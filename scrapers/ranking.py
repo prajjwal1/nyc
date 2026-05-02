@@ -31,10 +31,25 @@ NEIGHBORHOOD_PROXIMITY = {
 
 
 def compute_score(event: dict) -> float:
+    """Compute a 0-1 relevance score. Each event 'fights' for its position.
+
+    Multi-signal scoring:
+      - Source curation (40% weight via source + IG-author signal)
+      - Category match against user interests (with category-specific multipliers)
+      - Proximity to Williamsburg
+      - Title/description quality (zero out caption fragments)
+      - Time-of-day fit (post-work weekday, all-day weekend)
+      - Hard penalty for soft-block keywords and audience mismatches
+      - Boost for high-value vibes (rooftop, opening, premiere) and social keywords
+    """
     signals = quality_signals(event)
 
     # Caption fragments get nuked entirely
     if signals["is_caption_fragment"]:
+        return 0.0
+
+    # Title quality below 0.3 = clearly bad title, nuke
+    if signals["title_quality"] < 0.3:
         return 0.0
 
     # Multi-signal ranking
@@ -51,23 +66,25 @@ def compute_score(event: dict) -> float:
     time_q = signals["time_score"]
 
     # Engagement boosts/penalties
-    high_value_boost = min(0.25, signals["high_value_hits"] * 0.12)
-    soft_penalty = min(0.3, signals["soft_penalty_hits"] * 0.12)
-    audience_penalty = 0.4 if signals["audience_mismatch"] else 0.0
+    high_value_boost = min(0.30, signals["high_value_hits"] * 0.15)
+    social_boost = min(0.20, signals["social_hits"] * 0.10)
+    soft_penalty = min(0.4, signals["soft_penalty_hits"] * 0.15)
+    audience_penalty = 0.5 if signals["audience_mismatch"] else 0.0
 
+    # Strict baseline weighted average — every signal must pull its weight
     base_score = (
-        proximity * 0.18
-        + category * 0.20
-        + price * 0.06
-        + popularity * 0.08
-        + source * 0.20         # source quality matters a lot — IG is curated
-        + completeness * 0.05
-        + title_q * 0.10        # punish caption fragments
+        proximity * 0.16
+        + category * 0.22       # interests are critical
+        + price * 0.04
+        + popularity * 0.07
+        + source * 0.20         # IG is curated
+        + completeness * 0.06
+        + title_q * 0.12        # punish caption fragments
         + desc_q * 0.05
-        + time_q * 0.08         # weekend evening bias
+        + time_q * 0.08
     )
 
-    final = base_score + high_value_boost - soft_penalty - audience_penalty
+    final = base_score + high_value_boost + social_boost - soft_penalty - audience_penalty
     return max(0.0, min(1.0, final))
 
 

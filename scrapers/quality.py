@@ -8,6 +8,8 @@ import re
 
 # Hard blocks: events with these keywords are removed entirely.
 # These are events you would never want to attend as a 20-30 something in NYC.
+# IMPORTANT: This is the most aggressive layer. Use whole-word boundaries when
+# the keyword could falsely match (e.g., "play" matches "playing").
 HARD_BLOCK_KEYWORDS = [
     # Kids / family
     "storytime", "story time", "kids", "children", "child ", "toddler", "baby",
@@ -52,13 +54,41 @@ HARD_BLOCK_KEYWORDS = [
 SOFT_PENALTY_KEYWORDS = [
     "free house dance", "salsa class", "swing dance class",
     "speed dating", "gay men's speed", "lesbian speed",
-    "code & coffee", "code and coffee", "tech mixer",
-    "discussion group", "book club meeting", "writing workshop",
-    "open mic", "comedy show",  # too generic
+    "code & coffee", "code and coffee", "tech meetup",
+    "discussion group", "writing workshop",
     "yoga class", "pilates class", "meditation class",
-    "running club", "walking tour",
+    "running club",
     "trivia night",
+    # Generic recurring stuff
+    "weekly meeting", "monthly meeting", "regular meetup",
+    "every monday", "every tuesday", "every wednesday",
+    # Vague titles
+    "various artists", "tba", "more info", "stay tuned",
 ]
+
+# Social signals: events specifically conducive to meeting people.
+# These get a meaningful score boost since the user is single & wants to meet folks.
+SOCIAL_KEYWORDS = [
+    # Explicit
+    "singles night", "singles event", "singles mixer", "singles party",
+    "speed dating", "matchmaking", "date my friend", "blind date",
+    "first dates", "dating in nyc",
+    # Meet new people
+    "meet new people", "make new friends", "new in town",
+    "newcomers", "expats meetup", "newbies in nyc",
+    # Social mixers / connection-focused
+    "social mixer", "meet & greet", "meet and greet", "icebreaker",
+    "20s & 30s", "20s and 30s", "young professionals",
+    # Vibe-based connection events
+    "kickback", "house party", "social", "salon",
+    "after party", "afterparty", "cocktail hour",
+    "happy hour", "rooftop hour",
+    # Group activities for meeting
+    "run club", "social run", "social club",
+    "supper club", "dinner club",
+    "gallery hop", "art hop",
+]
+
 
 # Strong boosts: signals of a genuinely cool, engaging event.
 HIGH_VALUE_KEYWORDS = [
@@ -126,6 +156,7 @@ def quality_signals(event: dict) -> dict:
     # Count keyword hits
     soft_penalty_hits = sum(1 for kw in SOFT_PENALTY_KEYWORDS if kw in text)
     high_value_hits = sum(1 for kw in HIGH_VALUE_KEYWORDS if kw in text)
+    social_hits = sum(1 for kw in SOCIAL_KEYWORDS if kw in text)
     audience_mismatch = any(kw in text for kw in NON_TARGET_AUDIENCE)
 
     # Title quality: is the title an actual event title or a fragment?
@@ -142,6 +173,7 @@ def quality_signals(event: dict) -> dict:
     return {
         "soft_penalty_hits": soft_penalty_hits,
         "high_value_hits": high_value_hits,
+        "social_hits": social_hits,
         "audience_mismatch": audience_mismatch,
         "title_quality": title_quality,
         "desc_quality": desc_quality,
@@ -170,8 +202,10 @@ def _title_quality(title: str) -> float:
     if len(title) < 8:
         return 0.3
 
+    title_lower = title.lower()
+
     # Penalize titles ending with mid-sentence punctuation
-    if title.endswith((",", ":", ";", " and", " or", " the", " a", " of", " in", " on", " at", " to")):
+    if title.endswith((",", ":", ";", " and", " or", " the", " a", " of", " in", " on", " at", " to", " is", " are", " was", " were")):
         return 0.2
 
     # Penalize titles starting with lowercase (often caption fragments)
@@ -183,16 +217,33 @@ def _title_quality(title: str) -> float:
     if hashtag_ratio > 0.3:
         return 0.2
 
-    # Penalize titles that contain "Throughout his career" or other narrative phrases
+    # Penalize narrative caption fragments
     narrative_starters = [
         "throughout", "since ", "in his", "in her", "the artist", "the work",
         "this work", "this piece", "the painting", "the sculpture",
         "as part of", "see this", "join us at", "view of", "📷",
+        "did you know", "fun fact", "happy ", "today is", "let me",
+        "we love", "we're loving", "we’re loving", "we’re thrilled",
+        "we are thrilled", "we are excited", "what a ", "behind the scenes",
+        "swipe to", "swipe ⬅", "swipe ➡", "tap link", "link in bio",
     ]
-    if any(title.lower().startswith(p) for p in narrative_starters):
+    if any(title_lower.startswith(p) for p in narrative_starters):
         return 0.2
 
-    return 1.0
+    # Penalize titles with strong "ad copy" feel
+    if any(p in title_lower for p in [" featuring ", " ft. ", " presents "]):
+        return 0.7  # actually this can be a real event lineup, mild penalty only
+
+    # Reward titles with strong action verbs at the start (real events)
+    action_starters = [
+        "join ", "come ", "explore ", "discover ", "celebrate ", "experience ",
+        "see ", "visit ", "attend ", "go to ", "watch ", "listen to ",
+        "enjoy ", "shop ", "taste ", "dance to ", "party at ",
+    ]
+    if any(title_lower.startswith(p) for p in action_starters):
+        return 1.0
+
+    return 0.9
 
 
 def _description_quality(desc: str) -> float:

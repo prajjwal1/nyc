@@ -69,27 +69,117 @@ def extract_price(text: str) -> str:
 
 
 CATEGORY_KEYWORDS = {
-    "books": ["book club", "reading", "author talk", "literary", "poetry", "novel", "zine", "book launch", "book signing", "book swap"],
-    "art": ["art opening", "gallery", "exhibition", "museum", "painting", "sculpture", "installation", "moma", "whitney", "guggenheim", "art show", "open studios"],
+    "books": [
+        "book club", "reading series", "reading by", "author talk", "in conversation with",
+        "literary", "poetry", "novel", "zine", "book launch", "book signing", "book swap",
+        "book release", "memoir", "bookstore", "lit ", "literature",
+    ],
+    "art": [
+        "art opening", "gallery", "exhibition", "museum", "painting", "sculpture",
+        "installation", "moma", "whitney", "guggenheim", "art show", "open studios",
+        "first saturday", "first friday", "art fair", "biennial", "vernissage",
+        "artist talk", "panel discussion", "exhibition opens",
+    ],
     "music": [
         "live music", "live jazz", "jazz", "concert", "dj set", "dj night",
         "live band", "rock show", "hip hop", "electronic", "acoustic",
         "music venue", "live show", "vinyl night", "listening party",
         "house music", "techno", "indie band", "songwriter", "open mic",
-        "music festival", "live performance", "performance", "set ",
+        "music festival", "live performance", " performance", " set ",
         "sofar", "bowery", "elsewhere", "knockdown center",
+        "lo-fi", "chillout", "ambient", "experimental music",
+        "showcase", "lineup", "headlining", "supporting act",
+        "national sawdust", "rough trade", "le poisson rouge",
+        "summerstage", "celebrate brooklyn", "lincoln center out of doors",
+        "free concert", "outdoor concert", "tribute show",
     ],
     "parties": [
         "party", "social mixer", "mixer", "networking", "happy hour",
         "housewarming", "brunch party", "rooftop party", "loft party",
-        "warehouse party", "speakeasy", "cocktail party",
+        "warehouse party", "speakeasy", "cocktail party", "after-hours",
+        "underground", "boat party", "block party", "kickback",
+        "anniversary party", "release party",
     ],
-    "outdoors": ["park", "outdoor", "garden", "hike", "walk", "picnic", "rooftop", "boat", "harbor"],
-    "food": ["food festival", "dinner party", "tasting", "culinary", "chef", "supper club", "natural wine", "wine tasting", "cocktail", "smorgasburg"],
-    "games": ["board game", "trivia", "backgammon", "chess", "arcade", "game night"],
-    "theater": ["theater", "theatre", "film screening", "movie screening", "comedy show", "improv", "stand-up", "standup"],
+    "outdoors": [
+        "park", "outdoor", "garden", "hike", "walk", "picnic", "rooftop",
+        "boat", "harbor", "waterfront", "pier ", "beach", "ferry",
+        "high line", "domino park", "central park",
+    ],
+    "food": [
+        "food festival", "dinner party", "tasting menu", "tasting", "culinary",
+        "chef ", "supper club", "natural wine", "wine tasting", "wine bar",
+        "cocktail", "smorgasburg", "popup dinner", "pop-up dinner",
+        "restaurant week", "food crawl", "speakeasy",
+    ],
+    "games": [
+        "board game", "trivia", "backgammon", "chess", "arcade", "game night",
+        "mahjong", "poker night", "puzzle night",
+    ],
+    "theater": [
+        "theater", "theatre", "play opening", "broadway", "off-broadway",
+        "drama", "musical",
+    ],
+    "comedy": [
+        "comedy show", "improv", "stand-up", "standup", "open mic comedy",
+        "comedy night", "sketch show",
+    ],
+    "dance": [
+        "dance class", "dance party", "dance night", "salsa night",
+        "swing dance", "ballroom", "tango social",
+    ],
+    "design": [
+        "design week", "design fair", "design show", "icff",
+        "open studios", "interior design",
+    ],
+    "photography": [
+        "photo exhibition", "photography exhibition", "photo show",
+        "photo book", "photography",
+    ],
+    "wellness": [
+        "yoga ", "outdoor yoga", "yoga class", "meditation", "mindfulness",
+        "sound bath", "breathwork", "qigong", "tai chi",
+        "ice bath", "cold plunge", "sauna",
+    ],
+    "movies": [
+        "movie", "film screening", "movie screening", "outdoor movie",
+        "rooftop movie", "rooftop screening", "indie film", "premiere",
+        "movie night", "drive-in", "movies under the stars",
+    ],
+    "celebrities": [
+        "celebrity", "in conversation with", "live appearance",
+        "meet & greet", "fireside chat", "with special guest",
+        "in person ", "live taping",
+    ],
+    "exploration": [
+        "walking tour", "neighborhood tour", "self-guided tour",
+        "hidden gems", "secret nyc", "lesser-known", "off-the-beaten",
+        "explore brooklyn", "explore manhattan", "explore queens",
+        "open house", "first look", "pop-up shop", "popup shop",
+        "urban exploration", "street art tour", "architecture tour",
+        "rooftop tour", "scavenger hunt", "treasure hunt",
+        "hidden bar", "speakeasy",
+    ],
+    "viewings": [
+        "viewing party", "watch party", "live screening",
+        "stream watch", "screening party", "premiere watch",
+    ],
+    "singles": [
+        "singles event", "singles night", "singles party",
+        "singles mixer", "speed dating", "singles social",
+        "matchmaking", "dating event", "date night ", "date my friend",
+        "let's date", "date my", "first date",
+        "new in town", "meet new people", "make new friends",
+        "20s & 30s mixer", "20s and 30s", "in your 20s", "in your 30s",
+    ],
+    "film": [
+        "film screening", "movie screening", "premiere screening",
+        "film festival", "outdoor movie", "rooftop screening", "indie film",
+    ],
     "free": ["free admission", "no cover", "$0", "complimentary", "free event"],
-    "special": ["gala", "benefit", "fundraiser", "opening night", "premiere", "launch party", "met gala"],
+    "special": [
+        "gala", "benefit", "fundraiser", "opening night", "premiere",
+        "launch party", "met gala", "anniversary",
+    ],
 }
 
 

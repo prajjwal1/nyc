@@ -1,0 +1,556 @@
+"""General-purpose event scraper.
+
+Tries multiple universal extraction strategies (JSON-LD, OpenGraph, iCal)
+to scrape events from arbitrary URLs without per-site code.
+"""
+import json
+import os
+import re
+from urllib.parse import urlparse, urljoin
+
+from bs4 import BeautifulSoup
+
+from ..utils.http import fetch_text
+from ..utils.event_parser import build_event, parse_date, parse_time
+
+# High-value NYC venue/cultural URLs
+GENERIC_URLS = [
+    "https://www.92ny.org/calendar",
+    "https://www.bricartsmedia.org/events",
+    "https://thebellhouseny.com/calendar/",
+    "https://baryard.com/events",
+    "https://www.brooklynbrewery.com/visit-the-brewery/events/",
+    "https://www.cityvineyard.com/calendar",
+    "https://lpr.com/calendar/",
+    "https://elsewherebrooklyn.com/listings",
+    "https://www.bowerypoetry.com/events",
+    "https://greenwoodcemetery.org/events/",
+    "https://www.theinvisibledog.org/upcoming-events",
+    "https://www.openhousenewyork.org/calendar/",
+    "https://hudsonyards.com/discover/events/",
+    "https://thehighline.org/events/",
+    "https://flipthings.com/events",
+]
+
+# JSON-LD event schema types we accept
+EVENT_TYPES = {
+    "Event",
+    "MusicEvent",
+    "TheaterEvent",
+    "DanceEvent",
+    "ComedyEvent",
+    "FoodEvent",
+    "SportsEvent",
+    "BusinessEvent",
+    "EducationEvent",
+    "ExhibitionEvent",
+    "FestivalEvent",
+    "LiteraryEvent",
+    "ScreeningEvent",
+    "SocialEvent",
+    "VisualArtsEvent",
+    "ChildrensEvent",
+    "PublicationEvent",
+    "BroadcastEvent",
+}
+
+DISCOVERED_URLS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "discovered_urls.json",
+)
+
+
+def _domain_source(url: str) -> str:
+    """Extract a clean source label from URL domain."""
+    try:
+        host = urlparse(url).hostname or ""
+        host = host.lower()
+        if host.startswith("www."):
+            host = host[4:]
+        parts = host.split(".")
+        if len(parts) >= 2:
+            # Use the registrable name; for short slugs (like "lu") keep the suffix too
+            slug = parts[0]
+            if len(slug) <= 3 and len(parts) >= 2:
+                return f"{slug}.{parts[1]}"
+            return slug
+        return host or "generic"
+    except Exception:
+        return "generic"
+
+
+def _coerce_list(val):
+    if val is None:
+        return []
+    if isinstance(val, list):
+        return val
+    return [val]
+
+
+def _matches_event_type(type_val) -> bool:
+    """Check if a JSON-LD @type value indicates an event."""
+    if not type_val:
+        return False
+    types = _coerce_list(type_val)
+    return any(isinstance(t, str) and t in EVENT_TYPES for t in types)
+
+
+def _extract_image(image_val) -> str | None:
+    if not image_val:
+        return None
+    if isinstance(image_val, list):
+        for item in image_val:
+            url = _extract_image(item)
+            if url:
+                return url
+        return None
+    if isinstance(image_val, dict):
+        return image_val.get("url") or image_val.get("contentUrl")
+    if isinstance(image_val, str):
+        return image_val
+    return None
+
+
+def _extract_location(location_val) -> tuple[str, str]:
+    """Returns (location_name, address)."""
+    if not location_val:
+        return "", ""
+    if isinstance(location_val, list):
+        for item in location_val:
+            name, addr = _extract_location(item)
+            if name or addr:
+                return name, addr
+        return "", ""
+    if isinstance(location_val, dict):
+        loc_name = location_val.get("name", "") or ""
+        addr = location_val.get("address", "")
+        if isinstance(addr, dict):
+            parts = [
+                addr.get("streetAddress", ""),
+                addr.get("addressLocality", ""),
+                addr.get("addressRegion", ""),
+            ]
+            loc_addr = ", ".join(p for p in parts if p)
+        elif isinstance(addr, str):
+            loc_addr = addr
+        else:
+            loc_addr = ""
+        return loc_name, loc_addr
+    if isinstance(location_val, str):
+        return location_val, ""
+    return "", ""
+
+
+def _extract_price(offers_val) -> str:
+    if not offers_val:
+        return "unknown"
+    if isinstance(offers_val, list):
+        if not offers_val:
+            return "unknown"
+        offers_val = offers_val[0]
+    if isinstance(offers_val, dict):
+        p = offers_val.get("price", offers_val.get("lowPrice", ""))
+        if p == "0" or p == 0 or p == "0.00":
+            return "free"
+        if p:
+            try:
+                pf = float(p)
+                if pf == 0:
+                    return "free"
+                return f"${pf:g}"
+            except (ValueError, TypeError):
+                return f"${p}"
+    return "unknown"
+
+
+def _ld_event_to_dict(data: dict, source: str, fallback_url: str) -> dict | None:
+    """Convert a JSON-LD Event object to our event dict format."""
+    title = data.get("name", "") or ""
+    if not title:
+        return None
+    desc = data.get("description", "") or ""
+    if isinstance(desc, dict):
+        desc = desc.get("@value", "") or ""
+    start = data.get("startDate", "") or ""
+    end = data.get("endDate", "") or ""
+
+    event_date = parse_date(start[:10]) if start else None
+    if not event_date:
+        return None
+
+    start_time = start[11:16] if len(start) >= 16 else None
+    end_time = end[11:16] if len(end) >= 16 else None
+
+    loc_name, loc_addr = _extract_location(data.get("location"))
+    image = _extract_image(data.get("image"))
+    price = _extract_price(data.get("offers"))
+
+    url = data.get("url", "") or fallback_url
+    if isinstance(url, list) and url:
+        url = url[0]
+    if isinstance(url, str) and url and not url.startswith("http"):
+        url = urljoin(fallback_url, url)
+
+    return build_event(
+        title=str(title)[:300],
+        description=str(desc)[:500],
+        event_date=event_date,
+        start_time=start_time,
+        end_time=end_time,
+        location_name=loc_name,
+        address=loc_addr,
+        source=source,
+        source_url=url or fallback_url,
+        image_url=image,
+        price=price,
+    )
+
+
+def _walk_jsonld(node, source: str, fallback_url: str, results: list[dict], _seen: set | None = None) -> None:
+    """Recursively walk a JSON-LD structure, extracting any Event objects.
+
+    Handles: direct Event, lists, @graph, Organization with nested events,
+    ItemList with itemListElement, and other nested structures.
+    """
+    if _seen is None:
+        _seen = set()
+    if node is None:
+        return
+    # Cycles guard for dicts/lists by id
+    nid = id(node)
+    if nid in _seen:
+        return
+    _seen.add(nid)
+
+    if isinstance(node, list):
+        for item in node:
+            _walk_jsonld(item, source, fallback_url, results, _seen)
+        return
+
+    if not isinstance(node, dict):
+        return
+
+    type_val = node.get("@type")
+
+    # Direct event match
+    if _matches_event_type(type_val):
+        ev = _ld_event_to_dict(node, source, fallback_url)
+        if ev:
+            results.append(ev)
+        # Some events have sub-events; keep walking
+        for key in ("subEvent", "subEvents"):
+            sub = node.get(key)
+            if sub:
+                _walk_jsonld(sub, source, fallback_url, results, _seen)
+        return
+
+    # @graph structure
+    graph = node.get("@graph")
+    if graph:
+        _walk_jsonld(graph, source, fallback_url, results, _seen)
+
+    # Organization or LocalBusiness or Place with nested events array
+    for key in ("event", "events"):
+        if key in node:
+            _walk_jsonld(node[key], source, fallback_url, results, _seen)
+
+    # ItemList with itemListElement
+    if "itemListElement" in node:
+        items = node["itemListElement"]
+        if isinstance(items, list):
+            for item in items:
+                # Items can be ListItem wrappers around the actual entity
+                if isinstance(item, dict):
+                    inner = item.get("item", item)
+                    _walk_jsonld(inner, source, fallback_url, results, _seen)
+
+
+def _parse_jsonld_strategy(soup: BeautifulSoup, source: str, fallback_url: str) -> list[dict]:
+    events: list[dict] = []
+    for script in soup.find_all("script", type="application/ld+json"):
+        raw = script.string or script.get_text() or ""
+        if not raw.strip():
+            continue
+        # Some sites embed multiple JSON objects or have stray characters
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError:
+            # Try to recover by grabbing the first parseable object
+            try:
+                data = json.loads(raw.strip().rstrip(";"))
+            except Exception:
+                continue
+        _walk_jsonld(data, source, fallback_url, events)
+    return events
+
+
+def _meta(soup: BeautifulSoup, prop: str) -> str | None:
+    """Read a meta tag by property or name."""
+    el = soup.find("meta", attrs={"property": prop})
+    if not el:
+        el = soup.find("meta", attrs={"name": prop})
+    if el:
+        content = el.get("content")
+        if content:
+            return content.strip()
+    return None
+
+
+def _parse_opengraph_strategy(soup: BeautifulSoup, source: str, fallback_url: str) -> list[dict]:
+    """Extract a single event from OpenGraph metadata, if present and date is parseable."""
+    og_type = (_meta(soup, "og:type") or "").lower()
+    title = _meta(soup, "og:title") or (soup.title.get_text(strip=True) if soup.title else "")
+    if not title:
+        return []
+
+    start_raw = (
+        _meta(soup, "event:start_time")
+        or _meta(soup, "event:start_date")
+        or _meta(soup, "article:published_time")
+    )
+    end_raw = _meta(soup, "event:end_time") or _meta(soup, "event:end_date")
+
+    # Only treat as an event if og:type indicates so OR a start time exists
+    is_event = "event" in og_type or bool(start_raw)
+    if not is_event:
+        return []
+    if not start_raw:
+        return []
+
+    event_date = parse_date(start_raw[:10])
+    if not event_date:
+        event_date = parse_date(start_raw)
+    if not event_date:
+        return []
+
+    start_time = None
+    if len(start_raw) >= 16 and "T" in start_raw:
+        start_time = start_raw[11:16]
+    end_time = None
+    if end_raw and len(end_raw) >= 16 and "T" in end_raw:
+        end_time = end_raw[11:16]
+
+    desc = _meta(soup, "og:description") or _meta(soup, "description") or ""
+    image = _meta(soup, "og:image")
+    canonical = _meta(soup, "og:url") or fallback_url
+    location_name = _meta(soup, "event:location") or _meta(soup, "og:site_name") or ""
+
+    return [
+        build_event(
+            title=str(title)[:300],
+            description=str(desc)[:500],
+            event_date=event_date,
+            start_time=start_time,
+            end_time=end_time,
+            location_name=location_name,
+            source=source,
+            source_url=canonical,
+            image_url=image,
+        )
+    ]
+
+
+def _detect_ical_url(soup: BeautifulSoup, fallback_url: str) -> str | None:
+    """Look for <link rel='alternate' type='text/calendar'> or common .ics paths."""
+    link = soup.find("link", attrs={"rel": "alternate", "type": "text/calendar"})
+    if link:
+        href = link.get("href")
+        if href:
+            return urljoin(fallback_url, href)
+    # Look for direct anchors to .ics files
+    for a in soup.find_all("a", href=True):
+        href = a["href"]
+        if href.endswith(".ics") or "format=ical" in href.lower():
+            return urljoin(fallback_url, href)
+    return None
+
+
+_ICAL_FIELD_RE = re.compile(r"^([A-Z\-]+)(?:;[^:]*)?:(.*)$")
+
+
+def _parse_ical(text: str, source: str, fallback_url: str) -> list[dict]:
+    """Minimal iCal VEVENT parser — handles the common cases without a dep."""
+    events: list[dict] = []
+    # Unfold continuation lines (lines starting with space)
+    unfolded_lines: list[str] = []
+    for line in text.splitlines():
+        if line.startswith((" ", "\t")) and unfolded_lines:
+            unfolded_lines[-1] += line[1:]
+        else:
+            unfolded_lines.append(line)
+
+    in_event = False
+    current: dict = {}
+    for line in unfolded_lines:
+        if line.strip() == "BEGIN:VEVENT":
+            in_event = True
+            current = {}
+            continue
+        if line.strip() == "END:VEVENT":
+            in_event = False
+            ev = _ical_record_to_event(current, source, fallback_url)
+            if ev:
+                events.append(ev)
+            current = {}
+            continue
+        if not in_event:
+            continue
+        m = _ICAL_FIELD_RE.match(line)
+        if not m:
+            continue
+        key, value = m.group(1), m.group(2)
+        current[key] = value.replace("\\,", ",").replace("\\n", " ").replace("\\;", ";")
+    return events
+
+
+def _ical_date(value: str):
+    """Parse an iCal date/datetime field into (date_obj, time_str_or_none)."""
+    if not value:
+        return None, None
+    v = value.strip()
+    # YYYYMMDDTHHMMSS or YYYYMMDDTHHMMSSZ
+    m = re.match(r"^(\d{4})(\d{2})(\d{2})(?:T(\d{2})(\d{2}))?", v)
+    if not m:
+        return parse_date(v), None
+    y, mo, d, h, mi = m.group(1), m.group(2), m.group(3), m.group(4), m.group(5)
+    date_obj = parse_date(f"{y}-{mo}-{d}")
+    time_str = f"{h}:{mi}" if h and mi else None
+    return date_obj, time_str
+
+
+def _ical_record_to_event(rec: dict, source: str, fallback_url: str) -> dict | None:
+    title = rec.get("SUMMARY", "")
+    if not title:
+        return None
+    start = rec.get("DTSTART", "")
+    end = rec.get("DTEND", "")
+    desc = rec.get("DESCRIPTION", "")
+    location = rec.get("LOCATION", "")
+    url = rec.get("URL", fallback_url) or fallback_url
+
+    event_date, start_time = _ical_date(start)
+    if not event_date:
+        return None
+    _, end_time = _ical_date(end)
+
+    return build_event(
+        title=title[:300],
+        description=desc[:500],
+        event_date=event_date,
+        start_time=start_time,
+        end_time=end_time,
+        location_name=location,
+        source=source,
+        source_url=url,
+    )
+
+
+async def _try_ical(soup: BeautifulSoup, source: str, fallback_url: str) -> list[dict]:
+    ical_url = _detect_ical_url(soup, fallback_url)
+    candidates = []
+    if ical_url:
+        candidates.append(ical_url)
+    # Common conventional paths
+    parsed = urlparse(fallback_url)
+    base = f"{parsed.scheme}://{parsed.netloc}"
+    for path in ("/events.ics", "/calendar.ics", "/events/feed.ics"):
+        candidates.append(base + path)
+
+    for cand in candidates:
+        try:
+            text = await fetch_text(cand)
+            if "BEGIN:VCALENDAR" in text:
+                events = _parse_ical(text, source, fallback_url)
+                if events:
+                    return events
+        except Exception:
+            continue
+    return []
+
+
+def _dedupe(events: list[dict]) -> list[dict]:
+    seen: set[str] = set()
+    out: list[dict] = []
+    for ev in events:
+        key = ev.get("id") or f"{ev.get('title')}::{ev.get('date')}"
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(ev)
+    return out
+
+
+async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
+    """Scrape events from a single URL using universal extraction strategies."""
+    source = default_source if default_source != "generic" else _domain_source(url)
+    try:
+        html = await fetch_text(url)
+    except Exception as e:
+        print(f"[generic] {url}: fetch failed: {e}")
+        return []
+
+    try:
+        soup = BeautifulSoup(html, "lxml")
+    except Exception as e:
+        print(f"[generic] {url}: parse failed: {e}")
+        return []
+
+    # Strategy 1: JSON-LD Schema.org Event extraction
+    events = _parse_jsonld_strategy(soup, source, url)
+
+    # Strategy 2: OpenGraph metadata fallback for single-event pages
+    if not events:
+        events = _parse_opengraph_strategy(soup, source, url)
+
+    # Strategy 3: iCal feed detection
+    if not events:
+        try:
+            events = await _try_ical(soup, source, url)
+        except Exception as e:
+            print(f"[generic] {url}: ical attempt failed: {e}")
+
+    events = _dedupe(events)
+    print(f"[generic] {url}: {len(events)} events")
+    return events
+
+
+def _load_discovered_urls() -> list[str]:
+    """Load additional URLs from a JSON file (created by IG bio link discovery)."""
+    if not os.path.exists(DISCOVERED_URLS_PATH):
+        return []
+    try:
+        with open(DISCOVERED_URLS_PATH) as f:
+            data = json.load(f)
+    except Exception as e:
+        print(f"[generic] Failed to read {DISCOVERED_URLS_PATH}: {e}")
+        return []
+    # Accept either ["url1", ...] or {"urls": [...]}
+    if isinstance(data, list):
+        return [u for u in data if isinstance(u, str)]
+    if isinstance(data, dict):
+        urls = data.get("urls", [])
+        if isinstance(urls, list):
+            return [u for u in urls if isinstance(u, str)]
+    return []
+
+
+async def scrape() -> list[dict]:
+    """Scrape all URLs from GENERIC_URLS plus any discovered URLs."""
+    urls: list[str] = list(GENERIC_URLS)
+
+    # Append discovered URLs while preserving order and deduping
+    seen = set(urls)
+    for u in _load_discovered_urls():
+        if u not in seen:
+            urls.append(u)
+            seen.add(u)
+
+    all_events: list[dict] = []
+    for url in urls:
+        try:
+            events = await scrape_url(url)
+            all_events.extend(events)
+        except Exception as e:
+            print(f"[generic] {url}: ERROR {e}")
+    return all_events

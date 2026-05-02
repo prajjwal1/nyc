@@ -17,6 +17,7 @@ from ..config import (
     IG_SESSION_FILE,
     IG_USERNAME,
 )
+from ..discover import load_discovered_accounts
 from ..utils.event_parser import build_event, infer_categories, parse_date, parse_time
 
 # Optional image analysis for posts with incomplete caption data.
@@ -41,7 +42,10 @@ def scrape() -> list[dict]:
 
     all_events: list[dict] = []
 
-    for idx, account in enumerate(IG_ACCOUNTS):
+    # Merge curated seed list with any accounts discovered via BFS.
+    all_accounts = sorted(set(IG_ACCOUNTS) | set(load_discovered_accounts()))
+
+    for idx, account in enumerate(all_accounts):
         try:
             posts = _fetch_posts(loader, account)
             for post in posts:
@@ -56,10 +60,10 @@ def scrape() -> list[dict]:
             print(f"[instagram] Failed @{account}: {exc}")
 
         # Rate-limit: sleep between accounts (skip after the last one).
-        if idx < len(IG_ACCOUNTS) - 1:
+        if idx < len(all_accounts) - 1:
             time.sleep(1)
 
-    print(f"[instagram] Scraped {len(all_events)} events from {len(IG_ACCOUNTS)} accounts")
+    print(f"[instagram] Scraped {len(all_events)} events from {len(all_accounts)} accounts")
     return all_events
 
 

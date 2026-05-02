@@ -1,33 +1,28 @@
-name: Scrape Events
+name: Discover New Accounts
 
 on:
   schedule:
-    - cron: "0 */2 * * *"  # every 2 hours
+    - cron: "0 6 * * *"  # daily at 6am UTC
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: scrape
+  group: discover
   cancel-in-progress: false
 
 jobs:
-  scrape:
+  discover:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: "pip"
-
-      - name: Install system dependencies
-        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr
 
       - name: Install Python dependencies
         run: pip install -r scrapers/requirements.txt
@@ -41,19 +36,16 @@ jobs:
           mkdir -p ~/.config/instaloader
           echo "$IG_SESSION_B64" | base64 -d > ~/.config/instaloader/session-${IG_USERNAME:-prajfb}
 
-      - name: Run scrapers
+      - name: Run discovery BFS
         env:
           IG_USERNAME: ${{ secrets.IG_USERNAME }}
-        run: python -m scrapers.run_all
+        run: python -m scrapers.run_discovery
 
-      - name: Pull latest before commit
-        run: |
-          git pull --rebase --autostash || true
-
-      - name: Commit updated events
+      - name: Commit discovered accounts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/events.json site/public/events.json scrapers/data/discovered_accounts.json scrapers/data/discovered_urls.json 2>/dev/null || true
-          git diff --cached --quiet || git commit -m "Update events data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git add scrapers/data/discovered_accounts.json scrapers/data/discovered_urls.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "Discover new accounts $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git pull --rebase --autostash || true
           git push

@@ -6,7 +6,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scrapers.sources import luma, bookclubbar, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful
+from scrapers.sources import luma, bookclubbar, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful, generic
 from scrapers.normalize import process
 
 ASYNC_SCRAPERS = [
@@ -23,6 +23,7 @@ ASYNC_SCRAPERS = [
     ("dice", dice.scrape),
     ("substack", substack.scrape),
     ("partiful", partiful.scrape),
+    ("generic", generic.scrape),
 ]
 
 SYNC_SCRAPERS = [
