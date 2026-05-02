@@ -1,0 +1,155 @@
+"use client";
+
+import { useMemo } from "react";
+import { format, startOfWeek, endOfWeek, eachDayOfInterval, nextSaturday } from "date-fns";
+import { useEvents } from "./hooks/useEvents";
+import Header from "./components/Header";
+import Calendar from "./components/Calendar";
+import FilterBar from "./components/FilterBar";
+import EventList from "./components/EventList";
+import EventCard from "./components/EventCard";
+
+export default function Home() {
+  const {
+    loading,
+    events,
+    selectedDate,
+    setSelectedDate,
+    selectedDayEvents,
+    eventDates,
+    categories,
+    setCategories,
+    sources,
+    setSources,
+    search,
+    setSearch,
+    priceFilter,
+    setPriceFilter,
+    allSources,
+    allCategories,
+    lastUpdated,
+    totalEvents,
+  } = useEvents();
+
+  const eventCountByDate = useMemo(() => {
+    const map = new Map<string, number>();
+    for (const e of events) {
+      map.set(e.date, (map.get(e.date) || 0) + 1);
+    }
+    return map;
+  }, [events]);
+
+  const handleQuickFilter = (preset: string) => {
+    const today = new Date();
+    if (preset === "today") {
+      setSelectedDate(format(today, "yyyy-MM-dd"));
+    } else if (preset === "weekend") {
+      const dayOfWeek = today.getDay();
+      if (dayOfWeek === 0 || dayOfWeek === 6) {
+        setSelectedDate(format(today, "yyyy-MM-dd"));
+      } else {
+        setSelectedDate(format(nextSaturday(today), "yyyy-MM-dd"));
+      }
+    } else if (preset === "week") {
+      setSelectedDate(format(today, "yyyy-MM-dd"));
+    }
+  };
+
+  const weekEvents = useMemo(() => {
+    if (search) return null;
+    const today = new Date();
+    const weekEnd = endOfWeek(today);
+    const days = eachDayOfInterval({ start: today, end: weekEnd });
+    return days
+      .map((d) => {
+        const dateStr = format(d, "yyyy-MM-dd");
+        return {
+          date: dateStr,
+          label: format(d, "EEE, MMM d"),
+          events: events.filter((e) => e.date === dateStr),
+        };
+      })
+      .filter((d) => d.events.length > 0);
+  }, [events, search]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-gray-400 text-lg">Loading events...</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header totalEvents={totalEvents} lastUpdated={lastUpdated} />
+
+      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+        <div className="flex flex-col lg:flex-row gap-6">
+          <aside className="lg:w-80 shrink-0 space-y-6">
+            <Calendar
+              selectedDate={selectedDate}
+              onSelectDate={setSelectedDate}
+              eventDates={eventDates}
+              eventCountByDate={eventCountByDate}
+            />
+            <div className="bg-white rounded-xl border border-gray-200 p-4">
+              <FilterBar
+                categories={categories}
+                setCategories={setCategories}
+                sources={sources}
+                setSources={setSources}
+                search={search}
+                setSearch={setSearch}
+                priceFilter={priceFilter}
+                setPriceFilter={setPriceFilter}
+                allSources={allSources}
+                allCategories={allCategories}
+                onQuickFilter={handleQuickFilter}
+              />
+            </div>
+          </aside>
+
+          <section className="flex-1 min-w-0">
+            <EventList events={selectedDayEvents} selectedDate={selectedDate} />
+
+            {selectedDayEvents.length === 0 &&
+              weekEvents &&
+              weekEvents.length > 0 && (
+                <div className="mt-8">
+                  <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-4">
+                    Coming up this week
+                  </h3>
+                  <div className="space-y-6">
+                    {weekEvents.slice(0, 4).map((day) => (
+                      <div key={day.date}>
+                        <button
+                          onClick={() => setSelectedDate(day.date)}
+                          className="text-sm font-semibold text-gray-700 mb-2 hover:text-gray-900"
+                        >
+                          {day.label} ({day.events.length})
+                        </button>
+                        <div className="space-y-2">
+                          {day.events.slice(0, 3).map((event) => (
+                            <EventCard key={event.id} event={event} />
+                          ))}
+                          {day.events.length > 3 && (
+                            <button
+                              onClick={() => setSelectedDate(day.date)}
+                              className="text-sm text-gray-400 hover:text-gray-600 pl-1"
+                            >
+                              +{day.events.length - 3} more
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+          </section>
+        </div>
+      </main>
+    </div>
+  );
+}
