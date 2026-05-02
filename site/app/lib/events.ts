@@ -5,7 +5,7 @@ let cachedData: EventsData | null = null;
 export async function loadEvents(): Promise<EventsData> {
   if (cachedData) return cachedData;
 
-  const res = await fetch(`${process.env.NODE_ENV === "production" ? "/nyc-events" : ""}/events.json`);
+  const res = await fetch(`${process.env.NODE_ENV === "production" ? "/nyc" : ""}/events.json`);
   cachedData = await res.json();
   return cachedData!;
 }
