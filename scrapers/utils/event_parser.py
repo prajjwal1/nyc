@@ -69,16 +69,27 @@ def extract_price(text: str) -> str:
 
 
 CATEGORY_KEYWORDS = {
-    "books": ["book", "reading", "author", "literary", "poetry", "library", "novel", "zine"],
-    "art": ["art", "gallery", "exhibition", "museum", "painting", "sculpture", "installation", "moma", "whitney", "guggenheim"],
-    "music": ["music", "concert", "live band", "dj", "jazz", "rock", "hip hop", "electronic", "acoustic", "show", "gig", "sofar"],
-    "parties": ["party", "social", "mixer", "networking", "happy hour", "housewarming", "brunch"],
-    "outdoors": ["park", "outdoor", "garden", "hike", "walk", "picnic", "rooftop"],
-    "food": ["food", "dinner", "tasting", "culinary", "chef", "restaurant", "supper", "brunch", "cocktail"],
-    "games": ["game", "board game", "trivia", "backgammon", "chess", "puzzle", "arcade"],
-    "theater": ["theater", "theatre", "film", "screening", "comedy", "improv", "stand-up", "standup"],
-    "free": ["free", "no cover", "$0", "complimentary", "donation"],
-    "special": ["gala", "benefit", "fundraiser", "opening night", "premiere", "met gala"],
+    "books": ["book club", "reading", "author talk", "literary", "poetry", "novel", "zine", "book launch", "book signing", "book swap"],
+    "art": ["art opening", "gallery", "exhibition", "museum", "painting", "sculpture", "installation", "moma", "whitney", "guggenheim", "art show", "open studios"],
+    "music": [
+        "live music", "live jazz", "jazz", "concert", "dj set", "dj night",
+        "live band", "rock show", "hip hop", "electronic", "acoustic",
+        "music venue", "live show", "vinyl night", "listening party",
+        "house music", "techno", "indie band", "songwriter", "open mic",
+        "music festival", "live performance", "performance", "set ",
+        "sofar", "bowery", "elsewhere", "knockdown center",
+    ],
+    "parties": [
+        "party", "social mixer", "mixer", "networking", "happy hour",
+        "housewarming", "brunch party", "rooftop party", "loft party",
+        "warehouse party", "speakeasy", "cocktail party",
+    ],
+    "outdoors": ["park", "outdoor", "garden", "hike", "walk", "picnic", "rooftop", "boat", "harbor"],
+    "food": ["food festival", "dinner party", "tasting", "culinary", "chef", "supper club", "natural wine", "wine tasting", "cocktail", "smorgasburg"],
+    "games": ["board game", "trivia", "backgammon", "chess", "arcade", "game night"],
+    "theater": ["theater", "theatre", "film screening", "movie screening", "comedy show", "improv", "stand-up", "standup"],
+    "free": ["free admission", "no cover", "$0", "complimentary", "free event"],
+    "special": ["gala", "benefit", "fundraiser", "opening night", "premiere", "launch party", "met gala"],
 }
 
 

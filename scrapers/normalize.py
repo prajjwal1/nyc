@@ -52,10 +52,27 @@ def sort_by_date(events: list[dict]) -> list[dict]:
 
 def process(events: list[dict]) -> list[dict]:
     from .ranking import rank_events
+    from .quality import is_blocked
 
     events = [ev for ev in events if ev.get("title") and ev.get("date")]
     events = filter_future(events)
+
+    # Hard-filter blocked events (kids/utility/services/captions)
+    before = len(events)
+    events = [ev for ev in events if not is_blocked(ev)]
+    blocked = before - len(events)
+    if blocked:
+        print(f"[normalize] Blocked {blocked} low-quality events")
+
     events = deduplicate(events)
     events = rank_events(events)
+
+    # Drop zero-score caption fragments
+    before = len(events)
+    events = [ev for ev in events if ev.get("score", 0) > 0]
+    fragments = before - len(events)
+    if fragments:
+        print(f"[normalize] Dropped {fragments} caption fragments")
+
     events = sort_by_date(events)
     return events

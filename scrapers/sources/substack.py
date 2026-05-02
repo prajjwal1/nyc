@@ -166,6 +166,17 @@ def _extract_from_headings(soup, heading_tags, fallback_date, post_link: str) ->
         if not event_date:
             continue
 
+        # If the title is just a date like "May 16" or "May 16th", promote the
+        # first meaningful sentence from the description as the actual title.
+        if _is_date_only_title(title):
+            real_title = _extract_real_title_from_desc(description)
+            if real_title:
+                title = real_title
+
+        # Skip if we still have a low-quality title
+        if _is_date_only_title(title) or len(title) < 8:
+            continue
+
         # Extract time if present
         start_time = parse_time(combined_text)
 
@@ -180,6 +191,47 @@ def _extract_from_headings(soup, heading_tags, fallback_date, post_link: str) ->
         ))
 
     return events
+
+
+def _is_date_only_title(title: str) -> bool:
+    """True if the title is just a date like 'May 16' or '5/16'."""
+    if not title:
+        return True
+    stripped = title.strip().rstrip(".:,;")
+    # Match "May 16", "May 16th", "May 16, 2026"
+    if re.match(r"^(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2}(?:st|nd|rd|th)?(?:[,\s]+\d{4})?$", stripped, re.IGNORECASE):
+        return True
+    if re.match(r"^\d{1,2}/\d{1,2}(?:/\d{2,4})?$", stripped):
+        return True
+    return False
+
+
+def _extract_real_title_from_desc(desc: str) -> str:
+    """Extract the actual event title from description text.
+
+    Substack guides format like: '📍 Watch the 5 Boro Bike Tour🎟️ ...'
+    The title is between the location pin and the ticket emoji.
+    """
+    if not desc:
+        return ""
+
+    # Strip leading 📍 and any emoji
+    text = re.sub(r"^[📍🎟️✨🗓️🕐]+\s*", "", desc).strip()
+
+    # Cut at the ticket emoji 🎟️ (separates title from details)
+    title = re.split(r"🎟️", text, 1)[0].strip()
+
+    # Also try other common separators
+    if not title or len(title) < 5:
+        title = re.split(r"[•·|]", text, 1)[0].strip()
+
+    # Trim trailing junk
+    title = re.sub(r"\s+", " ", title)
+    title = title.strip(" .,:;!?-")
+
+    if 5 < len(title) < 120:
+        return title
+    return ""
 
 
 def _extract_date(text: str):
