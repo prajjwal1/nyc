@@ -226,9 +226,21 @@ def _title_quality(title: str) -> float:
         "we love", "we're loving", "we’re loving", "we’re thrilled",
         "we are thrilled", "we are excited", "what a ", "behind the scenes",
         "swipe to", "swipe ⬅", "swipe ➡", "tap link", "link in bio",
+        "back by", "tickets on sale", "now showing", "now open",
+        "last chance", "don't miss", "don’t miss", "save the date",
+        "calling all", "coming up", "coming soon", "celebrating ",
+        "thank you", "thanks to", "shoutout", "photo by", "video by",
     ]
     if any(title_lower.startswith(p) for p in narrative_starters):
-        return 0.2
+        return 0.1
+
+    # Numbered list items
+    if re.match(r"^\d+[\.\)]\s+", title):
+        return 0.1
+
+    # Title is just a date or relative time
+    if re.match(r"^(?:today|tomorrow|tonight|this weekend)$", title_lower):
+        return 0.1
 
     # Penalize titles with strong "ad copy" feel
     if any(p in title_lower for p in [" featuring ", " ft. ", " presents "]):
@@ -306,25 +318,89 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if not title:
         return False
 
+    title_lower = title.lower().strip()
+    title_stripped = title.strip()
+
     # Caption fragments often start with lowercase or narrative phrases
     fragment_starts = [
+        # Narrative / descriptive
         "throughout", "since ", "in his", "in her", "the artist", "the work",
         "this work", "this piece", "as part of", "see this", "📷",
         "📸", "see ", "view ", "watch ", "currently on view",
+        # First-person / hype language
+        "we are loving", "we're loving", "we’re loving",
+        "we are thrilled", "we're thrilled", "we’re thrilled",
+        "we are excited", "we're excited", "we’re excited",
+        "we are so", "we’re so", "we are super", "we’re super",
+        "we’ve got", "we've got", "we got", "we have ", "we’re back",
+        # Announcements / call-to-action
+        "back by popular", "tickets on sale", "now showing", "now open",
+        "last chance", "don't miss", "don’t miss", "save the date",
+        "calling all", "for those of",
+        "coming up", "coming soon",
+        "happy ", "today is", "celebrating ", "celebrate ",
+        "thank you", "thanks to", "shoutout", "shout out",
+        "photo by", "📷", "video by", "captured by",
+        # Hype / casual greetings
+        "hey ", "hi ", "yo ", "psa", "p.s.a", "‼", "‼️",
+        "big news", "huge news", "exciting news", "great news",
+        "just announced", "newly announced", "announcing",
+        "presale", "general on sale", "general sale",
+        "got some", "we’ve got some", "we got some",
+        "real dancers", "all dancers",
+        "catch his", "catch her", "catch their",
+        "[", "(",
+        "@", "#",
     ]
-    if any(title.lower().startswith(p) for p in fragment_starts):
+    if any(title_lower.startswith(p) for p in fragment_starts):
+        return True
+
+    # Numbered list items (e.g., "3. Harley Spiller premieres ...")
+    if re.match(r"^\d+[\.\)]\s+", title):
+        return True
+
+    # Titles starting with relative time like "Today" or "Tomorrow" alone
+    if re.match(r"^(?:today|tomorrow|tonight|this weekend|this week)[^\w]?$", title_lower):
         return True
 
     # Hashtag-only titles
     if title.startswith("#") or re.match(r"^#\w+(\s+#\w+)+$", title.strip()):
         return True
 
+    # Bracketed location tags like "[London]" or "[NYC]"
+    if re.match(r"^\[[^\]]+\]\s*$", title_stripped):
+        return True
+
     # Narrative phrases inside the title
     narrative_phrases = [
         "consist of", "throughout his", "throughout her",
         "experimented with", "still want a", "the largest",
+        "is #", " is now ", " is back", "are bringing",
+        "loving the energy", "across nyc",
+        "link in our bio", "link in bio", "swipe up",
+        "presale begins", "tickets are live", "schedule and tickets",
     ]
-    if any(p in title.lower() for p in narrative_phrases):
+    if any(p in title_lower for p in narrative_phrases):
         return True
+
+    # Sentence-like titles (multiple commas, ends with period in mid-sentence)
+    if title.count(",") >= 2 and len(title) > 80:
+        return True
+
+    # Title is mostly emoji/punctuation
+    alpha_chars = sum(1 for c in title_stripped if c.isalpha())
+    if alpha_chars < 5:
+        return True
+
+    # Title is all caps and looks like hype (e.g., "REAL DANCERS TO THE FRONT")
+    if (title_stripped.isupper() and len(title_stripped) > 8
+            and "‼" not in title_stripped[-3:]):
+        # OK to allow festival/abbreviation names
+        if not re.match(r"^[A-Z]{2,}\s*[A-Z0-9 ]*$", title_stripped):
+            # Has hype words?
+            hype = ["clear", "drop", "alert", "emergency", "urgent",
+                    "warning", "incoming", "psa", "must"]
+            if any(h in title_lower for h in hype):
+                return True
 
     return False

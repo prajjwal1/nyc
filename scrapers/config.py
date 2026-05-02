@@ -64,7 +64,7 @@ USER_INTERESTS = {
         "music", "parties", "singles", "art", "food", "books",
         "outdoors", "exploration", "games", "theater", "dance",
         "comedy", "movies", "viewings", "celebrities", "wellness",
-        "design", "photography",
+        "fitness", "design", "photography",
     ],
     # Categories that get a strong ranking boost (20s-30s NYC single lifestyle)
     "boost_categories": {
@@ -78,9 +78,10 @@ USER_INTERESTS = {
         "celebrities": 1.1,
         "viewings": 1.1,
         "movies": 1.05,
-        "comedy": 1.1,
+        "comedy": 1.15,       # Stand-up / improv (good first-date ideas too)
         "dance": 1.1,
         "wellness": 1.05,
+        "fitness": 1.1,       # Run clubs are great for meeting people
     },
     "home_neighborhood": "williamsburg",
     "preferred_price": "free",

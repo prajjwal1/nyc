@@ -140,6 +140,14 @@ CATEGORY_KEYWORDS = {
         "sound bath", "breathwork", "qigong", "tai chi",
         "ice bath", "cold plunge", "sauna",
     ],
+    "fitness": [
+        "run club", "running club", "weekend run", "morning run",
+        "social run", "saturday run", "sunday run",
+        "group run", "casual run", "track club",
+        "5k ", "10k ", "marathon training",
+        "bike ride", "group ride", "cycling club",
+        "pickleball", "tennis meetup",
+    ],
     "movies": [
         "movie", "film screening", "movie screening", "outdoor movie",
         "rooftop movie", "rooftop screening", "indie film", "premiere",

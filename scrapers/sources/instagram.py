@@ -159,6 +159,8 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     all_urls = re.findall(r"https?://[^\s)>\]\"']+", caption)
 
     sections = _split_caption(caption)
+    # Detect if this post is clearly a multi-event roundup (many sections w/ dates)
+    multi_event = sum(1 for s in sections if _find_dates(s)) >= 3
 
     events: list[dict] = []
     url_idx = 0  # walk through extracted URLs as we consume sections
@@ -169,6 +171,12 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             continue
 
         dates = _find_dates(section)
+
+        # If this is a multi-event roundup, ONLY accept sections that contain
+        # an explicit date. Otherwise we get caption fragments masquerading as events.
+        if multi_event and not dates:
+            continue
+
         time_str = parse_time(section)
         title = _extract_title(section)
         location = _extract_location(section)
@@ -200,7 +208,28 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             categories=categories,
         ))
 
-    # Fallback: if no sections produced events, treat the whole caption as one.
+    # If single-event post: treat the whole caption as one event with the post's
+    # main date. This is more accurate than splitting captions that aren't roundups.
+    if not multi_event:
+        events = []  # discard the per-section attempts
+        if post_date:
+            full_caption = caption
+            title = _extract_title(full_caption) or full_caption.split("\n")[0][:80]
+            event_date = _find_dates(full_caption)
+            event_date = event_date[0] if event_date else post_date.date()
+            events.append(build_event(
+                title=title,
+                description=full_caption[:400],
+                event_date=event_date,
+                start_time=parse_time(full_caption),
+                location_name=_extract_location(full_caption),
+                source="instagram",
+                source_url=all_urls[0] if all_urls else post_url,
+                image_url=image_url,
+                categories=infer_categories(title, full_caption),
+            ))
+
+    # Fallback: if no events at all, build one from the whole post
     if not events and post_date:
         title = _extract_title(caption) or caption[:80]
         events.append(build_event(
@@ -283,20 +312,50 @@ def _find_dates(text: str) -> list:
 # Title extraction
 # ---------------------------------------------------------------------------
 
+_HYPE_PREFIX_RE = re.compile(
+    r"^(?:just announced|announcing|newly announced|big news|huge news|"
+    r"exciting news|great news|psa|hey [a-z]+|yo [a-z]+|"
+    r"presale begins|tickets on sale|tickets are live|"
+    r"now showing|now open|back by popular|last chance|"
+    r"don[''`]?t miss|save the date|calling all|coming up|coming soon|"
+    r"we[''`]?(?:ve got| got| are loving| are thrilled| are excited)|"
+    r"shoutout|thank you|thanks to|photo by|video by|captured by|"
+    r"got some \S+ gigs|real dancers|catch (?:his|her|their)|"
+    r"clear your schedules)\s*[:!\-—,\s]*",
+    re.IGNORECASE,
+)
+
+
 def _extract_title(text: str) -> str:
     """Pull the most likely event title from a caption section.
 
-    Heuristic: the first non-trivial line that isn't just emoji or hashtags.
+    Heuristic: skip hype/announcement prefixes, find the first non-trivial
+    line that looks like an event name.
     """
 
-    for line in text.strip().split("\n"):
+    if not text:
+        return ""
+
+    # Strip leading hype prefix
+    cleaned_text = _HYPE_PREFIX_RE.sub("", text.strip(), count=1)
+
+    for line in cleaned_text.strip().split("\n"):
         line = line.strip()
-        # Strip emoji
-        cleaned = re.sub(r"[\U0001F300-\U0001FAFF\U00002702-\U000027B0\U0000FE00-\U0000FE0F]", "", line).strip()
-        # Skip lines that are just hashtags or handles
-        if re.match(r"^[#@\s]+$", cleaned):
+        # Strip emoji at start/end
+        cleaned = re.sub(
+            r"[\U0001F300-\U0001FAFF\U00002702-\U000027B0\U0000FE00-\U0000FE0F]",
+            "",
+            line,
+        ).strip()
+        # Strip leading punctuation
+        cleaned = cleaned.lstrip(":;,.!? -—")
+        # Skip lines that are just hashtags, handles, or punctuation
+        if re.match(r"^[#@\s\W]+$", cleaned):
             continue
-        if 5 < len(cleaned) < 120:
+        # Skip if line is mostly hashtags
+        if cleaned.count("#") >= 3 and len(cleaned) < 60:
+            continue
+        if 8 < len(cleaned) < 120:
             return cleaned
     return ""
 

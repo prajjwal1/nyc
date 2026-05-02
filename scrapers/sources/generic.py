@@ -15,12 +15,11 @@ from ..utils.event_parser import build_event, parse_date, parse_time
 
 # High-value NYC venue/cultural URLs
 GENERIC_URLS = [
+    # Music venues
     "https://www.92ny.org/calendar",
     "https://www.bricartsmedia.org/events",
     "https://thebellhouseny.com/calendar/",
-    "https://baryard.com/events",
     "https://www.brooklynbrewery.com/visit-the-brewery/events/",
-    "https://www.cityvineyard.com/calendar",
     "https://lpr.com/calendar/",
     "https://elsewherebrooklyn.com/listings",
     "https://www.bowerypoetry.com/events",
@@ -29,7 +28,30 @@ GENERIC_URLS = [
     "https://www.openhousenewyork.org/calendar/",
     "https://hudsonyards.com/discover/events/",
     "https://thehighline.org/events/",
-    "https://flipthings.com/events",
+    # Comedy venues
+    "https://www.flophousecomedy.com/events",
+    "https://www.flophousecomedy.com",
+    "https://www.greenpointcomedyclub.com/events",
+    "https://www.greenpointcomedyclub.com",
+    "https://www.unioncomedyhall.com/events",
+    "https://www.eastvillecomedy.com/events",
+    "https://newyorkcomedyclub.com/calendar",
+    "https://standupny.com/calendar",
+    # Running clubs / outdoor fitness (weekly social runs)
+    "https://www.brooklyntrack.club/events",
+    "https://newyorkroad.com/events",
+    "https://www.northbrooklynrunners.org/events",
+    # Curated NYC event hubs
+    "https://www.nyc.com/events/",
+    "https://www.eventcombo.com/events/new-york",
+    "https://www.timeout.com/newyork/things-to-do/things-to-do-in-nyc-this-weekend",
+    "https://www.timeout.com/newyork/events",
+    "https://www.timeout.com/newyork/things-to-do/best-things-to-do-in-nyc-this-week",
+    # Bookstores / literary
+    "https://www.mcnallyjackson.com/events",
+    "https://www.barnesandnoble.com/h/events/store/2675",
+    "https://www.bookcourt.com/calendar",
+    "https://lizsbookbar.com/events",
 ]
 
 # JSON-LD event schema types we accept
