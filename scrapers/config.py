@@ -9,15 +9,15 @@ IG_SESSION_FILE = os.environ.get(
 
 IG_ACCOUNTS = [
     "theskint",
-    "nycgovparks",
-    "secretnyc",
+    "nycparks",
+    "secret.nyc",
     "timeoutnewyork",
     "brooklynmuseum",
     "metmuseum",
-    "thewhitney",
+    "whitneymuseum",
     "sofarsounds",
-    "nonsensenyc",
-    "nyaboroshinyc",
+    "nonsense.nyc",
+    "onefinedaynyc",
 ]
 
 IG_MAX_POSTS_PER_ACCOUNT = 12
