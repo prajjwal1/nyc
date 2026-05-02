@@ -5,7 +5,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scrapers.sources import luma, bookclubbar, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram
+from scrapers.sources import luma, bookclubbar, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful
 from scrapers.normalize import process
 
 SCRAPERS = [
@@ -21,6 +21,8 @@ SCRAPERS = [
     ("meetup", meetup.scrape),
     ("dice", dice.scrape),
     ("instagram", instagram.scrape),
+    ("substack", substack.scrape),
+    ("partiful", partiful.scrape),
 ]
 
 OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "events.json")

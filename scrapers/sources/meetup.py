@@ -96,6 +96,8 @@ def _from_ld(data: dict) -> dict | None:
     image = data.get("image", "")
     if isinstance(image, list) and image:
         image = image[0]
+    if image and not image.startswith("http"):
+        image = f"https://www.meetup.com{image}"
 
     return build_event(
         title=title,

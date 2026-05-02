@@ -52,4 +52,6 @@ export const SOURCE_LABELS: Record<string, string> = {
   meetup: "Meetup",
   dice: "Dice.fm",
   instagram: "Instagram",
+  substack: "Substack",
+  partiful: "Partiful",
 };

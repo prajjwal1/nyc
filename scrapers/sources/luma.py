@@ -7,6 +7,7 @@ from ..utils.event_parser import build_event, parse_date, parse_time
 LUMA_PAGES = [
     "https://lu.ma/nycbackgammonclub",
     "https://lu.ma/readingrhythms-manhattan",
+    "https://lu.ma/litclub.nyc",
 ]
 
 
@@ -31,13 +32,17 @@ def _parse_luma_page(html: str, source_url: str) -> list[dict]:
             data = json.loads(script.string)
             if isinstance(data, list):
                 for item in data:
-                    ev = _parse_ld_json(item, source_url)
-                    if ev:
-                        events.append(ev)
+                    result = _parse_ld_json(item, source_url)
+                    if isinstance(result, list):
+                        events.extend(result)
+                    elif result:
+                        events.append(result)
             elif isinstance(data, dict):
-                ev = _parse_ld_json(data, source_url)
-                if ev:
-                    events.append(ev)
+                result = _parse_ld_json(data, source_url)
+                if isinstance(result, list):
+                    events.extend(result)
+                elif result:
+                    events.append(result)
         except (json.JSONDecodeError, Exception):
             continue
 
@@ -47,7 +52,20 @@ def _parse_luma_page(html: str, source_url: str) -> list[dict]:
     return events
 
 
-def _parse_ld_json(data: dict, source_url: str) -> dict | None:
+def _parse_ld_json(data: dict, source_url: str) -> dict | list | None:
+    # Handle Organization schema with nested events array
+    if data.get("@type") == "Organization":
+        nested_events = data.get("events", data.get("event", []))
+        if isinstance(nested_events, list):
+            results = []
+            for nested in nested_events:
+                if isinstance(nested, dict):
+                    ev = _parse_ld_json(nested, source_url)
+                    if ev and isinstance(ev, dict):
+                        results.append(ev)
+            return results
+        return None
+
     if data.get("@type") != "Event":
         return None
     title = data.get("name", "")
