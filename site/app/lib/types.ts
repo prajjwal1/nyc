@@ -17,6 +17,7 @@ export interface Event {
   sourceUrl: string;
   imageUrl: string | null;
   price: string;
+  score: number;
   scrapedAt: string;
 }
 

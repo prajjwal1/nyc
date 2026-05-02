@@ -1,6 +1,7 @@
 "use client";
 
 import { CATEGORY_CONFIG, SOURCE_LABELS } from "../lib/types";
+import type { SortMode } from "../hooks/useEvents";
 
 interface FilterBarProps {
   categories: string[];
@@ -11,6 +12,8 @@ interface FilterBarProps {
   setSearch: (s: string) => void;
   priceFilter: "all" | "free" | "paid";
   setPriceFilter: (p: "all" | "free" | "paid") => void;
+  sortMode: SortMode;
+  setSortMode: (s: SortMode) => void;
   allSources: string[];
   allCategories: string[];
   onQuickFilter: (preset: string) => void;
@@ -25,6 +28,8 @@ export default function FilterBar({
   setSearch,
   priceFilter,
   setPriceFilter,
+  sortMode,
+  setSortMode,
   allSources,
   allCategories,
   onQuickFilter,
@@ -129,6 +134,27 @@ export default function FilterBar({
               }`}
             >
               {p.charAt(0).toUpperCase() + p.slice(1)}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2">
+          Sort by
+        </p>
+        <div className="flex gap-1.5">
+          {(["relevance", "time"] as const).map((s) => (
+            <button
+              key={s}
+              onClick={() => setSortMode(s)}
+              className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                sortMode === s
+                  ? "bg-gray-900 text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              {s === "relevance" ? "For You" : "Time"}
             </button>
           ))}
         </div>

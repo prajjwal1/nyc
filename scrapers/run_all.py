@@ -1,4 +1,5 @@
 import asyncio
+import inspect
 import json
 import os
 import sys
@@ -8,7 +9,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from scrapers.sources import luma, bookclubbar, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful
 from scrapers.normalize import process
 
-SCRAPERS = [
+ASYNC_SCRAPERS = [
     ("luma", luma.scrape),
     ("bookclubbar", bookclubbar.scrape),
     ("nypl", nypl.scrape),
@@ -20,9 +21,12 @@ SCRAPERS = [
     ("theskint", theskint.scrape),
     ("meetup", meetup.scrape),
     ("dice", dice.scrape),
-    ("instagram", instagram.scrape),
     ("substack", substack.scrape),
     ("partiful", partiful.scrape),
+]
+
+SYNC_SCRAPERS = [
+    ("instagram", instagram.scrape),
 ]
 
 OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "events.json")
@@ -39,20 +43,35 @@ async def run_scraper(name: str, scrape_fn) -> list[dict]:
         return []
 
 
+def run_sync_scraper(name: str, scrape_fn) -> list[dict]:
+    try:
+        print(f"[{name}] Scraping...")
+        events = scrape_fn()
+        print(f"[{name}] Found {len(events)} events")
+        return events
+    except Exception as e:
+        print(f"[{name}] ERROR: {e}")
+        return []
+
+
 async def main():
     all_events = []
 
     results = await asyncio.gather(
-        *[run_scraper(name, fn) for name, fn in SCRAPERS],
+        *[run_scraper(name, fn) for name, fn in ASYNC_SCRAPERS],
         return_exceptions=True,
     )
 
     for i, result in enumerate(results):
-        name = SCRAPERS[i][0]
+        name = ASYNC_SCRAPERS[i][0]
         if isinstance(result, Exception):
             print(f"[{name}] Failed with exception: {result}")
         elif isinstance(result, list):
             all_events.extend(result)
+
+    for name, fn in SYNC_SCRAPERS:
+        result = run_sync_scraper(name, fn)
+        all_events.extend(result)
 
     print(f"\nTotal raw events: {len(all_events)}")
     processed = process(all_events)

@@ -4,6 +4,8 @@ import { useState, useEffect, useMemo } from "react";
 import { Event, EventsData } from "../lib/types";
 import { loadEvents, filterEvents, getEventDates } from "../lib/events";
 
+export type SortMode = "relevance" | "time";
+
 export function useEvents() {
   const [data, setData] = useState<EventsData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -14,6 +16,7 @@ export function useEvents() {
   const [sources, setSources] = useState<string[]>([]);
   const [search, setSearch] = useState("");
   const [priceFilter, setPriceFilter] = useState<"all" | "free" | "paid">("all");
+  const [sortMode, setSortMode] = useState<SortMode>("relevance");
 
   useEffect(() => {
     loadEvents()
@@ -28,10 +31,15 @@ export function useEvents() {
 
   const eventDates = useMemo(() => getEventDates(filteredEvents), [filteredEvents]);
 
-  const selectedDayEvents = useMemo(
-    () => filteredEvents.filter((e) => e.date === selectedDate),
-    [filteredEvents, selectedDate]
-  );
+  const selectedDayEvents = useMemo(() => {
+    const dayEvents = filteredEvents.filter((e) => e.date === selectedDate);
+    if (sortMode === "relevance") {
+      return [...dayEvents].sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
+    }
+    return [...dayEvents].sort((a, b) =>
+      (a.startTime || "99:99").localeCompare(b.startTime || "99:99")
+    );
+  }, [filteredEvents, selectedDate, sortMode]);
 
   const allSources = useMemo(() => {
     if (!data) return [];
@@ -58,6 +66,8 @@ export function useEvents() {
     setSearch,
     priceFilter,
     setPriceFilter,
+    sortMode,
+    setSortMode,
     allSources,
     allCategories,
     lastUpdated: data?.lastUpdated,

@@ -25,6 +25,8 @@ export default function Home() {
     setSearch,
     priceFilter,
     setPriceFilter,
+    sortMode,
+    setSortMode,
     allSources,
     allCategories,
     lastUpdated,
@@ -103,6 +105,8 @@ export default function Home() {
                 setSearch={setSearch}
                 priceFilter={priceFilter}
                 setPriceFilter={setPriceFilter}
+                sortMode={sortMode}
+                setSortMode={setSortMode}
                 allSources={allSources}
                 allCategories={allCategories}
                 onQuickFilter={handleQuickFilter}

@@ -51,8 +51,11 @@ def sort_by_date(events: list[dict]) -> list[dict]:
 
 
 def process(events: list[dict]) -> list[dict]:
+    from .ranking import rank_events
+
     events = [ev for ev in events if ev.get("title") and ev.get("date")]
     events = filter_future(events)
     events = deduplicate(events)
+    events = rank_events(events)
     events = sort_by_date(events)
     return events

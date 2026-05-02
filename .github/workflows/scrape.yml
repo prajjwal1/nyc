@@ -19,10 +19,21 @@ jobs:
           python-version: "3.12"
           cache: "pip"
 
-      - name: Install dependencies
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr
+
+      - name: Install Python dependencies
         run: pip install -r scrapers/requirements.txt
 
+      - name: Restore Instagram session
+        if: ${{ secrets.IG_SESSION_B64 != '' }}
+        run: |
+          mkdir -p ~/.config/instaloader
+          echo "${{ secrets.IG_SESSION_B64 }}" | base64 -d > ~/.config/instaloader/session-${{ secrets.IG_USERNAME || 'prajfb' }}
+
       - name: Run scrapers
+        env:
+          IG_USERNAME: ${{ secrets.IG_USERNAME || 'prajfb' }}
         run: python -m scrapers.run_all
 
       - name: Commit updated events
