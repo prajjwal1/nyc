@@ -26,14 +26,17 @@ jobs:
         run: pip install -r scrapers/requirements.txt
 
       - name: Restore Instagram session
-        if: ${{ secrets.IG_SESSION_B64 != '' }}
+        env:
+          IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+        if: env.IG_SESSION_B64 != ''
         run: |
           mkdir -p ~/.config/instaloader
-          echo "${{ secrets.IG_SESSION_B64 }}" | base64 -d > ~/.config/instaloader/session-${{ secrets.IG_USERNAME || 'prajfb' }}
+          echo "$IG_SESSION_B64" | base64 -d > ~/.config/instaloader/session-${IG_USERNAME:-prajfb}
 
       - name: Run scrapers
         env:
-          IG_USERNAME: ${{ secrets.IG_USERNAME || 'prajfb' }}
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
         run: python -m scrapers.run_all
 
       - name: Commit updated events
