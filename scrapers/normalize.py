@@ -57,7 +57,7 @@ def process(events: list[dict]) -> list[dict]:
     events = [ev for ev in events if ev.get("title") and ev.get("date")]
     events = filter_future(events)
 
-    # Hard-filter blocked events (kids/utility/services/captions)
+    # Hard-filter blocked events (kids/utility/services/non-NYC/captions)
     before = len(events)
     events = [ev for ev in events if not is_blocked(ev)]
     blocked = before - len(events)
@@ -67,12 +67,13 @@ def process(events: list[dict]) -> list[dict]:
     events = deduplicate(events)
     events = rank_events(events)
 
-    # Drop zero-score caption fragments
+    # Drop low-score events — every event must justify its position
+    MIN_SCORE = 0.5
     before = len(events)
-    events = [ev for ev in events if ev.get("score", 0) > 0]
-    fragments = before - len(events)
-    if fragments:
-        print(f"[normalize] Dropped {fragments} caption fragments")
+    events = [ev for ev in events if ev.get("score", 0) >= MIN_SCORE]
+    dropped = before - len(events)
+    if dropped:
+        print(f"[normalize] Dropped {dropped} low-score events (below {MIN_SCORE})")
 
     events = sort_by_date(events)
     return events

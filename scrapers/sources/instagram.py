@@ -158,9 +158,16 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     # Try to find all URLs in the full caption (some appear only once at end).
     all_urls = re.findall(r"https?://[^\s)>\]\"']+", caption)
 
+    # First check: is this post even about an event?
+    # Many IG posts are just content (art descriptions, announcements, hype).
+    if not _looks_like_event_post(caption):
+        # Don't create any event from this post
+        return []
+
     sections = _split_caption(caption)
-    # Detect if this post is clearly a multi-event roundup (many sections w/ dates)
-    multi_event = sum(1 for s in sections if _find_dates(s)) >= 3
+    # Detect if this post is clearly a multi-event roundup (many sections w/ dates).
+    n_dated_sections = sum(1 for s in sections if _find_dates(s))
+    multi_event = n_dated_sections >= 4
 
     events: list[dict] = []
     url_idx = 0  # walk through extracted URLs as we consume sections
@@ -245,6 +252,85 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
         ))
 
     return events
+
+
+# ---------------------------------------------------------------------------
+# Event-post detection — most IG posts are NOT events
+# ---------------------------------------------------------------------------
+
+# Words/phrases that strongly suggest the post is about a specific event.
+_EVENT_POST_SIGNALS = [
+    # Time / date markers
+    r"\bdoors?\s*(?:open|at)?\s*\d",  # "doors at 8"
+    r"\b\d+\s*(?:pm|am)\b",  # "8pm"
+    r"\b\d+:\d+\s*(?:pm|am)?\b",  # "8:30pm"
+    r"\btickets?\b",
+    r"\brsvp\b",
+    r"\b(?:link|tickets|info)\s+in\s+bio\b",
+    r"\bbuy\s+tickets\b",
+    r"\bget\s+tickets\b",
+    r"\bjoin\s+us\b",
+    r"\blu\.ma/",
+    r"\bpartiful\.com/",
+    r"\beventbrite\.com/",
+    r"\bdice\.fm/",
+    # Direct event language
+    r"\b(?:concert|show|gig|set|festival|party|gala|premiere|opening|launch|screening|reading|workshop|class|tour|mixer|meetup|happy hour|brunch|dinner)\b",
+    r"\b(?:performing|performance|playing|presents|hosts)\b",
+    # Date patterns
+    r"\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d+",
+    r"\b(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*,?\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)",
+    r"\b(?:tonight|tomorrow|this\s+(?:weekend|friday|saturday|sunday|thursday))\b",
+    # Venue markers
+    r"\bat\s+@\w+",  # "at @venue_name"
+    r"📍",
+    r"🎟",
+    r"🎫",
+    r"🎤",
+]
+_EVENT_POST_SIGNAL_RES = [re.compile(p, re.IGNORECASE) for p in _EVENT_POST_SIGNALS]
+
+# Phrases that strongly suggest the post is NOT an event (just content/art piece).
+_NON_EVENT_SIGNALS = [
+    "throughout (?:his|her|their) career",
+    "the artist (?:created|made|designed)",
+    "this (?:work|piece|painting|sculpture)",
+    "currently on view",
+    "now on view",
+    "have been featured",
+    "have been shown",
+    "has been featured",
+    "in (?:our|the) (?:permanent )?collection",
+    "from (?:our|the) collection",
+    "🌹|🌷|💐",  # flower emoji posts are usually content
+    "did you know",
+    "fun fact",
+    "happy birthday",
+    "happy anniversary",
+    "happy mother",
+    "happy father",
+    "happy holidays",
+]
+_NON_EVENT_SIGNAL_RES = [re.compile(p, re.IGNORECASE) for p in _NON_EVENT_SIGNALS]
+
+
+def _looks_like_event_post(caption: str) -> bool:
+    """Decide if an Instagram post is actually about an event.
+
+    Most IG posts are NOT events — they're announcements, art descriptions,
+    hype, behind-the-scenes content. We should only emit an event if the
+    post has multiple positive signals AND no strong negative signals.
+    """
+    if not caption or len(caption) < 20:
+        return False
+
+    # Strong negative signals = not an event
+    if any(r.search(caption) for r in _NON_EVENT_SIGNAL_RES):
+        return False
+
+    # Need at least 2 positive event signals
+    signal_count = sum(1 for r in _EVENT_POST_SIGNAL_RES if r.search(caption))
+    return signal_count >= 2
 
 
 # ---------------------------------------------------------------------------

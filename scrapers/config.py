@@ -71,9 +71,11 @@ USER_INTERESTS = {
         "singles": 1.5,       # Top priority — user is single
         "music": 1.4,         # Live music
         "parties": 1.35,      # Social parties — meeting new people
+        "games": 1.3,         # User actively follows backgammon clubs etc.
         "exploration": 1.25,  # NYC exploration (user wants to discover the city)
         "art": 1.15,
         "food": 1.15,
+        "books": 1.15,        # Book club bar, reading rhythms
         "outdoors": 1.1,
         "celebrities": 1.1,
         "viewings": 1.1,

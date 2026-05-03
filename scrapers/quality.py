@@ -143,9 +143,62 @@ NON_TARGET_AUDIENCE = [
 
 
 def is_blocked(event: dict) -> bool:
-    """True if event should be entirely filtered out (kids/utility/services)."""
+    """True if event should be entirely filtered out (kids/utility/services/non-NYC)."""
     text = _searchable_text(event).lower()
-    return any(kw in text for kw in HARD_BLOCK_KEYWORDS)
+    if any(kw in text for kw in HARD_BLOCK_KEYWORDS):
+        return True
+    if _is_non_nyc(event):
+        return True
+    return False
+
+
+# Cities that strongly suggest the event is NOT in NYC.
+_NON_NYC_CITIES = [
+    "los angeles", " la,", " la ", "los feliz", "echo park", "silverlake",
+    "san francisco", " sf,", " sf ", "oakland", "berkeley",
+    "chicago", "miami", "austin", "atlanta", "boston", "philadelphia", "philly",
+    "portland", "seattle", "denver", "nashville", "new orleans",
+    "washington dc", "d.c.", "dc,",
+    "london", "paris", "tokyo", "berlin", "amsterdam", "barcelona",
+    "mexico city", "toronto", "vancouver", "montreal",
+    "honolulu", "hawaii", "miami beach",
+    "las vegas", "vegas",
+    "dallas", "houston", "phoenix", "minneapolis",
+    "long beach", "santa monica", "venice beach",
+    # NJ cities (close to NYC but separate)
+    "jersey city", "hoboken", "newark",
+]
+
+# NYC-positive markers (presence of these suggests it IS in NYC)
+_NYC_MARKERS = [
+    "nyc", "new york", "brooklyn", "manhattan", "queens", "bronx",
+    "staten island", "harlem", "williamsburg", "bushwick", "greenpoint",
+    "soho", "tribeca", "chelsea", "lower east side", "east village",
+    "west village", "midtown", "upper east", "upper west",
+    "park slope", "fort greene", "dumbo", "prospect heights",
+    "long island city", "lic", "astoria",
+]
+
+
+def _is_non_nyc(event: dict) -> bool:
+    """Detect events that are clearly not in NYC."""
+    location = event.get("location", {})
+    address = (location.get("address", "") or "").lower()
+    loc_name = (location.get("name", "") or "").lower()
+    title = event.get("title", "").lower()
+    desc = event.get("description", "").lower()
+
+    combined = f"{address} {loc_name} {title} {desc}"
+
+    # Strong non-NYC marker
+    has_other_city = any(c in combined for c in _NON_NYC_CITIES)
+    has_nyc_marker = any(m in combined for m in _NYC_MARKERS)
+
+    # If it mentions another city AND no NYC markers, block
+    if has_other_city and not has_nyc_marker:
+        return True
+
+    return False
 
 
 def quality_signals(event: dict) -> dict:
@@ -370,6 +423,32 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # Bracketed location tags like "[London]" or "[NYC]"
     if re.match(r"^\[[^\]]+\]\s*$", title_stripped):
         return True
+
+    # Pure date / month titles
+    months = "(?:january|february|march|april|may|june|july|august|september|october|november|december)"
+    if re.match(rf"^{months}\s+\d{{1,2}}(?:st|nd|rd|th)?\.?$", title_lower):
+        return True
+    if re.match(r"^\d{1,2}(?:st|nd|rd|th)?\.?$", title_lower.strip(":!. ")):
+        return True
+
+    # Title that's just "Location:" or starts with a label
+    if title_lower.startswith(("location:", "venue:", "where:", "when:", "what:", "info:", "details:")):
+        return True
+
+    # Stylized unicode fonts (mathematical alphanumeric symbols U+1D400-1D7FF)
+    if re.search(r"[\U0001D400-\U0001D7FF]", title):
+        return True
+
+    # Title is just hype with emoji like "TO THE FRONT  ‼"
+    if "‼" in title and len(title_stripped.replace("‼", "").strip()) < 30:
+        return True
+
+    # All-caps titles that are mostly hype
+    if title_stripped.isupper() and len(title_stripped) > 6:
+        words = title_stripped.split()
+        # OK if it's a proper noun / festival name (1-3 short words)
+        if len(words) > 3 or sum(len(w) for w in words) > 25:
+            return True
 
     # Narrative phrases inside the title
     narrative_phrases = [

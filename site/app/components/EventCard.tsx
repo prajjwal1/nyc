@@ -21,24 +21,63 @@ export default function EventCard({ event, variant = "feed" }: EventCardProps) {
 }
 
 function FeedCard({ event, timeStr }: { event: Event; timeStr: string | null }) {
+  // Show description only if it's high-signal (not just a fragment of a larger caption)
+  const desc = event.description?.trim();
+  const showDesc =
+    desc && desc.length > 30 && desc.length < 300 &&
+    !desc.toLowerCase().startsWith("link in bio") &&
+    !desc.toLowerCase().startsWith("photo by");
+
   return (
     <a
       href={event.sourceUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all"
+      className="block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all overflow-hidden"
     >
-      {event.imageUrl && (
-        <div className="relative w-full aspect-[16/10] bg-gray-100">
-          <img
-            src={event.imageUrl}
-            alt=""
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+      <div className="flex gap-3 p-3">
+        {event.imageUrl && (
+          <div className="shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-gray-100">
+            <img
+              src={event.imageUrl}
+              alt=""
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        )}
+        <div className="flex-1 min-w-0">
+          <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">
+            {event.title}
+          </h3>
+
+          <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500">
+            {timeStr && (
+              <span className="flex items-center gap-1">
+                <ClockIcon />
+                {timeStr}
+              </span>
+            )}
+            {event.location.name && (
+              <span className="flex items-center gap-1 truncate">
+                <PinIcon />
+                <span className="truncate">{event.location.name}</span>
+                {event.location.neighborhood && (
+                  <span className="text-gray-400 shrink-0">· {event.location.neighborhood}</span>
+                )}
+              </span>
+            )}
+          </div>
+
+          {showDesc && (
+            <p className="mt-1.5 text-xs text-gray-600 line-clamp-2 leading-relaxed">
+              {desc}
+            </p>
+          )}
+
+          <div className="mt-1.5 flex flex-wrap items-center gap-1">
             {event.price === "free" && (
-              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-white/95 text-emerald-700 shadow-sm">
+              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">
                 FREE
               </span>
             )}
@@ -50,75 +89,17 @@ function FeedCard({ event, timeStr }: { event: Event; timeStr: string | null }) 
                 return (
                   <span
                     key={cat}
-                    className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold shadow-sm ${config.color}`}
+                    className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium ${config.color}`}
                   >
                     {config.label}
                   </span>
                 );
               })}
+            <span className="text-[10px] text-gray-400 ml-auto uppercase tracking-wide">
+              {SOURCE_LABELS[event.source] || event.source}
+            </span>
           </div>
         </div>
-      )}
-
-      <div className="p-4">
-        <div className="flex items-start justify-between gap-3 mb-1">
-          <h3 className="font-semibold text-gray-900 text-base leading-snug line-clamp-2 flex-1">
-            {event.title}
-          </h3>
-          <span className="shrink-0 text-xs text-gray-400 font-medium uppercase tracking-wide">
-            {SOURCE_LABELS[event.source] || event.source}
-          </span>
-        </div>
-
-        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500">
-          {timeStr && (
-            <span className="flex items-center gap-1">
-              <ClockIcon />
-              {timeStr}
-            </span>
-          )}
-          {event.location.name && (
-            <span className="flex items-center gap-1 truncate">
-              <PinIcon />
-              {event.location.name}
-              {event.location.neighborhood && (
-                <span className="text-gray-400">
-                  · {event.location.neighborhood}
-                </span>
-              )}
-            </span>
-          )}
-        </div>
-
-        {event.description && (
-          <p className="mt-2 text-sm text-gray-600 line-clamp-2">
-            {event.description}
-          </p>
-        )}
-
-        {!event.imageUrl && (
-          <div className="mt-3 flex flex-wrap items-center gap-1.5">
-            {event.price === "free" && (
-              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
-                Free
-              </span>
-            )}
-            {event.categories
-              .filter((c) => c !== "free" && c !== "other")
-              .slice(0, 2)
-              .map((cat) => {
-                const config = CATEGORY_CONFIG[cat] || CATEGORY_CONFIG.other;
-                return (
-                  <span
-                    key={cat}
-                    className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${config.color}`}
-                  >
-                    {config.label}
-                  </span>
-                );
-              })}
-          </div>
-        )}
       </div>
     </a>
   );
