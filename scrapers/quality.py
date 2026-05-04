@@ -450,6 +450,46 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         if len(words) > 3 or sum(len(w) for w in words) > 25:
             return True
 
+    # Caption-y openers (relative time + verb)
+    caption_openers = [
+        "tomorrow night ", "tomorrow we ", "tomorrow we’",
+        "tonight we ", "tonight we’", "tonight, ",
+        "this week ", "this weekend ", "this weekend, ",
+        "next week ", "next weekend ",
+        "today we ", "today we’", "today, ",
+        "yesterday ", "last night ",
+        "happening now",
+    ]
+    if any(title_lower.startswith(p) for p in caption_openers):
+        return True
+
+    # "X takes over Y" / "X headline Y" announcement patterns
+    announcement_patterns = [
+        r"\b(?:takes over|takeover)\b",
+        r"\bheadlines?\b",
+        r"\bsold out\b",
+        r"\bjust dropped\b",
+    ]
+    for pat in announcement_patterns:
+        if re.search(pat, title_lower):
+            return True
+
+    # Title is just a name/title without context (3 words or less, no verbs)
+    # like "Of Golden Sun" — these are usually song/album titles, not events
+    words = title_stripped.split()
+    if len(words) <= 3:
+        # Common verbs/event words that would make it a real event
+        event_words = {
+            "party", "show", "concert", "night", "club", "festival",
+            "open", "opens", "opening", "premiere", "launch",
+            "screening", "reading", "tour", "fair", "market",
+            "mixer", "meetup", "meet", "happy", "hour", "brunch",
+            "dinner", "tasting", "class", "workshop", "talk",
+            "series", "live", "vs", "v.", "vs.", "presents",
+        }
+        if not any(w.lower() in event_words for w in words):
+            return True
+
     # Narrative phrases inside the title
     narrative_phrases = [
         "consist of", "throughout his", "throughout her",
