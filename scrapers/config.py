@@ -48,6 +48,31 @@ IG_ACCOUNTS = [
     "mcnallyjacksonbooks",
     "powerhousearena",
     "stranbookstore",
+    "lizsbookbar",
+    # Williamsburg creative spaces / classes
+    "recessgrove",
+    "tripleseven_brooklyn",
+    "cafereggio",
+    # Yoga / wellness in parks
+    "bryantparknyc",
+    "centralparkconservancy",
+    "dominobrkparks",
+    "brooklynbridgepark",
+    "domino_park",
+    # Philosophy / intellectual
+    "thephilosophyclub",
+    "thinkolio",
+    # Comedy clubs
+    "thecomedycellar",
+    "ucbtheatre",
+    "thecaveatnyc",
+    "qedastoria",
+    # Jazz clubs
+    "smallsjazzclub",
+    "villagevanguard",
+    "bluenote.nyc",
+    "smokejazzclub",
+    "rosenwald.nyc",
     # Food / dining culture
     "infatuation",
     "eaterny",

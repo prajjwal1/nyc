@@ -8,6 +8,11 @@ LUMA_PAGES = [
     "https://lu.ma/nycbackgammonclub",
     "https://lu.ma/readingrhythms-manhattan",
     "https://lu.ma/litclub.nyc",
+    "https://lu.ma/thinkolio",
+    # Add more known NYC Luma calendars
+    "https://lu.ma/eventbrite",
+    "https://lu.ma/nyc-techweek",
+    "https://lu.ma/papercraftnyc",
 ]
 
 
