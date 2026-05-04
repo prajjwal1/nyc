@@ -123,6 +123,10 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
         print(f"[instagram] Profile @{username} failed: {exc}")
         return []
 
+    # Capture the profile's external URL — many event accounts say "link in bio"
+    # and the actual ticket page is at this URL.
+    bio_url = getattr(profile, "external_url", "") or ""
+
     posts: list[dict] = []
     count = 0
 
@@ -149,6 +153,7 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
             "image": images[0] if images else "",
             "all_images": images,
             "owner": post.owner_username,
+            "bio_url": bio_url,
         })
         count += 1
 
