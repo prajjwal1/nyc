@@ -5,11 +5,15 @@ from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time
 
 SEARCH_URLS = [
-    # Geographic + time
+    # Geographic + time (density)
     "https://www.eventbrite.com/d/ny--new-york/events--this-week/",
     "https://www.eventbrite.com/d/ny--new-york/events--this-weekend/",
+    "https://www.eventbrite.com/d/ny--new-york/events--next-week/",
+    "https://www.eventbrite.com/d/ny--new-york/events--this-month/",
+    "https://www.eventbrite.com/d/ny--new-york/events--next-month/",
     "https://www.eventbrite.com/d/ny--brooklyn/events--this-week/",
     "https://www.eventbrite.com/d/ny--brooklyn/events--this-weekend/",
+    "https://www.eventbrite.com/d/ny--brooklyn/events--this-month/",
     "https://www.eventbrite.com/d/ny--new-york/free--events/",
     # Category filters (NYC 20s-30s lifestyle)
     "https://www.eventbrite.com/d/ny--new-york/music--events/",
@@ -19,8 +23,18 @@ SEARCH_URLS = [
     "https://www.eventbrite.com/d/ny--new-york/arts--events/",
     "https://www.eventbrite.com/d/ny--new-york/film-and-media--events/",
     "https://www.eventbrite.com/d/ny--new-york/dating--events/",
+    "https://www.eventbrite.com/d/ny--new-york/performing-and-visual-arts--events/",
+    "https://www.eventbrite.com/d/ny--new-york/holiday--events/",
+    "https://www.eventbrite.com/d/ny--new-york/sports-and-fitness--events/",
+    "https://www.eventbrite.com/d/ny--new-york/health-and-wellness--events/",
     "https://www.eventbrite.com/d/ny--brooklyn/music--events/",
     "https://www.eventbrite.com/d/ny--brooklyn/comedy--events/",
+    "https://www.eventbrite.com/d/ny--brooklyn/nightlife--events/",
+    "https://www.eventbrite.com/d/ny--brooklyn/food-and-drink--events/",
+    # Williamsburg / specific neighborhoods
+    "https://www.eventbrite.com/d/ny--williamsburg/events/",
+    "https://www.eventbrite.com/d/ny--bushwick/events/",
+    "https://www.eventbrite.com/d/ny--greenpoint/events/",
 ]
 
 

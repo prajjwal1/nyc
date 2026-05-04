@@ -91,7 +91,38 @@ def compute_score(event: dict) -> float:
 def rank_events(events: list[dict]) -> list[dict]:
     for event in events:
         event["score"] = round(compute_score(event), 3)
+        event["highlights"] = _compute_highlights(event)
     return events
+
+
+def _compute_highlights(event: dict) -> list[str]:
+    """Extract 'must-go' indicator labels (free, opening, premiere, etc.)."""
+    text = (event.get("title", "") + " " + event.get("description", "")).lower()
+    highlights: list[str] = []
+
+    if event.get("price") == "free":
+        highlights.append("free")
+
+    # Special / time-limited
+    if any(kw in text for kw in ["opening night", "premiere", "launch party", "first look", "preview"]):
+        highlights.append("special")
+    if any(kw in text for kw in ["festival", "block party", "street fair"]):
+        highlights.append("festival")
+    if any(kw in text for kw in ["meet new people", "make new friends", "singles", "speed dating", "social mixer", "icebreaker"]):
+        highlights.append("meet-people")
+    if any(kw in text for kw in ["rooftop", "harbor cruise", "boat party", "sunset"]):
+        highlights.append("vibes")
+    if any(kw in text for kw in ["live jazz", "jazz set", "jazz club", "jazz night"]):
+        highlights.append("jazz")
+    if any(kw in text for kw in ["dj set", "dj night", "warehouse", "house music", "techno"]):
+        highlights.append("nightlife")
+
+    # Williamsburg-local
+    neighborhood = (event.get("location", {}).get("neighborhood") or "").lower()
+    if neighborhood in ("williamsburg", "greenpoint", "bushwick"):
+        highlights.append("nearby")
+
+    return highlights
 
 
 def _proximity_score(event: dict) -> float:

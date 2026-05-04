@@ -386,6 +386,22 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "we are excited", "we're excited", "we’re excited",
         "we are so", "we’re so", "we are super", "we’re super",
         "we’ve got", "we've got", "we got", "we have ", "we’re back",
+        # IG content patterns
+        "🚨", "‼", "⚠", "📣",  # alert emoji starts
+        "tomorrow,", "tomorrow we", "tomorrow night", "tomorrow morning",
+        "tonight 7", "tonight 8", "tonight 9", "tonight, ",
+        "spring starts", "summer starts", "fall starts", "winter starts",
+        "20 years in", "10 years in", "5 years in",
+        "raise a glass", "kick off ",
+        "more @", "back @", "back at @",
+        "tired of ", "are you tired",
+        "new food alert", "new event alert",
+        "i got the feeling", "this is your reminder",
+        "it may not feel", "even before",
+        "beautiful pictures", "amazing pictures", "great pictures",
+        "shoutout to", "big shoutout",
+        "i can't believe", "i can’t believe",
+        "your weekly", "your monthly",
         # Announcements / call-to-action
         "back by popular", "tickets on sale", "now showing", "now open",
         "last chance", "don't miss", "don’t miss", "save the date",

@@ -124,7 +124,13 @@ CATEGORY_KEYWORDS = {
     ],
     "comedy": [
         "comedy show", "improv", "stand-up", "standup", "open mic comedy",
-        "comedy night", "sketch show",
+        "comedy night", "sketch show", "comedy club", "comedy cellar",
+        "comedy lottery", "comedy competition", "comedy at ", "comedy hour",
+        "qedastoria", "q.e.d.", "qed astoria", "ucb", "caveat",
+        "eastville comedy", "carolines", "gotham comedy", "stand up ny",
+        "comic ", "comics ", "comedians", "tuesday night laughs",
+        "wednesday night laughs", "thursday night laughs",
+        "comedy basement", "comedy at the kicker",
     ],
     "dance": [
         "dance class", "dance party", "dance night", "salsa night",

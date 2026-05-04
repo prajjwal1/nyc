@@ -52,6 +52,34 @@ GENERIC_URLS = [
     "https://www.barnesandnoble.com/h/events/store/2675",
     "https://www.bookcourt.com/calendar",
     "https://lizsbookbar.com/events",
+    # Major concert venues with calendar pages
+    "https://www.boweryballroom.com/calendar/",
+    "https://www.websterhall.com/events/",
+    "https://www.brooklynsteel.com/calendar/",
+    "https://www.terminal5nyc.com/calendar/",
+    "https://www.warsawconcerts.com/events/",
+    "https://www.musichallofwilliamsburg.com/calendar/",
+    "https://www.brooklynbowl.com/new-york/events/",
+    # Film venues (NYC has incredible indie cinema)
+    "https://metrograph.com/calendar/",
+    "https://www.filmforum.org/calendar",
+    "https://www.ifccenter.com/calendar/",
+    "https://www.anthologyfilmarchives.org/calendar",
+    "https://www.angelikafilmcenter.com/nyc/showtimes",
+    "https://www.nitehawkcinema.com/williamsburg/showtimes",
+    # Theater / off-broadway
+    "https://www.publictheater.org/now-playing/",
+    "https://www.bam.org/whats-on",
+    "https://www.thekitchen.org/calendar/",
+    "https://www.lct3.org/upcoming",
+    "https://www.atlantictheater.org/season",
+    # Williamsburg / Brooklyn specific
+    "https://www.brooklynbrewery.com/events",
+    "https://www.brooklynkitchen.com/classes",
+    # Art galleries / spaces
+    "https://www.theshed.org/calendar",
+    "https://thekitchen.org/whats-on/",
+    "https://www.macny.org/whats-on",
 ]
 
 # JSON-LD event schema types we accept
