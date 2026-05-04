@@ -160,6 +160,51 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
 # Caption parsing  — multi-event aware
 # ---------------------------------------------------------------------------
 
+def _account_default_location(account: str) -> str:
+    """Map well-known IG accounts to their default venue/location name.
+
+    Used when the caption doesn't have a location — e.g. a post from
+    @brooklynbowl is almost certainly happening AT Brooklyn Bowl.
+    """
+    mapping = {
+        "brooklynbowl": "Brooklyn Bowl",
+        "brooklynmuseum": "Brooklyn Museum",
+        "metmuseum": "The Met",
+        "whitneymuseum": "Whitney Museum",
+        "newmuseum": "New Museum",
+        "moma": "MoMA",
+        "themorganlibrary": "Morgan Library",
+        "houseofyesnyc": "House of Yes",
+        "knockdowncenter": "Knockdown Center",
+        "elsewherebrooklyn": "Elsewhere",
+        "publicrecords": "Public Records",
+        "rockwoodmusichall": "Rockwood Music Hall",
+        "littlefieldnyc": "Littlefield",
+        "mercurylounge": "Mercury Lounge",
+        "thebellhouseny": "The Bell House",
+        "bookclubbar": "Book Club Bar",
+        "powerhousearena": "POWERHOUSE Arena",
+        "lizsbookbar": "Liz's Book Bar",
+        "recessgrove": "Recess Grove",
+        "smallsjazzclub": "Smalls Jazz Club",
+        "villagevanguard": "Village Vanguard",
+        "bluenote.nyc": "Blue Note",
+        "smokejazzclub": "Smoke Jazz Club",
+        "ucbtheatre": "UCB Theatre",
+        "thecaveatnyc": "Caveat",
+        "thecomedycellar": "Comedy Cellar",
+        "qedastoria": "Q.E.D. Astoria",
+        "smorgasburg": "Smorgasburg",
+        "thehighlinenyc": "The High Line",
+        "centralparknyc": "Central Park",
+        "domino_park": "Domino Park",
+        "brooklynbridgepark": "Brooklyn Bridge Park",
+        "bryantparknyc": "Bryant Park",
+        "nycparks": "NYC Parks",
+    }
+    return mapping.get(account.lower(), "")
+
+
 def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     """Parse a post caption and return one or more event dicts.
 
@@ -183,6 +228,9 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     # Posts with images get more leeway (we may OCR the image for details).
     if not _looks_like_event_post(caption, has_image=bool(image_url)):
         return []
+
+    # If account is a known venue, use it as default location.
+    default_location = _account_default_location(account)
 
     sections = _split_caption(caption)
     # Detect if this post is clearly a multi-event roundup (many sections w/ dates).
@@ -223,12 +271,13 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
         if not event_date:
             continue
 
+        loc_name = location or default_location
         events.append(build_event(
             title=title or section[:80],
             description=section[:400],
             event_date=event_date,
             start_time=time_str,
-            location_name=location,
+            location_name=loc_name,
             source="instagram",
             source_url=source_url,
             image_url=image_url,
@@ -244,12 +293,13 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             title = _extract_title(full_caption) or full_caption.split("\n")[0][:80]
             event_date = _find_dates(full_caption)
             event_date = event_date[0] if event_date else post_date.date()
+            extracted_loc = _extract_location(full_caption)
             events.append(build_event(
                 title=title,
                 description=full_caption[:400],
                 event_date=event_date,
                 start_time=parse_time(full_caption),
-                location_name=_extract_location(full_caption),
+                location_name=extracted_loc or default_location,
                 source="instagram",
                 source_url=all_urls[0] if all_urls else post_url,
                 image_url=image_url,
@@ -259,17 +309,22 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     # Fallback: if no events at all, build one from the whole post
     if not events and post_date:
         title = _extract_title(caption) or caption[:80]
+        extracted_loc = _extract_location(caption)
         events.append(build_event(
             title=title,
             description=caption[:400],
             event_date=post_date.date(),
             start_time=parse_time(caption),
-            location_name=_extract_location(caption),
+            location_name=extracted_loc or default_location,
             source="instagram",
             source_url=all_urls[0] if all_urls else post_url,
             image_url=image_url,
             categories=infer_categories(title, caption),
         ))
+
+    # Tag every event with the IG account it came from (for UI display + filtering).
+    for ev in events:
+        ev["instagramAccount"] = account
 
     return events
 

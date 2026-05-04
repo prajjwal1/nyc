@@ -19,6 +19,7 @@ export interface Event {
   price: string;
   score: number;
   scrapedAt: string;
+  instagramAccount?: string;
 }
 
 export interface EventsData {

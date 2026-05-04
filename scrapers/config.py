@@ -81,7 +81,7 @@ IG_ACCOUNTS = [
     "see.you.in.nyc",
 ]
 
-IG_MAX_POSTS_PER_ACCOUNT = 12
+IG_MAX_POSTS_PER_ACCOUNT = 20
 
 USER_INTERESTS = {
     # Categories the user actively cares about, ordered by priority

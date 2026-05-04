@@ -41,13 +41,20 @@ export function filterEvents(
 
   if (filters.search) {
     const q = filters.search.toLowerCase();
-    filtered = filtered.filter(
-      (e) =>
+    // Allow @username searches
+    const accountQuery = q.startsWith("@") ? q.slice(1) : null;
+    filtered = filtered.filter((e) => {
+      if (accountQuery) {
+        return (e.instagramAccount || "").toLowerCase().includes(accountQuery);
+      }
+      return (
         e.title.toLowerCase().includes(q) ||
         e.description.toLowerCase().includes(q) ||
         e.location.name.toLowerCase().includes(q) ||
-        (e.location.neighborhood || "").toLowerCase().includes(q)
-    );
+        (e.location.neighborhood || "").toLowerCase().includes(q) ||
+        (e.instagramAccount || "").toLowerCase().includes(q)
+      );
+    });
   }
 
   if (filters.priceFilter === "free") {

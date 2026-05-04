@@ -96,7 +96,9 @@ function FeedCard({ event, timeStr }: { event: Event; timeStr: string | null }) 
                 );
               })}
             <span className="text-[10px] text-gray-400 ml-auto uppercase tracking-wide">
-              {SOURCE_LABELS[event.source] || event.source}
+              {event.instagramAccount
+                ? `@${event.instagramAccount}`
+                : SOURCE_LABELS[event.source] || event.source}
             </span>
           </div>
         </div>
