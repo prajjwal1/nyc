@@ -5,9 +5,22 @@ from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time
 
 SEARCH_URLS = [
+    # Geographic + time
     "https://www.eventbrite.com/d/ny--new-york/events--this-week/",
-    "https://www.eventbrite.com/d/ny--new-york/free--events/",
+    "https://www.eventbrite.com/d/ny--new-york/events--this-weekend/",
     "https://www.eventbrite.com/d/ny--brooklyn/events--this-week/",
+    "https://www.eventbrite.com/d/ny--brooklyn/events--this-weekend/",
+    "https://www.eventbrite.com/d/ny--new-york/free--events/",
+    # Category filters (NYC 20s-30s lifestyle)
+    "https://www.eventbrite.com/d/ny--new-york/music--events/",
+    "https://www.eventbrite.com/d/ny--new-york/comedy--events/",
+    "https://www.eventbrite.com/d/ny--new-york/food-and-drink--events/",
+    "https://www.eventbrite.com/d/ny--new-york/nightlife--events/",
+    "https://www.eventbrite.com/d/ny--new-york/arts--events/",
+    "https://www.eventbrite.com/d/ny--new-york/film-and-media--events/",
+    "https://www.eventbrite.com/d/ny--new-york/dating--events/",
+    "https://www.eventbrite.com/d/ny--brooklyn/music--events/",
+    "https://www.eventbrite.com/d/ny--brooklyn/comedy--events/",
 ]
 
 
@@ -29,12 +42,7 @@ def _parse_search_page(html: str, source_url: str) -> list[dict]:
     for script in soup.find_all("script", type="application/ld+json"):
         try:
             data = json.loads(script.string)
-            items = data if isinstance(data, list) else [data]
-            for item in items:
-                if item.get("@type") == "Event":
-                    ev = _parse_ld_event(item)
-                    if ev:
-                        events.append(ev)
+            events.extend(_walk_jsonld(data))
         except (json.JSONDecodeError, Exception):
             continue
 
@@ -75,6 +83,60 @@ def _parse_search_page(html: str, source_url: str) -> list[dict]:
             ))
 
     return events
+
+
+_EVENT_TYPES = {
+    "Event", "MusicEvent", "TheaterEvent", "DanceEvent", "ComedyEvent",
+    "FoodEvent", "SportsEvent", "BusinessEvent", "EducationEvent",
+    "ExhibitionEvent", "FestivalEvent", "LiteraryEvent", "ScreeningEvent",
+    "SocialEvent", "ChildrensEvent",
+}
+
+
+def _walk_jsonld(data) -> list[dict]:
+    """Recursively walk JSON-LD looking for Event objects.
+
+    Handles: direct Event, list, ItemList.itemListElement, @graph arrays,
+    Organization with nested events, etc.
+    """
+    found = []
+    if isinstance(data, list):
+        for item in data:
+            found.extend(_walk_jsonld(item))
+        return found
+    if not isinstance(data, dict):
+        return found
+
+    t = data.get("@type", "")
+    if isinstance(t, list):
+        types = set(t)
+    else:
+        types = {t}
+
+    if types & _EVENT_TYPES:
+        ev = _parse_ld_event(data)
+        if ev:
+            found.append(ev)
+        return found
+
+    if "ItemList" in types:
+        for el in data.get("itemListElement", []) or []:
+            if isinstance(el, dict):
+                # ListItem wrapper
+                inner = el.get("item", el)
+                found.extend(_walk_jsonld(inner))
+        return found
+
+    if "@graph" in data:
+        found.extend(_walk_jsonld(data["@graph"]))
+
+    if "Organization" in types or "LocalBusiness" in types:
+        for key in ("event", "events"):
+            nested = data.get(key)
+            if nested:
+                found.extend(_walk_jsonld(nested))
+
+    return found
 
 
 def _parse_ld_event(data: dict) -> dict | None:

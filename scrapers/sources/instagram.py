@@ -108,12 +108,19 @@ def _get_authenticated_loader() -> instaloader.Instaloader | None:
 # ---------------------------------------------------------------------------
 
 def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
-    """Fetch the most recent posts for a given account."""
+    """Fetch the most recent posts for a given account.
+
+    Carousel posts (sidecar) yield ALL their images so the OCR pipeline can
+    extract event details from flyer-style multi-image posts.
+    """
 
     try:
         profile = instaloader.Profile.from_username(loader.context, username)
     except instaloader.exceptions.ProfileNotExistsException:
         print(f"[instagram] Profile @{username} does not exist, skipping")
+        return []
+    except Exception as exc:
+        print(f"[instagram] Profile @{username} failed: {exc}")
         return []
 
     posts: list[dict] = []
@@ -123,11 +130,25 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
         if count >= IG_MAX_POSTS_PER_ACCOUNT:
             break
 
+        # Collect all images from the post (carousel = sidecar)
+        images: list[str] = []
+        try:
+            if post.typename == "GraphSidecar":
+                for node in post.get_sidecar_nodes():
+                    if not getattr(node, "is_video", False):
+                        images.append(node.display_url)
+            else:
+                images.append(post.url)
+        except Exception:
+            images.append(post.url)
+
         posts.append({
             "caption": post.caption or "",
             "date": post.date_utc,
             "url": f"https://www.instagram.com/p/{post.shortcode}/",
-            "image": post.url,
+            "image": images[0] if images else "",
+            "all_images": images,
+            "owner": post.owner_username,
         })
         count += 1
 
@@ -159,9 +180,8 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     all_urls = re.findall(r"https?://[^\s)>\]\"']+", caption)
 
     # First check: is this post even about an event?
-    # Many IG posts are just content (art descriptions, announcements, hype).
-    if not _looks_like_event_post(caption):
-        # Don't create any event from this post
+    # Posts with images get more leeway (we may OCR the image for details).
+    if not _looks_like_event_post(caption, has_image=bool(image_url)):
         return []
 
     sections = _split_caption(caption)
@@ -314,12 +334,15 @@ _NON_EVENT_SIGNALS = [
 _NON_EVENT_SIGNAL_RES = [re.compile(p, re.IGNORECASE) for p in _NON_EVENT_SIGNALS]
 
 
-def _looks_like_event_post(caption: str) -> bool:
+def _looks_like_event_post(caption: str, has_image: bool = False) -> bool:
     """Decide if an Instagram post is actually about an event.
 
     Most IG posts are NOT events — they're announcements, art descriptions,
-    hype, behind-the-scenes content. We should only emit an event if the
-    post has multiple positive signals AND no strong negative signals.
+    hype, behind-the-scenes content. We only emit an event if the post has
+    sufficient positive signals AND no strong negative signals.
+
+    If the post has an image (which we may OCR), we accept just 1 signal
+    since image flyers often have generic captions like "May calendar 🩵".
     """
     if not caption or len(caption) < 20:
         return False
@@ -328,9 +351,12 @@ def _looks_like_event_post(caption: str) -> bool:
     if any(r.search(caption) for r in _NON_EVENT_SIGNAL_RES):
         return False
 
-    # Need at least 2 positive event signals
+    # Posts with images get more leeway since the actual event details may
+    # live in the image (calendar flyer, poster, etc.). Image OCR will
+    # extract dates from those.
+    threshold = 1 if has_image else 2
     signal_count = sum(1 for r in _EVENT_POST_SIGNAL_RES if r.search(caption))
-    return signal_count >= 2
+    return signal_count >= threshold
 
 
 # ---------------------------------------------------------------------------

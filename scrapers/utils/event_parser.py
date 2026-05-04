@@ -73,6 +73,8 @@ CATEGORY_KEYWORDS = {
         "book club", "reading series", "reading by", "author talk", "in conversation with",
         "literary", "poetry", "novel", "zine", "book launch", "book signing", "book swap",
         "book release", "memoir", "bookstore", "lit ", "literature",
+        "reading rhythms", "rest and read", "book hub", "essay collection",
+        "novelist", "writers ", "writing workshop",
     ],
     "art": [
         "art opening", "gallery", "exhibition", "museum", "painting", "sculpture",
@@ -113,7 +115,8 @@ CATEGORY_KEYWORDS = {
     ],
     "games": [
         "board game", "trivia", "backgammon", "chess", "arcade", "game night",
-        "mahjong", "poker night", "puzzle night",
+        "mahjong", "poker night", "puzzle night", "gammon", "scrabble",
+        "settlers of catan", "game social",
     ],
     "theater": [
         "theater", "theatre", "play opening", "broadway", "off-broadway",
