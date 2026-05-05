@@ -53,6 +53,7 @@ def sort_by_date(events: list[dict]) -> list[dict]:
 def process(events: list[dict]) -> list[dict]:
     from .ranking import rank_events
     from .quality import is_blocked
+    from .utils.event_parser import detect_recurring_weekday, expand_recurring_event
 
     events = [ev for ev in events if ev.get("title") and ev.get("date")]
     events = filter_future(events)
@@ -63,6 +64,22 @@ def process(events: list[dict]) -> list[dict]:
     blocked = before - len(events)
     if blocked:
         print(f"[normalize] Blocked {blocked} low-quality events")
+
+    # Expand recurring events ("every Saturday at Smorgasburg" → 6 weeks of dates)
+    expanded: list[dict] = []
+    recurring_count = 0
+    for ev in events:
+        text = (ev.get("title", "") + " " + ev.get("description", "")).lower()
+        weekday = detect_recurring_weekday(text)
+        if weekday is not None:
+            occurrences = expand_recurring_event(ev, weekday, weeks_ahead=6)
+            expanded.extend(occurrences)
+            recurring_count += 1
+        else:
+            expanded.append(ev)
+    if recurring_count:
+        print(f"[normalize] Expanded {recurring_count} recurring events into {len(expanded) - len(events) + recurring_count} total occurrences")
+    events = expanded
 
     events = deduplicate(events)
     events = rank_events(events)

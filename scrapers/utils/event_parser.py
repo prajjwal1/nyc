@@ -254,6 +254,79 @@ def infer_neighborhood(address: str) -> str | None:
     return None
 
 
+_WEEKDAY_INDEX = {
+    "monday": 0, "mon": 0,
+    "tuesday": 1, "tue": 1, "tues": 1,
+    "wednesday": 2, "wed": 2, "weds": 2,
+    "thursday": 3, "thu": 3, "thur": 3, "thurs": 3,
+    "friday": 4, "fri": 4,
+    "saturday": 5, "sat": 5,
+    "sunday": 6, "sun": 6,
+}
+
+_RECURRING_PATTERNS = [
+    re.compile(r"\bevery\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)\b", re.IGNORECASE),
+    re.compile(r"\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)\s+nights?\b", re.IGNORECASE),
+    re.compile(r"\bweekly\s+(?:on\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)", re.IGNORECASE),
+    re.compile(r"\bevery\s+other\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)\b", re.IGNORECASE),
+]
+
+
+def detect_recurring_weekday(text: str) -> int | None:
+    """If the text mentions a weekly recurring weekday, return its index.
+
+    Returns: 0 (Monday) through 6 (Sunday), or None if not recurring.
+    """
+    if not text:
+        return None
+    for pat in _RECURRING_PATTERNS:
+        m = pat.search(text)
+        if m:
+            day = m.group(1).lower()
+            return _WEEKDAY_INDEX.get(day)
+    return None
+
+
+def expand_recurring_event(event: dict, weekday: int, weeks_ahead: int = 6) -> list[dict]:
+    """Generate up to weeks_ahead future occurrences of a weekly event.
+
+    Returns the original event plus N future copies on the same weekday.
+    Each copy gets a unique id (date is part of the hash).
+    """
+    from datetime import datetime, timedelta
+    base_date_str = event.get("date", "")
+    if not base_date_str:
+        return [event]
+
+    try:
+        base = datetime.fromisoformat(base_date_str).date()
+    except Exception:
+        return [event]
+
+    occurrences = [event]
+    next_date = base
+    while len(occurrences) <= weeks_ahead:
+        next_date = next_date + timedelta(days=7)
+        days_to_target = (weekday - next_date.weekday()) % 7
+        target_date = next_date + timedelta(days=days_to_target)
+        if (target_date - base).days >= weeks_ahead * 7:
+            break
+        # Build a copy with the new date
+        new_ev = dict(event)
+        new_ev["date"] = target_date.isoformat()
+        new_ev["id"] = make_event_id(
+            event.get("source", ""),
+            event.get("title", ""),
+            new_ev["date"],
+        )
+        new_ev["recurring"] = True
+        # Preserve location, categories etc. by reference (deep copy not needed)
+        new_ev["location"] = dict(event.get("location", {}))
+        new_ev["categories"] = list(event.get("categories", []))
+        occurrences.append(new_ev)
+    return occurrences
+
+
 def build_event(
     title: str,
     description: str,
