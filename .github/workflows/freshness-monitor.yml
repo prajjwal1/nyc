@@ -1,0 +1,74 @@
+name: Freshness Monitor
+
+# Every 15 min, check whether the live events.json is stale.
+# If it's > 90 minutes old, dispatch a quick scrape.
+# This guarantees the live site never goes more than ~2 hours stale.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write  # to dispatch other workflows
+
+concurrency:
+  group: freshness-monitor
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Check freshness and dispatch if stale
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import json, os, sys, subprocess
+          from datetime import datetime, timezone
+          path = "data/events.json"
+          if not os.path.isfile(path):
+            print("events.json missing — needs scrape")
+            sys.exit(0)
+          with open(path) as f:
+            d = json.load(f)
+          ts = d.get("lastUpdated", "")
+          if not ts:
+            print("no lastUpdated — needs scrape")
+            sys.exit(0)
+          try:
+            t = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+            now = datetime.now(t.tzinfo) if t.tzinfo else datetime.now()
+            age_min = (now - t).total_seconds() / 60
+            print(f"events.json age: {age_min:.0f} min")
+            if age_min > 90:
+              print("STALE — dispatching quick-scrape")
+              # Use the GH_TOKEN to trigger quick-scrape.yml
+              import urllib.request, json as _json
+              req = urllib.request.Request(
+                "https://api.github.com/repos/${{ github.repository }}/actions/workflows/quick-scrape.yml/dispatches",
+                method="POST",
+                data=_json.dumps({"ref": "main"}).encode(),
+                headers={
+                  "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
+                  "Accept": "application/vnd.github+json",
+                  "Content-Type": "application/json",
+                },
+              )
+              try:
+                urllib.request.urlopen(req, timeout=10)
+                print("quick-scrape dispatched")
+              except Exception as e:
+                print(f"dispatch failed: {e}")
+            else:
+              print("fresh enough")
+          except Exception as e:
+            print(f"parse error: {e}")
+          PY

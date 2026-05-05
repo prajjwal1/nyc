@@ -98,6 +98,14 @@ def scrape() -> list[dict]:
     # 2. Curated + discovered accounts (skip ones we just covered via saved)
     all_accounts = sorted(set(IG_ACCOUNTS) | set(load_discovered_accounts()))
 
+    # Skip dead accounts (404s, repeated failures) — auto-cleanup
+    dead = _load_dead_accounts().get("accounts", {})
+    dead_set = {u for u, info in dead.items() if info.get("reason") in ("not_exists", "repeated_failure")}
+    before_dead = len(all_accounts)
+    all_accounts = [a for a in all_accounts if a.lower() not in dead_set]
+    if before_dead != len(all_accounts):
+        print(f"[instagram] Skipped {before_dead - len(all_accounts)} dead accounts")
+
     # Cap account count for time-bounded CI runs.
     if IG_MAX_ACCOUNTS > 0 and len(all_accounts) > IG_MAX_ACCOUNTS:
         # Always include the curated seeds + a sample of discovered.
@@ -221,6 +229,72 @@ def _load_affinity_accounts() -> set[str]:
         return {a.lower() for a in d.get("accounts", []) if isinstance(a, str)}
     except Exception:
         return set()
+
+
+_DEAD_ACCOUNTS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "dead_accounts.json",
+)
+
+
+def _load_dead_accounts() -> dict:
+    """Load the dead-accounts ledger.  Format:
+
+    {"accounts": {"username": {"reason": "...", "since": "...", "failure_count": N}}}
+    """
+    import json
+    if not os.path.isfile(_DEAD_ACCOUNTS_PATH):
+        return {"accounts": {}}
+    try:
+        with open(_DEAD_ACCOUNTS_PATH) as f:
+            d = json.load(f)
+        return d if isinstance(d, dict) else {"accounts": {}}
+    except Exception:
+        return {"accounts": {}}
+
+
+def _save_dead_accounts(data: dict) -> None:
+    import json
+    os.makedirs(os.path.dirname(_DEAD_ACCOUNTS_PATH), exist_ok=True)
+    with open(_DEAD_ACCOUNTS_PATH, "w") as f:
+        json.dump(data, f, indent=2)
+
+
+def _mark_dead_account(username: str, reason: str) -> None:
+    """Mark an account as dead — future scrape runs will skip it."""
+    from datetime import datetime, timezone
+    data = _load_dead_accounts()
+    data.setdefault("accounts", {})[username.lower()] = {
+        "reason": reason,
+        "since": datetime.now(timezone.utc).isoformat(),
+        "failure_count": data.get("accounts", {}).get(username.lower(), {}).get("failure_count", 0) + 1,
+    }
+    _save_dead_accounts(data)
+
+
+def _record_account_failure(username: str, reason: str) -> None:
+    """Record a transient failure. After 3 consecutive failures, mark dead."""
+    data = _load_dead_accounts()
+    entry = data.setdefault("accounts", {}).get(username.lower(), {"failure_count": 0})
+    entry["failure_count"] = entry.get("failure_count", 0) + 1
+    entry["last_reason"] = reason
+    if entry["failure_count"] >= 3:
+        from datetime import datetime, timezone
+        entry["since"] = datetime.now(timezone.utc).isoformat()
+        entry["reason"] = "repeated_failure"
+        print(f"[instagram] @{username} hit 3 failures — marking dead")
+    data["accounts"][username.lower()] = entry
+    _save_dead_accounts(data)
+
+
+def _is_dead_account(username: str) -> bool:
+    """True if this account should be skipped because it's marked dead."""
+    data = _load_dead_accounts()
+    entry = data.get("accounts", {}).get(username.lower(), {})
+    if entry.get("reason") in ("not_exists", "repeated_failure"):
+        return True
+    return False
 
 
 def _add_to_discovered_accounts(usernames: set[str]) -> None:
@@ -436,15 +510,20 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
 
     Carousel posts (sidecar) yield ALL their images so the OCR pipeline can
     extract event details from flyer-style multi-image posts.
+
+    Dead accounts (consistent ProfileNotExists) get marked so future runs
+    skip them automatically — keeps the scraper self-cleaning.
     """
 
     try:
         profile = instaloader.Profile.from_username(loader.context, username)
     except instaloader.exceptions.ProfileNotExistsException:
-        print(f"[instagram] Profile @{username} does not exist, skipping")
+        print(f"[instagram] Profile @{username} does not exist, marking dead")
+        _mark_dead_account(username, "not_exists")
         return []
     except Exception as exc:
         print(f"[instagram] Profile @{username} failed: {exc}")
+        _record_account_failure(username, str(exc)[:200])
         return []
 
     # High-affinity accounts get up to 1.5x posts (capped at 30)

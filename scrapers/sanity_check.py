@@ -114,7 +114,7 @@ WARNING_CHECKS = [
 ]
 
 
-def main(events_path: str = "data/events.json") -> int:
+def main(events_path: str = "data/events.json", *, write_stats: bool = False, hard_fail: bool = False) -> int:
     if not os.path.isfile(events_path):
         print(f"ERROR: {events_path} not found")
         return 1
@@ -146,11 +146,13 @@ def main(events_path: str = "data/events.json") -> int:
     # Run checks
     print("\n--- CRITICAL CHECKS ---")
     failures = []
+    critical_results = []
     for name, check, min_count in CRITICAL_CHECKS:
         matching = [e for e in events if check(e)]
         ok = len(matching) >= min_count
         symbol = "✓" if ok else "✗"
         print(f"  {symbol} {name}: {len(matching)} events (need {min_count}+)")
+        critical_results.append({"name": name, "count": len(matching), "min": min_count, "ok": ok})
         if not ok:
             failures.append(name)
 
@@ -174,6 +176,19 @@ def main(events_path: str = "data/events.json") -> int:
         cats_s = ",".join(e.get("categories", [])[:3])
         print(f"  [{e['score']}] {e['title'][:60]} | {e['source']} | {cats_s}")
 
+    # Freshness
+    last_updated = data.get("lastUpdated", "")
+    age_hours = None
+    if last_updated:
+        try:
+            from datetime import datetime as _dt
+            ts = _dt.fromisoformat(last_updated.replace("Z", "+00:00"))
+            now = _dt.now(ts.tzinfo) if ts.tzinfo else _dt.now()
+            age_hours = (now - ts).total_seconds() / 3600
+            print(f"\nFreshness: lastUpdated {age_hours:.1f}h ago")
+        except Exception:
+            pass
+
     # Summary
     print(f"\n=== SUMMARY ===")
     print(f"Critical failures: {len(failures)}")
@@ -183,9 +198,50 @@ def main(events_path: str = "data/events.json") -> int:
     if warnings:
         print(f"Could improve: {', '.join(warnings)}")
 
-    return 1 if failures else 0
+    # Write stats history (append-only) — useful for regression tracking
+    if write_stats:
+        _append_stats(
+            total=len(events),
+            sources=sources,
+            cats=dict(cats),
+            failures=failures,
+            warnings=warnings,
+            age_hours=age_hours,
+        )
+
+    return 1 if (hard_fail and failures) else 0
+
+
+def _append_stats(*, total, sources, cats, failures, warnings, age_hours):
+    """Append a one-line snapshot to scrapers/data/stats_history.jsonl.
+
+    Useful for debugging regressions over time.
+    """
+    from datetime import datetime, timezone
+    path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "data",
+        "stats_history.jsonl",
+    )
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    record = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "total": total,
+        "sources": sources,
+        "category_counts": cats,
+        "critical_failures": failures,
+        "warnings": warnings,
+        "age_hours": age_hours,
+    }
+    with open(path, "a") as f:
+        f.write(json.dumps(record) + "\n")
 
 
 if __name__ == "__main__":
-    path = sys.argv[1] if len(sys.argv) > 1 else "data/events.json"
-    sys.exit(main(path))
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("path", nargs="?", default="data/events.json")
+    parser.add_argument("--write-stats", action="store_true", help="Append to stats_history.jsonl")
+    parser.add_argument("--hard-fail", action="store_true", help="Exit non-zero on critical failures")
+    args = parser.parse_args()
+    sys.exit(main(args.path, write_stats=args.write_stats, hard_fail=args.hard_fail))

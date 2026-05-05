@@ -15,13 +15,26 @@ const MAX_DAYS = 30;
 const MAX_SAVED = 6;
 
 /**
- * Round-robin events across primary categories so the user sees variety.
+ * Order events by rank with category diversity.
+ *
+ * Top-K events (default 2) are pure score-order — the highest-ranked
+ * events always show first regardless of category. After that, we
+ * round-robin across categories for variety.
  */
-function diversifyByCategory(events: Event[], n: number): Event[] {
+function diversifyByCategory(events: Event[], n: number, topK = 2): Event[] {
   if (events.length <= n) return events;
 
+  // 1. Take top-K strictly by score
+  const sorted = [...events].sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
+  const result: Event[] = sorted.slice(0, topK);
+  const seen = new Set(result.map((e) => e.id));
+
+  if (result.length >= n) return result;
+
+  // 2. For the rest, round-robin across primary categories
   const buckets = new Map<string, Event[]>();
-  for (const e of events) {
+  for (const e of sorted.slice(topK)) {
+    if (seen.has(e.id)) continue;
     const primary = (e.categories || []).find(
       (c) => c !== "free" && c !== "other"
     ) || "_other";
@@ -33,10 +46,7 @@ function diversifyByCategory(events: Event[], n: number): Event[] {
     (a, b) => (b[1][0].score ?? 0) - (a[1][0].score ?? 0)
   );
 
-  const result: Event[] = [];
-  const seen = new Set<string>();
   let exhausted = false;
-
   while (result.length < n && !exhausted) {
     exhausted = true;
     for (const [, bucket] of orderedBuckets) {

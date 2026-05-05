@@ -50,6 +50,11 @@ jobs:
           IG_TIME_BUDGET_SECONDS: "1800"  # 30 min hard cap on IG scraping
         run: python -m scrapers.run_all
 
+      - name: Sanity check + stats logging
+        # Soft-fail: log issues but never break the pipeline. Stats appended
+        # to scrapers/data/stats_history.jsonl for trend tracking.
+        run: python -m scrapers.sanity_check --write-stats || true
+
       - name: Pull latest before commit
         run: |
           git pull --rebase --autostash || true
@@ -58,6 +63,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/events.json site/public/events.json scrapers/data/discovered_accounts.json scrapers/data/discovered_urls.json 2>/dev/null || true
+          git add data/events.json site/public/events.json \
+            scrapers/data/discovered_accounts.json \
+            scrapers/data/discovered_urls.json \
+            scrapers/data/user_affinity_accounts.json \
+            scrapers/data/stats_history.jsonl \
+            scrapers/data/dead_accounts.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Update events data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
