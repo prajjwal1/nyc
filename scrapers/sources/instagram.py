@@ -54,10 +54,19 @@ def scrape() -> list[dict]:
     # 2. Curated + discovered accounts (skip ones we just covered via saved)
     all_accounts = sorted(set(IG_ACCOUNTS) | set(load_discovered_accounts()))
 
+    # Track bio URLs from accounts that have "link in bio" pattern — these
+    # often link to Linktree/Beacons/lu.ma etc. with full event lists.
+    bio_urls_seen: set[str] = set()
+
     for idx, account in enumerate(all_accounts):
         try:
             posts = _fetch_posts(loader, account)
             for post in posts:
+                # Capture bio URL once per account
+                bio = post.get("bio_url", "")
+                if bio and bio not in bio_urls_seen:
+                    bio_urls_seen.add(bio)
+
                 extracted = _extract_events_from_caption(post, account)
 
                 # If image analyzer is available, try to fill in gaps.
@@ -72,8 +81,56 @@ def scrape() -> list[dict]:
         if idx < len(all_accounts) - 1:
             time.sleep(1)
 
+    # Persist bio URLs so the generic scraper can pick up event pages
+    # (Linktree/Beacons/Eventbrite/lu.ma/etc.) on the next pipeline run.
+    if bio_urls_seen:
+        _save_bio_urls(bio_urls_seen)
+
     print(f"[instagram] Scraped {len(all_events)} events from {len(all_accounts)} accounts + saved")
     return all_events
+
+
+def _save_bio_urls(urls: set[str]) -> None:
+    """Append IG bio URLs to discovered_urls.json (for the generic scraper)."""
+    import json
+    from datetime import datetime, timezone
+
+    path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "data",
+        "discovered_urls.json",
+    )
+    try:
+        existing: list[dict] = []
+        if os.path.isfile(path):
+            with open(path) as f:
+                data = json.load(f)
+                if isinstance(data, list):
+                    existing = data
+                elif isinstance(data, dict):
+                    existing = data.get("urls", [])
+
+        seen = {item["url"] if isinstance(item, dict) else item for item in existing}
+        added = 0
+        now = datetime.now(timezone.utc).isoformat()
+        for url in urls:
+            if url in seen:
+                continue
+            existing.append({
+                "url": url,
+                "discovered_at": now,
+                "discovered_via": "instagram_bio",
+            })
+            seen.add(url)
+            added += 1
+
+        if added:
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            with open(path, "w") as f:
+                json.dump(existing, f, indent=2)
+            print(f"[instagram] Added {added} bio URLs to discovered_urls.json")
+    except Exception as exc:
+        print(f"[instagram] Failed to save bio URLs: {exc}")
 
 
 def _scrape_saved_posts(loader, max_saved: int = 50) -> tuple[list[dict], set[str]]:
@@ -289,9 +346,20 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     post_date = post.get("date")
     post_url = post.get("url", "")
     image_url = post.get("image", "")
+    bio_url = post.get("bio_url", "")
 
     # Try to find all URLs in the full caption (some appear only once at end).
     all_urls = re.findall(r"https?://[^\s)>\]\"']+", caption)
+
+    # If caption mentions "link in bio" / "tickets in bio" but no URL is in
+    # the caption itself, prepend the bio URL — that's where the user goes
+    # for actual ticket info.
+    has_link_in_bio = bool(re.search(
+        r"\b(?:link|tickets?|info|details?|RSVP|sign\s*up)\s+in\s+bio\b",
+        caption, re.IGNORECASE,
+    )) or "🔗" in caption
+    if has_link_in_bio and bio_url and bio_url not in all_urls:
+        all_urls.insert(0, bio_url)
 
     # First check: is this post even about an event?
     # Posts with images get more leeway (we may OCR the image for details).
