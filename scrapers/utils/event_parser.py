@@ -327,6 +327,99 @@ def expand_recurring_event(event: dict, weekday: int, weeks_ahead: int = 6) -> l
     return occurrences
 
 
+# Detect CTA-only lines like "Tickets at the link in our bio"
+# A line is removed if it contains "link in bio" / "tickets in bio" AND
+# is mostly just that CTA (no other meaningful content).
+_LINK_IN_BIO_RE = re.compile(
+    r"\b(?:link|tickets?|details?|info|RSVP|sign\s*up|swipe)\s+in\s+(?:our\s+|my\s+)?bio\b",
+    re.IGNORECASE,
+)
+# Sentence-level CTA at end (after a period/exclamation/question)
+_TRAILING_CTA_RE = re.compile(
+    r"[\.!?]\s*[^.!?]*\b(?:link|tickets?|details?|info|RSVP|sign\s*up|swipe)\s+in\s+(?:our\s+|my\s+)?bio[^.!?]*[!.\s]*$",
+    re.IGNORECASE,
+)
+_HASHTAG_CLUSTER_RE = re.compile(r"(?:\s|^)#\w[\w]*(?:\s+#\w[\w]*)+\s*$")
+_TRAILING_HASHTAG_RE = re.compile(r"\s+#\w[\w]*\s*$")
+
+
+def clean_description(text: str, max_length: int = 250) -> str:
+    """Clean an IG-caption-style description for display.
+
+    - Strip trailing hashtag clusters ("#nyc #brooklyn #events" at the end)
+    - Remove "link in bio" / "tickets in bio" CTAs
+    - Collapse excessive whitespace
+    - Truncate at max_length, breaking at sentence boundary if possible
+    """
+    if not text:
+        return ""
+
+    # Process line by line — drop lines that are pure CTAs
+    lines = []
+    for raw_line in text.split("\n"):
+        line = raw_line.strip()
+        if not line:
+            continue
+        # Drop short lines that are mostly CTA
+        if _LINK_IN_BIO_RE.search(line) and len(line) < 80:
+            continue
+        # Drop lines that are JUST hashtags
+        non_hashtag = re.sub(r"#\w+|\s+", "", line)
+        if not non_hashtag:
+            continue
+        # Drop lines that are JUST @mentions (collaborator spam at end)
+        non_mention = re.sub(r"@\w+|\s+|[,.\-—•]", "", line)
+        if not non_mention and "@" in line:
+            continue
+        lines.append(line)
+    cleaned = " ".join(lines).strip()
+
+    # Within remaining text, drop sentences that contain "link in bio"
+    # but only if they're <60 chars (CTAs) — leave longer sentences alone
+    sentences = re.split(r"(?<=[.!?])\s+", cleaned)
+    sentences = [
+        s for s in sentences
+        if not (_LINK_IN_BIO_RE.search(s) and len(s) < 60)
+    ]
+    cleaned = " ".join(sentences).strip()
+
+    # Strip trailing CTA sentence ("...! Check out the link in our bio!")
+    cleaned = _TRAILING_CTA_RE.sub("", cleaned).strip()
+
+    # Strip trailing hashtag cluster
+    while True:
+        new = _HASHTAG_CLUSTER_RE.sub("", cleaned).rstrip()
+        if new == cleaned:
+            break
+        cleaned = new
+    for _ in range(20):
+        new = _TRAILING_HASHTAG_RE.sub("", cleaned).rstrip()
+        if new == cleaned:
+            break
+        cleaned = new
+
+    # Collapse multiple spaces
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+
+    if len(cleaned) <= max_length:
+        return cleaned
+
+    # Try to break at a sentence boundary near max_length
+    truncated = cleaned[:max_length]
+    last_period = max(
+        truncated.rfind(". "),
+        truncated.rfind("! "),
+        truncated.rfind("? "),
+    )
+    if last_period > max_length * 0.6:
+        return truncated[: last_period + 1]
+    # Otherwise break at word boundary
+    last_space = truncated.rfind(" ")
+    if last_space > max_length * 0.7:
+        return truncated[:last_space] + "…"
+    return truncated + "…"
+
+
 def build_event(
     title: str,
     description: str,
@@ -352,7 +445,7 @@ def build_event(
     return {
         "id": make_event_id(source, title, date_str),
         "title": title.strip(),
-        "description": description.strip() if description else "",
+        "description": clean_description(description, max_length=300) if description else "",
         "date": date_str,
         "startTime": start_time,
         "endTime": end_time,
