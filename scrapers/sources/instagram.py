@@ -34,7 +34,12 @@ except ImportError:
 # ---------------------------------------------------------------------------
 
 def scrape() -> list[dict]:
-    """Scrape recent posts from curated IG accounts and return parsed events."""
+    """Scrape recent posts from curated IG accounts and return parsed events.
+
+    Priority order:
+    1. User's SAVED posts — highest signal (user explicitly bookmarked these)
+    2. Curated IG_ACCOUNTS + BFS-discovered accounts
+    """
 
     loader = _get_authenticated_loader()
     if loader is None:
@@ -42,7 +47,11 @@ def scrape() -> list[dict]:
 
     all_events: list[dict] = []
 
-    # Merge curated seed list with any accounts discovered via BFS.
+    # 1. Saved posts — highest priority since user curated them
+    saved_events, saved_accounts = _scrape_saved_posts(loader)
+    all_events.extend(saved_events)
+
+    # 2. Curated + discovered accounts (skip ones we just covered via saved)
     all_accounts = sorted(set(IG_ACCOUNTS) | set(load_discovered_accounts()))
 
     for idx, account in enumerate(all_accounts):
@@ -63,8 +72,63 @@ def scrape() -> list[dict]:
         if idx < len(all_accounts) - 1:
             time.sleep(1)
 
-    print(f"[instagram] Scraped {len(all_events)} events from {len(all_accounts)} accounts")
+    print(f"[instagram] Scraped {len(all_events)} events from {len(all_accounts)} accounts + saved")
     return all_events
+
+
+def _scrape_saved_posts(loader, max_saved: int = 50) -> tuple[list[dict], set[str]]:
+    """Scrape the user's IG saved posts. These are the highest-signal events
+    since the user explicitly bookmarked them — likely things they want to attend.
+    """
+    events: list[dict] = []
+    accounts_seen: set[str] = set()
+    try:
+        my_profile = instaloader.Profile.from_username(loader.context, IG_USERNAME)
+    except Exception as exc:
+        print(f"[instagram] Could not load own profile @{IG_USERNAME}: {exc}")
+        return events, accounts_seen
+
+    try:
+        count = 0
+        for post in my_profile.get_saved_posts():
+            if count >= max_saved:
+                break
+            count += 1
+            owner = post.owner_username or "unknown"
+            accounts_seen.add(owner.lower())
+
+            # Build the post dict (same shape as _fetch_posts)
+            images: list[str] = []
+            try:
+                if post.typename == "GraphSidecar":
+                    for node in post.get_sidecar_nodes():
+                        if not getattr(node, "is_video", False):
+                            images.append(node.display_url)
+                else:
+                    images.append(post.url)
+            except Exception:
+                images.append(post.url)
+
+            post_dict = {
+                "caption": post.caption or "",
+                "date": post.date_utc,
+                "url": f"https://www.instagram.com/p/{post.shortcode}/",
+                "image": images[0] if images else "",
+                "all_images": images,
+                "owner": owner,
+                "bio_url": "",
+            }
+
+            # Saved posts get their owner as the IG account.
+            extracted = _extract_events_from_caption(post_dict, owner)
+            # Mark these as user-saved so we can boost in ranking
+            for ev in extracted:
+                ev["userSaved"] = True
+            events.extend(extracted)
+        print(f"[instagram] Scraped {len(events)} events from {count} SAVED posts ({len(accounts_seen)} unique accounts)")
+    except Exception as exc:
+        print(f"[instagram] Saved posts failed: {exc}")
+    return events, accounts_seen
 
 
 # ---------------------------------------------------------------------------

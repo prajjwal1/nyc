@@ -84,7 +84,10 @@ def compute_score(event: dict) -> float:
         + time_q * 0.08
     )
 
-    final = base_score + high_value_boost + social_boost - soft_penalty - audience_penalty
+    # User-saved posts get a major boost — explicit bookmark is highest signal
+    saved_boost = 0.25 if event.get("userSaved") else 0.0
+
+    final = base_score + high_value_boost + social_boost + saved_boost - soft_penalty - audience_penalty
     return max(0.0, min(1.0, final))
 
 
@@ -99,6 +102,10 @@ def _compute_highlights(event: dict) -> list[str]:
     """Extract 'must-go' indicator labels (free, opening, premiere, etc.)."""
     text = (event.get("title", "") + " " + event.get("description", "")).lower()
     highlights: list[str] = []
+
+    # Saved-by-user is the strongest signal
+    if event.get("userSaved"):
+        highlights.append("saved")
 
     if event.get("price") == "free":
         highlights.append("free")
