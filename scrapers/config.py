@@ -7,23 +7,31 @@ IG_SESSION_FILE = os.environ.get(
     os.path.expanduser(f"~/.config/instaloader/session-{IG_USERNAME}"),
 )
 
-IG_ACCOUNTS = [
+# Seed IG accounts.  In addition, the discovery system harvests the user's
+# follows + does BFS through @mentions in captions, so this list grows
+# autonomously over time (see scrapers/discover.py).  Accounts that don't
+# exist on IG are skipped silently.
+IG_ACCOUNTS = list(dict.fromkeys([  # dedupe while preserving order
     # Curated NYC event aggregators
     "theskint",
-    "secret.nyc",
+    "secretnyc",            # was "secret.nyc"; canonical is no-dot
     "timeoutnewyork",
     "onefinedaynyc",
-    "nonsense.nyc",
+    "nonsensenyc",          # was "nonsense.nyc"; canonical is no-dot
     "thingstodoinnyc",
     "newyorkcity",
     "ilovenynyc",
+    "explorenycfree",
+    "fomofeed",
     # NYC parks / outdoor
     "nycparks",
     "thehighlinenyc",
     "centralparknyc",
     "domino_park",
     "pier17nyc",
-    # Live music venues (top user interest)
+    "brooklynbridgepark",
+    "bryantparknyc",
+    # Live music venues
     "sofarsounds",
     "elsewherebrooklyn",
     "houseofyesnyc",
@@ -39,47 +47,42 @@ IG_ACCOUNTS = [
     "metmuseum",
     "whitneymuseum",
     "newmuseum",
-    "moma",
-    "newmuseum",
+    "themuseumofmodernart",  # canonical for MoMA — "moma" is a different acct
     "themorganlibrary",
     "cooperhewitt",
     # Bookstores / literary
     "bookclubbar",
-    "mcnallyjacksonbooks",
+    "mcnallyjackson",
     "powerhousearena",
-    "stranbookstore",
+    "strandbookstore",       # was "stranbookstore" (typo)
     "lizsbookbar",
-    # Williamsburg creative spaces / classes
+    # Williamsburg creative spaces
     "recessgrove",
-    "tripleseven_brooklyn",
-    "cafereggio",
-    # Yoga / wellness in parks
-    "bryantparknyc",
-    "centralparkconservancy",
-    "dominobrkparks",
-    "brooklynbridgepark",
-    "domino_park",
-    # Philosophy / intellectual
-    "thephilosophyclub",
-    "thinkolio",
     # Comedy clubs
     "thecomedycellar",
     "ucbtheatre",
     "thecaveatnyc",
     "qedastoria",
+    "greenpointcomedyclub",
     # Jazz clubs
     "smallsjazzclub",
     "villagevanguard",
     "bluenote.nyc",
     "smokejazzclub",
-    "rosenwald.nyc",
-    # Food / dining culture
+    # Food / dining
     "infatuation",
     "eaterny",
-    # Art galleries / openings
-    "artnewyork",
-    "see.you.in.nyc",
-]
+    # Singles / social (top priority)
+    "sipsandstoriesnyc",
+    "buzzkillnyc",
+    # Run clubs / fitness
+    "midnightrunnersnewyork",
+    "northbrooklynrunners",
+    # Williamsburg / Greenpoint local
+    "yeswilliamsburg",
+    "greenpointers",
+    "omgreenpoint",
+]))
 
 IG_MAX_POSTS_PER_ACCOUNT = 20
 
