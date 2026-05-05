@@ -34,14 +34,17 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 DISCOVERED_PATH = os.path.join(DATA_DIR, "discovered_accounts.json")
 DISCOVERED_URLS_PATH = os.path.join(DATA_DIR, "discovered_urls.json")
 
-# Score threshold: an account must score at least this high to be saved.
-# 0.45 keeps the bar relatively permissive (a couple of clear NYC/event
-# signals will get an account in) while still filtering out obvious
-# non-matches (random influencers, brands, personal accounts).
-SCORE_THRESHOLD = 0.45
+# Score threshold for accounts discovered via @mentions in captions
+# (BFS).  Lower threshold here = more permissive but more noise.
+SCORE_THRESHOLD = 0.40
+
+# Threshold for accounts the user themselves follows. Be permissive — even
+# if a follow doesn't have explicit "event" keywords, the user's manual
+# decision to follow is signal in itself.
+USER_FOLLOWING_THRESHOLD = 0.30
 
 # Hard caps to keep IG happy.
-MAX_NEW_ACCOUNTS_PER_RUN = 30
+MAX_NEW_ACCOUNTS_PER_RUN = 50
 SLEEP_BETWEEN_PROFILES_SEC = 1.0
 N_POSTS_TO_SCAN = 8
 
@@ -547,7 +550,8 @@ def harvest_following_list(loader, max_to_evaluate: int = 200) -> list[str]:
             count += 1
             try:
                 score = score_event_account(followee)
-                if score >= SCORE_THRESHOLD:
+                # Be more permissive for user's own follows
+                if score >= USER_FOLLOWING_THRESHOLD:
                     relevant.append({
                         "username": followee.username,
                         "score": round(score, 3),
