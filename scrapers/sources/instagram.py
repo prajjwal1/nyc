@@ -14,7 +14,9 @@ import instaloader
 from ..config import (
     IG_ACCOUNTS,
     IG_MAX_POSTS_PER_ACCOUNT,
+    IG_MAX_ACCOUNTS,
     IG_SESSION_FILE,
+    IG_SLEEP_BETWEEN_ACCOUNTS,
     IG_USERNAME,
 )
 from ..discover import load_discovered_accounts
@@ -54,6 +56,15 @@ def scrape() -> list[dict]:
     # 2. Curated + discovered accounts (skip ones we just covered via saved)
     all_accounts = sorted(set(IG_ACCOUNTS) | set(load_discovered_accounts()))
 
+    # Cap account count for time-bounded CI runs.
+    if IG_MAX_ACCOUNTS > 0 and len(all_accounts) > IG_MAX_ACCOUNTS:
+        # Always include the curated seeds + a sample of discovered.
+        seeds = list(set(IG_ACCOUNTS) & set(all_accounts))
+        discovered = [a for a in all_accounts if a not in seeds]
+        slot = max(0, IG_MAX_ACCOUNTS - len(seeds))
+        all_accounts = sorted(set(seeds) | set(discovered[:slot]))
+        print(f"[instagram] Capped to {len(all_accounts)} accounts for time budget")
+
     # Track bio URLs from accounts that have "link in bio" pattern — these
     # often link to Linktree/Beacons/lu.ma etc. with full event lists.
     bio_urls_seen: set[str] = set()
@@ -79,7 +90,7 @@ def scrape() -> list[dict]:
 
         # Rate-limit: sleep between accounts (skip after the last one).
         if idx < len(all_accounts) - 1:
-            time.sleep(1)
+            time.sleep(IG_SLEEP_BETWEEN_ACCOUNTS)
 
     # Persist bio URLs so the generic scraper can pick up event pages
     # (Linktree/Beacons/Eventbrite/lu.ma/etc.) on the next pipeline run.

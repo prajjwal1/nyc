@@ -84,7 +84,9 @@ IG_ACCOUNTS = list(dict.fromkeys([  # dedupe while preserving order
     "omgreenpoint",
 ]))
 
-IG_MAX_POSTS_PER_ACCOUNT = 20
+IG_MAX_POSTS_PER_ACCOUNT = int(os.environ.get("IG_MAX_POSTS_PER_ACCOUNT", "20"))
+IG_MAX_ACCOUNTS = int(os.environ.get("IG_MAX_ACCOUNTS", "0"))  # 0 = no cap
+IG_SLEEP_BETWEEN_ACCOUNTS = float(os.environ.get("IG_SLEEP_BETWEEN_ACCOUNTS", "1.0"))
 
 USER_INTERESTS = {
     # Categories the user actively cares about, ordered by priority

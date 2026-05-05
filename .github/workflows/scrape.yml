@@ -15,7 +15,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,6 +44,9 @@ jobs:
       - name: Run scrapers
         env:
           IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_MAX_POSTS_PER_ACCOUNT: "12"
+          IG_MAX_ACCOUNTS: "120"
+          IG_SLEEP_BETWEEN_ACCOUNTS: "0.5"
         run: python -m scrapers.run_all
 
       - name: Pull latest before commit
