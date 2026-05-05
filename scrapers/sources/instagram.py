@@ -371,7 +371,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
 
     sections = _split_caption(caption)
     # Detect if this post is clearly a multi-event roundup (many sections w/ dates).
-    n_dated_sections = sum(1 for s in sections if _find_dates(s))
+    n_dated_sections = sum(1 for s in sections if _find_dates(s, post_date))
     multi_event = n_dated_sections >= 4
 
     events: list[dict] = []
@@ -382,7 +382,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
         if len(section) < 15:
             continue
 
-        dates = _find_dates(section)
+        dates = _find_dates(section, post_date)
 
         # If this is a multi-event roundup, ONLY accept sections that contain
         # an explicit date. Otherwise we get caption fragments masquerading as events.
@@ -428,7 +428,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
         if post_date:
             full_caption = caption
             title = _extract_title(full_caption) or full_caption.split("\n")[0][:80]
-            event_date = _find_dates(full_caption)
+            event_date = _find_dates(full_caption, post_date)
             event_date = event_date[0] if event_date else post_date.date()
             extracted_loc = _extract_location(full_caption)
             events.append(build_event(
@@ -595,20 +595,89 @@ _DATE_PATTERNS = [
     r"(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*,?\s+(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?\s+\d{1,2}",
     # "this Saturday", "next Friday"
     r"(?:this|next)\s+(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)",
+    # "this weekend", "next weekend"
+    r"(?:this|next)\s+weekend",
     # relative
     r"(?:tonight|today|tomorrow)",
 ]
 
 
-def _find_dates(text: str) -> list:
-    """Extract date objects from text using regex patterns + dateparser."""
+_WEEKDAY_NAMES = {
+    "monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3,
+    "friday": 4, "saturday": 5, "sunday": 6,
+}
 
+
+def _resolve_relative(phrase: str, base_date) -> "date | None":
+    """Resolve relative phrases like 'tonight', 'this Saturday', 'next Fri'.
+
+    base_date is the anchor (post date for IG posts).  Returns a date or None.
+    """
+    from datetime import timedelta
+    p = phrase.lower().strip()
+
+    if p in ("tonight", "today"):
+        return base_date
+    if p == "tomorrow":
+        return base_date + timedelta(days=1)
+
+    # "this Saturday" → next Saturday on or after base_date
+    m = re.match(r"this\s+(\w+)", p)
+    if m:
+        wd = _WEEKDAY_NAMES.get(m.group(1))
+        if wd is not None:
+            days_ahead = (wd - base_date.weekday()) % 7
+            return base_date + timedelta(days=days_ahead)
+
+    # "next Saturday" → Saturday strictly AFTER this week
+    m = re.match(r"next\s+(\w+)", p)
+    if m:
+        wd = _WEEKDAY_NAMES.get(m.group(1))
+        if wd is not None:
+            days_ahead = (wd - base_date.weekday()) % 7
+            if days_ahead == 0:
+                days_ahead = 7
+            # "next" usually means the week after — add another 7
+            return base_date + timedelta(days=days_ahead + 7)
+
+    # "this weekend" → next Saturday on or after base_date
+    if p in ("this weekend", "weekend"):
+        days_ahead = (5 - base_date.weekday()) % 7
+        return base_date + timedelta(days=days_ahead)
+    if p == "next weekend":
+        days_ahead = (5 - base_date.weekday()) % 7
+        if days_ahead < 7:
+            days_ahead += 7
+        return base_date + timedelta(days=days_ahead)
+
+    return None
+
+
+def _find_dates(text: str, post_date=None) -> list:
+    """Extract date objects from text using regex patterns + dateparser.
+
+    If post_date is given, relative phrases like "tonight" / "tomorrow" /
+    "this Friday" are anchored to the post's date instead of the scraper's
+    "now".  This is critical because we scrape posts from days/weeks ago
+    that mention "tomorrow" — meaning the day AFTER the post, not the day
+    after we ran the scraper.
+    """
     dates = []
+    base_date = None
+    if post_date is not None:
+        base_date = post_date.date() if hasattr(post_date, "date") else post_date
+
     for pat in _DATE_PATTERNS:
         for match in re.finditer(pat, text, re.IGNORECASE):
-            parsed = parse_date(match.group())
-            if parsed:
-                dates.append(parsed)
+            phrase = match.group()
+            resolved = None
+            if base_date is not None:
+                resolved = _resolve_relative(phrase, base_date)
+            if resolved is None:
+                # Fall back to dateparser (handles "May 5", "5/5", etc.)
+                resolved = parse_date(phrase)
+            if resolved:
+                dates.append(resolved)
     return dates
 
 
