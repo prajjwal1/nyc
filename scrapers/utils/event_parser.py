@@ -130,6 +130,9 @@ CATEGORY_KEYWORDS = {
         "chef ", "supper club", "natural wine", "wine tasting", "wine bar",
         "cocktail", "smorgasburg", "popup dinner", "pop-up dinner",
         "restaurant week", "food crawl", "speakeasy",
+        "tapping", "tap takeover", "beer release", "brewery",
+        "pierogi", "fried chicken", "pizza party",
+        "happy hour", "brunch",
     ],
     "games": [
         "board game", "trivia", "backgammon", "chess", "arcade", "game night",
@@ -176,6 +179,8 @@ CATEGORY_KEYWORDS = {
         "5k ", "10k ", "marathon training",
         "bike ride", "group ride", "cycling club",
         "pickleball", "tennis meetup",
+        "sprint", "track meet", "intervals at",
+        "mccarren track", "domino park run",
     ],
     "movies": [
         "movie", "film screening", "movie screening", "outdoor movie",
@@ -277,16 +282,33 @@ _WEEKDAY_INDEX = {
 }
 
 _DAY = r"(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)"
-_RECURRING_PATTERNS = [
+
+# Strong recurring signals — "every X", "weekly on X", "every other X".
+# These are unambiguous and worth trusting wherever they appear.
+_STRONG_RECURRING_PATTERNS = [
     re.compile(rf"\bevery\s+{_DAY}\b", re.IGNORECASE),
-    re.compile(rf"\b{_DAY}s?\s+nights?\b", re.IGNORECASE),
-    re.compile(rf"\b{_DAY}s?\s+@\s*\d", re.IGNORECASE),  # "Tuesdays @ 7"
     re.compile(rf"\bweekly\s+(?:on\s+)?{_DAY}", re.IGNORECASE),
     re.compile(rf"\bevery\s+other\s+{_DAY}\b", re.IGNORECASE),
-    re.compile(rf"\b{_DAY}s\b", re.IGNORECASE),  # bare "Tuesdays" / "Sundays"
-    re.compile(rf"\b{_DAY}\s+(?:morning|afternoon|evening)s\b", re.IGNORECASE),  # "Saturday mornings"
-    re.compile(rf"\b(?:on\s+)?{_DAY}s?\s+at\s+(?:the\s+)?\w+", re.IGNORECASE),  # "Tuesdays at Caveat"
 ]
+
+# Weak recurring signals — "Tuesday nights", "Sundays at...", "Saturdays".
+# These are ambiguous: "Friday night" could just be context describing a
+# one-time event. Only trust these in the FIRST 100 chars of the text
+# (where a real recurring marker would be), AND only if the text doesn't
+# also have a specific-month-day pattern.
+_WEAK_RECURRING_PATTERNS = [
+    re.compile(rf"\b{_DAY}s?\s+nights?\b", re.IGNORECASE),
+    re.compile(rf"\b{_DAY}s?\s+@\s*\d", re.IGNORECASE),  # "Tuesdays @ 7"
+    re.compile(rf"\b{_DAY}s\b", re.IGNORECASE),  # bare "Tuesdays" / "Sundays"
+    re.compile(rf"\b{_DAY}\s+(?:morning|afternoon|evening)s\b", re.IGNORECASE),
+    re.compile(rf"\b(?:on\s+)?{_DAY}s?\s+at\s+(?:the\s+)?\w+", re.IGNORECASE),
+]
+
+# Specific-date pattern: presence vetoes weak recurring signals.
+_SPECIFIC_DATE_RE = re.compile(
+    r"\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2}|\b\d{1,2}/\d{1,2}|\b\d{1,2}\.\d{1,2}\.\d{2,4}\b",
+    re.IGNORECASE,
+)
 
 
 def detect_recurring_weekday(text: str) -> int | None:
@@ -296,11 +318,24 @@ def detect_recurring_weekday(text: str) -> int | None:
     """
     if not text:
         return None
-    for pat in _RECURRING_PATTERNS:
+
+    # Strong signals trump everything
+    for pat in _STRONG_RECURRING_PATTERNS:
         m = pat.search(text)
         if m:
-            day = m.group(1).lower()
-            return _WEEKDAY_INDEX.get(day)
+            return _WEEKDAY_INDEX.get(m.group(1).lower())
+
+    # Weak signals: only the first 100 chars (event-content area), and
+    # vetoed by any specific-date phrase ("March 27", "5/9", etc.) which
+    # makes this clearly a one-time event.
+    head = text[:100]
+    if _SPECIFIC_DATE_RE.search(text):
+        return None
+    for pat in _WEAK_RECURRING_PATTERNS:
+        m = pat.search(head)
+        if m:
+            return _WEEKDAY_INDEX.get(m.group(1).lower())
+
     return None
 
 
