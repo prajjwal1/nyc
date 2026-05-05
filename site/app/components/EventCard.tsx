@@ -1,6 +1,6 @@
 "use client";
 
-import { Event, CATEGORY_CONFIG, SOURCE_LABELS } from "../lib/types";
+import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
 
 interface EventCardProps {
   event: Event;
@@ -76,6 +76,22 @@ function FeedCard({ event, timeStr }: { event: Event; timeStr: string | null }) 
           )}
 
           <div className="mt-1.5 flex flex-wrap items-center gap-1">
+            {/* Highlight badges first — most important signals */}
+            {(event.highlights || [])
+              .filter((h) => h !== "free")  // free shown as category below
+              .slice(0, 3)
+              .map((h) => {
+                const config = HIGHLIGHT_CONFIG[h];
+                if (!config) return null;
+                return (
+                  <span
+                    key={h}
+                    className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold ${config.color}`}
+                  >
+                    {config.label}
+                  </span>
+                );
+              })}
             {event.price === "free" && (
               <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">
                 FREE

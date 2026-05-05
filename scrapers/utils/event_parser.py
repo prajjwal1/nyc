@@ -81,6 +81,9 @@ CATEGORY_KEYWORDS = {
         "installation", "moma", "whitney", "guggenheim", "art show", "open studios",
         "first saturday", "first friday", "art fair", "biennial", "vernissage",
         "artist talk", "panel discussion", "exhibition opens",
+        "sip and paint", "sip & paint", "paint and sip", "paint & sip",
+        "mural", "ceramics", "pottery class", "drawing class",
+        "art class", "art workshop", "creative workshop",
     ],
     "music": [
         "live music", "live jazz", "jazz", "concert", "dj set", "dj night",
@@ -101,6 +104,9 @@ CATEGORY_KEYWORDS = {
         "warehouse party", "speakeasy", "cocktail party", "after-hours",
         "underground", "boat party", "block party", "kickback",
         "anniversary party", "release party",
+        "drag queen", "drag show", "drag bingo", "drag brunch",
+        "queer", "pride", "lgbtq", "gay night", "lesbian night",
+        "after hours", "afters", "all night", "all-nighter",
     ],
     "outdoors": [
         "park", "outdoor", "garden", "hike", "walk", "picnic", "rooftop",
@@ -135,6 +141,8 @@ CATEGORY_KEYWORDS = {
     "dance": [
         "dance class", "dance party", "dance night", "salsa night",
         "swing dance", "ballroom", "tango social",
+        "salsa festival", "salsa social", "bachata", "kizomba",
+        "vogue ", "ballet ", "dance battle",
     ],
     "design": [
         "design week", "design fair", "design show", "icff",
@@ -175,6 +183,10 @@ CATEGORY_KEYWORDS = {
         "urban exploration", "street art tour", "architecture tour",
         "rooftop tour", "scavenger hunt", "treasure hunt",
         "hidden bar", "speakeasy",
+        "pop-up", "popup", "pop up at", "pop-up at",
+        "wedding trends", "beauty pop-up",
+        "brand pop-up", "brand pop up", "brand activation",
+        "is popping up",
     ],
     "viewings": [
         "viewing party", "watch party", "live screening",
