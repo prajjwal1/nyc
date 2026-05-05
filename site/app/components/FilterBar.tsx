@@ -65,12 +65,17 @@ export default function FilterBar({
         </svg>
         <input
           type="text"
-          placeholder="Search events..."
+          placeholder="Search events, venues, @accounts..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-200 bg-white"
         />
       </div>
+      <p className="-mt-3 text-[11px] text-gray-400">
+        Try <button onClick={() => setSearch("@theskint")} className="underline hover:text-gray-700">@theskint</button>,{" "}
+        <button onClick={() => setSearch("brooklyn bowl")} className="underline hover:text-gray-700">brooklyn bowl</button>,{" "}
+        <button onClick={() => setSearch("jazz")} className="underline hover:text-gray-700">jazz</button>
+      </p>
 
       <div className="flex gap-2 text-sm">
         <button

@@ -101,8 +101,9 @@ export default function Home() {
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
         <div className="flex flex-col lg:flex-row gap-6">
-          <aside className="lg:w-80 shrink-0 space-y-6">
-            <div className="bg-white rounded-xl border border-gray-200 p-1 flex">
+          <aside className="lg:w-80 shrink-0 space-y-4 lg:space-y-6 order-2 lg:order-1">
+            {/* View toggle pinned at top of sidebar (also moves to top on mobile via the sticky version below) */}
+            <div className="bg-white rounded-xl border border-gray-200 p-1 flex hidden lg:flex">
               <button
                 onClick={() => setView("for-you")}
                 className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
@@ -133,26 +134,56 @@ export default function Home() {
                 eventCountByDate={eventCountByDate}
               />
             )}
-            <div className="bg-white rounded-xl border border-gray-200 p-4">
-              <FilterBar
-                categories={categories}
-                setCategories={setCategories}
-                sources={sources}
-                setSources={setSources}
-                search={search}
-                setSearch={setSearch}
-                priceFilter={priceFilter}
-                setPriceFilter={setPriceFilter}
-                sortMode={sortMode}
-                setSortMode={setSortMode}
-                allSources={allSources}
-                allCategories={allCategories}
-                onQuickFilter={handleQuickFilter}
-              />
-            </div>
+            <details className="bg-white rounded-xl border border-gray-200 lg:open lg:[&>summary]:hidden" open>
+              <summary className="cursor-pointer list-none p-3 text-sm font-medium text-gray-700 flex items-center justify-between lg:hidden">
+                <span>Search & Filters</span>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div className="p-4 pt-0 lg:pt-4">
+                <FilterBar
+                  categories={categories}
+                  setCategories={setCategories}
+                  sources={sources}
+                  setSources={setSources}
+                  search={search}
+                  setSearch={setSearch}
+                  priceFilter={priceFilter}
+                  setPriceFilter={setPriceFilter}
+                  sortMode={sortMode}
+                  setSortMode={setSortMode}
+                  allSources={allSources}
+                  allCategories={allCategories}
+                  onQuickFilter={handleQuickFilter}
+                />
+              </div>
+            </details>
           </aside>
 
-          <section className="flex-1 min-w-0">
+          {/* Mobile-only view toggle, pinned above events */}
+          <div className="bg-white rounded-xl border border-gray-200 p-1 flex order-1 lg:hidden">
+            <button
+              onClick={() => setView("for-you")}
+              className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                view === "for-you"
+                  ? "bg-gray-900 text-white"
+                  : "text-gray-600 hover:bg-gray-50"
+              }`}
+            >
+              For You
+            </button>
+            <button
+              onClick={() => setView("calendar")}
+              className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                view === "calendar"
+                  ? "bg-gray-900 text-white"
+                  : "text-gray-600 hover:bg-gray-50"
+              }`}
+            >
+              Calendar
+            </button>
+          </div>
+
+          <section className="flex-1 min-w-0 order-3 lg:order-2">
             {view === "for-you" ? (
               <TopPicks events={events} onSelectDate={handleSelectDate} />
             ) : (
