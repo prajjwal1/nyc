@@ -14,30 +14,80 @@ def deduplicate(events: list[dict]) -> list[dict]:
     return list(seen.values())
 
 
+_STOPWORDS = {
+    "a", "an", "the", "at", "in", "on", "of", "for", "with", "to", "and",
+    "or", "is", "are", "by", "from", "this", "that", "your", "our", "my",
+    "presents", "presented", "live", "show", "event", "ticket", "tickets",
+    "free", "nyc", "ny", "new", "york", "brooklyn", "manhattan",
+}
+
+
 def _dedup_key(ev: dict) -> str:
+    """Build a normalized key for dedup.
+
+    - Lowercase, alphanumeric only
+    - Drop stopwords (so 'a night at the moma' = 'night moma')
+    - Take first 6 distinctive words, sorted
+    - Combine with date
+    """
     title = ev.get("title", "").lower().strip()
-    title_words = "".join(c for c in title if c.isalnum() or c == " ").split()
-    title_norm = " ".join(sorted(title_words[:5]))
+    title_clean = "".join(c if c.isalnum() or c == " " else " " for c in title)
+    words = title_clean.split()
+    distinctive = [w for w in words if w not in _STOPWORDS and len(w) > 1][:6]
+    title_norm = " ".join(sorted(distinctive))
     d = ev.get("date", "")
     return hashlib.md5(f"{title_norm}:{d}".encode()).hexdigest()
 
 
 def _merge(a: dict, b: dict) -> dict:
+    """Merge duplicate events, taking the best fields from both."""
     merged = dict(a)
-    if not merged.get("description") and b.get("description"):
+
+    # Prefer the longer description
+    if (b.get("description") or "") > (merged.get("description") or ""):
         merged["description"] = b["description"]
+
+    # Prefer specific time over none
     if not merged.get("startTime") and b.get("startTime"):
         merged["startTime"] = b["startTime"]
+    if not merged.get("endTime") and b.get("endTime"):
+        merged["endTime"] = b["endTime"]
+
+    # Prefer non-empty image
     if not merged.get("imageUrl") and b.get("imageUrl"):
         merged["imageUrl"] = b["imageUrl"]
+
+    # Merge location fields
     loc_a = merged.get("location", {})
     loc_b = b.get("location", {})
+    if not loc_a.get("name") and loc_b.get("name"):
+        merged["location"]["name"] = loc_b["name"]
     if not loc_a.get("address") and loc_b.get("address"):
         merged["location"]["address"] = loc_b["address"]
     if not loc_a.get("neighborhood") and loc_b.get("neighborhood"):
         merged["location"]["neighborhood"] = loc_b["neighborhood"]
+
+    # Union of categories
     cats = set(merged.get("categories", []) + b.get("categories", []))
+    if "other" in cats and len(cats) > 1:
+        cats.discard("other")
     merged["categories"] = sorted(cats)
+
+    # Preserve user signals from either side
+    merged["userSaved"] = bool(a.get("userSaved") or b.get("userSaved"))
+    merged["recurring"] = bool(a.get("recurring") or b.get("recurring"))
+    merged["ocrEnriched"] = bool(a.get("ocrEnriched") or b.get("ocrEnriched"))
+
+    # Prefer real ticket URL over IG post URL
+    a_url = merged.get("sourceUrl", "")
+    b_url = b.get("sourceUrl", "")
+    if "instagram.com/p/" in a_url and "instagram.com/p/" not in b_url and b_url:
+        merged["sourceUrl"] = b_url
+
+    # Engagement: take the higher count
+    merged["likes"] = max(a.get("likes", 0) or 0, b.get("likes", 0) or 0)
+    merged["comments"] = max(a.get("comments", 0) or 0, b.get("comments", 0) or 0)
+
     return merged
 
 
