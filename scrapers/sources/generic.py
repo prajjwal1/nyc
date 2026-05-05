@@ -337,9 +337,17 @@ def _meta(soup: BeautifulSoup, prop: str) -> str | None:
 
 
 def _parse_opengraph_strategy(soup: BeautifulSoup, source: str, fallback_url: str) -> list[dict]:
-    """Extract a single event from OpenGraph metadata, if present and date is parseable."""
+    """Extract a single event from OpenGraph metadata.
+
+    Robust to bot-stripped pages: falls back to <title> and meta name=description
+    when og: tags are missing.  Tries to parse a date from the title or description.
+    """
     og_type = (_meta(soup, "og:type") or "").lower()
-    title = _meta(soup, "og:title") or (soup.title.get_text(strip=True) if soup.title else "")
+    title = (
+        _meta(soup, "og:title")
+        or _meta(soup, "twitter:title")
+        or (soup.title.get_text(strip=True) if soup.title else "")
+    )
     if not title:
         return []
 
@@ -350,28 +358,43 @@ def _parse_opengraph_strategy(soup: BeautifulSoup, source: str, fallback_url: st
     )
     end_raw = _meta(soup, "event:end_time") or _meta(soup, "event:end_date")
 
-    # Only treat as an event if og:type indicates so OR a start time exists
-    is_event = "event" in og_type or bool(start_raw)
+    # If no explicit start time but we have an event-like URL, try parsing
+    # date from title or description (e.g., "Tickets, Saturday, May 2 • 4 PM").
+    desc_raw = _meta(soup, "og:description") or _meta(soup, "description") or ""
+    is_eventbrite_or_event = (
+        "event" in og_type
+        or "eventbrite.com/e/" in fallback_url
+        or "lu.ma/event/" in fallback_url
+        or "partiful.com/e/" in fallback_url
+    )
+
+    event_date = None
+    start_time = None
+    if start_raw:
+        event_date = parse_date(start_raw[:10]) or parse_date(start_raw)
+        if len(start_raw) >= 16 and "T" in start_raw:
+            start_time = start_raw[11:16]
+    elif is_eventbrite_or_event:
+        # Try parsing from title
+        for src in (title, desc_raw):
+            event_date = parse_date(src)
+            if event_date:
+                start_time = parse_time(src)
+                break
+
+    if not event_date:
+        return []
+
+    is_event = "event" in og_type or bool(start_raw) or is_eventbrite_or_event
     if not is_event:
         return []
-    if not start_raw:
-        return []
 
-    event_date = parse_date(start_raw[:10])
-    if not event_date:
-        event_date = parse_date(start_raw)
-    if not event_date:
-        return []
-
-    start_time = None
-    if len(start_raw) >= 16 and "T" in start_raw:
-        start_time = start_raw[11:16]
     end_time = None
     if end_raw and len(end_raw) >= 16 and "T" in end_raw:
         end_time = end_raw[11:16]
 
-    desc = _meta(soup, "og:description") or _meta(soup, "description") or ""
-    image = _meta(soup, "og:image")
+    desc = desc_raw
+    image = _meta(soup, "og:image") or _meta(soup, "twitter:image")
     canonical = _meta(soup, "og:url") or fallback_url
     location_name = _meta(soup, "event:location") or _meta(soup, "og:site_name") or ""
 
