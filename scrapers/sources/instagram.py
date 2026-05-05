@@ -807,6 +807,8 @@ _DATE_PATTERNS = [
     r"(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?\s+\d{1,2}(?:st|nd|rd|th)?(?:\s*,?\s*\d{4})?",
     # "5/5", "05/05/2026", "5/5/26"
     r"\d{1,2}/\d{1,2}(?:/\d{2,4})?",
+    # MM.DD.YYYY (run club style: "05.09.2026")
+    r"\d{1,2}\.\d{1,2}\.\d{4}",
     # "Saturday, May 5"
     r"(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*,?\s+(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?\s+\d{1,2}",
     # "this Saturday", "next Friday"
@@ -915,6 +917,23 @@ _HYPE_PREFIX_RE = re.compile(
 )
 
 
+_METADATA_LINE_RES = [
+    # "05.09.2026 / SAT / 11AM" — date/day/time line, no event content
+    re.compile(r"^\d{1,2}[./]\d{1,2}[./]\d{2,4}(?:\s*[/|\-—]\s*[\w\s]+)*$"),
+    # "Saturday May 5 - 7pm"
+    re.compile(r"^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*[,\s]+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d+(?:\s*[\-—|]\s*\d+\s*(?:am|pm))?$", re.IGNORECASE),
+    # Pure month-day "May 5" or "May 5, 2026"
+    re.compile(r"^(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2}(?:st|nd|rd|th)?(?:\s*,?\s*\d{4})?$", re.IGNORECASE),
+    # "5/9 - 11AM"
+    re.compile(r"^\d{1,2}/\d{1,2}(?:/\d{2,4})?\s*[\-—|]?\s*\d*\s*(?:am|pm)?$", re.IGNORECASE),
+]
+
+
+def _is_metadata_line(line: str) -> bool:
+    """True if line is just date/time metadata, not the event name."""
+    return any(r.match(line) for r in _METADATA_LINE_RES)
+
+
 def _extract_title(text: str) -> str:
     """Pull the most likely event title from a caption section.
 
@@ -944,6 +963,10 @@ def _extract_title(text: str) -> str:
         # Skip if line is mostly hashtags
         if cleaned.count("#") >= 3 and len(cleaned) < 60:
             continue
+        # Skip lines that are just date/time metadata
+        # ("05.09.2026 / SAT / 11AM", "Saturday, May 5", "5/9 - 11AM")
+        if _is_metadata_line(cleaned):
+            continue
         if 8 < len(cleaned) < 120:
             return cleaned
     return ""
@@ -958,6 +981,8 @@ _LOCATION_PATTERNS = [
     r"📍\s*(.+?)(?:\n|$)",
     # "@VenueName" (Instagram mention style — uppercase start = likely venue)
     r"@([A-Z][A-Za-z0-9_&' ]+?)(?:\n|$|,|\.|!|\s{2})",
+    # "meet @ Letish Cafe (171 S 4th St, ...)" — explicit venue + parenthesized address
+    r"meet\s+@\s+([A-Z][\w\s&'\-]+?)\s*\(",
     # "at The Museum of..." / "at Brooklyn Mirage"
     r"\bat\s+([A-Z][A-Za-z\s&''\-]+?)(?:\n|$|,|\.|!)",
     # "Location: ..." or "Venue: ..." or "Where: ..."

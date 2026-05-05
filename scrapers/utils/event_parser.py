@@ -52,7 +52,19 @@ def parse_time(text: str) -> str | None:
                     h = 0
                 return f"{h:02d}:00"
             elif len(groups) == 2:
-                return f"{int(groups[0]):02d}:{int(groups[1]):02d}"
+                # No AM/PM specified.  Use evening-bias heuristics for events:
+                # 1-7 = PM (events rarely happen 1-7 AM)
+                # 8-11 = ambiguous; check context for "morning"/"AM" cues
+                # 12 = noon, leave as 12
+                h, mi = int(groups[0]), int(groups[1])
+                if 1 <= h <= 7:
+                    h += 12  # 7:30 → 19:30 (a "show at 7:30" is evening)
+                elif 8 <= h <= 11:
+                    # Default to evening unless "morning" / "am" appears in context
+                    text_lower = text.lower()
+                    if "morning" not in text_lower and "am" not in text_lower:
+                        h += 12  # 9:30 → 21:30
+                return f"{h:02d}:{mi:02d}"
     return None
 
 
