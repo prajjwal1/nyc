@@ -111,16 +111,32 @@ function FeedCard({ event, timeStr }: { event: Event; timeStr: string | null }) 
                   </span>
                 );
               })}
-            <span className="text-[10px] text-gray-400 ml-auto uppercase tracking-wide">
-              {event.instagramAccount
-                ? `@${event.instagramAccount}`
-                : SOURCE_LABELS[event.source] || event.source}
+            <span className="text-[10px] text-gray-400 ml-auto uppercase tracking-wide flex items-center gap-1">
+              {event.likes && event.likes > 30 ? (
+                <span title="Likes" className="normal-case tracking-normal">
+                  ❤ {formatCount(event.likes)}
+                </span>
+              ) : null}
+              <span>
+                {event.instagramAccount
+                  ? `@${event.instagramAccount}`
+                  : SOURCE_LABELS[event.source] || event.source}
+              </span>
+              {event.accountVerified && (
+                <span className="text-blue-500" title="Verified">✓</span>
+              )}
             </span>
           </div>
         </div>
       </div>
     </a>
   );
+}
+
+function formatCount(n: number): string {
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + "M";
+  if (n >= 1_000) return (n / 1_000).toFixed(n >= 10_000 ? 0 : 1) + "k";
+  return String(n);
 }
 
 function CompactCard({ event, timeStr }: { event: Event; timeStr: string | null }) {

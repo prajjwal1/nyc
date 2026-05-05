@@ -23,6 +23,12 @@ export interface Event {
   highlights?: string[];
   userSaved?: boolean;
   userAffinity?: boolean;
+  likes?: number;
+  comments?: number;
+  accountFollowers?: number;
+  accountVerified?: boolean;
+  recurring?: boolean;
+  ocrEnriched?: boolean;
 }
 
 export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> = {
