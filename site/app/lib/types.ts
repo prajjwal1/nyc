@@ -25,6 +25,7 @@ export interface Event {
   userTagged?: boolean;
   userAffinity?: boolean;
   userFollowing?: boolean;
+  contributingSources?: string[];
   likes?: number;
   comments?: number;
   accountFollowers?: number;
@@ -38,6 +39,7 @@ export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> 
   tagged: { label: "✨ You're tagged", color: "bg-pink-100 text-pink-800" },
   affinity: { label: "From accounts you save", color: "bg-amber-50 text-amber-700" },
   following: { label: "From accounts you follow", color: "bg-blue-50 text-blue-700" },
+  verified: { label: "✓ Verified", color: "bg-green-100 text-green-800" },
   new: { label: "✨ Just Added", color: "bg-sky-100 text-sky-800" },
   free: { label: "Free", color: "bg-emerald-100 text-emerald-800" },
   special: { label: "Premiere", color: "bg-yellow-100 text-yellow-800" },

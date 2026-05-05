@@ -76,8 +76,16 @@ def _merge(a: dict, b: dict) -> dict:
 
     # Preserve user signals from either side
     merged["userSaved"] = bool(a.get("userSaved") or b.get("userSaved"))
+    merged["userTagged"] = bool(a.get("userTagged") or b.get("userTagged"))
+    merged["userAffinity"] = bool(a.get("userAffinity") or b.get("userAffinity"))
+    merged["userFollowing"] = bool(a.get("userFollowing") or b.get("userFollowing"))
     merged["recurring"] = bool(a.get("recurring") or b.get("recurring"))
     merged["ocrEnriched"] = bool(a.get("ocrEnriched") or b.get("ocrEnriched"))
+
+    # Track all sources contributing to this event (cross-source validation).
+    a_sources = set(a.get("contributingSources", [a.get("source")] if a.get("source") else []))
+    b_sources = set(b.get("contributingSources", [b.get("source")] if b.get("source") else []))
+    merged["contributingSources"] = sorted(a_sources | b_sources)
 
     # Prefer real ticket URL over IG post URL
     a_url = merged.get("sourceUrl", "")

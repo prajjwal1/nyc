@@ -99,6 +99,15 @@ def compute_score(event: dict) -> float:
         event.get("userSaved") or event.get("userTagged") or event.get("userAffinity")
     ) else 0.0
 
+    # Cross-source confirmation: same event appearing on 2+ sources is
+    # very strong validation (e.g., Eventbrite + Instagram both list it).
+    n_sources = len(event.get("contributingSources", []))
+    cross_source_boost = 0.0
+    if n_sources >= 3:
+        cross_source_boost = 0.12
+    elif n_sources == 2:
+        cross_source_boost = 0.07
+
     # Account-level credibility: verified or large follower count = trustworthy
     cred_boost = _account_credibility_boost(event)
 
@@ -108,8 +117,8 @@ def compute_score(event: dict) -> float:
 
     final = (
         base_score + high_value_boost + social_boost + saved_boost + tagged_boost
-        + affinity_boost + following_boost + cred_boost + time_relevance
-        - soft_penalty - audience_penalty
+        + affinity_boost + following_boost + cred_boost + cross_source_boost
+        + time_relevance - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
 
@@ -181,6 +190,10 @@ def _compute_highlights(event: dict) -> list[str]:
         highlights.append("affinity")
     elif event.get("userFollowing"):
         highlights.append("following")
+
+    # Cross-source confirmation
+    if len(event.get("contributingSources", [])) >= 2:
+        highlights.append("verified")
 
     # "Just Added" — first seen within last 30 hours
     first_seen = event.get("firstSeenAt", "")
