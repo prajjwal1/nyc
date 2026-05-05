@@ -6,6 +6,8 @@ from ..utils.event_parser import build_event, parse_date, parse_time, infer_cate
 
 FEEDS = [
     "https://onefinedaynyc.substack.com/feed",
+    # The Skint — daily curated free/cheap NYC events newsletter (legendary)
+    "https://www.theskint.com/feed/",
 ]
 
 # Patterns that look like dates within event text
@@ -39,8 +41,8 @@ def _parse_feed(xml_text: str) -> list[dict]:
         return events
 
     items = channel.findall("item")
-    # Only process the most recent 3 posts
-    for item in items[:3]:
+    # Process the most recent 8 posts (was 3) — captures more weekly guides
+    for item in items[:8]:
         try:
             events.extend(_parse_item(item, ns))
         except Exception as e:
