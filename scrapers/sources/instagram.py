@@ -36,7 +36,30 @@ except ImportError:
 # ---------------------------------------------------------------------------
 
 _AFFINITY_ACCOUNTS_CACHE: set[str] = set()
+_FOLLOWING_ACCOUNTS_CACHE: set[str] = set()
 _ACCOUNT_CURSORS_CACHE: dict = {}
+
+
+def _load_following_accounts() -> set[str]:
+    """Accounts the user directly follows (via discover.py harvest_following_list)."""
+    import json, os
+    path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "data",
+        "discovered_accounts.json",
+    )
+    if not os.path.isfile(path):
+        return set()
+    try:
+        with open(path) as f:
+            d = json.load(f)
+        return {
+            a["username"].lower()
+            for a in d.get("accounts", [])
+            if isinstance(a, dict) and a.get("discovered_via") == "user_following"
+        }
+    except Exception:
+        return set()
 
 
 def scrape_saved_only() -> list[dict]:
@@ -67,9 +90,11 @@ def scrape() -> list[dict]:
     1. User's SAVED posts — highest signal (user explicitly bookmarked these)
     2. Curated IG_ACCOUNTS + BFS-discovered accounts
     """
-    global _AFFINITY_ACCOUNTS_CACHE, _ACCOUNT_CURSORS_CACHE
+    global _AFFINITY_ACCOUNTS_CACHE, _FOLLOWING_ACCOUNTS_CACHE, _ACCOUNT_CURSORS_CACHE
     _AFFINITY_ACCOUNTS_CACHE = _load_affinity_accounts()
+    _FOLLOWING_ACCOUNTS_CACHE = _load_following_accounts()
     _ACCOUNT_CURSORS_CACHE = _load_account_cursors()
+    print(f"[instagram] Cache: {len(_AFFINITY_ACCOUNTS_CACHE)} affinity, {len(_FOLLOWING_ACCOUNTS_CACHE)} following")
 
     loader = _get_authenticated_loader()
     if loader is None:
@@ -127,12 +152,18 @@ def scrape() -> list[dict]:
     ig_budget_seconds = float(os.environ.get("IG_TIME_BUDGET_SECONDS", "1500"))  # 25 min default
     started = _time.time()
 
-    # Order accounts: high-affinity first (so they always get scraped even
-    # if budget runs out), then everything else.
-    affinity_first = sorted(
-        all_accounts,
-        key=lambda a: 0 if a.lower() in _AFFINITY_ACCOUNTS_CACHE else 1,
-    )
+    # Priority order so the most relevant accounts are guaranteed scraped:
+    # 0 = saved-from (highest)
+    # 1 = directly followed
+    # 2 = BFS-discovered via @mentions
+    def _priority(a: str) -> int:
+        a = a.lower()
+        if a in _AFFINITY_ACCOUNTS_CACHE:
+            return 0
+        if a in _FOLLOWING_ACCOUNTS_CACHE:
+            return 1
+        return 2
+    affinity_first = sorted(all_accounts, key=_priority)
 
     for idx, account in enumerate(affinity_first):
         elapsed = _time.time() - started
@@ -846,6 +877,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     followers = post.get("profile_followers", 0)
     verified = post.get("profile_is_verified", False)
     is_affinity = account.lower() in _AFFINITY_ACCOUNTS_CACHE
+    is_following = account.lower() in _FOLLOWING_ACCOUNTS_CACHE
     for ev in events:
         ev["instagramAccount"] = account
         if likes:
@@ -859,6 +891,9 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
         if is_affinity:
             # User has previously saved from this account — they're high-affinity.
             ev["userAffinity"] = True
+        if is_following:
+            # User directly follows this account on IG.
+            ev["userFollowing"] = True
 
     return events
 

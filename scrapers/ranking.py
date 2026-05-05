@@ -91,8 +91,13 @@ def compute_score(event: dict) -> float:
     tagged_boost = 0.20 if event.get("userTagged") and not event.get("userSaved") else 0.0
 
     # User-affinity: events from accounts user has saved from in the past
-    # (smaller than direct save but still strong signal)
     affinity_boost = 0.10 if event.get("userAffinity") and not (event.get("userSaved") or event.get("userTagged")) else 0.0
+
+    # User-following: account user directly follows on IG (manual choice).
+    # Even if they haven't saved, the user actively chose to follow.
+    following_boost = 0.08 if event.get("userFollowing") and not (
+        event.get("userSaved") or event.get("userTagged") or event.get("userAffinity")
+    ) else 0.0
 
     # Account-level credibility: verified or large follower count = trustworthy
     cred_boost = _account_credibility_boost(event)
@@ -103,7 +108,7 @@ def compute_score(event: dict) -> float:
 
     final = (
         base_score + high_value_boost + social_boost + saved_boost + tagged_boost
-        + affinity_boost + cred_boost + time_relevance
+        + affinity_boost + following_boost + cred_boost + time_relevance
         - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
@@ -174,6 +179,8 @@ def _compute_highlights(event: dict) -> list[str]:
         highlights.append("tagged")
     elif event.get("userAffinity"):
         highlights.append("affinity")
+    elif event.get("userFollowing"):
+        highlights.append("following")
 
     # "Just Added" — first seen within last 30 hours
     first_seen = event.get("firstSeenAt", "")
