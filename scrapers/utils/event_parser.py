@@ -264,11 +264,16 @@ _WEEKDAY_INDEX = {
     "sunday": 6, "sun": 6,
 }
 
+_DAY = r"(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)"
 _RECURRING_PATTERNS = [
-    re.compile(r"\bevery\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)\b", re.IGNORECASE),
-    re.compile(r"\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)\s+nights?\b", re.IGNORECASE),
-    re.compile(r"\bweekly\s+(?:on\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)", re.IGNORECASE),
-    re.compile(r"\bevery\s+other\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)\b", re.IGNORECASE),
+    re.compile(rf"\bevery\s+{_DAY}\b", re.IGNORECASE),
+    re.compile(rf"\b{_DAY}s?\s+nights?\b", re.IGNORECASE),
+    re.compile(rf"\b{_DAY}s?\s+@\s*\d", re.IGNORECASE),  # "Tuesdays @ 7"
+    re.compile(rf"\bweekly\s+(?:on\s+)?{_DAY}", re.IGNORECASE),
+    re.compile(rf"\bevery\s+other\s+{_DAY}\b", re.IGNORECASE),
+    re.compile(rf"\b{_DAY}s\b", re.IGNORECASE),  # bare "Tuesdays" / "Sundays"
+    re.compile(rf"\b{_DAY}\s+(?:morning|afternoon|evening)s\b", re.IGNORECASE),  # "Saturday mornings"
+    re.compile(rf"\b(?:on\s+)?{_DAY}s?\s+at\s+(?:the\s+)?\w+", re.IGNORECASE),  # "Tuesdays at Caveat"
 ]
 
 
