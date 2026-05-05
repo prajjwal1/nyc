@@ -87,8 +87,40 @@ def compute_score(event: dict) -> float:
     # User-saved posts get a major boost — explicit bookmark is highest signal
     saved_boost = 0.25 if event.get("userSaved") else 0.0
 
-    final = base_score + high_value_boost + social_boost + saved_boost - soft_penalty - audience_penalty
+    # Time relevance: events in the next 14 days get a small boost
+    # (people care more about "what to do this weekend" than 2 months out)
+    time_relevance = _time_relevance_boost(event)
+
+    final = (
+        base_score + high_value_boost + social_boost + saved_boost
+        + time_relevance - soft_penalty - audience_penalty
+    )
     return max(0.0, min(1.0, final))
+
+
+def _time_relevance_boost(event: dict) -> float:
+    """Small boost for events happening soon (within next 14 days)."""
+    from datetime import date, datetime
+    date_str = event.get("date", "")
+    if not date_str:
+        return 0.0
+    try:
+        ev_date = datetime.fromisoformat(date_str).date()
+    except Exception:
+        return 0.0
+    today = date.today()
+    days_out = (ev_date - today).days
+    if days_out < 0:
+        return 0.0
+    if days_out <= 1:
+        return 0.06   # today / tomorrow
+    if days_out <= 4:
+        return 0.04   # this week-ish
+    if days_out <= 7:
+        return 0.03   # next 7 days
+    if days_out <= 14:
+        return 0.015  # next 2 weeks
+    return 0.0
 
 
 def rank_events(events: list[dict]) -> list[dict]:
@@ -198,6 +230,25 @@ def _price_score(event: dict) -> float:
 
 
 def _popularity_score(event: dict) -> float:
+    # IG likes/comments are the strongest popularity signal we have
+    likes = event.get("likes", 0) or 0
+    comments = event.get("comments", 0) or 0
+    if likes or comments:
+        # Combine engagement: likes + 5*comments (comments require more effort)
+        engagement = likes + comments * 5
+        if engagement >= 5000:
+            return 1.0
+        if engagement >= 1500:
+            return 0.9
+        if engagement >= 500:
+            return 0.75
+        if engagement >= 150:
+            return 0.6
+        if engagement >= 30:
+            return 0.5
+        return 0.35
+
+    # Fallback: scrape RSVP / attendance counts from description
     desc = event.get("description", "")
     m = re.search(r"(\d+)\s*(?:going|attending|RSVP|interested)", desc, re.IGNORECASE)
     if m:

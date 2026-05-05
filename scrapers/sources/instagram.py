@@ -278,6 +278,16 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
         except Exception:
             images.append(post.url)
 
+        # Capture engagement signals (likes/comments) — high engagement
+        # = real, popular event, not just any post.
+        likes = 0
+        comments = 0
+        try:
+            likes = int(getattr(post, "likes", 0) or 0)
+            comments = int(getattr(post, "comments", 0) or 0)
+        except Exception:
+            pass
+
         posts.append({
             "caption": post.caption or "",
             "date": post.date_utc,
@@ -286,6 +296,8 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
             "all_images": images,
             "owner": post.owner_username,
             "bio_url": bio_url,
+            "likes": likes,
+            "comments": comments,
         })
         count += 1
 
@@ -487,9 +499,15 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             categories=infer_categories(title, caption),
         ))
 
-    # Tag every event with the IG account it came from (for UI display + filtering).
+    # Tag every event with the IG account it came from + engagement signals.
+    likes = post.get("likes", 0)
+    comments = post.get("comments", 0)
     for ev in events:
         ev["instagramAccount"] = account
+        if likes:
+            ev["likes"] = likes
+        if comments:
+            ev["comments"] = comments
 
     return events
 
