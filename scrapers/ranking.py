@@ -170,6 +170,17 @@ def _compute_highlights(event: dict) -> list[str]:
     elif event.get("userAffinity"):
         highlights.append("affinity")
 
+    # "Just Added" — first seen within last 30 hours
+    first_seen = event.get("firstSeenAt", "")
+    if first_seen:
+        try:
+            from datetime import datetime, timedelta
+            fs = datetime.fromisoformat(first_seen)
+            if (datetime.now() - fs) < timedelta(hours=30):
+                highlights.append("new")
+        except Exception:
+            pass
+
     if event.get("price") == "free":
         highlights.append("free")
 

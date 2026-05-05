@@ -7,7 +7,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from scrapers.sources import luma, bookclubbar, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful, generic
-from scrapers.normalize import process
+from scrapers.normalize import process, _load_previous_events_index
 
 ASYNC_SCRAPERS = [
     ("luma", luma.scrape),
@@ -58,6 +58,10 @@ def run_sync_scraper(name: str, scrape_fn) -> list[dict]:
 async def main():
     all_events = []
 
+    # Snapshot previous events to preserve firstSeenAt across runs.
+    previous_index = _load_previous_events_index(OUTPUT_PATH)
+    print(f"[run_all] Previous events.json: {len(previous_index)} events")
+
     results = await asyncio.gather(
         *[run_scraper(name, fn) for name, fn in ASYNC_SCRAPERS],
         return_exceptions=True,
@@ -73,7 +77,7 @@ async def main():
     # Save partial result after async scrapers — protects against IG hanging
     # the whole pipeline. We'll overwrite once IG completes (or doesn't).
     if all_events:
-        _write_events(process(all_events), OUTPUT_PATH)
+        _write_events(process(all_events, previous_index), OUTPUT_PATH)
         print(f"[run_all] Partial save after async scrapers: {len(all_events)} raw events")
 
     for name, fn in SYNC_SCRAPERS:
@@ -81,7 +85,7 @@ async def main():
         all_events.extend(result)
 
     print(f"\nTotal raw events: {len(all_events)}")
-    processed = process(all_events)
+    processed = process(all_events, previous_index)
     print(f"After processing: {len(processed)} events")
 
     _write_events(processed, OUTPUT_PATH)

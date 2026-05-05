@@ -100,7 +100,20 @@ def sort_by_date(events: list[dict]) -> list[dict]:
     return sorted(events, key=lambda e: (e.get("date", ""), e.get("startTime", "") or ""))
 
 
-def process(events: list[dict]) -> list[dict]:
+def _load_previous_events_index(path: str) -> dict:
+    """Load previous events.json keyed by event id, for firstSeenAt preservation."""
+    import json, os
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path) as f:
+            d = json.load(f)
+        return {e["id"]: e for e in d.get("events", []) if "id" in e}
+    except Exception:
+        return {}
+
+
+def process(events: list[dict], previous_index: dict | None = None) -> list[dict]:
     from .ranking import rank_events
     from .quality import is_blocked
     from .utils.event_parser import detect_recurring_weekday, expand_recurring_event
@@ -132,6 +145,19 @@ def process(events: list[dict]) -> list[dict]:
     events = expanded
 
     events = deduplicate(events)
+
+    # Preserve firstSeenAt across runs — if an event existed in the previous
+    # events.json, carry its original firstSeenAt forward; otherwise stamp now.
+    if previous_index is None:
+        previous_index = {}
+    now_iso = datetime.now().isoformat()
+    for ev in events:
+        prev = previous_index.get(ev.get("id"))
+        if prev and prev.get("firstSeenAt"):
+            ev["firstSeenAt"] = prev["firstSeenAt"]
+        else:
+            ev["firstSeenAt"] = now_iso
+
     events = rank_events(events)
 
     # Drop low-score events — every event must justify its position
