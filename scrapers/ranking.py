@@ -87,9 +87,12 @@ def compute_score(event: dict) -> float:
     # User-saved posts get a major boost — explicit bookmark is highest signal
     saved_boost = 0.25 if event.get("userSaved") else 0.0
 
+    # User-tagged: someone tagged the user — implicit invitation
+    tagged_boost = 0.20 if event.get("userTagged") and not event.get("userSaved") else 0.0
+
     # User-affinity: events from accounts user has saved from in the past
     # (smaller than direct save but still strong signal)
-    affinity_boost = 0.10 if event.get("userAffinity") and not event.get("userSaved") else 0.0
+    affinity_boost = 0.10 if event.get("userAffinity") and not (event.get("userSaved") or event.get("userTagged")) else 0.0
 
     # Account-level credibility: verified or large follower count = trustworthy
     cred_boost = _account_credibility_boost(event)
@@ -99,7 +102,7 @@ def compute_score(event: dict) -> float:
     time_relevance = _time_relevance_boost(event)
 
     final = (
-        base_score + high_value_boost + social_boost + saved_boost
+        base_score + high_value_boost + social_boost + saved_boost + tagged_boost
         + affinity_boost + cred_boost + time_relevance
         - soft_penalty - audience_penalty
     )
@@ -167,6 +170,8 @@ def _compute_highlights(event: dict) -> list[str]:
     # Saved-by-user is the strongest signal
     if event.get("userSaved"):
         highlights.append("saved")
+    elif event.get("userTagged"):
+        highlights.append("tagged")
     elif event.get("userAffinity"):
         highlights.append("affinity")
 

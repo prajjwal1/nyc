@@ -39,10 +39,13 @@ _AFFINITY_ACCOUNTS_CACHE: set[str] = set()
 
 
 def scrape_saved_only() -> list[dict]:
-    """Light-weight scrape: only the user's saved posts.
+    """Light-weight scrape: user's saved posts AND tagged posts.
 
-    Runs in 30s-2min. Used by the quick-scrape workflow to keep the
-    user's most relevant events (bookmarks) fresh on every cron tick.
+    Both are direct user-curated signals — saved (explicit bookmark)
+    and tagged (someone invited the user). Runs in 30s-2min.
+
+    Used by the quick-scrape workflow to keep the user's most relevant
+    events fresh on every cron tick.
     """
     global _AFFINITY_ACCOUNTS_CACHE
     _AFFINITY_ACCOUNTS_CACHE = _load_affinity_accounts()
@@ -52,7 +55,8 @@ def scrape_saved_only() -> list[dict]:
         return []
 
     saved_events, _ = _scrape_saved_posts(loader)
-    return saved_events
+    tagged_events, _ = _scrape_tagged_posts(loader)
+    return saved_events + tagged_events
 
 
 def scrape() -> list[dict]:
@@ -76,6 +80,11 @@ def scrape() -> list[dict]:
     all_events.extend(saved_events)
     # Saved posts update the affinity cache mid-run too
     _AFFINITY_ACCOUNTS_CACHE |= saved_accounts
+
+    # 1b. Tagged posts — user was tagged, implicit invitation
+    tagged_events, tagged_accounts = _scrape_tagged_posts(loader)
+    all_events.extend(tagged_events)
+    _AFFINITY_ACCOUNTS_CACHE |= tagged_accounts
 
     # If saved posts surfaced new accounts not in our seed/discovered list,
     # add them so we scrape MORE posts from them in this same run.
@@ -260,6 +269,60 @@ def _save_affinity_accounts(accounts: set[str]) -> None:
             json.dump({"accounts": sorted(merged)}, f, indent=2)
     except Exception as exc:
         print(f"[instagram] Failed to save affinity accounts: {exc}")
+
+
+def _scrape_tagged_posts(loader, max_tagged: int = 30) -> tuple[list[dict], set[str]]:
+    """Scrape posts where the user is tagged.
+
+    These are typically friends/venues calling the user out — events where
+    the user is implicitly invited. Highest semantic signal per post.
+    """
+    events: list[dict] = []
+    accounts_seen: set[str] = set()
+    try:
+        my_profile = instaloader.Profile.from_username(loader.context, IG_USERNAME)
+    except Exception as exc:
+        print(f"[instagram] Could not load profile for tagged posts: {exc}")
+        return events, accounts_seen
+
+    try:
+        count = 0
+        for post in my_profile.get_tagged_posts():
+            if count >= max_tagged:
+                break
+            count += 1
+            owner = post.owner_username or "unknown"
+            accounts_seen.add(owner.lower())
+
+            images: list[str] = []
+            try:
+                if post.typename == "GraphSidecar":
+                    for node in post.get_sidecar_nodes():
+                        if not getattr(node, "is_video", False):
+                            images.append(node.display_url)
+                else:
+                    images.append(post.url)
+            except Exception:
+                images.append(post.url)
+
+            post_dict = {
+                "caption": post.caption or "",
+                "date": post.date_utc,
+                "url": f"https://www.instagram.com/p/{post.shortcode}/",
+                "image": images[0] if images else "",
+                "all_images": images,
+                "owner": owner,
+                "bio_url": "",
+            }
+            extracted = _extract_events_from_caption(post_dict, owner)
+            for ev in extracted:
+                # Tagged posts are nearly as strong a signal as saved posts.
+                ev["userTagged"] = True
+            events.extend(extracted)
+        print(f"[instagram] Scraped {len(events)} events from {count} TAGGED posts ({len(accounts_seen)} unique accounts)")
+    except Exception as exc:
+        print(f"[instagram] Tagged posts failed: {exc}")
+    return events, accounts_seen
 
 
 def _scrape_saved_posts(loader, max_saved: int = 50) -> tuple[list[dict], set[str]]:

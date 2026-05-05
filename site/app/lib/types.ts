@@ -22,6 +22,7 @@ export interface Event {
   instagramAccount?: string;
   highlights?: string[];
   userSaved?: boolean;
+  userTagged?: boolean;
   userAffinity?: boolean;
   likes?: number;
   comments?: number;
@@ -33,6 +34,7 @@ export interface Event {
 
 export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> = {
   saved: { label: "★ Saved", color: "bg-amber-200 text-amber-900" },
+  tagged: { label: "✨ You're tagged", color: "bg-pink-100 text-pink-800" },
   affinity: { label: "From accounts you save", color: "bg-amber-50 text-amber-700" },
   new: { label: "✨ Just Added", color: "bg-sky-100 text-sky-800" },
   free: { label: "Free", color: "bg-emerald-100 text-emerald-800" },
