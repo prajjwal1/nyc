@@ -813,7 +813,17 @@ _LOCATION_PATTERNS = [
 
 
 def _extract_location(text: str) -> str:
-    """Try to pull a venue / location name from the text."""
+    """Try to pull a venue / location name from the text.
+
+    Special-case @mentions of known venues — e.g., '@brooklynbowl' →
+    'Brooklyn Bowl' (uses the same mapping as _account_default_location).
+    """
+    # Look for @account mentions first; if any maps to a known venue, use it.
+    for handle_match in re.finditer(r"@([a-z0-9._]{2,30})", text, re.IGNORECASE):
+        handle = handle_match.group(1).lower()
+        venue = _account_default_location(handle)
+        if venue:
+            return venue
 
     for pat in _LOCATION_PATTERNS:
         m = re.search(pat, text)
