@@ -60,6 +60,15 @@ def scrape() -> list[dict]:
     # Saved posts update the affinity cache mid-run too
     _AFFINITY_ACCOUNTS_CACHE |= saved_accounts
 
+    # If saved posts surfaced new accounts not in our seed/discovered list,
+    # add them so we scrape MORE posts from them in this same run.
+    discovered_now = set(load_discovered_accounts())
+    seed_set = {a.lower() for a in IG_ACCOUNTS}
+    new_from_saves = saved_accounts - seed_set - discovered_now
+    if new_from_saves:
+        _add_to_discovered_accounts(new_from_saves)
+        print(f"[instagram] Added {len(new_from_saves)} new accounts from saved posts: {sorted(new_from_saves)}")
+
     # 2. Curated + discovered accounts (skip ones we just covered via saved)
     all_accounts = sorted(set(IG_ACCOUNTS) | set(load_discovered_accounts()))
 
@@ -169,6 +178,39 @@ def _load_affinity_accounts() -> set[str]:
         return {a.lower() for a in d.get("accounts", []) if isinstance(a, str)}
     except Exception:
         return set()
+
+
+def _add_to_discovered_accounts(usernames: set[str]) -> None:
+    """Append accounts to discovered_accounts.json so they get scraped in
+    the same run (and persisted for future runs)."""
+    import json
+    from datetime import datetime, timezone
+    path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "data",
+        "discovered_accounts.json",
+    )
+    try:
+        existing = []
+        if os.path.isfile(path):
+            with open(path) as f:
+                d = json.load(f)
+            existing = d.get("accounts", []) if isinstance(d, dict) else []
+        seen = {a.get("username", "").lower() for a in existing if isinstance(a, dict)}
+        now = datetime.now(timezone.utc).isoformat()
+        for u in usernames:
+            if u.lower() not in seen:
+                existing.append({
+                    "username": u,
+                    "score": 0.7,  # high — user explicitly saved a post
+                    "discovered_at": now,
+                    "discovered_via": "user_saved_post",
+                })
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as f:
+            json.dump({"accounts": existing, "lastDiscovery": now}, f, indent=2)
+    except Exception as exc:
+        print(f"[instagram] Failed to add discovered accounts: {exc}")
 
 
 def _save_affinity_accounts(accounts: set[str]) -> None:
