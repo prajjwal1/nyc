@@ -87,13 +87,17 @@ def compute_score(event: dict) -> float:
     # User-saved posts get a major boost — explicit bookmark is highest signal
     saved_boost = 0.25 if event.get("userSaved") else 0.0
 
+    # User-affinity: events from accounts user has saved from in the past
+    # (smaller than direct save but still strong signal)
+    affinity_boost = 0.10 if event.get("userAffinity") and not event.get("userSaved") else 0.0
+
     # Time relevance: events in the next 14 days get a small boost
     # (people care more about "what to do this weekend" than 2 months out)
     time_relevance = _time_relevance_boost(event)
 
     final = (
         base_score + high_value_boost + social_boost + saved_boost
-        + time_relevance - soft_penalty - audience_penalty
+        + affinity_boost + time_relevance - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
 
@@ -138,6 +142,8 @@ def _compute_highlights(event: dict) -> list[str]:
     # Saved-by-user is the strongest signal
     if event.get("userSaved"):
         highlights.append("saved")
+    elif event.get("userAffinity"):
+        highlights.append("affinity")
 
     if event.get("price") == "free":
         highlights.append("free")

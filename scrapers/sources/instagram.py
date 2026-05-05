@@ -35,6 +35,9 @@ except ImportError:
 # Public API
 # ---------------------------------------------------------------------------
 
+_AFFINITY_ACCOUNTS_CACHE: set[str] = set()
+
+
 def scrape() -> list[dict]:
     """Scrape recent posts from curated IG accounts and return parsed events.
 
@@ -42,6 +45,8 @@ def scrape() -> list[dict]:
     1. User's SAVED posts — highest signal (user explicitly bookmarked these)
     2. Curated IG_ACCOUNTS + BFS-discovered accounts
     """
+    global _AFFINITY_ACCOUNTS_CACHE
+    _AFFINITY_ACCOUNTS_CACHE = _load_affinity_accounts()
 
     loader = _get_authenticated_loader()
     if loader is None:
@@ -52,6 +57,8 @@ def scrape() -> list[dict]:
     # 1. Saved posts — highest priority since user curated them
     saved_events, saved_accounts = _scrape_saved_posts(loader)
     all_events.extend(saved_events)
+    # Saved posts update the affinity cache mid-run too
+    _AFFINITY_ACCOUNTS_CACHE |= saved_accounts
 
     # 2. Curated + discovered accounts (skip ones we just covered via saved)
     all_accounts = sorted(set(IG_ACCOUNTS) | set(load_discovered_accounts()))
@@ -144,9 +151,48 @@ def _save_bio_urls(urls: set[str]) -> None:
         print(f"[instagram] Failed to save bio URLs: {exc}")
 
 
+_AFFINITY_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "user_affinity_accounts.json",
+)
+
+
+def _load_affinity_accounts() -> set[str]:
+    """Load accounts the user has historically saved from."""
+    import json
+    if not os.path.isfile(_AFFINITY_PATH):
+        return set()
+    try:
+        with open(_AFFINITY_PATH) as f:
+            d = json.load(f)
+        return {a.lower() for a in d.get("accounts", []) if isinstance(a, str)}
+    except Exception:
+        return set()
+
+
+def _save_affinity_accounts(accounts: set[str]) -> None:
+    """Persist the union of past + current saved-from accounts."""
+    import json
+    existing = _load_affinity_accounts()
+    merged = existing | {a.lower() for a in accounts}
+    if merged == existing:
+        return
+    try:
+        os.makedirs(os.path.dirname(_AFFINITY_PATH), exist_ok=True)
+        with open(_AFFINITY_PATH, "w") as f:
+            json.dump({"accounts": sorted(merged)}, f, indent=2)
+    except Exception as exc:
+        print(f"[instagram] Failed to save affinity accounts: {exc}")
+
+
 def _scrape_saved_posts(loader, max_saved: int = 50) -> tuple[list[dict], set[str]]:
     """Scrape the user's IG saved posts. These are the highest-signal events
     since the user explicitly bookmarked them — likely things they want to attend.
+
+    Also persists the accounts user has saved from (cumulative across runs)
+    so future scrapes can boost ALL events from those accounts, not just
+    the saved post itself.
     """
     events: list[dict] = []
     accounts_seen: set[str] = set()
@@ -196,6 +242,11 @@ def _scrape_saved_posts(loader, max_saved: int = 50) -> tuple[list[dict], set[st
         print(f"[instagram] Scraped {len(events)} events from {count} SAVED posts ({len(accounts_seen)} unique accounts)")
     except Exception as exc:
         print(f"[instagram] Saved posts failed: {exc}")
+
+    # Persist accounts as user-affinity signal for future runs.
+    if accounts_seen:
+        _save_affinity_accounts(accounts_seen)
+
     return events, accounts_seen
 
 
@@ -502,12 +553,16 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     # Tag every event with the IG account it came from + engagement signals.
     likes = post.get("likes", 0)
     comments = post.get("comments", 0)
+    is_affinity = account.lower() in _AFFINITY_ACCOUNTS_CACHE
     for ev in events:
         ev["instagramAccount"] = account
         if likes:
             ev["likes"] = likes
         if comments:
             ev["comments"] = comments
+        if is_affinity:
+            # User has previously saved from this account — they're high-affinity.
+            ev["userAffinity"] = True
 
     return events
 

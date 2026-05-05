@@ -22,10 +22,12 @@ export interface Event {
   instagramAccount?: string;
   highlights?: string[];
   userSaved?: boolean;
+  userAffinity?: boolean;
 }
 
 export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> = {
   saved: { label: "★ Saved", color: "bg-amber-200 text-amber-900" },
+  affinity: { label: "From accounts you save", color: "bg-amber-50 text-amber-700" },
   free: { label: "Free", color: "bg-emerald-100 text-emerald-800" },
   special: { label: "Premiere", color: "bg-yellow-100 text-yellow-800" },
   festival: { label: "Festival", color: "bg-orange-100 text-orange-800" },
