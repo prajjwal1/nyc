@@ -70,6 +70,12 @@ async def main():
         elif isinstance(result, list):
             all_events.extend(result)
 
+    # Save partial result after async scrapers — protects against IG hanging
+    # the whole pipeline. We'll overwrite once IG completes (or doesn't).
+    if all_events:
+        _write_events(process(all_events), OUTPUT_PATH)
+        print(f"[run_all] Partial save after async scrapers: {len(all_events)} raw events")
+
     for name, fn in SYNC_SCRAPERS:
         result = run_sync_scraper(name, fn)
         all_events.extend(result)
@@ -78,17 +84,26 @@ async def main():
     processed = process(all_events)
     print(f"After processing: {len(processed)} events")
 
-    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    with open(OUTPUT_PATH, "w") as f:
-        json.dump({"events": processed, "lastUpdated": __import__("datetime").datetime.now().isoformat()}, f, indent=2)
-
+    _write_events(processed, OUTPUT_PATH)
     print(f"Written to {OUTPUT_PATH}")
 
-    site_public = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "site", "public", "events.json")
-    os.makedirs(os.path.dirname(site_public), exist_ok=True)
-    with open(site_public, "w") as f:
-        json.dump({"events": processed, "lastUpdated": __import__("datetime").datetime.now().isoformat()}, f, indent=2)
-    print(f"Copied to {site_public}")
+
+SITE_PUBLIC_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "site", "public", "events.json",
+)
+
+
+def _write_events(events: list[dict], primary_path: str = OUTPUT_PATH) -> None:
+    """Write events.json to both data/ and site/public/ atomically."""
+    import datetime as _dt
+    payload = {"events": events, "lastUpdated": _dt.datetime.now().isoformat()}
+    for path in (primary_path, SITE_PUBLIC_PATH):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        tmp = path + ".tmp"
+        with open(tmp, "w") as f:
+            json.dump(payload, f, indent=2)
+        os.replace(tmp, path)
 
 
 if __name__ == "__main__":
