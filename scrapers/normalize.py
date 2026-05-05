@@ -1,4 +1,5 @@
 import hashlib
+import re
 from datetime import date, datetime
 
 
@@ -100,6 +101,42 @@ def sort_by_date(events: list[dict]) -> list[dict]:
     return sorted(events, key=lambda e: (e.get("date", ""), e.get("startTime", "") or ""))
 
 
+_TITLE_DATE_RE = re.compile(
+    r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+(\d{1,2})\b",
+    re.IGNORECASE,
+)
+_MONTHS = {
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+    "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+}
+
+
+def _is_phantom_recurring(event: dict) -> bool:
+    """Detect events where title mentions a specific date that doesn't match
+    the event's date — symptom of a buggy past recurring expansion.
+    """
+    if not event.get("recurring"):
+        return False
+    title = event.get("title", "")
+    date_str = event.get("date", "")
+    if not date_str:
+        return False
+    m = _TITLE_DATE_RE.search(title)
+    if not m:
+        return False
+    title_month = _MONTHS.get(m.group(1)[:3].lower())
+    title_day = int(m.group(2))
+    try:
+        from datetime import date as _date
+        ev_date = _date.fromisoformat(date_str)
+        # If title specifies a date and the event date doesn't match, it's phantom
+        if (ev_date.month, ev_date.day) != (title_month, title_day):
+            return True
+    except Exception:
+        pass
+    return False
+
+
 def _load_previous_events_index(path: str) -> dict:
     """Load previous events.json keyed by event id, for firstSeenAt preservation."""
     import json, os
@@ -127,6 +164,15 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     blocked = before - len(events)
     if blocked:
         print(f"[normalize] Blocked {blocked} low-quality events")
+
+    # Drop phantom recurring expansions: events where the title contains a
+    # specific date that doesn't match the event date (likely from a past
+    # buggy expansion). Title-date is the source of truth.
+    before = len(events)
+    events = [ev for ev in events if not _is_phantom_recurring(ev)]
+    phantom = before - len(events)
+    if phantom:
+        print(f"[normalize] Dropped {phantom} phantom recurring events (title-date mismatch)")
 
     # Expand recurring events ("every Saturday at Smorgasburg" → 6 weeks of dates)
     expanded: list[dict] = []
