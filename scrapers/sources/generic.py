@@ -589,6 +589,7 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
         html = await fetch_text(url)
     except Exception as e:
         print(f"[generic] {url}: fetch failed: {e}")
+        _record_url_failure(url)
         return []
 
     try:
@@ -613,7 +614,109 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
 
     events = _dedupe(events)
     print(f"[generic] {url}: {len(events)} events")
+
+    # Self-improvement: track URLs that consistently return 0 events.
+    # After 5 consecutive empty pulls, URL is marked dead and skipped.
+    if not events:
+        _record_url_failure(url)
+    else:
+        _record_url_success(url)
+        # Auto-discover Eventbrite organizer pages from event URLs.
+        # An organizer typically hosts dozens of NYC events.
+        if "eventbrite.com/e/" in url:
+            organizer_url = _extract_eventbrite_organizer(soup)
+            if organizer_url:
+                _add_discovered_url(organizer_url, "eventbrite_organizer")
+
     return events
+
+
+def _extract_eventbrite_organizer(soup: BeautifulSoup) -> str | None:
+    """Find the organizer page URL on an Eventbrite event page."""
+    # Eventbrite organizer links usually look like /o/{slug}-{id}
+    for a in soup.find_all("a", href=True):
+        href = a.get("href", "")
+        if "eventbrite.com/o/" in href and "-" in href:
+            # Make sure we only get organizer profile URLs
+            if "/o/" in href and not href.endswith("/follow"):
+                return href.split("?")[0]
+    return None
+
+
+_URL_HEALTH_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "url_health.json",
+)
+
+
+def _load_url_health() -> dict:
+    if not os.path.isfile(_URL_HEALTH_PATH):
+        return {}
+    try:
+        with open(_URL_HEALTH_PATH) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _save_url_health(data: dict) -> None:
+    os.makedirs(os.path.dirname(_URL_HEALTH_PATH), exist_ok=True)
+    tmp = _URL_HEALTH_PATH + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(data, f, indent=2)
+    os.replace(tmp, _URL_HEALTH_PATH)
+
+
+def _record_url_failure(url: str) -> None:
+    data = _load_url_health()
+    entry = data.setdefault(url, {"failures": 0, "successes": 0})
+    entry["failures"] = entry.get("failures", 0) + 1
+    _save_url_health(data)
+
+
+def _record_url_success(url: str) -> None:
+    data = _load_url_health()
+    entry = data.setdefault(url, {"failures": 0, "successes": 0})
+    entry["successes"] = entry.get("successes", 0) + 1
+    entry["failures"] = 0  # reset on success
+    _save_url_health(data)
+
+
+def _is_dead_url(url: str) -> bool:
+    """A URL is dead if it has 5+ failures with no recent successes."""
+    data = _load_url_health()
+    entry = data.get(url, {})
+    return entry.get("failures", 0) >= 5
+
+
+def _add_discovered_url(url: str, source: str) -> None:
+    """Add a URL to discovered_urls.json (deduped)."""
+    path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "data",
+        "discovered_urls.json",
+    )
+    try:
+        existing = []
+        if os.path.isfile(path):
+            with open(path) as f:
+                d = json.load(f)
+            existing = d if isinstance(d, list) else d.get("urls", [])
+        seen = {item["url"] if isinstance(item, dict) else item for item in existing}
+        if url in seen:
+            return
+        from datetime import datetime, timezone
+        existing.append({
+            "url": url,
+            "discovered_at": datetime.now(timezone.utc).isoformat(),
+            "discovered_via": source,
+        })
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as f:
+            json.dump(existing, f, indent=2)
+    except Exception as exc:
+        print(f"[generic] add_discovered_url failed: {exc}")
 
 
 def _load_discovered_urls() -> list[str]:
@@ -655,7 +758,10 @@ def _load_discovered_urls() -> list[str]:
 
 
 async def scrape() -> list[dict]:
-    """Scrape all URLs from GENERIC_URLS plus any discovered URLs."""
+    """Scrape all URLs from GENERIC_URLS plus any discovered URLs.
+
+    URLs that consistently return 0 events are skipped after 5 failures.
+    """
     urls: list[str] = list(GENERIC_URLS)
 
     # Append discovered URLs while preserving order and deduping
@@ -664,6 +770,13 @@ async def scrape() -> list[dict]:
         if u not in seen:
             urls.append(u)
             seen.add(u)
+
+    # Skip dead URLs (5+ consecutive failures)
+    health = _load_url_health()
+    before = len(urls)
+    urls = [u for u in urls if health.get(u, {}).get("failures", 0) < 5]
+    if before != len(urls):
+        print(f"[generic] Skipping {before - len(urls)} dead URLs (5+ failures)")
 
     all_events: list[dict] = []
     for url in urls:
