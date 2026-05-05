@@ -604,14 +604,16 @@ async def run_discovery() -> list[str]:
         except Exception as exc:
             print(f"[discover] Following list harvest failed: {exc}")
 
-    # 2. BFS from seed accounts AND from relevant follows
+    # 2. BFS from seed accounts AND from relevant follows.
+    # Depth 2: find accounts that user's network mentions, AND accounts
+    # those secondary accounts mention.  This casts a much wider net.
     seed_set = sorted(set(IG_ACCOUNTS) | set(following_seeds))
     print(f"[discover] BFS starting from {len(seed_set)} seeds ({len(IG_ACCOUNTS)} configured + {len(following_seeds)} from your follows)")
 
     discover_accounts(
         seed_accounts=seed_set,
-        max_depth=1,
-        max_per_seed=5,
+        max_depth=2,
+        max_per_seed=4,
     )
 
     discovered = load_discovered_accounts()

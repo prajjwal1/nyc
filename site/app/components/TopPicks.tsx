@@ -12,6 +12,48 @@ interface TopPicksProps {
 const MAX_PER_DAY = 8;
 const MAX_DAYS = 30;
 
+/**
+ * Round-robin events across primary categories so the user sees variety.
+ * Take the top-scored event from each distinct category, then cycle back.
+ * Falls back to score order when all categories exhausted.
+ */
+function diversifyByCategory(events: Event[], n: number): Event[] {
+  if (events.length <= n) return events;
+
+  // Bucket by primary category (skip "free" / "other" which are not really categories)
+  const buckets = new Map<string, Event[]>();
+  for (const e of events) {
+    const primary = (e.categories || []).find(
+      (c) => c !== "free" && c !== "other"
+    ) || "_other";
+    if (!buckets.has(primary)) buckets.set(primary, []);
+    buckets.get(primary)!.push(e);
+  }
+
+  // Sort buckets by their top event's score (descending)
+  const orderedBuckets = [...buckets.entries()].sort(
+    (a, b) => (b[1][0].score ?? 0) - (a[1][0].score ?? 0)
+  );
+
+  const result: Event[] = [];
+  const seen = new Set<string>();
+  let exhausted = false;
+
+  while (result.length < n && !exhausted) {
+    exhausted = true;
+    for (const [, bucket] of orderedBuckets) {
+      if (result.length >= n) break;
+      const next = bucket.shift();
+      if (next && !seen.has(next.id)) {
+        result.push(next);
+        seen.add(next.id);
+        exhausted = false;
+      }
+    }
+  }
+  return result;
+}
+
 export default function TopPicks({ events, onSelectDate }: TopPicksProps) {
   const todayStr = format(new Date(), "yyyy-MM-dd");
 
@@ -46,12 +88,12 @@ export default function TopPicks({ events, onSelectDate }: TopPicksProps) {
         {sortedDates.map((date) => {
           const dateObj = parseISO(date + "T12:00:00");
           const isToday = date === todayStr;
-          // Sort each day's events by score, take top N
-          const dayEvents = grouped
-            .get(date)!
-            .slice()
-            .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
-            .slice(0, MAX_PER_DAY);
+          // Diversify: round-robin top events across categories so user
+          // gets variety (not 8 jazz events on one day).
+          const dayEvents = diversifyByCategory(
+            grouped.get(date)!.slice().sort((a, b) => (b.score ?? 0) - (a.score ?? 0)),
+            MAX_PER_DAY
+          );
           const total = grouped.get(date)!.length;
 
           return (
