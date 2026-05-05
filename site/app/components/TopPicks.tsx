@@ -11,16 +11,14 @@ interface TopPicksProps {
 
 const MAX_PER_DAY = 8;
 const MAX_DAYS = 30;
+const MAX_SAVED = 6;
 
 /**
  * Round-robin events across primary categories so the user sees variety.
- * Take the top-scored event from each distinct category, then cycle back.
- * Falls back to score order when all categories exhausted.
  */
 function diversifyByCategory(events: Event[], n: number): Event[] {
   if (events.length <= n) return events;
 
-  // Bucket by primary category (skip "free" / "other" which are not really categories)
   const buckets = new Map<string, Event[]>();
   for (const e of events) {
     const primary = (e.categories || []).find(
@@ -30,7 +28,6 @@ function diversifyByCategory(events: Event[], n: number): Event[] {
     buckets.get(primary)!.push(e);
   }
 
-  // Sort buckets by their top event's score (descending)
   const orderedBuckets = [...buckets.entries()].sort(
     (a, b) => (b[1][0].score ?? 0) - (a[1][0].score ?? 0)
   );
@@ -57,21 +54,27 @@ function diversifyByCategory(events: Event[], n: number): Event[] {
 export default function TopPicks({ events, onSelectDate }: TopPicksProps) {
   const todayStr = format(new Date(), "yyyy-MM-dd");
 
-  // Filter to upcoming events
   const upcoming = events.filter((e) => e.date >= todayStr);
 
-  // Group by date
+  // ★ User-saved events — bookmarked by user, highest signal
+  const savedUpcoming = upcoming
+    .filter((e) => e.userSaved)
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(0, MAX_SAVED);
+  const savedIds = new Set(savedUpcoming.map((e) => e.id));
+
+  // Group remaining by date
   const grouped = new Map<string, Event[]>();
   for (const e of upcoming) {
+    if (savedIds.has(e.id)) continue; // shown in saved hero
     const list = grouped.get(e.date) ?? [];
     list.push(e);
     grouped.set(e.date, list);
   }
 
-  // Sort dates chronologically
   const sortedDates = [...grouped.keys()].sort().slice(0, MAX_DAYS);
 
-  if (sortedDates.length === 0) return null;
+  if (sortedDates.length === 0 && savedUpcoming.length === 0) return null;
 
   return (
     <div className="mb-8">
@@ -84,12 +87,24 @@ export default function TopPicks({ events, onSelectDate }: TopPicksProps) {
         </div>
       </div>
 
+      {/* ★ Saved hero */}
+      {savedUpcoming.length > 0 && (
+        <div className="mb-8 -mx-1 px-1 py-3 bg-amber-50/50 rounded-2xl border border-amber-200">
+          <h3 className="text-sm font-semibold text-amber-900 uppercase tracking-wide mb-2 px-2">
+            ★ Saved by you
+          </h3>
+          <div className="space-y-2">
+            {savedUpcoming.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="space-y-6">
         {sortedDates.map((date) => {
           const dateObj = parseISO(date + "T12:00:00");
           const isToday = date === todayStr;
-          // Diversify: round-robin top events across categories so user
-          // gets variety (not 8 jazz events on one day).
           const dayEvents = diversifyByCategory(
             grouped.get(date)!.slice().sort((a, b) => (b.score ?? 0) - (a.score ?? 0)),
             MAX_PER_DAY
@@ -100,10 +115,22 @@ export default function TopPicks({ events, onSelectDate }: TopPicksProps) {
             <div key={date}>
               <button
                 onClick={() => onSelectDate(date)}
-                className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 hover:text-gray-900 flex items-baseline gap-2"
+                className={`mb-2 hover:text-gray-900 flex items-baseline gap-2 ${
+                  isToday
+                    ? "text-base font-bold text-gray-900"
+                    : "text-xs font-semibold text-gray-500 uppercase tracking-wide"
+                }`}
               >
-                <span>{isToday ? "Today" : format(dateObj, "EEEE, MMM d")}</span>
-                <span className="text-gray-400 font-normal normal-case tracking-normal">
+                <span>
+                  {isToday
+                    ? `🔥 Today · ${format(dateObj, "EEEE, MMM d")}`
+                    : format(dateObj, "EEEE, MMM d")}
+                </span>
+                <span
+                  className={`font-normal normal-case tracking-normal ${
+                    isToday ? "text-gray-500 text-sm" : "text-gray-400"
+                  }`}
+                >
                   · {total} event{total !== 1 ? "s" : ""}
                 </span>
               </button>
