@@ -36,6 +36,7 @@ except ImportError:
 # ---------------------------------------------------------------------------
 
 _AFFINITY_ACCOUNTS_CACHE: set[str] = set()
+_ACCOUNT_CURSORS_CACHE: dict = {}
 
 
 def scrape_saved_only() -> list[dict]:
@@ -66,8 +67,9 @@ def scrape() -> list[dict]:
     1. User's SAVED posts — highest signal (user explicitly bookmarked these)
     2. Curated IG_ACCOUNTS + BFS-discovered accounts
     """
-    global _AFFINITY_ACCOUNTS_CACHE
+    global _AFFINITY_ACCOUNTS_CACHE, _ACCOUNT_CURSORS_CACHE
     _AFFINITY_ACCOUNTS_CACHE = _load_affinity_accounts()
+    _ACCOUNT_CURSORS_CACHE = _load_account_cursors()
 
     loader = _get_authenticated_loader()
     if loader is None:
@@ -164,6 +166,10 @@ def scrape() -> list[dict]:
     if bio_urls_seen:
         _save_bio_urls(bio_urls_seen)
 
+    # Persist per-account cursors for incremental scraping next run
+    if _ACCOUNT_CURSORS_CACHE:
+        _save_account_cursors(_ACCOUNT_CURSORS_CACHE)
+
     print(f"[instagram] Scraped {len(all_events)} events from {len(all_accounts)} accounts + saved")
     return all_events
 
@@ -236,6 +242,34 @@ _DEAD_ACCOUNTS_PATH = os.path.join(
     "data",
     "dead_accounts.json",
 )
+
+_ACCOUNT_CURSORS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "account_cursors.json",
+)
+
+
+def _load_account_cursors() -> dict:
+    """Load per-account cursors: {username: {last_shortcode: ..., last_seen: ...}}."""
+    import json
+    if not os.path.isfile(_ACCOUNT_CURSORS_PATH):
+        return {}
+    try:
+        with open(_ACCOUNT_CURSORS_PATH) as f:
+            d = json.load(f)
+        return d if isinstance(d, dict) else {}
+    except Exception:
+        return {}
+
+
+def _save_account_cursors(cursors: dict) -> None:
+    import json
+    os.makedirs(os.path.dirname(_ACCOUNT_CURSORS_PATH), exist_ok=True)
+    tmp = _ACCOUNT_CURSORS_PATH + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(cursors, f, indent=2)
+    os.replace(tmp, _ACCOUNT_CURSORS_PATH)
 
 
 def _load_dead_accounts() -> dict:
@@ -539,11 +573,24 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
     profile_followers = int(getattr(profile, "followers", 0) or 0)
     profile_is_verified = bool(getattr(profile, "is_verified", False))
 
+    # Incremental scraping: stop once we hit the most recent post we've
+    # already seen (cursor lookup). Saves significant time on accounts
+    # that haven't posted since last run.
+    cursors = _ACCOUNT_CURSORS_CACHE
+    last_seen = cursors.get(username.lower(), {}).get("last_shortcode")
+
     posts: list[dict] = []
     count = 0
+    newest_shortcode = None
 
     for post in profile.get_posts():
         if count >= max_posts:
+            break
+        if newest_shortcode is None:
+            newest_shortcode = post.shortcode
+        # Stop once we hit a post we've already processed (posts are
+        # returned newest-first by instaloader).
+        if last_seen and post.shortcode == last_seen:
             break
 
         # Collect all images from the post (carousel = sidecar)
@@ -583,7 +630,19 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
         })
         count += 1
 
-    print(f"[instagram] Fetched {len(posts)} posts from @{username}")
+    # Update cursor for this account so next run skips ahead
+    if newest_shortcode:
+        from datetime import datetime, timezone
+        _ACCOUNT_CURSORS_CACHE[username.lower()] = {
+            "last_shortcode": newest_shortcode,
+            "last_seen": datetime.now(timezone.utc).isoformat(),
+            "post_count": count,
+        }
+
+    if last_seen and not posts:
+        print(f"[instagram] @{username} has no new posts since last run — skipped")
+    else:
+        print(f"[instagram] Fetched {len(posts)} posts from @{username}")
     return posts
 
 
