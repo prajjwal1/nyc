@@ -555,7 +555,13 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
 
 
 def _load_discovered_urls() -> list[str]:
-    """Load additional URLs from a JSON file (created by IG bio link discovery)."""
+    """Load additional URLs from a JSON file (created by IG bio link discovery).
+
+    Accepts multiple shapes:
+      - ["url1", "url2", ...]
+      - {"urls": [...]}
+      - [{"url": "...", ...}, ...]   ← format used by discover.py + instagram.py
+    """
     if not os.path.exists(DISCOVERED_URLS_PATH):
         return []
     try:
@@ -564,14 +570,26 @@ def _load_discovered_urls() -> list[str]:
     except Exception as e:
         print(f"[generic] Failed to read {DISCOVERED_URLS_PATH}: {e}")
         return []
-    # Accept either ["url1", ...] or {"urls": [...]}
+
+    def _extract(item):
+        if isinstance(item, str):
+            return item
+        if isinstance(item, dict):
+            return item.get("url")
+        return None
+
+    items: list = []
     if isinstance(data, list):
-        return [u for u in data if isinstance(u, str)]
-    if isinstance(data, dict):
-        urls = data.get("urls", [])
-        if isinstance(urls, list):
-            return [u for u in urls if isinstance(u, str)]
-    return []
+        items = data
+    elif isinstance(data, dict):
+        items = data.get("urls", [])
+
+    urls = []
+    for item in items:
+        u = _extract(item)
+        if u and isinstance(u, str) and u.startswith("http"):
+            urls.append(u)
+    return urls
 
 
 async def scrape() -> list[dict]:
