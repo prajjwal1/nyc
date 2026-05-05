@@ -376,6 +376,10 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
     # and the actual ticket page is at this URL.
     bio_url = getattr(profile, "external_url", "") or ""
 
+    # Capture profile-level quality signals (affects ranking).
+    profile_followers = int(getattr(profile, "followers", 0) or 0)
+    profile_is_verified = bool(getattr(profile, "is_verified", False))
+
     posts: list[dict] = []
     count = 0
 
@@ -415,6 +419,8 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
             "bio_url": bio_url,
             "likes": likes,
             "comments": comments,
+            "profile_followers": profile_followers,
+            "profile_is_verified": profile_is_verified,
         })
         count += 1
 
@@ -616,9 +622,11 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             categories=infer_categories(title, caption),
         ))
 
-    # Tag every event with the IG account it came from + engagement signals.
+    # Tag every event with the IG account it came from + engagement + profile signals.
     likes = post.get("likes", 0)
     comments = post.get("comments", 0)
+    followers = post.get("profile_followers", 0)
+    verified = post.get("profile_is_verified", False)
     is_affinity = account.lower() in _AFFINITY_ACCOUNTS_CACHE
     for ev in events:
         ev["instagramAccount"] = account
@@ -626,6 +634,10 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             ev["likes"] = likes
         if comments:
             ev["comments"] = comments
+        if followers:
+            ev["accountFollowers"] = followers
+        if verified:
+            ev["accountVerified"] = True
         if is_affinity:
             # User has previously saved from this account — they're high-affinity.
             ev["userAffinity"] = True

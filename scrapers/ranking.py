@@ -91,15 +91,40 @@ def compute_score(event: dict) -> float:
     # (smaller than direct save but still strong signal)
     affinity_boost = 0.10 if event.get("userAffinity") and not event.get("userSaved") else 0.0
 
+    # Account-level credibility: verified or large follower count = trustworthy
+    cred_boost = _account_credibility_boost(event)
+
     # Time relevance: events in the next 14 days get a small boost
     # (people care more about "what to do this weekend" than 2 months out)
     time_relevance = _time_relevance_boost(event)
 
     final = (
         base_score + high_value_boost + social_boost + saved_boost
-        + affinity_boost + time_relevance - soft_penalty - audience_penalty
+        + affinity_boost + cred_boost + time_relevance
+        - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
+
+
+def _account_credibility_boost(event: dict) -> float:
+    """Small boost for events from verified or large IG accounts.
+
+    Verified = +0.04
+    >100k followers = +0.04
+    >25k followers = +0.025
+    >5k followers = +0.015
+    """
+    boost = 0.0
+    if event.get("accountVerified"):
+        boost += 0.04
+    followers = event.get("accountFollowers", 0) or 0
+    if followers >= 100_000:
+        boost += 0.04
+    elif followers >= 25_000:
+        boost += 0.025
+    elif followers >= 5_000:
+        boost += 0.015
+    return min(0.06, boost)  # cap so it doesn't dominate
 
 
 def _time_relevance_boost(event: dict) -> float:
