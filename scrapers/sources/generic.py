@@ -336,6 +336,44 @@ def _meta(soup: BeautifulSoup, prop: str) -> str | None:
     return None
 
 
+# Site-name suffixes to strip from <title>-derived event names
+# (e.g., "Doppelgänger Crawfish Boil Tickets, ... | Eventbrite" → strip the suffix)
+_TITLE_SUFFIXES = [
+    r"\s*\|\s*Eventbrite\s*$",
+    r"\s*\|\s*Lu\.ma\s*$",
+    r"\s*\|\s*Luma\s*$",
+    r"\s*\|\s*Partiful\s*$",
+    r"\s*\|\s*Meetup\s*$",
+    r"\s*\|\s*Substack\s*$",
+    r"\s*\|\s*RA\s*$",
+    r"\s*-\s*Eventbrite\s*$",
+    # Ticket noise like "Tickets, Saturday, May 2 • 4 PM - 7 PM"
+    r"\s+Tickets,\s+\w+,\s+\w+\s+\d+(?:\s*•[^|]*)?$",
+    r"\s+Tickets\s*$",
+]
+_TITLE_SUFFIX_RE = re.compile(
+    "|".join(_TITLE_SUFFIXES), re.IGNORECASE
+)
+
+
+def _clean_html_title(title: str) -> str:
+    """Strip platform suffixes and ticket-listing noise from <title>-derived
+    event names so they read like real event names.
+
+    Examples:
+      'Doppelgänger Crawfish Boil Tickets, Saturday, May 2 • 4 PM - 7 PM | Eventbrite'
+      → 'Doppelgänger Crawfish Boil'
+    """
+    cleaned = title.strip()
+    # Apply each suffix repeatedly until no further change
+    for _ in range(3):
+        new = _TITLE_SUFFIX_RE.sub("", cleaned).rstrip()
+        if new == cleaned:
+            break
+        cleaned = new
+    return cleaned
+
+
 def _parse_opengraph_strategy(soup: BeautifulSoup, source: str, fallback_url: str) -> list[dict]:
     """Extract a single event from OpenGraph metadata.
 
@@ -350,6 +388,7 @@ def _parse_opengraph_strategy(soup: BeautifulSoup, source: str, fallback_url: st
     )
     if not title:
         return []
+    title = _clean_html_title(title)
 
     start_raw = (
         _meta(soup, "event:start_time")
