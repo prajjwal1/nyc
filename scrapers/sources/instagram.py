@@ -632,7 +632,11 @@ def _extract_location(text: str) -> str:
 # ---------------------------------------------------------------------------
 
 def _maybe_enrich_with_image(events: list[dict], post: dict) -> list[dict]:
-    """If caption parsing left gaps, try to fill them from image analysis."""
+    """Run image OCR on event posts to fill in / enhance event details.
+
+    OCR is expensive (~2-5s/image), so we only run it when the post is
+    likely image-driven (short caption, calendar/flyer style).
+    """
 
     if not _HAS_IMAGE_ANALYZER:
         return events
@@ -641,26 +645,43 @@ def _maybe_enrich_with_image(events: list[dict], post: dict) -> list[dict]:
     if not image_url:
         return events
 
+    caption = post.get("caption", "") or ""
+    # Trigger OCR when:
+    #  - caption is short (image likely contains the event details), or
+    #  - any event from this post is missing critical data
+    short_caption = len(caption) < 150
+    needs_enrichment = any(
+        not e.get("startTime") or not e.get("location", {}).get("name") or
+        not e.get("title") or len(e.get("title", "")) < 10
+        for e in events
+    )
+
+    if not (short_caption or needs_enrichment):
+        return events
+
+    try:
+        image_info = analyze_event_image(image_url)
+    except Exception as exc:
+        print(f"[instagram] Image analysis failed: {exc}")
+        return events
+
+    if not image_info:
+        return events
+
     enriched: list[dict] = []
     for event in events:
-        missing_title = not event.get("title") or event["title"] == event.get("description", "")[:80]
-        missing_date = not event.get("date")
-
-        if missing_title or missing_date:
-            try:
-                image_info = analyze_event_image(image_url)
-                if image_info:
-                    if missing_title and image_info.get("title"):
-                        event["title"] = image_info["title"]
-                    if missing_date and image_info.get("date"):
-                        event["date"] = image_info["date"]
-                    if not event["location"]["name"] and image_info.get("location"):
-                        event["location"]["name"] = image_info["location"]
-                    if image_info.get("time") and not event.get("startTime"):
-                        event["startTime"] = image_info["time"]
-            except Exception as exc:
-                print(f"[instagram] Image analysis failed: {exc}")
-
+        if image_info.get("title") and (
+            not event.get("title") or len(event["title"]) < 10
+        ):
+            event["title"] = image_info["title"]
+        if image_info.get("date") and not event.get("date"):
+            event["date"] = image_info["date"]
+        if image_info.get("location") and not event["location"]["name"]:
+            event["location"]["name"] = image_info["location"]
+        if image_info.get("time") and not event.get("startTime"):
+            event["startTime"] = image_info["time"]
+        # Mark that this event was OCR-enriched
+        event["ocrEnriched"] = True
         enriched.append(event)
 
     return enriched
