@@ -366,6 +366,23 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     if not _looks_like_event_post(caption, has_image=bool(image_url)):
         return []
 
+    # Drop very old posts unless they reference an explicit future date.
+    # Posts older than 60 days are usually retrospective.
+    if post_date:
+        from datetime import datetime, timezone, timedelta
+        post_d = post_date if isinstance(post_date, datetime) else datetime.combine(post_date, datetime.min.time())
+        if post_d.tzinfo is None:
+            post_d = post_d.replace(tzinfo=timezone.utc)
+        age_days = (datetime.now(timezone.utc) - post_d).days
+        if age_days > 60:
+            # Only keep if caption has an explicit month-day or numeric date
+            has_explicit_date = bool(re.search(
+                r"\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2}",
+                caption, re.IGNORECASE,
+            )) or bool(re.search(r"\b\d{1,2}/\d{1,2}", caption))
+            if not has_explicit_date:
+                return []
+
     # If account is a known venue, use it as default location.
     default_location = _account_default_location(account)
 
@@ -502,7 +519,8 @@ _EVENT_POST_SIGNALS = [
 ]
 _EVENT_POST_SIGNAL_RES = [re.compile(p, re.IGNORECASE) for p in _EVENT_POST_SIGNALS]
 
-# Phrases that strongly suggest the post is NOT an event (just content/art piece).
+# Phrases that strongly suggest the post is NOT an event (just content/art piece
+# or recap of a past event).
 _NON_EVENT_SIGNALS = [
     "throughout (?:his|her|their) career",
     "the artist (?:created|made|designed)",
@@ -522,6 +540,20 @@ _NON_EVENT_SIGNALS = [
     "happy mother",
     "happy father",
     "happy holidays",
+    # Past-tense recaps (these are NOT future events, they happened already)
+    r"\b(?:throwback|tbt|flashback)\b",
+    r"\bthroughback\b",
+    r"\bone year ago\b",
+    r"\blast (?:night|weekend|week|month) was\b",
+    r"\bwhat a (?:night|weekend|show|crowd)\b",
+    r"\bthank you (?:to|so much) (?:everyone|all|to those)",
+    r"\b(?:thank|thanks) for coming",
+    r"\bsold out (?:our|the) (?:show|night|event)",
+    r"\bsuch a (?:great|amazing|incredible) (?:night|crowd|show)",
+    r"\bwhat an (?:amazing|incredible|epic|unforgettable)",
+    r"\brecap (?:of|from)",
+    r"\bin case you missed",
+    r"\bicymi\b",
 ]
 _NON_EVENT_SIGNAL_RES = [re.compile(p, re.IGNORECASE) for p in _NON_EVENT_SIGNALS]
 
