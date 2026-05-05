@@ -718,6 +718,11 @@ _SPLIT_RE = re.compile(
     r"|\n(?=[•●○‣◆▪︎★☆\-\*])"            # newline before bullet chars
     r"|\n(?=\d{1,2}[\.\)]\s)"            # newline before numbered list items
     r"|\n(?=📍|🎶|🎨|🎭|📚|🗓|🕐|👉)"   # newline before common event emoji
+    # Day-of-week prefixed roundup items: "Monday: ..." / "MON 5/12: ..." / "Friday — ..."
+    r"|\n(?=(?:Mon(?:day)?|Tue(?:s|sday)?|Wed(?:nesday)?|Thu(?:rs(?:day)?)?|Fri(?:day)?|Sat(?:urday)?|Sun(?:day)?)[\s,:—–\-•·\.])"
+    # Date-prefixed items: "5/12: ..." / "May 12: ..."
+    r"|\n(?=\d{1,2}/\d{1,2}[:\s\.,])"
+    r"|\n(?=(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2}[:\s\.,])"
 )
 
 
