@@ -30,6 +30,11 @@ SYNC_SCRAPERS = [
     ("instagram", instagram.scrape),
 ]
 
+# Allow CI to skip slow sources for fast partial scrapes.
+SKIP_INSTAGRAM = os.environ.get("SKIP_INSTAGRAM", "0") == "1"
+if SKIP_INSTAGRAM:
+    SYNC_SCRAPERS = []
+
 OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "events.json")
 
 
@@ -61,6 +66,16 @@ async def main():
     # Snapshot previous events to preserve firstSeenAt across runs.
     previous_index = _load_previous_events_index(OUTPUT_PATH)
     print(f"[run_all] Previous events.json: {len(previous_index)} events")
+
+    # When SKIP_INSTAGRAM is set, carry over existing IG events from the
+    # previous events.json (so quick scrapes don't lose all the IG data
+    # the full scrape gathered).  These are merged with the fresh non-IG
+    # events from this run, then re-processed.
+    if SKIP_INSTAGRAM:
+        carryover = [e for e in previous_index.values() if e.get("source") == "instagram"]
+        if carryover:
+            all_events.extend(carryover)
+            print(f"[run_all] Carrying over {len(carryover)} IG events from previous run")
 
     results = await asyncio.gather(
         *[run_scraper(name, fn) for name, fn in ASYNC_SCRAPERS],
