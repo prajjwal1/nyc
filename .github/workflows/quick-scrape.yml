@@ -1,9 +1,9 @@
 name: Quick Scrape (no Instagram)
 
 # A fast 5-10 minute scrape that runs only the reliable, fast sources
-# (Eventbrite, Substack, Luma, Partiful, generic).  Skips Instagram entirely.
-# Runs every 30 min so the live site always has fresh events, even when
-# the full IG-inclusive scrape is slow or broken.
+# (Eventbrite, Substack, Luma, Partiful, generic) PLUS just the user's
+# saved IG posts (~30s).  Skips the heavy account-by-account IG sweep.
+# Runs every 30 min so the live site always has fresh events.
 
 on:
   schedule:
@@ -34,9 +34,19 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r scrapers/requirements.txt
 
-      - name: Run scrapers (no IG)
+      - name: Restore Instagram session
         env:
-          SKIP_INSTAGRAM: "1"
+          IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+        if: env.IG_SESSION_B64 != ''
+        run: |
+          mkdir -p ~/.config/instaloader
+          echo "$IG_SESSION_B64" | base64 -d > ~/.config/instaloader/session-${IG_USERNAME:-prajfb}
+
+      - name: Run quick scrapers (saved IG only)
+        env:
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_SAVED_ONLY: "1"  # only saved IG posts, not full sweep
         run: python -m scrapers.run_all
 
       - name: Pull latest before commit
@@ -46,6 +56,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/events.json site/public/events.json scrapers/data/discovered_urls.json 2>/dev/null || true
-          git diff --cached --quiet || git commit -m "Quick scrape (no IG) $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git add data/events.json site/public/events.json scrapers/data/discovered_urls.json scrapers/data/user_affinity_accounts.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "Quick scrape $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push

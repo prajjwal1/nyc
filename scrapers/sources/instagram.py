@@ -38,6 +38,23 @@ except ImportError:
 _AFFINITY_ACCOUNTS_CACHE: set[str] = set()
 
 
+def scrape_saved_only() -> list[dict]:
+    """Light-weight scrape: only the user's saved posts.
+
+    Runs in 30s-2min. Used by the quick-scrape workflow to keep the
+    user's most relevant events (bookmarks) fresh on every cron tick.
+    """
+    global _AFFINITY_ACCOUNTS_CACHE
+    _AFFINITY_ACCOUNTS_CACHE = _load_affinity_accounts()
+
+    loader = _get_authenticated_loader()
+    if loader is None:
+        return []
+
+    saved_events, _ = _scrape_saved_posts(loader)
+    return saved_events
+
+
 def scrape() -> list[dict]:
     """Scrape recent posts from curated IG accounts and return parsed events.
 
