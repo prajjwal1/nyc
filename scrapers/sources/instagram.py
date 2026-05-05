@@ -85,7 +85,24 @@ def scrape() -> list[dict]:
     # often link to Linktree/Beacons/lu.ma etc. with full event lists.
     bio_urls_seen: set[str] = set()
 
-    for idx, account in enumerate(all_accounts):
+    # Wall-clock budget for IG scraping — beyond this, stop and return what
+    # we have so the rest of the pipeline (Eventbrite, Substack, etc.) can run.
+    import time as _time
+    ig_budget_seconds = float(os.environ.get("IG_TIME_BUDGET_SECONDS", "1500"))  # 25 min default
+    started = _time.time()
+
+    # Order accounts: high-affinity first (so they always get scraped even
+    # if budget runs out), then everything else.
+    affinity_first = sorted(
+        all_accounts,
+        key=lambda a: 0 if a.lower() in _AFFINITY_ACCOUNTS_CACHE else 1,
+    )
+
+    for idx, account in enumerate(affinity_first):
+        elapsed = _time.time() - started
+        if elapsed > ig_budget_seconds:
+            print(f"[instagram] Time budget exhausted at {elapsed:.0f}s after {idx} accounts; stopping IG scrape")
+            break
         try:
             posts = _fetch_posts(loader, account)
             for post in posts:
@@ -105,8 +122,8 @@ def scrape() -> list[dict]:
             print(f"[instagram] Failed @{account}: {exc}")
 
         # Rate-limit: sleep between accounts (skip after the last one).
-        if idx < len(all_accounts) - 1:
-            time.sleep(IG_SLEEP_BETWEEN_ACCOUNTS)
+        if idx < len(affinity_first) - 1:
+            _time.sleep(IG_SLEEP_BETWEEN_ACCOUNTS)
 
     # Persist bio URLs so the generic scraper can pick up event pages
     # (Linktree/Beacons/Eventbrite/lu.ma/etc.) on the next pipeline run.

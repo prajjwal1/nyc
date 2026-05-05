@@ -47,6 +47,7 @@ jobs:
           IG_MAX_POSTS_PER_ACCOUNT: "12"
           IG_MAX_ACCOUNTS: "120"
           IG_SLEEP_BETWEEN_ACCOUNTS: "0.5"
+          IG_TIME_BUDGET_SECONDS: "1800"  # 30 min hard cap on IG scraping
         run: python -m scrapers.run_all
 
       - name: Pull latest before commit
