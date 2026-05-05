@@ -185,12 +185,17 @@ export default function Home() {
 
           <section className="flex-1 min-w-0 order-3 lg:order-2">
             {view === "for-you" ? (
-              <TopPicks events={events} onSelectDate={handleSelectDate} />
+              <TopPicks
+                events={events}
+                onSelectDate={handleSelectDate}
+                onAccountClick={(acct) => setSearch("@" + acct)}
+              />
             ) : (
               <>
                 <EventList
                   events={selectedDayEvents}
                   selectedDate={selectedDate}
+                  onAccountClick={(acct) => setSearch("@" + acct)}
                 />
 
                 {selectedDayEvents.length === 0 &&
@@ -211,7 +216,11 @@ export default function Home() {
                             </button>
                             <div className="space-y-2">
                               {day.events.slice(0, 3).map((event) => (
-                                <EventCard key={event.id} event={event} />
+                                <EventCard
+                                  key={event.id}
+                                  event={event}
+                                  onAccountClick={(acct) => setSearch("@" + acct)}
+                                />
                               ))}
                               {day.events.length > 3 && (
                                 <button

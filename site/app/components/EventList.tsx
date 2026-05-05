@@ -7,9 +7,10 @@ import EventCard from "./EventCard";
 interface EventListProps {
   events: Event[];
   selectedDate: string;
+  onAccountClick?: (account: string) => void;
 }
 
-export default function EventList({ events, selectedDate }: EventListProps) {
+export default function EventList({ events, selectedDate, onAccountClick }: EventListProps) {
   const dateObj = parseISO(selectedDate + "T12:00:00");
   const dateLabel = format(dateObj, "EEEE, MMMM d");
 
@@ -30,7 +31,7 @@ export default function EventList({ events, selectedDate }: EventListProps) {
       ) : (
         <div className="space-y-3">
           {events.map((event) => (
-            <EventCard key={event.id} event={event} />
+            <EventCard key={event.id} event={event} onAccountClick={onAccountClick} />
           ))}
         </div>
       )}

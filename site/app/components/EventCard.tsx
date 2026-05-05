@@ -5,9 +5,10 @@ import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/
 interface EventCardProps {
   event: Event;
   variant?: "compact" | "feed";
+  onAccountClick?: (account: string) => void;
 }
 
-export default function EventCard({ event, variant = "feed" }: EventCardProps) {
+export default function EventCard({ event, variant = "feed", onAccountClick }: EventCardProps) {
   const timeStr = event.startTime
     ? formatTime(event.startTime) +
       (event.endTime ? ` – ${formatTime(event.endTime)}` : "")
@@ -17,10 +18,18 @@ export default function EventCard({ event, variant = "feed" }: EventCardProps) {
     return <CompactCard event={event} timeStr={timeStr} />;
   }
 
-  return <FeedCard event={event} timeStr={timeStr} />;
+  return <FeedCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} />;
 }
 
-function FeedCard({ event, timeStr }: { event: Event; timeStr: string | null }) {
+function FeedCard({
+  event,
+  timeStr,
+  onAccountClick,
+}: {
+  event: Event;
+  timeStr: string | null;
+  onAccountClick?: (account: string) => void;
+}) {
   // Show description only if it's high-signal (not just a fragment of a larger caption)
   const desc = event.description?.trim();
   const showDesc =
@@ -117,11 +126,21 @@ function FeedCard({ event, timeStr }: { event: Event; timeStr: string | null }) 
                   ❤ {formatCount(event.likes)}
                 </span>
               ) : null}
-              <span>
-                {event.instagramAccount
-                  ? `@${event.instagramAccount}`
-                  : SOURCE_LABELS[event.source] || event.source}
-              </span>
+              {event.instagramAccount ? (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onAccountClick?.(event.instagramAccount!);
+                  }}
+                  className="hover:text-gray-700 hover:underline focus:outline-none"
+                  title={`See more from @${event.instagramAccount}`}
+                >
+                  @{event.instagramAccount}
+                </button>
+              ) : (
+                <span>{SOURCE_LABELS[event.source] || event.source}</span>
+              )}
               {event.accountVerified && (
                 <span className="text-blue-500" title="Verified">✓</span>
               )}

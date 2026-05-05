@@ -7,6 +7,7 @@ import EventCard from "./EventCard";
 interface TopPicksProps {
   events: Event[];
   onSelectDate: (date: string) => void;
+  onAccountClick?: (account: string) => void;
 }
 
 const MAX_PER_DAY = 8;
@@ -51,7 +52,7 @@ function diversifyByCategory(events: Event[], n: number): Event[] {
   return result;
 }
 
-export default function TopPicks({ events, onSelectDate }: TopPicksProps) {
+export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPicksProps) {
   const todayStr = format(new Date(), "yyyy-MM-dd");
 
   const upcoming = events.filter((e) => e.date >= todayStr);
@@ -95,7 +96,7 @@ export default function TopPicks({ events, onSelectDate }: TopPicksProps) {
           </h3>
           <div className="space-y-2">
             {savedUpcoming.map((event) => (
-              <EventCard key={event.id} event={event} />
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} />
             ))}
           </div>
         </div>
@@ -136,7 +137,7 @@ export default function TopPicks({ events, onSelectDate }: TopPicksProps) {
               </button>
               <div className="space-y-2">
                 {dayEvents.map((event) => (
-                  <EventCard key={event.id} event={event} />
+                  <EventCard key={event.id} event={event} onAccountClick={onAccountClick} />
                 ))}
                 {total > MAX_PER_DAY && (
                   <button
