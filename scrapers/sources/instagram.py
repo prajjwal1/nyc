@@ -335,6 +335,8 @@ def _get_authenticated_loader() -> instaloader.Instaloader | None:
 def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
     """Fetch the most recent posts for a given account.
 
+    High-affinity accounts (user has saved from them) get more posts pulled.
+
     Carousel posts (sidecar) yield ALL their images so the OCR pipeline can
     extract event details from flyer-style multi-image posts.
     """
@@ -348,6 +350,11 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
         print(f"[instagram] Profile @{username} failed: {exc}")
         return []
 
+    # High-affinity accounts get up to 1.5x posts (capped at 30)
+    max_posts = IG_MAX_POSTS_PER_ACCOUNT
+    if username.lower() in _AFFINITY_ACCOUNTS_CACHE:
+        max_posts = min(30, int(IG_MAX_POSTS_PER_ACCOUNT * 1.5))
+
     # Capture the profile's external URL — many event accounts say "link in bio"
     # and the actual ticket page is at this URL.
     bio_url = getattr(profile, "external_url", "") or ""
@@ -356,7 +363,7 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
     count = 0
 
     for post in profile.get_posts():
-        if count >= IG_MAX_POSTS_PER_ACCOUNT:
+        if count >= max_posts:
             break
 
         # Collect all images from the post (carousel = sidecar)
