@@ -37,6 +37,7 @@ export default function Home() {
   } = useEvents();
 
   const [view, setView] = useState<View>("for-you");
+  const [presetFilter, setPresetFilter] = useState<"meet-people" | "saved" | null>(null);
 
   const eventCountByDate = useMemo(() => {
     const map = new Map<string, number>();
@@ -45,6 +46,20 @@ export default function Home() {
     }
     return map;
   }, [events]);
+
+  const presetEvents = useMemo(() => {
+    if (presetFilter === "meet-people") {
+      return events.filter((e) =>
+        (e.highlights || []).includes("meet-people") ||
+        e.categories.includes("singles") ||
+        (e.categories.includes("parties") && (e.highlights || []).some((h) => ["meet-people", "vibes", "nightlife"].includes(h)))
+      );
+    }
+    if (presetFilter === "saved") {
+      return events.filter((e) => e.userSaved);
+    }
+    return events;
+  }, [events, presetFilter]);
 
   const handleQuickFilter = (preset: string) => {
     const today = new Date();
@@ -62,6 +77,14 @@ export default function Home() {
     } else if (preset === "week") {
       setSelectedDate(format(today, "yyyy-MM-dd"));
       setView("calendar");
+    } else if (preset === "meet-people") {
+      setPresetFilter(presetFilter === "meet-people" ? null : "meet-people");
+      setView("for-you");
+    } else if (preset === "saved") {
+      setPresetFilter(presetFilter === "saved" ? null : "saved");
+      setView("for-you");
+    } else if (preset === "free") {
+      setPriceFilter(priceFilter === "free" ? "all" : "free");
     }
   };
 
@@ -185,11 +208,31 @@ export default function Home() {
 
           <section className="flex-1 min-w-0 order-3 lg:order-2">
             {view === "for-you" ? (
-              <TopPicks
-                events={events}
-                onSelectDate={handleSelectDate}
-                onAccountClick={(acct) => setSearch("@" + acct)}
-              />
+              <>
+                {presetFilter && (
+                  <div className="mb-4 flex items-center justify-between bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
+                    <div className="text-sm">
+                      <span className="font-medium text-amber-900">
+                        {presetFilter === "meet-people" ? "Meet people" : "★ Saved"}
+                      </span>
+                      <span className="text-amber-700 ml-2">
+                        — {presetEvents.length} events
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => setPresetFilter(null)}
+                      className="text-xs text-amber-700 hover:text-amber-900 underline"
+                    >
+                      clear
+                    </button>
+                  </div>
+                )}
+                <TopPicks
+                  events={presetEvents}
+                  onSelectDate={handleSelectDate}
+                  onAccountClick={(acct) => setSearch("@" + acct)}
+                />
+              </>
             ) : (
               <>
                 <EventList

@@ -7,6 +7,20 @@ from ..utils.event_parser import build_event, parse_date, parse_time
 LUMA_PAGES = [
     # /nyc is Luma's curated NYC discover page — broad mix, ~20 events per fetch.
     "https://lu.ma/nyc",
+    # Per-category NYC pages — each yields 20 events with strong topical
+    # overlap to user interests (social/parties = meet-people focus).
+    "https://lu.ma/nyc/social",
+    "https://lu.ma/nyc/parties",
+    "https://lu.ma/nyc/networking",
+    "https://lu.ma/nyc/community",
+    "https://lu.ma/nyc/music",
+    "https://lu.ma/nyc/art",
+    "https://lu.ma/nyc/food",
+    "https://lu.ma/nyc/comedy",
+    "https://lu.ma/nyc/literary",
+    "https://lu.ma/nyc/wellness",
+    "https://lu.ma/nyc/fitness",
+    # Curator calendars (verified live)
     "https://lu.ma/nycbackgammonclub",
     "https://lu.ma/readingrhythms-manhattan",
     "https://lu.ma/litclub.nyc",

@@ -77,7 +77,7 @@ export default function FilterBar({
         <button onClick={() => setSearch("jazz")} className="underline hover:text-gray-700">jazz</button>
       </p>
 
-      <div className="flex gap-2 text-sm">
+      <div className="flex flex-wrap gap-2 text-sm">
         <button
           onClick={() => onQuickFilter("today")}
           className="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium transition-colors"
@@ -95,6 +95,24 @@ export default function FilterBar({
           className="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium transition-colors"
         >
           This Week
+        </button>
+        <button
+          onClick={() => onQuickFilter("meet-people")}
+          className="px-3 py-1.5 rounded-lg bg-fuchsia-100 hover:bg-fuchsia-200 text-fuchsia-800 font-medium transition-colors"
+        >
+          Meet People
+        </button>
+        <button
+          onClick={() => onQuickFilter("saved")}
+          className="px-3 py-1.5 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-800 font-medium transition-colors"
+        >
+          ★ Saved
+        </button>
+        <button
+          onClick={() => onQuickFilter("free")}
+          className="px-3 py-1.5 rounded-lg bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-medium transition-colors"
+        >
+          Free
         </button>
       </div>
 
