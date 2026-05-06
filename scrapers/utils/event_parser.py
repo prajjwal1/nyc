@@ -444,8 +444,29 @@ def clean_description(text: str, max_length: int = 250) -> str:
         non_mention = re.sub(r"@\w+|\s+|[,.\-—•]", "", line)
         if not non_mention and "@" in line:
             continue
+        # Drop lines that are JUST emojis / decorative chars (5+ emoji in a row)
+        non_emoji = re.sub(
+            r"[\U0001F300-\U0001FAFF\U00002702-\U000027B0\U0001F000-\U0001F0FF\s\W]+",
+            "",
+            line,
+        )
+        if not non_emoji:
+            continue
+        # Drop lines that are JUST a URL
+        if re.fullmatch(r"\s*https?://\S+\s*", line):
+            continue
         lines.append(line)
     cleaned = " ".join(lines).strip()
+
+    # Strip raw URLs from inside the description — we already have sourceUrl
+    # in the event metadata, so URLs in the desc body are noise.
+    cleaned = re.sub(r"\bhttps?://\S+", "", cleaned)
+    # Collapse 3+ identical emoji into 1 (e.g., 🔥🔥🔥🔥 → 🔥)
+    cleaned = re.sub(
+        r"([\U0001F300-\U0001FAFF\U00002702-\U000027B0])\1{2,}",
+        r"\1",
+        cleaned,
+    )
 
     # Within remaining text, drop sentences that contain "link in bio"
     # but only if they're <60 chars (CTAs) — leave longer sentences alone

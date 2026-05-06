@@ -116,20 +116,50 @@ function diversifyByCategory(events: Event[], n: number, topK = 2, maxPerOrganiz
 
 export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPicksProps) {
   const todayStr = format(new Date(), "yyyy-MM-dd");
+  const now = new Date();
 
   const upcoming = events.filter((e) => e.date >= todayStr);
 
+  // 🔥 Tonight — events happening today, evening start (after 4pm) or no time set
+  const tonightEvents = upcoming
+    .filter((e) => e.date === todayStr)
+    .filter((e) => {
+      if (!e.startTime) return true;
+      const [h] = e.startTime.split(":").map(Number);
+      return h >= 16; // 4pm onward
+    })
+    .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+    .slice(0, 6);
+  const tonightIds = new Set(tonightEvents.map((e) => e.id));
+
+  // ✨ Just Added — events first seen in the last 30 hours, sorted by date
+  const recentlyAdded = upcoming
+    .filter((e) => {
+      if (tonightIds.has(e.id)) return false;
+      const fs = (e as Event & { firstSeenAt?: string }).firstSeenAt;
+      if (!fs) return false;
+      try {
+        const t = new Date(fs).getTime();
+        return now.getTime() - t < 30 * 3600 * 1000;
+      } catch {
+        return false;
+      }
+    })
+    .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+    .slice(0, 6);
+  const recentIds = new Set(recentlyAdded.map((e) => e.id));
+
   // ★ User-saved events — bookmarked by user, highest signal
   const savedUpcoming = upcoming
-    .filter((e) => e.userSaved)
+    .filter((e) => e.userSaved && !tonightIds.has(e.id) && !recentIds.has(e.id))
     .sort((a, b) => a.date.localeCompare(b.date))
     .slice(0, MAX_SAVED);
   const savedIds = new Set(savedUpcoming.map((e) => e.id));
 
-  // Group remaining by date
+  // Group remaining by date — exclude events already shown in hero sections
   const grouped = new Map<string, Event[]>();
   for (const e of upcoming) {
-    if (savedIds.has(e.id)) continue; // shown in saved hero
+    if (savedIds.has(e.id) || tonightIds.has(e.id) || recentIds.has(e.id)) continue;
     const list = grouped.get(e.date) ?? [];
     list.push(e);
     grouped.set(e.date, list);
@@ -137,7 +167,8 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
 
   const sortedDates = [...grouped.keys()].sort().slice(0, MAX_DAYS);
 
-  if (sortedDates.length === 0 && savedUpcoming.length === 0) return null;
+  if (sortedDates.length === 0 && savedUpcoming.length === 0
+      && tonightEvents.length === 0 && recentlyAdded.length === 0) return null;
 
   return (
     <div className="mb-8">
@@ -149,6 +180,37 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
           </p>
         </div>
       </div>
+
+      {/* 🔥 Tonight — happening today, evening events */}
+      {tonightEvents.length > 0 && (
+        <div className="mb-8 -mx-1 px-1 py-3 bg-rose-50/60 rounded-2xl border border-rose-200">
+          <h3 className="text-sm font-semibold text-rose-900 uppercase tracking-wide mb-2 px-2">
+            🔥 Tonight
+          </h3>
+          <div className="space-y-2">
+            {tonightEvents.map((event) => (
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ✨ Just Added — events first seen in last 30 hours */}
+      {recentlyAdded.length > 0 && (
+        <div className="mb-8 -mx-1 px-1 py-3 bg-sky-50/60 rounded-2xl border border-sky-200">
+          <h3 className="text-sm font-semibold text-sky-900 uppercase tracking-wide mb-2 px-2 flex items-center justify-between">
+            <span>✨ Just Added</span>
+            <span className="text-[10px] font-normal text-sky-700 normal-case tracking-normal">
+              new in the last day
+            </span>
+          </h3>
+          <div className="space-y-2">
+            {recentlyAdded.map((event) => (
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* ★ Saved hero */}
       {savedUpcoming.length > 0 && (
