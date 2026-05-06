@@ -6,7 +6,7 @@ import { downloadIcs } from "../lib/ics";
 
 interface EventCardProps {
   event: Event;
-  variant?: "compact" | "feed";
+  variant?: "compact" | "feed" | "grid";
   onAccountClick?: (account: string) => void;
   onHide?: (eventId: string) => void;
 }
@@ -21,6 +21,10 @@ export default function EventCard({ event, variant = "feed", onAccountClick, onH
     return <CompactCard event={event} timeStr={timeStr} />;
   }
 
+  if (variant === "grid") {
+    return <GridCard event={event} />;
+  }
+
   // IG events are inherently visual — when we have a usable image, lead with
   // a large flyer like an IG grid post so the user can scan visually rather
   // than reading metadata.
@@ -29,6 +33,68 @@ export default function EventCard({ event, variant = "feed", onAccountClick, onH
   }
 
   return <FeedCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} onHide={onHide} />;
+}
+
+function GridCard({ event }: { event: Event }) {
+  const handleOpen = () => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
+  const dateLabel = formatDateLabel(event.date);
+  const startsSoon = isStartingSoon(event);
+  return (
+    <a
+      href={event.sourceUrl}
+      onClick={handleOpen}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block group relative aspect-square rounded-lg overflow-hidden bg-gray-100 hover:opacity-90 transition-opacity"
+      title={event.title}
+    >
+      {event.imageUrl ? (
+        <img
+          src={event.imageUrl}
+          alt=""
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      ) : (
+        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center p-2 text-center">
+          <span className="text-xs font-medium text-gray-700 line-clamp-4">
+            {event.title}
+          </span>
+        </div>
+      )}
+      {/* Date pill */}
+      <div className="absolute top-1.5 left-1.5 bg-white/95 backdrop-blur rounded px-1.5 py-0.5 text-[10px] font-semibold text-gray-900 shadow-sm">
+        {dateLabel}
+      </div>
+      {/* Starting soon pulse */}
+      {startsSoon && (
+        <div className="absolute top-1.5 right-1.5 bg-rose-600 text-white rounded px-1.5 py-0.5 text-[10px] font-bold animate-pulse">
+          NOW
+        </div>
+      )}
+      {/* Bottom title overlay on hover */}
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="text-[11px] font-semibold text-white line-clamp-2">
+          {event.title}
+        </div>
+      </div>
+    </a>
+  );
+}
+
+function isStartingSoon(event: Event): boolean {
+  if (!event.startTime) return false;
+  try {
+    const todayStr = new Date().toISOString().split("T")[0];
+    if (event.date !== todayStr) return false;
+    const [h, m] = event.startTime.split(":").map(Number);
+    const start = new Date();
+    start.setHours(h, m, 0, 0);
+    const diffMs = start.getTime() - new Date().getTime();
+    return diffMs > 0 && diffMs < 2.5 * 3600 * 1000; // starts in next 2.5h
+  } catch {
+    return false;
+  }
 }
 
 function MediaFirstCard({

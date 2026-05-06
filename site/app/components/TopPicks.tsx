@@ -154,6 +154,19 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
   // disappears immediately without a page reload.
   const [hideTick, setHideTick] = useState(0);
   const onHide = () => setHideTick((t) => t + 1);
+  // Detail (one-per-row, full info) vs Grid (3-col thumbnail, IG-explore-style).
+  // Persisted in localStorage so the user's preference sticks across visits.
+  const [viewMode, setViewMode] = useState<"detail" | "grid">(() => {
+    if (typeof window === "undefined") return "detail";
+    const saved = window.localStorage.getItem("nyc-events:viewMode");
+    return saved === "grid" ? "grid" : "detail";
+  });
+  const setViewModePersist = (m: "detail" | "grid") => {
+    setViewMode(m);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("nyc-events:viewMode", m);
+    }
+  };
 
   // Drop user-hidden events from the feed (localStorage signal).
   const visible = events.filter((e) => !isHidden(e.id));
@@ -215,12 +228,32 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
 
   return (
     <div className="mb-8">
-      <div className="flex items-baseline justify-between mb-4">
+      <div className="flex items-end justify-between mb-4 gap-4">
         <div>
           <h2 className="text-xl font-semibold text-gray-900">For You</h2>
           <p className="text-sm text-gray-500">
             The best of NYC each day, picked for your interests
           </p>
+        </div>
+        <div className="bg-white rounded-lg border border-gray-200 p-0.5 flex shrink-0">
+          <button
+            onClick={() => setViewModePersist("detail")}
+            className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
+              viewMode === "detail" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-50"
+            }`}
+            title="Detailed cards"
+          >
+            Detail
+          </button>
+          <button
+            onClick={() => setViewModePersist("grid")}
+            className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
+              viewMode === "grid" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-50"
+            }`}
+            title="Compact grid (IG-explore style)"
+          >
+            Grid
+          </button>
         </div>
       </div>
 
@@ -302,19 +335,27 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
                   · {total} event{total !== 1 ? "s" : ""}
                 </span>
               </button>
-              <div className="space-y-2">
-                {dayEvents.map((event) => (
-                  <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} />
-                ))}
-                {total > MAX_PER_DAY && (
-                  <button
-                    onClick={() => onSelectDate(date)}
-                    className="text-xs text-gray-400 hover:text-gray-700 pl-1"
-                  >
-                    +{total - MAX_PER_DAY} more on {format(dateObj, "MMM d")}
-                  </button>
-                )}
-              </div>
+              {viewMode === "grid" ? (
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-1.5">
+                  {dayEvents.map((event) => (
+                    <EventCard key={event.id} event={event} variant="grid" />
+                  ))}
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {dayEvents.map((event) => (
+                    <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} />
+                  ))}
+                </div>
+              )}
+              {total > MAX_PER_DAY && (
+                <button
+                  onClick={() => onSelectDate(date)}
+                  className="text-xs text-gray-400 hover:text-gray-700 pl-1 mt-2 inline-block"
+                >
+                  +{total - MAX_PER_DAY} more on {format(dateObj, "MMM d")}
+                </button>
+              )}
             </div>
           );
         })}
