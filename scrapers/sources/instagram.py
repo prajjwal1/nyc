@@ -1410,4 +1410,81 @@ def _maybe_enrich_with_image(events: list[dict], post: dict) -> list[dict]:
         event["ocrEnriched"] = True
         enriched.append(event)
 
-    return enriched
+    # Carousel fan-out: posts with 3+ slides are typically multi-event roundups
+    # (e.g., "10 events this week" with one flyer per slide). We've already
+    # enriched slide 1; OCR the remaining slides and emit additional events
+    # for slides that produce a distinct date/title signature.
+    extras = _fan_out_carousel_slides(enriched, post)
+    return enriched + extras
+
+
+def _fan_out_carousel_slides(base_events: list[dict], post: dict) -> list[dict]:
+    """OCR carousel slides 2..N and emit additional events when they produce
+    a distinct (date, title) signature from the existing events.
+
+    Inherits user-curation flags from the first base event so a saved-post
+    carousel produces saved sub-events, etc.
+    """
+    if not _HAS_IMAGE_ANALYZER:
+        return []
+    all_images = post.get("all_images") or []
+    if len(all_images) < 3:
+        return []
+    if not base_events:
+        return []
+
+    base = base_events[0]
+    base_loc = base.get("location") or {}
+
+    seen_signatures: set[tuple[str, str]] = set()
+    for ev in base_events:
+        sig = (
+            ev.get("date") or "",
+            (ev.get("title") or "")[:40].strip().lower(),
+        )
+        seen_signatures.add(sig)
+
+    # Cap slides we OCR so a 20-slide carousel doesn't blow the wall clock.
+    MAX_SLIDES = 8
+    extras: list[dict] = []
+    from datetime import date as _date
+
+    for img_url in all_images[1:MAX_SLIDES]:
+        try:
+            info = analyze_event_image(img_url)
+        except Exception:
+            continue
+        if not info or not info.get("date") or not info.get("title"):
+            continue
+
+        sig = (info["date"], info["title"][:40].strip().lower())
+        if sig in seen_signatures:
+            continue
+        seen_signatures.add(sig)
+
+        try:
+            ev_date = _date.fromisoformat(info["date"])
+        except Exception:
+            continue
+
+        new_ev = build_event(
+            title=info["title"],
+            description=(base.get("description") or "")[:300],
+            event_date=ev_date,
+            start_time=info.get("time"),
+            location_name=info.get("location") or base_loc.get("name", ""),
+            address=base_loc.get("address", ""),
+            source="instagram",
+            source_url=base.get("sourceUrl"),
+            image_url=img_url,
+            categories=base.get("categories", []),
+        )
+        # Inherit user-curation signals from the base event — a saved roundup
+        # post should produce saved sub-events too.
+        for flag in ("userSaved", "userTagged", "userAffinity", "userFollowing"):
+            if base.get(flag):
+                new_ev[flag] = True
+        new_ev["ocrEnriched"] = True
+        extras.append(new_ev)
+
+    return extras

@@ -582,6 +582,70 @@ def _dedupe(events: list[dict]) -> list[dict]:
     return out
 
 
+_LINK_AGGREGATOR_HOSTS = (
+    "linktr.ee",
+    "beacons.ai",
+    "linkin.bio",
+    "stan.store",
+    "withkoji.com",
+    "koji.to",
+    "allmylinks.com",
+    "lnk.bio",
+    "snipfeed.co",
+    "tap.bio",
+    "msha.ke",  # milkshake
+    "campsite.bio",
+    "withfriends.co",
+)
+
+_EVENT_PLATFORM_HOSTS_RE = re.compile(
+    r"(?:lu\.ma|luma\.com|eventbrite\.com|partiful\.com|posh\.vip|"
+    r"ra\.co|shotgun\.live|withtopography\.com|tixr\.com|dice\.fm|"
+    r"meetup\.com)",
+    re.IGNORECASE,
+)
+
+
+def _is_link_aggregator(url: str) -> bool:
+    try:
+        host = (urlparse(url).hostname or "").lower().lstrip("www.")
+        return any(host == h or host.endswith("." + h) for h in _LINK_AGGREGATOR_HOSTS)
+    except Exception:
+        return False
+
+
+def _expand_link_aggregator(soup: BeautifulSoup, source_url: str) -> int:
+    """For Linktree/Beacons-style URLs, harvest outbound event-platform URLs
+    and add them to discovered_urls.json. Returns count of newly-added URLs.
+
+    These pages don't have event JSON-LD themselves but each links to one.
+    """
+    found: set[str] = set()
+    for a in soup.find_all("a", href=True):
+        href = (a.get("href") or "").strip()
+        if not href.startswith("http"):
+            continue
+        if _EVENT_PLATFORM_HOSTS_RE.search(href):
+            found.add(href.split("?")[0].split("#")[0])
+    if not found:
+        return 0
+    # Compute additions before writing so the count is accurate.
+    existing = set()
+    if os.path.isfile(DISCOVERED_URLS_PATH):
+        try:
+            with open(DISCOVERED_URLS_PATH) as f:
+                d = json.load(f)
+            items = d if isinstance(d, list) else d.get("urls", [])
+            existing = {it["url"] if isinstance(it, dict) else it for it in items}
+        except Exception:
+            pass
+    new_urls = found - existing
+    via = f"link_aggregator:{_domain_source(source_url)}"
+    for href in new_urls:
+        _add_discovered_url(href, via)
+    return len(new_urls)
+
+
 async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
     """Scrape events from a single URL using universal extraction strategies."""
     source = default_source if default_source != "generic" else _domain_source(url)
@@ -596,6 +660,17 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
         soup = BeautifulSoup(html, "lxml")
     except Exception as e:
         print(f"[generic] {url}: parse failed: {e}")
+        return []
+
+    # Link-aggregator fan-out: Linktree/Beacons/etc. don't host events but link
+    # to event pages. Harvest those outbound URLs and bail — the event pages
+    # themselves get scraped on the next pipeline run.
+    if _is_link_aggregator(url):
+        added = _expand_link_aggregator(soup, url)
+        if added:
+            print(f"[generic] {url}: aggregator → harvested {added} event-platform URLs")
+        # Treat as successful so we don't mark it dead.
+        _record_url_success(url)
         return []
 
     # Strategy 1: JSON-LD Schema.org Event extraction
