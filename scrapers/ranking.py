@@ -117,6 +117,8 @@ def compute_score(event: dict) -> float:
         cross_source_boost = 0.07
     # Hot boost: cross-source AND firstSeenAt within last 7 days = trending
     hot_boost = _hot_event_boost(event)
+    # Account-yield boost: IG accounts that consistently produce events
+    yield_boost = _account_yield_boost(event)
 
     # Account-level credibility: verified or large follower count = trustworthy
     cred_boost = _account_credibility_boost(event)
@@ -130,10 +132,35 @@ def compute_score(event: dict) -> float:
     final = (
         base_score + high_value_boost + social_boost + meet_people_boost
         + saved_boost + tagged_boost + affinity_boost + following_boost
-        + cred_boost + cross_source_boost + hot_boost + time_relevance + dow_fit
+        + cred_boost + cross_source_boost + hot_boost + yield_boost
+        + time_relevance + dow_fit
         - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
+
+
+def _account_yield_boost(event: dict) -> float:
+    """Boost events from IG accounts that historically emit lots of events.
+
+    accountEventYield is events_emitted / posts_scraped (lifetime).
+      - >= 0.5 (every other post is an event): +0.06 — a true event venue
+      - >= 0.25:                                 +0.04
+      - >= 0.10:                                 +0.02
+    Below 0.10: no boost (account posts mostly non-event content).
+    """
+    yield_ = event.get("accountEventYield", 0.0)
+    if not yield_:
+        return 0.0
+    posts_seen = event.get("accountPostsSeen", 0)
+    if posts_seen < 5:
+        return 0.0
+    if yield_ >= 0.5:
+        return 0.06
+    if yield_ >= 0.25:
+        return 0.04
+    if yield_ >= 0.10:
+        return 0.02
+    return 0.0
 
 
 def _hot_event_boost(event: dict) -> float:

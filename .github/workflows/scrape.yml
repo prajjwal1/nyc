@@ -75,6 +75,7 @@ jobs:
             scrapers/data/stats_history.jsonl \
             scrapers/data/dead_accounts.json \
             scrapers/data/account_cursors.json \
+            scrapers/data/account_quality.json \
             scrapers/data/url_health.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Update events data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push

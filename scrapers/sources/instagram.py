@@ -90,10 +90,11 @@ def scrape() -> list[dict]:
     1. User's SAVED posts — highest signal (user explicitly bookmarked these)
     2. Curated IG_ACCOUNTS + BFS-discovered accounts
     """
-    global _AFFINITY_ACCOUNTS_CACHE, _FOLLOWING_ACCOUNTS_CACHE, _ACCOUNT_CURSORS_CACHE
+    global _AFFINITY_ACCOUNTS_CACHE, _FOLLOWING_ACCOUNTS_CACHE, _ACCOUNT_CURSORS_CACHE, _ACCOUNT_QUALITY_CACHE
     _AFFINITY_ACCOUNTS_CACHE = _load_affinity_accounts()
     _FOLLOWING_ACCOUNTS_CACHE = _load_following_accounts()
     _ACCOUNT_CURSORS_CACHE = _load_account_cursors()
+    _ACCOUNT_QUALITY_CACHE = _load_account_quality()
     print(f"[instagram] Cache: {len(_AFFINITY_ACCOUNTS_CACHE)} affinity, {len(_FOLLOWING_ACCOUNTS_CACHE)} following")
 
     loader = _get_authenticated_loader()
@@ -188,6 +189,7 @@ def scrape() -> list[dict]:
             break
         try:
             posts = _fetch_posts(loader, account)
+            account_event_count = 0
             for post in posts:
                 # Capture bio URL once per account
                 bio = post.get("bio_url", "")
@@ -204,6 +206,10 @@ def scrape() -> list[dict]:
                     extracted = _maybe_enrich_with_image(extracted, post)
 
                 all_events.extend(extracted)
+                account_event_count += len(extracted)
+            # Record account-quality stats for this account this run.
+            if posts:
+                _record_account_activity(account, len(posts), account_event_count)
         except Exception as exc:
             print(f"[instagram] Failed @{account}: {exc}")
 
@@ -241,6 +247,11 @@ def scrape() -> list[dict]:
     # Persist per-account cursors for incremental scraping next run
     if _ACCOUNT_CURSORS_CACHE:
         _save_account_cursors(_ACCOUNT_CURSORS_CACHE)
+
+    # Persist per-account quality stats so future runs (and ranking) know
+    # which accounts reliably produce events.
+    if _ACCOUNT_QUALITY_CACHE:
+        _save_account_quality(_ACCOUNT_QUALITY_CACHE)
 
     print(f"[instagram] Scraped {len(all_events)} events from {len(all_accounts)} accounts + saved")
     return all_events
@@ -397,6 +408,57 @@ _ACCOUNT_CURSORS_PATH = os.path.join(
     "data",
     "account_cursors.json",
 )
+
+_ACCOUNT_QUALITY_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "account_quality.json",
+)
+
+
+_ACCOUNT_QUALITY_CACHE: dict = {}
+
+
+def _load_account_quality() -> dict:
+    """Load per-account quality stats:
+    {username: {posts_scraped, events_emitted, last_seen}}.
+
+    Used to compute event-yield (events per post) so high-yield NYC event
+    accounts get a small ranking boost. This is account-level memory that
+    compounds across runs.
+    """
+    import json
+    if not os.path.isfile(_ACCOUNT_QUALITY_PATH):
+        return {}
+    try:
+        with open(_ACCOUNT_QUALITY_PATH) as f:
+            d = json.load(f)
+        return d if isinstance(d, dict) else {}
+    except Exception:
+        return {}
+
+
+def _save_account_quality(quality: dict) -> None:
+    import json
+    os.makedirs(os.path.dirname(_ACCOUNT_QUALITY_PATH), exist_ok=True)
+    tmp = _ACCOUNT_QUALITY_PATH + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(quality, f, indent=2)
+    os.replace(tmp, _ACCOUNT_QUALITY_PATH)
+
+
+def _record_account_activity(username: str, posts_count: int, events_count: int) -> None:
+    """Update lifetime per-account counters for posts scraped and events emitted."""
+    from datetime import datetime, timezone
+    u = username.lower()
+    entry = _ACCOUNT_QUALITY_CACHE.setdefault(u, {
+        "posts_scraped": 0,
+        "events_emitted": 0,
+        "last_seen": "",
+    })
+    entry["posts_scraped"] = entry.get("posts_scraped", 0) + posts_count
+    entry["events_emitted"] = entry.get("events_emitted", 0) + events_count
+    entry["last_seen"] = datetime.now(timezone.utc).isoformat()
 
 
 def _load_account_cursors() -> dict:
@@ -1119,6 +1181,14 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
         if is_following:
             # User directly follows this account on IG.
             ev["userFollowing"] = True
+        # Stamp lifetime account-quality stats so ranking can read them
+        # without re-loading the JSON file per event.
+        q = _ACCOUNT_QUALITY_CACHE.get(account.lower(), {})
+        posts_seen = q.get("posts_scraped", 0)
+        events_emitted = q.get("events_emitted", 0)
+        if posts_seen >= 5:  # only meaningful with enough samples
+            ev["accountEventYield"] = round(events_emitted / posts_seen, 3)
+            ev["accountPostsSeen"] = posts_seen
 
     return events
 
