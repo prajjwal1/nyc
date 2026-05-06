@@ -120,11 +120,13 @@ def compute_score(event: dict) -> float:
     # Time relevance: events in the next 14 days get a small boost
     # (people care more about "what to do this weekend" than 2 months out)
     time_relevance = _time_relevance_boost(event)
+    # Day-of-week fit: parties on Fri/Sat, fitness on weekdays, etc.
+    dow_fit = _day_of_week_fit_boost(event)
 
     final = (
         base_score + high_value_boost + social_boost + meet_people_boost
         + saved_boost + tagged_boost + affinity_boost + following_boost
-        + cred_boost + cross_source_boost + time_relevance
+        + cred_boost + cross_source_boost + time_relevance + dow_fit
         - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
@@ -177,6 +179,52 @@ def _account_credibility_boost(event: dict) -> float:
     elif followers >= 5_000:
         boost += 0.015
     return min(0.06, boost)  # cap so it doesn't dominate
+
+
+def _day_of_week_fit_boost(event: dict) -> float:
+    """Match event type to typical attendance patterns.
+
+    - Parties / nightlife / social: Friday + Saturday boost; weekday penalty
+    - Run clubs / fitness / classes: weekday boost; weekend slight penalty
+    - Brunch / food: Sat/Sun late-morning boost
+    - Live music: Thu-Sat boost
+    Cap small (+0.05/-0.03) so it nudges, doesn't dominate.
+    """
+    from datetime import date as _date, datetime
+    date_str = event.get("date", "")
+    if not date_str:
+        return 0.0
+    try:
+        ev_date = datetime.fromisoformat(date_str).date()
+    except Exception:
+        return 0.0
+
+    weekday = ev_date.weekday()  # 0=Mon..6=Sun
+    is_weekend = weekday >= 5  # Sat/Sun
+    is_fri_sat = weekday in (4, 5)
+    cats = set(event.get("categories", []))
+    text = (event.get("title", "") + " " + event.get("description", ""))[:300].lower()
+
+    boost = 0.0
+    # Parties / nightlife / singles benefit on Fri/Sat
+    if cats & {"parties", "singles"} or any(k in text for k in ("dj", "dance party", "nightlife", "rooftop")):
+        if is_fri_sat:
+            boost += 0.05
+        elif weekday in (0, 1, 2):  # Mon/Tue/Wed
+            boost -= 0.03
+    # Live music: Thu/Fri/Sat
+    if "music" in cats or any(k in text for k in ("concert", "live music", "live band")):
+        if weekday in (3, 4, 5):
+            boost += 0.04
+    # Fitness / run clubs: weekdays preferred (people work-out before/after work)
+    if cats & {"fitness", "wellness"} or any(k in text for k in ("run club", "yoga", "workout")):
+        if not is_weekend:
+            boost += 0.03
+    # Brunch / food on weekends
+    if "food" in cats and any(k in text for k in ("brunch", "morning", "breakfast")):
+        if is_weekend:
+            boost += 0.03
+    return max(-0.05, min(0.06, boost))
 
 
 def _time_relevance_boost(event: dict) -> float:

@@ -12,7 +12,45 @@ def deduplicate(events: list[dict]) -> list[dict]:
         else:
             existing = seen[key]
             seen[key] = _merge(existing, ev)
-    return list(seen.values())
+    out = list(seen.values())
+
+    # Second pass: image-URL based merge across DIFFERENT title-keys.
+    # When the same flyer image is shared by N posts on the same date, they
+    # are the same event regardless of who wrote the caption. This catches
+    # cross-source duplicates (e.g., Eventbrite event re-posted on IG and
+    # picked up by Reddit) that the title-based dedup misses due to subtle
+    # wording differences.
+    return _dedup_by_image(out)
+
+
+def _dedup_by_image(events: list[dict]) -> list[dict]:
+    """Collapse events that share the same image_url + date into one merged
+    event. Skip events with no image or with low-information image URLs
+    (default avatars, etc.)."""
+    by_image: dict[tuple[str, str], list[dict]] = {}
+    no_image: list[dict] = []
+    for ev in events:
+        img = (ev.get("imageUrl") or "").strip()
+        d = ev.get("date") or ""
+        if not img or not d or len(img) < 30:
+            no_image.append(ev)
+            continue
+        # Normalize: drop CDN query params that vary by load
+        norm = img.split("?")[0]
+        key = (norm, d)
+        by_image.setdefault(key, []).append(ev)
+
+    merged: list[dict] = list(no_image)
+    for group in by_image.values():
+        if len(group) == 1:
+            merged.append(group[0])
+            continue
+        # Merge all into the first one using existing _merge
+        result = group[0]
+        for other in group[1:]:
+            result = _merge(result, other)
+        merged.append(result)
+    return merged
 
 
 _STOPWORDS = {

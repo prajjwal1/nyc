@@ -14,26 +14,56 @@ const MAX_PER_DAY = 8;
 const MAX_DAYS = 30;
 const MAX_SAVED = 6;
 
+// Source identifier for organizer/account-level cap. IG events use the
+// account; Eventbrite events use organizer host; otherwise fall back to source.
+function organizerKey(e: Event): string {
+  if (e.instagramAccount) return "ig:" + e.instagramAccount.toLowerCase();
+  if (e.source === "eventbrite") {
+    // Eventbrite event URLs include organizer in slug; group by approximate
+    // organizer-token (the trailing numeric ID is per-event, not organizer).
+    try {
+      const u = new URL(e.sourceUrl);
+      // /e/<slug>-<eventid>?... ; bucket by first 3 path tokens
+      const path = u.pathname.split("/").filter(Boolean).slice(0, 2).join("/");
+      return "eb:" + path;
+    } catch {
+      return "eb:" + e.sourceUrl;
+    }
+  }
+  return e.source + ":" + (e.location.name || "");
+}
+
 /**
- * Order events by rank with category diversity.
+ * Order events by rank with category AND source diversity.
  *
  * Top-K events (default 2) are pure score-order — the highest-ranked
  * events always show first regardless of category. After that, we
- * round-robin across categories for variety.
+ * round-robin across categories for variety, and cap how many events a
+ * single IG account / Eventbrite organizer can occupy in the result so
+ * one prolific source can't crowd out the feed.
  */
-function diversifyByCategory(events: Event[], n: number, topK = 2): Event[] {
+function diversifyByCategory(events: Event[], n: number, topK = 2, maxPerOrganizer = 2): Event[] {
   if (events.length <= n) return events;
 
   // 1. Take top-K strictly by score
   const sorted = [...events].sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
-  const result: Event[] = sorted.slice(0, topK);
-  const seen = new Set(result.map((e) => e.id));
+  const result: Event[] = [];
+  const seen = new Set<string>();
+  const orgCounts = new Map<string, number>();
+
+  for (const e of sorted) {
+    if (result.length >= topK) break;
+    result.push(e);
+    seen.add(e.id);
+    const k = organizerKey(e);
+    orgCounts.set(k, (orgCounts.get(k) || 0) + 1);
+  }
 
   if (result.length >= n) return result;
 
-  // 2. For the rest, round-robin across primary categories
+  // 2. For the rest, round-robin across primary categories with org cap
   const buckets = new Map<string, Event[]>();
-  for (const e of sorted.slice(topK)) {
+  for (const e of sorted) {
     if (seen.has(e.id)) continue;
     const primary = (e.categories || []).find(
       (c) => c !== "free" && c !== "other"
@@ -51,11 +81,33 @@ function diversifyByCategory(events: Event[], n: number, topK = 2): Event[] {
     exhausted = true;
     for (const [, bucket] of orderedBuckets) {
       if (result.length >= n) break;
-      const next = bucket.shift();
-      if (next && !seen.has(next.id)) {
-        result.push(next);
-        seen.add(next.id);
-        exhausted = false;
+      // Pick the next event from this bucket that doesn't bust the org cap.
+      let i = 0;
+      while (i < bucket.length) {
+        const cand = bucket[i];
+        const k = organizerKey(cand);
+        if ((orgCounts.get(k) || 0) < maxPerOrganizer) {
+          bucket.splice(i, 1);
+          if (!seen.has(cand.id)) {
+            result.push(cand);
+            seen.add(cand.id);
+            orgCounts.set(k, (orgCounts.get(k) || 0) + 1);
+            exhausted = false;
+          }
+          break;
+        }
+        i++;
+      }
+    }
+  }
+
+  // 3. If we couldn't fill n under the cap, fill remaining slots ignoring it.
+  if (result.length < n) {
+    for (const e of sorted) {
+      if (result.length >= n) break;
+      if (!seen.has(e.id)) {
+        result.push(e);
+        seen.add(e.id);
       }
     }
   }

@@ -138,7 +138,7 @@ def scrape() -> list[dict]:
 
     # Skip dead accounts (404s, repeated failures) — auto-cleanup
     dead = _load_dead_accounts().get("accounts", {})
-    dead_set = {u for u, info in dead.items() if info.get("reason") in ("not_exists", "repeated_failure")}
+    dead_set = {u for u, info in dead.items() if info.get("reason") in ("not_exists", "repeated_failure", "stale_no_recent_posts")}
     before_dead = len(all_accounts)
     all_accounts = [a for a in all_accounts if a.lower() not in dead_set]
     if before_dead != len(all_accounts):
@@ -561,7 +561,7 @@ def _scrape_hashtag_posts(loader, max_posts_per_tag: int = 20) -> tuple[list[dic
     started = time.time()
     budget_seconds = float(os.environ.get("IG_HASHTAG_BUDGET_SECONDS", "300"))  # 5 min
     dead_set = {u for u, info in _load_dead_accounts().get("accounts", {}).items()
-                if info.get("reason") in ("not_exists", "repeated_failure")}
+                if info.get("reason") in ("not_exists", "repeated_failure", "stale_no_recent_posts")}
 
     for tag in _IG_EVENT_HASHTAGS:
         if time.time() - started > budget_seconds:
@@ -821,12 +821,14 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
     posts: list[dict] = []
     count = 0
     newest_shortcode = None
+    newest_post_date = None
 
     for post in profile.get_posts():
         if count >= max_posts:
             break
         if newest_shortcode is None:
             newest_shortcode = post.shortcode
+            newest_post_date = post.date_utc
         # Stop once we hit a post we've already processed (posts are
         # returned newest-first by instaloader).
         if last_seen and post.shortcode == last_seen:
@@ -877,6 +879,21 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
             "last_seen": datetime.now(timezone.utc).isoformat(),
             "post_count": count,
         }
+
+    # Stale-account auto-prune: if the newest post is >90 days old AND the
+    # account isn't user-curated (saved/affinity/following), mark it stale.
+    # Stale accounts don't post events — keeps the rotation tight.
+    if newest_post_date is not None and username.lower() not in _AFFINITY_ACCOUNTS_CACHE \
+            and username.lower() not in _FOLLOWING_ACCOUNTS_CACHE:
+        from datetime import datetime, timezone, timedelta
+        try:
+            npd = newest_post_date if newest_post_date.tzinfo else newest_post_date.replace(tzinfo=timezone.utc)
+            age_days = (datetime.now(timezone.utc) - npd).days
+            if age_days >= 90:
+                _mark_dead_account(username, "stale_no_recent_posts")
+                print(f"[instagram] @{username} hasn't posted in {age_days}d — marked stale")
+        except Exception:
+            pass
 
     if last_seen and not posts:
         print(f"[instagram] @{username} has no new posts since last run — skipped")
