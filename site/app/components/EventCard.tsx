@@ -1,6 +1,7 @@
 "use client";
 
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
+import { trackAccountClick, trackEventOpen } from "../lib/interests";
 
 interface EventCardProps {
   event: Event;
@@ -38,9 +39,11 @@ function MediaFirstCard({
   onAccountClick?: (account: string) => void;
 }) {
   const dateLabel = formatDateLabel(event.date);
+  const handleOpen = () => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
   return (
     <a
       href={event.sourceUrl}
+      onClick={handleOpen}
       target="_blank"
       rel="noopener noreferrer"
       className="block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all overflow-hidden"
@@ -107,6 +110,7 @@ function MediaFirstCard({
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                trackAccountClick(event.instagramAccount);
                 onAccountClick?.(event.instagramAccount!);
               }}
               className="hover:text-gray-900 hover:underline font-medium"
@@ -159,6 +163,7 @@ function FeedCard({
   return (
     <a
       href={event.sourceUrl}
+      onClick={() => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl)}
       target="_blank"
       rel="noopener noreferrer"
       className="block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all overflow-hidden"
@@ -250,7 +255,8 @@ function FeedCard({
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    onAccountClick?.(event.instagramAccount!);
+                    trackAccountClick(event.instagramAccount);
+                onAccountClick?.(event.instagramAccount!);
                   }}
                   className="hover:text-gray-700 hover:underline focus:outline-none"
                   title={`See more from @${event.instagramAccount}`}

@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Event, EventsData } from "../lib/types";
 import { loadEvents, filterEvents, getEventDates } from "../lib/events";
+import { loadProfile, interestBoost, InterestProfile } from "../lib/interests";
 
 export type SortMode = "relevance" | "time";
 
@@ -17,17 +18,30 @@ export function useEvents() {
   const [search, setSearch] = useState("");
   const [priceFilter, setPriceFilter] = useState<"all" | "free" | "paid">("all");
   const [sortMode, setSortMode] = useState<SortMode>("relevance");
+  const [profile, setProfile] = useState<InterestProfile | null>(null);
 
   useEffect(() => {
     loadEvents()
       .then(setData)
       .finally(() => setLoading(false));
+    setProfile(loadProfile());
   }, []);
 
-  const filteredEvents = useMemo(() => {
+  // Re-rank events with the user's learned interest profile so the feed
+  // adapts to what they actually engage with. Server-side score is the
+  // base; interestBoost is small (max +0.15) so saved/tagged still win.
+  const personalizedEvents = useMemo(() => {
     if (!data) return [];
-    return filterEvents(data.events, { categories, sources, search, priceFilter });
-  }, [data, categories, sources, search, priceFilter]);
+    if (!profile) return data.events;
+    return data.events.map((e) => ({
+      ...e,
+      score: (e.score ?? 0) + interestBoost(e, profile),
+    }));
+  }, [data, profile]);
+
+  const filteredEvents = useMemo(() => {
+    return filterEvents(personalizedEvents, { categories, sources, search, priceFilter });
+  }, [personalizedEvents, categories, sources, search, priceFilter]);
 
   const eventDates = useMemo(() => getEventDates(filteredEvents), [filteredEvents]);
 
@@ -51,6 +65,8 @@ export function useEvents() {
     return [...new Set(data.events.flatMap((e) => e.categories))].sort();
   }, [data]);
 
+  const refreshProfile = () => setProfile(loadProfile());
+
   return {
     loading,
     events: filteredEvents,
@@ -72,5 +88,6 @@ export function useEvents() {
     allCategories,
     lastUpdated: data?.lastUpdated,
     totalEvents: data?.events.length ?? 0,
+    refreshProfile,
   };
 }
