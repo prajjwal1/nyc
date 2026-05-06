@@ -120,6 +120,48 @@ export function interestBoost(
   return Math.min(0.15, boost);
 }
 
+// Hidden-events memory — explicit negative signal. Stored separately from
+// the interest profile so user can clear interests without un-hiding.
+const HIDDEN_KEY = "nyc-events:hidden:v1";
+
+function loadHidden(): Set<string> {
+  if (typeof window === "undefined") return new Set();
+  try {
+    const raw = window.localStorage.getItem(HIDDEN_KEY);
+    if (!raw) return new Set();
+    const arr = JSON.parse(raw);
+    return new Set(Array.isArray(arr) ? arr : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function saveHidden(s: Set<string>): void {
+  if (typeof window === "undefined") return;
+  try {
+    // Cap at 500 most recent to bound localStorage growth.
+    const arr = Array.from(s).slice(-500);
+    window.localStorage.setItem(HIDDEN_KEY, JSON.stringify(arr));
+  } catch {
+    // ignore quota errors
+  }
+}
+
+export function hideEvent(eventId: string): void {
+  const s = loadHidden();
+  s.add(eventId);
+  saveHidden(s);
+}
+
+export function isHidden(eventId: string): boolean {
+  return loadHidden().has(eventId);
+}
+
+export function unhideAll(): void {
+  if (typeof window === "undefined") return;
+  window.localStorage.removeItem(HIDDEN_KEY);
+}
+
 export function topAccounts(profile: InterestProfile, n = 5): string[] {
   return Object.entries(profile.accounts)
     .sort((a, b) => b[1] - a[1])

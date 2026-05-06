@@ -128,12 +128,14 @@ def compute_score(event: dict) -> float:
     time_relevance = _time_relevance_boost(event)
     # Day-of-week fit: parties on Fri/Sat, fitness on weekdays, etc.
     dow_fit = _day_of_week_fit_boost(event)
+    # Time-of-day fit: evening events boosted (working-professional bias).
+    tod_fit = _time_of_day_fit_boost(event)
 
     final = (
         base_score + high_value_boost + social_boost + meet_people_boost
         + saved_boost + tagged_boost + affinity_boost + following_boost
         + cred_boost + cross_source_boost + hot_boost + yield_boost
-        + time_relevance + dow_fit
+        + time_relevance + dow_fit + tod_fit
         - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
@@ -240,6 +242,47 @@ def _account_credibility_boost(event: dict) -> float:
     elif followers >= 5_000:
         boost += 0.015
     return min(0.06, boost)  # cap so it doesn't dominate
+
+
+def _time_of_day_fit_boost(event: dict) -> float:
+    """Match event start time to typical preference for after-work attendance.
+
+    Working professional in their 20s/30s mostly attends events after 5pm.
+    - 18:00-22:00 (prime evening): +0.04
+    - 17:00-23:00 (extended evening): +0.02
+    - 06:30-09:00 (morning fitness/run): +0.02 (only for fitness/wellness)
+    - 09:00-16:00 weekdays: -0.02 (mid-day events less accessible)
+    - 09:00-16:00 weekends: 0 (no penalty — weekends are open)
+    """
+    from datetime import date as _date, datetime
+    start = event.get("startTime") or ""
+    if not start or ":" not in start:
+        return 0.0
+    try:
+        h = int(start.split(":")[0])
+    except Exception:
+        return 0.0
+    date_str = event.get("date", "")
+    try:
+        ev_date = datetime.fromisoformat(date_str).date()
+        is_weekend = ev_date.weekday() >= 5
+    except Exception:
+        is_weekend = False
+
+    cats = set(event.get("categories", []))
+    is_fitness_morning = (
+        6 <= h <= 9 and bool(cats & {"fitness", "wellness", "outdoors"})
+    )
+
+    if is_fitness_morning:
+        return 0.02
+    if 18 <= h < 22:
+        return 0.04
+    if 17 <= h < 23:
+        return 0.02
+    if 9 <= h < 16 and not is_weekend:
+        return -0.02
+    return 0.0
 
 
 def _day_of_week_fit_boost(event: dict) -> float:

@@ -1,16 +1,17 @@
 "use client";
 
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { trackAccountClick, trackEventOpen } from "../lib/interests";
+import { trackAccountClick, trackEventOpen, hideEvent } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 
 interface EventCardProps {
   event: Event;
   variant?: "compact" | "feed";
   onAccountClick?: (account: string) => void;
+  onHide?: (eventId: string) => void;
 }
 
-export default function EventCard({ event, variant = "feed", onAccountClick }: EventCardProps) {
+export default function EventCard({ event, variant = "feed", onAccountClick, onHide }: EventCardProps) {
   const timeStr = event.startTime
     ? formatTime(event.startTime) +
       (event.endTime ? ` – ${formatTime(event.endTime)}` : "")
@@ -24,23 +25,31 @@ export default function EventCard({ event, variant = "feed", onAccountClick }: E
   // a large flyer like an IG grid post so the user can scan visually rather
   // than reading metadata.
   if (event.source === "instagram" && event.imageUrl) {
-    return <MediaFirstCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} />;
+    return <MediaFirstCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} onHide={onHide} />;
   }
 
-  return <FeedCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} />;
+  return <FeedCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} onHide={onHide} />;
 }
 
 function MediaFirstCard({
   event,
   timeStr,
   onAccountClick,
+  onHide,
 }: {
   event: Event;
   timeStr: string | null;
   onAccountClick?: (account: string) => void;
+  onHide?: (eventId: string) => void;
 }) {
   const dateLabel = formatDateLabel(event.date);
   const handleOpen = () => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
+  const handleHide = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    hideEvent(event.id);
+    onHide?.(event.id);
+  };
   return (
     <a
       href={event.sourceUrl}
@@ -143,10 +152,27 @@ function MediaFirstCard({
             >
               <CalendarIcon />
             </button>
+            <button
+              onClick={handleHide}
+              className="text-gray-300 hover:text-rose-500 transition-colors"
+              title="Hide this event"
+              aria-label="Hide"
+            >
+              <HideIcon />
+            </button>
           </div>
         </div>
       </div>
     </a>
+  );
+}
+
+function HideIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+        d="M6 18L18 6M6 6l12 12" />
+    </svg>
   );
 }
 
@@ -172,11 +198,19 @@ function FeedCard({
   event,
   timeStr,
   onAccountClick,
+  onHide,
 }: {
   event: Event;
   timeStr: string | null;
   onAccountClick?: (account: string) => void;
+  onHide?: (eventId: string) => void;
 }) {
+  const handleHide = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    hideEvent(event.id);
+    onHide?.(event.id);
+  };
   // Show description only if it's high-signal (not just a fragment of a larger caption)
   const desc = event.description?.trim();
   const showDesc =
@@ -304,6 +338,14 @@ function FeedCard({
                 aria-label="Add to calendar"
               >
                 <CalendarIcon />
+              </button>
+              <button
+                onClick={handleHide}
+                className="text-gray-300 hover:text-rose-500 transition-colors"
+                title="Hide this event"
+                aria-label="Hide"
+              >
+                <HideIcon />
               </button>
             </span>
           </div>

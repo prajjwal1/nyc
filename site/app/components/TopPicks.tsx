@@ -1,8 +1,41 @@
 "use client";
 
 import { format, parseISO } from "date-fns";
+import { useState } from "react";
 import { Event } from "../lib/types";
 import EventCard from "./EventCard";
+import { isHidden } from "../lib/interests";
+
+// Series key — when the same recurring event title appears across many
+// future dates (e.g., "Smorgasburg" weekly), collapse to the soonest
+// occurrence per (title, account) pair so the feed shows variety.
+function seriesKey(e: Event): string {
+  const title = (e.title || "").toLowerCase().slice(0, 50);
+  const acct = (e.instagramAccount || e.source || "").toLowerCase();
+  return `${acct}::${title}`;
+}
+
+function collapseRecurring(events: Event[], maxPerSeries = 1): Event[] {
+  const counts = new Map<string, number>();
+  // Sort by date ascending so the SOONEST occurrence is kept.
+  const sorted = [...events].sort((a, b) =>
+    a.date.localeCompare(b.date)
+  );
+  const out: Event[] = [];
+  for (const e of sorted) {
+    if (!e.recurring) {
+      out.push(e);
+      continue;
+    }
+    const k = seriesKey(e);
+    const n = counts.get(k) || 0;
+    if (n < maxPerSeries) {
+      out.push(e);
+      counts.set(k, n + 1);
+    }
+  }
+  return out;
+}
 
 interface TopPicksProps {
   events: Event[];
@@ -117,8 +150,18 @@ function diversifyByCategory(events: Event[], n: number, topK = 2, maxPerOrganiz
 export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPicksProps) {
   const todayStr = format(new Date(), "yyyy-MM-dd");
   const now = new Date();
+  // Force-rerender token bumped when user hides an event so the card
+  // disappears immediately without a page reload.
+  const [hideTick, setHideTick] = useState(0);
+  const onHide = () => setHideTick((t) => t + 1);
 
-  const upcoming = events.filter((e) => e.date >= todayStr);
+  // Drop user-hidden events from the feed (localStorage signal).
+  const visible = events.filter((e) => !isHidden(e.id));
+  // Collapse recurring same-event occurrences: keep just the soonest one
+  // per (title, account) pair so Smorgasburg doesn't dominate 6 cards.
+  const upcoming = collapseRecurring(
+    visible.filter((e) => e.date >= todayStr),
+  );
 
   // 🔥 Tonight — events happening today, evening start (after 4pm) or no time set
   const tonightEvents = upcoming
@@ -189,7 +232,7 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
           </h3>
           <div className="space-y-2">
             {tonightEvents.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} />
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} />
             ))}
           </div>
         </div>
@@ -206,7 +249,7 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
           </h3>
           <div className="space-y-2">
             {recentlyAdded.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} />
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} />
             ))}
           </div>
         </div>
@@ -220,7 +263,7 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
           </h3>
           <div className="space-y-2">
             {savedUpcoming.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} />
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} />
             ))}
           </div>
         </div>
@@ -261,7 +304,7 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
               </button>
               <div className="space-y-2">
                 {dayEvents.map((event) => (
-                  <EventCard key={event.id} event={event} onAccountClick={onAccountClick} />
+                  <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} />
                 ))}
                 {total > MAX_PER_DAY && (
                   <button
