@@ -514,6 +514,85 @@ def clean_description(text: str, max_length: int = 250) -> str:
     return truncated + "…"
 
 
+_TITLE_LEADING_EMOJI_RE = re.compile(
+    r"^[\U0001F300-\U0001FAFF\U00002702-\U000027B0\U0001F000-\U0001F0FF\s]+",
+)
+_TITLE_TRAILING_HASHTAGS_RE = re.compile(
+    r"(?:\s+#\w+){2,}\s*$",
+)
+_TITLE_TRAILING_AT_MENTIONS_RE = re.compile(
+    r"(?:\s+@[a-z0-9._]+){3,}\s*$",
+    re.IGNORECASE,
+)
+
+
+def clean_title(title: str) -> str:
+    """Strip emoji prefixes, trailing hashtag/mention walls, and HTML
+    entity noise from event titles.
+    """
+    if not title:
+        return title
+    t = title.strip()
+    # Decode common HTML entities
+    t = t.replace("&amp;", "&").replace("&quot;", '"').replace("&#39;", "'")
+    # Strip leading emoji/punctuation cluster
+    t = _TITLE_LEADING_EMOJI_RE.sub("", t)
+    # Strip trailing hashtag wall (3+ hashtags at end)
+    t = _TITLE_TRAILING_HASHTAGS_RE.sub("", t)
+    # Strip trailing @-mention chain
+    t = _TITLE_TRAILING_AT_MENTIONS_RE.sub("", t)
+    # Collapse 3+ identical emoji
+    t = re.sub(
+        r"([\U0001F300-\U0001FAFF\U00002702-\U000027B0])\1{2,}",
+        r"\1",
+        t,
+    )
+    # Collapse whitespace
+    t = re.sub(r"\s+", " ", t).strip()
+    return t
+
+
+# Default start times by category — when caption has no time, infer from
+# event type so events show up in the "Tonight" filter at the right slots.
+_DEFAULT_START_BY_CATEGORY = {
+    "parties": "20:00",
+    "singles": "19:00",
+    "nightlife": "21:00",
+    "music": "20:00",
+    "comedy": "20:00",
+    "celebrities": "19:00",
+    "theater": "19:30",
+    "film": "19:30",
+    "movies": "19:30",
+    "viewings": "19:30",
+    "books": "19:00",
+    "food": "19:00",
+    "fitness": "07:00",
+    "wellness": "10:00",
+    "outdoors": "10:00",
+}
+
+
+def infer_default_start_time(categories: list[str], title: str = "", description: str = "") -> str | None:
+    """Infer a sensible default start time when none is in the caption.
+
+    Returns None if no confident default — better to show no time than wrong.
+    """
+    if not categories:
+        return None
+    text = (title + " " + description).lower()
+    # Brunch / breakfast → late morning
+    if any(k in text for k in ("brunch", "breakfast", "morning meet")):
+        return "11:00"
+    # Happy hour / sunset
+    if any(k in text for k in ("happy hour", "sunset")):
+        return "18:00"
+    for cat in categories:
+        if cat in _DEFAULT_START_BY_CATEGORY:
+            return _DEFAULT_START_BY_CATEGORY[cat]
+    return None
+
+
 def build_event(
     title: str,
     description: str,
@@ -536,9 +615,16 @@ def build_event(
     if categories is None:
         categories = infer_categories(title, description)
 
+    # Apply title cleanup
+    cleaned_title = clean_title(title)
+
+    # Infer default start time if missing (lets events show up in "Tonight").
+    if not start_time:
+        start_time = infer_default_start_time(categories, cleaned_title, description)
+
     return {
-        "id": make_event_id(source, title, date_str),
-        "title": title.strip(),
+        "id": make_event_id(source, cleaned_title, date_str),
+        "title": cleaned_title,
         "description": clean_description(description, max_length=300) if description else "",
         "date": date_str,
         "startTime": start_time,

@@ -79,6 +79,18 @@ GENERIC_URLS = [
     "https://www.eventbrite.com/d/ny--new-york/comedy--events/",
     "https://www.eventbrite.com/d/ny--new-york/food-and-drink--events/",
     "https://www.eventbrite.com/d/ny--new-york/free--events--this-weekend/",
+    # AllEvents.in — major aggregator with structured JSON-LD per borough
+    "https://allevents.in/new-york",
+    "https://allevents.in/brooklyn",
+    "https://allevents.in/queens",
+    "https://allevents.in/manhattan",
+    "https://allevents.in/new-york/free",
+    "https://allevents.in/new-york/music",
+    "https://allevents.in/new-york/comedy",
+    "https://allevents.in/new-york/food",
+    # Songkick metro pages — major live-music coverage with JSON-LD
+    "https://www.songkick.com/metro-areas/7644-us-new-york",
+    "https://www.songkick.com/metro-areas/7644-us-new-york/2",
 ]
 
 # JSON-LD event schema types we accept

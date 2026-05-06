@@ -109,10 +109,14 @@ def compute_score(event: dict) -> float:
     # very strong validation (e.g., Eventbrite + Instagram both list it).
     n_sources = len(event.get("contributingSources", []))
     cross_source_boost = 0.0
-    if n_sources >= 3:
+    if n_sources >= 4:
+        cross_source_boost = 0.16  # 4+ sources → trending
+    elif n_sources >= 3:
         cross_source_boost = 0.12
     elif n_sources == 2:
         cross_source_boost = 0.07
+    # Hot boost: cross-source AND firstSeenAt within last 7 days = trending
+    hot_boost = _hot_event_boost(event)
 
     # Account-level credibility: verified or large follower count = trustworthy
     cred_boost = _account_credibility_boost(event)
@@ -126,10 +130,40 @@ def compute_score(event: dict) -> float:
     final = (
         base_score + high_value_boost + social_boost + meet_people_boost
         + saved_boost + tagged_boost + affinity_boost + following_boost
-        + cred_boost + cross_source_boost + time_relevance + dow_fit
+        + cred_boost + cross_source_boost + hot_boost + time_relevance + dow_fit
         - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
+
+
+def _hot_event_boost(event: dict) -> float:
+    """Trending boost: event has 2+ sources AND was first seen recently.
+
+    A multi-source event that just landed in our pool is one currently
+    being talked about. Cap small (+0.08) since cross_source_boost already
+    captures the multi-source signal.
+    """
+    n_sources = len(event.get("contributingSources", []))
+    if n_sources < 2:
+        return 0.0
+    fs = event.get("firstSeenAt", "")
+    if not fs:
+        return 0.0
+    from datetime import datetime, timezone, timedelta
+    try:
+        ts = datetime.fromisoformat(fs)
+        if ts.tzinfo is None:
+            ts = ts.replace(tzinfo=timezone.utc)
+    except Exception:
+        return 0.0
+    age_days = (datetime.now(timezone.utc) - ts).days
+    if age_days > 7:
+        return 0.0
+    if age_days <= 1:
+        return 0.08
+    if age_days <= 3:
+        return 0.05
+    return 0.03
 
 
 def _meet_people_tier_boost(event: dict, signals: dict) -> float:
