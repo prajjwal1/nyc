@@ -17,14 +17,58 @@ LUMA_PAGES = [
 
 
 async def scrape() -> list[dict]:
+    """Scrape Luma calendars.  Retries with browser-like headers on 403."""
     events = []
     for url in LUMA_PAGES:
-        try:
-            html = await fetch_text(url)
-            events.extend(_parse_luma_page(html, url))
-        except Exception as e:
-            print(f"[luma] Failed to scrape {url}: {e}")
+        page_events = await _try_luma_url(url)
+        events.extend(page_events)
     return events
+
+
+async def _try_luma_url(url: str) -> list[dict]:
+    """Try to fetch a Luma page with multiple header strategies."""
+    import asyncio
+
+    header_variants = [
+        # Default (Mozilla baseline)
+        None,
+        # Browser-like with referer
+        {
+            "Referer": "https://www.google.com/",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+        },
+        # luma.com instead of lu.ma (alternate domain)
+    ]
+    # Retry with luma.com if lu.ma 403s
+    if "lu.ma/" in url:
+        alt_url = url.replace("lu.ma/", "luma.com/")
+    else:
+        alt_url = None
+
+    for headers in header_variants:
+        try:
+            html = (await fetch_text(url, headers=headers)) if headers else (await fetch_text(url))
+            events = _parse_luma_page(html, url)
+            return events
+        except Exception as e:
+            err_msg = str(e)
+            if "403" in err_msg or "Forbidden" in err_msg:
+                await asyncio.sleep(0.5)
+                continue
+            # Other errors (404, etc.) — try alt URL too
+            break
+
+    # Last resort: try alt domain
+    if alt_url:
+        try:
+            html = await fetch_text(alt_url)
+            return _parse_luma_page(html, url)
+        except Exception as e:
+            print(f"[luma] {url} (and {alt_url}): {e}")
+            return []
+
+    return []
 
 
 def _parse_luma_page(html: str, source_url: str) -> list[dict]:
@@ -68,6 +112,25 @@ def _parse_ld_json(data: dict, source_url: str) -> dict | list | None:
                     ev = _parse_ld_json(nested, source_url)
                     if ev and isinstance(ev, dict):
                         results.append(ev)
+            return results
+        return None
+
+    # Handle ItemList schema (Luma sometimes wraps events this way)
+    if data.get("@type") == "ItemList":
+        items = data.get("itemListElement", [])
+        if isinstance(items, list):
+            results = []
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                # ItemList items can be either bare Events or ListItem wrappers
+                inner = item.get("item", item)
+                if isinstance(inner, dict):
+                    ev = _parse_ld_json(inner, source_url)
+                    if ev and isinstance(ev, dict):
+                        results.append(ev)
+                    elif isinstance(ev, list):
+                        results.extend(ev)
             return results
         return None
 
