@@ -107,11 +107,22 @@ def scrape() -> list[dict]:
     all_events.extend(saved_events)
     # Saved posts update the affinity cache mid-run too
     _AFFINITY_ACCOUNTS_CACHE |= saved_accounts
+    # Saved-post captions are gold — harvest authoritative URLs immediately
+    for ev in saved_events:
+        if ev.get("description"):
+            saved_caption_urls = _extract_event_platform_urls(ev["description"])
+            if saved_caption_urls:
+                _save_caption_urls(saved_caption_urls)
 
     # 1b. Tagged posts — user was tagged, implicit invitation
     tagged_events, tagged_accounts = _scrape_tagged_posts(loader)
     all_events.extend(tagged_events)
     _AFFINITY_ACCOUNTS_CACHE |= tagged_accounts
+    for ev in tagged_events:
+        if ev.get("description"):
+            tagged_caption_urls = _extract_event_platform_urls(ev["description"])
+            if tagged_caption_urls:
+                _save_caption_urls(tagged_caption_urls)
 
     # If saved posts surfaced new accounts not in our seed/discovered list,
     # add them so we scrape MORE posts from them in this same run.
@@ -146,6 +157,11 @@ def scrape() -> list[dict]:
     # often link to Linktree/Beacons/lu.ma etc. with full event lists.
     bio_urls_seen: set[str] = set()
 
+    # Track authoritative event-page URLs found inside captions (lu.ma,
+    # eventbrite, partiful, posh.vip, ra.co, dice.fm). These let the generic
+    # scraper fetch canonical structured data on the next run.
+    caption_event_urls: set[str] = set()
+
     # Wall-clock budget for IG scraping — beyond this, stop and return what
     # we have so the rest of the pipeline (Eventbrite, Substack, etc.) can run.
     import time as _time
@@ -178,6 +194,9 @@ def scrape() -> list[dict]:
                 if bio and bio not in bio_urls_seen:
                     bio_urls_seen.add(bio)
 
+                # Harvest authoritative event-page URLs from caption text.
+                caption_event_urls |= _extract_event_platform_urls(post.get("caption", ""))
+
                 extracted = _extract_events_from_caption(post, account)
 
                 # If image analyzer is available, try to fill in gaps.
@@ -196,6 +215,12 @@ def scrape() -> list[dict]:
     # (Linktree/Beacons/Eventbrite/lu.ma/etc.) on the next pipeline run.
     if bio_urls_seen:
         _save_bio_urls(bio_urls_seen)
+
+    # Persist caption event URLs so the generic scraper grabs canonical
+    # event data (lu.ma, eventbrite, partiful) on the next run.
+    if caption_event_urls:
+        _save_caption_urls(caption_event_urls)
+        print(f"[instagram] Harvested {len(caption_event_urls)} event-platform URLs from captions")
 
     # Persist per-account cursors for incremental scraping next run
     if _ACCOUNT_CURSORS_CACHE:
@@ -246,6 +271,83 @@ def _save_bio_urls(urls: set[str]) -> None:
             print(f"[instagram] Added {added} bio URLs to discovered_urls.json")
     except Exception as exc:
         print(f"[instagram] Failed to save bio URLs: {exc}")
+
+
+_EVENT_PLATFORM_RE = re.compile(
+    r"https?://(?:www\.)?(?:"
+    r"lu\.ma/[A-Za-z0-9._-]+|"
+    r"luma\.com/[A-Za-z0-9._-]+|"
+    r"eventbrite\.com/(?:e|cc|o)/[^\s)>\]\"']+|"
+    r"partiful\.com/e/[A-Za-z0-9._-]+|"
+    r"posh\.vip/e/[^\s)>\]\"']+|"
+    r"ra\.co/(?:events|promoters)/[^\s)>\]\"']+|"
+    r"shotgun\.live/(?:[a-z]{2}/)?events/[^\s)>\]\"']+|"
+    r"withtopography\.com/[^\s)>\]\"']+|"
+    r"showtix4u\.com/[^\s)>\]\"']+|"
+    r"tixr\.com/(?:groups|e)/[^\s)>\]\"']+"
+    r")",
+    re.IGNORECASE,
+)
+
+
+def _extract_event_platform_urls(caption: str) -> set[str]:
+    """Pull authoritative event-page URLs from an IG caption.
+
+    These platforms publish structured event data (JSON-LD or scrape-friendly
+    HTML), so feeding them to the generic scraper turns a fragile caption
+    parse into a reliable cross-source confirmation.
+    """
+    if not caption:
+        return set()
+    found = set()
+    for m in _EVENT_PLATFORM_RE.finditer(caption):
+        url = m.group(0).rstrip(".,;:!?)")
+        # Drop trailing query-string fragments that are tracking-only.
+        found.add(url)
+    return found
+
+
+def _save_caption_urls(urls: set[str]) -> None:
+    """Append IG caption event-platform URLs to discovered_urls.json."""
+    import json
+    from datetime import datetime, timezone
+
+    path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "data",
+        "discovered_urls.json",
+    )
+    try:
+        existing: list[dict] = []
+        if os.path.isfile(path):
+            with open(path) as f:
+                data = json.load(f)
+                if isinstance(data, list):
+                    existing = data
+                elif isinstance(data, dict):
+                    existing = data.get("urls", [])
+
+        seen = {item["url"] if isinstance(item, dict) else item for item in existing}
+        added = 0
+        now = datetime.now(timezone.utc).isoformat()
+        for url in urls:
+            if url in seen:
+                continue
+            existing.append({
+                "url": url,
+                "discovered_at": now,
+                "discovered_via": "instagram_caption",
+            })
+            seen.add(url)
+            added += 1
+
+        if added:
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            with open(path, "w") as f:
+                json.dump(existing, f, indent=2)
+            print(f"[instagram] Added {added} caption event URLs to discovered_urls.json")
+    except Exception as exc:
+        print(f"[instagram] Failed to save caption URLs: {exc}")
 
 
 _AFFINITY_PATH = os.path.join(
