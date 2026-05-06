@@ -88,6 +88,7 @@ export function useEvents() {
     allCategories,
     lastUpdated: data?.lastUpdated,
     totalEvents: data?.events.length ?? 0,
+    topAccounts: data?.topAccounts,
     refreshProfile,
   };
 }

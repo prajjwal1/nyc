@@ -124,13 +124,68 @@ SITE_PUBLIC_PATH = os.path.join(
 def _write_events(events: list[dict], primary_path: str = OUTPUT_PATH) -> None:
     """Write events.json to both data/ and site/public/ atomically."""
     import datetime as _dt
-    payload = {"events": events, "lastUpdated": _dt.datetime.now().isoformat()}
+    payload = {
+        "events": events,
+        "lastUpdated": _dt.datetime.now().isoformat(),
+        "topAccounts": _top_ig_accounts(events, n=12),
+    }
     for path in (primary_path, SITE_PUBLIC_PATH):
         os.makedirs(os.path.dirname(path), exist_ok=True)
         tmp = path + ".tmp"
         with open(tmp, "w") as f:
             json.dump(payload, f, indent=2)
         os.replace(tmp, path)
+
+
+def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
+    """Compute the top IG accounts by yield + future event count.
+
+    Surfaces in the UI as a "Top Accounts" widget so the user can quickly
+    browse events from the most reliable NYC event-emitting accounts.
+    """
+    from collections import defaultdict
+    today = _today_iso()
+    per_acct: dict[str, dict] = defaultdict(lambda: {
+        "events": 0,
+        "yield": 0.0,
+        "verified": False,
+        "image": None,
+    })
+    for e in events:
+        acct = (e.get("instagramAccount") or "").lower()
+        if not acct:
+            continue
+        if (e.get("date") or "") < today:
+            continue
+        slot = per_acct[acct]
+        slot["events"] += 1
+        # accountEventYield is stamped onto events; take max seen.
+        y = e.get("accountEventYield", 0) or 0
+        if y and y > slot["yield"]:
+            slot["yield"] = y
+        if e.get("accountVerified"):
+            slot["verified"] = True
+        if not slot["image"] and e.get("imageUrl"):
+            slot["image"] = e["imageUrl"]
+    out = []
+    for acct, info in per_acct.items():
+        if info["events"] < 1:
+            continue
+        out.append({
+            "username": acct,
+            "events": info["events"],
+            "yield": round(info["yield"], 3),
+            "verified": info["verified"],
+            "image": info["image"],
+        })
+    # Rank by upcoming event count, then by yield (high-quality accounts win).
+    out.sort(key=lambda a: (-a["events"], -a["yield"]))
+    return out[:n]
+
+
+def _today_iso() -> str:
+    import datetime as _dt
+    return _dt.date.today().isoformat()
 
 
 if __name__ == "__main__":

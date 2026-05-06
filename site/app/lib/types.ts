@@ -51,9 +51,18 @@ export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> 
   nearby: { label: "Williamsburg", color: "bg-teal-100 text-teal-800" },
 };
 
+export interface TopAccount {
+  username: string;
+  events: number;
+  yield: number;
+  verified: boolean;
+  image: string | null;
+}
+
 export interface EventsData {
   events: Event[];
   lastUpdated: string;
+  topAccounts?: TopAccount[];
 }
 
 export const CATEGORY_CONFIG: Record<string, { label: string; color: string }> = {

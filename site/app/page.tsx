@@ -9,6 +9,7 @@ import FilterBar from "./components/FilterBar";
 import EventList from "./components/EventList";
 import EventCard from "./components/EventCard";
 import TopPicks from "./components/TopPicks";
+import TopAccounts from "./components/TopAccounts";
 
 type View = "for-you" | "calendar";
 
@@ -34,6 +35,7 @@ export default function Home() {
     allCategories,
     lastUpdated,
     totalEvents,
+    topAccounts,
   } = useEvents();
 
   const [view, setView] = useState<View>("for-you");
@@ -148,6 +150,8 @@ export default function Home() {
                 Calendar
               </button>
             </div>
+
+            <TopAccounts accounts={topAccounts} onAccountClick={(u) => setSearch("@" + u)} />
 
             {view === "calendar" && (
               <Calendar
