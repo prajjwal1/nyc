@@ -2,6 +2,7 @@
 
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
 import { trackAccountClick, trackEventOpen } from "../lib/interests";
+import { downloadIcs } from "../lib/ics";
 
 interface EventCardProps {
   event: Event;
@@ -124,14 +125,37 @@ function MediaFirstCard({
           ) : (
             <span>{SOURCE_LABELS[event.source] || event.source}</span>
           )}
-          {event.price === "free" && (
-            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">
-              FREE
-            </span>
-          )}
+          <div className="flex items-center gap-2">
+            {event.price === "free" && (
+              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">
+                FREE
+              </span>
+            )}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                downloadIcs(event);
+              }}
+              className="text-gray-400 hover:text-gray-700 transition-colors"
+              title="Add to calendar"
+              aria-label="Add to calendar"
+            >
+              <CalendarIcon />
+            </button>
+          </div>
         </div>
       </div>
     </a>
+  );
+}
+
+function CalendarIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
   );
 }
 
@@ -269,6 +293,18 @@ function FeedCard({
               {event.accountVerified && (
                 <span className="text-blue-500" title="Verified">✓</span>
               )}
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  downloadIcs(event);
+                }}
+                className="text-gray-400 hover:text-gray-700 transition-colors"
+                title="Add to calendar"
+                aria-label="Add to calendar"
+              >
+                <CalendarIcon />
+              </button>
             </span>
           </div>
         </div>

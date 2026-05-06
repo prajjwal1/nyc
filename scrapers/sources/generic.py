@@ -79,6 +79,18 @@ GENERIC_URLS = [
     "https://www.eventbrite.com/d/ny--new-york/comedy--events/",
     "https://www.eventbrite.com/d/ny--new-york/food-and-drink--events/",
     "https://www.eventbrite.com/d/ny--new-york/free--events--this-weekend/",
+    # Time-windowed + topic-targeted Eventbrite searches (~20 events each)
+    "https://www.eventbrite.com/d/ny--new-york/events--this-weekend/",
+    "https://www.eventbrite.com/d/ny--new-york/events--today/",
+    "https://www.eventbrite.com/d/ny--new-york/events--this-week/",
+    "https://www.eventbrite.com/d/ny--brooklyn/dating--events/",
+    "https://www.eventbrite.com/d/ny--new-york/parties--events/",
+    "https://www.eventbrite.com/d/ny--new-york/networking--events/",
+    "https://www.eventbrite.com/d/ny--new-york/dating--events/",
+    "https://www.eventbrite.com/d/ny--new-york/singles--events/",
+    # Meetup search-result pages (structured JSON-LD listings)
+    "https://www.meetup.com/find/?keywords=&source=EVENTS&location=us--ny--Brooklyn",
+    "https://www.meetup.com/find/events/?source=EVENTS&location=us--ny--New%20York",
     # AllEvents.in — major aggregator with structured JSON-LD per borough.
     # Pagination is real — each page returns ~88-95 unique events.
     "https://allevents.in/new-york",
