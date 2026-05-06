@@ -6,10 +6,13 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scrapers.sources import luma, bookclubbar, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful, generic
+from scrapers.sources import luma, bookclubbar, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful, generic, reddit
 from scrapers.normalize import process, _load_previous_events_index
 
 ASYNC_SCRAPERS = [
+    # Reddit returns 0 events but harvests event-platform URLs into
+    # discovered_urls.json; the generic scraper picks them up next run.
+    ("reddit", reddit.scrape),
     ("luma", luma.scrape),
     ("bookclubbar", bookclubbar.scrape),
     ("nypl", nypl.scrape),

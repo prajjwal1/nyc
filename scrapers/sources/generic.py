@@ -703,7 +703,96 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
             if organizer_url:
                 _add_discovered_url(organizer_url, "eventbrite_organizer")
 
+        # Sitemap mining: try once per host (not every URL) to avoid spam.
+        # When the host has /sitemap.xml, we can harvest every event URL on
+        # the venue's site at once instead of crawling page-by-page.
+        try:
+            await _maybe_harvest_sitemap(url)
+        except Exception as e:
+            print(f"[generic] {url}: sitemap harvest failed: {e}")
+
     return events
+
+
+_SITEMAP_TRIED_HOSTS: set[str] = set()
+
+
+async def _maybe_harvest_sitemap(url: str) -> None:
+    """Once per host, fetch /sitemap.xml and harvest event-looking URLs.
+
+    Many venue/listing sites publish a sitemap with hundreds of event pages.
+    We're conservative — only harvest URLs whose path contains common event
+    markers (event, show, calendar, gig, performance) so we don't add the
+    entire site.
+    """
+    parsed = urlparse(url)
+    host = parsed.netloc.lower()
+    if not host or host in _SITEMAP_TRIED_HOSTS:
+        return
+    _SITEMAP_TRIED_HOSTS.add(host)
+
+    base = f"{parsed.scheme}://{parsed.netloc}"
+    candidates = [
+        f"{base}/sitemap.xml",
+        f"{base}/sitemap_index.xml",
+        f"{base}/events-sitemap.xml",
+    ]
+    for cand in candidates:
+        try:
+            xml = await fetch_text(cand)
+        except Exception:
+            continue
+        if "<urlset" not in xml and "<sitemapindex" not in xml:
+            continue
+        urls = _extract_event_urls_from_sitemap(xml, base)
+        if not urls:
+            return
+        # Dedup against existing discovered_urls
+        existing = set()
+        if os.path.isfile(DISCOVERED_URLS_PATH):
+            try:
+                with open(DISCOVERED_URLS_PATH) as f:
+                    d = json.load(f)
+                items = d if isinstance(d, list) else d.get("urls", [])
+                existing = {it["url"] if isinstance(it, dict) else it for it in items}
+            except Exception:
+                pass
+        new_urls = [u for u in urls if u not in existing][:50]  # cap per host
+        for u in new_urls:
+            _add_discovered_url(u, f"sitemap:{_domain_source(url)}")
+        if new_urls:
+            print(f"[generic] {host}: sitemap → harvested {len(new_urls)} event URLs")
+        return
+
+
+_SITEMAP_EVENT_MARKERS_RE = re.compile(
+    r"/(?:event|events|show|shows|calendar|gig|gigs|performance|performances|"
+    r"concert|concerts|exhibit|exhibits|exhibition|exhibitions|tour|tours|"
+    r"screening|screenings|class|classes|workshop|workshops|book|reading)/",
+    re.IGNORECASE,
+)
+
+
+def _extract_event_urls_from_sitemap(xml: str, base: str) -> list[str]:
+    """Pull <loc> URLs from a sitemap and keep only event-looking ones."""
+    # Sitemaps may be a sitemap index pointing to other sitemaps; we only
+    # follow one level deep to bound cost.
+    locs = re.findall(r"<loc>\s*([^<]+?)\s*</loc>", xml)
+    out: list[str] = []
+    for loc in locs:
+        loc = loc.strip()
+        if not loc.startswith("http"):
+            continue
+        if _SITEMAP_EVENT_MARKERS_RE.search(urlparse(loc).path or ""):
+            out.append(loc.split("#")[0])
+    # Dedup, preserve order
+    seen: set[str] = set()
+    result: list[str] = []
+    for u in out:
+        if u not in seen:
+            seen.add(u)
+            result.append(u)
+    return result
 
 
 def _extract_eventbrite_organizer(soup: BeautifulSoup) -> str | None:
