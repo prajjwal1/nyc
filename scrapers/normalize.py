@@ -105,6 +105,75 @@ def filter_future(events: list[dict]) -> list[dict]:
     return [ev for ev in events if ev.get("date", "") >= today]
 
 
+_FAR_FUTURE_DAYS = 180
+
+
+def collapse_title_spam(events: list[dict]) -> list[dict]:
+    """Collapse repeated (title, sourceUrl) pairs that span weekly intervals
+    without an explicit recurring marker. These are almost always a prior
+    buggy recurring expansion of a one-shot event.
+
+    Keep the earliest occurrence; drop the rest.
+    """
+    from collections import defaultdict
+    groups: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    for ev in events:
+        key = (
+            (ev.get("title", "") or "").strip().lower()[:80],
+            (ev.get("sourceUrl", "") or "").split("?")[0],
+        )
+        groups[key].append(ev)
+
+    keep: list[dict] = []
+    dropped = 0
+    for key, group in groups.items():
+        if len(group) < 4:
+            keep.extend(group)
+            continue
+        # 4+ events with same (title, sourceUrl) — almost certainly a bad
+        # recurring expansion of a one-shot event. Check whether description
+        # has explicit weekly marker — if so, keep them all.
+        desc = (group[0].get("description", "") or "").lower()
+        if "every " in desc or "weekly" in desc or "each week" in desc:
+            keep.extend(group)
+            continue
+        # Sort by date and keep only the earliest one.
+        group.sort(key=lambda e: e.get("date", ""))
+        keep.append(group[0])
+        dropped += len(group) - 1
+
+    if dropped:
+        print(f"[normalize] Collapsed {dropped} title-spam events (suspected bad recurring expansion)")
+    return keep
+
+
+def filter_far_future_misparsed(events: list[dict]) -> list[dict]:
+    """Drop events dated >180 days out unless the description explicitly
+    mentions a year. Most >6-month-out IG events are misparsed (caption
+    said "April 12" with no year, parser defaulted to next year when
+    current year had passed).
+    """
+    today = date.today()
+    out = []
+    for ev in events:
+        d = ev.get("date", "")
+        try:
+            ev_date = date.fromisoformat(d)
+        except Exception:
+            out.append(ev)
+            continue
+        days_out = (ev_date - today).days
+        if days_out <= _FAR_FUTURE_DAYS:
+            out.append(ev)
+            continue
+        # Far-future: keep only if a 4-digit year is mentioned in title or desc
+        text = (ev.get("title", "") + " " + ev.get("description", ""))[:600]
+        import re as _re
+        if _re.search(r"\b(?:202[6-9]|20[3-9]\d)\b", text):
+            out.append(ev)
+    return out
+
+
 def sort_by_date(events: list[dict]) -> list[dict]:
     return sorted(events, key=lambda e: (e.get("date", ""), e.get("startTime", "") or ""))
 
@@ -166,6 +235,13 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     events = [ev for ev in events if ev.get("title") and ev.get("date")]
     events = filter_future(events)
 
+    # Drop suspiciously far-future events without an explicit year mention.
+    before = len(events)
+    events = filter_far_future_misparsed(events)
+    far_future_dropped = before - len(events)
+    if far_future_dropped:
+        print(f"[normalize] Dropped {far_future_dropped} far-future misparsed events (>{_FAR_FUTURE_DAYS}d, no year mention)")
+
     # Hard-filter blocked events (kids/utility/services/non-NYC/captions)
     before = len(events)
     events = [ev for ev in events if not is_blocked(ev)]
@@ -199,6 +275,10 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     events = expanded
 
     events = deduplicate(events)
+
+    # Collapse repeated (title, sourceUrl) groups without explicit recurring
+    # markers — these are stale bad-expansion artifacts from prior runs.
+    events = collapse_title_spam(events)
 
     # Preserve firstSeenAt across runs — if an event existed in the previous
     # events.json, carry its original firstSeenAt forward; otherwise stamp now.

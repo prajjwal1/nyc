@@ -310,6 +310,22 @@ _SPECIFIC_DATE_RE = re.compile(
     re.IGNORECASE,
 )
 
+# One-shot signals — these vetoes any recurring expansion. A specific
+# artist "returning" / "presenting" / "live" is a single show, not weekly.
+_ONE_SHOT_RE = re.compile(
+    r"\breturns?\s+(?:to\s+)?(?:nyc|brooklyn|new\s+york)\b|"
+    r"\bpresents?\b.*\b(?:live|tour|special|one[\s-]night)\b|"
+    r"\bone[\s-]night[\s-]only\b|"
+    r"\b(?:single|one)[\s-]time\b|"
+    r"\btour\s+stop\b|"
+    r"\b(?:opening|closing)\s+(?:night|reception|party)\b|"
+    r"\bpremieres?\b|"
+    r"\bdebut(?:s|ing)?\b|"
+    r"\bfinale\b|"
+    r"\bmark\s+your\s+calendars?\b",
+    re.IGNORECASE,
+)
+
 
 def detect_recurring_weekday(text: str) -> int | None:
     """If the text mentions a weekly recurring weekday, return its index.
@@ -317,6 +333,11 @@ def detect_recurring_weekday(text: str) -> int | None:
     Returns: 0 (Monday) through 6 (Sunday), or None if not recurring.
     """
     if not text:
+        return None
+
+    # One-shot signals veto recurring expansion entirely. "TOKiMONSTA returns
+    # to NYC" is not a weekly event even if the post mentions "Friday night".
+    if _ONE_SHOT_RE.search(text):
         return None
 
     # Strong signals trump everything

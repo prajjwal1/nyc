@@ -1071,6 +1071,23 @@ _NON_EVENT_SIGNALS = [
     r"\brecap (?:of|from)",
     r"\bin case you missed",
     r"\bicymi\b",
+    # Photo/screenshot recap captions — these are content posts, not events
+    r"\b(?:more|some|great) (?:pics|photos|shots) (?:from|of)\b",
+    r"\bphotos?\s+(?:from|of)\s+(?:our|the|last)",
+    r"\bscreenshot of\b",
+    r"\bcourtesy of\s+@",
+    r"^//\s*",  # photo-credit prefix like "// Screenshot of video"
+    # Event was cancelled / rescheduled — date in caption is unreliable
+    r"\brained out\b",
+    r"\b(?:cancelled|canceled|postponed)\b",
+    r"\bwill be rescheduled\b",
+    # Past tense "we had" / "the night was"
+    r"\b(?:we|the night) (?:had|was)\s+(?:a\s+)?(?:great|amazing|incredible|blast)",
+    r"\bwe (?:had|enjoyed|loved)\s",
+    # Promo/announcement only — no actual event being held
+    r"\bpre-?orders? (?:are\s+)?(?:now\s+)?(?:open|available|live)\b",
+    r"\bnew (?:single|album|book|product) (?:is\s+)?out\b",
+    r"\bavailable (?:now|today)\s+(?:on|at)\b",
 ]
 _NON_EVENT_SIGNAL_RES = [re.compile(p, re.IGNORECASE) for p in _NON_EVENT_SIGNALS]
 
@@ -1272,6 +1289,18 @@ def _is_metadata_line(line: str) -> bool:
     return any(r.match(line) for r in _METADATA_LINE_RES)
 
 
+_FRAGMENT_TITLE_RE = re.compile(
+    r"^(?:"
+    # Lowercase function-word starters that signal a mid-sentence fragment
+    r"we\s|to\s|from\s|in\s|on\s|at\s|of\s|the\s|and\s|but\s|or\s|that\s|this\s|"
+    r"would\s|could\s|should\s|will\s|stills?\s|next\s|"
+    # Image-credit / annotation prefixes
+    r"//|@|#"
+    r")",
+    re.IGNORECASE,
+)
+
+
 def _extract_title(text: str) -> str:
     """Pull the most likely event title from a caption section.
 
@@ -1302,8 +1331,17 @@ def _extract_title(text: str) -> str:
         if cleaned.count("#") >= 3 and len(cleaned) < 60:
             continue
         # Skip lines that are just date/time metadata
-        # ("05.09.2026 / SAT / 11AM", "Saturday, May 5", "5/9 - 11AM")
         if _is_metadata_line(cleaned):
+            continue
+        # Skip caption-fragment starts ("we collage night", "to announce...",
+        # "stills from Solaris", "// Screenshot of video"). Real event names
+        # don't begin with lowercase function words or photo-credit prefixes.
+        if _FRAGMENT_TITLE_RE.match(cleaned):
+            continue
+        # Skip lines whose first letter is lowercase AND first word is short:
+        # almost always a sentence fragment, not an event name.
+        first_word = cleaned.split(maxsplit=1)[0] if cleaned else ""
+        if first_word and first_word[0].islower() and len(first_word) <= 4:
             continue
         if 8 < len(cleaned) < 120:
             return cleaned

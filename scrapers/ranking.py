@@ -67,7 +67,13 @@ def compute_score(event: dict) -> float:
 
     # Engagement boosts/penalties
     high_value_boost = min(0.30, signals["high_value_hits"] * 0.15)
-    social_boost = min(0.20, signals["social_hits"] * 0.10)
+    # Social events are the user's primary goal (meet people, not just attend).
+    # Bumped cap from 0.20 → 0.28 to push singles/mixers/social events to top.
+    social_boost = min(0.28, signals["social_hits"] * 0.12)
+    # "Meet-people tier": 2+ social signals AND event is in the next 21 days.
+    # Immediacy matters for social events — a singles mixer next month is much
+    # less useful than one this week.
+    meet_people_boost = _meet_people_tier_boost(event, signals)
     soft_penalty = min(0.4, signals["soft_penalty_hits"] * 0.15)
     audience_penalty = 0.5 if signals["audience_mismatch"] else 0.0
 
@@ -116,11 +122,40 @@ def compute_score(event: dict) -> float:
     time_relevance = _time_relevance_boost(event)
 
     final = (
-        base_score + high_value_boost + social_boost + saved_boost + tagged_boost
-        + affinity_boost + following_boost + cred_boost + cross_source_boost
-        + time_relevance - soft_penalty - audience_penalty
+        base_score + high_value_boost + social_boost + meet_people_boost
+        + saved_boost + tagged_boost + affinity_boost + following_boost
+        + cred_boost + cross_source_boost + time_relevance
+        - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
+
+
+def _meet_people_tier_boost(event: dict, signals: dict) -> float:
+    """Extra boost for events that are *primarily* about meeting people:
+    2+ social signals AND happening within the next 21 days.
+
+    User's stated goal: replace IG scrolling with a curated feed of events to
+    meet people. This boost makes those events float to the top.
+    """
+    if signals.get("social_hits", 0) < 2:
+        return 0.0
+    from datetime import date, datetime
+    date_str = event.get("date", "")
+    if not date_str:
+        return 0.0
+    try:
+        ev_date = datetime.fromisoformat(date_str).date()
+    except Exception:
+        return 0.0
+    days_out = (ev_date - date.today()).days
+    if days_out < 0 or days_out > 21:
+        return 0.0
+    # 0.10 base + extra for events sooner
+    if days_out <= 3:
+        return 0.14
+    if days_out <= 7:
+        return 0.12
+    return 0.10
 
 
 def _account_credibility_boost(event: dict) -> float:
