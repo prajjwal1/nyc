@@ -79,11 +79,18 @@ GENERIC_URLS = [
     "https://www.eventbrite.com/d/ny--new-york/comedy--events/",
     "https://www.eventbrite.com/d/ny--new-york/food-and-drink--events/",
     "https://www.eventbrite.com/d/ny--new-york/free--events--this-weekend/",
-    # AllEvents.in — major aggregator with structured JSON-LD per borough
+    # AllEvents.in — major aggregator with structured JSON-LD per borough.
+    # Pagination is real — each page returns ~88-95 unique events.
     "https://allevents.in/new-york",
+    "https://allevents.in/new-york?page=2",
+    "https://allevents.in/new-york?page=3",
     "https://allevents.in/brooklyn",
+    "https://allevents.in/brooklyn?page=2",
+    "https://allevents.in/brooklyn?page=3",
     "https://allevents.in/queens",
+    "https://allevents.in/queens?page=2",
     "https://allevents.in/manhattan",
+    "https://allevents.in/manhattan?page=2",
     "https://allevents.in/new-york/free",
     "https://allevents.in/new-york/music",
     "https://allevents.in/new-york/comedy",
@@ -91,6 +98,12 @@ GENERIC_URLS = [
     # Songkick metro pages — major live-music coverage with JSON-LD
     "https://www.songkick.com/metro-areas/7644-us-new-york",
     "https://www.songkick.com/metro-areas/7644-us-new-york/2",
+    # Songkick venue pages — major NYC live-music venues (3-8 events each).
+    # These compound with the metro page since metro shows top events while
+    # venue pages give the full upcoming calendar per venue.
+    "https://www.songkick.com/venues/22-brooklyn-bowl",
+    "https://www.songkick.com/venues/8-elsewhere",
+    "https://www.songkick.com/venues/5-mercury-lounge",
 ]
 
 # JSON-LD event schema types we accept

@@ -185,6 +185,28 @@ def collapse_title_spam(events: list[dict]) -> list[dict]:
     return keep
 
 
+def _is_shell_event(event: dict) -> bool:
+    """An event with no description, no image, AND no venue is a placeholder
+    that adds no information. Drop these so the feed isn't padded with empty
+    tiles.
+
+    Exception: user-saved events are always kept regardless — the user
+    explicitly bookmarked them.
+    """
+    if event.get("userSaved") or event.get("userTagged"):
+        return False
+    desc = (event.get("description") or "").strip()
+    img = (event.get("imageUrl") or "").strip()
+    loc = (event.get("location") or {}).get("name", "").strip()
+    addr = (event.get("location") or {}).get("address", "").strip()
+    if not desc and not img and not loc and not addr:
+        return True
+    # Also drop events with very short descriptions, no image, AND no location.
+    if len(desc) < 15 and not img and not loc:
+        return True
+    return False
+
+
 def filter_far_future_misparsed(events: list[dict]) -> list[dict]:
     """Drop events dated >180 days out unless the description explicitly
     mentions a year. Most >6-month-out IG events are misparsed (caption
@@ -286,6 +308,15 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     blocked = before - len(events)
     if blocked:
         print(f"[normalize] Blocked {blocked} low-quality events")
+
+    # Drop "shell" events — no description AND no image AND no location.
+    # These are typically placeholder rows from listing scrapes that didn't
+    # extract any useful detail. They waste rank slots without informing.
+    before = len(events)
+    events = [ev for ev in events if not _is_shell_event(ev)]
+    shells = before - len(events)
+    if shells:
+        print(f"[normalize] Dropped {shells} shell events (no description/image/location)")
 
     # Drop phantom recurring expansions: events where the title contains a
     # specific date that doesn't match the event date (likely from a past
