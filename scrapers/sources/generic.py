@@ -69,6 +69,16 @@ GENERIC_URLS = [
     "https://www.theshed.org/calendar",
     # Bell House comedy/music (works well)
     "https://thebellhouseny.com/calendar/",
+    # Eventbrite NYC category pages — JSON-LD structured listings, 18-20 events each
+    "https://www.eventbrite.com/d/ny--new-york/all-events/",
+    "https://www.eventbrite.com/d/ny--brooklyn/all-events/",
+    "https://www.eventbrite.com/d/ny--brooklyn/free--events/",
+    "https://www.eventbrite.com/d/ny--brooklyn/free--events--this-weekend/",
+    "https://www.eventbrite.com/d/ny--queens/all-events/",
+    "https://www.eventbrite.com/d/ny--new-york/music--events/",
+    "https://www.eventbrite.com/d/ny--new-york/comedy--events/",
+    "https://www.eventbrite.com/d/ny--new-york/food-and-drink--events/",
+    "https://www.eventbrite.com/d/ny--new-york/free--events--this-weekend/",
 ]
 
 # JSON-LD event schema types we accept
@@ -833,17 +843,21 @@ def _save_url_health(data: dict) -> None:
 
 
 def _record_url_failure(url: str) -> None:
+    from datetime import datetime, timezone
     data = _load_url_health()
     entry = data.setdefault(url, {"failures": 0, "successes": 0})
     entry["failures"] = entry.get("failures", 0) + 1
+    entry["last_failure_at"] = datetime.now(timezone.utc).isoformat()
     _save_url_health(data)
 
 
 def _record_url_success(url: str) -> None:
+    from datetime import datetime, timezone
     data = _load_url_health()
     entry = data.setdefault(url, {"failures": 0, "successes": 0})
     entry["successes"] = entry.get("successes", 0) + 1
     entry["failures"] = 0  # reset on success
+    entry["last_success_at"] = datetime.now(timezone.utc).isoformat()
     _save_url_health(data)
 
 
@@ -852,6 +866,41 @@ def _is_dead_url(url: str) -> bool:
     data = _load_url_health()
     entry = data.get(url, {})
     return entry.get("failures", 0) >= 5
+
+
+_RETEST_COOLDOWN_DAYS = 7
+_RETEST_PER_RUN = 5
+
+
+def _select_dead_urls_for_retest(health: dict, all_urls: list[str]) -> list[str]:
+    """Pick a small set of dead URLs to retry this run (self-healing).
+
+    A dead URL is eligible after _RETEST_COOLDOWN_DAYS since last failure.
+    Cap at _RETEST_PER_RUN to bound wasted requests.
+    """
+    from datetime import datetime, timezone, timedelta
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(days=_RETEST_COOLDOWN_DAYS)
+
+    candidates = []
+    for u in all_urls:
+        entry = health.get(u, {})
+        if entry.get("failures", 0) < 5:
+            continue
+        last_fail = entry.get("last_failure_at", "")
+        try:
+            ts = datetime.fromisoformat(last_fail)
+        except Exception:
+            # No timestamp on legacy entries — treat as eligible for retest.
+            candidates.append(u)
+            continue
+        if ts < cutoff:
+            candidates.append(u)
+    # Prefer URLs with the longest dead time first (most overdue).
+    candidates.sort(
+        key=lambda u: health.get(u, {}).get("last_failure_at", ""),
+    )
+    return candidates[:_RETEST_PER_RUN]
 
 
 def _add_discovered_url(url: str, source: str) -> None:
@@ -935,12 +984,18 @@ async def scrape() -> list[dict]:
             urls.append(u)
             seen.add(u)
 
-    # Skip dead URLs (5+ consecutive failures)
+    # Skip dead URLs (5+ consecutive failures), but pick a few to retest
+    # so the URL pool is self-healing — if a venue's calendar comes back
+    # online or its URL was momentarily 5xx, we'll find it again.
     health = _load_url_health()
+    retest_urls = _select_dead_urls_for_retest(health, urls)
     before = len(urls)
-    urls = [u for u in urls if health.get(u, {}).get("failures", 0) < 5]
-    if before != len(urls):
-        print(f"[generic] Skipping {before - len(urls)} dead URLs (5+ failures)")
+    urls = [u for u in urls if health.get(u, {}).get("failures", 0) < 5 or u in set(retest_urls)]
+    skipped = before - len(urls)
+    if skipped:
+        print(f"[generic] Skipping {skipped} dead URLs (5+ failures)")
+    if retest_urls:
+        print(f"[generic] Re-testing {len(retest_urls)} previously-dead URLs after {_RETEST_COOLDOWN_DAYS}d cooldown")
 
     all_events: list[dict] = []
     for url in urls:

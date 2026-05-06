@@ -8,6 +8,14 @@ FEEDS = [
     "https://onefinedaynyc.substack.com/feed",
     # The Skint — daily curated free/cheap NYC events newsletter (legendary)
     "https://www.theskint.com/feed/",
+    # Hyperallergic — major NYC art exhibition / opening listings
+    "https://hyperallergic.com/feed/",
+    # Brooklyn Vegan — extensive concert / live music NY listings
+    "https://www.brooklynvegan.com/feed/",
+    # The Deli — independent NYC music venues
+    "https://thedeli.substack.com/feed",
+    # Hellgate — local NYC investigative journalism (occasional event roundups)
+    "https://hellgate.substack.com/feed",
 ]
 
 # Patterns that look like dates within event text

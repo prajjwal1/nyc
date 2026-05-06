@@ -5,6 +5,8 @@ from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time
 
 LUMA_PAGES = [
+    # /nyc is Luma's curated NYC discover page — broad mix, ~20 events per fetch.
+    "https://lu.ma/nyc",
     "https://lu.ma/nycbackgammonclub",
     "https://lu.ma/readingrhythms-manhattan",
     "https://lu.ma/litclub.nyc",
