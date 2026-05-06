@@ -18,7 +18,126 @@ export default function EventCard({ event, variant = "feed", onAccountClick }: E
     return <CompactCard event={event} timeStr={timeStr} />;
   }
 
+  // IG events are inherently visual — when we have a usable image, lead with
+  // a large flyer like an IG grid post so the user can scan visually rather
+  // than reading metadata.
+  if (event.source === "instagram" && event.imageUrl) {
+    return <MediaFirstCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} />;
+  }
+
   return <FeedCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} />;
+}
+
+function MediaFirstCard({
+  event,
+  timeStr,
+  onAccountClick,
+}: {
+  event: Event;
+  timeStr: string | null;
+  onAccountClick?: (account: string) => void;
+}) {
+  const dateLabel = formatDateLabel(event.date);
+  return (
+    <a
+      href={event.sourceUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all overflow-hidden"
+    >
+      <div className="relative aspect-square bg-gray-100">
+        <img
+          src={event.imageUrl!}
+          alt=""
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+        {/* Date badge top-left */}
+        <div className="absolute top-2 left-2 bg-white/95 backdrop-blur rounded-lg px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm">
+          {dateLabel}
+        </div>
+        {/* Likes badge top-right when meaningful */}
+        {event.likes && event.likes > 50 ? (
+          <div className="absolute top-2 right-2 bg-black/60 text-white rounded-lg px-2 py-1 text-xs font-medium backdrop-blur">
+            ❤ {formatCount(event.likes)}
+          </div>
+        ) : null}
+        {/* Highlight badges bottom-left */}
+        {(event.highlights || []).length > 0 && (
+          <div className="absolute bottom-2 left-2 right-2 flex flex-wrap gap-1">
+            {(event.highlights || [])
+              .filter((h) => h !== "free")
+              .slice(0, 3)
+              .map((h) => {
+                const config = HIGHLIGHT_CONFIG[h];
+                if (!config) return null;
+                return (
+                  <span
+                    key={h}
+                    className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold ${config.color}`}
+                  >
+                    {config.label}
+                  </span>
+                );
+              })}
+          </div>
+        )}
+      </div>
+      <div className="p-3">
+        <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">
+          {event.title}
+        </h3>
+        <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500">
+          {timeStr && (
+            <span className="flex items-center gap-1">
+              <ClockIcon />
+              {timeStr}
+            </span>
+          )}
+          {event.location.name && (
+            <span className="flex items-center gap-1 truncate">
+              <PinIcon />
+              <span className="truncate">{event.location.name}</span>
+            </span>
+          )}
+        </div>
+        <div className="mt-2 flex items-center justify-between text-[11px] text-gray-500">
+          {event.instagramAccount ? (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onAccountClick?.(event.instagramAccount!);
+              }}
+              className="hover:text-gray-900 hover:underline font-medium"
+              title={`See more from @${event.instagramAccount}`}
+            >
+              @{event.instagramAccount}
+              {event.accountVerified && (
+                <span className="text-blue-500 ml-1" title="Verified">✓</span>
+              )}
+            </button>
+          ) : (
+            <span>{SOURCE_LABELS[event.source] || event.source}</span>
+          )}
+          {event.price === "free" && (
+            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">
+              FREE
+            </span>
+          )}
+        </div>
+      </div>
+    </a>
+  );
+}
+
+function formatDateLabel(iso: string): string {
+  try {
+    const d = new Date(iso + "T00:00:00");
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  } catch {
+    return iso;
+  }
 }
 
 function FeedCard({

@@ -48,6 +48,11 @@ jobs:
           IG_MAX_ACCOUNTS: "120"
           IG_SLEEP_BETWEEN_ACCOUNTS: "0.5"
           IG_TIME_BUDGET_SECONDS: "1800"  # 30 min hard cap on IG scraping
+          # Mine NYC event hashtags for new author candidates + events.
+          # Only enabled in the full sweep (not quick-scrape) to keep per-run
+          # rate-limit risk low.
+          IG_HASHTAG_DISCOVERY: "1"
+          IG_HASHTAG_BUDGET_SECONDS: "300"  # 5 min cap inside the IG budget
         run: python -m scrapers.run_all
 
       - name: Sanity check + stats logging

@@ -211,6 +211,22 @@ def scrape() -> list[dict]:
         if idx < len(affinity_first) - 1:
             _time.sleep(IG_SLEEP_BETWEEN_ACCOUNTS)
 
+    # 3. Hashtag-driven discovery (opt-in via IG_HASHTAG_DISCOVERY=1).
+    # Mines posts from NYC event hashtags — captures events from authors we
+    # don't yet follow, AND registers those authors as discovered accounts
+    # so future runs scrape them directly. Most expansive single channel.
+    elapsed = _time.time() - started
+    if elapsed < ig_budget_seconds:
+        try:
+            ht_events, ht_accounts = _scrape_hashtag_posts(loader)
+            all_events.extend(ht_events)
+            # Harvest caption URLs from hashtag posts too.
+            for ev in ht_events:
+                if ev.get("description"):
+                    caption_event_urls |= _extract_event_platform_urls(ev["description"])
+        except Exception as exc:
+            print(f"[instagram-hashtag] Hashtag harvest failed: {exc}")
+
     # Persist bio URLs so the generic scraper can pick up event pages
     # (Linktree/Beacons/Eventbrite/lu.ma/etc.) on the next pipeline run.
     if bio_urls_seen:
@@ -510,6 +526,96 @@ def _save_affinity_accounts(accounts: set[str]) -> None:
             json.dump({"accounts": sorted(merged)}, f, indent=2)
     except Exception as exc:
         print(f"[instagram] Failed to save affinity accounts: {exc}")
+
+
+# NYC hashtags consistently used to promote events. Order = priority since
+# we'll cut off when the time budget is exhausted.
+_IG_EVENT_HASHTAGS = [
+    "nyceventsthisweek",
+    "nycweekend",
+    "brooklynevents",
+    "whatsuptonyc",
+    "nycnightlife",
+    "williamsburgnyc",
+    "nycdating",
+    "nycbookclub",
+    "nycrunclub",
+    "thingstodonyc",
+]
+
+
+def _scrape_hashtag_posts(loader, max_posts_per_tag: int = 20) -> tuple[list[dict], set[str]]:
+    """Mine NYC event hashtags for events + new author candidates.
+
+    This is the biggest single expansion of the IG search space — we go from
+    "scrape accounts we already know about" to "discover events from any
+    NYC poster using these hashtags". Gated by env IG_HASHTAG_DISCOVERY=1
+    because hashtag pulls are heavily rate-limited and can get sessions
+    flagged.
+    """
+    if os.environ.get("IG_HASHTAG_DISCOVERY", "0") != "1":
+        return [], set()
+
+    events: list[dict] = []
+    new_accounts: set[str] = set()
+    started = time.time()
+    budget_seconds = float(os.environ.get("IG_HASHTAG_BUDGET_SECONDS", "300"))  # 5 min
+    dead_set = {u for u, info in _load_dead_accounts().get("accounts", {}).items()
+                if info.get("reason") in ("not_exists", "repeated_failure")}
+
+    for tag in _IG_EVENT_HASHTAGS:
+        if time.time() - started > budget_seconds:
+            print(f"[instagram-hashtag] Budget exhausted; stopping after #{tag}")
+            break
+        try:
+            hashtag = instaloader.Hashtag.from_name(loader.context, tag)
+            count = 0
+            for post in hashtag.get_posts():
+                if count >= max_posts_per_tag:
+                    break
+                count += 1
+                owner = (post.owner_username or "").lower()
+                if not owner or owner in dead_set:
+                    continue
+                new_accounts.add(owner)
+
+                # Build the same post-dict shape as _fetch_posts.
+                images: list[str] = []
+                try:
+                    if post.typename == "GraphSidecar":
+                        for node in post.get_sidecar_nodes():
+                            if not getattr(node, "is_video", False):
+                                images.append(node.display_url)
+                    else:
+                        images.append(post.url)
+                except Exception:
+                    images.append(post.url)
+
+                post_dict = {
+                    "caption": post.caption or "",
+                    "date": post.date_utc,
+                    "url": f"https://www.instagram.com/p/{post.shortcode}/",
+                    "image": images[0] if images else "",
+                    "all_images": images,
+                    "owner": owner,
+                    "bio_url": "",
+                }
+                extracted = _extract_events_from_caption(post_dict, owner)
+                # Hashtag-discovered events: don't carry user-curation flags.
+                # They get a smaller boost than saved/tagged but are still
+                # candidates for ranking.
+                events.extend(extracted)
+            print(f"[instagram-hashtag] #{tag}: {count} posts scanned")
+        except Exception as exc:
+            print(f"[instagram-hashtag] #{tag} failed: {exc}")
+            continue
+
+    if new_accounts:
+        # Persist new author candidates so they get scraped in regular runs.
+        _add_to_discovered_accounts(new_accounts)
+        print(f"[instagram-hashtag] Total: {len(events)} events, "
+              f"{len(new_accounts)} new author candidates queued")
+    return events, new_accounts
 
 
 def _scrape_tagged_posts(loader, max_tagged: int = 30) -> tuple[list[dict], set[str]]:
