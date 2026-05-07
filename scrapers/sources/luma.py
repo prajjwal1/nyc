@@ -49,6 +49,38 @@ LUMA_PAGES = [
     # Games + meditation (aligns with games/wellness interests)
     "https://lu.ma/nyc/gaming",
     "https://lu.ma/nyc/meditation",
+    # Nightlife / drinks (social goal)
+    "https://lu.ma/nyc/nightlife",
+    "https://lu.ma/nyc/drinks",
+    "https://lu.ma/nyc/bars",
+    "https://lu.ma/nyc/cocktails",
+    "https://lu.ma/nyc/wine",
+    "https://lu.ma/nyc/beer",
+    "https://lu.ma/nyc/wine-tasting",
+    # Outdoors
+    "https://lu.ma/nyc/parks",
+    "https://lu.ma/nyc/hiking",
+    # Special / one-time
+    "https://lu.ma/nyc/festivals",
+    "https://lu.ma/nyc/markets",
+    "https://lu.ma/nyc/pop-up",
+    "https://lu.ma/nyc/immersive",
+    "https://lu.ma/nyc/screenings",
+    # Meet-people-tier social
+    "https://lu.ma/nyc/supper-club",
+    "https://lu.ma/nyc/friends",
+    "https://lu.ma/nyc/social-clubs",
+    # Talks / panels
+    "https://lu.ma/nyc/panel",
+    "https://lu.ma/nyc/talks",
+    # Dance — meet-people via partner-dance
+    "https://lu.ma/nyc/salsa",
+    "https://lu.ma/nyc/bachata",
+    "https://lu.ma/nyc/swing",
+    # Music / comedy specifics (cross-tag verification with /music, /comedy)
+    "https://lu.ma/nyc/live-music",
+    "https://lu.ma/nyc/jazz-clubs",
+    "https://lu.ma/nyc/comedy-shows",
     # Curator calendars (verified live)
     "https://lu.ma/nycbackgammonclub",
     "https://lu.ma/readingrhythms-manhattan",
