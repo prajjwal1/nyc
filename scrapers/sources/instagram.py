@@ -169,17 +169,38 @@ def scrape() -> list[dict]:
     ig_budget_seconds = float(os.environ.get("IG_TIME_BUDGET_SECONDS", "1500"))  # 25 min default
     started = _time.time()
 
-    # Priority order so the most relevant accounts are guaranteed scraped:
-    # 0 = saved-from (highest)
-    # 1 = directly followed
-    # 2 = BFS-discovered via @mentions
-    def _priority(a: str) -> int:
-        a = a.lower()
-        if a in _AFFINITY_ACCOUNTS_CACHE:
-            return 0
-        if a in _FOLLOWING_ACCOUNTS_CACHE:
-            return 1
-        return 2
+    # Priority order so the most relevant accounts are guaranteed scraped
+    # within the time budget. Tier (lower = higher priority):
+    #   0 = saved-from (user explicitly bookmarked their posts)
+    #   1 = directly followed by user
+    #   2 = high-yield (>= 25% of recent posts produce events)
+    #   3 = medium-yield (>= 10%)
+    #   4 = unknown (newly discovered, not enough data)
+    #   5 = low-yield (< 10% with >= 10 posts seen)
+    # Inside each tier, sort by yield desc — best accounts of the tier first.
+    def _priority(a: str) -> tuple[int, float]:
+        al = a.lower()
+        if al in _AFFINITY_ACCOUNTS_CACHE:
+            base = 0
+        elif al in _FOLLOWING_ACCOUNTS_CACHE:
+            base = 1
+        else:
+            q = _ACCOUNT_QUALITY_CACHE.get(al, {})
+            posts_seen = q.get("posts_scraped", 0)
+            yield_ = (q.get("events_emitted", 0) / posts_seen) if posts_seen >= 10 else None
+            if yield_ is None:
+                base = 4  # unknown
+            elif yield_ >= 0.25:
+                base = 2
+            elif yield_ >= 0.10:
+                base = 3
+            else:
+                base = 5  # low-yield deprioritized
+        # Negate yield so higher yield sorts FIRST inside each tier.
+        q = _ACCOUNT_QUALITY_CACHE.get(al, {})
+        posts_seen = q.get("posts_scraped", 0)
+        y = (q.get("events_emitted", 0) / posts_seen) if posts_seen else 0.0
+        return (base, -y)
     affinity_first = sorted(all_accounts, key=_priority)
 
     for idx, account in enumerate(affinity_first):
