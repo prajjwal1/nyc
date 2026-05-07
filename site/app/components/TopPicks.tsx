@@ -4,6 +4,7 @@ import { format, parseISO } from "date-fns";
 import { useState } from "react";
 import { Event } from "../lib/types";
 import EventCard from "./EventCard";
+import AccountBanner from "./AccountBanner";
 import { isHidden, isSavedLocal } from "../lib/interests";
 
 // Series key — when the same recurring event title appears across many
@@ -41,6 +42,9 @@ interface TopPicksProps {
   events: Event[];
   onSelectDate: (date: string) => void;
   onAccountClick?: (account: string) => void;
+  accountFilter?: string;        // e.g. "theskint" when search is "@theskint"
+  topAccounts?: import("../lib/types").TopAccount[];
+  onClearAccountFilter?: () => void;
 }
 
 const MAX_PER_DAY = 8;
@@ -147,7 +151,14 @@ function diversifyByCategory(events: Event[], n: number, topK = 2, maxPerOrganiz
   return result;
 }
 
-export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPicksProps) {
+export default function TopPicks({
+  events,
+  onSelectDate,
+  onAccountClick,
+  accountFilter,
+  topAccounts,
+  onClearAccountFilter,
+}: TopPicksProps) {
   const todayStr = format(new Date(), "yyyy-MM-dd");
   const now = new Date();
   // Force-rerender token bumped when user hides an event so the card
@@ -233,6 +244,15 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
 
   return (
     <div className="mb-8">
+      {accountFilter && (
+        <AccountBanner
+          account={accountFilter}
+          events={events}
+          topAccount={topAccounts?.find((a) => a.username.toLowerCase() === accountFilter.toLowerCase())}
+          onClear={onClearAccountFilter || (() => {})}
+        />
+      )}
+
       <div className="flex items-end justify-between mb-4 gap-4">
         <div>
           <h2 className="text-xl font-semibold text-gray-900">For You</h2>

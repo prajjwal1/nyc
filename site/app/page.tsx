@@ -235,6 +235,9 @@ export default function Home() {
                   events={presetEvents}
                   onSelectDate={handleSelectDate}
                   onAccountClick={(acct) => setSearch("@" + acct)}
+                  accountFilter={search.startsWith("@") ? search.slice(1) : undefined}
+                  topAccounts={topAccounts}
+                  onClearAccountFilter={() => setSearch("")}
                 />
               </>
             ) : (

@@ -114,6 +114,10 @@ GENERIC_URLS = [
     "https://allevents.in/new-york/business",
     "https://allevents.in/new-york/art",
     "https://allevents.in/new-york/yoga",
+    "https://allevents.in/new-york/film",
+    "https://allevents.in/new-york/literature",
+    "https://allevents.in/new-york/sports",
+    "https://allevents.in/new-york/exhibition",
     # Songkick metro pages — major live-music coverage with JSON-LD
     "https://www.songkick.com/metro-areas/7644-us-new-york",
     "https://www.songkick.com/metro-areas/7644-us-new-york/2",
