@@ -996,6 +996,21 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
         except Exception:
             pass
 
+        # IG geo-tag: when a post is location-tagged, the venue name is
+        # authoritative — much cleaner than parsing the caption's free text
+        # for "@venue" mentions or "at X" patterns.
+        geo_name = ""
+        geo_lat = None
+        geo_lng = None
+        try:
+            ig_loc = getattr(post, "location", None)
+            if ig_loc is not None:
+                geo_name = (getattr(ig_loc, "name", "") or "").strip()
+                geo_lat = getattr(ig_loc, "lat", None)
+                geo_lng = getattr(ig_loc, "lng", None)
+        except Exception:
+            pass
+
         posts.append({
             "caption": post.caption or "",
             "date": post.date_utc,
@@ -1008,6 +1023,9 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
             "comments": comments,
             "profile_followers": profile_followers,
             "profile_is_verified": profile_is_verified,
+            "geo_name": geo_name,
+            "geo_lat": geo_lat,
+            "geo_lng": geo_lng,
         })
         count += 1
 
@@ -1147,8 +1165,12 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             if not has_explicit_date:
                 return []
 
-    # If account is a known venue, use it as default location.
-    default_location = _account_default_location(account)
+    # Location preference (most authoritative first):
+    # 1. IG geo-tag (post.location.name) — venue confirmed by the poster
+    # 2. Account default — known venue accounts (mapped statically)
+    # 3. Caption text extraction (per-section)
+    geo_name = (post.get("geo_name") or "").strip()
+    default_location = geo_name or _account_default_location(account)
 
     sections = _split_caption(caption)
     # Detect if this post is clearly a multi-event roundup (many sections w/ dates).
