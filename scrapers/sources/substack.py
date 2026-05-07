@@ -1,8 +1,81 @@
+import json
+import os
 import re
 import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
+
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, infer_categories
+
+# Authoritative event-platform URLs that appear in newsletter post bodies.
+# Substack newsletter posts like "10 NYC events this weekend" link directly
+# to canonical event pages — harvesting those URLs feeds the generic scraper
+# on the next pipeline run for full structured data.
+_EVENT_PLATFORM_RE = re.compile(
+    r"https?://(?:www\.)?(?:"
+    r"lu\.ma/[A-Za-z0-9._-]+|"
+    r"luma\.com/[A-Za-z0-9._-]+|"
+    r"eventbrite\.com/(?:e|cc|o)/[^\s)>\]\"'<]+|"
+    r"partiful\.com/e/[A-Za-z0-9._-]+|"
+    r"posh\.vip/e/[^\s)>\]\"'<]+|"
+    r"ra\.co/(?:events|promoters)/[^\s)>\]\"'<]+|"
+    r"dice\.fm/event/[^\s)>\]\"'<]+|"
+    r"shotgun\.live/(?:[a-z]{2}/)?events/[^\s)>\]\"'<]+|"
+    r"tixr\.com/(?:groups|e)/[^\s)>\]\"'<]+|"
+    r"meetup\.com/[^\s)>\]\"'<]+/events/[^\s)>\]\"'<]+"
+    r")",
+    re.IGNORECASE,
+)
+
+_DISCOVERED_URLS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "discovered_urls.json",
+)
+
+
+def _harvest_and_save_post_urls(html_or_text: str) -> int:
+    """Harvest event-platform URLs from a post body and add to discovered_urls.
+
+    Returns count of NEWLY-added URLs (existing ones are deduped silently).
+    """
+    if not html_or_text:
+        return 0
+    found = set()
+    for m in _EVENT_PLATFORM_RE.finditer(html_or_text):
+        url = m.group(0).rstrip(".,;:!?)").split("#")[0]
+        found.add(url)
+    if not found:
+        return 0
+    # Load existing
+    existing: list = []
+    if os.path.isfile(_DISCOVERED_URLS_PATH):
+        try:
+            with open(_DISCOVERED_URLS_PATH) as f:
+                d = json.load(f)
+            existing = d if isinstance(d, list) else d.get("urls", [])
+        except Exception:
+            existing = []
+    seen = {it["url"] if isinstance(it, dict) else it for it in existing}
+    added = 0
+    now = datetime.now(timezone.utc).isoformat()
+    for url in found:
+        if url in seen:
+            continue
+        existing.append({"url": url, "discovered_at": now, "discovered_via": "substack_body"})
+        seen.add(url)
+        added += 1
+    if added:
+        try:
+            os.makedirs(os.path.dirname(_DISCOVERED_URLS_PATH), exist_ok=True)
+            tmp = _DISCOVERED_URLS_PATH + ".tmp"
+            with open(tmp, "w") as f:
+                json.dump(existing, f, indent=2)
+            os.replace(tmp, _DISCOVERED_URLS_PATH)
+        except Exception as e:
+            print(f"[substack] Failed to save discovered URLs: {e}")
+    return added
 
 FEEDS = [
     "https://onefinedaynyc.substack.com/feed",
@@ -29,34 +102,44 @@ DATE_PATTERNS = [
 
 async def scrape() -> list[dict]:
     events = []
+    total_url_added = 0
     for feed_url in FEEDS:
         try:
             xml_text = await fetch_text(feed_url)
-            events.extend(_parse_feed(xml_text))
+            feed_events, urls_added = _parse_feed(xml_text)
+            events.extend(feed_events)
+            total_url_added += urls_added
         except Exception as e:
             print(f"[substack] Failed to fetch {feed_url}: {e}")
+    if total_url_added:
+        print(f"[substack] Harvested {total_url_added} event-platform URLs from post bodies")
     return events
 
 
-def _parse_feed(xml_text: str) -> list[dict]:
+def _parse_feed(xml_text: str) -> tuple[list[dict], int]:
     events = []
+    urls_added = 0
     root = ET.fromstring(xml_text)
 
     # RSS feeds use <channel><item> structure
     ns = {"content": "http://purl.org/rss/1.0/modules/content/"}
     channel = root.find("channel")
     if channel is None:
-        return events
+        return events, 0
 
     items = channel.findall("item")
     # Process the most recent 8 posts (was 3) — captures more weekly guides
     for item in items[:8]:
         try:
             events.extend(_parse_item(item, ns))
+            # Harvest authoritative event-platform URLs from post body —
+            # newsletter posts often link to lu.ma/eventbrite/etc. directly.
+            body = item.findtext("content:encoded", "", namespaces=ns) or item.findtext("description", "")
+            urls_added += _harvest_and_save_post_urls(body)
         except Exception as e:
             title = item.findtext("title", "unknown")
             print(f"[substack] Error parsing item '{title}': {e}")
-    return events
+    return events, urls_added
 
 
 def _parse_item(item, ns: dict) -> list[dict]:
