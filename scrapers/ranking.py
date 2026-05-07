@@ -119,6 +119,9 @@ def compute_score(event: dict) -> float:
     hot_boost = _hot_event_boost(event)
     # Account-yield boost: IG accounts that consistently produce events
     yield_boost = _account_yield_boost(event)
+    # Affinity co-mention boost: accounts repeatedly @-tagged in event
+    # posts by accounts the user saves-from are high-confidence picks.
+    comention_boost = _affinity_comention_boost(event)
     # Content-quality boost: real flyer image + substantive description
     quality_boost = _content_quality_boost(event)
 
@@ -139,7 +142,7 @@ def compute_score(event: dict) -> float:
         base_score + high_value_boost + social_boost + meet_people_boost
         + saved_boost + tagged_boost + affinity_boost + following_boost
         + cred_boost + cross_source_boost + hot_boost + yield_boost
-        + quality_boost + time_relevance + dow_fit + tod_fit
+        + comention_boost + quality_boost + time_relevance + dow_fit + tod_fit
         + geo_proximity
         - soft_penalty - audience_penalty
     )
@@ -189,6 +192,29 @@ def _account_yield_boost(event: dict) -> float:
         return 0.04
     if yield_ >= 0.10:
         return 0.02
+    return 0.0
+
+
+def _affinity_comention_boost(event: dict) -> float:
+    """Boost when this event's IG account has been @-mentioned in event posts
+    by accounts the user already saves from. Strong recommendation signal:
+    'people you trust point to this account.'
+
+    Tier:
+      >= 5 comentions: +0.10
+      >= 3 comentions: +0.07
+      >= 2 comentions: +0.05
+      >= 1 comention:  +0.03
+    """
+    n = event.get("affinityComentions", 0)
+    if n >= 5:
+        return 0.10
+    if n >= 3:
+        return 0.07
+    if n >= 2:
+        return 0.05
+    if n >= 1:
+        return 0.03
     return 0.0
 
 

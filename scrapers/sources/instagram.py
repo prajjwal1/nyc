@@ -211,6 +211,9 @@ def scrape() -> list[dict]:
         try:
             posts = _fetch_posts(loader, account)
             account_event_count = 0
+            # Is this account one the user saves-from? If so, every @-mention
+            # in their event posts is a high-confidence recommendation.
+            is_author_affinity = account.lower() in _AFFINITY_ACCOUNTS_CACHE
             for post in posts:
                 # Capture bio URL once per account
                 bio = post.get("bio_url", "")
@@ -228,6 +231,13 @@ def scrape() -> list[dict]:
 
                 all_events.extend(extracted)
                 account_event_count += len(extracted)
+
+                # Affinity co-mention tracking: if this post is from an
+                # account the user saves-from AND the post is about an event
+                # (extracted >= 1), every @-mention in the caption is a
+                # high-confidence recommendation. Bump per-mention counters.
+                if is_author_affinity and extracted:
+                    _record_affinity_comentions(account, post.get("caption", ""))
             # Record account-quality stats for this account this run.
             if posts:
                 _record_account_activity(account, len(posts), account_event_count)
@@ -505,6 +515,40 @@ def _record_account_activity(username: str, posts_count: int, events_count: int)
     entry["posts_scraped"] = entry.get("posts_scraped", 0) + posts_count
     entry["events_emitted"] = entry.get("events_emitted", 0) + events_count
     entry["last_seen"] = datetime.now(timezone.utc).isoformat()
+
+
+_AFFINITY_MENTION_RE = re.compile(r"@([a-z0-9_][a-z0-9._]{1,28}[a-z0-9_])", re.IGNORECASE)
+
+
+def _record_affinity_comentions(author: str, caption: str) -> None:
+    """Bump per-mention counters when an affinity-account event post mentions
+    other accounts. Persisted in account_quality.json so high-co-mention
+    accounts surface in ranking and discovery rotation.
+    """
+    if not caption:
+        return
+    author_l = author.lower()
+    for m in _AFFINITY_MENTION_RE.finditer(caption):
+        handle = m.group(1).lower()
+        if handle == author_l or handle == IG_USERNAME.lower():
+            continue
+        # Skip obvious non-account mentions (emojis, generic terms)
+        if len(handle) < 3:
+            continue
+        entry = _ACCOUNT_QUALITY_CACHE.setdefault(handle, {
+            "posts_scraped": 0,
+            "events_emitted": 0,
+            "last_seen": "",
+        })
+        entry["affinity_comentions"] = entry.get("affinity_comentions", 0) + 1
+        # Track WHICH affinity accounts mentioned this — useful for
+        # surfacing "recommended by @theskint, @sipsandstoriesnyc"
+        sources = entry.setdefault("affinity_comention_sources", [])
+        if author_l not in sources:
+            sources.append(author_l)
+            # Cap to 10 most-recent contributors to bound payload
+            if len(sources) > 10:
+                entry["affinity_comention_sources"] = sources[-10:]
 
 
 def _load_account_cursors() -> dict:
@@ -1304,6 +1348,15 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
         if posts_seen >= 5:  # only meaningful with enough samples
             ev["accountEventYield"] = round(events_emitted / posts_seen, 3)
             ev["accountPostsSeen"] = posts_seen
+        # Surface co-mention strength even when posts_seen is small —
+        # accounts the user's saves-from accounts tag are high-confidence
+        # even if we haven't directly scraped them many times.
+        comentions = q.get("affinity_comentions", 0)
+        if comentions > 0:
+            ev["affinityComentions"] = comentions
+            sources = q.get("affinity_comention_sources", [])
+            if sources:
+                ev["affinityComentionSources"] = sources[:5]
 
     return events
 
