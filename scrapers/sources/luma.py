@@ -20,6 +20,9 @@ LUMA_PAGES = [
     "https://lu.ma/nyc/literary",
     "https://lu.ma/nyc/wellness",
     "https://lu.ma/nyc/fitness",
+    "https://lu.ma/nyc/running",
+    "https://lu.ma/nyc/run-clubs",
+    "https://lu.ma/nyc/yoga",
     # Curator calendars (verified live)
     "https://lu.ma/nycbackgammonclub",
     "https://lu.ma/readingrhythms-manhattan",

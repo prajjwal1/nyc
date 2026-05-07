@@ -269,6 +269,7 @@ export function clearAllLocalState(): void {
     window.localStorage.removeItem(STORAGE_KEY);
     window.localStorage.removeItem(SAVED_KEY);
     window.localStorage.removeItem(HIDDEN_KEY);
+    window.localStorage.removeItem(OPENED_KEY);
     window.localStorage.removeItem("nyc-events:lastVisitedAt:v1");
     window.localStorage.removeItem("nyc-events:viewMode");
   } catch {
