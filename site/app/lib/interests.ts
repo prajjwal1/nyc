@@ -283,3 +283,42 @@ export function getSavedCount(): number {
 export function getHiddenCount(): number {
   return loadHidden().size;
 }
+
+// Already-opened events: fade-out signal so the user can scan for what's
+// NEW vs what they've already explored. Mirrors IG's "seen" indicators.
+const OPENED_KEY = "nyc-events:opened:v1";
+
+function loadOpenedSet(): Set<string> {
+  if (typeof window === "undefined") return new Set();
+  try {
+    const raw = window.localStorage.getItem(OPENED_KEY);
+    if (!raw) return new Set();
+    const arr = JSON.parse(raw);
+    return new Set(Array.isArray(arr) ? arr : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function saveOpenedSet(s: Set<string>): void {
+  if (typeof window === "undefined") return;
+  try {
+    // Cap at 1000 most-recent to bound storage.
+    const arr = Array.from(s).slice(-1000);
+    window.localStorage.setItem(OPENED_KEY, JSON.stringify(arr));
+  } catch {
+    // ignore
+  }
+}
+
+export function markEventOpened(eventId: string): void {
+  if (!eventId) return;
+  const s = loadOpenedSet();
+  s.add(eventId);
+  saveOpenedSet(s);
+}
+
+export function isEventOpened(eventId: string): boolean {
+  if (!eventId) return false;
+  return loadOpenedSet().has(eventId);
+}

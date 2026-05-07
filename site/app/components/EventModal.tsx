@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal } from "../lib/interests";
+import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, markEventOpened } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 
 interface Props {
@@ -25,6 +25,9 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
     if (event) {
       setSaved(isSavedLocal(event.id));
       setImgIdx(0);
+      // Opening the modal is a strong "I considered this event" signal —
+      // mark it as opened so the card dims on next visit.
+      markEventOpened(event.id);
     }
   }, [event]);
 

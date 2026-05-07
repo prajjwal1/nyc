@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal } from "../lib/interests";
+import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, isEventOpened } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 
 interface EventCardProps {
@@ -48,13 +48,16 @@ function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event)
   };
   const dateLabel = formatDateLabel(event.date);
   const startsSoon = isStartingSoon(event);
+  const opened = isEventOpened(event.id);
   return (
     <a
       href={event.sourceUrl}
       onClick={handleClick}
       target="_blank"
       rel="noopener noreferrer"
-      className="block group relative aspect-square rounded-lg overflow-hidden bg-gray-100 hover:opacity-90 transition-opacity"
+      className={`block group relative aspect-square rounded-lg overflow-hidden bg-gray-100 hover:opacity-90 transition-opacity ${
+        opened ? "opacity-60" : ""
+      }`}
       title={event.title}
     >
       {event.imageUrl ? (
@@ -149,13 +152,16 @@ function MediaFirstCard({
     e.stopPropagation();
     setSaved(toggleSavedLocal(event.id, { account: event.instagramAccount, categories: event.categories, sourceUrl: event.sourceUrl }));
   };
+  const opened = isEventOpened(event.id);
   return (
     <a
       href={event.sourceUrl}
       onClick={handleOpen}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all overflow-hidden"
+      className={`block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all overflow-hidden ${
+        opened ? "opacity-60" : ""
+      }`}
     >
       <div className="relative aspect-square bg-gray-100">
         <img
@@ -350,13 +356,16 @@ function FeedCard({
     !desc.toLowerCase().startsWith("link in bio") &&
     !desc.toLowerCase().startsWith("photo by");
 
+  const openedFeed = isEventOpened(event.id);
   return (
     <a
       href={event.sourceUrl}
       onClick={handleCardClick}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all overflow-hidden"
+      className={`block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all overflow-hidden ${
+        openedFeed ? "opacity-60" : ""
+      }`}
     >
       <div className="flex gap-3 p-3">
         {event.imageUrl && (
