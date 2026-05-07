@@ -23,6 +23,32 @@ LUMA_PAGES = [
     "https://lu.ma/nyc/running",
     "https://lu.ma/nyc/run-clubs",
     "https://lu.ma/nyc/yoga",
+    # Singles / meeting people — directly serves user's primary goal
+    "https://lu.ma/nyc/dating",
+    "https://lu.ma/nyc/singles",
+    "https://lu.ma/nyc/queer",
+    # Music / creative
+    "https://lu.ma/nyc/jazz",
+    "https://lu.ma/nyc/dance",
+    "https://lu.ma/nyc/open-mic",
+    "https://lu.ma/nyc/acoustic",
+    "https://lu.ma/nyc/photography",
+    "https://lu.ma/nyc/design",
+    # Active / outdoor social
+    "https://lu.ma/nyc/climbing",
+    "https://lu.ma/nyc/biking",
+    "https://lu.ma/nyc/volleyball",
+    # Hands-on social workshops
+    "https://lu.ma/nyc/pottery",
+    "https://lu.ma/nyc/craft",
+    "https://lu.ma/nyc/workshops",
+    # Food
+    "https://lu.ma/nyc/breakfast",
+    "https://lu.ma/nyc/brunch",
+    "https://lu.ma/nyc/mixology",
+    # Games + meditation (aligns with games/wellness interests)
+    "https://lu.ma/nyc/gaming",
+    "https://lu.ma/nyc/meditation",
     # Curator calendars (verified live)
     "https://lu.ma/nycbackgammonclub",
     "https://lu.ma/readingrhythms-manhattan",
