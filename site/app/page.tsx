@@ -53,6 +53,41 @@ export default function Home() {
     setLastVisitedAt(readAndAdvanceLastVisited());
   }, []);
 
+  // URL permalinks: read ?date=YYYY-MM-DD&view=for-you|calendar on mount
+  // so users can bookmark + share specific date views.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const p = new URLSearchParams(window.location.search);
+    const d = p.get("date");
+    const v = p.get("view");
+    if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) {
+      setSelectedDate(d);
+      // If a date is in the URL, default to calendar view (since the
+      // user is asking to see a specific day).
+      if (!v || v === "calendar") setView("calendar");
+    }
+    if (v === "for-you" || v === "calendar") setView(v);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Reflect view + selectedDate in the URL so it's bookmarkable / shareable.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const p = new URLSearchParams(window.location.search);
+    if (view === "calendar" && selectedDate) {
+      p.set("date", selectedDate);
+      p.set("view", "calendar");
+    } else if (view === "for-you") {
+      p.set("view", "for-you");
+      p.delete("date");
+    }
+    const q = p.toString();
+    const newUrl = window.location.pathname + (q ? "?" + q : "") + window.location.hash;
+    if (newUrl !== window.location.pathname + window.location.search + window.location.hash) {
+      window.history.replaceState(null, "", newUrl);
+    }
+  }, [view, selectedDate]);
+
   const newSinceLastVisit = useMemo(() => {
     if (!lastVisitedAt) return 0;
     const cutoff = new Date(lastVisitedAt).getTime();
