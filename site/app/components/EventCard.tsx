@@ -75,6 +75,15 @@ function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event)
       <div className="absolute top-1.5 left-1.5 bg-white/95 backdrop-blur rounded px-1.5 py-0.5 text-[10px] font-semibold text-gray-900 shadow-sm">
         {dateLabel}
       </div>
+      {/* Multi-image badge (IG-style stack icon) */}
+      {event.extraImages && event.extraImages.length > 0 && (
+        <div className="absolute top-1.5 right-1.5 bg-black/60 text-white rounded px-1.5 py-0.5 text-[9px] font-bold backdrop-blur flex items-center gap-1">
+          <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 11H5m14-7H5m14 14H5" />
+          </svg>
+          {1 + event.extraImages.length}
+        </div>
+      )}
       {/* Starting soon pulse */}
       {startsSoon && (
         <div className="absolute top-1.5 right-1.5 bg-rose-600 text-white rounded px-1.5 py-0.5 text-[10px] font-bold animate-pulse">

@@ -32,6 +32,7 @@ export interface Event {
   accountVerified?: boolean;
   recurring?: boolean;
   ocrEnriched?: boolean;
+  extraImages?: string[];  // additional carousel slides (IG multi-photo posts)
 }
 
 export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> = {

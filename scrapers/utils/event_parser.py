@@ -604,6 +604,7 @@ def build_event(
     source: str = "",
     source_url: str = "",
     image_url: str | None = None,
+    extra_images: list[str] | None = None,
     price: str | None = None,
     categories: list[str] | None = None,
 ) -> dict:
@@ -622,7 +623,16 @@ def build_event(
     if not start_time:
         start_time = infer_default_start_time(categories, cleaned_title, description)
 
-    return {
+    # Filter extra_images to drop the primary image and any duplicates
+    extras: list[str] = []
+    if extra_images:
+        seen = {image_url} if image_url else set()
+        for img in extra_images:
+            if img and img not in seen:
+                extras.append(img)
+                seen.add(img)
+
+    out = {
         "id": make_event_id(source, cleaned_title, date_str),
         "title": cleaned_title,
         "description": clean_description(description, max_length=300) if description else "",
@@ -641,3 +651,7 @@ def build_event(
         "price": price or extract_price(f"{title} {description}"),
         "scrapedAt": datetime.now().isoformat(),
     }
+    # Only include extraImages when present — keeps non-carousel events lean
+    if extras:
+        out["extraImages"] = extras[:9]  # cap at 9 (10 slides total) to bound payload
+    return out

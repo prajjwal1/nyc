@@ -17,19 +17,28 @@ interface Props {
 // they want to actually buy tickets / see the source.
 export default function EventModal({ event, onClose, onAccountClick }: Props) {
   const [saved, setSaved] = useState(false);
+  const [imgIdx, setImgIdx] = useState(0);
 
   useEffect(() => {
-    if (event) setSaved(isSavedLocal(event.id));
+    if (event) {
+      setSaved(isSavedLocal(event.id));
+      setImgIdx(0);
+    }
   }, [event]);
 
-  // Close on ESC
+  // Keyboard navigation: ESC to close, arrows for carousel
   useEffect(() => {
     if (!event) return;
+    const totalImgs = 1 + (event.extraImages?.length || 0);
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      else if (e.key === "ArrowRight" && totalImgs > 1) {
+        setImgIdx((i) => Math.min(totalImgs - 1, i + 1));
+      } else if (e.key === "ArrowLeft" && totalImgs > 1) {
+        setImgIdx((i) => Math.max(0, i - 1));
+      }
     };
     window.addEventListener("keydown", handler);
-    // Lock body scroll
     document.body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", handler);
@@ -65,16 +74,61 @@ export default function EventModal({ event, onClose, onAccountClick }: Props) {
           </svg>
         </button>
 
-        {/* Hero image */}
-        {event.imageUrl && (
-          <div className="w-full bg-gray-100 max-h-[70vh] overflow-hidden">
-            <img
-              src={event.imageUrl}
-              alt=""
-              className="w-full h-auto object-contain max-h-[70vh]"
-            />
-          </div>
-        )}
+        {/* Hero image — IG-style carousel when multi-image */}
+        {(() => {
+          const images = [event.imageUrl, ...(event.extraImages || [])].filter(Boolean) as string[];
+          if (images.length === 0) return null;
+          const current = images[Math.min(imgIdx, images.length - 1)];
+          return (
+            <div className="relative w-full bg-gray-100 max-h-[70vh] overflow-hidden">
+              <img
+                src={current}
+                alt=""
+                className="w-full h-auto object-contain max-h-[70vh]"
+              />
+              {images.length > 1 && (
+                <>
+                  {imgIdx > 0 && (
+                    <button
+                      onClick={() => setImgIdx((i) => Math.max(0, i - 1))}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-md transition-colors"
+                      aria-label="Previous image"
+                    >
+                      <svg className="w-5 h-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                  )}
+                  {imgIdx < images.length - 1 && (
+                    <button
+                      onClick={() => setImgIdx((i) => Math.min(images.length - 1, i + 1))}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-md transition-colors"
+                      aria-label="Next image"
+                    >
+                      <svg className="w-5 h-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  )}
+                  {/* Dot indicator */}
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 px-2 py-1 rounded-full bg-black/40 backdrop-blur">
+                    {images.map((_, i) => (
+                      <span
+                        key={i}
+                        className={`block w-1.5 h-1.5 rounded-full transition-colors ${
+                          i === imgIdx ? "bg-white" : "bg-white/40"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/50 text-white text-[10px] font-semibold backdrop-blur">
+                    {imgIdx + 1} / {images.length}
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        })()}
 
         <div className="p-5 space-y-4">
           {/* Date pill + highlights */}

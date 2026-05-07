@@ -1060,6 +1060,10 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     post_date = post.get("date")
     post_url = post.get("url", "")
     image_url = post.get("image", "")
+    all_post_images = post.get("all_images") or []
+    # extra_images is the carousel slides AFTER the cover image — used by
+    # the EventModal to render an IG-style multi-image swiper.
+    extra_imgs = [img for img in all_post_images if img and img != image_url][:9]
     bio_url = post.get("bio_url", "")
 
     # Try to find all URLs in the full caption (some appear only once at end).
@@ -1149,6 +1153,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             source="instagram",
             source_url=source_url,
             image_url=image_url,
+            extra_images=extra_imgs,
             categories=categories,
         ))
 
@@ -1171,6 +1176,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
                 source="instagram",
                 source_url=all_urls[0] if all_urls else post_url,
                 image_url=image_url,
+                extra_images=extra_imgs,
                 categories=infer_categories(title, full_caption),
             ))
 
@@ -1187,6 +1193,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             source="instagram",
             source_url=all_urls[0] if all_urls else post_url,
             image_url=image_url,
+            extra_images=extra_imgs,
             categories=infer_categories(title, caption),
         ))
 
