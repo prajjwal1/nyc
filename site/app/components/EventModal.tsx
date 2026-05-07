@@ -9,13 +9,15 @@ interface Props {
   event: Event | null;
   onClose: () => void;
   onAccountClick: (account: string) => void;
+  relatedEvents?: Event[];
+  onSelectEvent?: (event: Event) => void;
 }
 
 // Full-screen modal that lets the user evaluate an event without leaving
 // the site. Mirrors the IG-post-tap experience: big image, full caption,
 // action buttons, and a single explicit "Open original" link for when
 // they want to actually buy tickets / see the source.
-export default function EventModal({ event, onClose, onAccountClick }: Props) {
+export default function EventModal({ event, onClose, onAccountClick, relatedEvents = [], onSelectEvent }: Props) {
   const [saved, setSaved] = useState(false);
   const [imgIdx, setImgIdx] = useState(0);
 
@@ -296,10 +298,78 @@ export default function EventModal({ event, onClose, onAccountClick }: Props) {
               Hide
             </button>
           </div>
+
+          {/* More from @account / source — IG-profile-equivalent strip */}
+          {(() => {
+            const todayStr = new Date().toISOString().split("T")[0];
+            const more = relatedEvents
+              .filter((e) =>
+                e.id !== event.id
+                && (e.date >= todayStr)
+                && (
+                  (event.instagramAccount && e.instagramAccount === event.instagramAccount)
+                  || (!event.instagramAccount && e.source === event.source && e.location?.name === event.location?.name && !!e.location?.name)
+                )
+              )
+              .sort((a, b) => a.date.localeCompare(b.date))
+              .slice(0, 4);
+            if (more.length === 0) return null;
+            const heading = event.instagramAccount
+              ? `More from @${event.instagramAccount}`
+              : event.location?.name
+                ? `More at ${event.location.name}`
+                : `More from ${SOURCE_LABELS[event.source] || event.source}`;
+            return (
+              <div className="pt-3 border-t border-gray-100">
+                <h3 className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">
+                  {heading}
+                </h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {more.map((e) => (
+                    <button
+                      key={e.id}
+                      onClick={() => {
+                        if (onSelectEvent) {
+                          onSelectEvent(e);
+                        } else {
+                          onClose();
+                        }
+                      }}
+                      className="text-left p-2 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors flex gap-2"
+                    >
+                      {e.imageUrl ? (
+                        <img src={e.imageUrl} alt="" loading="lazy" className="shrink-0 w-12 h-12 rounded object-cover bg-gray-100" />
+                      ) : (
+                        <div className="shrink-0 w-12 h-12 rounded bg-gradient-to-br from-gray-200 to-gray-300" />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[11px] font-semibold text-gray-700 line-clamp-1">
+                          {formatDateLabel(e.date)}
+                          {e.startTime ? " · " + formatTime(e.startTime) : ""}
+                        </div>
+                        <div className="text-xs font-medium text-gray-900 line-clamp-2 leading-tight">
+                          {e.title}
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </div>
     </div>
   );
+}
+
+function formatDateLabel(iso: string): string {
+  try {
+    const d = new Date(iso + "T00:00:00");
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  } catch {
+    return iso;
+  }
 }
 
 function ShareButton({ event }: { event: Event }) {

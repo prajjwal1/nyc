@@ -302,6 +302,8 @@ export default function Home() {
         event={openEvent}
         onClose={() => setOpenEvent(null)}
         onAccountClick={(acct) => setSearch("@" + acct)}
+        relatedEvents={events}
+        onSelectEvent={setOpenEvent}
       />
     </div>
   );
