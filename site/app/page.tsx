@@ -12,6 +12,7 @@ import TopPicks from "./components/TopPicks";
 import TopAccounts from "./components/TopAccounts";
 import EventModal from "./components/EventModal";
 import { Event } from "./lib/types";
+import { isSavedLocal } from "./lib/interests";
 
 type View = "for-you" | "calendar";
 
@@ -61,7 +62,9 @@ export default function Home() {
       );
     }
     if (presetFilter === "saved") {
-      return events.filter((e) => e.userSaved);
+      // Include both IG-saved (server signal) AND locally-saved
+      // (user starred the event in browser via ★ button).
+      return events.filter((e) => e.userSaved || isSavedLocal(e.id));
     }
     return events;
   }, [events, presetFilter]);
