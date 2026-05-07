@@ -442,12 +442,33 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     if previous_index is None:
         previous_index = {}
     now_iso = datetime.now().isoformat()
+    velocity_count = 0
     for ev in events:
         prev = previous_index.get(ev.get("id"))
         if prev and prev.get("firstSeenAt"):
             ev["firstSeenAt"] = prev["firstSeenAt"]
         else:
             ev["firstSeenAt"] = now_iso
+
+        # Engagement velocity: when an event's likes/comments grew since
+        # the previous scrape, that's a "trending" signal. Stash the delta
+        # for the ranking layer to consume.
+        if prev:
+            try:
+                prev_likes = int(prev.get("likes", 0) or 0)
+                prev_comments = int(prev.get("comments", 0) or 0)
+                cur_likes = int(ev.get("likes", 0) or 0)
+                cur_comments = int(ev.get("comments", 0) or 0)
+                # Combined engagement delta (comments weighted 5x, same as
+                # _popularity_score logic).
+                delta = (cur_likes - prev_likes) + 5 * (cur_comments - prev_comments)
+                if delta > 0:
+                    ev["engagementDelta"] = delta
+                    velocity_count += 1
+            except Exception:
+                pass
+    if velocity_count:
+        print(f"[normalize] {velocity_count} events have positive engagement velocity since last scrape")
 
     events = rank_events(events)
 

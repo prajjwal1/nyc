@@ -122,6 +122,9 @@ def compute_score(event: dict) -> float:
     # Affinity co-mention boost: accounts repeatedly @-tagged in event
     # posts by accounts the user saves-from are high-confidence picks.
     comention_boost = _affinity_comention_boost(event)
+    # Engagement velocity: events whose likes/comments have grown since
+    # the last scrape are trending — distinct from raw popularity score.
+    velocity_boost = _engagement_velocity_boost(event)
     # Content-quality boost: real flyer image + substantive description
     quality_boost = _content_quality_boost(event)
 
@@ -142,8 +145,8 @@ def compute_score(event: dict) -> float:
         base_score + high_value_boost + social_boost + meet_people_boost
         + saved_boost + tagged_boost + affinity_boost + following_boost
         + cred_boost + cross_source_boost + hot_boost + yield_boost
-        + comention_boost + quality_boost + time_relevance + dow_fit + tod_fit
-        + geo_proximity
+        + comention_boost + velocity_boost + quality_boost + time_relevance
+        + dow_fit + tod_fit + geo_proximity
         - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
@@ -191,6 +194,31 @@ def _account_yield_boost(event: dict) -> float:
     if yield_ >= 0.25:
         return 0.04
     if yield_ >= 0.10:
+        return 0.02
+    return 0.0
+
+
+def _engagement_velocity_boost(event: dict) -> float:
+    """Boost when this event's likes/comments have grown since last scrape.
+    Trending signal — distinct from raw popularity (which scores absolute
+    counts). An event going from 50 likes to 200 likes between scrapes is
+    going viral; we should surface it.
+
+    delta = (likes_delta) + 5 * (comments_delta), only positive deltas
+    are stored (prefer trending up). Tiers:
+      >= 500 delta: +0.10  (going viral)
+      >= 150 delta: +0.07  (rapidly accumulating attention)
+      >= 50 delta:  +0.04  (steady growth)
+      >= 10 delta:  +0.02  (some growth)
+    """
+    delta = event.get("engagementDelta", 0) or 0
+    if delta >= 500:
+        return 0.10
+    if delta >= 150:
+        return 0.07
+    if delta >= 50:
+        return 0.04
+    if delta >= 10:
         return 0.02
     return 0.0
 
