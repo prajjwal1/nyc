@@ -142,8 +142,11 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
 
     Surfaces in the UI as a "Top Accounts" widget so the user can quickly
     browse events from the most reliable NYC event-emitting accounts.
+    Each account is marked with `userSaved: bool` so the UI can split
+    into "From accounts I save from" vs "Suggested for you".
     """
     from collections import defaultdict
+    affinity = _load_user_affinity_set()
     today = _today_iso()
     per_acct: dict[str, dict] = defaultdict(lambda: {
         "events": 0,
@@ -177,10 +180,29 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
             "yield": round(info["yield"], 3),
             "verified": info["verified"],
             "image": info["image"],
+            "userSaved": acct in affinity,
         })
     # Rank by upcoming event count, then by yield (high-quality accounts win).
     out.sort(key=lambda a: (-a["events"], -a["yield"]))
     return out[:n]
+
+
+def _load_user_affinity_set() -> set:
+    """Load user-affinity (saved-from) account usernames lowercased."""
+    import json
+    path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "data", "user_affinity_accounts.json",
+    )
+    if not os.path.isfile(path):
+        return set()
+    try:
+        with open(path) as f:
+            d = json.load(f)
+        accts = d.get("accounts", []) if isinstance(d, dict) else d
+        return {str(a).lower() for a in accts}
+    except Exception:
+        return set()
 
 
 def _today_iso() -> str:

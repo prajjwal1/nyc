@@ -57,6 +57,7 @@ export interface TopAccount {
   yield: number;
   verified: boolean;
   image: string | null;
+  userSaved?: boolean;  // user has previously saved from this account on IG
 }
 
 export interface EventsData {
