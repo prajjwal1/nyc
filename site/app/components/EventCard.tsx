@@ -219,6 +219,29 @@ function MediaFirstCard({
             </span>
           )}
         </div>
+        {/* Recommendation provenance: when this account has been @-mentioned
+            in event posts by accounts the user saves from, surface that. */}
+        {event.affinityComentionSources && event.affinityComentionSources.length > 0 && (
+          <div className="mt-1.5 text-[10px] text-fuchsia-700 flex items-center gap-1">
+            <span>✨ recommended by</span>
+            {event.affinityComentionSources.slice(0, 2).map((src, i) => (
+              <button
+                key={src}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onAccountClick?.(src);
+                }}
+                className="font-medium hover:underline"
+              >
+                @{src}{i < Math.min(1, event.affinityComentionSources!.length - 1) ? "," : ""}
+              </button>
+            ))}
+            {event.affinityComentionSources.length > 2 && (
+              <span className="text-gray-400">+{event.affinityComentionSources.length - 2}</span>
+            )}
+          </div>
+        )}
         <div className="mt-2 flex items-center justify-between text-[11px] text-gray-500">
           {event.instagramAccount ? (
             <button

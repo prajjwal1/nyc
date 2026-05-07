@@ -33,6 +33,8 @@ export interface Event {
   recurring?: boolean;
   ocrEnriched?: boolean;
   extraImages?: string[];  // additional carousel slides (IG multi-photo posts)
+  affinityComentions?: number;
+  affinityComentionSources?: string[];  // affinity accounts that @-mentioned this account
 }
 
 export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> = {

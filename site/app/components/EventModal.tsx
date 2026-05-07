@@ -247,6 +247,30 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
             )}
           </div>
 
+          {/* Recommendation provenance — accounts you save from have
+              @-mentioned this account in event posts. */}
+          {event.affinityComentionSources && event.affinityComentionSources.length > 0 && (
+            <div className="bg-fuchsia-50 border border-fuchsia-200 rounded-lg px-3 py-2 text-xs text-fuchsia-900 flex flex-wrap items-center gap-1">
+              <span className="font-medium">✨ Recommended by</span>
+              {event.affinityComentionSources.slice(0, 4).map((src, i, arr) => (
+                <button
+                  key={src}
+                  onClick={() => {
+                    onAccountClick(src);
+                    onClose();
+                  }}
+                  className="font-semibold hover:underline"
+                >
+                  @{src}{i < arr.length - 1 ? "," : ""}
+                </button>
+              ))}
+              {event.affinityComentionSources.length > 4 && (
+                <span className="text-fuchsia-700">+{event.affinityComentionSources.length - 4} more</span>
+              )}
+              <span className="text-fuchsia-700">— accounts you save from tag this in event posts</span>
+            </div>
+          )}
+
           {/* Action row */}
           <div className="flex flex-wrap items-center gap-2 pt-2">
             <a
