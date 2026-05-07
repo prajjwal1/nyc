@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { format, endOfWeek, eachDayOfInterval, nextSaturday } from "date-fns";
 import { useEvents } from "./hooks/useEvents";
 import Header from "./components/Header";
@@ -12,7 +12,7 @@ import TopPicks from "./components/TopPicks";
 import TopAccounts from "./components/TopAccounts";
 import EventModal from "./components/EventModal";
 import { Event } from "./lib/types";
-import { isSavedLocal } from "./lib/interests";
+import { isSavedLocal, readAndAdvanceLastVisited } from "./lib/interests";
 
 type View = "for-you" | "calendar";
 
@@ -44,6 +44,27 @@ export default function Home() {
   const [view, setView] = useState<View>("for-you");
   const [presetFilter, setPresetFilter] = useState<"meet-people" | "saved" | null>(null);
   const [openEvent, setOpenEvent] = useState<Event | null>(null);
+  const [lastVisitedAt, setLastVisitedAt] = useState<string | null>(null);
+
+  // On first load, read previous-visit timestamp THEN advance it. This way
+  // the current session sees the prior visit's stamp for "new since" math.
+  useEffect(() => {
+    setLastVisitedAt(readAndAdvanceLastVisited());
+  }, []);
+
+  const newSinceLastVisit = useMemo(() => {
+    if (!lastVisitedAt) return 0;
+    const cutoff = new Date(lastVisitedAt).getTime();
+    return events.filter((e) => {
+      const fs = (e as Event & { firstSeenAt?: string }).firstSeenAt;
+      if (!fs) return false;
+      try {
+        return new Date(fs).getTime() > cutoff;
+      } catch {
+        return false;
+      }
+    }).length;
+  }, [events, lastVisitedAt]);
 
   const eventCountByDate = useMemo(() => {
     const map = new Map<string, number>();
@@ -128,7 +149,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header totalEvents={totalEvents} lastUpdated={lastUpdated} />
+      <Header totalEvents={totalEvents} lastUpdated={lastUpdated} newSinceLastVisit={newSinceLastVisit} />
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
         <div className="flex flex-col lg:flex-row gap-6">

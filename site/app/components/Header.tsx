@@ -3,9 +3,10 @@
 interface HeaderProps {
   totalEvents: number;
   lastUpdated?: string;
+  newSinceLastVisit?: number;
 }
 
-export default function Header({ totalEvents, lastUpdated }: HeaderProps) {
+export default function Header({ totalEvents, lastUpdated, newSinceLastVisit }: HeaderProps) {
   const updatedStr = lastUpdated
     ? new Date(lastUpdated).toLocaleDateString("en-US", {
         month: "short",
@@ -23,6 +24,11 @@ export default function Header({ totalEvents, lastUpdated }: HeaderProps) {
             <h1 className="text-2xl font-bold text-gray-900">NYC Events</h1>
             <p className="text-sm text-gray-500">
               {totalEvents} events from across the city
+              {newSinceLastVisit && newSinceLastVisit > 0 ? (
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[11px] font-semibold">
+                  ✨ {newSinceLastVisit} new since you last visited
+                </span>
+              ) : null}
             </p>
           </div>
           {updatedStr && (

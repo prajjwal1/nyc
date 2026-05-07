@@ -120,6 +120,22 @@ export function interestBoost(
   return Math.min(0.15, boost);
 }
 
+// Last-visited timestamp — tracked on page load so we can show "X new
+// since your last visit" badges. Updated AFTER reading so the current
+// session sees the previous-visit timestamp.
+const LAST_VISITED_KEY = "nyc-events:lastVisitedAt:v1";
+
+export function readAndAdvanceLastVisited(): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const prev = window.localStorage.getItem(LAST_VISITED_KEY);
+    window.localStorage.setItem(LAST_VISITED_KEY, new Date().toISOString());
+    return prev;
+  } catch {
+    return null;
+  }
+}
+
 // Locally-saved events — explicit positive signal the user controls. The
 // IG-saved signal already exists for IG events the user bookmarked on IG
 // itself; this is the equivalent for non-IG events (Eventbrite, Luma, etc.)
