@@ -355,6 +355,31 @@ def _extract_event_platform_urls(caption: str) -> set[str]:
     return found
 
 
+def _harvest_post_comments(post, max_comments: int = 8) -> set[str]:
+    """Pull event-platform URLs from top-level comments on an IG post.
+
+    Reserved for HIGH-VALUE posts only (saved/tagged) so we don't multiply
+    API volume across hundreds of curated-account posts. Top-level comments
+    on event posts frequently contain ticket URLs from organizers and
+    venue answers that aren't in the caption itself.
+    """
+    found: set[str] = set()
+    try:
+        comments = post.get_comments()
+    except Exception:
+        return found
+    seen = 0
+    for c in comments:
+        if seen >= max_comments:
+            break
+        seen += 1
+        text = getattr(c, "text", "") or ""
+        if not text:
+            continue
+        found |= _extract_event_platform_urls(text)
+    return found
+
+
 def _save_caption_urls(urls: set[str]) -> None:
     """Append IG caption event-platform URLs to discovered_urls.json."""
     import json
@@ -749,6 +774,14 @@ def _scrape_tagged_posts(loader, max_tagged: int = 30) -> tuple[list[dict], set[
                 # Tagged posts are nearly as strong a signal as saved posts.
                 ev["userTagged"] = True
             events.extend(extracted)
+
+            # Comments mining for tagged posts too — same value as saved.
+            try:
+                comment_urls = _harvest_post_comments(post, max_comments=8)
+                if comment_urls:
+                    _save_caption_urls(comment_urls)
+            except Exception:
+                pass
         print(f"[instagram] Scraped {len(events)} events from {count} TAGGED posts ({len(accounts_seen)} unique accounts)")
     except Exception as exc:
         print(f"[instagram] Tagged posts failed: {exc}")
@@ -808,6 +841,19 @@ def _scrape_saved_posts(loader, max_saved: int = 50) -> tuple[list[dict], set[st
             for ev in extracted:
                 ev["userSaved"] = True
             events.extend(extracted)
+
+            # Comments mining — saved posts are the highest-value targets.
+            # Top-level comments on event posts often carry ticket URLs and
+            # venue answers that the caption omits ("when's the next one?").
+            # Bounded to saved posts only so we don't multiply API volume.
+            try:
+                comment_urls = _harvest_post_comments(post, max_comments=8)
+                if comment_urls:
+                    _save_caption_urls(comment_urls)
+                    print(f"[instagram] @{owner} saved post: +{len(comment_urls)} URLs from comments")
+            except Exception as exc:
+                # Comments may rate-limit; never block the scrape.
+                pass
         print(f"[instagram] Scraped {len(events)} events from {count} SAVED posts ({len(accounts_seen)} unique accounts)")
     except Exception as exc:
         print(f"[instagram] Saved posts failed: {exc}")
