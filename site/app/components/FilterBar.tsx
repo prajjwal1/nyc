@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { CATEGORY_CONFIG, SOURCE_LABELS } from "../lib/types";
 import type { SortMode } from "../hooks/useEvents";
+import { loadSearchHistory, pushSearchHistory, clearSearchHistory } from "../lib/interests";
 
 interface FilterBarProps {
   categories: string[];
@@ -34,6 +36,32 @@ export default function FilterBar({
   allCategories,
   onQuickFilter,
 }: FilterBarProps) {
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const [history, setHistory] = useState<string[]>([]);
+  const searchWrapRef = useRef<HTMLDivElement | null>(null);
+
+  // Refresh history whenever input gains focus or after a commit
+  const refreshHistory = () => setHistory(loadSearchHistory());
+
+  // Commit on Enter or blur after typing
+  const commitSearch = () => {
+    if (search && search.trim().length >= 2) {
+      pushSearchHistory(search);
+    }
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    if (!historyOpen) return;
+    const onDoc = (e: MouseEvent) => {
+      if (searchWrapRef.current && !searchWrapRef.current.contains(e.target as Node)) {
+        setHistoryOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, [historyOpen]);
+
   const toggleCategory = (cat: string) => {
     setCategories(
       categories.includes(cat)
@@ -54,7 +82,7 @@ export default function FilterBar({
 
   return (
     <div className="space-y-4">
-      <div className="relative">
+      <div className="relative" ref={searchWrapRef}>
         <svg
           className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
           fill="none"
@@ -68,8 +96,50 @@ export default function FilterBar({
           placeholder="Search events, venues, @accounts..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onFocus={() => { refreshHistory(); setHistoryOpen(true); }}
+          onBlur={() => commitSearch()}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              commitSearch();
+              setHistoryOpen(false);
+              (e.target as HTMLInputElement).blur();
+            } else if (e.key === "Escape") {
+              setHistoryOpen(false);
+            }
+          }}
           className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-200 bg-white"
         />
+        {historyOpen && history.length > 0 && (
+          <div className="absolute z-30 mt-1 left-0 right-0 bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
+            <div className="px-3 py-2 flex items-center justify-between text-[10px] uppercase tracking-wide text-gray-400 border-b border-gray-100">
+              <span>Recent searches</span>
+              <button
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  clearSearchHistory();
+                  setHistory([]);
+                }}
+                className="hover:text-gray-700 normal-case tracking-normal"
+              >
+                clear
+              </button>
+            </div>
+            {history.map((q) => (
+              <button
+                key={q}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  setSearch(q);
+                  pushSearchHistory(q);
+                  setHistoryOpen(false);
+                }}
+                className="block w-full text-left px-3 py-1.5 text-sm hover:bg-gray-50 truncate"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
       <p className="-mt-3 text-[11px] text-gray-400">
         Try <button onClick={() => setSearch("@theskint")} className="underline hover:text-gray-700">@theskint</button>,{" "}

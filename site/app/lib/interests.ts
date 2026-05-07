@@ -270,6 +270,7 @@ export function clearAllLocalState(): void {
     window.localStorage.removeItem(SAVED_KEY);
     window.localStorage.removeItem(HIDDEN_KEY);
     window.localStorage.removeItem(OPENED_KEY);
+    window.localStorage.removeItem(SEARCH_HISTORY_KEY);
     window.localStorage.removeItem("nyc-events:lastVisitedAt:v1");
     window.localStorage.removeItem("nyc-events:viewMode");
   } catch {
@@ -283,6 +284,47 @@ export function getSavedCount(): number {
 
 export function getHiddenCount(): number {
   return loadHidden().size;
+}
+
+// Search history — last 8 distinct queries the user has typed. Surfaces
+// in the search bar dropdown so they can re-issue without retyping.
+const SEARCH_HISTORY_KEY = "nyc-events:searchHistory:v1";
+
+export function loadSearchHistory(): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(SEARCH_HISTORY_KEY);
+    if (!raw) return [];
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr.filter((s) => typeof s === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+export function pushSearchHistory(query: string): void {
+  if (typeof window === "undefined") return;
+  const q = (query || "").trim();
+  if (!q || q.length < 2) return;
+  try {
+    const existing = loadSearchHistory();
+    // Move-to-front: drop existing match (case-insensitive), prepend
+    const lower = q.toLowerCase();
+    const dedup = existing.filter((s) => s.toLowerCase() !== lower);
+    const next = [q, ...dedup].slice(0, 8);
+    window.localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(next));
+  } catch {
+    // ignore
+  }
+}
+
+export function clearSearchHistory(): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(SEARCH_HISTORY_KEY);
+  } catch {
+    // ignore
+  }
 }
 
 // Already-opened events: fade-out signal so the user can scan for what's
