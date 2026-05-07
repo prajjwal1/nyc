@@ -70,13 +70,37 @@ async def scrape() -> list[dict]:
             print(f"[reddit] /r/{sub}/new failed: {e}")
 
     # Strategy 2: search-based mining for high-signal queries
+    permalinks_to_mine: list[str] = []
     for sub in ("AskNYC", "nyc"):
         for query in SEARCH_QUERIES:
             try:
                 urls = await _harvest_subreddit_search(sub, query, limit=15)
                 found.update(urls)
+                # Capture permalinks from this query for comment mining
+                pls = getattr(_extract_urls_from_listing, "_last_permalinks", []) or []
+                permalinks_to_mine.extend(pls[:5])  # cap per query
             except Exception as e:
                 print(f"[reddit] /r/{sub}/search '{query}' failed: {e}")
+
+    # Strategy 3: mine comments on high-comment posts surfaced by search.
+    # Cap total comment fetches per run to bound rate-limit risk.
+    seen_permalinks = set()
+    comment_urls = 0
+    for pl in permalinks_to_mine:
+        if pl in seen_permalinks:
+            continue
+        seen_permalinks.add(pl)
+        if len(seen_permalinks) > 12:
+            break
+        try:
+            cu = await _harvest_post_comments(pl)
+            new_from_comments = cu - found
+            comment_urls += len(new_from_comments)
+            found.update(cu)
+        except Exception as e:
+            print(f"[reddit] comments on {pl} failed: {e}")
+    if comment_urls:
+        print(f"[reddit] +{comment_urls} URLs from comment mining ({len(seen_permalinks)} posts)")
 
     if not found:
         print(f"[reddit] No event-platform URLs found")
@@ -131,6 +155,7 @@ def _extract_urls_from_listing(text: str) -> set[str]:
         return found
 
     posts = data.get("data", {}).get("children", []) if isinstance(data, dict) else []
+    permalinks: list[str] = []
     for child in posts:
         if not isinstance(child, dict):
             continue
@@ -145,6 +170,48 @@ def _extract_urls_from_listing(text: str) -> set[str]:
         selftext = post.get("selftext", "")
         if isinstance(selftext, str) and selftext:
             for m in _EVENT_URL_RE.finditer(selftext):
+                found.add(m.group(0).rstrip(".,;:!?)").split("#")[0])
+        # Save permalinks of high-comment posts for later comment mining
+        permalink = post.get("permalink", "")
+        num_comments = post.get("num_comments", 0)
+        if permalink and num_comments and num_comments >= 5:
+            permalinks.append(permalink)
+    # Stash permalinks on the function (return only URLs but expose for caller)
+    _extract_urls_from_listing._last_permalinks = permalinks  # type: ignore[attr-defined]
+    return found
+
+
+async def _harvest_post_comments(permalink: str, limit: int = 30) -> set[str]:
+    """Fetch top-level comments on a Reddit post and harvest event URLs.
+
+    Many "events this weekend" megathreads have ticket URLs in comments
+    rather than the original post body. This pulls the JSON comments tree
+    and scans top comments for event-platform URLs.
+    """
+    url = f"https://www.reddit.com{permalink}.json?limit={limit}&depth=1"
+    headers = {"User-Agent": "nyc-events-scraper/0.1 (+https://github.com/prajjwal1/nyc)"}
+    try:
+        text = await fetch_text(url, headers=headers)
+    except Exception:
+        return set()
+    found: set[str] = set()
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        return found
+    # Reddit comments JSON returns [post_listing, comments_listing]
+    if not isinstance(data, list) or len(data) < 2:
+        return found
+    comments = data[1].get("data", {}).get("children", []) if isinstance(data[1], dict) else []
+    for child in comments:
+        if not isinstance(child, dict):
+            continue
+        c = child.get("data", {})
+        if not isinstance(c, dict):
+            continue
+        body = c.get("body", "")
+        if isinstance(body, str) and body:
+            for m in _EVENT_URL_RE.finditer(body):
                 found.add(m.group(0).rstrip(".,;:!?)").split("#")[0])
     return found
 

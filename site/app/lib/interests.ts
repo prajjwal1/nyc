@@ -147,7 +147,10 @@ function saveSavedSet(s: Set<string>): void {
   }
 }
 
-export function toggleSavedLocal(eventId: string): boolean {
+export function toggleSavedLocal(
+  eventId: string,
+  hint?: { account?: string; categories?: string[]; sourceUrl?: string }
+): boolean {
   const s = loadSavedSet();
   let saved: boolean;
   if (s.has(eventId)) {
@@ -156,6 +159,24 @@ export function toggleSavedLocal(eventId: string): boolean {
   } else {
     s.add(eventId);
     saved = true;
+    // Saving is the strongest explicit positive signal — feed it heavily
+    // into the interest profile so other events from the same account/
+    // categories/source rise in subsequent rankings. 5x the per-click bump.
+    if (hint) {
+      const p = loadProfile();
+      if (hint.account) bump(p.accounts, hint.account.toLowerCase(), 5);
+      for (const c of hint.categories || []) bump(p.categories, c, 3);
+      if (hint.sourceUrl) {
+        try {
+          const host = new URL(hint.sourceUrl).hostname.toLowerCase();
+          bump(p.hosts, host, 2);
+        } catch {
+          // ignore
+        }
+      }
+      p.updatedAt = new Date().toISOString();
+      saveProfile(p);
+    }
   }
   saveSavedSet(s);
   return saved;

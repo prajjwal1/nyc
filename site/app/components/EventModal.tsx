@@ -258,7 +258,7 @@ export default function EventModal({ event, onClose, onAccountClick }: Props) {
             </a>
             <button
               onClick={() => {
-                setSaved(toggleSavedLocal(event.id));
+                setSaved(toggleSavedLocal(event.id, { account: event.instagramAccount, categories: event.categories, sourceUrl: event.sourceUrl }));
               }}
               className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border text-sm font-medium transition-colors ${
                 saved
@@ -282,6 +282,7 @@ export default function EventModal({ event, onClose, onAccountClick }: Props) {
               </svg>
               Add to calendar
             </button>
+            <ShareButton event={event} />
             <button
               onClick={() => {
                 hideEvent(event.id);
@@ -298,6 +299,52 @@ export default function EventModal({ event, onClose, onAccountClick }: Props) {
         </div>
       </div>
     </div>
+  );
+}
+
+function ShareButton({ event }: { event: Event }) {
+  const [copied, setCopied] = useState(false);
+  const handle = async () => {
+    const dt = (() => {
+      try {
+        const d = new Date(event.date + "T00:00:00");
+        return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+      } catch {
+        return event.date;
+      }
+    })();
+    const tm = event.startTime ? formatTime(event.startTime) : "";
+    const where = event.location.name || "";
+    const body = `${event.title}\n${dt}${tm ? " · " + tm : ""}${where ? " · " + where : ""}\n${event.sourceUrl}`;
+    try {
+      // Use Web Share API when available (mobile), else clipboard.
+      if (typeof navigator !== "undefined" && (navigator as Navigator & { share?: (data: ShareData) => Promise<void> }).share) {
+        await (navigator as Navigator & { share: (data: ShareData) => Promise<void> }).share({
+          title: event.title,
+          text: body,
+          url: event.sourceUrl,
+        });
+        return;
+      }
+      await navigator.clipboard.writeText(body);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // ignore
+    }
+  };
+  return (
+    <button
+      onClick={handle}
+      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 text-sm font-medium transition-colors"
+      title="Share / copy link"
+    >
+      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+          d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+      </svg>
+      {copied ? "Copied!" : "Share"}
+    </button>
   );
 }
 
