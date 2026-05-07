@@ -250,3 +250,36 @@ export function topAccounts(profile: InterestProfile, n = 5): string[] {
     .slice(0, n)
     .map(([k]) => k);
 }
+
+export function topCategories(profile: InterestProfile, n = 5): Array<[string, number]> {
+  return Object.entries(profile.categories)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, n);
+}
+
+export function totalEngagementCount(profile: InterestProfile): number {
+  const sum = (m: Record<string, number>) =>
+    Object.values(m).reduce((a, b) => a + b, 0);
+  return sum(profile.accounts) + sum(profile.categories) + sum(profile.hosts);
+}
+
+export function clearAllLocalState(): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+    window.localStorage.removeItem(SAVED_KEY);
+    window.localStorage.removeItem(HIDDEN_KEY);
+    window.localStorage.removeItem("nyc-events:lastVisitedAt:v1");
+    window.localStorage.removeItem("nyc-events:viewMode");
+  } catch {
+    // ignore
+  }
+}
+
+export function getSavedCount(): number {
+  return loadSavedSet().size;
+}
+
+export function getHiddenCount(): number {
+  return loadHidden().size;
+}

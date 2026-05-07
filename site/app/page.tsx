@@ -10,6 +10,7 @@ import EventList from "./components/EventList";
 import EventCard from "./components/EventCard";
 import TopPicks from "./components/TopPicks";
 import TopAccounts from "./components/TopAccounts";
+import ActivityPanel from "./components/ActivityPanel";
 import EventModal from "./components/EventModal";
 import { Event } from "./lib/types";
 import { isSavedLocal, readAndAdvanceLastVisited } from "./lib/interests";
@@ -179,6 +180,7 @@ export default function Home() {
             </div>
 
             <TopAccounts accounts={topAccounts} onAccountClick={(u) => setSearch("@" + u)} />
+            <ActivityPanel onAccountClick={(u) => setSearch("@" + u)} />
 
             {view === "calendar" && (
               <Calendar
