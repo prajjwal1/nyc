@@ -753,7 +753,7 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
     if not events:
         _record_url_failure(url)
     else:
-        _record_url_success(url)
+        _record_url_success(url, event_count=len(events))
         # Auto-discover Eventbrite organizer pages from event URLs.
         # An organizer typically hosts dozens of NYC events.
         if "eventbrite.com/e/" in url:
@@ -899,14 +899,30 @@ def _record_url_failure(url: str) -> None:
     _save_url_health(data)
 
 
-def _record_url_success(url: str) -> None:
+def _record_url_success(url: str, event_count: int = 0) -> None:
     from datetime import datetime, timezone
     data = _load_url_health()
     entry = data.setdefault(url, {"failures": 0, "successes": 0})
     entry["successes"] = entry.get("successes", 0) + 1
     entry["failures"] = 0  # reset on success
     entry["last_success_at"] = datetime.now(timezone.utc).isoformat()
+    # Cumulative event yield — drives scrape rotation priority and lets us
+    # spot URLs that "succeed" (return 200) but never produce events.
+    entry["events_emitted_total"] = entry.get("events_emitted_total", 0) + event_count
+    entry["last_event_count"] = event_count
     _save_url_health(data)
+
+
+def _url_event_yield(url: str, health: dict | None = None) -> float:
+    """Return mean events-per-successful-scrape for a URL, or 0 if no data."""
+    if health is None:
+        health = _load_url_health()
+    entry = health.get(url, {})
+    successes = entry.get("successes", 0)
+    if successes < 2:
+        return 0.0  # not enough data
+    total = entry.get("events_emitted_total", 0)
+    return total / successes
 
 
 def _is_dead_url(url: str) -> bool:
@@ -1044,6 +1060,26 @@ async def scrape() -> list[dict]:
         print(f"[generic] Skipping {skipped} dead URLs (5+ failures)")
     if retest_urls:
         print(f"[generic] Re-testing {len(retest_urls)} previously-dead URLs after {_RETEST_COOLDOWN_DAYS}d cooldown")
+
+    # Order URLs by historical event yield so high-yield sources scrape first.
+    # Untracked URLs (no successes yet) get a neutral middle priority so they
+    # still get a fair shot. Tier scheme:
+    #   tier 0: yield >= 5 events/scrape  (top performers)
+    #   tier 1: yield >= 1 events/scrape  (steady contributors)
+    #   tier 2: untracked / new           (give them a chance)
+    #   tier 3: yield < 1 events/scrape   (consistently dry)
+    # Within each tier, sort by yield desc.
+    def _yield_priority(u: str) -> tuple[int, float]:
+        y = _url_event_yield(u, health)
+        successes = health.get(u, {}).get("successes", 0)
+        if successes < 2:
+            return (2, 0.0)
+        if y >= 5:
+            return (0, -y)
+        if y >= 1:
+            return (1, -y)
+        return (3, -y)
+    urls = sorted(urls, key=_yield_priority)
 
     all_events: list[dict] = []
     for url in urls:
