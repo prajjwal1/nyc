@@ -4,7 +4,7 @@ import { format, parseISO } from "date-fns";
 import { useState } from "react";
 import { Event } from "../lib/types";
 import EventCard from "./EventCard";
-import { isHidden } from "../lib/interests";
+import { isHidden, isSavedLocal } from "../lib/interests";
 
 // Series key — when the same recurring event title appears across many
 // future dates (e.g., "Smorgasburg" weekly), collapse to the soonest
@@ -205,9 +205,14 @@ export default function TopPicks({ events, onSelectDate, onAccountClick }: TopPi
     .slice(0, 6);
   const recentIds = new Set(recentlyAdded.map((e) => e.id));
 
-  // ★ User-saved events — bookmarked by user, highest signal
+  // ★ User-saved events — IG-saved (server) OR locally saved (browser).
+  // Locally-saved is the user explicitly clicking the star on a non-IG event.
   const savedUpcoming = upcoming
-    .filter((e) => e.userSaved && !tonightIds.has(e.id) && !recentIds.has(e.id))
+    .filter((e) =>
+      (e.userSaved || isSavedLocal(e.id))
+      && !tonightIds.has(e.id)
+      && !recentIds.has(e.id),
+    )
     .sort((a, b) => a.date.localeCompare(b.date))
     .slice(0, MAX_SAVED);
   const savedIds = new Set(savedUpcoming.map((e) => e.id));

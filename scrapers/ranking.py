@@ -119,6 +119,8 @@ def compute_score(event: dict) -> float:
     hot_boost = _hot_event_boost(event)
     # Account-yield boost: IG accounts that consistently produce events
     yield_boost = _account_yield_boost(event)
+    # Content-quality boost: real flyer image + substantive description
+    quality_boost = _content_quality_boost(event)
 
     # Account-level credibility: verified or large follower count = trustworthy
     cred_boost = _account_credibility_boost(event)
@@ -135,10 +137,32 @@ def compute_score(event: dict) -> float:
         base_score + high_value_boost + social_boost + meet_people_boost
         + saved_boost + tagged_boost + affinity_boost + following_boost
         + cred_boost + cross_source_boost + hot_boost + yield_boost
-        + time_relevance + dow_fit + tod_fit
+        + quality_boost + time_relevance + dow_fit + tod_fit
         - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
+
+
+def _content_quality_boost(event: dict) -> float:
+    """Small boost for events that have substantive content — proper
+    description AND a real flyer image. These signal "this is a real event
+    someone took the time to post about" vs a bare placeholder.
+
+    Capped at +0.05 so it nudges, doesn't dominate.
+    """
+    boost = 0.0
+    img = (event.get("imageUrl") or "").strip()
+    desc = (event.get("description") or "").strip()
+    # Image presence — a real flyer is a strong quality signal
+    if img and len(img) > 30:
+        boost += 0.02
+    # Description in the sweet-spot range (not too short, not pasted novel)
+    desc_len = len(desc)
+    if 60 <= desc_len <= 600:
+        boost += 0.03
+    elif 30 <= desc_len < 60:
+        boost += 0.01
+    return min(0.05, boost)
 
 
 def _account_yield_boost(event: dict) -> float:

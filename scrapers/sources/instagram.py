@@ -896,17 +896,28 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
         if last_seen and post.shortcode == last_seen:
             break
 
-        # Collect all images from the post (carousel = sidecar)
+        # Collect all images from the post (carousel = sidecar). Crucially,
+        # use display_url (always an image) rather than url (returns the
+        # .mp4 for video posts / Reels — which won't render in <img>).
         images: list[str] = []
         try:
             if post.typename == "GraphSidecar":
+                # Carousel: include EVERY slide's display image. Video slides
+                # have valuable poster frames we'd previously discarded.
                 for node in post.get_sidecar_nodes():
-                    if not getattr(node, "is_video", False):
-                        images.append(node.display_url)
+                    img = getattr(node, "display_url", None) or getattr(node, "url", None)
+                    if img:
+                        images.append(img)
             else:
-                images.append(post.url)
+                # Single-image OR video/Reel post: always use display_url so
+                # Reels render their poster instead of a broken mp4 link.
+                img = getattr(post, "display_url", None) or post.url
+                images.append(img)
         except Exception:
-            images.append(post.url)
+            try:
+                images.append(getattr(post, "display_url", post.url))
+            except Exception:
+                pass
 
         # Capture engagement signals (likes/comments) — high engagement
         # = real, popular event, not just any post.

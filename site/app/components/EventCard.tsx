@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { trackAccountClick, trackEventOpen, hideEvent } from "../lib/interests";
+import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 
 interface EventCardProps {
@@ -109,12 +110,18 @@ function MediaFirstCard({
   onHide?: (eventId: string) => void;
 }) {
   const dateLabel = formatDateLabel(event.date);
+  const [saved, setSaved] = useState(() => isSavedLocal(event.id));
   const handleOpen = () => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
   const handleHide = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     hideEvent(event.id);
     onHide?.(event.id);
+  };
+  const handleSave = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setSaved(toggleSavedLocal(event.id));
   };
   return (
     <a
@@ -207,6 +214,14 @@ function MediaFirstCard({
               </span>
             )}
             <button
+              onClick={handleSave}
+              className={`transition-colors ${saved ? "text-amber-500" : "text-gray-400 hover:text-amber-500"}`}
+              title={saved ? "Unsave" : "Save"}
+              aria-label={saved ? "Unsave" : "Save"}
+            >
+              <StarIcon filled={saved} />
+            </button>
+            <button
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -230,6 +245,15 @@ function MediaFirstCard({
         </div>
       </div>
     </a>
+  );
+}
+
+function StarIcon({ filled }: { filled: boolean }) {
+  return (
+    <svg className="w-4 h-4" fill={filled ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+    </svg>
   );
 }
 
@@ -271,11 +295,17 @@ function FeedCard({
   onAccountClick?: (account: string) => void;
   onHide?: (eventId: string) => void;
 }) {
+  const [savedF, setSavedF] = useState(() => isSavedLocal(event.id));
   const handleHide = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     hideEvent(event.id);
     onHide?.(event.id);
+  };
+  const handleSaveF = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setSavedF(toggleSavedLocal(event.id));
   };
   // Show description only if it's high-signal (not just a fragment of a larger caption)
   const desc = event.description?.trim();
@@ -393,6 +423,14 @@ function FeedCard({
               {event.accountVerified && (
                 <span className="text-blue-500" title="Verified">✓</span>
               )}
+              <button
+                onClick={handleSaveF}
+                className={`transition-colors ${savedF ? "text-amber-500" : "text-gray-400 hover:text-amber-500"}`}
+                title={savedF ? "Unsave" : "Save"}
+                aria-label={savedF ? "Unsave" : "Save"}
+              >
+                <StarIcon filled={savedF} />
+              </button>
               <button
                 onClick={(e) => {
                   e.preventDefault();

@@ -120,6 +120,51 @@ export function interestBoost(
   return Math.min(0.15, boost);
 }
 
+// Locally-saved events — explicit positive signal the user controls. The
+// IG-saved signal already exists for IG events the user bookmarked on IG
+// itself; this is the equivalent for non-IG events (Eventbrite, Luma, etc.)
+// where there's no platform "save". Stored in localStorage.
+const SAVED_KEY = "nyc-events:saved:v1";
+
+function loadSavedSet(): Set<string> {
+  if (typeof window === "undefined") return new Set();
+  try {
+    const raw = window.localStorage.getItem(SAVED_KEY);
+    if (!raw) return new Set();
+    const arr = JSON.parse(raw);
+    return new Set(Array.isArray(arr) ? arr : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function saveSavedSet(s: Set<string>): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(SAVED_KEY, JSON.stringify(Array.from(s).slice(-500)));
+  } catch {
+    // ignore quota errors
+  }
+}
+
+export function toggleSavedLocal(eventId: string): boolean {
+  const s = loadSavedSet();
+  let saved: boolean;
+  if (s.has(eventId)) {
+    s.delete(eventId);
+    saved = false;
+  } else {
+    s.add(eventId);
+    saved = true;
+  }
+  saveSavedSet(s);
+  return saved;
+}
+
+export function isSavedLocal(eventId: string): boolean {
+  return loadSavedSet().has(eventId);
+}
+
 // Hidden-events memory — explicit negative signal. Stored separately from
 // the interest profile so user can clear interests without un-hiding.
 const HIDDEN_KEY = "nyc-events:hidden:v1";
