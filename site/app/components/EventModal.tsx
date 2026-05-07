@@ -360,6 +360,68 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
               </div>
             );
           })()}
+
+          {/* More like this — same primary category, DIFFERENT account.
+              IG-explore-equivalent: serendipitous discovery from new sources. */}
+          {(() => {
+            const todayStr = new Date().toISOString().split("T")[0];
+            const primary = (event.categories || []).find((c) => c !== "free" && c !== "other");
+            if (!primary) return null;
+            const sameAcct = (event.instagramAccount || "").toLowerCase();
+            const sameVenue = (event.location?.name || "").toLowerCase();
+            const more = relatedEvents
+              .filter((e) =>
+                e.id !== event.id
+                && (e.date >= todayStr)
+                && (e.categories || []).includes(primary)
+                // Exclude same account / same venue — that's covered by the
+                // "More from @account" strip above. We want fresh sources.
+                && (!sameAcct || (e.instagramAccount || "").toLowerCase() !== sameAcct)
+                && (!sameVenue || (e.location?.name || "").toLowerCase() !== sameVenue)
+              )
+              .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+              .slice(0, 4);
+            if (more.length === 0) return null;
+            const cfg = CATEGORY_CONFIG[primary] || CATEGORY_CONFIG.other;
+            return (
+              <div className="pt-3 border-t border-gray-100">
+                <h3 className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">
+                  More <span className={`inline-block px-1.5 py-0.5 rounded ${cfg.color} normal-case tracking-normal`}>{cfg.label}</span> like this
+                </h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {more.map((e) => (
+                    <button
+                      key={e.id}
+                      onClick={() => {
+                        if (onSelectEvent) {
+                          onSelectEvent(e);
+                        } else {
+                          onClose();
+                        }
+                      }}
+                      className="text-left p-2 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors flex gap-2"
+                    >
+                      {e.imageUrl ? (
+                        <img src={e.imageUrl} alt="" loading="lazy" className="shrink-0 w-12 h-12 rounded object-cover bg-gray-100" />
+                      ) : (
+                        <div className="shrink-0 w-12 h-12 rounded bg-gradient-to-br from-gray-200 to-gray-300" />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[11px] font-semibold text-gray-700 line-clamp-1">
+                          {formatDateLabel(e.date)}
+                          {e.startTime ? " · " + formatTime(e.startTime) : ""}
+                          {e.instagramAccount ? <span className="text-gray-400 font-normal"> · @{e.instagramAccount}</span> : null}
+                        </div>
+                        <div className="text-xs font-medium text-gray-900 line-clamp-2 leading-tight">
+                          {e.title}
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </div>
     </div>
