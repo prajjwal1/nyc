@@ -20,7 +20,95 @@ def deduplicate(events: list[dict]) -> list[dict]:
     # cross-source duplicates (e.g., Eventbrite event re-posted on IG and
     # picked up by Reddit) that the title-based dedup misses due to subtle
     # wording differences.
-    return _dedup_by_image(out)
+    out = _dedup_by_image(out)
+
+    # Third pass: fuzzy-title-overlap merge for events that share a date AND
+    # a venue/account AND have high token-overlap in titles. Catches
+    # "Sips & Stories at Cafe Erzulie" vs "Sips & Stories NYC: The Social
+    # Room at Cafe Erzulie" — same event, two sources, different wording.
+    return _dedup_fuzzy_title(out)
+
+
+def _title_token_set(title: str) -> set[str]:
+    title_clean = "".join(c if c.isalnum() or c == " " else " " for c in (title or "").lower())
+    return {w for w in title_clean.split() if w not in _STOPWORDS and len(w) > 2}
+
+
+def _venue_key(ev: dict) -> str:
+    """Soft venue identifier: IG account, or normalized location name, or
+    Eventbrite organizer slug. Used to gate the fuzzy-title merge so we
+    don't accidentally merge unrelated events that happen on the same day.
+    """
+    acct = (ev.get("instagramAccount") or "").lower()
+    if acct:
+        return "ig:" + acct
+    loc = ((ev.get("location") or {}).get("name") or "").lower().strip()
+    if loc:
+        # Normalize: drop everything after first comma, collapse spaces
+        loc = loc.split(",")[0].strip()
+        return "loc:" + re.sub(r"\s+", " ", loc)
+    if ev.get("source") == "eventbrite":
+        try:
+            from urllib.parse import urlparse
+            p = urlparse(ev.get("sourceUrl") or "")
+            tokens = (p.path or "").split("/")[:3]
+            return "eb:" + "/".join(tokens)
+        except Exception:
+            pass
+    return ""  # no soft venue → skip fuzzy merge for this event
+
+
+def _dedup_fuzzy_title(events: list[dict]) -> list[dict]:
+    """Merge events that share (date, venue) + token-set Jaccard >= 0.55.
+
+    Conservative threshold: events truly identical-titled merged in pass 1.
+    This pass picks up the cross-source variants where the same event has
+    been described slightly differently (extra prefix, suffix, or word).
+    """
+    # Bucket by (date, venue_key) so we only compare events that are
+    # plausibly the same event.
+    by_bucket: dict[tuple[str, str], list[dict]] = {}
+    out: list[dict] = []
+    for ev in events:
+        d = ev.get("date") or ""
+        v = _venue_key(ev)
+        if not d or not v:
+            out.append(ev)
+            continue
+        by_bucket.setdefault((d, v), []).append(ev)
+
+    merges = 0
+    for bucket in by_bucket.values():
+        if len(bucket) == 1:
+            out.append(bucket[0])
+            continue
+        # Each event has a token set; greedy merge with first compatible peer.
+        # Prefer keeping the event with the longer description (more info).
+        token_sets = [_title_token_set(e.get("title", "")) for e in bucket]
+        keep_indices: list[int] = []
+        merged_into: dict[int, int] = {}
+        for i in range(len(bucket)):
+            if i in merged_into:
+                continue
+            keep_indices.append(i)
+            for j in range(i + 1, len(bucket)):
+                if j in merged_into:
+                    continue
+                a, b = token_sets[i], token_sets[j]
+                if not a or not b:
+                    continue
+                jacc = len(a & b) / len(a | b)
+                # Also require at least 2 shared distinctive tokens to avoid
+                # matching short titles by accident.
+                if jacc >= 0.55 and len(a & b) >= 2:
+                    bucket[i] = _merge(bucket[i], bucket[j])
+                    merged_into[j] = i
+                    merges += 1
+        for k in keep_indices:
+            out.append(bucket[k])
+    if merges:
+        print(f"[normalize] Fuzzy-title merged {merges} cross-source duplicates")
+    return out
 
 
 def _dedup_by_image(events: list[dict]) -> list[dict]:
