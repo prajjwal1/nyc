@@ -803,6 +803,17 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
             if organizer_url:
                 _add_discovered_url(organizer_url, "eventbrite_organizer")
 
+        # Auto-discover Lu.ma curator calendars via organizer URL in JSON-LD.
+        # Each Lu.ma event JSON-LD includes organizer.url which is typically
+        # lu.ma/<calendar-slug> — and those calendars often host 10-20+ NYC
+        # events. Self-improving: each event we scrape can surface a new
+        # curator we should follow directly.
+        if "lu.ma/" in url or "luma.com/" in url:
+            try:
+                _harvest_luma_curator_urls(soup)
+            except Exception:
+                pass
+
         # Sitemap mining: try once per host (not every URL) to avoid spam.
         # When the host has /sitemap.xml, we can harvest every event URL on
         # the venue's site at once instead of crawling page-by-page.
@@ -893,6 +904,75 @@ def _extract_event_urls_from_sitemap(xml: str, base: str) -> list[str]:
             seen.add(u)
             result.append(u)
     return result
+
+
+_LUMA_CALENDAR_SLUG_RE = re.compile(
+    r"^https?://(?:www\.)?(?:lu\.ma|luma\.com)/([a-z0-9][a-z0-9._-]{2,40})/?$",
+    re.IGNORECASE,
+)
+_LUMA_EVENT_SHORTCODE_RE = re.compile(r"^[a-z0-9]{6,10}$", re.IGNORECASE)
+
+
+def _harvest_luma_curator_urls(soup: BeautifulSoup) -> int:
+    """Walk the page's JSON-LD scripts; whenever an event's organizer.url
+    is a lu.ma calendar slug (not an event shortcode), add it to the
+    discovered URL pool. Compounds: each event we scrape can surface a
+    new high-yield curator calendar.
+    """
+    found: set[str] = set()
+    for script in soup.find_all("script", type="application/ld+json"):
+        raw = script.string or script.get_text() or ""
+        if not raw.strip():
+            continue
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError:
+            continue
+        _walk_for_organizer_urls(data, found)
+    if not found:
+        return 0
+    added = 0
+    for u in found:
+        m = _LUMA_CALENDAR_SLUG_RE.match(u)
+        if not m:
+            continue
+        slug = m.group(1)
+        # Skip event shortcodes (8-10 alphanumeric, no hyphen) — those are
+        # individual events, not calendars. Calendars typically have hyphens
+        # or descriptive names.
+        if _LUMA_EVENT_SHORTCODE_RE.match(slug) and "-" not in slug and "." not in slug and "_" not in slug:
+            continue
+        normalized = f"https://lu.ma/{slug}"
+        _add_discovered_url(normalized, "luma_organizer_jsonld")
+        added += 1
+    return added
+
+
+def _walk_for_organizer_urls(node, out: set[str], depth: int = 0) -> None:
+    """Recursively find any organizer.url in JSON-LD."""
+    if depth > 8 or node is None:
+        return
+    if isinstance(node, list):
+        for item in node:
+            _walk_for_organizer_urls(item, out, depth + 1)
+        return
+    if not isinstance(node, dict):
+        return
+    org = node.get("organizer")
+    if isinstance(org, dict):
+        u = org.get("url") or org.get("sameAs")
+        if isinstance(u, str) and u.startswith("http"):
+            out.add(u)
+    elif isinstance(org, list):
+        for o in org:
+            if isinstance(o, dict):
+                u = o.get("url") or o.get("sameAs")
+                if isinstance(u, str) and u.startswith("http"):
+                    out.add(u)
+    # Recurse into common nested fields
+    for key in ("@graph", "itemListElement", "events", "event"):
+        if key in node:
+            _walk_for_organizer_urls(node[key], out, depth + 1)
 
 
 def _extract_eventbrite_organizer(soup: BeautifulSoup) -> str | None:
