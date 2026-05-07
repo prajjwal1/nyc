@@ -180,7 +180,7 @@ export default function Home() {
             </div>
 
             <TopAccounts accounts={topAccounts} onAccountClick={(u) => setSearch("@" + u)} />
-            <ActivityPanel onAccountClick={(u) => setSearch("@" + u)} />
+            <ActivityPanel onAccountClick={(u) => setSearch("@" + u)} events={events} />
 
             {view === "calendar" && (
               <Calendar

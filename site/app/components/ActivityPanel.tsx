@@ -9,18 +9,21 @@ import {
   getSavedCount,
   getHiddenCount,
   clearAllLocalState,
+  isSavedLocal,
   InterestProfile,
 } from "../lib/interests";
-import { CATEGORY_CONFIG } from "../lib/types";
+import { downloadIcsBundle } from "../lib/ics";
+import { CATEGORY_CONFIG, Event } from "../lib/types";
 
 interface Props {
   onAccountClick: (username: string) => void;
+  events?: Event[];  // for bulk-export of saved events
 }
 
 // "Your Activity" panel — surfaces what the system has learned from the
 // user's clicks/saves/hides so they understand the personalization, plus
 // a reset button so they can clear and start fresh. Builds trust + control.
-export default function ActivityPanel({ onAccountClick }: Props) {
+export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
   const [profile, setProfile] = useState<InterestProfile | null>(null);
   const [savedCount, setSavedCount] = useState(0);
   const [hiddenCount, setHiddenCount] = useState(0);
@@ -87,17 +90,36 @@ export default function ActivityPanel({ onAccountClick }: Props) {
       </div>
 
       {(savedCount > 0 || hiddenCount > 0) && (
-        <div className="flex gap-3 text-xs text-gray-600 mb-3">
-          {savedCount > 0 && (
-            <span>
-              <span className="font-medium text-amber-700">★</span>{" "}
-              {savedCount} saved
-            </span>
-          )}
-          {hiddenCount > 0 && (
-            <span className="text-gray-400">
-              ✕ {hiddenCount} hidden
-            </span>
+        <div className="flex items-center justify-between gap-3 text-xs text-gray-600 mb-3">
+          <div className="flex gap-3">
+            {savedCount > 0 && (
+              <span>
+                <span className="font-medium text-amber-700">★</span>{" "}
+                {savedCount} saved
+              </span>
+            )}
+            {hiddenCount > 0 && (
+              <span className="text-gray-400">
+                ✕ {hiddenCount} hidden
+              </span>
+            )}
+          </div>
+          {savedCount > 0 && events.length > 0 && (
+            <button
+              onClick={() => {
+                const today = new Date().toISOString().split("T")[0];
+                const savedEvents = events.filter((e) =>
+                  (e.userSaved || isSavedLocal(e.id)) && (e.date >= today)
+                );
+                if (savedEvents.length > 0) {
+                  downloadIcsBundle(savedEvents, "saved-events");
+                }
+              }}
+              className="text-[10px] text-amber-700 hover:text-amber-900 underline"
+              title="Download all upcoming saved events as one calendar file"
+            >
+              Export to calendar
+            </button>
           )}
         </div>
       )}

@@ -107,3 +107,40 @@ export function downloadIcs(event: Event): void {
   window.document.body.removeChild(a);
   window.URL.revokeObjectURL(url);
 }
+
+// Bundle multiple events into a single .ics file for bulk import (e.g.,
+// "download all my saved events" → one click → import into Google /
+// Apple / Outlook calendar in one shot).
+export function buildIcsBundle(events: Event[]): string {
+  if (events.length === 0) return "";
+  const inner: string[] = [];
+  for (const ev of events) {
+    const single = buildIcs(ev);
+    // Strip the calendar wrapper from each single .ics; we'll wrap once
+    const m = single.match(/BEGIN:VEVENT[\s\S]+?END:VEVENT/);
+    if (m) inner.push(m[0]);
+  }
+  return [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//nyc-events//EN",
+    "CALSCALE:GREGORIAN",
+    ...inner,
+    "END:VCALENDAR",
+  ].join("\r\n");
+}
+
+export function downloadIcsBundle(events: Event[], filename: string = "saved-events"): void {
+  if (typeof window === "undefined" || events.length === 0) return;
+  const ics = buildIcsBundle(events);
+  const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+  const url = window.URL.createObjectURL(blob);
+  const a = window.document.createElement("a");
+  const today = new Date().toISOString().split("T")[0];
+  a.href = url;
+  a.download = `${filename}-${today}.ics`;
+  window.document.body.appendChild(a);
+  a.click();
+  window.document.body.removeChild(a);
+  window.URL.revokeObjectURL(url);
+}
