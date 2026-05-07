@@ -218,12 +218,50 @@ export default function TopPicks({
     .slice(0, 6);
   const recentIds = new Set(recentlyAdded.map((e) => e.id));
 
+  // 🎉 This Weekend — Fri/Sat night social/party events upcoming.
+  // Direct hero for "I want to go meet people this weekend" — the user's
+  // primary goal. Only shows when today is Mon-Fri (post-weekend it
+  // would be empty or stale).
+  const weekend = (() => {
+    const today = new Date();
+    const dow = today.getDay(); // 0=Sun..6=Sat
+    if (dow === 0) return { events: [], ids: new Set<string>() }; // Sunday, hide
+    const friday = new Date(today);
+    friday.setDate(today.getDate() + ((5 - dow + 7) % 7));
+    const saturday = new Date(friday);
+    saturday.setDate(friday.getDate() + 1);
+    const isWeekendDate = (d: string) =>
+      d === friday.toISOString().split("T")[0] || d === saturday.toISOString().split("T")[0];
+    const isSocial = (e: Event) =>
+      (e.highlights || []).some((h) => ["meet-people", "vibes", "nightlife", "festival"].includes(h))
+      || e.categories.some((c) => ["parties", "singles", "music", "dance"].includes(c));
+    const isEveningTime = (e: Event) => {
+      if (!e.startTime) return true;
+      const [h] = e.startTime.split(":").map(Number);
+      return h >= 17;
+    };
+    const ev = upcoming
+      .filter((e) =>
+        !tonightIds.has(e.id)
+        && !recentIds.has(e.id)
+        && isWeekendDate(e.date)
+        && isSocial(e)
+        && isEveningTime(e)
+      )
+      .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+      .slice(0, 6);
+    return { events: ev, ids: new Set(ev.map((e) => e.id)) };
+  })();
+  const weekendEvents = weekend.events;
+  const weekendIds = weekend.ids;
+
   // ★ User-saved events — IG-saved (server) OR locally saved (browser).
   // Locally-saved is the user explicitly clicking the star on a non-IG event.
   const savedUpcoming = upcoming
     .filter((e) =>
       (e.userSaved || isSavedLocal(e.id))
       && !tonightIds.has(e.id)
+      && !weekendIds.has(e.id)
       && !recentIds.has(e.id),
     )
     .sort((a, b) => a.date.localeCompare(b.date))
@@ -233,7 +271,7 @@ export default function TopPicks({
   // Group remaining by date — exclude events already shown in hero sections
   const grouped = new Map<string, Event[]>();
   for (const e of upcoming) {
-    if (savedIds.has(e.id) || tonightIds.has(e.id) || recentIds.has(e.id)) continue;
+    if (savedIds.has(e.id) || tonightIds.has(e.id) || recentIds.has(e.id) || weekendIds.has(e.id)) continue;
     const list = grouped.get(e.date) ?? [];
     list.push(e);
     grouped.set(e.date, list);
@@ -242,7 +280,8 @@ export default function TopPicks({
   const sortedDates = [...grouped.keys()].sort().slice(0, MAX_DAYS);
 
   if (sortedDates.length === 0 && savedUpcoming.length === 0
-      && tonightEvents.length === 0 && recentlyAdded.length === 0) return null;
+      && tonightEvents.length === 0 && recentlyAdded.length === 0
+      && weekendEvents.length === 0) return null;
 
   return (
     <div className="mb-8">
@@ -292,6 +331,23 @@ export default function TopPicks({
           </h3>
           <div className="space-y-2">
             {tonightEvents.map((event) => (
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 🎉 This Weekend — Fri/Sat social events for "go meet people" */}
+      {weekendEvents.length > 0 && (
+        <div className="mb-8 -mx-1 px-1 py-3 bg-fuchsia-50/60 rounded-2xl border border-fuchsia-200">
+          <h3 className="text-sm font-semibold text-fuchsia-900 uppercase tracking-wide mb-2 px-2 flex items-center justify-between">
+            <span>🎉 This Weekend</span>
+            <span className="text-[10px] font-normal text-fuchsia-700 normal-case tracking-normal">
+              social · parties · live music · Fri / Sat
+            </span>
+          </h3>
+          <div className="space-y-2">
+            {weekendEvents.map((event) => (
               <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
             ))}
           </div>
