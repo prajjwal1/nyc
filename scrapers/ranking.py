@@ -132,12 +132,15 @@ def compute_score(event: dict) -> float:
     dow_fit = _day_of_week_fit_boost(event)
     # Time-of-day fit: evening events boosted (working-professional bias).
     tod_fit = _time_of_day_fit_boost(event)
+    # Geographic proximity boost when event has lat/lng coordinates.
+    geo_proximity = _distance_proximity_boost(event)
 
     final = (
         base_score + high_value_boost + social_boost + meet_people_boost
         + saved_boost + tagged_boost + affinity_boost + following_boost
         + cred_boost + cross_source_boost + hot_boost + yield_boost
         + quality_boost + time_relevance + dow_fit + tod_fit
+        + geo_proximity
         - soft_penalty - audience_penalty
     )
     return max(0.0, min(1.0, final))
@@ -440,6 +443,48 @@ def _compute_highlights(event: dict) -> list[str]:
         highlights.append("nearby")
 
     return highlights
+
+
+def _haversine_miles(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
+    """Distance in miles between two lat/lng points (haversine)."""
+    import math
+    R = 3958.8  # Earth radius in miles
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp = math.radians(lat2 - lat1)
+    dl = math.radians(lng2 - lng1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return R * 2 * math.asin(math.sqrt(a))
+
+
+# User's home neighborhood (Williamsburg). Future: make this configurable
+# in scrapers/config.py.
+_USER_HOME_LAT = 40.7081
+_USER_HOME_LNG = -73.9571
+
+
+def _distance_proximity_boost(event: dict) -> float:
+    """Bonus for events with lat/lng physically close to user's home.
+    Stacks with the existing neighborhood-text proximity score and only
+    applies when the event has actual coordinates (currently from IG
+    geo-tags; future geocoding will expand coverage)."""
+    loc = event.get("location") or {}
+    lat = loc.get("lat")
+    lng = loc.get("lng")
+    if lat is None or lng is None:
+        return 0.0
+    try:
+        miles = _haversine_miles(float(lat), float(lng), _USER_HOME_LAT, _USER_HOME_LNG)
+    except Exception:
+        return 0.0
+    if miles <= 1:
+        return 0.06   # walking distance
+    if miles <= 3:
+        return 0.04   # short bike / quick L train
+    if miles <= 6:
+        return 0.02   # within Brooklyn / lower Manhattan
+    if miles >= 15:
+        return -0.03  # NJ / outer queens — actually deboost
+    return 0.0
 
 
 def _proximity_score(event: dict) -> float:

@@ -1171,6 +1171,8 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     # 3. Caption text extraction (per-section)
     geo_name = (post.get("geo_name") or "").strip()
     default_location = geo_name or _account_default_location(account)
+    geo_lat = post.get("geo_lat")
+    geo_lng = post.get("geo_lng")
 
     sections = _split_caption(caption)
     # Detect if this post is clearly a multi-event roundup (many sections w/ dates).
@@ -1222,6 +1224,8 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             source_url=source_url,
             image_url=image_url,
             extra_images=extra_imgs,
+            lat=geo_lat,
+            lng=geo_lng,
             categories=categories,
         ))
 
@@ -1245,6 +1249,8 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
                 source_url=all_urls[0] if all_urls else post_url,
                 image_url=image_url,
                 extra_images=extra_imgs,
+            lat=geo_lat,
+            lng=geo_lng,
                 categories=infer_categories(title, full_caption),
             ))
 
@@ -1262,6 +1268,8 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             source_url=all_urls[0] if all_urls else post_url,
             image_url=image_url,
             extra_images=extra_imgs,
+            lat=geo_lat,
+            lng=geo_lng,
             categories=infer_categories(title, caption),
         ))
 

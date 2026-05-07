@@ -607,6 +607,8 @@ def build_event(
     extra_images: list[str] | None = None,
     price: str | None = None,
     categories: list[str] | None = None,
+    lat: float | None = None,
+    lng: float | None = None,
 ) -> dict:
     if isinstance(event_date, date):
         date_str = event_date.isoformat()
@@ -632,6 +634,20 @@ def build_event(
                 extras.append(img)
                 seen.add(img)
 
+    location: dict = {
+        "name": location_name or "",
+        "address": address or "",
+        "neighborhood": infer_neighborhood(address or location_name or ""),
+    }
+    # Persist lat/lng when available (IG geo-tag, future geocoding) so
+    # ranking can compute true distance to user's home neighborhood.
+    if lat is not None and lng is not None:
+        try:
+            location["lat"] = float(lat)
+            location["lng"] = float(lng)
+        except Exception:
+            pass
+
     out = {
         "id": make_event_id(source, cleaned_title, date_str),
         "title": cleaned_title,
@@ -639,11 +655,7 @@ def build_event(
         "date": date_str,
         "startTime": start_time,
         "endTime": end_time,
-        "location": {
-            "name": location_name or "",
-            "address": address or "",
-            "neighborhood": infer_neighborhood(address or location_name or ""),
-        },
+        "location": location,
         "categories": categories,
         "source": source,
         "sourceUrl": source_url,
