@@ -10,6 +10,8 @@ import EventList from "./components/EventList";
 import EventCard from "./components/EventCard";
 import TopPicks from "./components/TopPicks";
 import TopAccounts from "./components/TopAccounts";
+import EventModal from "./components/EventModal";
+import { Event } from "./lib/types";
 
 type View = "for-you" | "calendar";
 
@@ -40,6 +42,7 @@ export default function Home() {
 
   const [view, setView] = useState<View>("for-you");
   const [presetFilter, setPresetFilter] = useState<"meet-people" | "saved" | null>(null);
+  const [openEvent, setOpenEvent] = useState<Event | null>(null);
 
   const eventCountByDate = useMemo(() => {
     const map = new Map<string, number>();
@@ -238,6 +241,7 @@ export default function Home() {
                   accountFilter={search.startsWith("@") ? search.slice(1) : undefined}
                   topAccounts={topAccounts}
                   onClearAccountFilter={() => setSearch("")}
+                  onSelectEvent={setOpenEvent}
                 />
               </>
             ) : (
@@ -291,6 +295,11 @@ export default function Home() {
           </section>
         </div>
       </main>
+      <EventModal
+        event={openEvent}
+        onClose={() => setOpenEvent(null)}
+        onAccountClick={(acct) => setSearch("@" + acct)}
+      />
     </div>
   );
 }

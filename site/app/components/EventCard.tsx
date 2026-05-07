@@ -10,9 +10,10 @@ interface EventCardProps {
   variant?: "compact" | "feed" | "grid";
   onAccountClick?: (account: string) => void;
   onHide?: (eventId: string) => void;
+  onSelect?: (event: Event) => void;
 }
 
-export default function EventCard({ event, variant = "feed", onAccountClick, onHide }: EventCardProps) {
+export default function EventCard({ event, variant = "feed", onAccountClick, onHide, onSelect }: EventCardProps) {
   const timeStr = event.startTime
     ? formatTime(event.startTime) +
       (event.endTime ? ` – ${formatTime(event.endTime)}` : "")
@@ -23,27 +24,34 @@ export default function EventCard({ event, variant = "feed", onAccountClick, onH
   }
 
   if (variant === "grid") {
-    return <GridCard event={event} />;
+    return <GridCard event={event} onSelect={onSelect} />;
   }
 
   // IG events are inherently visual — when we have a usable image, lead with
   // a large flyer like an IG grid post so the user can scan visually rather
   // than reading metadata.
   if (event.source === "instagram" && event.imageUrl) {
-    return <MediaFirstCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} onHide={onHide} />;
+    return <MediaFirstCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelect} />;
   }
 
-  return <FeedCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} onHide={onHide} />;
+  return <FeedCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelect} />;
 }
 
-function GridCard({ event }: { event: Event }) {
-  const handleOpen = () => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
+function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event) => void }) {
+  const handleClick = (e: React.MouseEvent) => {
+    if (onSelect) {
+      e.preventDefault();
+      onSelect(event);
+    } else {
+      trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
+    }
+  };
   const dateLabel = formatDateLabel(event.date);
   const startsSoon = isStartingSoon(event);
   return (
     <a
       href={event.sourceUrl}
-      onClick={handleOpen}
+      onClick={handleClick}
       target="_blank"
       rel="noopener noreferrer"
       className="block group relative aspect-square rounded-lg overflow-hidden bg-gray-100 hover:opacity-90 transition-opacity"
@@ -103,15 +111,24 @@ function MediaFirstCard({
   timeStr,
   onAccountClick,
   onHide,
+  onSelect,
 }: {
   event: Event;
   timeStr: string | null;
   onAccountClick?: (account: string) => void;
   onHide?: (eventId: string) => void;
+  onSelect?: (event: Event) => void;
 }) {
   const dateLabel = formatDateLabel(event.date);
   const [saved, setSaved] = useState(() => isSavedLocal(event.id));
-  const handleOpen = () => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
+  const handleOpen = (e: React.MouseEvent) => {
+    if (onSelect) {
+      e.preventDefault();
+      onSelect(event);
+    } else {
+      trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
+    }
+  };
   const handleHide = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -289,13 +306,23 @@ function FeedCard({
   timeStr,
   onAccountClick,
   onHide,
+  onSelect,
 }: {
   event: Event;
   timeStr: string | null;
   onAccountClick?: (account: string) => void;
   onHide?: (eventId: string) => void;
+  onSelect?: (event: Event) => void;
 }) {
   const [savedF, setSavedF] = useState(() => isSavedLocal(event.id));
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (onSelect) {
+      e.preventDefault();
+      onSelect(event);
+    } else {
+      trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
+    }
+  };
   const handleHide = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -317,7 +344,7 @@ function FeedCard({
   return (
     <a
       href={event.sourceUrl}
-      onClick={() => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl)}
+      onClick={handleCardClick}
       target="_blank"
       rel="noopener noreferrer"
       className="block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all overflow-hidden"

@@ -45,6 +45,7 @@ interface TopPicksProps {
   accountFilter?: string;        // e.g. "theskint" when search is "@theskint"
   topAccounts?: import("../lib/types").TopAccount[];
   onClearAccountFilter?: () => void;
+  onSelectEvent?: (event: Event) => void;
 }
 
 const MAX_PER_DAY = 8;
@@ -158,6 +159,7 @@ export default function TopPicks({
   accountFilter,
   topAccounts,
   onClearAccountFilter,
+  onSelectEvent,
 }: TopPicksProps) {
   const todayStr = format(new Date(), "yyyy-MM-dd");
   const now = new Date();
@@ -290,7 +292,7 @@ export default function TopPicks({
           </h3>
           <div className="space-y-2">
             {tonightEvents.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} />
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
             ))}
           </div>
         </div>
@@ -307,7 +309,7 @@ export default function TopPicks({
           </h3>
           <div className="space-y-2">
             {recentlyAdded.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} />
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
             ))}
           </div>
         </div>
@@ -321,7 +323,7 @@ export default function TopPicks({
           </h3>
           <div className="space-y-2">
             {savedUpcoming.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} />
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
             ))}
           </div>
         </div>
@@ -363,13 +365,13 @@ export default function TopPicks({
               {viewMode === "grid" ? (
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-1.5">
                   {dayEvents.map((event) => (
-                    <EventCard key={event.id} event={event} variant="grid" />
+                    <EventCard key={event.id} event={event} variant="grid" onSelect={onSelectEvent} />
                   ))}
                 </div>
               ) : (
                 <div className="space-y-2">
                   {dayEvents.map((event) => (
-                    <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} />
+                    <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
                   ))}
                 </div>
               )}
