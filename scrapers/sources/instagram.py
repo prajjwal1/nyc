@@ -179,12 +179,24 @@ def scrape() -> list[dict]:
     #   4 = unknown (newly discovered, not enough data)
     #   5 = low-yield (< 10% with >= 10 posts seen)
     # Inside each tier, sort by yield desc — best accounts of the tier first.
+    # Curated seed list (IG_ACCOUNTS) is protected from tier-5 demotion —
+    # these are accounts the user explicitly chose. Same protection as
+    # stale-prune. Without this, a curated account that switches to non-
+    # event content for a stretch (seasonal, hiatus, batch posting)
+    # gets permanently demoted because yield never recovers.
+    curated_set = {a.lower() for a in IG_ACCOUNTS}
+
     def _priority(a: str) -> tuple[int, float]:
         al = a.lower()
         if al in _AFFINITY_ACCOUNTS_CACHE:
             base = 0
         elif al in _FOLLOWING_ACCOUNTS_CACHE:
             base = 1
+        elif al in curated_set:
+            # Curated accounts always get tier 2 minimum — they earn their
+            # spot through user choice, not yield. Rolling-window yield
+            # would be better long-term but tier protection is cheap.
+            base = 2
         else:
             q = _ACCOUNT_QUALITY_CACHE.get(al, {})
             posts_seen = q.get("posts_scraped", 0)

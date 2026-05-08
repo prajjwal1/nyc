@@ -333,21 +333,28 @@ def _likely_past_midnight(event: dict) -> bool:
     if end and len(end) >= 4 and ":" in end:
         try:
             eh = int(end.split(":")[0])
-            # End-time wrap: end < start = overnight
-            if start and ":" in start:
-                sh = int(start.split(":")[0])
-                if eh < sh:
+            em = int(end.split(":")[1]) if ":" in end and len(end.split(":")) > 1 else 0
+            # Many sources emit endTime="00:00" as a "not set" sentinel
+            # rather than literal midnight. Skip the next-day-wrap check
+            # in that case to avoid over-pruning.
+            is_zero_sentinel = (eh == 0 and em == 0)
+            if not is_zero_sentinel:
+                # End-time wrap: end < start = overnight
+                if start and ":" in start:
+                    sh = int(start.split(":")[0])
+                    if eh < sh:
+                        return True
+                # Explicit late end: 01:00-04:59 is past midnight.
+                # NOT 00:00 because it's typically a sentinel.
+                if 1 <= eh <= 4:
                     return True
-            # Explicit late end (00:30, 01:00, 02:00 — small hour numbers)
-            # treated as next-day (since iCal doesn't span days here).
-            # An event ending at 00:00-04:59 is past midnight.
-            if 0 <= eh <= 4:
-                return True
         except Exception:
             pass
 
-    # Text signals — overnight time mentions in title/description
-    text = (event.get("title", "") + " " + event.get("description", ""))[:600].lower()
+    # Text signals — limit to title + FIRST 200 CHARS of description so
+    # we don't false-match phrases buried deep in long descriptions
+    # (e.g., "open from 11pm to 1am" mentioned as venue trivia).
+    text = (event.get("title", "") + " " + (event.get("description", "") or "")[:200]).lower()
     overnight_patterns = [
         r"\b(?:1|2|3|4|5)\s*am\b",            # "1am", "2 am" etc.
         r"\bpast midnight\b", r"\bafter midnight\b",

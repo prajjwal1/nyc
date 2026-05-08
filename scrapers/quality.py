@@ -578,7 +578,10 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
             return True
 
     # Title is just a name/title without context (3 words or less, no verbs)
-    # like "Of Golden Sun" — these are usually song/album titles, not events
+    # like "Of Golden Sun" — these are usually song/album titles, not events.
+    # CARVE-OUT: explicitly include single-token activity words that the user
+    # specifically asked for. "Vital Run Club", "Books Are Magic",
+    # "Sky Ting Yoga", "Greenpoint Comedy" should NOT be filtered out.
     words = title_stripped.split()
     if len(words) <= 3:
         # Common verbs/event words that would make it a real event
@@ -589,8 +592,19 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
             "mixer", "meetup", "meet", "happy", "hour", "brunch",
             "dinner", "tasting", "class", "workshop", "talk",
             "series", "live", "vs", "v.", "vs.", "presents",
+            # Single-token activity / venue / format words for the curated
+            # account titles the user specifically wants — run clubs, yoga,
+            # comedy, bookstores, supper clubs, brunches, etc.
+            "run", "runs", "running", "yoga", "comedy", "books", "book",
+            "supper", "fitness", "stretching", "stretch", "hike", "hiking",
+            "walk", "walking", "biking", "ride", "race", "marathon",
+            "ceramics", "pottery", "craft", "crafts", "sketching", "drawing",
+            "magic", "ting", "stories", "trivia", "social", "salon",
         }
-        if not any(w.lower() in event_words for w in words):
+        # Strip trailing punctuation when comparing — "Run!" should match
+        # "run" in event_words.
+        normalized = [w.lower().strip("!?.,:;\"'") for w in words]
+        if not any(w in event_words for w in normalized):
             return True
 
     # Narrative phrases inside the title

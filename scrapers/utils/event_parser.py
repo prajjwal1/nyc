@@ -52,18 +52,41 @@ def parse_time(text: str) -> str | None:
                     h = 0
                 return f"{h:02d}:00"
             elif len(groups) == 2:
-                # No AM/PM specified.  Use evening-bias heuristics for events:
-                # 1-7 = PM (events rarely happen 1-7 AM)
-                # 8-11 = ambiguous; check context for "morning"/"AM" cues
-                # 12 = noon, leave as 12
+                # No AM/PM specified — context-aware disambiguation.
+                # Run clubs and yoga classes commonly say "7:30" meaning 7:30 AM
+                # ("meet at 7:30 at McCarren track"). The old evening-bias rule
+                # silently promoted these to PM, killing run-club events.
                 h, mi = int(groups[0]), int(groups[1])
-                if 1 <= h <= 7:
-                    h += 12  # 7:30 → 19:30 (a "show at 7:30" is evening)
-                elif 8 <= h <= 11:
-                    # Default to evening unless "morning" / "am" appears in context
-                    text_lower = text.lower()
-                    if "morning" not in text_lower and "am" not in text_lower:
-                        h += 12  # 9:30 → 21:30
+                text_lower = text.lower()
+                # Strong AM signals — early-morning fitness / yoga / coffee /
+                # brunch / breakfast contexts. If any present, leave hour as-is.
+                AM_SIGNALS = (
+                    "morning", " am", " a.m", "am ", "a.m.",
+                    "run club", "running", "yoga", "stretch",
+                    "sunrise", "early bird", "early-bird",
+                    "breakfast", "brunch", "coffee meetup",
+                    "track club", "marathon training",
+                )
+                PM_SIGNALS = (
+                    "evening", " pm", " p.m", "pm ", "p.m.",
+                    "night", "happy hour", "after work",
+                    "doors", "concert", "show", "set ",
+                    "dj", "party", "dinner",
+                )
+                has_am = any(s in text_lower for s in AM_SIGNALS)
+                has_pm = any(s in text_lower for s in PM_SIGNALS)
+                if has_am and not has_pm:
+                    pass  # leave hour as-is (AM)
+                elif has_pm and not has_am:
+                    if h != 12:
+                        h += 12  # explicit PM context
+                elif 1 <= h <= 5:
+                    # Strongly implausible AM event time. Default to PM.
+                    h += 12
+                else:
+                    # Ambiguous (6-11) with no signals → return None rather than
+                    # guess. Better to have no time than a wrong time.
+                    return None
                 return f"{h:02d}:{mi:02d}"
     return None
 
