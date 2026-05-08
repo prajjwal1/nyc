@@ -477,6 +477,61 @@ Every IG behavior has a mirror or equivalent here:
 
 ---
 
+## User feedback log — durable, never forget
+
+Every concrete preference / requirement the user has stated lives here.
+This is the source of truth for "what does the user want?" Future agents
+must respect every entry. Add to this list whenever the user gives new
+feedback. Do not silently drop entries.
+
+### Excluded content (HARD blocks in `scrapers/quality.py`)
+- **Nightclub events**: `nightclub`, `bottle service`, `vip table/booth/section`, `table service`, `bottle minimum`
+- **Late-night** (anything running past midnight): `after hours`, `till 4am`, `until 5am`, `all night long`, plus the `_likely_past_midnight` filter in `scrapers/normalize.py` (start ≥ 23:00, end 00:00–04:59, end < start, text matches "1am-5am" / "after midnight" / etc.)
+- **Language mixers**: `internationals and language mixer`, `language mixer`, `language exchange`
+- **Reggaeton** music genre
+- **Professional / finance / corporate networking**: `professional networking/mixer`, `business networking/mixer`, `finance networking/mixer/professionals`, `wall street`, `executive networking/mixer`, `career`, `industry`, `corporate`, `investor`, `founders mixer`, `real estate`, `lawyer`, `consulting`, `banking`, `linkedin`, `b2b`, `sales`. **Tech mixer is fine** (carve-out works because the phrase "tech mixer" doesn't contain any blocked phrase).
+- **Kids / seniors / utility / non-NYC** content (longstanding)
+
+### Soft-penalized but not blocked
+- **Heavy-drinking emphasis**: `open bar`, `all you can drink`, `free drinks all night`, `unlimited drinks`, `bottomless mimosas`, `pre-game`, `kegger`, `shotgun beer`. Each match contributes to `soft_penalty_hits` (-0.15 per hit, capped -0.40). User: "fine to have some, just downweight."
+
+### Boosted content (positive signals)
+- **Alcohol-free events**: `alcohol free`, `sober`, `sober curious`, `non-alcoholic`, `zero proof`, `mocktail`, `no booze`, `tea ceremony`, `matcha`, `specialty coffee`, `kombucha tasting`, `tea tasting` → `alcohol_free_boost` up to +0.10. User: "see more events that are alcohol-free."
+- **Meet-people events** (singles, social mixers, run clubs, book clubs, supper clubs) → existing `social_boost` + `meet_people_boost`
+
+### Account-specific user requests
+- **Curated IG accounts the user explicitly named** (DO NOT prune — the stale-prune now skips IG_ACCOUNTS entirely):
+  - Run clubs: `@vitalrunclub`, `@nobaddays`, `@nobaddaysrunclub`, `@brooklyntrackclub`, `@dashing.whippets`, `@oldmanrunclub`
+  - Yoga: `@yogaforthepeople.nyc`, `@modoyoga`, `@humming.puppy`, `@sky_ting`, `@loomyogaclub`
+  - Comedy: `@flophousecomedy`, `@greenpointcomedyclub`, `@newyorkcomedyclub`, `@comedycellarnyc`
+  - Live music / DJ collectives: `@recessgroove`, `@recess.nyc`, `@718sessions`, `@nowadays.nyc`, `@musichallofwilliamsburg`, `@bowerypresents`
+  - Bookstores: `@bookclubbar`, `@books.are.magic`, `@mcnally_jackson`, `@greenlightbookstore`, `@thestrandbooks`
+  - NYC city-curators: `@donewyorkcity`, `@secret_nyc`/`@secretnyc`, `@exploringnyc`, `@onefinedaynyc`
+  - Alcohol-free nightlife: `@brightnightssocial`, `@thecuriousbar`, `@soberishfun`
+  - Spot-curators (`IG_SPOTS_ACCOUNTS`, posts treated as evergreen "🗺 Spot"): `@wherethefuckdowego`, `@thishappensnewyork`, `@newyorkguide`, `@newyorker.eats`, `@tastingny`, `@infatuation`, `@onefinedaynyc`
+
+### UI preferences
+- **Left sidebar**: removed TopAccounts and ActivityPanel widgets per user request. Sidebar shows only view-toggle, calendar, and search/filters.
+- **Empty placeholders**: when an event has no image, render text-only — DO NOT show empty gray gradient boxes (applied to ActivityPanel past saves, EventModal "More from"/"More like this" strips, GridCard).
+- **"This Weekend" hero**: must NOT be parties/nightclub/drinking-heavy. Filters TO low-key social: brunch, books, runs, art, outdoors, comedy, supper-club, workshops. Excludes `parties` cat, `nightlife` highlight, drinking-text patterns. Saturday + Sunday only (not Friday).
+
+### Content kinds + structure
+- **Two content kinds**: dated events (most) AND **cool spots** (evergreen, from `IG_SPOTS_ACCOUNTS`). Both render in same For You feed; spots get teal "🗺 Spot" pill, events get date pill.
+- **Multi-photo IG carousels matter**: 10-slide roundup posts must produce ~10 events (carousel OCR fan-out runs on saved/tagged/curated/hashtag paths).
+
+### System goals
+- **Replace IG scrolling**: the user explicitly does not want to open Instagram. Every IG behavior (home, profile-tap, explore, save, share, hashtags) has a mirror or equivalent here.
+- **Be the central NYC events + spots discovery hub**: meet people, find trending spots/events, have fun experiences. SEO-optimized for "things to do nyc / events tonight nyc / events this weekend nyc / brooklyn events" queries.
+- **Self-improving loop**: after deployment, audit live `events.json`, find issues, ship surgical fixes, repeat. The `Self-improvement loop` section below shows the audit script.
+
+### Coding principles user stated
+- **No custom per-source code**. Generalizable solutions only. Examples: bookclubbar.com event URLs are caught by the **generic** `_EVENT_PLATFORM_RE` venue-events pattern (`*/events/<id>`) → discovered_urls → generic OG fallback. No bookclubbar-specific scraper code.
+- **Don't break existing functionality**. Every change additive.
+- **Rethink assumptions**. When something looks broken, audit the filters that may be over-pruning (we hit this with the run-club + stale-prune issue).
+- **Quality bar**: it's the STACK of filters (shell / recap / fragment / phantom / title-spam / late-night / hard-blocks) plus `MIN_SCORE = 0.50`. Don't add a single high threshold — stack specific filters for what's actually noise.
+
+---
+
 ## Self-improvement loop (audit → fix → ship)
 
 The user explicitly asks: "after it gets deployed, scan the website, see what the issues are, ask how can we improve, do it, in a loop." This is the workflow:

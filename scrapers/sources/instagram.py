@@ -358,6 +358,7 @@ def _save_bio_urls(urls: set[str]) -> None:
 
 _EVENT_PLATFORM_RE = re.compile(
     r"https?://(?:www\.)?(?:"
+    # Known event ticketing platforms — these have structured JSON-LD
     r"lu\.ma/[A-Za-z0-9._-]+|"
     r"luma\.com/[A-Za-z0-9._-]+|"
     r"eventbrite\.com/(?:e|cc|o)/[^\s)>\]\"']+|"
@@ -367,7 +368,14 @@ _EVENT_PLATFORM_RE = re.compile(
     r"shotgun\.live/(?:[a-z]{2}/)?events/[^\s)>\]\"']+|"
     r"withtopography\.com/[^\s)>\]\"']+|"
     r"showtix4u\.com/[^\s)>\]\"']+|"
-    r"tixr\.com/(?:groups|e)/[^\s)>\]\"']+"
+    r"tixr\.com/(?:groups|e)/[^\s)>\]\"']+|"
+    # Generic venue-website pattern: ANY domain with /events/<id> or
+    # /event/<id> or /e/<slug> path. Covers bookclubbar.com, museum
+    # sites, venue calendars, etc. Generic scraper falls back to OG
+    # metadata when JSON-LD isn't present, so even if the venue's
+    # site is JS-rendered the individual event URL will produce a
+    # title + image + description.
+    r"[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9-]+)+/(?:events?|e|tickets?)/[A-Za-z0-9][A-Za-z0-9._-]+"
     r")",
     re.IGNORECASE,
 )
