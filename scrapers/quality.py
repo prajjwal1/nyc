@@ -34,6 +34,28 @@ HARD_BLOCK_KEYWORDS = [
     # Music genres user excluded (reggaeton)
     "reggaeton",
 
+    # Professional / finance / corporate networking (excluded — site is
+    # for events worth attending to meet people for connection, not
+    # for-business connections). "tech mixer" is explicitly OK.
+    "professional networking", "professionals networking",
+    "professional mixer", "professionals mixer",
+    "business networking", "business mixer",
+    "finance networking", "finance mixer", "finance professionals",
+    "wall street networking", "wall street mixer",
+    "executive networking", "executive mixer", "executives mixer",
+    "career networking", "career mixer",
+    "industry networking", "industry mixer",
+    "corporate networking", "corporate mixer",
+    "investor networking", "investor mixer", "investors mixer",
+    "founders networking", "founders mixer",  # focus on founder events; tech mixer stays
+    "real estate networking", "real estate mixer",
+    "lawyer networking", "lawyer mixer", "attorneys mixer",
+    "consulting networking", "consultant mixer",
+    "banking networking", "banking mixer",
+    "linkedin networking", "linkedin mixer",
+    "b2b networking", "b2b mixer",
+    "sales networking", "sales mixer",
+
     # Senior services / accessibility
     "seniors", "senior citizens", "55+", "aarp", "braille", "accessible reading",
 
