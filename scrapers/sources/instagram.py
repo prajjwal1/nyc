@@ -1247,11 +1247,14 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
             "post_count": count,
         }
 
-    # Stale-account auto-prune: if the newest post is >90 days old AND the
-    # account isn't user-curated (saved/affinity/following), mark it stale.
-    # Stale accounts don't post events — keeps the rotation tight.
-    if newest_post_date is not None and username.lower() not in _AFFINITY_ACCOUNTS_CACHE \
-            and username.lower() not in _FOLLOWING_ACCOUNTS_CACHE:
+    # Stale-account auto-prune: if newest post is >90 days old AND the
+    # account isn't user-curated (saved/affinity/following) AND not in
+    # the IG_ACCOUNTS curated seed list, mark it stale. Curated and saved
+    # accounts are protected from auto-prune since the user chose them.
+    if newest_post_date is not None \
+            and username.lower() not in _AFFINITY_ACCOUNTS_CACHE \
+            and username.lower() not in _FOLLOWING_ACCOUNTS_CACHE \
+            and username.lower() not in {a.lower() for a in IG_ACCOUNTS}:
         from datetime import datetime, timezone, timedelta
         try:
             npd = newest_post_date if newest_post_date.tzinfo else newest_post_date.replace(tzinfo=timezone.utc)
