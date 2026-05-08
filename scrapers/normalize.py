@@ -558,7 +558,12 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     events = rank_events(events)
 
     # Drop low-score events — every event must justify its position
-    MIN_SCORE = 0.5
+    # Quality bar: drop the bottom slice. Tightened from 0.5 → 0.55 in
+    # response to user's 'ensure we have a quality bar' request. With 16+
+    # ranking signals stacked, only events that earn it across multiple
+    # dimensions (saved, cross-source, time-fit, content-quality, etc.)
+    # cross 0.55. The site is a curated discovery hub, not a dump.
+    MIN_SCORE = 0.55
     before = len(events)
     events = [ev for ev in events if ev.get("score", 0) >= MIN_SCORE]
     dropped = before - len(events)

@@ -109,6 +109,17 @@ CATEGORY_KEYWORDS = {
         "national sawdust", "rough trade", "le poisson rouge",
         "summerstage", "celebrate brooklyn", "lincoln center out of doors",
         "free concert", "outdoor concert", "tribute show",
+        # Concert venues — Songkick uses "Artist @ Venue" format heavily
+        "@ webster hall", "@ brooklyn paramount", "@ brooklyn bowl",
+        "@ music hall of williamsburg", "@ bowery ballroom", "@ irving plaza",
+        "@ knockdown center", "@ elsewhere", "@ public records",
+        "@ nowadays", "@ avant gardner", "@ brooklyn steel",
+        "@ terminal 5", "@ kings theatre", "@ beacon theatre",
+        "carnegie hall", "lincoln center", "radio city",
+        "msg ", "madison square garden",
+        "blue note", "smoke jazz", "village vanguard", "small's jazz",
+        # Generic Songkick-style "@ Venue" pattern
+        " @ the hall", " @ the rooftop",
     ],
     "parties": [
         "party", "social mixer", "mixer", "networking", "happy hour",
@@ -124,6 +135,10 @@ CATEGORY_KEYWORDS = {
         "park", "outdoor", "garden", "hike", "walk", "picnic", "rooftop",
         "boat", "harbor", "waterfront", "pier ", "beach", "ferry",
         "high line", "domino park", "central park",
+        # Nature / birding / cemetery walks (Green-Wood)
+        "birding", "bird walk", "nature walk", "tree climbing",
+        "kayak", "rowing", "sailing", "fishing",
+        "trail", "hiking",
     ],
     "food": [
         "food festival", "dinner party", "tasting menu", "tasting", "culinary",
@@ -142,6 +157,14 @@ CATEGORY_KEYWORDS = {
     "theater": [
         "theater", "theatre", "play opening", "broadway", "off-broadway",
         "drama", "musical",
+        # Specific NYC theater venues + popular musicals
+        "wicked", "hamilton", "moulin rouge", "back to the future",
+        "lion king", "phantom", "mj the musical", "six the musical",
+        "aladdin", "company", "harry potter", "tina turner musical",
+        "& juliet", "hadestown", "kimberly akimbo", "the outsiders",
+        "playwrights horizons", "the public theater", "signature theatre",
+        "ny theatre workshop", "joe's pub", "the kitchen",
+        "play reading", "performance art",
     ],
     "comedy": [
         "comedy show", "improv", "stand-up", "standup", "open mic comedy",
@@ -176,11 +199,15 @@ CATEGORY_KEYWORDS = {
         "run club", "running club", "weekend run", "morning run",
         "social run", "saturday run", "sunday run",
         "group run", "casual run", "track club",
-        "5k ", "10k ", "marathon training",
+        "5k ", "10k ", "marathon training", "marathon",
         "bike ride", "group ride", "cycling club",
         "pickleball", "tennis meetup",
         "sprint", "track meet", "intervals at",
         "mccarren track", "domino park run",
+        # broader patterns: "X 5k", "X Half Marathon", any run/runs
+        " runs ", " run @", "saturday runs", "sunday runs",
+        "half marathon", " 5k!", "yoga class", "yoga flow",
+        "boxing class", "spin class", "cycle class",
     ],
     "movies": [
         "movie", "film screening", "movie screening", "outdoor movie",

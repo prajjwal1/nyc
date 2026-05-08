@@ -1,6 +1,10 @@
 # NYC Events — IG-replacement event discovery
 
-> **Goal**: replace scrolling Instagram for finding events. The user is single, lives in Williamsburg, is in their 20s/30s, and wants to find events to attend to **meet people**. Hosted at `github.com/prajjwal1/nyc`, deployed to GitHub Pages.
+> **Goal**: be the central place for New Yorkers to **discover cool spots, see which places/events are trending, find events to socialize and meet people, and have fun experiences**. Replace scrolling Instagram entirely. The user is single, lives in Williamsburg, is in their 20s/30s. Hosted at `github.com/prajjwal1/nyc`, deployed to GitHub Pages.
+
+**Two content kinds, one feed**:
+- **Dated events** — concerts, parties, classes, run clubs, etc. (most content)
+- **Cool spots** — evergreen place picks from `IG_SPOTS_ACCOUNTS` (`@wherethefuckdowego`, `@infatuation`, etc.). Always-current; render with teal "🗺 Spot" pill instead of date pill.
 
 This README is the **complete knowledge handoff**. Everything an agent needs to keep building is documented here. Read it end-to-end before making changes.
 
