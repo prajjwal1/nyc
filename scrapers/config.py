@@ -152,6 +152,12 @@ IG_SPOTS_ACCOUNTS = frozenset({
     "newyorker.eats",
     "tastingny",
     "infatuation",
+    "onefinedaynyc",      # daily NYC guide — mix of dated events AND
+                          # evergreen "cool place to check out" picks.
+                          # Treating IG posts as spots is the safer default;
+                          # the Substack RSS still extracts dated events
+                          # separately, so we don't lose the time-bound
+                          # content.
 })
 
 IG_MAX_POSTS_PER_ACCOUNT = int(os.environ.get("IG_MAX_POSTS_PER_ACCOUNT", "20"))
