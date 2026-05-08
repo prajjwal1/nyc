@@ -696,6 +696,77 @@ _IG_EVENT_HASHTAGS = [
 ]
 
 
+_USER_HASHTAGS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "user_hashtags.json",
+)
+
+
+def _harvest_user_hashtags(caption: str) -> set[str]:
+    """Extract #hashtags from a caption (saved/tagged post). The user
+    chose to save this — the hashtags they chose-to-save-with are a
+    strong personalization signal for discovery."""
+    if not caption:
+        return set()
+    out: set[str] = set()
+    for m in re.finditer(r"#([a-z0-9_]{4,40})", caption, re.IGNORECASE):
+        tag = m.group(1).lower()
+        # Skip generic/non-NYC tags + likely-noise
+        if tag in {"love", "fun", "vibes", "happy", "weekend", "monday", "friday",
+                   "saturday", "sunday", "music", "art", "photography", "fashion"}:
+            continue
+        out.add(tag)
+    return out
+
+
+def _persist_user_hashtags(tags: set[str]) -> None:
+    """Persist user-derived hashtag counters. Each save bumps the count;
+    high-count tags get added to the hashtag-discovery rotation."""
+    import json
+    if not tags:
+        return
+    existing: dict = {}
+    if os.path.isfile(_USER_HASHTAGS_PATH):
+        try:
+            with open(_USER_HASHTAGS_PATH) as f:
+                existing = json.load(f) or {}
+        except Exception:
+            existing = {}
+    counts: dict = existing.get("counts", {}) if isinstance(existing.get("counts"), dict) else {}
+    for t in tags:
+        counts[t] = counts.get(t, 0) + 1
+    out = {
+        "counts": counts,
+        "last_updated": datetime.now().isoformat(),
+    }
+    try:
+        os.makedirs(os.path.dirname(_USER_HASHTAGS_PATH), exist_ok=True)
+        tmp = _USER_HASHTAGS_PATH + ".tmp"
+        with open(tmp, "w") as f:
+            json.dump(out, f, indent=2)
+        os.replace(tmp, _USER_HASHTAGS_PATH)
+    except Exception as exc:
+        print(f"[instagram] Failed to save user hashtags: {exc}")
+
+
+def _load_user_hashtag_rotation(min_count: int = 2, cap: int = 8) -> list[str]:
+    """Return user-derived hashtags with at least `min_count` saves. These
+    augment _IG_EVENT_HASHTAGS during the full-sweep hashtag mining."""
+    import json
+    if not os.path.isfile(_USER_HASHTAGS_PATH):
+        return []
+    try:
+        with open(_USER_HASHTAGS_PATH) as f:
+            d = json.load(f) or {}
+    except Exception:
+        return []
+    counts = d.get("counts", {}) if isinstance(d.get("counts"), dict) else {}
+    eligible = [(t, n) for t, n in counts.items() if n >= min_count]
+    eligible.sort(key=lambda kv: -kv[1])
+    return [t for t, _ in eligible[:cap]]
+
+
 def _scrape_hashtag_posts(loader, max_posts_per_tag: int = 20) -> tuple[list[dict], set[str]]:
     """Mine NYC event hashtags for events + new author candidates.
 
@@ -715,7 +786,16 @@ def _scrape_hashtag_posts(loader, max_posts_per_tag: int = 20) -> tuple[list[dic
     dead_set = {u for u, info in _load_dead_accounts().get("accounts", {}).items()
                 if info.get("reason") in ("not_exists", "repeated_failure", "stale_no_recent_posts")}
 
-    for tag in _IG_EVENT_HASHTAGS:
+    # Mix in user-derived hashtags (from saved/tagged post captions) so the
+    # discovery rotation reflects the user's actual interests, not just our
+    # static seed list. User-derived tags get scraped FIRST since they're
+    # the strongest personalization signal.
+    user_tags = _load_user_hashtag_rotation(min_count=2, cap=8)
+    rotation = list(dict.fromkeys(user_tags + _IG_EVENT_HASHTAGS))
+    if user_tags:
+        print(f"[instagram-hashtag] User-derived tags from saves: {user_tags}")
+
+    for tag in rotation:
         if time.time() - started > budget_seconds:
             print(f"[instagram-hashtag] Budget exhausted; stopping after #{tag}")
             break
@@ -895,8 +975,18 @@ def _scrape_saved_posts(loader, max_saved: int = 50) -> tuple[list[dict], set[st
                 if comment_urls:
                     _save_caption_urls(comment_urls)
                     print(f"[instagram] @{owner} saved post: +{len(comment_urls)} URLs from comments")
-            except Exception as exc:
+            except Exception:
                 # Comments may rate-limit; never block the scrape.
+                pass
+
+            # Hashtag personalization: extract #-tags from saved post
+            # captions. These drive the hashtag-discovery rotation on
+            # future runs — your saves shape what we mine.
+            try:
+                user_tags = _harvest_user_hashtags(post.caption or "")
+                if user_tags:
+                    _persist_user_hashtags(user_tags)
+            except Exception:
                 pass
         print(f"[instagram] Scraped {len(events)} events from {count} SAVED posts ({len(accounts_seen)} unique accounts)")
     except Exception as exc:

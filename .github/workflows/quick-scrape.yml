@@ -66,6 +66,7 @@ jobs:
             scrapers/data/stats_history.jsonl \
             scrapers/data/url_health.json \
             scrapers/data/account_cursors.json \
-            scrapers/data/account_quality.json 2>/dev/null || true
+            scrapers/data/account_quality.json \
+            scrapers/data/user_hashtags.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Quick scrape $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
