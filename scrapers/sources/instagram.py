@@ -1311,7 +1311,16 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     sections = _split_caption(caption)
     # Detect if this post is clearly a multi-event roundup (many sections w/ dates).
     n_dated_sections = sum(1 for s in sections if _find_dates(s, post_date))
-    multi_event = n_dated_sections >= 4
+    # Threshold: 3+ dated sections (was 4) — better recall for shorter
+    # roundups. Multi-image carousel posts where each slide is an event
+    # flyer often have minimal captions but 3-4 inline-listed events.
+    multi_event = n_dated_sections >= 3
+    # Carousel posts with 4+ slides AND a short list of dated sections are
+    # almost certainly per-slide-per-event roundups even if section count
+    # is borderline.
+    n_slides = len(post.get("all_images") or [])
+    if not multi_event and n_slides >= 4 and n_dated_sections >= 2:
+        multi_event = True
 
     events: list[dict] = []
     url_idx = 0  # walk through extracted URLs as we consume sections
@@ -1576,11 +1585,20 @@ _SPLIT_RE = re.compile(
     r"\n\n+"                              # double+ newlines
     r"|\n(?=[•●○‣◆▪︎★☆\-\*])"            # newline before bullet chars
     r"|\n(?=\d{1,2}[\.\)]\s)"            # newline before numbered list items
-    r"|\n(?=📍|🎶|🎨|🎭|📚|🗓|🕐|👉)"   # newline before common event emoji
-    # Day-of-week prefixed roundup items: "Monday: ..." / "MON 5/12: ..." / "Friday — ..."
+    r"|\n(?=📍|🎶|🎨|🎭|📚|🗓|🕐|👉|🎟|🎫|🎉|🍷|🍻|🎤)"  # event emoji
+    # Number-emoji prefixes: 1️⃣ 2️⃣ 3️⃣ ... commonly used in carousel
+    # roundups where each slide gets its own number marker
+    r"|\n(?=[1-9]️⃣|\U0001f51f)"
+    # Long-dash separators: ━━━━ ════ ═══ (split BEFORE the run only;
+    # variable-width lookbehind isn't supported in stdlib re)
+    r"|\n(?=[━═─]{3,})"
+    # "Slide N" / "Photo N" / "Day N" / "Event N" / "Pic N" markers
+    r"|\n(?=(?:Slide|Photo|Pic|Day|Event)\s*\d+\s*[:\.\)\-\—])"
+    # Day-of-week prefixed roundup items
     r"|\n(?=(?:Mon(?:day)?|Tue(?:s|sday)?|Wed(?:nesday)?|Thu(?:rs(?:day)?)?|Fri(?:day)?|Sat(?:urday)?|Sun(?:day)?)[\s,:—–\-•·\.])"
-    # Date-prefixed items: "5/12: ..." / "May 12: ..."
+    # Date-prefixed items: "5/12: ..." / "May 12: ..." / "5.12 ..."
     r"|\n(?=\d{1,2}/\d{1,2}[:\s\.,])"
+    r"|\n(?=\d{1,2}\.\d{1,2}\.\d{2,4}[:\s])"
     r"|\n(?=(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2}[:\s\.,])"
 )
 

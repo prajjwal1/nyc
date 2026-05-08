@@ -10,6 +10,8 @@ import {
   getHiddenCount,
   clearAllLocalState,
   isSavedLocal,
+  loadSavedStubs,
+  SavedEventStub,
   InterestProfile,
 } from "../lib/interests";
 import { downloadIcsBundle } from "../lib/ics";
@@ -28,18 +30,26 @@ export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
   const [savedCount, setSavedCount] = useState(0);
   const [hiddenCount, setHiddenCount] = useState(0);
   const [confirming, setConfirming] = useState(false);
+  const [pastSaves, setPastSaves] = useState<SavedEventStub[]>([]);
+  const [pastOpen, setPastOpen] = useState(false);
 
   useEffect(() => {
     setProfile(loadProfile());
     setSavedCount(getSavedCount());
     setHiddenCount(getHiddenCount());
+    // Past saves: stubs whose date < today, sorted most-recent first
+    const today = new Date().toISOString().split("T")[0];
+    const past = loadSavedStubs()
+      .filter((s) => s.date && s.date < today)
+      .sort((a, b) => b.date.localeCompare(a.date));
+    setPastSaves(past);
   }, []);
 
   if (!profile) return null;
 
   const total = totalEngagementCount(profile);
   // Don't show until the user has any engagement OR has saved/hidden anything
-  if (total === 0 && savedCount === 0 && hiddenCount === 0) return null;
+  if (total === 0 && savedCount === 0 && hiddenCount === 0 && pastSaves.length === 0) return null;
 
   const cats = topCategories(profile, 5);
   const accts = topAccounts(profile, 5);
@@ -164,6 +174,74 @@ export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
           </div>
         </div>
       )}
+
+      {pastSaves.length > 0 && (
+        <div className="pt-3 border-t border-gray-100">
+          <button
+            onClick={() => setPastOpen(!pastOpen)}
+            className="w-full flex items-center justify-between text-[10px] uppercase tracking-wide text-gray-400 hover:text-gray-700"
+          >
+            <span>📅 Past saves ({pastSaves.length})</span>
+            <span className="normal-case tracking-normal">
+              {pastOpen ? "hide" : "show"}
+            </span>
+          </button>
+          {pastOpen && (
+            <div className="mt-2 space-y-1 max-h-64 overflow-y-auto">
+              {pastSaves.slice(0, 30).map((s) => (
+                <a
+                  key={s.id}
+                  href={s.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex gap-2 p-1.5 rounded hover:bg-gray-50 transition-colors"
+                  title={s.title}
+                >
+                  {s.imageUrl ? (
+                    <img
+                      src={s.imageUrl}
+                      alt=""
+                      loading="lazy"
+                      className="shrink-0 w-9 h-9 rounded object-cover bg-gray-100"
+                    />
+                  ) : (
+                    <div className="shrink-0 w-9 h-9 rounded bg-gradient-to-br from-gray-200 to-gray-300" />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <div className="text-[10px] text-gray-500 line-clamp-1">
+                      {formatPastDate(s.date)}
+                      {s.instagramAccount ? <span className="text-gray-400"> · @{s.instagramAccount}</span> : null}
+                    </div>
+                    <div className="text-[11px] font-medium text-gray-700 line-clamp-1">
+                      {s.title}
+                    </div>
+                  </div>
+                </a>
+              ))}
+              {pastSaves.length > 30 && (
+                <p className="text-[10px] text-gray-400 px-2">
+                  +{pastSaves.length - 30} more older saves
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
+}
+
+function formatPastDate(iso: string): string {
+  try {
+    const d = new Date(iso + "T00:00:00");
+    const now = new Date();
+    const diffDays = Math.floor((now.getTime() - d.getTime()) / (1000 * 3600 * 24));
+    if (diffDays === 0) return "Today";
+    if (diffDays === 1) return "Yesterday";
+    if (diffDays < 7) return `${diffDays}d ago`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)}w ago`;
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  } catch {
+    return iso;
+  }
 }
