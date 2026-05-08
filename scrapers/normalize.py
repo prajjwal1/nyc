@@ -267,11 +267,33 @@ def collapse_title_spam(events: list[dict]) -> list[dict]:
         if len(group) < 4:
             keep.extend(group)
             continue
-        # 4+ events with same (title, sourceUrl) — almost certainly a bad
-        # recurring expansion of a one-shot event. Check whether description
-        # has explicit weekly marker — if so, keep them all.
+        # 4+ events with same (title, sourceUrl). Only collapse if we have
+        # NO evidence this is a legit recurring series. Trust signals:
+        #   - event.recurring set by the recurring detector → keep all
+        #   - description has explicit weekly/monthly/every-X marker
+        #   - title contains weekday + day-of-week pattern indicating
+        #     "this Tuesday" series (e.g. "Tuesday Run Club")
+        if any(ev.get("recurring") for ev in group):
+            # Already detected as recurring upstream — trust it
+            keep.extend(group)
+            continue
         desc = (group[0].get("description", "") or "").lower()
-        if "every " in desc or "weekly" in desc or "each week" in desc:
+        title = (group[0].get("title", "") or "").lower()
+        recurring_markers = (
+            "every ", "weekly", "each week", "monthly", "each month",
+            "first ", "second ", "third ", "fourth ", "last ",
+            "biweekly", "fortnightly", "every other",
+        )
+        if any(m in desc or m in title for m in recurring_markers):
+            keep.extend(group)
+            continue
+        # Title contains a day-of-week followed by a noun → likely series
+        # (e.g. "Tuesday Run Club", "Saturday Brunch Club", "Sunday Yoga")
+        day_series_re = re.compile(
+            r"\b(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)s?\b\s+\w+",
+            re.IGNORECASE,
+        )
+        if day_series_re.search(title):
             keep.extend(group)
             continue
         # Sort by date and keep only the earliest one.
@@ -558,12 +580,15 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     events = rank_events(events)
 
     # Drop low-score events — every event must justify its position
-    # Quality bar: drop the bottom slice. Tightened from 0.5 → 0.55 in
-    # response to user's 'ensure we have a quality bar' request. With 16+
-    # ranking signals stacked, only events that earn it across multiple
-    # dimensions (saved, cross-source, time-fit, content-quality, etc.)
-    # cross 0.55. The site is a curated discovery hub, not a dump.
-    MIN_SCORE = 0.55
+    # Quality bar — when combined with all the per-source filters
+    # (shell-event filter, recap rejection, fragment-title filter,
+    # recurring-spam collapse, far-future filter, late-night filter,
+    # hard-blocks for nightclubs/professionals/language-mixers), 0.50
+    # turned out to be the right floor. Anything tighter started
+    # pruning legitimate run-club / book-club / niche events. The
+    # quality bar IS the stack of filters above; this is the safety
+    # net for what slipped through with weak signal.
+    MIN_SCORE = 0.50
     before = len(events)
     events = [ev for ev in events if ev.get("score", 0) >= MIN_SCORE]
     dropped = before - len(events)

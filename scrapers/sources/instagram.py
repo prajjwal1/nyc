@@ -1850,8 +1850,11 @@ def _is_metadata_line(line: str) -> bool:
 
 _FRAGMENT_TITLE_RE = re.compile(
     r"^(?:"
-    # Lowercase function-word starters that signal a mid-sentence fragment
-    r"we\s|to\s|from\s|in\s|on\s|at\s|of\s|the\s|and\s|but\s|or\s|that\s|this\s|"
+    # Lowercase function-word starters that signal a mid-sentence fragment.
+    # Removed "the" — false-matches legit titles like "The Cribs @ Warsaw",
+    # "The Book of Mormon", "The Rocky Horror Show". The other words almost
+    # never legitimately start an event title.
+    r"we\s|to\s|from\s|in\s|on\s|of\s|and\s|but\s|or\s|that\s|this\s|"
     r"would\s|could\s|should\s|will\s|stills?\s|next\s|"
     # Image-credit / annotation prefixes
     r"//|@|#"
