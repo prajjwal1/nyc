@@ -142,6 +142,55 @@ export function readAndAdvanceLastVisited(): string | null {
 // where there's no platform "save". Stored in localStorage.
 const SAVED_KEY = "nyc-events:saved:v1";
 
+// Saved-event content cache — the core event data per saved ID, so the
+// user can still see what they saved AFTER the event date has passed
+// (the source events.json drops past events). Keyed by event id.
+const SAVED_CACHE_KEY = "nyc-events:savedCache:v1";
+
+export interface SavedEventStub {
+  id: string;
+  title: string;
+  date: string;
+  sourceUrl: string;
+  imageUrl: string | null;
+  instagramAccount?: string;
+  accountVerified?: boolean;
+  startTime?: string | null;
+  locationName?: string;
+}
+
+function loadSavedCache(): Record<string, SavedEventStub> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(SAVED_CACHE_KEY);
+    if (!raw) return {};
+    const obj = JSON.parse(raw);
+    return obj && typeof obj === "object" ? obj : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveSavedCache(cache: Record<string, SavedEventStub>): void {
+  if (typeof window === "undefined") return;
+  try {
+    // Cap at 200 most-recent (by save order — we trust insertion order)
+    const ids = Object.keys(cache);
+    if (ids.length > 200) {
+      const trimmed: Record<string, SavedEventStub> = {};
+      for (const id of ids.slice(-200)) trimmed[id] = cache[id];
+      cache = trimmed;
+    }
+    window.localStorage.setItem(SAVED_CACHE_KEY, JSON.stringify(cache));
+  } catch {
+    // ignore quota
+  }
+}
+
+export function loadSavedStubs(): SavedEventStub[] {
+  return Object.values(loadSavedCache());
+}
+
 function loadSavedSet(): Set<string> {
   if (typeof window === "undefined") return new Set();
   try {
@@ -165,16 +214,27 @@ function saveSavedSet(s: Set<string>): void {
 
 export function toggleSavedLocal(
   eventId: string,
-  hint?: { account?: string; categories?: string[]; sourceUrl?: string }
+  hint?: {
+    account?: string;
+    categories?: string[];
+    sourceUrl?: string;
+    // Full stub for cache so saved events survive past their date
+    stub?: SavedEventStub;
+  }
 ): boolean {
   const s = loadSavedSet();
+  const cache = loadSavedCache();
   let saved: boolean;
   if (s.has(eventId)) {
     s.delete(eventId);
+    delete cache[eventId];
     saved = false;
   } else {
     s.add(eventId);
     saved = true;
+    if (hint?.stub) {
+      cache[eventId] = hint.stub;
+    }
     // Saving is the strongest explicit positive signal — feed it heavily
     // into the interest profile so other events from the same account/
     // categories/source rise in subsequent rankings. 5x the per-click bump.
@@ -195,6 +255,7 @@ export function toggleSavedLocal(
     }
   }
   saveSavedSet(s);
+  saveSavedCache(cache);
   return saved;
 }
 
@@ -268,6 +329,7 @@ export function clearAllLocalState(): void {
   try {
     window.localStorage.removeItem(STORAGE_KEY);
     window.localStorage.removeItem(SAVED_KEY);
+    window.localStorage.removeItem(SAVED_CACHE_KEY);
     window.localStorage.removeItem(HIDDEN_KEY);
     window.localStorage.removeItem(OPENED_KEY);
     window.localStorage.removeItem(SEARCH_HISTORY_KEY);

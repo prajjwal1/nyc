@@ -150,7 +150,7 @@ function MediaFirstCard({
   const handleSave = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setSaved(toggleSavedLocal(event.id, { account: event.instagramAccount, categories: event.categories, sourceUrl: event.sourceUrl }));
+    setSaved(toggleSavedLocal(event.id, { account: event.instagramAccount, categories: event.categories, sourceUrl: event.sourceUrl, stub: { id: event.id, title: event.title, date: event.date, sourceUrl: event.sourceUrl, imageUrl: event.imageUrl, instagramAccount: event.instagramAccount, accountVerified: event.accountVerified, startTime: event.startTime, locationName: event.location?.name } }));
   };
   const opened = isEventOpened(event.id);
   return (
@@ -370,7 +370,7 @@ function FeedCard({
   const handleSaveF = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setSavedF(toggleSavedLocal(event.id, { account: event.instagramAccount, categories: event.categories, sourceUrl: event.sourceUrl }));
+    setSavedF(toggleSavedLocal(event.id, { account: event.instagramAccount, categories: event.categories, sourceUrl: event.sourceUrl, stub: { id: event.id, title: event.title, date: event.date, sourceUrl: event.sourceUrl, imageUrl: event.imageUrl, instagramAccount: event.instagramAccount, accountVerified: event.accountVerified, startTime: event.startTime, locationName: event.location?.name } }));
   };
   // Show description only if it's high-signal (not just a fragment of a larger caption)
   const desc = event.description?.trim();
