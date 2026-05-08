@@ -68,8 +68,10 @@ function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event)
           loading="lazy"
         />
       ) : (
-        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center p-2 text-center">
-          <span className="text-xs font-medium text-gray-700 line-clamp-4">
+        // No image — keep the cell text-only with the title prominently
+        // displayed on a clean neutral surface (no decorative placeholder).
+        <div className="w-full h-full bg-white flex items-center justify-center p-3 text-center">
+          <span className="text-sm font-semibold text-gray-900 line-clamp-5 leading-snug">
             {event.title}
           </span>
         </div>

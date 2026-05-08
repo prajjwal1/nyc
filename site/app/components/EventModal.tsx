@@ -364,10 +364,8 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
                       }}
                       className="text-left p-2 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors flex gap-2"
                     >
-                      {e.imageUrl ? (
+                      {e.imageUrl && (
                         <img src={e.imageUrl} alt="" loading="lazy" className="shrink-0 w-12 h-12 rounded object-cover bg-gray-100" />
-                      ) : (
-                        <div className="shrink-0 w-12 h-12 rounded bg-gradient-to-br from-gray-200 to-gray-300" />
                       )}
                       <div className="min-w-0 flex-1">
                         <div className="text-[11px] font-semibold text-gray-700 line-clamp-1">
@@ -425,10 +423,8 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
                       }}
                       className="text-left p-2 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors flex gap-2"
                     >
-                      {e.imageUrl ? (
+                      {e.imageUrl && (
                         <img src={e.imageUrl} alt="" loading="lazy" className="shrink-0 w-12 h-12 rounded object-cover bg-gray-100" />
-                      ) : (
-                        <div className="shrink-0 w-12 h-12 rounded bg-gradient-to-br from-gray-200 to-gray-300" />
                       )}
                       <div className="min-w-0 flex-1">
                         <div className="text-[11px] font-semibold text-gray-700 line-clamp-1">

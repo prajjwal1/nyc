@@ -197,15 +197,13 @@ export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
                   className="flex gap-2 p-1.5 rounded hover:bg-gray-50 transition-colors"
                   title={s.title}
                 >
-                  {s.imageUrl ? (
+                  {s.imageUrl && (
                     <img
                       src={s.imageUrl}
                       alt=""
                       loading="lazy"
                       className="shrink-0 w-9 h-9 rounded object-cover bg-gray-100"
                     />
-                  ) : (
-                    <div className="shrink-0 w-9 h-9 rounded bg-gradient-to-br from-gray-200 to-gray-300" />
                   )}
                   <div className="min-w-0 flex-1">
                     <div className="text-[10px] text-gray-500 line-clamp-1">
