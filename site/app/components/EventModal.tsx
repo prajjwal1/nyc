@@ -136,12 +136,18 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
         })()}
 
         <div className="p-5 space-y-4">
-          {/* Date pill + highlights */}
+          {/* Date pill + highlights — or "Spot" for evergreen */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="px-2.5 py-1 rounded-lg bg-gray-900 text-white text-xs font-semibold">
-              {dateLabel}
-              {timeStr ? ` · ${timeStr}` : ""}
-            </span>
+            {event.evergreen ? (
+              <span className="px-2.5 py-1 rounded-lg bg-teal-100 text-teal-900 text-xs font-semibold">
+                🗺 Cool Spot · always-current
+              </span>
+            ) : (
+              <span className="px-2.5 py-1 rounded-lg bg-gray-900 text-white text-xs font-semibold">
+                {dateLabel}
+                {timeStr ? ` · ${timeStr}` : ""}
+              </span>
+            )}
             {(event.highlights || []).slice(0, 4).map((h) => {
               const config = HIGHLIGHT_CONFIG[h];
               if (!config) return null;

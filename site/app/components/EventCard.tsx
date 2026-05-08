@@ -76,9 +76,13 @@ function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event)
           </span>
         </div>
       )}
-      {/* Date pill */}
-      <div className="absolute top-1.5 left-1.5 bg-white/95 backdrop-blur rounded px-1.5 py-0.5 text-[10px] font-semibold text-gray-900 shadow-sm">
-        {dateLabel}
+      {/* Date pill — or "Spot" for evergreen */}
+      <div className={`absolute top-1.5 left-1.5 backdrop-blur rounded px-1.5 py-0.5 text-[10px] font-semibold shadow-sm ${
+        event.evergreen
+          ? "bg-teal-100/95 text-teal-900"
+          : "bg-white/95 text-gray-900"
+      }`}>
+        {event.evergreen ? "🗺 Spot" : dateLabel}
       </div>
       {/* Multi-image badge (IG-style stack icon) */}
       {event.extraImages && event.extraImages.length > 0 && (
@@ -172,9 +176,13 @@ function MediaFirstCard({
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        {/* Date badge top-left */}
-        <div className="absolute top-2 left-2 bg-white/95 backdrop-blur rounded-lg px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm">
-          {dateLabel}
+        {/* Date badge top-left — or "Spot" pill for evergreen recs */}
+        <div className={`absolute top-2 left-2 backdrop-blur rounded-lg px-2 py-1 text-xs font-semibold shadow-sm ${
+          event.evergreen
+            ? "bg-teal-100/95 text-teal-900"
+            : "bg-white/95 text-gray-900"
+        }`}>
+          {event.evergreen ? "🗺 Spot" : dateLabel}
         </div>
         {/* Likes badge top-right when meaningful */}
         {event.likes && event.likes > 50 ? (

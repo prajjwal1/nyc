@@ -75,6 +75,11 @@ IG_ACCOUNTS = list(dict.fromkeys([  # dedupe while preserving order
     # Singles / social (top priority)
     "sipsandstoriesnyc",
     "buzzkillnyc",
+    # Alcohol-free nightlife — niche but high-signal for meet-people goal
+    # without drinking
+    "brightnightssocial",
+    "thecuriousbar",
+    "soberishfun",
     # Run clubs / fitness
     "midnightrunnersnewyork",
     "northbrooklynrunners",
@@ -102,6 +107,15 @@ IG_ACCOUNTS = list(dict.fromkeys([  # dedupe while preserving order
     "secretnyc",
     "exploringnyc",
     "explorenyc",
+    # Place / spot accounts — content is "cool spots to check out" rather
+    # than dated events. We treat their posts as evergreen recommendations
+    # (see IG_SPOTS_ACCOUNTS below).
+    "wherethefuckdowego",
+    "thishappensnewyork",
+    "newyorkguide",
+    "newyorker.eats",
+    "tastingny",
+    "infatuation",  # Already covered above; restated as spot-source
     # Comedy clubs / scenes — live + comedy specifically requested
     "flophousecomedy",
     "greenpointcomedyclub",
@@ -126,6 +140,19 @@ IG_ACCOUNTS = list(dict.fromkeys([  # dedupe while preserving order
     "greenpointers",
     "omgreenpoint",
 ]))
+
+# Accounts whose posts are "cool spot" recommendations (places to check
+# out, not dated events). Posts from these accounts get marked evergreen
+# AND skip the date-required filter — "where to brunch this weekend",
+# "best rooftops", "hidden bars", etc. Place-centric content.
+IG_SPOTS_ACCOUNTS = frozenset({
+    "wherethefuckdowego",
+    "thishappensnewyork",
+    "newyorkguide",
+    "newyorker.eats",
+    "tastingny",
+    "infatuation",
+})
 
 IG_MAX_POSTS_PER_ACCOUNT = int(os.environ.get("IG_MAX_POSTS_PER_ACCOUNT", "20"))
 IG_MAX_ACCOUNTS = int(os.environ.get("IG_MAX_ACCOUNTS", "0"))  # 0 = no cap

@@ -35,6 +35,7 @@ export interface Event {
   extraImages?: string[];  // additional carousel slides (IG multi-photo posts)
   affinityComentions?: number;
   affinityComentionSources?: string[];  // affinity accounts that @-mentioned this account
+  evergreen?: boolean;  // 'cool spot' rather than dated event — never expires
 }
 
 export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> = {

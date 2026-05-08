@@ -228,7 +228,18 @@ def _merge(a: dict, b: dict) -> dict:
 
 def filter_future(events: list[dict]) -> list[dict]:
     today = date.today().isoformat()
-    return [ev for ev in events if ev.get("date", "") >= today]
+    # Evergreen events (spot recommendations from accounts like
+    # @wherethefuckdowego) survive — they're place picks, not dated events.
+    # We rewrite their date to today so they sort with current content.
+    out = []
+    for ev in events:
+        if ev.get("evergreen"):
+            ev["date"] = today
+            out.append(ev)
+            continue
+        if ev.get("date", "") >= today:
+            out.append(ev)
+    return out
 
 
 _FAR_FUTURE_DAYS = 180

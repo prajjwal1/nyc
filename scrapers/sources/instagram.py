@@ -17,6 +17,7 @@ from ..config import (
     IG_MAX_ACCOUNTS,
     IG_SESSION_FILE,
     IG_SLEEP_BETWEEN_ACCOUNTS,
+    IG_SPOTS_ACCOUNTS,
     IG_USERNAME,
 )
 from ..discover import load_discovered_accounts
@@ -1382,6 +1383,12 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     geo_lat = post.get("geo_lat")
     geo_lng = post.get("geo_lng")
 
+    # Spot accounts produce evergreen "cool place to check out" content
+    # rather than dated events. Posts from them survive the date-required
+    # path: if no date is parseable, we use today's date and mark
+    # `evergreen=true` so the date-pill in UI says "Spot" / always-current.
+    is_spot_account = account.lower() in IG_SPOTS_ACCOUNTS
+
     sections = _split_caption(caption)
     # Detect if this post is clearly a multi-event roundup (many sections w/ dates).
     n_dated_sections = sum(1 for s in sections if _find_dates(s, post_date))
@@ -1499,6 +1506,12 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     is_following = account.lower() in _FOLLOWING_ACCOUNTS_CACHE
     for ev in events:
         ev["instagramAccount"] = account
+        # Spot-account events are evergreen: place recommendations rather
+        # than dated events. Survive the future-only filter and render with
+        # a "Spot" pill instead of a date pill.
+        if is_spot_account:
+            ev["evergreen"] = True
+            ev["categories"] = sorted(set((ev.get("categories") or []) + ["exploration"]))
         if likes:
             ev["likes"] = likes
         if comments:
