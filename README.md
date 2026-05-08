@@ -473,7 +473,77 @@ Every IG behavior has a mirror or equivalent here:
 
 ---
 
-## Closing thought
+## Self-improvement loop (audit → fix → ship)
+
+The user explicitly asks: "after it gets deployed, scan the website, see what the issues are, ask how can we improve, do it, in a loop." This is the workflow:
+
+```bash
+# 1. Audit live data — count by source, check for filter leaks, dupes,
+#    far-future events, late-night events, etc.
+source venv/bin/activate && python3 <<'PY'
+import json, re
+from collections import Counter
+from datetime import date
+
+with open('site/public/events.json') as f:
+    d = json.load(f)
+events = d.get('events', [])
+print(f'Total: {len(events)}')
+
+sources = Counter(e.get('source', '?') for e in events)
+for s, n in sources.most_common(): print(f'  {n:4d}  {s}')
+
+# Check filter leaks
+late_re = re.compile(r'\b(?:1|2|3|4|5)\s*am\b|\bnightclub\b|\bafter ?hours?\b', re.IGNORECASE)
+lates = [e for e in events if late_re.search(e.get('title','') + ' ' + e.get('description','')[:300])]
+print(f'\nLate-night leaks: {len(lates)}')
+
+prof_re = re.compile(r'\b(professional networking|finance mixer|wall street|founders mixer)\b', re.IGNORECASE)
+profs = [e for e in events if prof_re.search(e.get('title','') + ' ' + e.get('description','')[:300])]
+print(f'Professional-networking leaks: {len(profs)}')
+
+# Same title+date appearing twice = missed dedup
+title_dates = Counter()
+for e in events:
+    key = (e.get('title','').lower().strip()[:60], e.get('date',''))
+    if key[0]: title_dates[key] += 1
+dupes = [(k,v) for k,v in title_dates.items() if v > 1]
+print(f'Title+date dupes (missed dedup): {len(dupes)}')
+
+# Far-future suspects
+ff = [e for e in events if e.get('date','') > '2026-12-01']
+print(f'Events past 2026-12: {len(ff)}')
+PY
+
+# 2. Identify patterns — which filters are leaking? which sources dominate?
+#    which titles look junky?
+
+# 3. Ship surgical fixes:
+#    - New patterns added to HARD_BLOCK_KEYWORDS in scrapers/quality.py
+#    - New text patterns in _likely_past_midnight in scrapers/normalize.py
+#    - SOURCE_QUALITY tuning in scrapers/config.py
+#    - SOURCE_LABELS additions in site/app/lib/types.ts
+
+# 4. Build + push:
+cd site && npx next build && cd ..
+git add . && git commit -m "Self-improvement: <what was fixed>"
+git push
+
+# 5. Wait for next CI scrape (every 4-6h for full, every 30min for quick).
+#    The newly-blocked events are purged on next run; newly-added URLs
+#    contribute on the run after.
+
+# 6. Re-audit. Repeat.
+```
+
+**Rules of thumb for the audit loop**:
+- Filter leaks are easier to fix than dedup misses; do filter leaks first
+- Source-quality tuning is risky; only adjust when one source is clearly noisy
+- Don't add overly-broad block keywords ("club" alone would block "book club"); use the specific phrase
+- Always sanity-test new keywords/patterns against real titles before pushing
+- The pipeline state files (account_quality.json, url_health.json) ARE the system's memory; never wipe them
+
+
 
 The user's stated goal is unwavering: **find events worth attending to meet people, without scrolling Instagram**. Every commit should serve that. After ~50 rounds of iteration, the IG-replacement loop is essentially complete — the gap between "open IG and scroll" and "open this site" is small and shrinking.
 

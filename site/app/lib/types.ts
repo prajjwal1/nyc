@@ -110,4 +110,10 @@ export const SOURCE_LABELS: Record<string, string> = {
   instagram: "Instagram",
   substack: "Substack",
   partiful: "Partiful",
+  allevents: "AllEvents",
+  songkick: "Songkick",
+  reddit: "Reddit",
+  greenwoodcemetery: "Green-Wood Cemetery",
+  terminal5nyc: "Terminal 5",
+  generic: "Web",
 };

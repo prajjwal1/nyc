@@ -200,6 +200,13 @@ DISCOVERED_URLS_PATH = os.path.join(
 )
 
 
+_SOURCE_LABEL_ALIASES = {
+    # Same platform, different URL domains — normalize to one canonical label
+    "lu.ma": "luma",
+    "luma.com": "luma",
+}
+
+
 def _domain_source(url: str) -> str:
     """Extract a clean source label from URL domain."""
     try:
@@ -212,9 +219,12 @@ def _domain_source(url: str) -> str:
             # Use the registrable name; for short slugs (like "lu") keep the suffix too
             slug = parts[0]
             if len(slug) <= 3 and len(parts) >= 2:
-                return f"{slug}.{parts[1]}"
-            return slug
-        return host or "generic"
+                label = f"{slug}.{parts[1]}"
+            else:
+                label = slug
+        else:
+            label = host or "generic"
+        return _SOURCE_LABEL_ALIASES.get(label, label)
     except Exception:
         return "generic"
 

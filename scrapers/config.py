@@ -180,9 +180,11 @@ SOURCE_QUALITY = {
     "nycforfree": 0.75,
     # Generic scraper sources (per-domain quality)
     "generic": 0.6,
-    "lu.ma": 0.9,
+    "lu.ma": 0.9,        # legacy label; _domain_source now normalizes to "luma"
     "eventbrite.com": 0.55,
     "92ny.org": 0.85,
     "lpr.com": 0.85,
     "elsewhere": 0.85,
+    "allevents": 0.5,    # major aggregator, weak curation per event
+    "songkick": 0.72,    # structured artist/venue listings, strong on music
 }
