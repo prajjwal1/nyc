@@ -218,35 +218,60 @@ export default function TopPicks({
     .slice(0, 6);
   const recentIds = new Set(recentlyAdded.map((e) => e.id));
 
-  // 🎉 This Weekend — Fri/Sat night social/party events upcoming.
-  // Direct hero for "I want to go meet people this weekend" — the user's
-  // primary goal. Only shows when today is Mon-Fri (post-weekend it
-  // would be empty or stale).
+  // 🎉 This Weekend — low-key Saturday/Sunday social events.
+  // User explicitly: 'currently everything in This Weekend is parties /
+  // nightclub events, concerned about excessive drinking, not my style'.
+  // So this hero filters AWAY parties/nightlife/drinks-heavy events and
+  // FAVORS books, run-clubs, yoga, outdoors, comedy, art, supper-club,
+  // workshops, brunch, dance-class style content. Saturday + Sunday
+  // (not Friday — Friday usually skews to nightlife).
   const weekend = (() => {
     const today = new Date();
     const dow = today.getDay(); // 0=Sun..6=Sat
-    if (dow === 0) return { events: [], ids: new Set<string>() }; // Sunday, hide
-    const friday = new Date(today);
-    friday.setDate(today.getDate() + ((5 - dow + 7) % 7));
-    const saturday = new Date(friday);
-    saturday.setDate(friday.getDate() + 1);
+    // Hide on Sunday afternoon — weekend is winding down
+    if (dow === 0) return { events: [], ids: new Set<string>() };
+    const saturday = new Date(today);
+    saturday.setDate(today.getDate() + ((6 - dow + 7) % 7));
+    const sunday = new Date(saturday);
+    sunday.setDate(saturday.getDate() + 1);
     const isWeekendDate = (d: string) =>
-      d === friday.toISOString().split("T")[0] || d === saturday.toISOString().split("T")[0];
-    const isSocial = (e: Event) =>
-      (e.highlights || []).some((h) => ["meet-people", "vibes", "nightlife", "festival"].includes(h))
-      || e.categories.some((c) => ["parties", "singles", "music", "dance"].includes(c));
-    const isEveningTime = (e: Event) => {
-      if (!e.startTime) return true;
-      const [h] = e.startTime.split(":").map(Number);
-      return h >= 17;
+      d === saturday.toISOString().split("T")[0] || d === sunday.toISOString().split("T")[0];
+
+    // POSITIVE signal — low-key social activities. Books, fitness,
+    // outdoors, art, food, comedy, dance-class, and meet-people events.
+    const POSITIVE_CATS = new Set([
+      "books", "fitness", "wellness", "outdoors", "exploration",
+      "art", "food", "comedy", "dance", "games", "design",
+      "photography", "movies", "viewings", "theater", "celebrities",
+    ]);
+    const POSITIVE_HIGHLIGHTS = new Set([
+      "meet-people", "festival",  // friendly social signals
+    ]);
+    // NEGATIVE — explicitly the heavy-drinking party scene the user
+    // wants away from. ANY of these → exclude entirely from this hero.
+    const NEGATIVE_CATS = new Set(["parties"]);
+    const NEGATIVE_HIGHLIGHTS = new Set(["nightlife"]);
+    const NEGATIVE_TEXT = /\b(open bar|all you can drink|all-you-can-drink|nightclub|bottle service|warehouse|rave|club night|after party|afterparty|edm|techno|free drinks all night)\b/i;
+
+    const isLowKeySocial = (e: Event) => {
+      const text = `${e.title} ${e.description || ""}`;
+      // Hard exclude: drinking-party / nightclub
+      if ((e.categories || []).some((c) => NEGATIVE_CATS.has(c))) return false;
+      if ((e.highlights || []).some((h) => NEGATIVE_HIGHLIGHTS.has(h))) return false;
+      if (NEGATIVE_TEXT.test(text)) return false;
+      // Positive: at least one low-key social category OR meet-people
+      if ((e.categories || []).some((c) => POSITIVE_CATS.has(c))) return true;
+      if ((e.highlights || []).some((h) => POSITIVE_HIGHLIGHTS.has(h))) return true;
+      return false;
     };
+    // Time: anytime on weekends is fine (brunch, afternoon walks, evening
+    // events all work). No 5pm-only filter.
     const ev = upcoming
       .filter((e) =>
         !tonightIds.has(e.id)
         && !recentIds.has(e.id)
         && isWeekendDate(e.date)
-        && isSocial(e)
-        && isEveningTime(e)
+        && isLowKeySocial(e)
       )
       .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
       .slice(0, 6);
@@ -337,13 +362,13 @@ export default function TopPicks({
         </div>
       )}
 
-      {/* 🎉 This Weekend — Fri/Sat social events for "go meet people" */}
+      {/* ☕ This Weekend — low-key social: brunch, books, runs, art, comedy */}
       {weekendEvents.length > 0 && (
-        <div className="mb-8 -mx-1 px-1 py-3 bg-fuchsia-50/60 rounded-2xl border border-fuchsia-200">
-          <h3 className="text-sm font-semibold text-fuchsia-900 uppercase tracking-wide mb-2 px-2 flex items-center justify-between">
-            <span>🎉 This Weekend</span>
-            <span className="text-[10px] font-normal text-fuchsia-700 normal-case tracking-normal">
-              social · parties · live music · Fri / Sat
+        <div className="mb-8 -mx-1 px-1 py-3 bg-emerald-50/60 rounded-2xl border border-emerald-200">
+          <h3 className="text-sm font-semibold text-emerald-900 uppercase tracking-wide mb-2 px-2 flex items-center justify-between">
+            <span>☕ This Weekend</span>
+            <span className="text-[10px] font-normal text-emerald-700 normal-case tracking-normal">
+              brunch · books · runs · art · outdoors · Sat / Sun
             </span>
           </h3>
           <div className="space-y-2">

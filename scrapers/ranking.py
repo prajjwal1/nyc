@@ -67,6 +67,10 @@ def compute_score(event: dict) -> float:
 
     # Engagement boosts/penalties
     high_value_boost = min(0.30, signals["high_value_hits"] * 0.15)
+    # Alcohol-free boost — user wants to see more sober-friendly events.
+    # Drinking-centric events still surface (soft_penalty already pushes
+    # them down a bit), this just floats alcohol-free options up.
+    alcohol_free_boost = min(0.10, signals.get("alcohol_free_hits", 0) * 0.05)
     # Social events are the user's primary goal (meet people, not just attend).
     # Bumped cap from 0.20 → 0.28 to push singles/mixers/social events to top.
     social_boost = min(0.28, signals["social_hits"] * 0.12)
@@ -142,7 +146,7 @@ def compute_score(event: dict) -> float:
     geo_proximity = _distance_proximity_boost(event)
 
     final = (
-        base_score + high_value_boost + social_boost + meet_people_boost
+        base_score + high_value_boost + alcohol_free_boost + social_boost + meet_people_boost
         + saved_boost + tagged_boost + affinity_boost + following_boost
         + cred_boost + cross_source_boost + hot_boost + yield_boost
         + comention_boost + velocity_boost + quality_boost + time_relevance

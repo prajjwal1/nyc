@@ -102,6 +102,13 @@ SOFT_PENALTY_KEYWORDS = [
     "yoga class", "pilates class", "meditation class",
     "running club",
     "trivia night",
+    # Heavy-drinking emphasis — user's stated preference is to avoid
+    # excessive-drinking culture. Soft-penalty (not block) so events
+    # that mention drinks in passing aren't excluded, but events that
+    # CENTER drinking get pushed down.
+    "open bar", "all you can drink", "all-you-can-drink",
+    "free drinks all night", "unlimited drinks", "bottomless mimosas",
+    "pre-game", "kegger", "shotgun beer",
     # Generic recurring stuff
     "weekly meeting", "monthly meeting", "regular meetup",
     "every monday", "every tuesday", "every wednesday",
@@ -134,6 +141,22 @@ SOCIAL_KEYWORDS = [
 
 
 # Strong boosts: signals of a genuinely cool, engaging event.
+# Alcohol-free signals — user explicitly wants more sober-friendly events
+# in the feed AND wants drinking-centered events down-weighted (not blocked).
+# Each match contributes a small positive boost via _alcohol_free_boost.
+ALCOHOL_FREE_KEYWORDS = [
+    "alcohol free", "alcohol-free", "alcohol  free",
+    "sober", "sober curious", "sober social",
+    "non-alcoholic", "non alcoholic", "non-alc", "non alc",
+    "zero proof", "zero-proof",
+    "dry january", "dry month",
+    "mocktail", "mocktails",
+    "no booze", "booze-free", "booze free",
+    "tea ceremony", "matcha", "specialty coffee",
+    "kombucha tasting", "tea tasting",
+]
+
+
 HIGH_VALUE_KEYWORDS = [
     # Live music — major boost (NYC 20s-30s love this)
     "live music", "live jazz", "jazz night", "jazz club", "jazz set",
@@ -253,6 +276,7 @@ def quality_signals(event: dict) -> dict:
     soft_penalty_hits = sum(1 for kw in SOFT_PENALTY_KEYWORDS if kw in text)
     high_value_hits = sum(1 for kw in HIGH_VALUE_KEYWORDS if kw in text)
     social_hits = sum(1 for kw in SOCIAL_KEYWORDS if kw in text)
+    alcohol_free_hits = sum(1 for kw in ALCOHOL_FREE_KEYWORDS if kw in text)
     audience_mismatch = any(kw in text for kw in NON_TARGET_AUDIENCE)
 
     # Title quality: is the title an actual event title or a fragment?
@@ -270,6 +294,7 @@ def quality_signals(event: dict) -> dict:
         "soft_penalty_hits": soft_penalty_hits,
         "high_value_hits": high_value_hits,
         "social_hits": social_hits,
+        "alcohol_free_hits": alcohol_free_hits,
         "audience_mismatch": audience_mismatch,
         "title_quality": title_quality,
         "desc_quality": desc_quality,
