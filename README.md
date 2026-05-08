@@ -169,8 +169,9 @@ In order of application in `normalize.process()`:
 
 1. **`filter_future`** — drop past events (date < today)
 2. **`filter_far_future_misparsed`** — drop events >180 days out unless title/desc has explicit 4-digit year (most are date misparses)
-3. **`is_blocked`** — kids/seniors/utility/services/non-NYC keywords (`scrapers/quality.py::HARD_BLOCK_KEYWORDS`)
+3. **`is_blocked`** — kids/seniors/utility/services/non-NYC/**nightclubs**/**late-night-only** keywords (`scrapers/quality.py::HARD_BLOCK_KEYWORDS`)
 4. **Shell filter** — drop events with no description AND no image AND no location
+4b. **`_likely_past_midnight`** — drop events expected to run past midnight (startTime ≥ 23:00, endTime in 00:00-04:59, or text mentions "1am"/"2am"/"after midnight"/etc.). User explicitly excluded these — site is for events worth attending to meet people, not late-night nightlife.
 5. **`_is_phantom_recurring`** — drop events whose title mentions a specific date that doesn't match the event date (buggy past expansions)
 6. **Recurring expansion** — `detect_recurring_weekday` + `expand_recurring_event` (6 weeks ahead)
 7. **`collapse_title_spam`** — when 4+ events share `(title, sourceUrl)` without explicit "every"/"weekly" markers, keep only the earliest (defensive cleanup of bad expansions)

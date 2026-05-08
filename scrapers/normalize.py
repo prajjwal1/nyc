@@ -273,6 +273,72 @@ def collapse_title_spam(events: list[dict]) -> list[dict]:
     return keep
 
 
+def _likely_past_midnight(event: dict) -> bool:
+    """Detect events expected to run past midnight. User explicitly
+    excluded these — the site is for events worth attending to meet
+    people, not late-night nightlife where everyone's already drunk.
+
+    Signals (any one):
+      - endTime is later (lexicographically) than '23:59'
+      - endTime is earlier than startTime (overnight wrap)
+      - startTime is 23:00 or later (most likely runs past midnight)
+      - title or description mentions overnight markers ('1am', 'after
+        midnight', 'open until 2am', etc.) — covers cases where
+        the structured times aren't set
+    """
+    start = (event.get("startTime") or "").strip()
+    end = (event.get("endTime") or "").strip()
+
+    # Structured time signals
+    if start and len(start) >= 4 and ":" in start:
+        try:
+            sh = int(start.split(":")[0])
+            if sh >= 23:
+                return True
+        except Exception:
+            pass
+    if end and len(end) >= 4 and ":" in end:
+        try:
+            eh = int(end.split(":")[0])
+            # End-time wrap: end < start = overnight
+            if start and ":" in start:
+                sh = int(start.split(":")[0])
+                if eh < sh:
+                    return True
+            # Explicit late end (00:30, 01:00, 02:00 — small hour numbers)
+            # treated as next-day (since iCal doesn't span days here).
+            # An event ending at 00:00-04:59 is past midnight.
+            if 0 <= eh <= 4:
+                return True
+        except Exception:
+            pass
+
+    # Text signals — overnight time mentions in title/description
+    text = (event.get("title", "") + " " + event.get("description", ""))[:600].lower()
+    overnight_patterns = [
+        r"\b(?:1|2|3|4|5)\s*am\b",            # "1am", "2 am" etc.
+        r"\bpast midnight\b", r"\bafter midnight\b",
+        r"\btill\s*(?:1|2|3|4|5)\s*am\b",
+        r"\buntil\s*(?:1|2|3|4|5)\s*am\b",
+        r"\btil\s*(?:1|2|3|4|5)\s*am\b",
+        r"\bopen\s*(?:until|till|til)\s*(?:1|2|3|4|5)\s*am\b",
+        r"\bclosing\s*at\s*(?:1|2|3|4|5)\s*am\b",
+        r"\b(?:doors?|show)\s*(?:at|until)\s*1[12]\s*pm",  # late doors
+        # Nightclub culture markers — these events typically run 4-5 AM
+        r"\bnightclub\b", r"\bnight\s*club\b",
+        r"\bbottle\s*service\b", r"\bvip\s*table\b", r"\bvip\s*booth\b",
+        r"\btable\s*service\b", r"\bbottle\s*package\b",
+        r"\bafter\s*hours?\b", r"\bafterhours?\b",
+        # Late-night DJ sets in club venues
+        r"\b(?:edm|techno|house)\s*(?:rave|warehouse|club)\b",
+        r"\bwarehouse\s*(?:party|set|rave)\b",
+    ]
+    for p in overnight_patterns:
+        if re.search(p, text):
+            return True
+    return False
+
+
 def _is_shell_event(event: dict) -> bool:
     """An event with no description, no image, AND no venue is a placeholder
     that adds no information. Drop these so the feed isn't padded with empty
@@ -405,6 +471,14 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     shells = before - len(events)
     if shells:
         print(f"[normalize] Dropped {shells} shell events (no description/image/location)")
+
+    # Drop events likely to run past midnight — user explicitly excluded
+    # these. Not appropriate for the meet-people-at-events use case.
+    before = len(events)
+    events = [ev for ev in events if not _likely_past_midnight(ev)]
+    midnight = before - len(events)
+    if midnight:
+        print(f"[normalize] Dropped {midnight} late-night events (past midnight)")
 
     # Drop phantom recurring expansions: events where the title contains a
     # specific date that doesn't match the event date (likely from a past

@@ -27,6 +27,12 @@ HARD_BLOCK_KEYWORDS = [
     "language meetup", "english practice", "spanish practice", "french practice",
     "italian practice", "deutsch", "korean–english", "korean-english",
     "internationals coffee", "lexgo language", "langroops", "conversation française",
+    # Language-mixer / international-mixer events (excluded per user request)
+    "internationals and language mixer", "international and language mixer",
+    "internationals language", "language mixer", "languages mixer",
+    "internationals mixer", "language exchange mixer",
+    # Music genres user excluded (reggaeton)
+    "reggaeton",
 
     # Senior services / accessibility
     "seniors", "senior citizens", "55+", "aarp", "braille", "accessible reading",
@@ -48,6 +54,21 @@ HARD_BLOCK_KEYWORDS = [
 
     # Random noise
     "registration for", "sign up for", "info session for", "orientation session",
+
+    # Nightclubs / late-night-only — user explicitly excluded these. The
+    # site is for events worth attending to meet people; nightclub
+    # "bottle service" / "vip section" culture isn't the target.
+    "nightclub", "night club ", "bottle service", "vip table", "vip booth",
+    "vip section", "bottle package", "table reservation", "table service",
+    "bottle minimum", "guest list",  # the bottle-service-y kind
+    # Late-night-only events (going past midnight)
+    "after hours", "afterhours", "after-hours",
+    "till sunrise", "until sunrise", "til sunrise",
+    "all night long", "till morning", "till dawn", "until dawn",
+    "till 4am", "until 4am", "til 4am", "till 5am", "until 5am",
+    "till 3am", "until 3am", "til 3am", "till 6am", "until 6am",
+    "rave 'til", "warehouse till", "club till",
+    "no last call",
 ]
 
 # Soft penalties: not blocked but pushed down in ranking.
