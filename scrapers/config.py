@@ -96,6 +96,12 @@ IG_ACCOUNTS = list(dict.fromkeys([  # dedupe while preserving order
     "loomyogaclub",
     "yoga_at_the_garden",
     "namaste_nyc",
+    # NYC city-curators (broad-mix)
+    "donewyorkcity",
+    "secret_nyc",
+    "secretnyc",
+    "exploringnyc",
+    "explorenyc",
     # Comedy clubs / scenes — live + comedy specifically requested
     "flophousecomedy",
     "greenpointcomedyclub",

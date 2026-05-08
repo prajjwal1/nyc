@@ -248,6 +248,30 @@ def scrape() -> list[dict]:
         if idx < len(affinity_first) - 1:
             _time.sleep(IG_SLEEP_BETWEEN_ACCOUNTS)
 
+    # 2b. IG's own 'Suggested for you' graph — for accounts the user saves
+    # from, mine IG's related-profiles to surface accounts we don't yet
+    # know about but IG's algorithm thinks are relevant. Bounded: only
+    # affinity accounts (limit ~5 to bound API volume), only when full
+    # hashtag-discovery is also enabled (so the budget is in full-sweep
+    # territory, not quick-scrape).
+    if os.environ.get("IG_HASHTAG_DISCOVERY", "0") == "1":
+        related_total: set[str] = set()
+        affinity_seeds = list(_AFFINITY_ACCOUNTS_CACHE)[:5]
+        for seed in affinity_seeds:
+            try:
+                related = _harvest_related_profiles(loader, seed, max_related=8)
+                related_total |= related
+            except Exception:
+                pass
+        # Subtract dead + already-known
+        dead_set = {u for u, info in _load_dead_accounts().get("accounts", {}).items()
+                    if info.get("reason") in ("not_exists", "repeated_failure", "stale_no_recent_posts")}
+        already_known = set(IG_ACCOUNTS) | set(load_discovered_accounts())
+        new_related = related_total - dead_set - {a.lower() for a in already_known}
+        if new_related:
+            _add_to_discovered_accounts(new_related)
+            print(f"[instagram-related] Added {len(new_related)} accounts via IG Suggested-for-you graph")
+
     # 3. Hashtag-driven discovery (opt-in via IG_HASHTAG_DISCOVERY=1).
     # Mines posts from NYC event hashtags — captures events from authors we
     # don't yet follow, AND registers those authors as discovered accounts
@@ -518,6 +542,41 @@ def _record_account_activity(username: str, posts_count: int, events_count: int)
 
 
 _AFFINITY_MENTION_RE = re.compile(r"@([a-z0-9_][a-z0-9._]{1,28}[a-z0-9_])", re.IGNORECASE)
+
+
+def _harvest_related_profiles(loader, username: str, max_related: int = 10) -> set[str]:
+    """Mine IG's own 'Suggested for you' graph for an account.
+
+    When you visit a profile on IG, the 'Suggested for you' row shows
+    related accounts in IG's recommendation algorithm. instaloader exposes
+    this via Profile.get_related_profiles(). For high-signal accounts the
+    user already saves from, the suggestions are highly relevant.
+
+    Returns a set of usernames to add to discovered_accounts.
+    """
+    related: set[str] = set()
+    try:
+        profile = instaloader.Profile.from_username(loader.context, username)
+    except Exception:
+        return related
+    try:
+        rel_iter = profile.get_related_profiles()
+    except Exception:
+        return related
+    count = 0
+    try:
+        for rp in rel_iter:
+            if count >= max_related:
+                break
+            count += 1
+            handle = (getattr(rp, "username", "") or "").lower()
+            if not handle or handle == username.lower():
+                continue
+            related.add(handle)
+    except Exception:
+        # Iteration may fail mid-stream on rate limits — return what we got
+        pass
+    return related
 
 
 def _record_affinity_comentions(author: str, caption: str) -> None:
@@ -833,6 +892,10 @@ def _scrape_hashtag_posts(loader, max_posts_per_tag: int = 20) -> tuple[list[dic
                     "bio_url": "",
                 }
                 extracted = _extract_events_from_caption(post_dict, owner)
+                # Carousel OCR for hashtag posts too — many hashtag-tagged
+                # roundups are 10-slide carousels with per-slide events.
+                if _HAS_IMAGE_ANALYZER and len(images) >= 3:
+                    extracted = _maybe_enrich_with_image(extracted, post_dict)
                 # Hashtag-discovered events: don't carry user-curation flags.
                 # They get a smaller boost than saved/tagged but are still
                 # candidates for ranking.
@@ -897,6 +960,11 @@ def _scrape_tagged_posts(loader, max_tagged: int = 30) -> tuple[list[dict], set[
             for ev in extracted:
                 # Tagged posts are nearly as strong a signal as saved posts.
                 ev["userTagged"] = True
+            # Carousel OCR fan-out — tagged posts may be 10-slide roundups
+            # where each slide is a different event flyer. Without this we'd
+            # miss 9/10 of those events.
+            if _HAS_IMAGE_ANALYZER:
+                extracted = _maybe_enrich_with_image(extracted, post_dict)
             events.extend(extracted)
 
             # Comments mining for tagged posts too — same value as saved.
@@ -964,6 +1032,12 @@ def _scrape_saved_posts(loader, max_saved: int = 50) -> tuple[list[dict], set[st
             # Mark these as user-saved so we can boost in ranking
             for ev in extracted:
                 ev["userSaved"] = True
+            # Carousel OCR fan-out — the user explicitly flagged that
+            # carousel posts often have 10 different events, one per slide.
+            # Saved posts are the user's highest-signal targets so apply
+            # OCR fan-out unconditionally when image_analyzer is available.
+            if _HAS_IMAGE_ANALYZER:
+                extracted = _maybe_enrich_with_image(extracted, post_dict)
             events.extend(extracted)
 
             # Comments mining — saved posts are the highest-value targets.

@@ -140,14 +140,20 @@ def _write_events(events: list[dict], primary_path: str = OUTPUT_PATH) -> None:
 def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
     """Compute the top IG accounts by yield + future event count.
 
-    Surfaces in the UI as a "Top Accounts" widget so the user can quickly
-    browse events from the most reliable NYC event-emitting accounts.
-    Each account is marked with `userSaved: bool` so the UI can split
-    into "From accounts I save from" vs "Suggested for you".
+    Combines two signals:
+      1. Accounts with future events in the current feed (in-feed events count)
+      2. account_quality.json — historical yield across all runs (so high-yield
+         accounts surface even when their events are filtered out of THIS run)
+
+    Surfaces in the UI as a "Top Accounts" widget. Each entry marked with
+    `userSaved` so UI can split "From accounts I save from" vs "Suggested".
     """
     from collections import defaultdict
     affinity = _load_user_affinity_set()
+    quality = _load_account_quality()
     today = _today_iso()
+
+    # Pass 1: per-account in-feed event count
     per_acct: dict[str, dict] = defaultdict(lambda: {
         "events": 0,
         "yield": 0.0,
@@ -162,7 +168,6 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
             continue
         slot = per_acct[acct]
         slot["events"] += 1
-        # accountEventYield is stamped onto events; take max seen.
         y = e.get("accountEventYield", 0) or 0
         if y and y > slot["yield"]:
             slot["yield"] = y
@@ -170,9 +175,37 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
             slot["verified"] = True
         if not slot["image"] and e.get("imageUrl"):
             slot["image"] = e["imageUrl"]
+
+    # Pass 2: enrich with account_quality.json for accounts that haven't
+    # produced events in THIS feed but have strong historical yield.
+    # Cap at 20 high-yield accounts not already in feed so the suggestion
+    # surface stays meaningful even on sparse-IG runs.
+    historical = []
+    for acct, info in quality.items():
+        if acct in per_acct:
+            continue  # already counted
+        posts = info.get("posts_scraped", 0)
+        if posts < 5:
+            continue
+        ev = info.get("events_emitted", 0)
+        y = ev / posts if posts else 0
+        if y < 0.25:
+            continue  # only meaningful yields
+        historical.append((acct, y, ev, posts))
+    historical.sort(key=lambda t: (-t[1], -t[3]))  # yield desc, posts desc
+
+    for acct, y, _ev, _posts in historical[:20]:
+        per_acct[acct] = {
+            "events": 0,                  # 0 in current feed
+            "yield": round(y, 3),
+            "verified": False,
+            "image": None,
+        }
+
     out = []
     for acct, info in per_acct.items():
-        if info["events"] < 1:
+        # Drop entries with both 0 events AND 0 yield (no signal)
+        if info["events"] == 0 and info["yield"] < 0.10:
             continue
         out.append({
             "username": acct,
@@ -182,9 +215,31 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
             "image": info["image"],
             "userSaved": acct in affinity,
         })
-    # Rank by upcoming event count, then by yield (high-quality accounts win).
-    out.sort(key=lambda a: (-a["events"], -a["yield"]))
+    # Rank by event count first (active accounts), then by yield, then by
+    # affinity (saved-from accounts elevated).
+    out.sort(key=lambda a: (
+        -a["events"],
+        -a["yield"],
+        0 if a.get("userSaved") else 1,
+    ))
     return out[:n]
+
+
+def _load_account_quality() -> dict:
+    """Load IG account_quality.json — lifetime per-account stats."""
+    import json
+    path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "data", "account_quality.json",
+    )
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path) as f:
+            d = json.load(f)
+        return d if isinstance(d, dict) else {}
+    except Exception:
+        return {}
 
 
 def _load_user_affinity_set() -> set:

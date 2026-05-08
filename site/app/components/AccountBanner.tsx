@@ -18,8 +18,15 @@ export default function AccountBanner({ account, events, topAccount, onClear }: 
   );
   const verified = topAccount?.verified || upcoming.some((e) => e.accountVerified);
   const igUrl = `https://www.instagram.com/${account}/`;
+  const yieldPct = topAccount?.yield && topAccount.yield > 0
+    ? Math.min(100, Math.round(topAccount.yield * 100))
+    : null;
 
-  if (upcoming.length === 0) return null;
+  // Even with 0 in-feed events, render the banner if topAccount data exists —
+  // tells the user "this is a real account we know about" + lets them open
+  // it on IG. Without this, clicking a "Suggested for you" account with 0
+  // current events would open an empty page (confusing).
+  if (upcoming.length === 0 && !topAccount) return null;
 
   return (
     <div className="mb-4 bg-gradient-to-br from-fuchsia-50 to-purple-50 border border-fuchsia-200 rounded-xl p-4">
