@@ -1513,6 +1513,11 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     comments = post.get("comments", 0)
     followers = post.get("profile_followers", 0)
     verified = post.get("profile_is_verified", False)
+    # Defensive: account should always be a non-empty string. If it's None
+    # or empty (rare edge — IG owner_username can be missing on archived
+    # posts), drop these events entirely rather than emit @None garbage.
+    if not account or not isinstance(account, str):
+        return []
     is_affinity = account.lower() in _AFFINITY_ACCOUNTS_CACHE
     is_following = account.lower() in _FOLLOWING_ACCOUNTS_CACHE
     for ev in events:
@@ -1913,6 +1918,18 @@ def _extract_title(text: str) -> str:
         first_word = cleaned.split(maxsplit=1)[0] if cleaned else ""
         if first_word and first_word[0].islower() and len(first_word) <= 4:
             continue
+        # Skip lines that END as fragments — "X presents", "X introduces",
+        # "X presented by", "X feat.", "X featuring" without the rest.
+        # These are partial captions where the actual event name comes after
+        # a line break and we picked up only the prefix.
+        lower_end = cleaned.lower().rstrip(":!.…")
+        if any(lower_end.endswith(suffix) for suffix in (
+            " presents", " presented by", " introducing",
+            " feat.", " featuring", " presents:", " present",
+            " in collaboration with", " in partnership with",
+            " hosted by", " brought to you by",
+        )):
+            continue
         if 8 < len(cleaned) < 120:
             return cleaned
     return ""
@@ -2093,6 +2110,16 @@ def _fan_out_carousel_slides(base_events: list[dict], post: dict) -> list[dict]:
             if base.get(flag):
                 new_ev[flag] = True
         new_ev["ocrEnriched"] = True
+        # Inherit IG-account context from the base event so fan-out events
+        # don't render as @None. Without this, slides 2-N of a carousel get
+        # emitted but lose the IG account attribution.
+        for field in ("instagramAccount", "accountVerified", "accountFollowers", "evergreen"):
+            if base.get(field):
+                new_ev[field] = base[field]
+        # Carry engagement signals too — they're per-post not per-slide.
+        for field in ("likes", "comments"):
+            if base.get(field):
+                new_ev[field] = base[field]
         extras.append(new_ev)
 
     return extras
