@@ -1,4 +1,5 @@
 import hashlib
+import os
 import re
 from datetime import date, datetime
 
@@ -26,12 +27,220 @@ def deduplicate(events: list[dict]) -> list[dict]:
     # a venue/account AND have high token-overlap in titles. Catches
     # "Sips & Stories at Cafe Erzulie" vs "Sips & Stories NYC: The Social
     # Room at Cafe Erzulie" — same event, two sources, different wording.
-    return _dedup_fuzzy_title(out)
+    out = _dedup_fuzzy_title(out)
+
+    # Fourth pass: cross-IG-account merge. When @theskint + @nycforfree +
+    # @secretnyc all promote the same event, the existing fuzzy pass
+    # CANNOT merge them because _venue_key returns "ig:<account>" which is
+    # unique per account. Image-URL dedup also misses since the same flyer
+    # reposted gets different CDN URLs. This pass keys on (date, normalized
+    # venue) regardless of which IG account posted, and merges when titles
+    # have strong token overlap. Yields one event with contributingAccounts
+    # = [theskint, nycforfree, secretnyc] — strong cross-account validation.
+    out = _dedup_cross_ig_account(out)
+
+    # Fifth pass: perceptual-hash dedup. Catches residual same-flyer reposts
+    # where the title differs enough to escape fuzzy-token-match (e.g.,
+    # one account writes "PICKLEBALL @ McCarren!", another writes "Open
+    # play tonight at McCarren") AND the image URLs differ (CDN tokens).
+    # Lazy: only computes hashes for events bucketed by (date, venue) where
+    # there's actually a chance of collision — never hashes events in
+    # singleton buckets. Disable via DEDUP_PHASH=0.
+    if os.environ.get("DEDUP_PHASH", "1") != "0":
+        out = _dedup_perceptual_hash(out)
+    return out
+
+
+def _dedup_perceptual_hash(events: list[dict]) -> list[dict]:
+    """Merge events whose flyer images perceptually match (Hamming ≤ 5)
+    AND share a date AND share a normalized venue/account scope.
+
+    This is the LAST resort dedup — catches reposts where:
+      - Title diverges enough to escape fuzzy-token match
+      - Image URLs differ (CDN tokens) so exact-URL dedup misses
+      - Same flyer image (≤ 5 bit diff after aHash)
+
+    Lazy: only computes hashes inside buckets that have ≥2 candidates with
+    image URLs, so we never download images for singletons. Hard cap on
+    network calls per run to bound cost on first-run cache miss. After the
+    first run, hashes are cached on disk and revisits are free.
+    """
+    try:
+        from .utils.image_hash import compute_phash, hamming_distance, flush_cache
+    except Exception:
+        return events  # PIL/httpx import path failed — degrade gracefully
+
+    MAX_HASHES_PER_RUN = int(os.environ.get("DEDUP_PHASH_MAX", "300"))
+    HAMMING_THRESHOLD = 5  # tolerance for compression / minor edits
+
+    # Bucket by (date, venue_key). Reuse _venue_key — already normalized.
+    by_bucket: dict[tuple[str, str], list[int]] = {}
+    for i, ev in enumerate(events):
+        d = ev.get("date") or ""
+        # For p-hash we want a SOFT venue scope so cross-account flyers
+        # bucket together. Use just the location name (no ig:account prefix)
+        # so events from different IG accounts at the same venue can match.
+        loc = ((ev.get("location") or {}).get("name") or "")
+        loc_norm = _normalize_venue_name(loc)
+        if not d or not loc_norm or len(loc_norm) < 3:
+            continue
+        # Skip events without an image — nothing to hash
+        img = (ev.get("imageUrl") or "").strip()
+        if not img or len(img) < 30:
+            continue
+        by_bucket.setdefault((d, loc_norm), []).append(i)
+
+    hashes_computed = 0
+    merges = 0
+    merged_into: dict[int, int] = {}
+
+    for indices in by_bucket.values():
+        if len(indices) < 2:
+            continue
+        # Compute hashes for this bucket up to the hash budget.
+        idx_to_hash: dict[int, str] = {}
+        for i in indices:
+            if hashes_computed >= MAX_HASHES_PER_RUN:
+                break
+            img = events[i].get("imageUrl") or ""
+            h = compute_phash(img)
+            hashes_computed += 1
+            if h:
+                idx_to_hash[i] = h
+        if len(idx_to_hash) < 2:
+            continue
+        # Greedy merge within bucket.
+        idx_list = list(idx_to_hash.keys())
+        for a in range(len(idx_list)):
+            ia = idx_list[a]
+            if ia in merged_into:
+                continue
+            for b in range(a + 1, len(idx_list)):
+                ib = idx_list[b]
+                if ib in merged_into:
+                    continue
+                if hamming_distance(idx_to_hash[ia], idx_to_hash[ib]) <= HAMMING_THRESHOLD:
+                    events[ia] = _merge(events[ia], events[ib])
+                    merged_into[ib] = ia
+                    merges += 1
+
+    # Persist new hash cache entries so next run is cheaper.
+    try:
+        flush_cache()
+    except Exception:
+        pass
+
+    if merges:
+        print(f"[normalize] Perceptual-hash merged {merges} same-flyer duplicates "
+              f"(hashed {hashes_computed} images)")
+
+    out = [ev for i, ev in enumerate(events) if i not in merged_into]
+    return out
+
+
+def _dedup_cross_ig_account(events: list[dict]) -> list[dict]:
+    """Merge IG events across DIFFERENT accounts when same date + venue +
+    high title-token overlap. Strict thresholds to avoid mismerging unrelated
+    events: Jaccard >= 0.60 AND >= 3 shared distinctive tokens."""
+    by_bucket: dict[tuple[str, str], list[dict]] = {}
+    out: list[dict] = []
+    for ev in events:
+        if ev.get("source") != "instagram":
+            out.append(ev)
+            continue
+        d = ev.get("date") or ""
+        loc = ((ev.get("location") or {}).get("name") or "")
+        if not d or not loc:
+            out.append(ev)
+            continue
+        loc_norm = _normalize_venue_name(loc)
+        if len(loc_norm) < 3:
+            out.append(ev)
+            continue
+        by_bucket.setdefault((d, loc_norm), []).append(ev)
+
+    cross_merges = 0
+    for bucket in by_bucket.values():
+        if len(bucket) == 1:
+            out.append(bucket[0])
+            continue
+        # Skip if all events are from the SAME IG account — the fuzzy pass
+        # would have handled them; this pass only adds value across accounts.
+        accounts_in_bucket = {(e.get("instagramAccount") or "").lower() for e in bucket}
+        accounts_in_bucket.discard("")
+        if len(accounts_in_bucket) <= 1:
+            out.extend(bucket)
+            continue
+
+        token_sets = [_title_token_set(e.get("title", "")) for e in bucket]
+        merged_into: dict[int, int] = {}
+        keep_indices: list[int] = []
+        for i in range(len(bucket)):
+            if i in merged_into:
+                continue
+            keep_indices.append(i)
+            for j in range(i + 1, len(bucket)):
+                if j in merged_into:
+                    continue
+                a, b = token_sets[i], token_sets[j]
+                if not a or not b:
+                    continue
+                jacc = len(a & b) / len(a | b)
+                # Constraint: (same date) + (same normalized location) +
+                # >= 3 distinctive shared tokens already strongly implies
+                # the same event. Jaccard threshold is set lower than the
+                # same-account fuzzy pass would suggest because cross-account
+                # captions naturally have more vocabulary variation (different
+                # writers describing the same event) — a stricter bar would
+                # systematically miss legitimate cross-promotion merges.
+                if jacc >= 0.50 and len(a & b) >= 3:
+                    bucket[i] = _merge(bucket[i], bucket[j])
+                    merged_into[j] = i
+                    cross_merges += 1
+        for k in keep_indices:
+            out.append(bucket[k])
+    if cross_merges:
+        print(f"[normalize] Cross-IG-account merged {cross_merges} duplicate promotions")
+    return out
 
 
 def _title_token_set(title: str) -> set[str]:
     title_clean = "".join(c if c.isalnum() or c == " " else " " for c in (title or "").lower())
     return {w for w in title_clean.split() if w not in _STOPWORDS and len(w) > 2}
+
+
+_NEIGHBORHOOD_SUFFIX_RE = re.compile(
+    r"\s+(?:bushwick|williamsburg|greenpoint|east\s+village|west\s+village|"
+    r"lower\s+east\s+side|upper\s+east\s+side|upper\s+west\s+side|"
+    r"financial\s+district|chelsea|midtown|harlem|astoria|long\s+island\s+city|"
+    r"crown\s+heights|fort\s+greene|prospect\s+heights|park\s+slope|"
+    r"chinatown|tribeca|soho|noho|nolita|dumbo|boerum\s+hill|"
+    r"red\s+hook|sunset\s+park|gowanus|carroll\s+gardens|cobble\s+hill|"
+    r"hells?\s+kitchen|gramercy|union\s+square|flatiron|nomad|"
+    r"manhattan|brooklyn|queens|bronx|nyc|ny|new\s+york)\b\s*$",
+    re.IGNORECASE,
+)
+
+
+def _normalize_venue_name(loc: str) -> str:
+    """Canonicalize a venue name so 'Book Club Bar Bushwick' and 'Book
+    Club Bar' map to the same key. Steps:
+      1. Drop everything after the first comma (street address)
+      2. Strip well-known NYC neighborhood/borough suffixes
+      3. Lowercase + collapse whitespace
+    Lets cross-source dedup catch events at the same venue when one
+    source includes the neighborhood and another doesn't.
+    """
+    if not loc:
+        return ""
+    s = loc.split(",")[0].strip()
+    # Strip trailing neighborhood/borough (e.g. "Book Club Bar Bushwick").
+    # Repeat to handle "Book Club Bar Bushwick Brooklyn".
+    prev = None
+    while s != prev:
+        prev = s
+        s = _NEIGHBORHOOD_SUFFIX_RE.sub("", s).strip()
+    return re.sub(r"\s+", " ", s.lower())
 
 
 def _venue_key(ev: dict) -> str:
@@ -42,11 +251,9 @@ def _venue_key(ev: dict) -> str:
     acct = (ev.get("instagramAccount") or "").lower()
     if acct:
         return "ig:" + acct
-    loc = ((ev.get("location") or {}).get("name") or "").lower().strip()
+    loc = ((ev.get("location") or {}).get("name") or "").strip()
     if loc:
-        # Normalize: drop everything after first comma, collapse spaces
-        loc = loc.split(",")[0].strip()
-        return "loc:" + re.sub(r"\s+", " ", loc)
+        return "loc:" + _normalize_venue_name(loc)
     if ev.get("source") == "eventbrite":
         try:
             from urllib.parse import urlparse
@@ -212,6 +419,20 @@ def _merge(a: dict, b: dict) -> dict:
     a_sources = set(a.get("contributingSources", [a.get("source")] if a.get("source") else []))
     b_sources = set(b.get("contributingSources", [b.get("source")] if b.get("source") else []))
     merged["contributingSources"] = sorted(a_sources | b_sources)
+
+    # Track which IG accounts mentioned this event (cross-account validation).
+    # Crucial for IG: when @theskint, @nycforfree, @secretnyc all promote
+    # the same event, that's a strong "definitely happening" signal that
+    # should boost ranking AND surface "Recommended by @theskint, @secretnyc"
+    # in the UI.
+    a_accts = set(a.get("contributingAccounts", []))
+    if a.get("instagramAccount"):
+        a_accts.add(a["instagramAccount"].lower())
+    b_accts = set(b.get("contributingAccounts", []))
+    if b.get("instagramAccount"):
+        b_accts.add(b["instagramAccount"].lower())
+    if a_accts | b_accts:
+        merged["contributingAccounts"] = sorted(a_accts | b_accts)
 
     # Prefer real ticket URL over IG post URL
     a_url = merged.get("sourceUrl", "")
@@ -586,21 +807,53 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
 
     events = rank_events(events)
 
-    # Drop low-score events — every event must justify its position
+    # Drop low-score events — every event must justify its position.
     # Quality bar — when combined with all the per-source filters
     # (shell-event filter, recap rejection, fragment-title filter,
     # recurring-spam collapse, far-future filter, late-night filter,
-    # hard-blocks for nightclubs/professionals/language-mixers), 0.50
-    # turned out to be the right floor. Anything tighter started
-    # pruning legitimate run-club / book-club / niche events. The
-    # quality bar IS the stack of filters above; this is the safety
-    # net for what slipped through with weak signal.
-    MIN_SCORE = 0.50
+    # hard-blocks for nightclubs/professionals/language-mixers), this
+    # is the safety net for what slipped through with weak signal.
+    #
+    # Per-source floors: Instagram from CURATED or AFFINITY accounts gets
+    # a lower bar (0.20) because the user has explicitly designated IG
+    # as the primary discovery channel — the curator's pick is itself
+    # quality signal. Random hashtag-discovered or unknown-account IG
+    # events still meet the default 0.30 floor.
+    DEFAULT_MIN_SCORE = 0.30
+    IG_CURATED_MIN_SCORE = 0.20
+    from .config import IG_ACCOUNTS
+    _curated_ig = {a.lower() for a in IG_ACCOUNTS}
+
+    def _floor_for(ev: dict) -> float:
+        if ev.get("source") != "instagram":
+            return DEFAULT_MIN_SCORE
+        # Curator-signal IG events: from accounts in the curated seed list
+        # OR from accounts the user explicitly follows / has saved-from /
+        # was tagged in / has built up affinity with.
+        acct = (ev.get("instagramAccount") or "").lower()
+        if acct in _curated_ig:
+            return IG_CURATED_MIN_SCORE
+        if (ev.get("userSaved") or ev.get("userTagged")
+                or ev.get("userAffinity") or ev.get("userFollowing")):
+            return IG_CURATED_MIN_SCORE
+        return DEFAULT_MIN_SCORE
+
     before = len(events)
-    events = [ev for ev in events if ev.get("score", 0) >= MIN_SCORE]
+    kept = []
+    ig_kept_curated = 0
+    for ev in events:
+        floor = _floor_for(ev)
+        if ev.get("score", 0) >= floor:
+            kept.append(ev)
+            if ev.get("source") == "instagram" and floor < DEFAULT_MIN_SCORE:
+                ig_kept_curated += 1
+    events = kept
     dropped = before - len(events)
     if dropped:
-        print(f"[normalize] Dropped {dropped} low-score events (below {MIN_SCORE})")
+        msg = f"[normalize] Dropped {dropped} low-score events (below {DEFAULT_MIN_SCORE})"
+        if ig_kept_curated:
+            msg += f" (kept {ig_kept_curated} IG curated events at lower {IG_CURATED_MIN_SCORE} floor)"
+        print(msg)
 
     events = sort_by_date(events)
     return events

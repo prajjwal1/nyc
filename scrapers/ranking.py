@@ -81,17 +81,19 @@ def compute_score(event: dict) -> float:
     soft_penalty = min(0.4, signals["soft_penalty_hits"] * 0.15)
     audience_penalty = 0.5 if signals["audience_mismatch"] else 0.0
 
-    # Strict baseline weighted average — every signal must pull its weight
+    # Strict baseline weighted average — every signal must pull its weight.
+    # Weights sum to 0.55 (not 1.0) so a "perfect" base leaves headroom for
+    # boosts to differentiate top-tier events instead of saturating at 1.0.
     base_score = (
-        proximity * 0.16
-        + category * 0.22       # interests are critical
-        + price * 0.04
-        + popularity * 0.07
-        + source * 0.20         # IG is curated
-        + completeness * 0.06
-        + title_q * 0.12        # punish caption fragments
-        + desc_q * 0.05
-        + time_q * 0.08
+        proximity * 0.09
+        + category * 0.12       # interests are critical
+        + price * 0.02
+        + popularity * 0.04
+        + source * 0.11         # IG is curated
+        + completeness * 0.03
+        + title_q * 0.07        # punish caption fragments
+        + desc_q * 0.03
+        + time_q * 0.04
     )
 
     # User-saved posts get a major boost — explicit bookmark is highest signal
@@ -119,6 +121,20 @@ def compute_score(event: dict) -> float:
         cross_source_boost = 0.12
     elif n_sources == 2:
         cross_source_boost = 0.07
+    # Cross-IG-account confirmation: when 2+ DIFFERENT IG accounts promote
+    # the same event, it's a strong "definitely happening + worth seeing"
+    # signal — distinct from cross-source (which is platform diversity).
+    # Stacks with cross_source but capped so a single channel can't
+    # dominate the boost stack.
+    n_accts = len(event.get("contributingAccounts", []))
+    cross_acct_boost = 0.0
+    if n_accts >= 4:
+        cross_acct_boost = 0.10
+    elif n_accts >= 3:
+        cross_acct_boost = 0.07
+    elif n_accts == 2:
+        cross_acct_boost = 0.04
+    cross_source_boost += cross_acct_boost
     # Hot boost: cross-source AND firstSeenAt within last 7 days = trending
     hot_boost = _hot_event_boost(event)
     # Account-yield boost: IG accounts that consistently produce events
@@ -138,6 +154,28 @@ def compute_score(event: dict) -> float:
     # Time relevance: events in the next 14 days get a small boost
     # (people care more about "what to do this weekend" than 2 months out)
     time_relevance = _time_relevance_boost(event)
+    # Story urgency: IG stories are 24h-ephemeral by nature — if it's still
+    # in our pool it's by definition very recent. Small extra boost so
+    # story-sourced events surface above feed-sourced equivalents.
+    if event.get("isStory") or event.get("discoveredVia") == "ig_story":
+        time_relevance += 0.04
+    # Highlight curation: the venue explicitly pinned this event in a
+    # highlight collection ("Upcoming Shows" etc.) — strongest editorial
+    # signal we can get from the venue itself. Slightly bigger than the
+    # story boost since highlights are intentionally curated.
+    if event.get("isHighlight") or event.get("discoveredVia") == "ig_highlight":
+        time_relevance += 0.05
+    # Pinned post: the account pinned this post to the top of their feed.
+    # IG limits pinning to 3 slots — when an account pins an event post
+    # that's their own "must-see" call. Strong quality signal independent
+    # of engagement counts (a freshly-pinned post may not yet have likes).
+    if event.get("isPinned"):
+        time_relevance += 0.04
+    # Composite trending boost — events firing 2+ trend signals get an
+    # additional bump on top of the individual signal boosts. This is
+    # bounded (+0.05) since the underlying signals already contributed.
+    if _is_trending(event):
+        time_relevance += 0.05
     # Day-of-week fit: parties on Fri/Sat, fitness on weekdays, etc.
     dow_fit = _day_of_week_fit_boost(event)
     # Time-of-day fit: evening events boosted (working-professional bias).
@@ -145,14 +183,22 @@ def compute_score(event: dict) -> float:
     # Geographic proximity boost when event has lat/lng coordinates.
     geo_proximity = _distance_proximity_boost(event)
 
-    final = (
-        base_score + high_value_boost + alcohol_free_boost + social_boost + meet_people_boost
-        + saved_boost + tagged_boost + affinity_boost + following_boost
+    # User-explicit signals (saved/tagged/affinity/following) are uncapped —
+    # an explicit bookmark should always pull an event to the top regardless
+    # of how many other signals fire. Everything else stacks under a sum-cap
+    # so events with broad keyword overlap don't saturate at 1.0 and tie.
+    explicit_boost = saved_boost + tagged_boost + affinity_boost + following_boost
+    stacked_boosts = (
+        high_value_boost + alcohol_free_boost + social_boost + meet_people_boost
         + cred_boost + cross_source_boost + hot_boost + yield_boost
         + comention_boost + velocity_boost + quality_boost + time_relevance
         + dow_fit + tod_fit + geo_proximity
-        - soft_penalty - audience_penalty
     )
+    # dow_fit/tod_fit/geo_proximity can be negative; preserve their downward
+    # signal but cap the positive sum so ranking still differentiates.
+    capped_stack = min(0.55, max(-0.20, stacked_boosts))
+
+    final = base_score + explicit_boost + capped_stack - soft_penalty - audience_penalty
     return max(0.0, min(1.0, final))
 
 
@@ -417,7 +463,9 @@ def _day_of_week_fit_boost(event: dict) -> float:
 
 
 def _time_relevance_boost(event: dict) -> float:
-    """Small boost for events happening soon (within next 14 days)."""
+    """Boost events happening soon. Weighted heavily for "tonight" (today,
+    after current time) since that's the user's primary use case — replacing
+    IG scrolling for "what's happening tonight"."""
     from datetime import date, datetime
     date_str = event.get("date", "")
     if not date_str:
@@ -430,8 +478,34 @@ def _time_relevance_boost(event: dict) -> float:
     days_out = (ev_date - today).days
     if days_out < 0:
         return 0.0
-    if days_out <= 1:
-        return 0.06   # today / tomorrow
+    if days_out == 0:
+        # "Tonight" — strongest urgency. If startTime is known and in the
+        # next 6 hours, treat it as prime-time. Otherwise still boost as
+        # today's event.
+        start = (event.get("startTime") or "").strip()
+        if start and ":" in start:
+            try:
+                hh, mm = start.split(":")[:2]
+                ev_hm = int(hh) * 60 + int(mm)
+                now = datetime.now()
+                cur_hm = now.hour * 60 + now.minute
+                # Future-of-today: stronger boost the closer to now
+                if ev_hm >= cur_hm:
+                    diff_min = ev_hm - cur_hm
+                    if diff_min <= 180:    # within 3 hours
+                        return 0.12
+                    if diff_min <= 360:    # within 6 hours
+                        return 0.10
+                    return 0.07            # later today
+                else:
+                    # Already started today — moderate boost so it doesn't
+                    # disappear (some events are multi-hour).
+                    return 0.03
+            except Exception:
+                pass
+        return 0.07  # today, no time known
+    if days_out == 1:
+        return 0.06   # tomorrow
     if days_out <= 4:
         return 0.04   # this week-ish
     if days_out <= 7:
@@ -439,6 +513,51 @@ def _time_relevance_boost(event: dict) -> float:
     if days_out <= 14:
         return 0.015  # next 2 weeks
     return 0.0
+
+
+def _is_trending(event: dict) -> bool:
+    """Composite 'going viral right now' check.
+
+    Returns True when 2+ of these signals fire AND the event is upcoming:
+      - Multi-account: >= 2 distinct IG accounts promoted it
+      - Engagement velocity: engagementDelta >= 50 (likes/comments growing)
+      - Fresh: firstSeenAt within last 3 days
+
+    The 2-of-3 floor avoids false positives (a recently-discovered event
+    isn't 'trending' on its own — it just got scraped) while catching the
+    "this is taking off" pattern users notice when scrolling IG.
+    """
+    from datetime import date, datetime, timezone, timedelta
+
+    # Event must be upcoming
+    date_str = event.get("date", "")
+    if not date_str:
+        return False
+    try:
+        ev_date = datetime.fromisoformat(date_str).date()
+    except Exception:
+        return False
+    days_out = (ev_date - date.today()).days
+    if days_out < 0 or days_out > 14:
+        return False
+
+    signals = 0
+    if len(event.get("contributingAccounts", [])) >= 2:
+        signals += 1
+    delta = event.get("engagementDelta", 0) or 0
+    if delta >= 50:
+        signals += 1
+    fs = event.get("firstSeenAt", "")
+    if fs:
+        try:
+            ts = datetime.fromisoformat(fs)
+            if ts.tzinfo is None:
+                ts = ts.replace(tzinfo=timezone.utc)
+            if (datetime.now(timezone.utc) - ts) <= timedelta(days=3):
+                signals += 1
+        except Exception:
+            pass
+    return signals >= 2
 
 
 def rank_events(events: list[dict]) -> list[dict]:
@@ -466,6 +585,35 @@ def _compute_highlights(event: dict) -> list[str]:
     # Cross-source confirmation
     if len(event.get("contributingSources", [])) >= 2:
         highlights.append("verified")
+    # Cross-IG-account confirmation — surfaces when 2+ different IG accounts
+    # promoted the same event. Distinct from cross-source (platform diversity).
+    if len(event.get("contributingAccounts", [])) >= 2:
+        highlights.append("multi-promoted")
+    # IG Story — 24h ephemeral. Important to flag because the source URL
+    # may stop working after the story expires; user should know.
+    if event.get("isStory") or event.get("discoveredVia") == "ig_story":
+        highlights.append("story")
+    # IG Highlight — pinned by the venue/account on their profile. This
+    # is the venue's own editorial pick of "events worth knowing about"
+    # so it's a strong curation signal. Persists indefinitely unlike
+    # stories, so we use the highlight title (e.g. "Upcoming Shows")
+    # as additional context in the UI when rendering.
+    if event.get("isHighlight") or event.get("discoveredVia") == "ig_highlight":
+        highlights.append("highlight")
+    # Pinned post: account pinned this to top of feed (max 3 pinned slots
+    # on IG). Account-level editorial signal — they thought this was worth
+    # promoting above everything else they've posted recently.
+    if event.get("isPinned"):
+        highlights.append("pinned")
+
+    # Composite "trending now" — when MULTIPLE trend signals fire on the
+    # same event, that's the "everyone's talking about this RIGHT NOW"
+    # situation users currently scroll IG to catch. Requires:
+    #   - At least 2 of: multi-account (≥2 IG accts), engagement growth
+    #     (delta ≥ 50), or recent first-seen (≤ 3 days)
+    #   - AND event is upcoming (today through next 14 days)
+    if _is_trending(event):
+        highlights.append("trending")
 
     # "Just Added" — first seen within last 30 hours
     first_seen = event.get("firstSeenAt", "")
@@ -611,12 +759,26 @@ def _price_score(event: dict) -> float:
 
 
 def _popularity_score(event: dict) -> float:
-    # IG likes/comments are the strongest popularity signal we have
+    # IG likes/comments are the strongest popularity signal we have.
+    # For Reels, video_views is the dominant signal — a viral Reel can hit
+    # 100k+ views with only 1-2k likes, so we fold views into engagement
+    # at a discount (1 view ≈ 0.1 like) capped to avoid drowning likes.
+    # Attendance signals from comments ("going!", "+5 friends") are highest-
+    # quality — they indicate real-people-actually-attending, not passive
+    # scrolling. Each attendance hit is worth 50 likes.
     likes = event.get("likes", 0) or 0
     comments = event.get("comments", 0) or 0
-    if likes or comments:
-        # Combine engagement: likes + 5*comments (comments require more effort)
-        engagement = likes + comments * 5
+    video_views = event.get("video_views", 0) or 0
+    attendance = event.get("attendanceSignal", 0) or 0
+    view_contribution = min(2000, video_views * 0.1) if video_views else 0
+    attendance_contribution = attendance * 50  # one "going!" ≈ 50 likes
+    if likes or comments or view_contribution or attendance_contribution:
+        engagement = (
+            likes
+            + comments * 5
+            + view_contribution
+            + attendance_contribution
+        )
         if engagement >= 5000:
             return 1.0
         if engagement >= 1500:

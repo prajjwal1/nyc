@@ -44,6 +44,37 @@ HARD_BLOCK_KEYWORDS = [
     "wall street networking", "wall street mixer",
     "executive networking", "executive mixer", "executives mixer",
     "career networking", "career mixer",
+    # User explicitly: NO career-related events. Specific phrases only
+    # so we don't false-positive on artist bios ("throughout her career")
+    # or comedy showcases ("new faces" of comedy).
+    "career fair", "career fairs",
+    "career expo", "career expos",
+    "career talk", "career talks",
+    "career panel", "career panels",
+    "career workshop", "career workshops",
+    "career conference", "career conferences",
+    "career summit",
+    "career advice", "career coaching", "career coach",
+    "career mentorship", "career mentor",
+    "career development", "career growth",
+    "career transition", "career transitions",
+    "career change", "career switch", "career switching",
+    "career blueprint", "career-ready", "career ready",
+    "career-changing", "career changing",
+    "job fair", "job fairs", "job expo", "job expos",
+    "job training", "job seekers", "job hunters", "job hunting",
+    "hiring event", "hiring fair", "hiring expo",
+    "professional development",
+    "leadership development", "leadership summit", "leadership conference",
+    "leadership workshop", "leadership forum",
+    "executive coaching", "executive summit",
+    "speed networking",
+    "networking breakfast", "networking lunch", "networking happy hour",
+    "founder summit", "founders summit", "founders conference",
+    "investor summit", "investors summit", "investor conference",
+    "biz dev mixer", "bizdev mixer",
+    "interview prep", "interview workshop", "interview practice",
+    "resume review", "resume writing",
     "industry networking", "industry mixer",
     "corporate networking", "corporate mixer",
     "investor networking", "investor mixer", "investors mixer",
@@ -208,11 +239,48 @@ NON_TARGET_AUDIENCE = [
 ]
 
 
+# Keywords that need WORD-BOUNDARY matching to avoid false positives.
+# Substring matching catches "baby" inside "Baby's All Right" (NYC music
+# venue) and "teen " inside "Springsteen ". For single-word age/family
+# tokens, require word boundaries. For multi-word phrases (e.g.
+# "professional networking", "job fair"), substring is fine because
+# those phrases don't appear inside unrelated words.
+_WORD_BOUNDARY_KEYWORDS = {
+    "kids", "children", "toddler", "toddlers", "baby", "babies",
+    "teen", "teens", "tween", "tweens", "preteen", "preteens",
+    "youth", "infant", "infants",
+}
+
+import re as _re
+# Word-boundary match BUT exclude possessive form ("Baby's All Right",
+# "Kid's Choice"). Negative lookahead `(?!')` ensures we don't match
+# inside venue/band names that use the apostrophe-s form.
+_WORD_BOUNDARY_RES = [
+    _re.compile(rf"\b{_re.escape(kw)}\b(?!')", _re.IGNORECASE)
+    for kw in _WORD_BOUNDARY_KEYWORDS
+]
+
+
 def is_blocked(event: dict) -> bool:
-    """True if event should be entirely filtered out (kids/utility/services/non-NYC)."""
+    """True if event should be entirely filtered out (kids/utility/services/non-NYC).
+
+    Single-word age/family keywords use word-boundary matching to avoid
+    false-positive blocks on venue names ("Baby's All Right") and band
+    names ("Bruce Springsteen"). Multi-word phrases stay on cheap
+    substring matching since they're unambiguous.
+    """
     text = _searchable_text(event).lower()
-    if any(kw in text for kw in HARD_BLOCK_KEYWORDS):
-        return True
+    # Multi-word phrases: substring match (cheap, unambiguous).
+    for kw in HARD_BLOCK_KEYWORDS:
+        # Skip single tokens we've moved to word-boundary matching.
+        if kw.strip() in _WORD_BOUNDARY_KEYWORDS:
+            continue
+        if kw in text:
+            return True
+    # Word-boundary single-word matches.
+    for r in _WORD_BOUNDARY_RES:
+        if r.search(text):
+            return True
     if _is_non_nyc(event):
         return True
     return False

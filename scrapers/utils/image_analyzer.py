@@ -47,6 +47,12 @@ def analyze_event_image(image_url: str) -> dict | None:
 def _parse_ocr_text(text: str) -> dict:
     result = {}
 
+    # Always include the raw OCR text — callers (e.g., story-flyer parsing)
+    # may feed it back into the caption-parsing pipeline as a synthetic
+    # caption when the actual IG caption is empty.
+    if text and text.strip():
+        result["text"] = text.strip()
+
     lines = [l.strip() for l in text.split("\n") if l.strip()]
     if lines:
         for line in lines:
