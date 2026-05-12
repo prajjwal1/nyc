@@ -5,3 +5,7 @@ dateparser>=1.2
 instaloader>=4.11
 pytesseract>=0.3
 Pillow>=10.0
+# Brotli decoder — many modern sites (Bell House, NY Comedy Club, etc.)
+# serve brotli-compressed HTML. Without this, responses come back as
+# binary garbage and JSON-LD/OG parsing returns 0 events.
+brotli>=1.0

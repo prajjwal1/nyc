@@ -89,6 +89,21 @@ FEEDS = [
     "https://thedeli.substack.com/feed",
     # Hellgate — local NYC investigative journalism (occasional event roundups)
     "https://hellgate.substack.com/feed",
+    # Eater NY — food/restaurant pop-ups, supper clubs, food events
+    "https://ny.eater.com/rss/index.xml",
+    # Gothamist — NYC news + culture, regular event roundups
+    "https://gothamist.com/feed",
+    # Bedford + Bowery — Brooklyn/East Village culture, art openings, shows
+    "https://bedfordandbowery.com/feed/",
+    # Untapped Cities — NYC tours, history, secret-spot/event coverage
+    "https://untappedcities.com/feed/",
+    # NYC for Free — free events curator, weekly roundups
+    "https://nycforfree.substack.com/feed",
+    # Brokelyn — Brooklyn-focused budget events (cheap/free)
+    "https://www.brokelyn.com/feed/",
+    # NYC Parks daily events feed (already covered via parks.py, but the
+    # Substack version surfaces editorial picks + program highlights)
+    "https://www.nycgovparks.org/news.rss",
 ]
 
 # Patterns that look like dates within event text

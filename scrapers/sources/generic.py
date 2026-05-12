@@ -161,14 +161,67 @@ GENERIC_URLS = [
     "https://allevents.in/new-york/sports",
     "https://allevents.in/new-york/exhibition",
     # Songkick metro pages — major live-music coverage with JSON-LD
+    # Songkick metro pages — each paginated page returns ~49 events with
+    # full JSON-LD MusicEvent metadata. Confirmed live for pages 1-7.
     "https://www.songkick.com/metro-areas/7644-us-new-york",
     "https://www.songkick.com/metro-areas/7644-us-new-york/2",
+    "https://www.songkick.com/metro-areas/7644-us-new-york/3",
+    "https://www.songkick.com/metro-areas/7644-us-new-york/4",
+    "https://www.songkick.com/metro-areas/7644-us-new-york/5",
+    "https://www.songkick.com/metro-areas/7644-us-new-york/6",
+    "https://www.songkick.com/metro-areas/7644-us-new-york/7",
     # Songkick venue pages — major NYC live-music venues (3-8 events each).
     # These compound with the metro page since metro shows top events while
     # venue pages give the full upcoming calendar per venue.
     "https://www.songkick.com/venues/22-brooklyn-bowl",
     "https://www.songkick.com/venues/8-elsewhere",
     "https://www.songkick.com/venues/5-mercury-lounge",
+    # Additional NYC music venues discovered via Songkick metro page —
+    # huge yield because Songkick reliably parses to JSON-LD MusicEvent
+    # and these are the busiest NYC concert venues.
+    "https://www.songkick.com/venues/16246-music-hall-of-williamsburg",
+    "https://www.songkick.com/venues/316-bowery-ballroom",
+    "https://www.songkick.com/venues/181873-irving-plaza",
+    "https://www.songkick.com/venues/1025-beacon-theatre",
+    "https://www.songkick.com/venues/10735-village-vanguard",
+    "https://www.songkick.com/venues/120516-brooklyn-paramount",
+    "https://www.songkick.com/venues/2445014-babys-all-right",
+    "https://www.songkick.com/venues/28184-le-poisson-rouge",
+    "https://www.songkick.com/venues/3457684-brooklyn-steel",
+    "https://www.songkick.com/venues/3658119-elsewhere",
+    "https://www.songkick.com/venues/3841499-sony-hall",
+    "https://www.songkick.com/venues/3895789-rooftop-at-pier-17",
+    "https://www.songkick.com/venues/4216319-public-records",
+    "https://www.songkick.com/venues/4480562-racket-nyc",
+    "https://www.songkick.com/venues/4429540-nebula",
+    "https://www.songkick.com/venues/4424442-under-the-k-bridge-park",
+    "https://www.songkick.com/venues/1656338-barclays-center",
+    "https://www.songkick.com/venues/2470-hammerstein-ballroom-manhattan-center",
+    # Universities — public lectures, readings, screenings, free concerts.
+    # Most events listed are open to the public; the ones that aren't get
+    # filtered by description content.
+    "https://events.nyu.edu/",
+    "https://events.columbia.edu/",
+    "https://events.newschool.edu/",
+    "https://www.juilliard.edu/calendar-performances",
+    # Public libraries — readings, classes, kid events, talks. NYPL already
+    # has a dedicated scraper; these add Brooklyn + Queens.
+    "https://www.bklynlibrary.org/calendar",
+    "https://www.queenslibrary.org/calendar",
+    # Cultural institutions
+    "https://www.bam.org/calendar",
+    "https://www.lincolncenter.org/lincoln-center-at-home/calendar",
+    "https://www.apollotheater.org/events/",
+    "https://carnegiehall.org/Calendar",
+    # Bookstores beyond McNally / Liz's — high quality literary events
+    "https://www.strandbooks.com/events",
+    "https://www.greenlightbookstore.com/event",
+    "https://www.booksaremagic.net/event",
+    "https://www.bookclubbar.com/events",
+    "https://www.caveat.nyc/events",
+    # Record-store / niche music venues with public events
+    "https://www.roughtradenyc.com/events/",
+    "https://www.publicrecords.nyc/calendar",
 ]
 
 # JSON-LD event schema types we accept
@@ -803,7 +856,66 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
     # Self-improvement: track URLs that consistently return 0 events.
     # After 5 consecutive empty pulls, URL is marked dead and skipped.
     if not events:
-        _record_url_failure(url)
+        # Bookmanager SPA detection: if the page is a Bookmanager-powered
+        # bookstore (Book Club Bar pattern), fetch the events via their
+        # hidden API in the same run — no 2-cycle indirection.
+        try:
+            from ..utils.bookmanager import is_bookmanager, detect_san, scrape_san
+            if is_bookmanager(html):
+                san = detect_san(html)
+                if san:
+                    parsed = urlparse(url)
+                    label = (parsed.netloc.lower().replace("www.", "").split(".")[0]
+                             or "bookmanager")
+                    public_tmpl = f"{parsed.scheme}://{parsed.netloc}/events/{{event_id}}"
+                    bm_events = await scrape_san(
+                        san=san,
+                        source_label=label,
+                        public_url_template=public_tmpl,
+                    )
+                    if bm_events:
+                        events.extend(bm_events)
+                        print(f"[generic] {url}: Bookmanager API → {len(bm_events)} events (SAN={san})")
+        except Exception as exc:
+            print(f"[generic] {url}: Bookmanager probe failed: {exc}")
+
+    if not events:
+        # Squarespace platform detection: many small venues are on
+        # Squarespace, which exposes a reliable iCal feed at ?format=ical.
+        # The React shell HTML returns 0 events to JSON-LD/OG, but the iCal
+        # feed has the full event list. Same pattern as Bookmanager —
+        # detect once, scrape any venue on the platform.
+        try:
+            from ..utils.squarespace import try_scrape_ical_for_squarespace
+            parsed = urlparse(url)
+            label = (parsed.netloc.lower().replace("www.", "").split(".")[0]
+                     or "squarespace")
+            ss_events = await try_scrape_ical_for_squarespace(url, html, label)
+            if ss_events:
+                events.extend(ss_events)
+                print(f"[generic] {url}: Squarespace iCal → {len(ss_events)} events")
+        except Exception as exc:
+            print(f"[generic] {url}: Squarespace probe failed: {exc}")
+
+    if not events:
+        # Salvage pass: many venue sites are React/Next/Vue SPAs that return
+        # JS-rendered content with 0 parseable JSON-LD/OG. BUT the raw HTML
+        # almost always contains /events/<id> or /show/<id> links (nav,
+        # hydration JSON, sitemap snippets) we can mine for canonical event
+        # URLs. Each found URL gets queued to discovered_urls.json for
+        # direct fetch on the next run — same pattern as Book Club Bar but
+        # generalized for any venue. This is the difference between a
+        # venue showing 0 events and showing all of them.
+        salvaged = _salvage_event_urls_from_html(html, url)
+        if salvaged:
+            print(f"[generic] {url}: SPA salvage → +{salvaged} event URLs queued for next run")
+            # Salvage counts as success — the URL DID surface event content,
+            # we just need an extra hop. Reset the failure counter so the
+            # URL doesn't get marked dead while it's actively producing
+            # downstream discoveries.
+            _record_url_success(url, event_count=0)
+        else:
+            _record_url_failure(url)
     else:
         _record_url_success(url, event_count=len(events))
         # Auto-discover Eventbrite organizer pages from event URLs.
@@ -832,10 +944,177 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
         except Exception as e:
             print(f"[generic] {url}: sitemap harvest failed: {e}")
 
+        # Canonical event-path probe: enqueue /events, /events/, /calendar
+        # for any new venue host. Generalizes the book-club-bar pattern so
+        # we don't need per-venue scrapers. Idempotent + cheap (just adds
+        # to discovery pool — actual fetches happen on next run, gated by
+        # url_health pruning if the paths 404).
+        try:
+            _maybe_probe_event_paths(url)
+        except Exception as e:
+            print(f"[generic] {url}: event-path probe failed: {e}")
+
     return events
 
 
+# Patterns that look like a venue's canonical event-detail URL inside the
+# raw HTML of a SPA index page. We're conservative: numeric IDs (Bookmanager,
+# Eventbrite-like), slug formats with hyphens, and common path segments.
+# We deliberately AVOID matching arbitrary paths like /about or /contact.
+_SALVAGE_PATH_RES = [
+    # /events/<digits>      — Bookmanager (Book Club Bar style)
+    re.compile(r'(?:href|"url"|"path")\s*[:=]\s*"(/events/\d{6,18})\b', re.IGNORECASE),
+    # /events/<slug-with-hyphens>  — common WordPress-event style
+    re.compile(r'href="(/events/[a-z0-9][a-z0-9\-]{4,80})"', re.IGNORECASE),
+    # /event/<digits-or-slug>
+    re.compile(r'href="(/event/[a-z0-9][a-z0-9\-]{2,80})"', re.IGNORECASE),
+    # /show/<slug>  — common at small concert venues
+    re.compile(r'href="(/shows?/[a-z0-9][a-z0-9\-]{4,80})"', re.IGNORECASE),
+    # /e/<id>  — Eventbrite-style shortcodes
+    re.compile(r'href="(/e/[a-z0-9\-]{4,80})"', re.IGNORECASE),
+    # Absolute event URLs in any inline JSON/text — captures patterns
+    # like {"url":"https://venue.com/events/123"} in hydration state.
+    re.compile(r'"(https?://[^"]+/events?/(?:[a-z0-9][a-z0-9\-]{3,80}|\d{6,18}))"', re.IGNORECASE),
+]
+
+# Cap salvage output per page so a sitemap-style payload listing thousands
+# of historical events doesn't explode discovered_urls.json.
+_SALVAGE_CAP_PER_PAGE = 30
+
+
+def _salvage_event_urls_from_html(html: str, base_url: str) -> int:
+    """Extract canonical event URLs from a 0-event page's raw HTML and
+    queue them as discovered URLs. Returns count of NEWLY queued URLs.
+
+    This generalizes the Book Club Bar pattern: many venue sites are
+    JS-rendered SPAs whose index page shows nothing to JSON-LD/OG
+    parsers, but the raw HTML still contains nav links and hydration
+    state with the actual event URLs. Mining those gives us the canonical
+    event pages — which are server-side-rendered and have proper
+    JSON-LD/OG, so the next-run generic fetch parses them cleanly.
+    """
+    if not html or len(html) < 200:
+        return 0
+    parsed = urlparse(base_url)
+    if not parsed.netloc:
+        return 0
+    base = f"{parsed.scheme}://{parsed.netloc}"
+
+    found: set[str] = set()
+    for r in _SALVAGE_PATH_RES:
+        for m in r.finditer(html):
+            path = m.group(1)
+            # Convert relative to absolute. Skip if path is identical to
+            # base_url's path (don't add the index page back to itself).
+            if path.startswith("http"):
+                url = path
+            else:
+                url = base + path
+            # Drop URL fragments / trailing punctuation
+            url = url.split("#")[0].rstrip(".,;:!?)")
+            # Skip self-references (index page linking to itself)
+            if url.rstrip("/") == base_url.rstrip("/"):
+                continue
+            # Same-host only — don't accidentally harvest a CDN link
+            try:
+                if urlparse(url).netloc.lower() != parsed.netloc.lower():
+                    continue
+            except Exception:
+                continue
+            found.add(url)
+            if len(found) >= _SALVAGE_CAP_PER_PAGE:
+                break
+        if len(found) >= _SALVAGE_CAP_PER_PAGE:
+            break
+
+    if not found:
+        return 0
+
+    added = 0
+    bare_host = parsed.netloc.lower()
+    if bare_host.startswith("www."):
+        bare_host = bare_host[4:]
+    src_label = f"spa-salvage:{bare_host}"
+    for u in found:
+        try:
+            _add_discovered_url(u, src_label)
+            added += 1
+        except Exception:
+            pass
+    return added
+
+
 _SITEMAP_TRIED_HOSTS: set[str] = set()
+_EVENT_PATH_PROBED_HOSTS: set[str] = set()
+
+# Hosts where probing /events makes no sense — they're aggregator platforms,
+# IG/social, or hosts whose canonical event-listing URLs we already seed.
+_PROBE_SKIP_HOSTS = {
+    "instagram.com", "www.instagram.com",
+    "facebook.com", "www.facebook.com", "m.facebook.com",
+    "twitter.com", "x.com", "t.co",
+    "lu.ma", "luma.com", "www.lu.ma",
+    "eventbrite.com", "www.eventbrite.com",
+    "meetup.com", "www.meetup.com",
+    "partiful.com", "www.partiful.com",
+    "allevents.in", "www.allevents.in",
+    "songkick.com", "www.songkick.com",
+    "dice.fm", "www.dice.fm",
+    "ra.co", "www.ra.co",
+    "ticketmaster.com", "www.ticketmaster.com",
+    "ticketweb.com", "www.ticketweb.com",
+    "youtube.com", "www.youtube.com", "youtu.be",
+    "tiktok.com", "www.tiktok.com",
+    "linktr.ee", "beacons.ai", "linkin.bio", "bio.link",
+    "google.com", "maps.google.com",
+    "substack.com",
+}
+
+
+def _maybe_probe_event_paths(url: str) -> None:
+    """Once per venue host, register canonical event-listing paths
+    (/events, /events/, /calendar) as discovered URLs.
+
+    Generalizes the book-club-bar pattern: when we scrape a single event
+    page like venue.com/events/1234, the venue almost certainly has a
+    /events index page that lists everything else. Adding it to the
+    discovery pool lets the next pipeline run pick it up automatically
+    — no per-venue scraper needed.
+
+    Cheap and idempotent: just enqueues paths. url_health prunes any
+    that 404 after a few attempts.
+    """
+    parsed = urlparse(url)
+    host = parsed.netloc.lower()
+    if not host or host in _EVENT_PATH_PROBED_HOSTS:
+        return
+    _EVENT_PATH_PROBED_HOSTS.add(host)
+
+    # Skip if the host is itself the aggregator (we already seed those).
+    bare_host = host[4:] if host.startswith("www.") else host
+    if host in _PROBE_SKIP_HOSTS or bare_host in _PROBE_SKIP_HOSTS:
+        return
+    # Don't probe if the URL already IS one of those canonical paths.
+    path = (parsed.path or "/").rstrip("/").lower()
+    if path in ("/events", "/calendar", "/events/calendar"):
+        return
+
+    base = f"{parsed.scheme}://{parsed.netloc}"
+    candidates = [
+        f"{base}/events",
+        f"{base}/events/",
+        f"{base}/calendar",
+    ]
+    added = 0
+    for cand in candidates:
+        # Stay idempotent — _add_discovered_url is no-op on duplicates.
+        try:
+            _add_discovered_url(cand, f"path-probe:{bare_host}")
+            added += 1
+        except Exception:
+            pass
+    if added:
+        print(f"[generic] {host}: probed canonical event paths (+{added} URLs)")
 
 
 async def _maybe_harvest_sitemap(url: str) -> None:
@@ -1066,6 +1345,80 @@ def _is_dead_url(url: str) -> bool:
 
 _RETEST_COOLDOWN_DAYS = 7
 _RETEST_PER_RUN = 5
+# A URL with this many failures AND zero lifetime successes AND a stale
+# last-failure timestamp is considered permanently dead. Prune it from
+# both discovered_urls.json and url_health.json so the pool stays lean.
+_PRUNE_FAILURE_THRESHOLD = 12
+_PRUNE_AGE_DAYS = 30
+
+
+def _prune_stale_urls() -> int:
+    """Remove permanently-dead URLs from the discovery pool and url_health.
+
+    Criteria (must meet ALL):
+      - failures >= _PRUNE_FAILURE_THRESHOLD
+      - successes == 0 (never emitted an event)
+      - last_failure_at older than _PRUNE_AGE_DAYS
+
+    Returns count of pruned URLs. Idempotent.
+    """
+    from datetime import datetime, timezone, timedelta
+    health = _load_url_health()
+    if not health:
+        return 0
+    cutoff = datetime.now(timezone.utc) - timedelta(days=_PRUNE_AGE_DAYS)
+
+    # Identify dead URLs to remove
+    dead: set[str] = set()
+    for url, entry in health.items():
+        if entry.get("successes", 0) > 0:
+            continue
+        if entry.get("failures", 0) < _PRUNE_FAILURE_THRESHOLD:
+            continue
+        last_fail = entry.get("last_failure_at", "")
+        try:
+            ts = datetime.fromisoformat(last_fail)
+        except Exception:
+            # Legacy entry without timestamp — let it be eligible.
+            dead.add(url)
+            continue
+        if ts < cutoff:
+            dead.add(url)
+
+    if not dead:
+        return 0
+
+    # Don't ever prune URLs from the seed list (GENERIC_URLS) — those are
+    # editorial decisions; let them sit and be re-tested via the retest path.
+    seed_urls = set(GENERIC_URLS)
+    dead -= seed_urls
+    if not dead:
+        return 0
+
+    # Drop from url_health
+    for u in dead:
+        health.pop(u, None)
+    _save_url_health(health)
+
+    # Drop from discovered_urls.json
+    if os.path.isfile(DISCOVERED_URLS_PATH):
+        try:
+            with open(DISCOVERED_URLS_PATH) as f:
+                data = json.load(f)
+            items = data if isinstance(data, list) else data.get("urls", [])
+            kept = [
+                it for it in items
+                if (it["url"] if isinstance(it, dict) else it) not in dead
+            ]
+            os.makedirs(os.path.dirname(DISCOVERED_URLS_PATH), exist_ok=True)
+            tmp = DISCOVERED_URLS_PATH + ".tmp"
+            with open(tmp, "w") as f:
+                json.dump(kept, f, indent=2)
+            os.replace(tmp, DISCOVERED_URLS_PATH)
+        except Exception as exc:
+            print(f"[generic] prune: failed to update discovered_urls: {exc}")
+
+    return len(dead)
 
 
 def _select_dead_urls_for_retest(health: dict, all_urls: list[str]) -> list[str]:
@@ -1171,6 +1524,13 @@ async def scrape() -> list[dict]:
 
     URLs that consistently return 0 events are skipped after 5 failures.
     """
+    # Pool hygiene first — drop URLs that are long-dead (12+ failures,
+    # 0 successes, last failure 30+ days ago) so the pool doesn't grow
+    # unboundedly. Seed URLs from GENERIC_URLS are never pruned.
+    pruned = _prune_stale_urls()
+    if pruned:
+        print(f"[generic] Pruned {pruned} permanently-dead URLs from discovery pool")
+
     urls: list[str] = list(GENERIC_URLS)
 
     # Append discovered URLs while preserving order and deduping
