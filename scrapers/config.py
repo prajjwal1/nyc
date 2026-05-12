@@ -139,6 +139,68 @@ IG_ACCOUNTS = list(dict.fromkeys([  # dedupe while preserving order
     "yeswilliamsburg",
     "greenpointers",
     "omgreenpoint",
+    # Auto-promoted from discovered_accounts: lifetime yield ≥10 events with
+    # ≥5 posts scraped. Promoting them to curated (a) protects them from
+    # discovery-pool pruning, (b) gives them tier-2 priority in the scrape
+    # rotation, (c) qualifies their events for the lower 0.20 MIN_SCORE
+    # floor. Avoids letting high-yield accounts churn out of the seed list.
+    "nyc_forfree",
+    "nycbackgammonclub",
+    "nyc_dot",
+    "bennysoto",
+    "ateazorganic",
+    "barnun.life",
+    "itsinqueens",
+    "dyslmshow",
+    "maggie_onthemove",
+    "dashwood_books",
+    "highlinenyc",
+    "wordbookstores",
+    "bronx_river",
+    "brooklynmagazine",
+    "kin_kollective_",
+    "downtownnyc",
+    "eliescobarnyc",
+    "franklinparkreadingseries",
+    "secondsrunclub",
+    "dannykrivit",
+    "hithouse",
+    "mamachaempanacha",
+    "nitehawkcinema",
+    "nyucreativewriting",
+    # Second-tier promotions (7-9 lifetime events, ≥10 posts seen) —
+    # consistently event-producing NYC accounts that haven't yet hit
+    # the 10-event threshold. Same justification as the first tier.
+    "bigvisionnyc",
+    "chelseapiersfitness",
+    "highlineartnyc",
+    "nook_bklyn",
+    "nyplyounglions",
+    "nyculture",
+    "reading_rhythms",
+    "bigreuse",
+    "midnightrunners",
+    "greenlightbklyn",
+    "litclub.nyc",
+    "no.vista",
+    "doppelganger_bar_nyc",
+    "cysknyc",
+    # Third-tier promotions (4-6 lifetime events) — clear NYC event
+    # accounts that consistently produce content. Filtered to event-
+    # organizing handles (skipped personal influencer / political /
+    # health-clinic accounts even when they cleared the yield bar).
+    "brooklynbookbodega",
+    "philosophy.nyc",
+    "queerfeetnyc",
+    "open.bookclub",
+    "booksaremagicbk",
+    "center4fiction",
+    "nycsprintcollective",
+    "zoomiesrunclub",
+    "thenewyorkgames",
+    "wnrr_nyc",
+    "berryparkbk",
+    "joyflowerpotnyc",
 ]))
 
 # Accounts whose posts are "cool spot" recommendations (places to check
@@ -210,6 +272,7 @@ SOURCE_QUALITY = {
     "museums": 0.78,
     "music_venues": 0.78,
     "bookclubbar": 0.8,
+    "lizsbookbar": 0.8,
     # Aggregators
     "eventbrite": 0.55,
     "meetup": 0.5,

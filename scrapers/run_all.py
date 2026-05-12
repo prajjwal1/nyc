@@ -6,7 +6,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scrapers.sources import luma, bookclubbar, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful, generic, reddit
+from scrapers.sources import luma, bookclubbar, lizsbookbar, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful, generic, reddit
 from scrapers.normalize import process, _load_previous_events_index
 
 ASYNC_SCRAPERS = [
@@ -15,6 +15,7 @@ ASYNC_SCRAPERS = [
     ("reddit", reddit.scrape),
     ("luma", luma.scrape),
     ("bookclubbar", bookclubbar.scrape),
+    ("lizsbookbar", lizsbookbar.scrape),
     ("nypl", nypl.scrape),
     ("nycforfree", nycforfree.scrape),
     ("eventbrite", eventbrite.scrape),
@@ -75,15 +76,20 @@ async def main():
     previous_index = _load_previous_events_index(OUTPUT_PATH)
     print(f"[run_all] Previous events.json: {len(previous_index)} events")
 
-    # When skipping the full IG sweep, carry over existing IG events from
-    # the previous events.json (so quick scrapes don't lose all the IG data
-    # the full scrape gathered). These are merged with the fresh non-IG
-    # events from this run, then re-processed.
-    if SKIP_INSTAGRAM or IG_SAVED_ONLY:
-        carryover = [e for e in previous_index.values() if e.get("source") == "instagram"]
-        if carryover:
-            all_events.extend(carryover)
-            print(f"[run_all] Carrying over {len(carryover)} IG events from previous run")
+    # Carry over existing IG events from the previous events.json on EVERY
+    # run — full scrapes included. Reasons:
+    #   (1) IG's incremental cursor + rate limiting + session expiry mean
+    #       a fresh IG sweep can produce FEWER events than the previous
+    #       run. Without carry-over we silently lose those events.
+    #   (2) The partial-save below happens BEFORE the IG sweep finishes,
+    #       so without carry-over the live events.json has ZERO IG events
+    #       for the duration of every full scrape (~20-40 min window).
+    # Dedup handles the merge: if the fresh IG run re-produces an event,
+    # the old + new copies collapse to one via the existing dedup chain.
+    carryover = [e for e in previous_index.values() if e.get("source") == "instagram"]
+    if carryover:
+        all_events.extend(carryover)
+        print(f"[run_all] Carrying over {len(carryover)} IG events from previous run")
 
     results = await asyncio.gather(
         *[run_scraper(name, fn) for name, fn in ASYNC_SCRAPERS],

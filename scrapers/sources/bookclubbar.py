@@ -1,26 +1,21 @@
-"""Book Club Bar event scraper.
-
-bookclubbar.com is a Bookmanager-powered React SPA — the index /events
-page has no server-side event list (JS-rendered).
-
-HOWEVER: individual /events/<numeric-id> URLs have rich server-side
-OpenGraph metadata (title, image, description), so the generic OG
-strategy in scrapers/sources/generic.py parses them correctly. Example:
-
-    https://www.bookclubbar.com/events/5159120260521
-      og:title=Game Night: Adult Spelling Bee | Book Club Bar
-      og:image=…GAME_NIGHT_ADULT_SPELLING_BEE…
-      og:description=Independent general bookstore…
-
-Discovery path: @bookclubbar (IG_ACCOUNTS) posts bookclubbar.com/events/
-URLs in captions → IG caption-URL harvester adds them to
-discovered_urls.json → generic scraper fetches each → OG metadata
-extraction.
-
-This module is a no-op stub. The pipeline reaches Book Club Bar events
-via the IG-→-discovered-URLs-→-generic-OG path.
+"""Book Club Bar event scraper — thin wrapper over the shared Bookmanager
+API helper. The actual extraction logic lives in `scrapers/utils/bookmanager.py`
+so any Bookmanager-powered NYC bookstore can reuse it without duplication.
 """
+
+from ..utils.bookmanager import scrape_san
+
+
+# Book Club Bar's public Bookmanager SAN (visible inline as
+# `var san="9911545"` on bookclubbar.com).
+_SAN = "9911545"
+_PUBLIC_EVENT_URL_TMPL = "https://www.bookclubbar.com/events/{event_id}"
 
 
 async def scrape() -> list[dict]:
-    return []
+    return await scrape_san(
+        san=_SAN,
+        source_label="bookclubbar",
+        default_venue="Book Club Bar",
+        public_url_template=_PUBLIC_EVENT_URL_TMPL,
+    )
