@@ -253,6 +253,31 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
             )}
           </div>
 
+          {/* Cross-IG-account confirmation: 2+ DIFFERENT IG accounts
+              promoted this same event. Strong "definitely happening" signal
+              that surfaces editorial consensus across the IG sphere. */}
+          {event.contributingAccounts && event.contributingAccounts.length >= 2 && (
+            <div className="bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 text-xs text-emerald-900 flex flex-wrap items-center gap-1">
+              <span className="font-medium">📣 Promoted by</span>
+              {event.contributingAccounts.slice(0, 4).map((acct, i, arr) => (
+                <button
+                  key={acct}
+                  onClick={() => {
+                    onAccountClick(acct);
+                    onClose();
+                  }}
+                  className="font-semibold hover:underline"
+                >
+                  @{acct}{i < arr.length - 1 ? "," : ""}
+                </button>
+              ))}
+              {event.contributingAccounts.length > 4 && (
+                <span className="text-emerald-700">+{event.contributingAccounts.length - 4} more</span>
+              )}
+              <span className="text-emerald-700">— multiple IG accounts cross-promoted this</span>
+            </div>
+          )}
+
           {/* Recommendation provenance — accounts you save from have
               @-mentioned this account in event posts. */}
           {event.affinityComentionSources && event.affinityComentionSources.length > 0 && (
@@ -283,7 +308,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
               href={event.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl)}
+              onClick={() => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl, event.startTime, event.date)}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
             >
               Open original
@@ -320,7 +345,11 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
             <ShareButton event={event} />
             <button
               onClick={() => {
-                hideEvent(event.id);
+                hideEvent(event.id, {
+                  account: event.instagramAccount,
+                  categories: event.categories,
+                  sourceUrl: event.sourceUrl,
+                });
                 onClose();
               }}
               className="ml-auto inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-gray-500 hover:bg-gray-50 text-sm font-medium transition-colors"

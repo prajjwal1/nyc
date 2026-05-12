@@ -22,7 +22,6 @@ export function filterEvents(
   events: Event[],
   filters: {
     categories?: string[];
-    sources?: string[];
     search?: string;
     priceFilter?: "all" | "free" | "paid";
   }
@@ -33,10 +32,6 @@ export function filterEvents(
     filtered = filtered.filter((e) =>
       e.categories.some((c) => filters.categories!.includes(c))
     );
-  }
-
-  if (filters.sources && filters.sources.length > 0) {
-    filtered = filtered.filter((e) => filters.sources!.includes(e.source));
   }
 
   if (filters.search) {

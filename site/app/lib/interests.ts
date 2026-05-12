@@ -16,6 +16,18 @@ export interface InterestProfile {
   categories: Record<string, number>;
   // Track distinct event domains/hosts to learn source preferences
   hosts: Record<string, number>;
+  // Negative signals: counts of hides per account/category/host. Symmetric
+  // with the positive maps so a user's "no thanks" on one event from
+  // @somenightclub deboosts other events from that same account.
+  negAccounts: Record<string, number>;
+  negCategories: Record<string, number>;
+  negHosts: Record<string, number>;
+  // Schedule learning: count of events the user has opened by start-time
+  // bucket (key: "morning" | "midday" | "afternoon" | "evening" | "late")
+  // and by day-of-week (key: "0".."6", Sunday=0). Lets the feed adapt to
+  // a 7am-runner profile vs a 10pm-show-goer.
+  timeBuckets: Record<string, number>;
+  dayOfWeek: Record<string, number>;
   // When was this profile last updated (ISO)
   updatedAt: string;
 }
@@ -24,6 +36,11 @@ const empty = (): InterestProfile => ({
   accounts: {},
   categories: {},
   hosts: {},
+  negAccounts: {},
+  negCategories: {},
+  negHosts: {},
+  timeBuckets: {},
+  dayOfWeek: {},
   updatedAt: new Date().toISOString(),
 });
 
@@ -37,6 +54,11 @@ export function loadProfile(): InterestProfile {
       accounts: parsed.accounts || {},
       categories: parsed.categories || {},
       hosts: parsed.hosts || {},
+      negAccounts: parsed.negAccounts || {},
+      negCategories: parsed.negCategories || {},
+      negHosts: parsed.negHosts || {},
+      timeBuckets: parsed.timeBuckets || {},
+      dayOfWeek: parsed.dayOfWeek || {},
       updatedAt: parsed.updatedAt || new Date().toISOString(),
     };
   } catch {
@@ -73,7 +95,95 @@ export function trackCategoryClick(category: string): void {
   saveProfile(p);
 }
 
-export function trackEventOpen(account: string | undefined, categories: string[], sourceUrl: string): void {
+// Search query terms that map to category labels — when the user searches
+// for these words, treat it as a category-interest signal too.
+const _SEARCH_CATEGORY_HINTS: Record<string, string> = {
+  jazz: "music",
+  concert: "music",
+  music: "music",
+  comedy: "comedy",
+  yoga: "wellness",
+  run: "fitness",
+  running: "fitness",
+  "run club": "fitness",
+  fitness: "fitness",
+  art: "art",
+  gallery: "art",
+  museum: "art",
+  book: "books",
+  books: "books",
+  reading: "books",
+  bookclub: "books",
+  "book club": "books",
+  film: "film",
+  movie: "film",
+  screening: "film",
+  food: "food",
+  brunch: "food",
+  dinner: "food",
+  rooftop: "outdoors",
+  park: "outdoors",
+  hike: "outdoors",
+  outdoor: "outdoors",
+  outdoors: "outdoors",
+  dance: "dance",
+  workshop: "workshop",
+  class: "workshop",
+};
+
+// Treat a committed search as a soft engagement signal: an @-handle
+// becomes a strong account-interest bump, and category-keyword queries
+// fold into the category map. Lower weights than clicks so a stray
+// search doesn't dominate.
+export function trackSearchSignal(query: string): void {
+  const q = (query || "").trim().toLowerCase();
+  if (!q || q.length < 2) return;
+  const p = loadProfile();
+  if (q.startsWith("@")) {
+    // @-handle — explicit account interest. Strong signal (user typed it).
+    const handle = q.slice(1).split(/[\s/]/)[0];
+    if (handle) bump(p.accounts, handle, 2);
+  } else {
+    // Free-text — see if it maps to a known category. Multi-word matches first.
+    for (const [phrase, cat] of Object.entries(_SEARCH_CATEGORY_HINTS)) {
+      if (q.includes(phrase)) {
+        bump(p.categories, cat, 1);
+        break;
+      }
+    }
+  }
+  p.updatedAt = new Date().toISOString();
+  saveProfile(p);
+}
+
+function timeBucket(startTime: string | null | undefined): string | null {
+  if (!startTime || !startTime.includes(":")) return null;
+  const h = parseInt(startTime.split(":")[0], 10);
+  if (Number.isNaN(h)) return null;
+  if (h < 11) return "morning";       // <11am
+  if (h < 14) return "midday";        // 11am-2pm
+  if (h < 17) return "afternoon";     // 2-5pm
+  if (h < 22) return "evening";       // 5-10pm
+  return "late";                      // 10pm+
+}
+
+function dayOfWeekKey(dateStr: string | undefined): string | null {
+  if (!dateStr || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return null;
+  try {
+    const d = new Date(dateStr + "T00:00:00");
+    return String(d.getDay());
+  } catch {
+    return null;
+  }
+}
+
+export function trackEventOpen(
+  account: string | undefined,
+  categories: string[],
+  sourceUrl: string,
+  startTime?: string | null,
+  date?: string,
+): void {
   const p = loadProfile();
   if (account) bump(p.accounts, account.toLowerCase(), 3); // strongest signal
   for (const c of categories || []) bump(p.categories, c, 1);
@@ -83,17 +193,26 @@ export function trackEventOpen(account: string | undefined, categories: string[]
   } catch {
     // ignore unparseable URLs
   }
+  // Schedule learning — track when the user is actually opening events.
+  // A 7am-runner and a 10pm-show-goer should see very different defaults.
+  const tb = timeBucket(startTime);
+  if (tb) bump(p.timeBuckets, tb, 1);
+  const dow = dayOfWeekKey(date);
+  if (dow) bump(p.dayOfWeek, dow, 1);
   p.updatedAt = new Date().toISOString();
   saveProfile(p);
 }
 
-// Compute a 0..0.15 boost for an event given a learned profile. Capped low
-// so it nudges; saved/tagged still trump it.
+// Compute a -0.25..+0.15 adjustment for an event given a learned profile.
+// Positive cap is small (saved/tagged still trump it); negative cap is
+// larger because explicit hides are a stronger no-confidence signal.
 export function interestBoost(
   event: {
     instagramAccount?: string;
     categories?: string[];
     sourceUrl?: string;
+    startTime?: string | null;
+    date?: string;
   },
   profile: InterestProfile,
 ): number {
@@ -117,7 +236,55 @@ export function interestBoost(
       // ignore
     }
   }
-  return Math.min(0.15, boost);
+  // Schedule match: small boost for events at times the user actually opens.
+  // Compute the user's preferred bucket share; if this event's bucket is
+  // dominant in their history (>=40% of opens), nudge it up.
+  const tb = timeBucket(event.startTime);
+  if (tb && profile.timeBuckets) {
+    const total = Object.values(profile.timeBuckets).reduce((a, b) => a + b, 0);
+    if (total >= 5) {
+      const share = (profile.timeBuckets[tb] || 0) / total;
+      if (share >= 0.4) boost += 0.04;
+      else if (share >= 0.25) boost += 0.02;
+      else if (share <= 0.05) boost -= 0.02; // user almost never opens this slot
+    }
+  }
+  const dow = dayOfWeekKey(event.date);
+  if (dow && profile.dayOfWeek) {
+    const total = Object.values(profile.dayOfWeek).reduce((a, b) => a + b, 0);
+    if (total >= 5) {
+      const share = (profile.dayOfWeek[dow] || 0) / total;
+      if (share >= 0.30) boost += 0.03;
+      else if (share >= 0.20) boost += 0.015;
+    }
+  }
+  const positive = Math.min(0.18, boost);
+
+  // Negative signals — explicit hides translate to deboost on other events
+  // from the same account/category/host. One hide is a soft signal; 3+ on
+  // the same account = "stop showing me this".
+  let neg = 0;
+  if (acct && profile.negAccounts?.[acct]) {
+    const n = profile.negAccounts[acct];
+    // 1 hide -0.04, 3 hides -0.10, 5+ -0.15 (effectively buries).
+    neg += Math.min(0.15, 0.03 + Math.log2(n + 1) * 0.04);
+  }
+  for (const c of event.categories || []) {
+    const n = profile.negCategories?.[c];
+    if (n) neg += Math.min(0.05, n * 0.01);
+  }
+  if (event.sourceUrl) {
+    try {
+      const host = new URL(event.sourceUrl).hostname.toLowerCase();
+      const n = profile.negHosts?.[host];
+      if (n) neg += Math.min(0.04, n * 0.008);
+    } catch {
+      // ignore
+    }
+  }
+  const negative = Math.min(0.25, neg);
+
+  return positive - negative;
 }
 
 // Last-visited timestamp — tracked on page load so we can show "X new
@@ -290,10 +457,35 @@ function saveHidden(s: Set<string>): void {
   }
 }
 
-export function hideEvent(eventId: string): void {
+export function hideEvent(
+  eventId: string,
+  hint?: {
+    account?: string;
+    categories?: string[];
+    sourceUrl?: string;
+  }
+): void {
   const s = loadHidden();
+  if (s.has(eventId)) return; // already hidden — don't double-bump negatives
   s.add(eventId);
   saveHidden(s);
+
+  // Feed the hide into the negative profile so other events from the
+  // same account/categories/host get deboosted in subsequent rankings.
+  if (!hint) return;
+  const p = loadProfile();
+  if (hint.account) bump(p.negAccounts, hint.account.toLowerCase(), 1);
+  for (const c of hint.categories || []) bump(p.negCategories, c, 1);
+  if (hint.sourceUrl) {
+    try {
+      const host = new URL(hint.sourceUrl).hostname.toLowerCase();
+      bump(p.negHosts, host, 1);
+    } catch {
+      // ignore
+    }
+  }
+  p.updatedAt = new Date().toISOString();
+  saveProfile(p);
 }
 
 export function isHidden(eventId: string): boolean {

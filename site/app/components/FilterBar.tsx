@@ -1,22 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { CATEGORY_CONFIG, SOURCE_LABELS } from "../lib/types";
-import type { SortMode } from "../hooks/useEvents";
-import { loadSearchHistory, pushSearchHistory, clearSearchHistory } from "../lib/interests";
+import { CATEGORY_CONFIG } from "../lib/types";
+import { loadSearchHistory, pushSearchHistory, clearSearchHistory, trackSearchSignal } from "../lib/interests";
 
 interface FilterBarProps {
   categories: string[];
   setCategories: (c: string[]) => void;
-  sources: string[];
-  setSources: (s: string[]) => void;
   search: string;
   setSearch: (s: string) => void;
   priceFilter: "all" | "free" | "paid";
   setPriceFilter: (p: "all" | "free" | "paid") => void;
-  sortMode: SortMode;
-  setSortMode: (s: SortMode) => void;
-  allSources: string[];
   allCategories: string[];
   onQuickFilter: (preset: string) => void;
 }
@@ -24,15 +18,10 @@ interface FilterBarProps {
 export default function FilterBar({
   categories,
   setCategories,
-  sources,
-  setSources,
   search,
   setSearch,
   priceFilter,
   setPriceFilter,
-  sortMode,
-  setSortMode,
-  allSources,
   allCategories,
   onQuickFilter,
 }: FilterBarProps) {
@@ -47,6 +36,9 @@ export default function FilterBar({
   const commitSearch = () => {
     if (search && search.trim().length >= 2) {
       pushSearchHistory(search);
+      // A committed search is a real engagement signal — feed it into the
+      // interest profile so future rankings reflect what the user looks for.
+      trackSearchSignal(search);
     }
   };
 
@@ -70,15 +62,7 @@ export default function FilterBar({
     );
   };
 
-  const toggleSource = (src: string) => {
-    setSources(
-      sources.includes(src)
-        ? sources.filter((s) => s !== src)
-        : [...sources, src]
-    );
-  };
-
-  const hasFilters = categories.length > 0 || sources.length > 0 || search || priceFilter !== "all";
+  const hasFilters = categories.length > 0 || search || priceFilter !== "all";
 
   return (
     <div className="space-y-4">
@@ -232,56 +216,10 @@ export default function FilterBar({
         </div>
       </div>
 
-      <div>
-        <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2">
-          Sort by
-        </p>
-        <div className="flex gap-1.5">
-          {(["relevance", "time"] as const).map((s) => (
-            <button
-              key={s}
-              onClick={() => setSortMode(s)}
-              className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                sortMode === s
-                  ? "bg-gray-900 text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              {s === "relevance" ? "For You" : "Time"}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2">
-          Sources
-        </p>
-        <div className="flex flex-wrap gap-1.5">
-          {allSources.map((src) => {
-            const active = sources.includes(src);
-            return (
-              <button
-                key={src}
-                onClick={() => toggleSource(src)}
-                className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors ${
-                  active
-                    ? "bg-gray-900 text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-              >
-                {SOURCE_LABELS[src] || src}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
       {hasFilters && (
         <button
           onClick={() => {
             setCategories([]);
-            setSources([]);
             setSearch("");
             setPriceFilter("all");
           }}

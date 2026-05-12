@@ -43,7 +43,7 @@ function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event)
       e.preventDefault();
       onSelect(event);
     } else {
-      trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
+      trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl, event.startTime, event.date);
     }
   };
   const dateLabel = formatDateLabel(event.date);
@@ -144,13 +144,17 @@ function MediaFirstCard({
       e.preventDefault();
       onSelect(event);
     } else {
-      trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
+      trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl, event.startTime, event.date);
     }
   };
   const handleHide = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    hideEvent(event.id);
+    hideEvent(event.id, {
+      account: event.instagramAccount,
+      categories: event.categories,
+      sourceUrl: event.sourceUrl,
+    });
     onHide?.(event.id);
   };
   const handleSave = (e: React.MouseEvent) => {
@@ -368,13 +372,17 @@ function FeedCard({
       e.preventDefault();
       onSelect(event);
     } else {
-      trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl);
+      trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl, event.startTime, event.date);
     }
   };
   const handleHide = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    hideEvent(event.id);
+    hideEvent(event.id, {
+      account: event.instagramAccount,
+      categories: event.categories,
+      sourceUrl: event.sourceUrl,
+    });
     onHide?.(event.id);
   };
   const handleSaveF = (e: React.MouseEvent) => {

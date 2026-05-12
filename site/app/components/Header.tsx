@@ -6,9 +6,17 @@ interface HeaderProps {
   totalEvents: number;
   lastUpdated?: string;
   newSinceLastVisit?: number;
+  igCaptureCount?: number;
+  igEphemeralCount?: number;
 }
 
-export default function Header({ totalEvents, lastUpdated, newSinceLastVisit }: HeaderProps) {
+export default function Header({
+  totalEvents,
+  lastUpdated,
+  newSinceLastVisit,
+  igCaptureCount,
+  igEphemeralCount,
+}: HeaderProps) {
   const [copied, setCopied] = useState(false);
   const handleShare = async () => {
     if (typeof window === "undefined") return;
@@ -49,6 +57,18 @@ export default function Header({ totalEvents, lastUpdated, newSinceLastVisit }: 
                 </span>
               ) : null}
             </p>
+            {igCaptureCount !== undefined && igCaptureCount > 0 && (
+              <p className="mt-1 text-xs text-gray-500">
+                <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-fuchsia-50 text-fuchsia-800 font-medium">
+                  📲 {igCaptureCount} from Instagram
+                </span>
+                {igEphemeralCount !== undefined && igEphemeralCount > 0 && (
+                  <span className="ml-2 text-gray-400">
+                    ({igEphemeralCount} from stories/highlights you'd otherwise have to scroll to see)
+                  </span>
+                )}
+              </p>
+            )}
           </div>
           <div className="flex items-center gap-3">
             {updatedStr && (

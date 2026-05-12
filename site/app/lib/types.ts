@@ -26,6 +26,7 @@ export interface Event {
   userAffinity?: boolean;
   userFollowing?: boolean;
   contributingSources?: string[];
+  contributingAccounts?: string[];   // IG accounts that all promoted this event
   likes?: number;
   comments?: number;
   accountFollowers?: number;
@@ -36,6 +37,15 @@ export interface Event {
   affinityComentions?: number;
   affinityComentionSources?: string[];  // affinity accounts that @-mentioned this account
   evergreen?: boolean;  // 'cool spot' rather than dated event — never expires
+  // IG-channel provenance — set by specific scraper paths
+  isStory?: boolean;       // 24h ephemeral; sourceUrl may expire
+  isHighlight?: boolean;   // pinned story collection on profile
+  isPinned?: boolean;      // pinned to top of feed by account
+  isVideo?: boolean;       // post is a Reel/video (uses video_views for popularity)
+  discoveredVia?: string;  // "ig_story" | "ig_highlight" | "venue_tagged" | etc.
+  highlightTitle?: string; // e.g. "Upcoming Shows" when isHighlight=true
+  venueTaggedFrom?: string;// venue account whose tagged-posts surfaced this
+  attendanceSignal?: number;
 }
 
 export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> = {
@@ -44,6 +54,11 @@ export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> 
   affinity: { label: "From accounts you save", color: "bg-amber-50 text-amber-700" },
   following: { label: "From accounts you follow", color: "bg-blue-50 text-blue-700" },
   verified: { label: "✓ Verified", color: "bg-green-100 text-green-800" },
+  "multi-promoted": { label: "📣 Multi-promoted", color: "bg-emerald-100 text-emerald-800" },
+  story: { label: "📲 Story (24h)", color: "bg-rose-100 text-rose-800" },
+  trending: { label: "🔥 Trending now", color: "bg-orange-100 text-orange-800" },
+  highlight: { label: "📌 Venue pick", color: "bg-violet-100 text-violet-800" },
+  pinned: { label: "📍 Pinned post", color: "bg-indigo-100 text-indigo-800" },
   new: { label: "✨ Just Added", color: "bg-sky-100 text-sky-800" },
   free: { label: "Free", color: "bg-emerald-100 text-emerald-800" },
   special: { label: "Premiere", color: "bg-yellow-100 text-yellow-800" },

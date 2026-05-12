@@ -25,15 +25,10 @@ export default function Home() {
     eventDates,
     categories,
     setCategories,
-    sources,
-    setSources,
     search,
     setSearch,
     priceFilter,
     setPriceFilter,
-    sortMode,
-    setSortMode,
-    allSources,
     allCategories,
     lastUpdated,
     totalEvents,
@@ -106,6 +101,24 @@ export default function Home() {
       map.set(e.date, (map.get(e.date) || 0) + 1);
     }
     return map;
+  }, [events]);
+
+  // IG capture stats — concrete value-prop for the user: the website
+  // surfaces this many IG events so they don't have to scroll. Ephemeral
+  // count is the strongest signal (stories disappear in 24h — without us
+  // scraping, the user genuinely cannot see them later).
+  const igCaptureStats = useMemo(() => {
+    let total = 0;
+    let ephemeral = 0;
+    for (const e of events) {
+      if (e.source === "instagram" || (e.instagramAccount || "") !== "") {
+        total += 1;
+        if (e.isStory || e.isHighlight) {
+          ephemeral += 1;
+        }
+      }
+    }
+    return { total, ephemeral };
   }, [events]);
 
   const presetEvents = useMemo(() => {
@@ -183,7 +196,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header totalEvents={totalEvents} lastUpdated={lastUpdated} newSinceLastVisit={newSinceLastVisit} />
+      <Header
+        totalEvents={totalEvents}
+        lastUpdated={lastUpdated}
+        newSinceLastVisit={newSinceLastVisit}
+        igCaptureCount={igCaptureStats.total}
+        igEphemeralCount={igCaptureStats.ephemeral}
+      />
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
         <div className="flex flex-col lg:flex-row gap-6">
@@ -229,15 +248,10 @@ export default function Home() {
                 <FilterBar
                   categories={categories}
                   setCategories={setCategories}
-                  sources={sources}
-                  setSources={setSources}
                   search={search}
                   setSearch={setSearch}
                   priceFilter={priceFilter}
                   setPriceFilter={setPriceFilter}
-                  sortMode={sortMode}
-                  setSortMode={setSortMode}
-                  allSources={allSources}
                   allCategories={allCategories}
                   onQuickFilter={handleQuickFilter}
                 />
