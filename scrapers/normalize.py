@@ -465,6 +465,17 @@ def filter_future(events: list[dict]) -> list[dict]:
 
 _FAR_FUTURE_DAYS = 180
 
+# Sources that publish authoritative venue calendars with explicit dates.
+# The far-future misparsed-date heuristic doesn't apply to them — when an
+# author tour is booked 8 months out, that's a real date, not a date-parser
+# defaulting to next year.
+_TRUSTED_FAR_FUTURE_SOURCES = frozenset({
+    "bookclubbar",
+    "lizsbookbar",
+    "museums",
+    "music_venues",
+})
+
 
 def collapse_title_spam(events: list[dict]) -> list[dict]:
     """Collapse repeated (title, sourceUrl) pairs that span weekly intervals
@@ -639,6 +650,11 @@ def filter_far_future_misparsed(events: list[dict]) -> list[dict]:
             continue
         days_out = (ev_date - today).days
         if days_out <= _FAR_FUTURE_DAYS:
+            out.append(ev)
+            continue
+        # Trusted venue calendars publish authoritative dates months ahead —
+        # the misparsed-relative-date heuristic doesn't apply.
+        if ev.get("source") in _TRUSTED_FAR_FUTURE_SOURCES:
             out.append(ev)
             continue
         # Far-future: keep only if a 4-digit year is mentioned in title or desc

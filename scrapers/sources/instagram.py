@@ -217,7 +217,7 @@ def scrape() -> list[dict]:
     # Wall-clock budget for IG scraping — beyond this, stop and return what
     # we have so the rest of the pipeline (Eventbrite, Substack, etc.) can run.
     import time as _time
-    ig_budget_seconds = float(os.environ.get("IG_TIME_BUDGET_SECONDS", "1500"))  # 25 min default
+    ig_budget_seconds = float(os.environ.get("IG_TIME_BUDGET_SECONDS", "2400"))  # 40 min default
     started = _time.time()
 
     # Priority order so the most relevant accounts are guaranteed scraped
@@ -266,89 +266,61 @@ def scrape() -> list[dict]:
         return (base, -y)
     affinity_first = sorted(all_accounts, key=_priority)
 
-    for idx, account in enumerate(affinity_first):
-        elapsed = _time.time() - started
-        if elapsed > ig_budget_seconds:
-            print(f"[instagram] Time budget exhausted at {elapsed:.0f}s after {idx} accounts; stopping IG scrape")
-            break
+    # Split the iteration into PROTECTED (tier 0 affinity + tier 1 user-follows)
+    # and BUDGETED (everyone else). Protected accounts run regardless of the
+    # time budget so user-followed accounts NEVER get starved by a long tail
+    # of low-yield seeds. Same per-account body for both.
+    protected = [a for a in affinity_first if _priority(a)[0] <= 1]
+    budgeted = [a for a in affinity_first if _priority(a)[0] > 1]
+    print(f"[instagram] {len(protected)} protected (affinity+follows) + {len(budgeted)} budgeted accounts")
+
+    def _scrape_one_account(account: str) -> None:
         try:
             posts = _fetch_posts(loader, account)
             account_event_count = 0
-            # Is this account one the user saves-from? If so, every @-mention
-            # in their event posts is a high-confidence recommendation.
             is_author_affinity = account.lower() in _AFFINITY_ACCOUNTS_CACHE
             for post in posts:
-                # Capture bio URL once per account
                 bio = post.get("bio_url", "")
                 if bio and bio not in bio_urls_seen:
                     bio_urls_seen.add(bio)
-
-                # Harvest authoritative event-page URLs from caption text.
-                caption_event_urls |= _extract_event_platform_urls(post.get("caption", ""))
-
+                caption_event_urls.update(
+                    _extract_event_platform_urls(post.get("caption", ""))
+                )
                 extracted = _extract_events_from_caption(post, account)
-
-                # If image analyzer is available, try to fill in gaps.
                 if _HAS_IMAGE_ANALYZER:
                     extracted = _maybe_enrich_with_image(extracted, post)
-
                 all_events.extend(extracted)
                 account_event_count += len(extracted)
-
-                # Affinity co-mention tracking: if this post is from an
-                # account the user saves-from AND the post is about an event
-                # (extracted >= 1), every @-mention in the caption is a
-                # high-confidence recommendation. Bump per-mention counters.
                 if is_author_affinity and extracted:
                     _record_affinity_comentions(account, post.get("caption", ""))
-
-                # Auto-discover IG accounts via tagged_users (the
-                # AUTHORITATIVE list). When a flyer post tags @venue1 +
-                # @djset1 + @opener1, those are guaranteed real accounts —
-                # no false-match risk like caption regex. Only act when
-                # the post produced at least one event (so we're tagging
-                # event-collaborators, not random selfies).
                 if extracted:
                     tagged = post.get("tagged_users", [])
                     if tagged:
                         _record_tagged_user_discovery(account, tagged, is_author_affinity)
-            # Record account-quality stats for this account this run.
             if posts:
                 _record_account_activity(account, len(posts), account_event_count)
         except Exception as exc:
             print(f"[instagram] Failed @{account}: {exc}")
 
-        # Rate-limit: sleep between accounts (skip after the last one).
-        if idx < len(affinity_first) - 1:
+    # Pass 1: protected (no budget check)
+    for idx, account in enumerate(protected):
+        _scrape_one_account(account)
+        if idx < len(protected) - 1:
             _time.sleep(IG_SLEEP_BETWEEN_ACCOUNTS)
 
-    # 2b. IG's own 'Suggested for you' graph — for accounts the user saves
-    # from, mine IG's related-profiles to surface accounts we don't yet
-    # know about but IG's algorithm thinks are relevant. Bounded by:
-    #   - 5 affinity-account seeds (capped to bound API volume)
-    #   - 8 related per seed (= ≤40 candidate fetches)
-    #   - time-budget gate: only runs if we still have budget left.
-    # Default ON because the user wants maximum IG signal; can be disabled
-    # via IG_RELATED_PROFILES=0 for rate-limit-sensitive runs.
-    related_enabled = os.environ.get("IG_RELATED_PROFILES", "1") != "0"
-    related_have_budget = (_time.time() - started) < ig_budget_seconds
-    if related_enabled and related_have_budget:
-        related_total: set[str] = set()
-        affinity_seeds = list(_AFFINITY_ACCOUNTS_CACHE)[:5]
-        for seed in affinity_seeds:
-            try:
-                related = _harvest_related_profiles(loader, seed, max_related=8)
-                related_total |= related
-            except Exception:
-                pass
-        # Subtract dead + already-known
-        dead_set = {u for u, info in _load_dead_accounts().get("accounts", {}).items()
-                    if info.get("reason") in ("not_exists", "repeated_failure", "stale_no_recent_posts")}
-        already_known = set(IG_ACCOUNTS) | set(load_discovered_accounts())
-        new_related = related_total - dead_set - {a.lower() for a in already_known}
-        if new_related:
-            _add_to_discovered_accounts(new_related)
-            print(f"[instagram-related] Added {len(new_related)} accounts via IG Suggested-for-you graph")
+    # Pass 2: budgeted
+    for idx, account in enumerate(budgeted):
+        elapsed = _time.time() - started
+        if elapsed > ig_budget_seconds:
+            print(f"[instagram] Budget exhausted after {len(protected)} protected + {idx} budgeted accounts ({elapsed:.0f}s)")
+            break
+        _scrape_one_account(account)
+        if idx < len(budgeted) - 1:
+            _time.sleep(IG_SLEEP_BETWEEN_ACCOUNTS)
+
+    # 2b. IG's 'Suggested for you' graph mining moved to scrapers/discover.py
+    # (`harvest_related_profiles`) so it runs in the discovery cron, not the
+    # scrape cron — frees scrape budget for actual event extraction.
 
     # 3. Hashtag-driven discovery (opt-in via IG_HASHTAG_DISCOVERY=1).
     # Mines posts from NYC event hashtags — captures events from authors we
@@ -718,41 +690,6 @@ def _record_account_activity(username: str, posts_count: int, events_count: int)
 
 
 _AFFINITY_MENTION_RE = re.compile(r"@([a-z0-9_][a-z0-9._]{1,28}[a-z0-9_])", re.IGNORECASE)
-
-
-def _harvest_related_profiles(loader, username: str, max_related: int = 10) -> set[str]:
-    """Mine IG's own 'Suggested for you' graph for an account.
-
-    When you visit a profile on IG, the 'Suggested for you' row shows
-    related accounts in IG's recommendation algorithm. instaloader exposes
-    this via Profile.get_related_profiles(). For high-signal accounts the
-    user already saves from, the suggestions are highly relevant.
-
-    Returns a set of usernames to add to discovered_accounts.
-    """
-    related: set[str] = set()
-    try:
-        profile = instaloader.Profile.from_username(loader.context, username)
-    except Exception:
-        return related
-    try:
-        rel_iter = profile.get_related_profiles()
-    except Exception:
-        return related
-    count = 0
-    try:
-        for rp in rel_iter:
-            if count >= max_related:
-                break
-            count += 1
-            handle = (getattr(rp, "username", "") or "").lower()
-            if not handle or handle == username.lower():
-                continue
-            related.add(handle)
-    except Exception:
-        # Iteration may fail mid-stream on rate limits — return what we got
-        pass
-    return related
 
 
 def _record_affinity_comentions(author: str, caption: str) -> None:

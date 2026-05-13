@@ -120,6 +120,15 @@ async def main():
     _write_events(processed, OUTPUT_PATH)
     print(f"Written to {OUTPUT_PATH}")
 
+    # Run sanity check at the end of every full run so the per-account IG
+    # diagnostic block lands in the workflow log. hard_fail=False keeps the
+    # pipeline non-fatal but the breakdown is visible immediately.
+    try:
+        from scrapers import sanity_check
+        sanity_check.main(OUTPUT_PATH, write_stats=True, hard_fail=False)
+    except Exception as exc:
+        print(f"[run_all] sanity_check failed: {exc}")
+
 
 SITE_PUBLIC_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),

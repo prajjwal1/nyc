@@ -44,7 +44,10 @@ SCORE_THRESHOLD = 0.40
 USER_FOLLOWING_THRESHOLD = 0.30
 
 # Hard caps to keep IG happy.
-MAX_NEW_ACCOUNTS_PER_RUN = 50
+MAX_NEW_ACCOUNTS_PER_RUN = 120
+# Cap how many candidates a single suggested-for-you sweep can persist —
+# prevents one noisy seed from dominating a discovery run.
+MAX_NEW_PER_SUGGESTED_BATCH = 8
 SLEEP_BETWEEN_PROFILES_SEC = 1.0
 N_POSTS_TO_SCAN = 8
 
@@ -190,7 +193,12 @@ def _save_discovered_state(state: dict) -> None:
 
 
 def _load_discovered_urls_state() -> dict:
-    return _read_json(DISCOVERED_URLS_PATH, {"urls": [], "lastDiscovery": None})
+    raw = _read_json(DISCOVERED_URLS_PATH, {"urls": [], "lastDiscovery": None})
+    # Legacy format on disk is a flat list of url-entries; new format is
+    # {"urls": [...], "lastDiscovery": ...}. Normalize on read.
+    if isinstance(raw, list):
+        return {"urls": raw, "lastDiscovery": None}
+    return raw
 
 
 def _save_discovered_urls_state(state: dict) -> None:
@@ -267,6 +275,43 @@ def score_event_account(profile) -> float:
 # ---------------------------------------------------------------------------
 # Mention extraction
 # ---------------------------------------------------------------------------
+
+def harvest_related_profiles(loader, username: str, max_related: int = 10) -> set[str]:
+    """Mine IG's related-account graph for a seed.
+
+    IG's official 'Suggested for you' endpoint was removed from public
+    APIs years ago, so instaloader no longer exposes `get_related_profiles`.
+    The closest replacement is `get_followees()` — the accounts the seed
+    itself follows. For a high-yield event account, who they follow is a
+    much stronger endorsement signal than IG's algorithmic suggestion
+    anyway (the seed manually chose those accounts).
+
+    Returns a set of lowercased usernames to feed into the discovery pipeline.
+    """
+    related: set[str] = set()
+    try:
+        profile = instaloader.Profile.from_username(loader.context, username)
+    except Exception:
+        return related
+    if getattr(profile, "is_private", False):
+        return related
+    # Skip mega-accounts: their followees are full of random brands/friends
+    # and the signal-to-noise ratio drops sharply.
+    if (getattr(profile, "followees", 0) or 0) > 5000:
+        return related
+    try:
+        for i, followee in enumerate(profile.get_followees()):
+            if i >= max_related:
+                break
+            handle = (getattr(followee, "username", "") or "").lower()
+            if not handle or handle == username.lower():
+                continue
+            related.add(handle)
+    except Exception:
+        # Iteration may fail mid-stream on rate limits — return what we got
+        pass
+    return related
+
 
 def extract_mentions_from_posts(
     loader: instaloader.Instaloader,
@@ -410,6 +455,83 @@ def _evaluate_candidate(
     return (score, profile)
 
 
+def _evaluate_and_save_candidates(
+    loader,
+    handles,
+    origin: str,
+    threshold: float,
+    already_known: set[str],
+    max_to_accept: int = MAX_NEW_PER_SUGGESTED_BATCH,
+    sleep_between: float = SLEEP_BETWEEN_PROFILES_SEC,
+) -> list[dict]:
+    """Score each candidate handle, persist those above `threshold`, return
+    the accepted entries. Mutates `already_known` so the same handle isn't
+    re-evaluated. Persists to discovered_accounts.json after the batch.
+
+    Used by both the @-mention BFS path and the suggested-for-you sweep —
+    single source of truth for candidate evaluation.
+    """
+    new: list[dict] = []
+    for handle in handles:
+        handle = handle.lower()
+        if handle in already_known:
+            continue
+        if len(new) >= max_to_accept:
+            break
+        score, profile = _evaluate_candidate(loader, handle)
+        time.sleep(sleep_between)
+        if profile is None or score < threshold:
+            continue
+        already_known.add(handle)
+        new.append({
+            "username": handle,
+            "score": round(score, 3),
+            "discovered_at": _now_iso(),
+            "discovered_via": origin,
+        })
+        try:
+            bio_urls = extract_bio_links(profile)
+            _save_discovered_urls(bio_urls, discovered_via=handle)
+        except Exception as exc:
+            print(f"[discover]   bio link expansion failed for @{handle}: {exc}")
+    if new:
+        state = _load_discovered_state()
+        state.setdefault("accounts", []).extend(new)
+        state["lastDiscovery"] = _now_iso()
+        _save_discovered_state(state)
+    return new
+
+
+def _top_yield_accounts(seed_pool, n: int = 20, min_posts: int = 10) -> list[str]:
+    """Return up to N highest-yield usernames from seed_pool by
+    events_emitted/posts_scraped, gated on posts_scraped >= min_posts.
+    Reads scrapers/data/account_quality.json.
+    """
+    quality_path = os.path.join(DATA_DIR, "account_quality.json")
+    if not os.path.isfile(quality_path):
+        return []
+    try:
+        with open(quality_path) as f:
+            quality = json.load(f)
+    except Exception:
+        return []
+    pool = {a.lower() for a in seed_pool}
+    ranked: list[tuple[float, str]] = []
+    for acct, info in (quality.items() if isinstance(quality, dict) else []):
+        if not isinstance(info, dict):
+            continue
+        if acct.lower() not in pool:
+            continue
+        posts = info.get("posts_scraped", 0) or 0
+        if posts < min_posts:
+            continue
+        ev = info.get("events_emitted", 0) or 0
+        y = ev / posts if posts else 0.0
+        ranked.append((y, acct))
+    ranked.sort(reverse=True)
+    return [acct for _y, acct in ranked[:n]]
+
+
 def discover_accounts(
     seed_accounts: list[str],
     max_depth: int = 1,
@@ -436,11 +558,10 @@ def discover_accounts(
         entry["username"].lower() for entry in state.get("accounts", [])
     }
 
-    # Normalise seeds.
     frontier: list[tuple[str, str]] = [(s.lower(), s.lower()) for s in seed_accounts]
     # tuple is (username_to_explore, origin_seed)
 
-    newly_discovered: list[dict] = []
+    all_new: list[dict] = []
     explored: set[str] = set()
 
     for depth in range(max_depth):
@@ -453,75 +574,40 @@ def discover_accounts(
                 continue
             explored.add(username)
 
-            if len(newly_discovered) >= MAX_NEW_ACCOUNTS_PER_RUN:
+            if len(all_new) >= MAX_NEW_ACCOUNTS_PER_RUN:
                 print(f"[discover] Hit MAX_NEW_ACCOUNTS_PER_RUN ({MAX_NEW_ACCOUNTS_PER_RUN}); stopping")
                 break
 
             mentions = extract_mentions_from_posts(loader, username, N_POSTS_TO_SCAN)
             time.sleep(SLEEP_BETWEEN_PROFILES_SEC)
 
-            promising_count = 0
-            kept_for_next: list[str] = []
-
-            # Cap how many candidates from each seed we actually evaluate to
-            # avoid hammering IG. Process the most-frequent first by keeping
-            # insertion order (already deduped).
-            for handle in mentions[: max_per_seed * 4]:
-                if handle in already_known or handle in explored:
-                    continue
-                if len(newly_discovered) >= MAX_NEW_ACCOUNTS_PER_RUN:
-                    break
-                if promising_count >= max_per_seed:
-                    break
-
-                score, profile = _evaluate_candidate(loader, handle)
-                time.sleep(SLEEP_BETWEEN_PROFILES_SEC)
-
-                if profile is None:
-                    continue
-                if score < SCORE_THRESHOLD:
-                    continue
-
-                # Accept!
-                already_known.add(handle)
-                newly_discovered.append({
-                    "username": handle,
-                    "score": round(score, 3),
-                    "discovered_at": _now_iso(),
-                    "discovered_via": origin,
-                })
-                promising_count += 1
-                kept_for_next.append(handle)
-
-                # Harvest any event URLs from the bio (incl. linktree).
-                try:
-                    bio_urls = extract_bio_links(profile)
-                    _save_discovered_urls(bio_urls, discovered_via=handle)
-                except Exception as exc:
-                    print(f"[discover]   bio link expansion failed for @{handle}: {exc}")
+            candidates = [m for m in mentions[: max_per_seed * 4]
+                          if m not in already_known and m not in explored]
+            new_entries = _evaluate_and_save_candidates(
+                loader,
+                candidates,
+                origin=origin,
+                threshold=SCORE_THRESHOLD,
+                already_known=already_known,
+                max_to_accept=max_per_seed,
+            )
+            all_new.extend(new_entries)
 
             print(
                 f"[discover] Exploring @{username}... found {len(mentions)} mentions, "
-                f"{promising_count} promising"
+                f"{len(new_entries)} promising"
             )
 
-            # Queue accepted accounts for next BFS level.
             if depth + 1 < max_depth:
-                for handle in kept_for_next:
-                    next_frontier.append((handle, origin))
+                for entry in new_entries:
+                    next_frontier.append((entry["username"], origin))
 
-        if len(newly_discovered) >= MAX_NEW_ACCOUNTS_PER_RUN:
+        if len(all_new) >= MAX_NEW_ACCOUNTS_PER_RUN:
             break
         frontier = next_frontier
 
-    # Persist results.
-    if newly_discovered:
-        state.setdefault("accounts", []).extend(newly_discovered)
-    state["lastDiscovery"] = _now_iso()
-    _save_discovered_state(state)
-
-    print(f"[discover] Run complete: {len(newly_discovered)} new accounts saved")
-    return [entry["username"] for entry in newly_discovered]
+    print(f"[discover] Run complete: {len(all_new)} new accounts saved")
+    return [entry["username"] for entry in all_new]
 
 
 # ---------------------------------------------------------------------------
@@ -582,39 +668,105 @@ def harvest_following_list(loader, max_to_evaluate: int = 200) -> list[str]:
     return [a["username"] for a in relevant]
 
 
+def _suggested_for_you_sweep(
+    loader,
+    seeds: list[str],
+    threshold: float,
+    max_related_per_seed: int,
+    max_seeds: int,
+) -> int:
+    """For each seed, mine IG's 'Suggested for you' graph and persist
+    high-scoring candidates with discovered_via=f"suggested_for:{seed}".
+    Returns total new accounts saved.
+    """
+    if not seeds:
+        return 0
+    state = _load_discovered_state()
+    already_known = set(IG_ACCOUNTS) | {
+        e["username"].lower() for e in state.get("accounts", [])
+    }
+    total_new = 0
+    for seed in seeds[:max_seeds]:
+        related = harvest_related_profiles(loader, seed, max_related=max_related_per_seed)
+        new_candidates = [h for h in related if h not in already_known]
+        if not new_candidates:
+            time.sleep(SLEEP_BETWEEN_PROFILES_SEC)
+            continue
+        new_entries = _evaluate_and_save_candidates(
+            loader,
+            new_candidates,
+            origin=f"suggested_for:{seed}",
+            threshold=threshold,
+            already_known=already_known,
+            max_to_accept=MAX_NEW_PER_SUGGESTED_BATCH,
+        )
+        total_new += len(new_entries)
+        time.sleep(SLEEP_BETWEEN_PROFILES_SEC)
+    return total_new
+
+
 async def run_discovery() -> list[str]:
-    """Run BFS discovery and return seed + discovered accounts (deduped).
+    """Tiered IG discovery that mirrors how a curious user would explore IG:
 
-    Strategy:
-      1. Harvest the user's IG following list — score each followee, keep relevant ones
-      2. Use both the seed accounts AND user's relevant follows as BFS seeds
-      3. BFS one level through @mentions in their captions
-      4. Persist everything for the scraper to use
+    Tier 1 — accounts the USER follows (highest trust signal):
+      a. Harvest the user's following list, score each.
+      b. BFS one level through @mentions in their recent posts (max_per_seed=6).
+      c. For up to 30 user-follows, mine IG's 'Suggested for you' graph and
+         add high-scoring candidates with discovered_via='suggested_for:<seed>'.
 
-    This is intended to be called from an orchestration script (e.g.
-    ``run_discovery.py``) on a less-frequent schedule than the main scrape.
+    Tier 2 — curated IG_ACCOUNTS (broad NYC event-account seed):
+      a. BFS one level (max_per_seed=4).
+      b. Suggested-for-you sweep on the top-20 highest-yield curated accounts
+         (yield = events_emitted / posts_scraped from account_quality.json).
+
+    Returns the merged account list (curated + all discovered) for the
+    scrape pipeline.
     """
 
-    # 1. Harvest the user's following list (powerful signal)
     loader = _get_authenticated_loader()
+    if loader is None:
+        return sorted(set(IG_ACCOUNTS))
+
+    # Tier 1 — user follows
     following_seeds: list[str] = []
-    if loader is not None:
-        try:
-            following_seeds = harvest_following_list(loader, max_to_evaluate=200)
-        except Exception as exc:
-            print(f"[discover] Following list harvest failed: {exc}")
+    try:
+        following_seeds = harvest_following_list(loader, max_to_evaluate=300)
+    except Exception as exc:
+        print(f"[discover] Following list harvest failed: {exc}")
+    print(f"[discover] Tier 1: {len(following_seeds)} user-followed accounts")
 
-    # 2. BFS from seed accounts AND from relevant follows.
-    # Depth 2: find accounts that user's network mentions, AND accounts
-    # those secondary accounts mention.  This casts a much wider net.
-    seed_set = sorted(set(IG_ACCOUNTS) | set(following_seeds))
-    print(f"[discover] BFS starting from {len(seed_set)} seeds ({len(IG_ACCOUNTS)} configured + {len(following_seeds)} from your follows)")
+    if following_seeds:
+        discover_accounts(
+            seed_accounts=following_seeds,
+            max_depth=1,
+            max_per_seed=6,
+        )
+        added = _suggested_for_you_sweep(
+            loader,
+            seeds=following_seeds,
+            threshold=USER_FOLLOWING_THRESHOLD,
+            max_related_per_seed=8,
+            max_seeds=30,
+        )
+        print(f"[discover] Tier 1 suggested-for-you added {added} accounts")
 
+    # Tier 2 — curated IG_ACCOUNTS
+    print(f"[discover] Tier 2: {len(IG_ACCOUNTS)} curated accounts")
     discover_accounts(
-        seed_accounts=seed_set,
-        max_depth=2,
+        seed_accounts=list(IG_ACCOUNTS),
+        max_depth=1,
         max_per_seed=4,
     )
+    curated_top = _top_yield_accounts(IG_ACCOUNTS, n=20)
+    print(f"[discover] Tier 2 suggested-for-you on top-{len(curated_top)} yield accounts")
+    added = _suggested_for_you_sweep(
+        loader,
+        seeds=curated_top,
+        threshold=SCORE_THRESHOLD,
+        max_related_per_seed=6,
+        max_seeds=20,
+    )
+    print(f"[discover] Tier 2 suggested-for-you added {added} accounts")
 
     discovered = load_discovered_accounts()
     merged = sorted(set(IG_ACCOUNTS) | set(discovered))
