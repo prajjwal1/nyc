@@ -1,3622 +1,1024 @@
 {
   "https://www.92ny.org/calendar": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:33.890376+00:00"
+    "last_failure_at": "2026-05-12T23:59:58.199581+00:00"
   },
   "https://www.bricartsmedia.org/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:41.985974+00:00"
+    "last_failure_at": "2026-05-13T00:00:06.571567+00:00"
   },
   "https://thebellhouseny.com/calendar/": {
-    "failures": 6,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T10:05:05.277059+00:00"
+    "failures": 0,
+    "successes": 2,
+    "last_success_at": "2026-05-13T00:01:47.152846+00:00",
+    "events_emitted_total": 68,
+    "last_event_count": 34
   },
   "https://www.brooklynbrewery.com/visit-the-brewery/events/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:44.595750+00:00"
+    "last_failure_at": "2026-05-13T00:00:11.105211+00:00"
   },
   "https://lpr.com/calendar/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:46.155623+00:00"
+    "last_failure_at": "2026-05-13T00:00:13.008043+00:00"
   },
   "https://elsewherebrooklyn.com/listings": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:46.599299+00:00"
+    "last_failure_at": "2026-05-13T00:00:13.531297+00:00"
   },
   "https://www.bowerypoetry.com/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:46.878257+00:00"
+    "last_failure_at": "2026-05-13T00:00:13.826873+00:00"
   },
   "https://greenwoodcemetery.org/events/": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:43.944459+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:18.706862+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 450,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:00:17.635041+00:00",
+    "events_emitted_total": 30,
     "last_event_count": 30
   },
   "https://www.theinvisibledog.org/upcoming-events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:47.303614+00:00"
+    "last_failure_at": "2026-05-13T00:00:19.378182+00:00"
   },
   "https://www.openhousenewyork.org/calendar/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:47.504780+00:00"
+    "last_failure_at": "2026-05-13T00:00:19.408543+00:00"
   },
   "https://hudsonyards.com/discover/events/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:50.265553+00:00"
+    "last_failure_at": "2026-05-13T00:00:22.706077+00:00"
   },
   "https://thehighline.org/events/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:54.755537+00:00"
+    "last_failure_at": "2026-05-13T00:00:30.366743+00:00"
   },
   "https://www.flophousecomedy.com/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:55.022056+00:00"
+    "last_failure_at": "2026-05-13T00:00:31.028482+00:00"
   },
   "https://www.flophousecomedy.com": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:55.165821+00:00"
+    "last_failure_at": "2026-05-13T00:00:31.226846+00:00"
   },
   "https://www.greenpointcomedyclub.com/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:55.424012+00:00"
+    "last_failure_at": "2026-05-13T00:00:31.556679+00:00"
   },
   "https://www.greenpointcomedyclub.com": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:56.106329+00:00"
+    "last_failure_at": "2026-05-13T00:00:33.430851+00:00"
   },
   "https://www.unioncomedyhall.com/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:56.229451+00:00"
+    "last_failure_at": "2026-05-13T00:00:33.541558+00:00"
   },
   "https://www.eastvillecomedy.com/events": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:57.284679+00:00"
+    "failures": 0,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:00:34.301679+00:00",
+    "events_emitted_total": 42,
+    "last_event_count": 42
   },
   "https://newyorkcomedyclub.com/calendar": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:23:59.358916+00:00"
+    "failures": 0,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:00:35.430243+00:00",
+    "events_emitted_total": 174,
+    "last_event_count": 174
   },
   "https://standupny.com/calendar": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:01.376326+00:00"
+    "last_failure_at": "2026-05-13T00:00:38.817687+00:00"
   },
   "https://www.brooklyntrack.club/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:01.469392+00:00"
+    "last_failure_at": "2026-05-13T00:00:38.857102+00:00"
   },
   "https://newyorkroad.com/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:01.852430+00:00"
+    "last_failure_at": "2026-05-13T00:00:39.377557+00:00"
   },
   "https://www.northbrooklynrunners.org/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:02.448005+00:00"
+    "last_failure_at": "2026-05-13T00:00:39.838340+00:00"
   },
   "https://www.nyc.com/events/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:02.702654+00:00"
+    "last_failure_at": "2026-05-13T00:00:40.343878+00:00"
   },
   "https://www.eventcombo.com/events/new-york": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:03.681570+00:00"
+    "last_failure_at": "2026-05-13T00:00:47.423317+00:00"
   },
   "https://www.timeout.com/newyork/things-to-do/things-to-do-in-nyc-this-weekend": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:06.050753+00:00"
+    "last_failure_at": "2026-05-13T00:00:49.641899+00:00"
   },
   "https://www.timeout.com/newyork/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:06.083969+00:00"
+    "last_failure_at": "2026-05-13T00:00:50.010923+00:00"
   },
   "https://www.timeout.com/newyork/things-to-do/best-things-to-do-in-nyc-this-week": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:06.489240+00:00"
+    "last_failure_at": "2026-05-13T00:00:50.429825+00:00"
   },
   "https://www.mcnallyjackson.com/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:36.543973+00:00"
+    "last_failure_at": "2026-05-13T00:01:20.470869+00:00"
   },
   "https://www.barnesandnoble.com/h/events/store/2675": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:36.731714+00:00"
+    "last_failure_at": "2026-05-13T00:01:20.711425+00:00"
   },
   "https://www.bookcourt.com/calendar": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:37.023398+00:00"
+    "last_failure_at": "2026-05-13T00:01:21.083799+00:00"
   },
   "https://lizsbookbar.com/events": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:38.304357+00:00"
+    "failures": 0,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:01:22.669622+00:00",
+    "events_emitted_total": 12,
+    "last_event_count": 12
   },
   "https://www.terminal5nyc.com/calendar/": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:03.991148+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:10.860600+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 45,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:01:25.075535+00:00",
+    "events_emitted_total": 3,
     "last_event_count": 3
   },
   "https://www.boweryballroom.com/calendar/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:40.058034+00:00"
+    "last_failure_at": "2026-05-13T00:01:30.522998+00:00"
   },
   "https://www.websterhall.com/events/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:40.446577+00:00"
+    "last_failure_at": "2026-05-13T00:01:30.883347+00:00"
   },
   "https://www.brooklynsteel.com/calendar/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:40.699295+00:00"
+    "last_failure_at": "2026-05-13T00:01:31.318675+00:00"
   },
   "https://www.warsawconcerts.com/events/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:41.808910+00:00"
+    "last_failure_at": "2026-05-13T00:01:32.630261+00:00"
   },
   "https://www.brooklynbowl.com/new-york/events/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:42.874125+00:00"
+    "last_failure_at": "2026-05-13T00:01:33.986378+00:00"
   },
   "https://metrograph.com/calendar/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:43.107353+00:00"
+    "last_failure_at": "2026-05-13T00:01:34.128349+00:00"
   },
   "https://www.filmforum.org/calendar": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:48.790838+00:00"
+    "last_failure_at": "2026-05-13T00:01:40.975926+00:00"
   },
   "https://www.anthologyfilmarchives.org/calendar": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:49.379343+00:00"
+    "last_failure_at": "2026-05-13T00:01:41.662584+00:00"
   },
   "https://www.thekitchen.org/calendar/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:51.059930+00:00"
+    "last_failure_at": "2026-05-13T00:01:43.210634+00:00"
   },
   "https://www.theshed.org/calendar": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:54.661580+00:00"
+    "last_failure_at": "2026-05-13T00:01:46.524029+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/all-events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:00:57.414605+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:45.303789+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:42.241603+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:47.337321+00:00"
   },
   "https://www.eventbrite.com/d/ny--brooklyn/all-events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:00:58.981201+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:47.428175+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:42.376013+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:47.401524+00:00"
   },
   "https://www.eventbrite.com/d/ny--brooklyn/free--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:00.261243+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:49.064164+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:42.507030+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:47.465973+00:00"
   },
   "https://www.eventbrite.com/d/ny--brooklyn/free--events--this-weekend/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:01.779809+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:50.419525+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:42.610919+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:47.530372+00:00"
   },
   "https://www.eventbrite.com/d/ny--queens/all-events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:02.968118+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:50.769833+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:42.737615+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:47.576719+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/music--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:58.118860+00:00",
-    "events_emitted_total": 56,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:02:00.314360+00:00",
-    "events_emitted_total": 48,
->>>>>>> Stashed changes
-    "last_event_count": 8,
-    "last_failure_at": "2026-05-12T23:00:00.784294+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:47.669519+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/comedy--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:04.943209+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:51.179131+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:42.827105+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:47.748824+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/food-and-drink--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:58.387377+00:00",
-    "events_emitted_total": 56,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:02:01.070352+00:00",
-    "events_emitted_total": 48,
->>>>>>> Stashed changes
-    "last_event_count": 8,
-    "last_failure_at": "2026-05-12T23:00:00.870915+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:47.797514+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/free--events--this-weekend/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:06.155438+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:52.453258+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:42.914643+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:47.987156+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/events--this-weekend/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:07.259234+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:52.724544+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.032109+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:48.120239+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/events--today/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:07.602698+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:54.143557+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.127690+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:48.199435+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/events--this-week/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:07.876600+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:55.420540+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.226555+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:48.279068+00:00"
   },
   "https://www.eventbrite.com/d/ny--brooklyn/dating--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:08.247675+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:55.861471+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.312622+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:48.369793+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/parties--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:09.691595+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:57.296475+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.404894+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:48.434810+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/networking--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:11.012491+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:00:58.582655+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.492795+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:48.558512+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/dating--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:12.823818+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:00.189842+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.627792+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:48.624099+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/singles--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:49.101562+00:00",
-    "events_emitted_total": 108,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:49.991084+00:00",
-    "events_emitted_total": 93,
->>>>>>> Stashed changes
-    "last_event_count": 15,
-    "last_failure_at": "2026-05-12T22:59:46.697732+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:01:48.670853+00:00"
   },
   "https://www.meetup.com/find/?keywords=&source=EVENTS&location=us--ny--Brooklyn": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:56.817337+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:59.008477+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 180,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:01:49.869091+00:00",
+    "events_emitted_total": 12,
     "last_event_count": 12
   },
   "https://www.meetup.com/find/events/?source=EVENTS&location=us--ny--New%20York": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:57.921778+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:00.686395+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 176,
-    "last_event_count": 9
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:01:51.192304+00:00",
+    "events_emitted_total": 12,
+    "last_event_count": 12
   },
   "https://allevents.in/new-york": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:11.551448+00:00",
-=======
-    "last_success_at": "2026-05-12T22:58:37.034573+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 1095,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:01:53.101807+00:00",
+    "events_emitted_total": 73,
     "last_event_count": 73
   },
   "https://allevents.in/new-york?page=2": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:16.169747+00:00",
-=======
-    "last_success_at": "2026-05-12T22:58:40.778839+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 1095,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:01:55.208579+00:00",
+    "events_emitted_total": 73,
     "last_event_count": 73
   },
   "https://allevents.in/new-york?page=3": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:18.149134+00:00",
-=======
-    "last_success_at": "2026-05-12T22:58:42.865691+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 1095,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:01:56.964610+00:00",
+    "events_emitted_total": 73,
     "last_event_count": 73
   },
   "https://allevents.in/brooklyn": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:29.286173+00:00",
-=======
-    "last_success_at": "2026-05-12T22:58:53.881454+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 1076,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:00.649729+00:00",
+    "events_emitted_total": 72,
     "last_event_count": 72
   },
   "https://allevents.in/brooklyn?page=2": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:36.344946+00:00",
-    "events_emitted_total": 1073,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:04.385222+00:00",
+    "events_emitted_total": 72,
     "last_event_count": 72
-=======
-    "last_success_at": "2026-05-12T22:59:00.817430+00:00",
-    "events_emitted_total": 1074,
-    "last_event_count": 73
->>>>>>> Stashed changes
   },
   "https://allevents.in/brooklyn?page=3": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:32.629285+00:00",
-    "events_emitted_total": 1074,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:07.693326+00:00",
+    "events_emitted_total": 72,
     "last_event_count": 72
-=======
-    "last_success_at": "2026-05-12T22:58:57.367959+00:00",
-    "events_emitted_total": 1075,
-    "last_event_count": 73
->>>>>>> Stashed changes
   },
   "https://allevents.in/queens": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:23.035368+00:00",
-=======
-    "last_success_at": "2026-05-12T22:58:47.661013+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 1080,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:08.442409+00:00",
+    "events_emitted_total": 72,
     "last_event_count": 72
   },
   "https://allevents.in/queens?page=2": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:23.925908+00:00",
-=======
-    "last_success_at": "2026-05-12T22:58:48.491567+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 1080,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:09.058648+00:00",
+    "events_emitted_total": 72,
     "last_event_count": 72
   },
   "https://allevents.in/manhattan": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:24.853664+00:00",
-=======
-    "last_success_at": "2026-05-12T22:58:49.242505+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 1080,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:09.733585+00:00",
+    "events_emitted_total": 72,
     "last_event_count": 72
   },
   "https://allevents.in/manhattan?page=2": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:25.584754+00:00",
-=======
-    "last_success_at": "2026-05-12T22:58:50.102433+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 1080,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:10.393992+00:00",
+    "events_emitted_total": 72,
     "last_event_count": 72
   },
   "https://allevents.in/new-york?page=4": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:20.221227+00:00",
-=======
-    "last_success_at": "2026-05-12T22:58:44.811980+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 1095,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:12.322590+00:00",
+    "events_emitted_total": 73,
     "last_event_count": 73
   },
   "https://allevents.in/new-york?page=5": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:22.322789+00:00",
-=======
-    "last_success_at": "2026-05-12T22:58:46.714704+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 1095,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:14.175102+00:00",
+    "events_emitted_total": 73,
     "last_event_count": 73
   },
   "https://allevents.in/new-york/free": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:49.753842+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:47.229348+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:14.821615+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/music": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:49.984697+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:47.593853+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:15.027736+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/comedy": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:50.192580+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:47.965711+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:15.224526+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/food": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:50.636031+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:48.630094+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:15.714356+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/parties": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:50.927593+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:49.195372+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:16.888786+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/dating": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:51.225429+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:49.520688+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:17.156672+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/business": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:51.472494+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:50.122058+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:17.756938+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/art": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:51.777229+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:50.571766+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:18.248792+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/yoga": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:52.004392+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:50.909329+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:18.578198+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/running": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:52.338904+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:51.288819+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:19.001153+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/fitness": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:52.571541+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:51.668666+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:19.394340+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/brooklyn/yoga": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:53.015525+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:52.163750+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:19.762060+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/brooklyn/fitness": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:53.283733+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:52.609933+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:20.118669+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/coffee": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:39.474055+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:07.298647+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 675,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:20.654849+00:00",
+    "events_emitted_total": 45,
     "last_event_count": 45
   },
   "https://allevents.in/new-york/poetry": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:53.765714+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:53.107959+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:21.079894+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/brooklyn/books": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:56.656063+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:57.259927+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 210,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:21.480861+00:00",
+    "events_emitted_total": 14,
     "last_event_count": 14
   },
   "https://allevents.in/new-york/art-exhibition": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:54.014352+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:53.476621+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:21.867562+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/gallery": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:54.380065+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:54.432062+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:22.335510+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://www.eventbrite.com/d/ny--brooklyn/running--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:14.633687+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:04.741035+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.730072+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:22.470828+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/running--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:16.307058+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:06.773989+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.820819+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:22.515577+00:00"
   },
   "https://www.eventbrite.com/d/ny--brooklyn/yoga--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:18.087836+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:08.640503+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.906524+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:22.595983+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/yoga--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:18.428676+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:10.606543+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:43.994389+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:22.642395+00:00"
   },
   "https://www.eventbrite.com/d/ny--brooklyn/sports-and-fitness--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:58.820845+00:00",
-    "events_emitted_total": 56,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:02:01.409830+00:00",
-    "events_emitted_total": 48,
->>>>>>> Stashed changes
-    "last_event_count": 8,
-    "last_failure_at": "2026-05-12T23:00:00.955118+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:22.766681+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/sports-and-fitness--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:59.105691+00:00",
-    "events_emitted_total": 56,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:02:01.605930+00:00",
-    "events_emitted_total": 48,
->>>>>>> Stashed changes
-    "last_event_count": 8,
-    "last_failure_at": "2026-05-12T23:00:01.045178+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:22.811879+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/fitness--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:20.073132+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:12.583246+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:44.086307+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:22.869005+00:00"
   },
   "https://www.eventbrite.com/d/ny--brooklyn/book-club--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:21.860691+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:15.019955+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:44.187739+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:22.913528+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/book-club--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:23.263462+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:16.462406+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:44.322048+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:22.962535+00:00"
   },
   "https://www.eventbrite.com/d/ny--brooklyn/literary--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:25.013385+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:18.296103+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:44.410006+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.009527+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/literary--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:25.263916+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:19.600334+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:44.497363+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.057405+00:00"
   },
   "https://www.eventbrite.com/d/ny--manhattan/art-gallery--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:27.257385+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:21.977921+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:44.588492+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.245772+00:00"
   },
   "https://www.eventbrite.com/d/ny--brooklyn/art-gallery--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:29.089465+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:23.961251+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:44.677944+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.306169+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/art-exhibits--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:30.763944+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:25.742647+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:44.765531+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.350334+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/visual-arts--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:32.524391+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:27.671744+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:44.851483+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.403786+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/jazz--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:34.122765+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:29.673470+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:44.949432+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.466384+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/dance--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:35.622751+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:31.393085+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:45.060108+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.519025+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/photography--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:37.142009+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:33.069003+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:45.161438+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.571841+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/film--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:38.927330+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:34.896971+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:45.248097+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.619524+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/theater--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:40.557547+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:36.584657+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:45.340629+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.663671+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/wellness--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:42.252673+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:38.284965+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:45.429315+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.712887+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/lgbtq--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:43.782447+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:40.214368+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:45.514494+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.761480+00:00"
   },
   "https://www.eventbrite.com/d/ny--new-york/wine-tasting--events/": {
-<<<<<<< Updated upstream
-    "failures": 0,
-    "successes": 7,
-    "last_success_at": "2026-05-12T23:01:45.461513+00:00",
-    "events_emitted_total": 140,
-=======
     "failures": 1,
-    "successes": 6,
-    "last_success_at": "2026-05-12T22:01:42.156746+00:00",
-    "events_emitted_total": 120,
->>>>>>> Stashed changes
-    "last_event_count": 20,
-    "last_failure_at": "2026-05-12T22:59:45.604261+00:00"
+    "successes": 0,
+    "last_failure_at": "2026-05-13T00:02:23.817095+00:00"
   },
   "https://www.meetup.com/find/?keywords=run+club&location=us--ny--Brooklyn": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:45.187303+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:24.706807+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 450,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:28.125449+00:00",
+    "events_emitted_total": 30,
     "last_event_count": 30
   },
   "https://www.meetup.com/find/?keywords=run+club&location=us--ny--New%20York": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:40.154403+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:14.351283+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 465,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:31.690565+00:00",
+    "events_emitted_total": 31,
     "last_event_count": 31
   },
   "https://www.meetup.com/find/?keywords=yoga&location=us--ny--Brooklyn": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:49.156856+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:33.913114+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 405,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:34.517502+00:00",
+    "events_emitted_total": 27,
     "last_event_count": 27
   },
   "https://www.meetup.com/find/?keywords=yoga&location=us--ny--New%20York": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:49.301705+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:36.040340+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 396,
-    "last_event_count": 27
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:36.754982+00:00",
+    "events_emitted_total": 26,
+    "last_event_count": 26
   },
   "https://www.meetup.com/find/?keywords=book+club&location=us--ny--New%20York": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:39.780413+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:10.134059+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 472,
-    "last_event_count": 32
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:38.784076+00:00",
+    "events_emitted_total": 31,
+    "last_event_count": 31
   },
   "https://www.meetup.com/find/?keywords=coffee&location=us--ny--New%20York": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:48.803535+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:31.728806+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 416,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:42.037371+00:00",
+    "events_emitted_total": 28,
     "last_event_count": 28
   },
   "https://www.meetup.com/topics/running/us/ny/new_york/": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:48.643128+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:28.511974+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 450,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:46.669854+00:00",
+    "events_emitted_total": 30,
     "last_event_count": 30
   },
   "https://www.meetup.com/topics/yoga/us/ny/new_york/": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:51.821397+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:39.572553+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 396,
-    "last_event_count": 27
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:48.655037+00:00",
+    "events_emitted_total": 26,
+    "last_event_count": 26
   },
   "https://allevents.in/new-york/film": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:54.684293+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:55.386487+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:49.286909+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/literature": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:55.033012+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:55.915141+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:49.696357+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/sports": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:55.260032+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:56.477625+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:49.909920+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/exhibition": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:56.448905+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:56.968298+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 225,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:50.164575+00:00",
+    "events_emitted_total": 15,
     "last_event_count": 15
   },
   "https://www.songkick.com/metro-areas/7644-us-new-york": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:38.928994+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:06.365534+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 748,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:51.076451+00:00",
+    "events_emitted_total": 50,
     "last_event_count": 50
   },
   "https://www.songkick.com/metro-areas/7644-us-new-york/2": {
     "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:38.704001+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:05.987361+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 749,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:52.120850+00:00",
+    "events_emitted_total": 50,
     "last_event_count": 50
-  },
-  "https://www.songkick.com/venues/22-brooklyn-bowl": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:07.406135+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:13.820006+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 45,
-    "last_event_count": 3
-  },
-  "https://www.songkick.com/venues/8-elsewhere": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:59.290632+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:01.727229+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 120,
-    "last_event_count": 8
-  },
-  "https://www.songkick.com/venues/5-mercury-lounge": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:07.474014+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:14.396549+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 45,
-    "last_event_count": 3
-  },
-  "https://www.eventbrite.com/e/cuny-jazz-festival-2026-featuring-chris-potter-and-adam-cruz-tickets-1986935047213": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:55.383580+00:00"
-  },
-  "https://www.eventbrite.com/e/interstellar-oddities-big-nazo-dave-heatwave-theophobia-and-headfooter-tickets-1986107035608": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:56.378341+00:00"
-  },
-  "https://www.eventbrite.com/e/cold-plunge-with-kurt-braunohler-tickets-1986775840020": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:56.977787+00:00"
-  },
-  "https://www.eventbrite.com/e/petes-21st-annual-kentucky-derby-potty-tickets-1986383917770": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:57.585633+00:00"
-  },
-  "https://shotgun.live/events/aionia-may-2-2026?utm_source=skint": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:57.634779+00:00"
-  },
-  "https://partiful.com/e/pzrhitxWVJOC9nvOYS3h": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:58.324103+00:00"
-  },
-  "https://www.eventbrite.com/e/friend-island-stand-up-comedy-show-tickets-1987323829070": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:59.224647+00:00"
-  },
-  "https://www.eventbrite.com/e/bitches-brew-free-comedy-stand-up-and-variety-show-tickets-172309360937": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:24:59.825103+00:00"
-  },
-  "https://www.eventbrite.com/e/free-star-wars-trivia-night-the-tiny-cupboard-tickets-1988282184537": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:00.857833+00:00"
-  },
-  "https://www.eventbrite.com/e/the-manhattan-rare-book-fine-press-fair-2026-tickets-1977851521142": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:01.401351+00:00"
-  },
-  "https://www.eventbrite.com/e/kentucky-derby-party-230-fifth-rooftop-tickets-1986863353776": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:02.301085+00:00"
-  },
-  "https://www.eventbrite.com/e/tribeca-dog-show-advance-purchase-required-tickets-1985328634389": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:03.660930+00:00"
-  },
-  "https://dice.fm/event/g5abr2-henson-29th-apr-cmon-everybody-new-york-tickets": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:05.060193+00:00"
-  },
-  "https://www.eventbrite.com/e/park-slop-comedy-free-show-free-beer-tickets-838394539637": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:06.016049+00:00"
-  },
-  "https://www.eventbrite.com/e/comedy-on-kingston-stand-up-comedy-in-crown-heights-brooklyn-tickets-1986223507980": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:06.540679+00:00"
-  },
-  "https://www.eventbrite.com/e/letters-sodas-lic-reading-series-tickets-1987431044755": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:07.112890+00:00"
-  },
-  "https://www.eventbrite.com/e/overeager-tickets-1980429088716": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:08.104583+00:00"
-  },
-  "https://www.eventbrite.com/e/golden-spiral-comedy-april-30th-katie-compa-album-release-show-tickets-1986483019185": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:09.123128+00:00"
-  },
-  "http://oldmanrunclub.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:11.582535+00:00"
-  },
-  "http://www.ateaz.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:12.380027+00:00"
-  },
-  "https://linktr.ee/BrooklynBridgePark": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:21.334273+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:32.793254+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://greenpointers.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:12.711178+00:00"
-  },
-  "http://jasonwiley.nm.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:13.967835+00:00"
-  },
-  "https://linkin.bio/ig-whitneymuseum": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:21.583586+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:33.255091+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://www.brooklyntrackclub.org": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:14.598457+00:00"
-  },
-  "https://linktr.ee/eliescobar": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:21.682337+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:34.217513+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linktr.ee/humming.puppy": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:21.785617+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:34.890876+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "http://linktr.ee/bigreuse": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:21.995786+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:35.097840+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linkin.bio/bowerypresents": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:22.117216+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:35.497997+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linktr.ee/ModoYoga": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:22.426252+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:36.426084+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://tinyurl.com/718-Sessions-in-the-Ruins": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:17.231853+00:00"
-  },
-  "https://linktr.ee/vitalrunclub": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:22.549815+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:37.564098+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://tinyurl.com/asianfoundersclub": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:21.158847+00:00"
-  },
-  "http://drysocial2.eventbrite.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:21.888310+00:00"
-  },
-  "http://smokejazz.com/": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:21.996263+00:00"
-  },
-  "https://linktr.ee/brooklynmuseum": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:22.658419+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:37.726707+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linktr.ee/dyslmshow": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:22.837600+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:39.609472+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "http://linktr.ee/greenlightbookstore/": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:23.447092+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:40.822500+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "http://met.org/helloinstagram": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:24.393621+00:00"
-  },
-  "https://linktr.ee/hithouse": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:23.913738+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:41.490114+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "http://linktr.ee/littlefieldnyc": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:24.095580+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:43.341530+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linktr.ee/BrooklynHeightsAssociation": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:24.254915+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:45.112694+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://link.dice.fm/H93a29204278?dice_id=H93a29204278": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:26.420267+00:00"
-  },
-  "https://www.polyesterzine.com/features/we-dont-need-another-pride-and-prejudice%23steady_paywall": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:26.648776+00:00"
-  },
-  "https://linktr.ee/knockdowncenter": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:24.517134+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:45.274024+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://www.eventbrite.com/e/do-you-still-like-me-a-comedy-dating-show-tickets-1987021259075": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:27.051581+00:00"
-  },
-  "https://www.eventbrite.com/e/1977279914451": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:28.123262+00:00"
-  },
-  "https://www.eventbrite.com/e/1979893821718": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:28.645590+00:00"
-  },
-  "https://www.eventbrite.com/e/1982325662419": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:29.104255+00:00"
-  },
-  "https://www.eventbrite.com/e/1982445066560": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:29.825335+00:00"
-  },
-  "https://www.eventbrite.com/e/1981682633101": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:30.299735+00:00"
-  },
-  "https://www.eventbrite.com/e/1980886028435": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:31.396680+00:00"
-  },
-  "https://www.eventbrite.com/e/1982622727950": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:31.842595+00:00"
-  },
-  "https://www.eventbrite.com/e/1981683116547": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:32.270982+00:00"
-  },
-  "https://www.eventbrite.com/e/1968865337224": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:33.015704+00:00"
-  },
-  "https://www.eventbrite.com/e/1980426756741": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:34.012493+00:00"
-  },
-  "https://www.eventbrite.com/e/1982621793154": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:34.794058+00:00"
-  },
-  "https://www.eventbrite.com/e/1981487421217": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:35.276188+00:00"
-  },
-  "https://www.eventbrite.com/e/1978738562306": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:36.075685+00:00"
-  },
-  "https://www.eventbrite.com/e/1982142372193": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:37.163074+00:00"
-  },
-  "https://www.eventbrite.com/e/1978010372270": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:37.963191+00:00"
-  },
-  "https://www.eventbrite.com/e/1980725283643": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:38.733602+00:00"
-  },
-  "https://www.eventbrite.com/e/1980934278753": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:39.574368+00:00"
-  },
-  "https://www.eventbrite.com/e/1981683664185": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:40.672554+00:00"
-  },
-  "https://www.eventbrite.com/e/1980727503282": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:41.496317+00:00"
-  },
-  "https://www.eventbrite.com/e/1983397615660": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:41.948868+00:00"
-  },
-  "https://www.eventbrite.com/e/1980576479566": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:42.725877+00:00"
-  },
-  "https://link.dice.fm/TortoiseInTheRuins": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:44.725089+00:00"
-  },
-  "https://link.dice.fm/-AMEME-RockinMoroccin-Taiga-YungOmz": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:46.704024+00:00"
-  },
-  "https://link.dice.fm/Enrico-SangiulianoKDC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:49.012424+00:00"
-  },
-  "https://link.dice.fm/FrostFestKDCNYC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:51.075616+00:00"
-  },
-  "https://link.dice.fm/VTSS-KDC-RUSH": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:53.740488+00:00"
-  },
-  "https://link.dice.fm/DJ-Harvey-Ruins": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:55.838851+00:00"
-  },
-  "https://link.dice.fm/AnnaVonHausswolff-KDC-NYC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:57.833133+00:00"
-  },
-  "https://link.dice.fm/Innervisions_26": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:25:59.940484+00:00"
-  },
-  "https://link.dice.fm/N57e9b43e9ad": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:02.075222+00:00"
-  },
-  "https://link.dice.fm/Riordan-NYCKDC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:04.161879+00:00"
-  },
-  "https://link.dice.fm/carolineNYCpresale": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:06.384861+00:00"
-  },
-  "https://link.dice.fm/BillCallahan-NYC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:08.371585+00:00"
-  },
-  "https://link.dice.fm/-Tiki-May10-Ruins": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:10.459106+00:00"
-  },
-  "https://link.dice.fm/TotalBummerFest2026": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:12.574029+00:00"
-  },
-  "https://link.dice.fm/718Sessions-May24": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:14.797748+00:00"
-  },
-  "https://link.dice.fm/MGMTRuinsNYC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:16.902878+00:00"
-  },
-  "https://link.dice.fm/SonnyFodera_26": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:21.836731+00:00"
-  },
-  "https://link.dice.fm/UnderworldKDC-NYC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:22.834520+00:00"
-  },
-  "https://link.dice.fm/x881847be506": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:24.956861+00:00"
-  },
-  "https://link.dice.fm/MartenLou-KDC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:26.935016+00:00"
-  },
-  "https://link.dice.fm/matesfestnyc": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:29.078686+00:00"
-  },
-  "https://link.dice.fm/Claptone-The-Ruins": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:30.072510+00:00"
-  },
-  "https://link.dice.fm/Claude-VonStroke-KDC-Ruins": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:32.016515+00:00"
-  },
-  "https://link.dice.fm/KC-PT-KDC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:34.075917+00:00"
-  },
-  "https://link.dice.fm/C2C_NY_26": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:35.029341+00:00"
-  },
-  "https://link.dice.fm/clippingkdc-nyc": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:37.011625+00:00"
-  },
-  "https://link.dice.fm/AlanSparkhawk-Ruins-26": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:38.011845+00:00"
-  },
-  "https://link.dice.fm/Carla-dal-Forno-Ruins": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:38.945564+00:00"
-  },
-  "https://link.dice.fm/CabaretVoltaire-NYC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:40.072912+00:00"
-  },
-  "https://link.dice.fm/f1ae2169efff": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:42.084296+00:00"
-  },
-  "https://link.dice.fm/InnelleaRuins2026": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:44.538027+00:00"
-  },
-  "http://www.doppelgangernyc.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:45.107941+00:00"
-  },
-  "https://luma.com/qjanzicr": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:46.681366+00:00"
-  },
-  "https://linktr.ee/center4fiction": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:24.665042+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:47.778635+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://www.youtube.com/watch?v=4h2xWvZuyfM": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:47.573620+00:00"
-  },
-  "https://linkin.bio/bkmag": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:24.826995+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:47.995176+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://lu.ma/gishikicalendar": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:49.604723+00:00"
-  },
-  "https://linkin.bio/itsinqueens": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:24.942004+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:48.243742+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://marfeel.bio/timeoutnewyork/3969/17841400816840143": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:52.230867+00:00"
-  },
-  "http://arena-embroidery.nyc": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:53.027615+00:00"
-  },
-  "https://www.eventbrite.com/e/jenny-gorelick-sorry-tickets-1987782972380": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:53.594318+00:00"
-  },
-  "https://partiful.com/e/cbVF3TwZ5LlAoBngGsBr": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:54.254310+00:00"
-  },
-  "https://www.eventbrite.com/e/japan-village-spring-festival-tickets-1988010234126": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:54.706876+00:00"
-  },
-  "https://partiful.com/e/rOCEoQJOUlYy8LMcvsQT": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:55.439084+00:00"
-  },
-  "https://lnk.bio/Heartsandbonesrescue": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:55.511189+00:00"
-  },
-  "https://lnk.bio/aliceevelynyang": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:55.553706+00:00"
-  },
-  "https://link.dice.fm/BarItalia-Ruins": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:57.564983+00:00"
-  },
-  "https://link.dice.fm/ieeb1522171c": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:26:59.555885+00:00"
-  },
-  "https://link.dice.fm/-CateleBon-KDC-2026": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:00.508439+00:00"
-  },
-  "https://link.dice.fm/Channel-Tres-KDC-NYC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:02.614924+00:00"
-  },
-  "https://link.dice.fm/CharlottedeWitte-KDC-26": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:05.102341+00:00"
-  },
-  "https://www.themorgan.org/programs/college-programs": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:05.592609+00:00"
-  },
-  "http://linktr.ee/fleursdevilles": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:25.126361+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:49.062293+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linktr.ee/bigvisioncommunity": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:25.222015+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:49.994771+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "http://linkin.bio/secret_nyc/": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:25.409193+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:50.291430+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "http://linktr.ee/donyc": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:25.523329+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:51.711928+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linktr.ee/nycparks": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:25.667674+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:51.855714+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://luma.com/9la6ymio": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:07.360714+00:00"
-  },
-  "http://www.corner.inc": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:07.433263+00:00"
-  },
-  "https://linktr.ee/powerhousebookstores": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:25.747127+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:52.883885+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://sprout.link/centralparknyc": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:08.192954+00:00"
-  },
-  "https://www.heylo.com/invite/KAemyCBgZM": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:08.944506+00:00"
-  },
-  "http://linktr.ee/amyboland": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:25.850407+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:53.653479+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://www.7thstreetburger.com/": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:09.608762+00:00"
-  },
-  "https://linktr.ee/aerapymethod": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:25.935060+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:54.647116+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "http://amyapgar.com/girl-group-training": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:10.681424+00:00"
-  },
-  "https://www.eventbrite.com/e/the-power-vested-in-me-by-maria-decotis-tickets-1989027709422": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:11.489169+00:00"
-  },
-  "http://www.baramericanonyc.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:12.275721+00:00"
-  },
-  "http://www.barcontra.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:13.392152+00:00"
-  },
-  "http://www.linktr.ee/ariannadanae/": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:26.552270+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:56.324459+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linktr.ee/atlanticaveartwalk?utm_source=qr_code": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:26.651763+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:57.069150+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://link.dice.fm/AriannaDanae-DJHarveyRuins": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:15.538232+00:00"
-  },
-  "https://artwalktourmay926.eventbrite.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:16.370964+00:00"
-  },
-  "https://www.eventbrite.com/e/crashscape-augmented-reality-walking-tour-for-atlantic-ave-art-walk-2026-tickets-1986370762422": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:16.832110+00:00"
-  },
-  "https://artwalktourmay1626.eventbrite.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:21.488042+00:00"
-  },
-  "https://link.dice.fm/BarItaliaKDC-TheRuins": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:23.474763+00:00"
-  },
-  "http://beeheezyprints.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:25.288091+00:00"
-  },
-  "http://www.joannehendrickscookbooks.com/": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:26.012764+00:00"
-  },
-  "https://dice.fm/event/53avwy-bar-italia-26th-mar-roundhouse-london-tickets": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:27.477252+00:00"
-  },
-  "http://linktr.ee/buzzkillnyc": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:26.750838+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:58.142533+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "http://drysocial7.eventbrite.com": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:28.544829+00:00"
-  },
-  "https://linkstre.am/brooklynbowl": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:30.430812+00:00"
-  },
-  "https://link.dice.fm/LifeAndDeath2026": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:32.413930+00:00"
-  },
-  "https://linktr.ee/Bennysoto": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:27.103835+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:58.936317+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linktr.ee/cafe.erzulie": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:27.252063+00:00",
-=======
-    "last_success_at": "2026-05-12T23:05:01.282059+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://posh.vip/f/680bf": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:33.107323+00:00"
-  },
-  "https://posh.vip/f/680ba": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:33.627752+00:00"
-  },
-  "https://posh.vip/f/680b1": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:34.122953+00:00"
-  },
-  "https://posh.vip/f/68d85": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:34.599971+00:00"
-  },
-  "https://posh.vip/f/6d10e": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:35.044884+00:00"
-  },
-  "https://posh.vip/f/6b27e": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:35.522470+00:00"
-  },
-  "https://posh.vip/f/6bad7": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:36.038420+00:00"
-  },
-  "https://posh.vip/f/64a03": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:36.713721+00:00"
-  },
-  "https://posh.vip/f/6bac0": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:37.200795+00:00"
-  },
-  "https://posh.vip/f/6caba": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:37.680636+00:00"
-  },
-  "https://posh.vip/f/66792": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:38.243890+00:00"
-  },
-  "https://posh.vip/f/57d00": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:38.760462+00:00"
-  },
-  "https://www.eventbrite.com/e/kwanzaa-crawl-2026-family-reunion-the-largest-black-bar-crawl-tickets-1987319609449": {
-    "failures": 5,
-    "successes": 1,
-    "last_failure_at": "2026-05-12T15:18:46.138848+00:00",
-    "last_success_at": "2026-05-12T09:43:55.060977+00:00",
-    "events_emitted_total": 1,
-    "last_event_count": 1
-  },
-  "https://posh.vip/f/68086": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:39.859930+00:00"
-  },
-  "https://posh.vip/f/680a8": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:40.348793+00:00"
-  },
-  "https://posh.vip/f/65e91": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:40.829815+00:00"
-  },
-  "https://posh.vip/f/6d0fb": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:41.336904+00:00"
-  },
-  "https://posh.vip/f/57cfd": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:41.879868+00:00"
-  },
-  "https://www.anaisbk.com/events": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:42.636834+00:00"
-  },
-  "https://linktr.ee/arihoenig": {
-    "failures": 0,
-    "successes": 15,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:27.405736+00:00",
-=======
-    "last_success_at": "2026-05-12T23:05:03.691826+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://www.eventbrite.com/e/know-it-alls-trivia-comedy-show-tickets-1987617771259": {
-    "failures": 5,
-    "successes": 2,
-    "last_success_at": "2026-05-12T10:34:37.640860+00:00",
-    "events_emitted_total": 2,
-    "last_event_count": 1,
-    "last_failure_at": "2026-05-12T17:58:54.552608+00:00"
-  },
-  "https://partiful.com/e/4q2aXXC6yvT2k19Qt2Bb": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:43.228290+00:00"
-  },
-  "https://www.eventbrite.com/e/landline-comedy-at-wild-east-brewing-tickets-1985964207405": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:43.634183+00:00"
-  },
-  "https://www.eventbrite.com/e/savage-a-comedy-show-free-tickets-364397592007": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:44.141836+00:00"
-  },
-  "https://www.eventbrite.com/e/comedy-ugly-a-comedy-strip-show-tickets-1935850744689": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:44.536892+00:00"
-  },
-  "https://www.eventbrite.com/e/1988866717892": {
-    "failures": 5,
-    "successes": 2,
-    "last_failure_at": "2026-05-12T17:58:55.108872+00:00",
-    "last_success_at": "2026-05-12T10:34:41.560682+00:00",
-    "events_emitted_total": 2,
-    "last_event_count": 1
-  },
-  "https://www.eventbrite.com/e/flash-comedy-tickets-1979288721848": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:44.983050+00:00"
-  },
-  "https://www.eventbrite.com/e/we-have-fun-a-weekly-stand-up-show-tickets-208767317667": {
-    "failures": 0,
-    "successes": 7,
-    "last_failure_at": "2026-05-12T17:58:55.624105+00:00",
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:07.601487+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:14.951370+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 7,
-    "last_event_count": 1
-  },
-  "https://www.eventbrite.com/e/my-kinda-night-a-queer-variety-show-tickets-1965639775482": {
-    "failures": 5,
-    "successes": 1,
-    "last_success_at": "2026-05-12T07:27:58.303797+00:00",
-    "events_emitted_total": 1,
-    "last_event_count": 1,
-    "last_failure_at": "2026-05-12T14:18:58.395165+00:00"
-  },
-  "https://www.eventbrite.com/e/group-lesson-with-ari-hoenig-january-24th-tickets-1980903582941": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T12:27:46.521714+00:00"
-  },
-  "https://linktr.ee/andreagentl": {
-    "failures": 0,
-    "successes": 9,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:27.516282+00:00",
-=======
-    "last_success_at": "2026-05-12T23:05:05.083943+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linktr.ee/brooklyncandlestudio": {
-    "failures": 0,
-    "successes": 9,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:27.642035+00:00",
-=======
-    "last_success_at": "2026-05-12T23:05:07.558919+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://link.dice.fm/Sasha-JohnDigweed-NYC-KDC": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T20:57:31.485477+00:00"
-  },
-  "https://posh.vip/f/6eb69": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T21:24:35.303231+00:00"
   },
   "https://www.songkick.com/metro-areas/7644-us-new-york/3": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:36.878884+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:01.849382+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 300,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:52.419609+00:00",
+    "events_emitted_total": 50,
     "last_event_count": 50
   },
   "https://www.songkick.com/metro-areas/7644-us-new-york/4": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:37.455567+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:03.032835+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 300,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:52.654965+00:00",
+    "events_emitted_total": 50,
     "last_event_count": 50
   },
   "https://www.songkick.com/metro-areas/7644-us-new-york/5": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:37.686287+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:03.561486+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 300,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:52.974770+00:00",
+    "events_emitted_total": 50,
     "last_event_count": 50
   },
   "https://www.songkick.com/metro-areas/7644-us-new-york/6": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:38.232189+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:04.296049+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 300,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:53.194628+00:00",
+    "events_emitted_total": 50,
     "last_event_count": 50
   },
   "https://www.songkick.com/metro-areas/7644-us-new-york/7": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:38.456938+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:05.097924+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 300,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:53.435194+00:00",
+    "events_emitted_total": 50,
     "last_event_count": 50
+  },
+  "https://www.songkick.com/venues/22-brooklyn-bowl": {
+    "failures": 0,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:53.983079+00:00",
+    "events_emitted_total": 3,
+    "last_event_count": 3
+  },
+  "https://www.songkick.com/venues/8-elsewhere": {
+    "failures": 0,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:54.874953+00:00",
+    "events_emitted_total": 8,
+    "last_event_count": 8
+  },
+  "https://www.songkick.com/venues/5-mercury-lounge": {
+    "failures": 0,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:55.609978+00:00",
+    "events_emitted_total": 3,
+    "last_event_count": 3
   },
   "https://www.songkick.com/venues/16246-music-hall-of-williamsburg": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:59.379117+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:02.072710+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:55.722476+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/316-bowery-ballroom": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:59.462835+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:02.354228+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:55.831276+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/181873-irving-plaza": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:59.545658+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:02.605477+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:56.009492+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/1025-beacon-theatre": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:01.084903+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:06.546391+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 42,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:56.100170+00:00",
+    "events_emitted_total": 7,
     "last_event_count": 7
   },
   "https://www.songkick.com/venues/10735-village-vanguard": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:59.626942+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:02.863435+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:56.209241+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/120516-brooklyn-paramount": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:59.715787+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:03.321140+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:56.759618+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/2445014-babys-all-right": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:59.878907+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:03.980081+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:56.859423+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/28184-le-poisson-rouge": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:00.043616+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:04.243736+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:56.962508+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/3457684-brooklyn-steel": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:00.123020+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:04.405083+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:57.067405+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/3658119-elsewhere": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:00.209902+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:04.545525+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:57.157582+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/3841499-sony-hall": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:00.294717+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:04.693215+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:57.254675+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/3895789-rooftop-at-pier-17": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:00.380327+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:04.953142+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:57.343950+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/4216319-public-records": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:00.497747+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:05.095414+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:57.444436+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/4480562-racket-nyc": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:00.604109+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:05.347398+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:57.548402+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/4429540-nebula": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:02.722306+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:09.467837+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 30,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:57.628864+00:00",
+    "events_emitted_total": 5,
     "last_event_count": 5
   },
   "https://www.songkick.com/venues/4424442-under-the-k-bridge-park": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:00.689744+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:05.599478+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:57.730078+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/1656338-barclays-center": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:00.998407+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:06.296215+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 48,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:57.825591+00:00",
+    "events_emitted_total": 8,
     "last_event_count": 8
   },
   "https://www.songkick.com/venues/2470-hammerstein-ballroom-manhattan-center": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:02.795225+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:09.930215+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 30,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:02:57.909330+00:00",
+    "events_emitted_total": 5,
     "last_event_count": 5
   },
   "https://events.nyu.edu/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:11.398473+00:00"
+    "last_failure_at": "2026-05-13T00:02:59.058832+00:00"
   },
   "https://events.columbia.edu/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:11.480740+00:00"
+    "last_failure_at": "2026-05-13T00:02:59.200352+00:00"
   },
   "https://events.newschool.edu/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:11.881767+00:00"
+    "last_failure_at": "2026-05-13T00:02:59.900140+00:00"
   },
   "https://www.juilliard.edu/calendar-performances": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:11.970771+00:00"
+    "last_failure_at": "2026-05-13T00:02:59.970812+00:00"
   },
   "https://www.bklynlibrary.org/calendar": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:13.096510+00:00"
+    "last_failure_at": "2026-05-13T00:03:01.459876+00:00"
   },
   "https://www.queenslibrary.org/calendar": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:19.178260+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:29.906444+00:00",
->>>>>>> Stashed changes
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:03:03.720146+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
   "https://www.bam.org/calendar": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:13.972789+00:00"
+    "last_failure_at": "2026-05-13T00:03:04.590617+00:00"
   },
   "https://www.lincolncenter.org/lincoln-center-at-home/calendar": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:16.784980+00:00"
+    "last_failure_at": "2026-05-13T00:03:07.458656+00:00"
   },
   "https://www.apollotheater.org/events/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:17.144384+00:00"
+    "last_failure_at": "2026-05-13T00:03:07.854086+00:00"
   },
   "https://carnegiehall.org/Calendar": {
-<<<<<<< Updated upstream
-    "failures": 2,
-    "successes": 4,
-    "last_success_at": "2026-05-12T21:26:55.812817+00:00",
-=======
     "failures": 0,
-    "successes": 5,
-    "last_success_at": "2026-05-12T23:04:31.395370+00:00",
->>>>>>> Stashed changes
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:03:10.141120+00:00",
     "events_emitted_total": 0,
-    "last_event_count": 0,
-    "last_failure_at": "2026-05-12T23:05:21.211598+00:00"
+    "last_event_count": 0
   },
   "https://www.strandbooks.com/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:17.263070+00:00"
+    "last_failure_at": "2026-05-13T00:03:10.305870+00:00"
   },
   "https://www.greenlightbookstore.com/event": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:17.350499+00:00"
+    "last_failure_at": "2026-05-13T00:03:10.449932+00:00"
   },
   "https://www.booksaremagic.net/event": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:17.752184+00:00"
+    "last_failure_at": "2026-05-13T00:03:10.851295+00:00"
   },
   "https://www.bookclubbar.com/events": {
     "failures": 0,
-    "successes": 6,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:01:47.092767+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:46.607073+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 122,
+    "successes": 1,
+    "last_success_at": "2026-05-13T00:03:12.836624+00:00",
+    "events_emitted_total": 22,
     "last_event_count": 22
   },
   "https://www.caveat.nyc/events": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:18.244499+00:00"
+    "last_failure_at": "2026-05-13T00:03:14.149547+00:00"
   },
   "https://www.roughtradenyc.com/events/": {
-    "failures": 5,
+    "failures": 1,
     "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:18.540893+00:00"
+    "last_failure_at": "2026-05-13T00:03:14.516562+00:00"
   },
   "https://www.publicrecords.nyc/calendar": {
-    "failures": 5,
-    "successes": 0,
-    "last_failure_at": "2026-05-12T22:02:18.604318+00:00"
-  },
-  "https://www.queenslibrary.org/event/013741-0326": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:02:11.093286+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:00:19.482442+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/013746-0326": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:02:13.496118+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:00:22.173371+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014575-0326": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:02:15.431462+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:00:24.885597+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/011834-0226": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:02:22.444473+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:00:30.676410+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/011817-0226": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:02:24.980934+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:00:33.176467+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/013705-0326": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:02:27.224598+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:00:35.663732+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/011573-0126": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:02:30.348543+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:00:59.344836+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014051-0326": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:02:36.315562+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:01:01.903156+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/008239-1125": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:02:38.360789+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:01:04.372120+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/012634-0226": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:02:40.232479+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:01:07.421739+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/009036-1225": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:04.170180+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:01:10.226668+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/016792-0624": {
-    "failures": 5,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:06.210081+00:00"
-  },
-  "https://carnegiehall.org/Events/Discount-Programs": {
-    "failures": 0,
-    "successes": 5,
-    "last_success_at": "2026-05-12T23:05:29.100737+00:00",
-=======
-    "last_failure_at": "2026-05-12T23:01:12.987501+00:00"
-  },
-  "https://carnegiehall.org/Events/Discount-Programs": {
-    "failures": 1,
-    "successes": 4,
-    "last_success_at": "2026-05-12T22:06:44.235507+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0,
-    "last_failure_at": "2026-05-12T23:05:08.416481+00:00"
-  },
-  "https://carnegiehall.org/Events/Family-Events": {
-    "failures": 0,
-    "successes": 5,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:30.276435+00:00",
-=======
-    "last_success_at": "2026-05-12T23:05:09.567036+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://carnegiehall.org/Events/Group-Sales": {
-    "failures": 0,
-    "successes": 4,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:32.078378+00:00",
-=======
-    "last_success_at": "2026-05-12T23:05:10.787923+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0,
-    "last_failure_at": "2026-05-12T20:58:25.220059+00:00"
-  },
-  "https://carnegiehall.org/Events/Highlights": {
-    "failures": 1,
-    "successes": 3,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:32.978652+00:00",
-=======
-    "last_failure_at": "2026-05-12T23:05:11.792506+00:00",
->>>>>>> Stashed changes
-    "last_success_at": "2026-05-12T22:06:48.799093+00:00",
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://carnegiehall.org/Events/Citywide": {
-    "failures": 1,
-    "successes": 4,
-    "last_success_at": "2026-05-12T22:06:49.871153+00:00",
-    "events_emitted_total": 0,
-    "last_event_count": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:33.962464+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:05:12.737495+00:00"
->>>>>>> Stashed changes
-  },
-  "https://carnegiehall.org/Events/Well-Being-Concerts": {
-    "failures": 1,
-    "successes": 4,
-    "last_success_at": "2026-05-12T22:06:51.227311+00:00",
-    "events_emitted_total": 0,
-    "last_event_count": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:35.056444+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:05:13.734525+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/015248-0426": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:07.905726+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:01:35.251230+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014538-0326": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:09.717255+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:01:37.864538+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/013532-0326": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:12.071214+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:01:40.474423+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014953-0326": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:13.222370+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:01:42.294886+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/013950-0326": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:15.476247+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:16.349834+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/002303-0825": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:25.114573+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:19.494257+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/015380-0426": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:27.239949+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:22.890381+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/000434-0725": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:28.948865+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:26.206796+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014997-0326": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:30.655934+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:29.477671+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/011170-0126": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:33.009497+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:32.684522+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/015382-0426": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:35.582330+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:35.336243+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/012010-0226": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:37.621104+00:00"
-  },
-  "https://carnegiehall.org/Events/Carnegie-Hall-Presents-25-26": {
-    "failures": 1,
-    "successes": 3,
-    "last_success_at": "2026-05-12T22:06:52.726454+00:00",
-=======
-    "last_failure_at": "2026-05-12T23:02:37.861365+00:00"
-  },
-  "https://carnegiehall.org/Events/Carnegie-Hall-Presents-25-26": {
-    "failures": 0,
-    "successes": 4,
-    "last_success_at": "2026-05-12T23:05:15.035275+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0,
-    "last_failure_at": "2026-05-12T23:05:35.987452+00:00"
-  },
-  "https://open.substack.com/pub/litclubnyc": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:37.671605+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:37.998974+00:00"
->>>>>>> Stashed changes
-  },
-  "http://www.abetterwaycreative.com": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:39.679001+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:41.560084+00:00"
->>>>>>> Stashed changes
-  },
-  "http://nookbk.com/": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:41.930294+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:45.264285+00:00"
->>>>>>> Stashed changes
-  },
-  "https://partiful.com/e/E4oVokp6hSLzs5zr30Y4?c=A924aC9L": {
-    "failures": 0,
-    "successes": 4,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:07.850527+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:15.829169+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 4,
-    "last_event_count": 1
-  },
-  "https://brightnightssocial.com/linkinbio": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:42.221937+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:45.791155+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.nycforfree.co/links": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:43.813540+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:48.580014+00:00"
->>>>>>> Stashed changes
-  },
-  "http://linktr.ee/younglions": {
-    "failures": 0,
-    "successes": 4,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:36.178487+00:00",
-=======
-    "last_success_at": "2026-05-12T23:05:15.227071+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "http://www.bookclubbar.com": {
-    "failures": 0,
-    "successes": 4,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:00:54.722532+00:00",
-=======
-    "last_success_at": "2026-05-12T22:59:41.208780+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 84,
-    "last_event_count": 22
-  },
-  "https://linktr.ee/nyucwp": {
-    "failures": 0,
-    "successes": 4,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:36.279756+00:00",
-=======
-    "last_success_at": "2026-05-12T23:05:15.376744+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://withforte.co/@nycsprint": {
-    "failures": 4,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:44.277526+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:49.819091+00:00"
->>>>>>> Stashed changes
-  },
-  "https://linktr.ee/explore_nyc_free": {
-    "failures": 0,
-    "successes": 4,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:36.437566+00:00",
-=======
-    "last_success_at": "2026-05-12T23:05:15.930063+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://linktr.ee/nycbackgammonclub": {
-    "failures": 0,
-    "successes": 4,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:36.560684+00:00",
-=======
-    "last_success_at": "2026-05-12T23:05:16.665652+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://www.eventbrite.com/e/casa-kahlo-frida-kahlos-private-home-and-sanctuary-tickets-1986443886137?ref=hyperallergic.com": {
-    "failures": 0,
-    "successes": 3,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:08.335839+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:16.609713+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 3,
-    "last_event_count": 1
-  },
-  "https://carnegiehall.org/Events/Carnegie-Hall-Presents-26-27": {
-    "failures": 0,
-    "successes": 2,
-    "last_failure_at": "2026-05-12T21:26:26.131303+00:00",
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:03:47.029494+00:00",
-=======
-    "last_success_at": "2026-05-12T23:02:51.446468+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 0,
-    "last_event_count": 0
-  },
-  "https://lu.ma/nycbackgammonclub": {
-    "failures": 0,
-    "successes": 3,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:02:01.766292+00:00",
-=======
-    "last_success_at": "2026-05-12T23:00:07.568355+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 18,
-    "last_event_count": 6
-  },
-  "https://www.queenslibrary.org/event/007186-1125": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:48.912968+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:54.053932+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/000435-0725": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:50.888879+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:56.793427+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/012497-0226": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:53.125228+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:02:59.202918+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/012607-0226": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:54.967712+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:01.602151+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014434-0326": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:03:56.671960+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:04.504551+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/013496-0326": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:28.626865+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:10.597417+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/012559-0226": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:30.687100+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:13.265921+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/015180-0326": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:32.901736+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:19.164019+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/004408-0925": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:35.195093+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:22.193711+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/006892-1125": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:37.413943+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:25.145508+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/006869-1125": {
-    "failures": 3,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:39.257050+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:28.122677+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014871-0326": {
-    "failures": 2,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:41.455306+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:30.617961+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/015378-0426": {
-    "failures": 2,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:43.445366+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:44.632325+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/011856-0226": {
-    "failures": 2,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:45.684157+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:47.484631+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/010940-0126": {
-    "failures": 2,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:47.791688+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:50.036530+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014590-0326": {
-    "failures": 2,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:49.812098+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:52.455141+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014955-0326": {
-    "failures": 2,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:51.618826+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:55.253221+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014170-0326": {
-    "failures": 2,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:53.335127+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:03:57.691945+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/012372-0226": {
-    "failures": 2,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:55.336605+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:00.384132+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/013843-0326": {
-    "failures": 2,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:04:57.349934+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:02.863568+00:00"
->>>>>>> Stashed changes
-  },
-  "http://www.bookclubbar.com/events": {
-    "failures": 0,
-    "successes": 1,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:04:59.899622+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:04.475410+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 22,
-    "last_event_count": 22
-  },
-  "http://www.bookclubbar.com/events/": {
-    "failures": 0,
-    "successes": 1,
-<<<<<<< Updated upstream
-    "last_success_at": "2026-05-12T23:05:02.354787+00:00",
-=======
-    "last_success_at": "2026-05-12T23:04:05.830151+00:00",
->>>>>>> Stashed changes
-    "events_emitted_total": 22,
-    "last_event_count": 22
-  },
-  "http://www.bookclubbar.com/calendar": {
     "failures": 1,
     "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:02.826387+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:06.076209+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/013972-0326": {
-    "failures": 1,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:05.117298+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:08.780518+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/004451-0925": {
-    "failures": 1,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:07.057717+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:11.177374+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/007903-1125": {
-    "failures": 1,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:08.752373+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:14.629609+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/006820-1025": {
-    "failures": 1,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:10.589570+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:17.271468+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/007651-1125": {
-    "failures": 1,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:12.580459+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:19.841506+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014359-0326": {
-    "failures": 1,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:14.432601+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:22.261462+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/014230-0326": {
-    "failures": 1,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:16.202234+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:24.952793+00:00"
->>>>>>> Stashed changes
-  },
-  "https://www.queenslibrary.org/event/012534-0226": {
-    "failures": 1,
-    "successes": 0,
-<<<<<<< Updated upstream
-    "last_failure_at": "2026-05-12T23:05:18.012818+00:00"
-=======
-    "last_failure_at": "2026-05-12T23:04:27.921028+00:00"
->>>>>>> Stashed changes
+    "last_failure_at": "2026-05-13T00:03:14.824571+00:00"
   }
 }
