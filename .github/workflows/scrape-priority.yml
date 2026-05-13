@@ -1,24 +1,31 @@
-name: Scrape Events
+name: Scrape Priority IG (affinity + follows)
+
+# Hourly hit on the user-relevant tier only: saved-from accounts and
+# accounts the user explicitly follows. Skips the long tail of curated +
+# discovered accounts, and skips hashtag/venue-tagged/highlights mining
+# (those run in the full scrape.yml every 4h).
+#
+# Why: the user's most-relevant accounts should always have fresh events.
+# A 15-min hourly run on ~30-50 protected accounts puts ~9x more fresh
+# data through the pipeline for the accounts that matter most, without
+# tripling total IG API volume.
 
 on:
   schedule:
-    # Every 4h — full long-tail sweep. Priority accounts already refreshed
-    # hourly by scrape-priority.yml, so this cron focuses on thorough
-    # coverage of curated + discovered accounts with more budget per run.
-    - cron: "0 */4 * * *"
+    - cron: "20 * * * *"  # every hour at :20 (offset from quick-scrape :00/:30)
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: scrape
-  cancel-in-progress: false
+  group: scrape-priority
+  cancel-in-progress: true  # next hourly run is fine
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,42 +51,37 @@ jobs:
           mkdir -p ~/.config/instaloader
           echo "$IG_SESSION_B64" | base64 -d > ~/.config/instaloader/session-${IG_USERNAME:-prajfb}
 
-      - name: Run scrapers
+      - name: Run priority IG scrape
         env:
           IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_PROTECTED_ONLY: "1"
           IG_MAX_POSTS_PER_ACCOUNT: "12"
-          IG_MAX_ACCOUNTS: "200"
           IG_SLEEP_BETWEEN_ACCOUNTS: "0.5"
-          IG_TIME_BUDGET_SECONDS: "3000"  # 50 min cap; runs every 4h now
-          # Mine NYC event hashtags for new author candidates + events.
-          # Only enabled in the full sweep (not quick-scrape) to keep per-run
-          # rate-limit risk low.
-          IG_HASHTAG_DISCOVERY: "1"
-          IG_HASHTAG_BUDGET_SECONDS: "300"  # 5 min cap inside the IG budget
+          # Budget irrelevant in protected-only mode (no budget check on
+          # protected pass), but set anyway as a safety ceiling.
+          IG_TIME_BUDGET_SECONDS: "900"
+          # Skip hashtag/venue-tagged/highlights — those run in full sweep.
+          IG_HASHTAG_DISCOVERY: "0"
+          IG_VENUE_TAGGED: "0"
+          IG_HIGHLIGHTS: "0"
+          IG_STORIES: "1"          # stories disappear in 24h — capture every hour
         run: python -m scrapers.run_all
 
-      - name: Sanity check + stats logging
-        # Soft-fail: log issues but never break the pipeline. Stats appended
-        # to scrapers/data/stats_history.jsonl for trend tracking.
-        run: python -m scrapers.sanity_check --write-stats || true
-
       - name: Pull latest before commit
-        run: |
-          git pull --rebase --autostash || true
+        run: git pull --rebase --autostash || true
 
       - name: Commit updated events
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/events.json site/public/events.json \
-            scrapers/data/discovered_accounts.json \
             scrapers/data/discovered_urls.json \
             scrapers/data/user_affinity_accounts.json \
-            scrapers/data/stats_history.jsonl \
             scrapers/data/dead_accounts.json \
+            scrapers/data/stats_history.jsonl \
+            scrapers/data/url_health.json \
             scrapers/data/account_cursors.json \
             scrapers/data/account_quality.json \
-            scrapers/data/user_hashtags.json \
-            scrapers/data/url_health.json 2>/dev/null || true
-          git diff --cached --quiet || git commit -m "Update events data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            scrapers/data/user_hashtags.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "Priority IG scrape $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push

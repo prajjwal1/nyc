@@ -272,7 +272,16 @@ def scrape() -> list[dict]:
     # of low-yield seeds. Same per-account body for both.
     protected = [a for a in affinity_first if _priority(a)[0] <= 1]
     budgeted = [a for a in affinity_first if _priority(a)[0] > 1]
-    print(f"[instagram] {len(protected)} protected (affinity+follows) + {len(budgeted)} budgeted accounts")
+
+    # Priority-only mode (set by scrape-priority.yml cron): scrape only the
+    # protected pass, skip budgeted accounts and the downstream hashtag /
+    # venue-tag / story / highlight passes. Lets the priority cron run on
+    # a tight schedule without competing with the full sweep.
+    protected_only = os.environ.get("IG_PROTECTED_ONLY", "0") == "1"
+    if protected_only:
+        budgeted = []
+    print(f"[instagram] {len(protected)} protected + {len(budgeted)} budgeted accounts"
+          + (" [PROTECTED_ONLY]" if protected_only else ""))
 
     def _scrape_one_account(account: str) -> None:
         try:
@@ -327,7 +336,7 @@ def scrape() -> list[dict]:
     # don't yet follow, AND registers those authors as discovered accounts
     # so future runs scrape them directly. Most expansive single channel.
     elapsed = _time.time() - started
-    if elapsed < ig_budget_seconds:
+    if elapsed < ig_budget_seconds and not protected_only:
         try:
             ht_events, ht_accounts = _scrape_hashtag_posts(loader)
             all_events.extend(ht_events)
@@ -345,7 +354,7 @@ def scrape() -> list[dict]:
     # comprehensive event coverage at NYC venues. Time-budgeted, can be
     # disabled via IG_VENUE_TAGGED=0.
     elapsed = _time.time() - started
-    if elapsed < ig_budget_seconds and os.environ.get("IG_VENUE_TAGGED", "1") != "0":
+    if elapsed < ig_budget_seconds and not protected_only and os.environ.get("IG_VENUE_TAGGED", "1") != "0":
         try:
             vt_events, vt_owners = _scrape_venue_tagged_posts(loader)
             all_events.extend(vt_events)
@@ -387,7 +396,7 @@ def scrape() -> list[dict]:
     # we mine surfaces a hand-curated event roster the venue itself
     # decided was worth pinning. Time-budgeted, IG_HIGHLIGHTS=0 to disable.
     elapsed = _time.time() - started
-    if elapsed < ig_budget_seconds and os.environ.get("IG_HIGHLIGHTS", "1") != "0":
+    if elapsed < ig_budget_seconds and not protected_only and os.environ.get("IG_HIGHLIGHTS", "1") != "0":
         try:
             hl_events = _scrape_account_highlights(loader)
             all_events.extend(hl_events)

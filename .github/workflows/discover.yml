@@ -2,7 +2,9 @@ name: Discover New Accounts
 
 on:
   schedule:
-    - cron: "0 6 * * *"  # daily at 6am UTC
+    # 2x/day so the tiered BFS + suggested-for-you sweep keeps the
+    # discovered-accounts pool fresh as the user's IG follows evolve.
+    - cron: "0 6,18 * * *"  # 6am and 6pm UTC
   workflow_dispatch:
 
 permissions:
