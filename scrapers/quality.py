@@ -40,6 +40,12 @@ HARD_BLOCK_KEYWORDS = [
     # for-business connections). "tech mixer" is explicitly OK.
     "professional networking", "professionals networking",
     "professional mixer", "professionals mixer",
+    "professional happy hour", "professionals happy hour",
+    "professional social", "professionals social",
+    "professional gathering", "professionals gathering",
+    "professional meetup", "professionals meetup",
+    "ny professionals", "nyc professionals", "young professionals happy",
+    "professional women happy", "professional men happy",
     "business networking", "business mixer",
     "finance networking", "finance mixer", "finance professionals",
     "wall street networking", "wall street mixer",
@@ -591,6 +597,16 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "catch his", "catch her", "catch their",
         "[", "(",
         "@", "#",
+        # Caption-only IG fragments lacking real event title
+        "for all the details", "for allll", "for all of",
+        "hit that link", "link in bio", "link in our bio",
+        "+ ", "- ", "— ", "– ",  # leading punctuation suggesting a list-item
+        "more details", "details below", "details inside",
+        "comment below", "tag a friend", "tag your",
+        "drop a comment", "leave a comment",
+        "double tap", "save this post", "share this post",
+        "swipe up", "swipe to", "swipe for",
+        "stay tuned",
     ]
     if any(title_lower.startswith(p) for p in fragment_starts):
         return True

@@ -787,10 +787,16 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     if phantom:
         print(f"[normalize] Dropped {phantom} phantom recurring events (title-date mismatch)")
 
-    # Expand recurring events ("every Saturday at Smorgasburg" → 6 weeks of dates)
+    # Expand recurring events ("every Saturday at Smorgasburg" → 3 weeks of
+    # dates). Skip events already marked recurring=True (already an expanded
+    # clone) — otherwise re-processing the events.json snowballs each clone
+    # into another 3 copies and the feed fills with duplicate titles.
     expanded: list[dict] = []
     recurring_count = 0
     for ev in events:
+        if ev.get("recurring"):
+            expanded.append(ev)
+            continue
         text = (ev.get("title", "") + " " + ev.get("description", "")).lower()
         weekday = detect_recurring_weekday(text)
         if weekday is not None:
