@@ -111,9 +111,6 @@ def compute_score(event: dict) -> float:
         event.get("userSaved") or event.get("userTagged") or event.get("userAffinity")
     ) else 0.0
 
-    # User-priority sources: hosts/series user explicitly flagged as
-    # high-quality (WNYC Book Club @ NYPL, litclub.nyc Luma org).
-    priority_boost = _user_priority_boost(event)
 
     # Cross-source confirmation: same event appearing on 2+ sources is
     # very strong validation (e.g., Eventbrite + Instagram both list it).
@@ -191,7 +188,7 @@ def compute_score(event: dict) -> float:
     # an explicit bookmark should always pull an event to the top regardless
     # of how many other signals fire. Everything else stacks under a sum-cap
     # so events with broad keyword overlap don't saturate at 1.0 and tie.
-    explicit_boost = saved_boost + tagged_boost + affinity_boost + following_boost + priority_boost
+    explicit_boost = saved_boost + tagged_boost + affinity_boost + following_boost
     stacked_boosts = (
         high_value_boost + alcohol_free_boost + social_boost + meet_people_boost
         + cred_boost + cross_source_boost + hot_boost + yield_boost
@@ -562,32 +559,6 @@ def _is_trending(event: dict) -> bool:
         except Exception:
             pass
     return signals >= 2
-
-
-_USER_PRIORITY_URL_FRAGMENTS = (
-    "litclub.nyc",      # user explicitly flagged this Luma org
-)
-_USER_PRIORITY_TITLE_HINTS = (
-    "wnyc book club",   # user explicitly flagged WNYC partnership events
-    "get lit",
-    "litclub",
-)
-
-
-def _user_priority_boost(event: dict) -> float:
-    """Boost for events from sources the user has explicitly flagged as
-    high-priority. Stacks under explicit_boost (uncapped), since these
-    aren't keyword-pattern hits but actual user picks.
-    """
-    url = (event.get("sourceUrl") or "").lower()
-    if any(frag in url for frag in _USER_PRIORITY_URL_FRAGMENTS):
-        return 0.15
-    title = (event.get("title") or "").lower()
-    desc = (event.get("description") or "").lower()[:300]
-    text = title + " " + desc
-    if any(h in text for h in _USER_PRIORITY_TITLE_HINTS):
-        return 0.15
-    return 0.0
 
 
 def rank_events(events: list[dict]) -> list[dict]:
