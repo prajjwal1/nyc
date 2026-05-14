@@ -81,20 +81,21 @@ FEEDS = [
     "https://onefinedaynyc.substack.com/feed",
     # The Skint — daily curated free/cheap NYC events newsletter (legendary)
     "https://www.theskint.com/feed/",
-    # Hyperallergic — major NYC art exhibition / opening listings
-    "https://hyperallergic.com/feed/",
     # Brooklyn Vegan — extensive concert / live music NY listings
     "https://www.brooklynvegan.com/feed/",
+    # (Removed: hyperallergic.com — mostly art news/commentary, not events.
+    # Posts like 'Getty Awards $1.8M for Archives' or 'What Does a Booth
+    # Cost at an Art Fair?' are news articles. We get art-opening coverage
+    # through bedfordandbowery, the venue sources, and IG instead.)
     # The Deli — independent NYC music venues
     "https://thedeli.substack.com/feed",
-    # Hellgate — local NYC investigative journalism (occasional event roundups)
-    "https://hellgate.substack.com/feed",
     # Eater NY — food/restaurant pop-ups, supper clubs, food events
     "https://ny.eater.com/rss/index.xml",
-    # Gothamist — NYC news + culture, regular event roundups
-    "https://gothamist.com/feed",
     # Bedford + Bowery — Brooklyn/East Village culture, art openings, shows
     "https://bedfordandbowery.com/feed/",
+    # (Removed: hellgate.substack.com, gothamist.com — primarily news outlets
+    # whose RSS items are news articles, not events. Occasional event
+    # roundups exist but noise-to-signal ratio is too high.)
     # Untapped Cities — NYC tours, history, secret-spot/event coverage
     "https://untappedcities.com/feed/",
     # NYC for Free — free events curator, weekly roundups
@@ -186,7 +187,8 @@ def _parse_item(item, ns: dict) -> list[dict]:
     else:
         # Fallback: treat the whole post as one event
         text = soup.get_text(separator=" ", strip=True)
-        if fallback_date and len(post_title) > 5:
+        if (fallback_date and len(post_title) > 5
+                and not _looks_like_news_title(post_title)):
             events.append(build_event(
                 title=post_title,
                 description=text[:500],
@@ -197,6 +199,51 @@ def _parse_item(item, ns: dict) -> list[dict]:
             ))
 
     return events
+
+
+# News-headline detection. Substack feeds (especially gothamist, hellgate-
+# style outlets that slip through) emit news articles as RSS posts. These
+# get parsed as 'events' even though they're commentary on past events
+# or general news. Patterns: passive voice, "X-year-old shot", question
+# titles like "What is...", "How can...", etc.
+import re as _re
+
+_NEWS_TITLE_PATTERNS = [
+    _re.compile(r"\b\d+[-\s]?year[-\s]?old\b", _re.IGNORECASE),
+    _re.compile(r"\b(shot|killed|stabbed|attacked|arrested|sentenced|indicted|fired|"
+                r"resigned|injured|hospitalized) (in|near|at|by|after)\b", _re.IGNORECASE),
+    _re.compile(r"\b(police|nypd|fdny|mta|fbi|doj) (say|seek|search|investigate|"
+                r"arrest|charge|release)", _re.IGNORECASE),
+    _re.compile(r"\b(governor|mayor|senator|congressman|councilman|hochul|adams|"
+                r"cuomo|trump|biden) (says|endorses|announces|signs|vetoes|denies)",
+                _re.IGNORECASE),
+    _re.compile(r"^(what|why|how|is|are|do|does|can|will|should) ", _re.IGNORECASE),
+    _re.compile(r"\b(early addition|morning briefing|news briefing|daily digest)\b",
+                _re.IGNORECASE),
+    _re.compile(r"\b(idf|israel|gaza|palestin|hamas) ", _re.IGNORECASE),
+    _re.compile(r"\b(fire (breaks|broke) out|breaks? out at|service (disrupted|suspended))\b",
+                _re.IGNORECASE),
+    _re.compile(r"\b(remembering|in memoriam|tribute to) [A-Z]", _re.IGNORECASE),
+    _re.compile(r"\b(awarded?|wins?|named|appointed|hired|gets?\s+new) (chief|director|"
+                r"curator|president|ceo|head)\b", _re.IGNORECASE),
+    _re.compile(r"\b(essential\s+\w+\s+to\s+know|things?\s+to\s+know|"
+                r"rights\s+to\s+know)", _re.IGNORECASE),
+]
+
+
+def _looks_like_news_title(title: str) -> bool:
+    """Detect news-article titles that aren't events.
+
+    Substack fallback path emits the whole RSS post as an event when there
+    are no h2/h3 headings. For news outlets this means every news article
+    becomes a fake event. Filter those out.
+    """
+    if not title:
+        return False
+    for pat in _NEWS_TITLE_PATTERNS:
+        if pat.search(title):
+            return True
+    return False
 
 
 def _extract_from_headings(soup, heading_tags, fallback_date, post_link: str) -> list[dict]:

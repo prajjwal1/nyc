@@ -134,6 +134,29 @@ HARD_BLOCK_KEYWORDS = [
     "rave 'til", "warehouse till", "club till",
     "no last call",
 
+    # Same-sex / LGBTQ+ speed dating events — these are demographic-specific
+    # dating events that the user (straight) doesn't attend. Straight speed
+    # dating, mixed singles mixers, queer-friendly art / cultural events
+    # are unaffected — only the demographic-specific dating events block.
+    "lesbian speed dating", "lesbian speed",
+    "gay speed dating", "gay men's speed dating", "gay men's speed",
+    "queer speed dating", "queer speed",
+    "lgbtq speed dating", "lgbtq+ speed dating", "lgbtq dating event",
+    "girl's night lesbian", "girls night lesbian",
+    "lesbian night dating", "wlw dating", "wlw speed",
+    "mlm speed dating", "mlm dating event",
+
+    # News-headline patterns — substack/news RSS sometimes leaks news
+    # articles as "events". Block obvious news phrasings that aren't
+    # event titles.
+    "shot in the bronx", "shot in bronx", "shot in queens",
+    "shot in brooklyn", "shot in harlem", "shot in manhattan",
+    "year-old girl shot", "year-old boy shot", "year old shot",
+    "killed in nyc", "police looking for",
+    "idf soldiers", "endorsement from",
+    "tenants rights to know", "essential tenants rights",
+    "rotten news", "beloved peach crop",
+
     # Mega-arena stadium acts the user doesn't want surfacing here. The
     # site is for going-out-with-friends events, not "buy 200 USD seats
     # at MSG four months out" listings — those have their own apps.
@@ -153,7 +176,6 @@ HARD_BLOCK_KEYWORDS = [
 # Soft penalties: not blocked but pushed down in ranking.
 SOFT_PENALTY_KEYWORDS = [
     "free house dance", "salsa class", "swing dance class",
-    "speed dating", "gay men's speed", "lesbian speed",
     "code & coffee", "code and coffee", "tech meetup",
     "discussion group", "writing workshop",
     "yoga class", "pilates class", "meditation class",
