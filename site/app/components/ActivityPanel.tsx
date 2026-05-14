@@ -60,6 +60,11 @@ export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
       accounts: {},
       categories: {},
       hosts: {},
+      negAccounts: {},
+      negCategories: {},
+      negHosts: {},
+      timeBuckets: {},
+      dayOfWeek: {},
       updatedAt: new Date().toISOString(),
     });
     setSavedCount(0);

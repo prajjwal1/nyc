@@ -6,6 +6,13 @@ on:
     paths:
       - "site/**"
       - "data/events.json"
+  schedule:
+    # GitHub Actions does NOT trigger workflows for commits made by
+    # GITHUB_TOKEN (the bot account our scrape workflows use). Without a
+    # cron, the site only deploys when a human pushes site/** changes —
+    # which is why events on the live site were stuck weeks behind the
+    # data in repo. Hourly cron forces a redeploy with current events.
+    - cron: "10 * * * *"
   workflow_dispatch:
 
 permissions:
