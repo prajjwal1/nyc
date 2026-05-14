@@ -612,11 +612,14 @@ def _likely_past_midnight(event: dict) -> bool:
 
 
 _IMAGE_REQUIRED_SOURCES = frozenset({
-    # Aggregator/listing sources where an entry without an image is a bare
-    # text blob — looks broken in the card UI. Venues (bookclubbar,
-    # eventbrite, etc.) sometimes ship without images for legit author
-    # events, so they're not in the strict list.
-    "substack", "partiful", "nypl", "greenwoodcemetery", "generic",
+    # Partiful events without images are usually private-event placeholders
+    # with bare titles — drop them. Generic JSON-LD without an image is
+    # often a bare listing-page entry. Other sources (substack, NYPL,
+    # bookclubbar, museums, music_venues, greenwoodcemetery) regularly
+    # publish high-content events with no flyer image — losing them to
+    # an image-required filter would silence legit literary/nature content
+    # the user values.
+    "partiful", "generic",
 })
 
 

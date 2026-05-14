@@ -633,6 +633,18 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         return True
     if re.match(r"^\d{1,2}(?:st|nd|rd|th)?\.?$", title_lower.strip(":!. ")):
         return True
+    # Pure timestamp titles like "Thursday, May 28 at 8:14 pm ET" or
+    # "FRI 5/15 @ 6:30pm —-" — these are timestamps masquerading as
+    # event titles, from accounts that post empty captions on flyer images.
+    weekday = "(?:mon|tue|wed|thu|fri|sat|sun|monday|tuesday|wednesday|thursday|friday|saturday|sunday)"
+    if re.match(rf"^{weekday},?\s+{months}\s+\d{{1,2}}\s+at\s+\d{{1,2}}:\d{{2}}", title_lower):
+        return True
+    if re.match(rf"^{weekday}\.?\s+\d{{1,2}}/\d{{1,2}}\s*[@-]", title_lower):
+        return True
+    # Title that is mostly just a time/date with at most a few words
+    # (e.g. "FRI 5/15 @ 6:30pm —-" — date+time + dash, no event subject)
+    if re.match(r"^\w{3,9}\.?\s+\d{1,2}[/.]\d{1,2}\s+@\s+\d{1,2}", title_lower):
+        return True
 
     # Title that's just "Location:" or starts with a label
     if title_lower.startswith(("location:", "venue:", "where:", "when:", "what:", "info:", "details:")):
