@@ -173,7 +173,7 @@ function MediaFirstCard({
         opened ? "opacity-60" : ""
       }`}
     >
-      <div className="relative aspect-square bg-gray-100">
+      <div className="relative aspect-[4/3] sm:aspect-[16/10] max-h-72 bg-gray-100 overflow-hidden">
         <img
           src={event.imageUrl!}
           alt=""

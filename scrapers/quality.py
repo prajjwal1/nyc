@@ -15,7 +15,9 @@ HARD_BLOCK_KEYWORDS = [
     "storytime", "story time", "kids", "children", "child ", "toddler", "baby",
     "babies", "preschool", "preteen", "tween", "teen ", "teens ", "after-school",
     "afterschool", "family saturday", "family sunday", "playtime", "popup play",
-    "pop in play", "pop-in play", "youth ", "ages 0", "ages 3", "ages 5", "ages 6",
+    "pop in play", "pop-in play", "open play", "early literacy",
+    "wiggle worms", "little movers", "toddler time",
+    "youth ", "ages 0", "ages 3", "ages 5", "ages 6",
     "ages 7", "ages 8", "ages 9", "ages 10",
 
     # Education / utility
@@ -23,6 +25,8 @@ HARD_BLOCK_KEYWORDS = [
     "high beginner english", "computer basics", "computer class", "computer lab",
     "homework help", "tutoring", "study group", "citizenship study",
     "tax help", "tax preparation", "legal clinic", "resume help", "resume workshop",
+    "social work intern", "social work student", "financial coaching",
+    "1:1 pace", "advisory session", "drop-in career", "drop in career",
     "job search", "job club", "career help", "ged ", "tefl ", "language exchange",
     "language meetup", "english practice", "english conversation",
     "spanish practice", "french practice",

@@ -106,6 +106,7 @@ def _parse_refinery_event(item: dict) -> dict | None:
         location_name="NYPL",
         source="nypl",
         source_url=url or "https://www.nypl.org/events",
+        image_url=DEFAULT_IMAGE,
         price="free",
         categories=["books", "free"],
     )
