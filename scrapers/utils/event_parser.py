@@ -143,6 +143,16 @@ CATEGORY_KEYWORDS = {
         "blue note", "smoke jazz", "village vanguard", "small's jazz",
         # Generic Songkick-style "@ Venue" pattern
         " @ the hall", " @ the rooftop",
+        # Touring-act fallbacks — "Artist Tour", "Springsteen", "Bruce
+        # Springsteen and E Street Band", "American Tour", etc. Catches
+        # the long tail of allevents arena-show listings that don't hit
+        # any specific venue keyword.
+        " tour", "world tour", "us tour", "north american tour",
+        "american tour", "live in concert", "in concert",
+        " at madison square garden", "at barclays center",
+        "at radio city", "at carnegie hall", "at beacon theatre",
+        "at lincoln center", "at the apollo", "at brooklyn steel",
+        "at terminal 5", "at webster hall", "at kings theatre",
     ],
     "parties": [
         "party", "social mixer", "mixer", "networking", "happy hour",

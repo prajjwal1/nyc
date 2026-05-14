@@ -898,5 +898,28 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
             msg += f" (kept {ig_kept_curated} IG curated events at lower {IG_CURATED_MIN_SCORE} floor)"
         print(msg)
 
+    # Per-source volume caps. Aggregator sources (allevents, songkick,
+    # comedy clubs) ship hundreds of events that crowd out IG and other
+    # user-relevant content. Keep top-N by score per capped source so
+    # the For You feed has real diversity.
+    from .config import SOURCE_VOLUME_CAPS
+    if SOURCE_VOLUME_CAPS:
+        by_source: dict[str, list] = {}
+        for ev in events:
+            by_source.setdefault(ev.get("source", ""), []).append(ev)
+        capped: list[dict] = []
+        cap_drops = 0
+        for src, src_events in by_source.items():
+            cap = SOURCE_VOLUME_CAPS.get(src)
+            if cap is None or len(src_events) <= cap:
+                capped.extend(src_events)
+                continue
+            src_events.sort(key=lambda e: e.get("score", 0), reverse=True)
+            capped.extend(src_events[:cap])
+            cap_drops += len(src_events) - cap
+        if cap_drops:
+            print(f"[normalize] Volume-capped {cap_drops} events from heavy aggregator sources")
+        events = capped
+
     events = sort_by_date(events)
     return events

@@ -287,6 +287,21 @@ SOURCE_QUALITY = {
     "92ny.org": 0.85,
     "lpr.com": 0.85,
     "elsewhere": 0.85,
-    "allevents": 0.5,    # major aggregator, weak curation per event
-    "songkick": 0.72,    # structured artist/venue listings, strong on music
+    "allevents": 0.35,   # major aggregator, weak curation per event
+    "songkick": 0.6,     # structured artist/venue listings, strong on music
+    "newyorkcomedyclub": 0.55,  # venue calendar; single-venue spam without cap
+    "eastvillecomedy": 0.55,
+    "thebellhouseny": 0.6,
+}
+
+# Per-source volume caps. Aggregator sources have hundreds of events
+# each — without a cap they crowd out user-relevant content
+# (IG events, books, social mixers). Top-N by score per source.
+SOURCE_VOLUME_CAPS = {
+    "allevents": 60,
+    "songkick": 50,
+    "newyorkcomedyclub": 25,
+    "eastvillecomedy": 15,
+    "thebellhouseny": 15,
+    "meetup": 80,
 }
