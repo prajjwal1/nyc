@@ -614,11 +614,12 @@ def _likely_past_midnight(event: dict) -> bool:
 _IMAGE_REQUIRED_SOURCES = frozenset({
     # Partiful events without images are usually private-event placeholders
     # with bare titles — drop them. Generic JSON-LD without an image is
-    # often a bare listing-page entry. Substack newsletters mix actual
-    # events (with flyer images) and news commentary (no images) — the
-    # no-image entries are almost always non-event headlines, so drop
-    # them to keep the feed event-focused.
-    "partiful", "generic", "substack",
+    # often a bare listing-page entry. Substack newsletters legitimately
+    # publish text-only event roundups (theskint, onefinedaynyc) — losing
+    # them to an image filter silences high-signal content. Keep substack
+    # OUT of the strict set and instead trust the source-level quality
+    # score + caption-fragment filters to weed out news commentary.
+    "partiful", "generic",
 })
 
 
