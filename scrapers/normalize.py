@@ -611,10 +611,22 @@ def _likely_past_midnight(event: dict) -> bool:
     return False
 
 
+_IMAGE_REQUIRED_SOURCES = frozenset({
+    # Aggregator/listing sources where an entry without an image is a bare
+    # text blob — looks broken in the card UI. Venues (bookclubbar,
+    # eventbrite, etc.) sometimes ship without images for legit author
+    # events, so they're not in the strict list.
+    "substack", "partiful", "nypl", "greenwoodcemetery", "generic",
+})
+
+
 def _is_shell_event(event: dict) -> bool:
     """An event with no description, no image, AND no venue is a placeholder
     that adds no information. Drop these so the feed isn't padded with empty
     tiles.
+
+    Also drop events from listing-aggregator sources that have no image —
+    they render as blank cards and ruin the visual feed quality.
 
     Exception: user-saved events are always kept regardless — the user
     explicitly bookmarked them.
@@ -625,6 +637,9 @@ def _is_shell_event(event: dict) -> bool:
     img = (event.get("imageUrl") or "").strip()
     loc = (event.get("location") or {}).get("name", "").strip()
     addr = (event.get("location") or {}).get("address", "").strip()
+    # Stricter: image required for listing-aggregator sources.
+    if not img and event.get("source") in _IMAGE_REQUIRED_SOURCES:
+        return True
     if not desc and not img and not loc and not addr:
         return True
     # Also drop events with very short descriptions, no image, AND no location.
@@ -657,10 +672,16 @@ def filter_far_future_misparsed(events: list[dict]) -> list[dict]:
         if ev.get("source") in _TRUSTED_FAR_FUTURE_SOURCES:
             out.append(ev)
             continue
-        # Far-future: keep only if a 4-digit year is mentioned in title or desc
+        # IG date parsing is unreliable past ~180d — the year exemption
+        # below is too loose for it. Drop IG events that far out unconditionally.
+        if ev.get("source") == "instagram":
+            continue
+        # Far-future: keep only if the event's actual year is mentioned in
+        # title or description (not just any 4-digit year — the description
+        # can mention an unrelated year and let a misparsed date through).
         text = (ev.get("title", "") + " " + ev.get("description", ""))[:600]
         import re as _re
-        if _re.search(r"\b(?:202[6-9]|20[3-9]\d)\b", text):
+        if _re.search(rf"\b{ev_date.year}\b", text):
             out.append(ev)
     return out
 
@@ -773,7 +794,7 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
         text = (ev.get("title", "") + " " + ev.get("description", "")).lower()
         weekday = detect_recurring_weekday(text)
         if weekday is not None:
-            occurrences = expand_recurring_event(ev, weekday, weeks_ahead=6)
+            occurrences = expand_recurring_event(ev, weekday, weeks_ahead=3)
             expanded.extend(occurrences)
             recurring_count += 1
         else:

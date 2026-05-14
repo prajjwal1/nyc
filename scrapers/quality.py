@@ -24,7 +24,8 @@ HARD_BLOCK_KEYWORDS = [
     "homework help", "tutoring", "study group", "citizenship study",
     "tax help", "tax preparation", "legal clinic", "resume help", "resume workshop",
     "job search", "job club", "career help", "ged ", "tefl ", "language exchange",
-    "language meetup", "english practice", "spanish practice", "french practice",
+    "language meetup", "english practice", "english conversation",
+    "spanish practice", "french practice",
     "italian practice", "deutsch", "korean–english", "korean-english",
     "internationals coffee", "lexgo language", "langroops", "conversation française",
     # Language-mixer / international-mixer events (excluded per user request)
@@ -122,6 +123,21 @@ HARD_BLOCK_KEYWORDS = [
     "till 3am", "until 3am", "til 3am", "till 6am", "until 6am",
     "rave 'til", "warehouse till", "club till",
     "no last call",
+
+    # Mega-arena stadium acts the user doesn't want surfacing here. The
+    # site is for going-out-with-friends events, not "buy 200 USD seats
+    # at MSG four months out" listings — those have their own apps.
+    "wwe ", "wwe:", "wwe at", "wwe presents",
+    # Virtual / remote-only events — user wants IRL events to meet people
+    "virtual race", "virtual run", "virtual 5k", "virtual 10k",
+    "virtual half marathon", "virtual marathon", "virtual fun run",
+    "virtual workout", "virtual yoga", "online event",
+    "zoom event", "via zoom",
+    # Tribute / cover-band schlock at venue mass-market shows
+    "tribute concert", "tribute band", "ultimate tribute",
+    # Generic "X 5K Walk/Run" charity races aren't the social-event vibe
+    # the user wants. Specific races (NYC Marathon, etc.) won't hit this.
+    "5k walk/run", "5k run/walk", "5k charity",
 ]
 
 # Soft penalties: not blocked but pushed down in ranking.
