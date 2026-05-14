@@ -111,6 +111,13 @@ def compute_score(event: dict) -> float:
         event.get("userSaved") or event.get("userTagged") or event.get("userAffinity")
     ) else 0.0
 
+    # User-curated source/series boost — reads scrapers/data/user_curated_sources.json
+    # at runtime. Designed to be appended-to over time by an
+    # engagement-tracking loop (or by the user directly editing the JSON),
+    # NOT by changing code. Hosts user has saved events from get added
+    # automatically; cold-start seed entries also live here.
+    curated_boost = _user_curated_boost(event)
+
 
     # Cross-source confirmation: same event appearing on 2+ sources is
     # very strong validation (e.g., Eventbrite + Instagram both list it).
@@ -188,7 +195,7 @@ def compute_score(event: dict) -> float:
     # an explicit bookmark should always pull an event to the top regardless
     # of how many other signals fire. Everything else stacks under a sum-cap
     # so events with broad keyword overlap don't saturate at 1.0 and tie.
-    explicit_boost = saved_boost + tagged_boost + affinity_boost + following_boost
+    explicit_boost = saved_boost + tagged_boost + affinity_boost + following_boost + curated_boost
     stacked_boosts = (
         high_value_boost + alcohol_free_boost + social_boost + meet_people_boost
         + cred_boost + cross_source_boost + hot_boost + yield_boost
@@ -559,6 +566,71 @@ def _is_trending(event: dict) -> bool:
         except Exception:
             pass
     return signals >= 2
+
+
+def _load_user_curated_sources() -> dict:
+    """Read scrapers/data/user_curated_sources.json (cached). Returns a dict
+    of {host_fragment: weight} and {title_hint: weight}.
+
+    This file is intended to grow over time from user engagement (saved
+    events, opened events) — not be hand-edited by the developer. Each
+    entry has a `score` (0-1) that maps to the rank boost magnitude and
+    a `source` field tagging where the entry came from ('user_mentioned',
+    'engagement_saved', 'engagement_opens_count', etc.).
+    """
+    global _USER_CURATED_CACHE
+    if _USER_CURATED_CACHE is not None:
+        return _USER_CURATED_CACHE
+    import os as _os
+    path = _os.path.join(
+        _os.path.dirname(_os.path.abspath(__file__)),
+        "data", "user_curated_sources.json",
+    )
+    if not _os.path.isfile(path):
+        _USER_CURATED_CACHE = {"hosts": {}, "title_hints": {}}
+        return _USER_CURATED_CACHE
+    try:
+        import json as _json
+        with open(path) as f:
+            raw = _json.load(f)
+        _USER_CURATED_CACHE = {
+            "hosts": {k.lower(): float(v.get("score", 1.0))
+                      for k, v in (raw.get("hosts") or {}).items()},
+            "title_hints": {k.lower(): float(v.get("score", 1.0))
+                            for k, v in (raw.get("title_hints") or {}).items()},
+        }
+        return _USER_CURATED_CACHE
+    except Exception:
+        _USER_CURATED_CACHE = {"hosts": {}, "title_hints": {}}
+        return _USER_CURATED_CACHE
+
+
+_USER_CURATED_CACHE: dict | None = None
+_USER_CURATED_MAX_BOOST = 0.15
+
+
+def _user_curated_boost(event: dict) -> float:
+    """Boost for events from user-curated hosts or title-matching series.
+    Magnitude scales with the score in user_curated_sources.json, capped at
+    _USER_CURATED_MAX_BOOST. Generalizes across any source the user (or
+    future auto-engagement-tracking) marks as high-signal — no hardcoded
+    URLs in code.
+    """
+    cfg = _load_user_curated_sources()
+    if not cfg["hosts"] and not cfg["title_hints"]:
+        return 0.0
+    boost = 0.0
+    url = (event.get("sourceUrl") or "").lower()
+    for host, weight in cfg["hosts"].items():
+        if host in url:
+            boost = max(boost, weight)
+    if boost < 1.0:
+        text = ((event.get("title") or "") + " "
+                + (event.get("description") or "")[:300]).lower()
+        for hint, weight in cfg["title_hints"].items():
+            if hint in text:
+                boost = max(boost, weight)
+    return min(_USER_CURATED_MAX_BOOST, boost * _USER_CURATED_MAX_BOOST)
 
 
 def rank_events(events: list[dict]) -> list[dict]:

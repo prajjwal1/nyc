@@ -742,6 +742,69 @@ def _load_previous_events_index(path: str) -> dict:
         return {}
 
 
+def _learn_curated_from_saved(events: list[dict]) -> None:
+    """Promote hosts of user-saved events into scrapers/data/user_curated_sources.json.
+
+    Every time an event is `userSaved`, the URL host (e.g. 'litclub.nyc',
+    'nypl.org') and any literary-series title token gets a small score bump.
+    The auto-learning loop: user clicks/saves → host gets a higher curated
+    score → future events from the same host rank higher → user sees more
+    of what they like → more saves. No code changes needed when a new
+    host enters the user's interest set.
+    """
+    import os as _os, json as _json
+    from datetime import datetime as _dt
+    from urllib.parse import urlparse as _urlparse
+
+    saved = [e for e in events if e.get("userSaved")]
+    if not saved:
+        return
+    path = _os.path.join(
+        _os.path.dirname(_os.path.abspath(__file__)),
+        "data", "user_curated_sources.json",
+    )
+    if _os.path.isfile(path):
+        try:
+            with open(path) as f:
+                cfg = _json.load(f)
+        except Exception:
+            cfg = {"hosts": {}, "title_hints": {}}
+    else:
+        cfg = {"hosts": {}, "title_hints": {}}
+    cfg.setdefault("hosts", {})
+    cfg.setdefault("title_hints", {})
+
+    changed = False
+    for ev in saved:
+        url = ev.get("sourceUrl") or ""
+        try:
+            host = _urlparse(url).hostname or ""
+        except Exception:
+            host = ""
+        host = host.lower().replace("www.", "")
+        if not host:
+            continue
+        entry = cfg["hosts"].setdefault(host, {
+            "score": 0.0,
+            "added_at": _dt.utcnow().date().isoformat(),
+            "source": "engagement_saved",
+            "save_count": 0,
+        })
+        entry["save_count"] = (entry.get("save_count") or 0) + 1
+        # Score saturates at 1.0; each save adds 0.2 (capped). After 5
+        # saves from a host it's "fully curated".
+        entry["score"] = min(1.0, 0.2 * entry["save_count"])
+        changed = True
+
+    if changed:
+        cfg["lastUpdated"] = _dt.utcnow().isoformat() + "Z"
+        try:
+            with open(path, "w") as f:
+                _json.dump(cfg, f, indent=2)
+        except Exception as exc:
+            print(f"[normalize] Failed to persist user_curated_sources: {exc}")
+
+
 def process(events: list[dict], previous_index: dict | None = None) -> list[dict]:
     from .ranking import rank_events
     from .quality import is_blocked
@@ -850,6 +913,10 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
                 pass
     if velocity_count:
         print(f"[normalize] {velocity_count} events have positive engagement velocity since last scrape")
+
+    # Promote hosts of saved events into user_curated_sources.json so the
+    # next run ranks them higher. Auto-learning, no code changes needed.
+    _learn_curated_from_saved(events)
 
     events = rank_events(events)
 

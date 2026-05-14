@@ -1,0 +1,10 @@
+{
+  "_doc": "User-curated high-signal sources. Auto-updated from engagement signals (events the user saves) AND seeded with sources the user has explicitly mentioned. Read by ranking.py:_user_curated_boost. Keys are URL host fragments (e.g. 'litclub.nyc') or lowercase title hints (e.g. 'wnyc book club').",
+  "hosts": {
+    "litclub.nyc": {"score": 1.0, "added_at": "2026-05-14", "source": "user_mentioned"}
+  },
+  "title_hints": {
+    "wnyc book club": {"score": 1.0, "added_at": "2026-05-14", "source": "user_mentioned"}
+  },
+  "lastUpdated": "2026-05-14T15:50:00Z"
+}
