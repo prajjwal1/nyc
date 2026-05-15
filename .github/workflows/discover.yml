@@ -49,5 +49,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add scrapers/data/discovered_accounts.json scrapers/data/discovered_urls.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Discover new accounts $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          git pull --rebase --autostash || true
+          .github/scripts/safe-pull.sh \
+            scrapers/data/discovered_accounts.json \
+            scrapers/data/discovered_urls.json
           git push

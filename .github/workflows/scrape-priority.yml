@@ -68,7 +68,17 @@ jobs:
         run: python -m scrapers.run_all
 
       - name: Pull latest before commit
-        run: git pull --rebase --autostash || true
+        run: |
+          .github/scripts/safe-pull.sh \
+            data/events.json site/public/events.json \
+            scrapers/data/discovered_urls.json \
+            scrapers/data/user_affinity_accounts.json \
+            scrapers/data/dead_accounts.json \
+            scrapers/data/stats_history.jsonl \
+            scrapers/data/url_health.json \
+            scrapers/data/account_cursors.json \
+            scrapers/data/account_quality.json \
+            scrapers/data/user_hashtags.json
 
       - name: Commit updated events
         run: |
