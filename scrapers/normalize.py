@@ -39,6 +39,11 @@ def deduplicate(events: list[dict]) -> list[dict]:
     # = [theskint, nycforfree, secretnyc] — strong cross-account validation.
     out = _dedup_cross_ig_account(out)
 
+    # 4b. Same-account recurring posts: an IG account posting weekly about
+    # the same series creates duplicate cards across multiple dates. Collapse
+    # to the earliest occurrence and mark recurring=True.
+    out = _dedup_same_account_recurring(out)
+
     # Fifth pass: perceptual-hash dedup. Catches residual same-flyer reposts
     # where the title differs enough to escape fuzzy-token-match (e.g.,
     # one account writes "PICKLEBALL @ McCarren!", another writes "Open
@@ -135,6 +140,66 @@ def _dedup_perceptual_hash(events: list[dict]) -> list[dict]:
               f"(hashed {hashes_computed} images)")
 
     out = [ev for i, ev in enumerate(events) if i not in merged_into]
+    return out
+
+
+def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:
+    """Collapse same-IG-account events that share a near-identical title
+    across multiple dates. These are usually the same recurring series
+    captured from multiple weekly posts. Keeping all of them inflates the
+    feed with duplicate cards. Keep the earliest occurrence per (account,
+    title-token-key).
+
+    Triggers when:
+      - Same IG account (instagramAccount field)
+      - Jaccard >= 0.75 on title tokens (or >=4 shared distinctive tokens)
+      - Dates are different (otherwise the regular dedup already handled it)
+    """
+    by_acct: dict[str, list[dict]] = {}
+    out: list[dict] = []
+    for ev in events:
+        if ev.get("source") != "instagram":
+            out.append(ev)
+            continue
+        acct = (ev.get("instagramAccount") or "").lower()
+        if not acct:
+            out.append(ev)
+            continue
+        by_acct.setdefault(acct, []).append(ev)
+
+    merges = 0
+    for acct, group in by_acct.items():
+        if len(group) <= 1:
+            out.extend(group)
+            continue
+        token_sets = [_title_token_set(e.get("title", "")) for e in group]
+        merged_into: dict[int, int] = {}
+        for i in range(len(group)):
+            if i in merged_into:
+                continue
+            for j in range(i + 1, len(group)):
+                if j in merged_into:
+                    continue
+                if group[i].get("date") == group[j].get("date"):
+                    continue
+                a, b = token_sets[i], token_sets[j]
+                if not a or not b or len(a) < 3:
+                    continue
+                jacc = len(a & b) / len(a | b)
+                if jacc >= 0.75 or len(a & b) >= 4:
+                    # Keep the earlier-dated one; merge later into earlier
+                    earlier, later = i, j
+                    if group[j].get("date","") < group[i].get("date",""):
+                        earlier, later = j, i
+                    group[earlier] = _merge(group[earlier], group[later])
+                    group[earlier]["recurring"] = True
+                    merged_into[later] = earlier
+                    merges += 1
+        for i, e in enumerate(group):
+            if i not in merged_into:
+                out.append(e)
+    if merges:
+        print(f"[normalize] Same-account recurring merged {merges} duplicate posts")
     return out
 
 

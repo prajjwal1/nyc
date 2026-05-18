@@ -174,6 +174,14 @@ HARD_BLOCK_KEYWORDS = [
     "are set to open", "set to open in",
     "150-year-old", "100-year-old", "200-year-old",
 
+    # Corporate / startup / founder networking — user opted out
+    "founders rooftop", "founders happy hour", "founders rooftop happy",
+    "consumer club", "consumer founders", "founders' club",
+    "vc happy hour", "vc mixer", "vc summit", "venture happy hour",
+    "yc founders", "ycombinator", "y combinator",
+    "tech founders", "tech ceos", "startup founders",
+    "founder dinner", "founders dinner", "founders breakfast",
+
     # Same-sex / LGBTQ+ speed dating events — these are demographic-specific
     # dating events that the user (straight) doesn't attend. Straight speed
     # dating, mixed singles mixers, queer-friendly art / cultural events
@@ -377,6 +385,8 @@ def is_blocked(event: dict) -> bool:
 # Cities that strongly suggest the event is NOT in NYC.
 _NON_NYC_CITIES = [
     "los angeles", " la,", " la ", "los feliz", "echo park", "silverlake",
+    "west hollywood", "weho", "culver city", "santa monica", "beverly hills",
+    "downtown la", "dtla", "highland park", "eagle rock", "pasadena",
     "san francisco", " sf,", " sf ", "oakland", "berkeley",
     "chicago", "miami", "austin", "atlanta", "boston", "philadelphia", "philly",
     "portland", "seattle", "denver", "nashville", "new orleans",
@@ -664,8 +674,12 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "[", "(",
         "@", "#",
         # Caption-only IG fragments lacking real event title
-        "for all the details", "for allll", "for all of",
+        "for all the details", "for allll", "for alll", "for all of",
         "hit that link", "link in bio", "link in our bio",
+        "the stage is set", "stage is set ",
+        "oh summer", "oh nyc", "oh new york",
+        "we are soooo", "we are so back", "we're soooo", "we're so back",
+        "summer in nyc",
         "+ ", "- ", "— ", "– ",  # leading punctuation suggesting a list-item
         "more details", "details below", "details inside",
         "comment below", "tag a friend", "tag your",
@@ -706,6 +720,10 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if re.match(rf"^{weekday},?\s+{months}\s+\d{{1,2}}\s+at\s+\d{{1,2}}:\d{{2}}", title_lower):
         return True
     if re.match(rf"^{weekday}\.?\s+\d{{1,2}}/\d{{1,2}}\s*[@-]", title_lower):
+        return True
+    # Pure-date titles WITHOUT a time: "Sunday May 24, 2026", "Friday Jun 6"
+    if re.match(rf"^{weekday},?\s+{months}\s+\d{{1,2}}(?:[,\s]+\d{{2,4}})?\.?\s*$",
+                title_lower):
         return True
     # Title that is mostly just a time/date with at most a few words
     # (e.g. "FRI 5/15 @ 6:30pm —-" — date+time + dash, no event subject)
