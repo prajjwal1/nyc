@@ -112,6 +112,7 @@ async def scrape() -> list[dict]:
                 location_name=loc_name or "NYC Parks",
                 source="nyc_parks",
                 source_url=url,
+                image_url="https://www.nycgovparks.org/pagefiles/180/Bryant-Park.jpg",
                 price="free",
                 categories=cats,
             )

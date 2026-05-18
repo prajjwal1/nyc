@@ -134,6 +134,46 @@ HARD_BLOCK_KEYWORDS = [
     "rave 'til", "warehouse till", "club till",
     "no last call",
 
+    # Age-mismatched singles events — user is in 20s/30s. Events targeting
+    # 40s/50s/60s+ aren't relevant. Match common labelings.
+    "(40s & 50s)", "(40s and 50s)", "(50s & 60s)", "(50s and 60s)",
+    "(40s)", "(50s)", "(60s)", "(70s)",
+    "ages 35 -", "ages 40 -", "ages 45 -", "ages 50 -", "ages 55 -",
+    "ages 35 to", "ages 40 to", "ages 45 to", "ages 50 to",
+    "ages 35+", "ages 40+", "ages 45+", "ages 50+", "ages 55+",
+    "40+ singles", "45+ singles", "50+ singles", "55+ singles",
+    "40+ mixer", "45+ mixer", "50+ mixer",
+    "men 40+", "men 45+", "men 50+",
+    "women 40+", "women 45+", "women 50+",
+    "boomers", "gen x dating",
+
+    # Generic tribute / cover-band acts — knockoff shows, not original artists.
+    # Specific noted tributes ("Tribute to MLK", "tribute mass") won't hit
+    # because they're block-listed elsewhere; this catches the music tribute
+    # band format the user explicitly mentioned not wanting.
+    "tribute to taylor swift", "tribute to beyonce", "tribute to prince",
+    "tribute to drake", "tribute to coldplay", "tribute to fleetwood",
+    "live band tribute", "band tribute to", "live tribute to",
+    "the ultimate tribute", "tribute night", "tribute show:",
+
+    # Corporate-vibe networking signals from the title (emoji + branded
+    # 'Professionals' patterns). User opted out of work-style networking.
+    "👔",   # necktie emoji — almost always work-networking branded
+    "connects professionals", "professionals connect",
+    "nyc connects", "ny connects",
+    "professionals for happy hour", "professionals happy hour",
+    "media/advertising professionals", "media professionals meet",
+
+    # All-caps hype titles that turn out to be generic shows — keep specific
+    # branded events ("YACHT", "DUMBO") allowed via length/word rules in
+    # _is_caption_fragment. These literal phrases are surfaced from the
+    # noisiest aggregators.
+    "ladies night out", "ladies' night out", "ladies nite out",
+
+    # IG news-headline-style captions that aren't event titles
+    "are set to open", "set to open in",
+    "150-year-old", "100-year-old", "200-year-old",
+
     # Same-sex / LGBTQ+ speed dating events — these are demographic-specific
     # dating events that the user (straight) doesn't attend. Straight speed
     # dating, mixed singles mixers, queer-friendly art / cultural events
@@ -690,6 +730,22 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         # OK if it's a proper noun / festival name (1-3 short words)
         if len(words) > 3 or sum(len(w) for w in words) > 25:
             return True
+    # Short all-caps hype titles like "COMEDY SPECIAL", "LADIES NIGHT OUT",
+    # "TRACK CLASS POP-UP!" — too generic to be a real event listing.
+    if (title_stripped.isupper() and 6 <= len(title_stripped) <= 22
+            and len(title_stripped.split()) <= 3):
+        return True
+
+    # Substack-style short CTA fragments: "Final Performance May 23.",
+    # "thru May 17 only!", "take 25% off tickets", "Limited $25 tickets..."
+    cta_prefixes = (
+        "take ", "thru ", "through ", "limited ", "final performance ",
+        "last chance to ", "tickets going fast", "tickets selling",
+        "save ", "save $", "save %", "discount", "early bird",
+        "sale ends", "today only", "this week only",
+    )
+    if any(title_lower.startswith(p) for p in cta_prefixes) and len(title_stripped) < 60:
+        return True
 
     # Caption-y openers (relative time + verb)
     caption_openers = [

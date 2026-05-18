@@ -110,6 +110,9 @@ CATEGORY_KEYWORDS = {
         "book release", "memoir", "bookstore", "lit ", "literature",
         "reading rhythms", "rest and read", "book hub", "essay collection",
         "novelist", "writers ", "writing workshop",
+        # Eventbrite/B&N pattern: "Author Name discusses BOOK at venue"
+        "discusses", "discuss her book", "discuss his book", "discuss their book",
+        "audiobooks", "audiobook", "lectures on", "library reading",
     ],
     "art": [
         "art opening", "gallery", "exhibition", "museum", "painting", "sculpture",
@@ -143,6 +146,9 @@ CATEGORY_KEYWORDS = {
         "blue note", "smoke jazz", "village vanguard", "small's jazz",
         # Generic Songkick-style "@ Venue" pattern
         " @ the hall", " @ the rooftop",
+        # Orchestra/symphony/choir patterns
+        "orchestra", "symphony", "philharmonic", "chamber music", "choir",
+        "string quartet", "ensemble", "recital",
         # Touring-act fallbacks — "Artist Tour", "Springsteen", "Bruce
         # Springsteen and E Street Band", "American Tour", etc. Catches
         # the long tail of allevents arena-show listings that don't hit
@@ -156,6 +162,7 @@ CATEGORY_KEYWORDS = {
     ],
     "parties": [
         "party", "social mixer", "mixer", "networking", "happy hour",
+        "social club", "social ", "after-party", "afterparty",
         "housewarming", "brunch party", "rooftop party", "loft party",
         "warehouse party", "speakeasy", "cocktail party", "after-hours",
         "underground", "boat party", "block party", "kickback",
@@ -185,7 +192,8 @@ CATEGORY_KEYWORDS = {
     "games": [
         "board game", "trivia", "backgammon", "chess", "arcade", "game night",
         "mahjong", "poker night", "puzzle night", "gammon", "scrabble",
-        "settlers of catan", "game social",
+        "settlers of catan", "game social", "bingo", "card game",
+        "the jewish dating game",
     ],
     "theater": [
         "theater", "theatre", "play opening", "broadway", "off-broadway",
