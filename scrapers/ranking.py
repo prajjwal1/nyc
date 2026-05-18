@@ -118,6 +118,16 @@ def compute_score(event: dict) -> float:
     # automatically; cold-start seed entries also live here.
     curated_boost = _user_curated_boost(event)
 
+    # Auto-derived interest profile — reads scrapers/data/user_interest_profile.json
+    # which is built from the user's IG follow graph + affinity engagement
+    # (utils/interest_profile.py). No hardcoded keywords; the profile evolves
+    # as the user's follow graph evolves.
+    try:
+        from .utils.interest_profile import interest_profile_boost
+        interest_boost = interest_profile_boost(event)
+    except Exception:
+        interest_boost = 0.0
+
 
     # Cross-source confirmation: same event appearing on 2+ sources is
     # very strong validation (e.g., Eventbrite + Instagram both list it).
@@ -195,7 +205,7 @@ def compute_score(event: dict) -> float:
     # an explicit bookmark should always pull an event to the top regardless
     # of how many other signals fire. Everything else stacks under a sum-cap
     # so events with broad keyword overlap don't saturate at 1.0 and tie.
-    explicit_boost = saved_boost + tagged_boost + affinity_boost + following_boost + curated_boost
+    explicit_boost = saved_boost + tagged_boost + affinity_boost + following_boost + curated_boost + interest_boost
     stacked_boosts = (
         high_value_boost + alcohol_free_boost + social_boost + meet_people_boost
         + cred_boost + cross_source_boost + hot_boost + yield_boost

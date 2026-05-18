@@ -1029,6 +1029,18 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # next run ranks them higher. Auto-learning, no code changes needed.
     _learn_curated_from_saved(events)
 
+    # Rebuild the auto-derived interest profile so the ranker reflects the
+    # latest IG follow graph + affinity engagement. Cheap (reads ~5 JSON
+    # files, writes 1) but invalidates the in-process cache so ranking
+    # uses fresh signals.
+    try:
+        from .utils.interest_profile import build_profile
+        import scrapers.utils.interest_profile as _ip
+        build_profile()
+        _ip._CACHE = None
+    except Exception as exc:
+        print(f"[normalize] interest_profile rebuild failed: {exc}")
+
     events = rank_events(events)
 
     # Drop low-score events — every event must justify its position.
@@ -1043,8 +1055,13 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # as the primary discovery channel — the curator's pick is itself
     # quality signal. Random hashtag-discovered or unknown-account IG
     # events still meet the default 0.30 floor.
-    DEFAULT_MIN_SCORE = 0.30
-    IG_CURATED_MIN_SCORE = 0.20
+    # User explicitly: "it's okay to see less events than to see events
+    # which are not useful". Floor raised from 0.30 to 0.45 (default) and
+    # 0.20 to 0.35 (curated IG). Combined with interest_profile_boost
+    # (auto-derived from follow graph), this keeps the relevant tail in
+    # while shedding marginal-quality aggregator dumps.
+    DEFAULT_MIN_SCORE = 0.45
+    IG_CURATED_MIN_SCORE = 0.35
     from .config import IG_ACCOUNTS
     _curated_ig = {a.lower() for a in IG_ACCOUNTS}
 
