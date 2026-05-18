@@ -181,6 +181,31 @@ HARD_BLOCK_KEYWORDS = [
     "yc founders", "ycombinator", "y combinator",
     "tech founders", "tech ceos", "startup founders",
     "founder dinner", "founders dinner", "founders breakfast",
+    "founders meetup", "founders & investors", "founders and investors",
+    "investors meetup", "investor meetup",
+    "b2b meetup", "b2b mixer", "b2b networking",
+    "ai meetup", "ai engineers", "ai founders", "ai agents for",
+    "agentic ai", "frontier ai", "ai circle",
+    "ai for designers", "ai for engineers", "ai for product",
+    "demo night", "demo day", "pitch night", "pitch day",
+    "builders club", "builder club", "builders dinner",
+    "5-9 builders", "9-5 builders",
+    "tech & beer", "tech and beer", "tech&beer",
+    "engineers meetup", "engineering meetup",
+    "product managers meetup", "pm meetup",
+    "ux meetup", "designers meetup", "design meetup",
+    "data engineers meetup", "data science meetup",
+    "ml meetup", "machine learning meetup",
+    "agile meetup", "scrum meetup",
+    "spc nyc demo", "spc demo",
+    "working capital", "unlocking working",
+
+    # IG news/info caption openers — informational posts, not events
+    "you can see them now", "you can find them",
+    "want to learn more about", "want to know more about",
+    "did you know that", "fun fact:",
+    "psst,", "psst:", "psssst",
+    "in case you missed", "in case you didn't",
 
     # Same-sex / LGBTQ+ speed dating events — these are demographic-specific
     # dating events that the user (straight) doesn't attend. Straight speed

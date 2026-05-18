@@ -197,10 +197,16 @@ def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:
                 if group[i].get("date") == group[j].get("date"):
                     continue
                 a, b = token_sets[i], token_sets[j]
-                if not a or not b or len(a) < 3:
+                if not a or not b:
                     continue
                 jacc = len(a & b) / len(a | b)
-                if jacc >= 0.75 or len(a & b) >= 4:
+                # Same publisher is itself strong signal — relax the
+                # min-token-count constraint. Generic recurring-show titles
+                # like 'New York Comedy Club Presents' have just 2 distinctive
+                # tokens after stopwords (presents/live/show all stripped),
+                # but we still want to collapse repeated nights of the same
+                # generic show.
+                if jacc >= 0.75 or len(a & b) >= 4 or (jacc >= 0.9 and len(a) >= 2):
                     # Keep the earlier-dated one; merge later into earlier
                     earlier, later = i, j
                     if group[j].get("date","") < group[i].get("date",""):
