@@ -696,6 +696,26 @@ def _likely_past_midnight(event: dict) -> bool:
     return False
 
 
+# Per-source fallback images for venues that publish events without flyer
+# photos. Keeps the card UI consistent (no blank rectangles) without
+# dropping legit literary / nature / civic content.
+_SOURCE_DEFAULT_IMAGES = {
+    "greenwoodcemetery": "https://www.green-wood.com/wp-content/uploads/2021/02/cemetery-aerial.jpg",
+    "nyc_parks": "https://www.nycgovparks.org/pagefiles/180/Bryant-Park.jpg",
+    "substack": "https://substack.com/img/substack_logo_dark.svg",
+    "lizsbookbar": "https://images.squarespace-cdn.com/content/v1/65a2eba6c0fe5b4af96a3cc7/d2eb6b48-7c5a-4ed0-b3a8-37e7c69e6b95/IMG_5283.jpeg",
+}
+
+
+def _apply_default_images(events: list[dict]) -> None:
+    for ev in events:
+        if (ev.get("imageUrl") or "").strip():
+            continue
+        fallback = _SOURCE_DEFAULT_IMAGES.get(ev.get("source", ""))
+        if fallback:
+            ev["imageUrl"] = fallback
+
+
 _IMAGE_REQUIRED_SOURCES = frozenset({
     # Partiful events without images are usually private-event placeholders
     # with bare titles — drop them. Generic JSON-LD without an image is
@@ -897,6 +917,10 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
 
     events = [ev for ev in events if ev.get("title") and ev.get("date")]
     events = filter_future(events)
+
+    # Stamp per-source default images BEFORE _is_shell_event so that
+    # venues like greenwoodcemetery / nyc_parks survive the image filter.
+    _apply_default_images(events)
 
     # Drop suspiciously far-future events without an explicit year mention.
     before = len(events)
