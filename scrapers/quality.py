@@ -417,6 +417,8 @@ _NON_NYC_CITIES = [
     "los angeles", " la,", " la ", "los feliz", "echo park", "silverlake",
     "west hollywood", "weho", "culver city", "santa monica", "beverly hills",
     "downtown la", "dtla", "highland park", "eagle rock", "pasadena",
+    "saint petersburg", "st. petersburg", "st petersburg",
+    "moscow", "russia,", "japan,", "korea,",
     "san francisco", " sf,", " sf ", "oakland", "berkeley",
     "chicago", "miami", "austin", "atlanta", "boston", "philadelphia", "philly",
     "portland", "seattle", "denver", "nashville", "new orleans",
@@ -637,6 +639,14 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
 
     title_lower = title.lower().strip()
     title_stripped = title.strip()
+    # Normalize curly quotes/apostrophes to ASCII so block patterns with
+    # ASCII apostrophes match titles that use the typographic ' (U+2019).
+    # IG/news outlets routinely render apostrophes as the curly form, so
+    # "Last year's SWITCH N' PRESS PLAY" wouldn't match "last year's"
+    # without this normalization.
+    title_lower = (title_lower
+                   .replace("’", "'").replace("‘", "'")
+                   .replace("“", '"').replace("”", '"'))
 
     # Caption fragments often start with lowercase or narrative phrases
     fragment_starts = [

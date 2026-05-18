@@ -113,6 +113,14 @@ CATEGORY_KEYWORDS = {
         # Eventbrite/B&N pattern: "Author Name discusses BOOK at venue"
         "discusses", "discuss her book", "discuss his book", "discuss their book",
         "audiobooks", "audiobook", "lectures on", "library reading",
+        # Generic literary patterns
+        "readers meetup", "readers' meetup", "reading brooklyn",
+        "rest & read", "rest and read", "rest n read",
+        "book bar", "book nook", "book pop", "book pop up",
+        "quiet reading", "silent reading",
+        # Pattern "by <author>" + literary verb in same title
+        " by hannah arendt", " by james mcb", " by tom perrotta",
+        " by joe west", " by elsie silver",
     ],
     "art": [
         "art opening", "gallery", "exhibition", "museum", "painting", "sculpture",
@@ -122,6 +130,9 @@ CATEGORY_KEYWORDS = {
         "sip and paint", "sip & paint", "paint and sip", "paint & sip",
         "mural", "ceramics", "pottery class", "drawing class",
         "art class", "art workshop", "creative workshop",
+        "calligraphy", "sip & script", "drink 'n draft", "drink n draft",
+        "animation nights", "anny", "screening:",
+        "thesis projects", "mfa thesis", "bfa thesis",
     ],
     "music": [
         "live music", "live jazz", "jazz", "concert", "dj set", "dj night",
@@ -193,7 +204,8 @@ CATEGORY_KEYWORDS = {
         "board game", "trivia", "backgammon", "chess", "arcade", "game night",
         "mahjong", "poker night", "puzzle night", "gammon", "scrabble",
         "settlers of catan", "game social", "bingo", "card game",
-        "the jewish dating game",
+        "the jewish dating game", "backgmmon",  # common misspelling
+        "game show", "pub quiz", "quiz night",
     ],
     "theater": [
         "theater", "theatre", "play opening", "broadway", "off-broadway",
@@ -211,6 +223,10 @@ CATEGORY_KEYWORDS = {
         "comedy show", "improv", "stand-up", "standup", "open mic comedy",
         "comedy night", "sketch show", "comedy club", "comedy cellar",
         "comedy lottery", "comedy competition", "comedy at ", "comedy hour",
+        "stand up showcase", "stand-up showcase", "comedy showcase",
+        "special taping", "comedy taping",
+        "ear hustle live", "drinking game nyc",
+        "tight pants comedy", "combat zone 360",
         "qedastoria", "q.e.d.", "qed astoria", "ucb", "caveat",
         "eastville comedy", "carolines", "gotham comedy", "stand up ny",
         "comic ", "comics ", "comedians", "tuesday night laughs",
@@ -272,6 +288,11 @@ CATEGORY_KEYWORDS = {
         "wedding trends", "beauty pop-up",
         "brand pop-up", "brand pop up", "brand activation",
         "is popping up",
+        # Science / themed exploration events
+        "astronomy on tap", "science on tap", "philosophy on tap",
+        "history on tap", "math on tap", "physics on tap",
+        "a conversation with", "in conversation with",
+        "rooftop happy hour at",
     ],
     "viewings": [
         "viewing party", "watch party", "live screening",

@@ -161,22 +161,24 @@ def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:
     by_acct: dict[str, list[dict]] = {}
     out: list[dict] = []
     for ev in events:
-        # Build a publisher key per source
+        # Build a publisher key per source. For non-IG: just source+netloc.
+        # Trying to include path-prefix backfires when ticketing platforms
+        # embed dates/IDs in the slug (e.g. ticketmaster.com/why-are-you-
+        # single-...-05-21-2026/event/<id>) — same recurring show on
+        # different nights gets different path-prefixes and never merges.
+        # Same publisher key + strict title Jaccard (>=0.75) gives the
+        # right balance: different shows at the same venue have distinct
+        # titles → low Jaccard → no false merge.
         src = ev.get("source", "")
         if src == "instagram":
             key = "ig:" + (ev.get("instagramAccount") or "").lower()
         else:
             try:
-                # For URL-based publishers, use host + first path segment
-                # so distinct event series under one venue don't collapse.
                 p = urlparse(ev.get("sourceUrl") or "")
-                # Drop trailing path component (event-specific slug). Take
-                # path up to the second-to-last segment.
-                parts = [x for x in (p.path or "").split("/") if x][:-1]
-                key = f"{src}:{p.netloc}:{('/'.join(parts))[:80]}"
+                key = f"{src}:{p.netloc}" if p.netloc else ""
             except Exception:
                 key = ""
-        if not key or key.endswith(":") or key == src + ":" :
+        if not key:
             out.append(ev)
             continue
         by_acct.setdefault(key, []).append(ev)
