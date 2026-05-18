@@ -863,6 +863,56 @@ def _load_previous_events_index(path: str) -> dict:
         return {}
 
 
+def _learn_excluded_from_hidden(events: list[dict]) -> None:
+    """Promote accounts/hosts of user-hidden events into
+    user_excluded_sources.json. Symmetric to _learn_curated_from_saved.
+
+    Triggers when an event carries userHidden=true. After 3 hides of the
+    same account, the account is auto-added with source='engagement_hidden'.
+    The user can still manually edit the JSON to override.
+    """
+    import os as _os, json as _json
+    from datetime import datetime as _dt
+
+    hidden = [e for e in events if e.get("userHidden")]
+    if not hidden:
+        return
+    path = _os.path.join(
+        _os.path.dirname(_os.path.abspath(__file__)),
+        "data", "user_excluded_sources.json",
+    )
+    if _os.path.isfile(path):
+        try:
+            with open(path) as f:
+                cfg = _json.load(f)
+        except Exception:
+            cfg = {"accounts": {}, "hosts": {}, "title_hints": {}}
+    else:
+        cfg = {"accounts": {}, "hosts": {}, "title_hints": {}}
+    cfg.setdefault("accounts", {})
+
+    changed = False
+    for ev in hidden:
+        acct = (ev.get("instagramAccount") or "").lower()
+        if not acct:
+            continue
+        entry = cfg["accounts"].setdefault(acct, {
+            "reason": "engagement_hidden",
+            "added_at": _dt.utcnow().date().isoformat(),
+            "hide_count": 0,
+        })
+        entry["hide_count"] = (entry.get("hide_count") or 0) + 1
+        changed = True
+
+    if changed:
+        cfg["lastUpdated"] = _dt.utcnow().isoformat() + "Z"
+        try:
+            with open(path, "w") as f:
+                _json.dump(cfg, f, indent=2)
+        except Exception as exc:
+            print(f"[normalize] Failed to persist user_excluded_sources: {exc}")
+
+
 def _learn_curated_from_saved(events: list[dict]) -> None:
     """Promote hosts of user-saved events into scrapers/data/user_curated_sources.json.
 
@@ -951,6 +1001,19 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     blocked = before - len(events)
     if blocked:
         print(f"[normalize] Blocked {blocked} low-quality events")
+
+    # User-excluded sources (data-driven, no hardcoded list) — accounts /
+    # hosts / title-hints the user has explicitly said no to via
+    # scrapers/data/user_excluded_sources.json. Auto-grows from hides.
+    try:
+        from .ranking import is_user_excluded
+        before = len(events)
+        events = [ev for ev in events if not is_user_excluded(ev)]
+        excluded = before - len(events)
+        if excluded:
+            print(f"[normalize] Dropped {excluded} user-excluded events")
+    except Exception as exc:
+        print(f"[normalize] user-exclusion filter failed: {exc}")
 
     # Drop "shell" events — no description AND no image AND no location.
     # These are typically placeholder rows from listing scrapes that didn't
@@ -1042,6 +1105,8 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # Promote hosts of saved events into user_curated_sources.json so the
     # next run ranks them higher. Auto-learning, no code changes needed.
     _learn_curated_from_saved(events)
+    # Symmetric on the negative side: hidden events grow the excluded list.
+    _learn_excluded_from_hidden(events)
 
     # Rebuild the auto-derived interest profile so the ranker reflects the
     # latest IG follow graph + affinity engagement. Cheap (reads ~5 JSON

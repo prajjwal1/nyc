@@ -121,9 +121,23 @@ def build_profile() -> dict:
         y = ev / posts if posts else 0.0
         yield_map[u] = round(y, 3)
 
-    # Signal accounts = follows + affinity, ordered by yield desc.
+    # Read excluded accounts so user-rejected handles don't keep getting
+    # the follow-graph boost (e.g. user follows houseofyesnyc for the
+    # aesthetic but doesn't want their events surfaced).
+    excluded_path = os.path.join(DATA_DIR, "user_excluded_sources.json")
+    excluded_usernames: set[str] = set()
+    if os.path.isfile(excluded_path):
+        try:
+            with open(excluded_path) as f:
+                exc = json.load(f)
+            excluded_usernames = {k.lower() for k in (exc.get("accounts") or {}).keys()}
+        except Exception:
+            pass
+
+    # Signal accounts = follows + affinity (minus exclusions), ordered by
+    # yield desc. Excluded accounts get NO boost even if user follows them.
     signal = sorted(
-        follow_usernames | affinity_usernames,
+        (follow_usernames | affinity_usernames) - excluded_usernames,
         key=lambda u: -yield_map.get(u, 0),
     )
 

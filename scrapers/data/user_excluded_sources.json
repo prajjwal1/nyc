@@ -1,0 +1,9 @@
+{
+  "_doc": "User-excluded sources. Symmetric counterpart to user_curated_sources.json. Events matching any entry get a heavy negative rank penalty (effectively dropped). Auto-grown from engagement signals (events the user hides 3+ times from a single account/host), AND seeded with accounts the user has explicitly mentioned not wanting. Read by ranking.py:_user_excluded_penalty and interest_profile.py (excluded accounts get removed from signal_accounts so they don't receive the IG-follow boost even when followed).",
+  "accounts": {
+    "houseofyesnyc": {"reason": "user_mentioned", "added_at": "2026-05-18", "note": "club / late-night DJ venue — not the meeting-people vibe user wants"}
+  },
+  "hosts": {},
+  "title_hints": {},
+  "lastUpdated": "2026-05-18T17:30:00Z"
+}

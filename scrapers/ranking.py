@@ -578,6 +578,63 @@ def _is_trending(event: dict) -> bool:
     return signals >= 2
 
 
+_USER_EXCLUDED_CACHE: dict | None = None
+
+
+def _load_user_excluded_sources() -> dict:
+    """Read scrapers/data/user_excluded_sources.json (cached). Returns
+    {accounts, hosts, title_hints}. Symmetric to user_curated_sources.json
+    — sources/series the user has explicitly said NO to. Auto-grows from
+    repeated hide signals.
+    """
+    global _USER_EXCLUDED_CACHE
+    if _USER_EXCLUDED_CACHE is not None:
+        return _USER_EXCLUDED_CACHE
+    import os as _os, json as _json
+    path = _os.path.join(
+        _os.path.dirname(_os.path.abspath(__file__)),
+        "data", "user_excluded_sources.json",
+    )
+    if not _os.path.isfile(path):
+        _USER_EXCLUDED_CACHE = {"accounts": set(), "hosts": [], "title_hints": []}
+        return _USER_EXCLUDED_CACHE
+    try:
+        with open(path) as f:
+            raw = _json.load(f)
+        _USER_EXCLUDED_CACHE = {
+            "accounts": {k.lower() for k in (raw.get("accounts") or {}).keys()},
+            "hosts": [k.lower() for k in (raw.get("hosts") or {}).keys()],
+            "title_hints": [k.lower() for k in (raw.get("title_hints") or {}).keys()],
+        }
+        return _USER_EXCLUDED_CACHE
+    except Exception:
+        _USER_EXCLUDED_CACHE = {"accounts": set(), "hosts": [], "title_hints": []}
+        return _USER_EXCLUDED_CACHE
+
+
+def is_user_excluded(event: dict) -> bool:
+    """True if event matches any user-excluded source. Used by
+    normalize.process() to drop events BEFORE ranking — these are
+    "I don't want to see this" signals so they shouldn't be scored.
+    """
+    cfg = _load_user_excluded_sources()
+    if not cfg["accounts"] and not cfg["hosts"] and not cfg["title_hints"]:
+        return False
+    acct = (event.get("instagramAccount") or "").lower()
+    if acct and acct in cfg["accounts"]:
+        return True
+    url = (event.get("sourceUrl") or "").lower()
+    for host in cfg["hosts"]:
+        if host in url:
+            return True
+    if cfg["title_hints"]:
+        text = ((event.get("title") or "") + " "
+                + (event.get("description") or "")[:300]).lower()
+        if any(h in text for h in cfg["title_hints"]):
+            return True
+    return False
+
+
 def _load_user_curated_sources() -> dict:
     """Read scrapers/data/user_curated_sources.json (cached). Returns a dict
     of {host_fragment: weight} and {title_hint: weight}.
