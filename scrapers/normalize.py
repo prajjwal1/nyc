@@ -144,28 +144,42 @@ def _dedup_perceptual_hash(events: list[dict]) -> list[dict]:
 
 
 def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:
-    """Collapse same-IG-account events that share a near-identical title
-    across multiple dates. These are usually the same recurring series
-    captured from multiple weekly posts. Keeping all of them inflates the
-    feed with duplicate cards. Keep the earliest occurrence per (account,
-    title-token-key).
+    """Collapse events from the SAME publisher that share a near-identical
+    title across multiple dates. These are usually the same recurring series
+    captured from multiple weekly posts/listings. Keeping all of them
+    inflates the feed with duplicate cards.
 
-    Triggers when:
-      - Same IG account (instagramAccount field)
+    Key by (source, account/sourceUrl-base). Triggers when:
+      - Same publisher
       - Jaccard >= 0.75 on title tokens (or >=4 shared distinctive tokens)
       - Dates are different (otherwise the regular dedup already handled it)
+
+    Covers: IG (instagramAccount), meetup (organizer URL), songkick (artist
+    in URL), eventbrite (organizer slug), bookclubbar/lizsbookbar venues.
     """
+    from urllib.parse import urlparse
     by_acct: dict[str, list[dict]] = {}
     out: list[dict] = []
     for ev in events:
-        if ev.get("source") != "instagram":
+        # Build a publisher key per source
+        src = ev.get("source", "")
+        if src == "instagram":
+            key = "ig:" + (ev.get("instagramAccount") or "").lower()
+        else:
+            try:
+                # For URL-based publishers, use host + first path segment
+                # so distinct event series under one venue don't collapse.
+                p = urlparse(ev.get("sourceUrl") or "")
+                # Drop trailing path component (event-specific slug). Take
+                # path up to the second-to-last segment.
+                parts = [x for x in (p.path or "").split("/") if x][:-1]
+                key = f"{src}:{p.netloc}:{('/'.join(parts))[:80]}"
+            except Exception:
+                key = ""
+        if not key or key.endswith(":") or key == src + ":" :
             out.append(ev)
             continue
-        acct = (ev.get("instagramAccount") or "").lower()
-        if not acct:
-            out.append(ev)
-            continue
-        by_acct.setdefault(acct, []).append(ev)
+        by_acct.setdefault(key, []).append(ev)
 
     merges = 0
     for acct, group in by_acct.items():

@@ -680,6 +680,19 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "oh summer", "oh nyc", "oh new york",
         "we are soooo", "we are so back", "we're soooo", "we're so back",
         "summer in nyc",
+        # Ticket-CTA fragments treated as title
+        "advance tickets are", "tickets are $", "tickets are still",
+        "tickets selling", "tickets going fast", "tickets going quick",
+        "limited tickets", "few tickets left", "tickets remaining",
+        # Seasonal hype caption openers
+        "this summer is for", "this winter is for", "this spring is for",
+        "this fall is for", "this season is",
+        "the girlies are coming", "the girls are coming",
+        # Narrative IG openers
+        "crate-diggers", "basement raiders",
+        "calling all bookworms", "for the bookworms",
+        "for those who love", "for those of us",
+        "to all the", "if you love", "if you're into",
         "+ ", "- ", "— ", "– ",  # leading punctuation suggesting a list-item
         "more details", "details below", "details inside",
         "comment below", "tag a friend", "tag your",
@@ -753,6 +766,19 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if (title_stripped.isupper() and 6 <= len(title_stripped) <= 22
             and len(title_stripped.split()) <= 3):
         return True
+    # Hype mostly-caps titles: "BREAKING STAGES and TAKING NAMES",
+    # "BACK BY POPULAR DEMAND", etc. Detect titles where >=70% of cased
+    # letters are uppercase AND contains a hype verb. Catches the
+    # "MOSTLY CAPS with stitched filler words" pattern.
+    letters = [c for c in title_stripped if c.isalpha()]
+    if len(letters) >= 6:
+        upper_ratio = sum(1 for c in letters if c.isupper()) / len(letters)
+        if upper_ratio >= 0.7 and len(title_stripped.split()) >= 4:
+            hype_verbs = ("breaking", "taking", "shaking", "making", "coming",
+                          "going", "bringing", "back by", "raising", "showing",
+                          "killing", "smashing", "rocking", "owning")
+            if any(v in title_lower for v in hype_verbs):
+                return True
 
     # Substack-style short CTA fragments: "Final Performance May 23.",
     # "thru May 17 only!", "take 25% off tickets", "Limited $25 tickets..."
