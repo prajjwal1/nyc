@@ -165,12 +165,15 @@ _WORD_RE = re.compile(r"[a-z0-9]+")
 
 
 def interest_profile_boost(event: dict) -> float:
-    """Return a 0..0.15 boost for events that align with the user's profile.
+    """Return a 0..0.25 boost for events that align with the user's profile.
+
+    Boost magnitudes tuned so events from accounts the user actually
+    follows reliably outrank generic aggregator content.
 
     Signals checked (cumulative, capped):
-      - Event IG account is in signal_accounts → +0.06
+      - Event IG account is in signal_accounts → +0.15
       - Event title/desc contains topic hints with positive follow-graph
-        frequency → +0.02 each (capped at 0.06)
+        frequency → +0.03 each (capped at 0.10)
       - Event's host (from sourceUrl) matches a curated host → +0.05
     """
     profile = get_profile()
@@ -178,10 +181,11 @@ def interest_profile_boost(event: dict) -> float:
         return 0.0
     boost = 0.0
 
-    # 1) Account-level signal
+    # 1) Account-level signal — the strongest tell. If the user follows
+    # this IG account, surface what it posts.
     acct = (event.get("instagramAccount") or "").lower()
     if acct and acct in set(profile.get("signal_accounts", [])):
-        boost += 0.06
+        boost += 0.15
 
     # 2) Topic overlap
     topic_counts = profile.get("topic_counts", {}) or {}
@@ -195,11 +199,11 @@ def interest_profile_boost(event: dict) -> float:
         # them — singletons are noise.
         matched = sum(1 for t, c in topic_counts.items()
                       if c >= 2 and t in tokens)
-        boost += min(0.06, matched * 0.02)
+        boost += min(0.10, matched * 0.03)
 
     # 3) Host match
     url = (event.get("sourceUrl") or "").lower()
     if any(h in url for h in profile.get("curated_hosts", [])):
         boost += 0.05
 
-    return min(0.15, boost)
+    return min(0.25, boost)

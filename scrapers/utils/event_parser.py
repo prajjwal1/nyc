@@ -318,12 +318,49 @@ CATEGORY_KEYWORDS = {
 }
 
 
-def infer_categories(title: str, description: str = "") -> list[str]:
+_IG_ACCOUNT_TOPIC_HINTS = {
+    "books": ("book", "bookclub", "litclub", "library", "poet", "read"),
+    "music": ("jazz", "dj", "vinyl", "sound", "band", "music", "concert",
+              "rave", "venue", "phono", "tunes"),
+    "art": ("art", "gallery", "museum", "studio"),
+    "comedy": ("comedy", "improv", "standup", "humor"),
+    "food": ("food", "kitchen", "chef", "eats", "supper", "wine", "bar"),
+    "fitness": ("running", "run", "fit", "yoga", "wellness", "workout"),
+    "outdoors": ("park", "garden", "outdoor", "nature", "hike"),
+    "parties": ("party", "social", "club", "rave", "nightlife", "afterhours"),
+    "games": ("game", "backgammon", "chess", "bingo", "trivia"),
+    "exploration": ("astronomy", "secret", "hidden"),
+}
+
+
+def _ig_account_topic_categories(account: str) -> list[str]:
+    """Infer categories from the IG account handle when the title is
+    too cryptic to categorize (e.g. '5/21 • caroline...' from a music
+    venue's IG roundup). Returns list of category names that match
+    substring patterns in the username.
+    """
+    if not account:
+        return []
+    u = account.lower()
+    cats = []
+    for cat, hints in _IG_ACCOUNT_TOPIC_HINTS.items():
+        if any(h in u for h in hints):
+            cats.append(cat)
+    return cats
+
+
+def infer_categories(title: str, description: str = "", ig_account: str = "") -> list[str]:
     text = f"{title} {description}".lower()
     cats = []
     for cat, keywords in CATEGORY_KEYWORDS.items():
         if any(kw in text for kw in keywords):
             cats.append(cat)
+    # Fall back to IG-account handle topic-hints when the title is cryptic
+    # (e.g. '5/21 • caroline...' from a music venue's IG roundup). This is
+    # structural — derives category from the account's stated focus rather
+    # than scanning the title for venue-specific terms.
+    if not cats and ig_account:
+        cats = _ig_account_topic_categories(ig_account)
     return cats if cats else ["other"]
 
 

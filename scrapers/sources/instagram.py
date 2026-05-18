@@ -2427,7 +2427,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
         time_str = parse_time(section)
         title = _extract_title(section)
         location = _extract_location(section)
-        categories = infer_categories(title or section, section)
+        categories = infer_categories(title or section, section, ig_account=account)
 
         # URLs within the section get priority; fall back to next global URL.
         section_urls = re.findall(r"https?://[^\s)>\]\"']+", section)
@@ -2488,7 +2488,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
                 extra_images=extra_imgs,
             lat=geo_lat,
             lng=geo_lng,
-                categories=infer_categories(title, full_caption),
+                categories=infer_categories(title, full_caption, ig_account=account),
             )
             if full_recurring:
                 ev["recurring"] = True
@@ -2510,7 +2510,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
             extra_images=extra_imgs,
             lat=geo_lat,
             lng=geo_lng,
-            categories=infer_categories(title, caption),
+            categories=infer_categories(title, caption, ig_account=account),
         ))
 
     # Tag every event with the IG account it came from + engagement + profile signals.

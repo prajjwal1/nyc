@@ -730,6 +730,15 @@ _IMAGE_REQUIRED_SOURCES = frozenset({
 })
 
 
+_DESCRIPTION_REQUIRED_SOURCES = frozenset({
+    # Non-IG sources where an event with empty description is a bare
+    # listing — no context for the user, can't be categorized properly,
+    # and signals the upstream page lacked real content. IG captions
+    # are the description so IG isn't in this set.
+    "luma", "eventbrite", "partiful", "allevents", "songkick",
+})
+
+
 def _is_shell_event(event: dict) -> bool:
     """An event with no description, no image, AND no venue is a placeholder
     that adds no information. Drop these so the feed isn't padded with empty
@@ -749,6 +758,11 @@ def _is_shell_event(event: dict) -> bool:
     addr = (event.get("location") or {}).get("address", "").strip()
     # Stricter: image required for listing-aggregator sources.
     if not img and event.get("source") in _IMAGE_REQUIRED_SOURCES:
+        return True
+    # Empty descriptions on listing aggregators are bare placeholder rows.
+    # IG captions are the description, so IG events aren't checked.
+    if (len(desc) < 15
+            and event.get("source") in _DESCRIPTION_REQUIRED_SOURCES):
         return True
     if not desc and not img and not loc and not addr:
         return True
@@ -1056,12 +1070,12 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # quality signal. Random hashtag-discovered or unknown-account IG
     # events still meet the default 0.30 floor.
     # User explicitly: "it's okay to see less events than to see events
-    # which are not useful". Floor raised from 0.30 to 0.45 (default) and
-    # 0.20 to 0.35 (curated IG). Combined with interest_profile_boost
-    # (auto-derived from follow graph), this keeps the relevant tail in
-    # while shedding marginal-quality aggregator dumps.
-    DEFAULT_MIN_SCORE = 0.45
-    IG_CURATED_MIN_SCORE = 0.35
+    # which are not useful". Iter 7 raises floors again now that the
+    # interest_profile_boost (+0.15 for signal accounts) compensates for
+    # events the user genuinely cares about. Marginal-quality long tail
+    # in 0.45-0.55 was 133 events; trimming that.
+    DEFAULT_MIN_SCORE = 0.55
+    IG_CURATED_MIN_SCORE = 0.40
     from .config import IG_ACCOUNTS
     _curated_ig = {a.lower() for a in IG_ACCOUNTS}
 
