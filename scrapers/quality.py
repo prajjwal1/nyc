@@ -782,6 +782,25 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if re.search(r"\bthe ultimate (tribute|doors|stones|beatles|dead)\b", title_lower):
         return True
 
+    # Generic professional / artists networking event detector. The hardcoded
+    # list of specific networking types ('career networking', 'speed
+    # networking', etc.) misses formats like 'Artists Networking Event for
+    # all Creatives', 'Black Professionals in NYC | Summer Prelude'.
+    # Match: word boundary, common networking-event modifiers, networking
+    # verb. Excluded if combined with explicit-social signals (singles,
+    # casual, fun) since those are different from career events.
+    if re.search(r"\b(artists?|professionals?|founders?|creators?|creatives?|"
+                 r"women|men|young) [a-z]* ?(networking|mixer|connect)\b", title_lower):
+        # Spare singles-mixer / queer-mixer / open-mixer variants
+        if not any(soft in title_lower for soft in
+                   ("singles", "queer", "open ", "social ", "casual ")):
+            return True
+    if re.search(r"\bnetworking event\b", title_lower):
+        return True
+    # "<demographic> in NYC | <noun>" professional-mixer format
+    if re.search(r"professionals in (?:nyc|new york|brooklyn|manhattan)\b", title_lower):
+        return True
+
     # Pure date / month titles
     months = "(?:january|february|march|april|may|june|july|august|september|october|november|december)"
     if re.match(rf"^{months}\s+\d{{1,2}}(?:st|nd|rd|th)?\.?$", title_lower):
