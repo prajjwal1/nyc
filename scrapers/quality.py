@@ -772,6 +772,16 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if re.match(r"^\[[^\]]+\]\s*$", title_stripped):
         return True
 
+    # Tribute / cover-band act detection — structural regex catches the
+    # generic 'Tribute to <X>' and 'plays the <X>' formats without listing
+    # every artist by name. User has indicated dislike for these.
+    if re.search(r"\btribute to the\b", title_lower):
+        return True
+    if re.search(r"\bplays the (dead|stones|beatles|doors|grateful)\b", title_lower):
+        return True
+    if re.search(r"\bthe ultimate (tribute|doors|stones|beatles|dead)\b", title_lower):
+        return True
+
     # Pure date / month titles
     months = "(?:january|february|march|april|may|june|july|august|september|october|november|december)"
     if re.match(rf"^{months}\s+\d{{1,2}}(?:st|nd|rd|th)?\.?$", title_lower):

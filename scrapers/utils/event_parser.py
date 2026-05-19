@@ -319,9 +319,11 @@ CATEGORY_KEYWORDS = {
 
 
 _IG_ACCOUNT_TOPIC_HINTS = {
-    "books": ("book", "bookclub", "litclub", "library", "poet", "read"),
+    "books": ("book", "bookclub", "litclub", "library", "poet", "read",
+              "writers"),
     "music": ("jazz", "dj", "vinyl", "sound", "band", "music", "concert",
-              "rave", "venue", "phono", "tunes"),
+              "rave", "venue", "phono", "tunes", "bowl", "hall", "presents",
+              "ballroom", "theatre", "theater"),
     "art": ("art", "gallery", "museum", "studio"),
     "comedy": ("comedy", "improv", "standup", "humor"),
     "food": ("food", "kitchen", "chef", "eats", "supper", "wine", "bar"),
