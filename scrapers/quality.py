@@ -737,6 +737,10 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "calling all bookworms", "for the bookworms",
         "for those who love", "for those of us",
         "to all the", "if you love", "if you're into",
+        "whether you", "whether they", "whether or not",
+        "find the (", "find your", "find a ",  # 'find the (Guber) One' fragment
+        "sree lo", "just rsvp",  # broken-extraction artifacts
+        "guber one",  # this specific vague tag from one IG post
         # Excited-reaction caption openers — pure caption, no event subject
         "wow wow", "wowowow", "wowww", "yesssss",
         "last year's", "last year we", "last summer", "last spring",
@@ -770,6 +774,17 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
 
     # Bracketed location tags like "[London]" or "[NYC]"
     if re.match(r"^\[[^\]]+\]\s*$", title_stripped):
+        return True
+
+    # Address-as-title detection. IG scraper sometimes extracts a location
+    # line ('445 grand st, brooklyn, ny') as the title when no clear event-
+    # name line exists. Pattern: number + street word + ", borough/city".
+    if re.match(r"^\d{1,5}\s+[\w\-\s]+\s+(st|street|ave|avenue|blvd|boulevard|"
+                r"rd|road|pl|place|way|dr|drive|ln|lane)[\.,]\s*[\w\s]+,\s*[\w\s]+",
+                title_lower):
+        return True
+    # Simpler address pattern: '<number> <street name>, <city>, <state>'
+    if re.match(r"^\d{1,5}\s+\w[\w\s]*,\s*\w+,\s*\w{2,}", title_lower):
         return True
 
     # Tribute / cover-band act detection — structural regex catches the
