@@ -419,6 +419,8 @@ _NON_NYC_CITIES = [
     "downtown la", "dtla", "highland park", "eagle rock", "pasadena",
     "saint petersburg", "st. petersburg", "st petersburg",
     "moscow", "russia,", "japan,", "korea,",
+    "uluwatu", "bali", "indonesia", "jakarta",
+    "tulum", "cancun", "mexico city",
     "san francisco", " sf,", " sf ", "oakland", "berkeley",
     "chicago", "miami", "austin", "atlanta", "boston", "philadelphia", "philly",
     "portland", "seattle", "denver", "nashville", "new orleans",
@@ -724,6 +726,8 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "advance tickets are", "tickets are $", "tickets are still",
         "tickets selling", "tickets going fast", "tickets going quick",
         "limited tickets", "few tickets left", "tickets remaining",
+        "preorder today", "pre-order today", "preorder our",
+        "shop our", "now available on", "now available at",
         # Seasonal hype caption openers
         "this summer is for", "this winter is for", "this spring is for",
         "this fall is for", "this season is",

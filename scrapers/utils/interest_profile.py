@@ -189,16 +189,33 @@ def interest_profile_boost(event: dict) -> float:
       - Event title/desc contains topic hints with positive follow-graph
         frequency → +0.03 each (capped at 0.10)
       - Event's host (from sourceUrl) matches a curated host → +0.05
+
+    Caption-fragment titles get NO account-level boost — we don't want
+    'Preorder today on our website!' from a curated bookstore to rank
+    above its actual book-launch event just because the user follows
+    that bookstore. The fragment detector already lowers title_quality
+    but the +0.15 explicit boost was overriding it.
     """
     profile = get_profile()
     if not profile:
         return 0.0
     boost = 0.0
 
-    # 1) Account-level signal — the strongest tell. If the user follows
-    # this IG account, surface what it posts.
+    # Suppress account-level boost when title looks like a CTA / caption
+    # fragment. Topic + host signals still apply because they reflect
+    # the event's actual content / source, not just who posted it.
+    try:
+        from ..quality import _is_caption_fragment
+        title_is_fragment = _is_caption_fragment(
+            event.get("title", ""), event.get("description", "") or "",
+        )
+    except Exception:
+        title_is_fragment = False
+
+    # 1) Account-level signal — the strongest tell, but only when the
+    # title is actually a real event (not a fragment).
     acct = (event.get("instagramAccount") or "").lower()
-    if acct and acct in set(profile.get("signal_accounts", [])):
+    if acct and acct in set(profile.get("signal_accounts", [])) and not title_is_fragment:
         boost += 0.15
 
     # 2) Topic overlap
