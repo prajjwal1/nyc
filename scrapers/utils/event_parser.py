@@ -351,7 +351,23 @@ def _ig_account_topic_categories(account: str) -> list[str]:
     return cats
 
 
-def infer_categories(title: str, description: str = "", ig_account: str = "") -> list[str]:
+# Source name → primary category hint. When a venue scraper's source
+# label encodes the venue's focus (newyorkcomedyclub → comedy), use it
+# to disambiguate cryptic per-event titles (e.g. just a comic's name
+# without 'comedy' in it).
+_SOURCE_TOPIC_HINTS = {
+    "newyorkcomedyclub": "comedy",
+    "eastvillecomedy": "comedy",
+    "bookclubbar": "books",
+    "lizsbookbar": "books",
+    "thebellhouseny": "comedy",
+    "nypl": "books",
+    "songkick": "music",
+}
+
+
+def infer_categories(title: str, description: str = "", ig_account: str = "",
+                     source: str = "") -> list[str]:
     text = f"{title} {description}".lower()
     cats = []
     for cat, keywords in CATEGORY_KEYWORDS.items():
@@ -363,6 +379,11 @@ def infer_categories(title: str, description: str = "", ig_account: str = "") ->
     # than scanning the title for venue-specific terms.
     if not cats and ig_account:
         cats = _ig_account_topic_categories(ig_account)
+    # Source-level topic hint: a venue scraper like newyorkcomedyclub
+    # encodes its focus in the source label. Use it as a default
+    # category if nothing better matched.
+    if (not cats or cats == ["other"]) and source in _SOURCE_TOPIC_HINTS:
+        cats = [_SOURCE_TOPIC_HINTS[source]]
     return cats if cats else ["other"]
 
 
@@ -744,7 +765,7 @@ def build_event(
         date_str = event_date
 
     if categories is None:
-        categories = infer_categories(title, description)
+        categories = infer_categories(title, description, source=source)
 
     # Apply title cleanup
     cleaned_title = clean_title(title)

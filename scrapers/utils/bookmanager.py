@@ -167,7 +167,7 @@ def _row_to_event(row: dict, source_label: str, default_venue: str,
     else:
         source_url = _EVENT_LIST_URL
 
-    cats = infer_categories(title, description)
+    cats = infer_categories(title, description, source=source_label)
     bm_cat = ((row.get("category") or {}).get("name") or "").lower()
     if "book" in bm_cat:
         cats = sorted(set(list(cats) + ["books"]))
