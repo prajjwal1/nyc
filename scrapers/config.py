@@ -298,10 +298,14 @@ SOURCE_QUALITY = {
 # each — without a cap they crowd out user-relevant content
 # (IG events, books, social mixers). Top-N by score per source.
 SOURCE_VOLUME_CAPS = {
-    "allevents": 60,
-    "songkick": 50,
-    "newyorkcomedyclub": 25,
-    "eastvillecomedy": 15,
-    "thebellhouseny": 15,
-    "meetup": 80,
+    # Aggregator caps tightened per user 'less is more' direction.
+    # These sources dump hundreds of concert-listing events that
+    # crowd out social/literary/discovery content. Top-N by score
+    # is kept per source — same diversity, less long-tail.
+    "allevents": 40,
+    "songkick": 25,
+    "newyorkcomedyclub": 15,
+    "eastvillecomedy": 10,
+    "thebellhouseny": 10,
+    "meetup": 60,
 }
