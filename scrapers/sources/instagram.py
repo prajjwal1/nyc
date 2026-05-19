@@ -3027,6 +3027,13 @@ _FRAGMENT_TITLE_RE = re.compile(
     # never legitimately start an event title.
     r"we\s|to\s|from\s|in\s|on\s|of\s|and\s|but\s|or\s|that\s|this\s|"
     r"would\s|could\s|should\s|will\s|stills?\s|next\s|"
+    # Caption-mid-sentence narrative openers picked up at IG extraction
+    r"whether\s|find\s+(?:the\s*\(|your\s|a\s+)|use\s+code\s|enter\s+code\s|"
+    r"join\s+us\s|swipe\s|tag\s+a\s|friday\s+outside|sree\s+lo|"
+    r"guber\s+one|just\s+rsvp|"
+    # Address-like start: digits + street word
+    r"\d{1,5}\s+\w+\s+(?:st|street|ave|avenue|blvd|boulevard|rd|road|pl|"
+    r"place|way|dr|drive|ln|lane)[\.,\s]|"
     # Image-credit / annotation prefixes
     r"//|@|#"
     r")",
