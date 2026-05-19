@@ -371,7 +371,22 @@ def infer_categories(title: str, description: str = "", ig_account: str = "",
     text = f"{title} {description}".lower()
     cats = []
     for cat, keywords in CATEGORY_KEYWORDS.items():
-        if any(kw in text for kw in keywords):
+        matched = False
+        for kw in keywords:
+            # Word-boundary match for short single-word keywords (<=5 chars)
+            # to avoid 'gala' matching inside 'Lagala', 'tap' inside 'tape', etc.
+            # Multi-word phrases stay as substring matches since their length
+            # makes accidental matches negligible.
+            if " " in kw or len(kw) > 5:
+                if kw in text:
+                    matched = True
+                    break
+            else:
+                import re as _re
+                if _re.search(rf"\b{_re.escape(kw)}\b", text):
+                    matched = True
+                    break
+        if matched:
             cats.append(cat)
     # Fall back to IG-account handle topic-hints when the title is cryptic
     # (e.g. '5/21 • caroline...' from a music venue's IG roundup). This is

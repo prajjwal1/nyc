@@ -728,6 +728,14 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "limited tickets", "few tickets left", "tickets remaining",
         "preorder today", "pre-order today", "preorder our",
         "shop our", "now available on", "now available at",
+        # Promo / discount CTAs picked up as titles
+        "use code ", "use coupon", "enter code ", "code: ",
+        "free with code", "first 50", "first 100",
+        # Location-prefix caption fragments
+        "friday outside", "saturday outside", "sunday outside",
+        "monday outside", "tuesday outside", "wednesday outside",
+        "thursday outside",
+        "this friday outside", "this saturday outside",
         # Seasonal hype caption openers
         "this summer is for", "this winter is for", "this spring is for",
         "this fall is for", "this season is",
