@@ -13,6 +13,68 @@ ORGANIZER_URLS = [
     "https://www.eventbrite.com/o/14861961557",
 ]
 
+
+# Topics that map cleanly onto Eventbrite's URL search slugs and are
+# meaningful event categories (vs. location markers, demographics, or
+# already-excluded categories). Auto-built into search URLs based on
+# the user's interest profile — scalable: as the user's IG follows
+# evolve, the topic counts change, and the search URLs change with them.
+_SUPPORTED_INTEREST_TOPICS = {
+    "yoga", "run", "book", "comedy", "wine", "park", "art",
+    "music", "food", "dance", "running", "fitness", "literary",
+    "queer", "social", "poetry", "pottery", "jazz", "vinyl",
+}
+
+# Special-case topic → eventbrite slug mapping where the literal topic
+# word doesn't match the URL convention.
+_TOPIC_URL_SLUG = {
+    "run": "running",        # user's profile has "run", eventbrite slug is "running"
+    "running": "running",
+    "book": "books",
+    "park": "outdoor",
+    "literary": "books",
+    "vinyl": "music",
+    "jazz": "music",
+}
+
+
+def _build_interest_topic_urls() -> list[str]:
+    """Read the user interest profile and construct eventbrite search URLs
+    for topics the user's IG follow graph has surfaced.
+
+    No hardcoded per-topic URL list — the function generates URLs at
+    runtime based on the live profile. New topics that appear in the
+    profile automatically get searched.
+    """
+    import os, json as _json
+    profile_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "data", "user_interest_profile.json",
+    )
+    if not os.path.isfile(profile_path):
+        return []
+    try:
+        with open(profile_path) as f:
+            prof = _json.load(f)
+    except Exception:
+        return []
+
+    topics = (prof.get("topic_counts") or {})
+    urls: list[str] = []
+    seen_slugs: set[str] = set()
+    for topic, count in sorted(topics.items(), key=lambda kv: -kv[1]):
+        if topic not in _SUPPORTED_INTEREST_TOPICS:
+            continue
+        if count < 1:
+            continue
+        slug = _TOPIC_URL_SLUG.get(topic, topic)
+        if slug in seen_slugs:
+            continue
+        seen_slugs.add(slug)
+        urls.append(f"https://www.eventbrite.com/d/ny--new-york/{slug}--events/")
+        urls.append(f"https://www.eventbrite.com/d/ny--brooklyn/{slug}--events/")
+    return urls
+
 SEARCH_URLS = [
     # Geographic + time (density)
     "https://www.eventbrite.com/d/ny--new-york/events--this-week/",
@@ -56,6 +118,17 @@ async def scrape() -> list[dict]:
             events.extend(_parse_search_page(html, url))
         except Exception as e:
             print(f"[eventbrite] Failed {url}: {e}")
+    # Topic search URLs built dynamically from the user's interest profile.
+    # Auto-evolves with the IG follow graph — no per-topic config edits.
+    interest_urls = _build_interest_topic_urls()
+    if interest_urls:
+        print(f"[eventbrite-interest] {len(interest_urls)} interest-driven URLs from profile")
+        for url in interest_urls:
+            try:
+                html = await fetch_text(url)
+                events.extend(_parse_search_page(html, url))
+            except Exception as e:
+                print(f"[eventbrite-interest] Failed {url}: {e}")
     # Then specific organizer pages (user-curated). Organizer pages don't
     # ship JSON-LD; they hydrate from a __NEXT_DATA__ blob. Use the
     # organizer-specific parser.
