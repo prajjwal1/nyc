@@ -1,10 +1,13 @@
 {
   "_doc": "User-curated high-signal sources. Auto-updated from engagement signals (events the user saves) AND seeded with sources the user has explicitly mentioned. Read by ranking.py:_user_curated_boost. Keys are URL host fragments (e.g. 'litclub.nyc') or lowercase title hints (e.g. 'wnyc book club').",
   "hosts": {
-    "litclub.nyc": {"score": 1.0, "added_at": "2026-05-14", "source": "user_mentioned"}
+    "litclub.nyc": {"score": 1.0, "added_at": "2026-05-14", "source": "user_mentioned"},
+    "eventbrite.com/o/14861961557": {"score": 1.0, "added_at": "2026-05-21", "source": "user_mentioned", "note": "Lululemon NYC organizer — fitness events priority"}
   },
   "title_hints": {
-    "wnyc book club": {"score": 1.0, "added_at": "2026-05-14", "source": "user_mentioned"}
+    "wnyc book club": {"score": 1.0, "added_at": "2026-05-14", "source": "user_mentioned"},
+    "lululemon": {"score": 1.0, "added_at": "2026-05-21", "source": "user_mentioned", "note": "Lululemon-branded fitness events priority"},
+    "no regrets runners": {"score": 1.0, "added_at": "2026-05-21", "source": "user_mentioned"}
   },
-  "lastUpdated": "2026-05-14T15:50:00Z"
+  "lastUpdated": "2026-05-21T15:00:00Z"
 }

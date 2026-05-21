@@ -4,6 +4,15 @@ from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time
 
+# Specific organizer pages the user has flagged as high-priority.
+# These list ALL of an organizer's events in one place — useful for
+# brand-curated event series the user follows. Add to user_curated_sources
+# .json simultaneously so events from these get the +0.15 boost.
+ORGANIZER_URLS = [
+    # Lululemon — user added (fitness events priority)
+    "https://www.eventbrite.com/o/14861961557",
+]
+
 SEARCH_URLS = [
     # Geographic + time (density)
     "https://www.eventbrite.com/d/ny--new-york/events--this-week/",
@@ -40,12 +49,77 @@ SEARCH_URLS = [
 
 async def scrape() -> list[dict]:
     events = []
+    # Pull search-density pages first
     for url in SEARCH_URLS:
         try:
             html = await fetch_text(url)
             events.extend(_parse_search_page(html, url))
         except Exception as e:
             print(f"[eventbrite] Failed {url}: {e}")
+    # Then specific organizer pages (user-curated). Organizer pages don't
+    # ship JSON-LD; they hydrate from a __NEXT_DATA__ blob. Use the
+    # organizer-specific parser.
+    for url in ORGANIZER_URLS:
+        try:
+            html = await fetch_text(url)
+            org_events = _parse_organizer_page(html, url)
+            events.extend(org_events)
+            print(f"[eventbrite-organizer] {url}: {len(org_events)} events")
+        except Exception as e:
+            print(f"[eventbrite-organizer] Failed {url}: {e}")
+    return events
+
+
+def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
+    """Parse an Eventbrite organizer page (/o/<id>) via __NEXT_DATA__.
+    Organizer pages don't include JSON-LD — they hydrate from a Next.js
+    data blob. Extracts upcoming events with full venue + ticket info.
+    """
+    m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.DOTALL)
+    if not m:
+        return []
+    try:
+        data = json.loads(m.group(1))
+    except Exception:
+        return []
+    upcoming = (data.get("props", {}).get("pageProps", {}).get("upcomingEvents") or [])
+    events: list[dict] = []
+    for raw in upcoming:
+        if not isinstance(raw, dict):
+            continue
+        title = raw.get("name") or ""
+        if isinstance(title, dict):
+            title = title.get("text") or ""
+        if not title:
+            continue
+        date_str = raw.get("start_date") or ""
+        event_date = parse_date(date_str)
+        if not event_date:
+            continue
+        start_time = (raw.get("start_time") or "")[:5] or None
+        end_time = (raw.get("end_time") or "")[:5] or None
+        url = raw.get("url") or source_url
+        image = ((raw.get("image") or {}).get("url") or None)
+        venue = raw.get("primary_venue") or {}
+        venue_name = venue.get("name") or ""
+        addr_obj = venue.get("address") or {}
+        venue_addr = addr_obj.get("localized_address_display") or ""
+        is_free = ((raw.get("ticket_availability") or {}).get("is_free"))
+        price = "free" if is_free else None
+        summary = raw.get("summary") or ""
+        events.append(build_event(
+            title=title,
+            description=summary[:500],
+            event_date=event_date,
+            start_time=start_time,
+            end_time=end_time,
+            location_name=venue_name,
+            address=venue_addr,
+            source="eventbrite",
+            source_url=url,
+            image_url=image,
+            price=price,
+        ))
     return events
 
 

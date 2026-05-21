@@ -256,6 +256,7 @@ CATEGORY_KEYWORDS = {
         "run club", "running club", "weekend run", "morning run",
         "social run", "saturday run", "sunday run",
         "group run", "casual run", "track club",
+        "runners", "no regrets runners", "lululemon",
         "5k ", "10k ", "marathon training", "marathon",
         "bike ride", "group ride", "cycling club",
         "pickleball", "tennis meetup",
