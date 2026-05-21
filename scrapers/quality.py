@@ -736,6 +736,17 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "monday outside", "tuesday outside", "wednesday outside",
         "thursday outside",
         "this friday outside", "this saturday outside",
+        # 'Day Location: X' label format
+        "saturday location:", "sunday location:", "monday location:",
+        "tuesday location:", "wednesday location:", "thursday location:",
+        "friday location:",
+        "location:", "venue:", "where:", "when:",
+        # Promo / giveaway captions
+        "grads get", "giving away", "win a ",
+        "free donuts", "free coffee", "free tickets to",
+        "date change", "rescheduled to", "postponed to",
+        # OCR garbage
+        "= ",
         # Seasonal hype caption openers
         "this summer is for", "this winter is for", "this spring is for",
         "this fall is for", "this season is",

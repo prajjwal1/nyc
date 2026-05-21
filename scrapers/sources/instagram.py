@@ -3031,6 +3031,14 @@ _FRAGMENT_TITLE_RE = re.compile(
     r"whether\s|find\s+(?:the\s*\(|your\s|a\s+)|use\s+code\s|enter\s+code\s|"
     r"join\s+us\s|swipe\s|tag\s+a\s|friday\s+outside|sree\s+lo|"
     r"guber\s+one|just\s+rsvp|"
+    # Location-label fragments ('Saturday Location:', 'Location:')
+    r"(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+location:|"
+    r"location:\s|venue:\s|where:\s|when:\s|"
+    # Promo / giveaway captions
+    r"grads\s+get\s|giving\s+away\s|win\s+a\s+|gift\s+card|"
+    r"date\s+change\s|rescheduled\s+to|postponed\s+to|"
+    # Title starts with '=' character (OCR garbage)
+    r"=|"
     # Address-like start: digits + street word
     r"\d{1,5}\s+\w+\s+(?:st|street|ave|avenue|blvd|boulevard|rd|road|pl|"
     r"place|way|dr|drive|ln|lane)[\.,\s]|"
