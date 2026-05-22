@@ -747,6 +747,16 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "date change", "rescheduled to", "postponed to",
         # OCR garbage
         "= ",
+        # Narrative IG caption openers ('there are so many things...')
+        "there are so many", "there are lots of", "there's a lot of",
+        "so many things", "so many ways", "so many reasons",
+        # Brand reopening / news announcements (not events)
+        "reopening tomorrow", "reopens tomorrow", "we're reopening",
+        "we are reopening", "now reopen",
+        "nyc beaches reopen", "beaches reopen", "the beach reopens",
+        # Promo / giveaway captions (more)
+        "free knicks donuts", "free donuts tomorrow",
+        "first 53 ", "first 100 ", "first 50 ", "first 25 ",
         # Seasonal hype caption openers
         "this summer is for", "this winter is for", "this spring is for",
         "this fall is for", "this season is",
@@ -805,6 +815,39 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # Simpler address pattern: '<number> <street name>, <city>, <state>'
     if re.match(r"^\d{1,5}\s+\w[\w\s]*,\s*\w+,\s*\w{2,}", title_lower):
         return True
+
+    # Carousel-slide-marker prefix: '0 'X' or '1 Y' — IG carousel scroll
+    # indicator (e.g., 'Ti This week!') accidentally included as title.
+    # Pattern: single char + space + something that doesn't look like
+    # a real event title.
+    if re.match(r"^\d\s+['\"]", title_stripped):
+        return True
+    if re.match(r"^[A-Za-z]{1,2}\s+[A-Z][a-z]+\s+(?:week|month|day)", title_stripped):
+        # 'Ti This week', 'Th This month' — carousel marker + caption start
+        return True
+
+    # Fragment-ender: title ends mid-sentence (with a preposition,
+    # auxiliary verb, or qualifier). These come from IG captions where
+    # the title-extractor picked a line that was cut off by the line
+    # break. Example: 'there are so many things you should' / 'New
+    # York's largest inland' / 'making class led by bartenders from'.
+    # Real event titles never end this way.
+    fragment_enders = (
+        "from", "of", "with", "by", "for", "to", "in", "on", "at",
+        "and", "or", "but", "but the", "is", "are", "was", "were",
+        "the", "a", "an", "should", "would", "could", "might",
+        "can", "will", "do", "does", "did",
+        # Qualifier adjectives that need a noun to make sense
+        "inland", "largest", "biggest", "smallest", "best", "worst",
+        "first", "last", "next", "newest", "oldest",
+    )
+    last_word = title_lower.rstrip("!?.…,;: ").rsplit(maxsplit=1)
+    if len(last_word) == 2 and last_word[1] in fragment_enders:
+        # Whitelist: legit titles can end in 'of' ('Book Club²'), 'and'
+        # ('Friendship, Lomelda, and...'). Only block if the title is
+        # short (<=60 chars) — short fragments are nearly always bad.
+        if len(title_stripped) <= 60:
+            return True
 
     # Tribute / cover-band act detection — structural regex catches the
     # generic 'Tribute to <X>' and 'plays the <X>' formats without listing
