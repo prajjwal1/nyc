@@ -682,7 +682,22 @@ def _user_curated_boost(event: dict) -> float:
     _USER_CURATED_MAX_BOOST. Generalizes across any source the user (or
     future auto-engagement-tracking) marks as high-signal — no hardcoded
     URLs in code.
+
+    SUPPRESSED when the title is a caption fragment: we don't want a
+    curated host (reading_rhythms, bookclubbar, etc.) to push 'Not your
+    typical outdoor' or 'Preorder today on our website' to the top of
+    the feed just because the publisher is one the user follows.
+    Mirrors the iter-8 fix for interest_profile_boost.
     """
+    # Skip if title is a caption fragment — the host signal shouldn't
+    # rescue an unintelligible title.
+    try:
+        from .quality import _is_caption_fragment
+        if _is_caption_fragment(event.get("title", ""),
+                                event.get("description", "") or ""):
+            return 0.0
+    except Exception:
+        pass
     cfg = _load_user_curated_sources()
     if not cfg["hosts"] and not cfg["title_hints"]:
         return 0.0

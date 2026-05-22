@@ -783,6 +783,8 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "find the (", "find your", "find a ",  # 'find the (Guber) One' fragment
         "not your typical", "not your average", "not your usual",
         "not just a", "not just an", "not your ordinary",
+        "send this to", "send to a friend", "send to someone",
+        "share with a", "share this with", "share with the",
         "sree lo", "just rsvp",  # broken-extraction artifacts
         "guber one",  # this specific vague tag from one IG post
         # Excited-reaction caption openers — pure caption, no event subject
