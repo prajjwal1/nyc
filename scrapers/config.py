@@ -273,6 +273,7 @@ SOURCE_QUALITY = {
     "music_venues": 0.78,
     "bookclubbar": 0.8,
     "lizsbookbar": 0.8,
+    "mcnallyjackson": 0.85,
     # Aggregators
     "eventbrite": 0.55,
     "meetup": 0.5,

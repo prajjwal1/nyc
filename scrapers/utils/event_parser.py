@@ -361,6 +361,7 @@ _SOURCE_TOPIC_HINTS = {
     "eastvillecomedy": "comedy",
     "bookclubbar": "books",
     "lizsbookbar": "books",
+    "mcnallyjackson": "books",
     "thebellhouseny": "comedy",
     "nypl": "books",
     "songkick": "music",
