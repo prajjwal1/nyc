@@ -29,6 +29,8 @@ HARD_BLOCK_KEYWORDS = [
     "1:1 pace", "advisory session", "drop-in career", "drop in career",
     "job search", "job club", "career help", "ged ", "tefl ", "language exchange",
     "language meetup", "english practice", "english conversation",
+    "english speaking", "global english", "english speakers",
+    "daily practice circle", "language practice circle",
     "spanish practice", "french practice",
     "italian practice", "deutsch", "korean–english", "korean-english",
     "internationals coffee", "lexgo language", "langroops", "conversation française",
@@ -186,6 +188,8 @@ HARD_BLOCK_KEYWORDS = [
     "b2b meetup", "b2b mixer", "b2b networking",
     "ai meetup", "ai engineers", "ai founders", "ai agents for",
     "agentic ai", "frontier ai", "ai circle", "ai entrepreneur",
+    "ai imprint", "ai that thinks", "ai personal", "ai self",
+    "ai writing", "ai productivity", "ai automation",
     "ai for designers", "ai for engineers", "ai for product",
     "ai tools for", "ai for business", "ai for online",
     "mindset of the ai", "mastering ai", "future of ai",
@@ -827,9 +831,8 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
 
     # Carousel-slide-marker prefix: '0 'X' or '1 Y' — IG carousel scroll
     # indicator (e.g., 'Ti This week!') accidentally included as title.
-    # Pattern: single char + space + something that doesn't look like
-    # a real event title.
-    if re.match(r"^\d\s+['\"]", title_stripped):
+    # Pattern: single char + space + ASCII or curly quote / apostrophe.
+    if re.match(r"^\d\s+['\"‘’“”]", title_stripped):
         return True
 
     # Promo-phrase substrings (anywhere in title, not just start).
