@@ -781,6 +781,8 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "to all the", "if you love", "if you're into",
         "whether you", "whether they", "whether or not",
         "find the (", "find your", "find a ",  # 'find the (Guber) One' fragment
+        "not your typical", "not your average", "not your usual",
+        "not just a", "not just an", "not your ordinary",
         "sree lo", "just rsvp",  # broken-extraction artifacts
         "guber one",  # this specific vague tag from one IG post
         # Excited-reaction caption openers — pure caption, no event subject
@@ -866,6 +868,10 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         # Qualifier adjectives that need a noun to make sense
         "inland", "largest", "biggest", "smallest", "best", "worst",
         "first", "last", "next", "newest", "oldest",
+        # Bare descriptors / period markers — caption snippets ending with
+        # these are mid-sentence (e.g. 'Not your typical outdoor')
+        "outdoor", "indoor", "weekly", "monthly", "daily",
+        "typical", "kind", "style", "thing", "stuff",
     )
     last_word = title_lower.rstrip("!?.…,;: ").rsplit(maxsplit=1)
     if len(last_word) == 2 and last_word[1] in fragment_enders:

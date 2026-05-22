@@ -3031,6 +3031,7 @@ _FRAGMENT_TITLE_RE = re.compile(
     r"whether\s|find\s+(?:the\s*\(|your\s|a\s+)|use\s+code\s|enter\s+code\s|"
     r"join\s+us\s|swipe\s|tag\s+a\s|friday\s+outside|sree\s+lo|"
     r"guber\s+one|just\s+rsvp|"
+    r"not\s+your\s+(?:typical|average|usual|ordinary)|"
     # Location-label fragments ('Saturday Location:', 'Location:')
     r"(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+location:|"
     r"location:\s|venue:\s|where:\s|when:\s|"
