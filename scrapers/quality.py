@@ -1014,11 +1014,14 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
             # Single-token activity / venue / format words for the curated
             # account titles the user specifically wants — run clubs, yoga,
             # comedy, bookstores, supper clubs, brunches, etc.
-            "run", "runs", "running", "yoga", "comedy", "books", "book",
+            "run", "runs", "running", "runners", "yoga", "comedy", "books", "book",
             "supper", "fitness", "stretching", "stretch", "hike", "hiking",
-            "walk", "walking", "biking", "ride", "race", "marathon",
+            "walk", "walking", "walkers", "biking", "bikers", "ride", "race",
+            "marathon", "marathoners",
             "ceramics", "pottery", "craft", "crafts", "sketching", "drawing",
             "magic", "ting", "stories", "trivia", "social", "salon",
+            "readers", "writers", "dancers", "singers", "drinkers",
+            "regrets",  # 'No Regrets Runners' brand name
         }
         # Strip trailing punctuation when comparing — "Run!" should match
         # "run" in event_words.
