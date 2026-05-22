@@ -785,6 +785,10 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "not just a", "not just an", "not your ordinary",
         "send this to", "send to a friend", "send to someone",
         "share with a", "share this with", "share with the",
+        # Hey-style IG caption openers picked up as title
+        "hay nyc", "hay friends", "hay everyone", "hay you",
+        "i'm hosting", "im hosting", "i am hosting",
+        "we're hosting", "we are hosting",
         "sree lo", "just rsvp",  # broken-extraction artifacts
         "guber one",  # this specific vague tag from one IG post
         # Excited-reaction caption openers — pure caption, no event subject
