@@ -2,12 +2,36 @@
   "_doc": "User-curated high-signal sources. Auto-updated from engagement signals (events the user saves) AND seeded with sources the user has explicitly mentioned. Read by ranking.py:_user_curated_boost. Keys are URL host fragments (e.g. 'litclub.nyc') or lowercase title hints (e.g. 'wnyc book club').",
   "hosts": {
     "litclub.nyc": {"score": 1.0, "added_at": "2026-05-14", "source": "user_mentioned"},
-    "eventbrite.com/o/14861961557": {"score": 1.0, "added_at": "2026-05-21", "source": "user_mentioned", "note": "Lululemon NYC organizer — fitness events priority"}
+    "eventbrite.com/o/14861961557": {"score": 1.0, "added_at": "2026-05-21", "source": "user_mentioned", "note": "Lululemon NYC organizer"},
+    "readingrhythms": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Silent reading parties — group reads book together with wine/music breaks, Williamsburg+Manhattan"},
+    "franklinparkreading": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Crown Heights monthly authors-on-tap reading series"},
+    "mcnallyjackson": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "SoHo/Williamsburg/Seaport indie bookstore author events"},
+    "booksaremagic": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Cobble Hill indie bookstore (Emma Straub) author events"},
+    "greenlightbookstore": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Fort Greene indie bookstore reading series"},
+    "centerforfiction": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Fort Greene literary nonprofit"},
+    "center4fiction": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Center for Fiction IG handle variant"},
+    "pioneerworks": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Red Hook arts/sci nonprofit — talks, readings, music"},
+    "caveatnyc": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "LES smart-fun venue — debates, science nights, literary"},
+    "murmrr": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Crown Heights/Prospect Heights venue, author talks + indie music"},
+    "runstreetnyc": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Run + art tours — running × museum overlap"},
+    "offlineclub": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Phone-free coffeehouse social hours"},
+    "timeleft": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Wednesday dinners with strangers, social"},
+    "catapult.story": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Indie-lit publisher reading series at McNally Jackson, Books Are Magic"}
   },
   "title_hints": {
     "wnyc book club": {"score": 1.0, "added_at": "2026-05-14", "source": "user_mentioned"},
-    "lululemon": {"score": 1.0, "added_at": "2026-05-21", "source": "user_mentioned", "note": "Lululemon-branded fitness events priority"},
-    "no regrets runners": {"score": 1.0, "added_at": "2026-05-21", "source": "user_mentioned"}
+    "lululemon": {"score": 1.0, "added_at": "2026-05-21", "source": "user_mentioned"},
+    "no regrets runners": {"score": 1.0, "added_at": "2026-05-21", "source": "user_mentioned"},
+    "silent reading": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Catches Reading Rhythms + Slow Reading Club + copycats"},
+    "reading series": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub"},
+    "literary salon": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub"},
+    "supper club": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Small-group dinner-club format"},
+    "phone-free": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub", "note": "Offline Club style"},
+    "sober social": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub"},
+    "book launch": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub"},
+    "author talk": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub"},
+    "dinner with strangers": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub"},
+    "communal dinner": {"score": 1.0, "added_at": "2026-05-22", "source": "discovered_similar_to_litclub"}
   },
-  "lastUpdated": "2026-05-21T15:00:00Z"
+  "lastUpdated": "2026-05-22T16:00:00Z"
 }
