@@ -822,6 +822,20 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # a real event title.
     if re.match(r"^\d\s+['\"]", title_stripped):
         return True
+
+    # Promo-phrase substrings (anywhere in title, not just start).
+    # Real event titles never contain these. Complements fragment_starts
+    # which only fires at the title prefix.
+    promo_substrings = (
+        "free knicks donuts", "free knicks", "knicks donuts",
+        "tomorrow for first", "for first 53", "for first 100",
+        "for first 50", "for first 25",
+        "win a $", "giving away $", "giveaway: $",
+        "rest in peace", "happy birthday to",
+        "free with code", "use code ",
+    )
+    if any(p in title_lower for p in promo_substrings):
+        return True
     if re.match(r"^[A-Za-z]{1,2}\s+[A-Z][a-z]+\s+(?:week|month|day)", title_stripped):
         # 'Ti This week', 'Th This month' — carousel marker + caption start
         return True
