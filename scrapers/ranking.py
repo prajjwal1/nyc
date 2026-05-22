@@ -687,10 +687,21 @@ def _user_curated_boost(event: dict) -> float:
     if not cfg["hosts"] and not cfg["title_hints"]:
         return 0.0
     boost = 0.0
-    url = (event.get("sourceUrl") or "").lower()
-    for host, weight in cfg["hosts"].items():
-        if host in url:
-            boost = max(boost, weight)
+    # Check sourceUrl AND organizerUrl. Events scraped from eventbrite
+    # organizer pages keep the per-event slug URL in sourceUrl and the
+    # /o/<id> URL in organizerUrl — both need to be checked against the
+    # curated hosts so Lululemon's individual events still match the
+    # organizer-host fragment.
+    urls = (
+        (event.get("sourceUrl") or "").lower(),
+        (event.get("organizerUrl") or "").lower(),
+    )
+    for url in urls:
+        if not url:
+            continue
+        for host, weight in cfg["hosts"].items():
+            if host in url:
+                boost = max(boost, weight)
     if boost < 1.0:
         text = ((event.get("title") or "") + " "
                 + (event.get("description") or "")[:300]).lower()
