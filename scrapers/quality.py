@@ -217,6 +217,15 @@ HARD_BLOCK_KEYWORDS = [
     # dating, mixed singles mixers, queer-friendly art / cultural events
     # are unaffected — only the demographic-specific dating events block.
     "lesbian speed dating", "lesbian speed",
+    "fluid dating", "queer speed dating",
+    "bisexual speed", "pansexual speed",
+    "speed dating for bisexual", "speed dating for pansexual",
+    "speed dating for queer", "speed dating for lgbtq",
+
+    # Social media / content-creator networking — career networking
+    "social media networking",
+    "content creators networking", "content creator networking",
+    "influencer networking", "influencers networking",
     "gay speed dating", "gay men's speed dating", "gay men's speed",
     "queer speed dating", "queer speed",
     "lgbtq speed dating", "lgbtq+ speed dating", "lgbtq dating event",

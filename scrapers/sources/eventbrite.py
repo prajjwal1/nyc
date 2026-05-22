@@ -180,7 +180,7 @@ def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
         is_free = ((raw.get("ticket_availability") or {}).get("is_free"))
         price = "free" if is_free else None
         summary = raw.get("summary") or ""
-        events.append(build_event(
+        ev = build_event(
             title=title,
             description=summary[:500],
             event_date=event_date,
@@ -192,7 +192,13 @@ def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
             source_url=url,
             image_url=image,
             price=price,
-        ))
+        )
+        # Stamp the organizer-page URL so downstream filters can match
+        # it against user_curated_sources.json (the per-event sourceUrl
+        # is the specific /e/<slug> URL which doesn't contain the
+        # organizer ID).
+        ev["organizerUrl"] = source_url
+        events.append(ev)
     return events
 
 

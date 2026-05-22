@@ -741,17 +741,36 @@ _DESCRIPTION_REQUIRED_SOURCES = frozenset({
 
 def _is_curated_host(event: dict) -> bool:
     """True if the event's sourceUrl matches a host in
-    user_curated_sources.json. Curated hosts are user-explicit
-    high-signal sources — they should bypass aggregator-style filters
-    (description-required, image-required) that target generic-listing
-    noise from the same source type. E.g., a litclub.nyc Luma event
-    with no description is still a litclub event the user wants.
+    user_curated_sources.json, OR title/desc matches a title_hint.
+    Curated hosts/hints are user-explicit high-signal sources — they
+    should bypass aggregator-style filters (description-required,
+    image-required) that target generic-listing noise.
+
+    Title-hint matching extends bypass to events scraped from organizer
+    pages that lose the original host context after the slug-based event
+    URL is the only URL kept (e.g. Lululemon's eventbrite organizer
+    'No Regrets Runners' event URL is /e/no-regrets-runners-tickets-X,
+    not /o/14861961557, but the title hint 'no regrets runners' fires).
     """
     try:
         from .ranking import _load_user_curated_sources
         cfg = _load_user_curated_sources()
-        url = (event.get("sourceUrl") or "").lower()
-        return any(h in url for h in cfg.get("hosts", {}))
+        # Check both sourceUrl AND organizerUrl (events scraped from
+        # organizer pages keep the org URL in organizerUrl while sourceUrl
+        # points to the specific event slug).
+        urls = (
+            (event.get("sourceUrl") or "").lower(),
+            (event.get("organizerUrl") or "").lower(),
+        )
+        for url in urls:
+            if url and any(h in url for h in cfg.get("hosts", {})):
+                return True
+        title = (event.get("title") or "").lower()
+        desc = (event.get("description") or "")[:300].lower()
+        text = title + " " + desc
+        if any(h in text for h in cfg.get("title_hints", {})):
+            return True
+        return False
     except Exception:
         return False
 
