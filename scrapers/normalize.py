@@ -739,6 +739,23 @@ _DESCRIPTION_REQUIRED_SOURCES = frozenset({
 })
 
 
+def _is_curated_host(event: dict) -> bool:
+    """True if the event's sourceUrl matches a host in
+    user_curated_sources.json. Curated hosts are user-explicit
+    high-signal sources — they should bypass aggregator-style filters
+    (description-required, image-required) that target generic-listing
+    noise from the same source type. E.g., a litclub.nyc Luma event
+    with no description is still a litclub event the user wants.
+    """
+    try:
+        from .ranking import _load_user_curated_sources
+        cfg = _load_user_curated_sources()
+        url = (event.get("sourceUrl") or "").lower()
+        return any(h in url for h in cfg.get("hosts", {}))
+    except Exception:
+        return False
+
+
 def _is_shell_event(event: dict) -> bool:
     """An event with no description, no image, AND no venue is a placeholder
     that adds no information. Drop these so the feed isn't padded with empty
@@ -747,10 +764,16 @@ def _is_shell_event(event: dict) -> bool:
     Also drop events from listing-aggregator sources that have no image —
     they render as blank cards and ruin the visual feed quality.
 
-    Exception: user-saved events are always kept regardless — the user
-    explicitly bookmarked them.
+    Exception: user-saved events and events from user-curated hosts
+    (litclub.nyc, Lululemon, etc.) are always kept regardless — the user
+    has explicitly signaled these are high-priority.
     """
     if event.get("userSaved") or event.get("userTagged"):
+        return False
+    # User-curated hosts bypass the aggregator-style filters. A litclub
+    # luma event with no description still belongs in the feed because
+    # the host itself is a positive signal.
+    if _is_curated_host(event):
         return False
     desc = (event.get("description") or "").strip()
     img = (event.get("imageUrl") or "").strip()
