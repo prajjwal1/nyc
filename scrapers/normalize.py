@@ -1,7 +1,7 @@
 import hashlib
 import os
 import re
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 
 
 def deduplicate(events: list[dict]) -> list[dict]:
@@ -1111,18 +1111,29 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # markers — these are stale bad-expansion artifacts from prior runs.
     events = collapse_title_spam(events)
 
-    # Preserve firstSeenAt across runs — if an event existed in the previous
-    # events.json, carry its original firstSeenAt forward; otherwise stamp now.
+    # Preserve firstSeenAt across runs. Three layers, most specific first:
+    #   1. If the event already carries firstSeenAt (e.g. an ad-hoc re-run
+    #      of normalize on an already-processed feed), keep it as-is —
+    #      otherwise re-running this function silently clobbers freshness
+    #      data and breaks the "Just Added" hero.
+    #   2. If `previous_index` (from prior events.json) has this id, carry
+    #      its firstSeenAt forward — this is the normal full-pipeline path.
+    #   3. Otherwise stamp `now`.
+    # UTC + tz-aware so JS / Python both see an unambiguous instant.
     if previous_index is None:
         previous_index = {}
-    now_iso = datetime.now().isoformat()
+    now_iso = datetime.now(timezone.utc).isoformat()
     velocity_count = 0
     for ev in events:
-        prev = previous_index.get(ev.get("id"))
-        if prev and prev.get("firstSeenAt"):
-            ev["firstSeenAt"] = prev["firstSeenAt"]
+        if ev.get("firstSeenAt"):
+            pass  # layer 1: trust event's own stamp
         else:
-            ev["firstSeenAt"] = now_iso
+            prev = previous_index.get(ev.get("id"))
+            if prev and prev.get("firstSeenAt"):
+                ev["firstSeenAt"] = prev["firstSeenAt"]
+            else:
+                ev["firstSeenAt"] = now_iso
+        prev = previous_index.get(ev.get("id"))
 
         # Engagement velocity: when an event's likes/comments grew since
         # the previous scrape, that's a "trending" signal. Stash the delta
