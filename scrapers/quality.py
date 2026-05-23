@@ -257,6 +257,10 @@ HARD_BLOCK_KEYWORDS = [
     "virtual half marathon", "virtual marathon", "virtual fun run",
     "virtual workout", "virtual yoga", "online event",
     "zoom event", "via zoom",
+    "online webinar", "free online webinar", "free webinar",
+    "online class", "online workshop", "virtual workshop",
+    "webinar", "virtual class", "online course",
+    "remote-only", "fully remote", "(online)", "(virtual)",
     # Tribute / cover-band schlock at venue mass-market shows
     "tribute concert", "tribute band", "ultimate tribute",
     # Generic "X 5K Walk/Run" charity races aren't the social-event vibe
@@ -662,6 +666,19 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     title_lower = (title_lower
                    .replace("’", "'").replace("‘", "'")
                    .replace("“", '"').replace("”", '"'))
+    # Strip leading emoji / zero-width joiners / symbols / punctuation so
+    # the startswith checks below match titles that lead with a decorative
+    # glyph (IG captions often open with "🎨 🛞 And come..."). We keep
+    # leading @, #, [, (, * since those are themselves fragment markers.
+    def _strip_leading_decoration(s: str) -> str:
+        i = 0
+        while i < len(s):
+            c = s[i]
+            if c.isalnum() or c in "@#[(*\"'":
+                break
+            i += 1
+        return s[i:].lstrip()
+    title_lower_nofx = _strip_leading_decoration(title_lower)
 
     # Caption fragments often start with lowercase or narrative phrases
     fragment_starts = [
@@ -810,6 +827,16 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         # ("Opened in June 2019, the Plinth is...")
         "opened in ", "opens in ", "located in ", "located at ",
         "situated in ", "situated at ",
+        # Excited-caption openers ("Super excited to be part of...")
+        "super excited", "so excited", "so happy to",
+        "so pumped", "super pumped",
+        "stoked to ", "thrilled to ", "honored to ", "honoured to ",
+        # "And come..." / "And join..." — caption continuation prefix
+        "and come ", "and join ", "and we ",
+        # "Join us in / at / on / for ..." — when followed by date or
+        # a place prefix this is caption, not title. "Join us for X"
+        # is borderline but generally caption-y.
+        "join us in ", "join us at ", "join us on ", "join us this ",
         # Generic activity fragments missing the actual event name
         # ("screenings at @hudsonyards", "event in Central Park May 30",
         # "free screenings at", "concerts at"). Singular + plural.
@@ -820,7 +847,8 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         # but these specific anchors are common IG caption starts.
         "free screenings", "free concerts",
     ]
-    if any(title_lower.startswith(p) for p in fragment_starts):
+    if any(title_lower.startswith(p) or title_lower_nofx.startswith(p)
+           for p in fragment_starts):
         return True
 
     # Month-day + dash prefix: "Jun 17 - Alphonso Horne...", "5/27 - Brass
@@ -1080,6 +1108,13 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "loving the energy", "across nyc",
         "link in our bio", "link in bio", "swipe up",
         "presale begins", "tickets are live", "schedule and tickets",
+        # "<Org> is excited / thrilled / proud to announce ..." — caption
+        # announcement-narrative, not an event title.
+        "is excited to announce", "is thrilled to announce",
+        "is proud to announce", "are excited to announce",
+        "are thrilled to announce", "are proud to announce",
+        "is excited to host", "is thrilled to host",
+        "we are launching", "we're launching",
     ]
     if any(p in title_lower for p in narrative_phrases):
         return True
