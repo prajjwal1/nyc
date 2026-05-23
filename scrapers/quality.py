@@ -806,8 +806,36 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "double tap", "save this post", "share this post",
         "swipe up", "swipe to", "swipe for",
         "stay tuned",
+        # Place / installation descriptions misparsed as events
+        # ("Opened in June 2019, the Plinth is...")
+        "opened in ", "opens in ", "located in ", "located at ",
+        "situated in ", "situated at ",
+        # Generic activity fragments missing the actual event name
+        # ("screenings at @hudsonyards", "event in Central Park May 30",
+        # "free screenings at", "concerts at"). Singular + plural.
+        "screenings at ", "screening at ", "concerts at ", "concert at ",
+        "shows at ", "show at ", "performances at ", "performance at ",
+        "event in ", "events in ", "event at ", "events at ",
+        # "an evening of" fragment-opener already covered by other rules
+        # but these specific anchors are common IG caption starts.
+        "free screenings", "free concerts",
     ]
     if any(title_lower.startswith(p) for p in fragment_starts):
+        return True
+
+    # Month-day + dash prefix: "Jun 17 - Alphonso Horne...", "5/27 - Brass
+    # Queens...". These come from multi-event lineup IG posts where the
+    # caption is a bulleted schedule and each line gets harvested as a
+    # separate event. The "Jun 17 - " prefix means the title is really
+    # just a lineup item, not a self-contained event name.
+    if re.match(
+        r"^(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+"
+        r"\d{1,2}(?:st|nd|rd|th)?\s*[-–—]\s+",
+        title_lower,
+    ):
+        return True
+    # Numeric date prefix: "6/7 - Recovery: What Matters", "5/27 - Brass Queens"
+    if re.match(r"^\d{1,2}/\d{1,2}\s*[-–—]\s+", title_lower):
         return True
 
     # Numbered list items (e.g., "3. Harley Spiller premieres ...")
