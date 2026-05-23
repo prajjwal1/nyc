@@ -885,6 +885,23 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if re.match(r"^(?:today|tomorrow|tonight|this weekend|this week)[^\w]?$", title_lower):
         return True
 
+    # Truncation marker: title ends in "..." or "…". Indicates a caption
+    # got cut off mid-sentence and surfaced as a title (e.g. "reading
+    # day...", "Not your typical..."). Real event titles never trail off.
+    if title_stripped.endswith(("...", "…", "..")):
+        return True
+
+    # Title ending in a verb-fragment that needs an object (e.g.
+    # "THE CENTER FOR FICTION presents", "X discusses", "Y introduces").
+    # The actual event subject was cut off after the verb.
+    fragment_verb_endings = (
+        "presents", "discusses", "introduces", "features",
+        "celebrates", "announces", "honors", "welcomes",
+        "explores", "examines", "reflects on",
+    )
+    if any(title_lower.endswith(" " + v) for v in fragment_verb_endings):
+        return True
+
     # Hashtag-only titles
     if title.startswith("#") or re.match(r"^#\w+(\s+#\w+)+$", title.strip()):
         return True
