@@ -870,6 +870,17 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if re.match(r"^\d+[\.\)]\s+", title):
         return True
 
+    # "On <Weekday>, <Month> <Day>, join/come/we ..." caption opener.
+    # Same family as "Tomorrow, we're..." but with an explicit date.
+    # Real event titles never lead with "On Sunday, May 24, join ...".
+    if re.match(
+        r"^on\s+(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*,?\s+"
+        r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+"
+        r"\d{1,2}(?:st|nd|rd|th)?,?\s+",
+        title_lower,
+    ):
+        return True
+
     # Titles starting with relative time like "Today" or "Tomorrow" alone
     if re.match(r"^(?:today|tomorrow|tonight|this weekend|this week)[^\w]?$", title_lower):
         return True
