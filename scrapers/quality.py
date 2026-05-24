@@ -870,6 +870,34 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # Numeric date prefix: "6/7 - Recovery: What Matters", "5/27 - Brass Queens"
     if re.match(r"^\d{1,2}/\d{1,2}\s*[-–—]\s+", title_lower):
         return True
+    # Month-day + bare-word continuation: "May 27 Busta Rhymes",
+    # "May 28 with free post-run recovery", "June 9, just in time".
+    # Caption-style date prefix that the title-extractor swallowed as
+    # part of the event name. Match if the day is followed by:
+    #   - a comma + caption continuation (just in time, this week)
+    #   - a preposition/connector (with, for, at, in, on)
+    if re.match(
+        r"^(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+"
+        r"\d{1,2}(?:st|nd|rd|th)?[,]?\s+(?:with|for|at|in|on|just|this|"
+        r"and|to|coming|featuring|ft\.|ft|w/|x\b)",
+        title_lower,
+    ):
+        return True
+
+    # Weekday + (M/D) + Hpm pattern — date-stamp masquerading as title.
+    # "Wednesday (5/27) 7pm at McNally Jackson Seaport: ..." → drop the
+    # date-stamp prefix, but if it dominates the title the result is
+    # caption-style narrative. Match the whole prefix as a fragment.
+    weekday_re = "(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*"
+    if re.match(
+        rf"^{weekday_re}\s*\(\d{{1,2}}/\d{{1,2}}\)\s*\d{{1,2}}(?::\d{{2}})?\s*(?:am|pm)",
+        title_lower,
+    ):
+        return True
+
+    # "Want free|to|a chance" — promo CTA opener
+    if re.match(r"^want\s+(?:free|to|a|some|tickets|the)\b", title_lower):
+        return True
 
     # Numbered list items (e.g., "3. Harley Spiller premieres ...")
     if re.match(r"^\d+[\.\)]\s+", title):
@@ -1151,6 +1179,10 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         # "X is officially <verb>ing ..." — news-announcement opener,
         # not an event title ("FIFA is officially bringing ...")
         "is officially ", "are officially ",
+        # "X is spending a day ..." / "X is bringing ..." — celebrity
+        # caption narrative ("Christian Pulisic is spending a day...")
+        "is spending ", "is bringing ", "are bringing ",
+        "is hosting ", "is hosting a", "is taking over",
     ]
     if any(p in title_lower for p in narrative_phrases):
         return True
