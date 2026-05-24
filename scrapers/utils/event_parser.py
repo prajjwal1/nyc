@@ -31,6 +31,12 @@ def parse_iso_to_local(iso_str: str) -> tuple[str | None, str | None]:
     if not iso_str:
         return None, None
     s = iso_str.replace("Z", "+00:00")
+    # If there's no "T" separator, this is a date-only input. Return the
+    # date and a None time — otherwise fromisoformat parses it as naive
+    # midnight and every date-only event ends up displayed at 00:00, which
+    # is worse than no time at all.
+    if "T" not in s:
+        return (s[:10] if len(s) >= 10 else None), None
     try:
         dt = datetime.fromisoformat(s)
         if dt.tzinfo is None:
