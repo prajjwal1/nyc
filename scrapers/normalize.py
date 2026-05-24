@@ -564,6 +564,45 @@ _TRUSTED_FAR_FUTURE_SOURCES = frozenset({
 })
 
 
+_COMEDY_LINEUP_SOURCES = frozenset({
+    "newyorkcomedyclub", "eastvillecomedy", "thebellhouseny",
+    "comedycellar", "ucbtheatre", "thecaveatnyc",
+})
+# A title is a "comedian lineup" when it's 3+ comma-separated person-name
+# tokens (First [Middle] Last) and contains no event-format keyword.
+_COMEDIAN_NAME_RE = re.compile(
+    r"^[A-Z][a-zA-Z'’\-\.]+(?:\s+[A-Z][a-zA-Z'’\-\.]+){1,3}$"
+)
+_COMEDY_KEYWORDS = frozenset({
+    "comedy", "stand-up", "standup", "stand up", "show", "presents",
+    "lineup", "live", "tour", "special", "headliner", "podcast",
+    "open mic", "roast", "improv", "sketch", "showcase", "series",
+})
+
+
+def _prefix_comedian_lineups(events: list[dict]) -> list[dict]:
+    for ev in events:
+        if ev.get("source") not in _COMEDY_LINEUP_SOURCES:
+            continue
+        title = (ev.get("title") or "").strip()
+        if not title or title.lower().startswith(("stand-up", "standup", "comedy")):
+            continue
+        title_lower = title.lower()
+        if any(kw in title_lower for kw in _COMEDY_KEYWORDS):
+            continue
+        # Split on comma; each token should look like a person name.
+        tokens = [t.strip() for t in title.split(",") if t.strip()]
+        if len(tokens) < 3:
+            continue
+        # Drop trailing parenthetical from final token before regex check.
+        last = re.sub(r"\s*\([^)]*\)\s*$", "", tokens[-1])
+        tokens[-1] = last
+        if not all(_COMEDIAN_NAME_RE.match(t) for t in tokens):
+            continue
+        ev["title"] = f"Stand-Up Comedy: {title}"
+    return events
+
+
 def collapse_title_spam(events: list[dict]) -> list[dict]:
     """Collapse repeated (title, sourceUrl) pairs that span weekly intervals
     without an explicit recurring marker. These are almost always a prior
@@ -1110,6 +1149,13 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # Collapse repeated (title, sourceUrl) groups without explicit recurring
     # markers — these are stale bad-expansion artifacts from prior runs.
     events = collapse_title_spam(events)
+
+    # Prefix bare comedian-lineup titles. Comedy-club scrapers ingest the
+    # raw lineup ("Caitlin Peluffo, Judah Friedlander, Dante Nero, ...")
+    # as the title, leaving the user with no idea what kind of show it
+    # is. Detect titles that are 3+ comma-separated First-Last names
+    # with no event-format keyword and prepend "Stand-Up Comedy:".
+    events = _prefix_comedian_lineups(events)
 
     # Preserve firstSeenAt across runs. Three layers, most specific first:
     #   1. If the event already carries firstSeenAt (e.g. an ad-hoc re-run
