@@ -924,6 +924,27 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if title_stripped.endswith(("...", "…", "..")):
         return True
 
+    # Title starts with a lowercase letter (in original case). Real
+    # event titles use Title Case or ALL CAPS for the headline.
+    # Lowercase-led titles come from mid-sentence captions ("costumes
+    # for a single show", "here are the details"). Carve-outs to
+    # protect legitimate lowercase-led titles:
+    #   - "a ", "an ", "the " — English article starts
+    #   - Title contains "@" — concert format ("sunflwr @ The Rooftop")
+    #     where lowercase artist names are common
+    #   - First token is camelCase (lowercase first + uppercase later,
+    #     e.g. "commUNITY", "iLuminate") — brand stylization
+    title_orig_nofx = _strip_leading_decoration(title_stripped)
+    if (title_orig_nofx and title_orig_nofx[0].islower()
+            and "@" not in title_orig_nofx
+            and not title_orig_nofx.lower().startswith(("a ", "an ", "the "))):
+        first_word = title_orig_nofx.split(maxsplit=1)[0] if title_orig_nofx else ""
+        is_camel = (len(first_word) > 2
+                    and first_word[0].islower()
+                    and any(c.isupper() for c in first_word[1:]))
+        if not is_camel and len(title_orig_nofx.split()) >= 3:
+            return True
+
     # Title ending in a verb-fragment that needs an object (e.g.
     # "THE CENTER FOR FICTION presents", "X discusses", "Y introduces").
     # The actual event subject was cut off after the verb.
@@ -1183,6 +1204,10 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         # caption narrative ("Christian Pulisic is spending a day...")
         "is spending ", "is bringing ", "are bringing ",
         "is hosting ", "is hosting a", "is taking over",
+        # "Here are more details on ..." — caption announcement opener
+        # ("Here are more details on the Passport to Taiwan Festival")
+        "here are more", "here are the", "here's more",
+        "here's the lineup", "here's everything", "here's what",
     ]
     if any(p in title_lower for p in narrative_phrases):
         return True
