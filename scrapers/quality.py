@@ -1143,6 +1143,9 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "are thrilled to announce", "are proud to announce",
         "is excited to host", "is thrilled to host",
         "we are launching", "we're launching",
+        # "X is officially <verb>ing ..." — news-announcement opener,
+        # not an event title ("FIFA is officially bringing ...")
+        "is officially ", "are officially ",
     ]
     if any(p in title_lower for p in narrative_phrases):
         return True
