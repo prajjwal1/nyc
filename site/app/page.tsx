@@ -103,6 +103,20 @@ export default function Home() {
     return map;
   }, [events]);
 
+  // Count events within the next 7 days (inclusive of today) — gives the
+  // user a sense of immediately-relevant volume without scanning. Different
+  // from `totalEvents` which spans months out.
+  const thisWeekCount = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const cutoff = new Date(today);
+    cutoff.setDate(today.getDate() + 7);
+    const toStr = (d: Date) => format(d, "yyyy-MM-dd");
+    const start = toStr(today);
+    const end = toStr(cutoff);
+    return events.filter((e) => e.date >= start && e.date < end).length;
+  }, [events]);
+
   // IG capture stats — concrete value-prop for the user: the website
   // surfaces this many IG events so they don't have to scroll. Ephemeral
   // count is the strongest signal (stories disappear in 24h — without us
@@ -198,6 +212,7 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       <Header
         totalEvents={totalEvents}
+        thisWeekCount={thisWeekCount}
         lastUpdated={lastUpdated}
         newSinceLastVisit={newSinceLastVisit}
         igCaptureCount={igCaptureStats.total}

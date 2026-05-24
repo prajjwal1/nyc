@@ -4,6 +4,7 @@ import { useState } from "react";
 
 interface HeaderProps {
   totalEvents: number;
+  thisWeekCount?: number;
   lastUpdated?: string;
   newSinceLastVisit?: number;
   igCaptureCount?: number;
@@ -12,6 +13,7 @@ interface HeaderProps {
 
 export default function Header({
   totalEvents,
+  thisWeekCount,
   lastUpdated,
   newSinceLastVisit,
   igCaptureCount,
@@ -50,7 +52,15 @@ export default function Header({
           <div>
             <h1 className="text-2xl font-bold text-gray-900">NYC Events</h1>
             <p className="text-sm text-gray-500">
-              {totalEvents} events from across the city
+              {thisWeekCount !== undefined && thisWeekCount > 0 ? (
+                <>
+                  <span className="font-semibold text-gray-700">{thisWeekCount}</span>
+                  {" "}this week
+                  <span className="text-gray-400"> · {totalEvents} total</span>
+                </>
+              ) : (
+                <>{totalEvents} events from across the city</>
+              )}
               {newSinceLastVisit && newSinceLastVisit > 0 ? (
                 <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[11px] font-semibold">
                   ✨ {newSinceLastVisit} new since you last visited
