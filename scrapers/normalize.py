@@ -468,10 +468,21 @@ def _merge(a: dict, b: dict) -> dict:
     if (b.get("description") or "") > (merged.get("description") or ""):
         merged["description"] = b["description"]
 
-    # Prefer specific time over none
-    if not merged.get("startTime") and b.get("startTime"):
+    # Prefer specific time over none, AND prefer the fresher scrape's
+    # times when both have them. Reason: stale carryover may carry a
+    # time produced under a now-fixed bug (e.g. iter 43 UTC->ET fix);
+    # the fresh scrape's time reflects the current code path.
+    def _newer(x: dict, y: dict) -> bool:
+        return (x.get("scrapedAt") or "") > (y.get("scrapedAt") or "")
+    if not merged.get("startTime"):
+        if b.get("startTime"):
+            merged["startTime"] = b["startTime"]
+    elif b.get("startTime") and _newer(b, merged):
         merged["startTime"] = b["startTime"]
-    if not merged.get("endTime") and b.get("endTime"):
+    if not merged.get("endTime"):
+        if b.get("endTime"):
+            merged["endTime"] = b["endTime"]
+    elif b.get("endTime") and _newer(b, merged):
         merged["endTime"] = b["endTime"]
 
     # Prefer non-empty image
