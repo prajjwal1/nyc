@@ -87,10 +87,24 @@ async def main():
     #       for the duration of every full scrape (~20-40 min window).
     # Dedup handles the merge: if the fresh IG run re-produces an event,
     # the old + new copies collapse to one via the existing dedup chain.
-    carryover = [e for e in previous_index.values() if e.get("source") == "instagram"]
+    # Carryover protects feed continuity for sources that flake in CI:
+    #   - instagram: cursor + session + rate-limit volatility
+    #   - eventbrite: GitHub Actions runner IPs hit aggressive anti-bot
+    #     blocking; a "successful" run can return 3 events vs 80+ from
+    #     a local machine. Without carry-over the deployed feed lost
+    #     ~80 user-facing events per failed eventbrite sweep.
+    CARRYOVER_SOURCES = {"instagram", "eventbrite"}
+    carryover = [
+        e for e in previous_index.values()
+        if e.get("source") in CARRYOVER_SOURCES
+    ]
     if carryover:
         all_events.extend(carryover)
-        print(f"[run_all] Carrying over {len(carryover)} IG events from previous run")
+        # Per-source count for monitoring.
+        from collections import Counter as _Counter
+        per_src = _Counter(e.get("source", "?") for e in carryover)
+        per_src_str = ", ".join(f"{n} {s}" for s, n in per_src.most_common())
+        print(f"[run_all] Carrying over {len(carryover)} events from previous run ({per_src_str})")
 
     results = await asyncio.gather(
         *[run_scraper(name, fn) for name, fn in ASYNC_SCRAPERS],
