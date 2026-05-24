@@ -12,7 +12,7 @@ from html import unescape
 from urllib.parse import urljoin
 
 from ..utils.http import fetch_json, fetch_text
-from ..utils.event_parser import build_event, parse_date
+from ..utils.event_parser import build_event, parse_date, parse_iso_to_local
 
 REFINERY_URL = "https://refinery.nypl.org/api/nypl/ndo/v0.1/site-data/events?limit=50"
 
@@ -85,12 +85,12 @@ def _parse_refinery_event(item: dict) -> dict | None:
     if not title:
         return None
     start = attrs.get("start-date", "")
-    event_date = parse_date(start[:10]) if start else None
+    end = attrs.get("end-date", "")
+    date_str, start_time = parse_iso_to_local(start)
+    _, end_time = parse_iso_to_local(end)
+    event_date = parse_date(date_str) if date_str else None
     if not event_date:
         return None
-    start_time = start[11:16] if len(start) > 16 else None
-    end = attrs.get("end-date", "")
-    end_time = end[11:16] if len(end) > 16 else None
 
     desc_short = attrs.get("description-short", "")
     desc = re.sub(r"\s+", " ", desc_short).strip()[:400]

@@ -1,7 +1,7 @@
 import json
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time
+from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
 
 VENUES = [
     {
@@ -73,11 +73,10 @@ def _from_ld(data: dict, venue: dict) -> dict | None:
     start = data.get("startDate", "")
     url = data.get("url", venue["url"])
 
-    event_date = parse_date(start[:10]) if start else None
+    date_str, start_time = parse_iso_to_local(start)
+    event_date = parse_date(date_str) if date_str else None
     if not event_date:
         return None
-
-    start_time = start[11:16] if len(start) > 16 else None
 
     image = data.get("image", "")
     if isinstance(image, list) and image:

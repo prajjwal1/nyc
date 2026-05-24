@@ -11,7 +11,7 @@ from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time
+from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
 
 # High-value NYC venue/cultural URLs
 GENERIC_URLS = [
@@ -377,12 +377,11 @@ def _ld_event_to_dict(data: dict, source: str, fallback_url: str) -> dict | None
     start = data.get("startDate", "") or ""
     end = data.get("endDate", "") or ""
 
-    event_date = parse_date(start[:10]) if start else None
+    date_str, start_time = parse_iso_to_local(start)
+    _, end_time = parse_iso_to_local(end)
+    event_date = parse_date(date_str) if date_str else None
     if not event_date:
         return None
-
-    start_time = start[11:16] if len(start) >= 16 else None
-    end_time = end[11:16] if len(end) >= 16 else None
 
     loc_name, loc_addr = _extract_location(data.get("location"))
     image = _extract_image(data.get("image"))

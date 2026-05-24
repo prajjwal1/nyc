@@ -2,7 +2,7 @@ import json
 import re
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time
+from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
 
 # Specific organizer pages the user has flagged as high-priority.
 # These list ALL of an organizer's events in one place — useful for
@@ -322,11 +322,10 @@ def _parse_ld_event(data: dict) -> dict | None:
         elif isinstance(addr, str):
             loc_addr = addr
 
-    event_date = parse_date(start[:10]) if start else None
+    date_str, start_time = parse_iso_to_local(start)
+    event_date = parse_date(date_str) if date_str else None
     if not event_date:
         return None
-
-    start_time = start[11:16] if len(start) > 16 else None
     url = data.get("url", "")
 
     offers = data.get("offers", {})

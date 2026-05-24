@@ -1,13 +1,47 @@
 import hashlib
 import re
 from datetime import datetime, date, time
+from zoneinfo import ZoneInfo
 
 import dateparser
+
+
+_NYC_TZ = ZoneInfo("America/New_York")
 
 
 def make_event_id(source: str, title: str, event_date: str) -> str:
     raw = f"{source}:{title}:{event_date}"
     return hashlib.sha256(raw.encode()).hexdigest()[:16]
+
+
+def parse_iso_to_local(iso_str: str) -> tuple[str | None, str | None]:
+    """Parse a JSON-LD style ISO datetime into (date, HH:MM) in
+    America/New_York. Handles "Z" suffix and explicit offsets.
+
+    JSON-LD startDate values are typically UTC (e.g.
+    "2026-05-26T22:00:00Z"). Naive slicing of chars 11-16 displays
+    UTC verbatim, so an 18:00 ET event shows as 22:00 to the user.
+    This helper does the timezone conversion centrally so every
+    scraper doing JSON-LD ingestion stays consistent.
+
+    Falls back to (date_str, naive HH:MM slice) when parsing fails,
+    matching the legacy behavior so malformed values don't drop the
+    event entirely.
+    """
+    if not iso_str:
+        return None, None
+    s = iso_str.replace("Z", "+00:00")
+    try:
+        dt = datetime.fromisoformat(s)
+        if dt.tzinfo is None:
+            local = dt  # already local
+        else:
+            local = dt.astimezone(_NYC_TZ)
+        return local.date().isoformat(), local.strftime("%H:%M")
+    except Exception:
+        date_str = iso_str[:10] if len(iso_str) >= 10 else None
+        time_str = iso_str[11:16] if len(iso_str) > 16 else None
+        return date_str, time_str
 
 
 def parse_date(text: str) -> date | None:

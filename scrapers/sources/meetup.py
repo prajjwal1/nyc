@@ -1,34 +1,7 @@
 import json
-from datetime import datetime
-from zoneinfo import ZoneInfo
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time
-
-_NYC_TZ = ZoneInfo("America/New_York")
-
-
-def _ld_start_to_local(start: str) -> tuple[str | None, str | None]:
-    """Parse Meetup's JSON-LD startDate (typically UTC, e.g.
-    "2026-05-26T22:00:00Z") into America/New_York date + HH:MM. Falls
-    back to the previous naive substring approach if parsing fails.
-    """
-    if not start:
-        return None, None
-    # Handle "Z" suffix that fromisoformat() didn't accept pre-3.11.
-    s = start.replace("Z", "+00:00")
-    try:
-        dt = datetime.fromisoformat(s)
-        if dt.tzinfo is None:
-            # No timezone info — assume already local NYC.
-            local = dt
-        else:
-            local = dt.astimezone(_NYC_TZ)
-        return local.date().isoformat(), local.strftime("%H:%M")
-    except Exception:
-        date_str = parse_date(start[:10])
-        time_str = start[11:16] if len(start) > 16 else None
-        return (date_str.isoformat() if date_str else None), time_str
+from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
 
 SEARCH_URLS = [
     "https://www.meetup.com/find/?location=us--ny--New%20York&source=EVENTS&categoryId=546",  # Arts
@@ -114,7 +87,7 @@ def _from_ld(data: dict) -> dict | None:
         if isinstance(addr, dict):
             loc_addr = addr.get("streetAddress", "")
 
-    date_str, start_time = _ld_start_to_local(start)
+    date_str, start_time = parse_iso_to_local(start)
     if not date_str:
         return None
     event_date = parse_date(date_str)
