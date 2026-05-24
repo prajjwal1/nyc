@@ -701,6 +701,20 @@ def clean_title(title: str) -> str:
     t = title.strip()
     # Decode common HTML entities
     t = t.replace("&amp;", "&").replace("&quot;", '"').replace("&#39;", "'")
+    # OCR'd @ glyph: image-OCR sometimes reads the @ symbol on a flyer
+    # as "G", "C", or "O" and glues it to the handle, producing
+    # "Gbrooklynmuseum", "Chighlinenyc", etc. Detect single uppercase
+    # letter followed by 4+ lowercase letters that end in a recognizable
+    # venue/place suffix — almost certainly a misread @-handle. Replace
+    # the leading cap with a proper @ so downstream link/handle parsing
+    # works (e.g. AccountBanner can navigate to the IG profile).
+    t = re.sub(
+        r"\b[GCOQ]([a-z]{3,}(?:nyc|museum|park|fest|gallery|theatre|theater|"
+        r"comedy|library|brewery|bookstore|stadium|hall|cafe|club|bridge|"
+        r"jazz|garden|bar))\b",
+        r"@\1",
+        t,
+    )
     # Strip leading emoji/punctuation cluster
     t = _TITLE_LEADING_EMOJI_RE.sub("", t)
     # Strip trailing hashtag wall (3+ hashtags at end)
