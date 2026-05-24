@@ -580,6 +580,31 @@ _COMEDY_KEYWORDS = frozenset({
 })
 
 
+_BOOK_TITLE_RE = re.compile(r"[\"“][^\"”]{2,80}[\"”]")
+
+
+def _prefix_book_club_lists(events: list[dict]) -> list[dict]:
+    """Meetup book clubs sometimes ship a title that's just 2+ quoted book
+    names ('"Siren’s Call", "Midnight Library" and "Washington"'),
+    leaving the user with no context. Prepend "Book Club:" when we can
+    confirm the source URL is a book-club meetup.
+    """
+    for ev in events:
+        title = (ev.get("title") or "").strip()
+        if not title or title.lower().startswith("book club"):
+            continue
+        # Need 2+ quoted titles in the displayed title.
+        if len(_BOOK_TITLE_RE.findall(title)) < 2:
+            continue
+        # Source-specific gating: meetup URL contains "/books" group, or
+        # description contains "book club".
+        url = (ev.get("sourceUrl") or "").lower()
+        desc = (ev.get("description") or "").lower()
+        if "/books" in url or "/book-" in url or "book club" in desc:
+            ev["title"] = f"Book Club: {title}"
+    return events
+
+
 def _prefix_comedian_lineups(events: list[dict]) -> list[dict]:
     for ev in events:
         if ev.get("source") not in _COMEDY_LINEUP_SOURCES:
@@ -1156,6 +1181,10 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # is. Detect titles that are 3+ comma-separated First-Last names
     # with no event-format keyword and prepend "Stand-Up Comedy:".
     events = _prefix_comedian_lineups(events)
+
+    # Same pattern for meetup book clubs that ship a list of quoted
+    # book titles as the event title.
+    events = _prefix_book_club_lists(events)
 
     # Preserve firstSeenAt across runs. Three layers, most specific first:
     #   1. If the event already carries firstSeenAt (e.g. an ad-hoc re-run
