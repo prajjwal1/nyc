@@ -175,6 +175,10 @@ CATEGORY_KEYWORDS = {
         "thesis projects", "mfa thesis", "bfa thesis",
     ],
     "music": [
+        # Bare "music" — word-bounded (5 chars, so re.search with \\b)
+        # so "music album", "Rum and Music" tag music. Doesn't fire on
+        # "musical" (would match "music" inside it without \\b).
+        "music",
         "live music", "live jazz", "jazz", "concert", "dj set", "dj night",
         "live band", "rock show", "hip hop", "electronic", "acoustic",
         "music venue", "live show", "vinyl night", "listening party",
@@ -308,6 +312,7 @@ CATEGORY_KEYWORDS = {
         "ice bath", "cold plunge", "sauna",
     ],
     "fitness": [
+        "zumba", "barre", "spin class", "spin studio",
         "run club", "running club", "weekend run", "morning run",
         "social run", "saturday run", "sunday run",
         "group run", "casual run", "track club",
