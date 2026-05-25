@@ -36,18 +36,30 @@ def parse_offers_price(offers) -> str:
     for o in offers:
         if not isinstance(o, dict):
             continue
-        p = o.get("price", "")
+        # Accept either price (standard) or lowPrice (AggregateOffer)
+        p = o.get("price", o.get("lowPrice", ""))
         if p == "" or p is None:
             continue
-        if str(p) == "0" or p == 0:
-            free_seen = True
+        # Normalize: "0", 0, "0.00", 0.0 all mean free
+        try:
+            pf = float(p)
+            if pf == 0:
+                free_seen = True
+                continue
+            if paid_price is None:
+                paid_price = f"${pf:g}"  # strip trailing zeros ($25.00 -> $25)
             continue
-        if paid_price is None:
-            paid_price = p
+        except (ValueError, TypeError):
+            pass
+        # Non-numeric price (e.g. "Free" string) — fall back to string form
+        if isinstance(p, str) and p.lower() == "free":
+            free_seen = True
+        elif paid_price is None:
+            paid_price = f"${p}"
     if free_seen and paid_price is None:
         return "free"
     if paid_price is not None:
-        return f"${paid_price}"
+        return paid_price
     return "unknown"
 
 

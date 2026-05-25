@@ -11,7 +11,7 @@ from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
+from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
 
 # High-value NYC venue/cultural URLs
 GENERIC_URLS = [
@@ -344,26 +344,8 @@ def _extract_location(location_val) -> tuple[str, str]:
     return "", ""
 
 
-def _extract_price(offers_val) -> str:
-    if not offers_val:
-        return "unknown"
-    if isinstance(offers_val, list):
-        if not offers_val:
-            return "unknown"
-        offers_val = offers_val[0]
-    if isinstance(offers_val, dict):
-        p = offers_val.get("price", offers_val.get("lowPrice", ""))
-        if p == "0" or p == 0 or p == "0.00":
-            return "free"
-        if p:
-            try:
-                pf = float(p)
-                if pf == 0:
-                    return "free"
-                return f"${pf:g}"
-            except (ValueError, TypeError):
-                return f"${p}"
-    return "unknown"
+# Delegated to the shared helper in scrapers/utils/event_parser.py
+_extract_price = parse_offers_price
 
 
 def _ld_event_to_dict(data: dict, source: str, fallback_url: str) -> dict | None:
