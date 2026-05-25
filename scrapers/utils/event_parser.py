@@ -153,6 +153,12 @@ CATEGORY_KEYWORDS = {
         # Eventbrite/B&N pattern: "Author Name discusses BOOK at venue"
         "discusses", "discuss her book", "discuss his book", "discuss their book",
         "audiobooks", "audiobook", "lectures on", "library reading",
+        # Writing-event variants — kept as 2-word phrases so "Writing Code
+        # in Python" / "Writing the Will" don't get tagged books.
+        "writing practice", "writing salon", "writing series",
+        "writing class", "writing group", "creative writing",
+        "notes on writing", "writing rhythms", "writing community",
+        "writers meet", "writer's group",
         # Generic literary patterns
         "readers meetup", "readers' meetup", "reading brooklyn",
         "rest & read", "rest and read", "rest n read",
