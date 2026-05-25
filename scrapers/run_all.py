@@ -156,7 +156,10 @@ def _write_events(events: list[dict], primary_path: str = OUTPUT_PATH) -> None:
     import datetime as _dt
     payload = {
         "events": events,
-        "lastUpdated": _dt.datetime.now().isoformat(),
+        # tz-aware UTC so the site's `new Date(lastUpdated)` parses
+        # unambiguously (naive ISO is interpreted as local in JS, which
+        # produced a 4-hour skew for users west of UTC).
+        "lastUpdated": _dt.datetime.now(_dt.timezone.utc).isoformat(),
         "topAccounts": _top_ig_accounts(events, n=12),
     }
     for path in (primary_path, SITE_PUBLIC_PATH):
