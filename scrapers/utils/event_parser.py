@@ -761,6 +761,21 @@ def clean_title(title: str) -> str:
     t = _TITLE_TRAILING_HASHTAGS_RE.sub("", t)
     # Strip trailing @-mention chain
     t = _TITLE_TRAILING_AT_MENTIONS_RE.sub("", t)
+    # Strip trailing " on <Weekday>, <Month> <Day>" date suffix that IG
+    # captions append to event names. Example transformations:
+    #   "Hive Mind with Allen Aucoin on FRI, JUL 10"  -> "Hive Mind with Allen Aucoin"
+    #   "BERTHA: Grateful Drag on SAT, OCT 10"        -> "BERTHA: Grateful Drag"
+    #   "Donna The Buffalo on SAT, NOV 7"             -> "Donna The Buffalo"
+    # Constrained to short trailing tokens (weekday + month abbreviation)
+    # so we don't strip legit "...on Tuesday Night" style titles.
+    t = re.sub(
+        r"\s+on\s+(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?,?\s+"
+        r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+"
+        r"\d{1,2}(?:st|nd|rd|th)?\.?\s*$",
+        "",
+        t,
+        flags=re.IGNORECASE,
+    )
     # Collapse 3+ identical emoji
     t = re.sub(
         r"([\U0001F300-\U0001FAFF\U00002702-\U000027B0])\1{2,}",
