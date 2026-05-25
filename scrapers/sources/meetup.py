@@ -100,6 +100,30 @@ def _from_ld(data: dict) -> dict | None:
     if image and not image.startswith("http"):
         image = f"https://www.meetup.com{image}"
 
+    # Extract price from offers — most meetup events are free; users
+    # benefit from seeing the FREE pill prominently. Without this,
+    # every meetup event displays as "unknown" price, which makes the
+    # site's price filter ("all / free / paid") useless for meetup.
+    offers = data.get("offers", {})
+    price = "unknown"
+    if isinstance(offers, dict):
+        p = offers.get("price", "")
+        if str(p) == "0" or p == 0:
+            price = "free"
+        elif p:
+            price = f"${p}"
+    elif isinstance(offers, list) and offers:
+        # offers can be a list of Offer objects
+        for o in offers:
+            if isinstance(o, dict):
+                p = o.get("price", "")
+                if str(p) == "0" or p == 0:
+                    price = "free"
+                    break
+                if p:
+                    price = f"${p}"
+                    break
+
     return build_event(
         title=title,
         description=desc[:500],
@@ -110,4 +134,5 @@ def _from_ld(data: dict) -> dict | None:
         source="meetup",
         source_url=url,
         image_url=image if image else None,
+        price=price,
     )
