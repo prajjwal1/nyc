@@ -807,6 +807,14 @@ def infer_default_start_time(categories: list[str], title: str = "", description
     # Happy hour / sunset
     if any(k in text for k in ("happy hour", "sunset")):
         return "18:00"
+    # Art gallery openings / receptions → 18:00 (standard NYC gallery
+    # opening hour). Detect explicit reception/opening text so a date-
+    # only eventbrite art listing surfaces with a meaningful default time.
+    if any(k in text for k in (
+        "opening reception", "open reception", "exhibition opening",
+        "open studios", "final open studios", "private view",
+    )):
+        return "18:00"
     for cat in categories:
         if cat in _DEFAULT_START_BY_CATEGORY:
             return _DEFAULT_START_BY_CATEGORY[cat]

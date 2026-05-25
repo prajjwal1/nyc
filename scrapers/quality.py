@@ -1208,6 +1208,14 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         # ("Here are more details on the Passport to Taiwan Festival")
         "here are more", "here are the", "here's more",
         "here's the lineup", "here's everything", "here's what",
+        # Leading "|" pipe + caption ("| Tomorrow is the first day...")
+        # The pipe is sometimes the divider in a flyer header that ended
+        # up at the start of the extracted title.
+        "| ", "|",
+        # "A solo show by @X is on view at @Y" — gallery caption narrative
+        "a solo show by", "a new exhibition by", "a new show by",
+        # "series @© next saturday" — caption-style with copyright glyph
+        "series @©", "series @ ", "series:",
     ]
     if any(p in title_lower for p in narrative_phrases):
         return True
