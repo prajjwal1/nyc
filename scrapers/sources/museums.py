@@ -1,7 +1,7 @@
 import json
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
+from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
 
 MUSEUMS = [
     {
@@ -94,6 +94,8 @@ def _from_ld(data: dict, museum: dict) -> dict | None:
     if isinstance(image, list) and image:
         image = image[0]
 
+    price = parse_offers_price(data.get("offers"))
+
     return build_event(
         title=title,
         description=desc[:500],
@@ -104,6 +106,7 @@ def _from_ld(data: dict, museum: dict) -> dict | None:
         source_url=url,
         image_url=image if image else None,
         categories=["art"],
+        price=price,
     )
 
 

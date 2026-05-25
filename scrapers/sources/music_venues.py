@@ -1,7 +1,7 @@
 import json
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
+from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
 
 VENUES = [
     {
@@ -82,14 +82,7 @@ def _from_ld(data: dict, venue: dict) -> dict | None:
     if isinstance(image, list) and image:
         image = image[0]
 
-    offers = data.get("offers", {})
-    price = "unknown"
-    if isinstance(offers, dict):
-        p = offers.get("price", "")
-        if str(p) == "0":
-            price = "free"
-        elif p:
-            price = f"${p}"
+    price = parse_offers_price(data.get("offers"))
 
     return build_event(
         title=title,

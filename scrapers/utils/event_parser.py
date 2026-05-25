@@ -14,6 +14,43 @@ def make_event_id(source: str, title: str, event_date: str) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()[:16]
 
 
+def parse_offers_price(offers) -> str:
+    """Extract a display price from a JSON-LD `offers` field.
+
+    JSON-LD `offers` can be a dict (single Offer) or a list of Offer
+    objects. Returns:
+      - "free" when any offer has price 0
+      - "$N" for the first non-zero price
+      - "unknown" if nothing is parseable
+
+    Centralizing this so eventbrite/meetup/museums/dice all expose the
+    same FREE pill behavior on the cards without each scraper
+    re-implementing the same offers walk.
+    """
+    if isinstance(offers, dict):
+        offers = [offers]
+    if not isinstance(offers, list):
+        return "unknown"
+    free_seen = False
+    paid_price = None
+    for o in offers:
+        if not isinstance(o, dict):
+            continue
+        p = o.get("price", "")
+        if p == "" or p is None:
+            continue
+        if str(p) == "0" or p == 0:
+            free_seen = True
+            continue
+        if paid_price is None:
+            paid_price = p
+    if free_seen and paid_price is None:
+        return "free"
+    if paid_price is not None:
+        return f"${paid_price}"
+    return "unknown"
+
+
 def parse_iso_to_local(iso_str: str) -> tuple[str | None, str | None]:
     """Parse a JSON-LD style ISO datetime into (date, HH:MM) in
     America/New_York. Handles "Z" suffix and explicit offsets.

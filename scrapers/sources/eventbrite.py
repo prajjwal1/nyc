@@ -2,7 +2,7 @@ import json
 import re
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
+from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
 
 # Specific organizer pages the user has flagged as high-priority.
 # These list ALL of an organizer's events in one place — useful for
@@ -328,20 +328,7 @@ def _parse_ld_event(data: dict) -> dict | None:
         return None
     url = data.get("url", "")
 
-    offers = data.get("offers", {})
-    price = "unknown"
-    if isinstance(offers, dict):
-        p = offers.get("price", "")
-        if p == "0" or p == 0:
-            price = "free"
-        elif p:
-            price = f"${p}"
-    elif isinstance(offers, list) and offers:
-        p = offers[0].get("price", "")
-        if p == "0" or p == 0:
-            price = "free"
-        elif p:
-            price = f"${p}"
+    price = parse_offers_price(data.get("offers"))
 
     image = data.get("image", "")
     if isinstance(image, list) and image:
