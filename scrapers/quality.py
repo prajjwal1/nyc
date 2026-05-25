@@ -771,6 +771,12 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         "monday outside", "tuesday outside", "wednesday outside",
         "thursday outside",
         "this friday outside", "this saturday outside",
+        # "This <Weekday>, join/come/we/celebrate..." caption opener
+        # ("This Friday, join us for a celebration of our composting...")
+        # Distinct from the bare "this <weekday>" because the comma
+        # signals a caption-style sentence continuation.
+        "this friday,", "this saturday,", "this sunday,",
+        "this monday,", "this tuesday,", "this wednesday,", "this thursday,",
         # 'Day Location: X' label format
         "saturday location:", "sunday location:", "monday location:",
         "tuesday location:", "wednesday location:", "thursday location:",
