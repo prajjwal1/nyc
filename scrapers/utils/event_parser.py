@@ -248,16 +248,31 @@ CATEGORY_KEYWORDS = {
         "game show", "pub quiz", "quiz night",
     ],
     "theater": [
-        "theater", "theatre", "play opening", "broadway", "off-broadway",
-        "drama", "musical",
+        # NB: bare "theater" / "theatre" are too noisy — Beacon Theatre,
+        # Kings Theatre, Webster Hall etc. are music venues that also
+        # get tagged. Bare musical-title words ("wicked", "company")
+        # clash with venue/adjective uses ("Wicked Willy's bar",
+        # "Company NYC"). Require play/show context instead.
+        "play opening", "play reading", "broadway", "off-broadway",
+        "drama school", "drama club", "stage play", "musical theater",
+        "musical theatre", "the musical",
         # Specific NYC theater venues + popular musicals
-        "wicked", "hamilton", "moulin rouge", "back to the future",
-        "lion king", "phantom", "mj the musical", "six the musical",
-        "aladdin", "company", "harry potter", "tina turner musical",
-        "& juliet", "hadestown", "kimberly akimbo", "the outsiders",
+        # Specific musical names — be constrained: bare "wicked",
+        # "hamilton", "company", "phantom", "outsiders" all collide with
+        # bar names, neighborhood names, adjective uses. Where the title
+        # alone is ambiguous, anchor it ("wicked on broadway", "hamilton
+        # the musical"). Unambiguous brand titles stay as-is.
+        "wicked on broadway", "wicked the musical",
+        "hamilton on broadway", "hamilton the musical",
+        "moulin rouge the musical", "back to the future the musical",
+        "lion king", "lion king the musical",
+        "phantom of the opera",
+        "mj the musical", "six the musical",
+        "aladdin the musical", "harry potter and the cursed child",
+        "tina turner musical", "& juliet",
+        "hadestown", "kimberly akimbo", "the outsiders the musical",
         "playwrights horizons", "the public theater", "signature theatre",
-        "ny theatre workshop", "joe's pub", "the kitchen",
-        "play reading", "performance art",
+        "ny theatre workshop", "joe's pub", "performance art",
     ],
     "comedy": [
         "comedy show", "improv", "stand-up", "standup", "open mic comedy",
