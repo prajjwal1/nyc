@@ -320,6 +320,11 @@ CATEGORY_KEYWORDS = {
     "fitness": [
         "zumba", "barre", "spin class", "spin studio",
         "run club", "running club", "weekend run", "morning run",
+        "evening run", "night run", "afternoon run", "tuesday night run",
+        "thursday night run", "monday night run", "wednesday night run",
+        "rise & run", "rise and run", "rise n run", "rise n' run",
+        "run & refuel", "run and refuel", "run + refuel",
+        "run-prospect park", "social run",
         "social run", "saturday run", "sunday run",
         "group run", "casual run", "track club",
         "runners", "no regrets runners", "lululemon",
