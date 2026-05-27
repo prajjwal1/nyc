@@ -46,8 +46,10 @@ export function filterEvents(
         e.title.toLowerCase().includes(q) ||
         e.description.toLowerCase().includes(q) ||
         e.location.name.toLowerCase().includes(q) ||
+        (e.location.address || "").toLowerCase().includes(q) ||
         (e.location.neighborhood || "").toLowerCase().includes(q) ||
-        (e.instagramAccount || "").toLowerCase().includes(q)
+        (e.instagramAccount || "").toLowerCase().includes(q) ||
+        e.categories.some((c) => c.toLowerCase().includes(q))
       );
     });
   }
