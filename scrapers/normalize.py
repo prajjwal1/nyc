@@ -594,6 +594,70 @@ _COMEDY_KEYWORDS = frozenset({
 _BOOK_TITLE_RE = re.compile(r"[\"“][^\"”]{2,80}[\"”]")
 
 
+_VENUE_NAME_TO_NEIGHBORHOOD = {
+    "liz's book bar": "carroll gardens",
+    "book club bar": "east village",
+    "mcnally jackson": "soho",
+    "national sawdust": "williamsburg",
+    "music hall of williamsburg": "williamsburg",
+    "brooklyn bowl": "williamsburg",
+    "rough trade nyc": "williamsburg",
+    "elsewhere": "bushwick",
+    "the bell house": "gowanus",
+    "house of yes": "bushwick",
+    "knockdown center": "ridgewood",
+    "brooklyn steel": "east williamsburg",
+    "kings theatre": "flatbush",
+    "kings theatre brooklyn": "flatbush",
+    "brooklyn academy of music": "fort greene",
+    "bam": "fort greene",
+    "the box": "lower east side",
+    "the strand": "east village",
+    "moma": "midtown",
+    "the met": "upper east side",
+    "metropolitan museum of art": "upper east side",
+    "guggenheim": "upper east side",
+    "whitney museum": "meatpacking",
+    "brooklyn museum": "prospect heights",
+    "new museum": "lower east side",
+    "comedy cellar": "west village",
+    "new york comedy club": "east village",
+    "eastville comedy club": "east village",
+}
+
+
+def _backfill_neighborhood_from_venue(events: list[dict]) -> None:
+    """Re-derive neighborhoods on every normalize pass:
+    1. If a venue NAME maps to a known neighborhood, use that (most
+       reliable — fixed-venue scrapers like Liz's Book Bar lack addresses).
+    2. If an address is present, re-run infer_neighborhood with the
+       current keyword list — catches stale tags from older keyword sets
+       (e.g. "broadway" used to falsely tag Times Square as SoHo).
+    3. Leave the existing tag alone only if nothing better can be derived.
+    """
+    from .utils.event_parser import infer_neighborhood
+    for ev in events:
+        loc = ev.get("location") or {}
+        name = (loc.get("name") or "").lower().strip()
+        addr = (loc.get("address") or "").strip()
+        existing = loc.get("neighborhood")
+        new_hood: str | None = None
+        # Step 1: venue-name lookup (strongest signal)
+        for venue, hood in _VENUE_NAME_TO_NEIGHBORHOOD.items():
+            if venue in name:
+                new_hood = hood
+                break
+        # Step 2: address inference (always re-runs, can override stale tags)
+        if new_hood is None and addr:
+            new_hood = infer_neighborhood(addr)
+        # If the existing tag was derivable from current address keywords, keep
+        # it; otherwise it's stale (e.g. neighborhood keyword removed since
+        # last scrape) and gets cleared so the filter doesn't lie.
+        if new_hood != existing:
+            loc["neighborhood"] = new_hood
+            ev["location"] = loc
+
+
 _OUTDOORS_INDOOR_ARENAS = (
     "madison square garden",
     "barclays center",
@@ -1227,6 +1291,12 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # at infer_categories time. Keeps the category facet honest so users
     # browsing "outdoors" don't get arena concerts.
     _strip_outdoors_indoor_arena(events)
+
+    # Re-derive missing neighborhoods from venue name / re-run address
+    # inference. Bookmanager-powered scrapers (lizsbookbar, bookclubbar)
+    # don't carry addresses, and the keyword list grows over time, so
+    # cached events benefit from a refresh pass.
+    _backfill_neighborhood_from_venue(events)
 
     # Preserve firstSeenAt across runs. Three layers, most specific first:
     #   1. If the event already carries firstSeenAt (e.g. an ad-hoc re-run

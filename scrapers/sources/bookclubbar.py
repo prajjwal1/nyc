@@ -19,6 +19,10 @@ from ..utils.bookmanager import scrape_san
 # but still the publishing SAN for all BCB events including Bushwick ones.
 _SANS = ("9911545",)
 _PUBLIC_EVENT_URL_TMPL = "https://www.bookclubbar.com/events/{event_id}"
+# 197 E 3rd St is the East Village address; Bushwick events get the venue
+# noted in their description. The address is good enough for the
+# infer_neighborhood pass to tag them as East Village.
+_DEFAULT_ADDRESS = "197 E 3rd St, New York, NY 10009"
 
 
 def _dedup_key(ev: dict) -> tuple:
@@ -37,6 +41,7 @@ async def scrape() -> list[dict]:
                 source_label="bookclubbar",
                 default_venue="Book Club Bar",
                 public_url_template=_PUBLIC_EVENT_URL_TMPL,
+                default_address=_DEFAULT_ADDRESS,
             )
             for san in _SANS
         ],

@@ -130,7 +130,8 @@ async def _resolve_store_info(client: httpx.AsyncClient, san: str) -> dict:
 
 
 def _row_to_event(row: dict, source_label: str, default_venue: str,
-                  default_url_template: Optional[str] = None) -> Optional[dict]:
+                  default_url_template: Optional[str] = None,
+                  default_address: Optional[str] = None) -> Optional[dict]:
     """Bookmanager row → normalized event dict."""
     title = (row.get("title") or "").strip()
     if not title:
@@ -180,6 +181,7 @@ def _row_to_event(row: dict, source_label: str, default_venue: str,
         event_date=event_date,
         start_time=start_time,
         location_name=location_name,
+        address=default_address or "",
         source=source_label,
         source_url=source_url,
         image_url=image_url,
@@ -192,6 +194,7 @@ async def scrape_san(
     source_label: str = "bookmanager",
     default_venue: Optional[str] = None,
     public_url_template: Optional[str] = None,
+    default_address: Optional[str] = None,
 ) -> list[dict]:
     """Fetch upcoming events for the bookstore identified by `san`.
 
@@ -235,7 +238,7 @@ async def scrape_san(
 
         events: list[dict] = []
         for row in rows:
-            ev = _row_to_event(row, source_label, venue, public_url_template)
+            ev = _row_to_event(row, source_label, venue, public_url_template, default_address)
             if ev:
                 events.append(ev)
         print(f"[bookmanager:{source_label}] Got {len(events)} events (SAN={san}, store_id={store_id})")

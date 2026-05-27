@@ -15,4 +15,5 @@ async def scrape() -> list[dict]:
         source_label="lizsbookbar",
         default_venue="Liz's Book Bar",
         public_url_template=_PUBLIC_EVENT_URL_TMPL,
+        default_address="315 Smith Street, Brooklyn, NY 11231",
     )
