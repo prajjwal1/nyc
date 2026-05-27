@@ -1298,6 +1298,17 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # cached events benefit from a refresh pass.
     _backfill_neighborhood_from_venue(events)
 
+    # Re-run title cleanup so the iterated clean_title rules apply to
+    # cached events too — otherwise caption-fragment fixes only help new
+    # scrapes, and titles like "GETTING UNSTUCK: On Sunday, ..." linger
+    # for weeks in the feed.
+    from .utils.event_parser import clean_title as _clean_title
+    for ev in events:
+        t = ev.get("title") or ""
+        cleaned = _clean_title(t)
+        if cleaned and cleaned != t:
+            ev["title"] = cleaned
+
     # Preserve firstSeenAt across runs. Three layers, most specific first:
     #   1. If the event already carries firstSeenAt (e.g. an ad-hoc re-run
     #      of normalize on an already-processed feed), keep it as-is —

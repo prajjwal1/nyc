@@ -939,6 +939,26 @@ def clean_title(title: str) -> str:
         t,
         flags=re.IGNORECASE,
     )
+    # IG captions follow the pattern "EVENT NAME: On <weekday>, <date>,
+    # <rest of caption>" — the part before the colon is a clean event
+    # name, the part after is a sentence. Truncate at the colon when:
+    # 1. The title is longish (>30 chars total) — short titles like
+    #    "BERTHA: Grateful Drag" should stay intact, and
+    # 2. The text after the colon starts with a caption-fragment opener
+    #    (On <weekday>, Finally, Tomorrow, This <weekday>, etc.) AND
+    # 3. The text before the colon is at least 8 chars (a meaningful name).
+    if len(t) > 30 and ":" in t:
+        head, sep, tail = t.partition(":")
+        head_stripped = head.strip()
+        tail_stripped = tail.strip()
+        if len(head_stripped) >= 8 and re.match(
+            r"^(?:on\s+(?:mon|tue|wed|thur?|fri|sat|sun)[a-z]*,?|"
+            r"finally,|tomorrow,|today,|tonight,|"
+            r"this\s+(?:mon|tue|wed|thur?|fri|sat|sun)[a-z]*,)",
+            tail_stripped,
+            flags=re.IGNORECASE,
+        ):
+            t = head_stripped
     # Collapse 3+ identical emoji
     t = re.sub(
         r"([\U0001F300-\U0001FAFF\U00002702-\U000027B0])\1{2,}",
