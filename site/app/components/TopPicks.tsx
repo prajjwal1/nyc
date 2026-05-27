@@ -201,7 +201,11 @@ export default function TopPicks({
     .slice(0, 6);
   const tonightIds = new Set(tonightEvents.map((e) => e.id));
 
-  // ✨ Just Added — events first seen in the last 30 hours, sorted by date
+  // ✨ Just Added — events first seen in the last 72 hours, sorted by score.
+  // Wide window (3 days) because most scrapers re-discover the same upcoming
+  // events repeatedly; truly fresh additions trickle in slowly. A tight 30h
+  // window left this hero empty on most visits, which made the site feel
+  // stale. 72h keeps it consistently populated without becoming uninteresting.
   const recentlyAdded = upcoming
     .filter((e) => {
       if (tonightIds.has(e.id)) return false;
@@ -209,7 +213,7 @@ export default function TopPicks({
       if (!fs) return false;
       try {
         const t = new Date(fs).getTime();
-        return now.getTime() - t < 30 * 3600 * 1000;
+        return now.getTime() - t < 72 * 3600 * 1000;
       } catch {
         return false;
       }
@@ -385,7 +389,7 @@ export default function TopPicks({
           <h3 className="text-sm font-semibold text-sky-900 uppercase tracking-wide mb-2 px-2 flex items-center justify-between">
             <span>✨ Just Added</span>
             <span className="text-[10px] font-normal text-sky-700 normal-case tracking-normal">
-              new in the last day
+              new this week
             </span>
           </h3>
           <div className="space-y-2">

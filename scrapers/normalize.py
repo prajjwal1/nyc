@@ -594,6 +594,30 @@ _COMEDY_KEYWORDS = frozenset({
 _BOOK_TITLE_RE = re.compile(r"[\"“][^\"”]{2,80}[\"”]")
 
 
+_OUTDOORS_INDOOR_ARENAS = (
+    "madison square garden",
+    "barclays center",
+    "the box",
+    "garden room",
+)
+_OUTDOORS_STRONG_SIGNALS = (
+    "rooftop", "pier ", "waterfront", "park ", " park", "beach", "ferry",
+    "high line", "domino park", "central park", "prospect park",
+    "kayak", "hike", "trail", "outdoor concert", "outdoor movie",
+    "outdoors", "outdoor ", "garden party",
+)
+
+
+def _strip_outdoors_indoor_arena(events: list[dict]) -> None:
+    for ev in events:
+        cats = ev.get("categories") or []
+        if "outdoors" not in cats:
+            continue
+        text = f"{ev.get('title','')} {ev.get('description','')} {(ev.get('location') or {}).get('name','')}".lower()
+        if any(v in text for v in _OUTDOORS_INDOOR_ARENAS) and not any(s in text for s in _OUTDOORS_STRONG_SIGNALS):
+            ev["categories"] = [c for c in cats if c != "outdoors"] or ["other"]
+
+
 def _prefix_book_club_lists(events: list[dict]) -> list[dict]:
     """Meetup book clubs sometimes ship a title that's just 2+ quoted book
     names ('"Siren’s Call", "Midnight Library" and "Washington"'),
@@ -1196,6 +1220,13 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # Same pattern for meetup book clubs that ship a list of quoted
     # book titles as the event title.
     events = _prefix_book_club_lists(events)
+
+    # Strip the "outdoors" tag from events whose only nature signal is an
+    # indoor-arena name (Madison Square Garden, Barclays Center). This
+    # repairs already-cached categories — new scrapes get this filtered
+    # at infer_categories time. Keeps the category facet honest so users
+    # browsing "outdoors" don't get arena concerts.
+    _strip_outdoors_indoor_arena(events)
 
     # Preserve firstSeenAt across runs. Three layers, most specific first:
     #   1. If the event already carries firstSeenAt (e.g. an ad-hoc re-run

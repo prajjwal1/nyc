@@ -488,6 +488,16 @@ _SOURCE_TOPIC_HINTS = {
 }
 
 
+_OUTDOORS_FALSE_POSITIVE_VENUES = (
+    "madison square garden",  # MSG — indoor arena, "garden" is a misnomer
+    "the garden at madison",
+    "barclays center",
+    "msg sphere",
+    "the box",
+    "garden room",  # private venue rooms named "Garden"
+)
+
+
 def infer_categories(title: str, description: str = "", ig_account: str = "",
                      source: str = "") -> list[str]:
     text = f"{title} {description}".lower()
@@ -510,6 +520,18 @@ def infer_categories(title: str, description: str = "", ig_account: str = "",
                     break
         if matched:
             cats.append(cat)
+    # Suppress outdoors when the only signal was an indoor-arena name that
+    # happens to contain a nature word. Madison Square Garden is the prime
+    # offender — "garden" matches but it's an enclosed indoor arena.
+    if "outdoors" in cats and any(v in text for v in _OUTDOORS_FALSE_POSITIVE_VENUES):
+        # Only drop if no STRONG outdoor signal also present.
+        strong_outdoor = any(s in text for s in (
+            "rooftop", "pier ", "waterfront", "park ", "beach", "ferry",
+            "high line", "domino park", "central park", "prospect park",
+            "kayak", "hike", "trail", "outdoor concert", "outdoor movie",
+        ))
+        if not strong_outdoor:
+            cats = [c for c in cats if c != "outdoors"]
     # Fall back to IG-account handle topic-hints when the title is cryptic
     # (e.g. '5/21 • caroline...' from a music venue's IG roundup). This is
     # structural — derives category from the account's stated focus rather
