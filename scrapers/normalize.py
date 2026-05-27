@@ -394,7 +394,31 @@ def _dedup_fuzzy_title(events: list[dict]) -> list[dict]:
                 jacc = len(a & b) / len(a | b)
                 # Also require at least 2 shared distinctive tokens to avoid
                 # matching short titles by accident.
-                if jacc >= 0.55 and len(a & b) >= 2:
+                should_merge = jacc >= 0.55 and len(a & b) >= 2
+                # Cross-source same-venue same-date with 2+ distinctive
+                # shared tokens — e.g., songkick's "Charlie Puth @ Madison
+                # Square Garden" vs allevents's "Charlie Puth, Daniel Seavey,
+                # Ally Salort in New York". Token-set jaccard is low because
+                # each title has extras the other doesn't, but the shared
+                # tokens are the actual artist name. Only enable for non-IG
+                # venues (loc:*) since IG bucket already collapses by account.
+                if not should_merge and len(a & b) >= 2:
+                    # Cross-source same-venue: when two different scrapers
+                    # produce events at the same venue+date with 2+ shared
+                    # tokens, they're almost always the same event with
+                    # different framing (one lists the headliner alone,
+                    # the other lists the opener too). The venue match is
+                    # the strong signal; token overlap just confirms the
+                    # subject. Only fires on non-IG venues (loc:*) and
+                    # only when at least one shared token is reasonably
+                    # distinctive (>=4 chars, not a stopword).
+                    src_a = bucket[i].get("source")
+                    src_b = bucket[j].get("source")
+                    if src_a != src_b:
+                        distinctive = [t for t in (a & b) if len(t) >= 4]
+                        if len(distinctive) >= 2:
+                            should_merge = True
+                if should_merge:
                     bucket[i] = _merge(bucket[i], bucket[j])
                     merged_into[j] = i
                     merges += 1
