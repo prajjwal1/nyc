@@ -185,6 +185,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - known issue (separate, not addressed): substack's 237 surviving events include many product-affiliate noise ("Mini Phone Tripod", "Apple AirTag") that should be filtered out. The "(link)" suffix is a strong tell. Logged as fb-128.
 - 2 of the Substack FEEDS URLs return 404 (untappedcities.com/feed/, nycgovparks.org/news.rss). Harmless but wasted budget. Not addressed this iteration.
 
+### fb-136 — Aggregate attended counter in TopPicks header
+- created_at: 2026-05-28
+- source: agent-proposal (iter 95; completes the iter 71+75 attended thread)
+- status: addressed (committed in iter 95)
+- body: Iter 71 shipped the "Did you go?" button + iter 75 the on-card ✓ badge. Adding a small `· ✓ N attended` suffix in the "For You" subhead so the user sees their feedback history accumulating at a glance. Only renders when `yes >= 1` — no zero-state clutter. Subtle emerald color matches the badge color.
+- new helper: `getAttendedCount()` in `lib/interests.ts` returns `{yes, no}` counts.
+- intentionally minimal: no "no" count surfaced (negatives stay invisible per iter 75 spec); no "manage attended" UI. The counter exists to reward engagement, not to drive interaction.
+
 ### fb-135 — theskint over-fragmentation: 172 events from 11 RSS posts
 - created_at: 2026-05-28
 - source: agent-proposal (iter 94 audit)

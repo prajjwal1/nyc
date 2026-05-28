@@ -466,6 +466,17 @@ export function getAttendedState(eventId: string): AttendedState {
   return loadAttended()[eventId];
 }
 
+export function getAttendedCount(): { yes: number; no: number } {
+  const map = loadAttended();
+  let yes = 0;
+  let no = 0;
+  for (const v of Object.values(map)) {
+    if (v === "yes") yes += 1;
+    else if (v === "no") no += 1;
+  }
+  return { yes, no };
+}
+
 export function markAttended(
   eventId: string,
   answer: "yes" | "no",

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Event } from "../lib/types";
 import EventCard from "./EventCard";
 import AccountBanner from "./AccountBanner";
-import { isHidden, isSavedLocal } from "../lib/interests";
+import { isHidden, isSavedLocal, getAttendedCount } from "../lib/interests";
 
 // Series key — when the same recurring event title appears across many
 // future dates (e.g., "Smorgasburg" weekly), collapse to the soonest
@@ -361,6 +361,15 @@ export default function TopPicks({
           <h2 className="text-xl font-semibold text-gray-900">For You</h2>
           <p className="text-sm text-gray-500">
             The best of NYC each day, picked for your interests
+            {(() => {
+              const { yes } = getAttendedCount();
+              if (yes <= 0) return null;
+              return (
+                <span className="ml-1.5 text-emerald-700">
+                  · ✓ {yes} attended
+                </span>
+              );
+            })()}
           </p>
         </div>
         <div className="bg-white rounded-lg border border-gray-200 p-0.5 flex shrink-0">
