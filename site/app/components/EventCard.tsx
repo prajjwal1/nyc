@@ -99,6 +99,21 @@ function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event)
           NOW
         </div>
       )}
+      {/* Conviction glyph — sky ★ for follow, amber ♥ for affinity */}
+      {(event.userFollowing || event.userAffinity) && (
+        <div
+          className={`absolute bottom-1.5 left-1.5 rounded-full w-5 h-5 flex items-center justify-center text-[11px] font-bold backdrop-blur ${
+            event.userFollowing ? "bg-sky-500/95 text-white" : "bg-amber-500/95 text-white"
+          }`}
+          title={
+            event.userFollowing
+              ? `Because you follow @${event.account || event.instagramAccount || ""}`
+              : `From accounts you save from`
+          }
+        >
+          {event.userFollowing ? "★" : "♥"}
+        </div>
+      )}
       {/* Bottom title overlay on hover */}
       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 opacity-0 group-hover:opacity-100 transition-opacity">
         <div className="text-[11px] font-semibold text-white line-clamp-2">
@@ -163,16 +178,34 @@ function MediaFirstCard({
     setSaved(toggleSavedLocal(event.id, { account: event.instagramAccount, categories: event.categories, sourceUrl: event.sourceUrl, stub: { id: event.id, title: event.title, date: event.date, sourceUrl: event.sourceUrl, imageUrl: event.imageUrl, instagramAccount: event.instagramAccount, accountVerified: event.accountVerified, startTime: event.startTime, locationName: event.location?.name } }));
   };
   const opened = isEventOpened(event.id);
+  const convictionFollow = !!event.userFollowing;
+  const convictionAffinity = !convictionFollow && !!event.userAffinity;
+  const convictionAccount = event.account || event.instagramAccount || "";
+  const cardChrome = convictionFollow
+    ? "ring-1 ring-sky-300 shadow-[inset_3px_0_0_0_#0ea5e9]"
+    : convictionAffinity
+    ? "ring-1 ring-amber-300 shadow-[inset_3px_0_0_0_#f59e0b]"
+    : "border border-gray-200 hover:border-gray-300";
   return (
     <a
       href={event.sourceUrl}
       onClick={handleOpen}
       target="_blank"
       rel="noopener noreferrer"
-      className={`block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all overflow-hidden ${
+      className={`block bg-white rounded-xl ${cardChrome} hover:shadow-md transition-all overflow-hidden ${
         opened ? "opacity-60" : ""
       }`}
     >
+      {(convictionFollow || convictionAffinity) && convictionAccount && (
+        <div
+          className={`px-3 py-1 text-[11px] font-semibold flex items-center gap-1 ${
+            convictionFollow ? "bg-sky-50 text-sky-800" : "bg-amber-50 text-amber-800"
+          }`}
+        >
+          <span>{convictionFollow ? "Because you follow" : "From accounts you save from"}</span>
+          <span className="font-bold">@{convictionAccount}</span>
+        </div>
+      )}
       <div className="relative aspect-[4/3] sm:aspect-[16/10] max-h-72 bg-gray-100 overflow-hidden">
         <img
           src={event.imageUrl!}
@@ -194,11 +227,11 @@ function MediaFirstCard({
             ❤ {formatCount(event.likes)}
           </div>
         ) : null}
-        {/* Highlight badges bottom-left */}
+        {/* Highlight badges bottom-left — follow/affinity moved to card-level ribbon (U1) */}
         {(event.highlights || []).length > 0 && (
           <div className="absolute bottom-2 left-2 right-2 flex flex-wrap gap-1">
             {(event.highlights || [])
-              .filter((h) => h !== "free")
+              .filter((h) => h !== "free" && h !== "following" && h !== "affinity")
               .slice(0, 3)
               .map((h) => {
                 const config = HIGHLIGHT_CONFIG[h];
@@ -398,16 +431,34 @@ function FeedCard({
     !desc.toLowerCase().startsWith("photo by");
 
   const openedFeed = isEventOpened(event.id);
+  const convictionFollow = !!event.userFollowing;
+  const convictionAffinity = !convictionFollow && !!event.userAffinity;
+  const convictionAccount = event.account || event.instagramAccount || "";
+  const feedChrome = convictionFollow
+    ? "ring-1 ring-sky-300 shadow-[inset_3px_0_0_0_#0ea5e9]"
+    : convictionAffinity
+    ? "ring-1 ring-amber-300 shadow-[inset_3px_0_0_0_#f59e0b]"
+    : "border border-gray-200 hover:border-gray-300";
   return (
     <a
       href={event.sourceUrl}
       onClick={handleCardClick}
       target="_blank"
       rel="noopener noreferrer"
-      className={`block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all overflow-hidden ${
+      className={`block bg-white rounded-xl ${feedChrome} hover:shadow-sm transition-all overflow-hidden ${
         openedFeed ? "opacity-60" : ""
       }`}
     >
+      {(convictionFollow || convictionAffinity) && convictionAccount && (
+        <div
+          className={`px-3 py-1 text-[11px] font-semibold flex items-center gap-1 ${
+            convictionFollow ? "bg-sky-50 text-sky-800" : "bg-amber-50 text-amber-800"
+          }`}
+        >
+          <span>{convictionFollow ? "Because you follow" : "From accounts you save from"}</span>
+          <span className="font-bold">@{convictionAccount}</span>
+        </div>
+      )}
       <div className="flex gap-3 p-3">
         {event.imageUrl && (
           <div className="shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-gray-100">
@@ -431,7 +482,7 @@ function FeedCard({
                 {timeStr}
               </span>
             )}
-            {event.location.name && (
+            {event.location.name ? (
               <span className="flex items-center gap-1 truncate">
                 <PinIcon />
                 <span className="truncate">{event.location.name}</span>
@@ -439,7 +490,12 @@ function FeedCard({
                   <span className="text-gray-400 shrink-0">· {event.location.neighborhood}</span>
                 )}
               </span>
-            )}
+            ) : event.instagramAccount && !event.location.neighborhood ? (
+              <span className="flex items-center gap-1 truncate text-gray-400">
+                <PinIcon />
+                <span className="truncate italic">location in caption</span>
+              </span>
+            ) : null}
           </div>
 
           {showDesc && (
@@ -449,9 +505,10 @@ function FeedCard({
           )}
 
           <div className="mt-1.5 flex flex-wrap items-center gap-1">
-            {/* Highlight badges first — most important signals */}
+            {/* Highlight badges first — most important signals.
+                following/affinity now surface via card-level ribbon (U1). */}
             {(event.highlights || [])
-              .filter((h) => h !== "free")  // free shown as category below
+              .filter((h) => h !== "free" && h !== "following" && h !== "affinity")
               .slice(0, 3)
               .map((h) => {
                 const config = HIGHLIGHT_CONFIG[h];

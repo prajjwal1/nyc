@@ -170,8 +170,16 @@ def scrape() -> list[dict]:
     cooldown_cutoff = datetime.now(timezone.utc) - timedelta(days=21)
     dead_set: set[str] = set()
     retested_curated = 0
+    revived_transient = 0
     for u, info in dead.items():
         if info.get("reason") not in ("not_exists", "repeated_failure", "stale_no_recent_posts"):
+            continue
+        # Auto-revive accounts that were struck via a transient IG throttle
+        # (e.g. the 2026-05-24 mass-kill from `feedback_required`). One-shot
+        # per run — let them retry; _record_account_failure no longer strikes
+        # for transient markers, so they won't immediately re-dead.
+        if info.get("reason") == "repeated_failure" and _is_transient_failure(info.get("last_reason", "")):
+            revived_transient += 1
             continue
         # Curated retest: if the dead-marker is older than 21 days, give it
         # another shot this run.
@@ -195,6 +203,8 @@ def scrape() -> list[dict]:
         print(f"[instagram] Skipped {before_dead - len(all_accounts)} dead accounts")
     if retested_curated:
         print(f"[instagram] Re-testing {retested_curated} curated accounts after 21d cooldown")
+    if revived_transient:
+        print(f"[instagram] Reviving {revived_transient} transient-killed accounts (feedback_required / rate-limit)")
 
     # Cap account count for time-bounded CI runs.
     if IG_MAX_ACCOUNTS > 0 and len(all_accounts) > IG_MAX_ACCOUNTS:
@@ -789,14 +799,41 @@ def _mark_dead_account(username: str, reason: str) -> None:
     _save_dead_accounts(data)
 
 
+# IG throttle / login-required signals — not actual account-dead signals.
+# A 2026-05-24 mass-kill swept 54 accounts when IG started returning these
+# globally; cooldown logic only auto-revives curated accounts, leaving the
+# rest permanently dead. Treat these as soft signals: record but don't strike.
+_TRANSIENT_FAILURE_MARKERS = (
+    "feedback_required",
+    "please wait a few minutes",
+    "checkpoint_required",
+    "login_required",
+    "429",
+    "rate limit",
+    "rate-limited",
+)
+
+
+def _is_transient_failure(reason: str) -> bool:
+    lowered = (reason or "").lower()
+    return any(m in lowered for m in _TRANSIENT_FAILURE_MARKERS)
+
+
 def _record_account_failure(username: str, reason: str) -> None:
     """Record a transient failure. After 3 consecutive failures, mark dead."""
+    from datetime import datetime, timezone
     data = _load_dead_accounts()
     entry = data.setdefault("accounts", {}).get(username.lower(), {"failure_count": 0})
+    # IG throttle / session blip — log last_reason but do NOT strike.
+    if _is_transient_failure(reason):
+        entry["last_reason"] = reason
+        entry["last_transient_at"] = datetime.now(timezone.utc).isoformat()
+        data["accounts"][username.lower()] = entry
+        _save_dead_accounts(data)
+        return
     entry["failure_count"] = entry.get("failure_count", 0) + 1
     entry["last_reason"] = reason
     if entry["failure_count"] >= 3:
-        from datetime import datetime, timezone
         entry["since"] = datetime.now(timezone.utc).isoformat()
         entry["reason"] = "repeated_failure"
         print(f"[instagram] @{username} hit 3 failures — marking dead")
@@ -2530,6 +2567,7 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
     is_following = account.lower() in _FOLLOWING_ACCOUNTS_CACHE
     for ev in events:
         ev["instagramAccount"] = account
+        ev["account"] = account  # source-agnostic alias for metrics / UI provenance
         # Spot-account events are evergreen: place recommendations rather
         # than dated events. Survive the future-only filter and render with
         # a "Spot" pill instead of a date pill.
@@ -3019,6 +3057,25 @@ def _is_metadata_line(line: str) -> bool:
     return any(r.match(line) for r in _METADATA_LINE_RES)
 
 
+# OCR'd-handle leak: IG Stories that get scraped sometimes emit titles whose
+# first token is an entire glued @handle ("Glibertybagelsny grand opening",
+# "Ggretavanfleet gave fans quite"). The first token has 1–2 uppercase letters,
+# a run of lowercase, an inner uppercase, then more lowercase — and is > 13
+# chars long. Length floor avoids false positives on legit camel case
+# ("BookClubBar Presents", "WeWork", "MoMA").
+_GLUED_HANDLE_RE = re.compile(r"^[A-Z]{1,2}[a-z]{2,}[A-Z][a-z]{2,}$")
+
+
+def _looks_like_glued_handle(title: str) -> bool:
+    words = title.split()
+    if len(words) < 2:
+        return False
+    first = words[0]
+    if len(first) <= 13:
+        return False
+    return bool(_GLUED_HANDLE_RE.match(first))
+
+
 _FRAGMENT_TITLE_RE = re.compile(
     r"^(?:"
     # Lowercase function-word starters that signal a mid-sentence fragment.
@@ -3086,6 +3143,8 @@ def _extract_title(text: str) -> str:
         # "stills from Solaris", "// Screenshot of video"). Real event names
         # don't begin with lowercase function words or photo-credit prefixes.
         if _FRAGMENT_TITLE_RE.match(cleaned):
+            continue
+        if _looks_like_glued_handle(cleaned):
             continue
         # Skip lines whose first letter is lowercase AND first word is short:
         # almost always a sentence fragment, not an event name.

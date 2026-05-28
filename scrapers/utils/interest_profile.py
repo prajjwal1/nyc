@@ -226,6 +226,13 @@ def interest_profile_boost(event: dict) -> float:
             (event.get("description") or "")[:200].lower(),
         ])
         tokens = set(_WORD_RE.findall(text))
+        # User-shorthand fold: a follow with "bk" in its handle (franklinparkbk,
+        # anaiswinebk, …) signals Brooklyn interest. Mirror tokens so the
+        # `bk` topic also matches "brooklyn" text and vice versa.
+        if "brooklyn" in tokens:
+            tokens.add("bk")
+        if "bk" in tokens:
+            tokens.add("brooklyn")
         # Only count topics with at least 2 followed accounts referencing
         # them — singletons are noise.
         matched = sum(1 for t, c in topic_counts.items()

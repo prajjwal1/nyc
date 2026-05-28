@@ -12,3 +12,6 @@ site/out/
 # OS
 .DS_Store
 *.swp
+
+# Claude Code session state (per-session git worktrees — do not commit)
+.claude/worktrees/

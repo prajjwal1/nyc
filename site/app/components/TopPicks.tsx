@@ -83,8 +83,22 @@ function organizerKey(e: Event): string {
 function diversifyByCategory(events: Event[], n: number, topK = 2, maxPerOrganizer = 2): Event[] {
   if (events.length <= n) return events;
 
-  // 1. Take top-K strictly by score
-  const sorted = [...events].sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
+  // 1. Take top-K — conviction-first with a score floor (U4 modified).
+  // A high-conviction event (userFollowing / userAffinity / userSaved) jumps
+  // ahead of a non-conviction event ONLY if its score is within 0.2 of the
+  // day's max. This raises perceived high-conviction ratio in the visible
+  // viewport without burying a great Eventbrite event under a mediocre IG one.
+  // userSaved is currently only set client-side via localStorage and is null
+  // in events.json — the read is intentional (effectively a no-op today, lights
+  // up later when we wire saved-state into ranking).
+  const maxScore = events.length ? Math.max(...events.map((e) => e.score ?? 0)) : 0;
+  const convictionFloor = maxScore - 0.2;
+  const sorted = [...events].sort((a, b) => {
+    const aConv = !!(a.userFollowing || a.userAffinity || a.userSaved) && (a.score ?? 0) >= convictionFloor;
+    const bConv = !!(b.userFollowing || b.userAffinity || b.userSaved) && (b.score ?? 0) >= convictionFloor;
+    if (aConv !== bConv) return bConv ? 1 : -1;
+    return (b.score ?? 0) - (a.score ?? 0);
+  });
   const result: Event[] = [];
   const seen = new Set<string>();
   const orgCounts = new Map<string, number>();

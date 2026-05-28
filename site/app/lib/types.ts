@@ -20,6 +20,7 @@ export interface Event {
   score: number;
   scrapedAt: string;
   instagramAccount?: string;
+  account?: string;  // source-agnostic provenance alias (mirrors instagramAccount on IG)
   highlights?: string[];
   userSaved?: boolean;
   userTagged?: boolean;

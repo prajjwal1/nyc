@@ -121,6 +121,17 @@ GENERIC_URLS = [
     "https://allevents.in/new-york/coffee",          # 45 events confirmed
     "https://allevents.in/new-york/poetry",
     "https://allevents.in/brooklyn/books",
+    # 2026-05-28 self-improve run: close the `bk` topic gap (S1).
+    # Each probed live with yield ≥ 8; capped by SOURCE_VOLUME_CAPS["allevents"]=40.
+    "https://allevents.in/brooklyn/free",
+    "https://allevents.in/brooklyn/dating",
+    "https://allevents.in/brooklyn/comedy",
+    "https://allevents.in/brooklyn/literature",
+    "https://allevents.in/brooklyn/running",
+    "https://allevents.in/brooklyn/coffee",
+    "https://allevents.in/brooklyn/poetry",
+    "https://www.eventbrite.com/d/ny--brooklyn/parties--events/",
+    "https://www.eventbrite.com/d/ny--brooklyn/comedy--events/",
     "https://allevents.in/new-york/art-exhibition",
     "https://allevents.in/new-york/gallery",
     # Eventbrite NYC categorical pages — running, yoga, fitness, books, art

@@ -201,6 +201,27 @@ IG_ACCOUNTS = list(dict.fromkeys([  # dedupe while preserving order
     "wnrr_nyc",
     "berryparkbk",
     "joyflowerpotnyc",
+    # 2026-05-28 self-improve run: promote user_following signal_accounts
+    # to curated so they get the 21-day cooldown auto-revive. (Critic's
+    # modified P3; excludes timeoutnewyork — publisher, not venue/curator.
+    # Also excludes individual-person accounts per fb-106: only clubs /
+    # venues / curators / social brands belong in IG_ACCOUNTS.)
+    "anaiswinebk",            # wine bar in BK
+    "asianfoundersclub",      # club
+    "brightlightorg",         # org
+    "brooklynbotanic",        # Brooklyn Botanic Garden
+    "brooklynheightsassociation",
+    "crownheightscraftclub",  # craft club
+    "fortheplotnyc",          # social brand / event series
+    "franklinparkbk",         # bar / venue
+    "greenpointtrashclub",    # social eco-club
+    "likeafriendsaid.nyc",    # social brand
+    "quietreading.club",      # book club
+    "richardsgamesnyc",       # games series
+    "rummikubers",            # games club
+    "silentbookclub.nyc",     # book club
+    "strangersorfriendsbk",   # social brand
+    "yogaspace.nyc",          # yoga studio
 ]))
 
 # Accounts whose posts are "cool spot" recommendations (places to check
