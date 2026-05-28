@@ -141,6 +141,22 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: addressed (committed in iter 68)
 - body: `bookclubbar` appeared twice in `scrapers/config.py` IG_ACCOUNTS (lines 54 and 133). `list(dict.fromkeys([...]))` made it harmless functionally but it's noise. Removed line 133.
 
+### fb-109 — Block leaks: corporate AWS meetups, B2B coaching, bar crawls
+- created_at: 2026-05-28
+- source: agent-proposal (iter 69 audit of deployed feed)
+- status: addressed (committed in iter 69)
+- body: Three leak patterns found in the live feed by sampling non-IG sources:
+  (a) "Amazon Quick - NYC Meetup" — Amazon AWS product demo classified as `food/free/outdoors/parties`. Hard-block added: `amazon quick`, `amazon quicksight`, `aws meetup`, `aws user group`, `google cloud meetup`, `azure meetup`, `salesforce meetup`, `snowflake meetup`.
+  (b) "The Career Reset: …" + "The AI Edge: Supercharge Your Startup Vision" — B2B coaching framings. Hard-block added: `career reset`, `career strategy`, `supercharge your startup`, `startup vision`, `your startup growth`.
+  (c) 3 "Brooklyn Bar Crawl: <neighborhood>" events at 0.65-0.71 — drinking-centric, same spirit as `open bar`/`unlimited drinks`. Soft-penalty added: `bar crawl`, `pub crawl`.
+- "addressed" criterion: ✓ patterns block their target titles; verified no false positives on "throughout her career" or "asianfoundersclub mixer".
+
+### fb-110 — Bake fb-106 into agent system prompts
+- created_at: 2026-05-28
+- source: agent-proposal (iter 69)
+- status: addressed (committed in iter 69)
+- body: User correction fb-106 ("socializing entities only in IG_ACCOUNTS — no individual people") added directly to `.claude/agents/source-curator.md` (hard filter + heuristic checks) and `.claude/agents/ingestion-quality.md` (hard rule). Future /self-improve runs will respect this automatically.
+
 ### fb-104 — Prune redundant `/nyc/<topic>` URLs from LUMA_PAGES (after fb-105)
 - created_at: 2026-05-28
 - source: agent-proposal (dreamer-critic D2, DREAM-DEFER)

@@ -95,4 +95,5 @@ Write to `<run-dir>/ingestion.md`:
 - Every regex / keyword proposal must be tested against the actual live-feed titles before you write it down. If a pattern would catch 0 real titles, drop it.
 - Don't propose changes to `MIN_SCORE` or any top-level threshold without explicit justification tied to a specific failure mode in the live feed.
 - Respect `README.md` §373–395 ("Behavioral guidelines for agents") — additive only, no per-source code, run sanity_check before commit.
+- When you propose IG-side fixes that touch `IG_ACCOUNTS` (e.g. "add account X to curated"), respect fb-106: **socializing entities only** — no individual people (`firstname_lastname`, `firstname<digits>`), no editorial publishers, no private IGs. If unsure, flag for the Critic rather than propose.
 - If you're uncertain whether something is a bug or a feature, ask the Critic via the "Open questions" section rather than guessing.

@@ -74,6 +74,11 @@ HARD_BLOCK_KEYWORDS = [
     "career change", "career switch", "career switching",
     "career blueprint", "career-ready", "career ready",
     "career-changing", "career changing",
+    # iter 69 audit leaks: "The Career Reset: Surviving and Thriving in
+    # the AI Economy" + "The AI Edge: Supercharge Your Startup Vision".
+    # Both clear professional-coaching/B2B framings.
+    "career reset", "career strategy",
+    "supercharge your startup", "startup vision", "your startup growth",
     "job fair", "job fairs", "job expo", "job expos",
     "job training", "job seekers", "job hunters", "job hunting",
     "hiring event", "hiring fair", "hiring expo",
@@ -92,6 +97,12 @@ HARD_BLOCK_KEYWORDS = [
     "corporate networking", "corporate mixer",
     "investor networking", "investor mixer", "investors mixer",
     "founders networking", "founders mixer",  # focus on founder events; tech mixer stays
+    # Cloud / AWS product meetups masquerading as community events (iter 69 audit
+    # caught "Amazon Quick - NYC Meetup" — a corporate product demo classified
+    # as food/free/outdoors/parties by auto-tagging). These are B2B/enterprise,
+    # not the social NYC events the user wants.
+    "amazon quick", "amazon quicksight", "aws meetup", "aws user group",
+    "google cloud meetup", "azure meetup", "salesforce meetup", "snowflake meetup",
     "real estate networking", "real estate mixer",
     "lawyer networking", "lawyer mixer", "attorneys mixer",
     "consulting networking", "consultant mixer",
@@ -288,6 +299,10 @@ SOFT_PENALTY_KEYWORDS = [
     "open bar", "all you can drink", "all-you-can-drink",
     "free drinks all night", "unlimited drinks", "bottomless mimosas",
     "pre-game", "kegger", "shotgun beer",
+    # Bar crawls — drinking-centric by definition (iter 69 audit; saw 3
+    # "Brooklyn Bar Crawl: <neighborhood>" events at 0.65-0.71 score that
+    # match the same spirit as "open bar"/"unlimited drinks").
+    "bar crawl", "pub crawl",
     # Generic recurring stuff
     "weekly meeting", "monthly meeting", "regular meetup",
     "every monday", "every tuesday", "every wednesday",

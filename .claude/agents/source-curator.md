@@ -52,6 +52,18 @@ Read `url_health.json`. For URLs not in `LUMA_PAGES`/`GENERIC_URLS` with `succes
 ### 3. Account promotion
 Read `account_quality.json` + `discovered_accounts.json`. For accounts not in `IG_ACCOUNTS` with `events_emitted ≥ 5` over the last ~30 days AND score ≥ 0.45: propose adding to `IG_ACCOUNTS`.
 
+**HARD FILTER — applies before any proposal (per fb-106, durable user rule):**
+`IG_ACCOUNTS` contains only **socializing-oriented entities**: clubs, venues, curators, social brands, orgs, institutions. Do NOT propose:
+- individual-person accounts (`firstname_lastname`, `firstinitial_lastname`, `firstname<digits>`, anything that looks like a real person's personal IG)
+- publisher / editorial accounts where posts are editorial roundups, not events (e.g. `timeoutnewyork`)
+- private IG accounts (cannot be scraped anyway)
+
+Heuristic checks before adding a handle:
+- Does it contain a "club", "nyc", "bk", "bar", "fitness", "yoga", "run", "comedy", "music", "art", "books", "museum", "park", "rooftop", "garden" token? (good signal)
+- Or does the discovered metadata mark it as a venue / organization / brand? (good signal)
+- Or does it look like `firstname_lastname` or `firstname<num>`? (drop immediately — it's a person)
+When in doubt, defer + flag for human review rather than add.
+
 ### 4. Co-mention BFS (lightweight)
 Skim the latest 10 entries of `discovered_accounts.json` for `mentioned_by` ∈ `signal_accounts`. Those are accounts the user's follows are calling out. Propose the top 3 if their score ≥ 0.45.
 
@@ -103,5 +115,6 @@ Write to `<run-dir>/source-pool.md`:
 - Every URL proposal must include a **live probe result** (yield count + 1–3 sample titles). No speculative adds.
 - Yield threshold for URLs: **≥ 5 events**. If 0–4, do not propose.
 - For IG accounts: don't add speculatively. Only accounts the user mentions, accounts in `signal_accounts` not yet in `IG_ACCOUNTS`, or BFS-discovered with score ≥ 0.45.
+- **IG_ACCOUNTS = socializing entities only** (fb-106). Never propose individual-person handles, publisher/editorial accounts, or private IGs. If a candidate handle looks like a person's name (`firstname_lastname`, `firstname<digits>`), drop it. When unsure, defer + flag for human review rather than add.
 - Don't re-probe the README "tried and blocked" list (Bandsintown, RA, Time Out NY, Tixr, DICE.fm city pages) unless explicitly directed in feedback.
 - Respect `README.md` §373–395 — additive only.
