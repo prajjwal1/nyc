@@ -185,6 +185,15 @@ These are the durable preferences the user has stated. They're marked `addressed
 - known issue (separate, not addressed): substack's 237 surviving events include many product-affiliate noise ("Mini Phone Tripod", "Apple AirTag") that should be filtered out. The "(link)" suffix is a strong tell. Logged as fb-128.
 - 2 of the Substack FEEDS URLs return 404 (untappedcities.com/feed/, nycgovparks.org/news.rss). Harmless but wasted budget. Not addressed this iteration.
 
+### fb-133 — NYPL audit: 79 events surviving filters, "Playdate at the Library" leak
+- created_at: 2026-05-28
+- source: agent-proposal (iter 92 audit)
+- status: addressed (committed in iter 92)
+- body: NYPL was 3/246 events in deployed feed. Live yield is 121 events (all future from Refinery API + HTML keyword searches). 42 correctly blocked as kids programming, 79 survive — including "Playdate at the Library" which is clearly a parent/kid event but had no caught keywords.
+  - Refinery API doesn't expose an `audience` attribute (confirmed via API inspection — keys are `event-id, name, description-short, image, registration-type` only). Can't filter structurally; must use text patterns.
+- fix: added `playdate`, `caregivers`, `caregiver and child` to HARD_BLOCK_KEYWORDS. All 3 are near-exclusively parent/kid terms. 4/4 tests pass including negative cases (Adult Book Club, Author Talk).
+- note: the 79 surviving NYPL events are still mostly not surfacing in deployed feed because their score < MIN_SCORE=0.5 (NYPL events have generic titles + DEFAULT_IMAGE + thin descriptions, scoring low). That's working as intended — score floor is the right gate for low-info library events.
+
 ### fb-132 — Comedy-club month pagination + dynamic URL injection
 - created_at: 2026-05-28
 - source: agent-proposal (iter 91 audit)

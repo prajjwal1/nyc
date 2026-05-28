@@ -17,6 +17,9 @@ HARD_BLOCK_KEYWORDS = [
     "afterschool", "family saturday", "family sunday", "playtime", "popup play",
     "pop in play", "pop-in play", "open play", "early literacy",
     "wiggle worms", "little movers", "toddler time",
+    # iter 92: NYPL audit found "Playdate at the Library" leaking — the word
+    # `playdate` and `caregivers` are almost exclusively parent/kid terms.
+    "playdate", "caregivers", "caregiver and child",
     "youth ", "ages 0", "ages 3", "ages 5", "ages 6",
     "ages 7", "ages 8", "ages 9", "ages 10",
 
