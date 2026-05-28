@@ -27,7 +27,7 @@ HARD_BLOCK_KEYWORDS = [
     "tax help", "tax preparation", "legal clinic", "resume help", "resume workshop",
     "social work intern", "social work student", "financial coaching",
     "1:1 pace", "advisory session", "drop-in career", "drop in career",
-    "job search", "job club", "career help", "ged ", "tefl ", "language exchange",
+    "job search", "job club", "career help", "ged", "tefl", "language exchange",
     "language meetup", "english practice", "english conversation",
     "english speaking", "global english", "english speakers",
     "daily practice circle", "language practice circle",
@@ -412,6 +412,11 @@ _WORD_BOUNDARY_KEYWORDS = {
     "kids", "children", "toddler", "toddlers", "baby", "babies",
     "teen", "teens", "tween", "tweens", "preteen", "preteens",
     "youth", "infant", "infants",
+    # Acronyms — "ged" / "tefl" must word-boundary match. Iter 85 audit
+    # found "ged " false-positiving on "collaged", "aged", "engaged",
+    # "encouraged" etc. — the trailing space in HARD_BLOCK_KEYWORDS
+    # wasn't enough since it matched inside any verb past tense.
+    "ged", "tefl",
 }
 
 import re as _re

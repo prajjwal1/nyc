@@ -76,7 +76,21 @@ def _parse_event_item(item: dict, region: str) -> dict | None:
     title = event_data.get("title", "")
     description = event_data.get("description", "")
     start_date_str = event_data.get("startDate", "")
-    cover_photo = event_data.get("coverPhotoUrl", "")
+    # Image field has changed shape over time. Try in priority order:
+    # 1. legacy `coverPhotoUrl` (string)
+    # 2. modern `image` (dict with `url` at top level or under `upload.url`)
+    # Iter 85 audit: every live event was using shape #2, so the scraper
+    # was emitting imageUrl=None which `_IMAGE_REQUIRED_SOURCES` then
+    # dropped as shell. Partiful went 15 → 1 events in the deployed feed.
+    cover_photo = event_data.get("coverPhotoUrl", "") or ""
+    if not cover_photo:
+        img_obj = event_data.get("image") or {}
+        if isinstance(img_obj, dict):
+            cover_photo = (
+                img_obj.get("url")
+                or (img_obj.get("upload") or {}).get("url")
+                or ""
+            )
 
     if not title or not start_date_str:
         return None

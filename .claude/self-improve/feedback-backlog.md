@@ -176,6 +176,15 @@ These are the durable preferences the user has stated. They're marked `addressed
 - defensive scope: shape (a) checks first word length ≥14 AND all-lowercase-after-first-capital. The deployed feed has 0 legitimate words of this shape; the regex catches exactly the 2 leaks.
 - other audit findings (not yet addressed): some events have wrong categories ("Silver Sapphics: Speed Dating" tagged `movies`; "Word and Object by Quine" tagged `fitness`). Categorizer false-positives — separate issue, queued as fb-123.
 
+### fb-126 — Partiful image-field rename + "ged" substring false-positive
+- created_at: 2026-05-28
+- source: agent-proposal (iter 85 audit of Partiful low yield)
+- status: addressed (committed in iter 85)
+- body: Audit: live Partiful yield is 15 events but the deployed feed had 1. Two causes:
+  1. **Image-field rename**: the scraper read `event_data["coverPhotoUrl"]` but Partiful's __NEXT_DATA__ now uses a nested `image: {url, upload: {url}}` object. Every event came in with `imageUrl=None`, then `_IMAGE_REQUIRED_SOURCES` (partiful is in that set) dropped them all as shell. Fix: read `coverPhotoUrl` first, fall back to `image.url` or `image.upload.url`. Verified: 15/15 events now carry an image URL.
+  2. **"ged " substring false-positive**: `HARD_BLOCK_KEYWORDS` had `"ged "` (with trailing space) to block GED prep classes. It false-fired on "collaged", "encouraged", "aged", "engaged" — substring match doesn't respect word boundaries. Moved `ged` and `tefl` (same shape) into `_WORD_BOUNDARY_KEYWORDS` so they only block on real word boundaries.
+- result: surviving partiful events 1 → 8 (+7, of which 7 were image-field, 1 was the GED unblock).
+
 ### fb-125 — Same strict-@type bug across luma / music_venues / museums / dice
 - created_at: 2026-05-28
 - source: agent-proposal (iter 84; followed fb-124's thread)
