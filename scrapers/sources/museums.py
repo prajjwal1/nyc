@@ -1,14 +1,18 @@
 import json
+import re
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
 
+# Iter 98 audit:
+# - MoMA returns 403 to every UA — bot block. Removed from the list.
+# - Guggenheim moved /calendar to /event. Updated.
+# - Brooklyn Museum / Whitney / New Museum / Met all JS-render their event
+#   data (no JSON-LD, no __NEXT_DATA__). The DOM-card fallback now rejects
+#   page-scaffold junk titles ("Today's events", "Narrow search", date-only
+#   strings) so the museums scraper degrades gracefully instead of shipping
+#   garbage events.
 MUSEUMS = [
-    {
-        "name": "MoMA",
-        "url": "https://www.moma.org/calendar/",
-        "base": "https://www.moma.org",
-    },
     {
         "name": "The Met",
         "url": "https://www.metmuseum.org/events",
@@ -31,7 +35,7 @@ MUSEUMS = [
     },
     {
         "name": "Guggenheim",
-        "url": "https://www.guggenheim.org/calendar",
+        "url": "https://www.guggenheim.org/event",  # iter 98: was /calendar (404)
         "base": "https://www.guggenheim.org",
     },
 ]
@@ -123,6 +127,26 @@ def _from_ld(data: dict, museum: dict) -> dict | None:
     )
 
 
+# Title patterns the DOM-card fallback should refuse. Iter 98 audit found
+# museums was emitting page-scaffold strings as "events": "Thursday, May 28"
+# (calendar header), "Narrow search" (a filter widget), "Today's events"
+# (page heading). These are UI chrome, not events.
+_MUSEUM_TITLE_REJECT_RES = [
+    re.compile(r"^\s*(?:mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)(?:day)?[\s,].*\d", re.IGNORECASE),
+    # "Today's events" / "Today’s events" — straight + curly apostrophe.
+    re.compile(r"^\s*today['’]?s?\s+events?\s*$", re.IGNORECASE),
+    re.compile(r"^\s*(?:narrow|filter|refine|browse)\b", re.IGNORECASE),
+    re.compile(r"^\s*(?:view|see|all|more|next|previous|prev)\s+(?:all\s+)?events?\b", re.IGNORECASE),
+    re.compile(r"^\s*search\s*(?:events?|results?)?\s*$", re.IGNORECASE),
+    re.compile(r"^\s*\d{1,2}\s*[-/]\s*\d{1,2}(?:\s*[-/]\s*\d{2,4})?\s*$"),  # bare date
+    re.compile(r"^\s*(?:upcoming|featured)\s+events?\s*$", re.IGNORECASE),
+]
+
+
+def _is_museum_card_junk(title: str) -> bool:
+    return any(rx.match(title) for rx in _MUSEUM_TITLE_REJECT_RES)
+
+
 def _from_card(card, museum: dict) -> dict | None:
     title_el = card.select_one("h2, h3, h4, [class*='title'], [class*='name']")
     date_el = card.select_one("time, [class*='date'], [class*='Date']")
@@ -132,6 +156,8 @@ def _from_card(card, museum: dict) -> dict | None:
 
     title = title_el.get_text(strip=True)
     if len(title) < 3 or len(title) > 300:
+        return None
+    if _is_museum_card_junk(title):
         return None
 
     link_el = card.select_one("a[href]")

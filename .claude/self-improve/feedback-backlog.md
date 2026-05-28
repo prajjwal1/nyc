@@ -202,6 +202,23 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-140 — Museums.py shipped page-scaffold strings as events
+- created_at: 2026-05-28
+- source: agent-proposal (iter 98 audit)
+- status: addressed (committed in iter 98)
+- body: Iter 84 extended museums.py's @type acceptance but didn't probe live yield. Audit found:
+  - MoMA returns 403 to every UA (bot block)
+  - Guggenheim `/calendar` 404s (URL moved to `/event`)
+  - Brooklyn Museum / Whitney / New Museum / The Met all JS-render their event data (no JSON-LD, no `__NEXT_DATA__`)
+  - The DOM-card fallback was scraping page-scaffold strings as "events": `"Thursday, May 28"` (calendar header), `"Narrow search"` (filter widget), `"Today's events"` (page heading) — all dated 2027-05-28 or 2031-05-01 from far-future date misparse.
+- fix:
+  - Removed MoMA from MUSEUMS (bot-blocked).
+  - Updated Guggenheim URL `/calendar` → `/event`.
+  - `_MUSEUM_TITLE_REJECT_RES`: 7 patterns rejecting page-scaffold titles (weekday-headers, "Today's events" with straight + curly apostrophes, "Narrow search", "view/see all events", bare dates, "Upcoming/Featured events").
+  - `_is_museum_card_junk(title)` gate applied in `_from_card`.
+- result: 3 garbage events → 0. Honest empty is better than fake events polluting the feed with "Thursday, May 28" at score 0.5+.
+- known-broken (no fix this round): museum sites JS-render; full restoration would need a JS-rendering pipeline. README §70-83 already documents this class of source. The Met + Brooklyn Museum are in "tried and blocked".
+
 ### fb-139 — Set up Reddit OAuth (PRAW) for full comment-mining
 - created_at: 2026-05-28
 - source: agent-proposal (iter 97)
