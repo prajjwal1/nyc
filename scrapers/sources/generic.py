@@ -14,6 +14,35 @@ from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
 
 # High-value NYC venue/cultural URLs
+# Calendar-style sources that expose `/calendar/YYYY-MM` (or `/events/YYYY-MM`)
+# month-paginated views. The default listing page only shows the current
+# month, so events past the 28th vanish unless we fetch next month too.
+# Iter 91 audit: NYCC + East Ville Comedy were yielding ~250 May events
+# combined but only 25 were future (after 2026-05-28). Adding next 2
+# months' URLs at scrape time per `_dynamic_calendar_urls()`.
+_CALENDAR_MONTH_URL_TEMPLATES = [
+    "https://newyorkcomedyclub.com/calendar/{year}-{month:02d}",
+    "https://www.eastvillecomedy.com/calendar/{year}-{month:02d}",
+]
+
+
+def _dynamic_calendar_urls() -> list[str]:
+    """Generate next 3 months of calendar URLs at scrape time so we don't
+    have to hardcode dates that go stale every month."""
+    from datetime import date as _date
+    today = _date.today()
+    urls: list[str] = []
+    for offset in (0, 1, 2):
+        # Roll over to next year if needed
+        y, m = today.year, today.month + offset
+        while m > 12:
+            m -= 12
+            y += 1
+        for tpl in _CALENDAR_MONTH_URL_TEMPLATES:
+            urls.append(tpl.format(year=y, month=m))
+    return urls
+
+
 GENERIC_URLS = [
     # Music venues
     "https://www.92ny.org/calendar",
@@ -1567,6 +1596,7 @@ async def scrape() -> list[dict]:
         print(f"[generic] Pruned {pruned} permanently-dead URLs from discovery pool")
 
     urls: list[str] = list(GENERIC_URLS)
+    urls.extend(_dynamic_calendar_urls())
 
     # Append discovered URLs while preserving order and deduping
     seen = set(urls)

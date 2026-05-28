@@ -185,6 +185,15 @@ These are the durable preferences the user has stated. They're marked `addressed
 - known issue (separate, not addressed): substack's 237 surviving events include many product-affiliate noise ("Mini Phone Tripod", "Apple AirTag") that should be filtered out. The "(link)" suffix is a strong tell. Logged as fb-128.
 - 2 of the Substack FEEDS URLs return 404 (untappedcities.com/feed/, nycgovparks.org/news.rss). Harmless but wasted budget. Not addressed this iteration.
 
+### fb-132 — Comedy-club month pagination + dynamic URL injection
+- created_at: 2026-05-28
+- source: agent-proposal (iter 91 audit)
+- status: addressed (committed in iter 91)
+- body: Comedy clubs were at 2 + 6 events in deployed feed despite stats_history showing yields of 33 + 60 two weeks ago. Probed: NYCC `/calendar` and East Ville Comedy `/events` return ~267 events combined but **all in May 2026** — only 32 are future after today (2026-05-28). The default calendar page only shows the current month; past-date filter strips most.
+- discovery: `/calendar/YYYY-MM` pattern reaches future months. NYCC has 109 June + 22 July events; East Ville has 34 June + 38 July events.
+- fix: added `_dynamic_calendar_urls()` that generates URLs for the current + next 2 months for both clubs at scrape time (handles year rollover). Avoids hardcoding dates that would go stale monthly.
+- expected impact: ~235 future comedy events available, capped to top-25 by existing SOURCE_VOLUME_CAPS (newyorkcomedyclub=15 + eastvillecomedy=10). The comedy category share rises meaningfully and the events are top-quality picks from a much deeper pool.
+
 ### fb-131 — Eventbrite pagination works but only page 1 was scraped
 - created_at: 2026-05-28
 - source: agent-proposal (iter 90 audit)
