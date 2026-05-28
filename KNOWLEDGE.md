@@ -63,7 +63,7 @@ Three guiding principles:
 | **bookclubbar**  | ✗      | React SPA, JS-required. Use IG @bookclubbar.       |
 | **dice**         | ✗      | URL changes. Try harder.                           |
 | **nycforfree**   | ✗      | HTML structure unclear. Use IG @nycforfree.co.     |
-| **parks**        | ✗      | nycgovparks didn't return events. Try API.         |
+| **parks**        | ✅      | nycgovparks.org/events: 50 events, 22 surviving filters (yoga/dance/movies/theater in parks). Most yield is fitness + cultural programming. Kids events auto-blocked. (Re-verified iter 99.) |
 
 ---
 

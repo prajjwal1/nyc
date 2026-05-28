@@ -202,6 +202,17 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-141 — parks.py is actually working + CANCELED leak
+- created_at: 2026-05-28
+- source: agent-proposal (iter 99 audit)
+- status: addressed (committed in iter 99)
+- body: README §66 / KNOWLEDGE.md marked parks scraper as `✗` ("didn't return events. Try API."). Live probe found it's actually working: **50 events from nycgovparks.org/events**. Most are "Kids in Motion" (correctly blocked by existing kids/word-boundary filter), leaving 22 legit events surviving: Bellydance, Yoga, Cardio, Bootcamp, Dance Fitness, "Hudson Classical Theater: Uncle Vanya", "Bryant Park Picnic Performance: Jazzmobile", "World Cinema Nights".
+- but: 5 "CANCELED: <event>" entries were leaking through. The leading marker is unambiguous.
+- fix:
+  1. HARD_BLOCK_KEYWORDS += `canceled:`, `cancelled:` (both spellings)
+  2. KNOWLEDGE.md status `✗ parks` → `✅ parks` with the actual yield numbers.
+- 5 canceled → 0; 22 legit events continue to surface. Parks events should appear in the next scrape (cultural / fitness programming is high-value for the user).
+
 ### fb-140 — Museums.py shipped page-scaffold strings as events
 - created_at: 2026-05-28
 - source: agent-proposal (iter 98 audit)

@@ -26,6 +26,10 @@ HARD_BLOCK_KEYWORDS = [
     # `[private event` won't false-positive — it's specifically a Book Club
     # Bar / event-calendar convention.
     "[private event",
+    # iter 99: parks.py audit found 5 "CANCELED: <event>" entries that the
+    # parks API surfaces but the user can't attend. Match the leading marker
+    # so the cancellation noise doesn't pollute the feed.
+    "canceled:", "cancelled:",
     "youth ", "ages 0", "ages 3", "ages 5", "ages 6",
     "ages 7", "ages 8", "ages 9", "ages 10",
 
