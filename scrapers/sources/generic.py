@@ -386,7 +386,7 @@ def _ld_event_to_dict(data: dict, source: str, fallback_url: str) -> dict | None
     if isinstance(url, str) and url and not url.startswith("http"):
         url = urljoin(fallback_url, url)
 
-    return build_event(
+    ev = build_event(
         title=str(title)[:300],
         description=str(desc)[:500],
         event_date=event_date,
@@ -399,6 +399,25 @@ def _ld_event_to_dict(data: dict, source: str, fallback_url: str) -> dict | None
         image_url=image,
         price=price,
     )
+    if ev is None:
+        return None
+    # Stamp organizer name + URL from JSON-LD organizer field if present.
+    # Used downstream by normalize._enrich_provenance_from_url to attach
+    # follow-graph signal to Eventbrite / Lu.ma events whose organizer is
+    # a signal_account.
+    org = data.get("organizer")
+    if isinstance(org, list) and org:
+        org = org[0]
+    if isinstance(org, dict):
+        org_name = (org.get("name") or "").strip()
+        if isinstance(org_name, dict):
+            org_name = (org_name.get("@value") or "").strip()
+        if org_name:
+            ev["organizer"] = org_name[:120]
+        org_url = (org.get("url") or "").strip() if isinstance(org.get("url"), str) else ""
+        if org_url and not ev.get("organizerUrl"):
+            ev["organizerUrl"] = org_url
+    return ev
 
 
 def _walk_jsonld(node, source: str, fallback_url: str, results: list[dict], _seen: set | None = None) -> None:

@@ -1044,25 +1044,52 @@ def _enrich_provenance_from_url(events: list[dict]) -> None:
     encodes a curator handle that the user follows on IG. The audit at
     iter 73 found that Lu.ma URLs like `lu.ma/litclub.nyc` and
     `lu.ma/nycbackgammonclub` are signal-account handles — currently
-    those events are invisible to the follow-graph metric."""
+    those events are invisible to the follow-graph metric.
+
+    Iter 77 extends this to the JSON-LD `organizer.name` field — many
+    Eventbrite events carry an organizer name like "Vital Run Club"
+    that, normalized to `vitalrunclub`, matches an IG signal_account.
+    """
     following = _user_following_normalized()
     if not following:
         return
     matched = 0
+    organizer_matched = 0
     for ev in events:
         if ev.get("account") or ev.get("instagramAccount"):
             continue  # already has provenance
+        # 1) URL handle match (Lu.ma, Partiful, venue-domain hosts)
         handle = _extract_handle_from_url(ev.get("sourceUrl") or "")
-        if not handle:
+        if handle:
+            for cand in _handle_candidates(handle):
+                if cand in following:
+                    ev["account"] = handle  # preserve original handle
+                    ev["userFollowing"] = True
+                    matched += 1
+                    break
+            if ev.get("userFollowing"):
+                continue
+        # 2) Organizer-name match (JSON-LD organizer.name → alphanumeric fold)
+        organizer = (ev.get("organizer") or "").strip()
+        if not organizer or len(organizer) < 3:
             continue
-        for cand in _handle_candidates(handle):
-            if cand in following:
-                ev["account"] = handle  # preserve original handle for display
-                ev["userFollowing"] = True
-                matched += 1
-                break
+        org_norm = _re.sub(r"[^a-z0-9]", "", organizer.lower())
+        if not org_norm or len(org_norm) < 5:
+            continue  # too short to be confident
+        # Also try with location suffixes stripped: "readingrhythmsnyc" →
+        # "readingrhythms" so it matches the IG handle `reading_rhythms`.
+        org_candidates = {org_norm}
+        for suffix in ("nyc", "ny", "brooklyn", "manhattan", "bk"):
+            if org_norm.endswith(suffix) and len(org_norm) - len(suffix) >= 5:
+                org_candidates.add(org_norm[:-len(suffix)])
+        if any(c in following for c in org_candidates):
+            ev["account"] = organizer
+            ev["userFollowing"] = True
+            organizer_matched += 1
     if matched:
         print(f"[normalize] Enriched {matched} non-IG events with userFollowing via curator-handle URL match")
+    if organizer_matched:
+        print(f"[normalize] Enriched {organizer_matched} non-IG events with userFollowing via organizer-name match")
 
 
 _IMAGE_REQUIRED_SOURCES = frozenset({

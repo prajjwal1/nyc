@@ -163,6 +163,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: addressed (committed in iter 70)
 - body: `_normalize_venue_name` now expands NYC venue abbreviations before suffix-stripping. `\bbk\b → brooklyn`, `\bmoma\b → museum of modern art`, `\bbam\b → brooklyn academy of music`, `\bkdc\b → knockdown center`, `\bhoy\b → house of yes`, `\bbma\b → brooklyn museum`, `\bthe met\b → metropolitan museum`. Word-boundary regex avoids false-positives on "Backgammon" / "Botanic". Cross-source dedup now collapses "BK Bowl" + "Brooklyn Bowl" + "Brooklyn Bowl Williamsburg" into one event.
 
+### fb-118 — Extract organizer name from JSON-LD + match against IG follows
+- created_at: 2026-05-28
+- source: agent-proposal (iter 77; extends iter 73-74 enrichment to JSON-LD events)
+- status: addressed (committed in iter 77)
+- body: Eventbrite/Lu.ma/etc. JSON-LD events include `organizer.name`. The generic JSON-LD parser was discarding this field. Now stamped onto the event as `event.organizer`, then `_enrich_provenance_from_url` matches `event.organizer` against user_following via alphanumeric fold + suffix stripping (`nyc`, `ny`, `brooklyn`, `bk`, `manhattan`). Catches: "Vital Run Club" → `vitalrunclub`, "Reading Rhythms NYC" → `readingrhythms` → `reading_rhythms`, "BookClubBar" → `bookclubbar`. Rejects: generic short names ("AB Productions", "Yoga Studio") via 5-char floor.
+- Impact will land on next scrape — current deployed feed has no `organizer` field (only `organizerUrl`); the JSON-LD extraction starts populating it on the next CI scrape.
+
 ### fb-117 — Surface attended-yes on cards
 - created_at: 2026-05-28
 - source: agent-proposal (iter 75; completes the iter 71 UI loop)
