@@ -176,6 +176,21 @@ These are the durable preferences the user has stated. They're marked `addressed
 - defensive scope: shape (a) checks first word length ≥14 AND all-lowercase-after-first-capital. The deployed feed has 0 legitimate words of this shape; the regex catches exactly the 2 leaks.
 - other audit findings (not yet addressed): some events have wrong categories ("Silver Sapphics: Speed Dating" tagged `movies`; "Word and Object by Quine" tagged `fitness`). Categorizer false-positives — separate issue, queued as fb-123.
 
+### fb-127 — Substack venue extraction from title (~+33 events per scrape)
+- created_at: 2026-05-28
+- source: agent-proposal (iter 86 audit of Substack low yield)
+- status: addressed (committed in iter 86)
+- body: Audit: live Substack yield is 493 events but only 1 in deployed feed. Most surviving events (237 → "ok") are actually junk product affiliates ("J.Crew Cosmo pant", "Mini Phone Tripod") while 235 *real* events were shell-filtered. Inspected the shell pool: titles like "Pet Adoption Day (@ Elizabeth Street Garden)" had the venue baked into the title string but `location.name=""` — so the shell filter (`no desc + no img + no loc`) dropped them.
+- fix: `_extract_from_headings` now matches `\((?:@|at)\s+([^)]+)\)\s*$` on the title, pulls the venue into `location.name`, and strips the parenthetical from the title. Result: shell pool 235 → 202 (+33 real events recovered including Brooklyn Ceramic Arts Tour, Pet Adoption Day, High Line Plant Sale, Pupper West Side Street Fair, Brooklyn Bridge Sunset Yoga).
+- known issue (separate, not addressed): substack's 237 surviving events include many product-affiliate noise ("Mini Phone Tripod", "Apple AirTag") that should be filtered out. The "(link)" suffix is a strong tell. Logged as fb-128.
+- 2 of the Substack FEEDS URLs return 404 (untappedcities.com/feed/, nycgovparks.org/news.rss). Harmless but wasted budget. Not addressed this iteration.
+
+### fb-128 — Substack product-affiliate noise ("Mini Phone Tripod (link)")
+- created_at: 2026-05-28
+- source: agent-proposal (iter 86 audit)
+- status: open
+- body: Substack's RSS scrape includes hundreds of newsletter posts where the items are product affiliate links, not events: "J.Crew Cosmo pant in luster charmeuse (link)", "Mini Phone Tripod (link)", "Apple AirTag (link)". The trailing `(link)` is a strong tell. Add a quality filter for substack: if title ends with `(link)` or matches `^[A-Z][a-z]+ [A-Z][a-z]+ (\(link\))?` (looks like a product name), drop. Estimated ~150 noise events per scrape.
+
 ### fb-126 — Partiful image-field rename + "ged" substring false-positive
 - created_at: 2026-05-28
 - source: agent-proposal (iter 85 audit of Partiful low yield)

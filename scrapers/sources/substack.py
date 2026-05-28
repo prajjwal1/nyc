@@ -335,11 +335,25 @@ def _extract_from_headings(soup, heading_tags, fallback_date, post_link: str) ->
         # Extract time if present
         start_time = parse_time(combined_text)
 
+        # Substack RSS often bakes the venue into the title:
+        #   "Pet Adoption Day (@ Elizabeth Street Garden)"
+        #   "High Line Plant Sale (@ High Line - 14th Street)"
+        # Pull the venue into location.name so the event isn't dropped by
+        # the shell-event filter (no desc + no img + no loc → shell).
+        # Iter 86 audit: ~235 substack events were getting shell-filtered
+        # for exactly this reason.
+        loc_name = ""
+        m = _re.search(r"\((?:@|at)\s+([^)]+)\)\s*$", title)
+        if m:
+            loc_name = m.group(1).strip()
+            title = title[:m.start()].strip()
+
         events.append(build_event(
             title=title,
             description=description,
             event_date=event_date,
             start_time=start_time,
+            location_name=loc_name or None,
             source="substack",
             source_url=source_url,
             categories=infer_categories(title, description),
