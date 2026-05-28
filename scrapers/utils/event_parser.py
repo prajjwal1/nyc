@@ -389,12 +389,21 @@ CATEGORY_KEYWORDS = {
     ],
     "movies": [
         "movie", "film screening", "movie screening", "outdoor movie",
-        "rooftop movie", "rooftop screening", "indie film", "premiere",
+        "rooftop movie", "rooftop screening", "indie film",
+        # Iter 82: removed bare "premiere" — false-positived on
+        # "NYC's Premiere Party" / "Premiere lesbian event" (means
+        # "best/first" not "movie premiere"). Replaced with specific
+        # phrases.
+        "movie premiere", "film premiere", "premiere screening",
         "movie night", "drive-in", "movies under the stars",
     ],
     "celebrities": [
         "celebrity", "in conversation with", "live appearance",
-        "meet & greet", "fireside chat", "with special guest",
+        # Iter 82: removed bare "meet & greet" — false-positived on
+        # dog-rescue + brand events ("meet & greet shelter dogs"). The
+        # specific phrase "celebrity meet & greet" is what we want.
+        "celebrity meet", "celebrity m&g",
+        "fireside chat", "with special guest",
         "in person ", "live taping",
     ],
     "exploration": [

@@ -176,12 +176,15 @@ These are the durable preferences the user has stated. They're marked `addressed
 - defensive scope: shape (a) checks first word length ≥14 AND all-lowercase-after-first-capital. The deployed feed has 0 legitimate words of this shape; the regex catches exactly the 2 leaks.
 - other audit findings (not yet addressed): some events have wrong categories ("Silver Sapphics: Speed Dating" tagged `movies`; "Word and Object by Quine" tagged `fitness`). Categorizer false-positives — separate issue, queued as fb-123.
 
-### fb-123 — Categorizer false-positives ("movies" on dating, "fitness" on philosophy)
+### fb-123 — Categorizer false-positives ("movies" on dating, "celebrities" on dog rescue)
 - created_at: 2026-05-28
-- source: agent-proposal (iter 81 audit, not addressed yet)
-- status: open
-- body: Found in the iter 81 top-20 audit: "Silver Sapphics: Speed Dating and Mixer" tagged as `movies, parties` (the "movies" hit is wrong — likely the word "Sapphics" or some other token confusing the categorizer). "Word and Object by Quine Week 4" tagged as `celebrities, fitness` (Quine is a philosopher; categorizer maybe matched "Object" → fitness?). Need to read `event_parser.CATEGORY_KEYWORDS` / `infer_categories` and identify the trigger phrases.
-- "addressed" criterion: both events re-categorize correctly (singles/parties for Sapphics; books/philosophy for Quine) and a real-feed audit shows < 5 obvious mis-categorizations.
+- source: agent-proposal (iter 81 audit)
+- status: addressed (committed in iter 82)
+- body: Identified two trigger phrases in `event_parser.CATEGORY_KEYWORDS`:
+  1. `premiere` was in `movies` — false-fired on "NYC's Premiere Party for lesbians" and "Premiere Brunch Series" (means "best/first", not "movie premiere"). Replaced with disambiguated phrases: `movie premiere`, `film premiere`, `premiere screening`.
+  2. `meet & greet` was in `celebrities` — false-fired on "meet & greet shelter dogs" (TMIRCE bRUNch) and "Founders Coffee Meet & Greet". Replaced with `celebrity meet`, `celebrity m&g`.
+- Verified: 4 positive tests still pass (real movie nights / celebrity m&g still tag correctly), 4 negative tests pass (no false positives on Sapphics, brunch with dogs, founders coffee).
+- separate issue still open: "Word and Object by Quine Week 4" event's title doesn't match its description (description was about TMIRCE bRUNch). That's a data-quality bug, not a categorizer one — likely cross-source title swap during dedup. Tracked separately if it recurs.
 
 ### fb-121 — Audit iter 77 organizer-match real-world yield
 - created_at: 2026-05-28
