@@ -185,6 +185,15 @@ These are the durable preferences the user has stated. They're marked `addressed
 - known issue (separate, not addressed): substack's 237 surviving events include many product-affiliate noise ("Mini Phone Tripod", "Apple AirTag") that should be filtered out. The "(link)" suffix is a strong tell. Logged as fb-128.
 - 2 of the Substack FEEDS URLs return 404 (untappedcities.com/feed/, nycgovparks.org/news.rss). Harmless but wasted budget. Not addressed this iteration.
 
+### fb-131 — Eventbrite pagination works but only page 1 was scraped
+- created_at: 2026-05-28
+- source: agent-proposal (iter 90 audit)
+- status: addressed (committed in iter 90)
+- body: Eventbrite was 111/246 events in deployed feed. Probed `?page=N` query param — it paginates correctly (page 2 returns "OkayAfrica x Elsewhere" vs page 1's "BROOKLYN CARNIVAL"; page 5 of all-events still yielded 20 distinct events for a cumulative 100 unique). All ~30 categorical URLs in `GENERIC_URLS` only fetched page 1, missing ~200+ events per scrape.
+- fix: added `?page=2` and `?page=3` for the 3 high-density `all-events` URLs (new-york, brooklyn, queens) and `?page=2` for 5 high-priority categorical URLs (music, comedy, parties, dating, singles) — +9 new fetches total.
+- bounded with SOURCE_VOLUME_CAPS["eventbrite"]=100. The user explicitly likes "less is more" per the existing cap comments. 100 events keeps Eventbrite from dominating while letting the top-N bubble up from a much deeper pool — same feed size, higher quality, more diversity.
+- expected impact: same eventbrite share (~100/feed_total) but the events are top-quality picks from a ~300-event pool instead of all 111 page-1 hits. Music/comedy/parties/singles depth improves significantly.
+
 ### fb-130 — AllEvents.in pagination broken (`?page=N` returns page 1)
 - created_at: 2026-05-28
 - source: agent-proposal (iter 89 audit, following the Songkick thread)

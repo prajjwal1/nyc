@@ -69,14 +69,26 @@ GENERIC_URLS = [
     "https://www.theshed.org/calendar",
     # Bell House comedy/music (works well)
     "https://thebellhouseny.com/calendar/",
-    # Eventbrite NYC category pages — JSON-LD structured listings, 18-20 events each
+    # Eventbrite NYC category pages — JSON-LD structured listings, 18-20 events each.
+    # Iter 90 audit: `?page=N` query param paginates correctly (each page returns
+    # 20 distinct events). Added page 2 + 3 for the high-density all-events
+    # URLs and page 2 for high-value categorical filters. Combined with the
+    # new eventbrite=100 SOURCE_VOLUME_CAPS entry, this lets the top-100 best
+    # events bubble up from a deeper pool without dominating the feed.
     "https://www.eventbrite.com/d/ny--new-york/all-events/",
+    "https://www.eventbrite.com/d/ny--new-york/all-events/?page=2",
+    "https://www.eventbrite.com/d/ny--new-york/all-events/?page=3",
     "https://www.eventbrite.com/d/ny--brooklyn/all-events/",
+    "https://www.eventbrite.com/d/ny--brooklyn/all-events/?page=2",
+    "https://www.eventbrite.com/d/ny--brooklyn/all-events/?page=3",
     "https://www.eventbrite.com/d/ny--brooklyn/free--events/",
     "https://www.eventbrite.com/d/ny--brooklyn/free--events--this-weekend/",
     "https://www.eventbrite.com/d/ny--queens/all-events/",
+    "https://www.eventbrite.com/d/ny--queens/all-events/?page=2",
     "https://www.eventbrite.com/d/ny--new-york/music--events/",
+    "https://www.eventbrite.com/d/ny--new-york/music--events/?page=2",
     "https://www.eventbrite.com/d/ny--new-york/comedy--events/",
+    "https://www.eventbrite.com/d/ny--new-york/comedy--events/?page=2",
     "https://www.eventbrite.com/d/ny--new-york/food-and-drink--events/",
     "https://www.eventbrite.com/d/ny--new-york/free--events--this-weekend/",
     # Time-windowed + topic-targeted Eventbrite searches (~20 events each)
@@ -85,9 +97,12 @@ GENERIC_URLS = [
     "https://www.eventbrite.com/d/ny--new-york/events--this-week/",
     "https://www.eventbrite.com/d/ny--brooklyn/dating--events/",
     "https://www.eventbrite.com/d/ny--new-york/parties--events/",
+    "https://www.eventbrite.com/d/ny--new-york/parties--events/?page=2",
     "https://www.eventbrite.com/d/ny--new-york/networking--events/",
     "https://www.eventbrite.com/d/ny--new-york/dating--events/",
+    "https://www.eventbrite.com/d/ny--new-york/dating--events/?page=2",
     "https://www.eventbrite.com/d/ny--new-york/singles--events/",
+    "https://www.eventbrite.com/d/ny--new-york/singles--events/?page=2",
     # Meetup search-result pages (structured JSON-LD listings)
     "https://www.meetup.com/find/?keywords=&source=EVENTS&location=us--ny--Brooklyn",
     "https://www.meetup.com/find/events/?source=EVENTS&location=us--ny--New%20York",

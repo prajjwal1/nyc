@@ -329,4 +329,8 @@ SOURCE_VOLUME_CAPS = {
     "eastvillecomedy": 10,
     "thebellhouseny": 10,
     "meetup": 60,
+    # Iter 90: eventbrite pagination now reaches pages 2-3 — yield could
+    # grow from ~111 to 200+. Cap at 100 so the top-100 best events
+    # bubble up from a deeper pool without dominating the feed.
+    "eventbrite": 100,
 }
