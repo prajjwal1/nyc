@@ -940,6 +940,16 @@ _LUMA_HANDLE_RE = _re.compile(r"^https?://(?:lu\.ma|luma\.com)/([A-Za-z0-9_.\-]+
 _PARTIFUL_HANDLE_RE = _re.compile(r"^https?://(?:www\.)?partiful\.com/@([A-Za-z0-9_.\-]+)")
 
 
+# Hosts that are generic aggregators / event platforms — their second-level
+# domain is NOT a curator handle. Don't extract a "handle" from these.
+_AGGREGATOR_HOSTS = {
+    "eventbrite", "meetup", "lu", "luma", "songkick", "allevents",
+    "instagram", "facebook", "twitter", "linktr", "partiful", "ticketmaster",
+    "dice", "ra", "shotgun", "posh", "tixr", "substack", "youtube", "spotify",
+    "google", "apple", "linkedin", "tiktok",
+}
+
+
 def _extract_handle_from_url(url: str) -> str | None:
     if not url:
         return None
@@ -951,7 +961,20 @@ def _extract_handle_from_url(url: str) -> str | None:
             if handle.lower() in {"nyc", "event", "events", "home"}:
                 return None
             return handle
-    return None
+    # Host-based fallback: a venue/curator that runs their own site
+    # (bookclubbar.com, theskint.com, etc.) — the second-level domain
+    # often is their canonical handle. Skip aggregators.
+    try:
+        from urllib.parse import urlparse
+        host = (urlparse(url).hostname or "").lower().replace("www.", "")
+        if not host or "." not in host:
+            return None
+        sld = host.split(".")[0]
+        if sld in _AGGREGATOR_HOSTS or len(sld) < 3:
+            return None
+        return sld
+    except Exception:
+        return None
 
 
 def _load_user_following_set() -> set[str]:

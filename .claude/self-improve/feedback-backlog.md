@@ -163,6 +163,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: addressed (committed in iter 70)
 - body: `_normalize_venue_name` now expands NYC venue abbreviations before suffix-stripping. `\bbk\b → brooklyn`, `\bmoma\b → museum of modern art`, `\bbam\b → brooklyn academy of music`, `\bkdc\b → knockdown center`, `\bhoy\b → house of yes`, `\bbma\b → brooklyn museum`, `\bthe met\b → metropolitan museum`. Word-boundary regex avoids false-positives on "Backgammon" / "Botanic". Cross-source dedup now collapses "BK Bowl" + "Brooklyn Bowl" + "Brooklyn Bowl Williamsburg" into one event.
 
+### fb-116 — Extend follow-graph signal to venue-domain hosts (bookclubbar.com)
+- created_at: 2026-05-28
+- source: agent-proposal (iter 74)
+- status: addressed (committed in iter 74)
+- body: Extension of fb-115. Beyond Lu.ma + Partiful, venues that run their own .com (bookclubbar.com, theskint.com, lizsbookbar.com, green-wood.com) have a second-level domain that often is the canonical handle. `_extract_handle_from_url` now falls back to hostname extraction when the URL is not a lu.ma/partiful pattern. An `_AGGREGATOR_HOSTS` deny-list keeps eventbrite/meetup/songkick/allevents/instagram/luma/dice from being misread as handles. Matches against user_following only; lizsbookbar (curated but user doesn't follow on IG) correctly DOES NOT fire userFollowing.
+- impact: +13 bookclubbar.com events get userFollowing. Combined with iter 73, non-IG userFollowing events 0 → 29 (Lu.ma 16 + bookclubbar 13). Combined with deployed-feed's existing 6 IG userFollowing events, high-conviction ratio rises from 3.3% to projected 15.0% on next scrape.
+
 ### fb-115 — Extend follow-graph signal to Lu.ma via curator-handle URL match
 - created_at: 2026-05-28
 - source: agent-proposal (iter 73)
