@@ -193,6 +193,15 @@ These are the durable preferences the user has stated. They're marked `addressed
 - new helper: `getAttendedCount()` in `lib/interests.ts` returns `{yes, no}` counts.
 - intentionally minimal: no "no" count surfaced (negatives stay invisible per iter 75 spec); no "manage attended" UI. The counter exists to reward engagement, not to drive interaction.
 
+### fb-137 — Substack parser only handled RSS, missed Atom (eaterny 0→8)
+- created_at: 2026-05-28
+- source: agent-proposal (iter 96 audit of substack feeds)
+- status: addressed (committed in iter 96)
+- body: Surveyed all 7 substack-style feeds. `eaterny` (Eater NY, food/restaurant openings) was returning 0 events. Root cause: Eater NY uses **Atom XML** (`<feed><entry>` with default Atom xmlns) instead of RSS (`<channel><item>`). The substack parser strictly looked for `<channel>` and bailed otherwise.
+- fix: `_parse_feed` now falls back to `root.findall("a:entry", ...)` when no `<channel>` found. `_parse_item` extended to read Atom-namespaced `title`, `published`/`updated`, `summary`/`content`, and `<link rel="alternate" href=...>`.
+- result: eaterny 0 → 8 events extracted. Sample: "Taqueria Ramirez's Soccer Bar Opens Just In Time for the World Cup", "A Force Behind Ultra-Lauded Atomix Is Opening Her Own NYC Restaurant" — these are restaurant openings = legit user-attendable food events.
+- bonus finding: meetup search-page pagination doesn't actually paginate. Probed 6 param patterns + 20 category IDs — most cats ignored. The 4 SEARCH_URLs yield ~45 events, can't grow via pagination. Logged as "no actionable" so future iters don't re-investigate.
+
 ### fb-135 — theskint over-fragmentation: 172 events from 11 RSS posts
 - created_at: 2026-05-28
 - source: agent-proposal (iter 94 audit)

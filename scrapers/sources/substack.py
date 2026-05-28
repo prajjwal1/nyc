@@ -137,17 +137,30 @@ def _parse_feed(xml_text: str) -> tuple[list[dict], int]:
     # RSS feeds use <channel><item> structure
     ns = {"content": "http://purl.org/rss/1.0/modules/content/"}
     channel = root.find("channel")
-    if channel is None:
+    items: list = []
+    if channel is not None:
+        items = list(channel.findall("item"))
+    else:
+        # Atom feeds use <feed><entry> with a default xmlns (iter 96 audit:
+        # eaterny ships Atom not RSS and was extracting 0 events).
+        atom_ns = {"a": "http://www.w3.org/2005/Atom"}
+        items = list(root.findall("a:entry", atom_ns))
+
+    if not items:
         return events, 0
 
-    items = channel.findall("item")
     # Process the most recent 8 posts (was 3) — captures more weekly guides
     for item in items[:8]:
         try:
             events.extend(_parse_item(item, ns))
             # Harvest authoritative event-platform URLs from post body —
             # newsletter posts often link to lu.ma/eventbrite/etc. directly.
-            body = item.findtext("content:encoded", "", namespaces=ns) or item.findtext("description", "")
+            body = (
+                item.findtext("content:encoded", "", namespaces=ns)
+                or item.findtext("description", "")
+                or item.findtext("{http://www.w3.org/2005/Atom}content", "")
+                or item.findtext("{http://www.w3.org/2005/Atom}summary", "")
+            )
             urls_added += _harvest_and_save_post_urls(body)
         except Exception as e:
             title = item.findtext("title", "unknown")
@@ -157,15 +170,38 @@ def _parse_feed(xml_text: str) -> tuple[list[dict], int]:
 
 def _parse_item(item, ns: dict) -> list[dict]:
     events = []
-    post_title = item.findtext("title", "")
-    post_link = item.findtext("link", "")
-    pub_date_str = item.findtext("pubDate", "")
+    # RSS first, then Atom-namespaced fallback (iter 96).
+    post_title = (
+        item.findtext("title", "")
+        or item.findtext("{http://www.w3.org/2005/Atom}title", "")
+        or ""
+    )
+    post_link = item.findtext("link", "") or ""
+    pub_date_str = item.findtext("pubDate", "") or ""
+
+    # Atom fallback (iter 96): <link rel="alternate" href="...">, <published>
+    if not post_link:
+        for link_el in item.findall("{http://www.w3.org/2005/Atom}link"):
+            rel = link_el.get("rel", "alternate")
+            if rel == "alternate":
+                post_link = link_el.get("href", "")
+                break
+    if not pub_date_str:
+        pub_date_str = (
+            item.findtext("{http://www.w3.org/2005/Atom}published", "")
+            or item.findtext("{http://www.w3.org/2005/Atom}updated", "")
+            or ""
+        )
 
     # Get the full HTML content from content:encoded
     content_encoded = item.findtext("content:encoded", "", namespaces=ns)
     if not content_encoded:
-        # Fallback to description
-        content_encoded = item.findtext("description", "")
+        # Fallback to description, then Atom summary/content
+        content_encoded = (
+            item.findtext("description", "")
+            or item.findtext("{http://www.w3.org/2005/Atom}content", "")
+            or item.findtext("{http://www.w3.org/2005/Atom}summary", "")
+        )
 
     if not content_encoded:
         return events
