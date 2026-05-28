@@ -185,6 +185,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 - known issue (separate, not addressed): substack's 237 surviving events include many product-affiliate noise ("Mini Phone Tripod", "Apple AirTag") that should be filtered out. The "(link)" suffix is a strong tell. Logged as fb-128.
 - 2 of the Substack FEEDS URLs return 404 (untappedcities.com/feed/, nycgovparks.org/news.rss). Harmless but wasted budget. Not addressed this iteration.
 
+### fb-134 — bookclubbar venue-rental "[PRIVATE EVENT" leak
+- created_at: 2026-05-28
+- source: agent-proposal (iter 93 audit)
+- status: addressed (committed in iter 93)
+- body: bookclubbar live yield is 34 events, mostly high-quality (Author Event, Galinsky Poetry, etc). Two duplicate "[PRIVATE EVENT - closed from 6pm to 10pm]" entries were leaking — those are venue closures for private rentals, not public events. Added `[private event` (with bracket) to HARD_BLOCK_KEYWORDS. The bracketed form is specifically a Book Club Bar / event-calendar convention so won't false-positive on legit phrases like "host your private event tips". Verified 3/3 test cases.
+- bonus finding: lizsbookbar yield is healthy at 19 events all passing filters — no fixes needed there.
+
 ### fb-133 — NYPL audit: 79 events surviving filters, "Playdate at the Library" leak
 - created_at: 2026-05-28
 - source: agent-proposal (iter 92 audit)

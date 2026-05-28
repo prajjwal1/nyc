@@ -20,6 +20,12 @@ HARD_BLOCK_KEYWORDS = [
     # iter 92: NYPL audit found "Playdate at the Library" leaking — the word
     # `playdate` and `caregivers` are almost exclusively parent/kid terms.
     "playdate", "caregivers", "caregiver and child",
+    # iter 93: bookclubbar audit found "[PRIVATE EVENT - closed from 6pm to
+    # 10pm]" surfacing as a public event. Venue private-rental markers in
+    # square brackets are clearly not public events. The bracketed form
+    # `[private event` won't false-positive — it's specifically a Book Club
+    # Bar / event-calendar convention.
+    "[private event",
     "youth ", "ages 0", "ages 3", "ages 5", "ages 6",
     "ages 7", "ages 8", "ages 9", "ages 10",
 
