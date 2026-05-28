@@ -163,6 +163,15 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: addressed (committed in iter 70)
 - body: `_normalize_venue_name` now expands NYC venue abbreviations before suffix-stripping. `\bbk\b → brooklyn`, `\bmoma\b → museum of modern art`, `\bbam\b → brooklyn academy of music`, `\bkdc\b → knockdown center`, `\bhoy\b → house of yes`, `\bbma\b → brooklyn museum`, `\bthe met\b → metropolitan museum`. Word-boundary regex avoids false-positives on "Backgammon" / "Botanic". Cross-source dedup now collapses "BK Bowl" + "Brooklyn Bowl" + "Brooklyn Bowl Williamsburg" into one event.
 
+### fb-117 — Surface attended-yes on cards
+- created_at: 2026-05-28
+- source: agent-proposal (iter 75; completes the iter 71 UI loop)
+- status: addressed (committed in iter 75)
+- body: Iter 71 shipped the EventModal "Did you go?" Yes/No prompt + localStorage state, but the user could only see the answer by re-opening the modal. Added at-a-glance badges on past events:
+  - GridCard: emerald `✓` circle at bottom-right (5x5), title hover "You marked attended"
+  - FeedCard + MediaFirstCard: inline `✓ went` pill next to the title (emerald-100 bg, emerald-800 text, 10px)
+- Only renders when `event.date < today AND getAttendedState(event.id) === "yes"`. No render for "no" or unmarked. Build + TypeScript clean.
+
 ### fb-116 — Extend follow-graph signal to venue-domain hosts (bookclubbar.com)
 - created_at: 2026-05-28
 - source: agent-proposal (iter 74)

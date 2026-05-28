@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, isEventOpened } from "../lib/interests";
+import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, isEventOpened, getAttendedState } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 
 interface EventCardProps {
@@ -49,6 +49,9 @@ function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event)
   const dateLabel = formatDateLabel(event.date);
   const startsSoon = isStartingSoon(event);
   const opened = isEventOpened(event.id);
+  const todayStr = new Date().toISOString().split("T")[0];
+  const isPast = !!event.date && event.date < todayStr;
+  const attended = isPast ? getAttendedState(event.id) : undefined;
   return (
     <a
       href={event.sourceUrl}
@@ -112,6 +115,16 @@ function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event)
           }
         >
           {event.userFollowing ? "★" : "♥"}
+        </div>
+      )}
+      {/* Attended badge — past event the user marked "yes" via EventModal.
+          Subtle visual confirmation that this is in their attended history. */}
+      {attended === "yes" && (
+        <div
+          className="absolute bottom-1.5 right-1.5 rounded-full w-5 h-5 flex items-center justify-center text-[11px] font-bold backdrop-blur bg-emerald-500/95 text-white"
+          title="You marked attended"
+        >
+          ✓
         </div>
       )}
       {/* Bottom title overlay on hover */}
@@ -186,6 +199,9 @@ function MediaFirstCard({
     : convictionAffinity
     ? "ring-1 ring-amber-300 shadow-[inset_3px_0_0_0_#f59e0b]"
     : "border border-gray-200 hover:border-gray-300";
+  const todayStrMF = new Date().toISOString().split("T")[0];
+  const isPastMF = !!event.date && event.date < todayStrMF;
+  const attendedMF = isPastMF ? getAttendedState(event.id) : undefined;
   return (
     <a
       href={event.sourceUrl}
@@ -251,6 +267,14 @@ function MediaFirstCard({
       <div className="p-3">
         <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">
           {event.title}
+          {attendedMF === "yes" && (
+            <span
+              className="ml-1.5 inline-flex items-center align-middle rounded-full bg-emerald-100 text-emerald-800 px-1.5 py-0.5 text-[10px] font-medium"
+              title="You marked attended"
+            >
+              ✓ went
+            </span>
+          )}
         </h3>
         <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500">
           {timeStr && (
@@ -439,6 +463,9 @@ function FeedCard({
     : convictionAffinity
     ? "ring-1 ring-amber-300 shadow-[inset_3px_0_0_0_#f59e0b]"
     : "border border-gray-200 hover:border-gray-300";
+  const todayStrF = new Date().toISOString().split("T")[0];
+  const isPastF = !!event.date && event.date < todayStrF;
+  const attendedF = isPastF ? getAttendedState(event.id) : undefined;
   return (
     <a
       href={event.sourceUrl}
@@ -473,6 +500,14 @@ function FeedCard({
         <div className="flex-1 min-w-0">
           <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">
             {event.title}
+            {attendedF === "yes" && (
+              <span
+                className="ml-1.5 inline-flex items-center align-middle rounded-full bg-emerald-100 text-emerald-800 px-1.5 py-0.5 text-[10px] font-medium"
+                title="You marked attended"
+              >
+                ✓ went
+              </span>
+            )}
           </h3>
 
           <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500">
