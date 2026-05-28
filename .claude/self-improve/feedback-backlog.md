@@ -124,9 +124,9 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-105 — Curator-calendar lu.ma path probing for every signal_account
 - created_at: 2026-05-28
 - source: agent-proposal (dreamer-critic D1, APPROVE-DREAM but deferred this round)
-- status: open
+- status: in-progress (script shipped: 21d916c on 2026-05-28)
 - body: For every `signal_account` (54 today, 69 after this round's P3 promotions), probe `https://lu.ma/<handle>` once. If yield ≥ 3 distinct events not in `/nyc`, add to `LUMA_PAGES`. Implement as `scrapers/maintenance/probe_luma_curators.py` (one-off, not in hot path). Replaces the broken `/nyc/<topic>` URLs.
-- "addressed" criterion: the maintenance script exists in `scrapers/maintenance/`, has been run at least once, and produced an output diff applied to `luma.py`.
+- "addressed" criterion: the maintenance script exists in `scrapers/maintenance/` ✓ shipped 21d916c. Still needed: run it at least once, apply candidate diff to `luma.py`.
 
 ### fb-104 — Prune redundant `/nyc/<topic>` URLs from LUMA_PAGES (after fb-105)
 - created_at: 2026-05-28
