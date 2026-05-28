@@ -96,15 +96,12 @@ FEEDS = [
     # (Removed: hellgate.substack.com, gothamist.com — primarily news outlets
     # whose RSS items are news articles, not events. Occasional event
     # roundups exist but noise-to-signal ratio is too high.)
-    # Untapped Cities — NYC tours, history, secret-spot/event coverage
-    "https://untappedcities.com/feed/",
+    # (Removed iter 87: untappedcities.com/feed/ + nycgovparks.org/news.rss
+    # — both 404 confirmed in the iter 86 audit; wasted scrape budget.)
     # NYC for Free — free events curator, weekly roundups
     "https://nycforfree.substack.com/feed",
     # Brokelyn — Brooklyn-focused budget events (cheap/free)
     "https://www.brokelyn.com/feed/",
-    # NYC Parks daily events feed (already covered via parks.py, but the
-    # Substack version surfaces editorial picks + program highlights)
-    "https://www.nycgovparks.org/news.rss",
 ]
 
 # Patterns that look like dates within event text
@@ -246,6 +243,34 @@ def _looks_like_news_title(title: str) -> bool:
     return False
 
 
+# Retail / non-event hosts that newsletter authors link to for affiliate
+# revenue. An "event" sourceUrl pointing to one of these is a product pick,
+# not an event.
+_AFFILIATE_HOSTS = (
+    "amazon.com", "amzn.to",
+    "jcrew.com", "macys.com", "apple.com", "llbean.com",
+    "shopstyle.com", "rewardstyle.com", "ltk.com", "shopmy.us",
+    "distrokid.com", "mirror.xyz", "audius.co", "spotify.com",
+    "variety.com", "gofundme.com",
+    "twitter.com", "x.com",  # social-link spam in newsletter footers
+)
+
+
+def _is_affiliate_noise(title: str, source_url: str) -> bool:
+    """True if the heading is a product affiliate / non-event link, not an
+    actual event. Pattern: title ending in `(link)` OR sourceUrl pointing to
+    a retail / non-NYC-event host."""
+    t = (title or "").strip().lower()
+    if t.endswith("(link)") or t.endswith("[link]"):
+        return True
+    try:
+        from urllib.parse import urlparse
+        host = (urlparse(source_url or "").hostname or "").replace("www.", "").lower()
+    except Exception:
+        return False
+    return any(h in host for h in _AFFILIATE_HOSTS)
+
+
 def _extract_from_headings(soup, heading_tags, fallback_date, post_link: str) -> list[dict]:
     events = []
     seen_titles = set()
@@ -330,6 +355,13 @@ def _extract_from_headings(soup, heading_tags, fallback_date, post_link: str) ->
 
         # Skip if we still have a low-quality title
         if _is_date_only_title(title) or len(title) < 8:
+            continue
+
+        # Skip product-affiliate noise (iter 87, fb-128). Substack newsletters
+        # often embed product picks alongside events: "J.Crew Cosmo pant in
+        # luster charmeuse (link)", "Apple Wired Ear Pods (link)". Trailing
+        # "(link)" + retail/shopping host on source_url = noise.
+        if _is_affiliate_noise(title, source_url):
             continue
 
         # Extract time if present

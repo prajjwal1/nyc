@@ -188,8 +188,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-128 — Substack product-affiliate noise ("Mini Phone Tripod (link)")
 - created_at: 2026-05-28
 - source: agent-proposal (iter 86 audit)
-- status: open
-- body: Substack's RSS scrape includes hundreds of newsletter posts where the items are product affiliate links, not events: "J.Crew Cosmo pant in luster charmeuse (link)", "Mini Phone Tripod (link)", "Apple AirTag (link)". The trailing `(link)` is a strong tell. Add a quality filter for substack: if title ends with `(link)` or matches `^[A-Z][a-z]+ [A-Z][a-z]+ (\(link\))?` (looks like a product name), drop. Estimated ~150 noise events per scrape.
+- status: addressed (committed in iter 87)
+- body: Substack RSS includes product affiliate links as RSS items: "J.Crew Cosmo pant", "Mini Phone Tripod (link)", "Apple Wired Ear Pods (link)". Trailing "(link)" + retail-host sourceUrl = clear non-event.
+- fix: `_is_affiliate_noise(title, source_url)` checks: title ends with `(link)`/`[link]` OR sourceUrl host matches a deny-list of retail/social hosts (amazon, jcrew, macys, apple, llbean, shopstyle, ltk, distrokid, mirror.xyz, audius, spotify, variety, gofundme, twitter, x.com). Applied per-heading in `_extract_from_headings` before `build_event`. Audit confirmed 13 noise → 0 remaining post-fix.
+- bonus: removed 2 confirmed-404 FEEDS URLs (untappedcities.com/feed/, nycgovparks.org/news.rss) so scrape budget isn't wasted.
 
 ### fb-126 — Partiful image-field rename + "ged" substring false-positive
 - created_at: 2026-05-28
