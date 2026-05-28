@@ -932,6 +932,116 @@ def _apply_default_images(events: list[dict]) -> None:
             ev["imageUrl"] = fallback
 
 
+# URL patterns that carry a curator/host handle. These cross-source
+# handles often map to accounts the user follows on IG. Extracting them
+# lets us extend the follow-graph signal (userFollowing) to non-IG events.
+import re as _re
+_LUMA_HANDLE_RE = _re.compile(r"^https?://(?:lu\.ma|luma\.com)/([A-Za-z0-9_.\-]+)/?$")
+_PARTIFUL_HANDLE_RE = _re.compile(r"^https?://(?:www\.)?partiful\.com/@([A-Za-z0-9_.\-]+)")
+
+
+def _extract_handle_from_url(url: str) -> str | None:
+    if not url:
+        return None
+    for rx in (_LUMA_HANDLE_RE, _PARTIFUL_HANDLE_RE):
+        m = rx.match(url)
+        if m:
+            handle = m.group(1)
+            # Bare /nyc / event-id patterns aren't handles.
+            if handle.lower() in {"nyc", "event", "events", "home"}:
+                return None
+            return handle
+    return None
+
+
+def _load_user_following_set() -> set[str]:
+    """Lower-cased usernames the user follows on IG (from discover.py).
+    Used by _enrich_provenance_from_url to set userFollowing on non-IG
+    events whose curator handle matches one of these."""
+    import json as _json
+    import os as _os
+    path = _os.path.join(
+        _os.path.dirname(_os.path.abspath(__file__)),
+        "data",
+        "discovered_accounts.json",
+    )
+    if not _os.path.isfile(path):
+        return set()
+    try:
+        with open(path) as f:
+            data = _json.load(f)
+        return {
+            a["username"].lower()
+            for a in data.get("accounts", [])
+            if isinstance(a, dict) and a.get("discovered_via") == "user_following"
+            and a.get("username")
+        }
+    except Exception:
+        return set()
+
+
+_HANDLE_LOCATION_SUFFIX_RE = _re.compile(r"-(?:manhattan|brooklyn|queens|bronx|bk|nyc|ny|williamsburg)$")
+
+
+def _handle_candidates(handle: str) -> list[str]:
+    """Variants of a curator handle to test against the user_following set.
+    Catches `readingrhythms-manhattan` ↔ `reading_rhythms`, `bk-` prefixes,
+    `_` ↔ `-` separator differences, and the alphanumeric-only collapse
+    so `readingrhythms-manhattan` → `readingrhythms` ↔ `reading_rhythms`
+    → `readingrhythms`."""
+    h = handle.lower()
+    stripped = _HANDLE_LOCATION_SUFFIX_RE.sub("", h)
+    out = {
+        h,
+        stripped,
+        h.replace("-", "_"),
+        h.replace("_", "-"),
+        stripped.replace("-", "_"),
+        stripped.replace("_", "-"),
+        # Alphanumeric-only fold — bridges `_` / `-` / `.` differences
+        # like `readingrhythms-manhattan` ↔ `reading_rhythms`.
+        _re.sub(r"[^a-z0-9]", "", h),
+        _re.sub(r"[^a-z0-9]", "", stripped),
+    }
+    return [v for v in out if v]
+
+
+def _user_following_normalized() -> set[str]:
+    """User following set extended with alphanumeric-only normalized
+    variants so handles like `reading_rhythms` match `readingrhythms`."""
+    base = _load_user_following_set()
+    out = set(base)
+    for h in base:
+        out.add(_re.sub(r"[^a-z0-9]", "", h))
+    return out
+
+
+def _enrich_provenance_from_url(events: list[dict]) -> None:
+    """Set `account` + `userFollowing` on non-IG events whose sourceUrl
+    encodes a curator handle that the user follows on IG. The audit at
+    iter 73 found that Lu.ma URLs like `lu.ma/litclub.nyc` and
+    `lu.ma/nycbackgammonclub` are signal-account handles — currently
+    those events are invisible to the follow-graph metric."""
+    following = _user_following_normalized()
+    if not following:
+        return
+    matched = 0
+    for ev in events:
+        if ev.get("account") or ev.get("instagramAccount"):
+            continue  # already has provenance
+        handle = _extract_handle_from_url(ev.get("sourceUrl") or "")
+        if not handle:
+            continue
+        for cand in _handle_candidates(handle):
+            if cand in following:
+                ev["account"] = handle  # preserve original handle for display
+                ev["userFollowing"] = True
+                matched += 1
+                break
+    if matched:
+        print(f"[normalize] Enriched {matched} non-IG events with userFollowing via curator-handle URL match")
+
+
 _IMAGE_REQUIRED_SOURCES = frozenset({
     # Partiful events without images are usually private-event placeholders
     # with bare titles — drop them. Generic JSON-LD without an image is
@@ -1421,6 +1531,8 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
         _ip._CACHE = None
     except Exception as exc:
         print(f"[normalize] interest_profile rebuild failed: {exc}")
+
+    _enrich_provenance_from_url(events)
 
     events = rank_events(events)
 
