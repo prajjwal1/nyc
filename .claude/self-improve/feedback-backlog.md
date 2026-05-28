@@ -163,6 +163,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: addressed (committed in iter 70)
 - body: `_normalize_venue_name` now expands NYC venue abbreviations before suffix-stripping. `\bbk\b → brooklyn`, `\bmoma\b → museum of modern art`, `\bbam\b → brooklyn academy of music`, `\bkdc\b → knockdown center`, `\bhoy\b → house of yes`, `\bbma\b → brooklyn museum`, `\bthe met\b → metropolitan museum`. Word-boundary regex avoids false-positives on "Backgammon" / "Botanic". Cross-source dedup now collapses "BK Bowl" + "Brooklyn Bowl" + "Brooklyn Bowl Williamsburg" into one event.
 
+### fb-120 — Clean stale transient-killed entries from dead_accounts.json
+- created_at: 2026-05-28
+- source: agent-proposal (iter 79; janitorial follow-up to iter 1 P1)
+- status: addressed (committed in iter 79)
+- body: Iter 1 P1 added a runtime auto-revive for the 54 accounts mass-killed on 2026-05-24 by transient `feedback_required` errors. The skip-set builder correctly bypasses them, but the JSON file itself still carried the stale entries — misleading for sanity_check + ops readers. New `scrapers/maintenance/clean_dead_accounts.py` is an idempotent purger (dry-run by default, `PURGE=1` to apply). Removed 54 entries; 58 remain (26 legitimate `not_exists` + 32 legitimate `stale_no_recent_posts`).
+- side benefit: `sanity_check.py` "Newly-dead accounts in last 7 days" dropped from 54 → 0, killing the "sudden dead-account growth" WARNING signal.
+
 ### fb-119 — "From accounts you follow" hero in TopPicks
 - created_at: 2026-05-28
 - source: agent-proposal (iter 78; surfaces the iter 73-77 enrichment work)
