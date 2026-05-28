@@ -22,6 +22,39 @@ async def scrape() -> list[dict]:
     return events
 
 
+# Schema.org Event subtypes that Meetup uses. The bare "Event" check missed
+# philosophy / language / education events (Meetup tags them
+# EducationEvent), routing them through the empty-description DOM fallback
+# instead. Audit at iter 83 found "Word and Object by Quine Week 4" with a
+# wrong description bleeding in from a sibling card because the JSON-LD
+# path was skipped.
+_MEETUP_EVENT_TYPES = {
+    "Event",
+    "EducationEvent",
+    "BusinessEvent",
+    "SocialEvent",
+    "MusicEvent",
+    "SportsEvent",
+    "TheaterEvent",
+    "DanceEvent",
+    "ComedyEvent",
+    "FoodEvent",
+    "Festival",
+    "ScreeningEvent",
+    "ExhibitionEvent",
+    "VisualArtsEvent",
+    "LiteraryEvent",
+}
+
+
+def _is_meetup_event_type(t) -> bool:
+    if isinstance(t, str):
+        return t in _MEETUP_EVENT_TYPES
+    if isinstance(t, list):
+        return any(isinstance(s, str) and s in _MEETUP_EVENT_TYPES for s in t)
+    return False
+
+
 def _parse_meetup(html: str, source_url: str) -> list[dict]:
     events = []
     soup = BeautifulSoup(html, "lxml")
@@ -31,7 +64,7 @@ def _parse_meetup(html: str, source_url: str) -> list[dict]:
             data = json.loads(script.string)
             items = data if isinstance(data, list) else [data]
             for item in items:
-                if item.get("@type") == "Event":
+                if _is_meetup_event_type(item.get("@type")):
                     ev = _from_ld(item)
                     if ev:
                         events.append(ev)

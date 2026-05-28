@@ -176,6 +176,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - defensive scope: shape (a) checks first word length ≥14 AND all-lowercase-after-first-capital. The deployed feed has 0 legitimate words of this shape; the regex catches exactly the 2 leaks.
 - other audit findings (not yet addressed): some events have wrong categories ("Silver Sapphics: Speed Dating" tagged `movies`; "Word and Object by Quine" tagged `fitness`). Categorizer false-positives — separate issue, queued as fb-123.
 
+### fb-124 — Meetup Schema.org Event-subtype acceptance
+- created_at: 2026-05-28
+- source: agent-proposal (iter 83 trace of the Quine event)
+- status: addressed (committed in iter 83)
+- body: Traced the iter 81 "Word and Object by Quine Week 4 — TMIRCE brunch desc" anomaly. The Meetup page's JSON-LD correctly carries the right title + the right description ("How does language come to have meaning…") tagged `@type: EducationEvent`. But `_parse_meetup` strictly filtered on `@type == "Event"`, so EducationEvent / MusicEvent / TheaterEvent / etc. were all routed to the empty-description DOM card fallback. Wrong descriptions could then bleed in from sibling cards on search pages.
+- fix: extended acceptance to a Schema.org Event-subtype set: `Event, EducationEvent, BusinessEvent, SocialEvent, MusicEvent, SportsEvent, TheaterEvent, DanceEvent, ComedyEvent, FoodEvent, Festival, ScreeningEvent, ExhibitionEvent, VisualArtsEvent, LiteraryEvent`. Mirrors `generic.py::EVENT_TYPES`.
+- verified: re-parsed Quine's Meetup page → "Word and Object by Quine Week 4" + the correct philosophy description (no more TMIRCE bleed). All philosophy / language / education Meetup groups will now extract correctly.
+
 ### fb-123 — Categorizer false-positives ("movies" on dating, "celebrities" on dog rescue)
 - created_at: 2026-05-28
 - source: agent-proposal (iter 81 audit)
