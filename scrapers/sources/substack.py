@@ -175,9 +175,17 @@ def _parse_item(item, ns: dict) -> list[dict]:
 
     soup = BeautifulSoup(content_encoded, "html.parser")
 
+    # Iter 94: roundup vs single-event detection. Newsletters like theskint
+    # mix two post shapes — multi-event roundups whose titles start with a
+    # day-pair like "WEDS-THURS, 5/27-28: ..." AND single-event posts like
+    # "CELEBRATE THE MODERN AMERICAN THEATER AT HB STUDIO'S FESTIVAL".
+    # The default heading-fragmentation path produces 100+ fragments from a
+    # single non-roundup post (button text, paragraph subheads).
+    is_roundup_title = _looks_like_roundup(post_title)
+
     # Strategy: find headings (h2, h3, strong, b) that likely denote event titles,
     # then gather the text and links that follow until the next heading.
-    heading_tags = soup.find_all(["h2", "h3", "strong", "b"])
+    heading_tags = soup.find_all(["h2", "h3", "strong", "b"]) if is_roundup_title else []
 
     if heading_tags:
         events.extend(_extract_from_headings(soup, heading_tags, fallback_date, post_link))
@@ -254,6 +262,33 @@ _AFFILIATE_HOSTS = (
     "variety.com", "gofundme.com",
     "twitter.com", "x.com",  # social-link spam in newsletter footers
 )
+
+
+# Roundup-title detection (iter 94). Theskint and similar newsletters use
+# weekday-pair prefixes for multi-event roundups: "WEDS-THURS, 5/27-28:",
+# "FRI-TUES, 5/22-26:", "MON, 6/3:". Posts WITHOUT this shape are typically
+# single-event sponsored posts and should be parsed as one event each.
+_ROUNDUP_TITLE_RE = _re.compile(
+    r"^\s*"
+    r"(?:mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)s?"
+    r"\s*[-,/&]\s*"  # separator
+    r"(?:mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)s?"
+    r"\s*[,:]",
+    _re.IGNORECASE,
+)
+# Also: "MON, 6/3:" or "WEDS, 5/27:" — single day + date + colon
+_SINGLE_DAY_ROUNDUP_RE = _re.compile(
+    r"^\s*"
+    r"(?:mon|tue|tues|wed|weds|thu|thur|thurs|fri|sat|sun)s?"
+    r"\s*,\s*\d{1,2}/\d{1,2}\s*:",
+    _re.IGNORECASE,
+)
+
+
+def _looks_like_roundup(title: str) -> bool:
+    if not title:
+        return False
+    return bool(_ROUNDUP_TITLE_RE.match(title) or _SINGLE_DAY_ROUNDUP_RE.match(title))
 
 
 def _is_affiliate_noise(title: str, source_url: str) -> bool:
@@ -404,6 +439,13 @@ def _is_date_only_title(title: str) -> bool:
         return True
     if re.match(r"^\d{1,2}/\d{1,2}(?:/\d{2,4})?$", stripped):
         return True
+    # Iter 94: roundup posts leak day-name fragments ("wednesday", "monday")
+    # as if they were event titles. The day-of-week appears as a paragraph
+    # subhead in theskint posts. Treat as date-only.
+    if re.match(r"^(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)$", stripped, re.IGNORECASE):
+        return True
+    if re.match(r"^(?:may|june|july|august|september|october|november|december)\s+\d{1,2}\s*(?:to|-|–|—)\s*(?:may|june|july|august|september|october|november|december)?\s*\d{1,2}$", stripped, re.IGNORECASE):
+        return True  # date range like "May 30 to June 5"
     return False
 
 

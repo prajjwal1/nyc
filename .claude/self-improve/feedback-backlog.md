@@ -185,6 +185,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - known issue (separate, not addressed): substack's 237 surviving events include many product-affiliate noise ("Mini Phone Tripod", "Apple AirTag") that should be filtered out. The "(link)" suffix is a strong tell. Logged as fb-128.
 - 2 of the Substack FEEDS URLs return 404 (untappedcities.com/feed/, nycgovparks.org/news.rss). Harmless but wasted budget. Not addressed this iteration.
 
+### fb-135 — theskint over-fragmentation: 172 events from 11 RSS posts
+- created_at: 2026-05-28
+- source: agent-proposal (iter 94 audit)
+- status: addressed (committed in iter 94)
+- body: theskint substack feed was generating 172 "events" from 11 RSS posts because `_extract_from_headings` treats every body `<h2>/<h3>/<strong>/<b>` as an event title. theskint posts are mixed: weekday-roundup posts ("WEDS-THURS, 5/27-28: MANHATTANHENGE, BUSTA RHYMES, ...") SHOULD be fragmented, but single-event sponsored posts ("CELEBRATE THE MODERN AMERICAN THEATER AT HB STUDIO'S FESTIVAL") were leaking dozens of button-text + paragraph fragments.
+- fix: added `_looks_like_roundup(title)` heuristic that matches weekday-pair prefixes (`WEDS-THURS,`, `FRI-TUES,`, `MON, 6/3:`). Single-event posts skip heading fragmentation. Also extended `_is_date_only_title` to drop day-name fragments ("wednesday") and date ranges ("May 30 to June 5") that were leaking from roundup posts.
+- result: 172 → 106 extracted events. The real-event count from theskint is small either way (~6 surviving filters) because theskint's HTML doesn't have clean per-event structure, but noise is materially reduced. Single-event posts now contribute 1 event instead of 15-30 fragments each.
+
 ### fb-134 — bookclubbar venue-rental "[PRIVATE EVENT" leak
 - created_at: 2026-05-28
 - source: agent-proposal (iter 93 audit)
