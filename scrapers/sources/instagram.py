@@ -3057,13 +3057,20 @@ def _is_metadata_line(line: str) -> bool:
     return any(r.match(line) for r in _METADATA_LINE_RES)
 
 
-# OCR'd-handle leak: IG Stories that get scraped sometimes emit titles whose
-# first token is an entire glued @handle ("Glibertybagelsny grand opening",
-# "Ggretavanfleet gave fans quite"). The first token has 1–2 uppercase letters,
-# a run of lowercase, an inner uppercase, then more lowercase — and is > 13
-# chars long. Length floor avoids false positives on legit camel case
-# ("BookClubBar Presents", "WeWork", "MoMA").
-_GLUED_HANDLE_RE = re.compile(r"^[A-Z]{1,2}[a-z]{2,}[A-Z][a-z]{2,}$")
+# OCR'd-handle leak: IG Stories sometimes emit titles whose first token is
+# an entire glued @handle. Two shapes observed in the deployed feed:
+#   (a) single capital + long lowercase run (≥14 chars): "Glibertybagelsny",
+#       "Ggretavanfleet" — iter 81 audit confirmed these are the actual
+#       leaks scoring at the top of the feed.
+#   (b) camelCase glued handle: "MidnightRunnersNewYork", "BookClubBarPresents"
+#       — defensive; the deployed feed has none today but the pattern is
+#       commonly produced by OCR over multi-word handles.
+# Both require ≥2-word titles and a first token > 13 chars so legit names
+# ("Backgammon", "Williamsburg", "BookClubBar Presents") aren't caught.
+_GLUED_HANDLE_RES = (
+    re.compile(r"^[A-Z][a-z]{12,}$"),                  # shape (a)
+    re.compile(r"^[A-Z]{1,2}[a-z]{2,}[A-Z][a-z]{2,}$"),  # shape (b)
+)
 
 
 def _looks_like_glued_handle(title: str) -> bool:
@@ -3073,7 +3080,7 @@ def _looks_like_glued_handle(title: str) -> bool:
     first = words[0]
     if len(first) <= 13:
         return False
-    return bool(_GLUED_HANDLE_RE.match(first))
+    return any(rx.match(first) for rx in _GLUED_HANDLE_RES)
 
 
 _FRAGMENT_TITLE_RE = re.compile(

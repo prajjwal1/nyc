@@ -923,6 +923,29 @@ _SOURCE_DEFAULT_IMAGES = {
 }
 
 
+# Glued-handle title leak (iter 81 audit): IG-Stories OCR sometimes glues
+# an @handle into the title as a single 14+ char token, single-capital +
+# all-lowercase ("Glibertybagelsny grand opening", "Ggretavanfleet gave
+# fans quite"). Iter 1 P5's camelCase regex didn't catch these — they
+# have no internal uppercase. This post-filter purges them on every
+# normalize() pass so already-stored leaks self-clean without a re-scrape.
+#
+# Length floor 14 + all-lowercase-after-first keeps the FP rate near zero
+# — the deployed feed has 0 legitimate words of this shape; the only 2
+# hits are real OCR junk.
+_GLUED_HANDLE_TITLE_RE = re.compile(r"^[A-Z][a-z]{12,}$")
+
+
+def _is_glued_handle_title(title: str) -> bool:
+    words = (title or "").split()
+    if len(words) < 2:
+        return False
+    first = words[0]
+    if len(first) < 14:
+        return False
+    return bool(_GLUED_HANDLE_TITLE_RE.match(first))
+
+
 def _apply_default_images(events: list[dict]) -> None:
     for ev in events:
         if (ev.get("imageUrl") or "").strip():
@@ -1422,6 +1445,16 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     blocked = before - len(events)
     if blocked:
         print(f"[normalize] Blocked {blocked} low-quality events")
+
+    # Purge already-stored events whose title is a glued-handle OCR leak
+    # ("Ggretavanfleet gave fans quite", "Glibertybagelsny grand opening").
+    # Iter 1 P5 catches these at IG extraction; this pass catches old
+    # rows already in the feed before the fix landed.
+    before = len(events)
+    events = [ev for ev in events if not _is_glued_handle_title(ev.get("title", ""))]
+    glued = before - len(events)
+    if glued:
+        print(f"[normalize] Purged {glued} glued-handle title leaks")
 
     # User-excluded sources (data-driven, no hardcoded list) — accounts /
     # hosts / title-hints the user has explicitly said no to via

@@ -163,6 +163,26 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: addressed (committed in iter 70)
 - body: `_normalize_venue_name` now expands NYC venue abbreviations before suffix-stripping. `\bbk\b → brooklyn`, `\bmoma\b → museum of modern art`, `\bbam\b → brooklyn academy of music`, `\bkdc\b → knockdown center`, `\bhoy\b → house of yes`, `\bbma\b → brooklyn museum`, `\bthe met\b → metropolitan museum`. Word-boundary regex avoids false-positives on "Backgammon" / "Botanic". Cross-source dedup now collapses "BK Bowl" + "Brooklyn Bowl" + "Brooklyn Bowl Williamsburg" into one event.
 
+### fb-122 — Top-event audit + purge glued-handle leak at top of feed
+- created_at: 2026-05-28
+- source: agent-proposal (iter 81)
+- status: addressed (committed in iter 81)
+- body: Audited top 20 events by score. Found 2 critical issues:
+  1. **"Ggretavanfleet gave fans quite"** ranked #2 at score 1.00 — an IG-Stories OCR glued-handle leak that iter 1 P5 was supposed to catch. Inspection revealed the iter 1 regex (`^[A-Z]{1,2}[a-z]{2,}[A-Z][a-z]{2,}$`) requires an *internal* uppercase, but the actual leaks (`Glibertybagelsny`, `Ggretavanfleet`) are 1 capital + long lowercase. The Critic's "verified against live titles" claim was wrong.
+  2. **"Glibertybagelsny grand opening"** also leaking, score 0.66.
+- fix: added shape-(a) regex `^[A-Z][a-z]{12,}$` (1 capital + 12+ lowercase, min title-word length 14). Now caught in:
+  - `scrapers/sources/instagram.py::_looks_like_glued_handle` — checks both shape (a) and shape (b) at extraction time
+  - `scrapers/normalize.py::_is_glued_handle_title` — post-filter pass in `process()` so already-stored leaks self-clean without a re-scrape (purges 2 events on the very next normalize run)
+- defensive scope: shape (a) checks first word length ≥14 AND all-lowercase-after-first-capital. The deployed feed has 0 legitimate words of this shape; the regex catches exactly the 2 leaks.
+- other audit findings (not yet addressed): some events have wrong categories ("Silver Sapphics: Speed Dating" tagged `movies`; "Word and Object by Quine" tagged `fitness`). Categorizer false-positives — separate issue, queued as fb-123.
+
+### fb-123 — Categorizer false-positives ("movies" on dating, "fitness" on philosophy)
+- created_at: 2026-05-28
+- source: agent-proposal (iter 81 audit, not addressed yet)
+- status: open
+- body: Found in the iter 81 top-20 audit: "Silver Sapphics: Speed Dating and Mixer" tagged as `movies, parties` (the "movies" hit is wrong — likely the word "Sapphics" or some other token confusing the categorizer). "Word and Object by Quine Week 4" tagged as `celebrities, fitness` (Quine is a philosopher; categorizer maybe matched "Object" → fitness?). Need to read `event_parser.CATEGORY_KEYWORDS` / `infer_categories` and identify the trigger phrases.
+- "addressed" criterion: both events re-categorize correctly (singles/parties for Sapphics; books/philosophy for Quine) and a real-feed audit shows < 5 obvious mis-categorizations.
+
 ### fb-121 — Audit iter 77 organizer-match real-world yield
 - created_at: 2026-05-28
 - source: agent-proposal (iter 80; validation of iter 77 claim)
