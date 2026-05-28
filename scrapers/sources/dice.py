@@ -12,12 +12,24 @@ async def scrape() -> list[dict]:
         html = await fetch_text(URL)
         soup = BeautifulSoup(html, "lxml")
 
+        # Accept Schema.org Event subtypes (iter 84). DICE tags shows with
+        # MusicEvent / ComedyEvent / TheaterEvent / Festival — strict
+        # `Event|MusicEvent` was dropping the rest.
+        from .generic import EVENT_TYPES
+
+        def _is_event(t) -> bool:
+            if isinstance(t, str):
+                return t in EVENT_TYPES
+            if isinstance(t, list):
+                return any(isinstance(x, str) and x in EVENT_TYPES for x in t)
+            return False
+
         for script in soup.find_all("script", type="application/ld+json"):
             try:
                 data = json.loads(script.string)
                 items = data if isinstance(data, list) else [data]
                 for item in items:
-                    if item.get("@type") in ("Event", "MusicEvent"):
+                    if _is_event(item.get("@type")):
                         ev = _from_ld(item)
                         if ev:
                             events.append(ev)

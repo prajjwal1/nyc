@@ -176,6 +176,18 @@ These are the durable preferences the user has stated. They're marked `addressed
 - defensive scope: shape (a) checks first word length ≥14 AND all-lowercase-after-first-capital. The deployed feed has 0 legitimate words of this shape; the regex catches exactly the 2 leaks.
 - other audit findings (not yet addressed): some events have wrong categories ("Silver Sapphics: Speed Dating" tagged `movies`; "Word and Object by Quine" tagged `fitness`). Categorizer false-positives — separate issue, queued as fb-123.
 
+### fb-125 — Same strict-@type bug across luma / music_venues / museums / dice
+- created_at: 2026-05-28
+- source: agent-proposal (iter 84; followed fb-124's thread)
+- status: addressed (committed in iter 84)
+- body: Audited every source scraper for the same strict `@type == "Event"` filter that iter 83 fixed in Meetup. Found 4 more affected:
+  - `luma.py:212` — strict `@type != "Event"` — dropping all subtypes
+  - `music_venues.py:54` — Event|MusicEvent only — dropping ComedyEvent, TheaterEvent, ScreeningEvent, Festival
+  - `museums.py:60` — Event only — dropping ExhibitionEvent, VisualArtsEvent, EducationEvent (artist talks), ScreeningEvent (film series)
+  - `dice.py:20` — Event|MusicEvent only — dropping ComedyEvent, TheaterEvent
+- fix: each now imports `EVENT_TYPES` from `generic.py` (canonical set of 18 subtypes) + uses a small `_is_event(t)` helper supporting str-or-list `@type` values. `meetup.py` DRY'd to use the same import.
+- expected impact: more events captured from these sources on next scrape — especially museum talks/screenings + venue comedy/theater shows that were silently invisible.
+
 ### fb-124 — Meetup Schema.org Event-subtype acceptance
 - created_at: 2026-05-28
 - source: agent-proposal (iter 83 trace of the Quine event)

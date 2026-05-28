@@ -52,12 +52,25 @@ def _parse_museum(html: str, museum: dict) -> list[dict]:
     events = []
     soup = BeautifulSoup(html, "lxml")
 
+    # Accept Schema.org Event subtypes (iter 84). Museums host
+    # ExhibitionEvent, VisualArtsEvent, EducationEvent (artist talks),
+    # ScreeningEvent (film series), Festival, etc. — strict
+    # `@type == "Event"` was missing all of these.
+    from .generic import EVENT_TYPES
+
+    def _is_event(t) -> bool:
+        if isinstance(t, str):
+            return t in EVENT_TYPES
+        if isinstance(t, list):
+            return any(isinstance(x, str) and x in EVENT_TYPES for x in t)
+        return False
+
     for script in soup.find_all("script", type="application/ld+json"):
         try:
             data = json.loads(script.string)
             items = data if isinstance(data, list) else [data]
             for item in items:
-                if item.get("@type") == "Event":
+                if _is_event(item.get("@type")):
                     ev = _from_ld(item, museum)
                     if ev:
                         events.append(ev)

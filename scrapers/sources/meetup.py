@@ -22,29 +22,13 @@ async def scrape() -> list[dict]:
     return events
 
 
-# Schema.org Event subtypes that Meetup uses. The bare "Event" check missed
-# philosophy / language / education events (Meetup tags them
-# EducationEvent), routing them through the empty-description DOM fallback
-# instead. Audit at iter 83 found "Word and Object by Quine Week 4" with a
-# wrong description bleeding in from a sibling card because the JSON-LD
-# path was skipped.
-_MEETUP_EVENT_TYPES = {
-    "Event",
-    "EducationEvent",
-    "BusinessEvent",
-    "SocialEvent",
-    "MusicEvent",
-    "SportsEvent",
-    "TheaterEvent",
-    "DanceEvent",
-    "ComedyEvent",
-    "FoodEvent",
-    "Festival",
-    "ScreeningEvent",
-    "ExhibitionEvent",
-    "VisualArtsEvent",
-    "LiteraryEvent",
-}
+# Schema.org Event subtypes — the bare "Event" check missed philosophy /
+# language / education events (Meetup tags them EducationEvent), routing
+# them through the empty-description DOM fallback instead. Audit at iter
+# 83 found "Word and Object by Quine Week 4" with a wrong description
+# bleeding in. Iter 84 DRY'd this up across all source scrapers using the
+# canonical set in generic.EVENT_TYPES.
+from .generic import EVENT_TYPES as _MEETUP_EVENT_TYPES
 
 
 def _is_meetup_event_type(t) -> bool:

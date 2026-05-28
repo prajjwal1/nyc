@@ -209,7 +209,18 @@ def _parse_ld_json(data: dict, source_url: str) -> dict | list | None:
             return results
         return None
 
-    if data.get("@type") != "Event":
+    # Accept Schema.org Event subtypes (MusicEvent, EducationEvent, etc.)
+    # — same set as generic.py. Iter 84 audit: strict "Event"-only check
+    # was identical to the bug Meetup had in iter 83.
+    from .generic import EVENT_TYPES
+    t = data.get("@type")
+    if isinstance(t, str):
+        if t not in EVENT_TYPES:
+            return None
+    elif isinstance(t, list):
+        if not any(isinstance(x, str) and x in EVENT_TYPES for x in t):
+            return None
+    else:
         return None
     title = data.get("name", "")
     desc = data.get("description", "")
