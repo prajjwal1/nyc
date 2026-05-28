@@ -309,18 +309,40 @@ _NEIGHBORHOOD_SUFFIX_RE = re.compile(
 )
 
 
+# Venue-name abbreviation expansions — common NYC shorthand that splits
+# the same venue across multiple cross-source events (README §354 gap).
+# Tested against word boundaries to avoid false-positives on tokens that
+# happen to contain the abbreviation as a substring.
+_VENUE_SYNONYMS = {
+    r"\bbk\b": "brooklyn",
+    r"\bbma\b": "brooklyn museum",
+    r"\bmoma\b": "museum of modern art",
+    r"\bbam\b": "brooklyn academy of music",
+    r"\bkdc\b": "knockdown center",
+    r"\bhoy\b": "house of yes",
+    r"\bthe met\b": "metropolitan museum",
+}
+_VENUE_SYNONYM_RES = [(re.compile(pat, re.IGNORECASE), repl) for pat, repl in _VENUE_SYNONYMS.items()]
+
+
 def _normalize_venue_name(loc: str) -> str:
     """Canonicalize a venue name so 'Book Club Bar Bushwick' and 'Book
     Club Bar' map to the same key. Steps:
       1. Drop everything after the first comma (street address)
-      2. Strip well-known NYC neighborhood/borough suffixes
-      3. Lowercase + collapse whitespace
+      2. Expand venue-name abbreviations (BK → Brooklyn, MoMA → Museum of
+         Modern Art, etc.) so cross-source variants merge.
+      3. Strip well-known NYC neighborhood/borough suffixes
+      4. Lowercase + collapse whitespace
     Lets cross-source dedup catch events at the same venue when one
     source includes the neighborhood and another doesn't.
     """
     if not loc:
         return ""
     s = loc.split(",")[0].strip()
+    # Expand venue abbreviations BEFORE neighborhood-suffix stripping so
+    # patterns like "Brooklyn Bowl" (synonym target) survive intact.
+    for rx, repl in _VENUE_SYNONYM_RES:
+        s = rx.sub(repl, s)
     # Strip trailing neighborhood/borough (e.g. "Book Club Bar Bushwick").
     # Repeat to handle "Book Club Bar Bushwick Brooklyn".
     prev = None
