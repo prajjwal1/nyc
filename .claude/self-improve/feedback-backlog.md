@@ -185,6 +185,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - known issue (separate, not addressed): substack's 237 surviving events include many product-affiliate noise ("Mini Phone Tripod", "Apple AirTag") that should be filtered out. The "(link)" suffix is a strong tell. Logged as fb-128.
 - 2 of the Substack FEEDS URLs return 404 (untappedcities.com/feed/, nycgovparks.org/news.rss). Harmless but wasted budget. Not addressed this iteration.
 
+### fb-130 — AllEvents.in pagination broken (`?page=N` returns page 1)
+- created_at: 2026-05-28
+- source: agent-proposal (iter 89 audit, following the Songkick thread)
+- status: addressed (committed in iter 89)
+- body: AllEvents had 14 events in deployed feed. `GENERIC_URLS` had 6 borough URLs using `?page=2..5` for pagination but live probe showed every `?page=N` returns the same page-1 events as the bare URL — 4-5 wasted fetches per scrape.
+- discovery: AllEvents uses time-window paths (`/today`, `/tomorrow`, `/this-weekend`, `/upcoming`, `/all`) which return distinct event slices. Probed against the bare URL: each yields 5-30 net-new events.
+- fix: replaced the 6 dead `?page=N` URLs with 7 time-window URLs across the 4 borough pages. Live verified: total unique events 353 from 13 URLs (vs ~65 prior with 12 URLs that included duplicates) — 5.4× lift.
+
 ### fb-129 — Songkick pagination broken (path suffix vs query param)
 - created_at: 2026-05-28
 - source: agent-proposal (iter 88 audit)

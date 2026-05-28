@@ -93,18 +93,24 @@ GENERIC_URLS = [
     "https://www.meetup.com/find/events/?source=EVENTS&location=us--ny--New%20York",
     # AllEvents.in — major aggregator with structured JSON-LD per borough.
     # Pagination is real — each page returns ~88-95 unique events.
-    "https://allevents.in/new-york",
-    "https://allevents.in/new-york?page=2",
-    "https://allevents.in/new-york?page=3",
-    "https://allevents.in/brooklyn",
-    "https://allevents.in/brooklyn?page=2",
-    "https://allevents.in/brooklyn?page=3",
+    # AllEvents.in pagination: `?page=N` returns the same page-1 events.
+    # Iter 89 audit: 6 of 12 borough URLs were duplicates wasting fetches.
+    # The real pagination uses time-window paths (`/today`, `/tomorrow`,
+    # `/this-weekend`, `/upcoming`, `/all`) which return distinct event
+    # slices. Replaced the `?page=N` block with time-window URLs.
+    "https://allevents.in/new-york",          # 65 events (default)
+    "https://allevents.in/new-york/today",     # 15 distinct
+    "https://allevents.in/new-york/tomorrow",  # 15 distinct
+    "https://allevents.in/new-york/this-weekend",  # 15 distinct
+    "https://allevents.in/new-york/upcoming",  # 15 distinct
+    "https://allevents.in/new-york/all",       # 45 broader
+    "https://allevents.in/brooklyn",          # 64 events
+    "https://allevents.in/brooklyn/today",
+    "https://allevents.in/brooklyn/this-weekend",
     "https://allevents.in/queens",
-    "https://allevents.in/queens?page=2",
+    "https://allevents.in/queens/this-weekend",
     "https://allevents.in/manhattan",
-    "https://allevents.in/manhattan?page=2",
-    "https://allevents.in/new-york?page=4",
-    "https://allevents.in/new-york?page=5",
+    "https://allevents.in/manhattan/this-weekend",
     "https://allevents.in/new-york/free",
     "https://allevents.in/new-york/music",
     "https://allevents.in/new-york/comedy",
