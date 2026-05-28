@@ -124,9 +124,22 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-105 — Curator-calendar lu.ma path probing for every signal_account
 - created_at: 2026-05-28
 - source: agent-proposal (dreamer-critic D1, APPROVE-DREAM but deferred this round)
-- status: in-progress (script shipped: 21d916c on 2026-05-28)
+- status: in-progress (script shipped: 21d916c on 2026-05-28; live run blocked by IP rate-limit)
 - body: For every `signal_account` (54 today, 69 after this round's P3 promotions), probe `https://lu.ma/<handle>` once. If yield ≥ 3 distinct events not in `/nyc`, add to `LUMA_PAGES`. Implement as `scrapers/maintenance/probe_luma_curators.py` (one-off, not in hot path). Replaces the broken `/nyc/<topic>` URLs.
 - "addressed" criterion: the maintenance script exists in `scrapers/maintenance/` ✓ shipped 21d916c. Still needed: run it at least once, apply candidate diff to `luma.py`.
+- run blocker (2026-05-28 iter 67-68): Lu.ma rate-limited this IP after the initial concurrent burst — every URL returns 429 even at 2s/request sequential pacing. Need to either wait for the rate-limit window to expire (try in 1+ hour from a fresh session), or run from CI (different IP, presumably uncluttered budget). Pacing now defaults to 1.5s/req in the committed script.
+
+### fb-107 — Lower IG-session staleness threshold from 30 to 25 days
+- created_at: 2026-05-28
+- source: agent-proposal (iter 68)
+- status: addressed (committed in iter 68)
+- body: The 2026-05-24 mass-kill of 54 accounts happened while the session was ~23 days old. The 30-day STALE threshold in `sanity_check.py` was too lenient — by the time it fires, the session is fully dead and accounts have already been wrongly struck. New thresholds: ⚠ STALE at 25 days, ⛔ CRITICAL at 28 days, with explicit refresh command in the warning.
+
+### fb-108 — Dedup `bookclubbar` in IG_ACCOUNTS
+- created_at: 2026-05-28
+- source: agent-proposal (iter 68; Critic flagged in run 2026-05-28-1552)
+- status: addressed (committed in iter 68)
+- body: `bookclubbar` appeared twice in `scrapers/config.py` IG_ACCOUNTS (lines 54 and 133). `list(dict.fromkeys([...]))` made it harmless functionally but it's noise. Removed line 133.
 
 ### fb-104 — Prune redundant `/nyc/<topic>` URLs from LUMA_PAGES (after fb-105)
 - created_at: 2026-05-28

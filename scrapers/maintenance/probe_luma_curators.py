@@ -80,20 +80,28 @@ async def _probe_one(handle: str) -> tuple[int, list[dict]]:
     return len(events), events
 
 
-async def main(min_yield: int = 3, concurrency: int = 4) -> None:
+async def main(min_yield: int = 3, delay: float = 1.5) -> None:
     candidates = _candidate_handles()
-    print(f"[probe] checking {len(candidates)} lu.ma curator handles (concurrency={concurrency})")
+    print(f"[probe] checking {len(candidates)} lu.ma curator handles (sequential, delay={delay}s)")
     baseline = await _fetch_baseline()
     print(f"[probe] baseline /nyc set: {len(baseline)} event-keys")
 
-    sem = asyncio.Semaphore(concurrency)
     additions: list[dict] = []
+    skipped_rate_limited = 0
 
-    async def worker(handle: str) -> None:
-        async with sem:
-            count, events = await _probe_one(handle)
+    for i, handle in enumerate(candidates):
+        count, events = await _probe_one(handle)
+        if count == -1:
+            err = events[0].get("error", "") if events else ""
+            if "429" in err or "Too Many Requests" in err:
+                skipped_rate_limited += 1
+            if (i + 1) % 20 == 0:
+                print(f"[probe] progress {i+1}/{len(candidates)} (rate-limited so far: {skipped_rate_limited})")
+            await asyncio.sleep(delay * 2)  # back off on errors
+            continue
         if count <= 0:
-            return
+            await asyncio.sleep(delay)
+            continue
         keys = {_event_key(e) for e in events if isinstance(e, dict)}
         net_new = keys - baseline
         if len(net_new) >= min_yield:
@@ -109,10 +117,7 @@ async def main(min_yield: int = 3, concurrency: int = 4) -> None:
                 ],
             })
             print(f"[probe] ✓ @{handle}: {count} events, {len(net_new)} net-new")
-        else:
-            print(f"[probe]   @{handle}: {count} events, only {len(net_new)} net-new — skip")
-
-    await asyncio.gather(*(worker(h) for h in candidates))
+        await asyncio.sleep(delay)
 
     additions.sort(key=lambda x: -x["net_new"])
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -125,5 +130,5 @@ async def main(min_yield: int = 3, concurrency: int = 4) -> None:
 if __name__ == "__main__":
     asyncio.run(main(
         min_yield=int(os.environ.get("LUMA_PROBE_MIN_YIELD", "3")),
-        concurrency=int(os.environ.get("LUMA_PROBE_CONCURRENCY", "4")),
+        delay=float(os.environ.get("LUMA_PROBE_DELAY", "1.5")),
     ))

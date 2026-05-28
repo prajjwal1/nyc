@@ -129,8 +129,7 @@ IG_ACCOUNTS = list(dict.fromkeys([  # dedupe while preserving order
     "nowadays.nyc",
     "musichallofwilliamsburg",
     "bowerypresents",
-    # Bookstore / literary scene
-    "bookclubbar",
+    # Bookstore / literary scene (bookclubbar dedup'd — already at line 54)
     "mcnally_jackson",
     "books.are.magic",
     "greenlightbookstore",

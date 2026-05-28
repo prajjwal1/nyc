@@ -324,12 +324,20 @@ def _print_ig_diagnostics(events: list) -> None:
         except Exception as exc:
             print(f"(discovered_accounts.json read failed: {exc})")
 
-    # Session age
+    # Session age — instaloader sessions practically die at ~25-30 days.
+    # The mass-kill on 2026-05-24 (54 accounts) traced to feedback_required
+    # errors that started while the session was 23+ days old, so the 30-day
+    # bar was too lenient. Flag at 25 (warn), 28 (critical).
     try:
         from .config import IG_SESSION_FILE
         if os.path.isfile(IG_SESSION_FILE):
             age_days = (datetime.now().timestamp() - os.stat(IG_SESSION_FILE).st_mtime) / 86400
-            flag = " ⚠ STALE" if age_days > 30 else ""
+            if age_days >= 28:
+                flag = " ⛔ CRITICAL — refresh now (run: instaloader --login <username>)"
+            elif age_days >= 25:
+                flag = " ⚠ STALE — refresh soon"
+            else:
+                flag = ""
             print(f"\nIG session age: {age_days:.1f} days{flag}")
         else:
             print(f"\nIG session file MISSING at {IG_SESSION_FILE}")
