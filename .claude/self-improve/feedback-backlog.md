@@ -163,6 +163,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: addressed (committed in iter 70)
 - body: `_normalize_venue_name` now expands NYC venue abbreviations before suffix-stripping. `\bbk\b → brooklyn`, `\bmoma\b → museum of modern art`, `\bbam\b → brooklyn academy of music`, `\bkdc\b → knockdown center`, `\bhoy\b → house of yes`, `\bbma\b → brooklyn museum`, `\bthe met\b → metropolitan museum`. Word-boundary regex avoids false-positives on "Backgammon" / "Botanic". Cross-source dedup now collapses "BK Bowl" + "Brooklyn Bowl" + "Brooklyn Bowl Williamsburg" into one event.
 
+### fb-121 — Audit iter 77 organizer-match real-world yield
+- created_at: 2026-05-28
+- source: agent-proposal (iter 80; validation of iter 77 claim)
+- status: addressed (committed in iter 80)
+- body: Iter 77 added an organizer-name match path to the enrichment, claiming it would surface Eventbrite events from accounts the user follows. Probed 15 random Eventbrite + 15 random Meetup events live: 0/30 organizer names overlap with user_following. NYC Eventbrite organizers are mostly tour/event companies / one-off promoters / venues ("Crush Wine Experiences", "lululemon Williamsburg", "Mireve for Women") not the indie social/curator IG brands the user follows. Meetup groups have entirely different naming. The match path stays as defensive infrastructure (cheap, harmless, may catch future matches) but is documented as low-yield in practice.
+- also fixed: iter 77 was storing the FULL org name ("Vital Run Club") as `event.account`, breaking the UI ribbon's @account link semantics. Now stores the matched IG handle ("vitalrunclub") in `account` and keeps the human org name in `event.organizer` for display.
+
 ### fb-120 — Clean stale transient-killed entries from dead_accounts.json
 - created_at: 2026-05-28
 - source: agent-proposal (iter 79; janitorial follow-up to iter 1 P1)

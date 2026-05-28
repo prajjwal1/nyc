@@ -1082,8 +1082,13 @@ def _enrich_provenance_from_url(events: list[dict]) -> None:
         for suffix in ("nyc", "ny", "brooklyn", "manhattan", "bk"):
             if org_norm.endswith(suffix) and len(org_norm) - len(suffix) >= 5:
                 org_candidates.add(org_norm[:-len(suffix)])
-        if any(c in following for c in org_candidates):
-            ev["account"] = organizer
+        matched_handle = next((c for c in org_candidates if c in following), None)
+        if matched_handle:
+            # Store the matched IG handle (not the human org name) as `account`
+            # so the UI ribbon's "Because you follow @{account}" reads as a
+            # valid IG handle and the click-to-@account link still works.
+            # The full org name remains in `event.organizer` for display.
+            ev["account"] = matched_handle
             ev["userFollowing"] = True
             organizer_matched += 1
     if matched:
