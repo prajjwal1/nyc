@@ -626,10 +626,18 @@ NYC_NEIGHBORHOODS = {
 }
 
 
-def infer_neighborhood(address: str) -> str | None:
-    if not address:
+def infer_neighborhood(address: str, *extras: str) -> str | None:
+    """Match the address — and any additional context strings (title,
+    location.name, etc.) — against the NYC_NEIGHBORHOODS keyword map.
+    The audit at iter 72 showed 32 events with `Williamsburg` / `Astoria` /
+    `Harlem` in their *title* but no neighborhood inferred, because the
+    old call site only passed the address. Accepting *extras lets callers
+    fold the title in without changing the keyword map.
+    """
+    parts = [p for p in (address, *extras) if p]
+    if not parts:
         return None
-    lower = address.lower()
+    lower = " ".join(parts).lower()
     for hood, keywords in NYC_NEIGHBORHOODS.items():
         if any(kw in lower for kw in keywords):
             return hood
@@ -1063,7 +1071,12 @@ def build_event(
     location: dict = {
         "name": location_name or "",
         "address": address or "",
-        "neighborhood": infer_neighborhood(address or location_name or ""),
+        # Fold title + location_name in (iter 72). Many events have an
+        # informative title ("The 9:30 Comedy Show - Williamsburg",
+        # "Harlem Book Company Pop Up") with no neighborhood-keyword in
+        # the bare address. Audit showed 32/116 null-neighborhood events
+        # recoverable this way.
+        "neighborhood": infer_neighborhood(address or "", location_name or "", cleaned_title or ""),
     }
     # Persist lat/lng when available (IG geo-tag, future geocoding) so
     # ranking can compute true distance to user's home neighborhood.

@@ -693,9 +693,14 @@ def _backfill_neighborhood_from_venue(events: list[dict]) -> None:
             if venue in name:
                 new_hood = hood
                 break
-        # Step 2: address inference (always re-runs, can override stale tags)
-        if new_hood is None and addr:
-            new_hood = infer_neighborhood(addr)
+        # Step 2: address inference (always re-runs, can override stale tags).
+        # Also fold in title + location.name so titles like
+        # "The 9:30 Comedy Show - Williamsburg" recover their neighborhood
+        # even when the address has no neighborhood keyword (iter 72).
+        if new_hood is None:
+            title = (ev.get("title") or "")
+            if addr or name or title:
+                new_hood = infer_neighborhood(addr, name, title)
         # If the existing tag was derivable from current address keywords, keep
         # it; otherwise it's stale (e.g. neighborhood keyword removed since
         # last scrape) and gets cleared so the filter doesn't lie.
