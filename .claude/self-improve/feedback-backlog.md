@@ -185,6 +185,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - known issue (separate, not addressed): substack's 237 surviving events include many product-affiliate noise ("Mini Phone Tripod", "Apple AirTag") that should be filtered out. The "(link)" suffix is a strong tell. Logged as fb-128.
 - 2 of the Substack FEEDS URLs return 404 (untappedcities.com/feed/, nycgovparks.org/news.rss). Harmless but wasted budget. Not addressed this iteration.
 
+### fb-129 — Songkick pagination broken (path suffix vs query param)
+- created_at: 2026-05-28
+- source: agent-proposal (iter 88 audit)
+- status: addressed (committed in iter 88)
+- body: Audit: Songkick listed at 16 events in deployed feed despite README claiming "major live-music coverage." Investigated: `GENERIC_URLS` had 7 metro-area URLs using path-suffix pagination — `/metro-areas/.../2`, `/3`, etc. **All 7 path-suffix URLs returned the same page-1 49 events.** Effectively scraping the same content 7 times, costing 6 wasted fetches and capping yield at ~49 unique titles.
+- fix: switched to `?page=N` query-param pagination. Live-verified each `?page=2..7` returns ~48 distinct MusicEvent JSON-LD items. Total yield: 334 events, 306 unique titles (6.2× lift). Many duplicates across pages because Songkick repeats artists across venues/dates — downstream dedup handles cleanly.
+- expected impact on next scrape: music category share rises substantially; `Instagram is dominant source` sanity_check threshold becomes easier to satisfy as the overall feed grows.
+
 ### fb-128 — Substack product-affiliate noise ("Mini Phone Tripod (link)")
 - created_at: 2026-05-28
 - source: agent-proposal (iter 86 audit)

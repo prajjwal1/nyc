@@ -171,16 +171,19 @@ GENERIC_URLS = [
     "https://allevents.in/new-york/literature",
     "https://allevents.in/new-york/sports",
     "https://allevents.in/new-york/exhibition",
-    # Songkick metro pages — major live-music coverage with JSON-LD
-    # Songkick metro pages — each paginated page returns ~49 events with
-    # full JSON-LD MusicEvent metadata. Confirmed live for pages 1-7.
+    # Songkick metro pages — major live-music coverage with JSON-LD.
+    # Iter 88 audit: path-suffix pagination (`/2`, `/3`, ...) was broken —
+    # all those URLs returned the same page-1 49 events, wasting 6 fetches.
+    # The correct pagination is `?page=N` query param. Live-verified: each
+    # `?page=N` returns ~48 distinct MusicEvent JSON-LD items. Confirmed
+    # 1..7 reachable; estimated 337 total events vs 49 today.
     "https://www.songkick.com/metro-areas/7644-us-new-york",
-    "https://www.songkick.com/metro-areas/7644-us-new-york/2",
-    "https://www.songkick.com/metro-areas/7644-us-new-york/3",
-    "https://www.songkick.com/metro-areas/7644-us-new-york/4",
-    "https://www.songkick.com/metro-areas/7644-us-new-york/5",
-    "https://www.songkick.com/metro-areas/7644-us-new-york/6",
-    "https://www.songkick.com/metro-areas/7644-us-new-york/7",
+    "https://www.songkick.com/metro-areas/7644-us-new-york?page=2",
+    "https://www.songkick.com/metro-areas/7644-us-new-york?page=3",
+    "https://www.songkick.com/metro-areas/7644-us-new-york?page=4",
+    "https://www.songkick.com/metro-areas/7644-us-new-york?page=5",
+    "https://www.songkick.com/metro-areas/7644-us-new-york?page=6",
+    "https://www.songkick.com/metro-areas/7644-us-new-york?page=7",
     # Songkick venue pages — major NYC live-music venues (3-8 events each).
     # These compound with the metro page since metro shows top events while
     # venue pages give the full upcoming calendar per venue.
