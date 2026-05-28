@@ -193,6 +193,25 @@ These are the durable preferences the user has stated. They're marked `addressed
 - new helper: `getAttendedCount()` in `lib/interests.ts` returns `{yes, no}` counts.
 - intentionally minimal: no "no" count surfaced (negatives stay invisible per iter 75 spec); no "manage attended" UI. The counter exists to reward engagement, not to drive interaction.
 
+### fb-138 — Reddit harvester broken (`.json` 403) + RSS fallback
+- created_at: 2026-05-28
+- source: agent-proposal (iter 97 audit)
+- status: addressed-partial (committed in iter 97; full fix needs OAuth)
+- body: reddit.py harvester was returning "No event-platform URLs found" silently. Probed: Reddit cracked down on `/.json` endpoints — 403s every UA (browser, custom, old.reddit). Their API now requires OAuth (PRAW credentials).
+- fix (this round): added `_report_reddit_403()` so the silent failure is now a clear log line about the OAuth requirement. Added `.rss` (Atom) fallback that yields 7 URLs from r/AskNYC/new — comments unavailable but post titles/summaries sometimes contain event-platform links. Mirrors the iter 96 Atom-parsing pattern.
+- not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
+- bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
+
+### fb-139 — Set up Reddit OAuth (PRAW) for full comment-mining
+- created_at: 2026-05-28
+- source: agent-proposal (iter 97)
+- status: open (requires user action)
+- body: Reddit's `/.json` API now requires OAuth. To restore comment-mining (the main URL source per README), the user needs to:
+  1. Register an app at https://www.reddit.com/prefs/apps (script type)
+  2. Set GitHub secrets: `REDDIT_CLIENT_ID`, `REDDIT_CLIENT_SECRET`
+  3. Add a small `praw.Reddit(...)` wrapper to `scrapers/sources/reddit.py`
+- once done, the iter 97 RSS fallback can stay as defense-in-depth.
+
 ### fb-137 — Substack parser only handled RSS, missed Atom (eaterny 0→8)
 - created_at: 2026-05-28
 - source: agent-proposal (iter 96 audit of substack feeds)

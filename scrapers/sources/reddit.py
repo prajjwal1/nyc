@@ -120,28 +120,78 @@ async def scrape() -> list[dict]:
     return []
 
 
+# Iter 97 audit: Reddit cracked down on the /.json endpoint in 2026 — it
+# now returns 403 globally regardless of User-Agent (verified against
+# browser + custom UAs from this IP, against both www.reddit and
+# old.reddit). The /.rss endpoint still works but doesn't include comment
+# bodies, which is where most event-platform URLs live (post titles in
+# AskNYC are conversational per README). The harvester is effectively
+# dead until OAuth (PRAW) credentials are configured.
+# We keep the code path intact + add visible logging so the silent fail
+# isn't hidden, and try the /.rss endpoint as a best-effort fallback.
+_REDDIT_403_REPORTED = False
+
+
+def _report_reddit_403() -> None:
+    global _REDDIT_403_REPORTED
+    if not _REDDIT_403_REPORTED:
+        print("[reddit] /.json endpoint returns 403 — Reddit API now requires OAuth (PRAW). "
+              "Harvester is degraded to /.rss best-effort. Set up PRAW creds to restore.")
+        _REDDIT_403_REPORTED = True
+
+
 async def _harvest_subreddit_new(subreddit: str, limit: int = 25) -> set[str]:
-    url = f"https://www.reddit.com/r/{subreddit}/new.json?limit={limit}"
+    json_url = f"https://www.reddit.com/r/{subreddit}/new.json?limit={limit}"
     headers = {"User-Agent": "nyc-events-scraper/0.1 (+https://github.com/prajjwal1/nyc)"}
     try:
-        text = await fetch_text(url, headers=headers)
+        text = await fetch_text(json_url, headers=headers)
+        return _extract_urls_from_listing(text)
+    except Exception:
+        _report_reddit_403()
+    # Fallback: .rss (Atom). Comments unavailable but post URLs / selftext
+    # snippets do sometimes leak event-platform URLs in titles.
+    rss_url = f"https://www.reddit.com/r/{subreddit}/new.rss?limit={limit}"
+    try:
+        text = await fetch_text(rss_url)
+        return _extract_urls_from_atom(text)
     except Exception:
         return set()
-    return _extract_urls_from_listing(text)
 
 
 async def _harvest_subreddit_search(subreddit: str, query: str, limit: int = 15) -> set[str]:
     from urllib.parse import quote_plus
-    url = (
+    json_url = (
         f"https://www.reddit.com/r/{subreddit}/search.json"
         f"?q={quote_plus(query)}&restrict_sr=1&sort=relevance&limit={limit}"
     )
     headers = {"User-Agent": "nyc-events-scraper/0.1 (+https://github.com/prajjwal1/nyc)"}
     try:
-        text = await fetch_text(url, headers=headers)
+        text = await fetch_text(json_url, headers=headers)
+        return _extract_urls_from_listing(text)
     except Exception:
-        return set()
-    return _extract_urls_from_listing(text)
+        _report_reddit_403()
+    # No .rss equivalent for search; degrade gracefully.
+    return set()
+
+
+def _extract_urls_from_atom(text: str) -> set[str]:
+    """Pull event-platform URLs from a Reddit Atom feed (best-effort).
+    Comments aren't included in RSS so the yield is much smaller than the
+    /.json path, but it's something."""
+    found: set[str] = set()
+    try:
+        import xml.etree.ElementTree as ET
+        root = ET.fromstring(text)
+    except Exception:
+        return found
+    atom_ns = "{http://www.w3.org/2005/Atom}"
+    for entry in root.findall(f"{atom_ns}entry"):
+        # Look in content + title + summary
+        for tag in ("content", "title", "summary"):
+            blob = entry.findtext(f"{atom_ns}{tag}", "") or ""
+            for m in _EVENT_URL_RE.finditer(blob):
+                found.add(m.group(0).rstrip(".,;:!?)").split("#")[0])
+    return found
 
 
 def _extract_urls_from_listing(text: str) -> set[str]:
