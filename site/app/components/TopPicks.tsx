@@ -51,6 +51,7 @@ interface TopPicksProps {
 const MAX_PER_DAY = 8;
 const MAX_DAYS = 30;
 const MAX_SAVED = 6;
+const MAX_FOLLOWING = 6;
 
 // Source identifier for organizer/account-level cap. IG events use the
 // account; Eventbrite events use organizer host; otherwise fall back to source.
@@ -298,6 +299,23 @@ export default function TopPicks({
   const weekendEvents = weekend.events;
   const weekendIds = weekend.ids;
 
+  // 👤 From accounts you follow — IG userFollowing OR cross-source enriched
+  // (Lu.ma/venue-domain/JSON-LD organizer matched against IG follows in
+  // normalize._enrich_provenance_from_url). The highest-conviction signal
+  // we have for "events the user would actually attend." Surfaced before
+  // Saved because following is a broader / lower-friction signal than
+  // explicit star.
+  const followingUpcoming = upcoming
+    .filter((e) =>
+      e.userFollowing
+      && !tonightIds.has(e.id)
+      && !weekendIds.has(e.id)
+      && !recentIds.has(e.id),
+    )
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(0, MAX_FOLLOWING);
+  const followingIds = new Set(followingUpcoming.map((e) => e.id));
+
   // ★ User-saved events — IG-saved (server) OR locally saved (browser).
   // Locally-saved is the user explicitly clicking the star on a non-IG event.
   const savedUpcoming = upcoming
@@ -305,7 +323,8 @@ export default function TopPicks({
       (e.userSaved || isSavedLocal(e.id))
       && !tonightIds.has(e.id)
       && !weekendIds.has(e.id)
-      && !recentIds.has(e.id),
+      && !recentIds.has(e.id)
+      && !followingIds.has(e.id),
     )
     .sort((a, b) => a.date.localeCompare(b.date))
     .slice(0, MAX_SAVED);
@@ -314,7 +333,7 @@ export default function TopPicks({
   // Group remaining by date — exclude events already shown in hero sections
   const grouped = new Map<string, Event[]>();
   for (const e of upcoming) {
-    if (savedIds.has(e.id) || tonightIds.has(e.id) || recentIds.has(e.id) || weekendIds.has(e.id)) continue;
+    if (savedIds.has(e.id) || tonightIds.has(e.id) || recentIds.has(e.id) || weekendIds.has(e.id) || followingIds.has(e.id)) continue;
     const list = grouped.get(e.date) ?? [];
     list.push(e);
     grouped.set(e.date, list);
@@ -324,7 +343,7 @@ export default function TopPicks({
 
   if (sortedDates.length === 0 && savedUpcoming.length === 0
       && tonightEvents.length === 0 && recentlyAdded.length === 0
-      && weekendEvents.length === 0) return null;
+      && weekendEvents.length === 0 && followingUpcoming.length === 0) return null;
 
   return (
     <div className="mb-8">
@@ -408,6 +427,20 @@ export default function TopPicks({
           </h3>
           <div className="space-y-2">
             {recentlyAdded.map((event) => (
+              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 👤 From accounts you follow — highest-conviction signal */}
+      {followingUpcoming.length > 0 && (
+        <div className="mb-8 -mx-1 px-1 py-3 bg-sky-50/60 rounded-2xl border border-sky-200">
+          <h3 className="text-sm font-semibold text-sky-900 uppercase tracking-wide mb-2 px-2">
+            👤 From accounts you follow
+          </h3>
+          <div className="space-y-2">
+            {followingUpcoming.map((event) => (
               <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
             ))}
           </div>

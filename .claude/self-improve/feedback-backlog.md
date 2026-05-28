@@ -163,6 +163,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: addressed (committed in iter 70)
 - body: `_normalize_venue_name` now expands NYC venue abbreviations before suffix-stripping. `\bbk\b → brooklyn`, `\bmoma\b → museum of modern art`, `\bbam\b → brooklyn academy of music`, `\bkdc\b → knockdown center`, `\bhoy\b → house of yes`, `\bbma\b → brooklyn museum`, `\bthe met\b → metropolitan museum`. Word-boundary regex avoids false-positives on "Backgammon" / "Botanic". Cross-source dedup now collapses "BK Bowl" + "Brooklyn Bowl" + "Brooklyn Bowl Williamsburg" into one event.
 
+### fb-119 — "From accounts you follow" hero in TopPicks
+- created_at: 2026-05-28
+- source: agent-proposal (iter 78; surfaces the iter 73-77 enrichment work)
+- status: addressed (committed in iter 78)
+- body: 5th hero in TopPicks, sky-themed, sandwiched between Just Added and Saved. Filters `upcoming` events where `userFollowing` fires (capped at 6). Hero ordering: Tonight → Weekend → Just Added → Following → Saved → per-day. Follow-graph signal is the highest-conviction predictor of "events the user would attend" — surfacing them as a dedicated hero (instead of buried per-day) directly serves the North Star. Combined with iter 73-74 (URL handle + venue-domain) + iter 77 (organizer name), this hero will populate with up to ~35 events post next-scrape (6 current IG userFollowing + 29 enriched).
+- Visual choice: 👤 emoji + sky-50/60 background to match the iter 71 U1 ribbon (sky for follow signal).
+
 ### fb-118 — Extract organizer name from JSON-LD + match against IG follows
 - created_at: 2026-05-28
 - source: agent-proposal (iter 77; extends iter 73-74 enrichment to JSON-LD events)
