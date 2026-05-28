@@ -124,10 +124,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-105 — Curator-calendar lu.ma path probing for every signal_account
 - created_at: 2026-05-28
 - source: agent-proposal (dreamer-critic D1, APPROVE-DREAM but deferred this round)
-- status: in-progress (script shipped: 21d916c on 2026-05-28; live run blocked by IP rate-limit)
+- status: addressed: probe ran iter 76 (rate-limit cleared); zero new candidates found
 - body: For every `signal_account` (54 today, 69 after this round's P3 promotions), probe `https://lu.ma/<handle>` once. If yield ≥ 3 distinct events not in `/nyc`, add to `LUMA_PAGES`. Implement as `scrapers/maintenance/probe_luma_curators.py` (one-off, not in hot path). Replaces the broken `/nyc/<topic>` URLs.
-- "addressed" criterion: the maintenance script exists in `scrapers/maintenance/` ✓ shipped 21d916c. Still needed: run it at least once, apply candidate diff to `luma.py`.
-- run blocker (2026-05-28 iter 67-68): Lu.ma rate-limited this IP after the initial concurrent burst — every URL returns 429 even at 2s/request sequential pacing. Need to either wait for the rate-limit window to expire (try in 1+ hour from a fresh session), or run from CI (different IP, presumably uncluttered budget). Pacing now defaults to 1.5s/req in the committed script.
+- resolution: ran the script against 169 candidates (excluding the 6 handles already covered). Result: **0 net-new lu.ma curator URLs** worth adding. Most signal_accounts don't have public lu.ma calendars (404 on the handle path). The existing 6 curator URLs (`nycbackgammonclub`, `readingrhythms-manhattan`, `litclub.nyc`, `thinkolio`, `founderscoffee`, `cinemaclub`) cover everything available. Also fixed a `_existing_handles` bug that was falsely flagging `nycbackgammonclub` as a candidate (the earlier `startswith("nyc")` filter was too broad).
+- implication for fb-104: deferral premise (replacement curator-calendar list before prune) doesn't materialize — there's no replacement list to add. Pruning `/nyc/<topic>` URLs would now be safe (they're redundant) but is still a deletion, which the additive-only rule blocks without explicit user opt-in.
 
 ### fb-107 — Lower IG-session staleness threshold from 30 to 25 days
 - created_at: 2026-05-28

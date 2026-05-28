@@ -39,13 +39,26 @@ def _event_key(ev: dict) -> str:
 
 
 def _existing_handles() -> set[str]:
-    """Curator handles already covered by LUMA_PAGES."""
+    """Curator handles already covered by LUMA_PAGES.
+    Skip the bare `lu.ma/nyc` discover and `lu.ma/nyc/<topic>` category
+    URLs, but DO include curator handles like `nycbackgammonclub` (the
+    earlier `startswith("nyc")` filter was too broad and falsely excluded
+    legit handles that happen to start with "nyc")."""
     handles: set[str] = set()
     for url in LUMA_PAGES:
-        # path-tail after the last "/"
-        tail = url.rstrip("/").rsplit("/", 1)[-1]
-        if tail and not tail.startswith("nyc"):
-            handles.add(tail.lower())
+        # Strip the lu.ma/luma.com prefix and split. `lu.ma/nyc` → path=["nyc"];
+        # `lu.ma/nyc/run` → path=["nyc","run"]; `lu.ma/litclub.nyc` → path=["litclub.nyc"].
+        try:
+            from urllib.parse import urlparse
+            path_parts = [p for p in urlparse(url).path.split("/") if p]
+        except Exception:
+            continue
+        if not path_parts:
+            continue
+        # Bare `/nyc` or `/nyc/<topic>` aren't curator handles.
+        if path_parts[0].lower() == "nyc" and len(path_parts) <= 2:
+            continue
+        handles.add(path_parts[0].lower())
     return handles
 
 
