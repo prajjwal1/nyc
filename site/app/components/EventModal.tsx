@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, markEventOpened } from "../lib/interests";
+import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, markEventOpened, getAttendedState, markAttended } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 
 interface Props {
@@ -20,10 +20,12 @@ interface Props {
 export default function EventModal({ event, onClose, onAccountClick, relatedEvents = [], onSelectEvent }: Props) {
   const [saved, setSaved] = useState(false);
   const [imgIdx, setImgIdx] = useState(0);
+  const [attended, setAttended] = useState<"yes" | "no" | undefined>(undefined);
 
   useEffect(() => {
     if (event) {
       setSaved(isSavedLocal(event.id));
+      setAttended(getAttendedState(event.id));
       setImgIdx(0);
       // Opening the modal is a strong "I considered this event" signal —
       // mark it as opened so the card dims on next visit.
@@ -360,6 +362,58 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
               Hide
             </button>
           </div>
+
+          {/* "Did you go?" — only on past events, regardless of saved state.
+              The strongest calibration signal we collect: saves are intent,
+              attendance is reality. Answer persists + bumps interest profile
+              (yes = strong +; no = soft clamp-to-zero downweight). */}
+          {(() => {
+            const todayStr = new Date().toISOString().split("T")[0];
+            if (!event.date || event.date >= todayStr) return null;
+            const hint = {
+              account: event.instagramAccount,
+              categories: event.categories,
+              sourceUrl: event.sourceUrl,
+            };
+            return (
+              <div className="mt-3 flex flex-wrap items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm">
+                <span className="text-gray-700 font-medium">Did you go?</span>
+                <button
+                  onClick={() => {
+                    markAttended(event.id, "yes", hint);
+                    setAttended("yes");
+                  }}
+                  className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                    attended === "yes"
+                      ? "bg-emerald-100 text-emerald-800 ring-1 ring-emerald-300"
+                      : "bg-white text-gray-700 hover:bg-emerald-50 border border-gray-200"
+                  }`}
+                  aria-pressed={attended === "yes"}
+                >
+                  Yes, I went
+                </button>
+                <button
+                  onClick={() => {
+                    markAttended(event.id, "no", hint);
+                    setAttended("no");
+                  }}
+                  className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                    attended === "no"
+                      ? "bg-gray-200 text-gray-800 ring-1 ring-gray-300"
+                      : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                  }`}
+                  aria-pressed={attended === "no"}
+                >
+                  No, I didn&apos;t
+                </button>
+                {attended && (
+                  <span className="text-xs text-gray-500 ml-auto">
+                    Thanks — this trains your recommendations.
+                  </span>
+                )}
+              </div>
+            );
+          })()}
 
           {/* More from @account / source — IG-profile-equivalent strip */}
           {(() => {

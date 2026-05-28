@@ -430,6 +430,83 @@ export function isSavedLocal(eventId: string): boolean {
   return loadSavedSet().has(eventId);
 }
 
+// "Did you go?" attendance feedback — the strongest calibration signal we
+// can collect. Saves are intent; attendance is reality. Stored as
+// {eventId: "yes" | "no"} so we can render the answer on subsequent opens
+// and use it to adjust the interest profile.
+const ATTENDED_KEY = "nyc-events:attended:v1";
+
+type AttendedState = "yes" | "no" | undefined;
+
+function loadAttended(): Record<string, "yes" | "no"> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(ATTENDED_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return typeof parsed === "object" && parsed ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveAttended(map: Record<string, "yes" | "no">): void {
+  if (typeof window === "undefined") return;
+  try {
+    // Cap at 500 most recent to bound localStorage growth.
+    const entries = Object.entries(map);
+    const trimmed = entries.length > 500 ? Object.fromEntries(entries.slice(-500)) : map;
+    window.localStorage.setItem(ATTENDED_KEY, JSON.stringify(trimmed));
+  } catch {
+    // ignore quota errors
+  }
+}
+
+export function getAttendedState(eventId: string): AttendedState {
+  return loadAttended()[eventId];
+}
+
+export function markAttended(
+  eventId: string,
+  answer: "yes" | "no",
+  hint: { account?: string; categories?: string[]; sourceUrl?: string },
+): void {
+  const map = loadAttended();
+  map[eventId] = answer;
+  saveAttended(map);
+  // Profile bump: "yes" is the strongest positive signal (attended >
+  // saved > opened). "no" is a soft negative (planned but didn't make it
+  // — small downweight, not a hide).
+  const p = loadProfile();
+  if (answer === "yes") {
+    if (hint.account) bump(p.accounts, hint.account.toLowerCase(), 8);
+    for (const c of hint.categories || []) bump(p.categories, c, 5);
+    if (hint.sourceUrl) {
+      try {
+        bump(p.hosts, new URL(hint.sourceUrl).hostname.toLowerCase(), 3);
+      } catch {
+        // ignore unparseable
+      }
+    }
+  } else {
+    // "no" — soft downweight. Clamp to 0 so interestBoost's Math.log2 path
+    // can't NaN. "No" still differs from "yes" because future events from
+    // the same account/category don't accumulate further positive bumps.
+    const decAcct = (k: string, by: number) => {
+      const next = (p.accounts[k] || 0) + by;
+      p.accounts[k] = next < 0 ? 0 : next;
+    };
+    const decCat = (k: string, by: number) => {
+      const next = (p.categories[k] || 0) + by;
+      p.categories[k] = next < 0 ? 0 : next;
+    };
+    if (hint.account) decAcct(hint.account.toLowerCase(), -2);
+    for (const c of hint.categories || []) decCat(c, -1);
+  }
+  p.updatedAt = new Date().toISOString();
+  saveProfile(p);
+}
+
 // Hidden-events memory — explicit negative signal. Stored separately from
 // the interest profile so user can clear interests without un-hiding.
 const HIDDEN_KEY = "nyc-events:hidden:v1";
