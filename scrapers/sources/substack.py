@@ -87,23 +87,20 @@ FEEDS = [
     # Posts like 'Getty Awards $1.8M for Archives' or 'What Does a Booth
     # Cost at an Art Fair?' are news articles. We get art-opening coverage
     # through bedfordandbowery, the venue sources, and IG instead.)
-    # The Deli — independent NYC music venues
-    "https://thedeli.substack.com/feed",
+    # (Removed iter 124: thedeli.substack.com — STALE per audit_urls.py:
+    # 4 events, 0 future, 0 URL harvest. Music venues already covered by
+    # Songkick + per-venue scrapers.)
     # Eater NY — food/restaurant pop-ups, supper clubs, food events
     "https://ny.eater.com/rss/index.xml",
-    # (Removed iter 114: bedfordandbowery.com — confirmed dead. Last post
-    # in May 2021. All RSS items are 4-year-old articles, no current
-    # events. The art-opening coverage README §86 attributed to it was
-    # stale even when written.)
-    # (Removed: hellgate.substack.com, gothamist.com — primarily news outlets
-    # whose RSS items are news articles, not events. Occasional event
-    # roundups exist but noise-to-signal ratio is too high.)
+    # (Removed iter 114: bedfordandbowery.com — confirmed dead since 2021.)
+    # (Removed: hellgate.substack.com, gothamist.com — news outlets.)
     # (Removed iter 87: untappedcities.com/feed/ + nycgovparks.org/news.rss
-    # — both 404 confirmed in the iter 86 audit; wasted scrape budget.)
-    # NYC for Free — free events curator, weekly roundups
-    "https://nycforfree.substack.com/feed",
-    # Brokelyn — Brooklyn-focused budget events (cheap/free)
-    "https://www.brokelyn.com/feed/",
+    # — both 404.)
+    # (Removed iter 124: nycforfree.substack.com — STALE per audit_urls.py:
+    # 3 events, 0 future, 0 URL harvest. The .co site is covered by the
+    # iter-100 nycforfree.py Squarespace scraper.)
+    # (Removed iter 124: brokelyn.com/feed/ — STALE: 8 events, 0 future,
+    # 0 URL harvest. Site appears to have stopped publishing events.)
 ]
 
 # Patterns that look like dates within event text

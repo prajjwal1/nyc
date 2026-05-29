@@ -214,6 +214,17 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-165 — Remove 3 STALE substack feeds (0 future + 0 URL harvest)
+- created_at: 2026-05-29
+- source: agent-proposal (iter 124; ran iter-123 enhanced audit_urls.py)
+- status: addressed (committed in iter 124)
+- body: Full audit with the new HARVEST classification surfaced 3 substack feeds that contribute **nothing** — neither future events nor harvested URLs:
+  - `thedeli.substack.com` — 4 events, 0 future, 0 harvest. Music venues already covered by Songkick + per-venue scrapers.
+  - `nycforfree.substack.com` — 3 events, 0 future, 0 harvest. The .co site is covered by the iter-100 nycforfree.py Squarespace scraper.
+  - `brokelyn.com/feed/` — 8 events, 0 future, 0 harvest. Appears to have stopped publishing events.
+- contrast: `onefinedaynyc.substack.com` was correctly classified as **HARVEST** (8 events + 21 URLs harvested) — kept.
+- `audit_urls.py`'s HARVEST classification (iter 123) is what made these removal decisions safe — without it I might have left STALE feeds that were actually contributing via URL harvest, or removed harvesting feeds that looked dead.
+
 ### fb-164 — audit_urls.py: HARVEST classification for substack feeds
 - created_at: 2026-05-29
 - source: agent-proposal (iter 123)
