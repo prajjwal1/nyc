@@ -2,7 +2,11 @@
   "_doc": "User-excluded sources. Symmetric counterpart to user_curated_sources.json. Events matching any entry get a heavy negative rank penalty (effectively dropped). Auto-grown from engagement signals (events the user hides 3+ times from a single account/host), AND seeded with accounts the user has explicitly mentioned not wanting. Read by ranking.py:_user_excluded_penalty and interest_profile.py (excluded accounts get removed from signal_accounts so they don't receive the IG-follow boost even when followed).",
   "accounts": {
     "houseofyesnyc": {"reason": "user_mentioned_clubs", "added_at": "2026-05-18", "note": "club / late-night DJ venue"},
-    "knockdowncenter": {"reason": "user_mentioned_clubs", "added_at": "2026-05-19", "note": "warehouse / rave venue — user explicitly excluded clubs. Mostly DJ marathon / late-night events."}
+    "knockdowncenter": {"reason": "user_mentioned_clubs", "added_at": "2026-05-19", "note": "warehouse / rave venue — user explicitly excluded clubs. Mostly DJ marathon / late-night events."},
+    "leahcanel": {"reason": "fb-106_personal_account", "added_at": "2026-05-29", "note": "Individual person account. Per fb-106: only socializing-geared accounts, no personal/private."},
+    "alvinzx": {"reason": "fb-106_personal_account", "added_at": "2026-05-29", "note": "Individual person account. Per fb-106."},
+    "j_palmer_7": {"reason": "fb-106_personal_account", "added_at": "2026-05-29", "note": "Individual person account. Per fb-106."},
+    "sophiareed5": {"reason": "fb-106_personal_account", "added_at": "2026-05-29", "note": "Individual person account. Per fb-106."}
   },
   "hosts": {},
   "title_hints": {
