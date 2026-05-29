@@ -253,9 +253,10 @@ GENERIC_URLS = [
     # Songkick venue pages — major NYC live-music venues (3-8 events each).
     # These compound with the metro page since metro shows top events while
     # venue pages give the full upcoming calendar per venue.
-    "https://www.songkick.com/venues/22-brooklyn-bowl",
     "https://www.songkick.com/venues/8-elsewhere",
-    "https://www.songkick.com/venues/5-mercury-lounge",
+    # (Removed iter 117: brooklyn-bowl, mercury-lounge, village-vanguard —
+    # all STALE per audit_urls.py (3 events each, 0 future). Metro pages
+    # already cover their current shows.)
     # Additional NYC music venues discovered via Songkick metro page —
     # huge yield because Songkick reliably parses to JSON-LD MusicEvent
     # and these are the busiest NYC concert venues.
@@ -263,7 +264,6 @@ GENERIC_URLS = [
     "https://www.songkick.com/venues/316-bowery-ballroom",
     "https://www.songkick.com/venues/181873-irving-plaza",
     "https://www.songkick.com/venues/1025-beacon-theatre",
-    "https://www.songkick.com/venues/10735-village-vanguard",
     "https://www.songkick.com/venues/120516-brooklyn-paramount",
     "https://www.songkick.com/venues/2445014-babys-all-right",
     "https://www.songkick.com/venues/28184-le-poisson-rouge",

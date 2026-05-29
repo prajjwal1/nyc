@@ -202,6 +202,17 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-159 — Prune 3 STALE Songkick venue URLs (covered by metro pages)
+- created_at: 2026-05-29
+- source: agent-proposal (iter 117; follow-up audit_urls run)
+- status: addressed (committed in iter 117)
+- body: Audit surfaced 7 STALE URLs (events but all past). 3 are Songkick venue pages: brooklyn-bowl, mercury-lounge, village-vanguard — each returns 3 events, all past. The Songkick metro-areas pages (49 events × 7 pages = 306 events from iter 88) already cover these venues' current shows.
+- removed:
+  - `songkick.com/venues/22-brooklyn-bowl`
+  - `songkick.com/venues/5-mercury-lounge`
+  - `songkick.com/venues/10735-village-vanguard`
+- the other 4 STALE URLs are substack feeds (onefinedaynyc, thedeli, nycforfree.substack, brokelyn) where 0 future is normal (RSS blog feeds — events are referenced in body text). Kept.
+
 ### fb-158 — Full audit_urls run: 60 EMPTY URLs found
 - created_at: 2026-05-29
 - source: agent-proposal (iter 116; ran iter-115 script over all 204 URLs)
