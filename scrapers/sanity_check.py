@@ -509,6 +509,23 @@ def _append_stats(*, total, sources, cats, failures, warnings, age_hours, north_
     with open(path, "a") as f:
         f.write(json.dumps(record) + "\n")
 
+    # Rotate when the file grows past ~5000 records (~3MB at current size).
+    # Keep the most recent 5000. Cheap because rotation only fires once per
+    # ~50 runs after the cap is reached.
+    _MAX_HISTORY_RECORDS = 5000
+    try:
+        with open(path) as f:
+            lines = f.readlines()
+        if len(lines) > _MAX_HISTORY_RECORDS:
+            keep = lines[-_MAX_HISTORY_RECORDS:]
+            tmp = path + ".tmp"
+            with open(tmp, "w") as f:
+                f.writelines(keep)
+            os.replace(tmp, path)
+            print(f"[sanity_check] Rotated stats_history.jsonl: kept last {_MAX_HISTORY_RECORDS} records")
+    except Exception as exc:
+        print(f"[sanity_check] stats_history rotation skipped: {exc}")
+
 
 if __name__ == "__main__":
     import argparse
