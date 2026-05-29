@@ -214,6 +214,16 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-167 — Add SOURCE_VOLUME_CAPS for nycforfree + mcnallyjackson
+- created_at: 2026-05-29
+- source: agent-proposal (iter 126)
+- status: addressed (committed in iter 126)
+- body: After iter 100 (`nycforfree.py` rewrite, ~83 future events) and iter 102 (mcnallyjackson dynamic month URLs, ~44 future events), both sources have high yield but no `SOURCE_VOLUME_CAPS` entry. Without caps they could crowd out other content.
+- added:
+  - `nycforfree: 40` — matches allevents cap; user is interested in free events but doesn't need 80 of them per scrape
+  - `mcnallyjackson: 30` — literary events the user follows; 30 is generous
+- the cap applies AFTER ranking, so the top-30 best events from each source bubble up. Other sources unaffected.
+
 ### fb-166 — Add SOURCE_LABELS for sources missing display names
 - created_at: 2026-05-29
 - source: agent-proposal (iter 125)

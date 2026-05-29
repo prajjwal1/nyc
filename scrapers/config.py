@@ -333,4 +333,11 @@ SOURCE_VOLUME_CAPS = {
     # grow from ~111 to 200+. Cap at 100 so the top-100 best events
     # bubble up from a deeper pool without dominating the feed.
     "eventbrite": 100,
+    # Iter 126: caps for sources that grew significantly this session and
+    # could otherwise dominate. nycforfree.py iter-100 rewrite yields ~83
+    # future events; mcnallyjackson iter-102 dynamic month URLs yields
+    # ~44. Both are user-interested (free events + literary) so the cap is
+    # generous, but bounds it so they don't crowd out other content.
+    "nycforfree": 40,
+    "mcnallyjackson": 30,
 }
