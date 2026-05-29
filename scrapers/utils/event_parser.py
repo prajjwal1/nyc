@@ -728,7 +728,7 @@ NYC_NEIGHBORHOODS = {
     "prospect heights": ["prospect heights"],
     "gowanus": ["gowanus"],
     "red hook": ["red hook"],
-    "fidi": ["financial district", "maiden lane", "wall st", "fulton st", "broad st"],
+    "fidi": ["fidi", "financial district", "maiden lane", "wall st", "fulton st", "broad st"],
     "harlem": ["harlem", "lenox ave", "malcolm x blvd", "adam clayton powell"],
 }
 
