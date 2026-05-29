@@ -45,8 +45,10 @@ For every proposal in `ingestion.md` / `source-pool.md` / `ui.md`:
 ### 2. Cross-checks (mandatory, run all)
 - **`sanity_check.py` regression risk**: would any ingestion proposal kill a `CRITICAL_CHECK`? (NYC Backgammon Club, Reading Rhythms, music ≥ 15, Williamsburg/Greenpoint/Bushwick ≥ 3, free events ≥ 20, IG-as-dominant-source ≥ 50.) Flag and modify if so.
 - **Duplicate sources**: does any Source Curator proposal duplicate an entry already in `LUMA_PAGES` / `GENERIC_URLS`?
+- **User-excluded check** (per fb-153): for every IG_ACCOUNTS or GENERIC_URLS add proposal, verify the candidate isn't in `scrapers/data/user_excluded_sources.json` (`accounts` / `hosts` / `title_hints`). Iter 107 mistakenly added HoY + KDC venue-search URLs even though both were on the exclusion list — a CHECK-FIRST step would have caught it. REJECT any add proposal that didn't explicitly cite this check.
 - **UI preference compliance**: does any UI proposal violate §513–516 (no empty gray boxes, no left-sidebar widgets, no parties in This Weekend hero)?
 - **Feedback addressing**: of the top 3 directives in `feedback.md`, which were addressed this round? For each not addressed, do the deferrals carry an acceptable reason? If not, REJECT the deferral and modify the worker's plan to include it.
+- **Silent-failure watch** (recurring session theme): is there a previously-working source now yielding 0 events? Common causes: API field rename (Partiful image), schema-subtype drift (Meetup EducationEvent), broken pagination (`?page=N` vs `/N`), Atom-vs-RSS, JS-rendering (museums). Flag for ingestion-quality to investigate next round if so.
 
 ### 3. Tell each worker what they missed
 For each worker:

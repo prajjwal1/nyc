@@ -52,7 +52,15 @@ Read `url_health.json`. For URLs not in `LUMA_PAGES`/`GENERIC_URLS` with `succes
 ### 3. Account promotion
 Read `account_quality.json` + `discovered_accounts.json`. For accounts not in `IG_ACCOUNTS` with `events_emitted ≥ 5` over the last ~30 days AND score ≥ 0.45: propose adding to `IG_ACCOUNTS`.
 
-**HARD FILTER — applies before any proposal (per fb-106, durable user rule):**
+**HARD FILTER #1 — exclusion check (per fb-153, durable user rule):**
+**Before proposing ANY add** to `IG_ACCOUNTS` or `GENERIC_URLS`, you MUST read `scrapers/data/user_excluded_sources.json` and check:
+- the candidate account / handle isn't in `accounts`
+- no URL fragment in `hosts` matches a candidate URL
+- a quick sanity sweep of `title_hints` for the venue style (e.g. "rave", "warehouse rave", "open to close", "after party @") matching the candidate's typical event mix
+
+Iter 111 was a mistake: HoY + KDC were added as Eventbrite venue-search URLs even though both are explicitly excluded as *"club / late-night DJ venue"*. The user had clearly signaled "no" and a CHECK-FIRST step would have caught it. **No add proposal goes out without this check.**
+
+**HARD FILTER #2 — socializing entities only (per fb-106, durable user rule):**
 `IG_ACCOUNTS` contains only **socializing-oriented entities**: clubs, venues, curators, social brands, orgs, institutions. Do NOT propose:
 - individual-person accounts (`firstname_lastname`, `firstinitial_lastname`, `firstname<digits>`, anything that looks like a real person's personal IG)
 - publisher / editorial accounts where posts are editorial roundups, not events (e.g. `timeoutnewyork`)
@@ -116,5 +124,6 @@ Write to `<run-dir>/source-pool.md`:
 - Yield threshold for URLs: **≥ 5 events**. If 0–4, do not propose.
 - For IG accounts: don't add speculatively. Only accounts the user mentions, accounts in `signal_accounts` not yet in `IG_ACCOUNTS`, or BFS-discovered with score ≥ 0.45.
 - **IG_ACCOUNTS = socializing entities only** (fb-106). Never propose individual-person handles, publisher/editorial accounts, or private IGs. If a candidate handle looks like a person's name (`firstname_lastname`, `firstname<digits>`), drop it. When unsure, defer + flag for human review rather than add.
+- **Check `user_excluded_sources.json` before any add** (fb-153). The user explicitly excludes club / late-night DJ venues / AI-themed events. Never propose anything in that file's `accounts` / `hosts` / `title_hints` even if it'd otherwise be a great match.
 - Don't re-probe the README "tried and blocked" list (Bandsintown, RA, Time Out NY, Tixr, DICE.fm city pages) unless explicitly directed in feedback.
 - Respect `README.md` §373–395 — additive only.
