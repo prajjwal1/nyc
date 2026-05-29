@@ -234,7 +234,17 @@ def _print_ig_diagnostics(events: list) -> None:
     else:
         print("(no IG events in current feed)")
 
-    # Silenced high-yield accounts — lifetime yield >= 0.5 but 0 in this feed
+    # Silenced high-yield accounts — lifetime yield >= 0.5 but 0 in this feed.
+    # Skip user-excluded accounts (we intentionally don't ingest from them).
+    excluded_accounts: set[str] = set()
+    excluded_path = os.path.join(data_dir, "user_excluded_sources.json")
+    if os.path.isfile(excluded_path):
+        try:
+            with open(excluded_path) as f:
+                excl = json.load(f)
+            excluded_accounts = {a.lower() for a in (excl.get("accounts") or {}).keys()}
+        except Exception:
+            pass
     quality_path = os.path.join(data_dir, "account_quality.json")
     silenced: list[tuple[str, float, int]] = []
     if os.path.isfile(quality_path):
@@ -243,6 +253,8 @@ def _print_ig_diagnostics(events: list) -> None:
                 quality = json.load(f)
             for acct, info in quality.items():
                 if not isinstance(info, dict):
+                    continue
+                if acct.lower() in excluded_accounts:
                     continue
                 posts = info.get("posts_scraped", 0) or 0
                 ev = info.get("events_emitted", 0) or 0
