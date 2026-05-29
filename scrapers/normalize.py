@@ -1601,10 +1601,14 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # categorizer is the source of truth.
     from .utils.event_parser import infer_categories as _infer_categories
     for ev in events:
+        # Prefer `account` (set by iter 1 P2 mirror) but fall back to
+        # `instagramAccount` for events emitted by older scraper versions
+        # — the field used by the IG-handle topic-hint path.
+        ig_acct = ev.get("account") or ev.get("instagramAccount") or ""
         new_cats = _infer_categories(
             ev.get("title") or "",
             ev.get("description") or "",
-            ig_account=ev.get("account") or "",
+            ig_account=ig_acct,
             source=ev.get("source") or "",
         )
         if new_cats:
