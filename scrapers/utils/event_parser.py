@@ -517,6 +517,17 @@ _OUTDOORS_FALSE_POSITIVE_VENUES = (
     "garden room",  # private venue rooms named "Garden"
 )
 
+# Strong-outdoor signals — if any of these appear in the text along with
+# an indoor-arena name, KEEP the outdoors tag (genuine outdoor activity at
+# or near the arena). Single source of truth shared by the categorizer's
+# own outdoor check (below) and normalize._strip_outdoors_indoor_arena.
+_OUTDOORS_STRONG_SIGNALS = (
+    "rooftop", "pier ", "waterfront", "park ", " park", "beach", "ferry",
+    "high line", "domino park", "central park", "prospect park",
+    "kayak", "hike", "trail", "outdoor concert", "outdoor movie",
+    "outdoors", "outdoor ", "garden party",
+)
+
 
 def infer_categories(title: str, description: str = "", ig_account: str = "",
                      source: str = "") -> list[str]:
@@ -545,12 +556,7 @@ def infer_categories(title: str, description: str = "", ig_account: str = "",
     # offender — "garden" matches but it's an enclosed indoor arena.
     if "outdoors" in cats and any(v in text for v in _OUTDOORS_FALSE_POSITIVE_VENUES):
         # Only drop if no STRONG outdoor signal also present.
-        strong_outdoor = any(s in text for s in (
-            "rooftop", "pier ", "waterfront", "park ", "beach", "ferry",
-            "high line", "domino park", "central park", "prospect park",
-            "kayak", "hike", "trail", "outdoor concert", "outdoor movie",
-        ))
-        if not strong_outdoor:
+        if not any(s in text for s in _OUTDOORS_STRONG_SIGNALS):
             cats = [c for c in cats if c != "outdoors"]
     # Fall back to IG-account handle topic-hints when the title is cryptic
     # (e.g. '5/21 • caroline...' from a music venue's IG roundup). This is
