@@ -344,6 +344,10 @@ _SOURCE_LABEL_ALIASES = {
     # would render with the raw hyphenated label and fall to the 0.5 default
     # quality. Alias keeps the canonical name aligned with existing config.
     "green-wood": "greenwoodcemetery",
+    # iter 164: events.nyu.edu now produces 'nyu.edu' because the 3-char
+    # slug rule concatenates the TLD. Normalize to plain 'nyu' for parity
+    # with 'columbia' / 'newschool'.
+    "nyu.edu": "nyu",
 }
 
 
@@ -354,6 +358,12 @@ def _domain_source(url: str) -> str:
         host = host.lower()
         if host.startswith("www."):
             host = host[4:]
+        # iter 164: events.nyu.edu / events.columbia.edu / events.newschool.edu
+        # would all collapse to the label 'events' because the original logic
+        # took parts[0] as the slug. Strip the 'events' subdomain like 'www'
+        # so each university gets its own label.
+        if host.startswith("events."):
+            host = host[len("events."):]
         parts = host.split(".")
         if len(parts) >= 2:
             # Use the registrable name; for short slugs (like "lu") keep the suffix too

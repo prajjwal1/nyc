@@ -141,4 +141,8 @@ export const SOURCE_LABELS: Record<string, string> = {
   greenwoodcemetery: "Green-Wood Cemetery",
   terminal5nyc: "Terminal 5",
   generic: "Web",
+  // University event calendars (iter 164)
+  nyu: "NYU",
+  columbia: "Columbia",
+  newschool: "The New School",
 };
