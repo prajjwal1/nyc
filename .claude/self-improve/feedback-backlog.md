@@ -202,6 +202,19 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-160 — Prune 8 confirmed-redundant EMPTY URLs
+- created_at: 2026-05-29
+- source: agent-proposal (iter 118; continues iter-116 cleanup)
+- status: addressed (committed in iter 118)
+- body: Continued EMPTY cleanup. Removed 8 URLs that are dead/redundant with confidence:
+  - `nyc.com/events/` — EMPTY, no public alternate
+  - `eventcombo.com/events/new-york` — EMPTY, aggregator that lost coverage
+  - `timeout.com/newyork/{events, this-weekend, this-week}` (3 URLs) — TimeOut blocks bots; iter-1 README §70 already documented "Time Out NY — 404s on most calendar URLs"
+  - `mcnallyjackson.com/events` — page is Squarespace-eventlist; the dedicated `scrapers/sources/mcnallyjackson.py` parses it correctly via iter-102 dynamic month URLs
+  - `bookcourt.com/calendar` — site appears closed/redirected
+  - `lizsbookbar.com/events` — already covered by `lizsbookbar.py` (bookmanager API)
+- saves 8 wasted fetches per scrape run. 46 EMPTYs remaining; venue own-sites need case-by-case review.
+
 ### fb-159 — Prune 3 STALE Songkick venue URLs (covered by metro pages)
 - created_at: 2026-05-29
 - source: agent-proposal (iter 117; follow-up audit_urls run)

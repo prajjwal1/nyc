@@ -88,16 +88,16 @@ GENERIC_URLS = [
     "https://newyorkroad.com/events",
     "https://www.northbrooklynrunners.org/events",
     # Curated NYC event hubs
-    "https://www.nyc.com/events/",
-    "https://www.eventcombo.com/events/new-york",
-    "https://www.timeout.com/newyork/things-to-do/things-to-do-in-nyc-this-weekend",
-    "https://www.timeout.com/newyork/events",
-    "https://www.timeout.com/newyork/things-to-do/best-things-to-do-in-nyc-this-week",
-    # Bookstores / literary
-    "https://www.mcnallyjackson.com/events",
+    # (Removed iter 118 per audit_urls.py EMPTYs:
+    #  nyc.com/events/, eventcombo.com/events/new-york,
+    #  timeout.com/newyork/{events,this-weekend,this-week} — all 0 events.
+    #  TimeOut blocks bots / requires JS. mcnallyjackson.com is also EMPTY
+    #  here because the page is Squarespace-eventlist; the dedicated
+    #  `scrapers/sources/mcnallyjackson.py` parses it correctly via the
+    #  iter-102 dynamic-month-URL pattern. lizsbookbar/bookcourt also
+    #  EMPTY here — lizsbookbar covered by `lizsbookbar.py`,
+    #  bookcourt.com appears closed/redirected.)
     "https://www.barnesandnoble.com/h/events/store/2675",
-    "https://www.bookcourt.com/calendar",
-    "https://lizsbookbar.com/events",
     # Major concert venues with calendar pages (kept the working ones)
     "https://www.terminal5nyc.com/calendar/",       # Returns events ✓
     "https://www.boweryballroom.com/calendar/",
