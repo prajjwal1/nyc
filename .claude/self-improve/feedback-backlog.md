@@ -202,6 +202,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-156 — bedfordandbowery.com is dead (last post May 2021)
+- created_at: 2026-05-29
+- source: agent-proposal (iter 114 audit)
+- status: addressed (committed in iter 114)
+- body: Probed bedfordandbowery substack feed — yields 8 items, all dated **2021** (last post May 2021). The site stopped publishing 4 years ago. Articles like "Reviving the American Chestnut From a New York City Terrace", "For the Showman Behind Film Forum, It's On With the Show" are blog posts about news, not future events anyway — but they're 4 years stale.
+- fix: removed `https://bedfordandbowery.com/feed/` from `substack.FEEDS`. Cleans up the wasted fetch and stops the parser from producing junk events that get filtered downstream.
+- pattern: substack feed sources can die silently — the feed still returns 200 OK with old content. Without date-staleness checks at the FEEDS list level, dead feeds keep getting scraped.
+
 ### fb-155 — Eventbrite venue-search slug is keyword-search, not strict-venue
 - created_at: 2026-05-29
 - source: agent-proposal (iter 113; verifying iter-109 enrichment)

@@ -91,8 +91,10 @@ FEEDS = [
     "https://thedeli.substack.com/feed",
     # Eater NY — food/restaurant pop-ups, supper clubs, food events
     "https://ny.eater.com/rss/index.xml",
-    # Bedford + Bowery — Brooklyn/East Village culture, art openings, shows
-    "https://bedfordandbowery.com/feed/",
+    # (Removed iter 114: bedfordandbowery.com — confirmed dead. Last post
+    # in May 2021. All RSS items are 4-year-old articles, no current
+    # events. The art-opening coverage README §86 attributed to it was
+    # stale even when written.)
     # (Removed: hellgate.substack.com, gothamist.com — primarily news outlets
     # whose RSS items are news articles, not events. Occasional event
     # roundups exist but noise-to-signal ratio is too high.)
