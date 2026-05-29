@@ -858,6 +858,17 @@ _TRANSIENT_FAILURE_MARKERS = (
     "429",
     "rate limit",
     "rate-limited",
+    # Network-layer + IG-server transients. These wipe runs from
+    # GitHub Actions runners every few weeks. Without marking them
+    # transient, a transient outage would silently kill accounts.
+    "500",                  # IG server error
+    "502",                  # bad gateway
+    "503",                  # service unavailable
+    "504",                  # gateway timeout
+    "connection",           # 'Connection error', 'Connection reset', etc.
+    "timeout",              # 'Read timed out', 'connect timeout'
+    "timed out",
+    "ssl",                  # SSL handshake failures
 )
 
 
