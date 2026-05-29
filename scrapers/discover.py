@@ -177,6 +177,13 @@ def _write_json(path: str, data: dict) -> None:
         json.dump(data, f, indent=2)
 
 
+def _load_user_excluded_account_set() -> set:
+    """User-excluded handles (fb-106 personal + opt-out venues). Used at
+    the harvest stage so excluded handles never enter the discovery pool."""
+    excl = _read_json(os.path.join(DATA_DIR, "user_excluded_sources.json"), {})
+    return {k.lower() for k in (excl.get("accounts") or {}).keys()}
+
+
 def load_discovered_accounts() -> list[str]:
     """Return the list of usernames previously discovered (empty if none)."""
 
@@ -627,6 +634,12 @@ def harvest_following_list(loader, max_to_evaluate: int = 200) -> list[str]:
         print(f"[discover] Could not load @{IG_USERNAME} profile: {exc}")
         return []
 
+    # Pre-load user-excluded accounts so they never enter the discovered
+    # set in the first place — saves the per-followee scoring call and
+    # keeps discovered_accounts.json from constantly churning excluded
+    # handles back in on every harvest pass.
+    excluded = _load_user_excluded_account_set()
+
     relevant: list[dict] = []
     count = 0
     try:
@@ -634,6 +647,8 @@ def harvest_following_list(loader, max_to_evaluate: int = 200) -> list[str]:
             if count >= max_to_evaluate:
                 break
             count += 1
+            if followee.username.lower() in excluded:
+                continue
             try:
                 score = score_event_account(followee)
                 # Be more permissive for user's own follows
