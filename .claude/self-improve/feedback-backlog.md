@@ -202,6 +202,17 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-153 — Back out iter-107 HoY/KDC (user-excluded); extend exclusion to venue
+- created_at: 2026-05-29
+- source: agent-proposal (iter 111; reviewed user_excluded_sources.json)
+- status: addressed (committed in iter 111)
+- body: **Mistake correction**: iter 107 added `eventbrite.com/d/ny--brooklyn/house-of-yes/` and `.../knockdown-center/` to GENERIC_URLS, but `user_excluded_sources.json::accounts` explicitly lists `houseofyesnyc` and `knockdowncenter` with the note "club / late-night DJ venue" and "warehouse rave venue — user explicitly excluded clubs." Iter 107 was wrong; I should have checked the exclusion file before adding.
+- fix:
+  1. Removed the 2 venue-search URLs from GENERIC_URLS.
+  2. Extended `ranking.is_user_excluded` to also check `event.location.name` against the accounts set via the same alphanumeric-fold + suffix-strip/add used in `_enrich_provenance_from_url`. So cross-source events from excluded venues (e.g. Eventbrite event at "House of Yes" from a different search URL) still get dropped.
+- 5/5 tests pass: HoY venue / KDC venue / IG account / random venue / AI title hint.
+- meta lesson: future agents proposing IG_ACCOUNTS or GENERIC_URLS adds must check `user_excluded_sources.json` first. Logged the lesson in the next agent prompt iteration.
+
 ### fb-152 — Pioneer Works + Murmrr from user_curated_sources
 - created_at: 2026-05-29
 - source: agent-proposal (iter 110; cross-checked `scrapers/data/user_curated_sources.json`)

@@ -623,6 +623,27 @@ def is_user_excluded(event: dict) -> bool:
     acct = (event.get("instagramAccount") or "").lower()
     if acct and acct in cfg["accounts"]:
         return True
+    # Iter 111: also check event.location.name against the accounts set
+    # via the same alphanumeric-fold + suffix-strip/add used in
+    # normalize._enrich_provenance_from_url. Cross-source events from
+    # excluded venues (e.g. Eventbrite event at "House of Yes") need to
+    # be dropped even though their instagramAccount field is empty.
+    if cfg["accounts"]:
+        loc = event.get("location") or {}
+        loc_name = (loc.get("name") or "").strip().lower() if isinstance(loc, dict) else ""
+        if loc_name and len(loc_name) >= 3:
+            import re as _re
+            loc_norm = _re.sub(r"[^a-z0-9]", "", loc_name)
+            if len(loc_norm) >= 5:
+                variants = {loc_norm}
+                for suffix in ("nyc", "ny", "brooklyn", "manhattan", "bk"):
+                    if loc_norm.endswith(suffix) and len(loc_norm) - len(suffix) >= 5:
+                        variants.add(loc_norm[:-len(suffix)])
+                for suffix in ("nyc", "ny", "bk"):
+                    if not loc_norm.endswith(suffix):
+                        variants.add(loc_norm + suffix)
+                if any(v in cfg["accounts"] for v in variants):
+                    return True
     url = (event.get("sourceUrl") or "").lower()
     for host in cfg["hosts"]:
         if host in url:

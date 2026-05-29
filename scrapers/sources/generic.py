@@ -61,8 +61,11 @@ GENERIC_URLS = [
     # NYC venue booking through Eventbrite — each yields 18-20 events.
     # Bounded by SOURCE_VOLUME_CAPS["eventbrite"]=100 so adding more URLs
     # raises pool quality without dominating the feed.
-    "https://www.eventbrite.com/d/ny--brooklyn/house-of-yes/",
-    "https://www.eventbrite.com/d/ny--brooklyn/knockdown-center/",
+    # Iter 111: house-of-yes and knockdown-center removed — they're in
+    # `scrapers/data/user_excluded_sources.json` as "club / late-night DJ
+    # venue" / "warehouse rave venue. user explicitly excluded clubs."
+    # The exclusion check now also matches event.location.name so any
+    # leakage via other sources still gets dropped.
     "https://www.eventbrite.com/d/ny--brooklyn/elsewhere/",
     "https://www.eventbrite.com/d/ny--brooklyn/brooklyn-bowl/",
     "https://www.eventbrite.com/d/ny--brooklyn/public-records/",
