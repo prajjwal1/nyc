@@ -202,6 +202,18 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-151 — Extend enrichment to event.location.name (venue ⇒ follow match)
+- created_at: 2026-05-29
+- source: agent-proposal (iter 109; followed iter 107-108 thread)
+- status: addressed (committed in iter 109)
+- body: Investigated whether iter 77's organizer-name path would fire on the new iter-108 venue-search events. Sampled real Eventbrite events: `organizer.name` is the per-show **promoter** ("@officialdjopapi", "Zoe Levy"), not the venue. The user follows venues, not per-show promoters, so the path doesn't fire. The VENUE is in `location.name`.
+- fix: extended `_enrich_provenance_from_url` with a 4th match path: alphanumeric-fold + suffix-strip ({nyc, ny, brooklyn, manhattan, bk}) + **suffix-add** ({nyc, ny, bk}) on `event.location.name`. Suffix-add was a new addition because venues often drop the `nyc`/`bk` suffix in their public name even when the IG handle has it. Verified:
+  - "Greenpoint Comedy Club" → `greenpointcomedyclub` ✓
+  - "Franklin Park" → `franklinpark` + `franklinparkbk` ✓ (via bk suffix-add)
+  - "Anais Wine" → `anaiswinebk` ✓
+  - "Random Venue NYC" → no match ✓ (correct rejection)
+- expected impact: every event at a venue the user follows now triggers `userFollowing` via location.name even when the per-show organizer is someone else.
+
 ### fb-150 — Backfill 13 more venues via Eventbrite venue-search
 - created_at: 2026-05-29
 - source: agent-proposal (iter 108; extends iter-107 pattern)

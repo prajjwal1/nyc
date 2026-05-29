@@ -1093,31 +1093,43 @@ def _enrich_provenance_from_url(events: list[dict]) -> None:
             if ev.get("userFollowing"):
                 continue
         # 2) Organizer-name match (JSON-LD organizer.name → alphanumeric fold)
-        organizer = (ev.get("organizer") or "").strip()
-        if not organizer or len(organizer) < 3:
-            continue
-        org_norm = _re.sub(r"[^a-z0-9]", "", organizer.lower())
-        if not org_norm or len(org_norm) < 5:
-            continue  # too short to be confident
-        # Also try with location suffixes stripped: "readingrhythmsnyc" →
-        # "readingrhythms" so it matches the IG handle `reading_rhythms`.
-        org_candidates = {org_norm}
-        for suffix in ("nyc", "ny", "brooklyn", "manhattan", "bk"):
-            if org_norm.endswith(suffix) and len(org_norm) - len(suffix) >= 5:
-                org_candidates.add(org_norm[:-len(suffix)])
-        matched_handle = next((c for c in org_candidates if c in following), None)
-        if matched_handle:
-            # Store the matched IG handle (not the human org name) as `account`
-            # so the UI ribbon's "Because you follow @{account}" reads as a
-            # valid IG handle and the click-to-@account link still works.
-            # The full org name remains in `event.organizer` for display.
-            ev["account"] = matched_handle
-            ev["userFollowing"] = True
-            organizer_matched += 1
+        # 3) Location-name match (iter 109): for Eventbrite venue-search events
+        #    (iter 107-108), the organizer is a per-event promoter ("DJ Opapi")
+        #    while the venue is in location.name ("House of Yes"). The venue
+        #    is the user-follow target — `houseofyes` → `houseofyesnyc` via
+        #    suffix-strip → matches `houseofyesnyc` in user_following.
+        for candidate_field in ("organizer", "_location_name"):
+            if candidate_field == "_location_name":
+                loc = ev.get("location") or {}
+                candidate = (loc.get("name") or "").strip() if isinstance(loc, dict) else ""
+            else:
+                candidate = (ev.get(candidate_field) or "").strip()
+            if not candidate or len(candidate) < 3:
+                continue
+            cand_norm = _re.sub(r"[^a-z0-9]", "", candidate.lower())
+            if not cand_norm or len(cand_norm) < 5:
+                continue
+            cand_variants = {cand_norm}
+            # Suffix-strip
+            for suffix in ("nyc", "ny", "brooklyn", "manhattan", "bk"):
+                if cand_norm.endswith(suffix) and len(cand_norm) - len(suffix) >= 5:
+                    cand_variants.add(cand_norm[:-len(suffix)])
+            # Suffix-add (venues often drop "nyc"/"bk" but the IG handle has
+            # it). "houseofyes" → also try "houseofyesnyc"; "franklinpark"
+            # → "franklinparkbk".
+            for suffix in ("nyc", "ny", "bk"):
+                if not cand_norm.endswith(suffix):
+                    cand_variants.add(cand_norm + suffix)
+            matched_handle = next((c for c in cand_variants if c in following), None)
+            if matched_handle:
+                ev["account"] = matched_handle
+                ev["userFollowing"] = True
+                organizer_matched += 1
+                break  # don't double-count if both organizer + location match
     if matched:
         print(f"[normalize] Enriched {matched} non-IG events with userFollowing via curator-handle URL match")
     if organizer_matched:
-        print(f"[normalize] Enriched {organizer_matched} non-IG events with userFollowing via organizer-name match")
+        print(f"[normalize] Enriched {organizer_matched} non-IG events with userFollowing via organizer/venue-name match")
 
 
 _IMAGE_REQUIRED_SOURCES = frozenset({
