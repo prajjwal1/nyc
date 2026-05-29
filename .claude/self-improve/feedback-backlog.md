@@ -202,6 +202,15 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-157 — Maintenance script: audit_urls.py
+- created_at: 2026-05-29
+- source: agent-proposal (iter 115)
+- status: addressed (committed in iter 115)
+- body: Manual URL audits across iter 87, 102, 113, 114 found multiple silently-dead feeds + broken-pagination URLs. Automating that audit pattern as `scrapers/maintenance/audit_urls.py` so future agents can run it instead of probing each URL by hand.
+- script behavior: probes every URL in `GENERIC_URLS` + `substack.FEEDS`, classifies as HEALTHY (≥3 future events) / WARN (1-2 future) / STALE (events but all past) / EMPTY (0 events) / ERROR. Flags candidates for review.
+- usage: `python -m scrapers.maintenance.audit_urls` (slow — 200+ URLs × ~3s each). `--limit N` for quick sampling. `--json` for piping into a follow-up tool. `--concurrency K` to adjust HTTP parallelism.
+- smoke test on first 10 URLs already surfaced 4 EMPTY entries (`92ny.org`, `bricartsmedia.org`, `brooklynbrewery.com`, `lpr.com`) — review candidates for the next audit round.
+
 ### fb-156 — bedfordandbowery.com is dead (last post May 2021)
 - created_at: 2026-05-29
 - source: agent-proposal (iter 114 audit)
