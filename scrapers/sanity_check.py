@@ -168,6 +168,7 @@ def main(events_path: str = "data/events.json", *, write_stats: bool = False, ha
         print(f"  [{e['score']}] {e['title'][:60]} | {e['source']} | {cats_s}")
 
     _print_ig_diagnostics(events)
+    _print_north_star_metrics(events)
 
     # Freshness
     last_updated = data.get("lastUpdated", "")
@@ -341,6 +342,75 @@ def _print_ig_diagnostics(events: list) -> None:
             print(f"\nIG session file MISSING at {IG_SESSION_FILE}")
     except Exception:
         pass
+
+
+def _print_north_star_metrics(events: list) -> None:
+    """Print the three plan-defined North-Star metrics:
+      1. Follow-graph coverage: % signal_accounts with yield > 0
+      2. Topic coverage: each topic_counts >= 2 has >=1 event in feed
+      3. High-conviction ratio: % events with userFollowing/userSaved/
+         userAffinity firing — proxy for "would the user actually attend?"
+
+    Print-only; no failure thresholds. Lets each scrape log show the
+    deltas the self-improve loop is supposed to be moving.
+    """
+    print("\n--- NORTH STAR METRICS ---")
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+    profile_path = os.path.join(data_dir, "user_interest_profile.json")
+    if not os.path.isfile(profile_path):
+        print("(user_interest_profile.json not found — skipping)")
+        return
+    try:
+        with open(profile_path) as f:
+            profile = json.load(f)
+    except Exception as exc:
+        print(f"(profile read failed: {exc})")
+        return
+
+    # 1. Follow-graph coverage
+    signals = profile.get("signal_accounts", []) or []
+    ymap = profile.get("yield_map", {}) or {}
+    if signals:
+        with_yield = sum(1 for a in signals if (ymap.get(a) or 0) > 0)
+        pct = 100.0 * with_yield / len(signals)
+        print(f"Follow-graph coverage: {with_yield}/{len(signals)} ({pct:.1f}%) signal_accounts producing events")
+
+    # 2. Topic coverage — every topic with count >= 2 should appear in the feed
+    topic_counts = profile.get("topic_counts", {}) or {}
+    location_topics = {"ny", "nyc", "brooklyn", "manhattan", "bk"}  # not actionable
+    meaningful = [
+        (t, c) for t, c in topic_counts.items()
+        if c >= 2 and t not in location_topics
+    ]
+    if meaningful:
+        # crude proxy: count events whose categories or title contain the topic
+        from collections import Counter
+        cat_counter: Counter = Counter()
+        for e in events:
+            for c in e.get("categories", []) or []:
+                cat_counter[c] += 1
+        title_text = " ".join((e.get("title") or "") for e in events).lower()
+        missing = []
+        covered = []
+        for topic, _ in meaningful:
+            has_cat = cat_counter.get(topic, 0) > 0
+            has_in_title = topic in title_text
+            if has_cat or has_in_title:
+                covered.append(topic)
+            else:
+                missing.append(topic)
+        print(f"Topic coverage: {len(covered)}/{len(meaningful)} meaningful topics present")
+        if missing:
+            print(f"  missing: {', '.join(missing[:6])}")
+
+    # 3. High-conviction ratio
+    if events:
+        hc = sum(
+            1 for e in events
+            if e.get("userFollowing") or e.get("userSaved") or e.get("userAffinity")
+        )
+        pct = 100.0 * hc / len(events)
+        print(f"High-conviction ratio: {hc}/{len(events)} ({pct:.1f}%) events with follow/save/affinity boost")
 
 
 def _append_stats(*, total, sources, cats, failures, warnings, age_hours):
