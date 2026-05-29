@@ -96,6 +96,10 @@ jobs:
             scrapers/data/account_cursors.json \
             scrapers/data/account_quality.json \
             scrapers/data/user_hashtags.json \
-            scrapers/data/url_health.json 2>/dev/null || true
+            scrapers/data/url_health.json \
+            scrapers/data/image_hashes.json \
+            scrapers/data/user_interest_profile.json 2>/dev/null || true
+          # Note: user_curated_sources.json + user_excluded_sources.json are
+          # user-edited, not CI-generated — handled in safe-pull but not here.
           git diff --cached --quiet || git commit -m "Update events data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
