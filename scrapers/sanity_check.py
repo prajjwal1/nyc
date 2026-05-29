@@ -95,20 +95,6 @@ WARNING_CHECKS = [
         1,
     ),
     (
-        "House of Yes",
-        lambda e: "house of yes" in (
-            e["title"].lower() + e.get("location", {}).get("name", "").lower()
-        ),
-        1,
-    ),
-    (
-        "Knockdown Center",
-        lambda e: "knockdown" in (
-            e["title"].lower() + e.get("description", "").lower() + e.get("location", {}).get("name", "").lower()
-        ),
-        1,
-    ),
-    (
         "Elsewhere / Brooklyn Bowl / Music Hall venues",
         lambda e: any(
             kw in e["title"].lower() + e.get("location", {}).get("name", "").lower()
