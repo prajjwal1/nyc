@@ -62,7 +62,7 @@ Three guiding principles:
 | **theskint**     | ✗      | HTML scrape didn't work. Use IG @theskint instead. |
 | **bookclubbar**  | ✗      | React SPA, JS-required. Use IG @bookclubbar.       |
 | **dice**         | ✗      | URL changes. Try harder.                           |
-| **nycforfree**   | ✗      | HTML structure unclear. Use IG @nycforfree.co.     |
+| **nycforfree**   | ✅      | Squarespace eventlist on /events. 126 events / 83 future surviving filters. Free events by definition (curator), price="free" stamped. Use 90s timeout — page is ~2MB. (Restored iter 100.) |
 | **parks**        | ✅      | nycgovparks.org/events: 50 events, 22 surviving filters (yoga/dance/movies/theater in parks). Most yield is fitness + cultural programming. Kids events auto-blocked. (Re-verified iter 99.) |
 
 ---

@@ -202,6 +202,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-142 — nycforfree.py rewritten for Squarespace eventlist (+126 events)
+- created_at: 2026-05-29
+- source: agent-proposal (iter 100 audit)
+- status: addressed (committed in iter 100)
+- body: README marked nycforfree as `✗ "HTML structure unclear. Use IG @nycforfree.co."`. Live probe: nycforfree.co/events is a standard **Squarespace eventlist** with 129 articles (`article.eventlist-event`), same pattern as brooklyncomedy.py. The old scraper looked at the wrong URL (`/`, no events) and CSS selectors. Rewritten to fetch `/events` with 90s timeout (~2MB page) and parse `a.eventlist-title-link`, `time.event-time-24hr-start[datetime]`, `.eventlist-description`, `.eventlist-column-thumbnail img`.
+- result: 0 → 126 events, 83 future surviving filters. All correctly tagged `price="free"`. Sample: "U.S. SailGP Fan Zone", "Last Crumb Grand Opening", "Jung Saem Mool Glass Skin Atelier Pop-Up" — exactly the free/pop-up coverage nycforfree.co specializes in.
+- KNOWLEDGE.md status: ✗ → ✅ with yield numbers.
+
 ### fb-141 — parks.py is actually working + CANCELED leak
 - created_at: 2026-05-28
 - source: agent-proposal (iter 99 audit)
