@@ -1416,13 +1416,6 @@ def _url_event_yield(url: str, health: dict | None = None) -> float:
     return total / successes
 
 
-def _is_dead_url(url: str) -> bool:
-    """A URL is dead if it has 5+ failures with no recent successes."""
-    data = _load_url_health()
-    entry = data.get(url, {})
-    return entry.get("failures", 0) >= 5
-
-
 _RETEST_COOLDOWN_DAYS = 7
 _RETEST_PER_RUN = 5
 # A URL with this many failures AND zero lifetime successes AND a stale
