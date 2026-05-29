@@ -629,7 +629,12 @@ _TRUSTED_FAR_FUTURE_SOURCES = frozenset({
 
 _COMEDY_LINEUP_SOURCES = frozenset({
     "newyorkcomedyclub", "eastvillecomedy", "thebellhouseny",
-    "comedycellar", "ucbtheatre", "thecaveatnyc",
+    "brooklyncomedy",   # iter 169: brooklyncomedy.py (iter 106) — verified
+                        # source value is 'brooklyncomedy', matches the check
+    # (Removed iter 169: 'comedycellar', 'ucbtheatre', 'thecaveatnyc' —
+    # these are IG account handles, not source-field values. The check
+    # `ev.get("source") not in ...` would never fire on them since IG
+    # events have source='instagram'. They were dead set entries.)
 })
 # A title is a "comedian lineup" when it's 3+ comma-separated person-name
 # tokens (First [Middle] Last) and contains no event-format keyword.
