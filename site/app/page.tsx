@@ -46,13 +46,16 @@ export default function Home() {
     setLastVisitedAt(readAndAdvanceLastVisited());
   }, []);
 
-  // URL permalinks: read ?date=YYYY-MM-DD&view=for-you|calendar on mount
-  // so users can bookmark + share specific date views.
+  // URL permalinks: read ?date=YYYY-MM-DD&view=for-you|calendar&account=X
+  // on mount so users can bookmark + share specific date / account views.
+  // Iter 104 added the &account=X param so per-account views are
+  // shareable (no static-route generation needed; query-param-only).
   useEffect(() => {
     if (typeof window === "undefined") return;
     const p = new URLSearchParams(window.location.search);
     const d = p.get("date");
     const v = p.get("view");
+    const acct = p.get("account");
     if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) {
       setSelectedDate(d);
       // If a date is in the URL, default to calendar view (since the
@@ -60,10 +63,16 @@ export default function Home() {
       if (!v || v === "calendar") setView("calendar");
     }
     if (v === "for-you" || v === "calendar") setView(v);
+    // Account filter: stored in `search` as "@<handle>". Only accept
+    // safe handles to keep XSS surface minimal.
+    if (acct && /^[A-Za-z0-9_.\-]{1,40}$/.test(acct)) {
+      setSearch("@" + acct.toLowerCase());
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Reflect view + selectedDate in the URL so it's bookmarkable / shareable.
+  // Reflect view + selectedDate + account filter in the URL so they're
+  // bookmarkable / shareable.
   useEffect(() => {
     if (typeof window === "undefined") return;
     const p = new URLSearchParams(window.location.search);
@@ -74,12 +83,18 @@ export default function Home() {
       p.set("view", "for-you");
       p.delete("date");
     }
+    // Account filter (iter 104): persist when search starts with @.
+    if (search.startsWith("@") && search.length > 1) {
+      p.set("account", search.slice(1).toLowerCase());
+    } else {
+      p.delete("account");
+    }
     const q = p.toString();
     const newUrl = window.location.pathname + (q ? "?" + q : "") + window.location.hash;
     if (newUrl !== window.location.pathname + window.location.search + window.location.hash) {
       window.history.replaceState(null, "", newUrl);
     }
-  }, [view, selectedDate]);
+  }, [view, selectedDate, search]);
 
   const newSinceLastVisit = useMemo(() => {
     if (!lastVisitedAt) return 0;
