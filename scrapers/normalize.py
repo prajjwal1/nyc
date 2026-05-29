@@ -715,12 +715,10 @@ def _backfill_neighborhood_from_venue(events: list[dict]) -> None:
             ev["location"] = loc
 
 
-_OUTDOORS_INDOOR_ARENAS = (
-    "madison square garden",
-    "barclays center",
-    "the box",
-    "garden room",
-)
+# Re-export event_parser's authoritative list. The two used to be parallel
+# tuples that drifted (normalize had 4 entries; event_parser had 6 — missing
+# 'msg sphere' and 'the garden at madison' in normalize). One source of truth.
+from .utils.event_parser import _OUTDOORS_FALSE_POSITIVE_VENUES as _OUTDOORS_INDOOR_ARENAS  # noqa: E402
 _OUTDOORS_STRONG_SIGNALS = (
     "rooftop", "pier ", "waterfront", "park ", " park", "beach", "ferry",
     "high line", "domino park", "central park", "prospect park",
