@@ -1058,25 +1058,7 @@ def _handle_candidates(handle: str) -> list[str]:
     return [v for v in out if v]
 
 
-def _load_user_excluded_accounts() -> set[str]:
-    """Excluded handles (fb-106 personal accounts, user-rejected clubs, etc).
-    These must not receive the userFollowing boost even if the user follows
-    them on IG."""
-    import json as _json
-    import os as _os
-    path = _os.path.join(
-        _os.path.dirname(_os.path.abspath(__file__)),
-        "data",
-        "user_excluded_sources.json",
-    )
-    if not _os.path.isfile(path):
-        return set()
-    try:
-        with open(path) as f:
-            data = _json.load(f)
-        return {k.lower() for k in (data.get("accounts") or {}).keys()}
-    except Exception:
-        return set()
+from scrapers.utils.user_excluded import load_excluded_account_set as _load_user_excluded_accounts  # noqa: E402
 
 
 def _user_following_normalized() -> set[str]:

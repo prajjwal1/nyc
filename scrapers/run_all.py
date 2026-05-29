@@ -306,24 +306,7 @@ def _load_user_affinity_set() -> set:
         return set()
 
 
-def _load_user_excluded_account_set() -> set:
-    """User-excluded accounts (fb-106 personal accounts, HoY/KDC, etc.).
-    Used to keep excluded handles out of the topAccounts widget so the UI
-    'Top Accounts' surface doesn't recommend accounts the user opted out of.
-    """
-    import json
-    path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
-        "data", "user_excluded_sources.json",
-    )
-    if not os.path.isfile(path):
-        return set()
-    try:
-        with open(path) as f:
-            d = json.load(f)
-        return {k.lower() for k in (d.get("accounts") or {}).keys()}
-    except Exception:
-        return set()
+from scrapers.utils.user_excluded import load_excluded_account_set as _load_user_excluded_account_set  # noqa: E402
 
 
 def _today_iso() -> str:

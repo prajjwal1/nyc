@@ -48,23 +48,7 @@ _ACCOUNT_CURSORS_CACHE: dict = {}
 _MIN_FRESH_REFETCH = 3
 
 
-def _load_excluded_account_set() -> set[str]:
-    """Accounts in user_excluded_sources.json::accounts. Used to fully
-    exclude these handles from being scraped (fb-106)."""
-    import json, os
-    path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "data",
-        "user_excluded_sources.json",
-    )
-    if not os.path.isfile(path):
-        return set()
-    try:
-        with open(path) as f:
-            d = json.load(f)
-        return {k.lower() for k in (d.get("accounts") or {}).keys()}
-    except Exception:
-        return set()
+from scrapers.utils.user_excluded import load_excluded_account_set as _load_excluded_account_set  # noqa: E402
 
 
 def _load_following_accounts() -> set[str]:

@@ -177,11 +177,7 @@ def _write_json(path: str, data: dict) -> None:
         json.dump(data, f, indent=2)
 
 
-def _load_user_excluded_account_set() -> set:
-    """User-excluded handles (fb-106 personal + opt-out venues). Used at
-    the harvest stage so excluded handles never enter the discovery pool."""
-    excl = _read_json(os.path.join(DATA_DIR, "user_excluded_sources.json"), {})
-    return {k.lower() for k in (excl.get("accounts") or {}).keys()}
+from scrapers.utils.user_excluded import load_excluded_account_set as _load_user_excluded_account_set  # noqa: E402
 
 
 def load_discovered_accounts() -> list[str]:
