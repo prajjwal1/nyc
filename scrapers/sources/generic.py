@@ -56,6 +56,12 @@ GENERIC_URLS = [
     # returns 503 / Bad Gateway on the bare host. The direct events path
     # works: yields ~10 events including evening tours / After Hours.
     "https://www.green-wood.com/events",
+    # Iter 107: Eventbrite venue-search pages for House of Yes + Knockdown
+    # Center. Both venues sell shows through Eventbrite (no scrapable own-site
+    # data — HoY is Squarespace with /calendar showing only an EB cc link).
+    # Closes the sanity_check WARNING_CHECKS for both venues. 19 events each.
+    "https://www.eventbrite.com/d/ny--brooklyn/house-of-yes/",
+    "https://www.eventbrite.com/d/ny--brooklyn/knockdown-center/",
     "https://www.theinvisibledog.org/upcoming-events",
     "https://www.openhousenewyork.org/calendar/",
     "https://hudsonyards.com/discover/events/",

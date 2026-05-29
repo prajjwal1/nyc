@@ -202,6 +202,17 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-149 — House of Yes + Knockdown Center via Eventbrite venue-search
+- created_at: 2026-05-29
+- source: agent-proposal (iter 107)
+- status: addressed (committed in iter 107)
+- body: `sanity_check.py::WARNING_CHECKS` flags both as required venues. Probed sites: both are Squarespace homepages with no scrapable own-site event structure. HoY /calendar is just an Eventbrite collection link ("Dirty Circus at House of Yes"); knockdown.center has no /events path at all.
+- discovered: Eventbrite venue-search URLs (`/d/ny--brooklyn/<venue>/`) work as venue calendars via the existing generic.py JSON-LD parser. 19 events each.
+- fix: added both URLs to GENERIC_URLS. Sample:
+  - HoY: "HOT & FRESH · Burlesque", "Weapons Of Mass Seduction Preview Concert", "Rock the House 2026"
+  - KDC: "DJ Harvey at Ruins at Knockdown Center", "LP Giobbi", "Marten Lou"
+- pattern: any NYC venue that books through Eventbrite is reachable via `eventbrite.com/d/ny--<borough>/<slug>/`. Could backfill other under-yielding venue keywords this way if more sanity_check WARNINGs surface.
+
 ### fb-148 — Smorgasburg recurring scraper (closes sanity_check WARNING)
 - created_at: 2026-05-29
 - source: agent-proposal (iter 106; sanity_check WARNING_CHECKS gap)
