@@ -548,8 +548,21 @@ def infer_categories(title: str, description: str = "", ig_account: str = "",
     # (e.g. '5/21 • caroline...' from a music venue's IG roundup). This is
     # structural — derives category from the account's stated focus rather
     # than scanning the title for venue-specific terms.
-    if not cats and ig_account:
-        cats = _ig_account_topic_categories(ig_account)
+    #
+    # Also augment when title-derived cats are venue-context cats only
+    # (outdoors / food). 'Read on the Lawn at Bryant Park' from
+    # @reading_rhythms hits 'outdoors' on 'lawn' but should also be 'books'
+    # — the venue topic is the user's primary reason for going. Union the
+    # ig-account hints when the title cats are weak/venue-only.
+    if ig_account:
+        if not cats:
+            cats = _ig_account_topic_categories(ig_account)
+        else:
+            _VENUE_CONTEXT_CATS = {"outdoors", "food"}
+            if set(cats) <= _VENUE_CONTEXT_CATS:
+                acct_cats = _ig_account_topic_categories(ig_account)
+                if acct_cats and acct_cats != ["other"]:
+                    cats = sorted(set(cats) | set(acct_cats))
     # Source-level topic hint: a venue scraper like newyorkcomedyclub
     # encodes its focus in the source label. Use it as a default
     # category if nothing better matched.
