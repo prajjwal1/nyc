@@ -202,6 +202,22 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-155 — Eventbrite venue-search slug is keyword-search, not strict-venue
+- created_at: 2026-05-29
+- source: agent-proposal (iter 113; verifying iter-109 enrichment)
+- status: addressed (committed in iter 113)
+- body: Verifying iter-109's location.name enrichment against real venue-search fetches surfaced a much bigger problem: the Eventbrite URL pattern `/d/<location>/<slug>/` is **substring keyword search, not strict venue match**. Audit results from real fetches:
+  - ✓ elsewhere: 18/20 events actually at Elsewhere
+  - ✓ littlefield: 20/20 ✓
+  - ✓ caveat: 20/20 ✓
+  - ✓ pioneer-works: 17/20 ✓
+  - ✗ comedy-cellar: 0/20 (Eventbrite matched "Whiskey Cellar", "Oak Cellar at Jake's Dilemma", "Grove 34")
+  - ✗ blue-note: 0/20 (matched "Books Are Magic Montague", "Casa de Montecristo", "Chelsea Table & Stage")
+  - ✗ brooklyn-bowl, mercury-lounge, rockwood-music-hall, small-s-jazz-club, village-vanguard, smoke-jazz-club, public-records, murmrr, qed-astoria: all 0-1/20
+- iter 108 was therefore adding **~220 noise events per scrape** from 11 false-positive URLs. Removed them; kept the 4 verified working URLs.
+- pattern: generic single-word slugs ("blue-note", "comedy-cellar") fail because they substring-match many other venues. Unique multi-word slugs ("pioneer-works", "littlefield") succeed.
+- meta lesson #2 for source-curator agents: probe the actual yield + location.name match rate before adding any Eventbrite venue-search URL. The 20-event count alone is meaningless without venue-name verification.
+
 ### fb-154 — Bake iter-111 + iter-83-onward lessons into agent prompts
 - created_at: 2026-05-29
 - source: agent-proposal (iter 112)

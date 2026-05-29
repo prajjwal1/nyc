@@ -56,35 +56,20 @@ GENERIC_URLS = [
     # returns 503 / Bad Gateway on the bare host. The direct events path
     # works: yields ~10 events including evening tours / After Hours.
     "https://www.green-wood.com/events",
-    # Iter 107 + 108: Eventbrite venue-search pages for venues the user
-    # follows on IG. The `/d/ny--<borough>/<slug>/` pattern works for any
-    # NYC venue booking through Eventbrite — each yields 18-20 events.
-    # Bounded by SOURCE_VOLUME_CAPS["eventbrite"]=100 so adding more URLs
-    # raises pool quality without dominating the feed.
-    # Iter 111: house-of-yes and knockdown-center removed — they're in
-    # `scrapers/data/user_excluded_sources.json` as "club / late-night DJ
-    # venue" / "warehouse rave venue. user explicitly excluded clubs."
-    # The exclusion check now also matches event.location.name so any
-    # leakage via other sources still gets dropped.
+    # Iter 113 audit: the Eventbrite venue-search URL pattern
+    # `/d/<location>/<slug>/` is a KEYWORD search, NOT a strict venue
+    # match. Generic slugs ("blue-note", "brooklyn-bowl", "mercury-lounge",
+    # "comedy-cellar", "village-vanguard", "smoke-jazz-club") returned
+    # 0/20 events at the target venue — Eventbrite was substring-matching
+    # the slug across unrelated venues. Only sufficiently-unique slugs
+    # work: elsewhere (18/20), littlefield (20/20), caveat (20/20),
+    # pioneer-works (17/20).
+    # The 11 false-positive URLs (HoY + KDC + the 9 generic-slug ones) were
+    # removed from this list. Keeping the 4 verified.
     "https://www.eventbrite.com/d/ny--brooklyn/elsewhere/",
-    "https://www.eventbrite.com/d/ny--brooklyn/brooklyn-bowl/",
-    "https://www.eventbrite.com/d/ny--brooklyn/public-records/",
     "https://www.eventbrite.com/d/ny--brooklyn/littlefield/",
-    "https://www.eventbrite.com/d/ny--manhattan/mercury-lounge/",
-    "https://www.eventbrite.com/d/ny--manhattan/rockwood-music-hall/",
-    "https://www.eventbrite.com/d/ny--manhattan/comedy-cellar/",
     "https://www.eventbrite.com/d/ny--manhattan/caveat/",
-    "https://www.eventbrite.com/d/ny--manhattan/small-s-jazz-club/",
-    "https://www.eventbrite.com/d/ny--manhattan/village-vanguard/",
-    "https://www.eventbrite.com/d/ny--manhattan/blue-note/",
-    "https://www.eventbrite.com/d/ny--manhattan/smoke-jazz-club/",
-    "https://www.eventbrite.com/d/ny--queens/qed-astoria/",
-    # Iter 110: user_curated_sources.json hosts not yet covered. Pioneer
-    # Works (Red Hook arts/sci nonprofit) + Murmrr (Crown/Prospect Heights
-    # venue). Both have JS-rendered own sites; Eventbrite venue-search
-    # works. 20 + 19 events.
     "https://www.eventbrite.com/d/ny--brooklyn/pioneer-works/",
-    "https://www.eventbrite.com/d/ny--brooklyn/murmrr/",
     "https://www.theinvisibledog.org/upcoming-events",
     "https://www.openhousenewyork.org/calendar/",
     "https://hudsonyards.com/discover/events/",
