@@ -125,22 +125,45 @@ def _parse_event(details_div) -> dict | None:
     )
 
 
-async def scrape() -> list[dict]:
-    try:
-        html = await fetch_text(EVENTS_URL)
-    except Exception as exc:
-        print(f"[mcnallyjackson] Failed to fetch {EVENTS_URL}: {exc}")
-        return []
+def _month_urls(months_ahead: int = 2) -> list[str]:
+    """Generate /events/YYYY/MM URLs for the current + next N months.
+    Iter 102 audit: bare /events only returns current-month events. The
+    `/events/YYYY/MM` pattern returns 35 (June) + 11 (July) future
+    events. Mirrors the iter-91 comedy-club dynamic-URL pattern."""
+    from datetime import date as _date
+    today = _date.today()
+    urls = [EVENTS_URL]
+    for offset in range(1, months_ahead + 1):
+        y, m = today.year, today.month + offset
+        while m > 12:
+            m -= 12
+            y += 1
+        urls.append(f"{EVENTS_URL}/{y}/{m:02d}")
+    return urls
 
-    soup = BeautifulSoup(html, "html.parser")
+
+async def scrape() -> list[dict]:
     events: list[dict] = []
-    # Direct .event-list__details divs (parents of body)
-    for details in soup.find_all("div", class_="event-list__details"):
+    seen: set[str] = set()
+    for url in _month_urls():
         try:
-            ev = _parse_event(details)
-            if ev:
-                events.append(ev)
+            html = await fetch_text(url)
         except Exception as exc:
-            print(f"[mcnallyjackson] Error parsing event: {exc}")
-    print(f"[mcnallyjackson] {len(events)} events")
+            print(f"[mcnallyjackson] Failed to fetch {url}: {exc}")
+            continue
+        soup = BeautifulSoup(html, "html.parser")
+        for details in soup.find_all("div", class_="event-list__details"):
+            try:
+                ev = _parse_event(details)
+            except Exception as exc:
+                print(f"[mcnallyjackson] Error parsing event: {exc}")
+                continue
+            if not ev:
+                continue
+            ev_key = (ev.get("title", ""), ev.get("date", ""))
+            if ev_key in seen:
+                continue
+            seen.add(ev_key)
+            events.append(ev)
+    print(f"[mcnallyjackson] {len(events)} events (across {len(_month_urls())} month URLs)")
     return events

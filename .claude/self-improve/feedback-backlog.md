@@ -202,6 +202,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-144 — mcnallyjackson month-pagination (3 → 44 future events)
+- created_at: 2026-05-29
+- source: agent-proposal (iter 102 audit)
+- status: addressed (committed in iter 102)
+- body: mcnallyjackson.py yielded 33 events but only 3 future — same current-month-only issue as the iter 91 comedy-club fix. Inspected page HTML: found 6 unique `/events` URLs including `/events/2026/06` (35 June events) and `/events/2026/07` (11 July events). The bare `/events` route only ships current-month.
+- fix: added `_month_urls()` generating `/events/YYYY/MM` for the current + next 2 months at scrape time (handles year rollover). Dedup by (title, date) so any overlap with the bare /events doesn't double-count.
+- result: 33 → 79 events extracted, 3 → 44 future events surviving filters (14× lift). Sample: "Matthew Campbell & Mike Bird" (Jun 1), "New Directions Book Club" (Jun 2) — actual literary programming the user follows.
+
 ### fb-143 — dice.py rewritten for __NEXT_DATA__ (0 → 30 events)
 - created_at: 2026-05-29
 - source: agent-proposal (iter 101 audit)
