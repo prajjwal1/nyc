@@ -305,9 +305,13 @@ export default function TopPicks({
   // we have for "events the user would actually attend." Surfaced before
   // Saved because following is a broader / lower-friction signal than
   // explicit star.
+  // Iter 122: also include userAffinity (accounts the user has saved-from
+  // before). The iter-71 card ribbon already shows both with sky/amber
+  // distinction; the hero filter should match. Affinity is rarer than
+  // following, so this won't dominate.
   const followingUpcoming = upcoming
     .filter((e) =>
-      e.userFollowing
+      (e.userFollowing || e.userAffinity)
       && !tonightIds.has(e.id)
       && !weekendIds.has(e.id)
       && !recentIds.has(e.id),
@@ -442,11 +446,14 @@ export default function TopPicks({
         </div>
       )}
 
-      {/* 👤 From accounts you follow — highest-conviction signal */}
+      {/* 👤 From accounts you follow / save from — highest-conviction signal */}
       {followingUpcoming.length > 0 && (
         <div className="mb-8 -mx-1 px-1 py-3 bg-sky-50/60 rounded-2xl border border-sky-200">
           <h3 className="text-sm font-semibold text-sky-900 uppercase tracking-wide mb-2 px-2">
             👤 From accounts you follow
+            {followingUpcoming.some((e) => e.userAffinity && !e.userFollowing) && (
+              <span className="text-sky-700/70"> · &amp; save from</span>
+            )}
           </h3>
           <div className="space-y-2">
             {followingUpcoming.map((event) => (

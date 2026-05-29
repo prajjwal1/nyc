@@ -214,6 +214,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-163 — Following hero now also surfaces userAffinity events
+- created_at: 2026-05-29
+- source: agent-proposal (iter 122; UX-consistency fix)
+- status: addressed (committed in iter 122)
+- body: Iter 78 added the 👤 Following hero filtering on `event.userFollowing`. But iter-71's card ribbon already showed BOTH `userFollowing` (sky) and `userAffinity` (amber) as conviction signals. The hero's filter was strictly narrower, so affinity events were buried in the per-day feed even with the amber card ribbon visible.
+- fix: hero filter now includes `userAffinity` too. Header text grows a `· & save from` suffix when affinity-only events are present, so the user knows the broader scope is engaged. Build clean.
+
 ### fb-162 — Prune 7 more EMPTYs (bookstores + niche venues, JS-rendered)
 - created_at: 2026-05-29
 - source: agent-proposal (iter 120)
