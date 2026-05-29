@@ -84,26 +84,64 @@ async def _audit_substack_feed(url: str) -> dict:
             "classification": "ERROR",
         }
     try:
-        events, _ = _parse_feed(xml)
+        events, _urls_persisted = _parse_feed(xml)
     except Exception as exc:
         return {
             "url": url,
             "kind": "substack",
             "yield": 0,
             "future": 0,
+            "harvest": 0,
             "err": str(exc)[:120],
             "classification": "ERROR",
         }
+    # Substack feeds also harvest event-platform URLs (Lu.ma/Eventbrite/etc.)
+    # from post bodies. The audit needs to count those — a feed can be
+    # "0 future events" while still contributing dozens of URLs that the
+    # generic scraper picks up next run.
+    harvested_urls = _harvest_from_xml(xml)
     future = [e for e in events if (e.get("date", "") or "") >= today]
-    cls = _classify(len(events), len(future), None)
+    # Reclassify: feeds with substantial URL harvest are HEALTHY-by-harvest
+    # even when direct event yield is 0.
+    if len(harvested_urls) >= 5 and len(future) == 0 and len(events) > 0:
+        cls = "HARVEST"  # net contributor via URL harvesting
+    else:
+        cls = _classify(len(events), len(future), None)
     return {
         "url": url,
         "kind": "substack",
         "yield": len(events),
         "future": len(future),
+        "harvest": len(harvested_urls),
         "err": None,
         "classification": cls,
     }
+
+
+_HARVEST_URL_RE = None
+
+
+def _harvest_from_xml(xml: str) -> set[str]:
+    """Quick scan of feed XML for event-platform URLs without invoking the
+    full substack harvester (which writes to discovered_urls.json)."""
+    global _HARVEST_URL_RE
+    if _HARVEST_URL_RE is None:
+        import re as _re
+        _HARVEST_URL_RE = _re.compile(
+            r"https?://(?:www\.)?(?:"
+            r"lu\.ma|luma\.com|"
+            r"eventbrite\.com|"
+            r"partiful\.com|"
+            r"posh\.vip|"
+            r"shotgun\.live|"
+            r"ra\.co|"
+            r"dice\.fm|"
+            r"tixr\.com|"
+            r"meetup\.com"
+            r")/[^\s\"'<>)]+",
+            _re.IGNORECASE,
+        )
+    return set(_HARVEST_URL_RE.findall(xml))
 
 
 def _host(url: str) -> str:
@@ -149,17 +187,19 @@ async def main(argv: list[str]) -> int:
 
     print(f"Audited {len(results)} URLs in {elapsed:.1f}s "
           f"(concurrency={args.concurrency})\n")
-    for cls in ("HEALTHY", "WARN", "STALE", "EMPTY", "ERROR"):
+    for cls in ("HEALTHY", "HARVEST", "WARN", "STALE", "EMPTY", "ERROR"):
         rows = by_class.get(cls, [])
         if not rows:
             continue
         print(f"=== {cls} ({len(rows)}) ===")
-        rows.sort(key=lambda r: -r["future"])
+        rows.sort(key=lambda r: -(r.get("future") or 0))
         for r in rows:
             host = _host(r["url"])
             path = (urlparse(r["url"]).path or "/")[:50]
             tail = f" — {r['err']}" if r.get("err") else ""
-            print(f"  yield={r['yield']:3d} future={r['future']:3d}  "
+            harvest = r.get("harvest")
+            harvest_str = f" harvest={harvest:3d}" if harvest is not None else ""
+            print(f"  yield={r['yield']:3d} future={r['future']:3d}{harvest_str}  "
                   f"{host:30s} {path:50s}{tail}")
         print()
     return 0

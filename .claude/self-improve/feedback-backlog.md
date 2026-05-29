@@ -214,6 +214,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-164 — audit_urls.py: HARVEST classification for substack feeds
+- created_at: 2026-05-29
+- source: agent-proposal (iter 123)
+- status: addressed (committed in iter 123)
+- body: Iter 117's classification flagged 4 substack feeds (onefinedaynyc, thedeli, nycforfree.substack, brokelyn) as STALE because direct event yield = 0 future. But those feeds **harvest event-platform URLs** (Lu.ma, Eventbrite, Partiful, etc.) from post bodies that the generic scraper picks up next run. A feed with 0 future events but 21 harvested URLs is still a net contributor.
+- fix: `audit_urls.py` now counts URL harvest per substack feed (regex-scan of feed XML for known event-platform hosts). New HARVEST classification for feeds with ≥5 harvested URLs but no future events. Tooltip column added to the per-URL output.
+- verified: onefinedaynyc → 0 future + 21 URLs → HARVEST (was STALE). theskint → 84 future + 23 URLs → HEALTHY. Substantially more informative.
+
 ### fb-163 — Following hero now also surfaces userAffinity events
 - created_at: 2026-05-29
 - source: agent-proposal (iter 122; UX-consistency fix)
