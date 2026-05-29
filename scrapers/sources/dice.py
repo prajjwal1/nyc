@@ -1,74 +1,144 @@
+"""DICE.fm browse-page scraper.
+
+Iter 101 audit: the JSON-LD path was extracting 0 events because DICE
+only ships site-metadata (Brand, WebSite) as JSON-LD. The actual events
+live in `__NEXT_DATA__.pageProps.events` — 30 events per browse-page
+fetch, with structured fields (`name`, `dates.event_start_date`,
+`venues[].name/address`, `images.landscape`, `perm_name`).
+"""
 import json
+import re
+
 from bs4 import BeautifulSoup
+from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
+
 
 URL = "https://dice.fm/browse?location=new-york"
 
 
 async def scrape() -> list[dict]:
-    events = []
+    events: list[dict] = []
     try:
         html = await fetch_text(URL)
-        soup = BeautifulSoup(html, "lxml")
+    except Exception as exc:
+        print(f"[dice] fetch failed: {exc}")
+        return events
 
-        # Accept Schema.org Event subtypes (iter 84). DICE tags shows with
-        # MusicEvent / ComedyEvent / TheaterEvent / Festival — strict
-        # `Event|MusicEvent` was dropping the rest.
-        from .generic import EVENT_TYPES
-
-        def _is_event(t) -> bool:
-            if isinstance(t, str):
-                return t in EVENT_TYPES
-            if isinstance(t, list):
-                return any(isinstance(x, str) and x in EVENT_TYPES for x in t)
-            return False
-
-        for script in soup.find_all("script", type="application/ld+json"):
+    # Primary: __NEXT_DATA__ event list
+    m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.DOTALL)
+    if m:
+        try:
+            data = json.loads(m.group(1))
+        except Exception as exc:
+            print(f"[dice] __NEXT_DATA__ parse failed: {exc}")
+            data = {}
+        raw_events = (
+            data.get("props", {}).get("pageProps", {}).get("events", []) or []
+        )
+        for raw in raw_events:
             try:
-                data = json.loads(script.string)
-                items = data if isinstance(data, list) else [data]
-                for item in items:
-                    if _is_event(item.get("@type")):
-                        ev = _from_ld(item)
-                        if ev:
-                            events.append(ev)
-            except (json.JSONDecodeError, Exception):
+                ev = _from_next_data(raw)
+            except Exception as exc:
+                print(f"[dice] parse error: {exc}")
                 continue
+            if ev:
+                events.append(ev)
+        print(f"[dice] Parsed {len(events)} events from __NEXT_DATA__")
+        if events:
+            return events
 
-        if not events:
-            for card in soup.select("[class*='EventCard'], [class*='event-card'], a[href*='/event/']"):
-                title_el = card.select_one("h3, h4, [class*='title'], [class*='name']")
-                date_el = card.select_one("[class*='date'], time")
+    # Fallback: legacy JSON-LD + DOM-card paths (kept defensive in case
+    # DICE swaps back to JSON-LD).
+    soup = BeautifulSoup(html, "lxml")
+    from .generic import EVENT_TYPES
 
-                if not title_el:
-                    continue
+    def _is_event(t) -> bool:
+        if isinstance(t, str):
+            return t in EVENT_TYPES
+        if isinstance(t, list):
+            return any(isinstance(x, str) and x in EVENT_TYPES for x in t)
+        return False
 
-                title = title_el.get_text(strip=True)
-                date_text = date_el.get_text(strip=True) if date_el else ""
-                event_date = parse_date(date_text) if date_text else None
-                if not event_date:
-                    continue
-
-                href = card.get("href", "") if card.name == "a" else ""
-                link_el = card.select_one("a[href]")
-                if not href and link_el:
-                    href = link_el.get("href", "")
-                if href and not href.startswith("http"):
-                    href = f"https://dice.fm{href}"
-
-                events.append(build_event(
-                    title=title,
-                    description="",
-                    event_date=event_date,
-                    start_time=parse_time(date_text),
-                    source="dice",
-                    source_url=href or URL,
-                    categories=["music"],
-                ))
-    except Exception as e:
-        print(f"[dice] Failed: {e}")
+    for script in soup.find_all("script", type="application/ld+json"):
+        try:
+            data = json.loads(script.string)
+            items = data if isinstance(data, list) else [data]
+            for item in items:
+                if _is_event(item.get("@type")):
+                    ev = _from_ld(item)
+                    if ev:
+                        events.append(ev)
+        except (json.JSONDecodeError, Exception):
+            continue
     return events
+
+
+def _from_next_data(raw: dict) -> dict | None:
+    name = (raw.get("name") or "").strip()
+    if not name:
+        return None
+    dates = raw.get("dates") or {}
+    start_iso = dates.get("event_start_date") or ""
+    if not start_iso:
+        return None
+    date_str, start_time = parse_iso_to_local(start_iso)
+    event_date = parse_date(date_str) if date_str else None
+    if not event_date:
+        return None
+
+    venues = raw.get("venues") or []
+    venue = venues[0] if isinstance(venues, list) and venues else {}
+    venue_name = ""
+    venue_addr = ""
+    lat = lng = None
+    if isinstance(venue, dict):
+        venue_name = (venue.get("name") or "").strip()
+        venue_addr = (venue.get("address") or "").strip()
+        loc = venue.get("location") or {}
+        if isinstance(loc, dict):
+            lat = loc.get("lat")
+            lng = loc.get("lng")
+
+    images = raw.get("images") or {}
+    image_url = None
+    if isinstance(images, dict):
+        # Preference: landscape > portrait > square
+        for key in ("landscape", "portrait", "square"):
+            v = images.get(key)
+            if isinstance(v, str) and v.startswith("http"):
+                image_url = v
+                break
+            if isinstance(v, dict):
+                u = v.get("url")
+                if isinstance(u, str) and u.startswith("http"):
+                    image_url = u
+                    break
+
+    perm = raw.get("perm_name") or ""
+    source_url = f"https://dice.fm/event/{perm}" if perm else URL
+
+    # about is a dict { description, highlights }; summary_lineup is a string.
+    about = raw.get("about")
+    if isinstance(about, dict):
+        summary = (about.get("description") or "").strip()
+    else:
+        summary = (about or raw.get("summary_lineup") or "").strip()
+
+    return build_event(
+        title=name[:300],
+        description=summary[:500],
+        event_date=event_date,
+        start_time=start_time,
+        location_name=venue_name or None,
+        address=venue_addr or None,
+        source="dice",
+        source_url=source_url,
+        image_url=image_url,
+        lat=lat if isinstance(lat, (int, float)) else None,
+        lng=lng if isinstance(lng, (int, float)) else None,
+        categories=["music"],
+    )
 
 
 def _from_ld(data: dict) -> dict | None:

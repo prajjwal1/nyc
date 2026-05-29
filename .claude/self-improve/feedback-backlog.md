@@ -202,6 +202,15 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-143 — dice.py rewritten for __NEXT_DATA__ (0 → 30 events)
+- created_at: 2026-05-29
+- source: agent-proposal (iter 101 audit)
+- status: addressed (committed in iter 101)
+- body: README marked dice as `✗ "URL changes. Try harder."`. Live probe: `dice.fm/browse?location=new-york` returns 625KB with 3 JSON-LD blocks (all site-metadata: Brand, WebSite) AND a `__NEXT_DATA__` script containing `pageProps.events` — 30 events with structured fields (name, dates.event_start_date, venues[].name/address/location, images.landscape, perm_name). The iter-84 `EVENT_TYPES` fix was reading from the wrong data shape.
+- fix: read events from `__NEXT_DATA__.props.pageProps.events`. Build full event with venue name + address + lat/lng + image URL + ticket URL (`dice.fm/event/<perm_name>`). Kept JSON-LD path as defensive fallback in case DICE flips schemes again. Quirk: `about` is `{description, highlights}` dict (not a string).
+- result: 30 events / 25 future surviving filters. Sample: "Horse Meat Disco NY in The Ruins", "T4T LUV NRG Pride: Eris Drew b2b Octo Octa", "Elsewhere Presents: Chanel Beads" — indie DJ + live music programming.
+- doc cleanup: KNOWLEDGE.md ✗ entries corrected for **dice** (`✅ __NEXT_DATA__`), **theskint** (`✅ RSS via substack`), **bookclubbar** (`✅ bookmanager API`). All 4 remaining `✗` rows in the source table are now resolved over iter 99-101.
+
 ### fb-142 — nycforfree.py rewritten for Squarespace eventlist (+126 events)
 - created_at: 2026-05-29
 - source: agent-proposal (iter 100 audit)

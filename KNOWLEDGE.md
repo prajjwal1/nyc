@@ -59,9 +59,9 @@ Three guiding principles:
 | **music_venues** | ⚠️      | Some 403 (Rough Trade). JSON-LD where available.   |
 | **museums**      | ⚠️      | Met blocks via Vercel Security Checkpoint. Others. |
 | **generic**      | ✅      | Universal JSON-LD/OG/iCal scraper.                 |
-| **theskint**     | ✗      | HTML scrape didn't work. Use IG @theskint instead. |
-| **bookclubbar**  | ✗      | React SPA, JS-required. Use IG @bookclubbar.       |
-| **dice**         | ✗      | URL changes. Try harder.                           |
+| **theskint**     | ✅      | RSS via `substack.py::FEEDS`. Iter 94 added roundup-vs-single-event detection (172 fragments → 106 cleaner extractions). |
+| **bookclubbar**  | ✅      | bookmanager API (`bookclubbar.py`). 34 events live, 33 future. Iter 93 added `[private event` hard-block. |
+| **dice**         | ✅      | __NEXT_DATA__ from `dice.fm/browse?location=new-york`. 30 events / 25 future surviving filters. Iter 101 rewrite (was reading JSON-LD which only has site-metadata). |
 | **nycforfree**   | ✅      | Squarespace eventlist on /events. 126 events / 83 future surviving filters. Free events by definition (curator), price="free" stamped. Use 90s timeout — page is ~2MB. (Restored iter 100.) |
 | **parks**        | ✅      | nycgovparks.org/events: 50 events, 22 surviving filters (yoga/dance/movies/theater in parks). Most yield is fitness + cultural programming. Kids events auto-blocked. (Re-verified iter 99.) |
 
