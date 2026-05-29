@@ -168,7 +168,7 @@ def main(events_path: str = "data/events.json", *, write_stats: bool = False, ha
         print(f"  [{e['score']}] {e['title'][:60]} | {e['source']} | {cats_s}")
 
     _print_ig_diagnostics(events)
-    _print_north_star_metrics(events)
+    north_star = _print_north_star_metrics(events)
 
     # Freshness
     last_updated = data.get("lastUpdated", "")
@@ -201,6 +201,7 @@ def main(events_path: str = "data/events.json", *, write_stats: bool = False, ha
             failures=failures,
             warnings=warnings,
             age_hours=age_hours,
+            north_star=north_star,
         )
 
     return 1 if (hard_fail and failures) else 0
@@ -344,28 +345,29 @@ def _print_ig_diagnostics(events: list) -> None:
         pass
 
 
-def _print_north_star_metrics(events: list) -> None:
+def _print_north_star_metrics(events: list) -> dict:
     """Print the three plan-defined North-Star metrics:
       1. Follow-graph coverage: % signal_accounts with yield > 0
       2. Topic coverage: each topic_counts >= 2 has >=1 event in feed
       3. High-conviction ratio: % events with userFollowing/userSaved/
          userAffinity firing — proxy for "would the user actually attend?"
 
-    Print-only; no failure thresholds. Lets each scrape log show the
-    deltas the self-improve loop is supposed to be moving.
+    Returns a dict so the caller can persist them into stats_history.jsonl
+    for trend tracking. Print-only side-effect; no failure thresholds.
     """
+    metrics: dict = {}
     print("\n--- NORTH STAR METRICS ---")
     data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
     profile_path = os.path.join(data_dir, "user_interest_profile.json")
     if not os.path.isfile(profile_path):
         print("(user_interest_profile.json not found — skipping)")
-        return
+        return metrics
     try:
         with open(profile_path) as f:
             profile = json.load(f)
     except Exception as exc:
         print(f"(profile read failed: {exc})")
-        return
+        return metrics
 
     # 1. Follow-graph coverage
     signals = profile.get("signal_accounts", []) or []
@@ -374,6 +376,8 @@ def _print_north_star_metrics(events: list) -> None:
         with_yield = sum(1 for a in signals if (ymap.get(a) or 0) > 0)
         pct = 100.0 * with_yield / len(signals)
         print(f"Follow-graph coverage: {with_yield}/{len(signals)} ({pct:.1f}%) signal_accounts producing events")
+        metrics["follow_graph_covered"] = with_yield
+        metrics["follow_graph_total"] = len(signals)
 
     # 2. Topic coverage — every topic with count >= 2 should appear in the feed.
     # Filter out (a) location topics (not actionable) and (b) "de-boost zone"
@@ -408,6 +412,10 @@ def _print_north_star_metrics(events: list) -> None:
         print(f"Topic coverage: {len(covered)}/{len(meaningful)} meaningful topics present")
         if missing:
             print(f"  missing: {', '.join(missing[:6])}")
+        metrics["topic_covered"] = len(covered)
+        metrics["topic_total"] = len(meaningful)
+        if missing:
+            metrics["topic_missing"] = missing
 
     # 3. High-conviction ratio
     if events:
@@ -417,9 +425,13 @@ def _print_north_star_metrics(events: list) -> None:
         )
         pct = 100.0 * hc / len(events)
         print(f"High-conviction ratio: {hc}/{len(events)} ({pct:.1f}%) events with follow/save/affinity boost")
+        metrics["high_conviction"] = hc
+        metrics["high_conviction_total"] = len(events)
+
+    return metrics
 
 
-def _append_stats(*, total, sources, cats, failures, warnings, age_hours):
+def _append_stats(*, total, sources, cats, failures, warnings, age_hours, north_star=None):
     """Append a one-line snapshot to scrapers/data/stats_history.jsonl.
 
     Useful for debugging regressions over time.
@@ -440,6 +452,8 @@ def _append_stats(*, total, sources, cats, failures, warnings, age_hours):
         "warnings": warnings,
         "age_hours": age_hours,
     }
+    if north_star:
+        record["north_star"] = north_star
     with open(path, "a") as f:
         f.write(json.dumps(record) + "\n")
 
