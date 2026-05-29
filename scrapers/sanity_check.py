@@ -125,6 +125,11 @@ def main(events_path: str = "data/events.json", *, write_stats: bool = False, ha
     for s, c in sorted(sources.items(), key=lambda x: -x[1]):
         print(f"  {s}: {c}")
 
+    # Source regression check: any source that produced >= 5 events on the
+    # previous run but produced 0 this run is likely silently broken.
+    # Uses stats_history.jsonl to find the most recent prior snapshot.
+    _print_source_regressions(sources)
+
     # Category breakdown
     cats = {}
     for e in events:
@@ -343,6 +348,53 @@ def _print_ig_diagnostics(events: list) -> None:
             print(f"\nIG session file MISSING at {IG_SESSION_FILE}")
     except Exception:
         pass
+
+
+def _print_source_regressions(sources: dict) -> None:
+    """Flag sources that previously yielded >= 5 events but now yield 0.
+
+    Reads the most recent prior stats_history.jsonl record and diffs against
+    `sources`. Print-only; surfaces silent breakage (e.g., a venue
+    changing markup) immediately in the run log instead of waiting for a
+    human to notice the empty section.
+    """
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+    path = os.path.join(data_dir, "stats_history.jsonl")
+    if not os.path.isfile(path):
+        return
+    try:
+        with open(path) as f:
+            lines = f.readlines()
+    except Exception:
+        return
+    # Find the most recent valid record different from this run.
+    prior = None
+    for line in reversed(lines):
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            rec = json.loads(line)
+        except Exception:
+            continue
+        prior_sources = rec.get("sources") or {}
+        # Skip records that aren't materially different (same timestamp run
+        # or empty). Heuristic: require at least one source with >= 5 events
+        # to consider it a meaningful prior baseline.
+        if any(c >= 5 for c in prior_sources.values()):
+            prior = prior_sources
+            break
+    if not prior:
+        return
+    regressions = [
+        (s, prior[s]) for s in prior
+        if prior[s] >= 5 and sources.get(s, 0) == 0
+    ]
+    if not regressions:
+        return
+    print(f"\n⚠ Source regressions ({len(regressions)} sources dropped to 0):")
+    for s, prev in sorted(regressions, key=lambda kv: -kv[1])[:8]:
+        print(f"  {s}: {prev} → 0")
 
 
 def _print_north_star_metrics(events: list) -> dict:
