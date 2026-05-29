@@ -56,12 +56,26 @@ GENERIC_URLS = [
     # returns 503 / Bad Gateway on the bare host. The direct events path
     # works: yields ~10 events including evening tours / After Hours.
     "https://www.green-wood.com/events",
-    # Iter 107: Eventbrite venue-search pages for House of Yes + Knockdown
-    # Center. Both venues sell shows through Eventbrite (no scrapable own-site
-    # data — HoY is Squarespace with /calendar showing only an EB cc link).
-    # Closes the sanity_check WARNING_CHECKS for both venues. 19 events each.
+    # Iter 107 + 108: Eventbrite venue-search pages for venues the user
+    # follows on IG. The `/d/ny--<borough>/<slug>/` pattern works for any
+    # NYC venue booking through Eventbrite — each yields 18-20 events.
+    # Bounded by SOURCE_VOLUME_CAPS["eventbrite"]=100 so adding more URLs
+    # raises pool quality without dominating the feed.
     "https://www.eventbrite.com/d/ny--brooklyn/house-of-yes/",
     "https://www.eventbrite.com/d/ny--brooklyn/knockdown-center/",
+    "https://www.eventbrite.com/d/ny--brooklyn/elsewhere/",
+    "https://www.eventbrite.com/d/ny--brooklyn/brooklyn-bowl/",
+    "https://www.eventbrite.com/d/ny--brooklyn/public-records/",
+    "https://www.eventbrite.com/d/ny--brooklyn/littlefield/",
+    "https://www.eventbrite.com/d/ny--manhattan/mercury-lounge/",
+    "https://www.eventbrite.com/d/ny--manhattan/rockwood-music-hall/",
+    "https://www.eventbrite.com/d/ny--manhattan/comedy-cellar/",
+    "https://www.eventbrite.com/d/ny--manhattan/caveat/",
+    "https://www.eventbrite.com/d/ny--manhattan/small-s-jazz-club/",
+    "https://www.eventbrite.com/d/ny--manhattan/village-vanguard/",
+    "https://www.eventbrite.com/d/ny--manhattan/blue-note/",
+    "https://www.eventbrite.com/d/ny--manhattan/smoke-jazz-club/",
+    "https://www.eventbrite.com/d/ny--queens/qed-astoria/",
     "https://www.theinvisibledog.org/upcoming-events",
     "https://www.openhousenewyork.org/calendar/",
     "https://hudsonyards.com/discover/events/",

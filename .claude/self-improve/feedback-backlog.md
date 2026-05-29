@@ -202,6 +202,17 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-150 — Backfill 13 more venues via Eventbrite venue-search
+- created_at: 2026-05-29
+- source: agent-proposal (iter 108; extends iter-107 pattern)
+- status: addressed (committed in iter 108)
+- body: Iter 107 verified the `eventbrite.com/d/ny--<borough>/<slug>/` pattern works for any NYC venue booking through Eventbrite. Batch-probed all venues in user's IG_ACCOUNTS: 14/14 yield 18-20 events each. Added 13 more (HoY + KDC already in from iter 107):
+  - Brooklyn: elsewhere, brooklyn-bowl, public-records, littlefield
+  - Manhattan: mercury-lounge, rockwood-music-hall, comedy-cellar, caveat, small-s-jazz-club, village-vanguard, blue-note, smoke-jazz-club
+  - Queens: qed-astoria
+- bounded: SOURCE_VOLUME_CAPS["eventbrite"]=100 keeps the top-100 picks bubbling up from the now ~500-event pool. Same feed size, higher venue diversity, more on-target with user's IG follow graph.
+- expected impact on next scrape: every venue the user follows has a dedicated event stream. Music/jazz/comedy depth lifts substantially.
+
 ### fb-149 — House of Yes + Knockdown Center via Eventbrite venue-search
 - created_at: 2026-05-29
 - source: agent-proposal (iter 107)
