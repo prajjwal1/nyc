@@ -451,6 +451,13 @@ CATEGORY_KEYWORDS = {
         "let's date", "date my", "first date",
         "new in town", "meet new people", "make new friends",
         "20s & 30s mixer", "20s and 30s", "in your 20s", "in your 30s",
+        # iter 174: bare '20s & 30s' (so 'NYC 20s & 30s Hangout' counts)
+        # plus 'lock and key' (iconic match-the-keys singles format) and
+        # 'bored of dating apps' (a curated NYC singles event series).
+        "20s & 30s", "lock and key", "bored of dating apps",
+        # Pattern catches: 'Slow Dating', 'Conscious Dating', 'Mindful Dating' —
+        # the modern alternatives to speed dating.
+        "slow dating", "conscious dating", "mindful dating",
     ],
     "film": [
         "film screening", "movie screening", "premiere screening",
