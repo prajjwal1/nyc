@@ -192,6 +192,7 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
     from collections import defaultdict
     affinity = _load_user_affinity_set()
     quality = _load_account_quality()
+    excluded = _load_user_excluded_account_set()
     today = _today_iso()
 
     # Pass 1: per-account in-feed event count
@@ -204,6 +205,8 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
     for e in events:
         acct = (e.get("instagramAccount") or "").lower()
         if not acct:
+            continue
+        if acct in excluded:
             continue
         if (e.get("date") or "") < today:
             continue
@@ -225,6 +228,8 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
     for acct, info in quality.items():
         if acct in per_acct:
             continue  # already counted
+        if acct.lower() in excluded:
+            continue
         posts = info.get("posts_scraped", 0)
         if posts < 5:
             continue
@@ -297,6 +302,26 @@ def _load_user_affinity_set() -> set:
             d = json.load(f)
         accts = d.get("accounts", []) if isinstance(d, dict) else d
         return {str(a).lower() for a in accts}
+    except Exception:
+        return set()
+
+
+def _load_user_excluded_account_set() -> set:
+    """User-excluded accounts (fb-106 personal accounts, HoY/KDC, etc.).
+    Used to keep excluded handles out of the topAccounts widget so the UI
+    'Top Accounts' surface doesn't recommend accounts the user opted out of.
+    """
+    import json
+    path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "data", "user_excluded_sources.json",
+    )
+    if not os.path.isfile(path):
+        return set()
+    try:
+        with open(path) as f:
+            d = json.load(f)
+        return {k.lower() for k in (d.get("accounts") or {}).keys()}
     except Exception:
         return set()
 
