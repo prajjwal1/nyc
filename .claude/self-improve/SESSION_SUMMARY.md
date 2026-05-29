@@ -107,6 +107,14 @@ The "ship, then verify" loop caught my own mistakes:
 - iter 125: SOURCE_LABELS for new sources
 - iter 126: SOURCE_VOLUME_CAPS for nycforfree + mcnallyjackson (40, 30)
 - iter 127: workflow git-add fix — `image_hashes.json` + `user_interest_profile.json` were generated but not committed (state was wiped each CI run)
+- iter 128: **shipped 3 untracked scrapers (`brooklyncomedy.py`, `centerforfiction.py`, `powerhousearena.py`) that `run_all.py` has been importing since iter 106**. They existed locally but were never `git add`ed. Merging this branch *before* iter 128 would have crashed CI at module import. Smoke-tested: brooklyncomedy 119 events, powerhousearena 11, centerforfiction 0 (403, graceful)
+- iter 129-130: sanity_check de-noised — dropped HoY/KDC phantom warnings (user-excluded), filtered excluded accounts from "Silenced high-yield" diagnostic
+- iter 131: **fb-106 hard-enforce** — 4 personal IG accts (leahcanel, alvinzx, j_palmer_7, sophiareed5) added to `user_excluded_sources.json::accounts`. `signal_accounts` went 54 → 50.
+- iter 132: normalize() re-derives categories every run. Stops stale categorizations (e.g. book clubs tagged "fitness" from cross-promo blurbs) from lingering. Local: fitness false-positives 13 → 7.
+- iter 133: source-topic hints for brooklyncomedy/powerhousearena/centerforfiction (default category fallback for cryptic titles)
+- iter 134: `normalize._enrich_provenance_from_url` respects excluded accounts — closes loophole where Eventbrite organizer="Leah Canel" could still bestow userFollowing boost
+- iter 135-136: **North-Star metrics in `sanity_check`** every run logs follow-graph coverage / topic coverage / high-conviction ratio. De-boost topics (ai/tech/startup/founder) excluded from coverage counting.
+- iter 137: `instagram._FOLLOWING_ACCOUNTS_CACHE` filters excluded — completes the fb-106 chain. Personal accounts no longer get tier-1 protected priority in the hourly priority cron, and won't receive `userFollowing=True` boost on emitted posts.
 
 ### Knowledge consolidation
 
