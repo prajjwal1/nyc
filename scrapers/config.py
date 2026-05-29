@@ -340,4 +340,12 @@ SOURCE_VOLUME_CAPS = {
     # generous, but bounds it so they don't crowd out other content.
     "nycforfree": 40,
     "mcnallyjackson": 30,
+    # Iter 155: brooklyncomedy yields 119 raw events (iter 106 Squarespace
+    # scraper). Cap at 20 — Brooklyn Comedy Collective programs an
+    # enormous indie comedy schedule but the user values diversity over
+    # one venue's volume.
+    "brooklyncomedy": 20,
+    # iter 110 venue scrapers — low-volume but cap defensively.
+    "powerhousearena": 15,
+    "centerforfiction": 15,
 }
