@@ -22,16 +22,10 @@ from pathlib import Path
 
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "dead_accounts.json"
 
-# Same markers as `_TRANSIENT_FAILURE_MARKERS` in instagram.py — keep in sync.
-TRANSIENT_MARKERS = (
-    "feedback_required",
-    "please wait a few minutes",
-    "checkpoint_required",
-    "login_required",
-    "429",
-    "rate limit",
-    "rate-limited",
-)
+# Re-export instagram._TRANSIENT_FAILURE_MARKERS as the single source of
+# truth. The previous duplicated tuple drifted easily; importing keeps
+# both definitions in lockstep.
+from scrapers.sources.instagram import _TRANSIENT_FAILURE_MARKERS as TRANSIENT_MARKERS  # noqa: E402
 
 
 def _is_transient_kill(info: dict) -> bool:
