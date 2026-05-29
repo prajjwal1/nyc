@@ -239,6 +239,10 @@ CATEGORY_KEYWORDS = {
         "disco",  # iter 170: genre word; word-boundary check applies (5 chars)
                   # so 'Discord', 'discomfort' won't match. Catches 'Horse Meat
                   # Disco', 'Disco Inferno', 'Disco Night' from DICE/Songkick.
+        # iter 171: more genres found missing in an audit of Songkick/DICE
+        # titles. All length-5+ so word-boundary applies — no 'metalcraft'
+        # / 'reggae'-in-other-string false positives.
+        "blues", "reggae", "metal ", "punk ", "karaoke",
         "music venue", "live show", "vinyl night", "listening party",
         "house music", "techno", "indie band", "songwriter", "open mic",
         "music festival", "live performance", " performance", " set ",
