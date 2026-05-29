@@ -202,6 +202,17 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-162 — Prune 7 more EMPTYs (bookstores + niche venues, JS-rendered)
+- created_at: 2026-05-29
+- source: agent-proposal (iter 120)
+- status: addressed (committed in iter 120)
+- body: Continued audit_urls cleanup. Removed 7 EMPTY URLs:
+  - `strandbooks.com/events`, `greenlightbookstore.com/event`, `booksaremagic.net/event` — JS-rendered bookstore own-sites
+  - `bookclubbar.com/events` — covered by `bookclubbar.py` (bookmanager API)
+  - `caveat.nyc/events` — covered by Eventbrite venue-search `/d/ny--manhattan/caveat/` (verified iter 113: 20/20 venue matches)
+  - `roughtradenyc.com/events/`, `publicrecords.nyc/calendar` — JS-rendered, no working alternative
+- Iter 120 saves 7 wasted fetches per scrape. Cumulative cleanup totals over session: 38 dead URLs removed.
+
 ### fb-161 — Update README "tried and blocked" with current state
 - created_at: 2026-05-29
 - source: agent-proposal (iter 119)

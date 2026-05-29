@@ -293,15 +293,15 @@ GENERIC_URLS = [
     "https://www.lincolncenter.org/lincoln-center-at-home/calendar",
     "https://www.apollotheater.org/events/",
     "https://carnegiehall.org/Calendar",
-    # Bookstores beyond McNally / Liz's — high quality literary events
-    "https://www.strandbooks.com/events",
-    "https://www.greenlightbookstore.com/event",
-    "https://www.booksaremagic.net/event",
-    "https://www.bookclubbar.com/events",
-    "https://www.caveat.nyc/events",
-    # Record-store / niche music venues with public events
-    "https://www.roughtradenyc.com/events/",
-    "https://www.publicrecords.nyc/calendar",
+    # (Removed iter 120 per audit_urls.py EMPTY findings:
+    #  - strandbooks.com/events, greenlightbookstore.com/event,
+    #    booksaremagic.net/event, bookclubbar.com/events,
+    #    caveat.nyc/events: all JS-rendered own-site bookstore pages.
+    #    bookclubbar covered by bookclubbar.py (bookmanager API).
+    #    caveat covered by Eventbrite venue-search /d/ny--manhattan/caveat/
+    #    (verified iter 113: 20/20 venue matches).
+    #  - roughtradenyc.com/events/, publicrecords.nyc/calendar: same shape.
+    #    publicrecords.nyc has no working alternative; roughtradenyc same.)
 ]
 
 # JSON-LD event schema types we accept
