@@ -301,6 +301,13 @@ CATEGORY_KEYWORDS = {
         "birding", "bird walk", "nature walk", "tree climbing",
         "kayak", "rowing", "sailing", "fishing",
         "trail", "hiking",
+        # iter 175: -ing forms (word-boundary on 'walk' / 'hike' don't
+        # match 'walking' / 'hiking' in compound forms), plus common outdoor
+        # event types missing from the original list. Kept the leading
+        # space on 'walking ' so 'Sleepwalking' doesn't false-positive
+        # (substring match needs the boundary).
+        " walking", " biking", "bike tour", "walking tour",
+        "camping", "bouldering", "climbing",
     ],
     "food": [
         "food festival", "dinner party", "tasting menu", "tasting", "culinary",
