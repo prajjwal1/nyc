@@ -67,10 +67,22 @@ Build on top of these principles. Don't break them.
 - **Resident Advisor (ra.co)** — 403s
 - **Time Out NY** — 404s on most calendar URLs
 - **Tixr** — 403s
-- **DICE.fm city pages** — 404s (only individual event URLs work)
 - **Twitter/X via Nitter** — never tried (user rejected probe; instances unreliable)
 - **Discord** — too complex to scrape public servers without sustained engineering
-- **Most NYC venue calendars** — McKittrick, Knockdown Center, House of Yes, Output, Brooklyn Steel, Webster Hall, etc. — 403/404 or no JSON-LD. Lu.ma category pages fill the gap.
+- **Most NYC venue own-sites** — JS-rendered with no extractable structure (Met Museum, Brooklyn Museum, MoMA, Carnegie Hall, Lincoln Center, BAM, Apollo, etc.). The iter-98 audit confirmed these systematically. Per-venue alternatives that DO work documented below.
+
+### Sources that turned out to work (formerly thought blocked)
+
+- **DICE.fm browse page** — `dice.fm/browse?location=new-york` ships events in `__NEXT_DATA__.props.pageProps.events` (Iter 101: ~25 future events). The JSON-LD path only has site-metadata; never look there.
+- **Reddit** — `.json` API now 403s (cracked down 2026); `.rss` Atom fallback yields a few URLs (Iter 97). Full restore needs OAuth/PRAW.
+- **Atom feeds (eaterny etc.)** — Iter 96 added Atom support alongside RSS in `substack._parse_feed`.
+- **Eventbrite venue-search** — `eventbrite.com/d/ny--<borough>/<slug>/` works for venues with **unique** slugs (`elsewhere`, `littlefield`, `caveat`, `pioneer-works` → 17-20/20). Generic slugs (`blue-note`, `brooklyn-bowl`, `comedy-cellar`) substring-match across the whole NYC corpus → 0 venue events. Iter 113 documented the trap; iter 107/108/110 had to roll back ~11 false-positive URLs.
+- **Squarespace eventlist sites** — `article.eventlist-event` markup with `a.eventlist-title-link` + `time.event-time-24hr-start[datetime]`. Pattern works for: brooklyncomedycollective, nycforfree.co, mcnallyjackson, lizsbookbar/bookclubbar (via bookmanager API).
+- **Squarespace month-paginated calendars** — `/calendar/YYYY-MM` (NYCC + East Ville Comedy) or `/events/YYYY/MM` (mcnallyjackson). Iter 91/102 added `_dynamic_calendar_urls()` per source for next-3-months coverage.
+
+### URL audit tooling
+
+- `scrapers/maintenance/audit_urls.py` (iter 115) — probes every URL in `GENERIC_URLS` + `substack.FEEDS`, classifies HEALTHY/WARN/STALE/EMPTY/ERROR. Run it before adding new URLs or as part of a routine cleanup pass.
 
 ### Source extraction strategies (in `generic.py`)
 

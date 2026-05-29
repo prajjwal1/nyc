@@ -202,6 +202,16 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-161 — Update README "tried and blocked" with current state
+- created_at: 2026-05-29
+- source: agent-proposal (iter 119)
+- status: addressed (committed in iter 119)
+- body: README §64 had stale claims after the audit thread:
+  - "DICE.fm city pages — 404s (only individual event URLs work)" — wrong as of iter 101 (`__NEXT_DATA__` path yields 25 events).
+  - Missing patterns we DID find that work (Atom feeds, Squarespace eventlist, Squarespace month-pagination, Eventbrite venue-search with unique slugs).
+- new section "Sources that turned out to work" documents the recovered patterns + the cautionary cases (iter 113's venue-search false-positive).
+- new section "URL audit tooling" points future agents at `audit_urls.py` so they can re-run the audit before adding URLs.
+
 ### fb-160 — Prune 8 confirmed-redundant EMPTY URLs
 - created_at: 2026-05-29
 - source: agent-proposal (iter 118; continues iter-116 cleanup)
