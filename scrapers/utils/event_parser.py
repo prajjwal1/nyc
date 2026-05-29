@@ -216,6 +216,11 @@ CATEGORY_KEYWORDS = {
         # Pattern "by <author>" + literary verb in same title
         " by hannah arendt", " by james mcb", " by tom perrotta",
         " by joe west", " by elsie silver",
+        # iter 173: common book-event phrasings missing from the list above.
+        # Audit found 'Book Fair', 'Author Signing Event', 'Reading Group:
+        # Toni Morrison', 'Indie Press Showcase' all falling to ['other'].
+        "book fair", "author signing", "reading group", "indie press",
+        "books signing",  # variant
     ],
     "art": [
         "art opening", "gallery", "exhibition", "museum", "painting", "sculpture",
