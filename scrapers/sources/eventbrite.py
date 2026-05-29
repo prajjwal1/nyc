@@ -23,6 +23,7 @@ _SUPPORTED_INTEREST_TOPICS = {
     "yoga", "run", "book", "comedy", "wine", "park", "art",
     "music", "food", "dance", "running", "fitness", "literary",
     "queer", "social", "poetry", "pottery", "jazz", "vinyl",
+    "read",        # iter 145: maps to books slug
 }
 
 # Special-case topic → eventbrite slug mapping where the literal topic
@@ -31,6 +32,7 @@ _TOPIC_URL_SLUG = {
     "run": "running",        # user's profile has "run", eventbrite slug is "running"
     "running": "running",
     "book": "books",
+    "read": "books",         # iter 145: same target as 'book'
     "park": "outdoor",
     "literary": "books",
     "vinyl": "music",
