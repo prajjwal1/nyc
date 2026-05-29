@@ -76,6 +76,12 @@ GENERIC_URLS = [
     "https://www.eventbrite.com/d/ny--manhattan/blue-note/",
     "https://www.eventbrite.com/d/ny--manhattan/smoke-jazz-club/",
     "https://www.eventbrite.com/d/ny--queens/qed-astoria/",
+    # Iter 110: user_curated_sources.json hosts not yet covered. Pioneer
+    # Works (Red Hook arts/sci nonprofit) + Murmrr (Crown/Prospect Heights
+    # venue). Both have JS-rendered own sites; Eventbrite venue-search
+    # works. 20 + 19 events.
+    "https://www.eventbrite.com/d/ny--brooklyn/pioneer-works/",
+    "https://www.eventbrite.com/d/ny--brooklyn/murmrr/",
     "https://www.theinvisibledog.org/upcoming-events",
     "https://www.openhousenewyork.org/calendar/",
     "https://hudsonyards.com/discover/events/",

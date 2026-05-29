@@ -202,6 +202,16 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-152 — Pioneer Works + Murmrr from user_curated_sources
+- created_at: 2026-05-29
+- source: agent-proposal (iter 110; cross-checked `scrapers/data/user_curated_sources.json`)
+- status: addressed (committed in iter 110)
+- body: Inspected `user_curated_sources.json` — found 16 hosts the user explicitly curated. 14 are covered through various paths; 2 weren't: **pioneerworks** (Red Hook arts/sci nonprofit per the user's note: "talks, readings, music") and **murmrr** (Crown Heights/Prospect Heights venue: "author talks + indie music"). Both have JS-rendered own sites; both yield 19-20 events via the iter-108 Eventbrite venue-search pattern.
+- fix: 2 new URLs in GENERIC_URLS. Sample:
+  - Pioneer Works: "Supper Club by Dacha 46", "Second Sundays: June 2026"
+  - Murmrr: "Mad East: Muze, Xena & Happy"
+- the `user_curated_sources.json` file is now ≥ 99% covered.
+
 ### fb-151 — Extend enrichment to event.location.name (venue ⇒ follow match)
 - created_at: 2026-05-29
 - source: agent-proposal (iter 109; followed iter 107-108 thread)
