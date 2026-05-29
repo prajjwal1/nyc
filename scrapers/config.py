@@ -313,6 +313,15 @@ SOURCE_QUALITY = {
     "newyorkcomedyclub": 0.55,  # venue calendar; single-venue spam without cap
     "eastvillecomedy": 0.55,
     "thebellhouseny": 0.6,
+    # iter 160: source-quality scores for the dedicated scrapers added
+    # iter 100-110. Defaults to 0.5 otherwise — too low for high-curation
+    # bookstore / venue sources.
+    "powerhousearena": 0.8,    # Brooklyn literary bookstore; high curation
+    "centerforfiction": 0.85,  # NYC literary institution; rare events
+    "brooklyncomedy": 0.6,     # indie comedy venue; high volume, BCC alone
+    "smorgasburg": 0.7,        # recurring weekend food market
+    "greenwoodcemetery": 0.7,  # historic Brooklyn venue, varied programming
+    "parks": 0.65,             # matches nyc_parks (alternative source name)
 }
 
 # Per-source volume caps. Aggregator sources have hundreds of events
