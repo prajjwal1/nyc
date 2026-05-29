@@ -301,6 +301,13 @@ CATEGORY_KEYWORDS = {
         "drag queen", "drag show", "drag bingo", "drag brunch",
         "queer", "pride", "lgbtq", "gay night", "lesbian night",
         "after hours", "afters", "all night", "all-nighter",
+        # iter 177: bare 'bash' (4 chars, word-boundary), 'funday' (6 chars
+        # substring). 'Birthday Bash' and 'Sunday Funday' are iconic NYC
+        # social-event phrasings that the existing 'party'-based list
+        # missed. 'bashful' / 'splash' don't word-boundary-match 'bash';
+        # 'Sundayfunday' substrings to 'funday' which is correct (still
+        # a party). Tested FP-free.
+        "bash", "funday",
     ],
     "outdoors": [
         "park", "outdoor", "garden", "hike", "walk", "picnic", "rooftop",
