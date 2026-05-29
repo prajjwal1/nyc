@@ -1600,25 +1600,9 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
         if cleaned and cleaned != t:
             ev["title"] = cleaned
 
-    # Re-derive categories on every run. Stale categories from older
-    # categorizer versions (e.g. iter 82's bare "premiere" → movies bug,
-    # or cross-promo descriptions falsely matching "run club" → fitness on
-    # a book club event) linger in cached events otherwise. The current
-    # categorizer is the source of truth.
-    from .utils.event_parser import infer_categories as _infer_categories
-    for ev in events:
-        # Prefer `account` (set by iter 1 P2 mirror) but fall back to
-        # `instagramAccount` for events emitted by older scraper versions
-        # — the field used by the IG-handle topic-hint path.
-        ig_acct = ev.get("account") or ev.get("instagramAccount") or ""
-        new_cats = _infer_categories(
-            ev.get("title") or "",
-            ev.get("description") or "",
-            ig_account=ig_acct,
-            source=ev.get("source") or "",
-        )
-        if new_cats:
-            ev["categories"] = new_cats
+    # Re-categorize moved DOWN past _enrich_provenance_from_url so the
+    # IG-handle topic-hint fallback can use the enriched `account` field
+    # (set when a non-IG event's URL/organizer/location matches a follow).
 
     # Preserve firstSeenAt across runs. Three layers, most specific first:
     #   1. If the event already carries firstSeenAt (e.g. an ad-hoc re-run
@@ -1683,6 +1667,27 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
         print(f"[normalize] interest_profile rebuild failed: {exc}")
 
     _enrich_provenance_from_url(events)
+
+    # Re-derive categories on every run. Stale categories from older
+    # categorizer versions (e.g. iter 82's bare "premiere" → movies bug,
+    # or cross-promo descriptions falsely matching "run club" → fitness on
+    # a book club event) linger in cached events otherwise. The current
+    # categorizer is the source of truth. Runs AFTER provenance enrichment
+    # so the IG-handle topic-hint fallback can use the enriched `account`.
+    from .utils.event_parser import infer_categories as _infer_categories
+    for ev in events:
+        # Prefer `account` (set by iter 1 P2 mirror, or by enrichment) but
+        # fall back to `instagramAccount` for events emitted by older
+        # scraper versions — the field used by the IG-handle topic path.
+        ig_acct = ev.get("account") or ev.get("instagramAccount") or ""
+        new_cats = _infer_categories(
+            ev.get("title") or "",
+            ev.get("description") or "",
+            ig_account=ig_acct,
+            source=ev.get("source") or "",
+        )
+        if new_cats:
+            ev["categories"] = new_cats
 
     events = rank_events(events)
 
