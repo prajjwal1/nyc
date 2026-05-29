@@ -202,6 +202,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-145 — Green-Wood Cemetery URL update (greenwoodcemetery.org → green-wood.com)
+- created_at: 2026-05-29
+- source: agent-proposal (iter 103 audit)
+- status: addressed (committed in iter 103)
+- body: `https://greenwoodcemetery.org/events/` (in GENERIC_URLS) redirects to green-wood.com which 503s on bare host. The direct path `https://www.green-wood.com/events` works and yields 10 events (Green-Wood After Hours evening tours through June+).
+- bonus negative finding: bookmanager API helper (powers bookclubbar + lizsbookbar) doesn't need pagination — already returns multi-month data (May through September for bookclubbar). No fix needed there.
+
 ### fb-144 — mcnallyjackson month-pagination (3 → 44 future events)
 - created_at: 2026-05-29
 - source: agent-proposal (iter 102 audit)

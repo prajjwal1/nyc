@@ -52,7 +52,10 @@ GENERIC_URLS = [
     "https://lpr.com/calendar/",
     "https://elsewherebrooklyn.com/listings",
     "https://www.bowerypoetry.com/events",
-    "https://greenwoodcemetery.org/events/",
+    # Iter 103 audit: greenwoodcemetery.org redirects to green-wood.com which
+    # returns 503 / Bad Gateway on the bare host. The direct events path
+    # works: yields ~10 events including evening tours / After Hours.
+    "https://www.green-wood.com/events",
     "https://www.theinvisibledog.org/upcoming-events",
     "https://www.openhousenewyork.org/calendar/",
     "https://hudsonyards.com/discover/events/",
