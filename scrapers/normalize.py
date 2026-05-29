@@ -1558,12 +1558,10 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # book titles as the event title.
     events = _prefix_book_club_lists(events)
 
-    # Strip the "outdoors" tag from events whose only nature signal is an
-    # indoor-arena name (Madison Square Garden, Barclays Center). This
-    # repairs already-cached categories — new scrapes get this filtered
-    # at infer_categories time. Keeps the category facet honest so users
-    # browsing "outdoors" don't get arena concerts.
-    _strip_outdoors_indoor_arena(events)
+    # _strip_outdoors_indoor_arena moved BELOW re-categorize (iter 166):
+    # iter 132's re-derive pass overwrites the cats list, undoing the
+    # strip. Running it after re-categorize keeps the location.name-based
+    # check honest (the categorizer's own check only scans title+desc).
 
     # Re-derive missing neighborhoods from venue name / re-run address
     # inference. Bookmanager-powered scrapers (lizsbookbar, bookclubbar)
@@ -1670,6 +1668,13 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
         )
         if new_cats:
             ev["categories"] = new_cats
+
+    # Strip the "outdoors" tag from events whose only nature signal is an
+    # indoor-arena name (Madison Square Garden, Barclays Center) — the
+    # categorizer's own outdoor check only scans title+desc, so an event
+    # at MSG that title-mentions 'garden' but doesn't mention 'indoor'
+    # still gets tagged outdoors. This pass scans location.name too.
+    _strip_outdoors_indoor_arena(events)
 
     events = rank_events(events)
 
