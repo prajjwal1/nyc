@@ -321,7 +321,8 @@ SOURCE_QUALITY = {
     "brooklyncomedy": 0.6,     # indie comedy venue; high volume, BCC alone
     "smorgasburg": 0.7,        # recurring weekend food market
     "greenwoodcemetery": 0.7,  # historic Brooklyn venue, varied programming
-    "parks": 0.65,             # matches nyc_parks (alternative source name)
+    # (parks.py emits source="nyc_parks" — already covered above; the
+    # scraper-name "parks" in run_all is only used for logging.)
 }
 
 # Per-source volume caps. Aggregator sources have hundreds of events
