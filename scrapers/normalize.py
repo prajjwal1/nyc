@@ -1570,6 +1570,22 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
         if cleaned and cleaned != t:
             ev["title"] = cleaned
 
+    # Re-derive categories on every run. Stale categories from older
+    # categorizer versions (e.g. iter 82's bare "premiere" → movies bug,
+    # or cross-promo descriptions falsely matching "run club" → fitness on
+    # a book club event) linger in cached events otherwise. The current
+    # categorizer is the source of truth.
+    from .utils.event_parser import infer_categories as _infer_categories
+    for ev in events:
+        new_cats = _infer_categories(
+            ev.get("title") or "",
+            ev.get("description") or "",
+            ig_account=ev.get("account") or "",
+            source=ev.get("source") or "",
+        )
+        if new_cats:
+            ev["categories"] = new_cats
+
     # Preserve firstSeenAt across runs. Three layers, most specific first:
     #   1. If the event already carries firstSeenAt (e.g. an ad-hoc re-run
     #      of normalize on an already-processed feed), keep it as-is —
