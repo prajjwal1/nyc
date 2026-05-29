@@ -49,25 +49,43 @@ _MIN_FRESH_REFETCH = 3
 
 
 def _load_following_accounts() -> set[str]:
-    """Accounts the user directly follows (via discover.py harvest_following_list)."""
+    """Accounts the user directly follows (via discover.py harvest_following_list).
+
+    Excludes any account in user_excluded_sources.json::accounts so that
+    personal accounts (fb-106) and user-rejected venues (HoY/KDC) don't
+    inherit tier-1 priority and don't receive the userFollowing boost on
+    any events emitted from them.
+    """
     import json, os
-    path = os.path.join(
+    data_dir = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
         "data",
-        "discovered_accounts.json",
     )
+    path = os.path.join(data_dir, "discovered_accounts.json")
     if not os.path.isfile(path):
         return set()
     try:
         with open(path) as f:
             d = json.load(f)
-        return {
+        follows = {
             a["username"].lower()
             for a in d.get("accounts", [])
             if isinstance(a, dict) and a.get("discovered_via") == "user_following"
         }
     except Exception:
         return set()
+    # Subtract excluded accounts. Best-effort: if the file is missing or
+    # malformed we still return the raw follow set.
+    excluded_path = os.path.join(data_dir, "user_excluded_sources.json")
+    if os.path.isfile(excluded_path):
+        try:
+            with open(excluded_path) as f:
+                excl = json.load(f)
+            excluded = {k.lower() for k in (excl.get("accounts") or {}).keys()}
+            follows -= excluded
+        except Exception:
+            pass
+    return follows
 
 
 def scrape_saved_only() -> list[dict]:
