@@ -335,7 +335,7 @@ def _print_ig_diagnostics(events: list) -> None:
             if age_days >= 28:
                 flag = " ⛔ CRITICAL — refresh now (run: instaloader --login <username>)"
             elif age_days >= 25:
-                flag = " ⚠ STALE — refresh soon"
+                flag = " ⚠ STALE — refresh soon (instaloader --login <username>; then update IG_SESSION_B64 secret)"
             else:
                 flag = ""
             print(f"\nIG session age: {age_days:.1f} days{flag}")
