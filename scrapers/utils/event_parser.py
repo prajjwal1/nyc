@@ -349,6 +349,9 @@ CATEGORY_KEYWORDS = {
         "settlers of catan", "game social", "bingo", "card game",
         "the jewish dating game", "backgmmon",  # common misspelling
         "game show", "pub quiz", "quiz night",
+        # iter 178: 'Catan Night' / 'Boardgame Bar' missed because only
+        # 'board game' (with space) and 'settlers of catan' were listed.
+        "catan", "boardgame",
     ],
     "theater": [
         # NB: bare "theater" / "theatre" are too noisy — Beacon Theatre,
@@ -400,6 +403,12 @@ CATEGORY_KEYWORDS = {
         "swing dance", "ballroom", "tango social",
         "salsa festival", "salsa social", "bachata", "kizomba",
         "vogue ", "ballet ", "dance battle",
+        # iter 178: 'Ecstatic Dance' (somatic / wellness-y dance event,
+        # popular in NYC), 'Contemporary Dance Show', 'Hip Hop Class' all
+        # missed before. Bare 'ecstatic dance' / 'contemporary dance'
+        # catch the common shapes.
+        "ecstatic dance", "contemporary dance", "modern dance",
+        "hip hop class", "hip-hop class",
     ],
     "design": [
         "design week", "design fair", "design show", "icff",
@@ -434,6 +443,10 @@ CATEGORY_KEYWORDS = {
         " runs ", " run @", "saturday runs", "sunday runs",
         "half marathon", " 5k!", "yoga class", "yoga flow",
         "boxing class", "spin class", "cycle class",
+        # iter 178: bare fitness modalities. All length-4+ substring or
+        # word-boundary safe. 'Pilates Class' / 'CrossFit NYC' / 'HIIT
+        # Workout' / 'Boot Camp' all fell to ['other'] before.
+        "pilates", "crossfit", "hiit", "boot camp", "bootcamp",
     ],
     "movies": [
         "movie", "film screening", "movie screening", "outdoor movie",
