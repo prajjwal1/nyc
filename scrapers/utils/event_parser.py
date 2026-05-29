@@ -341,6 +341,10 @@ CATEGORY_KEYWORDS = {
         "ny theatre workshop", "joe's pub", "performance art",
     ],
     "comedy": [
+        # iter 172: bare 'comedy' substring (6 chars). 'Comedy Open Mic' /
+        # 'Dark Comedy Showcase' missed when only specific phrases were
+        # listed. 'comedic' / 'comed' don't substring-match (different chars).
+        "comedy",
         "comedy show", "improv", "stand-up", "standup", "open mic comedy",
         "comedy night", "sketch show", "comedy club", "comedy cellar",
         "comedy lottery", "comedy competition", "comedy at ", "comedy hour",
