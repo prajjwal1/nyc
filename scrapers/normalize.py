@@ -1052,10 +1052,34 @@ def _handle_candidates(handle: str) -> list[str]:
     return [v for v in out if v]
 
 
+def _load_user_excluded_accounts() -> set[str]:
+    """Excluded handles (fb-106 personal accounts, user-rejected clubs, etc).
+    These must not receive the userFollowing boost even if the user follows
+    them on IG."""
+    import json as _json
+    import os as _os
+    path = _os.path.join(
+        _os.path.dirname(_os.path.abspath(__file__)),
+        "data",
+        "user_excluded_sources.json",
+    )
+    if not _os.path.isfile(path):
+        return set()
+    try:
+        with open(path) as f:
+            data = _json.load(f)
+        return {k.lower() for k in (data.get("accounts") or {}).keys()}
+    except Exception:
+        return set()
+
+
 def _user_following_normalized() -> set[str]:
-    """User following set extended with alphanumeric-only normalized
-    variants so handles like `reading_rhythms` match `readingrhythms`."""
-    base = _load_user_following_set()
+    """User following set (minus excluded handles) extended with
+    alphanumeric-only normalized variants so handles like `reading_rhythms`
+    match `readingrhythms`. Excluded handles (fb-106 personal accounts,
+    user-rejected clubs) are dropped here so the URL/organizer/location
+    enrichment paths won't tag events with userFollowing for them."""
+    base = _load_user_following_set() - _load_user_excluded_accounts()
     out = set(base)
     for h in base:
         out.add(_re.sub(r"[^a-z0-9]", "", h))
