@@ -369,8 +369,21 @@ def _extract_from_headings(soup, heading_tags, fallback_date, post_link: str) ->
         # Skip very short or generic headings
         if len(title) < 4 or title.lower() in seen_titles:
             continue
-        # Skip headings that are just generic section headers
-        if title.lower() in ("events", "this week", "this weekend", "highlights", "more", "links"):
+        # Skip headings that are just generic section headers. Both literal
+        # strings AND structural patterns — onefinedaynyc uses h2s like
+        # "NYC Local Events I'm Excited About This Week" / "Taylor's Top
+        # Picks" / "NYC Small Businesses / Local Finds" to organize the
+        # newsletter. They aren't events themselves; treating them as
+        # event titles produces dateless garbage that needs to be filtered
+        # downstream.
+        t_lower = title.lower()
+        if t_lower in ("events", "this week", "this weekend", "highlights", "more", "links"):
+            continue
+        if _re.search(
+            r"\b(nyc\s+local\s+events|top\s+picks?|small\s+businesses|local\s+finds|"
+            r"i'?m\s+excited|excited\s+about|this\s+(week|weekend)\s*$)",
+            t_lower,
+        ):
             continue
 
         seen_titles.add(title.lower())
