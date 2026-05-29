@@ -303,11 +303,14 @@ SOURCE_QUALITY = {
     "nycforfree": 0.75,
     # Generic scraper sources (per-domain quality)
     "generic": 0.6,
-    "lu.ma": 0.9,        # legacy label; _domain_source now normalizes to "luma"
-    "eventbrite.com": 0.55,
-    "92ny.org": 0.85,
+    # iter 163: keys must match the actual label produced by
+    # generic._domain_source. 'eventbrite.com' and 'lu.ma' were redundant
+    # with 'eventbrite' / 'luma' (already covered above; lu.ma also has an
+    # alias). '92ny.org' and 'elsewhere' never fired because the labels
+    # produced are '92ny' and 'elsewherebrooklyn' respectively.
+    "92ny": 0.85,
     "lpr.com": 0.85,
-    "elsewhere": 0.85,
+    "elsewherebrooklyn": 0.85,
     "allevents": 0.35,   # major aggregator, weak curation per event
     "songkick": 0.6,     # structured artist/venue listings, strong on music
     "newyorkcomedyclub": 0.55,  # venue calendar; single-venue spam without cap
