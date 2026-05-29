@@ -318,12 +318,31 @@ _SINGLE_DAY_ROUNDUP_RE = _re.compile(
     r"\s*,\s*\d{1,2}/\d{1,2}\s*:",
     _re.IGNORECASE,
 )
+# Weekly-digest titles like "NYC This Week | May 27 - 31",
+# "Your May Guide to NYC", "NYC Weekend Guide: ...". Different shape from
+# theskint's weekday-prefix posts but same structure inside — proper h2/h3 +
+# strong tags listing the actual events. Trigger the heading-extraction
+# path so the embedded events surface (instead of dropping the whole post
+# as one un-actionable event titled "NYC This Week | ...").
+_WEEKLY_DIGEST_TITLE_RE = _re.compile(
+    r"(?:"
+    r"\bNYC\s+(?:this\s+)?(?:week|weekend)\b"     # "NYC This Week", "NYC Weekend"
+    r"|\bweekend\s+(?:guide|picks?|edit|roundup)\b"
+    r"|\bguide\s+to\s+NYC\b"                       # "Your May Guide to NYC"
+    r"|\bweekly\s+(?:digest|roundup|picks?)\b"
+    r")",
+    _re.IGNORECASE,
+)
 
 
 def _looks_like_roundup(title: str) -> bool:
     if not title:
         return False
-    return bool(_ROUNDUP_TITLE_RE.match(title) or _SINGLE_DAY_ROUNDUP_RE.match(title))
+    return bool(
+        _ROUNDUP_TITLE_RE.match(title)
+        or _SINGLE_DAY_ROUNDUP_RE.match(title)
+        or _WEEKLY_DIGEST_TITLE_RE.search(title)
+    )
 
 
 def _is_affiliate_noise(title: str, source_url: str) -> bool:
