@@ -48,6 +48,25 @@ _ACCOUNT_CURSORS_CACHE: dict = {}
 _MIN_FRESH_REFETCH = 3
 
 
+def _load_excluded_account_set() -> set[str]:
+    """Accounts in user_excluded_sources.json::accounts. Used to fully
+    exclude these handles from being scraped (fb-106)."""
+    import json, os
+    path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "data",
+        "user_excluded_sources.json",
+    )
+    if not os.path.isfile(path):
+        return set()
+    try:
+        with open(path) as f:
+            d = json.load(f)
+        return {k.lower() for k in (d.get("accounts") or {}).keys()}
+    except Exception:
+        return set()
+
+
 def _load_following_accounts() -> set[str]:
     """Accounts the user directly follows (via discover.py harvest_following_list).
 
@@ -176,6 +195,16 @@ def scrape() -> list[dict]:
 
     # 2. Curated + discovered accounts (skip ones we just covered via saved)
     all_accounts = sorted(set(IG_ACCOUNTS) | set(load_discovered_accounts()))
+
+    # Drop user-excluded accounts entirely — fb-106 personal accounts and
+    # user-rejected venues should never be scraped, not just demoted. Saves
+    # IG budget and prevents accidental userFollowing tagging downstream.
+    excluded_acct_set = _load_excluded_account_set()
+    if excluded_acct_set:
+        before_excl = len(all_accounts)
+        all_accounts = [a for a in all_accounts if a.lower() not in excluded_acct_set]
+        if before_excl != len(all_accounts):
+            print(f"[instagram] Skipped {before_excl - len(all_accounts)} user-excluded accounts")
 
     # Skip dead accounts (404s, repeated failures) — auto-cleanup. Curated
     # accounts (IG_ACCOUNTS) get a 21-day cooldown-then-retest, so transient
