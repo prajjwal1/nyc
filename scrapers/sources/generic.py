@@ -193,14 +193,13 @@ GENERIC_URLS = [
     "https://allevents.in/brooklyn/free",
     "https://allevents.in/brooklyn/dating",
     "https://allevents.in/brooklyn/comedy",
-    "https://allevents.in/brooklyn/literature",
-    "https://allevents.in/brooklyn/running",
-    "https://allevents.in/brooklyn/coffee",
-    "https://allevents.in/brooklyn/poetry",
+    # (Removed iter 116: allevents.in/brooklyn/literature, /running,
+    # /coffee, /poetry, /new-york/art-exhibition, /gallery — all 0 yield
+    # per `audit_urls.py`. AllEvents likely lacks events under these
+    # category slugs at the borough level. The borough-level catch-all
+    # /brooklyn pages cover the events that would have appeared.)
     "https://www.eventbrite.com/d/ny--brooklyn/parties--events/",
     "https://www.eventbrite.com/d/ny--brooklyn/comedy--events/",
-    "https://allevents.in/new-york/art-exhibition",
-    "https://allevents.in/new-york/gallery",
     # Eventbrite NYC categorical pages — running, yoga, fitness, books, art
     "https://www.eventbrite.com/d/ny--brooklyn/running--events/",
     "https://www.eventbrite.com/d/ny--new-york/running--events/",

@@ -202,6 +202,23 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-158 — Full audit_urls run: 60 EMPTY URLs found
+- created_at: 2026-05-29
+- source: agent-proposal (iter 116; ran iter-115 script over all 204 URLs)
+- status: addressed-partial (6 cleanest removed; 54 logged for review)
+- body: Ran `audit_urls.py` over all 204 URLs (61.9s with concurrency=8). Classification:
+  - HEALTHY (≥3 future events): **142** ✓
+  - STALE/WARN/EMPTY/ERROR: **62**
+  - In particular, 60 URLs return 0 events — they're either JS-rendered own-venue sites (timeout.com, mcnallyjackson.com, terminal5nyc.com, websterhall.com, brooklynbowl.com, metrograph.com, filmforum.org, lincolncenter.org, carnegiehall.org, etc.) or moved/dead.
+- removed this round (6 lowest-risk):
+  - `allevents.in/brooklyn/{literature,running,coffee,poetry}`
+  - `allevents.in/new-york/{art-exhibition,gallery}`
+  - Within an otherwise-healthy AllEvents source, these specific subcategory URLs return 0 — borough-level catch-all already covers their events.
+- deferred (54 remaining EMPTYs): most are venue own-sites where the alternate path is either an Eventbrite venue-search URL (per iter 107-110 pattern, only 4 verified to actually filter correctly) or no public alternate. Future iterations should:
+  1. Cross-check each EMPTY against `audit_urls.py --json` output
+  2. For venues that DO have a verified Eventbrite slug, consider swap
+  3. For dead-only-sites, just remove
+
 ### fb-157 — Maintenance script: audit_urls.py
 - created_at: 2026-05-29
 - source: agent-proposal (iter 115)
