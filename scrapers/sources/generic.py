@@ -337,6 +337,13 @@ _SOURCE_LABEL_ALIASES = {
     # Same platform, different URL domains — normalize to one canonical label
     "lu.ma": "luma",
     "luma.com": "luma",
+    # iter 162: green-wood.com (the Brooklyn cemetery's actual domain) was
+    # historically labeled "greenwoodcemetery" in stored events, SOURCE_QUALITY,
+    # SOURCE_LABELS, and _SOURCE_DEFAULT_IMAGES. _domain_source today returns
+    # "green-wood" which won't match any of those — every new green-wood event
+    # would render with the raw hyphenated label and fall to the 0.5 default
+    # quality. Alias keeps the canonical name aligned with existing config.
+    "green-wood": "greenwoodcemetery",
 }
 
 
