@@ -375,12 +375,18 @@ def _print_north_star_metrics(events: list) -> None:
         pct = 100.0 * with_yield / len(signals)
         print(f"Follow-graph coverage: {with_yield}/{len(signals)} ({pct:.1f}%) signal_accounts producing events")
 
-    # 2. Topic coverage — every topic with count >= 2 should appear in the feed
+    # 2. Topic coverage — every topic with count >= 2 should appear in the feed.
+    # Filter out (a) location topics (not actionable) and (b) "de-boost zone"
+    # topics from interest_profile._USERNAME_TOPIC_HINTS — the user follows
+    # some tech/AI-adjacent accounts but explicitly excluded AI events
+    # (user_excluded_sources.json::title_hints), so counting AI coverage as
+    # a goal would directly contradict that signal.
     topic_counts = profile.get("topic_counts", {}) or {}
-    location_topics = {"ny", "nyc", "brooklyn", "manhattan", "bk"}  # not actionable
+    location_topics = {"ny", "nyc", "brooklyn", "manhattan", "bk"}
+    deboost_topics = {"tech", "ai", "startup", "founder"}
     meaningful = [
         (t, c) for t, c in topic_counts.items()
-        if c >= 2 and t not in location_topics
+        if c >= 2 and t not in location_topics and t not in deboost_topics
     ]
     if meaningful:
         # crude proxy: count events whose categories or title contain the topic
