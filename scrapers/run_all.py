@@ -97,7 +97,11 @@ async def main():
     #     blocking; a "successful" run can return 3 events vs 80+ from
     #     a local machine. Without carry-over the deployed feed lost
     #     ~80 user-facing events per failed eventbrite sweep.
-    CARRYOVER_SOURCES = {"instagram", "eventbrite"}
+    #   - songkick: 300+ events per healthy run (iter 88 pagination);
+    #     occasional HTTP 5xx wipes the music section of the feed.
+    #   - meetup: anti-bot blocking on GH Actions IPs causes silent
+    #     near-zero pulls. Past events naturally age out via filter_future.
+    CARRYOVER_SOURCES = {"instagram", "eventbrite", "songkick", "meetup"}
     carryover = [
         e for e in previous_index.values()
         if e.get("source") in CARRYOVER_SOURCES
