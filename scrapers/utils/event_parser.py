@@ -497,6 +497,14 @@ _SOURCE_TOPIC_HINTS = {
     "thebellhouseny": "comedy",
     "nypl": "books",
     "songkick": "music",
+    # iter 165: structural music + food fallbacks. dice.fm scraper (iter
+    # 101) and music_venues scraper both publish concert listings —
+    # cryptic titles like 'caroline (5/21)' should default to music when
+    # the title-keyword path produces nothing. smorgasburg (iter 106)
+    # publishes only food-market recurrences.
+    "dice": "music",
+    "music_venues": "music",
+    "smorgasburg": "food",
 }
 
 
