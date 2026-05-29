@@ -236,6 +236,9 @@ CATEGORY_KEYWORDS = {
         "music",
         "live music", "live jazz", "jazz", "concert", "dj set", "dj night",
         "live band", "rock show", "hip hop", "electronic", "acoustic",
+        "disco",  # iter 170: genre word; word-boundary check applies (5 chars)
+                  # so 'Discord', 'discomfort' won't match. Catches 'Horse Meat
+                  # Disco', 'Disco Inferno', 'Disco Night' from DICE/Songkick.
         "music venue", "live show", "vinyl night", "listening party",
         "house music", "techno", "indie band", "songwriter", "open mic",
         "music festival", "live performance", " performance", " set ",
