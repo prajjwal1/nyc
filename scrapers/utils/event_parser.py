@@ -233,6 +233,15 @@ CATEGORY_KEYWORDS = {
         "calligraphy", "sip & script", "drink 'n draft", "drink n draft",
         "animation nights", "anny", "screening:",
         "thesis projects", "mfa thesis", "bfa thesis",
+        # iter 176: common art-event patterns missing from original list.
+        # 'drawing' / 'printmaking' / 'collage' all standard NYC creative
+        # workshops; 'art crawl' / 'studio visit' are gallery-circuit
+        # formats; 'crafternoon' is a recurring craft-meetup brand.
+        "drawing workshop", "drawing night", "drawing session",
+        "printmaking", "print making", "linocut", "screen printing",
+        "collage night", "collage workshop", "collage session",
+        "art crawl", "art tour", "studio visit", "studio tour",
+        "open studio", "crafternoon", "craft night", "craft workshop",
     ],
     "music": [
         # Bare "music" — word-bounded (5 chars, so re.search with \\b)
@@ -317,6 +326,15 @@ CATEGORY_KEYWORDS = {
         "tapping", "tap takeover", "beer release", "brewery",
         "pierogi", "fried chicken", "pizza party",
         "happy hour", "brunch",
+        # iter 176: common food-event patterns and types missing from
+        # original list. '<food> crawl' is iconic NYC; 'cooking class' is
+        # the dominant DIY-food event format; 'whiskey'/'cheese' pairings
+        # round out the existing 'wine' coverage.
+        "bagel crawl", "taco crawl", "coffee crawl", "pizza crawl",
+        "burger crawl", "donut crawl", "ramen crawl",
+        "cooking class", "pasta class", "baking class",
+        "ramen night", "pizza night", "taco night",
+        "cheese tasting", "whiskey tasting", "cheese pairing",
     ],
     "games": [
         "board game", "trivia", "backgammon", "chess", "arcade", "game night",
