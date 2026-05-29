@@ -202,6 +202,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-147 — Data freshness color cue in Header
+- created_at: 2026-05-29
+- source: agent-proposal (iter 105)
+- status: addressed (committed in iter 105)
+- body: Header already shows "Updated <date>" in gray-400 but doesn't visually warn when data is stale. With the IG session-refresh bottleneck leaving feeds stale for days at a time, the user wasn't getting a clear signal.
+- fix: compute `ageHours` from `lastUpdated`. Color the "Updated" line gray when < 8h, amber when 8-48h ("feed is getting stale; the scraper may be blocked"), red + bold + ⚠ when > 48h ("IG session likely expired"). Tooltip explains the exact age.
+- result: visible at-a-glance staleness signal. The current deployed feed timestamps as ~21h stale; with this iter the user will see amber + tooltip explanation instead of silently looking at old data.
+
 ### fb-146 — Shareable account-filtered URLs via `?account=X` query param
 - created_at: 2026-05-29
 - source: agent-proposal (iter 104; smaller scope than README §361 dedicated route)

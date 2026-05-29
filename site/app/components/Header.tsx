@@ -44,6 +44,29 @@ export default function Header({
         minute: "2-digit",
       })
     : null;
+  // Iter 105: surface staleness as a color cue so the user knows when
+  // they're looking at old data (the IG-session-refresh bottleneck has
+  // left feeds stale before). gray = fresh (<8h), amber = stale (8-48h),
+  // red = very stale (>48h).
+  const ageHours = lastUpdated
+    ? (Date.now() - new Date(lastUpdated).getTime()) / 3_600_000
+    : null;
+  const updatedColorClass =
+    ageHours == null
+      ? "text-gray-400"
+      : ageHours < 8
+      ? "text-gray-400"
+      : ageHours < 48
+      ? "text-amber-600"
+      : "text-rose-600 font-semibold";
+  const updatedTooltip =
+    ageHours == null
+      ? undefined
+      : ageHours < 8
+      ? `${ageHours.toFixed(1)}h ago`
+      : ageHours < 48
+      ? `${ageHours.toFixed(1)}h ago — feed is getting stale; the scraper may be blocked`
+      : `${(ageHours / 24).toFixed(1)} days ago — the scraper hasn't run successfully. IG session likely expired.`;
 
   return (
     <header className="border-b border-gray-200 bg-white">
@@ -82,7 +105,12 @@ export default function Header({
           </div>
           <div className="flex items-center gap-3">
             {updatedStr && (
-              <p className="text-xs text-gray-400">Updated {updatedStr}</p>
+              <p className={`text-xs ${updatedColorClass}`} title={updatedTooltip}>
+                Updated {updatedStr}
+                {ageHours != null && ageHours >= 48 && (
+                  <span className="ml-1">⚠</span>
+                )}
+              </p>
             )}
             <button
               onClick={handleShare}
