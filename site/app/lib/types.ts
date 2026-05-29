@@ -115,6 +115,10 @@ export const CATEGORY_CONFIG: Record<string, { label: string; color: string }> =
 export const SOURCE_LABELS: Record<string, string> = {
   luma: "Luma",
   bookclubbar: "Book Club Bar",
+  lizsbookbar: "Liz's Book Bar",
+  mcnallyjackson: "McNally Jackson",
+  brooklyncomedy: "Brooklyn Comedy Collective",
+  smorgasburg: "Smorgasburg",
   nypl: "NYPL",
   nycforfree: "NYC for Free",
   eventbrite: "Eventbrite",

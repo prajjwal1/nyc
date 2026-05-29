@@ -214,6 +214,18 @@ These are the durable preferences the user has stated. They're marked `addressed
 - not addressed: the actual harvest yield is degraded (README says comments are the main URL source; RSS doesn't include them). Full restoration requires PRAW creds + `praw.Reddit(client_id=..., client_secret=...)` configuration. Logged as fb-139 for the user to set up auth out-of-band.
 - bonus result: harvester now logs visibly when broken; future iters won't waste time re-investigating "is reddit silently failing?"
 
+### fb-166 — Add SOURCE_LABELS for sources missing display names
+- created_at: 2026-05-29
+- source: agent-proposal (iter 125)
+- status: addressed (committed in iter 125)
+- body: Audited `site/app/lib/types.ts::SOURCE_LABELS` against per-source scraper `source=` field. 5 sources were missing labels and would render as raw key in cards:
+  - `lizsbookbar` → "Liz's Book Bar"
+  - `mcnallyjackson` → "McNally Jackson"
+  - `brooklyncomedy` → "Brooklyn Comedy Collective"
+  - `smorgasburg` → "Smorgasburg" (new from iter 106)
+- (Note: `parks` uses `source="nyc_parks"` which was already in the dict.)
+- build clean.
+
 ### fb-165 — Remove 3 STALE substack feeds (0 future + 0 URL harvest)
 - created_at: 2026-05-29
 - source: agent-proposal (iter 124; ran iter-123 enhanced audit_urls.py)
