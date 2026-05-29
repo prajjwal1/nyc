@@ -352,6 +352,10 @@ CATEGORY_KEYWORDS = {
         # iter 178: 'Catan Night' / 'Boardgame Bar' missed because only
         # 'board game' (with space) and 'settlers of catan' were listed.
         "catan", "boardgame",
+        # iter 180: 'tournament' covers Magic: The Gathering, chess, poker,
+        # esports tournaments. Note this also FP-matches music's ' tour'
+        # keyword — that's fine, both signals can fire on the same event.
+        "tournament",
     ],
     "theater": [
         # NB: bare "theater" / "theatre" are too noisy — Beacon Theatre,
