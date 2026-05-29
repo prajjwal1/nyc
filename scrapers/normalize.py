@@ -616,8 +616,14 @@ _FAR_FUTURE_DAYS = 180
 _TRUSTED_FAR_FUTURE_SOURCES = frozenset({
     "bookclubbar",
     "lizsbookbar",
+    "mcnallyjackson",       # iter 102: dedicated month-pagination scraper
+    "powerhousearena",      # iter 110: Squarespace eventlist with explicit dates
+    "centerforfiction",     # iter 110: WordPress event pages with explicit dates
+    "brooklyncomedy",       # iter 106: Squarespace eventlist with explicit dates
+    "nycforfree",           # iter 100: Squarespace eventlist with explicit dates
     "museums",
     "music_venues",
+    "greenwoodcemetery",    # iter 103: dedicated scraper
 })
 
 
