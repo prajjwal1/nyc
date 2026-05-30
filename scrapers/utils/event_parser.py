@@ -609,7 +609,12 @@ _OUTDOORS_FALSE_POSITIVE_VENUES = (
 # or near the arena). Single source of truth shared by the categorizer's
 # own outdoor check (below) and normalize._strip_outdoors_indoor_arena.
 _OUTDOORS_STRONG_SIGNALS = (
-    "rooftop", "pier ", "waterfront", "park ", " park", "beach", "ferry",
+    # iter 184: dropped bare ' park' (leading space) — FP-matched
+    # ' parking' (in 'free parking available'), making an indoor MSG-
+    # concert's outdoors tag impossible to strip when the description
+    # mentioned parking. 'park ' (trailing) and the specific named parks
+    # below still catch the legit outdoor signals.
+    "rooftop", "pier ", "waterfront", "park ", "beach", "ferry",
     "high line", "domino park", "central park", "prospect park",
     "kayak", "hike", "trail", "outdoor concert", "outdoor movie",
     "outdoors", "outdoor ", "garden party",
