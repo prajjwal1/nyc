@@ -199,8 +199,14 @@ CATEGORY_KEYWORDS = {
         "book release", "memoir", "bookstore", "lit ", "literature",
         "reading rhythms", "rest and read", "book hub", "essay collection",
         "novelist", "writers ", "writing workshop",
-        # Eventbrite/B&N pattern: "Author Name discusses BOOK at venue"
-        "discusses", "discuss her book", "discuss his book", "discuss their book",
+        # Eventbrite/B&N pattern: "Author Name discusses BOOK at venue".
+        # iter 186: removed bare 'discusses' — FP-matched 'CEO discusses
+        # Q3 earnings' / 'Panel discusses immigration policy' / 'Court
+        # discusses precedent'. Replace with 'author ' (trailing space) so
+        # 'Author X discusses Y' fires via the author signal instead.
+        # 'authoritarian' / 'authority' have 'author' followed by i/i —
+        # neither is a space, so the trailing-space form is FP-safe.
+        "author ", "discuss her book", "discuss his book", "discuss their book",
         "audiobooks", "audiobook", "lectures on", "library reading",
         # Writing-event variants — kept as 2-word phrases so "Writing Code
         # in Python" / "Writing the Will" don't get tagged books.
