@@ -227,6 +227,11 @@ CATEGORY_KEYWORDS = {
         # Toni Morrison', 'Indie Press Showcase' all falling to ['other'].
         "book fair", "author signing", "reading group", "indie press",
         "books signing",  # variant
+        # iter 187: 'Book Chat' / 'Book Talk' / 'Book Conversation' common
+        # casual-discussion patterns. Found via real-data audit: an Amity
+        # Gaige 'Brunch and Book Chat' event had wrong cats because none
+        # of the existing book-keywords matched the title.
+        "book chat", "book talk", "book conversation",
     ],
     "art": [
         "art opening", "gallery", "exhibition", "museum", "painting", "sculpture",
