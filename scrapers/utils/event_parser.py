@@ -268,8 +268,8 @@ CATEGORY_KEYWORDS = {
         # titles. All length-5+ so word-boundary applies — no 'metalcraft'
         # / 'reggae'-in-other-string false positives. NB: 'reggae' substring-
         # matches 'reggaeton', which is fine here — reggaeton IS music. The
-        # quality.HARD_BLOCK list (iter 192) handles user-excluded subgenres
-        # like reggaeton independently, so categorization stays semantic.
+        # quality.HARD_BLOCK list handles user-excluded subgenres (reggaeton)
+        # independently, so categorization stays semantic.
         "blues", "reggae", "metal ", "punk ", "karaoke",
         "music venue", "live show", "vinyl night", "listening party",
         "house music", "techno", "indie band", "songwriter", "open mic",
