@@ -348,7 +348,11 @@ CATEGORY_KEYWORDS = {
         "high line", "domino park", "central park",
         # Nature / birding / cemetery walks (Green-Wood)
         "birding", "bird walk", "nature walk", "tree climbing",
-        "kayak", "rowing", "sailing", "fishing",
+        # iter 197: ' rowing' (leading space) — bare 'rowing' substring-
+        # matched 'throwing' (a "Throwing a Y2K Party" event got 'outdoors'
+        # wrongly). Leading-space form catches 'go rowing', 'rowing club'
+        # but not 'throwing'/'overthrowing'.
+        "kayak", " rowing", "sailing", "fishing",
         "trail", "hiking",
         # iter 175: -ing forms (word-boundary on 'walk' / 'hike' don't
         # match 'walking' / 'hiking' in compound forms), plus common outdoor
