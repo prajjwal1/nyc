@@ -577,6 +577,12 @@ _SOURCE_TOPIC_HINTS = {
     "dice": "music",
     "music_venues": "music",
     "smorgasburg": "food",
+    # iter 182: museum + outdoor source-name fallbacks. Same logic as the
+    # other entries — when the categorizer's keyword pass produces nothing
+    # for a cryptic title, the source label itself encodes the venue type.
+    "museums": "art",
+    "nyc_parks": "outdoors",
+    "greenwoodcemetery": "exploration",
 }
 
 
