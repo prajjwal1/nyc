@@ -626,6 +626,10 @@ _OUTDOORS_FALSE_POSITIVE_VENUES = (
     "the garden at madison",
     "barclays center",
     "msg sphere",
+    " msg ",  # iter 190: short-form "Concert at MSG" / "@ MSG" — catches
+              # references that don't spell out 'madison square garden'.
+              # Both leading + trailing space to avoid 'msgsmith.com' /
+              # 'msgs received' FPs.
     "the box",
     "garden room",  # private venue rooms named "Garden"
 )
