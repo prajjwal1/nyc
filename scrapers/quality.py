@@ -337,7 +337,13 @@ SOCIAL_KEYWORDS = [
     "social mixer", "meet & greet", "meet and greet", "icebreaker",
     "20s & 30s", "20s and 30s", "young professionals",
     # Vibe-based connection events
-    "kickback", "house party", "social", "salon",
+    # iter 195: removed bare 'social' — same FP source as iter 183's
+    # parties keyword. 'social media' / 'social tees' / 'social movement'
+    # were getting the social-keywords boost despite not being social
+    # events. Existing 'social mixer' / 'social run' / 'social club' /
+    # 'social hour' (added below) cover the legit social patterns.
+    "kickback", "house party", "salon",
+    "social hour", "social night",
     "after party", "afterparty", "cocktail hour",
     "happy hour", "rooftop hour",
     # Group activities for meeting
