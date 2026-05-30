@@ -293,7 +293,16 @@ CATEGORY_KEYWORDS = {
     ],
     "parties": [
         "party", "social mixer", "mixer", "networking", "happy hour",
-        "social club", "social ", "after-party", "afterparty",
+        "social club", "after-party", "afterparty",
+        # iter 183: replaced bare 'social ' with specific phrases. The
+        # trailing-space variant was matching FPs like 'social media' /
+        # 'social tees' / 'social movement' / 'social striders' (half the
+        # 'social' hits in current data were not party-context).
+        "social night", "social hour", "social happy hour",
+        "social meetup", "social gathering", "social event",
+        "social run",      # 'Monday Evening Social Run' (also fitness)
+        "social dance",    # 'FREE Latin Dance Social at...'
+        "after-work social", "after work social",
         "housewarming", "brunch party", "rooftop party", "loft party",
         "warehouse party", "speakeasy", "cocktail party", "after-hours",
         "underground", "boat party", "block party", "kickback",
