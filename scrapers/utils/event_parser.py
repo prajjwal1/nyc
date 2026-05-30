@@ -328,6 +328,10 @@ CATEGORY_KEYWORDS = {
         # 'Sundayfunday' substrings to 'funday' which is correct (still
         # a party). Tested FP-free.
         "bash", "funday",
+        # iter 188: 'summer social' / 'spring social' / 'winter social'
+        # are common NYC seasonal-social phrasings missed by iter 183's
+        # 'social <type>' phrase set (only had social night/hour/etc).
+        "summer social", "spring social", "winter social", "fall social",
     ],
     "outdoors": [
         "park", "outdoor", "garden", "hike", "walk", "picnic", "rooftop",
@@ -344,6 +348,11 @@ CATEGORY_KEYWORDS = {
         # (substring match needs the boundary).
         " walking", " biking", "bike tour", "walking tour",
         "camping", "bouldering", "climbing",
+        # iter 188: 'Sunset Cruise' / 'Booze Cruise' / 'Boat Cruise' are
+        # iconic NYC summer waterfront events. 'cruise' alone is FP-prone
+        # ('Tom Cruise tribute') so use 2-word phrases.
+        "sunset cruise", "booze cruise", "boat cruise",
+        "harbor cruise", "river cruise",
     ],
     "food": [
         "food festival", "dinner party", "tasting menu", "tasting", "culinary",
@@ -536,6 +545,12 @@ CATEGORY_KEYWORDS = {
     "special": [
         "gala", "benefit", "fundraiser", "opening night", "premiere",
         "launch party", "met gala", "anniversary",
+        # iter 188: bare 'festival' for generic festivals not covered by
+        # the cat-specific 'music festival' / 'food festival' / 'film
+        # festival' phrases. 'Masterwork Festival' (classical music event)
+        # fell to ['other'] before. Catches the long tail of festival-
+        # labeled NYC events that don't trigger a specific genre keyword.
+        "festival",
     ],
 }
 
