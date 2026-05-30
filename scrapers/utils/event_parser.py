@@ -249,7 +249,7 @@ CATEGORY_KEYWORDS = {
         # "musical" (would match "music" inside it without \\b).
         "music",
         "live music", "live jazz", "jazz", "concert", "dj set", "dj night",
-        "live band", "rock show", "hip hop", "electronic", "acoustic",
+        "live band", "rock show", "hip hop", "hip-hop", "electronic", "acoustic",
         "disco",  # iter 170: genre word; word-boundary check applies (5 chars)
                   # so 'Discord', 'discomfort' won't match. Catches 'Horse Meat
                   # Disco', 'Disco Inferno', 'Disco Night' from DICE/Songkick.
