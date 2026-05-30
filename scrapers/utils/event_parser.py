@@ -303,7 +303,13 @@ CATEGORY_KEYWORDS = {
         "at terminal 5", "at webster hall", "at kings theatre",
     ],
     "parties": [
-        "party", "social mixer", "mixer", "networking", "happy hour",
+        # iter 191: kept bare 'party' — the theoretical 'third-party'
+        # FP doesn't manifest in real event data (0 hits), while real
+        # event titles legitimately start with 'Party ...' ('Party After',
+        # 'Party Dozen'). Trying ' party' (leading space) regressed 3
+        # real events for zero real FP fixes.
+        "party",
+        "social mixer", "mixer", "networking", "happy hour",
         "social club", "after-party", "afterparty",
         # iter 183: replaced bare 'social ' with specific phrases. The
         # trailing-space variant was matching FPs like 'social media' /
