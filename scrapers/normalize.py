@@ -1108,8 +1108,15 @@ def _load_account_quality_map() -> dict:
 def _apply_quality_for(ev: dict, handle: str, quality: dict) -> None:
     """Stamp accountEventYield + accountPostsSeen from the IG account_quality
     record onto an enriched non-IG event so it gets the same yield-based
-    ranking lift as native-IG events from the same account."""
+    ranking lift as native-IG events from the same account.
+
+    Defensive: skip if accountEventYield is already set (e.g. by a future
+    scraper that does its own per-account quality tracking). Don't
+    silently overwrite scraper-provided signals.
+    """
     if not quality or not handle:
+        return
+    if ev.get("accountEventYield") is not None:
         return
     h = handle.lower()
     info = quality.get(h) or quality.get(_re.sub(r"[^a-z0-9]", "", h))
