@@ -714,7 +714,13 @@ def infer_categories(title: str, description: str = "", ig_account: str = "",
         if not cats:
             cats = _ig_account_topic_categories(ig_account)
         else:
-            _VENUE_CONTEXT_CATS = {"outdoors", "food"}
+            # iter 201: 'exploration' joins outdoors/food as venue-context.
+            # 'Pop-Up Book Discussion' from @bookclubbar got ['exploration']
+            # (from 'pop-up') without 'books' because pop-up isn't in the
+            # original {outdoors, food} subset. Audit confirmed exploration
+            # is also a 'where/how' signal, not a 'what' signal — same
+            # treatment as outdoors/food.
+            _VENUE_CONTEXT_CATS = {"outdoors", "food", "exploration"}
             if set(cats) <= _VENUE_CONTEXT_CATS:
                 acct_cats = _ig_account_topic_categories(ig_account)
                 if acct_cats and acct_cats != ["other"]:
