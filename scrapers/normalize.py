@@ -1076,6 +1076,52 @@ def _user_following_normalized() -> set[str]:
     return out
 
 
+def _load_account_quality_map() -> dict:
+    """Load scrapers/data/account_quality.json keyed by handle (alphanumeric
+    fold variant included so callers can match either form)."""
+    import json as _json, os as _os
+    path = _os.path.join(
+        _os.path.dirname(_os.path.abspath(__file__)),
+        "data",
+        "account_quality.json",
+    )
+    if not _os.path.isfile(path):
+        return {}
+    try:
+        with open(path) as f:
+            raw = _json.load(f)
+    except Exception:
+        return {}
+    # Index by both the original handle and its alphanumeric fold so
+    # 'reading_rhythms' and 'readingrhythms' resolve to the same record.
+    out = {}
+    for handle, info in raw.items():
+        if not isinstance(info, dict):
+            continue
+        out[handle.lower()] = info
+        fold = _re.sub(r"[^a-z0-9]", "", handle.lower())
+        if fold != handle.lower():
+            out.setdefault(fold, info)
+    return out
+
+
+def _apply_quality_for(ev: dict, handle: str, quality: dict) -> None:
+    """Stamp accountEventYield + accountPostsSeen from the IG account_quality
+    record onto an enriched non-IG event so it gets the same yield-based
+    ranking lift as native-IG events from the same account."""
+    if not quality or not handle:
+        return
+    h = handle.lower()
+    info = quality.get(h) or quality.get(_re.sub(r"[^a-z0-9]", "", h))
+    if not info:
+        return
+    posts = info.get("posts_scraped", 0) or 0
+    evs = info.get("events_emitted", 0) or 0
+    if posts >= 5:
+        ev["accountEventYield"] = round(evs / posts, 3)
+        ev["accountPostsSeen"] = posts
+
+
 def _enrich_provenance_from_url(events: list[dict]) -> None:
     """Set `account` + `userFollowing` on non-IG events whose sourceUrl
     encodes a curator handle that the user follows on IG. The audit at
@@ -1090,6 +1136,11 @@ def _enrich_provenance_from_url(events: list[dict]) -> None:
     following = _user_following_normalized()
     if not following:
         return
+    # iter 205: load account_quality so enriched non-IG events inherit
+    # the IG-side accountEventYield. A Lu.ma event from @bookclubbar
+    # (yield 0.83) should get the same yield boost in ranking as an IG
+    # event from that account would.
+    quality = _load_account_quality_map()
     matched = 0
     organizer_matched = 0
     for ev in events:
@@ -1102,6 +1153,7 @@ def _enrich_provenance_from_url(events: list[dict]) -> None:
                 if cand in following:
                     ev["account"] = handle  # preserve original handle
                     ev["userFollowing"] = True
+                    _apply_quality_for(ev, cand, quality)
                     matched += 1
                     break
             if ev.get("userFollowing"):
@@ -1138,6 +1190,7 @@ def _enrich_provenance_from_url(events: list[dict]) -> None:
             if matched_handle:
                 ev["account"] = matched_handle
                 ev["userFollowing"] = True
+                _apply_quality_for(ev, matched_handle, quality)
                 organizer_matched += 1
                 break  # don't double-count if both organizer + location match
     if matched:
