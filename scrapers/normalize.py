@@ -1078,7 +1078,13 @@ def _user_following_normalized() -> set[str]:
 
 def _load_account_quality_map() -> dict:
     """Load scrapers/data/account_quality.json keyed by handle (alphanumeric
-    fold variant included so callers can match either form)."""
+    fold variant AND original handle so callers can match either form).
+
+    iter 208: discovered via real-data trace that 'reading_rhythms' (the
+    quality file's key) was unreachable via the alphanumeric-fold lookup
+    path. Indexing by both forms means a folded match-candidate like
+    'readingrhythms' resolves to the underscore-keyed record.
+    """
     import json as _json, os as _os
     path = _os.path.join(
         _os.path.dirname(_os.path.abspath(__file__)),
@@ -1092,15 +1098,14 @@ def _load_account_quality_map() -> dict:
             raw = _json.load(f)
     except Exception:
         return {}
-    # Index by both the original handle and its alphanumeric fold so
-    # 'reading_rhythms' and 'readingrhythms' resolve to the same record.
     out = {}
     for handle, info in raw.items():
         if not isinstance(info, dict):
             continue
-        out[handle.lower()] = info
-        fold = _re.sub(r"[^a-z0-9]", "", handle.lower())
-        if fold != handle.lower():
+        h_lower = handle.lower()
+        out[h_lower] = info
+        fold = _re.sub(r"[^a-z0-9]", "", h_lower)
+        if fold != h_lower:
             out.setdefault(fold, info)
     return out
 
