@@ -722,9 +722,17 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-100 — Run calibration ask next round
 - created_at: 2026-05-28
 - source: agent-proposal
-- status: open
+- status: addressed (iter 198 — see calibration response below)
 - body: This first invocation deferred the user-ask. Next run should call `AskUserQuestion` with 3 real events from `account ∈ signal_accounts` and ask which the user would actually attend. That answer is the ground-truth signal for whether the loop is improving.
 - "addressed" criterion: A `/self-improve` run logs a user response to the calibration question in `<run-dir>/feedback.md`.
+- calibration response (iter 198, 2026-06-01):
+  - Question: "Of these 3 high-conviction events from accounts you follow, which would you actually attend?"
+  - Options:
+    1. East Village Wordsmiths Literary Salon @ Book Club Bar
+    2. Garden Rest and Read @ litclub.nyc
+    3. GonzoFest Social - Happy Hour @ Book Club Bar
+  - User answer: **ALL THREE** (3/3 — strongest possible signal that the curated-host enrichment is well-aligned).
+  - Calibration takeaway: events from `litclub.nyc`, `bookclubbar`, `readingrhythms-manhattan`, and similar curated literary hosts are the user's actual attend-target. The iter 73/74/77/109 enrichment paths surfacing these events as `userFollowing` are validated. No category-coverage gap implied — books/parties/food/outdoors covered. Continue the current enrichment + ranking strategy; the loop is moving in the right direction.
 
 <!-- Append new feedback above this comment as it comes in. Top of list is highest priority. -->
 
