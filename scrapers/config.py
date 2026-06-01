@@ -263,7 +263,12 @@ USER_INTERESTS = {
         "exploration": 1.25,  # NYC exploration (user wants to discover the city)
         "art": 1.15,
         "food": 1.15,
-        "books": 1.15,        # Book club bar, reading rhythms
+        "books": 1.3,         # Book club bar, reading rhythms. Iter 200:
+                              # bumped from 1.15 → 1.3 after iter 198
+                              # calibration confirmed 3/3 literary events
+                              # as attend-target. Brings books inline with
+                              # games (1.3) — both are user's confirmed
+                              # high-attend categories.
         "outdoors": 1.1,
         "celebrities": 1.1,
         "viewings": 1.1,
