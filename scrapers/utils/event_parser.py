@@ -576,8 +576,11 @@ CATEGORY_KEYWORDS = {
 
 
 _IG_ACCOUNT_TOPIC_HINTS = {
+    # iter 202: add 'fiction' / 'novel' / 'literature' so @centerforfiction
+    # (a major NYC literary venue) and similar IG handles get the books
+    # topic hint. Pre-iter-202 they returned [] for the book signal.
     "books": ("book", "bookclub", "litclub", "library", "poet", "read",
-              "writers"),
+              "writers", "fiction", "novel", "literature"),
     "music": ("jazz", "dj", "vinyl", "sound", "band", "music", "concert",
               "rave", "venue", "phono", "tunes", "bowl", "hall", "presents",
               "ballroom", "theatre", "theater"),
