@@ -592,6 +592,15 @@ _IG_ACCOUNT_TOPIC_HINTS = {
     "parties": ("party", "social", "club", "rave", "nightlife", "afterhours"),
     "games": ("game", "backgammon", "chess", "bingo", "trivia"),
     "exploration": ("astronomy", "secret", "hidden"),
+    # iter 203: dance was the only top-level category missing from the
+    # IG-account-topic-hints. An IG handle like @salsa_nyc returned []
+    # before, so events from that account with cryptic titles fell to
+    # ['other'].
+    "dance": ("dance", "salsa", "bachata", "tango", "ballet", "vogue", "kizomba"),
+    # 'wellness' as separate from fitness — yoga/meditation/sound-bath
+    # accounts deserve the wellness tag (mind-body) in addition to
+    # whatever fitness signals their handle has.
+    "wellness": ("yoga", "meditation", "wellness", "mindful", "breathwork"),
 }
 
 
