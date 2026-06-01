@@ -232,6 +232,13 @@ CATEGORY_KEYWORDS = {
         # Gaige 'Brunch and Book Chat' event had wrong cats because none
         # of the existing book-keywords matched the title.
         "book chat", "book talk", "book conversation",
+        # iter 199: post-calibration audit. User confirmed 3/3 literary
+        # events as attend-target — surfacing more book-style phrasings
+        # is high-leverage. All FP-safe (specific multi-word or distinctly
+        # book-related compound).
+        "books and", "book lovers", "bookish", "bookworm",
+        "page-turner", "page turners", "read-along", "read together",
+        "story hour",
     ],
     "art": [
         "art opening", "gallery", "exhibition", "museum", "painting", "sculpture",
