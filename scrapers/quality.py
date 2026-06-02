@@ -326,9 +326,12 @@ SOFT_PENALTY_KEYWORDS = [
 # Social signals: events specifically conducive to meeting people.
 # These get a meaningful score boost since the user is single & wants to meet folks.
 SOCIAL_KEYWORDS = [
-    # Explicit
+    # Explicit. Note: 'speed dating' removed iter 209 — user explicitly
+    # excluded the format. The is_user_excluded check (title_hint match)
+    # drops them upstream, but removing from SOCIAL_KEYWORDS too means
+    # any speed-dating event that slipped past doesn't get the boost.
     "singles night", "singles event", "singles mixer", "singles party",
-    "speed dating", "matchmaking", "date my friend", "blind date",
+    "matchmaking", "date my friend", "blind date",
     "first dates", "dating in nyc",
     # Meet new people
     "meet new people", "make new friends", "new in town",
