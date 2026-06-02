@@ -20,6 +20,7 @@ interface Props {
 export default function EventModal({ event, onClose, onAccountClick, relatedEvents = [], onSelectEvent }: Props) {
   const [saved, setSaved] = useState(false);
   const [imgIdx, setImgIdx] = useState(0);
+  const [heroImgFailed, setHeroImgFailed] = useState(false);
   const [attended, setAttended] = useState<"yes" | "no" | undefined>(undefined);
 
   useEffect(() => {
@@ -84,7 +85,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
         {/* Hero image — IG-style carousel when multi-image */}
         {(() => {
           const images = [event.imageUrl, ...(event.extraImages || [])].filter(Boolean) as string[];
-          if (images.length === 0) return null;
+          if (images.length === 0 || heroImgFailed) return null;
           const current = images[Math.min(imgIdx, images.length - 1)];
           return (
             <div className="relative w-full bg-gray-100 max-h-[70vh] overflow-hidden">
@@ -92,6 +93,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
                 src={current}
                 alt=""
                 className="w-full h-auto object-contain max-h-[70vh]"
+                onError={() => setHeroImgFailed(true)}
               />
               {images.length > 1 && (
                 <>
@@ -454,7 +456,13 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
                       className="text-left p-2 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors flex gap-2"
                     >
                       {e.imageUrl && (
-                        <img src={e.imageUrl} alt="" loading="lazy" className="shrink-0 w-12 h-12 rounded object-cover bg-gray-100" />
+                        <img
+                          src={e.imageUrl}
+                          alt=""
+                          loading="lazy"
+                          className="shrink-0 w-12 h-12 rounded object-cover bg-gray-100"
+                          onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                        />
                       )}
                       <div className="min-w-0 flex-1">
                         <div className="text-[11px] font-semibold text-gray-700 line-clamp-1">
@@ -513,7 +521,13 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
                       className="text-left p-2 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors flex gap-2"
                     >
                       {e.imageUrl && (
-                        <img src={e.imageUrl} alt="" loading="lazy" className="shrink-0 w-12 h-12 rounded object-cover bg-gray-100" />
+                        <img
+                          src={e.imageUrl}
+                          alt=""
+                          loading="lazy"
+                          className="shrink-0 w-12 h-12 rounded object-cover bg-gray-100"
+                          onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                        />
                       )}
                       <div className="min-w-0 flex-1">
                         <div className="text-[11px] font-semibold text-gray-700 line-clamp-1">

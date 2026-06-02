@@ -38,6 +38,7 @@ export default function EventCard({ event, variant = "feed", onAccountClick, onH
 }
 
 function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event) => void }) {
+  const [imgFailed, setImgFailed] = useState(false);
   const handleClick = (e: React.MouseEvent) => {
     if (onSelect) {
       e.preventDefault();
@@ -63,16 +64,18 @@ function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event)
       }`}
       title={event.title}
     >
-      {event.imageUrl ? (
+      {event.imageUrl && !imgFailed ? (
         <img
           src={event.imageUrl}
           alt=""
           className="w-full h-full object-cover"
           loading="lazy"
+          onError={() => setImgFailed(true)}
         />
       ) : (
-        // No image — keep the cell text-only with the title prominently
-        // displayed on a clean neutral surface (no decorative placeholder).
+        // No image (or image failed to load) — keep the cell text-only
+        // with the title prominently displayed on a clean neutral
+        // surface (no decorative placeholder / no broken img icon).
         <div className="w-full h-full bg-white flex items-center justify-center p-3 text-center">
           <span className="text-sm font-semibold text-gray-900 line-clamp-5 leading-snug">
             {event.title}
@@ -167,6 +170,7 @@ function MediaFirstCard({
 }) {
   const dateLabel = formatDateLabel(event.date);
   const [saved, setSaved] = useState(() => isSavedLocal(event.id));
+  const [imgFailed, setImgFailed] = useState(false);
   const handleOpen = (e: React.MouseEvent) => {
     if (onSelect) {
       e.preventDefault();
@@ -223,12 +227,21 @@ function MediaFirstCard({
         </div>
       )}
       <div className="relative aspect-[4/3] sm:aspect-[16/10] max-h-72 bg-gray-100 overflow-hidden">
-        <img
-          src={event.imageUrl!}
-          alt=""
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
+        {!imgFailed ? (
+          <img
+            src={event.imageUrl!}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="lazy"
+            onError={() => setImgFailed(true)}
+          />
+        ) : (
+          <div className="w-full h-full bg-white flex items-center justify-center p-4 text-center">
+            <span className="text-base font-semibold text-gray-900 line-clamp-4 leading-snug">
+              {event.title}
+            </span>
+          </div>
+        )}
         {/* Date badge top-left — or "Spot" pill for evergreen recs */}
         <div className={`absolute top-2 left-2 backdrop-blur rounded-lg px-2 py-1 text-xs font-semibold shadow-sm ${
           event.evergreen
@@ -424,6 +437,7 @@ function FeedCard({
   onSelect?: (event: Event) => void;
 }) {
   const [savedF, setSavedF] = useState(() => isSavedLocal(event.id));
+  const [imgFailedF, setImgFailedF] = useState(false);
   const handleCardClick = (e: React.MouseEvent) => {
     if (onSelect) {
       e.preventDefault();
@@ -487,13 +501,14 @@ function FeedCard({
         </div>
       )}
       <div className="flex gap-3 p-3">
-        {event.imageUrl && (
+        {event.imageUrl && !imgFailedF && (
           <div className="shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-gray-100">
             <img
               src={event.imageUrl}
               alt=""
               className="w-full h-full object-cover"
               loading="lazy"
+              onError={() => setImgFailedF(true)}
             />
           </div>
         )}
@@ -644,6 +659,7 @@ function formatCount(n: number): string {
 }
 
 function CompactCard({ event, timeStr }: { event: Event; timeStr: string | null }) {
+  const [imgFailedC, setImgFailedC] = useState(false);
   return (
     <a
       href={event.sourceUrl}
@@ -652,13 +668,14 @@ function CompactCard({ event, timeStr }: { event: Event; timeStr: string | null 
       className="block bg-white rounded-xl border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm transition-all"
     >
       <div className="flex gap-4">
-        {event.imageUrl && (
+        {event.imageUrl && !imgFailedC && (
           <div className="shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-gray-100">
             <img
               src={event.imageUrl}
               alt=""
               className="w-full h-full object-cover"
               loading="lazy"
+              onError={() => setImgFailedC(true)}
             />
           </div>
         )}
