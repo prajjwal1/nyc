@@ -592,6 +592,13 @@ def _title_quality(title: str) -> float:
     # Penalize titles ending with mid-sentence punctuation
     if title.endswith((",", ":", ";", " and", " or", " the", " a", " of", " in", " on", " at", " to", " is", " are", " was", " were")):
         return 0.2
+    # Iter 213: catch QA-found pattern 'X : Y' where Y is 1-2 chars (OCR
+    # truncation mid-word). 'Pe Wea : i' from an IG story OCR'd flyer
+    # surfaced as an event because the title-quality filter only checked
+    # trailing punctuation, not 'punctuation + tiny fragment'.
+    import re as _re
+    if _re.search(r"\s[:;,\-]\s+\w{1,2}$", title):
+        return 0.15
 
     # Penalize titles starting with lowercase (often caption fragments)
     if title[0].islower() and not title.startswith(("a ", "an ", "the ")):
