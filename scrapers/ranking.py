@@ -644,6 +644,16 @@ def is_user_excluded(event: dict) -> bool:
                         variants.add(loc_norm + suffix)
                 if any(v in cfg["accounts"] for v in variants):
                     return True
+                # Iter 211: also check if any excluded account is a SUBSTRING
+                # of loc_norm. Caught QA leak "Ruins, Knockdown Center" — the
+                # venue is presented as a multi-room space "Ruins, KDC", and
+                # the alphanumeric fold "ruinsknockdowncenter" didn't match
+                # any variant of "knockdowncenter". Restrict to accounts >= 8
+                # chars to avoid spurious matches (all current excluded
+                # accounts are well above this threshold).
+                for excl_acct in cfg["accounts"]:
+                    if len(excl_acct) >= 8 and excl_acct in loc_norm:
+                        return True
     url = (event.get("sourceUrl") or "").lower()
     for host in cfg["hosts"]:
         if host in url:
