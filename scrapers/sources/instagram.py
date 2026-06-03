@@ -2745,6 +2745,16 @@ _NON_EVENT_SIGNALS = [
     r"\bpre-?orders? (?:are\s+)?(?:now\s+)?(?:open|available|live)\b",
     r"\bnew (?:single|album|book|product) (?:is\s+)?out\b",
     r"\bavailable (?:now|today)\s+(?:on|at)\b",
+    # Iter 212: QA-found leak — "Not able to join us tonight for..." was
+    # a regret/promo post (event already happening tonight + ad for a
+    # separate future intensive) that surfaced as an event with the
+    # caption fragment as title. Catches the "can't make it / unable to
+    # attend" sentence opener that's pure announcement, not an event.
+    r"^not (?:able to|going to|gonna) (?:join|make|attend|be)",
+    r"\bcan'?t (?:join|make it|attend) (?:us\s+)?(?:tonight|tomorrow|today)\b",
+    r"\bif you (?:can't|cannot|can not) (?:join|make|attend)",
+    r"\bthere'?s still time to register\b",  # promo cross-link
+    r"\bregister for (?:her|his|their|our) (?:online|virtual) ",
 ]
 _NON_EVENT_SIGNAL_RES = [re.compile(p, re.IGNORECASE) for p in _NON_EVENT_SIGNALS]
 
