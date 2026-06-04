@@ -363,18 +363,15 @@ export default function TopPicks({
       <div className="flex items-end justify-between mb-4 gap-4">
         <div>
           <h2 className="text-xl font-semibold text-gray-900">For You</h2>
-          <p className="text-sm text-gray-500">
-            The best of NYC each day, picked for your interests
-            {(() => {
-              const { yes } = getAttendedCount();
-              if (yes <= 0) return null;
-              return (
-                <span className="ml-1.5 text-emerald-700">
-                  · ✓ {yes} attended
-                </span>
-              );
-            })()}
-          </p>
+          {(() => {
+            const { yes } = getAttendedCount();
+            if (yes <= 0) return null;
+            return (
+              <p className="text-xs text-emerald-700 mt-0.5">
+                ✓ {yes} attended
+              </p>
+            );
+          })()}
         </div>
         <div className="bg-white rounded-lg border border-gray-200 p-0.5 flex shrink-0">
           <button
@@ -415,11 +412,8 @@ export default function TopPicks({
       {/* ☕ This Weekend — low-key social: brunch, books, runs, art, comedy */}
       {weekendEvents.length > 0 && (
         <div className="mb-8 -mx-1 px-1 py-3 bg-emerald-50/60 rounded-2xl border border-emerald-200">
-          <h3 className="text-sm font-semibold text-emerald-900 uppercase tracking-wide mb-2 px-2 flex items-center justify-between">
-            <span>☕ This Weekend</span>
-            <span className="text-[10px] font-normal text-emerald-700 normal-case tracking-normal">
-              brunch · books · runs · art · outdoors · Sat / Sun
-            </span>
+          <h3 className="text-sm font-semibold text-emerald-900 uppercase tracking-wide mb-2 px-2">
+            ☕ This Weekend
           </h3>
           <div className="space-y-2">
             {weekendEvents.map((event) => (
@@ -429,14 +423,11 @@ export default function TopPicks({
         </div>
       )}
 
-      {/* ✨ Just Added — events first seen in last 30 hours */}
+      {/* ✨ Just Added — events first seen in last 72 hours */}
       {recentlyAdded.length > 0 && (
         <div className="mb-8 -mx-1 px-1 py-3 bg-sky-50/60 rounded-2xl border border-sky-200">
-          <h3 className="text-sm font-semibold text-sky-900 uppercase tracking-wide mb-2 px-2 flex items-center justify-between">
-            <span>✨ Just Added</span>
-            <span className="text-[10px] font-normal text-sky-700 normal-case tracking-normal">
-              new this week
-            </span>
+          <h3 className="text-sm font-semibold text-sky-900 uppercase tracking-wide mb-2 px-2">
+            ✨ Just Added
           </h3>
           <div className="space-y-2">
             {recentlyAdded.map((event) => (
@@ -446,14 +437,13 @@ export default function TopPicks({
         </div>
       )}
 
-      {/* 👤 From accounts you follow / save from — highest-conviction signal */}
+      {/* Following hero — highest-conviction signal. Heading deliberately
+          minimal (iter 214): the ★ glyph on cards already signals the
+          source. Verbose 'Because you follow @X' text removed per user. */}
       {followingUpcoming.length > 0 && (
         <div className="mb-8 -mx-1 px-1 py-3 bg-sky-50/60 rounded-2xl border border-sky-200">
           <h3 className="text-sm font-semibold text-sky-900 uppercase tracking-wide mb-2 px-2">
-            👤 From accounts you follow
-            {followingUpcoming.some((e) => e.userAffinity && !e.userFollowing) && (
-              <span className="text-sky-700/70"> · &amp; save from</span>
-            )}
+            ★ Following
           </h3>
           <div className="space-y-2">
             {followingUpcoming.map((event) => (
@@ -491,24 +481,15 @@ export default function TopPicks({
             <div key={date}>
               <button
                 onClick={() => onSelectDate(date)}
-                className={`mb-2 hover:text-gray-900 flex items-baseline gap-2 ${
+                className={`mb-2 hover:text-gray-900 ${
                   isToday
                     ? "text-base font-bold text-gray-900"
                     : "text-xs font-semibold text-gray-500 uppercase tracking-wide"
                 }`}
               >
-                <span>
-                  {isToday
-                    ? `🔥 Today · ${format(dateObj, "EEEE, MMM d")}`
-                    : format(dateObj, "EEEE, MMM d")}
-                </span>
-                <span
-                  className={`font-normal normal-case tracking-normal ${
-                    isToday ? "text-gray-500 text-sm" : "text-gray-400"
-                  }`}
-                >
-                  · {total} event{total !== 1 ? "s" : ""}
-                </span>
+                {isToday
+                  ? `Today · ${format(dateObj, "EEEE, MMM d")}`
+                  : format(dateObj, "EEEE, MMM d")}
               </button>
               {viewMode === "grid" ? (
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-1.5">

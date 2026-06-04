@@ -111,11 +111,6 @@ function GridCard({ event, onSelect }: { event: Event; onSelect?: (event: Event)
           className={`absolute bottom-1.5 left-1.5 rounded-full w-5 h-5 flex items-center justify-center text-[11px] font-bold backdrop-blur ${
             event.userFollowing ? "bg-sky-500/95 text-white" : "bg-amber-500/95 text-white"
           }`}
-          title={
-            event.userFollowing
-              ? `Because you follow @${event.account || event.instagramAccount || ""}`
-              : `From accounts you save from`
-          }
         >
           {event.userFollowing ? "★" : "♥"}
         </div>
@@ -197,7 +192,6 @@ function MediaFirstCard({
   const opened = isEventOpened(event.id);
   const convictionFollow = !!event.userFollowing;
   const convictionAffinity = !convictionFollow && !!event.userAffinity;
-  const convictionAccount = event.account || event.instagramAccount || "";
   const cardChrome = convictionFollow
     ? "ring-1 ring-sky-300 shadow-[inset_3px_0_0_0_#0ea5e9]"
     : convictionAffinity
@@ -216,16 +210,6 @@ function MediaFirstCard({
         opened ? "opacity-60" : ""
       }`}
     >
-      {(convictionFollow || convictionAffinity) && convictionAccount && (
-        <div
-          className={`px-3 py-1 text-[11px] font-semibold flex items-center gap-1 ${
-            convictionFollow ? "bg-sky-50 text-sky-800" : "bg-amber-50 text-amber-800"
-          }`}
-        >
-          <span>{convictionFollow ? "Because you follow" : "From accounts you save from"}</span>
-          <span className="font-bold">@{convictionAccount}</span>
-        </div>
-      )}
       <div className="relative aspect-[4/3] sm:aspect-[16/10] max-h-72 bg-gray-100 overflow-hidden">
         {!imgFailed ? (
           <img
@@ -471,7 +455,6 @@ function FeedCard({
   const openedFeed = isEventOpened(event.id);
   const convictionFollow = !!event.userFollowing;
   const convictionAffinity = !convictionFollow && !!event.userAffinity;
-  const convictionAccount = event.account || event.instagramAccount || "";
   const feedChrome = convictionFollow
     ? "ring-1 ring-sky-300 shadow-[inset_3px_0_0_0_#0ea5e9]"
     : convictionAffinity
@@ -490,16 +473,6 @@ function FeedCard({
         openedFeed ? "opacity-60" : ""
       }`}
     >
-      {(convictionFollow || convictionAffinity) && convictionAccount && (
-        <div
-          className={`px-3 py-1 text-[11px] font-semibold flex items-center gap-1 ${
-            convictionFollow ? "bg-sky-50 text-sky-800" : "bg-amber-50 text-amber-800"
-          }`}
-        >
-          <span>{convictionFollow ? "Because you follow" : "From accounts you save from"}</span>
-          <span className="font-bold">@{convictionAccount}</span>
-        </div>
-      )}
       <div className="flex gap-3 p-3">
         {event.imageUrl && !imgFailedF && (
           <div className="shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-gray-100">
