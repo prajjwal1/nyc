@@ -67,3 +67,33 @@ After the next CI scrape (which will pick up P1's auto-revive of the 54 transien
 2. Ship the curator-calendar probing maintenance script (fb-105).
 3. Audit whether the un-deading uncovered any new caption-fragment patterns now that more posts flow.
 
+
+## 2026-06-04 19:04 — run-id 2026-06-04-1904
+
+**Shipped (commit 9eb458e):**
+- ingestion-P1: OCR-garbage title detector `_looks_like_ocr_garbage` wired into `quality._is_caption_fragment` — purges glyph-artifact IG-story titles (`6» GOLIVIACRANDALL *ASTaa}`, `AA Mi, ill il th`, etc.).
+- ingestion-P2 (MODIFIED by Critic): narrative/CTA fragment starters + leading-stray-quote regex in `quality.py`. Critic tightened `throwing `→`throwing a ` and `enter a `→`enter a ballot` for future-feed FP safety. P1+P2 together caught exactly 12 garbage IG titles across the 347-event feed, 0 false positives (verified live).
+- ingestion-P3: Meetup group-slug enrichment in `normalize._enrich_provenance_from_url` — the curator handle lives in the URL path (`meetup.com/<slug>`), not the host SLD; folds + membership-checks it. Moves `silentbookclub.nyc` toward yield>0. Verified `jcrunners` etc. don't false-match.
+- ingestion-P4: `luma._parse_luma_next_data` — reads `__NEXT_DATA__` for SPA curator calendars (ld+json yields 0 on them). Broad NYC gate (`_is_nyc_address`) + fully defensive parse. `lu.ma/nycbackgammonclub` recovered 0→6 live events; `litclub.nyc` returns [] cleanly.
+- source-pool-S1 (MODIFIED by Critic): added `lu.ma/philosophy` to LUMA_PAGES (7 live NYC events, covers `philosophy.nyc`). Critic found it INERT without two deps: (1) hard-dep on P4 (same SPA shape) — both shipped together; (2) added a location-suffix-strip fold in `_user_following_normalized` so the bare `philosophy` slug matches the `philosophy.nyc` signal handle. Enrichment verified firing.
+- ui-U1: plain-text `@account` provenance branch on `EventCard.tsx` FeedCard for the 68 cross-source-enriched conviction events (userFollowing + account but no instagramAccount: bookclubbar, readingrhythms-manhattan, nycforfree, silentbookclubnyc). Not the banned prose ribbon; not clickable (avoids empty AccountBanner). Build clean.
+- D1 (APPROVE-DREAM): `_infer_time_from_text` fills absent startTime from "doors at 7pm / show starts at 8" body text (earliest plausible 06:00–23:59, fill-only). Wired into `process()` before the late-night filter.
+
+**Rejected:** none this round (Critic APPROVE/MODIFY on all 6 worker proposals).
+
+**Deferred (added to backlog):**
+- fb-169 (D2): make `AccountBanner` key on `event.account` so ui-U1's plain handles become clickable per-account routes. Touches a 2nd component; ship after ui-U1 confirmed clutter-free.
+
+**Feedback gate:** CLOSED (last calibration 2026-06-01, inside 7-day throttle; no force-ask). No user question this round.
+
+**Still user-blocked (no code fix possible):**
+- IG session 33 days stale (⛔ CRITICAL) → CI IG account-sweep degraded → 38 zero-yield signal accounts + sanity_check "Instagram dominant" CRITICAL (IG=46<50). The dominant cause of low follow-graph coverage. Needs interactive `instaloader --login` + IG_SESSION_B64 secret refresh.
+- fb-139 (Reddit OAuth), fb-104 (prune redundant Lu.ma /nyc/<topic> URLs — additive-only rule).
+
+**Metric delta (code-only round; events.json not re-scraped — deltas land on next CI scrape):**
+- Follow-graph coverage: 12/50 (24.0%) → 12/50 (24.0%). Next scrape expected ~17/50 (+philosophy.nyc, +nycbackgammonclub, +silentbookclub.nyc, + reading_rhythms/nyc_forfree registering on profile rebuild).
+- Topic coverage: 4/4 → 4/4 (stable).
+- High-conviction ratio: 105/347 (30.3%) → 105/347 (30.3%). Next scrape: P1+P2 remove 12 OCR/caption-garbage IG titles (precision up), P3/P4/S1 add genuinely-followed non-IG events.
+
+**Hypothesis for next round:**
+After the next CI scrape, follow-graph coverage should tick up from the 3 newly-enriched non-IG accounts (philosophy/backgammon/silentbookclub) even with the IG session still stale — proving the non-IG enrichment lever works independent of the IG bottleneck. The binding constraint remains the IG-session refresh (user-blocked). Next run should re-audit the top-of-feed after the OCR purge lands and consider whether a story-specific title-quality floor is warranted (ingestion open question #4).
