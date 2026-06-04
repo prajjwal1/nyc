@@ -734,6 +734,14 @@ These are the durable preferences the user has stated. They're marked `addressed
   - User answer: **ALL THREE** (3/3 — strongest possible signal that the curated-host enrichment is well-aligned).
   - Calibration takeaway: events from `litclub.nyc`, `bookclubbar`, `readingrhythms-manhattan`, and similar curated literary hosts are the user's actual attend-target. The iter 73/74/77/109 enrichment paths surfacing these events as `userFollowing` are validated. No category-coverage gap implied — books/parties/food/outdoors covered. Continue the current enrichment + ranking strategy; the loop is moving in the right direction.
 
+### fb-169 — Make AccountBanner key on event.account (clickable enriched conviction handles)
+- created_at: 2026-06-04
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-06-04-1904)
+- status: open
+- body: ui-U1 (this round) surfaces the followed `@account` on the 68 cross-source-enriched conviction events as PLAIN TEXT, because `AccountBanner` currently filters by `instagramAccount` only and would render an empty "0 upcoming" banner for a `bookclubbar`/`readingrhythms-manhattan`/`nycforfree`/`silentbookclubnyc` click. D2 completes the loop: extend `AccountBanner`'s filter predicate to match `e.instagramAccount === acct || e.account === acct`, then make the ui-U1 plain-text `@account` a clickable filter button like the IG branch — turning these calibration-validated literary follows (iter-198: user said they'd attend ALL of bookclubbar/readingrhythms/litclub) into working per-account browse routes.
+- files: `site/app/components/EventCard.tsx` (provenance branch) + `site/app/components/AccountBanner.tsx` (filter predicate).
+- deferred reason: touches a second component; ui-U1 (plain text) is the safe minimal step. Ship only after ui-U1 lands and is confirmed clutter-free.
+
 <!-- Append new feedback above this comment as it comes in. Top of list is highest priority. -->
 
 

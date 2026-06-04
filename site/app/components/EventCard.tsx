@@ -246,6 +246,14 @@ function FeedCard({
                 >
                   @{event.instagramAccount}
                 </button>
+              ) : event.account && (event.userFollowing || event.userAffinity) ? (
+                // Cross-source-enriched conviction event: surface WHICH follow
+                // drove it. Plain text (not a filter button) — AccountBanner
+                // keys on instagramAccount and would show an empty banner for
+                // these source-only handles.
+                <span title={`From @${event.account}, an account you follow`}>
+                  @{event.account}
+                </span>
               ) : (
                 <span>{SOURCE_LABELS[event.source] || event.source}</span>
               )}

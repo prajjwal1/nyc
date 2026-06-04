@@ -88,6 +88,9 @@ LUMA_PAGES = [
     "https://lu.ma/thinkolio",
     "https://lu.ma/founderscoffee",
     "https://lu.ma/cinemaclub",
+    # philosophy.nyc signal account — 7 live NYC philosophy salon events
+    # (Met, McCarren Parkhouse, Ethical Culture). Yields via __NEXT_DATA__.
+    "https://lu.ma/philosophy",
 ]
 
 
@@ -170,9 +173,113 @@ def _parse_luma_page(html: str, source_url: str) -> list[dict]:
         except (json.JSONDecodeError, Exception):
             continue
 
+    # Curator calendars (lu.ma/<handle>) are SPAs that embed their event
+    # roster in <script id="__NEXT_DATA__"> rather than ld+json — so the
+    # ld+json loop above silently yields 0 for them (e.g. nycbackgammonclub
+    # had 6 live events but extracted none). Source-agnostic NEXT_DATA path.
+    if not events:
+        m = re.search(
+            r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.S
+        )
+        if m:
+            try:
+                data = json.loads(m.group(1))
+            except Exception:
+                data = None
+            if data:
+                events.extend(_parse_luma_next_data(data, source_url))
+
     if not events:
         events.extend(_parse_luma_html(soup, source_url))
 
+    return events
+
+
+_NYC_CITIES = {"new york", "brooklyn", "queens", "bronx", "staten island",
+               "long island city", "williamsburg", "astoria"}
+
+
+def _is_nyc_address(geo: dict) -> bool:
+    """Broad NYC gate (not strict city=='New York' — keeps Brooklyn-labeled
+    events). Rejects events with no parseable NYC address so a curator's
+    out-of-town events aren't pulled in."""
+    if not isinstance(geo, dict):
+        return False
+    city = (geo.get("city") or "").strip().lower()
+    if city in _NYC_CITIES:
+        return True
+    blob = " ".join(str(geo.get(k) or "") for k in
+                    ("full_address", "address", "region", "city_state")).lower()
+    if "new york" in blob:
+        return True
+    # ", NY" with a NY-zip / state token (avoid matching "NYE party" etc.)
+    if re.search(r",\s*ny\b", blob):
+        return True
+    return False
+
+
+def _parse_luma_next_data(data, source_url: str) -> list[dict]:
+    """Walk a lu.ma __NEXT_DATA__ blob for event dicts (name + start_at) and
+    build NYC events. Defensive: never throws, requires name + parseable
+    start, dedupes by api_id, gates on a NYC address."""
+    found = []
+    seen_ids = set()
+
+    def walk(node):
+        if isinstance(node, dict):
+            if isinstance(node.get("name"), str) and isinstance(node.get("start_at"), str):
+                found.append(node)
+            for v in node.values():
+                walk(v)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v)
+
+    try:
+        walk(data)
+    except Exception:
+        return []
+
+    events = []
+    for ev in found:
+        try:
+            api_id = ev.get("api_id") or ""
+            if api_id and api_id in seen_ids:
+                continue
+            geo = ev.get("geo_address_info") or {}
+            if not _is_nyc_address(geo):
+                continue
+            title = (ev.get("name") or "").strip()
+            if not title:
+                continue
+            date_str, start_time = parse_iso_to_local(ev.get("start_at") or "")
+            event_date = parse_date(date_str) if date_str else None
+            if not event_date:
+                continue
+            _, end_time = parse_iso_to_local(ev.get("end_at") or "")
+            loc_name = (geo.get("name") or "").strip()
+            loc_addr = (geo.get("full_address") or geo.get("address") or "").strip()
+            image = ev.get("cover_url") or None
+            if api_id:
+                seen_ids.add(api_id)
+            desc = ev.get("description_mirror") or ev.get("description") or ""
+            events.append(build_event(
+                title=title,
+                description=desc[:1000] if isinstance(desc, str) else "",
+                event_date=event_date,
+                start_time=start_time,
+                end_time=end_time,
+                location_name=loc_name,
+                address=loc_addr,
+                source="luma",
+                # Keep the curator/page URL (not a per-event slug) so the
+                # normalize.py curator-handle enrichment (lu.ma/<handle>)
+                # can fire and tag userFollowing — the point of this path.
+                source_url=source_url,
+                image_url=image,
+            ))
+        except Exception:
+            continue
     return events
 
 

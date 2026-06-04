@@ -705,10 +705,50 @@ def _time_of_day_score(start_time: str | None, date_str: str) -> float:
         return 0.3       # weekday morning
 
 
+_OCR_COMMON_SHORT = {"a", "i", "to", "of", "in", "on", "at", "an", "is", "no",
+    "we", "my", "ok", "so", "up", "by", "x", "vs", "am", "pm", "st", "nd",
+    "rd", "th", "dj", "ny", "us", "go", "do", "if", "as", "or", "be", "it",
+    "he", "me"}
+
+
+def _looks_like_ocr_garbage(title: str) -> bool:
+    """Detect IG-story OCR garbage titles (random character runs / glyph
+    artifacts) that slip past the literal caption-fragment starters because
+    they're not real words. Source-agnostic; fired from _is_caption_fragment.
+    """
+    t = (title or "").strip()
+    words = t.split()
+    if len(words) < 3:
+        return False
+    # Strong OCR-artifact glyph signatures (braces, em-dash runs, *CAPS,
+    # 6+ glued capitals followed by lowercase) — essentially never appear
+    # in a real event name.
+    if re.search(r"[»«}{]|———|\*[A-Z]{2,}", t) or re.search(r"\b[A-Z]{6,}[a-z]", t):
+        return True
+    # Fallback: high fraction of stray 1-2 char non-word / symbol tokens.
+    noise = 0
+    for w in words:
+        a = re.sub(r"[^A-Za-z]", "", w)
+        if not a:
+            if re.fullmatch(r"[&]+", w) or re.fullmatch(r"[\d\$.,:/&+-]+", w):
+                continue
+            noise += 1
+            continue
+        if re.search(r"\d", w):
+            continue
+        wl = w.lower().strip(".,!?'’‘")
+        if len(a) <= 2 and wl not in _OCR_COMMON_SHORT:
+            noise += 1
+    return noise / len(words) >= 0.45
+
+
 def _is_caption_fragment(title: str, desc: str) -> bool:
     """Detect Instagram captions that got split into bogus 'events'."""
     if not title:
         return False
+
+    if _looks_like_ocr_garbage(title):
+        return True
 
     title_lower = title.lower().strip()
     title_stripped = title.strip()
@@ -906,9 +946,20 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         # "an evening of" fragment-opener already covered by other rules
         # but these specific anchors are common IG caption starts.
         "free screenings", "free concerts",
+        # Narrative / CTA openers from IG-story captions (2026-06-04 leak audit).
+        # "throwing a " / "enter a ballot" are scoped tighter than the bare
+        # "throwing "/"enter a " to avoid future FPs (e.g. "Throwing Workshop").
+        "not able to", "throwing a ", "enter to win", "enter a ballot",
+        "house of @",  # trailing @ scopes to handle-glued captions, not a venue
+        "below.",
     ]
     if any(title_lower.startswith(p) or title_lower_nofx.startswith(p)
            for p in fragment_starts):
+        return True
+
+    # Leading stray apostrophe/quote + space + word: "' Things making me happy"
+    # — an OCR-split caption line, never a real title.
+    if re.match(r"^['\"’‘]\s+\S", title.strip()):
         return True
 
     # Month-day + dash prefix: "Jun 17 - Alphonso Horne...", "5/27 - Brass

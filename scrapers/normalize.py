@@ -847,6 +847,42 @@ def collapse_title_spam(events: list[dict]) -> list[dict]:
     return keep
 
 
+_TIME_IN_TEXT_RE = re.compile(
+    r"\b(?:doors?(?:\s+(?:open|at))?|starts?(?:\s+at)?|"
+    r"kicks?\s+off(?:\s+at)?|show)\s*:?\s*"
+    r"(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m\.?",
+    re.I,
+)
+
+
+def _infer_time_from_text(title: str, description: str) -> str | None:
+    """Infer an HH:MM start time from caption/body text like 'doors at 7pm'
+    or 'show starts at 8'. Returns the EARLIEST plausible 06:00–23:59 match
+    (doors usually precede show). Used only to fill an absent startTime —
+    never to overwrite a parsed one. Source-agnostic; no IG session needed.
+    """
+    text = f"{title or ''}  {description or ''}"
+    best = None
+    for m in _TIME_IN_TEXT_RE.finditer(text):
+        try:
+            hour = int(m.group(1))
+            minute = int(m.group(2)) if m.group(2) else 0
+        except (TypeError, ValueError):
+            continue
+        ampm = m.group(3).lower()
+        if hour == 12:
+            hour = 0
+        if ampm == "p":
+            hour += 12
+        if not (6 <= hour <= 23) or not (0 <= minute <= 59):
+            continue
+        if best is None or (hour, minute) < best:
+            best = (hour, minute)
+    if best is None:
+        return None
+    return f"{best[0]:02d}:{best[1]:02d}"
+
+
 def _likely_past_midnight(event: dict) -> bool:
     """Detect events expected to run past midnight. User explicitly
     excluded these — the site is for events worth attending to meet
@@ -1073,6 +1109,14 @@ def _user_following_normalized() -> set[str]:
     out = set(base)
     for h in base:
         out.add(_re.sub(r"[^a-z0-9]", "", h))
+    # Location-suffix-stripped fold: many curators run a lu.ma/Eventbrite
+    # calendar at the bare host slug (lu.ma/philosophy) while the IG handle
+    # carries an NYC suffix (philosophy.nyc). Strip a trailing nyc/ny/bk so
+    # the bare slug matches the followed handle. (iter 2026-06-04, fb S1)
+    for h in list(out):
+        stripped = _re.sub(r"(nyc|ny|bk)$", "", h)
+        if stripped and stripped != h and len(stripped) >= 4:
+            out.add(stripped)
     return out
 
 
@@ -1169,6 +1213,20 @@ def _enrich_provenance_from_url(events: list[dict]) -> None:
                     matched += 1
                     break
             if ev.get("userFollowing"):
+                continue
+        # 1b) Meetup group slug lives in the URL path, not the host SLD
+        #     (meetup.com/<slug>/events/...). _extract_handle_from_url reads
+        #     only the host, so Meetup groups never matched. Fold the path
+        #     slug and check membership. (iter 2026-06-04: silentbookclub.nyc)
+        mu = _re.search(r"meetup\.com/([^/?#]+)", ev.get("sourceUrl") or "", _re.I)
+        if mu:
+            slug = mu.group(1)
+            fold = _re.sub(r"[^a-z0-9]", "", slug.lower())
+            if fold and len(fold) >= 5 and fold in following:
+                ev["account"] = slug
+                ev["userFollowing"] = True
+                _apply_quality_for(ev, fold, quality)
+                matched += 1
                 continue
         # 2) Organizer-name match (JSON-LD organizer.name → alphanumeric fold)
         # 3) Location-name match (iter 109): for Eventbrite venue-search events
@@ -1518,6 +1576,19 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
 
     events = [ev for ev in events if ev.get("title") and ev.get("date")]
     events = filter_future(events)
+
+    # Fill missing startTime from body text ("doors at 7pm", "show starts at
+    # 8") — only when absent, never overwriting a parsed time. Runs before the
+    # late-night filter so an inferred time can still be range-checked.
+    time_filled = 0
+    for ev in events:
+        if not (ev.get("startTime") or "").strip():
+            inferred = _infer_time_from_text(ev.get("title", ""), ev.get("description", ""))
+            if inferred:
+                ev["startTime"] = inferred
+                time_filled += 1
+    if time_filled:
+        print(f"[normalize] Inferred startTime from text for {time_filled} events")
 
     # Stamp per-source default images BEFORE _is_shell_event so that
     # venues like greenwoodcemetery / nyc_parks survive the image filter.
