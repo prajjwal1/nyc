@@ -1251,6 +1251,18 @@ def build_event(
     if categories is None:
         categories = infer_categories(title, description, source=source)
 
+    # iter 215: scrub raw ISO datetimes out of description text. Songkick's
+    # JSON-LD puts the startDate string ('2026-06-04T18:00:00-0400') in the
+    # description field, which then renders verbatim in the UI. The event
+    # already has structured date+startTime fields, so the raw ISO in
+    # description is noise.
+    if description:
+        description = re.sub(
+            r"\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:[+\-]\d{2}:?\d{2}|Z)?\b",
+            "",
+            description,
+        ).strip()
+
     # Apply title cleanup
     cleaned_title = clean_title(title)
 

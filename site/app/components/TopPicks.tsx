@@ -180,21 +180,8 @@ export default function TopPicks({
   const now = new Date();
   // Force-rerender token bumped when user hides an event so the card
   // disappears immediately without a page reload.
-  const [hideTick, setHideTick] = useState(0);
+  const [, setHideTick] = useState(0);
   const onHide = () => setHideTick((t) => t + 1);
-  // Detail (one-per-row, full info) vs Grid (3-col thumbnail, IG-explore-style).
-  // Persisted in localStorage so the user's preference sticks across visits.
-  const [viewMode, setViewMode] = useState<"detail" | "grid">(() => {
-    if (typeof window === "undefined") return "detail";
-    const saved = window.localStorage.getItem("nyc-events:viewMode");
-    return saved === "grid" ? "grid" : "detail";
-  });
-  const setViewModePersist = (m: "detail" | "grid") => {
-    setViewMode(m);
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem("nyc-events:viewMode", m);
-    }
-  };
 
   // Drop user-hidden events from the feed (localStorage signal).
   const visible = events.filter((e) => !isHidden(e.id));
@@ -360,40 +347,19 @@ export default function TopPicks({
         />
       )}
 
-      <div className="flex items-end justify-between mb-4 gap-4">
-        <div>
-          <h2 className="text-xl font-semibold text-gray-900">For You</h2>
-          {(() => {
-            const { yes } = getAttendedCount();
-            if (yes <= 0) return null;
-            return (
-              <p className="text-xs text-emerald-700 mt-0.5">
-                ✓ {yes} attended
-              </p>
-            );
-          })()}
-        </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-0.5 flex shrink-0">
-          <button
-            onClick={() => setViewModePersist("detail")}
-            className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
-              viewMode === "detail" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-50"
-            }`}
-            title="Detailed cards"
-          >
-            Detail
-          </button>
-          <button
-            onClick={() => setViewModePersist("grid")}
-            className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
-              viewMode === "grid" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-50"
-            }`}
-            title="Compact grid (IG-explore style)"
-          >
-            Grid
-          </button>
-        </div>
-      </div>
+      {/* iter 215: dropped 'For You' heading + Detail/Grid toggle entirely.
+          User: 'remove For You I know its for me' + 'we don't want grid
+          option'. Attended count surfaces inline near the first hero only
+          when non-zero, so it doesn't take a full row on a fresh visit. */}
+      {(() => {
+        const { yes } = getAttendedCount();
+        if (yes <= 0) return null;
+        return (
+          <p className="text-xs text-emerald-700 mb-3 px-2">
+            ✓ {yes} attended
+          </p>
+        );
+      })()}
 
       {/* 🔥 Tonight — happening today, evening events */}
       {tonightEvents.length > 0 && (
@@ -491,19 +457,11 @@ export default function TopPicks({
                   ? `Today · ${format(dateObj, "EEEE, MMM d")}`
                   : format(dateObj, "EEEE, MMM d")}
               </button>
-              {viewMode === "grid" ? (
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-1.5">
-                  {dayEvents.map((event) => (
-                    <EventCard key={event.id} event={event} variant="grid" onSelect={onSelectEvent} />
-                  ))}
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  {dayEvents.map((event) => (
-                    <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
-                  ))}
-                </div>
-              )}
+              <div className="space-y-2">
+                {dayEvents.map((event) => (
+                  <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+                ))}
+              </div>
               {total > MAX_PER_DAY && (
                 <button
                   onClick={() => onSelectDate(date)}

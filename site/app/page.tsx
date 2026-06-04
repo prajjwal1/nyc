@@ -1,17 +1,16 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { format, endOfWeek, eachDayOfInterval, nextSaturday } from "date-fns";
+import { format, endOfWeek, eachDayOfInterval } from "date-fns";
 import { useEvents } from "./hooks/useEvents";
 import Header from "./components/Header";
 import Calendar from "./components/Calendar";
-import FilterBar from "./components/FilterBar";
 import EventList from "./components/EventList";
 import EventCard from "./components/EventCard";
 import TopPicks from "./components/TopPicks";
 import EventModal from "./components/EventModal";
 import { Event } from "./lib/types";
-import { isSavedLocal, readAndAdvanceLastVisited } from "./lib/interests";
+import { readAndAdvanceLastVisited } from "./lib/interests";
 
 type View = "for-you" | "calendar";
 
@@ -23,20 +22,14 @@ export default function Home() {
     setSelectedDate,
     selectedDayEvents,
     eventDates,
-    categories,
-    setCategories,
     search,
     setSearch,
-    priceFilter,
-    setPriceFilter,
-    allCategories,
     lastUpdated,
     totalEvents,
     topAccounts,
   } = useEvents();
 
   const [view, setView] = useState<View>("for-you");
-  const [presetFilter, setPresetFilter] = useState<"meet-people" | "saved" | null>(null);
   const [openEvent, setOpenEvent] = useState<Event | null>(null);
   const [lastVisitedAt, setLastVisitedAt] = useState<string | null>(null);
 
@@ -132,66 +125,11 @@ export default function Home() {
     return events.filter((e) => e.date >= start && e.date < end).length;
   }, [events]);
 
-  // IG capture stats — concrete value-prop for the user: the website
-  // surfaces this many IG events so they don't have to scroll. Ephemeral
-  // count is the strongest signal (stories disappear in 24h — without us
-  // scraping, the user genuinely cannot see them later).
-  const igCaptureStats = useMemo(() => {
-    let total = 0;
-    let ephemeral = 0;
-    for (const e of events) {
-      if (e.source === "instagram" || (e.instagramAccount || "") !== "") {
-        total += 1;
-        if (e.isStory || e.isHighlight) {
-          ephemeral += 1;
-        }
-      }
-    }
-    return { total, ephemeral };
-  }, [events]);
-
-  const presetEvents = useMemo(() => {
-    if (presetFilter === "meet-people") {
-      return events.filter((e) =>
-        (e.highlights || []).includes("meet-people") ||
-        e.categories.includes("singles") ||
-        (e.categories.includes("parties") && (e.highlights || []).some((h) => ["meet-people", "vibes", "nightlife"].includes(h)))
-      );
-    }
-    if (presetFilter === "saved") {
-      // Include both IG-saved (server signal) AND locally-saved
-      // (user starred the event in browser via ★ button).
-      return events.filter((e) => e.userSaved || isSavedLocal(e.id));
-    }
-    return events;
-  }, [events, presetFilter]);
-
-  const handleQuickFilter = (preset: string) => {
-    const today = new Date();
-    if (preset === "today") {
-      setSelectedDate(format(today, "yyyy-MM-dd"));
-      setView("calendar");
-    } else if (preset === "weekend") {
-      const dayOfWeek = today.getDay();
-      if (dayOfWeek === 0 || dayOfWeek === 6) {
-        setSelectedDate(format(today, "yyyy-MM-dd"));
-      } else {
-        setSelectedDate(format(nextSaturday(today), "yyyy-MM-dd"));
-      }
-      setView("calendar");
-    } else if (preset === "week") {
-      setSelectedDate(format(today, "yyyy-MM-dd"));
-      setView("calendar");
-    } else if (preset === "meet-people") {
-      setPresetFilter(presetFilter === "meet-people" ? null : "meet-people");
-      setView("for-you");
-    } else if (preset === "saved") {
-      setPresetFilter(presetFilter === "saved" ? null : "saved");
-      setView("for-you");
-    } else if (preset === "free") {
-      setPriceFilter(priceFilter === "free" ? "all" : "free");
-    }
-  };
+  // iter 215: dropped igCaptureStats, presetEvents, handleQuickFilter —
+  // FilterBar (search/categories/price/quick-filters) and the IG-stats
+  // header line all removed per user direction. Heroes in TopPicks
+  // already provide the time-based + signal-based slicing the quick
+  // filters used to offer.
 
   const handleSelectDate = (date: string) => {
     setSelectedDate(date);
@@ -230,120 +168,53 @@ export default function Home() {
         thisWeekCount={thisWeekCount}
         lastUpdated={lastUpdated}
         newSinceLastVisit={newSinceLastVisit}
-        igCaptureCount={igCaptureStats.total}
-        igEphemeralCount={igCaptureStats.ephemeral}
       />
 
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
-        <div className="flex flex-col lg:flex-row gap-6">
-          <aside className="lg:w-80 shrink-0 space-y-4 lg:space-y-6 order-2 lg:order-1">
-            {/* View toggle pinned at top of sidebar (also moves to top on mobile via the sticky version below) */}
-            <div className="bg-white rounded-xl border border-gray-200 p-1 flex hidden lg:flex">
-              <button
-                onClick={() => setView("for-you")}
-                className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  view === "for-you"
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-600 hover:bg-gray-50"
-                }`}
-              >
-                For You
-              </button>
-              <button
-                onClick={() => setView("calendar")}
-                className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  view === "calendar"
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-600 hover:bg-gray-50"
-                }`}
-              >
-                Calendar
-              </button>
-            </div>
+      <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+        {/* Compact Feed/Calendar toggle — single bar across top, no sidebar
+            on the Feed view (iter 215: dropped the FilterBar sidebar). */}
+        <div className="bg-white rounded-xl border border-gray-200 p-1 flex mb-6 max-w-xs">
+          <button
+            onClick={() => setView("for-you")}
+            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+              view === "for-you" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-50"
+            }`}
+          >
+            Feed
+          </button>
+          <button
+            onClick={() => setView("calendar")}
+            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+              view === "calendar" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-50"
+            }`}
+          >
+            Calendar
+          </button>
+        </div>
 
-            {view === "calendar" && (
+        <div className="flex flex-col lg:flex-row gap-6">
+          {view === "calendar" && (
+            <aside className="lg:w-80 shrink-0 order-2 lg:order-1">
               <Calendar
                 selectedDate={selectedDate}
                 onSelectDate={setSelectedDate}
                 eventDates={eventDates}
                 eventCountByDate={eventCountByDate}
               />
-            )}
-            <details className="bg-white rounded-xl border border-gray-200 lg:open lg:[&>summary]:hidden" open>
-              <summary className="cursor-pointer list-none p-3 text-sm font-medium text-gray-700 flex items-center justify-between lg:hidden">
-                <span>Search & Filters</span>
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-              </summary>
-              <div className="p-4 pt-0 lg:pt-4">
-                <FilterBar
-                  categories={categories}
-                  setCategories={setCategories}
-                  search={search}
-                  setSearch={setSearch}
-                  priceFilter={priceFilter}
-                  setPriceFilter={setPriceFilter}
-                  allCategories={allCategories}
-                  onQuickFilter={handleQuickFilter}
-                />
-              </div>
-            </details>
-          </aside>
-
-          {/* Mobile-only view toggle, pinned above events */}
-          <div className="bg-white rounded-xl border border-gray-200 p-1 flex order-1 lg:hidden">
-            <button
-              onClick={() => setView("for-you")}
-              className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                view === "for-you"
-                  ? "bg-gray-900 text-white"
-                  : "text-gray-600 hover:bg-gray-50"
-              }`}
-            >
-              For You
-            </button>
-            <button
-              onClick={() => setView("calendar")}
-              className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                view === "calendar"
-                  ? "bg-gray-900 text-white"
-                  : "text-gray-600 hover:bg-gray-50"
-              }`}
-            >
-              Calendar
-            </button>
-          </div>
+            </aside>
+          )}
 
           <section className="flex-1 min-w-0 order-3 lg:order-2">
             {view === "for-you" ? (
-              <>
-                {presetFilter && (
-                  <div className="mb-4 flex items-center justify-between bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
-                    <div className="text-sm">
-                      <span className="font-medium text-amber-900">
-                        {presetFilter === "meet-people" ? "Meet people" : "★ Saved"}
-                      </span>
-                      <span className="text-amber-700 ml-2">
-                        — {presetEvents.length} events
-                      </span>
-                    </div>
-                    <button
-                      onClick={() => setPresetFilter(null)}
-                      className="text-xs text-amber-700 hover:text-amber-900 underline"
-                    >
-                      clear
-                    </button>
-                  </div>
-                )}
-                <TopPicks
-                  events={presetEvents}
-                  onSelectDate={handleSelectDate}
-                  onAccountClick={(acct) => setSearch("@" + acct)}
-                  accountFilter={search.startsWith("@") ? search.slice(1) : undefined}
-                  topAccounts={topAccounts}
-                  onClearAccountFilter={() => setSearch("")}
-                  onSelectEvent={setOpenEvent}
-                />
-              </>
+              <TopPicks
+                events={events}
+                onSelectDate={handleSelectDate}
+                onAccountClick={(acct) => setSearch("@" + acct)}
+                accountFilter={search.startsWith("@") ? search.slice(1) : undefined}
+                topAccounts={topAccounts}
+                onClearAccountFilter={() => setSearch("")}
+                onSelectEvent={setOpenEvent}
+              />
             ) : (
               <>
                 <EventList
