@@ -210,6 +210,19 @@ def _parse_item(item, ns: dict) -> list[dict]:
 
     soup = BeautifulSoup(content_encoded, "html.parser")
 
+    # One Fine Day NYC-style posts mark each curated event with a 📍 pin +
+    # ☁️ date. When present, parse those precisely — the structure is clean
+    # and deterministic, unlike the heading-fragment heuristic which mangles
+    # these posts into duplicate / mis-dated / mis-linked fragments.
+    # (The pin arrives HTML-encoded as &#128205; in the raw XML, so test the
+    # DECODED soup text, not content_encoded.)
+    if _PIN in soup.get_text():
+        pin_events = _extract_pin_marker_events(
+            soup, fallback_date, post_link, fallback_date
+        )
+        if pin_events:
+            return pin_events
+
     # Iter 94: roundup vs single-event detection. Newsletters like theskint
     # mix two post shapes — multi-event roundups whose titles start with a
     # day-pair like "WEDS-THURS, 5/27-28: ..." AND single-event posts like
@@ -225,10 +238,16 @@ def _parse_item(item, ns: dict) -> list[dict]:
     if heading_tags:
         events.extend(_extract_from_headings(soup, heading_tags, fallback_date, post_link))
     else:
-        # Fallback: treat the whole post as one event
+        # Fallback: treat the whole post as one event. But a roundup/guide
+        # title ("Your June Guide to NYC", "NYC This Week | …", "May Calendar")
+        # is a CONTAINER of events, never itself a single event — emitting it
+        # produces a junk promo card (especially for now-paywalled monthly
+        # guides that ship only an intro + "Read more").
         text = soup.get_text(separator=" ", strip=True)
         if (fallback_date and len(post_title) > 5
-                and not _looks_like_news_title(post_title)):
+                and not _looks_like_news_title(post_title)
+                and not _looks_like_roundup(post_title)
+                and not _re.search(r"\b(guide|calendar)\b", post_title, _re.IGNORECASE)):
             events.append(build_event(
                 title=post_title,
                 description=text[:500],
@@ -493,6 +512,136 @@ def _extract_from_headings(soup, heading_tags, fallback_date, post_link: str) ->
             categories=infer_categories(title, description),
         ))
 
+    return events
+
+
+# --- Pin-marker event extraction (One Fine Day NYC newsletter style) -------
+# Posts like "NYC This Week | May 27-31" mark each curated event with a 📍
+# pin, then encode date/time/ticket inline with emoji delimiters:
+#   📍<Title> (@ <Venue>)☁️ <Date> | <Time>🎟️ <Price><Description…>
+# Shops are marked 🛍️/🍀/☕ and product picks 👖/📱, so the 📍 pin + ☁️ date
+# pair is a clean event discriminator. This structured parse replaces the
+# heading-fragment heuristic for these posts (which mangles them into
+# duplicate/mis-dated/mis-linked fragments). Content-pattern driven, so any
+# newsletter using this convention benefits — not hardcoded to one host.
+_PIN = "\U0001F4CD"          # 📍
+_CLOUD_RE = _re.compile(r"☁️?")        # ☁ (+ optional VS16)
+_TICKET_RE = _re.compile(r"\U0001F39F️?")   # 🎟 (+ optional VS16)
+_MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+           "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
+_MONTH_DAY_RE = _re.compile(
+    r"(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})",
+    _re.IGNORECASE,
+)
+
+
+def _parse_marker_date(date_text: str, ref_date):
+    """Parse a 'Month Day' from the inline date text, anchored to the post's
+    publication YEAR (ref_date). dateparser's PREFER_DATES_FROM=future pushes a
+    bare 'May 29' to next year when it's already past — anchoring to the post
+    year fixes that. Handles ranges ('May 28-31' → start) by taking the first
+    match. Returns None for dateless text ('Open daily')."""
+    from datetime import date as _date
+    if not date_text:
+        return None
+    m = _MONTH_DAY_RE.search(date_text)
+    if not m:
+        return None
+    month = _MONTHS[m.group(1)[:3].lower()]
+    day = int(m.group(2))
+    year = ref_date.year if ref_date else _date.today().year
+    try:
+        d = _date(year, month, day)
+    except ValueError:
+        return None
+    # Year rollover: a post published in late December linking a January event
+    # should land next year. Only bump when the event is well before the post.
+    if ref_date and (d - ref_date).days < -90:
+        try:
+            d = _date(year + 1, month, day)
+        except ValueError:
+            pass
+    return d
+
+
+def _extract_pin_marker_events(soup, fallback_date, post_link, ref_date) -> list[dict]:
+    events = []
+    seen = set()
+    for p in soup.find_all(["p", "li"]):
+        text = p.get_text(" ", strip=True)
+        if _PIN not in text:
+            continue
+        # Each event is its own paragraph; take everything after the pin.
+        after = text.split(_PIN, 1)[1].strip()
+        if not after:
+            continue
+        # Layout: 📍<Title> (@ Venue)☁️ <Date> | <Time>🎟️ <Price><Desc…>
+        # Split on the 🎟️ ticket marker FIRST (always present) so price/desc
+        # never bleed into the title — the ☁️ date marker is absent on the
+        # dateless monthly-guide items. Then split the left side on ☁️.
+        head, tail = (_TICKET_RE.split(after, maxsplit=1) + [""])[:2]
+        tv, dt_text = (_CLOUD_RE.split(head, maxsplit=1) + [""])[:2]
+
+        # Title + venue: "Title (@ Venue)" — venue may itself contain parens.
+        title_venue = tv.strip()
+        loc_name = ""
+        if "(@" in title_venue:
+            title, venue = title_venue.split("(@", 1)
+            title = title.strip()
+            loc_name = venue.strip().rstrip(")").strip()
+        else:
+            title = title_venue.strip()
+        title = _re.sub(r"\s+", " ", title).strip(" .,:;-")
+        if len(title) < 4:
+            continue
+
+        # Date + time.
+        date_part, time_part = (dt_text.split("|", 1) + [""])[:2]
+        event_date = _parse_marker_date(date_part, ref_date) or fallback_date
+        if not event_date:
+            continue
+        start_time = parse_time(time_part) or parse_time(dt_text)
+
+        # Per-event URL: first non-substack http link in this paragraph.
+        source_url = post_link
+        for link in p.find_all("a", href=True):
+            href = link.get("href", "")
+            if href.startswith("http") and "substack.com" not in href:
+                source_url = href
+                break
+
+        # Price hint + description from the tail (after 🎟️). The tail leads
+        # with a ticket phrase glued to the description; capture price, then
+        # strip the phrase so the description reads cleanly. Monthly-guide
+        # items use a ✨ separator between the price line and the description.
+        tail = tail.strip()
+        price = "free" if _re.match(r"free\b", tail, _re.IGNORECASE) else None
+        if "✨" in tail:
+            description = tail.split("✨", 1)[1].strip()
+        else:
+            description = _re.sub(
+                r"^(free to attend|free entry|ticketed event|ticketed|free|"
+                r"rsvp required|scheduled event|pay[- ]what[- ]you[- ]wish)\b[\s:./-]*",
+                "", tail, flags=_re.IGNORECASE,
+            ).strip()
+        description = description[:500]
+
+        key = (title.lower(), event_date.isoformat())
+        if key in seen:
+            continue
+        seen.add(key)
+
+        events.append(build_event(
+            title=title,
+            description=description,
+            event_date=event_date,
+            start_time=start_time,
+            location_name=loc_name or None,
+            source="substack",
+            source_url=source_url,
+            price=price,
+            categories=infer_categories(title, description),
+        ))
     return events
 
 
