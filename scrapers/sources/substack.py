@@ -112,12 +112,28 @@ DATE_PATTERNS = [
 ]
 
 
+# Feed-reader-appropriate request headers. The shared _DEFAULT_HEADERS mimic a
+# browser NAVIGATING to a web page (Accept: text/html, Sec-Fetch-Mode: navigate,
+# Sec-Fetch-Dest: document). A real browser almost never navigates to a raw RSS
+# feed, so from a datacenter IP that pattern trips some publishers' bot
+# heuristics — observed as a 403 on onefinedaynyc.substack.com/feed from the CI
+# runner while other feeds served fine. Requesting as an actual feed reader
+# (feed Accept type, no page-navigation hints) is the legitimate shape for a
+# feed and is far less likely to be challenged.
+_FEED_HEADERS = {
+    "Accept": "application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin",
+}
+
+
 async def scrape() -> list[dict]:
     events = []
     total_url_added = 0
     for feed_url in FEEDS:
         try:
-            xml_text = await fetch_text(feed_url)
+            xml_text = await _fetch_feed(feed_url)
             feed_events, urls_added = _parse_feed(xml_text)
             events.extend(feed_events)
             total_url_added += urls_added
@@ -126,6 +142,19 @@ async def scrape() -> list[dict]:
     if total_url_added:
         print(f"[substack] Harvested {total_url_added} event-platform URLs from post bodies")
     return events
+
+
+async def _fetch_feed(feed_url: str) -> str:
+    """Fetch a feed with feed-reader headers; on a 403 (bot heuristic), retry
+    once with a feed-reader User-Agent, which some publishers allow-list."""
+    try:
+        return await fetch_text(feed_url, headers=_FEED_HEADERS)
+    except Exception as e:
+        if "403" in str(e):
+            retry = {**_FEED_HEADERS,
+                     "User-Agent": "Mozilla/5.0 (compatible; feedfetcher/1.0; +rss)"}
+            return await fetch_text(feed_url, headers=retry)
+        raise
 
 
 def _parse_feed(xml_text: str) -> tuple[list[dict], int]:
