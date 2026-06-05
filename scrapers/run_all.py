@@ -111,6 +111,11 @@ async def main():
     CARRYOVER_SOURCES = {
         "instagram", "eventbrite", "songkick", "meetup",
         "substack", "mcnallyjackson", "centerforfiction", "nyc_parks", "museums",
+        # partiful /explore/nyc works from CI today, but Partiful sits behind
+        # the same anti-bot that intermittently 403s GH runners — carry it over
+        # so a flaked run never wipes the ~28 social events. Trending events
+        # rotate, so stale ones age out via filter_future.
+        "partiful",
     }
     carryover = [
         e for e in previous_index.values()
