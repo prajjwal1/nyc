@@ -2613,7 +2613,13 @@ def _extract_events_from_caption(post: dict, account: str) -> list[dict]:
         # Spot-account events are evergreen: place recommendations rather
         # than dated events. Survive the future-only filter and render with
         # a "Spot" pill instead of a date pill.
-        if is_spot_account:
+        # EXCEPTION: a genuine multi-event roundup (3+ dated sections) from a
+        # spot account is a real dated-events list — e.g. @onefinedaynyc's
+        # monthly curated event carousel. Those should keep their real dates
+        # and render as normal dated events, not "Spot" pills. (The monthly
+        # Substack guide that used to carry these dated events is now
+        # paywalled, so the IG roundup is the only path to them.)
+        if is_spot_account and not multi_event:
             ev["evergreen"] = True
             ev["categories"] = sorted(set((ev.get("categories") or []) + ["exploration"]))
         if likes:

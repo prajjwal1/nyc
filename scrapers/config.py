@@ -236,10 +236,16 @@ IG_SPOTS_ACCOUNTS = frozenset({
     "infatuation",
     "onefinedaynyc",      # daily NYC guide — mix of dated events AND
                           # evergreen "cool place to check out" picks.
-                          # Treating IG posts as spots is the safer default;
-                          # the Substack RSS still extracts dated events
-                          # separately, so we don't lose the time-bound
-                          # content.
+                          # Daily single posts stay evergreen "Spot" picks,
+                          # but its multi-event roundups (the monthly curated
+                          # event carousel) now surface as real dated events
+                          # (see instagram.py is_spot_account + multi_event).
+                          # This matters because the monthly Substack guide
+                          # that used to carry those dated events is now
+                          # PAYWALLED (RSS ships only an intro + "Read more"),
+                          # so the IG roundup is the only remaining path to
+                          # the monthly curated list. Weekly "NYC This Week"
+                          # dated events still come via Substack RSS.
 })
 
 IG_MAX_POSTS_PER_ACCOUNT = int(os.environ.get("IG_MAX_POSTS_PER_ACCOUNT", "20"))
