@@ -742,6 +742,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - files: `site/app/components/EventCard.tsx` (provenance branch) + `site/app/components/AccountBanner.tsx` (filter predicate).
 - deferred reason: touches a second component; ui-U1 (plain text) is the safe minimal step. Ship only after ui-U1 lands and is confirmed clutter-free.
 
+### fb-170 — Feature One Fine Day NYC's curated events well
+- created_at: 2026-06-05
+- source: user-explicit
+- status: addressed: bca6495
+- body: User wants a very good job extracting events from https://onefinedaynyc.substack.com — its blog posts contain a highly-curated list of NYC events that the user wants featured on the site.
+- resolution: Rewrote the onefinedaynyc handling in `scrapers/sources/substack.py`. The weekly "NYC This Week" posts mark each curated event with a 📍 pin and encode `📍Title (@ Venue)☁️ Date | Time🎟️ Price+Desc` inline. The old heading-fragment heuristic mangled these (duplicate/mis-dated-to-2027/mis-linked fragments) and leaked the shop (🛍️/🍀/☕) and product (👖/📱) sections as fake events. New `_extract_pin_marker_events` parses the structure deterministically: 📍+☁️ as event discriminator, split on 🎟️ then ☁️, dates anchored to the post's publication year (fixes dateparser future-preference 2027 bug), per-event external venue/lu.ma/eventbrite URL, inline time, free/ticketed price, venue, cleaned description. Also suppressed the whole-post fallback for roundup/guide/calendar container titles (kills the "Your June Guide to NYC" promo-card junk). Verified live on the May weeklies (Brooklyn Ceramic Arts Tour, High Line Plant Sale, Well-Read/Best Dressed Literary Salon → score 1.00); theskint/eater unaffected.
+- NOTE for future agents: the MONTHLY "Your X Guide to NYC" posts are now PAYWALLED (RSS ships only an intro + "Read more") — we correctly extract nothing from them. The WEEKLY "NYC This Week | <dates>" posts remain full-text and free — that is the high-value content. When the user reports "no One Fine Day events showing", first check whether a NEW weekly has been published (the feed can lag a few days between weeklies); the parser is correct, the feed simply may not have a current-week edition yet.
+
 <!-- Append new feedback above this comment as it comes in. Top of list is highest priority. -->
 
 
