@@ -101,7 +101,17 @@ async def main():
     #     occasional HTTP 5xx wipes the music section of the feed.
     #   - meetup: anti-bot blocking on GH Actions IPs causes silent
     #     near-zero pulls. Past events naturally age out via filter_future.
-    CARRYOVER_SOURCES = {"instagram", "eventbrite", "songkick", "meetup"}
+    #   - substack / mcnallyjackson / centerforfiction / nyc_parks / museums:
+    #     all observed returning HTTP 403/429 to the GH Actions runner IP in a
+    #     full scrape (2026-06-05) while serving fine from a residential IP.
+    #     These are high-value literary/cultural sources — without carryover a
+    #     single datacenter-IP block wipes them from the feed until the next
+    #     lucky run. Past events age out via filter_future, so carryover only
+    #     preserves still-future events.
+    CARRYOVER_SOURCES = {
+        "instagram", "eventbrite", "songkick", "meetup",
+        "substack", "mcnallyjackson", "centerforfiction", "nyc_parks", "museums",
+    }
     carryover = [
         e for e in previous_index.values()
         if e.get("source") in CARRYOVER_SOURCES
