@@ -6,7 +6,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scrapers.sources import luma, bookclubbar, lizsbookbar, mcnallyjackson, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful, generic, reddit, powerhousearena, centerforfiction, brooklyncomedy, smorgasburg
+from scrapers.sources import luma, bookclubbar, lizsbookbar, mcnallyjackson, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful, generic, reddit, powerhousearena, centerforfiction, brooklyncomedy, smorgasburg, bondandgrace
 from scrapers.normalize import process, _load_previous_events_index
 
 ASYNC_SCRAPERS = [
@@ -19,6 +19,7 @@ ASYNC_SCRAPERS = [
     ("mcnallyjackson", mcnallyjackson.scrape),
     ("powerhousearena", powerhousearena.scrape),
     ("centerforfiction", centerforfiction.scrape),
+    ("bondandgrace", bondandgrace.scrape),
     ("brooklyncomedy", brooklyncomedy.scrape),
     ("nypl", nypl.scrape),
     ("nycforfree", nycforfree.scrape),
@@ -111,6 +112,9 @@ async def main():
     CARRYOVER_SOURCES = {
         "instagram", "eventbrite", "songkick", "meetup",
         "substack", "mcnallyjackson", "centerforfiction", "nyc_parks", "museums",
+        # bondandgrace: low-volume literary salons (user's top interest) from a
+        # custom site — carry over so a flaked fetch doesn't drop them.
+        "bondandgrace",
         # partiful /explore/nyc works from CI today, but Partiful sits behind
         # the same anti-bot that intermittently 403s GH runners — carry it over
         # so a flaked run never wipes the ~28 social events. Trending events

@@ -119,6 +119,7 @@ export const SOURCE_LABELS: Record<string, string> = {
   mcnallyjackson: "McNally Jackson",
   powerhousearena: "POWERHOUSE Arena",
   centerforfiction: "Center for Fiction",
+  bondandgrace: "Lit Society (Bond & Grace)",
   brooklyncomedy: "Brooklyn Comedy Collective",
   newyorkcomedyclub: "New York Comedy Club",
   eastvillecomedy: "EastVille Comedy",

@@ -51,12 +51,26 @@ class TestSpotAccountEvergreen:
         assert "onefinedaynyc" in IG_SPOTS_ACCOUNTS
 
     def test_multi_event_roundup_keeps_real_dates_not_evergreen(self):
-        events = _extract_events_from_caption(_post(ROUNDUP_CAPTION, slides=5), "onefinedaynyc")
+        # Build the caption from dates that are always in the future relative
+        # to "now" so the test isn't brittle as the calendar advances (a bare
+        # "June 6" flips to next year once June 6 is past — dateparser future
+        # preference). Use today + 20/25/30/35 days.
+        from datetime import datetime, timedelta
+        now = datetime(2026, 6, 1, 12, 0)
+        offs = [20, 25, 30, 35]
+        ds = [now + timedelta(days=o) for o in offs]
+        lines = [f"{d.strftime('%B %-d')} | Event {i} at a NYC venue, a great time."
+                 for i, d in enumerate(ds)]
+        caption = "Your NYC Guide is here!\n\n" + "\n".join(lines)
+        post = _post(caption, when=now, slides=5)
+        events = _extract_events_from_caption(post, "onefinedaynyc")
         assert len(events) >= 3, "roundup should yield its dated sections"
         # None of the roundup events are flattened to evergreen Spot pills.
         assert all(not e.get("evergreen") for e in events)
-        # And they carry real June dates, not the post date as a fallback.
-        assert {e["date"] for e in events} >= {"2026-06-06", "2026-06-10", "2026-06-14"}
+        # They carry the real parsed dates, not the post date as a fallback.
+        got = {e["date"] for e in events}
+        expected = {d.date().isoformat() for d in ds}
+        assert len(got & expected) >= 3
 
     def test_single_spot_post_stays_evergreen(self):
         events = _extract_events_from_caption(_post(SPOT_CAPTION, when=datetime(2026, 6, 4, 12, 0)),
