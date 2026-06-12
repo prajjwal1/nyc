@@ -12,14 +12,37 @@ import re
 # the keyword could falsely match (e.g., "play" matches "playing").
 HARD_BLOCK_KEYWORDS = [
     # Kids / family
-    "storytime", "story time", "kids", "children", "child ", "toddler", "baby",
-    "babies", "preschool", "preteen", "tween", "teen ", "teens ", "after-school",
-    "afterschool", "family saturday", "family sunday", "playtime", "popup play",
-    "pop in play", "pop-in play", "open play", "early literacy",
-    "wiggle worms", "little movers", "toddler time",
+    "storytime",
+    "story time",
+    "kids",
+    "children",
+    "child ",
+    "toddler",
+    "baby",
+    "babies",
+    "preschool",
+    "preteen",
+    "tween",
+    "teen ",
+    "teens ",
+    "after-school",
+    "afterschool",
+    "family saturday",
+    "family sunday",
+    "playtime",
+    "popup play",
+    "pop in play",
+    "pop-in play",
+    "open play",
+    "early literacy",
+    "wiggle worms",
+    "little movers",
+    "toddler time",
     # iter 92: NYPL audit found "Playdate at the Library" leaking — the word
     # `playdate` and `caregivers` are almost exclusively parent/kid terms.
-    "playdate", "caregivers", "caregiver and child",
+    "playdate",
+    "caregivers",
+    "caregiver and child",
     # iter 93: bookclubbar audit found "[PRIVATE EVENT - closed from 6pm to
     # 10pm]" surfacing as a public event. Venue private-rental markers in
     # square brackets are clearly not public events. The bracketed form
@@ -29,298 +52,672 @@ HARD_BLOCK_KEYWORDS = [
     # iter 99: parks.py audit found 5 "CANCELED: <event>" entries that the
     # parks API surfaces but the user can't attend. Match the leading marker
     # so the cancellation noise doesn't pollute the feed.
-    "canceled:", "cancelled:",
-    "youth ", "ages 0", "ages 3", "ages 5", "ages 6",
-    "ages 7", "ages 8", "ages 9", "ages 10",
-
+    "canceled:",
+    "cancelled:",
+    "youth ",
+    "ages 0",
+    "ages 3",
+    "ages 5",
+    "ages 6",
+    "ages 7",
+    "ages 8",
+    "ages 9",
+    "ages 10",
     # Education / utility
-    "esl", "english class", "english language class", "spanish class",
-    "high beginner english", "computer basics", "computer class", "computer lab",
-    "homework help", "tutoring", "study group", "citizenship study",
-    "tax help", "tax preparation", "legal clinic", "resume help", "resume workshop",
-    "social work intern", "social work student", "financial coaching",
-    "1:1 pace", "advisory session", "drop-in career", "drop in career",
-    "job search", "job club", "career help", "ged", "tefl", "language exchange",
-    "language meetup", "english practice", "english conversation",
-    "english speaking", "global english", "english speakers",
-    "daily practice circle", "language practice circle",
-    "spanish practice", "french practice",
-    "italian practice", "deutsch", "korean–english", "korean-english",
-    "internationals coffee", "lexgo language", "langroops", "conversation française",
+    "esl",
+    "english class",
+    "english language class",
+    "spanish class",
+    "high beginner english",
+    "computer basics",
+    "computer class",
+    "computer lab",
+    "homework help",
+    "tutoring",
+    "study group",
+    "citizenship study",
+    "tax help",
+    "tax preparation",
+    "legal clinic",
+    "resume help",
+    "resume workshop",
+    "social work intern",
+    "social work student",
+    "financial coaching",
+    "1:1 pace",
+    "advisory session",
+    "drop-in career",
+    "drop in career",
+    "job search",
+    "job club",
+    "career help",
+    "ged",
+    "tefl",
+    "language exchange",
+    "language meetup",
+    "english practice",
+    "english conversation",
+    "english speaking",
+    "global english",
+    "english speakers",
+    "daily practice circle",
+    "language practice circle",
+    "spanish practice",
+    "french practice",
+    "italian practice",
+    "deutsch",
+    "korean–english",
+    "korean-english",
+    "internationals coffee",
+    "lexgo language",
+    "langroops",
+    "conversation française",
     # Language-mixer / international-mixer events (excluded per user request)
-    "internationals and language mixer", "international and language mixer",
-    "internationals language", "language mixer", "languages mixer",
-    "internationals mixer", "language exchange mixer",
+    "internationals and language mixer",
+    "international and language mixer",
+    "internationals language",
+    "language mixer",
+    "languages mixer",
+    "internationals mixer",
+    "language exchange mixer",
     # Music genres user excluded (reggaeton)
     "reggaeton",
-
     # Professional / finance / corporate networking (excluded — site is
     # for events worth attending to meet people for connection, not
     # for-business connections). "tech mixer" is explicitly OK.
-    "professional networking", "professionals networking",
-    "professional mixer", "professionals mixer",
-    "professional happy hour", "professionals happy hour",
-    "professional social", "professionals social",
-    "professional gathering", "professionals gathering",
-    "professional meetup", "professionals meetup",
-    "ny professionals", "nyc professionals", "young professionals happy",
-    "professional women happy", "professional men happy",
-    "business networking", "business mixer",
-    "finance networking", "finance mixer", "finance professionals",
-    "wall street networking", "wall street mixer",
-    "executive networking", "executive mixer", "executives mixer",
-    "career networking", "career mixer",
+    "professional networking",
+    "professionals networking",
+    "professional mixer",
+    "professionals mixer",
+    "professional happy hour",
+    "professionals happy hour",
+    "professional social",
+    "professionals social",
+    "professional gathering",
+    "professionals gathering",
+    "professional meetup",
+    "professionals meetup",
+    "ny professionals",
+    "nyc professionals",
+    "young professionals happy",
+    "professional women happy",
+    "professional men happy",
+    "business networking",
+    "business mixer",
+    "finance networking",
+    "finance mixer",
+    "finance professionals",
+    "wall street networking",
+    "wall street mixer",
+    "executive networking",
+    "executive mixer",
+    "executives mixer",
+    "career networking",
+    "career mixer",
     # User explicitly: NO career-related events. Specific phrases only
     # so we don't false-positive on artist bios ("throughout her career")
     # or comedy showcases ("new faces" of comedy).
-    "career fair", "career fairs",
-    "career expo", "career expos",
-    "career talk", "career talks",
-    "career panel", "career panels",
-    "career workshop", "career workshops",
-    "career conference", "career conferences",
+    "career fair",
+    "career fairs",
+    "career expo",
+    "career expos",
+    "career talk",
+    "career talks",
+    "career panel",
+    "career panels",
+    "career workshop",
+    "career workshops",
+    "career conference",
+    "career conferences",
     "career summit",
-    "career advice", "career coaching", "career coach",
-    "career mentorship", "career mentor",
-    "career development", "career growth",
-    "career transition", "career transitions",
-    "career change", "career switch", "career switching",
-    "career blueprint", "career-ready", "career ready",
-    "career-changing", "career changing",
+    "career advice",
+    "career coaching",
+    "career coach",
+    "career mentorship",
+    "career mentor",
+    "career development",
+    "career growth",
+    "career transition",
+    "career transitions",
+    "career change",
+    "career switch",
+    "career switching",
+    "career blueprint",
+    "career-ready",
+    "career ready",
+    "career-changing",
+    "career changing",
     # iter 69 audit leaks: "The Career Reset: Surviving and Thriving in
     # the AI Economy" + "The AI Edge: Supercharge Your Startup Vision".
     # Both clear professional-coaching/B2B framings.
-    "career reset", "career strategy",
-    "supercharge your startup", "startup vision", "your startup growth",
-    "job fair", "job fairs", "job expo", "job expos",
-    "job training", "job seekers", "job hunters", "job hunting",
-    "hiring event", "hiring fair", "hiring expo",
+    "career reset",
+    "career strategy",
+    "supercharge your startup",
+    "startup vision",
+    "your startup growth",
+    "job fair",
+    "job fairs",
+    "job expo",
+    "job expos",
+    "job training",
+    "job seekers",
+    "job hunters",
+    "job hunting",
+    "hiring event",
+    "hiring fair",
+    "hiring expo",
     "professional development",
-    "leadership development", "leadership summit", "leadership conference",
-    "leadership workshop", "leadership forum",
-    "executive coaching", "executive summit",
+    "leadership development",
+    "leadership summit",
+    "leadership conference",
+    "leadership workshop",
+    "leadership forum",
+    "executive coaching",
+    "executive summit",
     "speed networking",
-    "networking breakfast", "networking lunch", "networking happy hour",
-    "founder summit", "founders summit", "founders conference",
-    "investor summit", "investors summit", "investor conference",
-    "biz dev mixer", "bizdev mixer",
-    "interview prep", "interview workshop", "interview practice",
-    "resume review", "resume writing",
-    "industry networking", "industry mixer",
-    "corporate networking", "corporate mixer",
-    "investor networking", "investor mixer", "investors mixer",
-    "founders networking", "founders mixer",  # focus on founder events; tech mixer stays
+    "networking breakfast",
+    "networking lunch",
+    "networking happy hour",
+    "founder summit",
+    "founders summit",
+    "founders conference",
+    "investor summit",
+    "investors summit",
+    "investor conference",
+    "biz dev mixer",
+    "bizdev mixer",
+    "interview prep",
+    "interview workshop",
+    "interview practice",
+    "resume review",
+    "resume writing",
+    "industry networking",
+    "industry mixer",
+    "corporate networking",
+    "corporate mixer",
+    "investor networking",
+    "investor mixer",
+    "investors mixer",
+    "founders networking",
+    "founders mixer",  # focus on founder events; tech mixer stays
     # Cloud / AWS product meetups masquerading as community events (iter 69 audit
     # caught "Amazon Quick - NYC Meetup" — a corporate product demo classified
     # as food/free/outdoors/parties by auto-tagging). These are B2B/enterprise,
     # not the social NYC events the user wants.
-    "amazon quick", "amazon quicksight", "aws meetup", "aws user group",
-    "google cloud meetup", "azure meetup", "salesforce meetup", "snowflake meetup",
-    "real estate networking", "real estate mixer",
-    "lawyer networking", "lawyer mixer", "attorneys mixer",
-    "consulting networking", "consultant mixer",
-    "banking networking", "banking mixer",
-    "linkedin networking", "linkedin mixer",
-    "b2b networking", "b2b mixer",
-    "sales networking", "sales mixer",
-
+    "amazon quick",
+    "amazon quicksight",
+    "aws meetup",
+    "aws user group",
+    "google cloud meetup",
+    "azure meetup",
+    "salesforce meetup",
+    "snowflake meetup",
+    "real estate networking",
+    "real estate mixer",
+    "lawyer networking",
+    "lawyer mixer",
+    "attorneys mixer",
+    "consulting networking",
+    "consultant mixer",
+    "banking networking",
+    "banking mixer",
+    "linkedin networking",
+    "linkedin mixer",
+    "b2b networking",
+    "b2b mixer",
+    "sales networking",
+    "sales mixer",
     # Senior services / accessibility
-    "seniors", "senior citizens", "55+", "aarp", "braille", "accessible reading",
-
+    "seniors",
+    "senior citizens",
+    "55+",
+    "aarp",
+    "braille",
+    "accessible reading",
     # Recurring services / boring
-    "knitting circle", "crochet circle", "knitting and crochet", "library card",
-    "library tour", "library orientation", "open lab", "drop-in", "drop in tech",
-    "tech help", "device help", "ebook help",
-    "book sale", "book donation", "book drop",
-    "bingo for", "puzzle group",
-
+    "knitting circle",
+    "crochet circle",
+    "knitting and crochet",
+    "library card",
+    "library tour",
+    "library orientation",
+    "open lab",
+    "drop-in",
+    "drop in tech",
+    "tech help",
+    "device help",
+    "ebook help",
+    "book sale",
+    "book donation",
+    "book drop",
+    "bingo for",
+    "puzzle group",
     # Wellness / support
-    "support group", "aa meeting", "al-anon", "narcotics anonymous",
-    "grief group", "therapy group", "12-step", "12 step",
-    "narcan training", "naloxone training",
-
+    "support group",
+    "aa meeting",
+    "al-anon",
+    "narcotics anonymous",
+    "grief group",
+    "therapy group",
+    "12-step",
+    "12 step",
+    "narcan training",
+    "naloxone training",
     # Religious services
-    "bible study", "torah study", "quran study",
-
+    "bible study",
+    "torah study",
+    "quran study",
     # Random noise
-    "registration for", "sign up for", "info session for", "orientation session",
-
+    "registration for",
+    "sign up for",
+    "info session for",
+    "orientation session",
     # Nightclubs / late-night-only — user explicitly excluded these. The
     # site is for events worth attending to meet people; nightclub
     # "bottle service" / "vip section" culture isn't the target.
-    "nightclub", "night club ", "bottle service", "vip table", "vip booth",
-    "vip section", "bottle package", "table reservation", "table service",
-    "bottle minimum", "guest list",  # the bottle-service-y kind
+    "nightclub",
+    "night club ",
+    "bottle service",
+    "vip table",
+    "vip booth",
+    "vip section",
+    "bottle package",
+    "table reservation",
+    "table service",
+    "bottle minimum",
+    "guest list",  # the bottle-service-y kind
     # Late-night-only events (going past midnight)
-    "after hours", "afterhours", "after-hours",
-    "till sunrise", "until sunrise", "til sunrise",
-    "all night long", "till morning", "till dawn", "until dawn",
-    "till 4am", "until 4am", "til 4am", "till 5am", "until 5am",
-    "till 3am", "until 3am", "til 3am", "till 6am", "until 6am",
-    "rave 'til", "warehouse till", "club till",
+    "after hours",
+    "afterhours",
+    "after-hours",
+    "till sunrise",
+    "until sunrise",
+    "til sunrise",
+    "all night long",
+    "till morning",
+    "till dawn",
+    "until dawn",
+    "till 4am",
+    "until 4am",
+    "til 4am",
+    "till 5am",
+    "until 5am",
+    "till 3am",
+    "until 3am",
+    "til 3am",
+    "till 6am",
+    "until 6am",
+    "rave 'til",
+    "warehouse till",
+    "club till",
     "no last call",
-
     # Age-mismatched singles events — user is in 20s/30s. Events targeting
     # 40s/50s/60s+ aren't relevant. Match common labelings.
-    "(40s & 50s)", "(40s and 50s)", "(50s & 60s)", "(50s and 60s)",
-    "(40s)", "(50s)", "(60s)", "(70s)",
-    "ages 35 -", "ages 40 -", "ages 45 -", "ages 50 -", "ages 55 -",
-    "ages 35 to", "ages 40 to", "ages 45 to", "ages 50 to",
-    "ages 35+", "ages 40+", "ages 45+", "ages 50+", "ages 55+",
-    "40+ singles", "45+ singles", "50+ singles", "55+ singles",
-    "40+ mixer", "45+ mixer", "50+ mixer",
-    "men 40+", "men 45+", "men 50+",
-    "women 40+", "women 45+", "women 50+",
-    "boomers", "gen x dating",
-
+    "(40s & 50s)",
+    "(40s and 50s)",
+    "(50s & 60s)",
+    "(50s and 60s)",
+    "(40s)",
+    "(50s)",
+    "(60s)",
+    "(70s)",
+    "ages 35 -",
+    "ages 40 -",
+    "ages 45 -",
+    "ages 50 -",
+    "ages 55 -",
+    "ages 35 to",
+    "ages 40 to",
+    "ages 45 to",
+    "ages 50 to",
+    "ages 35+",
+    "ages 40+",
+    "ages 45+",
+    "ages 50+",
+    "ages 55+",
+    "40+ singles",
+    "45+ singles",
+    "50+ singles",
+    "55+ singles",
+    "40+ mixer",
+    "45+ mixer",
+    "50+ mixer",
+    "men 40+",
+    "men 45+",
+    "men 50+",
+    "women 40+",
+    "women 45+",
+    "women 50+",
+    "boomers",
+    "gen x dating",
     # Generic tribute / cover-band acts — knockoff shows, not original artists.
     # Specific noted tributes ("Tribute to MLK", "tribute mass") won't hit
     # because they're block-listed elsewhere; this catches the music tribute
     # band format the user explicitly mentioned not wanting.
-    "tribute to taylor swift", "tribute to beyonce", "tribute to prince",
-    "tribute to drake", "tribute to coldplay", "tribute to fleetwood",
-    "live band tribute", "band tribute to", "live tribute to",
-    "the ultimate tribute", "tribute night", "tribute show:",
-
+    "tribute to taylor swift",
+    "tribute to beyonce",
+    "tribute to prince",
+    "tribute to drake",
+    "tribute to coldplay",
+    "tribute to fleetwood",
+    "live band tribute",
+    "band tribute to",
+    "live tribute to",
+    "the ultimate tribute",
+    "tribute night",
+    "tribute show:",
     # Corporate-vibe networking signals from the title (emoji + branded
     # 'Professionals' patterns). User opted out of work-style networking.
-    "👔",   # necktie emoji — almost always work-networking branded
-    "connects professionals", "professionals connect",
-    "nyc connects", "ny connects",
-    "professionals for happy hour", "professionals happy hour",
-    "media/advertising professionals", "media professionals meet",
-
+    "👔",  # necktie emoji — almost always work-networking branded
+    "connects professionals",
+    "professionals connect",
+    "nyc connects",
+    "ny connects",
+    "professionals for happy hour",
+    "professionals happy hour",
+    "media/advertising professionals",
+    "media professionals meet",
     # All-caps hype titles that turn out to be generic shows — keep specific
     # branded events ("YACHT", "DUMBO") allowed via length/word rules in
     # _is_caption_fragment. These literal phrases are surfaced from the
     # noisiest aggregators.
-    "ladies night out", "ladies' night out", "ladies nite out",
-
+    "ladies night out",
+    "ladies' night out",
+    "ladies nite out",
     # IG news-headline-style captions that aren't event titles
-    "are set to open", "set to open in",
-    "150-year-old", "100-year-old", "200-year-old",
-
+    "are set to open",
+    "set to open in",
+    "150-year-old",
+    "100-year-old",
+    "200-year-old",
     # Corporate / startup / founder networking — user opted out
-    "founders rooftop", "founders happy hour", "founders rooftop happy",
-    "consumer club", "consumer founders", "founders' club",
-    "vc happy hour", "vc mixer", "vc summit", "venture happy hour",
-    "yc founders", "ycombinator", "y combinator",
-    "tech founders", "tech ceos", "startup founders",
-    "startup networking", "startup mixer", "startup happy hour",
-    "fintech networking", "fintech mixer", "fintech happy hour",
-    "fintech startup", "fintech meetup", "fintech rooftop",
-    "saas networking", "saas mixer", "saas happy hour",
-    "venture networking", "vc networking", "vc rooftop",
-    "founder dinner", "founders dinner", "founders breakfast",
-    "founders meetup", "founders & investors", "founders and investors",
-    "investors meetup", "investor meetup", "founders running",
-    "b2b meetup", "b2b mixer", "b2b networking",
-    "ai meetup", "ai engineers", "ai founders", "ai agents for",
-    "agentic ai", "frontier ai", "ai circle", "ai entrepreneur",
-    "ai imprint", "ai that thinks", "ai personal", "ai self",
-    "ai writing", "ai productivity", "ai automation",
-    "ai for designers", "ai for engineers", "ai for product",
-    "ai tools for", "ai for business", "ai for online",
-    "mindset of the ai", "mastering ai", "future of ai",
-    "foundation models", "open foundation", "llm meetup", "llms meetup",
-    "agents and mcp", "mcp for", "agents and llm",
-    "demo night", "demo day", "pitch night", "pitch day",
-    "builders club", "builder club", "builders dinner",
-    "5-9 builders", "9-5 builders",
-    "tech & beer", "tech and beer", "tech&beer",
-    "engineers meetup", "engineering meetup",
-    "product managers meetup", "pm meetup",
-    "ux meetup", "designers meetup", "design meetup",
-    "data engineers meetup", "data science meetup",
-    "ml meetup", "machine learning meetup",
-    "agile meetup", "scrum meetup",
-    "spc nyc demo", "spc demo",
-    "working capital", "unlocking working",
-    "online income", "business workflows",
-
+    "founders rooftop",
+    "founders happy hour",
+    "founders rooftop happy",
+    "consumer club",
+    "consumer founders",
+    "founders' club",
+    "vc happy hour",
+    "vc mixer",
+    "vc summit",
+    "venture happy hour",
+    "yc founders",
+    "ycombinator",
+    "y combinator",
+    "tech founders",
+    "tech ceos",
+    "startup founders",
+    "startup networking",
+    "startup mixer",
+    "startup happy hour",
+    "fintech networking",
+    "fintech mixer",
+    "fintech happy hour",
+    "fintech startup",
+    "fintech meetup",
+    "fintech rooftop",
+    "saas networking",
+    "saas mixer",
+    "saas happy hour",
+    "venture networking",
+    "vc networking",
+    "vc rooftop",
+    "founder dinner",
+    "founders dinner",
+    "founders breakfast",
+    "founders meetup",
+    "founders & investors",
+    "founders and investors",
+    "investors meetup",
+    "investor meetup",
+    "founders running",
+    "b2b meetup",
+    "b2b mixer",
+    "b2b networking",
+    "ai meetup",
+    "ai engineers",
+    "ai founders",
+    "ai agents for",
+    "agentic ai",
+    "frontier ai",
+    "ai circle",
+    "ai entrepreneur",
+    "ai imprint",
+    "ai that thinks",
+    "ai personal",
+    "ai self",
+    "ai writing",
+    "ai productivity",
+    "ai automation",
+    "ai for designers",
+    "ai for engineers",
+    "ai for product",
+    "ai tools for",
+    "ai for business",
+    "ai for online",
+    "mindset of the ai",
+    "mastering ai",
+    "future of ai",
+    "foundation models",
+    "open foundation",
+    "llm meetup",
+    "llms meetup",
+    "agents and mcp",
+    "mcp for",
+    "agents and llm",
+    "demo night",
+    "demo day",
+    "pitch night",
+    "pitch day",
+    "builders club",
+    "builder club",
+    "builders dinner",
+    "5-9 builders",
+    "9-5 builders",
+    "tech & beer",
+    "tech and beer",
+    "tech&beer",
+    "engineers meetup",
+    "engineering meetup",
+    "product managers meetup",
+    "pm meetup",
+    "ux meetup",
+    "designers meetup",
+    "design meetup",
+    "data engineers meetup",
+    "data science meetup",
+    "ml meetup",
+    "machine learning meetup",
+    "agile meetup",
+    "scrum meetup",
+    "spc nyc demo",
+    "spc demo",
+    "working capital",
+    "unlocking working",
+    "online income",
+    "business workflows",
+    # Get-rich / side-hustle / "build a business in a day" grift (often AI-framed).
+    # e.g. "AI Side Income Secrets: Build a Profitable Business In A Day".
+    "side income",
+    "income secrets",
+    "profitable business",
+    "business in a day",
+    "passive income",
+    "side hustle",
+    "get rich",
+    "financial freedom",
+    "make money online",
+    "6-figure",
+    "six-figure",
+    "6 figure",
+    # Commercial matchmaking-industry singles spam — luxury-hotel ballroom mixers
+    # run by dating companies ("Ivy League / Intelligent Singles Mixer at St.
+    # Regis", "High-Net-Worth Matchmaking", "Elite Social: Exclusive Singles").
+    # Distinct from authentic community singles nights, which stay.
+    "matchmaking",
+    "high-net-worth",
+    "high net worth",
+    "ivy league singles",
+    "intelligent singles",
+    "elite social",
+    "exclusive singles",
+    "singles recruitment",
     # IG news/info caption openers — informational posts, not events
-    "you can see them now", "you can find them",
-    "want to learn more about", "want to know more about",
-    "did you know that", "fun fact:",
-    "psst,", "psst:", "psssst",
-    "in case you missed", "in case you didn't",
-
+    "you can see them now",
+    "you can find them",
+    "want to learn more about",
+    "want to know more about",
+    "did you know that",
+    "fun fact:",
+    "psst,",
+    "psst:",
+    "psssst",
+    "in case you missed",
+    "in case you didn't",
     # Same-sex / LGBTQ+ speed dating events — these are demographic-specific
     # dating events that the user (straight) doesn't attend. Straight speed
     # dating, mixed singles mixers, queer-friendly art / cultural events
     # are unaffected — only the demographic-specific dating events block.
-    "lesbian speed dating", "lesbian speed",
-    "fluid dating", "queer speed dating",
-    "bisexual speed", "pansexual speed",
-    "speed dating for bisexual", "speed dating for pansexual",
-    "speed dating for queer", "speed dating for lgbtq",
-
+    "lesbian speed dating",
+    "lesbian speed",
+    "fluid dating",
+    "queer speed dating",
+    "bisexual speed",
+    "pansexual speed",
+    "speed dating for bisexual",
+    "speed dating for pansexual",
+    "speed dating for queer",
+    "speed dating for lgbtq",
     # Social media / content-creator networking — career networking
     "social media networking",
-    "content creators networking", "content creator networking",
-    "influencer networking", "influencers networking",
-    "gay speed dating", "gay men's speed dating", "gay men's speed",
-    "queer speed dating", "queer speed",
-    "lgbtq speed dating", "lgbtq+ speed dating", "lgbtq dating event",
-    "girl's night lesbian", "girls night lesbian",
-    "lesbian night dating", "wlw dating", "wlw speed",
-    "mlm speed dating", "mlm dating event",
-
+    "content creators networking",
+    "content creator networking",
+    "influencer networking",
+    "influencers networking",
+    "gay speed dating",
+    "gay men's speed dating",
+    "gay men's speed",
+    "queer speed dating",
+    "queer speed",
+    "lgbtq speed dating",
+    "lgbtq+ speed dating",
+    "lgbtq dating event",
+    "girl's night lesbian",
+    "girls night lesbian",
+    "lesbian night dating",
+    "wlw dating",
+    "wlw speed",
+    "mlm speed dating",
+    "mlm dating event",
     # News-headline patterns — substack/news RSS sometimes leaks news
     # articles as "events". Block obvious news phrasings that aren't
     # event titles.
-    "shot in the bronx", "shot in bronx", "shot in queens",
-    "shot in brooklyn", "shot in harlem", "shot in manhattan",
-    "year-old girl shot", "year-old boy shot", "year old shot",
-    "killed in nyc", "police looking for",
-    "idf soldiers", "endorsement from",
-    "tenants rights to know", "essential tenants rights",
-    "rotten news", "beloved peach crop",
-
+    "shot in the bronx",
+    "shot in bronx",
+    "shot in queens",
+    "shot in brooklyn",
+    "shot in harlem",
+    "shot in manhattan",
+    "year-old girl shot",
+    "year-old boy shot",
+    "year old shot",
+    "killed in nyc",
+    "police looking for",
+    "idf soldiers",
+    "endorsement from",
+    "tenants rights to know",
+    "essential tenants rights",
+    "rotten news",
+    "beloved peach crop",
     # Mega-arena stadium acts the user doesn't want surfacing here. The
     # site is for going-out-with-friends events, not "buy 200 USD seats
     # at MSG four months out" listings — those have their own apps.
-    "wwe ", "wwe:", "wwe at", "wwe presents",
+    "wwe ",
+    "wwe:",
+    "wwe at",
+    "wwe presents",
     # Virtual / remote-only events — user wants IRL events to meet people
-    "virtual race", "virtual run", "virtual 5k", "virtual 10k",
-    "virtual half marathon", "virtual marathon", "virtual fun run",
-    "virtual workout", "virtual yoga", "online event",
-    "zoom event", "via zoom",
-    "online webinar", "free online webinar", "free webinar",
-    "online class", "online workshop", "virtual workshop",
-    "webinar", "virtual class", "online course",
-    "remote-only", "fully remote", "(online)", "(virtual)",
+    "virtual race",
+    "virtual run",
+    "virtual 5k",
+    "virtual 10k",
+    "virtual half marathon",
+    "virtual marathon",
+    "virtual fun run",
+    "virtual workout",
+    "virtual yoga",
+    "online event",
+    "zoom event",
+    "via zoom",
+    "online webinar",
+    "free online webinar",
+    "free webinar",
+    "online class",
+    "online workshop",
+    "virtual workshop",
+    "webinar",
+    "virtual class",
+    "online course",
+    "remote-only",
+    "fully remote",
+    "(online)",
+    "(virtual)",
     # Tribute / cover-band schlock at venue mass-market shows
-    "tribute concert", "tribute band", "ultimate tribute",
+    "tribute concert",
+    "tribute band",
+    "ultimate tribute",
     # Generic "X 5K Walk/Run" charity races aren't the social-event vibe
     # the user wants. Specific races (NYC Marathon, etc.) won't hit this.
-    "5k walk/run", "5k run/walk", "5k charity",
+    "5k walk/run",
+    "5k run/walk",
+    "5k charity",
 ]
 
 # Soft penalties: not blocked but pushed down in ranking.
 SOFT_PENALTY_KEYWORDS = [
-    "free house dance", "salsa class", "swing dance class",
-    "code & coffee", "code and coffee", "tech meetup",
-    "discussion group", "writing workshop",
-    "yoga class", "pilates class", "meditation class",
+    "free house dance",
+    "salsa class",
+    "swing dance class",
+    "code & coffee",
+    "code and coffee",
+    "tech meetup",
+    "discussion group",
+    "writing workshop",
+    "yoga class",
+    "pilates class",
+    "meditation class",
     "running club",
     "trivia night",
     # Heavy-drinking emphasis — user's stated preference is to avoid
     # excessive-drinking culture. Soft-penalty (not block) so events
     # that mention drinks in passing aren't excluded, but events that
     # CENTER drinking get pushed down.
-    "open bar", "all you can drink", "all-you-can-drink",
-    "free drinks all night", "unlimited drinks", "bottomless mimosas",
-    "pre-game", "kegger", "shotgun beer",
+    "open bar",
+    "all you can drink",
+    "all-you-can-drink",
+    "free drinks all night",
+    "unlimited drinks",
+    "bottomless mimosas",
+    "pre-game",
+    "kegger",
+    "shotgun beer",
     # Bar crawls — drinking-centric by definition (iter 69 audit; saw 3
     # "Brooklyn Bar Crawl: <neighborhood>" events at 0.65-0.71 score that
     # match the same spirit as "open bar"/"unlimited drinks").
-    "bar crawl", "pub crawl",
+    "bar crawl",
+    "pub crawl",
     # Generic recurring stuff
-    "weekly meeting", "monthly meeting", "regular meetup",
-    "every monday", "every tuesday", "every wednesday",
+    "weekly meeting",
+    "monthly meeting",
+    "regular meetup",
+    "every monday",
+    "every tuesday",
+    "every wednesday",
     # Vague titles
-    "various artists", "tba", "more info", "stay tuned",
+    "various artists",
+    "tba",
+    "more info",
+    "stay tuned",
 ]
 
 # Social signals: events specifically conducive to meeting people.
@@ -330,29 +727,54 @@ SOCIAL_KEYWORDS = [
     # excluded the format. The is_user_excluded check (title_hint match)
     # drops them upstream, but removing from SOCIAL_KEYWORDS too means
     # any speed-dating event that slipped past doesn't get the boost.
-    "singles night", "singles event", "singles mixer", "singles party",
-    "matchmaking", "date my friend", "blind date",
-    "first dates", "dating in nyc",
+    "singles night",
+    "singles event",
+    "singles mixer",
+    "singles party",
+    "matchmaking",
+    "date my friend",
+    "blind date",
+    "first dates",
+    "dating in nyc",
     # Meet new people
-    "meet new people", "make new friends", "new in town",
-    "newcomers", "expats meetup", "newbies in nyc",
+    "meet new people",
+    "make new friends",
+    "new in town",
+    "newcomers",
+    "expats meetup",
+    "newbies in nyc",
     # Social mixers / connection-focused
-    "social mixer", "meet & greet", "meet and greet", "icebreaker",
-    "20s & 30s", "20s and 30s", "young professionals",
+    "social mixer",
+    "meet & greet",
+    "meet and greet",
+    "icebreaker",
+    "20s & 30s",
+    "20s and 30s",
+    "young professionals",
     # Vibe-based connection events
     # iter 195: removed bare 'social' — same FP source as iter 183's
     # parties keyword. 'social media' / 'social tees' / 'social movement'
     # were getting the social-keywords boost despite not being social
     # events. Existing 'social mixer' / 'social run' / 'social club' /
     # 'social hour' (added below) cover the legit social patterns.
-    "kickback", "house party", "salon",
-    "social hour", "social night",
-    "after party", "afterparty", "cocktail hour",
-    "happy hour", "rooftop hour",
+    "kickback",
+    "house party",
+    "salon",
+    "social hour",
+    "social night",
+    "after party",
+    "afterparty",
+    "cocktail hour",
+    "happy hour",
+    "rooftop hour",
     # Group activities for meeting
-    "run club", "social run", "social club",
-    "supper club", "dinner club",
-    "gallery hop", "art hop",
+    "run club",
+    "social run",
+    "social club",
+    "supper club",
+    "dinner club",
+    "gallery hop",
+    "art hop",
 ]
 
 
@@ -361,66 +783,150 @@ SOCIAL_KEYWORDS = [
 # in the feed AND wants drinking-centered events down-weighted (not blocked).
 # Each match contributes a small positive boost via _alcohol_free_boost.
 ALCOHOL_FREE_KEYWORDS = [
-    "alcohol free", "alcohol-free", "alcohol  free",
-    "sober", "sober curious", "sober social",
-    "non-alcoholic", "non alcoholic", "non-alc", "non alc",
-    "zero proof", "zero-proof",
-    "dry january", "dry month",
-    "mocktail", "mocktails",
-    "no booze", "booze-free", "booze free",
-    "tea ceremony", "matcha", "specialty coffee",
-    "kombucha tasting", "tea tasting",
+    "alcohol free",
+    "alcohol-free",
+    "alcohol  free",
+    "sober",
+    "sober curious",
+    "sober social",
+    "non-alcoholic",
+    "non alcoholic",
+    "non-alc",
+    "non alc",
+    "zero proof",
+    "zero-proof",
+    "dry january",
+    "dry month",
+    "mocktail",
+    "mocktails",
+    "no booze",
+    "booze-free",
+    "booze free",
+    "tea ceremony",
+    "matcha",
+    "specialty coffee",
+    "kombucha tasting",
+    "tea tasting",
 ]
 
 
 HIGH_VALUE_KEYWORDS = [
     # Live music — major boost (NYC 20s-30s love this)
-    "live music", "live jazz", "jazz night", "jazz club", "jazz set",
-    "concert", "dj set", "dj night", "live band", "live set", "live show",
-    "vinyl night", "record listening", "listening party", "listening session",
-    "lo-fi", "house music", "techno", "indie band", "indie show",
-    "acoustic set", "open mic night", "songwriter showcase",
-    "music festival", "summer concert", "music venue",
-    "performance", "live performance",
-
+    "live music",
+    "live jazz",
+    "jazz night",
+    "jazz club",
+    "jazz set",
+    "concert",
+    "dj set",
+    "dj night",
+    "live band",
+    "live set",
+    "live show",
+    "vinyl night",
+    "record listening",
+    "listening party",
+    "listening session",
+    "lo-fi",
+    "house music",
+    "techno",
+    "indie band",
+    "indie show",
+    "acoustic set",
+    "open mic night",
+    "songwriter showcase",
+    "music festival",
+    "summer concert",
+    "music venue",
+    "performance",
+    "live performance",
     # Nightlife venues / vibes
-    "rooftop", "speakeasy", "warehouse party", "loft party",
-    "warehouse", "underground", "secret", "after hours", "late night",
-    "natural wine bar", "wine bar", "cocktail bar", "nightclub",
-
+    "rooftop",
+    "speakeasy",
+    "warehouse party",
+    "loft party",
+    "warehouse",
+    "underground",
+    "secret",
+    "after hours",
+    "late night",
+    "natural wine bar",
+    "wine bar",
+    "cocktail bar",
+    "nightclub",
     # Special / time-limited
-    "opening night", "premiere", "launch party", "release party",
-    "exclusive", "vip", "invite only", "first look", "preview",
-    "exhibition opening", "gallery opening", "art opening", "show opening",
-
+    "opening night",
+    "premiere",
+    "launch party",
+    "release party",
+    "exclusive",
+    "vip",
+    "invite only",
+    "first look",
+    "preview",
+    "exhibition opening",
+    "gallery opening",
+    "art opening",
+    "show opening",
     # Curated cultural
-    "literary salon", "salon ", "supper club", "tasting menu",
-    "natural wine", "cocktail party", "wine tasting",
-    "film screening", "movie screening", "private screening",
-    "outdoor movie", "rooftop screening",
-
+    "literary salon",
+    "salon ",
+    "supper club",
+    "tasting menu",
+    "natural wine",
+    "cocktail party",
+    "wine tasting",
+    "film screening",
+    "movie screening",
+    "private screening",
+    "outdoor movie",
+    "rooftop screening",
     # Festival / pop-up
-    "pop-up", "pop up", "popup", "festival", "block party",
-    "street fair", "open studios", "smorgasburg",
-
+    "pop-up",
+    "pop up",
+    "popup",
+    "festival",
+    "block party",
+    "street fair",
+    "open studios",
+    "smorgasburg",
     # Curated NYC moments
-    "first friday", "first saturday", "free friday",
-    "sunset", "rooftop sunset", "harbor cruise", "boat party",
-
+    "first friday",
+    "first saturday",
+    "free friday",
+    "sunset",
+    "rooftop sunset",
+    "harbor cruise",
+    "boat party",
     # Signature events (you'd brag about going)
-    "gala", "benefit", "fundraiser dinner",
-
+    "gala",
+    "benefit",
+    "fundraiser dinner",
     # 20s-30s NYC lifestyle
-    "brooklyn brewery", "brooklyn bowl", "house of yes",
-    "elsewhere", "the broadway", "knockdown center",
+    "brooklyn brewery",
+    "brooklyn bowl",
+    "house of yes",
+    "elsewhere",
+    "the broadway",
+    "knockdown center",
 ]
 
 # Audience targeting markers - if event explicitly targets demographics
 # that don't match, penalize.
 NON_TARGET_AUDIENCE = [
-    "for kids", "for children", "for families", "for seniors",
-    "for moms", "for dads", "for parents", "for teens",
-    "for ages", "ages 0-", "ages 3-", "ages 5-", "ages 6-",
+    "for kids",
+    "for children",
+    "for families",
+    "for seniors",
+    "for moms",
+    "for dads",
+    "for parents",
+    "for teens",
+    "for ages",
+    "ages 0-",
+    "ages 3-",
+    "ages 5-",
+    "ages 6-",
 ]
 
 
@@ -431,17 +937,31 @@ NON_TARGET_AUDIENCE = [
 # "professional networking", "job fair"), substring is fine because
 # those phrases don't appear inside unrelated words.
 _WORD_BOUNDARY_KEYWORDS = {
-    "kids", "children", "toddler", "toddlers", "baby", "babies",
-    "teen", "teens", "tween", "tweens", "preteen", "preteens",
-    "youth", "infant", "infants",
+    "kids",
+    "children",
+    "toddler",
+    "toddlers",
+    "baby",
+    "babies",
+    "teen",
+    "teens",
+    "tween",
+    "tweens",
+    "preteen",
+    "preteens",
+    "youth",
+    "infant",
+    "infants",
     # Acronyms — "ged" / "tefl" must word-boundary match. Iter 85 audit
     # found "ged " false-positiving on "collaged", "aged", "engaged",
     # "encouraged" etc. — the trailing space in HARD_BLOCK_KEYWORDS
     # wasn't enough since it matched inside any verb past tense.
-    "ged", "tefl",
+    "ged",
+    "tefl",
 }
 
 import re as _re
+
 # Word-boundary match BUT exclude possessive form ("Baby's All Right",
 # "Kid's Choice"). Negative lookahead `(?!')` ensures we don't match
 # inside venue/band names that use the apostrophe-s form.
@@ -478,35 +998,113 @@ def is_blocked(event: dict) -> bool:
 
 # Cities that strongly suggest the event is NOT in NYC.
 _NON_NYC_CITIES = [
-    "los angeles", " la,", " la ", "los feliz", "echo park", "silverlake",
-    "west hollywood", "weho", "culver city", "santa monica", "beverly hills",
-    "downtown la", "dtla", "highland park", "eagle rock", "pasadena",
-    "saint petersburg", "st. petersburg", "st petersburg",
-    "moscow", "russia,", "japan,", "korea,",
-    "uluwatu", "bali", "indonesia", "jakarta",
-    "tulum", "cancun", "mexico city",
-    "san francisco", " sf,", " sf ", "oakland", "berkeley",
-    "chicago", "miami", "austin", "atlanta", "boston", "philadelphia", "philly",
-    "portland", "seattle", "denver", "nashville", "new orleans",
-    "washington dc", "d.c.", "dc,",
-    "london", "paris", "tokyo", "berlin", "amsterdam", "barcelona",
-    "mexico city", "toronto", "vancouver", "montreal",
-    "honolulu", "hawaii", "miami beach",
-    "las vegas", "vegas",
-    "dallas", "houston", "phoenix", "minneapolis",
-    "long beach", "santa monica", "venice beach",
+    "los angeles",
+    " la,",
+    " la ",
+    "los feliz",
+    "echo park",
+    "silverlake",
+    "west hollywood",
+    "weho",
+    "culver city",
+    "santa monica",
+    "beverly hills",
+    "downtown la",
+    "dtla",
+    "highland park",
+    "eagle rock",
+    "pasadena",
+    "saint petersburg",
+    "st. petersburg",
+    "st petersburg",
+    "moscow",
+    "russia,",
+    "japan,",
+    "korea,",
+    "uluwatu",
+    "bali",
+    "indonesia",
+    "jakarta",
+    "tulum",
+    "cancun",
+    "mexico city",
+    "san francisco",
+    " sf,",
+    " sf ",
+    "oakland",
+    "berkeley",
+    "chicago",
+    "miami",
+    "austin",
+    "atlanta",
+    "boston",
+    "philadelphia",
+    "philly",
+    "portland",
+    "seattle",
+    "denver",
+    "nashville",
+    "new orleans",
+    "washington dc",
+    "d.c.",
+    "dc,",
+    "london",
+    "paris",
+    "tokyo",
+    "berlin",
+    "amsterdam",
+    "barcelona",
+    "mexico city",
+    "toronto",
+    "vancouver",
+    "montreal",
+    "honolulu",
+    "hawaii",
+    "miami beach",
+    "las vegas",
+    "vegas",
+    "dallas",
+    "houston",
+    "phoenix",
+    "minneapolis",
+    "long beach",
+    "santa monica",
+    "venice beach",
     # NJ cities (close to NYC but separate)
-    "jersey city", "hoboken", "newark",
+    "jersey city",
+    "hoboken",
+    "newark",
 ]
 
 # NYC-positive markers (presence of these suggests it IS in NYC)
 _NYC_MARKERS = [
-    "nyc", "new york", "brooklyn", "manhattan", "queens", "bronx",
-    "staten island", "harlem", "williamsburg", "bushwick", "greenpoint",
-    "soho", "tribeca", "chelsea", "lower east side", "east village",
-    "west village", "midtown", "upper east", "upper west",
-    "park slope", "fort greene", "dumbo", "prospect heights",
-    "long island city", "lic", "astoria",
+    "nyc",
+    "new york",
+    "brooklyn",
+    "manhattan",
+    "queens",
+    "bronx",
+    "staten island",
+    "harlem",
+    "williamsburg",
+    "bushwick",
+    "greenpoint",
+    "soho",
+    "tribeca",
+    "chelsea",
+    "lower east side",
+    "east village",
+    "west village",
+    "midtown",
+    "upper east",
+    "upper west",
+    "park slope",
+    "fort greene",
+    "dumbo",
+    "prospect heights",
+    "long island city",
+    "lic",
+    "astoria",
 ]
 
 
@@ -590,13 +1188,33 @@ def _title_quality(title: str) -> float:
     title_lower = title.lower()
 
     # Penalize titles ending with mid-sentence punctuation
-    if title.endswith((",", ":", ";", " and", " or", " the", " a", " of", " in", " on", " at", " to", " is", " are", " was", " were")):
+    if title.endswith(
+        (
+            ",",
+            ":",
+            ";",
+            " and",
+            " or",
+            " the",
+            " a",
+            " of",
+            " in",
+            " on",
+            " at",
+            " to",
+            " is",
+            " are",
+            " was",
+            " were",
+        )
+    ):
         return 0.2
     # Iter 213: catch QA-found pattern 'X : Y' where Y is 1-2 chars (OCR
     # truncation mid-word). 'Pe Wea : i' from an IG story OCR'd flyer
     # surfaced as an event because the title-quality filter only checked
     # trailing punctuation, not 'punctuation + tiny fragment'.
     import re as _re
+
     if _re.search(r"\s[:;,\-]\s+\w{1,2}$", title):
         return 0.15
 
@@ -611,17 +1229,56 @@ def _title_quality(title: str) -> float:
 
     # Penalize narrative caption fragments
     narrative_starters = [
-        "throughout", "since ", "in his", "in her", "the artist", "the work",
-        "this work", "this piece", "the painting", "the sculpture",
-        "as part of", "see this", "join us at", "view of", "📷",
-        "did you know", "fun fact", "happy ", "today is", "let me",
-        "we love", "we're loving", "we’re loving", "we’re thrilled",
-        "we are thrilled", "we are excited", "what a ", "behind the scenes",
-        "swipe to", "swipe ⬅", "swipe ➡", "tap link", "link in bio",
-        "back by", "tickets on sale", "now showing", "now open",
-        "last chance", "don't miss", "don’t miss", "save the date",
-        "calling all", "coming up", "coming soon", "celebrating ",
-        "thank you", "thanks to", "shoutout", "photo by", "video by",
+        "throughout",
+        "since ",
+        "in his",
+        "in her",
+        "the artist",
+        "the work",
+        "this work",
+        "this piece",
+        "the painting",
+        "the sculpture",
+        "as part of",
+        "see this",
+        "join us at",
+        "view of",
+        "📷",
+        "did you know",
+        "fun fact",
+        "happy ",
+        "today is",
+        "let me",
+        "we love",
+        "we're loving",
+        "we’re loving",
+        "we’re thrilled",
+        "we are thrilled",
+        "we are excited",
+        "what a ",
+        "behind the scenes",
+        "swipe to",
+        "swipe ⬅",
+        "swipe ➡",
+        "tap link",
+        "link in bio",
+        "back by",
+        "tickets on sale",
+        "now showing",
+        "now open",
+        "last chance",
+        "don't miss",
+        "don’t miss",
+        "save the date",
+        "calling all",
+        "coming up",
+        "coming soon",
+        "celebrating ",
+        "thank you",
+        "thanks to",
+        "shoutout",
+        "photo by",
+        "video by",
     ]
     if any(title_lower.startswith(p) for p in narrative_starters):
         return 0.1
@@ -640,9 +1297,23 @@ def _title_quality(title: str) -> float:
 
     # Reward titles with strong action verbs at the start (real events)
     action_starters = [
-        "join ", "come ", "explore ", "discover ", "celebrate ", "experience ",
-        "see ", "visit ", "attend ", "go to ", "watch ", "listen to ",
-        "enjoy ", "shop ", "taste ", "dance to ", "party at ",
+        "join ",
+        "come ",
+        "explore ",
+        "discover ",
+        "celebrate ",
+        "experience ",
+        "see ",
+        "visit ",
+        "attend ",
+        "go to ",
+        "watch ",
+        "listen to ",
+        "enjoy ",
+        "shop ",
+        "taste ",
+        "dance to ",
+        "party at ",
     ]
     if any(title_lower.startswith(p) for p in action_starters):
         return 1.0
@@ -674,6 +1345,7 @@ def _time_of_day_score(start_time: str | None, date_str: str) -> float:
     is_weekend = False
     try:
         from datetime import datetime
+
         d = datetime.fromisoformat(date_str)
         is_weekend = d.weekday() >= 5
     except Exception:
@@ -686,29 +1358,63 @@ def _time_of_day_score(start_time: str | None, date_str: str) -> float:
         if 14 <= hour < 17:
             return 0.85  # afternoon
         if 17 <= hour < 21:
-            return 1.0   # prime evening
+            return 1.0  # prime evening
         if 21 <= hour <= 23:
             return 0.95  # late night
         if 0 <= hour < 4:
-            return 0.7   # very late
-        return 0.4       # morning weekend
+            return 0.7  # very late
+        return 0.4  # morning weekend
     else:
         # Weekdays - prefer evening
         if 18 <= hour < 22:
-            return 1.0   # post-work prime
+            return 1.0  # post-work prime
         if 17 <= hour < 18:
             return 0.85  # early evening
         if 22 <= hour <= 23:
-            return 0.8   # late
+            return 0.8  # late
         if 12 <= hour < 17:
-            return 0.5   # midday
-        return 0.3       # weekday morning
+            return 0.5  # midday
+        return 0.3  # weekday morning
 
 
-_OCR_COMMON_SHORT = {"a", "i", "to", "of", "in", "on", "at", "an", "is", "no",
-    "we", "my", "ok", "so", "up", "by", "x", "vs", "am", "pm", "st", "nd",
-    "rd", "th", "dj", "ny", "us", "go", "do", "if", "as", "or", "be", "it",
-    "he", "me"}
+_OCR_COMMON_SHORT = {
+    "a",
+    "i",
+    "to",
+    "of",
+    "in",
+    "on",
+    "at",
+    "an",
+    "is",
+    "no",
+    "we",
+    "my",
+    "ok",
+    "so",
+    "up",
+    "by",
+    "x",
+    "vs",
+    "am",
+    "pm",
+    "st",
+    "nd",
+    "rd",
+    "th",
+    "dj",
+    "ny",
+    "us",
+    "go",
+    "do",
+    "if",
+    "as",
+    "or",
+    "be",
+    "it",
+    "he",
+    "me",
+}
 
 
 def _looks_like_ocr_garbage(title: str) -> bool:
@@ -757,9 +1463,13 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # IG/news outlets routinely render apostrophes as the curly form, so
     # "Last year's SWITCH N' PRESS PLAY" wouldn't match "last year's"
     # without this normalization.
-    title_lower = (title_lower
-                   .replace("’", "'").replace("‘", "'")
-                   .replace("“", '"').replace("”", '"'))
+    title_lower = (
+        title_lower.replace("’", "'")
+        .replace("‘", "'")
+        .replace("“", '"')
+        .replace("”", '"')
+    )
+
     # Strip leading emoji / zero-width joiners / symbols / punctuation so
     # the startswith checks below match titles that lead with a decorative
     # glyph (IG captions often open with "🎨 🛞 And come..."). We keep
@@ -772,194 +1482,519 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
                 break
             i += 1
         return s[i:].lstrip()
+
     title_lower_nofx = _strip_leading_decoration(title_lower)
 
     # Caption fragments often start with lowercase or narrative phrases
     fragment_starts = [
         # Narrative / descriptive
-        "throughout", "since ", "in his", "in her", "the artist", "the work",
-        "this work", "this piece", "as part of", "see this", "📷",
-        "📸", "see ", "view ", "watch ", "currently on view",
+        "throughout",
+        "since ",
+        "in his",
+        "in her",
+        "the artist",
+        "the work",
+        "this work",
+        "this piece",
+        "as part of",
+        "see this",
+        "📷",
+        "📸",
+        "see ",
+        "view ",
+        "watch ",
+        "currently on view",
         # First-person / hype language
-        "we are loving", "we're loving", "we’re loving",
-        "we are thrilled", "we're thrilled", "we’re thrilled",
-        "we are excited", "we're excited", "we’re excited",
-        "we are so", "we’re so", "we are super", "we’re super",
-        "we’ve got", "we've got", "we got", "we have ", "we’re back",
+        "we are loving",
+        "we're loving",
+        "we’re loving",
+        "we are thrilled",
+        "we're thrilled",
+        "we’re thrilled",
+        "we are excited",
+        "we're excited",
+        "we’re excited",
+        "we are so",
+        "we’re so",
+        "we are super",
+        "we’re super",
+        "we’ve got",
+        "we've got",
+        "we got",
+        "we have ",
+        "we’re back",
         # IG content patterns
-        "🚨", "‼", "⚠", "📣",  # alert emoji starts
-        "tomorrow,", "tomorrow we", "tomorrow night", "tomorrow morning",
-        "tonight 7", "tonight 8", "tonight 9", "tonight, ",
-        "spring starts", "summer starts", "fall starts", "winter starts",
-        "20 years in", "10 years in", "5 years in",
-        "raise a glass", "kick off ",
-        "more @", "back @", "back at @",
-        "tired of ", "are you tired",
-        "new food alert", "new event alert",
-        "i got the feeling", "this is your reminder",
-        "it may not feel", "even before",
-        "beautiful pictures", "amazing pictures", "great pictures",
-        "shoutout to", "big shoutout",
-        "i can't believe", "i can’t believe",
-        "your weekly", "your monthly",
-        "let's do", "let’s do",
-        "what…", "what...",
+        "🚨",
+        "‼",
+        "⚠",
+        "📣",  # alert emoji starts
+        "tomorrow,",
+        "tomorrow we",
+        "tomorrow night",
+        "tomorrow morning",
+        "tonight 7",
+        "tonight 8",
+        "tonight 9",
+        "tonight, ",
+        "spring starts",
+        "summer starts",
+        "fall starts",
+        "winter starts",
+        "20 years in",
+        "10 years in",
+        "5 years in",
+        "raise a glass",
+        "kick off ",
+        "more @",
+        "back @",
+        "back at @",
+        "tired of ",
+        "are you tired",
+        "new food alert",
+        "new event alert",
+        "i got the feeling",
+        "this is your reminder",
+        "it may not feel",
+        "even before",
+        "beautiful pictures",
+        "amazing pictures",
+        "great pictures",
+        "shoutout to",
+        "big shoutout",
+        "i can't believe",
+        "i can’t believe",
+        "your weekly",
+        "your monthly",
+        "let's do",
+        "let’s do",
+        "what…",
+        "what...",
         "*",  # asterisk-led fragments like "*Artist will not be present"
         "hosted by",
-        "mid-week", "midweek",
-        "bravo fans", "swifties", "beyhive",
-        "this one's for you", "this one’s for you",
-        "this is big", "this is huge",
-        "we present", "we’re excited to present",
-        "presenting:", "introducing ",
-        "if you’ve been", "if you've been",
-        "if you’re looking", "if you've been looking",
-        "the wait is over", "the moment we",
-        "you don’t want to", "you don't want to",
-        "this is", "this was",
-        "got some", "we’ve got some",
-        "y’all", "yall",
-        "good morning", "good afternoon", "good evening",
-        "🎬", "🎉", "🎊", "🥳",  # celebration emoji starts (often hype)
+        "mid-week",
+        "midweek",
+        "bravo fans",
+        "swifties",
+        "beyhive",
+        "this one's for you",
+        "this one’s for you",
+        "this is big",
+        "this is huge",
+        "we present",
+        "we’re excited to present",
+        "presenting:",
+        "introducing ",
+        "if you’ve been",
+        "if you've been",
+        "if you’re looking",
+        "if you've been looking",
+        "the wait is over",
+        "the moment we",
+        "you don’t want to",
+        "you don't want to",
+        "this is",
+        "this was",
+        "got some",
+        "we’ve got some",
+        "y’all",
+        "yall",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "🎬",
+        "🎉",
+        "🎊",
+        "🥳",  # celebration emoji starts (often hype)
         # Announcements / call-to-action
-        "back by popular", "tickets on sale", "now showing", "now open",
-        "last chance", "don't miss", "don’t miss", "save the date",
-        "calling all", "for those of",
-        "coming up", "coming soon",
-        "happy ", "today is", "celebrating ", "celebrate ",
-        "thank you", "thanks to", "shoutout", "shout out",
-        "photo by", "📷", "video by", "captured by",
+        "back by popular",
+        "tickets on sale",
+        "now showing",
+        "now open",
+        "last chance",
+        "don't miss",
+        "don’t miss",
+        "save the date",
+        "calling all",
+        "for those of",
+        "coming up",
+        "coming soon",
+        "happy ",
+        "today is",
+        "celebrating ",
+        "celebrate ",
+        "thank you",
+        "thanks to",
+        "shoutout",
+        "shout out",
+        "photo by",
+        "📷",
+        "video by",
+        "captured by",
         # Hype / casual greetings
-        "hey ", "hi ", "yo ", "psa", "p.s.a", "‼", "‼️",
-        "big news", "huge news", "exciting news", "great news",
-        "just announced", "newly announced", "announcing",
-        "presale", "general on sale", "general sale",
-        "got some", "we’ve got some", "we got some",
-        "real dancers", "all dancers",
-        "catch his", "catch her", "catch their",
-        "[", "(",
-        "@", "#",
+        "hey ",
+        "hi ",
+        "yo ",
+        "psa",
+        "p.s.a",
+        "‼",
+        "‼️",
+        "big news",
+        "huge news",
+        "exciting news",
+        "great news",
+        "just announced",
+        "newly announced",
+        "announcing",
+        "presale",
+        "general on sale",
+        "general sale",
+        "got some",
+        "we’ve got some",
+        "we got some",
+        "real dancers",
+        "all dancers",
+        "catch his",
+        "catch her",
+        "catch their",
+        "[",
+        "(",
+        "@",
+        "#",
         # Caption-only IG fragments lacking real event title
-        "for all the details", "for allll", "for alll", "for all of",
-        "hit that link", "link in bio", "link in our bio",
-        "the stage is set", "stage is set ",
-        "oh summer", "oh nyc", "oh new york",
-        "we are soooo", "we are so back", "we're soooo", "we're so back",
+        "for all the details",
+        "for allll",
+        "for alll",
+        "for all of",
+        "hit that link",
+        "link in bio",
+        "link in our bio",
+        "the stage is set",
+        "stage is set ",
+        "oh summer",
+        "oh nyc",
+        "oh new york",
+        "we are soooo",
+        "we are so back",
+        "we're soooo",
+        "we're so back",
         "summer in nyc",
         # Ticket-CTA fragments treated as title
-        "advance tickets are", "tickets are $", "tickets are still",
-        "tickets selling", "tickets going fast", "tickets going quick",
-        "limited tickets", "few tickets left", "tickets remaining",
-        "preorder today", "pre-order today", "preorder our",
-        "shop our", "now available on", "now available at",
+        "advance tickets are",
+        "tickets are $",
+        "tickets are still",
+        "tickets selling",
+        "tickets going fast",
+        "tickets going quick",
+        "limited tickets",
+        "few tickets left",
+        "tickets remaining",
+        "preorder today",
+        "pre-order today",
+        "preorder our",
+        "shop our",
+        "now available on",
+        "now available at",
         # Promo / discount CTAs picked up as titles
-        "use code ", "use coupon", "enter code ", "code: ",
-        "free with code", "first 50", "first 100",
+        "use code ",
+        "use coupon",
+        "enter code ",
+        "code: ",
+        "free with code",
+        "first 50",
+        "first 100",
         # Location-prefix caption fragments
-        "friday outside", "saturday outside", "sunday outside",
-        "monday outside", "tuesday outside", "wednesday outside",
+        "friday outside",
+        "saturday outside",
+        "sunday outside",
+        "monday outside",
+        "tuesday outside",
+        "wednesday outside",
         "thursday outside",
-        "this friday outside", "this saturday outside",
+        "this friday outside",
+        "this saturday outside",
         # "This <Weekday>, join/come/we/celebrate..." caption opener
         # ("This Friday, join us for a celebration of our composting...")
         # Distinct from the bare "this <weekday>" because the comma
         # signals a caption-style sentence continuation.
-        "this friday,", "this saturday,", "this sunday,",
-        "this monday,", "this tuesday,", "this wednesday,", "this thursday,",
+        "this friday,",
+        "this saturday,",
+        "this sunday,",
+        "this monday,",
+        "this tuesday,",
+        "this wednesday,",
+        "this thursday,",
         # 'Day Location: X' label format
-        "saturday location:", "sunday location:", "monday location:",
-        "tuesday location:", "wednesday location:", "thursday location:",
+        "saturday location:",
+        "sunday location:",
+        "monday location:",
+        "tuesday location:",
+        "wednesday location:",
+        "thursday location:",
         "friday location:",
-        "location:", "venue:", "where:", "when:",
+        "location:",
+        "venue:",
+        "where:",
+        "when:",
         # Promo / giveaway captions
-        "grads get", "giving away", "win a ",
-        "free donuts", "free coffee", "free tickets to",
-        "date change", "rescheduled to", "postponed to",
+        "grads get",
+        "giving away",
+        "win a ",
+        "free donuts",
+        "free coffee",
+        "free tickets to",
+        "date change",
+        "rescheduled to",
+        "postponed to",
         # OCR garbage
         "= ",
         # Narrative IG caption openers ('there are so many things...')
-        "there are so many", "there are lots of", "there's a lot of",
-        "so many things", "so many ways", "so many reasons",
+        "there are so many",
+        "there are lots of",
+        "there's a lot of",
+        "so many things",
+        "so many ways",
+        "so many reasons",
         # Brand reopening / news announcements (not events)
-        "reopening tomorrow", "reopens tomorrow", "we're reopening",
-        "we are reopening", "now reopen",
-        "nyc beaches reopen", "beaches reopen", "the beach reopens",
+        "reopening tomorrow",
+        "reopens tomorrow",
+        "we're reopening",
+        "we are reopening",
+        "now reopen",
+        "nyc beaches reopen",
+        "beaches reopen",
+        "the beach reopens",
         # Promo / giveaway captions (more)
-        "free knicks donuts", "free donuts tomorrow",
-        "first 53 ", "first 100 ", "first 50 ", "first 25 ",
+        "free knicks donuts",
+        "free donuts tomorrow",
+        "first 53 ",
+        "first 100 ",
+        "first 50 ",
+        "first 25 ",
         # Seasonal hype caption openers
-        "this summer is for", "this winter is for", "this spring is for",
-        "this fall is for", "this season is",
-        "the girlies are coming", "the girls are coming",
+        "this summer is for",
+        "this winter is for",
+        "this spring is for",
+        "this fall is for",
+        "this season is",
+        "the girlies are coming",
+        "the girls are coming",
         # Narrative IG openers
-        "crate-diggers", "basement raiders",
-        "calling all bookworms", "for the bookworms",
-        "for those who love", "for those of us",
-        "to all the", "if you love", "if you're into",
-        "whether you", "whether they", "whether or not",
-        "find the (", "find your", "find a ",  # 'find the (Guber) One' fragment
-        "not your typical", "not your average", "not your usual",
-        "not just a", "not just an", "not your ordinary",
-        "send this to", "send to a friend", "send to someone",
-        "share with a", "share this with", "share with the",
+        "crate-diggers",
+        "basement raiders",
+        "calling all bookworms",
+        "for the bookworms",
+        "for those who love",
+        "for those of us",
+        "to all the",
+        "if you love",
+        "if you're into",
+        "whether you",
+        "whether they",
+        "whether or not",
+        "find the (",
+        "find your",
+        "find a ",  # 'find the (Guber) One' fragment
+        "not your typical",
+        "not your average",
+        "not your usual",
+        "not just a",
+        "not just an",
+        "not your ordinary",
+        "send this to",
+        "send to a friend",
+        "send to someone",
+        "share with a",
+        "share this with",
+        "share with the",
         # Hey-style IG caption openers picked up as title
-        "hay nyc", "hay friends", "hay everyone", "hay you",
-        "i'm hosting", "im hosting", "i am hosting",
-        "we're hosting", "we are hosting",
-        "sree lo", "just rsvp",  # broken-extraction artifacts
+        "hay nyc",
+        "hay friends",
+        "hay everyone",
+        "hay you",
+        "i'm hosting",
+        "im hosting",
+        "i am hosting",
+        "we're hosting",
+        "we are hosting",
+        "sree lo",
+        "just rsvp",  # broken-extraction artifacts
         "guber one",  # this specific vague tag from one IG post
         # Excited-reaction caption openers — pure caption, no event subject
-        "wow wow", "wowowow", "wowww", "yesssss",
-        "last year's", "last year we", "last summer", "last spring",
-        "lasts year's", "last fall we", "last winter",
-        "our debut show", "our debut at", "our last show",
+        "wow wow",
+        "wowowow",
+        "wowww",
+        "yesssss",
+        "last year's",
+        "last year we",
+        "last summer",
+        "last spring",
+        "lasts year's",
+        "last fall we",
+        "last winter",
+        "our debut show",
+        "our debut at",
+        "our last show",
         "it's that time of the year",
-        "swipe through to", "tap through to",
-        "happy birthday to", "rest in peace", "rip ",
-        "+ ", "- ", "— ", "– ",  # leading punctuation suggesting a list-item
-        "more details", "details below", "details inside",
-        "comment below", "tag a friend", "tag your",
-        "drop a comment", "leave a comment",
-        "double tap", "save this post", "share this post",
-        "swipe up", "swipe to", "swipe for",
+        "swipe through to",
+        "tap through to",
+        "happy birthday to",
+        "rest in peace",
+        "rip ",
+        "+ ",
+        "- ",
+        "— ",
+        "– ",  # leading punctuation suggesting a list-item
+        "more details",
+        "details below",
+        "details inside",
+        "comment below",
+        "tag a friend",
+        "tag your",
+        "drop a comment",
+        "leave a comment",
+        "double tap",
+        "save this post",
+        "share this post",
+        "swipe up",
+        "swipe to",
+        "swipe for",
         "stay tuned",
         # Place / installation descriptions misparsed as events
         # ("Opened in June 2019, the Plinth is...")
-        "opened in ", "opens in ", "located in ", "located at ",
-        "situated in ", "situated at ",
+        "opened in ",
+        "opens in ",
+        "located in ",
+        "located at ",
+        "situated in ",
+        "situated at ",
         # Excited-caption openers ("Super excited to be part of...")
-        "super excited", "so excited", "so happy to",
-        "so pumped", "super pumped",
-        "stoked to ", "thrilled to ", "honored to ", "honoured to ",
+        "super excited",
+        "so excited",
+        "so happy to",
+        "so pumped",
+        "super pumped",
+        "stoked to ",
+        "thrilled to ",
+        "honored to ",
+        "honoured to ",
         # "And come..." / "And join..." — caption continuation prefix
-        "and come ", "and join ", "and we ",
+        "and come ",
+        "and join ",
+        "and we ",
         # "Join us in / at / on / for ..." — when followed by date or
         # a place prefix this is caption, not title. "Join us for X"
         # is borderline but generally caption-y.
-        "join us in ", "join us at ", "join us on ", "join us this ",
+        "join us in ",
+        "join us at ",
+        "join us on ",
+        "join us this ",
         # Generic activity fragments missing the actual event name
         # ("screenings at @hudsonyards", "event in Central Park May 30",
         # "free screenings at", "concerts at"). Singular + plural.
-        "screenings at ", "screening at ", "concerts at ", "concert at ",
-        "shows at ", "show at ", "performances at ", "performance at ",
-        "event in ", "events in ", "event at ", "events at ",
+        "screenings at ",
+        "screening at ",
+        "concerts at ",
+        "concert at ",
+        "shows at ",
+        "show at ",
+        "performances at ",
+        "performance at ",
+        "event in ",
+        "events in ",
+        "event at ",
+        "events at ",
         # "an evening of" fragment-opener already covered by other rules
         # but these specific anchors are common IG caption starts.
-        "free screenings", "free concerts",
+        "free screenings",
+        "free concerts",
         # Narrative / CTA openers from IG-story captions (2026-06-04 leak audit).
         # "throwing a " / "enter a ballot" are scoped tighter than the bare
         # "throwing "/"enter a " to avoid future FPs (e.g. "Throwing Workshop").
-        "not able to", "throwing a ", "enter to win", "enter a ballot",
+        "not able to",
+        "throwing a ",
+        "enter to win",
+        "enter a ballot",
         "house of @",  # trailing @ scopes to handle-glued captions, not a venue
         "below.",
     ]
-    if any(title_lower.startswith(p) or title_lower_nofx.startswith(p)
-           for p in fragment_starts):
+    if any(
+        title_lower.startswith(p) or title_lower_nofx.startswith(p)
+        for p in fragment_starts
+    ):
         return True
 
     # Leading stray apostrophe/quote + space + word: "' Things making me happy"
     # — an OCR-split caption line, never a real title.
     if re.match(r"^['\"’‘]\s+\S", title.strip()):
+        return True
+
+    # IG-Story OCR fragments (2026-06-12 audit). These are schedule/flyer lines
+    # where the real event name is missing — the title is just a date, a
+    # neighborhood label, or a caption opener. All verified 0-FP on the live
+    # 428-event feed. (Followed reading accounts get their titles SALVAGED
+    # upstream in instagram.py before reaching here, so these only drop the
+    # genuinely unsalvageable fragments.)
+    # Q3: date-led fragments
+    if re.match(
+        r"^(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*,\s+"
+        r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{1,2}",
+        title_lower,
+    ):
+        return True
+    if re.match(
+        r"^.{0,6}\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+"
+        r"\d{1,2}(?:st|nd|rd|th)?\s*:",
+        title_lower,
+    ):
+        return True
+    if re.match(
+        r"^(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*\s+"
+        r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{1,2}.{0,3}[-–—]",
+        title_lower,
+    ):
+        return True
+    # Q4: ALLCAPS neighborhood-prefix + weekday-date (Reading-Rhythms list lines,
+    # e.g. "PROSPECT HEIGHTS (CITY POINT): Sat, June 13th"). The prefix stays
+    # case-SENSITIVE (ALLCAPS only — won't hit a normal mixed-case title); the
+    # weekday/month are matched in capitalized form. Reading Rhythms content is
+    # covered cleanly by the lu.ma curator calendar, so dropping these is safe.
+    if re.match(
+        r"^[A-Z][A-Z &()]+:\s*"
+        r"(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*,?\s+"
+        r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)",
+        title,
+    ):
+        return True
+    # Q5: OCR symbol-run garbage ("@ &&", "@)", ".-", trailing "[ JUNE")
+    if re.search(r"(?:&&|@\)|\.-|\s@\s*&|@\s*$|\[\s*[A-Z]+\s*$)", title):
+        return True
+    # Q6: caption-fragment openers / markers (museum + promo + vibe captions)
+    if re.match(r"^we[''’]?(?:re| are)\s+celebrat", title_lower):
+        return True
+    if re.search(
+        r"\b(?:is on view|on view|on display|now through|now on view)\b", title_lower
+    ):
+        return True
+    if re.search(
+        r"\b(?:starts|opens|begins|kicks off)\s+(?:tomorrow|today|tonight|this week)\b",
+        title_lower,
+    ):
+        return True
+    if re.match(
+        r"^(?:yarn of the day|.* is for the (?:gals|girls|boys|guys)\b)", title_lower
+    ):
+        return True
+    if re.search(
+        r"\b(?:giving away|give away|giveaway|win a pair|win tickets|enter to win)\b",
+        title_lower,
+    ):
+        return True
+    if re.match(r"^(?:featuring:|gig\))", title_lower):
+        return True
+    # Q8: World Cup schedule-line spam — "COUNTRY v. COUNTRY @ time". One venue
+    # turns a multi-match schedule into N near-identical cards. Drop the
+    # schedule-line shape; legit "Brazil World Cup Watch Party" titles don't match.
+    if re.match(r"^[A-Z][A-Z ]+\s+v\.?\s+[A-Z][A-Z ]+\s*@\s*\d", title):
         return True
 
     # Month-day + dash prefix: "Jun 17 - Alphonso Horne...", "5/27 - Brass
@@ -1021,7 +2056,9 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         return True
 
     # Titles starting with relative time like "Today" or "Tomorrow" alone
-    if re.match(r"^(?:today|tomorrow|tonight|this weekend|this week)[^\w]?$", title_lower):
+    if re.match(
+        r"^(?:today|tomorrow|tonight|this weekend|this week)[^\w]?$", title_lower
+    ):
         return True
 
     # Truncation marker: title ends in "..." or "…". Indicates a caption
@@ -1041,13 +2078,18 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     #   - First token is camelCase (lowercase first + uppercase later,
     #     e.g. "commUNITY", "iLuminate") — brand stylization
     title_orig_nofx = _strip_leading_decoration(title_stripped)
-    if (title_orig_nofx and title_orig_nofx[0].islower()
-            and "@" not in title_orig_nofx
-            and not title_orig_nofx.lower().startswith(("a ", "an ", "the "))):
+    if (
+        title_orig_nofx
+        and title_orig_nofx[0].islower()
+        and "@" not in title_orig_nofx
+        and not title_orig_nofx.lower().startswith(("a ", "an ", "the "))
+    ):
         first_word = title_orig_nofx.split(maxsplit=1)[0] if title_orig_nofx else ""
-        is_camel = (len(first_word) > 2
-                    and first_word[0].islower()
-                    and any(c.isupper() for c in first_word[1:]))
+        is_camel = (
+            len(first_word) > 2
+            and first_word[0].islower()
+            and any(c.isupper() for c in first_word[1:])
+        )
         if not is_camel and len(title_orig_nofx.split()) >= 3:
             return True
 
@@ -1055,9 +2097,17 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # "THE CENTER FOR FICTION presents", "X discusses", "Y introduces").
     # The actual event subject was cut off after the verb.
     fragment_verb_endings = (
-        "presents", "discusses", "introduces", "features",
-        "celebrates", "announces", "honors", "welcomes",
-        "explores", "examines", "reflects on",
+        "presents",
+        "discusses",
+        "introduces",
+        "features",
+        "celebrates",
+        "announces",
+        "honors",
+        "welcomes",
+        "explores",
+        "examines",
+        "reflects on",
     )
     if any(title_lower.endswith(" " + v) for v in fragment_verb_endings):
         return True
@@ -1073,9 +2123,11 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # Address-as-title detection. IG scraper sometimes extracts a location
     # line ('445 grand st, brooklyn, ny') as the title when no clear event-
     # name line exists. Pattern: number + street word + ", borough/city".
-    if re.match(r"^\d{1,5}\s+[\w\-\s]+\s+(st|street|ave|avenue|blvd|boulevard|"
-                r"rd|road|pl|place|way|dr|drive|ln|lane)[\.,]\s*[\w\s]+,\s*[\w\s]+",
-                title_lower):
+    if re.match(
+        r"^\d{1,5}\s+[\w\-\s]+\s+(st|street|ave|avenue|blvd|boulevard|"
+        r"rd|road|pl|place|way|dr|drive|ln|lane)[\.,]\s*[\w\s]+,\s*[\w\s]+",
+        title_lower,
+    ):
         return True
     # Simpler address pattern: '<number> <street name>, <city>, <state>'
     if re.match(r"^\d{1,5}\s+\w[\w\s]*,\s*\w+,\s*\w{2,}", title_lower):
@@ -1091,12 +2143,21 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # Real event titles never contain these. Complements fragment_starts
     # which only fires at the title prefix.
     promo_substrings = (
-        "free knicks donuts", "free knicks", "knicks donuts",
-        "tomorrow for first", "for first 53", "for first 100",
-        "for first 50", "for first 25",
-        "win a $", "giving away $", "giveaway: $",
-        "rest in peace", "happy birthday to",
-        "free with code", "use code ",
+        "free knicks donuts",
+        "free knicks",
+        "knicks donuts",
+        "tomorrow for first",
+        "for first 53",
+        "for first 100",
+        "for first 50",
+        "for first 25",
+        "win a $",
+        "giving away $",
+        "giveaway: $",
+        "rest in peace",
+        "happy birthday to",
+        "free with code",
+        "use code ",
     )
     if any(p in title_lower for p in promo_substrings):
         return True
@@ -1111,17 +2172,59 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # York's largest inland' / 'making class led by bartenders from'.
     # Real event titles never end this way.
     fragment_enders = (
-        "from", "of", "with", "by", "for", "to", "in", "on", "at",
-        "and", "or", "but", "but the", "is", "are", "was", "were",
-        "the", "a", "an", "should", "would", "could", "might",
-        "can", "will", "do", "does", "did",
+        "from",
+        "of",
+        "with",
+        "by",
+        "for",
+        "to",
+        "in",
+        "on",
+        "at",
+        "and",
+        "or",
+        "but",
+        "but the",
+        "is",
+        "are",
+        "was",
+        "were",
+        "the",
+        "a",
+        "an",
+        "should",
+        "would",
+        "could",
+        "might",
+        "can",
+        "will",
+        "do",
+        "does",
+        "did",
         # Qualifier adjectives that need a noun to make sense
-        "inland", "largest", "biggest", "smallest", "best", "worst",
-        "first", "last", "next", "newest", "oldest",
+        "inland",
+        "largest",
+        "biggest",
+        "smallest",
+        "best",
+        "worst",
+        "first",
+        "last",
+        "next",
+        "newest",
+        "oldest",
         # Bare descriptors / period markers — caption snippets ending with
         # these are mid-sentence (e.g. 'Not your typical outdoor')
-        "outdoor", "indoor", "weekly", "monthly", "daily",
-        "typical", "kind", "style", "thing", "stuff",
+        "outdoor",
+        "indoor",
+        "weekly",
+        "monthly",
+        "daily",
+        "typical",
+        "kind",
+        "style",
+        "thing",
+        "stuff",
     )
     last_word = title_lower.rstrip("!?.…,;: ").rsplit(maxsplit=1)
     if len(last_word) == 2 and last_word[1] in fragment_enders:
@@ -1148,16 +2251,23 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # Match: word boundary, common networking-event modifiers, networking
     # verb. Excluded if combined with explicit-social signals (singles,
     # casual, fun) since those are different from career events.
-    if re.search(r"\b(artists?|professionals?|founders?|creators?|creatives?|"
-                 r"women|men|young) [a-z]* ?(networking|mixer|connect)\b", title_lower):
+    if re.search(
+        r"\b(artists?|professionals?|founders?|creators?|creatives?|"
+        r"women|men|young) [a-z]* ?(networking|mixer|connect)\b",
+        title_lower,
+    ):
         # Spare singles-mixer / queer-mixer / open-mixer variants
-        if not any(soft in title_lower for soft in
-                   ("singles", "queer", "open ", "social ", "casual ")):
+        if not any(
+            soft in title_lower
+            for soft in ("singles", "queer", "open ", "social ", "casual ")
+        ):
             return True
     if re.search(r"\bnetworking event\b", title_lower):
         return True
     # "<demographic> in NYC | <noun>" professional-mixer format
-    if re.search(r"professionals in (?:nyc|new york|brooklyn|manhattan)\b", title_lower):
+    if re.search(
+        r"professionals in (?:nyc|new york|brooklyn|manhattan)\b", title_lower
+    ):
         return True
 
     # Pure date / month titles
@@ -1170,13 +2280,16 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     # "FRI 5/15 @ 6:30pm —-" — these are timestamps masquerading as
     # event titles, from accounts that post empty captions on flyer images.
     weekday = "(?:mon|tue|wed|thu|fri|sat|sun|monday|tuesday|wednesday|thursday|friday|saturday|sunday)"
-    if re.match(rf"^{weekday},?\s+{months}\s+\d{{1,2}}\s+at\s+\d{{1,2}}:\d{{2}}", title_lower):
+    if re.match(
+        rf"^{weekday},?\s+{months}\s+\d{{1,2}}\s+at\s+\d{{1,2}}:\d{{2}}", title_lower
+    ):
         return True
     if re.match(rf"^{weekday}\.?\s+\d{{1,2}}/\d{{1,2}}\s*[@-]", title_lower):
         return True
     # Pure-date titles WITHOUT a time: "Sunday May 24, 2026", "Friday Jun 6"
-    if re.match(rf"^{weekday},?\s+{months}\s+\d{{1,2}}(?:[,\s]+\d{{2,4}})?\.?\s*$",
-                title_lower):
+    if re.match(
+        rf"^{weekday},?\s+{months}\s+\d{{1,2}}(?:[,\s]+\d{{2,4}})?\.?\s*$", title_lower
+    ):
         return True
     # Title that is mostly just a time/date with at most a few words
     # (e.g. "FRI 5/15 @ 6:30pm —-" — date+time + dash, no event subject)
@@ -1184,7 +2297,9 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         return True
 
     # Title that's just "Location:" or starts with a label
-    if title_lower.startswith(("location:", "venue:", "where:", "when:", "what:", "info:", "details:")):
+    if title_lower.startswith(
+        ("location:", "venue:", "where:", "when:", "what:", "info:", "details:")
+    ):
         return True
 
     # Stylized unicode fonts (mathematical alphanumeric symbols U+1D400-1D7FF)
@@ -1203,8 +2318,11 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
             return True
     # Short all-caps hype titles like "COMEDY SPECIAL", "LADIES NIGHT OUT",
     # "TRACK CLASS POP-UP!" — too generic to be a real event listing.
-    if (title_stripped.isupper() and 6 <= len(title_stripped) <= 22
-            and len(title_stripped.split()) <= 3):
+    if (
+        title_stripped.isupper()
+        and 6 <= len(title_stripped) <= 22
+        and len(title_stripped.split()) <= 3
+    ):
         return True
     # Hype mostly-caps titles: "BREAKING STAGES and TAKING NAMES",
     # "BACK BY POPULAR DEMAND", etc. Detect titles where >=70% of cased
@@ -1214,31 +2332,69 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if len(letters) >= 6:
         upper_ratio = sum(1 for c in letters if c.isupper()) / len(letters)
         if upper_ratio >= 0.7 and len(title_stripped.split()) >= 4:
-            hype_verbs = ("breaking", "taking", "shaking", "making", "coming",
-                          "going", "bringing", "back by", "raising", "showing",
-                          "killing", "smashing", "rocking", "owning")
+            hype_verbs = (
+                "breaking",
+                "taking",
+                "shaking",
+                "making",
+                "coming",
+                "going",
+                "bringing",
+                "back by",
+                "raising",
+                "showing",
+                "killing",
+                "smashing",
+                "rocking",
+                "owning",
+            )
             if any(v in title_lower for v in hype_verbs):
                 return True
 
     # Substack-style short CTA fragments: "Final Performance May 23.",
     # "thru May 17 only!", "take 25% off tickets", "Limited $25 tickets..."
     cta_prefixes = (
-        "take ", "thru ", "through ", "limited ", "final performance ",
-        "last chance to ", "tickets going fast", "tickets selling",
-        "save ", "save $", "save %", "discount", "early bird",
-        "sale ends", "today only", "this week only",
+        "take ",
+        "thru ",
+        "through ",
+        "limited ",
+        "final performance ",
+        "last chance to ",
+        "tickets going fast",
+        "tickets selling",
+        "save ",
+        "save $",
+        "save %",
+        "discount",
+        "early bird",
+        "sale ends",
+        "today only",
+        "this week only",
     )
-    if any(title_lower.startswith(p) for p in cta_prefixes) and len(title_stripped) < 60:
+    if (
+        any(title_lower.startswith(p) for p in cta_prefixes)
+        and len(title_stripped) < 60
+    ):
         return True
 
     # Caption-y openers (relative time + verb)
     caption_openers = [
-        "tomorrow night ", "tomorrow we ", "tomorrow we’",
-        "tonight we ", "tonight we’", "tonight, ",
-        "this week ", "this weekend ", "this weekend, ",
-        "next week ", "next weekend ",
-        "today we ", "today we’", "today, ",
-        "yesterday ", "last night ",
+        "tomorrow night ",
+        "tomorrow we ",
+        "tomorrow we’",
+        "tonight we ",
+        "tonight we’",
+        "tonight, ",
+        "this week ",
+        "this weekend ",
+        "this weekend, ",
+        "next week ",
+        "next weekend ",
+        "today we ",
+        "today we’",
+        "today, ",
+        "yesterday ",
+        "last night ",
         "happening now",
     ]
     if any(title_lower.startswith(p) for p in caption_openers):
@@ -1264,22 +2420,82 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if len(words) <= 3:
         # Common verbs/event words that would make it a real event
         event_words = {
-            "party", "show", "concert", "night", "club", "festival",
-            "open", "opens", "opening", "premiere", "launch",
-            "screening", "reading", "tour", "fair", "market",
-            "mixer", "meetup", "meet", "happy", "hour", "brunch",
-            "dinner", "tasting", "class", "workshop", "talk",
-            "series", "live", "vs", "v.", "vs.", "presents",
+            "party",
+            "show",
+            "concert",
+            "night",
+            "club",
+            "festival",
+            "open",
+            "opens",
+            "opening",
+            "premiere",
+            "launch",
+            "screening",
+            "reading",
+            "tour",
+            "fair",
+            "market",
+            "mixer",
+            "meetup",
+            "meet",
+            "happy",
+            "hour",
+            "brunch",
+            "dinner",
+            "tasting",
+            "class",
+            "workshop",
+            "talk",
+            "series",
+            "live",
+            "vs",
+            "v.",
+            "vs.",
+            "presents",
             # Single-token activity / venue / format words for the curated
             # account titles the user specifically wants — run clubs, yoga,
             # comedy, bookstores, supper clubs, brunches, etc.
-            "run", "runs", "running", "runners", "yoga", "comedy", "books", "book",
-            "supper", "fitness", "stretching", "stretch", "hike", "hiking",
-            "walk", "walking", "walkers", "biking", "bikers", "ride", "race",
-            "marathon", "marathoners",
-            "ceramics", "pottery", "craft", "crafts", "sketching", "drawing",
-            "magic", "ting", "stories", "trivia", "social", "salon",
-            "readers", "writers", "dancers", "singers", "drinkers",
+            "run",
+            "runs",
+            "running",
+            "runners",
+            "yoga",
+            "comedy",
+            "books",
+            "book",
+            "supper",
+            "fitness",
+            "stretching",
+            "stretch",
+            "hike",
+            "hiking",
+            "walk",
+            "walking",
+            "walkers",
+            "biking",
+            "bikers",
+            "ride",
+            "race",
+            "marathon",
+            "marathoners",
+            "ceramics",
+            "pottery",
+            "craft",
+            "crafts",
+            "sketching",
+            "drawing",
+            "magic",
+            "ting",
+            "stories",
+            "trivia",
+            "social",
+            "salon",
+            "readers",
+            "writers",
+            "dancers",
+            "singers",
+            "drinkers",
             "regrets",  # 'No Regrets Runners' brand name
         }
         # Strip trailing punctuation when comparing — "Run!" should match
@@ -1290,38 +2506,69 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
 
     # Narrative phrases inside the title
     narrative_phrases = [
-        "consist of", "throughout his", "throughout her",
-        "experimented with", "still want a", "the largest",
-        "is #", " is now ", " is back", "are bringing",
-        "loving the energy", "across nyc",
-        "link in our bio", "link in bio", "swipe up",
-        "presale begins", "tickets are live", "schedule and tickets",
+        "consist of",
+        "throughout his",
+        "throughout her",
+        "experimented with",
+        "still want a",
+        "the largest",
+        "is #",
+        " is now ",
+        " is back",
+        "are bringing",
+        "loving the energy",
+        "across nyc",
+        "link in our bio",
+        "link in bio",
+        "swipe up",
+        "presale begins",
+        "tickets are live",
+        "schedule and tickets",
         # "<Org> is excited / thrilled / proud to announce ..." — caption
         # announcement-narrative, not an event title.
-        "is excited to announce", "is thrilled to announce",
-        "is proud to announce", "are excited to announce",
-        "are thrilled to announce", "are proud to announce",
-        "is excited to host", "is thrilled to host",
-        "we are launching", "we're launching",
+        "is excited to announce",
+        "is thrilled to announce",
+        "is proud to announce",
+        "are excited to announce",
+        "are thrilled to announce",
+        "are proud to announce",
+        "is excited to host",
+        "is thrilled to host",
+        "we are launching",
+        "we're launching",
         # "X is officially <verb>ing ..." — news-announcement opener,
         # not an event title ("FIFA is officially bringing ...")
-        "is officially ", "are officially ",
+        "is officially ",
+        "are officially ",
         # "X is spending a day ..." / "X is bringing ..." — celebrity
         # caption narrative ("Christian Pulisic is spending a day...")
-        "is spending ", "is bringing ", "are bringing ",
-        "is hosting ", "is hosting a", "is taking over",
+        "is spending ",
+        "is bringing ",
+        "are bringing ",
+        "is hosting ",
+        "is hosting a",
+        "is taking over",
         # "Here are more details on ..." — caption announcement opener
         # ("Here are more details on the Passport to Taiwan Festival")
-        "here are more", "here are the", "here's more",
-        "here's the lineup", "here's everything", "here's what",
+        "here are more",
+        "here are the",
+        "here's more",
+        "here's the lineup",
+        "here's everything",
+        "here's what",
         # Leading "|" pipe + caption ("| Tomorrow is the first day...")
         # The pipe is sometimes the divider in a flyer header that ended
         # up at the start of the extracted title.
-        "| ", "|",
+        "| ",
+        "|",
         # "A solo show by @X is on view at @Y" — gallery caption narrative
-        "a solo show by", "a new exhibition by", "a new show by",
+        "a solo show by",
+        "a new exhibition by",
+        "a new show by",
         # "series @© next saturday" — caption-style with copyright glyph
-        "series @©", "series @ ", "series:",
+        "series @©",
+        "series @ ",
+        "series:",
     ]
     if any(p in title_lower for p in narrative_phrases):
         return True
@@ -1336,13 +2583,25 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
         return True
 
     # Title is all caps and looks like hype (e.g., "REAL DANCERS TO THE FRONT")
-    if (title_stripped.isupper() and len(title_stripped) > 8
-            and "‼" not in title_stripped[-3:]):
+    if (
+        title_stripped.isupper()
+        and len(title_stripped) > 8
+        and "‼" not in title_stripped[-3:]
+    ):
         # OK to allow festival/abbreviation names
         if not re.match(r"^[A-Z]{2,}\s*[A-Z0-9 ]*$", title_stripped):
             # Has hype words?
-            hype = ["clear", "drop", "alert", "emergency", "urgent",
-                    "warning", "incoming", "psa", "must"]
+            hype = [
+                "clear",
+                "drop",
+                "alert",
+                "emergency",
+                "urgent",
+                "warning",
+                "incoming",
+                "psa",
+                "must",
+            ]
             if any(h in title_lower for h in hype):
                 return True
 

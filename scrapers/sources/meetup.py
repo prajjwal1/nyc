@@ -1,7 +1,13 @@
 import json
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
+from ..utils.event_parser import (
+    build_event,
+    parse_date,
+    parse_time,
+    parse_iso_to_local,
+    parse_offers_price,
+)
 
 SEARCH_URLS = [
     "https://www.meetup.com/find/?location=us--ny--New%20York&source=EVENTS&categoryId=546",  # Arts
@@ -56,7 +62,9 @@ def _parse_meetup(html: str, source_url: str) -> list[dict]:
             continue
 
     if not events:
-        for card in soup.select("[id*='event-card'], [class*='eventCard'], [data-testid*='event']"):
+        for card in soup.select(
+            "[id*='event-card'], [class*='eventCard'], [data-testid*='event']"
+        ):
             title_el = card.select_one("h2, h3, [class*='title']")
             date_el = card.select_one("time, [class*='date']")
             link_el = card.select_one("a[href*='/events/']")
@@ -65,7 +73,9 @@ def _parse_meetup(html: str, source_url: str) -> list[dict]:
                 continue
 
             title = title_el.get_text(strip=True)
-            date_text = date_el.get("datetime", date_el.get_text(strip=True)) if date_el else ""
+            date_text = (
+                date_el.get("datetime", date_el.get_text(strip=True)) if date_el else ""
+            )
             event_date = parse_date(date_text) if date_text else None
             if not event_date:
                 continue
@@ -77,15 +87,17 @@ def _parse_meetup(html: str, source_url: str) -> list[dict]:
             loc_el = card.select_one("[class*='venue'], [class*='location']")
             loc_name = loc_el.get_text(strip=True) if loc_el else ""
 
-            events.append(build_event(
-                title=title,
-                description="",
-                event_date=event_date,
-                start_time=parse_time(date_text),
-                location_name=loc_name,
-                source="meetup",
-                source_url=link,
-            ))
+            events.append(
+                build_event(
+                    title=title,
+                    description="",
+                    event_date=event_date,
+                    start_time=parse_time(date_text),
+                    location_name=loc_name,
+                    source="meetup",
+                    source_url=link,
+                )
+            )
 
     return events
 
@@ -98,11 +110,29 @@ def _from_ld(data: dict) -> dict | None:
 
     loc_name = ""
     loc_addr = ""
+    region = ""
     if isinstance(location, dict):
         loc_name = location.get("name", "")
         addr = location.get("address", {})
         if isinstance(addr, dict):
             loc_addr = addr.get("streetAddress", "")
+            region = (addr.get("addressRegion") or "").strip().upper()
+
+    # NYC-only gate: meetup's NYC-scoped search still returns the occasional
+    # out-of-metro event (observed: a Washington, DC group's "AI Side Income"
+    # event). When the JSON-LD carries an explicit state, drop anything outside
+    # the tri-state area. Gate on state (precise) rather than the group slug, so
+    # NYC groups like "Washington Square ..." aren't false-dropped. Events with
+    # no region are kept (online/unspecified) — the search scope covers them.
+    if region and region not in (
+        "NY",
+        "NJ",
+        "CT",
+        "NEW YORK",
+        "NEW JERSEY",
+        "CONNECTICUT",
+    ):
+        return None
 
     date_str, start_time = parse_iso_to_local(start)
     if not date_str:
