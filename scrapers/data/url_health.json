@@ -11,9 +11,9 @@
   },
   "https://thebellhouseny.com/calendar/": {
     "failures": 0,
-    "successes": 1160,
-    "last_success_at": "2026-06-13T17:25:57.469676+00:00",
-    "events_emitted_total": 38940,
+    "successes": 1162,
+    "last_success_at": "2026-06-13T18:01:57.263862+00:00",
+    "events_emitted_total": 39008,
     "last_event_count": 34
   },
   "https://www.brooklynbrewery.com/visit-the-brewery/events/": {
@@ -91,16 +91,16 @@
   },
   "https://www.eastvillecomedy.com/events": {
     "failures": 0,
-    "successes": 580,
-    "last_success_at": "2026-06-13T17:25:52.432120+00:00",
-    "events_emitted_total": 22802,
+    "successes": 581,
+    "last_success_at": "2026-06-13T18:01:50.751656+00:00",
+    "events_emitted_total": 22846,
     "last_event_count": 44
   },
   "https://newyorkcomedyclub.com/calendar": {
     "failures": 0,
-    "successes": 580,
-    "last_success_at": "2026-06-13T17:25:30.025221+00:00",
-    "events_emitted_total": 103336,
+    "successes": 581,
+    "last_success_at": "2026-06-13T18:01:25.477770+00:00",
+    "events_emitted_total": 103500,
     "last_event_count": 164
   },
   "https://standupny.com/calendar": {
@@ -346,41 +346,41 @@
     "last_event_count": 20
   },
   "https://www.eventbrite.com/d/ny--new-york/dating--events/": {
-    "failures": 0,
+    "failures": 1,
     "successes": 4,
-    "last_failure_at": "2026-06-06T14:24:10.874838+00:00",
+    "last_failure_at": "2026-06-13T18:02:20.138254+00:00",
     "last_success_at": "2026-06-13T17:26:20.081766+00:00",
     "events_emitted_total": 80,
     "last_event_count": 20
   },
   "https://www.eventbrite.com/d/ny--new-york/singles--events/": {
-    "failures": 0,
+    "failures": 1,
     "successes": 4,
-    "last_failure_at": "2026-06-06T14:24:10.925191+00:00",
+    "last_failure_at": "2026-06-13T18:02:22.907077+00:00",
     "last_success_at": "2026-06-13T17:26:26.676218+00:00",
     "events_emitted_total": 78,
     "last_event_count": 20
   },
   "https://www.meetup.com/find/?keywords=&source=EVENTS&location=us--ny--Brooklyn": {
     "failures": 0,
-    "successes": 580,
-    "last_success_at": "2026-06-13T17:26:40.929189+00:00",
-    "events_emitted_total": 6016,
+    "successes": 581,
+    "last_success_at": "2026-06-13T18:02:39.980376+00:00",
+    "events_emitted_total": 6023,
     "last_event_count": 7
   },
   "https://www.meetup.com/find/events/?source=EVENTS&location=us--ny--New%20York": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:39.907090+00:00",
-    "events_emitted_total": 6119,
-    "last_event_count": 9,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:02:38.942930+00:00",
+    "events_emitted_total": 6127,
+    "last_event_count": 8,
     "last_failure_at": "2026-06-13T06:44:48.697569+00:00"
   },
   "https://allevents.in/new-york": {
     "failures": 0,
-    "successes": 580,
-    "last_success_at": "2026-06-13T17:25:42.535823+00:00",
-    "events_emitted_total": 41814,
+    "successes": 581,
+    "last_success_at": "2026-06-13T18:01:37.987528+00:00",
+    "events_emitted_total": 41889,
     "last_event_count": 75
   },
   "https://allevents.in/new-york?page=2": {
@@ -399,9 +399,9 @@
   },
   "https://allevents.in/brooklyn": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:25:45.911709+00:00",
-    "events_emitted_total": 40927,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:01:41.462444+00:00",
+    "events_emitted_total": 41000,
     "last_event_count": 73,
     "last_failure_at": "2026-06-02T02:10:11.555717+00:00"
   },
@@ -422,9 +422,9 @@
   },
   "https://allevents.in/queens": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:25:47.602971+00:00",
-    "events_emitted_total": 40257,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:01:43.199051+00:00",
+    "events_emitted_total": 40329,
     "last_event_count": 72,
     "last_failure_at": "2026-05-22T08:49:11.905297+00:00"
   },
@@ -437,9 +437,9 @@
   },
   "https://allevents.in/manhattan": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:25:46.631660+00:00",
-    "events_emitted_total": 40352,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:01:42.358546+00:00",
+    "events_emitted_total": 40424,
     "last_event_count": 72,
     "last_failure_at": "2026-06-06T09:05:43.672807+00:00"
   },
@@ -467,125 +467,125 @@
   },
   "https://allevents.in/new-york/free": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:29.804113+00:00",
-    "events_emitted_total": 8685,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:02:28.167666+00:00",
+    "events_emitted_total": 8700,
     "last_event_count": 15,
     "last_failure_at": "2026-06-06T11:07:42.703143+00:00"
   },
   "https://allevents.in/new-york/music": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:30.280240+00:00",
-    "events_emitted_total": 8685,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:02:28.475388+00:00",
+    "events_emitted_total": 8700,
     "last_event_count": 15,
     "last_failure_at": "2026-06-04T18:22:06.505234+00:00"
   },
   "https://allevents.in/new-york/comedy": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:31.113105+00:00",
-    "events_emitted_total": 8685,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:02:28.875619+00:00",
+    "events_emitted_total": 8700,
     "last_event_count": 15,
     "last_failure_at": "2026-06-03T07:18:49.211320+00:00"
   },
   "https://allevents.in/new-york/food": {
     "failures": 0,
-    "successes": 578,
-    "last_success_at": "2026-06-13T17:26:31.611654+00:00",
-    "events_emitted_total": 8670,
+    "successes": 579,
+    "last_success_at": "2026-06-13T18:02:29.308217+00:00",
+    "events_emitted_total": 8685,
     "last_event_count": 15,
     "last_failure_at": "2026-06-06T11:08:34.128471+00:00"
   },
   "https://allevents.in/new-york/parties": {
     "failures": 0,
-    "successes": 570,
-    "last_success_at": "2026-06-13T17:26:32.809738+00:00",
-    "events_emitted_total": 8550,
+    "successes": 571,
+    "last_success_at": "2026-06-13T18:02:30.567114+00:00",
+    "events_emitted_total": 8565,
     "last_event_count": 15,
     "last_failure_at": "2026-05-23T21:11:21.710888+00:00"
   },
   "https://allevents.in/new-york/dating": {
     "failures": 0,
-    "successes": 580,
-    "last_success_at": "2026-06-13T17:26:33.164678+00:00",
-    "events_emitted_total": 8700,
+    "successes": 581,
+    "last_success_at": "2026-06-13T18:02:30.939553+00:00",
+    "events_emitted_total": 8715,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/business": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:26.887532+00:00",
-    "events_emitted_total": 8955,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:02:23.469530+00:00",
+    "events_emitted_total": 8970,
     "last_event_count": 15,
     "last_failure_at": "2026-06-04T18:21:33.670092+00:00"
   },
   "https://allevents.in/new-york/art": {
     "failures": 0,
-    "successes": 572,
-    "last_success_at": "2026-06-13T17:26:34.096095+00:00",
-    "events_emitted_total": 8580,
+    "successes": 573,
+    "last_success_at": "2026-06-13T18:02:32.120566+00:00",
+    "events_emitted_total": 8595,
     "last_event_count": 15,
     "last_failure_at": "2026-05-24T08:12:49.004797+00:00"
   },
   "https://allevents.in/new-york/yoga": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:34.351255+00:00",
-    "events_emitted_total": 8685,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:02:32.428375+00:00",
+    "events_emitted_total": 8700,
     "last_event_count": 15,
     "last_failure_at": "2026-06-06T11:09:45.385009+00:00"
   },
   "https://allevents.in/new-york/running": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:27.684002+00:00",
-    "events_emitted_total": 8693,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:02:24.870407+00:00",
+    "events_emitted_total": 8708,
     "last_event_count": 15,
     "last_failure_at": "2026-06-03T19:04:23.440603+00:00"
   },
   "https://allevents.in/new-york/fitness": {
     "failures": 0,
-    "successes": 580,
-    "last_success_at": "2026-06-13T17:26:34.586935+00:00",
-    "events_emitted_total": 8700,
+    "successes": 581,
+    "last_success_at": "2026-06-13T18:02:32.980128+00:00",
+    "events_emitted_total": 8715,
     "last_event_count": 15
   },
   "https://allevents.in/brooklyn/yoga": {
     "failures": 0,
-    "successes": 580,
-    "last_success_at": "2026-06-13T17:26:34.823375+00:00",
-    "events_emitted_total": 8700,
+    "successes": 581,
+    "last_success_at": "2026-06-13T18:02:33.377738+00:00",
+    "events_emitted_total": 8715,
     "last_event_count": 15
   },
   "https://allevents.in/brooklyn/fitness": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:35.086371+00:00",
-    "events_emitted_total": 8685,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:02:33.847256+00:00",
+    "events_emitted_total": 8700,
     "last_event_count": 15,
     "last_failure_at": "2026-05-28T19:33:00.144948+00:00"
   },
   "https://allevents.in/new-york/coffee": {
     "failures": 0,
-    "successes": 580,
-    "last_success_at": "2026-06-13T17:25:50.803314+00:00",
-    "events_emitted_total": 26100,
+    "successes": 581,
+    "last_success_at": "2026-06-13T18:01:48.061759+00:00",
+    "events_emitted_total": 26145,
     "last_event_count": 45
   },
   "https://allevents.in/new-york/poetry": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:35.583254+00:00",
-    "events_emitted_total": 8685,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:02:34.507326+00:00",
+    "events_emitted_total": 8700,
     "last_event_count": 15,
     "last_failure_at": "2026-06-02T01:41:13.532368+00:00"
   },
   "https://allevents.in/brooklyn/books": {
     "failures": 0,
-    "successes": 578,
-    "last_success_at": "2026-06-13T17:26:37.655954+00:00",
-    "events_emitted_total": 8092,
+    "successes": 579,
+    "last_success_at": "2026-06-13T18:02:36.918029+00:00",
+    "events_emitted_total": 8106,
     "last_event_count": 14,
     "last_failure_at": "2026-06-04T23:09:43.511546+00:00"
   },
@@ -605,9 +605,9 @@
     "last_failure_at": "2026-05-16T12:52:19.721242+00:00"
   },
   "https://www.eventbrite.com/d/ny--brooklyn/running--events/": {
-    "failures": 0,
+    "failures": 1,
     "successes": 4,
-    "last_failure_at": "2026-06-06T14:24:10.976596+00:00",
+    "last_failure_at": "2026-06-13T18:02:20.228681+00:00",
     "last_success_at": "2026-06-13T17:26:20.560127+00:00",
     "events_emitted_total": 80,
     "last_event_count": 20
@@ -653,41 +653,41 @@
     "last_event_count": 8
   },
   "https://www.eventbrite.com/d/ny--new-york/fitness--events/": {
-    "failures": 0,
+    "failures": 1,
     "successes": 2,
-    "last_failure_at": "2026-06-06T15:47:29.039571+00:00",
+    "last_failure_at": "2026-06-13T18:02:20.318672+00:00",
     "last_success_at": "2026-06-13T17:27:14.144797+00:00",
     "events_emitted_total": 40,
     "last_event_count": 20
   },
   "https://www.eventbrite.com/d/ny--brooklyn/book-club--events/": {
-    "failures": 0,
+    "failures": 1,
     "successes": 2,
-    "last_failure_at": "2026-06-06T15:47:29.074862+00:00",
+    "last_failure_at": "2026-06-13T18:02:20.412451+00:00",
     "last_success_at": "2026-06-13T17:27:15.942982+00:00",
     "events_emitted_total": 40,
     "last_event_count": 20
   },
   "https://www.eventbrite.com/d/ny--new-york/book-club--events/": {
-    "failures": 0,
+    "failures": 1,
     "successes": 2,
-    "last_failure_at": "2026-06-06T15:47:29.111154+00:00",
+    "last_failure_at": "2026-06-13T18:02:20.595236+00:00",
     "last_success_at": "2026-06-13T17:27:17.613946+00:00",
     "events_emitted_total": 40,
     "last_event_count": 20
   },
   "https://www.eventbrite.com/d/ny--brooklyn/literary--events/": {
-    "failures": 5,
+    "failures": 6,
     "successes": 1,
-    "last_failure_at": "2026-06-06T15:47:29.146495+00:00",
+    "last_failure_at": "2026-06-13T18:03:25.208570+00:00",
     "last_success_at": "2026-06-06T11:14:50.956995+00:00",
     "events_emitted_total": 20,
     "last_event_count": 20
   },
   "https://www.eventbrite.com/d/ny--new-york/literary--events/": {
-    "failures": 0,
+    "failures": 1,
     "successes": 4,
-    "last_failure_at": "2026-06-13T14:05:30.633662+00:00",
+    "last_failure_at": "2026-06-13T18:02:20.736184+00:00",
     "last_success_at": "2026-06-13T17:26:21.697164+00:00",
     "events_emitted_total": 80,
     "last_event_count": 20
@@ -773,112 +773,112 @@
     "last_event_count": 20
   },
   "https://www.eventbrite.com/d/ny--new-york/lgbtq--events/": {
-    "failures": 0,
+    "failures": 1,
     "successes": 3,
-    "last_failure_at": "2026-06-06T14:24:11.298516+00:00",
+    "last_failure_at": "2026-06-13T18:02:20.828440+00:00",
     "last_success_at": "2026-06-13T17:26:23.268724+00:00",
     "events_emitted_total": 60,
     "last_event_count": 20
   },
   "https://www.eventbrite.com/d/ny--new-york/wine-tasting--events/": {
-    "failures": 0,
+    "failures": 1,
     "successes": 2,
-    "last_failure_at": "2026-06-06T14:24:11.349331+00:00",
+    "last_failure_at": "2026-06-13T18:02:20.930359+00:00",
     "last_success_at": "2026-06-13T17:27:19.490898+00:00",
     "events_emitted_total": 40,
     "last_event_count": 20
   },
   "https://www.meetup.com/find/?keywords=run+club&location=us--ny--Brooklyn": {
     "failures": 0,
-    "successes": 573,
-    "last_success_at": "2026-06-13T17:26:17.500216+00:00",
-    "events_emitted_total": 16441,
+    "successes": 574,
+    "last_success_at": "2026-06-13T18:02:17.933245+00:00",
+    "events_emitted_total": 16469,
     "last_event_count": 28,
     "last_failure_at": "2026-05-21T19:26:38.407408+00:00"
   },
   "https://www.meetup.com/find/?keywords=run+club&location=us--ny--New%20York": {
     "failures": 0,
-    "successes": 574,
-    "last_success_at": "2026-06-13T17:26:10.952687+00:00",
-    "events_emitted_total": 16974,
+    "successes": 575,
+    "last_success_at": "2026-06-13T18:02:10.436633+00:00",
+    "events_emitted_total": 17003,
     "last_event_count": 29,
     "last_failure_at": "2026-05-31T18:19:55.719050+00:00"
   },
   "https://www.meetup.com/find/?keywords=yoga&location=us--ny--Brooklyn": {
     "failures": 0,
-    "successes": 434,
-    "last_success_at": "2026-06-13T17:26:13.197682+00:00",
-    "events_emitted_total": 12752,
+    "successes": 435,
+    "last_success_at": "2026-06-13T18:02:12.637368+00:00",
+    "events_emitted_total": 12782,
     "last_event_count": 30,
     "last_failure_at": "2026-05-21T04:44:25.512455+00:00"
   },
   "https://www.meetup.com/find/?keywords=yoga&location=us--ny--New%20York": {
     "failures": 0,
-    "successes": 573,
-    "last_success_at": "2026-06-13T17:26:05.798169+00:00",
-    "events_emitted_total": 17175,
+    "successes": 574,
+    "last_success_at": "2026-06-13T18:02:04.890408+00:00",
+    "events_emitted_total": 17206,
     "last_event_count": 31,
     "last_failure_at": "2026-05-21T19:26:19.348839+00:00"
   },
   "https://www.meetup.com/find/?keywords=book+club&location=us--ny--New%20York": {
     "failures": 0,
-    "successes": 574,
-    "last_success_at": "2026-06-13T17:25:59.946664+00:00",
-    "events_emitted_total": 18095,
+    "successes": 575,
+    "last_success_at": "2026-06-13T18:01:59.665808+00:00",
+    "events_emitted_total": 18127,
     "last_event_count": 32,
     "last_failure_at": "2026-05-21T19:26:18.776367+00:00"
   },
   "https://www.meetup.com/find/?keywords=coffee&location=us--ny--New%20York": {
     "failures": 0,
-    "successes": 435,
-    "last_success_at": "2026-06-13T17:26:19.743947+00:00",
-    "events_emitted_total": 11119,
+    "successes": 436,
+    "last_success_at": "2026-06-13T18:02:20.046028+00:00",
+    "events_emitted_total": 11145,
     "last_event_count": 26,
     "last_failure_at": "2026-05-21T19:26:39.378404+00:00"
   },
   "https://www.meetup.com/topics/running/us/ny/new_york/": {
     "failures": 0,
-    "successes": 573,
-    "last_success_at": "2026-06-13T17:26:03.278422+00:00",
-    "events_emitted_total": 17194,
+    "successes": 574,
+    "last_success_at": "2026-06-13T18:02:02.977162+00:00",
+    "events_emitted_total": 17226,
     "last_event_count": 32,
     "last_failure_at": "2026-05-21T17:31:45.118890+00:00"
   },
   "https://www.meetup.com/topics/yoga/us/ny/new_york/": {
     "failures": 0,
-    "successes": 574,
-    "last_success_at": "2026-06-13T17:26:08.138838+00:00",
-    "events_emitted_total": 17202,
+    "successes": 575,
+    "last_success_at": "2026-06-13T18:02:07.038026+00:00",
+    "events_emitted_total": 17233,
     "last_event_count": 31,
     "last_failure_at": "2026-05-21T17:16:40.320038+00:00"
   },
   "https://allevents.in/new-york/film": {
     "failures": 0,
-    "successes": 580,
-    "last_success_at": "2026-06-13T17:26:27.199227+00:00",
-    "events_emitted_total": 8715,
+    "successes": 581,
+    "last_success_at": "2026-06-13T18:02:24.283952+00:00",
+    "events_emitted_total": 8730,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/literature": {
     "failures": 0,
-    "successes": 580,
-    "last_success_at": "2026-06-13T17:26:37.956246+00:00",
-    "events_emitted_total": 7830,
+    "successes": 581,
+    "last_success_at": "2026-06-13T18:02:37.545904+00:00",
+    "events_emitted_total": 7842,
     "last_event_count": 12
   },
   "https://allevents.in/new-york/sports": {
     "failures": 0,
-    "successes": 577,
-    "last_success_at": "2026-06-13T17:26:37.107702+00:00",
-    "events_emitted_total": 8655,
+    "successes": 578,
+    "last_success_at": "2026-06-13T18:02:35.731918+00:00",
+    "events_emitted_total": 8670,
     "last_event_count": 15,
     "last_failure_at": "2026-05-24T01:53:43.894285+00:00"
   },
   "https://allevents.in/new-york/exhibition": {
     "failures": 0,
-    "successes": 578,
-    "last_success_at": "2026-06-13T17:26:37.446467+00:00",
-    "events_emitted_total": 8670,
+    "successes": 579,
+    "last_success_at": "2026-06-13T18:02:36.444719+00:00",
+    "events_emitted_total": 8685,
     "last_event_count": 15,
     "last_failure_at": "2026-06-06T11:12:36.493981+00:00"
   },
@@ -964,9 +964,9 @@
   },
   "https://www.songkick.com/venues/16246-music-hall-of-williamsburg": {
     "failures": 0,
-    "successes": 292,
-    "last_success_at": "2026-06-13T17:26:51.376724+00:00",
-    "events_emitted_total": 2336,
+    "successes": 293,
+    "last_success_at": "2026-06-13T18:02:50.464863+00:00",
+    "events_emitted_total": 2344,
     "last_event_count": 8,
     "last_failure_at": "2026-06-06T14:23:51.816521+00:00"
   },
@@ -1012,9 +1012,9 @@
   },
   "https://www.songkick.com/venues/2445014-babys-all-right": {
     "failures": 0,
-    "successes": 288,
-    "last_success_at": "2026-06-13T17:26:52.350011+00:00",
-    "events_emitted_total": 2304,
+    "successes": 289,
+    "last_success_at": "2026-06-13T18:02:51.754252+00:00",
+    "events_emitted_total": 2312,
     "last_event_count": 8,
     "last_failure_at": "2026-06-06T15:47:13.422152+00:00"
   },
@@ -1028,9 +1028,9 @@
   },
   "https://www.songkick.com/venues/3457684-brooklyn-steel": {
     "failures": 0,
-    "successes": 552,
-    "last_success_at": "2026-06-13T17:26:52.691830+00:00",
-    "events_emitted_total": 4416,
+    "successes": 553,
+    "last_success_at": "2026-06-13T18:02:51.910739+00:00",
+    "events_emitted_total": 4424,
     "last_event_count": 8,
     "last_failure_at": "2026-06-13T15:16:07.314544+00:00"
   },
@@ -1043,12 +1043,12 @@
     "last_failure_at": "2026-06-13T04:56:06.427974+00:00"
   },
   "https://www.songkick.com/venues/3841499-sony-hall": {
-    "failures": 2,
+    "failures": 3,
     "successes": 291,
     "last_success_at": "2026-06-13T15:16:07.392349+00:00",
     "events_emitted_total": 2328,
     "last_event_count": 8,
-    "last_failure_at": "2026-06-13T17:26:52.869547+00:00"
+    "last_failure_at": "2026-06-13T18:02:52.154076+00:00"
   },
   "https://www.songkick.com/venues/3895789-rooftop-at-pier-17": {
     "failures": 6,
@@ -1140,24 +1140,24 @@
     "last_failure_at": "2026-06-13T09:50:21.041400+00:00"
   },
   "https://www.bam.org/calendar": {
-    "failures": 8,
+    "failures": 9,
     "successes": 0,
-    "last_failure_at": "2026-06-06T15:47:31.034322+00:00"
+    "last_failure_at": "2026-06-13T18:03:26.839028+00:00"
   },
   "https://www.lincolncenter.org/lincoln-center-at-home/calendar": {
-    "failures": 8,
+    "failures": 9,
     "successes": 0,
-    "last_failure_at": "2026-06-06T15:47:33.329131+00:00"
+    "last_failure_at": "2026-06-13T18:03:28.945711+00:00"
   },
   "https://www.apollotheater.org/events/": {
-    "failures": 8,
+    "failures": 9,
     "successes": 0,
-    "last_failure_at": "2026-06-06T15:47:33.732352+00:00"
+    "last_failure_at": "2026-06-13T18:03:29.530918+00:00"
   },
   "https://carnegiehall.org/Calendar": {
     "failures": 0,
-    "successes": 517,
-    "last_success_at": "2026-06-13T17:27:24.836204+00:00",
+    "successes": 518,
+    "last_success_at": "2026-06-13T18:03:36.624223+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0,
     "last_failure_at": "2026-06-13T11:27:48.379266+00:00"
@@ -1201,188 +1201,188 @@
   },
   "https://www.eventbrite.com/e/dirty-little-secrets-improv-show-tickets-1985938673031": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:55.150778+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:55.092952+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:04.747259+00:00"
   },
   "https://www.eventbrite.com/e/bitches-brew-free-comedy-stand-up-and-variety-show-tickets-172309360937": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:55.293621+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:55.381094+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:04.809885+00:00"
   },
   "https://www.eventbrite.com/e/comedy-in-costumes-tickets-1986218434806": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:55.448001+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:55.583103+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:04.861447+00:00"
   },
   "https://www.eventbrite.com/e/beanie-babe-comedy-at-young-ethels-tickets-714227332177": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:55.549481+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:55.853500+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:04.918813+00:00"
   },
   "https://www.eventbrite.com/e/pasar-malam-ny-tickets-1987092855221": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:55.685839+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:56.079459+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:04.973634+00:00"
   },
   "https://www.eventbrite.com/e/good-god-tickets-1987839575682": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:55.790894+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:56.358670+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:05.029421+00:00"
   },
   "https://www.eventbrite.com/e/2026-exhibition-openings-bfamfa-thesis-projects-mps-studio-projects-tickets-1981352509693": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:55.899392+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:56.659439+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:05.084946+00:00"
   },
   "https://www.eventbrite.com/e/kweendom-lgbtq-comedy-tickets-1988971630689": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:56.044329+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:56.848879+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:05.153396+00:00"
   },
   "https://luma.com/j1atwswh": {
     "failures": 0,
-    "successes": 573,
-    "last_success_at": "2026-06-13T17:26:56.344358+00:00",
-    "events_emitted_total": 573,
+    "successes": 574,
+    "last_success_at": "2026-06-13T18:02:57.234563+00:00",
+    "events_emitted_total": 574,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T22:06:59.269897+00:00"
   },
   "https://www.eventbrite.com/e/sad-girl-survival-guide-live-tickets-1988522143260": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:56.469417+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:57.505055+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:05.591328+00:00"
   },
   "https://partiful.com/e/wPPg1fPVdJHuSGo96naX": {
-    "failures": 8,
+    "failures": 9,
     "successes": 0,
-    "last_failure_at": "2026-06-06T15:47:37.766391+00:00"
+    "last_failure_at": "2026-06-13T18:03:33.040903+00:00"
   },
   "https://www.eventbrite.com/e/1988866717892": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:56.618058+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:57.832856+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:05.649262+00:00"
   },
   "https://www.eventbrite.com/e/know-it-alls-trivia-comedy-show-tickets-1987617771259": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:56.853008+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:58.333715+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:05.709780+00:00"
   },
   "https://partiful.com/e/4q2aXXC6yvT2k19Qt2Bb": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:57.154151+00:00",
-    "events_emitted_total": 579,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:02:58.708435+00:00",
+    "events_emitted_total": 580,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/my-kinda-night-a-queer-variety-show-tickets-1965639775482": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:57.636332+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:59.615736+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:06.625826+00:00"
   },
   "https://www.eventbrite.com/e/flash-comedy-tickets-1979288721848": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:57.831347+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:02:59.890775+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:06.714788+00:00"
   },
   "https://www.eventbrite.com/e/savage-a-comedy-show-free-tickets-364397592007": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:57.988366+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:03:00.228217+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:06.770473+00:00"
   },
   "https://www.eventbrite.com/e/we-have-fun-a-weekly-stand-up-show-tickets-208767317667": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:58.111411+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:03:00.458910+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:06.828773+00:00"
   },
   "https://www.eventbrite.com/e/landline-comedy-at-wild-east-brewing-tickets-1985964207405": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:58.248029+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:03:00.715469+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:06.882696+00:00"
   },
   "https://www.eventbrite.com/e/comedy-ugly-a-comedy-strip-show-tickets-1935850744689": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:58.387335+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:03:00.981443+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:06.932778+00:00"
   },
   "https://partiful.com/e/rOCEoQJOUlYy8LMcvsQT": {
     "failures": 0,
-    "successes": 578,
-    "last_success_at": "2026-06-13T17:26:58.674045+00:00",
-    "events_emitted_total": 578,
+    "successes": 579,
+    "last_success_at": "2026-06-13T18:03:01.418883+00:00",
+    "events_emitted_total": 579,
     "last_event_count": 1,
     "last_failure_at": "2026-05-24T17:19:59.976527+00:00"
   },
   "https://www.eventbrite.com/e/jenny-gorelick-sorry-tickets-1987782972380": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:58.852736+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:03:01.668882+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:07.349571+00:00"
   },
   "https://partiful.com/e/cbVF3TwZ5LlAoBngGsBr": {
     "failures": 0,
-    "successes": 579,
-    "last_success_at": "2026-06-13T17:26:59.085793+00:00",
-    "events_emitted_total": 579,
+    "successes": 580,
+    "last_success_at": "2026-06-13T18:03:02.020625+00:00",
+    "events_emitted_total": 580,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/japan-village-spring-festival-tickets-1988010234126": {
     "failures": 0,
-    "successes": 560,
-    "last_success_at": "2026-06-13T17:26:59.192540+00:00",
-    "events_emitted_total": 560,
+    "successes": 561,
+    "last_success_at": "2026-06-13T18:03:02.222708+00:00",
+    "events_emitted_total": 561,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:07.726306+00:00"
   },
@@ -1448,48 +1448,48 @@
   },
   "https://carnegiehall.org/Events/Group-Sales": {
     "failures": 0,
-    "successes": 523,
-    "last_success_at": "2026-06-13T17:27:26.807335+00:00",
+    "successes": 524,
+    "last_success_at": "2026-06-13T18:03:37.841443+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0,
     "last_failure_at": "2026-06-13T11:27:49.226419+00:00"
   },
   "https://carnegiehall.org/Events/Discount-Programs": {
     "failures": 0,
-    "successes": 526,
+    "successes": 527,
     "last_failure_at": "2026-06-13T11:27:50.177315+00:00",
-    "last_success_at": "2026-06-13T17:27:28.597791+00:00",
+    "last_success_at": "2026-06-13T18:03:39.203366+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
   "https://carnegiehall.org/Events/Highlights": {
     "failures": 0,
-    "successes": 514,
+    "successes": 515,
     "last_failure_at": "2026-06-13T11:27:51.025212+00:00",
-    "last_success_at": "2026-06-13T17:27:29.710764+00:00",
+    "last_success_at": "2026-06-13T18:03:40.455877+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
   "https://carnegiehall.org/Events/Citywide": {
     "failures": 0,
-    "successes": 516,
-    "last_success_at": "2026-06-13T17:27:30.891106+00:00",
+    "successes": 517,
+    "last_success_at": "2026-06-13T18:03:41.535196+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0,
     "last_failure_at": "2026-06-13T11:27:52.095775+00:00"
   },
   "https://carnegiehall.org/Events/Well-Being-Concerts": {
     "failures": 0,
-    "successes": 526,
-    "last_success_at": "2026-06-13T17:27:32.366986+00:00",
+    "successes": 527,
+    "last_success_at": "2026-06-13T18:03:42.723043+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0,
     "last_failure_at": "2026-06-13T11:27:52.911456+00:00"
   },
   "https://carnegiehall.org/Events/Family-Events": {
     "failures": 0,
-    "successes": 525,
-    "last_success_at": "2026-06-13T17:27:33.852090+00:00",
+    "successes": 526,
+    "last_success_at": "2026-06-13T18:03:43.971601+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0,
     "last_failure_at": "2026-06-13T11:27:53.767125+00:00"
@@ -1551,24 +1551,24 @@
   },
   "https://lu.ma/pleasedtomeetyou": {
     "failures": 0,
-    "successes": 294,
-    "last_success_at": "2026-06-13T17:26:54.990702+00:00",
-    "events_emitted_total": 693,
+    "successes": 295,
+    "last_success_at": "2026-06-13T18:02:54.875863+00:00",
+    "events_emitted_total": 695,
     "last_event_count": 2,
     "last_failure_at": "2026-06-12T22:06:58.546640+00:00"
   },
   "https://carnegiehall.org/Events/Carnegie-Hall-Presents-25-26": {
     "failures": 0,
-    "successes": 527,
+    "successes": 528,
     "last_failure_at": "2026-06-10T14:37:14.055691+00:00",
-    "last_success_at": "2026-06-13T17:27:35.092212+00:00",
+    "last_success_at": "2026-06-13T18:03:45.477743+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
   "https://carnegiehall.org/Events/Carnegie-Hall-Presents-26-27": {
     "failures": 0,
-    "successes": 522,
-    "last_success_at": "2026-06-13T17:27:36.336475+00:00",
+    "successes": 523,
+    "last_success_at": "2026-06-13T18:03:47.065659+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0,
     "last_failure_at": "2026-06-13T11:27:55.910068+00:00"
@@ -1615,23 +1615,23 @@
   },
   "https://linktr.ee/explore_nyc_free": {
     "failures": 0,
-    "successes": 577,
-    "last_success_at": "2026-06-13T17:27:36.486788+00:00",
+    "successes": 578,
+    "last_success_at": "2026-06-13T18:03:47.238830+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
   "http://linkin.bio/secret_nyc/": {
     "failures": 0,
-    "successes": 577,
-    "last_success_at": "2026-06-13T17:27:36.667127+00:00",
+    "successes": 578,
+    "last_success_at": "2026-06-13T18:03:47.769143+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
   "https://partiful.com/e/E4oVokp6hSLzs5zr30Y4?c=A924aC9L": {
     "failures": 0,
-    "successes": 576,
-    "last_success_at": "2026-06-13T17:26:59.483528+00:00",
-    "events_emitted_total": 576,
+    "successes": 577,
+    "last_success_at": "2026-06-13T18:03:02.518747+00:00",
+    "events_emitted_total": 577,
     "last_event_count": 1,
     "last_failure_at": "2026-06-11T20:42:07.283722+00:00"
   },
@@ -2038,17 +2038,17 @@
   },
   "https://www.eventbrite.com/e/laura-veirs-with-karl-blau-tickets-1988857852375?aff=aff0bandsintown&amp;keep_tld=true&amp;bit_userid=${user_id}&amp;appId=fdhnerfcnpr-ynhenirvefqensgfvgr&amp;comeFrom=267&amp;artist_event_id=108384830": {
     "failures": 0,
-    "successes": 483,
-    "last_success_at": "2026-06-13T17:26:59.630482+00:00",
-    "events_emitted_total": 483,
+    "successes": 484,
+    "last_success_at": "2026-06-13T18:03:02.775302+00:00",
+    "events_emitted_total": 484,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:08.132047+00:00"
   },
   "https://www.eventbrite.com/e/the-broad-squad-tickets-1989426572432": {
     "failures": 0,
-    "successes": 476,
-    "last_success_at": "2026-06-13T17:26:59.771056+00:00",
-    "events_emitted_total": 476,
+    "successes": 477,
+    "last_success_at": "2026-06-13T18:03:02.969425+00:00",
+    "events_emitted_total": 477,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:08.188205+00:00"
   },
@@ -2059,23 +2059,23 @@
   },
   "https://partiful.com/e/PFqAuvL9UCXWkpYT3fz3": {
     "failures": 0,
-    "successes": 495,
-    "last_success_at": "2026-06-13T17:27:00.079394+00:00",
-    "events_emitted_total": 495,
+    "successes": 496,
+    "last_success_at": "2026-06-13T18:03:03.297416+00:00",
+    "events_emitted_total": 496,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/afters-stories-of-so-called-endings-tickets-1987710003127": {
     "failures": 0,
-    "successes": 476,
-    "last_success_at": "2026-06-13T17:27:00.201315+00:00",
-    "events_emitted_total": 476,
+    "successes": 477,
+    "last_success_at": "2026-06-13T18:03:03.521614+00:00",
+    "events_emitted_total": 477,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:08.458990+00:00"
   },
   "https://dice.fm/event/nv929q-party-dozen-6th-jun-tubbys-kingston-kingston-tickets": {
     "failures": 0,
-    "successes": 356,
-    "last_success_at": "2026-06-13T17:27:22.840153+00:00",
+    "successes": 357,
+    "last_success_at": "2026-06-13T18:03:35.015133+00:00",
     "events_emitted_total": 142,
     "last_event_count": 0,
     "last_failure_at": "2026-05-26T19:32:12.170148+00:00"
@@ -2087,49 +2087,49 @@
   },
   "https://www.eventbrite.com/e/love-always-impress-tickets-1987358038391": {
     "failures": 0,
-    "successes": 466,
-    "last_success_at": "2026-06-13T17:27:00.306418+00:00",
-    "events_emitted_total": 466,
+    "successes": 467,
+    "last_success_at": "2026-06-13T18:03:03.732651+00:00",
+    "events_emitted_total": 467,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:08.512734+00:00"
   },
   "https://www.eventbrite.com/e/river-blues-the-war-and-treaty-tickets-1987344990364": {
     "failures": 0,
-    "successes": 466,
-    "last_success_at": "2026-06-13T17:27:00.433435+00:00",
-    "events_emitted_total": 466,
+    "successes": 467,
+    "last_success_at": "2026-06-13T18:03:03.980868+00:00",
+    "events_emitted_total": 467,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:08.569349+00:00"
   },
   "https://www.eventbrite.com/e/river-blues-allen-stone-tickets-1987355797689": {
     "failures": 0,
-    "successes": 466,
-    "last_success_at": "2026-06-13T17:27:00.575999+00:00",
-    "events_emitted_total": 466,
+    "successes": 467,
+    "last_success_at": "2026-06-13T18:03:04.268756+00:00",
+    "events_emitted_total": 467,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:08.623004+00:00"
   },
   "https://www.eventbrite.com/e/river-blues-rebirth-brass-band-tickets-1987351329324": {
     "failures": 0,
-    "successes": 466,
-    "last_success_at": "2026-06-13T17:27:00.692359+00:00",
-    "events_emitted_total": 466,
+    "successes": 467,
+    "last_success_at": "2026-06-13T18:03:04.591364+00:00",
+    "events_emitted_total": 467,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:08.678235+00:00"
   },
   "https://www.eventbrite.com/e/red-baraat-tickets-1987348331357": {
     "failures": 0,
-    "successes": 466,
-    "last_success_at": "2026-06-13T17:27:00.796648+00:00",
-    "events_emitted_total": 466,
+    "successes": 467,
+    "last_success_at": "2026-06-13T18:03:04.825108+00:00",
+    "events_emitted_total": 467,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:08.736251+00:00"
   },
   "https://www.eventbrite.com/e/river-blues-amelia-day-tickets-1987356947127": {
     "failures": 0,
-    "successes": 466,
-    "last_success_at": "2026-06-13T17:27:00.911306+00:00",
-    "events_emitted_total": 466,
+    "successes": 467,
+    "last_success_at": "2026-06-13T18:03:05.095763+00:00",
+    "events_emitted_total": 467,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:08.789717+00:00"
   },
@@ -2143,9 +2143,9 @@
   },
   "https://www.eventbrite.com/e/luna-w-lael-neale-tickets-1989940933901": {
     "failures": 0,
-    "successes": 452,
-    "last_success_at": "2026-06-13T17:27:01.024850+00:00",
-    "events_emitted_total": 452,
+    "successes": 453,
+    "last_success_at": "2026-06-13T18:03:05.316655+00:00",
+    "events_emitted_total": 453,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:08.974566+00:00"
   },
@@ -2175,25 +2175,25 @@
   },
   "https://allevents.in/events/car-shows-in-usa": {
     "failures": 0,
-    "successes": 311,
-    "last_success_at": "2026-06-13T17:25:40.275558+00:00",
-    "events_emitted_total": 36710,
+    "successes": 312,
+    "last_success_at": "2026-06-13T18:01:35.300677+00:00",
+    "events_emitted_total": 36829,
     "last_event_count": 119,
     "last_failure_at": "2026-06-06T06:05:43.732823+00:00"
   },
   "https://allevents.in/events/memorial-day-in-the-usa": {
     "failures": 0,
-    "successes": 327,
-    "last_success_at": "2026-06-13T17:25:47.942596+00:00",
-    "events_emitted_total": 17511,
+    "successes": 328,
+    "last_success_at": "2026-06-13T18:01:43.394846+00:00",
+    "events_emitted_total": 17516,
     "last_event_count": 5,
     "last_failure_at": "2026-05-26T13:41:03.052182+00:00"
   },
   "https://www.eventbrite.com/e/oakwood-camping-in-alaska-empty-parking-lot-tickets-1989844285824": {
     "failures": 0,
-    "successes": 434,
-    "last_success_at": "2026-06-13T17:27:01.135795+00:00",
-    "events_emitted_total": 434,
+    "successes": 435,
+    "last_success_at": "2026-06-13T18:03:05.534409+00:00",
+    "events_emitted_total": 435,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:09.062049+00:00"
   },
@@ -2212,16 +2212,16 @@
   },
   "https://partiful.com/e/xXtXWc8QMqsW2p3JswCs": {
     "failures": 0,
-    "successes": 442,
-    "last_success_at": "2026-06-13T17:27:01.394508+00:00",
-    "events_emitted_total": 442,
+    "successes": 443,
+    "last_success_at": "2026-06-13T18:03:05.892179+00:00",
+    "events_emitted_total": 443,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/graveyard-shift-comedy-at-the-twisted-spine-tickets-1987024530861": {
     "failures": 0,
-    "successes": 423,
-    "last_success_at": "2026-06-13T17:27:01.574780+00:00",
-    "events_emitted_total": 423,
+    "successes": 424,
+    "last_success_at": "2026-06-13T18:03:06.173349+00:00",
+    "events_emitted_total": 424,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:09.345302+00:00"
   },
@@ -2237,56 +2237,56 @@
   },
   "https://www.eventbrite.com/e/winging-it-an-open-mic-night-at-lofty-pigeon-books-tickets-1250056957009": {
     "failures": 0,
-    "successes": 318,
-    "last_success_at": "2026-06-13T17:27:01.686601+00:00",
-    "events_emitted_total": 318,
+    "successes": 319,
+    "last_success_at": "2026-06-13T18:03:06.444181+00:00",
+    "events_emitted_total": 319,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:09.422701+00:00"
   },
   "https://www.eventbrite.com/e/golden-spiral-comedy-may-28th-tickets-1988942137474": {
     "failures": 0,
-    "successes": 318,
-    "last_success_at": "2026-06-13T17:27:01.820294+00:00",
-    "events_emitted_total": 318,
+    "successes": 319,
+    "last_success_at": "2026-06-13T18:03:06.644725+00:00",
+    "events_emitted_total": 319,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:09.478411+00:00"
   },
   "https://partiful.com/e/fVxtP0Rv65wBtkuebGoh": {
     "failures": 0,
-    "successes": 337,
-    "last_success_at": "2026-06-13T17:27:02.051030+00:00",
-    "events_emitted_total": 337,
+    "successes": 338,
+    "last_success_at": "2026-06-13T18:03:06.931949+00:00",
+    "events_emitted_total": 338,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/pins-needles-comedy-show-flash-tattoos-artist-pop-up-tickets-1987474784582": {
     "failures": 0,
-    "successes": 318,
-    "last_success_at": "2026-06-13T17:27:02.178013+00:00",
-    "events_emitted_total": 318,
+    "successes": 319,
+    "last_success_at": "2026-06-13T18:03:07.252864+00:00",
+    "events_emitted_total": 319,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:09.886526+00:00"
   },
   "https://www.eventbrite.com/e/dead-ladies-show-nyc-40-tickets-1988886763850": {
     "failures": 0,
-    "successes": 317,
-    "last_success_at": "2026-06-13T17:27:02.287604+00:00",
-    "events_emitted_total": 317,
+    "successes": 318,
+    "last_success_at": "2026-06-13T18:03:07.481050+00:00",
+    "events_emitted_total": 318,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:09.942840+00:00"
   },
   "https://www.eventbrite.com/e/nyc-magic-ensemble-young-ethels-0528-tickets-1982558531938": {
     "failures": 0,
-    "successes": 318,
-    "last_success_at": "2026-06-13T17:27:02.387524+00:00",
-    "events_emitted_total": 318,
+    "successes": 319,
+    "last_success_at": "2026-06-13T18:03:07.761355+00:00",
+    "events_emitted_total": 319,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:09.999310+00:00"
   },
   "https://www.eventbrite.com/e/comedy-on-kingston-stand-up-comedy-in-crown-heights-brooklyn-tickets-1989346069646": {
     "failures": 0,
-    "successes": 318,
-    "last_success_at": "2026-06-13T17:27:02.511744+00:00",
-    "events_emitted_total": 318,
+    "successes": 319,
+    "last_success_at": "2026-06-13T18:03:08.051015+00:00",
+    "events_emitted_total": 319,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:10.063800+00:00"
   },
@@ -2304,33 +2304,33 @@
   },
   "https://www.eventbrite.com/e/conversations-with-the-collective-tickets-1990160132530": {
     "failures": 0,
-    "successes": 291,
-    "last_success_at": "2026-06-13T17:27:04.598719+00:00",
-    "events_emitted_total": 291,
+    "successes": 292,
+    "last_success_at": "2026-06-13T18:03:11.711545+00:00",
+    "events_emitted_total": 292,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:11.773304+00:00"
   },
   "https://www.eventbrite.com/e/15th-annual-bushwick-collective-block-party-tickets-1988055115367": {
     "failures": 0,
-    "successes": 291,
-    "last_success_at": "2026-06-13T17:27:04.703275+00:00",
-    "events_emitted_total": 291,
+    "successes": 292,
+    "last_success_at": "2026-06-13T18:03:11.976452+00:00",
+    "events_emitted_total": 292,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:11.864911+00:00"
   },
   "https://www.eventbrite.com/e/harlem-wellness-festival-2026-tickets-1989098796044": {
     "failures": 0,
-    "successes": 284,
-    "last_success_at": "2026-06-13T17:27:05.996794+00:00",
-    "events_emitted_total": 284,
+    "successes": 285,
+    "last_success_at": "2026-06-13T18:03:14.281032+00:00",
+    "events_emitted_total": 285,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:12.957282+00:00"
   },
   "https://www.eventbrite.com/e/tale-nycs-finest-storytelling-tickets-1988925764502": {
     "failures": 0,
-    "successes": 284,
-    "last_success_at": "2026-06-13T17:27:06.596525+00:00",
-    "events_emitted_total": 284,
+    "successes": 285,
+    "last_success_at": "2026-06-13T18:03:15.203336+00:00",
+    "events_emitted_total": 285,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:13.330708+00:00"
   },
@@ -2341,38 +2341,38 @@
   },
   "https://partiful.com/e/s2cbfTX5sONClG55fcba": {
     "failures": 0,
-    "successes": 303,
-    "last_success_at": "2026-06-13T17:27:05.766884+00:00",
-    "events_emitted_total": 303,
+    "successes": 304,
+    "last_success_at": "2026-06-13T18:03:13.726170+00:00",
+    "events_emitted_total": 304,
     "last_event_count": 1
   },
   "https://partiful.com/e/M5hZhcPaAt99Xm4JhWSp": {
     "failures": 0,
-    "successes": 303,
-    "last_success_at": "2026-06-13T17:27:06.478698+00:00",
-    "events_emitted_total": 303,
+    "successes": 304,
+    "last_success_at": "2026-06-13T18:03:14.831264+00:00",
+    "events_emitted_total": 304,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/thredup-presents-the-guest-list-pop-up-tickets-1990022249117": {
     "failures": 0,
-    "successes": 284,
-    "last_success_at": "2026-06-13T17:27:05.870431+00:00",
-    "events_emitted_total": 284,
+    "successes": 285,
+    "last_success_at": "2026-06-13T18:03:14.010862+00:00",
+    "events_emitted_total": 285,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:12.903907+00:00"
   },
   "https://luma.com/brooklyngrange.navyyards": {
     "failures": 0,
-    "successes": 303,
-    "last_success_at": "2026-06-13T17:26:24.025833+00:00",
-    "events_emitted_total": 6060,
+    "successes": 304,
+    "last_success_at": "2026-06-13T18:02:22.048413+00:00",
+    "events_emitted_total": 6080,
     "last_event_count": 20
   },
   "https://www.eventbrite.com/e/this-sucks-a-bad-comedy-show-tickets-1988577020399": {
     "failures": 0,
-    "successes": 284,
-    "last_success_at": "2026-06-13T17:27:06.134940+00:00",
-    "events_emitted_total": 284,
+    "successes": 285,
+    "last_success_at": "2026-06-13T18:03:14.528917+00:00",
+    "events_emitted_total": 285,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:13.014814+00:00"
   },
@@ -2383,9 +2383,9 @@
   },
   "https://www.green-wood.com/events": {
     "failures": 0,
-    "successes": 229,
-    "last_success_at": "2026-06-13T17:26:43.178965+00:00",
-    "events_emitted_total": 2290,
+    "successes": 230,
+    "last_success_at": "2026-06-13T18:02:42.646060+00:00",
+    "events_emitted_total": 2300,
     "last_event_count": 10,
     "last_failure_at": "2026-06-11T11:11:15.708125+00:00"
   },
@@ -2503,91 +2503,91 @@
   },
   "https://allevents.in/new-york/today": {
     "failures": 0,
-    "successes": 230,
-    "last_success_at": "2026-06-13T17:26:28.146931+00:00",
-    "events_emitted_total": 3450,
+    "successes": 231,
+    "last_success_at": "2026-06-13T18:02:25.648809+00:00",
+    "events_emitted_total": 3465,
     "last_event_count": 15,
     "last_failure_at": "2026-06-05T08:55:21.432223+00:00"
   },
   "https://allevents.in/new-york/tomorrow": {
     "failures": 0,
-    "successes": 230,
-    "last_success_at": "2026-06-13T17:26:28.550639+00:00",
-    "events_emitted_total": 3450,
+    "successes": 231,
+    "last_success_at": "2026-06-13T18:02:26.361673+00:00",
+    "events_emitted_total": 3465,
     "last_event_count": 15,
     "last_failure_at": "2026-06-05T12:22:48.206710+00:00"
   },
   "https://allevents.in/new-york/this-weekend": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:26:28.856772+00:00",
-    "events_emitted_total": 3465,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:02:26.671159+00:00",
+    "events_emitted_total": 3480,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/upcoming": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:26:29.112441+00:00",
-    "events_emitted_total": 3465,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:02:27.051025+00:00",
+    "events_emitted_total": 3480,
     "last_event_count": 15
   },
   "https://allevents.in/new-york/all": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:25:50.340086+00:00",
-    "events_emitted_total": 10395,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:01:47.417911+00:00",
+    "events_emitted_total": 10440,
     "last_event_count": 45
   },
   "https://allevents.in/brooklyn/today": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:26:53.293756+00:00",
-    "events_emitted_total": 1833,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:02:52.740621+00:00",
+    "events_emitted_total": 1845,
     "last_event_count": 12
   },
   "https://allevents.in/brooklyn/this-weekend": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:26:53.861637+00:00",
-    "events_emitted_total": 1638,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:02:53.351187+00:00",
+    "events_emitted_total": 1649,
     "last_event_count": 11
   },
   "https://allevents.in/queens/this-weekend": {
     "failures": 0,
-    "successes": 230,
-    "last_success_at": "2026-06-13T17:26:29.447814+00:00",
-    "events_emitted_total": 3450,
+    "successes": 231,
+    "last_success_at": "2026-06-13T18:02:27.485258+00:00",
+    "events_emitted_total": 3465,
     "last_event_count": 15,
     "last_failure_at": "2026-06-06T11:07:12.643121+00:00"
   },
   "https://allevents.in/manhattan/this-weekend": {
     "failures": 0,
-    "successes": 230,
-    "last_success_at": "2026-06-13T17:26:54.322278+00:00",
-    "events_emitted_total": 1252,
+    "successes": 231,
+    "last_success_at": "2026-06-13T18:02:53.984897+00:00",
+    "events_emitted_total": 1257,
     "last_event_count": 5,
     "last_failure_at": "2026-06-04T18:07:31.237018+00:00"
   },
   "https://allevents.in/brooklyn/free": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:26:35.867798+00:00",
-    "events_emitted_total": 3465,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:02:35.108778+00:00",
+    "events_emitted_total": 3480,
     "last_event_count": 15
   },
   "https://allevents.in/brooklyn/dating": {
     "failures": 0,
-    "successes": 229,
-    "last_success_at": "2026-06-13T17:26:36.157470+00:00",
-    "events_emitted_total": 3435,
+    "successes": 230,
+    "last_success_at": "2026-06-13T18:02:35.451813+00:00",
+    "events_emitted_total": 3450,
     "last_event_count": 15,
     "last_failure_at": "2026-06-06T11:11:55.285613+00:00"
   },
   "https://allevents.in/brooklyn/comedy": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:26:53.624187+00:00",
-    "events_emitted_total": 1753,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:02:53.002410+00:00",
+    "events_emitted_total": 1760,
     "last_event_count": 7
   },
   "https://www.eventbrite.com/d/ny--brooklyn/parties--events/": {
@@ -2656,67 +2656,67 @@
   },
   "https://newyorkcomedyclub.com/calendar/2026-06": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:25:39.339240+00:00",
-    "events_emitted_total": 32734,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:01:34.392229+00:00",
+    "events_emitted_total": 32898,
     "last_event_count": 164
   },
   "https://www.eastvillecomedy.com/calendar/2026-06": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:25:55.035154+00:00",
-    "events_emitted_total": 8200,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:01:54.393043+00:00",
+    "events_emitted_total": 8244,
     "last_event_count": 44
   },
   "https://newyorkcomedyclub.com/calendar/2026-07": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:25:49.731368+00:00",
-    "events_emitted_total": 10635,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:01:46.786715+00:00",
+    "events_emitted_total": 10700,
     "last_event_count": 65
   },
   "https://www.eastvillecomedy.com/calendar/2026-07": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:25:53.085627+00:00",
-    "events_emitted_total": 8978,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:01:52.236963+00:00",
+    "events_emitted_total": 9017,
     "last_event_count": 39
   },
   "https://newyorkcomedyclub.com/calendar/2026-08": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:26:54.096352+00:00",
-    "events_emitted_total": 1342,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:02:53.672958+00:00",
+    "events_emitted_total": 1348,
     "last_event_count": 6
   },
   "https://www.eastvillecomedy.com/calendar/2026-08": {
     "failures": 0,
-    "successes": 231,
-    "last_success_at": "2026-06-13T17:25:51.664283+00:00",
-    "events_emitted_total": 10164,
+    "successes": 232,
+    "last_success_at": "2026-06-13T18:01:49.840596+00:00",
+    "events_emitted_total": 10208,
     "last_event_count": 44
   },
   "https://luma.com/evs081j2": {
     "failures": 0,
-    "successes": 225,
-    "last_success_at": "2026-06-13T17:27:06.973627+00:00",
-    "events_emitted_total": 225,
+    "successes": 226,
+    "last_success_at": "2026-06-13T18:03:15.645957+00:00",
+    "events_emitted_total": 226,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T22:07:06.696070+00:00"
   },
   "https://luma.com/jk3yv5y5": {
     "failures": 0,
-    "successes": 225,
-    "last_success_at": "2026-06-13T17:27:05.533980+00:00",
-    "events_emitted_total": 225,
+    "successes": 226,
+    "last_success_at": "2026-06-13T18:03:13.279246+00:00",
+    "events_emitted_total": 226,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T22:07:05.562165+00:00"
   },
   "http://luma.com/thecollaboratory": {
     "failures": 0,
-    "successes": 227,
-    "last_success_at": "2026-06-13T17:26:51.022409+00:00",
-    "events_emitted_total": 2173,
+    "successes": 228,
+    "last_success_at": "2026-06-13T18:02:50.072476+00:00",
+    "events_emitted_total": 2182,
     "last_event_count": 9,
     "last_failure_at": "2026-06-12T22:06:55.550973+00:00"
   },
@@ -2727,9 +2727,9 @@
   },
   "https://luma.com/38unchct": {
     "failures": 0,
-    "successes": 225,
-    "last_success_at": "2026-06-13T17:27:05.315890+00:00",
-    "events_emitted_total": 225,
+    "successes": 226,
+    "last_success_at": "2026-06-13T18:03:12.897452+00:00",
+    "events_emitted_total": 226,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T22:07:05.306057+00:00"
   },
@@ -2740,70 +2740,70 @@
   },
   "https://lu.ma/budsonthemovecalendar": {
     "failures": 0,
-    "successes": 224,
-    "last_success_at": "2026-06-13T17:26:54.680068+00:00",
-    "events_emitted_total": 945,
+    "successes": 225,
+    "last_success_at": "2026-06-13T18:02:54.421329+00:00",
+    "events_emitted_total": 949,
     "last_event_count": 4,
     "last_failure_at": "2026-06-12T22:06:58.021346+00:00"
   },
   "https://lu.ma/thecollaboratory": {
     "failures": 0,
-    "successes": 228,
-    "last_success_at": "2026-06-13T17:26:49.566833+00:00",
-    "events_emitted_total": 2185,
+    "successes": 229,
+    "last_success_at": "2026-06-13T18:02:48.308763+00:00",
+    "events_emitted_total": 2194,
     "last_event_count": 9,
     "last_failure_at": "2026-06-04T23:09:59.994546+00:00"
   },
   "https://www.eastvillecomedy.com/events/": {
     "failures": 0,
-    "successes": 228,
-    "last_success_at": "2026-06-13T17:25:53.873007+00:00",
-    "events_emitted_total": 8098,
+    "successes": 229,
+    "last_success_at": "2026-06-13T18:01:52.893456+00:00",
+    "events_emitted_total": 8142,
     "last_event_count": 44
   },
   "https://www.eastvillecomedy.com/calendar": {
     "failures": 0,
-    "successes": 228,
-    "last_success_at": "2026-06-13T17:25:54.450020+00:00",
-    "events_emitted_total": 8098,
+    "successes": 229,
+    "last_success_at": "2026-06-13T18:01:53.735529+00:00",
+    "events_emitted_total": 8142,
     "last_event_count": 44
   },
   "https://partiful.com/e/Egs1S4epcaBLTEvGczPZ": {
     "failures": 0,
-    "successes": 224,
-    "last_success_at": "2026-06-13T17:27:07.185909+00:00",
-    "events_emitted_total": 224,
+    "successes": 225,
+    "last_success_at": "2026-06-13T18:03:16.064106+00:00",
+    "events_emitted_total": 225,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/love-that-hosted-by-jessie-lee-megan-rosenblum-tickets-1989614053192": {
     "failures": 0,
-    "successes": 204,
-    "last_success_at": "2026-06-13T17:27:07.296016+00:00",
-    "events_emitted_total": 204,
+    "successes": 205,
+    "last_success_at": "2026-06-13T18:03:16.354875+00:00",
+    "events_emitted_total": 205,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:14.260186+00:00"
   },
   "https://www.eventbrite.com/e/cold-plunge-with-kurt-braunohler-tickets-1988799074569": {
     "failures": 0,
-    "successes": 204,
-    "last_success_at": "2026-06-13T17:27:07.468293+00:00",
-    "events_emitted_total": 204,
+    "successes": 205,
+    "last_success_at": "2026-06-13T18:03:16.580572+00:00",
+    "events_emitted_total": 205,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:14.327600+00:00"
   },
   "https://www.eventbrite.com/e/nyc-poets-afloat-2026-brooklyn-reading-tickets-1988415010824": {
     "failures": 0,
-    "successes": 204,
-    "last_success_at": "2026-06-13T17:27:07.593995+00:00",
-    "events_emitted_total": 204,
+    "successes": 205,
+    "last_success_at": "2026-06-13T18:03:16.812959+00:00",
+    "events_emitted_total": 205,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:14.381056+00:00"
   },
   "https://www.eventbrite.com/e/rec-and-roll-speed-book-recommending-at-lofty-pigeon-books-tickets-1989603051285": {
     "failures": 0,
-    "successes": 204,
-    "last_success_at": "2026-06-13T17:27:07.737989+00:00",
-    "events_emitted_total": 204,
+    "successes": 205,
+    "last_success_at": "2026-06-13T18:03:17.053696+00:00",
+    "events_emitted_total": 205,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:14.438742+00:00"
   },
@@ -2814,91 +2814,91 @@
   },
   "https://www.wnyc.org/events/outsiders": {
     "failures": 0,
-    "successes": 217,
-    "last_success_at": "2026-06-13T17:27:43.739329+00:00",
+    "successes": 218,
+    "last_success_at": "2026-06-13T18:04:00.487575+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
   "https://www.wnyc.org/events/radiolab-live-with-latif-nasser-lulu-miller-at-tribeca": {
     "failures": 0,
-    "successes": 217,
-    "last_success_at": "2026-06-13T17:27:44.791318+00:00",
+    "successes": 218,
+    "last_success_at": "2026-06-13T18:04:01.853919+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
   "https://www.wnyc.org/events/wqxr-celebrates-pride": {
     "failures": 0,
-    "successes": 213,
-    "last_success_at": "2026-06-13T17:27:46.145635+00:00",
+    "successes": 214,
+    "last_success_at": "2026-06-13T18:04:03.006772+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0,
     "last_failure_at": "2026-06-11T20:42:51.643044+00:00"
   },
   "https://www.wnyc.org/events/new-yorker-radio-hour-live-with-david-remnick-at-tribeca": {
     "failures": 0,
-    "successes": 217,
-    "last_success_at": "2026-06-13T17:27:47.798067+00:00",
+    "successes": 218,
+    "last_success_at": "2026-06-13T18:04:04.956963+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
   "https://luma.com/7vewtqbw": {
     "failures": 0,
-    "successes": 212,
-    "last_success_at": "2026-06-13T17:27:02.893191+00:00",
-    "events_emitted_total": 212,
+    "successes": 213,
+    "last_success_at": "2026-06-13T18:03:08.602990+00:00",
+    "events_emitted_total": 213,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T22:07:03.494874+00:00"
   },
   "https://www.eventbrite.com/e/blok-parti-launch-party-the-ruffle-bag-edition-tickets-1988785463859": {
     "failures": 0,
-    "successes": 198,
-    "last_success_at": "2026-06-13T17:27:03.007231+00:00",
-    "events_emitted_total": 198,
+    "successes": 199,
+    "last_success_at": "2026-06-13T18:03:08.852100+00:00",
+    "events_emitted_total": 199,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:10.487751+00:00"
   },
   "https://partiful.com/e/VOZqFMjm0VY6I5jvxGyp": {
     "failures": 0,
-    "successes": 217,
-    "last_success_at": "2026-06-13T17:27:03.314306+00:00",
-    "events_emitted_total": 217,
+    "successes": 218,
+    "last_success_at": "2026-06-13T18:03:09.291725+00:00",
+    "events_emitted_total": 218,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/prada-touch-tour-nyc-pop-up-tickets-1988556792898": {
     "failures": 0,
-    "successes": 198,
-    "last_success_at": "2026-06-13T17:27:03.410637+00:00",
-    "events_emitted_total": 198,
+    "successes": 199,
+    "last_success_at": "2026-06-13T18:03:09.634909+00:00",
+    "events_emitted_total": 199,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:10.894550+00:00"
   },
   "https://partiful.com/e/rId3r5BZAvrsAZ74bLQR": {
     "failures": 0,
-    "successes": 217,
-    "last_success_at": "2026-06-13T17:27:03.617089+00:00",
-    "events_emitted_total": 217,
+    "successes": 218,
+    "last_success_at": "2026-06-13T18:03:09.999814+00:00",
+    "events_emitted_total": 218,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/krewe-krawfish-boil-nyc-meatpacking-district-tickets-1986568680400": {
     "failures": 0,
-    "successes": 198,
-    "last_success_at": "2026-06-13T17:27:03.740125+00:00",
-    "events_emitted_total": 198,
+    "successes": 199,
+    "last_success_at": "2026-06-13T18:03:10.329133+00:00",
+    "events_emitted_total": 199,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:11.171384+00:00"
   },
   "https://partiful.com/e/TKVnmNDUMqlvLEmZ7DDv": {
     "failures": 0,
-    "successes": 217,
-    "last_success_at": "2026-06-13T17:27:04.075817+00:00",
-    "events_emitted_total": 217,
+    "successes": 218,
+    "last_success_at": "2026-06-13T18:03:10.783095+00:00",
+    "events_emitted_total": 218,
     "last_event_count": 1
   },
   "https://partiful.com/e/notYPalJ8dnGICGAumtD": {
     "failures": 0,
-    "successes": 217,
-    "last_success_at": "2026-06-13T17:27:04.348848+00:00",
-    "events_emitted_total": 217,
+    "successes": 218,
+    "last_success_at": "2026-06-13T18:03:11.097700+00:00",
+    "events_emitted_total": 218,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/not-a-normal-spring-show-union-square-april-10-12-april-17-19-tickets-1984645209246?gclsrc=aw.ds&amp;&amp;utm_source=google&amp;utm_medium=ebps&amp;utm_campaign=PSNB_CUAL_PMK_PDO_0_US_NYC_BAU_0_GA01-DSA--Page-Feed-High-Value&amp;utm_term=&amp;aff=ebmkmxperformance&amp;gad_source=1&amp;gad_campaignid=23539116610&amp;gbraid=0AAAAAo0IdU0JzOUx6w-4Yeg7_Dyb1czb8&amp;gclid=CjwKCAjw-dfOBhAjEiwAq0RwI-xkGFWSmW3t_qbai1M5VcAoZ4-vuGtikxQRULeT2ZHeAbRQoD2_3hoCm1YQAvD_BwE": {
@@ -2908,31 +2908,31 @@
   },
   "https://www.eventbrite.com/e/a-current-affair-pop-up-vintage-marketplace-in-brooklyn-spring-2026-tickets-1965676868428?aff=oddtdtcreator": {
     "failures": 0,
-    "successes": 198,
-    "last_success_at": "2026-06-13T17:27:04.488536+00:00",
-    "events_emitted_total": 198,
+    "successes": 199,
+    "last_success_at": "2026-06-13T18:03:11.433134+00:00",
+    "events_emitted_total": 199,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:11.718021+00:00"
   },
   "https://newyorkcomedyclub.com/events": {
     "failures": 0,
-    "successes": 217,
-    "last_success_at": "2026-06-13T17:25:33.999674+00:00",
-    "events_emitted_total": 31166,
+    "successes": 218,
+    "last_success_at": "2026-06-13T18:01:29.192738+00:00",
+    "events_emitted_total": 31330,
     "last_event_count": 164
   },
   "https://newyorkcomedyclub.com/events/": {
     "failures": 0,
-    "successes": 217,
-    "last_success_at": "2026-06-13T17:25:36.808093+00:00",
-    "events_emitted_total": 31160,
+    "successes": 218,
+    "last_success_at": "2026-06-13T18:01:31.919196+00:00",
+    "events_emitted_total": 31324,
     "last_event_count": 164
   },
   "https://www.eventbrite.com/e/drag-race-all-stars-11-with-priestess-lolita-and-poison-oak-tickets-1988428146112": {
     "failures": 0,
-    "successes": 198,
-    "last_success_at": "2026-06-13T17:27:04.858672+00:00",
-    "events_emitted_total": 198,
+    "successes": 199,
+    "last_success_at": "2026-06-13T18:03:12.295776+00:00",
+    "events_emitted_total": 199,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:11.919357+00:00"
   },
@@ -2958,9 +2958,9 @@
   },
   "https://www.eventbrite.com/e/maryland-deathfest-xxii-tickets-1989800148809": {
     "failures": 0,
-    "successes": 181,
-    "last_success_at": "2026-06-13T17:27:07.842994+00:00",
-    "events_emitted_total": 181,
+    "successes": 182,
+    "last_success_at": "2026-06-13T18:03:17.296799+00:00",
+    "events_emitted_total": 182,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:14.513367+00:00"
   },
@@ -2981,9 +2981,9 @@
   },
   "https://luma.com/5rjkf3oc": {
     "failures": 0,
-    "successes": 169,
-    "last_success_at": "2026-06-13T17:27:08.876998+00:00",
-    "events_emitted_total": 169,
+    "successes": 170,
+    "last_success_at": "2026-06-13T18:03:17.722343+00:00",
+    "events_emitted_total": 170,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T22:07:07.477889+00:00"
   },
@@ -2994,25 +2994,25 @@
   },
   "https://www.eventbrite.com/e/slumber-party-with-clare-donaher-and-shelby-latterman-tickets-1990144741495": {
     "failures": 0,
-    "successes": 164,
-    "last_success_at": "2026-06-13T17:27:09.017156+00:00",
-    "events_emitted_total": 164,
+    "successes": 165,
+    "last_success_at": "2026-06-13T18:03:17.976443+00:00",
+    "events_emitted_total": 165,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:14.899115+00:00"
   },
   "https://www.eventbrite.com/e/the-2026-tony-awards-viewing-party-at-brooklyn-art-haus-tickets-1990007242231": {
     "failures": 0,
-    "successes": 164,
-    "last_success_at": "2026-06-13T17:27:09.133815+00:00",
-    "events_emitted_total": 164,
+    "successes": 165,
+    "last_success_at": "2026-06-13T18:03:18.267473+00:00",
+    "events_emitted_total": 165,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:14.951316+00:00"
   },
   "https://luma.com/6ztzsvup": {
     "failures": 0,
-    "successes": 169,
-    "last_success_at": "2026-06-13T17:27:09.442193+00:00",
-    "events_emitted_total": 169,
+    "successes": 170,
+    "last_success_at": "2026-06-13T18:03:18.572860+00:00",
+    "events_emitted_total": 170,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T22:07:07.813554+00:00"
   },
@@ -3033,9 +3033,9 @@
   },
   "https://www.eventbrite.com/e/do-you-still-like-me-a-comedy-dating-show-tickets-1989804795708": {
     "failures": 0,
-    "successes": 127,
-    "last_success_at": "2026-06-13T17:27:09.583932+00:00",
-    "events_emitted_total": 127,
+    "successes": 128,
+    "last_success_at": "2026-06-13T18:03:18.776227+00:00",
+    "events_emitted_total": 128,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:15.255222+00:00"
   },
@@ -3051,102 +3051,102 @@
   },
   "https://partiful.com/e/xAqp8OnvPltHwrSQ01qC": {
     "failures": 0,
-    "successes": 99,
-    "last_success_at": "2026-06-13T17:27:09.777755+00:00",
-    "events_emitted_total": 99,
+    "successes": 100,
+    "last_success_at": "2026-06-13T18:03:19.078050+00:00",
+    "events_emitted_total": 100,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/spirited-away-psychic-paranormal-night-tickets-1001770110367?aff=erelexpmlt": {
     "failures": 0,
-    "successes": 94,
-    "last_success_at": "2026-06-13T17:27:09.890958+00:00",
-    "events_emitted_total": 94,
+    "successes": 95,
+    "last_success_at": "2026-06-13T18:03:19.343460+00:00",
+    "events_emitted_total": 95,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:15.706646+00:00"
   },
   "https://carnegiehall.org/Events/NYO-in-Concert": {
     "failures": 0,
-    "successes": 83,
-    "last_success_at": "2026-06-13T17:27:48.626263+00:00",
+    "successes": 84,
+    "last_success_at": "2026-06-13T18:04:06.163382+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0,
     "last_failure_at": "2026-06-13T11:28:05.274779+00:00"
   },
   "https://www.eventbrite.com/e/landline-comedy-at-wild-east-brewing-tickets-1987757506210": {
     "failures": 0,
-    "successes": 83,
-    "last_success_at": "2026-06-13T17:27:10.007288+00:00",
-    "events_emitted_total": 83,
+    "successes": 84,
+    "last_success_at": "2026-06-13T18:03:19.555618+00:00",
+    "events_emitted_total": 84,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:15.776370+00:00"
   },
   "https://www.eventbrite.com/e/savage-comedy-show-tickets-364397592007": {
     "failures": 0,
-    "successes": 83,
-    "last_success_at": "2026-06-13T17:27:10.183465+00:00",
-    "events_emitted_total": 83,
+    "successes": 84,
+    "last_success_at": "2026-06-13T18:03:19.959711+00:00",
+    "events_emitted_total": 84,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:15.910210+00:00"
   },
   "https://www.eventbrite.com/e/how-to-live-make-art-in-these-fked-up-times-tickets-1989961768217": {
     "failures": 0,
-    "successes": 83,
-    "last_success_at": "2026-06-13T17:27:10.292479+00:00",
-    "events_emitted_total": 83,
+    "successes": 84,
+    "last_success_at": "2026-06-13T18:03:20.237060+00:00",
+    "events_emitted_total": 84,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:15.969173+00:00"
   },
   "https://www.eventbrite.com/e/free-advance-screening-find-your-friends-tickets-1990516163428": {
     "failures": 0,
-    "successes": 83,
-    "last_success_at": "2026-06-13T17:27:10.405691+00:00",
-    "events_emitted_total": 83,
+    "successes": 84,
+    "last_success_at": "2026-06-13T18:03:20.543171+00:00",
+    "events_emitted_total": 84,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:16.020475+00:00"
   },
   "https://www.eventbrite.com/e/tip-top-tits-a-stand-up-comedy-show-tickets-1990583275161": {
     "failures": 0,
-    "successes": 83,
-    "last_success_at": "2026-06-13T17:27:10.518285+00:00",
-    "events_emitted_total": 83,
+    "successes": 84,
+    "last_success_at": "2026-06-13T18:03:20.800683+00:00",
+    "events_emitted_total": 84,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:16.095186+00:00"
   },
   "https://www.eventbrite.com/e/paris-is-burning-with-jennie-livingston-bill-rauch-michael-roberson-tickets-1990485493694": {
     "failures": 0,
-    "successes": 83,
-    "last_success_at": "2026-06-13T17:27:10.638202+00:00",
-    "events_emitted_total": 83,
+    "successes": 84,
+    "last_success_at": "2026-06-13T18:03:21.041901+00:00",
+    "events_emitted_total": 84,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:16.148216+00:00"
   },
   "https://dice.fm/event/7dbx36-shudder-to-think-17th-sep-the-glass-house-pomona-tickets?pid=a1331df1&amp;_branch_match_id=1398664767189620159&amp;utm_medium=partners_api&amp;_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1S8zTUy1NEw1S7ZMTrEvyEyxTTQ0NjZMSTNUqytKTUstKsrMS49PKsovL04tsnXOKMrPTQUAD%2B23oUgAAAA%3D": {
     "failures": 0,
-    "successes": 76,
-    "last_success_at": "2026-06-13T17:27:50.226693+00:00",
+    "successes": 77,
+    "last_success_at": "2026-06-13T18:04:07.948057+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
   "https://partiful.com/e/Txh9TPQPwaur5Txqm1aX": {
     "failures": 0,
-    "successes": 76,
-    "last_success_at": "2026-06-13T17:27:10.862470+00:00",
-    "events_emitted_total": 76,
+    "successes": 77,
+    "last_success_at": "2026-06-13T18:03:21.474652+00:00",
+    "events_emitted_total": 77,
     "last_event_count": 1
   },
   "https://www.eventbrite.com/e/1988681281246?aff=oddtdtcreator": {
     "failures": 0,
-    "successes": 71,
-    "last_success_at": "2026-06-13T17:27:11.012701+00:00",
-    "events_emitted_total": 71,
+    "successes": 72,
+    "last_success_at": "2026-06-13T18:03:21.899877+00:00",
+    "events_emitted_total": 72,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:16.434212+00:00"
   },
   "https://www.eventbrite.com/e/1988681281246?aff=oddtdtcreator</a": {
     "failures": 0,
-    "successes": 71,
-    "last_success_at": "2026-06-13T17:27:11.162170+00:00",
-    "events_emitted_total": 71,
+    "successes": 72,
+    "last_success_at": "2026-06-13T18:03:22.215016+00:00",
+    "events_emitted_total": 72,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:16.595722+00:00"
   },
@@ -3167,25 +3167,25 @@
   },
   "https://www.eventbrite.com/e/the-erotica-ball-celebrating-the-erotica-album-tickets-1986366498669": {
     "failures": 0,
-    "successes": 65,
-    "last_success_at": "2026-06-13T17:27:11.289744+00:00",
-    "events_emitted_total": 65,
+    "successes": 66,
+    "last_success_at": "2026-06-13T18:03:22.488291+00:00",
+    "events_emitted_total": 66,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:16.646822+00:00"
   },
   "https://www.eventbrite.com/e/its-giving-brunch-nyc-pride-presents-2026-drag-brunch-fundraiser-tickets-1983791356349": {
     "failures": 0,
-    "successes": 65,
-    "last_success_at": "2026-06-13T17:27:11.411375+00:00",
-    "events_emitted_total": 65,
+    "successes": 66,
+    "last_success_at": "2026-06-13T18:03:22.748909+00:00",
+    "events_emitted_total": 66,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:16.719238+00:00"
   },
   "https://www.eventbrite.com/cc/ironstrength-2026-one-community-for-all-3296719": {
     "failures": 0,
-    "successes": 62,
-    "last_success_at": "2026-06-13T17:26:14.673856+00:00",
-    "events_emitted_total": 1798,
+    "successes": 63,
+    "last_success_at": "2026-06-13T18:02:14.195962+00:00",
+    "events_emitted_total": 1827,
     "last_event_count": 29,
     "last_failure_at": "2026-06-12T23:57:39.357286+00:00"
   },
@@ -3201,9 +3201,9 @@
   },
   "https://www.eventbrite.com/e/warm-up-2026-season-pass-tickets-1990447639471?sc_src=email_9953640&amp;sc_lid=897765122&amp;sc_uid=6N0XNXQfgV&amp;sc_llid=49330&amp;sc_eh=f60cc66fc111592c1&amp;utm_source=Emarsys&amp;utm_medium=email&amp;utm_campaign=PS1+-+Warm+Up+Lineup+Announcement+2026&amp;&amp;mi_u=605713995&amp;mi_ecmp=9953640": {
     "failures": 0,
-    "successes": 54,
-    "last_success_at": "2026-06-13T17:27:11.528514+00:00",
-    "events_emitted_total": 54,
+    "successes": 55,
+    "last_success_at": "2026-06-13T18:03:23.014035+00:00",
+    "events_emitted_total": 55,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:16.774534+00:00"
   },
@@ -3249,8 +3249,8 @@
   },
   "https://www.wnyc.org/events/otm-fema": {
     "failures": 0,
-    "successes": 35,
-    "last_success_at": "2026-06-13T17:27:51.026661+00:00",
+    "successes": 36,
+    "last_success_at": "2026-06-13T18:04:09.320034+00:00",
     "events_emitted_total": 0,
     "last_event_count": 0
   },
@@ -3281,25 +3281,25 @@
   },
   "https://www.eventbrite.com/e/second-nature-second-hand-found-in-the-wild-tickets-1990314811178": {
     "failures": 0,
-    "successes": 28,
-    "last_success_at": "2026-06-13T17:27:11.632773+00:00",
-    "events_emitted_total": 28,
+    "successes": 29,
+    "last_success_at": "2026-06-13T18:03:23.269425+00:00",
+    "events_emitted_total": 29,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:16.906279+00:00"
   },
   "https://www.eventbrite.com/e/erotic-art-bazaar-pride-edition-tickets-1988862418031": {
     "failures": 0,
-    "successes": 28,
-    "last_success_at": "2026-06-13T17:27:11.811849+00:00",
-    "events_emitted_total": 28,
+    "successes": 29,
+    "last_success_at": "2026-06-13T18:03:23.534217+00:00",
+    "events_emitted_total": 29,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:16.959786+00:00"
   },
   "https://www.eventbrite.com/e/best-night-ever-comedy-show-tickets-1990583244068": {
     "failures": 0,
-    "successes": 28,
-    "last_success_at": "2026-06-13T17:27:11.913885+00:00",
-    "events_emitted_total": 28,
+    "successes": 29,
+    "last_success_at": "2026-06-13T18:03:23.820315+00:00",
+    "events_emitted_total": 29,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:17.014758+00:00"
   },
@@ -3310,41 +3310,41 @@
   },
   "https://www.eventbrite.com/e/one-love-fest-tickets-1985478003155": {
     "failures": 0,
-    "successes": 28,
-    "last_success_at": "2026-06-13T17:27:12.038456+00:00",
-    "events_emitted_total": 28,
+    "successes": 29,
+    "last_success_at": "2026-06-13T18:03:24.089329+00:00",
+    "events_emitted_total": 29,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:17.071627+00:00"
   },
   "https://www.eventbrite.com/e/danse-le-freak-tickets-1991392491549": {
     "failures": 0,
-    "successes": 28,
-    "last_success_at": "2026-06-13T17:27:12.197713+00:00",
-    "events_emitted_total": 28,
+    "successes": 29,
+    "last_success_at": "2026-06-13T18:03:24.286610+00:00",
+    "events_emitted_total": 29,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:17.165351+00:00"
   },
   "https://www.eventbrite.com/e/we-have-to-do-pride-with-maddie-peck-bridget-foley-tickets-1988574845895": {
     "failures": 0,
-    "successes": 28,
-    "last_success_at": "2026-06-13T17:27:12.314675+00:00",
-    "events_emitted_total": 28,
+    "successes": 29,
+    "last_success_at": "2026-06-13T18:03:24.511581+00:00",
+    "events_emitted_total": 29,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:17.228374+00:00"
   },
   "https://www.eventbrite.com/e/public-library-art-and-propaganda-fair-tickets-1989878101969": {
     "failures": 0,
-    "successes": 28,
-    "last_success_at": "2026-06-13T17:27:12.417179+00:00",
-    "events_emitted_total": 28,
+    "successes": 29,
+    "last_success_at": "2026-06-13T18:03:24.819932+00:00",
+    "events_emitted_total": 29,
     "last_event_count": 1,
     "last_failure_at": "2026-06-12T23:58:17.327858+00:00"
   },
   "https://partiful.com/e/Q2btg2wEQreBz5vOCjGn": {
     "failures": 0,
-    "successes": 30,
-    "last_success_at": "2026-06-13T17:27:12.630558+00:00",
-    "events_emitted_total": 30,
+    "successes": 31,
+    "last_success_at": "2026-06-13T18:03:25.117518+00:00",
+    "events_emitted_total": 31,
     "last_event_count": 1
   },
   "https://www.queenslibrary.org/event/015768-0426": {
