@@ -55,11 +55,13 @@ Argument: `$ARGUMENTS`. Recognized values:
    except Exception as e:
        feed = json.load(open('site/public/events.json'))
    events = feed.get('events', [])
+   TOPIC_SYNONYMS = {'bk': ('bk', 'brooklyn'), 'brooklyn': ('brooklyn', 'bk')}
    topic_rep = {t: 0 for t, c in topics.items() if c >= 2}
    for e in events:
        txt = (e.get('title','') + ' ' + ' '.join(e.get('categories', []) or []) + ' ' + e.get('description','')[:300]).lower()
        for t in list(topic_rep):
-           if t in txt: topic_rep[t] += 1
+           needles = TOPIC_SYNONYMS.get(t, (t,))
+           if any(n in txt for n in needles): topic_rep[t] += 1
    high = sum(1 for e in events if any(e.get(k) for k in ('userFollowing','userSaved','userAffinity')))
    print('FOLLOW_GRAPH_COVERAGE:', f'{nz}/{len(sig)}', f'({100*nz/max(1,len(sig)):.1f}%)')
    print('TOPIC_COVERAGE:', {t: topic_rep[t] for t in topic_rep})

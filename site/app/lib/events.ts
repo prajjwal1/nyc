@@ -40,7 +40,10 @@ export function filterEvents(
     const accountQuery = q.startsWith("@") ? q.slice(1) : null;
     filtered = filtered.filter((e) => {
       if (accountQuery) {
-        return (e.instagramAccount || "").toLowerCase().includes(accountQuery);
+        return (
+          (e.instagramAccount || "").toLowerCase().includes(accountQuery) ||
+          (e.account || "").toLowerCase().includes(accountQuery)
+        );
       }
       return (
         e.title.toLowerCase().includes(q) ||

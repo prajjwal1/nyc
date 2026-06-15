@@ -30,7 +30,9 @@ from collections import Counter
 from datetime import datetime
 from typing import Iterable
 
-DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
+DATA_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"
+)
 PROFILE_PATH = os.path.join(DATA_DIR, "user_interest_profile.json")
 DISCOVERED_PATH = os.path.join(DATA_DIR, "discovered_accounts.json")
 AFFINITY_PATH = os.path.join(DATA_DIR, "user_affinity_accounts.json")
@@ -53,20 +55,61 @@ def _load(path: str, default):
 # matches against event titles; just hints derived from who the user
 # follows. The set evolves automatically as the follow graph evolves.
 _USERNAME_TOPIC_HINTS = (
-    "book", "lit", "poet", "read", "literary",     # books
-    "jazz", "music", "live", "dj", "vinyl", "sound", "band",  # music
-    "art", "gallery", "museum",                    # art
-    "comedy", "improv", "standup",                 # comedy
-    "food", "kitchen", "chef", "wine", "bar",      # food
-    "running", "run", "fit", "yoga", "wellness",   # fitness
-    "ny", "nyc", "brooklyn", "bk", "manhattan",    # NYC location
-    "single", "date", "love",                      # singles
-    "park", "outdoor", "garden", "nature",         # outdoors
-    "rave", "club", "party", "social",             # nightlife/social
-    "queer", "lgbtq", "pride",                     # (descriptive, not exclusive)
-    "vintage", "thrift", "flea",                   # shopping/exploration
-    "dance",                                       # dance
-    "tech", "ai", "startup", "founder",            # (de-boost zone)
+    "book",
+    "lit",
+    "poet",
+    "read",
+    "literary",  # books
+    "jazz",
+    "music",
+    "live",
+    "dj",
+    "vinyl",
+    "sound",
+    "band",  # music
+    "art",
+    "gallery",
+    "museum",  # art
+    "comedy",
+    "improv",
+    "standup",  # comedy
+    "food",
+    "kitchen",
+    "chef",
+    "wine",
+    "bar",  # food
+    "running",
+    "run",
+    "fit",
+    "yoga",
+    "wellness",  # fitness
+    "ny",
+    "nyc",
+    "brooklyn",
+    "bk",
+    "manhattan",  # NYC location
+    "single",
+    "date",
+    "love",  # singles
+    "park",
+    "outdoor",
+    "garden",
+    "nature",  # outdoors
+    "rave",
+    "club",
+    "party",
+    "social",  # nightlife/social
+    "queer",
+    "lgbtq",
+    "pride",  # (descriptive, not exclusive)
+    "vintage",
+    "thrift",
+    "flea",  # shopping/exploration
+    "dance",  # dance
+    "tech",
+    "ai",
+    "startup",
+    "founder",  # (de-boost zone)
 )
 
 
@@ -85,7 +128,8 @@ def build_profile() -> dict:
     curated = _load(CURATED_PATH, {"hosts": {}, "title_hints": {}})
 
     follows = [
-        a for a in disc.get("accounts", [])
+        a
+        for a in disc.get("accounts", [])
         if a.get("discovered_via") == "user_following"
     ]
     follow_usernames = {(a.get("username") or "").lower() for a in follows}
@@ -120,6 +164,64 @@ def build_profile() -> dict:
         ev = info.get("events_emitted", 0) or 0
         y = ev / posts if posts else 0.0
         yield_map[u] = round(y, 3)
+
+    # D1 (fb-174 workaround): credit NON-IG enriched events into yield_map.
+    # Follow-graph coverage reads yield_map, which above is sourced ONLY from
+    # account_quality.json — written only by the IG scraper. While the IG
+    # account-sweep is blocked (fb-174), signal accounts whose events arrive via
+    # non-IG paths (lu.ma curators, venue sites) and already fire userFollowing
+    # never register coverage — so reading_rhythms / nycbackgammonclub /
+    # philosophy.nyc sit at yield 0 despite producing many events. Second pass:
+    # fold each enriched event's account → signal handle and stamp a non-zero
+    # yield. Strictly additive (only raises 0 → >0; never lowers an IG yield).
+    try:
+        _feed_path = os.path.join(DATA_DIR, "..", "..", "site", "public", "events.json")
+        with open(_feed_path) as _f:
+            _feed = json.load(_f)
+        # Fold a handle to its alnum form AND a location-suffix-stripped form,
+        # so the event's account (e.g. "readingrhythms-manhattan") matches the
+        # signal handle ("reading_rhythms"). Same suffix set as normalize.
+        _SUF = (
+            "manhattan",
+            "brooklyn",
+            "queens",
+            "bronx",
+            "statenisland",
+            "williamsburg",
+            "nyc",
+            "ny",
+            "bk",
+        )
+
+        def _folds(h):
+            base = re.sub(r"[^a-z0-9]", "", (h or "").lower())
+            if not base:
+                return
+            yield base
+            for suf in _SUF:
+                if base.endswith(suf) and len(base) - len(suf) >= 4:
+                    yield base[: -len(suf)]
+
+        # Map every fold variant of each signal handle → the signal handle.
+        _norm = {}
+        for s in follow_usernames | affinity_usernames:
+            for f in _folds(s):
+                _norm.setdefault(f, s)
+        _credited = 0
+        for _ev in _feed.get("events", []):
+            if not _ev.get("userFollowing"):
+                continue
+            _h = _ev.get("account") or _ev.get("instagramAccount") or ""
+            _sig = next((_norm[f] for f in _folds(_h) if f in _norm), None)
+            if _sig and yield_map.get(_sig, 0) == 0:
+                yield_map[_sig] = _ev.get("accountEventYield") or 0.05
+                _credited += 1
+        if _credited:
+            print(
+                f"[interest_profile] D1: credited {_credited} non-IG enriched signal accounts into yield_map"
+            )
+    except Exception:
+        pass
 
     # Read excluded accounts so user-rejected handles don't keep getting
     # the follow-graph boost (e.g. user follows houseofyesnyc for the
@@ -206,8 +308,10 @@ def interest_profile_boost(event: dict) -> float:
     # the event's actual content / source, not just who posted it.
     try:
         from ..quality import _is_caption_fragment
+
         title_is_fragment = _is_caption_fragment(
-            event.get("title", ""), event.get("description", "") or "",
+            event.get("title", ""),
+            event.get("description", "") or "",
         )
     except Exception:
         title_is_fragment = False
@@ -215,16 +319,22 @@ def interest_profile_boost(event: dict) -> float:
     # 1) Account-level signal — the strongest tell, but only when the
     # title is actually a real event (not a fragment).
     acct = (event.get("instagramAccount") or "").lower()
-    if acct and acct in set(profile.get("signal_accounts", [])) and not title_is_fragment:
+    if (
+        acct
+        and acct in set(profile.get("signal_accounts", []))
+        and not title_is_fragment
+    ):
         boost += 0.15
 
     # 2) Topic overlap
     topic_counts = profile.get("topic_counts", {}) or {}
     if topic_counts:
-        text = " ".join([
-            (event.get("title") or "").lower(),
-            (event.get("description") or "")[:200].lower(),
-        ])
+        text = " ".join(
+            [
+                (event.get("title") or "").lower(),
+                (event.get("description") or "")[:200].lower(),
+            ]
+        )
         tokens = set(_WORD_RE.findall(text))
         # User-shorthand fold: a follow with "bk" in its handle (franklinparkbk,
         # anaiswinebk, …) signals Brooklyn interest. Mirror tokens so the
@@ -235,8 +345,7 @@ def interest_profile_boost(event: dict) -> float:
             tokens.add("brooklyn")
         # Only count topics with at least 2 followed accounts referencing
         # them — singletons are noise.
-        matched = sum(1 for t, c in topic_counts.items()
-                      if c >= 2 and t in tokens)
+        matched = sum(1 for t, c in topic_counts.items() if c >= 2 and t in tokens)
         boost += min(0.10, matched * 0.03)
 
     # 3) Host match

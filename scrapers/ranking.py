@@ -52,6 +52,31 @@ def compute_score(event: dict) -> float:
     if signals["title_quality"] < 0.3:
         return 0.0
 
+    # Story-scoped title floor (fb-175): IG-story OCR/caption fragments that pass
+    # the global fragment detector but aren't real events ("2 mini lobster rolls",
+    # "45 minutes of feel Sood", "Purchase a @nike kit..."). Scoped to isStory so
+    # legit non-story digit-led/imperative titles (e.g. "718 Sessions PRIDE BOAT
+    # PARTY", "Get the Beauty Scoop") are untouched.
+    if event.get("isStory") or event.get("discoveredVia") == "ig_story":
+        _t = (event.get("title") or "").strip().lower()
+        _imperative = (
+            "purchase ",
+            "buy ",
+            "get ",
+            "try ",
+            "grab ",
+            "order ",
+            "shop ",
+            "tap ",
+            "swipe ",
+            "click ",
+            "use code",
+            "dm us",
+            "head to",
+        )
+        if re.match(r"^\d", _t) or _t.startswith(_imperative):
+            return 0.0
+
     # Multi-signal ranking
     proximity = _proximity_score(event)
     category = _category_score(event)
@@ -86,12 +111,12 @@ def compute_score(event: dict) -> float:
     # boosts to differentiate top-tier events instead of saturating at 1.0.
     base_score = (
         proximity * 0.09
-        + category * 0.12       # interests are critical
+        + category * 0.12  # interests are critical
         + price * 0.02
         + popularity * 0.04
-        + source * 0.11         # IG is curated
+        + source * 0.11  # IG is curated
         + completeness * 0.03
-        + title_q * 0.07        # punish caption fragments
+        + title_q * 0.07  # punish caption fragments
         + desc_q * 0.03
         + time_q * 0.04
     )
@@ -100,16 +125,30 @@ def compute_score(event: dict) -> float:
     saved_boost = 0.25 if event.get("userSaved") else 0.0
 
     # User-tagged: someone tagged the user — implicit invitation
-    tagged_boost = 0.20 if event.get("userTagged") and not event.get("userSaved") else 0.0
+    tagged_boost = (
+        0.20 if event.get("userTagged") and not event.get("userSaved") else 0.0
+    )
 
     # User-affinity: events from accounts user has saved from in the past
-    affinity_boost = 0.10 if event.get("userAffinity") and not (event.get("userSaved") or event.get("userTagged")) else 0.0
+    affinity_boost = (
+        0.10
+        if event.get("userAffinity")
+        and not (event.get("userSaved") or event.get("userTagged"))
+        else 0.0
+    )
 
     # User-following: account user directly follows on IG (manual choice).
     # Even if they haven't saved, the user actively chose to follow.
-    following_boost = 0.08 if event.get("userFollowing") and not (
-        event.get("userSaved") or event.get("userTagged") or event.get("userAffinity")
-    ) else 0.0
+    following_boost = (
+        0.08
+        if event.get("userFollowing")
+        and not (
+            event.get("userSaved")
+            or event.get("userTagged")
+            or event.get("userAffinity")
+        )
+        else 0.0
+    )
 
     # User-curated source/series boost — reads scrapers/data/user_curated_sources.json
     # at runtime. Designed to be appended-to over time by an
@@ -124,10 +163,10 @@ def compute_score(event: dict) -> float:
     # as the user's follow graph evolves.
     try:
         from .utils.interest_profile import interest_profile_boost
+
         interest_boost = interest_profile_boost(event)
     except Exception:
         interest_boost = 0.0
-
 
     # Cross-source confirmation: same event appearing on 2+ sources is
     # very strong validation (e.g., Eventbrite + Instagram both list it).
@@ -205,12 +244,30 @@ def compute_score(event: dict) -> float:
     # an explicit bookmark should always pull an event to the top regardless
     # of how many other signals fire. Everything else stacks under a sum-cap
     # so events with broad keyword overlap don't saturate at 1.0 and tie.
-    explicit_boost = saved_boost + tagged_boost + affinity_boost + following_boost + curated_boost + interest_boost
+    explicit_boost = (
+        saved_boost
+        + tagged_boost
+        + affinity_boost
+        + following_boost
+        + curated_boost
+        + interest_boost
+    )
     stacked_boosts = (
-        high_value_boost + alcohol_free_boost + social_boost + meet_people_boost
-        + cred_boost + cross_source_boost + hot_boost + yield_boost
-        + comention_boost + velocity_boost + quality_boost + time_relevance
-        + dow_fit + tod_fit + geo_proximity
+        high_value_boost
+        + alcohol_free_boost
+        + social_boost
+        + meet_people_boost
+        + cred_boost
+        + cross_source_boost
+        + hot_boost
+        + yield_boost
+        + comention_boost
+        + velocity_boost
+        + quality_boost
+        + time_relevance
+        + dow_fit
+        + tod_fit
+        + geo_proximity
     )
     # dow_fit/tod_fit/geo_proximity can be negative; preserve their downward
     # signal but cap the positive sum so ranking still differentiates.
@@ -328,6 +385,7 @@ def _hot_event_boost(event: dict) -> float:
     if not fs:
         return 0.0
     from datetime import datetime, timezone, timedelta
+
     try:
         ts = datetime.fromisoformat(fs)
         if ts.tzinfo is None:
@@ -354,6 +412,7 @@ def _meet_people_tier_boost(event: dict, signals: dict) -> float:
     if signals.get("social_hits", 0) < 2:
         return 0.0
     from datetime import date, datetime
+
     date_str = event.get("date", "")
     if not date_str:
         return 0.0
@@ -404,6 +463,7 @@ def _time_of_day_fit_boost(event: dict) -> float:
     - 09:00-16:00 weekends: 0 (no penalty — weekends are open)
     """
     from datetime import date as _date, datetime
+
     start = event.get("startTime") or ""
     if not start or ":" not in start:
         return 0.0
@@ -419,8 +479,8 @@ def _time_of_day_fit_boost(event: dict) -> float:
         is_weekend = False
 
     cats = set(event.get("categories", []))
-    is_fitness_morning = (
-        6 <= h <= 9 and bool(cats & {"fitness", "wellness", "outdoors"})
+    is_fitness_morning = 6 <= h <= 9 and bool(
+        cats & {"fitness", "wellness", "outdoors"}
     )
 
     if is_fitness_morning:
@@ -444,6 +504,7 @@ def _day_of_week_fit_boost(event: dict) -> float:
     Cap small (+0.05/-0.03) so it nudges, doesn't dominate.
     """
     from datetime import date as _date, datetime
+
     date_str = event.get("date", "")
     if not date_str:
         return 0.0
@@ -460,17 +521,23 @@ def _day_of_week_fit_boost(event: dict) -> float:
 
     boost = 0.0
     # Parties / nightlife / singles benefit on Fri/Sat
-    if cats & {"parties", "singles"} or any(k in text for k in ("dj", "dance party", "nightlife", "rooftop")):
+    if cats & {"parties", "singles"} or any(
+        k in text for k in ("dj", "dance party", "nightlife", "rooftop")
+    ):
         if is_fri_sat:
             boost += 0.05
         elif weekday in (0, 1, 2):  # Mon/Tue/Wed
             boost -= 0.03
     # Live music: Thu/Fri/Sat
-    if "music" in cats or any(k in text for k in ("concert", "live music", "live band")):
+    if "music" in cats or any(
+        k in text for k in ("concert", "live music", "live band")
+    ):
         if weekday in (3, 4, 5):
             boost += 0.04
     # Fitness / run clubs: weekdays preferred (people work-out before/after work)
-    if cats & {"fitness", "wellness"} or any(k in text for k in ("run club", "yoga", "workout")):
+    if cats & {"fitness", "wellness"} or any(
+        k in text for k in ("run club", "yoga", "workout")
+    ):
         if not is_weekend:
             boost += 0.03
     # Brunch / food on weekends
@@ -485,6 +552,7 @@ def _time_relevance_boost(event: dict) -> float:
     after current time) since that's the user's primary use case — replacing
     IG scrolling for "what's happening tonight"."""
     from datetime import date, datetime
+
     date_str = event.get("date", "")
     if not date_str:
         return 0.0
@@ -510,11 +578,11 @@ def _time_relevance_boost(event: dict) -> float:
                 # Future-of-today: stronger boost the closer to now
                 if ev_hm >= cur_hm:
                     diff_min = ev_hm - cur_hm
-                    if diff_min <= 180:    # within 3 hours
+                    if diff_min <= 180:  # within 3 hours
                         return 0.12
-                    if diff_min <= 360:    # within 6 hours
+                    if diff_min <= 360:  # within 6 hours
                         return 0.10
-                    return 0.07            # later today
+                    return 0.07  # later today
                 else:
                     # Already started today — moderate boost so it doesn't
                     # disappear (some events are multi-hour).
@@ -523,11 +591,11 @@ def _time_relevance_boost(event: dict) -> float:
                 pass
         return 0.07  # today, no time known
     if days_out == 1:
-        return 0.06   # tomorrow
+        return 0.06  # tomorrow
     if days_out <= 4:
-        return 0.04   # this week-ish
+        return 0.04  # this week-ish
     if days_out <= 7:
-        return 0.03   # next 7 days
+        return 0.03  # next 7 days
     if days_out <= 14:
         return 0.015  # next 2 weeks
     return 0.0
@@ -591,9 +659,11 @@ def _load_user_excluded_sources() -> dict:
     if _USER_EXCLUDED_CACHE is not None:
         return _USER_EXCLUDED_CACHE
     import os as _os, json as _json
+
     path = _os.path.join(
         _os.path.dirname(_os.path.abspath(__file__)),
-        "data", "user_excluded_sources.json",
+        "data",
+        "user_excluded_sources.json",
     )
     if not _os.path.isfile(path):
         _USER_EXCLUDED_CACHE = {"accounts": set(), "hosts": [], "title_hints": []}
@@ -630,15 +700,18 @@ def is_user_excluded(event: dict) -> bool:
     # be dropped even though their instagramAccount field is empty.
     if cfg["accounts"]:
         loc = event.get("location") or {}
-        loc_name = (loc.get("name") or "").strip().lower() if isinstance(loc, dict) else ""
+        loc_name = (
+            (loc.get("name") or "").strip().lower() if isinstance(loc, dict) else ""
+        )
         if loc_name and len(loc_name) >= 3:
             import re as _re
+
             loc_norm = _re.sub(r"[^a-z0-9]", "", loc_name)
             if len(loc_norm) >= 5:
                 variants = {loc_norm}
                 for suffix in ("nyc", "ny", "brooklyn", "manhattan", "bk"):
                     if loc_norm.endswith(suffix) and len(loc_norm) - len(suffix) >= 5:
-                        variants.add(loc_norm[:-len(suffix)])
+                        variants.add(loc_norm[: -len(suffix)])
                 for suffix in ("nyc", "ny", "bk"):
                     if not loc_norm.endswith(suffix):
                         variants.add(loc_norm + suffix)
@@ -659,8 +732,9 @@ def is_user_excluded(event: dict) -> bool:
         if host in url:
             return True
     if cfg["title_hints"]:
-        text = ((event.get("title") or "") + " "
-                + (event.get("description") or "")[:300]).lower()
+        text = (
+            (event.get("title") or "") + " " + (event.get("description") or "")[:300]
+        ).lower()
         if any(h in text for h in cfg["title_hints"]):
             return True
     return False
@@ -680,22 +754,29 @@ def _load_user_curated_sources() -> dict:
     if _USER_CURATED_CACHE is not None:
         return _USER_CURATED_CACHE
     import os as _os
+
     path = _os.path.join(
         _os.path.dirname(_os.path.abspath(__file__)),
-        "data", "user_curated_sources.json",
+        "data",
+        "user_curated_sources.json",
     )
     if not _os.path.isfile(path):
         _USER_CURATED_CACHE = {"hosts": {}, "title_hints": {}}
         return _USER_CURATED_CACHE
     try:
         import json as _json
+
         with open(path) as f:
             raw = _json.load(f)
         _USER_CURATED_CACHE = {
-            "hosts": {k.lower(): float(v.get("score", 1.0))
-                      for k, v in (raw.get("hosts") or {}).items()},
-            "title_hints": {k.lower(): float(v.get("score", 1.0))
-                            for k, v in (raw.get("title_hints") or {}).items()},
+            "hosts": {
+                k.lower(): float(v.get("score", 1.0))
+                for k, v in (raw.get("hosts") or {}).items()
+            },
+            "title_hints": {
+                k.lower(): float(v.get("score", 1.0))
+                for k, v in (raw.get("title_hints") or {}).items()
+            },
         }
         return _USER_CURATED_CACHE
     except Exception:
@@ -724,8 +805,10 @@ def _user_curated_boost(event: dict) -> float:
     # rescue an unintelligible title.
     try:
         from .quality import _is_caption_fragment
-        if _is_caption_fragment(event.get("title", ""),
-                                event.get("description", "") or ""):
+
+        if _is_caption_fragment(
+            event.get("title", ""), event.get("description", "") or ""
+        ):
             return 0.0
     except Exception:
         pass
@@ -749,8 +832,9 @@ def _user_curated_boost(event: dict) -> float:
             if host in url:
                 boost = max(boost, weight)
     if boost < 1.0:
-        text = ((event.get("title") or "") + " "
-                + (event.get("description") or "")[:300]).lower()
+        text = (
+            (event.get("title") or "") + " " + (event.get("description") or "")[:300]
+        ).lower()
         for hint, weight in cfg["title_hints"].items():
             if hint in text:
                 boost = max(boost, weight)
@@ -817,6 +901,7 @@ def _compute_highlights(event: dict) -> list[str]:
     if first_seen:
         try:
             from datetime import datetime, timedelta
+
             fs = datetime.fromisoformat(first_seen)
             if (datetime.now() - fs) < timedelta(hours=30):
                 highlights.append("new")
@@ -827,17 +912,33 @@ def _compute_highlights(event: dict) -> list[str]:
         highlights.append("free")
 
     # Special / time-limited
-    if any(kw in text for kw in ["opening night", "premiere", "launch party", "first look", "preview"]):
+    if any(
+        kw in text
+        for kw in ["opening night", "premiere", "launch party", "first look", "preview"]
+    ):
         highlights.append("special")
     if any(kw in text for kw in ["festival", "block party", "street fair"]):
         highlights.append("festival")
-    if any(kw in text for kw in ["meet new people", "make new friends", "singles", "speed dating", "social mixer", "icebreaker"]):
+    if any(
+        kw in text
+        for kw in [
+            "meet new people",
+            "make new friends",
+            "singles",
+            "speed dating",
+            "social mixer",
+            "icebreaker",
+        ]
+    ):
         highlights.append("meet-people")
     if any(kw in text for kw in ["rooftop", "harbor cruise", "boat party", "sunset"]):
         highlights.append("vibes")
     if any(kw in text for kw in ["live jazz", "jazz set", "jazz club", "jazz night"]):
         highlights.append("jazz")
-    if any(kw in text for kw in ["dj set", "dj night", "warehouse", "house music", "techno"]):
+    if any(
+        kw in text
+        for kw in ["dj set", "dj night", "warehouse", "house music", "techno"]
+    ):
         highlights.append("nightlife")
 
     # Williamsburg-local
@@ -851,6 +952,7 @@ def _compute_highlights(event: dict) -> list[str]:
 def _haversine_miles(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
     """Distance in miles between two lat/lng points (haversine)."""
     import math
+
     R = 3958.8  # Earth radius in miles
     p1, p2 = math.radians(lat1), math.radians(lat2)
     dp = math.radians(lat2 - lat1)
@@ -880,11 +982,11 @@ def _distance_proximity_boost(event: dict) -> float:
     except Exception:
         return 0.0
     if miles <= 1:
-        return 0.06   # walking distance
+        return 0.06  # walking distance
     if miles <= 3:
-        return 0.04   # short bike / quick L train
+        return 0.04  # short bike / quick L train
     if miles <= 6:
-        return 0.02   # within Brooklyn / lower Manhattan
+        return 0.02  # within Brooklyn / lower Manhattan
     if miles >= 15:
         return -0.03  # NJ / outer queens — actually deboost
     return 0.0
@@ -970,12 +1072,7 @@ def _popularity_score(event: dict) -> float:
     view_contribution = min(2000, video_views * 0.1) if video_views else 0
     attendance_contribution = attendance * 50  # one "going!" ≈ 50 likes
     if likes or comments or view_contribution or attendance_contribution:
-        engagement = (
-            likes
-            + comments * 5
-            + view_contribution
-            + attendance_contribution
-        )
+        engagement = likes + comments * 5 + view_contribution + attendance_contribution
         if engagement >= 5000:
             return 1.0
         if engagement >= 1500:

@@ -248,12 +248,21 @@ function FeedCard({
                 </button>
               ) : event.account && (event.userFollowing || event.userAffinity) ? (
                 // Cross-source-enriched conviction event: surface WHICH follow
-                // drove it. Plain text (not a filter button) — AccountBanner
-                // keys on instagramAccount and would show an empty banner for
-                // these source-only handles.
-                <span title={`From @${event.account}, an account you follow`}>
+                // drove it, as a clickable per-account filter (fb-169). The
+                // account filter now keys on event.account (lib/events.ts), and
+                // AccountBanner suppresses the IG link for these non-IG handles.
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    trackAccountClick(event.account);
+                    onAccountClick?.(event.account!);
+                  }}
+                  className="hover:text-gray-700 hover:underline focus:outline-none"
+                  title={`See more from @${event.account}`}
+                >
                   @{event.account}
-                </span>
+                </button>
               ) : (
                 <span>{SOURCE_LABELS[event.source] || event.source}</span>
               )}

@@ -750,6 +750,56 @@ These are the durable preferences the user has stated. They're marked `addressed
 - resolution: Rewrote the onefinedaynyc handling in `scrapers/sources/substack.py`. The weekly "NYC This Week" posts mark each curated event with a 📍 pin and encode `📍Title (@ Venue)☁️ Date | Time🎟️ Price+Desc` inline. The old heading-fragment heuristic mangled these (duplicate/mis-dated-to-2027/mis-linked fragments) and leaked the shop (🛍️/🍀/☕) and product (👖/📱) sections as fake events. New `_extract_pin_marker_events` parses the structure deterministically: 📍+☁️ as event discriminator, split on 🎟️ then ☁️, dates anchored to the post's publication year (fixes dateparser future-preference 2027 bug), per-event external venue/lu.ma/eventbrite URL, inline time, free/ticketed price, venue, cleaned description. Also suppressed the whole-post fallback for roundup/guide/calendar container titles (kills the "Your June Guide to NYC" promo-card junk). Verified live on the May weeklies (Brooklyn Ceramic Arts Tour, High Line Plant Sale, Well-Read/Best Dressed Literary Salon → score 1.00); theskint/eater unaffected.
 - NOTE for future agents: the MONTHLY "Your X Guide to NYC" posts are now PAYWALLED (RSS ships only an intro + "Read more") — we correctly extract nothing from them. The WEEKLY "NYC This Week | <dates>" posts remain full-text and free — that is the high-value content. When the user reports "no One Fine Day events showing", first check whether a NEW weekly has been published (the feed can lag a few days between weeklies); the parser is correct, the feed simply may not have a current-week edition yet.
 
+### fb-176 — Brooklyn `bk` topic-coverage gap: shorthand not matching (0 events)
+- created_at: 2026-06-15
+- source: agent-proposal (metrics-before, run 2026-06-15-1724)
+- status: open
+- body: `metrics-before` shows `topic_counts.bk = 0` across a 378-event deployed feed while `brooklyn = 43`. The `bk → brooklyn` synonym fold (fb-103 iter-1-P6 in `interest_profile.py`) and the venue-name expansion (fb-111 `_normalize_venue_name`) should have lifted this above zero. Either the synonym fold isn't being applied during the topic-count pass that produces `topic_counts`, or no surfaced events carry the `bk` token in a field the topic counter reads. With 43 Brooklyn events present, the borough is well-covered — this is a *measurement/tokenization* gap, not a coverage gap. The user explicitly named Brooklyn shorthand as a tracked topic; a tracked topic sitting at 0 while its long-form sibling has 43 is a regression signal worth closing.
+- "addressed" criterion: `topic_counts.bk > 0` on the next metrics snapshot (target ≥ 5, proportional to the 43 brooklyn events), OR a documented finding that the `bk` token is intentionally not derivable from these events with a wont-do rationale approved by the Critic.
+
+### fb-175 — 4 residual IG-Story OCR fragments survive the iter-4fee74e filters
+- created_at: 2026-06-15
+- source: agent-proposal (post-ship audit of commit 4fee74e)
+- status: open
+- body: The 2026-06-15 quality cleanup (commit 4fee74e) shipped hard-blocks + IG-Story OCR fragment filters (date-led, ALLCAPS-neighborhood, OCR symbol-runs, caption openers, World Cup schedule spam) and dropped 38 garbage events with 0 legit events affected. 4 borderline IG-Story residuals remain because they could not be filtered without false-positive risk on legitimate titles: "45 minutes of feel Sood", "2 mini lobster rolls", "Great vibe 1010 experience", "Dance your cares away". These are caption-sentence fragments OCR'd from stories, not real event titles. They need a precision-safe filter (e.g. a story-source-scoped title-quality floor: short imperative/fragment titles from `instagram` source with no date/venue/structured fields) rather than a global keyword block.
+- "addressed" criterion: the 4 named residuals are dropped from the feed (verify against a fresh feed snapshot) AND 0 legitimate IG events are removed (precision check against the prior-feed legit IG titles).
+
+### fb-174 — IG GraphQL account-sweep broadly blocked (400) fleet-wide; only saved-posts works
+- created_at: 2026-06-15
+- source: agent-proposal (discovered during the onefinedaynyc IG work, commit 6d50046)
+- status: open (user-blocked — infra/platform constraint, no code fix)
+- body: Instagram's GraphQL endpoint now returns 400 for the account-sweep path from BOTH CI runner IPs and residential IPs — the IG account-sweep is degraded fleet-wide, not just an IP/session problem. Only the saved-posts endpoint still works. This is the dominant structural cause behind low follow-graph coverage (12/50) and the chronically low IG share of the feed (14/378). It is NOT fixable by an IG-session refresh alone — the GraphQL account-sweep path itself is blocked. Workers MUST NOT propose IG-account-sweep-dependent fixes as the lever for follow-graph coverage; they must use non-IG enrichment paths (Lu.ma curator handles, venue-domain hostnames, organizer/location.name matching) which work independent of this block. While working on onefinedaynyc IG capture, spot-account multi-event roundups were made to surface as dated events (commit 6d50046) — that path still works via saved-posts and is the recommended pattern.
+- "addressed" criterion: user-blocked; cannot be closed by a worker. Reduce dependence on it by lifting follow-graph coverage via non-IG paths (see fb-177).
+
+### fb-173 — GitHub Actions runner IP broadly 403/429-blocked by many publishers
+- created_at: 2026-06-15
+- source: agent-proposal (discovered during the onefinedaynyc + multi-source work)
+- status: open (user-blocked — infra constraint; mitigations shipped)
+- body: The GitHub Actions runner IP is broadly 403/429-blocked by many publishers: substack (onefinedaynyc), mcnallyjackson, centerforfiction, nycgovparks, museums, instagram. This degrades CI scrape yield independent of any per-source scraper correctness. Mitigations shipped this session: expanded `CARRYOVER_SOURCES` (so a blocked fetch reuses the last-good events instead of dropping the source to 0), a feed-reader-header retry for substack, and the operational practice of running residential-IP scrapes when CI is blocked. This is a durable infra constraint future agents must account for — a source showing 0 in a CI metrics snapshot may be IP-blocked, not broken. Verify against a residential-IP run before concluding a scraper is broken.
+- "addressed" criterion: user-blocked; mitigated via CARRYOVER_SOURCES + residential-scrape practice. Future audits must distinguish "0 events from CI IP block" from "0 events from scraper bug."
+
+### fb-172 — Lu.ma curators + Bond & Grace literary-salon scraper
+- created_at: 2026-06-15
+- source: user-explicit
+- status: addressed: c462147
+- body: User: "Capture lu.ma curators (litclub.nyc, readingrhythms-manhattan, philosophy) well + add bondandgrace.com lit-society." Lu.ma curators are now yielding well (litclub.nyc 13, readingrhythms 18, philosophy 6). Added a dedicated Bond & Grace literary-salon scraper (NYC-only).
+- resolution: shipped in commit c462147. Lu.ma curator coverage verified yielding; new `bondandgrace` source live (2 events on the current deployed feed per metrics-before SOURCE_DIST).
+
+### fb-171 — Partiful rewritten off /explore/nyc (3 → ~40 robust NYC events)
+- created_at: 2026-06-15
+- source: user-explicit
+- status: addressed: 28d14c0
+- body: User: "Improve partiful, make it robust, NYC-only" and pointed to partiful.com/explore/nyc. Rewrote the partiful scraper to read from /explore/nyc, lifting it from 3 to ~40 NYC events, robust, capped, with carryover.
+- resolution: shipped (commits incl. 28d14c0). Partiful is 40 events on the current deployed feed per metrics-before SOURCE_DIST — matches the ~40 target and the SOURCE_VOLUME_CAPS bound.
+
+
+### fb-178 — "Did you go?" attend/skip affordance on past saved events
+- created_at: 2026-06-15
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-06-15-1724)
+- status: open
+- body: Convert passive saves into explicit attend/skip ground truth to close the calibration loop (README §341-369). For events whose date is in the past AND were saved (`isSavedLocal`), render a minimal "Did you go? Yes / No" on the FeedCard (no new widget chrome — consistent with the iter-215 simplification). Persist to localStorage `attended:<eventId>`. A later round adds an ingest path (`scrapers/data/user_attendance.json`) that re-weights `userAffinity` + the topic_counts derivation. Deferred because it needs a storage/ingest design beyond a no-backend round.
+- files: `site/app/components/EventCard.tsx` (past+saved branch) + `site/app/lib/interests.ts` (localStorage helper).
+
 <!-- Append new feedback above this comment as it comes in. Top of list is highest priority. -->
 
 

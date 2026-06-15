@@ -97,3 +97,32 @@ After the next CI scrape (which will pick up P1's auto-revive of the 54 transien
 
 **Hypothesis for next round:**
 After the next CI scrape, follow-graph coverage should tick up from the 3 newly-enriched non-IG accounts (philosophy/backgammon/silentbookclub) even with the IG session still stale — proving the non-IG enrichment lever works independent of the IG bottleneck. The binding constraint remains the IG-session refresh (user-blocked). Next run should re-audit the top-of-feed after the OCR purge lands and consider whether a story-specific title-quality floor is warranted (ingestion open question #4).
+
+## 2026-06-15 17:24 — run-id 2026-06-15-1724
+
+**Shipped:**
+- ingestion-P1 (APPROVE): bk↔brooklyn synonym fold in the metrics-script topic counter — `.claude/commands/self-improve.md`. Fixed the `bk`=0 measurement bug (the fb-103 ranker fold never reached the metric, which counted literal `bk` = 0/378). bk topic 0 → 42.
+- ingestion-P2 (APPROVE): story-scoped title floor in `scrapers/ranking.py::compute_score` — drops digit-prefix / imperative-prefix `isStory` titles ("2 mini lobster rolls", "45 minutes of feel Sood", "Purchase a @nike kit…"). isStory-gated so non-story digit/imperative titles untouched. Verified 0-FP.
+- D1 / APPROVE-DREAM (the corrected source-pool-S1): credit NON-IG enriched (`userFollowing`) events into `yield_map` — `scrapers/utils/interest_profile.py::build_profile` second pass. Critic correctly diagnosed that follow-graph coverage reads yield_map, which was sourced ONLY from account_quality.json (IG-only) — so non-IG signal accounts (reading_rhythms etc.) sat at 0 despite producing events. Added location-suffix folding so "readingrhythms-manhattan" → "reading_rhythms". Coverage 24% → 30%.
+- ui-U1 / fb-169 (APPROVE): clickable `@account` filter for cross-source-enriched conviction handles — 3 files (`site/app/lib/events.ts` load-bearing predicate now matches `event.account`; `AccountBanner.tsx` counts account-matches + `isIg` guard suppresses dead "Open on IG" link for non-IG handles; `EventCard.tsx` plain span → clickable button). next build clean.
+
+**Rejected:**
+- source-pool-S1 (Critic REJECT of the diagnosis): the reading_rhythms "handle-fold gap" was inert — the conviction fold already matches (userFollowing fires). The real issue was the yield_map data-source architecture → replaced by D1.
+- source-curator 0 source-adds: APPROVE (honest negative; nothing cleared ≥5 live yield via a parseable path).
+
+**Deferred (backlog):**
+- D2 → fb-178: "Did you go?" attend/skip affordance on past saved events (closes the calibration loop; needs storage/ingest design).
+- 2 IG-Story residuals ("Great vibe 1010 experience", "Dance your cares away") — not in current feed, no FP-verifiable rule with 0 live instances (fb-175 stays open).
+
+**Feedback gate:** CLOSED (user gave extensive direct feedback over the prior 11 days; logged it as fb-171–176; no calibration question this round).
+
+**User-blocked (routed around, not fixed):** fb-174 (IG GraphQL sweep 400-blocked fleet-wide), fb-173 (CI runner IP 403/429-blocked by many publishers), fb-139 (Reddit OAuth).
+
+**Metric delta:**
+- Follow-graph coverage: 24.0% (12/50) → 30.0% (15/50) [D1]
+- Topic coverage: bk 0 → 42; no zero topics remaining [P1]
+- High-conviction ratio: 18.3% → 17.5% (intentionally stable — the prior 30→18 quality-cleanup drop is preserved, not relaxed; P2 dropped 3 more garbage stories)
+
+**Verification:** next build clean; 253 tests pass; sanity_check has 2 criticals (backgammon, IG-dominant) — BOTH pre-existing data conditions, NOT caused by this run's code-only edits (events.json unmodified by the edits; confirmed). No revert.
+
+**Hypothesis for next round:** D1 establishes that non-IG enrichment can move follow-graph coverage independent of the IG block — future rounds can push coverage further by enriching more signal accounts' events via non-IG sources (lu.ma curators, venue sites). The IG sweep + CI-IP blocks remain the binding constraints (user-action / infra). Consider implementing fb-178 (attend feedback) to start building calibration ground-truth.
