@@ -737,7 +737,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-169 — Make AccountBanner key on event.account (clickable enriched conviction handles)
 - created_at: 2026-06-04
 - source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-06-04-1904)
-- status: open
+- status: addressed: 707b444 (ui-U1, run 2026-06-15-1724 — 3-file change incl. the load-bearing lib/events.ts predicate)
 - body: ui-U1 (this round) surfaces the followed `@account` on the 68 cross-source-enriched conviction events as PLAIN TEXT, because `AccountBanner` currently filters by `instagramAccount` only and would render an empty "0 upcoming" banner for a `bookclubbar`/`readingrhythms-manhattan`/`nycforfree`/`silentbookclubnyc` click. D2 completes the loop: extend `AccountBanner`'s filter predicate to match `e.instagramAccount === acct || e.account === acct`, then make the ui-U1 plain-text `@account` a clickable filter button like the IG branch — turning these calibration-validated literary follows (iter-198: user said they'd attend ALL of bookclubbar/readingrhythms/litclub) into working per-account browse routes.
 - files: `site/app/components/EventCard.tsx` (provenance branch) + `site/app/components/AccountBanner.tsx` (filter predicate).
 - deferred reason: touches a second component; ui-U1 (plain text) is the safe minimal step. Ship only after ui-U1 lands and is confirmed clutter-free.
@@ -753,14 +753,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-176 — Brooklyn `bk` topic-coverage gap: shorthand not matching (0 events)
 - created_at: 2026-06-15
 - source: agent-proposal (metrics-before, run 2026-06-15-1724)
-- status: open
+- status: addressed: 707b444 (ingestion-P1 — bk<->brooklyn fold in the metrics-script topic counter; measurement bug, bk 0->42)
 - body: `metrics-before` shows `topic_counts.bk = 0` across a 378-event deployed feed while `brooklyn = 43`. The `bk → brooklyn` synonym fold (fb-103 iter-1-P6 in `interest_profile.py`) and the venue-name expansion (fb-111 `_normalize_venue_name`) should have lifted this above zero. Either the synonym fold isn't being applied during the topic-count pass that produces `topic_counts`, or no surfaced events carry the `bk` token in a field the topic counter reads. With 43 Brooklyn events present, the borough is well-covered — this is a *measurement/tokenization* gap, not a coverage gap. The user explicitly named Brooklyn shorthand as a tracked topic; a tracked topic sitting at 0 while its long-form sibling has 43 is a regression signal worth closing.
 - "addressed" criterion: `topic_counts.bk > 0` on the next metrics snapshot (target ≥ 5, proportional to the 43 brooklyn events), OR a documented finding that the `bk` token is intentionally not derivable from these events with a wont-do rationale approved by the Critic.
 
 ### fb-175 — 4 residual IG-Story OCR fragments survive the iter-4fee74e filters
 - created_at: 2026-06-15
 - source: agent-proposal (post-ship audit of commit 4fee74e)
-- status: open
+- status: addressed-partial: 707b444 (ingestion-P2 story-scoped floor dropped the 3 LIVE residuals; 2 not-in-feed residuals deferred — no FP-verifiable rule with 0 live instances)
 - body: The 2026-06-15 quality cleanup (commit 4fee74e) shipped hard-blocks + IG-Story OCR fragment filters (date-led, ALLCAPS-neighborhood, OCR symbol-runs, caption openers, World Cup schedule spam) and dropped 38 garbage events with 0 legit events affected. 4 borderline IG-Story residuals remain because they could not be filtered without false-positive risk on legitimate titles: "45 minutes of feel Sood", "2 mini lobster rolls", "Great vibe 1010 experience", "Dance your cares away". These are caption-sentence fragments OCR'd from stories, not real event titles. They need a precision-safe filter (e.g. a story-source-scoped title-quality floor: short imperative/fragment titles from `instagram` source with no date/venue/structured fields) rather than a global keyword block.
 - "addressed" criterion: the 4 named residuals are dropped from the feed (verify against a fresh feed snapshot) AND 0 legitimate IG events are removed (precision check against the prior-feed legit IG titles).
 
