@@ -1236,8 +1236,8 @@
     },
     "buzzkillnyc": {
       "failure_count": 0,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
-      "last_transient_at": "2026-06-17T05:23:03.533711+00:00"
+      "last_reason": "JSON Query to graphql/query: 500 Internal Server Error when accessing https://www.instagram.com/graphql/query?variables=%7B%22hasQuery%22%3Atrue%2C%22query%22%3A%22buzzkillnyc%22%7D&doc_id=26347858941",
+      "last_transient_at": "2026-06-17T12:33:40.184270+00:00"
     },
     "litclub.nyc": {
       "failure_count": 0,
@@ -1311,8 +1311,8 @@
     },
     "secret_nyc": {
       "failure_count": 0,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
-      "last_transient_at": "2026-06-17T05:22:39.117435+00:00"
+      "last_reason": "JSON Query to graphql/query: 500 Internal Server Error when accessing https://www.instagram.com/graphql/query?variables=%7B%22hasQuery%22%3Atrue%2C%22query%22%3A%22secret_nyc%22%7D&doc_id=263478589415",
+      "last_transient_at": "2026-06-17T12:31:21.916527+00:00"
     },
     "likeafriendsaid.nyc": {
       "failure_count": 0,
