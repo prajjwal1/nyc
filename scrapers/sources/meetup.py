@@ -14,6 +14,14 @@ SEARCH_URLS = [
     "https://www.meetup.com/find/?location=us--ny--New%20York&source=EVENTS&categoryId=622",  # Book Clubs
     "https://www.meetup.com/find/?location=us--ny--New%20York&source=EVENTS&categoryId=436",  # Games
     "https://www.meetup.com/find/?location=us--ny--Brooklyn&source=EVENTS",
+    # Fitness / run clubs (user priority — recurring run clubs live on
+    # Meetup as weekly events: RSRC, Party Pace, social runs, etc.).
+    # Keyword searches are more targeted than the broad Sports category,
+    # which is mostly leagues/pickup-sports the user doesn't want.
+    "https://www.meetup.com/find/?keywords=run%20club&location=us--ny--New%20York&source=EVENTS",
+    "https://www.meetup.com/find/?keywords=run%20club&location=us--ny--Brooklyn&source=EVENTS",
+    "https://www.meetup.com/find/?keywords=running&location=us--ny--New%20York&source=EVENTS",
+    "https://www.meetup.com/find/?keywords=fitness&location=us--ny--New%20York&source=EVENTS",
 ]
 
 

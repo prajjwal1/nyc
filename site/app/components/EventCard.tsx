@@ -224,6 +224,20 @@ function FeedCard({
                 FREE
               </span>
             )}
+            {/* U1 (run 2026-06-22-1501): surface a non-free price at a glance.
+                The feed previously badged only FREE, so paid fitness/dance
+                events (Brooklyn Contra $15, run-club drop-ins) showed no price
+                until the modal. Digit-only guard avoids junk pills ("varies",
+                "unknown"); qualitative words ("donation"/PWYC) deferred to D1. */}
+            {event.price &&
+              event.price !== "free" &&
+              event.price !== "unknown" &&
+              event.price !== "varies" &&
+              /\d/.test(event.price) && (
+                <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-gray-100 text-gray-700">
+                  {event.price}
+                </span>
+              )}
             {/* iter 215: category chips removed — visual noise. Categories
                 still drive ranking + diversity internally; the user does
                 not need to see them on every card. */}

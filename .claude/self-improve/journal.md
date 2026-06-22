@@ -126,3 +126,31 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Verification:** next build clean; 253 tests pass; sanity_check has 2 criticals (backgammon, IG-dominant) — BOTH pre-existing data conditions, NOT caused by this run's code-only edits (events.json unmodified by the edits; confirmed). No revert.
 
 **Hypothesis for next round:** D1 establishes that non-IG enrichment can move follow-graph coverage independent of the IG block — future rounds can push coverage further by enriching more signal accounts' events via non-IG sources (lu.ma curators, venue sites). The IG sweep + CI-IP blocks remain the binding constraints (user-action / infra). Consider implementing fb-178 (attend feedback) to start building calibration ground-truth.
+
+## 2026-06-22 1501 — run-id 2026-06-22-1501
+
+**Theme:** user-explicit (this session) — "more fitness-based events + run clubs (recurring too)" (fb-179) and "add contra dancing brooklyn" (fb-180). Both implemented in-session before the loop ran; the loop audited, hardened, and broadened them.
+
+**Shipped (pre-loop session work + loop edits, all in this run's commit):**
+- fb-179 (fitness/run-clubs): Meetup +4 run-club/running/fitness search URLs (`scrapers/sources/meetup.py`); removed `"running club"` from SOFT_PENALTY_KEYWORDS (`scrapers/quality.py`); fitness boost 1.1→1.3, wellness 1.05→1.2, +10 run-club/fitness IG seeds (`scrapers/config.py`). All +10 seeds fb-106-clean (clubs/orgs/studios).
+- fb-180 (Brooklyn Contra): new dedicated `scrapers/sources/brooklyncontra.py` (Squarespace-store parser; date-from-title; year inference), registered in `run_all.py` + `SOURCE_QUALITY=0.8`; `DISTINCT_SCHEDULE_SOURCES` exemption in `normalize.py`.
+- ingestion-P1 (APPROVE): scope-skip "every <weekday>" soft-penalty for fitness/wellness/outdoors text — `scrapers/quality.py::quality_signals`.
+- ingestion-P2 (MODIFY): generalized `\b<hint>\b` word-boundary matching for short single-word exclusion title-hints (len≤6/no-space/alpha), precompiled+cached — `scrapers/ranking.py`. Fixes fb-181 ('rave'→"Raven & Goose").
+- ingestion-P3 (APPROVE): DISTINCT_SCHEDULE_SOURCES also bypasses `_dedup_fuzzy_title` — `scrapers/normalize.py`. Contra 8→10 (both Sep-26 sessions recovered).
+- source-pool S1–S3,S5,S6 (APPROVE) + S4 (MODIFY/provisional): +6 live-probed Eventbrite slugs (run-club/contra/swing/folk/salsa/pilates), 20/20 future each — `scrapers/sources/generic.py`. Curator finding: existing broad running/yoga/fitness/dance slugs are INERT (0-yield) — flagged for ingestion next round.
+- ui-U1 (APPROVE): non-free digit-price pill on FeedCard — `site/app/components/EventCard.tsx`.
+
+**Rejected:** none — Critic APPROVE/MODIFY on all 11 proposals; zero directives deferred-rejected.
+
+**Deferred (added to backlog):** D1→fb-182 (qualitative price-word pills); D2→fb-183 (shared `_is_distinct_schedule_source` helper + queued fb-106-clean IG fitness/dance candidates for when fb-174 clears).
+
+**Feedback gate:** CLOSED (≥3 open items; newest user-explicit feedback is this session). No calibration question. Captured this session's two requests as fb-179/fb-180.
+
+**Metric delta (code-only round; events.json not re-scraped — deltas land on next CI scrape):**
+- Follow-graph coverage: 15/50 (30.0%) → 15/50 (30.0%).
+- Topic coverage: 0 zero-topics → 0 zero-topics (run=26, bk=42 stable; run-club/dance slugs reinforce run+dance next scrape).
+- High-conviction ratio: 64/365 (17.5%) → 64/365 (17.5%).
+
+**Verification:** 253 tests pass; next build clean; sanity_check 2 criticals (backgammon, IG-dominant) — IDENTICAL to pre-run, pre-existing data conditions (fb-174 IG block), NOT regressions (events.json unmodified). No revert. Note: the configured black formatter reflowed long lines across config/normalize/run_all/generic (cosmetic, behavior-preserving; content verified intact — IG_ACCOUNTS 167→176, SOURCE_QUALITY +brooklyncontra). Test-induced state-file churn (url_health/user_interest_profile) reverted to HEAD.
+
+**Hypothesis for next round:** the fitness/run-club/dance levers are now in place but their payoff is gated on the next CI scrape (Meetup live-verified 74 fitness/run events; Brooklyn Contra 10 dated dances verified through normalize). Next round should: (1) re-probe the 6 NEW Eventbrite slugs' LANDED yield (esp. folk-dance/pilates for performance/studio-spam) and the provisional S4; (2) investigate WHY the 6 legacy fitness slugs yield 0 (silent JSON-LD shape change — could recover yield cheaply); (3) measure the fitness/dance event-count lift in the deployed feed.

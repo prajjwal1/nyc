@@ -6,7 +6,32 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scrapers.sources import luma, bookclubbar, lizsbookbar, mcnallyjackson, nypl, nycforfree, eventbrite, museums, music_venues, parks, theskint, meetup, dice, instagram, substack, partiful, generic, reddit, powerhousearena, centerforfiction, brooklyncomedy, smorgasburg, bondandgrace
+from scrapers.sources import (
+    luma,
+    bookclubbar,
+    lizsbookbar,
+    mcnallyjackson,
+    nypl,
+    nycforfree,
+    eventbrite,
+    museums,
+    music_venues,
+    parks,
+    theskint,
+    meetup,
+    dice,
+    instagram,
+    substack,
+    partiful,
+    generic,
+    reddit,
+    powerhousearena,
+    centerforfiction,
+    brooklyncomedy,
+    smorgasburg,
+    bondandgrace,
+    brooklyncontra,
+)
 from scrapers.normalize import process, _load_previous_events_index
 
 ASYNC_SCRAPERS = [
@@ -28,6 +53,7 @@ ASYNC_SCRAPERS = [
     ("music_venues", music_venues.scrape),
     ("parks", parks.scrape),
     ("smorgasburg", smorgasburg.scrape),
+    ("brooklyncontra", brooklyncontra.scrape),
     ("theskint", theskint.scrape),
     ("meetup", meetup.scrape),
     ("dice", dice.scrape),
@@ -50,7 +76,9 @@ elif IG_SAVED_ONLY:
     # Quick-scrape mode: only user's saved posts (30s-2min).
     SYNC_SCRAPERS = [("instagram-saved", instagram.scrape_saved_only)]
 
-OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "events.json")
+OUTPUT_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "events.json"
+)
 
 
 async def run_scraper(name: str, scrape_fn) -> list[dict]:
@@ -110,8 +138,15 @@ async def main():
     #     lucky run. Past events age out via filter_future, so carryover only
     #     preserves still-future events.
     CARRYOVER_SOURCES = {
-        "instagram", "eventbrite", "songkick", "meetup",
-        "substack", "mcnallyjackson", "centerforfiction", "nyc_parks", "museums",
+        "instagram",
+        "eventbrite",
+        "songkick",
+        "meetup",
+        "substack",
+        "mcnallyjackson",
+        "centerforfiction",
+        "nyc_parks",
+        "museums",
         # bondandgrace: low-volume literary salons (user's top interest) from a
         # custom site — carry over so a flaked fetch doesn't drop them.
         "bondandgrace",
@@ -122,16 +157,18 @@ async def main():
         "partiful",
     }
     carryover = [
-        e for e in previous_index.values()
-        if e.get("source") in CARRYOVER_SOURCES
+        e for e in previous_index.values() if e.get("source") in CARRYOVER_SOURCES
     ]
     if carryover:
         all_events.extend(carryover)
         # Per-source count for monitoring.
         from collections import Counter as _Counter
+
         per_src = _Counter(e.get("source", "?") for e in carryover)
         per_src_str = ", ".join(f"{n} {s}" for s, n in per_src.most_common())
-        print(f"[run_all] Carrying over {len(carryover)} events from previous run ({per_src_str})")
+        print(
+            f"[run_all] Carrying over {len(carryover)} events from previous run ({per_src_str})"
+        )
 
     results = await asyncio.gather(
         *[run_scraper(name, fn) for name, fn in ASYNC_SCRAPERS],
@@ -149,7 +186,9 @@ async def main():
     # the whole pipeline. We'll overwrite once IG completes (or doesn't).
     if all_events:
         _write_events(process(all_events, previous_index), OUTPUT_PATH)
-        print(f"[run_all] Partial save after async scrapers: {len(all_events)} raw events")
+        print(
+            f"[run_all] Partial save after async scrapers: {len(all_events)} raw events"
+        )
 
     for name, fn in SYNC_SCRAPERS:
         result = run_sync_scraper(name, fn)
@@ -167,6 +206,7 @@ async def main():
     # pipeline non-fatal but the breakdown is visible immediately.
     try:
         from scrapers import sanity_check
+
         sanity_check.main(OUTPUT_PATH, write_stats=True, hard_fail=False)
     except Exception as exc:
         print(f"[run_all] sanity_check failed: {exc}")
@@ -174,13 +214,16 @@ async def main():
 
 SITE_PUBLIC_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "site", "public", "events.json",
+    "site",
+    "public",
+    "events.json",
 )
 
 
 def _write_events(events: list[dict], primary_path: str = OUTPUT_PATH) -> None:
     """Write events.json to both data/ and site/public/ atomically."""
     import datetime as _dt
+
     payload = {
         "events": events,
         # tz-aware UTC so the site's `new Date(lastUpdated)` parses
@@ -209,18 +252,21 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
     `userSaved` so UI can split "From accounts I save from" vs "Suggested".
     """
     from collections import defaultdict
+
     affinity = _load_user_affinity_set()
     quality = _load_account_quality()
     excluded = _load_user_excluded_account_set()
     today = _today_iso()
 
     # Pass 1: per-account in-feed event count
-    per_acct: dict[str, dict] = defaultdict(lambda: {
-        "events": 0,
-        "yield": 0.0,
-        "verified": False,
-        "image": None,
-    })
+    per_acct: dict[str, dict] = defaultdict(
+        lambda: {
+            "events": 0,
+            "yield": 0.0,
+            "verified": False,
+            "image": None,
+        }
+    )
     for e in events:
         acct = (e.get("instagramAccount") or "").lower()
         if not acct:
@@ -261,7 +307,7 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
 
     for acct, y, _ev, _posts in historical[:20]:
         per_acct[acct] = {
-            "events": 0,                  # 0 in current feed
+            "events": 0,  # 0 in current feed
             "yield": round(y, 3),
             "verified": False,
             "image": None,
@@ -272,30 +318,36 @@ def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:
         # Drop entries with both 0 events AND 0 yield (no signal)
         if info["events"] == 0 and info["yield"] < 0.10:
             continue
-        out.append({
-            "username": acct,
-            "events": info["events"],
-            "yield": round(info["yield"], 3),
-            "verified": info["verified"],
-            "image": info["image"],
-            "userSaved": acct in affinity,
-        })
+        out.append(
+            {
+                "username": acct,
+                "events": info["events"],
+                "yield": round(info["yield"], 3),
+                "verified": info["verified"],
+                "image": info["image"],
+                "userSaved": acct in affinity,
+            }
+        )
     # Rank by event count first (active accounts), then by yield, then by
     # affinity (saved-from accounts elevated).
-    out.sort(key=lambda a: (
-        -a["events"],
-        -a["yield"],
-        0 if a.get("userSaved") else 1,
-    ))
+    out.sort(
+        key=lambda a: (
+            -a["events"],
+            -a["yield"],
+            0 if a.get("userSaved") else 1,
+        )
+    )
     return out[:n]
 
 
 def _load_account_quality() -> dict:
     """Load IG account_quality.json — lifetime per-account stats."""
     import json
+
     path = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
-        "data", "account_quality.json",
+        "data",
+        "account_quality.json",
     )
     if not os.path.isfile(path):
         return {}
@@ -310,9 +362,11 @@ def _load_account_quality() -> dict:
 def _load_user_affinity_set() -> set:
     """Load user-affinity (saved-from) account usernames lowercased."""
     import json
+
     path = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
-        "data", "user_affinity_accounts.json",
+        "data",
+        "user_affinity_accounts.json",
     )
     if not os.path.isfile(path):
         return set()
@@ -330,6 +384,7 @@ from scrapers.utils.user_excluded import load_excluded_account_set as _load_user
 
 def _today_iso() -> str:
     import datetime as _dt
+
     return _dt.date.today().isoformat()
 
 
