@@ -96,7 +96,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-179 — Incorporate more fitness-based events + run clubs (recurring ones too)
 - created_at: 2026-06-22
 - source: user-explicit
-- status: in-progress (implemented this session, uncommitted; → addressed: <sha> in Phase 6)
+- status: addressed: d9eb82e (run 2026-06-22-1501; +P1 scope-skip "every <weekday>" soft-penalty for fitness, +S1/S6 Eventbrite run-club/pilates slugs)
 - body: incorporate more fitness based events, more run clubs (recurring ones should show up too)
 - resolution (this session, pending commit): Meetup +4 fitness/run-club search URLs; removed the `"running club"` soft-penalty in `scrapers/quality.py`; bumped fitness boost 1.1→1.3 and wellness 1.05→1.2 in `scrapers/config.py`; +10 run-club/fitness IG seed accounts in `scrapers/config.py`. The recurring-run-club path (`detect_recurring_weekday` → `expand_recurring_event`) was verified to work so recurring weekly runs surface as dated occurrences.
 - "addressed" criterion: fitness/run-club events increase on the next scrape AND at least one recurring run club surfaces as multiple dated occurrences; no run-club event is soft-penalized.
@@ -104,7 +104,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-180 — Add Brooklyn Contra dancing (brooklyncontra.org)
 - created_at: 2026-06-22
 - source: user-explicit
-- status: in-progress (implemented this session, uncommitted; → addressed: <sha> in Phase 6)
+- status: addressed: d9eb82e (run 2026-06-22-1501; +P3 fuzzy-title-dedup exemption → 10 dances incl. both Sep-26 sessions; +S2–S5 NYC-wide social-dance slugs)
 - body: add contra dancing brooklyn https://www.brooklyncontra.org/tickets
 - resolution (this session, pending commit): new dedicated scraper `scrapers/sources/brooklyncontra.py` (parses the Squarespace store; date from title; year inference), registered in `run_all.py` with `SOURCE_QUALITY=0.8`; added a `DISTINCT_SCHEDULE_SOURCES` exemption in `scrapers/normalize.py` so each scheduled dance survives the recurring-merge. Verified 8 dances surface (scores 0.59–0.76).
 - known-minor: the Oct-4 "Raven & Goose" dance is dropped by a PRE-EXISTING false positive — the user's `'rave'` title-exclusion substring-matches "Rave"n. Tracked separately as fb-181 (pre-existing exclusion bug, not contra-specific).
@@ -113,7 +113,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-181 — `'rave'` title-exclusion substring-matches legitimate words ("Raven", "rave reviews", etc.)
 - created_at: 2026-06-22
 - source: agent-proposal (discovered during fb-180 contra work)
-- status: open
+- status: addressed: d9eb82e (run 2026-06-22-1501; P2 — generalized `\b<hint>\b` word-boundary match for short single-word exclusion hints, precompiled+cached. Verified: "Raven & Goose"/"travel"/"gravel" survive; "warehouse rave"/standalone "RAVE" still blocked)
 - body: The `'rave'` title-exclusion is matched as a bare substring, so it incorrectly drops legitimate titles that merely contain the letters "rave" — e.g. Brooklyn Contra's Oct-4 "Raven & Goose" dance, and would also catch "rave reviews", "gravel", "travel", "bravery", "grave". The exclusion should be word-boundary anchored (`\brave\b`, optionally also `\braves?\b`) so it still blocks actual rave events without false-positiving on substrings.
 - "addressed" criterion: "Raven & Goose" (and a representative set like "rave reviews"/"travel") survive the filter while a literal "Rave" / "warehouse rave" title is still excluded; verified against the contra feed and a small FP probe set.
 
