@@ -540,6 +540,19 @@ def _day_of_week_fit_boost(event: dict) -> float:
     ):
         if not is_weekend:
             boost += 0.03
+    # fb-184: profile-aligned fitness/run/dance Eventbrite-category events
+    # score ~0.36-0.51 on completeness/title/time and miss the 0.55 floor
+    # despite being user-requested (fb-179). Recover ONLY well-formed ones:
+    # require BOTH a parsed startTime AND a venue name, so a low-info
+    # caption-only event still floors out (preserves the 0.55 quality gate —
+    # this is NOT a category-wide exemption). The +0.05 lifts the verified
+    # 0.49-0.54 cluster over 0.55; the final clamp below caps total stacking
+    # at +0.06 so it can't run away.
+    if cats & {"fitness", "wellness", "outdoors"} or any(
+        k in text for k in ("run club", "yoga", "pilates", "contra", "swing dance")
+    ):
+        if event.get("startTime") and (event.get("location", {}) or {}).get("name"):
+            boost += 0.05
     # Brunch / food on weekends
     if "food" in cats and any(k in text for k in ("brunch", "morning", "breakfast")):
         if is_weekend:

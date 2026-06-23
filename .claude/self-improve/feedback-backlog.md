@@ -838,6 +838,41 @@ These are the durable preferences the user has stated. They're marked `addressed
 - body: Two parts. (1) MAINTENANCE: `DISTINCT_SCHEDULE_SOURCES` is now checked at TWO call-sites in `scrapers/normalize.py` (`_dedup_same_account_recurring` and `_dedup_fuzzy_title`). The 3rd+ distinct-schedule source someone adds will need both edits and someone will forget one → a silent merge-back that quietly drops user-requested dated events. Extract `def _is_distinct_schedule_source(ev): return ev.get("source") in DISTINCT_SCHEDULE_SOURCES`, call from both passes, add a unit test asserting a 2nd source bypasses BOTH. Pure refactor, behavior-identical. (2) QUEUED-FOR-IG-REFRESH: source-curator's BFS surfaced on-vector, fb-106-clean IG fitness/dance handles that are unprobeable while the IG sweep is blocked (fb-174): `outopia.run`, `eastriverpilates`, `danceparadenyc`, `barcontranyc`, `residentrunners`, `danceherenownyc`. Probe + add when fb-174 clears so they aren't lost.
 - files: `scrapers/normalize.py` (helper); `scrapers/config.py::IG_ACCOUNTS` (when fb-174 clears).
 
+### fb-184 — Investigate the 6 inert legacy Eventbrite fitness/dance slugs (0-yield despite 500+ fetches)
+- created_at: 2026-06-23
+- source: agent-proposal (source-curator finding, run 2026-06-22-1501; surfaced in that run's hypothesis #2)
+- status: open
+- body: The source-curator's run-2026-06-22-1501 probe found that the pre-existing broad running/yoga/fitness/dance Eventbrite slugs in `scrapers/sources/generic.py` are INERT — they yield 0 events despite being fetched every scrape (500+ cumulative fetches across the session). The 6 NEW narrow slugs added that round (run-club/contra/swing/folk/salsa/pilates) all live-verified at 20/20 future, so the pattern works; the legacy broad slugs are silently returning nothing. Most likely a JSON-LD shape change or a too-broad keyword slug that Eventbrite no longer resolves (cf. fb-155: generic single-word slugs substring-match nothing or the wrong venues). This is a cheap, high-leverage recovery: the user explicitly asked for more fitness/run-club coverage (fb-179), so reviving these slugs (or swapping them for the verified narrow-slug pattern) directly serves that request and the North Star. Ingestion lane: probe each legacy slug's live yield + JSON-LD shape, then either fix the parse path, swap to a verified narrow slug, or remove the dead fetch.
+- "addressed" criterion: each of the 6 legacy fitness/dance slugs is classified (working / swapped-to-verified-slug / removed-as-dead) with a live-probe yield count recorded; net fitness/dance event count does not regress and ideally rises on the next scrape.
+
+### fb-185 — Prune duplicate `ny--brooklyn/running--events/` (100% dup of NYC slug)
+- created_at: 2026-06-23
+- source: agent-proposal (ingestion P1b + Critic APPROVE, run 2026-06-23-1816)
+- status: open (blocked-on: user opt-in — additive-only rule)
+- body: `https://www.eventbrite.com/d/ny--brooklyn/running--events/` (`scrapers/sources/generic.py:212`) is a 100% duplicate of `ny--new-york/running--events/` (:213) — Eventbrite ignores the borough segment for category search (live overlap verified 18/18 identical). Safe to remove with zero event loss; saves one fetch/round. Removal blocked by the additive-only rule (same class as fb-104). Batch with fb-104 prune opt-ins when the user green-lights deletions.
+- "addressed" criterion: user opts into source prunes → remove the line; confirm no event-count regression.
+
+### fb-186 — Strengthen body-text time inference ("doors at 7pm") to unblock the fb-184 fitness gate
+- created_at: 2026-06-23
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-06-23-1816)
+- status: open
+- body: The fb-184 P1 fitness/run/dance score-recovery boost (shipped this round) is HARD-GATED on a parsed `startTime` (+ venue) to preserve the 0.55 quality floor. Many user-requested Eventbrite-category fitness/run/dance events carry their time only in body text ("doors at 7pm", "starts 8pm") so they fail that gate even though they're well-formed. A robust body-text time extractor recovers their yield HONESTLY (raises completeness rather than overriding the floor) and improves the feed-wide `time_q` signal. NOTE: a `_infer_time_from_text` pass already exists in `scrapers/normalize.py` (added 2026-06-04) — this item is to AUDIT/STRENGTHEN it (coverage of "doors"/"starts"/bare "Npm", single-unambiguous-match gating, never overwrite a parsed time) and confirm it runs before scoring so the P1 gate sees the inferred time. Compounds directly with fb-184.
+- files: `scrapers/normalize.py` (`_infer_time_from_text` + its call ordering in `process`).
+
+### fb-187 — folk-dance Eventbrite slug is provisional (~55% participatory)
+- created_at: 2026-06-23
+- source: agent-proposal (Critic keep-but-watch, run 2026-06-23-1816)
+- status: open (watch)
+- body: `https://www.eventbrite.com/d/ny--new-york/folk-dance--events/` (added 2026-06-22, `scrapers/sources/generic.py`) was independently re-probed this round by both ingestion + source-curator at ~55% participatory (the rest are performances/parties/talks mis-bucketed: "Ayazamana", "Bowie Dance Party"). It clears the bar and additive-only forbids unilateral removal, but it's the weakest dance slug. WATCH: if the next scrape's LANDED folk-dance events under-engage or skew >50% performance, surface as a user opt-in prune.
+- "addressed" criterion: next-scrape folk-dance landed-yield assessed; kept if ≥50% participatory, else surfaced for opt-in prune.
+
+### fb-188 — EventModal: style non-free price as a pill (cross-surface consistency with U1)
+- created_at: 2026-06-23
+- source: agent-proposal (Critic nicety, run 2026-06-23-1816)
+- status: open (low priority)
+- body: U1 (run 2026-06-22) + this round's fb-182 give the FeedCard a numeric gray price pill and a qualitative sky price pill. `EventModal.tsx:172` still renders any non-free/non-unknown price as verbatim text (so qualitative words already show there, un-styled). Low-priority cosmetic consistency: give the modal the same numeric-gray / qualitative-sky pill treatment. Cosmetic-only; no behavior change.
+- files: `site/app/components/EventModal.tsx` (~line 172).
+
 <!-- Append new feedback above this comment as it comes in. Top of list is highest priority. -->
 
 

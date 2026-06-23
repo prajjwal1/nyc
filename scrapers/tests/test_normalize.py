@@ -13,11 +13,86 @@ Locks in:
 
 import pytest
 
+import scrapers.normalize as normalize
 from scrapers.normalize import (
     _backfill_neighborhood_from_venue,
+    _dedup_fuzzy_title,
+    _dedup_same_account_recurring,
+    _is_distinct_schedule_source,
     _strip_outdoors_indoor_arena,
     deduplicate,
 )
+
+
+# ---------------------------------------------------------------------------
+# DISTINCT_SCHEDULE_SOURCES — individually-ticketed repeated-title sources
+# (brooklyncontra et al.) must bypass BOTH dedup passes (fb-183). The check
+# lives in one helper so a future source can't be half-exempted.
+# ---------------------------------------------------------------------------
+
+
+class TestDistinctScheduleSources:
+    def test_helper_membership(self, monkeypatch):
+        monkeypatch.setattr(normalize, "DISTINCT_SCHEDULE_SOURCES", {"sched"})
+        assert _is_distinct_schedule_source({"source": "sched"}) is True
+        assert _is_distinct_schedule_source({"source": "other"}) is False
+
+    def test_distinct_source_bypasses_both_passes(self, monkeypatch):
+        monkeypatch.setattr(normalize, "DISTINCT_SCHEDULE_SOURCES", {"sched"})
+        # Same-account-recurring would collapse near-identical titles across
+        # dates (same publisher); fuzzy-title would collapse same-date+venue.
+        recurring = [
+            {
+                "source": "sched",
+                "title": "Weekly Social Dance Night",
+                "date": "2026-07-01",
+                "sourceUrl": "https://sched.org/x",
+                "location": {"name": "Hall"},
+            },
+            {
+                "source": "sched",
+                "title": "Weekly Social Dance Night",
+                "date": "2026-07-08",
+                "sourceUrl": "https://sched.org/y",
+                "location": {"name": "Hall"},
+            },
+        ]
+        assert len(_dedup_same_account_recurring(recurring)) == 2
+        same_day = [
+            {
+                "source": "sched",
+                "title": "Harvest Ball Advanced Dance",
+                "date": "2026-09-26",
+                "location": {"name": "Hall"},
+            },
+            {
+                "source": "sched",
+                "title": "Harvest Ball Evening Dance",
+                "date": "2026-09-26",
+                "location": {"name": "Hall"},
+            },
+        ]
+        assert len(_dedup_fuzzy_title(same_day)) == 2
+
+    def test_control_source_still_merges(self, monkeypatch):
+        # A source NOT in the set must still merge (proves the bypass is the
+        # cause, not a broken dedup).
+        monkeypatch.setattr(normalize, "DISTINCT_SCHEDULE_SOURCES", {"sched"})
+        same_day = [
+            {
+                "source": "eventbrite",
+                "title": "Harvest Ball Advanced Dance",
+                "date": "2026-09-26",
+                "location": {"name": "Hall"},
+            },
+            {
+                "source": "eventbrite",
+                "title": "Harvest Ball Evening Dance",
+                "date": "2026-09-26",
+                "location": {"name": "Hall"},
+            },
+        ]
+        assert len(_dedup_fuzzy_title(same_day)) == 1
 
 
 # ---------------------------------------------------------------------------

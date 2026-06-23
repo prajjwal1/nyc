@@ -158,6 +158,17 @@ def _dedup_perceptual_hash(events: list[dict]) -> list[dict]:
 DISTINCT_SCHEDULE_SOURCES = {"brooklyncontra"}
 
 
+def _is_distinct_schedule_source(ev: dict) -> bool:
+    """True if the event comes from a distinct-schedule source — one whose
+    listings are individually-scheduled, individually-ticketed events that
+    legitimately repeat a near-identical title across dates. Such events must
+    bypass BOTH dedup passes (_dedup_same_account_recurring and
+    _dedup_fuzzy_title). Single source of truth so a future distinct-schedule
+    source can't be half-exempted (fb-183).
+    """
+    return ev.get("source") in DISTINCT_SCHEDULE_SOURCES
+
+
 def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:
     """Collapse events from the SAME publisher that share a near-identical
     title across multiple dates. These are usually the same recurring series
@@ -177,7 +188,7 @@ def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:
     by_acct: dict[str, list[dict]] = {}
     out: list[dict] = []
     for ev in events:
-        if ev.get("source") in DISTINCT_SCHEDULE_SOURCES:
+        if _is_distinct_schedule_source(ev):
             out.append(ev)
             continue
         # Build a publisher key per source. For non-IG: just source+netloc.
@@ -419,7 +430,7 @@ def _dedup_fuzzy_title(events: list[dict]) -> list[dict]:
         # dedupe exact (date,title) internally, so each survivor is genuinely
         # distinct — bypass the fuzzy-merge. Mirrors the same exemption in
         # _dedup_same_account_recurring.
-        if ev.get("source") in DISTINCT_SCHEDULE_SOURCES:
+        if _is_distinct_schedule_source(ev):
             out.append(ev)
             continue
         d = ev.get("date") or ""

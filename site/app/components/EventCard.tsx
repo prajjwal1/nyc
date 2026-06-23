@@ -238,6 +238,19 @@ function FeedCard({
                   {event.price}
                 </span>
               )}
+            {/* fb-182 (run 2026-06-23-1816): qualitative low-commitment price
+                words ("donation"/PWYC/"sliding scale") are POSITIVE attend
+                signals — surface them as a subtle sky pill, lighter than the
+                emerald FREE so it reads "cheap/flexible," not "free." Numeric
+                wins: the !/\d/ guard means "sliding scale $10" shows only the
+                numeric pill above (one price pill per card). */}
+            {event.price &&
+              !/\d/.test(event.price) &&
+              /donation|pay what|pwyc|sliding scale|suggested/i.test(event.price) && (
+                <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-sky-50 text-sky-700">
+                  {event.price}
+                </span>
+              )}
             {/* iter 215: category chips removed — visual noise. Categories
                 still drive ranking + diversity internally; the user does
                 not need to see them on every card. */}

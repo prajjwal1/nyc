@@ -216,22 +216,36 @@ GENERIC_URLS = [
     "https://www.eventbrite.com/d/ny--brooklyn/sports-and-fitness--events/",
     "https://www.eventbrite.com/d/ny--new-york/sports-and-fitness--events/",
     "https://www.eventbrite.com/d/ny--new-york/fitness--events/",
-    # fb-179/fb-180 (run 2026-06-22-1501): the broad slugs above
-    # (running/yoga/fitness/dance) are largely INERT — url_health shows
-    # 500+ fetches with 0 events_yielded (Eventbrite changed their listing
-    # shape for those category pages). These MORE SPECIFIC slugs actually
-    # parse to 20/20 future-dated events (all live-probed, exclusion-clean,
-    # volume-capped at eventbrite=100). run-club serves fb-179; the dance
-    # slugs broaden fb-180 (Brooklyn Contra) to NYC-wide social dance.
-    # NOTE: folk-dance (S4) is PROVISIONAL — its samples skewed toward
-    # performances rather than participatory social dance; re-probe its
-    # landed yield next round and retire if noisy.
+    # fb-179/fb-180 (run 2026-06-22-1501): MORE SPECIFIC fitness/dance slugs
+    # that live-probe to 20/20 future-dated events (exclusion-clean, volume-
+    # capped at eventbrite=100). run-club serves fb-179; the dance slugs
+    # broaden fb-180 (Brooklyn Contra) to NYC-wide social dance.
+    # CORRECTION (fb-184, run 2026-06-23-1816): the broad slugs above
+    # (running/yoga/fitness/etc.) are NOT inert as a prior comment claimed —
+    # live-probing shows they parse ~20 events each. Their events were
+    # dying DOWNSTREAM at MIN_SCORE 0.55 + the eventbrite=100 cap, not at
+    # extraction. The fb-184 P1 boost (ranking.py) recovers well-formed
+    # fitness/run/dance events over the floor. Do not "fix the parse" — it
+    # works. NOTE: folk-dance is PROVISIONAL (~55% participatory; re-probe
+    # landed yield next scrape, retire if it skews to performances).
     "https://www.eventbrite.com/d/ny--new-york/run-club--events/",
     "https://www.eventbrite.com/d/ny--new-york/contra-dance--events/",
     "https://www.eventbrite.com/d/ny--new-york/swing-dance--events/",
     "https://www.eventbrite.com/d/ny--new-york/folk-dance--events/",
     "https://www.eventbrite.com/d/ny--new-york/salsa--events/",
     "https://www.eventbrite.com/d/ny--new-york/pilates--events/",
+    # fb-184 / source-pool (run 2026-06-23-1816): additional on-vector
+    # participatory slugs, all live-probed ≥19 future-dated + exclusion-clean.
+    # Cap-bound (eventbrite=100) so they deepen the pool with on-vector
+    # content rather than enlarge the feed. board-games/chess at games-boost
+    # 1.3 are the highest-yield (recurring meet-people clubs); hiking/
+    # walking-tour serve outdoors/exploration; trivia/climbing are social.
+    "https://www.eventbrite.com/d/ny--new-york/hiking--events/",
+    "https://www.eventbrite.com/d/ny--new-york/walking-tour--events/",
+    "https://www.eventbrite.com/d/ny--new-york/board-games--events/",
+    "https://www.eventbrite.com/d/ny--new-york/chess--events/",
+    "https://www.eventbrite.com/d/ny--new-york/trivia--events/",
+    "https://www.eventbrite.com/d/ny--new-york/climbing--events/",
     "https://www.eventbrite.com/d/ny--brooklyn/book-club--events/",
     "https://www.eventbrite.com/d/ny--new-york/book-club--events/",
     "https://www.eventbrite.com/d/ny--brooklyn/literary--events/",
