@@ -827,21 +827,21 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-182 — Render qualitative/low-commitment price words as a positive pill (D1)
 - created_at: 2026-06-22
 - source: agent-proposal (dreamer-critic D1, DREAM-DEFER, run 2026-06-22-1501)
-- status: open
+- status: addressed: 8699d96 (run 2026-06-23-1816, U1 — qualitative sky pill, numeric-wins precedence; no-op until a qualitative-price source lands)
 - body: U1 (run 2026-06-22-1501) added a digit-only non-free price pill on the FeedCard, intentionally suppressing qualitative price words ("donation", "pay what you can", "PWYC", "sliding scale", "suggested"). But those are POSITIVE low-commitment signals a meet-people user wants at a glance — surfacing them nudges attendance. Add a branch after U1's numeric pill: if `event.price` matches `/donation|pay what|pwyc|sliding scale|suggested/i`, render a distinct subtle pill (e.g. `bg-sky-50 text-sky-700`), visually lighter than FREE so it reads "cheap/flexible" not "free".
 - files: `site/app/components/EventCard.tsx` (same badge row U1 touches).
 
 ### fb-183 — Consolidate DISTINCT_SCHEDULE_SOURCES into a shared helper + queue fb-106-clean IG fitness/dance candidates (D2)
 - created_at: 2026-06-22
 - source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-06-22-1501)
-- status: open
+- status: addressed-partial: 8699d96 (run 2026-06-23-1816 — part 1 DONE: `_is_distinct_schedule_source` helper extracted + used by both dedup passes + 3 unit tests. Part 2 (queue the 6 fb-106-clean IG fitness/dance handles) remains OPEN, blocked on fb-174 IG-sweep restoration.)
 - body: Two parts. (1) MAINTENANCE: `DISTINCT_SCHEDULE_SOURCES` is now checked at TWO call-sites in `scrapers/normalize.py` (`_dedup_same_account_recurring` and `_dedup_fuzzy_title`). The 3rd+ distinct-schedule source someone adds will need both edits and someone will forget one → a silent merge-back that quietly drops user-requested dated events. Extract `def _is_distinct_schedule_source(ev): return ev.get("source") in DISTINCT_SCHEDULE_SOURCES`, call from both passes, add a unit test asserting a 2nd source bypasses BOTH. Pure refactor, behavior-identical. (2) QUEUED-FOR-IG-REFRESH: source-curator's BFS surfaced on-vector, fb-106-clean IG fitness/dance handles that are unprobeable while the IG sweep is blocked (fb-174): `outopia.run`, `eastriverpilates`, `danceparadenyc`, `barcontranyc`, `residentrunners`, `danceherenownyc`. Probe + add when fb-174 clears so they aren't lost.
 - files: `scrapers/normalize.py` (helper); `scrapers/config.py::IG_ACCOUNTS` (when fb-174 clears).
 
 ### fb-184 — Investigate the 6 inert legacy Eventbrite fitness/dance slugs (0-yield despite 500+ fetches)
 - created_at: 2026-06-23
 - source: agent-proposal (source-curator finding, run 2026-06-22-1501; surfaced in that run's hypothesis #2)
-- status: open
+- status: addressed: 8699d96 (run 2026-06-23-1816) — RE-SCOPED: premise DISPROVEN. Both backend workers live-probed the 6 legacy slugs and found they parse ~20 events EACH (not inert; url_health emitted_total 80-440). The events die DOWNSTREAM at MIN_SCORE 0.55 + the eventbrite=100 cap, not at extraction. Fix shipped is score-recovery (P1: +0.05 fitness/run/dance boost gated on startTime AND venue), not a parse fix. The legacy slugs are KEPT (they work). NEXT-SCRAPE verify: fitness/dance count rises AND music CRITICAL_CHECK (≥15) not regressed by cap-eviction.
 - body: The source-curator's run-2026-06-22-1501 probe found that the pre-existing broad running/yoga/fitness/dance Eventbrite slugs in `scrapers/sources/generic.py` are INERT — they yield 0 events despite being fetched every scrape (500+ cumulative fetches across the session). The 6 NEW narrow slugs added that round (run-club/contra/swing/folk/salsa/pilates) all live-verified at 20/20 future, so the pattern works; the legacy broad slugs are silently returning nothing. Most likely a JSON-LD shape change or a too-broad keyword slug that Eventbrite no longer resolves (cf. fb-155: generic single-word slugs substring-match nothing or the wrong venues). This is a cheap, high-leverage recovery: the user explicitly asked for more fitness/run-club coverage (fb-179), so reviving these slugs (or swapping them for the verified narrow-slug pattern) directly serves that request and the North Star. Ingestion lane: probe each legacy slug's live yield + JSON-LD shape, then either fix the parse path, swap to a verified narrow slug, or remove the dead fetch.
 - "addressed" criterion: each of the 6 legacy fitness/dance slugs is classified (working / swapped-to-verified-slug / removed-as-dead) with a live-probe yield count recorded; net fitness/dance event count does not regress and ideally rises on the next scrape.
 
