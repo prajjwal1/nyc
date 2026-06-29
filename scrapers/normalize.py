@@ -1491,6 +1491,19 @@ def _is_curated_host(event: dict) -> bool:
         for url in urls:
             if url and any(h in url for h in cfg.get("hosts", {})):
                 return True
+        # lu.ma curator-calendar URLs are hand-curated single-curator
+        # calendars (lu.ma/<handle>, e.g. lu.ma/philosophy, lu.ma/thinkolio),
+        # as opposed to the lu.ma/nyc[/<category>] aggregate feeds. Their
+        # events are often description-less, and they'd otherwise be dropped
+        # by the description-required shell filter. Treat them as curated
+        # automatically so a new curator added to luma.LUMA_PAGES doesn't
+        # silently lose all its events without also being hand-added to
+        # user_curated_sources.json (the gap that hid lu.ma/philosophy).
+        if event.get("source") == "luma":
+            src_url = (event.get("sourceUrl") or "").lower()
+            m = re.search(r"lu\.ma/([^/?#]+)", src_url)
+            if m and m.group(1) != "nyc":
+                return True
         title = (event.get("title") or "").lower()
         desc = (event.get("description") or "")[:300].lower()
         text = title + " " + desc
@@ -1499,6 +1512,43 @@ def _is_curated_host(event: dict) -> bool:
         return False
     except Exception:
         return False
+
+
+# Score floors for the final quality gate. DEFAULT applies to generic /
+# aggregator events; the lower CURATED floor applies to events the user has
+# explicitly designated (followed / saved / tagged / affinity, or an IG event
+# from a curated seed account) — the curator's pick is itself quality signal.
+DEFAULT_MIN_SCORE = 0.55
+IG_CURATED_MIN_SCORE = 0.40
+
+
+def _min_score_floor(event: dict, curated_ig: set[str] | None = None) -> float:
+    """Return the minimum score an event must clear to survive the final
+    quality gate. Module-level + parameterized so it's unit-testable.
+
+    Explicit high-conviction signals (userFollowing / userSaved / userTagged /
+    userAffinity) grant the lower CURATED floor REGARDLESS of source — this is
+    what lets non-IG curator calendars the user follows (e.g. lu.ma/philosophy
+    → philosophy.nyc) survive instead of getting filtered at the 0.55 default.
+    IG events from a curated seed account also get the lower floor.
+    """
+    if (
+        event.get("userSaved")
+        or event.get("userTagged")
+        or event.get("userAffinity")
+        or event.get("userFollowing")
+    ):
+        return IG_CURATED_MIN_SCORE
+    if event.get("source") != "instagram":
+        return DEFAULT_MIN_SCORE
+    if curated_ig is None:
+        from .config import IG_ACCOUNTS
+
+        curated_ig = {a.lower() for a in IG_ACCOUNTS}
+    acct = (event.get("instagramAccount") or "").lower()
+    if acct in curated_ig:
+        return IG_CURATED_MIN_SCORE
+    return DEFAULT_MIN_SCORE
 
 
 def _is_shell_event(event: dict) -> bool:
@@ -2046,35 +2096,15 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # interest_profile_boost (+0.15 for signal accounts) compensates for
     # events the user genuinely cares about. Marginal-quality long tail
     # in 0.45-0.55 was 133 events; trimming that.
-    DEFAULT_MIN_SCORE = 0.55
-    IG_CURATED_MIN_SCORE = 0.40
     from .config import IG_ACCOUNTS
 
     _curated_ig = {a.lower() for a in IG_ACCOUNTS}
-
-    def _floor_for(ev: dict) -> float:
-        if ev.get("source") != "instagram":
-            return DEFAULT_MIN_SCORE
-        # Curator-signal IG events: from accounts in the curated seed list
-        # OR from accounts the user explicitly follows / has saved-from /
-        # was tagged in / has built up affinity with.
-        acct = (ev.get("instagramAccount") or "").lower()
-        if acct in _curated_ig:
-            return IG_CURATED_MIN_SCORE
-        if (
-            ev.get("userSaved")
-            or ev.get("userTagged")
-            or ev.get("userAffinity")
-            or ev.get("userFollowing")
-        ):
-            return IG_CURATED_MIN_SCORE
-        return DEFAULT_MIN_SCORE
 
     before = len(events)
     kept = []
     ig_kept_curated = 0
     for ev in events:
-        floor = _floor_for(ev)
+        floor = _min_score_floor(ev, _curated_ig)
         if ev.get("score", 0) >= floor:
             kept.append(ev)
             if ev.get("source") == "instagram" and floor < DEFAULT_MIN_SCORE:

@@ -56,7 +56,14 @@ class TestSpotAccountEvergreen:
         # "June 6" flips to next year once June 6 is past — dateparser future
         # preference). Use today + 20/25/30/35 days.
         from datetime import datetime, timedelta
-        now = datetime(2026, 6, 1, 12, 0)
+        # Anchor to the REAL current date so the offset dates are always
+        # genuinely in the future at run time. A hardcoded past `now` makes
+        # this brittle: once the calendar passes the chosen dates, the
+        # extractor's dateparser future-preference rolls a bare "June 21" to
+        # NEXT year while the test's expectation stays on the hardcoded year,
+        # so they diverge (the 2026→2027 flake). Offsets stay comfortably
+        # future so year-inference is unambiguous.
+        now = datetime.now()
         offs = [20, 25, 30, 35]
         ds = [now + timedelta(days=o) for o in offs]
         lines = [f"{d.strftime('%B %-d')} | Event {i} at a NYC venue, a great time."

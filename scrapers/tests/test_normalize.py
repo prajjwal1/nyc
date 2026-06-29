@@ -15,13 +15,106 @@ import pytest
 
 import scrapers.normalize as normalize
 from scrapers.normalize import (
+    DEFAULT_MIN_SCORE,
+    IG_CURATED_MIN_SCORE,
     _backfill_neighborhood_from_venue,
     _dedup_fuzzy_title,
     _dedup_same_account_recurring,
     _is_distinct_schedule_source,
+    _is_shell_event,
+    _min_score_floor,
     _strip_outdoors_indoor_arena,
     deduplicate,
 )
+from scrapers.sources.luma import LUMA_PAGES
+
+
+def _luma_curator_urls():
+    """The hand-curated single-curator lu.ma calendars in LUMA_PAGES —
+    lu.ma/<handle>, as opposed to the lu.ma/nyc[/<category>] aggregate feeds."""
+    out = []
+    for u in LUMA_PAGES:
+        if "lu.ma/" not in u:
+            continue
+        path = u.split("lu.ma/", 1)[1].strip("/")
+        if path == "nyc" or path.startswith("nyc/"):
+            continue
+        out.append(u)
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Curated-source survival — regression guard for the lu.ma/philosophy bug:
+# a curator calendar added to LUMA_PAGES whose (description-less) events were
+# silently dropped by the description-required shell filter because the host
+# was never added to user_curated_sources.json. The fix treats ALL lu.ma
+# curator calendars as curated automatically, so this can't recur for any
+# current OR future curator added to LUMA_PAGES.
+# ---------------------------------------------------------------------------
+
+
+class TestCuratedSourceSurvival:
+    def _descless_luma_event(self, url):
+        # Mirrors what the luma scraper emits for philosophy: real image +
+        # venue, but an EMPTY description.
+        return {
+            "source": "luma",
+            "title": "Philosophy Salon at the Museum",
+            "description": "",
+            "imageUrl": "https://images.lumacdn.com/x.jpg",
+            "location": {"name": "The Met", "address": "1000 5th Ave"},
+            "date": "2026-07-15",
+            "startTime": "19:00",
+            "sourceUrl": url,
+        }
+
+    @pytest.mark.parametrize("url", _luma_curator_urls())
+    def test_every_luma_curator_calendar_survives_shell_filter(self, url):
+        # Every configured lu.ma curator calendar must NOT be shell-dropped
+        # when it emits a description-less (but image+venue) event — the
+        # exact failure mode that hid lu.ma/philosophy. Adding a new curator
+        # to LUMA_PAGES that regresses this will fail here.
+        ev = self._descless_luma_event(url)
+        assert not _is_shell_event(ev), (
+            f"{url}: description-less curator event dropped as shell — "
+            f"luma curator calendars must bypass the description-required filter"
+        )
+
+    def test_luma_nyc_aggregate_feed_still_requires_description(self):
+        # The lu.ma/nyc[/category] AGGREGATE feeds are NOT curator calendars;
+        # a description-less event from them should still be shell-dropped
+        # (they're aggregator-style and the bypass must not over-reach).
+        ev = self._descless_luma_event("https://lu.ma/nyc/social")
+        assert _is_shell_event(ev) is True
+
+
+# ---------------------------------------------------------------------------
+# Score-floor — followed/curated events get the lower floor REGARDLESS of
+# source (the 2nd half of the philosophy bug: followed lu.ma events sat at
+# the 0.55 default and were filtered despite being followed).
+# ---------------------------------------------------------------------------
+
+
+class TestMinScoreFloor:
+    def test_followed_non_ig_event_gets_curated_floor(self):
+        ev = {"source": "luma", "userFollowing": True}
+        assert _min_score_floor(ev, set()) == IG_CURATED_MIN_SCORE
+
+    def test_saved_non_ig_event_gets_curated_floor(self):
+        ev = {"source": "eventbrite", "userSaved": True}
+        assert _min_score_floor(ev, set()) == IG_CURATED_MIN_SCORE
+
+    def test_plain_non_ig_event_gets_default_floor(self):
+        ev = {"source": "eventbrite"}
+        assert _min_score_floor(ev, set()) == DEFAULT_MIN_SCORE
+
+    def test_curated_seed_ig_account_gets_curated_floor(self):
+        ev = {"source": "instagram", "instagramAccount": "philosophy.nyc"}
+        assert _min_score_floor(ev, {"philosophy.nyc"}) == IG_CURATED_MIN_SCORE
+
+    def test_unknown_ig_account_gets_default_floor(self):
+        ev = {"source": "instagram", "instagramAccount": "rando"}
+        assert _min_score_floor(ev, {"philosophy.nyc"}) == DEFAULT_MIN_SCORE
 
 
 # ---------------------------------------------------------------------------
