@@ -73,7 +73,7 @@
       "userTagged": false,
       "userAffinity": false,
       "userFollowing": false,
-      "recurring": false,
+      "recurring": true,
       "ocrEnriched": false,
       "contributingSources": [
         "eventbrite"
@@ -118,44 +118,6 @@
       "firstSeenAt": "2026-06-28T00:25:33.058470+00:00",
       "score": 0.623,
       "highlights": []
-    },
-    {
-      "id": "3cf700ac12cafca6",
-      "title": "40 in Focus: SummerStage through the Lens of Photographer Jack Vartoogian",
-      "description": "9:00 a.m. \u2013 5:00 p.m. From 1987 to 2019, celebrated NYC photographer Jack Vartoogian captured hundreds of SummerStage performances across Manhattan parks, from Central Park to Marcus Garvey Park and Tompkins Square Park. Category: Art , History Free!",
-      "date": "2026-06-30",
-      "startTime": "10:00",
-      "endTime": null,
-      "location": {
-        "name": "at Arsenal (in Central Park) , Manhattan",
-        "address": "",
-        "neighborhood": "manhattan"
-      },
-      "categories": [
-        "music",
-        "outdoors"
-      ],
-      "source": "nyc_parks",
-      "sourceUrl": "https://www.nycgovparks.org/events/2026/06/30/40-in-focus-summerstage-through-the-lens-of-photographer-jack-vartoogian",
-      "imageUrl": "https://www.nycgovparks.org/pagefiles/180/Bryant-Park.jpg",
-      "price": "free",
-      "scrapedAt": "2026-06-30T17:19:48.840083",
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "nyc_parks"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "firstSeenAt": "2026-06-30T17:21:56.825163+00:00",
-      "score": 0.652,
-      "highlights": [
-        "free"
-      ]
     },
     {
       "id": "7c8b9703c3a75906",
@@ -217,7 +179,7 @@
       "sourceUrl": "https://lu.ma/litclub.nyc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/bb/70378794-5b1a-44a3-83c0-f0a5eb8fa4cf.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.853458",
+      "scrapedAt": "2026-06-30T23:55:17.697400",
       "firstSeenAt": "2026-06-04T20:30:33.459254+00:00",
       "account": "litclub.nyc",
       "userFollowing": true,
@@ -248,45 +210,10 @@
       "sourceUrl": "https://lizsbookbar.com/events/5453020260630",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/web_orb_mysterious.png?cb=1779992319",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.512566",
+      "scrapedAt": "2026-06-30T23:54:30.015482",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "score": 0.756,
       "highlights": []
-    },
-    {
-      "id": "58157c90888269fb",
-      "title": "A Floral Film Salon: Blooms on Screen",
-      "description": "Join us for an evening of conversation and discussion as we explore how flowers have the power to drive storytelling on screen \ud83c\udf38\u2728 Iris (author of Flowers in Cinema, a Substack newsletter dedicated to exploring the role of flowers in film) and Alyson (founder of Ruby Film Club and author of\u2026",
-      "date": "2026-06-30",
-      "startTime": "19:00",
-      "endTime": "21:00",
-      "location": {
-        "name": "",
-        "address": "51 35th St, Brooklyn, NY 11232",
-        "neighborhood": "brooklyn"
-      },
-      "categories": [
-        "books"
-      ],
-      "source": "partiful",
-      "sourceUrl": "https://partiful.com/e/eM97ON1y0SRtt1pdrEVT",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F6oB5zXGO6IWxRS93fwpZPGvGHEf1%2FjNE-T9jZ81xTPoONNqVgs?alt=media",
-      "price": "unknown",
-      "scrapedAt": "2026-06-16T04:25:21.344128",
-      "firstSeenAt": "2026-06-16T04:28:07.259518+00:00",
-      "score": 0.688,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "partiful"
-      ],
-      "likes": 0,
-      "comments": 0
     },
     {
       "id": "a0098652f5825915",
@@ -313,6 +240,41 @@
       "highlights": [
         "nightlife"
       ],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "partiful"
+      ],
+      "likes": 0,
+      "comments": 0
+    },
+    {
+      "id": "58157c90888269fb",
+      "title": "A Floral Film Salon: Blooms on Screen",
+      "description": "Join us for an evening of conversation and discussion as we explore how flowers have the power to drive storytelling on screen \ud83c\udf38\u2728 Iris (author of Flowers in Cinema, a Substack newsletter dedicated to exploring the role of flowers in film) and Alyson (founder of Ruby Film Club and author of\u2026",
+      "date": "2026-06-30",
+      "startTime": "19:00",
+      "endTime": "21:00",
+      "location": {
+        "name": "",
+        "address": "51 35th St, Brooklyn, NY 11232",
+        "neighborhood": "brooklyn"
+      },
+      "categories": [
+        "books"
+      ],
+      "source": "partiful",
+      "sourceUrl": "https://partiful.com/e/eM97ON1y0SRtt1pdrEVT",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F6oB5zXGO6IWxRS93fwpZPGvGHEf1%2FjNE-T9jZ81xTPoONNqVgs?alt=media",
+      "price": "unknown",
+      "scrapedAt": "2026-06-16T04:25:21.344128",
+      "firstSeenAt": "2026-06-16T04:28:07.259518+00:00",
+      "score": 0.688,
+      "highlights": [],
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -364,40 +326,6 @@
       "highlights": []
     },
     {
-      "id": "c33695c7af6181f4",
-      "title": "I post what I\u2019m",
-      "description": "I post what I\u2019m reading behind the scenes for book club on this account :) Gelizabeth.montrose Mi i",
-      "date": "2026-06-30",
-      "startTime": "19:00",
-      "endTime": null,
-      "location": {
-        "name": "",
-        "address": "",
-        "neighborhood": null
-      },
-      "categories": [
-        "books"
-      ],
-      "source": "instagram",
-      "sourceUrl": "https://www.instagram.com/stories/open.bookclub/DaNvJg7joBu/",
-      "imageUrl": "https://scontent-iad3-1.cdninstagram.com/v/t51.71878-15/731053522_1656266622094900_2013339884746027167_n.jpg?stp=dst-jpg_e15_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi42NDAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuYzIifQ&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gHKkIZcrLZbUpLkIsS1MCh6KNgaAFzK6Cjgu6B_xuwZ9eq1eUP11JweZsSRuTw_C6o&_nc_ohc=npiadNHCjcIQ7kNvwFfo9ER&_nc_gid=d9o7_OaoVBIaD-vefE5hjQ&edm=AHlfZHwBAAAA&ccb=7-5&oh=00_AQAJRBrR9UcjNyoGplYsgBi-xC6l39gx_UmlnMgX5MnWXg&oe=6A49C5E7&_nc_sid=d8d02b",
-      "price": "unknown",
-      "scrapedAt": "2026-06-30T18:26:57.941399",
-      "instagramAccount": "open.bookclub",
-      "account": "open.bookclub",
-      "userFollowing": true,
-      "ocrEnriched": true,
-      "ocrOnly": true,
-      "discoveredVia": "ig_story",
-      "isStory": true,
-      "firstSeenAt": "2026-06-30T18:29:21.602227+00:00",
-      "score": 0.876,
-      "highlights": [
-        "following",
-        "story"
-      ]
-    },
-    {
       "id": "3641f5c8468141ba",
       "title": "Lectures on Tap - \"Pride & the Cosmos: Polyamorous Galaxies and More\"",
       "description": "Professors, experts, and storytellers giving thought-provoking lectures in NYC bars.",
@@ -432,6 +360,40 @@
       "firstSeenAt": "2026-06-27T14:06:15.213044+00:00",
       "score": 0.688,
       "highlights": []
+    },
+    {
+      "id": "c33695c7af6181f4",
+      "title": "I post what I\u2019m",
+      "description": "I post what I\u2019m reading behind the scenes for book club on this account :) Gelizabeth.montrose Mi i",
+      "date": "2026-06-30",
+      "startTime": "19:00",
+      "endTime": null,
+      "location": {
+        "name": "",
+        "address": "",
+        "neighborhood": null
+      },
+      "categories": [
+        "books"
+      ],
+      "source": "instagram",
+      "sourceUrl": "https://www.instagram.com/stories/open.bookclub/DaNvJg7joBu/",
+      "imageUrl": "https://scontent-iad3-1.cdninstagram.com/v/t51.71878-15/731053522_1656266622094900_2013339884746027167_n.jpg?stp=dst-jpg_e15_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi42NDAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuYzIifQ&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gHKkIZcrLZbUpLkIsS1MCh6KNgaAFzK6Cjgu6B_xuwZ9eq1eUP11JweZsSRuTw_C6o&_nc_ohc=npiadNHCjcIQ7kNvwFfo9ER&_nc_gid=d9o7_OaoVBIaD-vefE5hjQ&edm=AHlfZHwBAAAA&ccb=7-5&oh=00_AQAJRBrR9UcjNyoGplYsgBi-xC6l39gx_UmlnMgX5MnWXg&oe=6A49C5E7&_nc_sid=d8d02b",
+      "price": "unknown",
+      "scrapedAt": "2026-06-30T18:26:57.941399",
+      "instagramAccount": "open.bookclub",
+      "account": "open.bookclub",
+      "userFollowing": true,
+      "ocrEnriched": true,
+      "ocrOnly": true,
+      "discoveredVia": "ig_story",
+      "isStory": true,
+      "firstSeenAt": "2026-06-30T18:29:21.602227+00:00",
+      "score": 0.876,
+      "highlights": [
+        "following",
+        "story"
+      ]
     },
     {
       "id": "3fdd2bf91a93d566",
@@ -517,7 +479,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/candela-glac-tour",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/b476c3ed-aa63-4bc8-a10b-d14bc8681302/Screenshot+2026-06-29+at+11.47.10%E2%80%AFAM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.002630",
+      "scrapedAt": "2026-06-30T23:54:28.895938",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -547,7 +509,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/reddit-soccer-people-are-the-best-fan-experience",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/99bfd0b2-da0f-4c48-8b95-4331c6e36f1e/image+%286%29.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.013685",
+      "scrapedAt": "2026-06-30T23:54:28.906493",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -576,7 +538,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5477820260630",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/06_June/630_SQUARE.png?cb=1779128801",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.638477",
+      "scrapedAt": "2026-06-30T23:54:30.047126",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -891,6 +853,44 @@
       "comments": 0
     },
     {
+      "id": "5799f9045dc2f6e2",
+      "title": "Stonewall: The Untold Story",
+      "description": "Stonewall is one of the most iconic events in queer HERstory, but the exact circumstances leading up to the riots has remained a MISSstory - UNTIL NOW. Buy Tickets",
+      "date": "2026-06-30",
+      "startTime": "20:00",
+      "endTime": null,
+      "location": {
+        "name": "Brooklyn Comedy Collective (Eris Mainstage)",
+        "address": "167 Graham Ave, Brooklyn, NY 11206",
+        "neighborhood": "brooklyn"
+      },
+      "categories": [
+        "parties"
+      ],
+      "source": "brooklyncomedy",
+      "sourceUrl": "https://www.brooklyncomedycollective.com/show-schedule/stonewall-the-untold-story-6-30",
+      "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1780237390705-HXVY2N5NMYWTIQ70YP46/June+30th.png",
+      "price": "unknown",
+      "scrapedAt": "2026-06-30T23:54:29.794970",
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "brooklyncomedy",
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "firstSeenAt": "2026-06-30T23:57:14.625658+00:00",
+      "score": 0.657,
+      "highlights": [
+        "verified"
+      ]
+    },
+    {
       "id": "5b49d2e0e67fb503",
       "title": "Meditation - Yoga Nidra",
       "description": "Hey team - Continuing our theme of exploring author's B-sides, we will be reading William Falkner's novel As I Lay Dying. Published in 1930, the stream of consciousness novel about the death of a family matriarch is often considered one of the best works of American 20th century literature.",
@@ -1030,7 +1030,7 @@
       "sourceUrl": "https://www.nypl.org/events/programs/2026/07/01/clone-hudson-park-book-club-trees-percival-everett-june-3rd",
       "imageUrl": "https://drupal.nypl.org/sites-drupal/default/files/2023-01/default_events_img_868x455.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:52.321276",
+      "scrapedAt": "2026-06-30T23:54:38.938315",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -1105,7 +1105,7 @@
       "sourceUrl": "https://lu.ma/litclub.nyc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/ks/efa1371f-9d68-4660-946b-665388a491ce.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.855696",
+      "scrapedAt": "2026-06-30T23:55:17.699653",
       "firstSeenAt": "2026-06-04T20:30:33.459254+00:00",
       "account": "litclub.nyc",
       "userFollowing": true,
@@ -1326,7 +1326,7 @@
       "sourceUrl": "https://www.brooklyncomedycollective.com/show-schedule/the-sound-within-7-1",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1781199159834-77WJD3QDS2K8QJ1RA4I7/71+Poster+with+Soft+Yes.png",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.182113",
+      "scrapedAt": "2026-06-30T23:54:29.802694",
       "firstSeenAt": "2026-06-30T01:51:48.420883+00:00",
       "score": 0.553,
       "highlights": []
@@ -1577,7 +1577,7 @@
       "sourceUrl": "https://www.eastvillecomedy.com/events/the-anxiety-of-laughing-disability-pride-month-benefit-comedy-showcase",
       "imageUrl": "/img/events/unnamed-869408a6-large-thumb.jpg",
       "price": "$40",
-      "scrapedAt": "2026-06-30T22:46:18.001933",
+      "scrapedAt": "2026-06-30T23:55:00.668282",
       "organizer": "Eastville Comedy Club",
       "organizerUrl": "https://www.eastvillecomedy.com",
       "firstSeenAt": "2026-06-17T18:56:12.358189+00:00",
@@ -1716,7 +1716,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/comedy-mob-presents-the-lineup-2026-05-27140844",
       "imageUrl": "/img/events/Thursday-Mic-NYCC-Comedy-Mob-973c0f7e-large-thumb.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:08.462030",
+      "scrapedAt": "2026-06-30T23:54:50.040574",
       "organizer": "New York Comedy Club on 4th Street",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "userSaved": false,
@@ -1831,7 +1831,7 @@
       "sourceUrl": "https://lu.ma/readingrhythms-manhattan",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/ta/0467e2c4-7fe4-40e8-bbe9-4494481e75d2.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.226783",
+      "scrapedAt": "2026-06-30T23:55:17.247031",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -2115,7 +2115,7 @@
       "sourceUrl": "https://allevents.in/new-york/harlem-jazz-series-craig-harris-and-the-harlem-nightsongs-big-band-tickets/80002652442998",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90aHVtYnMvdGh1bWI2OWE1NTRkYmM5YTA1LmpwZw.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:03.036710",
+      "scrapedAt": "2026-06-30T23:54:45.061679",
       "firstSeenAt": "2026-06-29T20:23:05.404435+00:00",
       "score": 0.55,
       "highlights": []
@@ -2141,7 +2141,7 @@
       "sourceUrl": "https://allevents.in/queens/randb-thursdays-at-hush-lounge-garden-queens-tickets/80001391503573",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90aHVtYnMvdGh1bWI2YTJmZWI3ZjkxMzliLmpwZw.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:09.947834",
+      "scrapedAt": "2026-06-30T23:54:51.793011",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -2176,7 +2176,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/mike-britt-seaton-smith-nick-griffin-jc-mendoza",
       "imageUrl": "/img/comedians/Mike-Britt-a05c0970-large-thumb.jpg",
       "price": "$29",
-      "scrapedAt": "2026-06-30T22:46:08.467800",
+      "scrapedAt": "2026-06-30T23:54:50.046671",
       "organizer": "New York Comedy Club on 4th Street",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "userSaved": false,
@@ -2215,7 +2215,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/seaton-smith-ian-fidance-courtney-fearrington-aaron-mccann",
       "imageUrl": "/img/comedians/SeatonSmithCA-c4e50a9a-large-thumb.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:08.473429",
+      "scrapedAt": "2026-06-30T23:54:50.052651",
       "organizer": "New York Comedy Club Upper West Side",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
@@ -2284,7 +2284,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/damien-lemon-graham-kay-courtney-fearrington",
       "imageUrl": "/img/comedians/cour-6923077b-large-thumb.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:08.464900",
+      "scrapedAt": "2026-06-30T23:54:50.043599",
       "organizer": "New York Comedy Club Upper West Side",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "firstSeenAt": "2026-06-29T16:17:54.006488+00:00",
@@ -2325,7 +2325,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/ian-fidance-liz-glazer-kenice-mobley-aaron-mccann",
       "imageUrl": "/img/comedians/ian2-64800705-large-thumb.jpg",
       "price": "$15",
-      "scrapedAt": "2026-06-30T22:46:08.479097",
+      "scrapedAt": "2026-06-30T23:54:50.058631",
       "organizer": "New York Comedy Club",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
@@ -2351,7 +2351,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/editions-de-parfums-frederic-malle-x-acne-studios",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/751563ff-48a4-4ee4-b4cb-96b79d081dc6/Screenshot+2026-06-30+at+3.48.46%E2%80%AFPM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.039048",
+      "scrapedAt": "2026-06-30T23:54:28.931628",
       "firstSeenAt": "2026-06-30T21:07:00.519492+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -2573,44 +2573,6 @@
       ]
     },
     {
-      "id": "b48b608eb87f2556",
-      "title": "Refuge Independence Daytime w/ DJ Seinfeld b2b Demi Riqu\u00edsimo",
-      "description": "Fridays @ Refuge ~Before. During. Afters~",
-      "date": "2026-07-03",
-      "startTime": "15:00",
-      "endTime": null,
-      "location": {
-        "name": "Refuge",
-        "address": "366 Ten Eyck",
-        "neighborhood": null
-      },
-      "categories": [
-        "parties"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/refuge-independence-daytime-w-dj-seinfeld-b2b-demi-riquisimo-tickets-1990831939924",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1187089201%2F308018534751%2F1%2Foriginal.20260617-051930?crop=focalpoint&fit=crop&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=0900fffe459bcb76398973117ac233b7",
-      "price": "unknown",
-      "scrapedAt": "2026-06-29T12:13:53.679439",
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": true,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "eventbrite",
-        "songkick"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "firstSeenAt": "2026-06-29T12:22:21.441170+00:00",
-      "score": 0.615,
-      "highlights": [
-        "verified"
-      ]
-    },
-    {
       "id": "40cf0ef0ddd67b06",
       "title": "barnacle boi @ The Rooftop, Elsewhere",
       "description": "barnacle boi at The Rooftop, Elsewhere at 2026-07-03T18:00:00-0400",
@@ -2707,7 +2669,7 @@
       "sourceUrl": "https://www.eastvillecomedy.com/events/matthew-broussard-vishnu-vaka-michael-good-peter-stewart",
       "imageUrl": "/img/comedians/matthewbroussard-f6220c83-large-thumb.jpg",
       "price": "$25",
-      "scrapedAt": "2026-06-30T22:46:18.006867",
+      "scrapedAt": "2026-06-30T23:55:00.673092",
       "organizer": "Eastville Comedy Club",
       "organizerUrl": "https://www.eastvillecomedy.com",
       "firstSeenAt": "2026-06-30T21:07:00.519492+00:00",
@@ -2746,7 +2708,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/marie-faustin-tyler-horvath-ryan-thomas-sarah-adelman",
       "imageUrl": "/img/comedians/image1-77a707e2-large-thumb.jpg",
       "price": "$29",
-      "scrapedAt": "2026-06-30T22:46:08.482004",
+      "scrapedAt": "2026-06-30T23:54:50.061685",
       "organizer": "New York Comedy Club Upper West Side",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "firstSeenAt": "2026-06-30T21:07:00.519492+00:00",
@@ -2774,11 +2736,37 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/rachel-feinstein-ryan-long-phil-duckett",
       "imageUrl": "/img/comedians/Rachel-Feinstein-Headshot-2022-202362115913-a1a012b3-large-thumb.png",
       "price": "$45",
-      "scrapedAt": "2026-06-30T22:46:08.484692",
+      "scrapedAt": "2026-06-30T23:54:50.064567",
       "organizer": "New York Comedy Club",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "firstSeenAt": "2026-06-30T21:07:00.519492+00:00",
       "score": 0.675,
+      "highlights": []
+    },
+    {
+      "id": "8f4b2f6a74fd3063",
+      "title": "HAGGUS w/ Cataclysmic, Aisle 19 and Muscipula",
+      "description": "Savage Party x Ripping Headaches Present: HAGGUS with Cataclysmic, Aisle 19 and Muscipula Friday July 3, 2026 Doors at 7:00 PM, Show at 8:00 PM All Ages",
+      "date": "2026-07-03",
+      "startTime": "19:00",
+      "endTime": null,
+      "location": {
+        "name": "Metro Baltimore",
+        "address": "1700 North Charles Street, Baltimore, Maryland 21201, United States",
+        "neighborhood": "lower east side",
+        "lat": 39.30889,
+        "lng": -76.6168
+      },
+      "categories": [
+        "parties"
+      ],
+      "source": "dice",
+      "sourceUrl": "https://dice.fm/event/pyb9vp-haggus-w-cataclysmic-aisle-19-and-muscipula-3rd-jul-metro-baltimore-baltimore-tickets",
+      "imageUrl": "https://dice-media.imgix.net/attachments/2026-06-15/5c5d4424-b7f0-4a3e-86f9-4385fa4c0148.jpg?rect=0%2C216%2C1080%2C648",
+      "price": "unknown",
+      "scrapedAt": "2026-06-30T23:54:31.162867",
+      "firstSeenAt": "2026-06-30T23:57:03.343496+00:00",
+      "score": 0.583,
       "highlights": []
     },
     {
@@ -2881,7 +2869,18 @@
       "score": 0.791,
       "highlights": [
         "nearby"
-      ]
+      ],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0
     },
     {
       "id": "a0a68038811e5429",
@@ -3068,30 +3067,41 @@
       ]
     },
     {
-      "id": "e8df58c807353623",
-      "title": "All White Independence Day Boat Party: DJ TONE & DJ SWAY J",
-      "description": "Highlights \u26f4\ufe0f Scenic three-hour cruise of the NYC harbor with breathtaking skyline views \ud83c\udfb5 Two indoor dance floors and an open-air deck playing the best summer anthems \ud83d\uddfd Sail past iconic landmarks including the Statue of Liberty and Brooklyn Bridge Genera",
+      "id": "b48b608eb87f2556",
+      "title": "Refuge Independence Daytime w/ DJ Seinfeld b2b Demi Riqu\u00edsimo",
+      "description": "Fridays @ Refuge ~Before. During. Afters~",
       "date": "2026-07-03",
       "startTime": "20:00",
       "endTime": null,
       "location": {
-        "name": "Pier 78 at Hudson River Park",
-        "address": "Pier 78 at Hudson River Park, 455 12th Avenue, Manhattan, NY",
-        "neighborhood": "manhattan"
+        "name": "Refuge",
+        "address": "366 Ten Eyck",
+        "neighborhood": null
       },
       "categories": [
-        "parties",
-        "outdoors"
+        "parties"
       ],
-      "source": "allevents",
-      "sourceUrl": "https://allevents.in/manhattan/all-white-independence-day-boat-party-dj-tone-and-dj-sway-j/2700030147866808",
-      "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:600:300/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czkvYmFubmVycy9jMDNjYjBlMC03MjAyLTExZjEtYWU1OC0yMzc0NzVkODU0NjMtcmltZy13NTUwLWg1NTAtZGNlZmYwZjEtZ21pci5qcGc_dj0xNzgyNTQ5MTU2.avif",
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/refuge-independence-daytime-w-dj-seinfeld-b2b-demi-riquisimo-tickets-1990831939924",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1187089201%2F308018534751%2F1%2Foriginal.20260617-051930?crop=focalpoint&fit=crop&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=0900fffe459bcb76398973117ac233b7",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:11.198217",
-      "firstSeenAt": "2026-06-25T13:33:51.384132+00:00",
-      "score": 0.759,
+      "scrapedAt": "2026-06-29T12:13:53.679439",
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": true,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "eventbrite",
+        "songkick"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "firstSeenAt": "2026-06-29T12:22:21.441170+00:00",
+      "score": 0.695,
       "highlights": [
-        "vibes"
+        "verified"
       ]
     },
     {
@@ -3113,12 +3123,39 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/ryan-long-dante-nero-marie-faustin-tracey-carnazzo",
       "imageUrl": "/img/comedians/rose-67d4075d-large-thumb.jpg",
       "price": "$45",
-      "scrapedAt": "2026-06-30T22:46:08.487627",
+      "scrapedAt": "2026-06-30T23:54:50.067662",
       "organizer": "New York Comedy Club on 4th Street",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "firstSeenAt": "2026-06-30T21:07:00.519492+00:00",
       "score": 0.648,
       "highlights": []
+    },
+    {
+      "id": "e8df58c807353623",
+      "title": "All White Independence Day Boat Party: DJ TONE & DJ SWAY J",
+      "description": "Highlights \u26f4\ufe0f Scenic three-hour cruise of the NYC harbor with breathtaking skyline views \ud83c\udfb5 Two indoor dance floors and an open-air deck playing the best summer anthems \ud83d\uddfd Sail past iconic landmarks including the Statue of Liberty and Brooklyn Bridge Genera",
+      "date": "2026-07-03",
+      "startTime": "20:00",
+      "endTime": null,
+      "location": {
+        "name": "Pier 78 at Hudson River Park",
+        "address": "Pier 78 at Hudson River Park, 455 12th Avenue, Manhattan, NY",
+        "neighborhood": "manhattan"
+      },
+      "categories": [
+        "parties",
+        "outdoors"
+      ],
+      "source": "allevents",
+      "sourceUrl": "https://allevents.in/manhattan/all-white-independence-day-boat-party-dj-tone-and-dj-sway-j/2700030147866808",
+      "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:600:300/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czkvYmFubmVycy9jMDNjYjBlMC03MjAyLTExZjEtYWU1OC0yMzc0NzVkODU0NjMtcmltZy13NTUwLWg1NTAtZGNlZmYwZjEtZ21pci5qcGc_dj0xNzgyNTQ5MTU2.avif",
+      "price": "unknown",
+      "scrapedAt": "2026-06-30T23:54:52.973087",
+      "firstSeenAt": "2026-06-25T13:33:51.384132+00:00",
+      "score": 0.759,
+      "highlights": [
+        "vibes"
+      ]
     },
     {
       "id": "41affbd10f014951",
@@ -3140,7 +3177,7 @@
       "sourceUrl": "https://www.ticketmaster.com/the-bell-house-stand-up-showcase-brooklyn-new-york-07-03-2026/event/300064AE0347EA71",
       "imageUrl": "https://s1.ticketm.net/dam/e/92c/41e5c5d4-d0a3-4153-b923-4377f851092c_TABLET_LANDSCAPE_LARGE_16_9.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:18.793544",
+      "scrapedAt": "2026-06-30T23:55:01.321291",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -3213,7 +3250,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/rachel-williams-dante-nero-rick-younger-phil-duckett",
       "imageUrl": "/img/comedians/image0-76cf07de-large-thumb.jpg",
       "price": "$45",
-      "scrapedAt": "2026-06-30T22:46:08.493406",
+      "scrapedAt": "2026-06-30T23:54:50.073674",
       "organizer": "New York Comedy Club",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "firstSeenAt": "2026-06-30T17:59:36.010843+00:00",
@@ -3240,7 +3277,7 @@
       "sourceUrl": "https://www.eastvillecomedy.com/events/vishnu-vaka-nick-tilleli-tina-zhu-dave-temple",
       "imageUrl": "/img/events/Original-856c08b4-large-thumb.png",
       "price": "$25",
-      "scrapedAt": "2026-06-30T22:46:18.009479",
+      "scrapedAt": "2026-06-30T23:55:00.675805",
       "organizer": "Eastville Comedy Club",
       "organizerUrl": "https://www.eastvillecomedy.com",
       "userSaved": false,
@@ -3278,7 +3315,7 @@
       "sourceUrl": "https://www.eastvillecomedy.com/events/bryan-mckenna-zahid-dewji-ray-zawodni-harry-terjanian",
       "imageUrl": "/img/comedians/Screenshot-2024-10-24-at-10-28-12-AM-ed000f48-large-thumb.png",
       "price": "$25",
-      "scrapedAt": "2026-06-30T22:46:18.012066",
+      "scrapedAt": "2026-06-30T23:55:00.678590",
       "organizer": "Eastville Comedy Club",
       "organizerUrl": "https://www.eastvillecomedy.com",
       "firstSeenAt": "2026-06-30T21:07:00.519492+00:00",
@@ -3304,7 +3341,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/dante-nero-mia-jackson-ismael-loutfi-tracey-carnazzo",
       "imageUrl": "/img/comedians/dante-nero-a1590996-large-thumb.jpg",
       "price": "$45",
-      "scrapedAt": "2026-06-30T22:46:08.496368",
+      "scrapedAt": "2026-06-30T23:54:50.076751",
       "organizer": "New York Comedy Club on 4th Street",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "firstSeenAt": "2026-06-30T21:07:00.519492+00:00",
@@ -3332,7 +3369,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/jason-salmon-rick-younger-rachel-williams-riley-lassin",
       "imageUrl": "/img/comedians/Jason-Salmon-Headshot-2d450d95-large-thumb.jpg",
       "price": "$15",
-      "scrapedAt": "2026-06-30T22:46:08.499307",
+      "scrapedAt": "2026-06-30T23:54:50.079816",
       "organizer": "New York Comedy Club Upper West Side",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "firstSeenAt": "2026-06-30T19:17:58.948139+00:00",
@@ -3443,7 +3480,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/nyc-4th-of-july-fireworks-show",
       "imageUrl": null,
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.081297",
+      "scrapedAt": "2026-06-30T23:54:28.973974",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -3513,7 +3550,7 @@
       "sourceUrl": "https://www.smorgasburg.com",
       "imageUrl": null,
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:46.434062",
+      "scrapedAt": "2026-06-30T23:54:27.942900",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -3743,7 +3780,7 @@
       "sourceUrl": "https://www.eastvillecomedy.com/events/rosey-catherine-max-lowe-ray-zawodni-cesh-reyes",
       "imageUrl": "/img/comedians/Rosey-Catherine-de1c0b78-large-thumb.jpg",
       "price": "$25",
-      "scrapedAt": "2026-06-30T22:46:18.014844",
+      "scrapedAt": "2026-06-30T23:55:00.681570",
       "organizer": "Eastville Comedy Club",
       "organizerUrl": "https://www.eastvillecomedy.com",
       "userSaved": false,
@@ -3781,7 +3818,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/royal-swedish-navy-band",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/64d83a28-d573-4cc2-9580-bd3833a7ab66/SnapInsta.to_730160710_18603741757007190_2882414414541263707_n.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.069587",
+      "scrapedAt": "2026-06-30T23:54:28.962354",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -3811,7 +3848,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/nynj-world-cup-26-x-telemundo-fan-village-at-rockefeller-center",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/da5b6c79-78b9-4fed-a53a-f515e550e3de/NYNJ-World-Cup-26-x-Telemundo-Fan-Village-at-Rockefeller-Center.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.064444",
+      "scrapedAt": "2026-06-30T23:54:28.957123",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -3840,7 +3877,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/america250-x-one-times-square",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/dcd37708-22a4-413b-9c98-c42c6b4292fd/Screenshot+2026-06-25+at+9.30.34%E2%80%AFPM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.074760",
+      "scrapedAt": "2026-06-30T23:54:28.967449",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -4162,7 +4199,7 @@
       "sourceUrl": "https://allevents.in/brooklyn/mighty-fines-fourth-annual-4th-of-july-rock-and-roll-bbq-tickets/80002764244608",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90aHVtYnMvdGh1bWI2YTM5ZWNiZjY2ODc5LmpwZw.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:06.253870",
+      "scrapedAt": "2026-06-30T23:54:47.875485",
       "firstSeenAt": "2026-06-27T01:27:05.973378+00:00",
       "score": 0.57,
       "highlights": []
@@ -4191,7 +4228,18 @@
       "organizerUrl": "https://www.songkick.com/concerts/43259227-slander-at-pacha-nyc?utm_medium=organic&utm_source=microformat",
       "firstSeenAt": "2026-06-30T22:47:57.596276+00:00",
       "score": 0.556,
-      "highlights": []
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "songkick"
+      ],
+      "likes": 0,
+      "comments": 0
     },
     {
       "id": "5c3c9a26e8b0a8da",
@@ -4213,7 +4261,7 @@
       "sourceUrl": "https://www.eastvillecomedy.com/events/myq-kaplan-peter-stewart-rosey-catherine-luis-lopez",
       "imageUrl": "/img/comedians/myqkaplan-9b1c097c-large-thumb.jpg",
       "price": "$25",
-      "scrapedAt": "2026-06-30T22:46:18.017535",
+      "scrapedAt": "2026-06-30T23:55:00.684440",
       "organizer": "Eastville Comedy Club",
       "organizerUrl": "https://www.eastvillecomedy.com",
       "userSaved": false,
@@ -4290,7 +4338,7 @@
       "sourceUrl": "https://www.smorgasburg.com",
       "imageUrl": null,
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:46.435582",
+      "scrapedAt": "2026-06-30T23:54:27.944533",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -4409,7 +4457,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/comedy-mob-open-mic-2026-06-03170413",
       "imageUrl": "/img/events/ComedyMobb-a1a70989-large-thumb.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:08.509634",
+      "scrapedAt": "2026-06-30T23:54:50.091120",
       "organizer": "New York Comedy Club on 4th Street",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "userSaved": false,
@@ -4449,7 +4497,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/laughing-buddha-comedy-2026-06-03170442",
       "imageUrl": "/img/shows/NYCC-1-702a0728-large-thumb.png",
       "price": "$29",
-      "scrapedAt": "2026-06-30T22:46:08.512294",
+      "scrapedAt": "2026-06-30T23:54:50.093922",
       "organizer": "New York Comedy Club Upper West Side",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "userSaved": false,
@@ -4468,36 +4516,6 @@
       "highlights": [
         "special"
       ]
-    },
-    {
-      "id": "89c82dc550c9ecf5",
-      "title": "The Ritual with Anan\u00e9 & Louie Vega makes its debut at The Nursery at Public Reco",
-      "description": "The Ritual with Anan\u00e9 & Louie Vega makes its debut at The Nursery at Public Records on Sunday Afternoon / Evening July 5, 2026 in Brooklyn NYC. As highly accomplished as DJs, Artists, Producers and Label Owners, Anan\u00e9 and Louie Vega are quadruple threats who have had major impacts in the Music\u2026",
-      "date": "2026-07-05",
-      "startTime": "20:00",
-      "endTime": null,
-      "location": {
-        "name": "",
-        "address": "",
-        "neighborhood": "long island city"
-      },
-      "categories": [
-        "music"
-      ],
-      "source": "instagram",
-      "sourceUrl": "https://www.instagram.com/p/DYMoGrWgDeE/",
-      "imageUrl": "https://scontent-lga3-1.cdninstagram.com/v/t51.82787-15/696584948_18052905323723829_3991875625169217696_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzg5NDY2NDE1ODQ5NDM0MDk5Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=ebRWnEosOEAQ7kNvwGkOI4e&_nc_oc=Adosy4URD9-qgWJI4VO7i7FTlW4wDqUKUx2NtxCwfxzqFVQKyrROmM5rjnmJ0Ck2Hvs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_gid=gthD6aJWokDRaPSYeF2hNA&_nc_ss=7a22e&oh=00_Af41hAzAKTEcI24q0W2-JNFgC0oOjOu5YY5wm9SWD4Mmrw&oe=6A0CF124",
-      "price": "unknown",
-      "scrapedAt": "2026-05-15T14:25:13.351480",
-      "instagramAccount": "bennysoto",
-      "likes": 538,
-      "comments": 15,
-      "accountFollowers": 14517,
-      "accountVerified": true,
-      "ocrEnriched": true,
-      "firstSeenAt": "2026-04-23T20:30:21.742682+00:00",
-      "score": 0.721,
-      "highlights": []
     },
     {
       "id": "8027c13b72361a00",
@@ -4646,6 +4664,36 @@
       ]
     },
     {
+      "id": "89c82dc550c9ecf5",
+      "title": "The Ritual with Anan\u00e9 & Louie Vega makes its debut at The Nursery at Public Reco",
+      "description": "The Ritual with Anan\u00e9 & Louie Vega makes its debut at The Nursery at Public Records on Sunday Afternoon / Evening July 5, 2026 in Brooklyn NYC. As highly accomplished as DJs, Artists, Producers and Label Owners, Anan\u00e9 and Louie Vega are quadruple threats who have had major impacts in the Music\u2026",
+      "date": "2026-07-05",
+      "startTime": "20:00",
+      "endTime": null,
+      "location": {
+        "name": "",
+        "address": "",
+        "neighborhood": "long island city"
+      },
+      "categories": [
+        "music"
+      ],
+      "source": "instagram",
+      "sourceUrl": "https://www.instagram.com/p/DYMoGrWgDeE/",
+      "imageUrl": "https://scontent-lga3-1.cdninstagram.com/v/t51.82787-15/696584948_18052905323723829_3991875625169217696_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzg5NDY2NDE1ODQ5NDM0MDk5Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=ebRWnEosOEAQ7kNvwGkOI4e&_nc_oc=Adosy4URD9-qgWJI4VO7i7FTlW4wDqUKUx2NtxCwfxzqFVQKyrROmM5rjnmJ0Ck2Hvs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_gid=gthD6aJWokDRaPSYeF2hNA&_nc_ss=7a22e&oh=00_Af41hAzAKTEcI24q0W2-JNFgC0oOjOu5YY5wm9SWD4Mmrw&oe=6A0CF124",
+      "price": "unknown",
+      "scrapedAt": "2026-05-15T14:25:13.351480",
+      "instagramAccount": "bennysoto",
+      "likes": 538,
+      "comments": 15,
+      "accountFollowers": 14517,
+      "accountVerified": true,
+      "ocrEnriched": true,
+      "firstSeenAt": "2026-04-23T20:30:21.742682+00:00",
+      "score": 0.721,
+      "highlights": []
+    },
+    {
       "id": "389f0aaac48c6116",
       "title": "Stand-Up Comedy: Josh Adam Meyers, Calise Hawkins, Alingon Mitra, Jill Weiner",
       "description": "Nothing says downtown NYC like a microphone, a stool, a brick wall and a comedian. Stand up comedy has been a staple of Village nightlife for decades! The newly expanded New York Comedy Club is proud to join the thriving arts and entertainment scene in the East Village, building on our strong\u2026",
@@ -4664,7 +4712,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/josh-adam-meyers-calise-hawkins-alingon-mitra-jill-weiner",
       "imageUrl": "/img/comedians/B30CB6D7-B412-449D-9082-D0835262F3E1-a2900d54-large-thumb.jpg",
       "price": "$25",
-      "scrapedAt": "2026-06-30T22:46:08.518155",
+      "scrapedAt": "2026-06-30T23:54:50.100206",
       "organizer": "New York Comedy Club on 4th Street",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "userSaved": false,
@@ -4774,7 +4822,7 @@
       "sourceUrl": "https://lizsbookbar.com/events/5716120260706",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/LecturesOnTap.png?cb=1742243299",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.514824",
+      "scrapedAt": "2026-06-30T23:54:30.017549",
       "firstSeenAt": "2026-06-20T18:53:16.897996+00:00",
       "score": 0.756,
       "highlights": []
@@ -5051,7 +5099,7 @@
       "sourceUrl": "https://lizsbookbar.com/events/1462720260707",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/LBB_event_site_Quiet_Reading.png?cb=1724783211",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.515404",
+      "scrapedAt": "2026-06-30T23:54:30.018071",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "score": 0.846,
       "highlights": []
@@ -5076,7 +5124,7 @@
       "sourceUrl": "https://www.brooklyncomedycollective.com/show-schedule/golfers-7-7",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1780501101412-66R8HAG2R60DLVTA14NM/GOLFERS.png",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.192148",
+      "scrapedAt": "2026-06-30T23:54:29.813809",
       "firstSeenAt": "2026-06-30T01:51:48.420883+00:00",
       "score": 0.557,
       "highlights": []
@@ -5137,7 +5185,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5630920260707",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/77_GAMES_SQUARE.png?cb=1781213619",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.642154",
+      "scrapedAt": "2026-06-30T23:54:30.050657",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -5288,7 +5336,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/dune-part-three-imax-global-trailer-event",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/ebfb033b-c6fd-48dc-8214-d8b2e3a30ce2/Screenshot+2026-06-29+at+7.00.42%E2%80%AFPM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.096300",
+      "scrapedAt": "2026-06-30T23:54:28.988895",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -5317,7 +5365,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5494020260708",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/Recurring/Stage_Dive___Square.png?cb=1742237970",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.644828",
+      "scrapedAt": "2026-06-30T23:54:30.053140",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -5359,7 +5407,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5685320260708",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/General_Literary___BCB_BK_070826.jpg?cb=1781633824",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.646611",
+      "scrapedAt": "2026-06-30T23:54:30.054792",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -5652,7 +5700,7 @@
       "sourceUrl": "https://lizsbookbar.com/events/5677720260709",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/web_orb_PAINTnSIP.png?cb=1781793680",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.516704",
+      "scrapedAt": "2026-06-30T23:54:30.019164",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "score": 0.741,
       "highlights": []
@@ -5660,7 +5708,7 @@
     {
       "id": "1c3077b13c7eeee1",
       "title": "RODEO: breakfast night",
-      "description": "CELEBRATE the JOY and BEAUTY of BREAKFAST! RODEO is a brand new night by oddhorse!!!!! so much more than just music... you don't want to miss it! Purchase your tickets through the eventbrite link below... (17 going, 22 interested)",
+      "description": "CELEBRATE the JOY and BEAUTY of BREAKFAST! RODEO is a brand new night by oddhorse!!!!! so much more than just music... you don't want to miss it! Purchase your tickets through the eventbrite link below... (18 going, 22 interested)",
       "date": "2026-07-09",
       "startTime": "19:30",
       "endTime": null,
@@ -5749,7 +5797,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5413720260709",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/Recurring/POETRY_IN_NEW_YORK_SQUARE.png?cb=1731350146",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.647482",
+      "scrapedAt": "2026-06-30T23:54:30.055647",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -5990,7 +6038,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/hart-vip-night",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/64139604-ec6f-4969-b3bc-94fbfd8268eb/Screenshot+2026-06-28+at+3.35.34%E2%80%AFPM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.106862",
+      "scrapedAt": "2026-06-30T23:54:28.999926",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -6040,43 +6088,6 @@
       ]
     },
     {
-      "id": "3b48911e1dba3fbb",
-      "title": "MODA Mocktails x Lily Pond Spritz Soir\u00e9e",
-      "description": "Join us for a Summer Spritz Soir\u00e9e hosted by Lily Pond x MODA Mocktails. Come mingle, sip, and celebrate summer in the West Village with complimentary spritz mocktails, special items and more! Bring your friends - all are welcome\ud83c\udf4b\ud83c\udf4a (168 going, 104 interested)",
-      "date": "2026-07-10",
-      "startTime": "17:00",
-      "endTime": null,
-      "location": {
-        "name": "Lily Pond",
-        "address": "183 W Tenth St, New York, NY 10014",
-        "neighborhood": "manhattan"
-      },
-      "categories": [
-        "free"
-      ],
-      "source": "partiful",
-      "sourceUrl": "https://partiful.com/e/XmzZvogndJryEQfi9Qix",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FCTr0XrPis8b2CzqEA9SuPdbzB3K3%2F_m0FNVUkXnoUSdvP4mb--?alt=media",
-      "price": "free",
-      "scrapedAt": "2026-06-30T19:12:46.304206",
-      "firstSeenAt": "2026-06-30T19:17:58.948139+00:00",
-      "score": 0.562,
-      "highlights": [
-        "free"
-      ],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "partiful"
-      ],
-      "likes": 0,
-      "comments": 0
-    },
-    {
       "id": "332446910494cf93",
       "title": "Habibi Festival at BRIC Celebrate Brooklyn!",
       "description": "Habibi Festival brings the vibrant sounds of Tunisia, Morocco, Sudan, and beyond. DJ Kofta of the iconic party series Yalla! Party Project will keep the vibes high as we kick things off with the Habibi Festival house band, led by Yacine Boulares and featuring special guests, including Tunisian\u2026",
@@ -6114,6 +6125,34 @@
       ],
       "likes": 0,
       "comments": 0
+    },
+    {
+      "id": "fc7d2199c8dcede0",
+      "title": "Mura Masa (DJ Set) - Open Air",
+      "description": "21+ | JULY 10 | 6PM /// BANANAS (OPEN AIR) /// Mura Masa \\[DJ Set\\]",
+      "date": "2026-07-10",
+      "startTime": "18:00",
+      "endTime": null,
+      "location": {
+        "name": "BERHTA",
+        "address": "1237 W Street Northeast, Washington, District of Columbia 20018, United States",
+        "neighborhood": null,
+        "lat": 38.919114,
+        "lng": -76.987664
+      },
+      "categories": [
+        "music"
+      ],
+      "source": "dice",
+      "sourceUrl": "https://dice.fm/event/g5qk8p-mura-masa-dj-set-open-air-10th-jul-berhta-washington-tickets",
+      "imageUrl": "https://dice-media.imgix.net/attachments/2026-05-29/4f9a0838-26da-4630-8be9-3dc93c74f062.jpg?rect=0%2C1010%2C2480%2C1488",
+      "price": "unknown",
+      "scrapedAt": "2026-06-30T23:54:31.157261",
+      "firstSeenAt": "2026-06-30T23:57:03.343496+00:00",
+      "score": 0.684,
+      "highlights": [
+        "nightlife"
+      ]
     },
     {
       "id": "4c9cfcf54b617721",
@@ -6251,10 +6290,24 @@
       "sourceUrl": "https://lizsbookbar.com/events/5493120260710",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/web_orb_dempys.png?cb=1776270479",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.518697",
+      "scrapedAt": "2026-06-30T23:54:30.021016",
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "eventbrite",
+        "lizsbookbar"
+      ],
+      "likes": 0,
+      "comments": 0,
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "score": 1.0,
-      "highlights": []
+      "highlights": [
+        "verified"
+      ]
     },
     {
       "id": "9476043f7c67131a",
@@ -6275,7 +6328,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/west-side-fest-at-the-whitney",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/603a65d5-b3ae-4d2e-ab02-d23f16479787/Screenshot+2026-06-25+at+10.03.12%E2%80%AFAM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.116940",
+      "scrapedAt": "2026-06-30T23:54:29.010830",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -6283,41 +6336,6 @@
       "highlights": [
         "following",
         "free"
-      ]
-    },
-    {
-      "id": "558944d77ec255ba",
-      "title": "Hive Mind with Allen Aucoin",
-      "description": "\ud83d\udc49 Hive Mind with Allen Aucoin on FRI, JUL 10",
-      "date": "2026-07-10",
-      "startTime": "20:00",
-      "endTime": null,
-      "location": {
-        "name": "Brooklyn Bowl",
-        "address": "",
-        "neighborhood": "williamsburg"
-      },
-      "categories": [
-        "music"
-      ],
-      "source": "instagram",
-      "sourceUrl": "https://www.instagram.com/p/DYXKgPiDF_M/",
-      "imageUrl": "https://scontent-lga3-2.cdninstagram.com/v/t51.82787-15/696722472_18590160241057003_2276978334898668363_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzg5NzYzMDE0NjA3MjQ0MDYyMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=A-6UNLVZg8oQ7kNvwGlJrW8&_nc_oc=Adr78QlmdkPGcAFOxrbhX7hVoepQwLIKeEc7VB0tQhFH444VTAXQVgZzekKZyZzAZaA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-lga3-2.cdninstagram.com&_nc_gid=oA6I9EguotuoTjumAQokMA&_nc_ss=7a22e&oh=00_Af7zRadb7mWjHGTDR8_CmAKFGZeAyJRDavbrZIqJ-N-m7Q&oe=6A0D0D91",
-      "price": "unknown",
-      "scrapedAt": "2026-05-15T14:31:49.711615",
-      "extraImages": [
-        "https://scontent-lga3-3.cdninstagram.com/v/t51.82787-15/695051941_18590160397057003_5983112526787597489_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=Mzg5NzYzMDE3Njc3NjEyMjE1OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=FJ0P4hUMCCoQ7kNvwGGjDrI&_nc_oc=AdqB-buabIIxQVV_RTu6tbcB7PhPLVJKKT4RNq0pzS7Clc6yOOAPaI5DRZvmsV_AQ2k&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_gid=oA6I9EguotuoTjumAQokMA&_nc_ss=7a22e&oh=00_Af4Mr1ltgciCtiMh1q1g-Syix72r9dmMKwk7NDfFvo3f1g&oe=6A0CF2FE"
-      ],
-      "instagramAccount": "brooklynbowl",
-      "likes": 3,
-      "comments": 1,
-      "accountFollowers": 107673,
-      "accountVerified": true,
-      "ocrEnriched": true,
-      "firstSeenAt": "2026-04-23T20:30:21.742682+00:00",
-      "score": 0.816,
-      "highlights": [
-        "nearby"
       ]
     },
     {
@@ -6584,30 +6602,39 @@
       "comments": 0
     },
     {
-      "id": "216710db7761cd16",
-      "title": "DJ Python & Foodman",
-      "description": "Foodman + DJ Python Two of electronic music\u2019s most distinctive voices share a bill at BOOM Club. From hyper-detailed rhythmic experiments to humid, dub-soaked club music, Foodman and DJ Python each push dance music into strange and beautiful territory while remaining deeply connected to its roots.",
+      "id": "558944d77ec255ba",
+      "title": "Hive Mind with Allen Aucoin",
+      "description": "\ud83d\udc49 Hive Mind with Allen Aucoin on FRI, JUL 10",
       "date": "2026-07-10",
       "startTime": "20:00",
       "endTime": null,
       "location": {
-        "name": "BOOM Club",
-        "address": "600 Foster Street, Suite B, Durham, North Carolina 27701, United States",
-        "neighborhood": null,
-        "lat": 36.002316,
-        "lng": -78.901044
+        "name": "Brooklyn Bowl",
+        "address": "",
+        "neighborhood": "williamsburg"
       },
       "categories": [
         "music"
       ],
-      "source": "dice",
-      "sourceUrl": "https://dice.fm/event/ry87kq-dj-python-foodman-10th-jul-boom-club-durham-tickets",
-      "imageUrl": "https://dice-media.imgix.net/attachments/2026-06-19/385f10a2-d241-4ea6-a8e4-53b0e3d5029e.jpg?rect=0%2C386%2C1715%2C1029",
+      "source": "instagram",
+      "sourceUrl": "https://www.instagram.com/p/DYXKgPiDF_M/",
+      "imageUrl": "https://scontent-lga3-2.cdninstagram.com/v/t51.82787-15/696722472_18590160241057003_2276978334898668363_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzg5NzYzMDE0NjA3MjQ0MDYyMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=A-6UNLVZg8oQ7kNvwGlJrW8&_nc_oc=Adr78QlmdkPGcAFOxrbhX7hVoepQwLIKeEc7VB0tQhFH444VTAXQVgZzekKZyZzAZaA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-lga3-2.cdninstagram.com&_nc_gid=oA6I9EguotuoTjumAQokMA&_nc_ss=7a22e&oh=00_Af7zRadb7mWjHGTDR8_CmAKFGZeAyJRDavbrZIqJ-N-m7Q&oe=6A0D0D91",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:49.242495",
-      "firstSeenAt": "2026-06-30T22:47:57.596276+00:00",
-      "score": 0.573,
-      "highlights": []
+      "scrapedAt": "2026-05-15T14:31:49.711615",
+      "extraImages": [
+        "https://scontent-lga3-3.cdninstagram.com/v/t51.82787-15/695051941_18590160397057003_5983112526787597489_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=Mzg5NzYzMDE3Njc3NjEyMjE1OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=FJ0P4hUMCCoQ7kNvwGGjDrI&_nc_oc=AdqB-buabIIxQVV_RTu6tbcB7PhPLVJKKT4RNq0pzS7Clc6yOOAPaI5DRZvmsV_AQ2k&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_gid=oA6I9EguotuoTjumAQokMA&_nc_ss=7a22e&oh=00_Af4Mr1ltgciCtiMh1q1g-Syix72r9dmMKwk7NDfFvo3f1g&oe=6A0CF2FE"
+      ],
+      "instagramAccount": "brooklynbowl",
+      "likes": 3,
+      "comments": 1,
+      "accountFollowers": 107673,
+      "accountVerified": true,
+      "ocrEnriched": true,
+      "firstSeenAt": "2026-04-23T20:30:21.742682+00:00",
+      "score": 0.816,
+      "highlights": [
+        "nearby"
+      ]
     },
     {
       "id": "fafea77f43d507ae",
@@ -6724,34 +6751,28 @@
       "highlights": []
     },
     {
-      "id": "87d1794e260efae1",
-      "title": "How to Be Book Club: \"Conversation in the Mountains\" by Paul Celan",
-      "description": "** Please note, this event will take place at Book Club Bar East Village. ** Existential crises are like a persistent rash. There's no cure, but if you're suffering from the Big Questions, maybe the How To Be Book Club can be a salve.",
+      "id": "faf340af051c33ed",
+      "title": "Atori Cafe July Pastry Pop Up",
+      "description": "Join me for a one-day July pastry pop-up at Blue Brown Cafe in Williamsburg. This month\u2019s menu is a lush midsummer collection of Asian-inspired pastries, with flavors like ube, pandan, and coconut, capturing the richness of summer in full bloom.",
       "date": "2026-07-11",
-      "startTime": "11:00",
-      "endTime": null,
+      "startTime": "12:00",
+      "endTime": "14:00",
       "location": {
-        "name": "East Village, 197 E 3rd Street",
-        "address": "197 E 3rd St, New York, NY 10009",
-        "neighborhood": "east village"
+        "name": "Blue Brown Cafe",
+        "address": "45 Havemeyer St, Brooklyn, NY 11211",
+        "neighborhood": "brooklyn"
       },
       "categories": [
-        "books"
+        "exploration"
       ],
-      "source": "bookclubbar",
-      "sourceUrl": "https://www.bookclubbar.com/events/5621520260711",
-      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/HTB_JULY_26.png?cb=1780750662",
+      "source": "partiful",
+      "sourceUrl": "https://partiful.com/e/r2rlwxvkf6IMsDvZteYK",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F2pCDwjOmRxoTd1rCaPd9%2FdoHjsWbP33e4moBHUsTUC?alt=media",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.650218",
-      "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
-      "account": "bookclubbar",
-      "userFollowing": true,
-      "accountEventYield": 0.833,
-      "accountPostsSeen": 12,
-      "score": 0.905,
-      "highlights": [
-        "following"
-      ]
+      "scrapedAt": "2026-06-30T23:54:31.000578",
+      "firstSeenAt": "2026-06-30T23:57:03.343496+00:00",
+      "score": 0.807,
+      "highlights": []
     },
     {
       "id": "b2410b0afde9f63f",
@@ -6901,52 +6922,46 @@
       "comments": 0
     },
     {
-      "id": "e2b1aa6e8ba18f02",
-      "title": "\u00a9 BOOKSANDBOUNTY @ by author - Edited",
-      "description": "\u00a9 BOOKSANDBOUNTY @ by author - Edited This trilogy changed me. Do you hear me? Talk about a TRANSFORMATIONAL TEXT! Plus it can get quite trippy. The kind of story and characters that we remain with you \u2014manifest in your dreams type of thing.",
+      "id": "87d1794e260efae1",
+      "title": "How to Be Book Club: \"Conversation in the Mountains\" by Paul Celan",
+      "description": "Book Club Bar's in-person philosophy discussion group! This month we're reading \"Conversation in the Mountains\" by Paul Celan.",
       "date": "2026-07-11",
       "startTime": "19:00",
       "endTime": null,
       "location": {
-        "name": "CENTERFORFICTION",
-        "address": "",
-        "neighborhood": null
+        "name": "East Village, 197 E 3rd Street",
+        "address": "197 E 3rd St, New York, NY 10009",
+        "neighborhood": "east village"
       },
       "categories": [
         "books"
       ],
-      "source": "instagram",
-      "sourceUrl": "https://www.instagram.com/stories/center4fiction/DaDgHYXxFhD/",
-      "imageUrl": "https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/729629582_18602286154003088_595041194938199909_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MzkyODEyNDU0NDY5MDQ0NDM1NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IlNUT1JZLnhwaWRzLjEyODQuc2RyLnJlZ3VsYXJfcGhvdG8uQzMifQ%3D%3D&_nc_ohc=_iaZ_Zg2klkQ7kNvwG-jihy&_nc_oc=AdqO048_ZsKimJbeClgGiXB70-k1b9lugOIRGEkycOlLysAx3HIow82Jm5pE_ZaHnzU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&_nc_gid=Li7nsu_FaCYAHPaZrRBXkQ&_nc_ss=7a3ba&oh=00_Af80JlGtVyeZGmWg_vaNb5B0Ylz85bY63e6i2mBfh_XKsg&oe=6A44A74F",
+      "source": "bookclubbar",
+      "sourceUrl": "https://www.bookclubbar.com/events/5621520260711",
+      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/HTB_JULY_26.png?cb=1780750662",
       "price": "unknown",
-      "scrapedAt": "2026-06-26T18:20:20.726504",
-      "instagramAccount": "center4fiction",
-      "account": "center4fiction",
-      "userFollowing": true,
-      "accountEventYield": 1.0,
-      "accountPostsSeen": 12,
-      "ocrEnriched": true,
-      "ocrOnly": true,
-      "discoveredVia": "ig_story",
-      "isStory": true,
-      "firstSeenAt": "2026-06-26T18:23:25.229010+00:00",
-      "score": 1.0,
-      "highlights": [
-        "following",
-        "story"
-      ],
+      "scrapedAt": "2026-06-30T23:54:30.058159",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
+      "userFollowing": true,
       "recurring": false,
+      "ocrEnriched": false,
       "contributingSources": [
-        "instagram"
-      ],
-      "contributingAccounts": [
-        "center4fiction"
+        "bookclubbar",
+        "eventbrite"
       ],
       "likes": 0,
-      "comments": 0
+      "comments": 0,
+      "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
+      "account": "bookclubbar",
+      "accountEventYield": 0.833,
+      "accountPostsSeen": 12,
+      "score": 0.871,
+      "highlights": [
+        "following",
+        "verified"
+      ]
     },
     {
       "id": "a5f1b742ff1e29c3",
@@ -7022,6 +7037,54 @@
       "firstSeenAt": "2026-06-27T21:36:48.880943+00:00",
       "score": 0.631,
       "highlights": []
+    },
+    {
+      "id": "e2b1aa6e8ba18f02",
+      "title": "\u00a9 BOOKSANDBOUNTY @ by author - Edited",
+      "description": "\u00a9 BOOKSANDBOUNTY @ by author - Edited This trilogy changed me. Do you hear me? Talk about a TRANSFORMATIONAL TEXT! Plus it can get quite trippy. The kind of story and characters that we remain with you \u2014manifest in your dreams type of thing.",
+      "date": "2026-07-11",
+      "startTime": "19:00",
+      "endTime": null,
+      "location": {
+        "name": "CENTERFORFICTION",
+        "address": "",
+        "neighborhood": null
+      },
+      "categories": [
+        "books"
+      ],
+      "source": "instagram",
+      "sourceUrl": "https://www.instagram.com/stories/center4fiction/DaDgHYXxFhD/",
+      "imageUrl": "https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/729629582_18602286154003088_595041194938199909_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MzkyODEyNDU0NDY5MDQ0NDM1NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IlNUT1JZLnhwaWRzLjEyODQuc2RyLnJlZ3VsYXJfcGhvdG8uQzMifQ%3D%3D&_nc_ohc=_iaZ_Zg2klkQ7kNvwG-jihy&_nc_oc=AdqO048_ZsKimJbeClgGiXB70-k1b9lugOIRGEkycOlLysAx3HIow82Jm5pE_ZaHnzU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&_nc_gid=Li7nsu_FaCYAHPaZrRBXkQ&_nc_ss=7a3ba&oh=00_Af80JlGtVyeZGmWg_vaNb5B0Ylz85bY63e6i2mBfh_XKsg&oe=6A44A74F",
+      "price": "unknown",
+      "scrapedAt": "2026-06-26T18:20:20.726504",
+      "instagramAccount": "center4fiction",
+      "account": "center4fiction",
+      "userFollowing": true,
+      "accountEventYield": 1.0,
+      "accountPostsSeen": 12,
+      "ocrEnriched": true,
+      "ocrOnly": true,
+      "discoveredVia": "ig_story",
+      "isStory": true,
+      "firstSeenAt": "2026-06-26T18:23:25.229010+00:00",
+      "score": 1.0,
+      "highlights": [
+        "following",
+        "story"
+      ],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "recurring": false,
+      "contributingSources": [
+        "instagram"
+      ],
+      "contributingAccounts": [
+        "center4fiction"
+      ],
+      "likes": 0,
+      "comments": 0
     },
     {
       "id": "49188891de992bbd",
@@ -7115,7 +7178,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/teremana-the-world-table",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/a6fbf5a7-cf37-4fcc-93a0-12180e9f0a0f/Screenshot+2026-06-30+at+10.21.08%E2%80%AFAM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.121804",
+      "scrapedAt": "2026-06-30T23:54:29.016125",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -7295,7 +7358,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/lululemon-summer-series",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/ce10a22d-7dc1-4bf9-a15c-f11a5f762416/Screenshot+2026-06-25+at+10.10.53%E2%80%AFAM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.131713",
+      "scrapedAt": "2026-06-30T23:54:29.026945",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -7345,38 +7408,6 @@
       ],
       "likes": 0,
       "comments": 0
-    },
-    {
-      "id": "534d0d60ffcda722",
-      "title": "Poetry Today Book Club: \"The Vitals\" by Marie de Quatrebarbes",
-      "description": "Book Club Bar's in-person poetry discussion group! This month: The Vitals by Marie de Quatrebarbes. The book's translator, Aiden Farrell, will join the discussion! Whether you haven't read a poem since high school or you live and breathe verse, come to Book Club Bar for a tour of the underground\u2026",
-      "date": "2026-07-12",
-      "startTime": "11:00",
-      "endTime": null,
-      "location": {
-        "name": "Book Club Bar East Village, 197 East 3rd Street",
-        "address": "197 E 3rd St, New York, NY 10009",
-        "neighborhood": "east village"
-      },
-      "categories": [
-        "books",
-        "music",
-        "parties"
-      ],
-      "source": "bookclubbar",
-      "sourceUrl": "https://www.bookclubbar.com/events/5673020260712",
-      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/PT_July_Square.png?cb=1781447629",
-      "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.652547",
-      "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
-      "account": "bookclubbar",
-      "userFollowing": true,
-      "accountEventYield": 0.833,
-      "accountPostsSeen": 12,
-      "score": 0.962,
-      "highlights": [
-        "following"
-      ]
     },
     {
       "id": "12ae54de69a90780",
@@ -7492,6 +7523,50 @@
       ]
     },
     {
+      "id": "534d0d60ffcda722",
+      "title": "Poetry Today Book Club: \"The Vitals\" by Marie de Quatrebarbes",
+      "description": "Book Club Bar's in-person poetry discussion group! This month: The Vitals by Marie de Quatrebarbes. The book's translator, Aiden Farrell, will join the discussion! Whether you haven't read a poem since high school or you live and breathe verse, come to Book Club Bar for a tour of the underground\u2026",
+      "date": "2026-07-12",
+      "startTime": "19:00",
+      "endTime": null,
+      "location": {
+        "name": "Book Club Bar East Village, 197 East 3rd Street",
+        "address": "197 E 3rd St, New York, NY 10009",
+        "neighborhood": "east village"
+      },
+      "categories": [
+        "books",
+        "music",
+        "parties"
+      ],
+      "source": "bookclubbar",
+      "sourceUrl": "https://www.bookclubbar.com/events/5673020260712",
+      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/PT_July_Square.png?cb=1781447629",
+      "price": "unknown",
+      "scrapedAt": "2026-06-30T23:54:30.060312",
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": true,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "bookclubbar",
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
+      "account": "bookclubbar",
+      "accountEventYield": 0.833,
+      "accountPostsSeen": 12,
+      "score": 1.0,
+      "highlights": [
+        "following",
+        "verified"
+      ]
+    },
+    {
       "id": "0b10e0eea633cd45",
       "title": "French Cheese & Wine Tasting",
       "description": "Go on a journey through the flavors of French wine and cheese with a guided tasting of the country\u2019s best.",
@@ -7581,7 +7656,7 @@
       "sourceUrl": "https://www.eastvillecomedy.com/events/punchline-comedy",
       "imageUrl": "/img/events/WhatsApp-Image-2026-06-29-at-3-24-59-PM-26761053-large-thumb.jpg",
       "price": "$25",
-      "scrapedAt": "2026-06-30T22:46:18.045634",
+      "scrapedAt": "2026-06-30T23:55:00.714822",
       "organizer": "Eastville Comedy Club",
       "organizerUrl": "https://www.eastvillecomedy.com",
       "firstSeenAt": "2026-06-29T20:23:05.404435+00:00",
@@ -7607,7 +7682,7 @@
       "sourceUrl": "https://allevents.in/brooklyn/jack-boldly-declared-let-there-be-classics-tickets/80001017076384",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90aHVtYnMvdGh1bWI2YTA2NDk3OTI0NmIwLmpwZw.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:06.256358",
+      "scrapedAt": "2026-06-30T23:54:47.878205",
       "firstSeenAt": "2026-06-02T04:13:51.117502+00:00",
       "score": 0.648,
       "highlights": [
@@ -7633,7 +7708,7 @@
       "sourceUrl": "https://allevents.in/brooklyn/ariana-grande-at-barclays-center/2400028775073207",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czYvYmFubmVycy9hYWM5NDU3MC01N2Y0LTExZjEtOGZmOS0xOWEyMjIwM2VkZjQtcmltZy13MTIwMC1oNTgwLWRjMjExNjA1LWdtaXIuanBnP3Y9MTc3OTY4NDM3Nw.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:06.258841",
+      "scrapedAt": "2026-06-30T23:54:47.880944",
       "firstSeenAt": "2026-06-15T17:48:01.495636+00:00",
       "score": 0.588,
       "highlights": []
@@ -7771,7 +7846,7 @@
       "sourceUrl": "https://lu.ma/readingrhythms-manhattan",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/6i/3ad07393-d4d2-41fb-b0c8-329557d33daf.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.229118",
+      "scrapedAt": "2026-06-30T23:55:17.249440",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -7938,7 +8013,7 @@
       "sourceUrl": "https://newyorkcomedyclub.com/events/backroom-comedy-1",
       "imageUrl": "/img/events/LOGO-NYCC2015vectorFeb14update-99fc0f8c-main-image-23861613-large-thumb.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:08.681413",
+      "scrapedAt": "2026-06-30T23:54:50.271817",
       "organizer": "New York Comedy Club",
       "organizerUrl": "https://newyorkcomedyclub.com",
       "firstSeenAt": "2026-06-27T01:27:05.973378+00:00",
@@ -8005,7 +8080,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/michelob-ultra-pitchside-club-2026",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/8ceb40d4-e491-4197-9a5d-1f0fc8be8b8b/Screenshot+2026-06-28+at+3.43.47%E2%80%AFPM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.141198",
+      "scrapedAt": "2026-06-30T23:54:29.037340",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -8034,7 +8109,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5599420260714",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/Recurring/square_GAME_NIGHT_ADULT_SPELLING_BEE__Instagram_Post_.png?cb=1741650447",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.654313",
+      "scrapedAt": "2026-06-30T23:54:30.062025",
       "firstSeenAt": "2026-06-26T01:34:56.345538+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -8197,7 +8272,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-the-instigators-by-atima-omara/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/The-Instigators-cover.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.401655",
+      "scrapedAt": "2026-06-30T23:54:28.365250",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.852,
       "highlights": []
@@ -8259,7 +8334,7 @@
       "sourceUrl": "https://lu.ma/readingrhythms-manhattan",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/m2/490f2ab4-5cb4-4d89-8c25-b51f680e30b0.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.233430",
+      "scrapedAt": "2026-06-30T23:55:17.253891",
       "firstSeenAt": "2026-06-26T01:34:56.345538+00:00",
       "account": "readingrhythms-manhattan",
       "userFollowing": true,
@@ -8365,7 +8440,7 @@
       "sourceUrl": "https://lizsbookbar.com/events/5704320260716",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/SpilledEvent.png?cb=1760901100",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.521608",
+      "scrapedAt": "2026-06-30T23:54:30.023593",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "score": 0.666,
       "highlights": []
@@ -8392,7 +8467,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-extremely-accurate-birds-by-tommy-siegel-in-conversation-with-billy-libby/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/9798894140186_RetailCover_RetailAndCatalog.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.402328",
+      "scrapedAt": "2026-06-30T23:54:28.365984",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.732,
       "highlights": []
@@ -8416,7 +8491,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/bis-designed-for-departure",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/ba4b34c5-e513-4858-ac8c-8a3d1d1b1b61/SnapInsta.to_731650963_18371980324229534_4714014488456086062_n.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.145433",
+      "scrapedAt": "2026-06-30T23:54:29.042015",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -8591,7 +8666,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/backyard-baseball-x-shopify",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/ae62a8f7-f40c-46e8-a1ed-a82c45ffe8b8/Screenshot+2026-06-29+at+9.01.11%E2%80%AFAM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.150496",
+      "scrapedAt": "2026-06-30T23:54:29.047539",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -8664,7 +8739,7 @@
       "sourceUrl": "https://www.eastvillecomedy.com/events/starr-struck-comedy-4",
       "imageUrl": "/img/events/starstuck-9db2099b-large-thumb.jpg",
       "price": "$25",
-      "scrapedAt": "2026-06-30T22:46:18.053639",
+      "scrapedAt": "2026-06-30T23:55:00.723516",
       "organizer": "Eastville Comedy Club",
       "organizerUrl": "https://www.eastvillecomedy.com",
       "firstSeenAt": "2026-06-19T20:11:18.528732+00:00",
@@ -8674,7 +8749,7 @@
     {
       "id": "64143ea83b7132d2",
       "title": "Wine Between the Lines: Drinking the Mediterranean",
-      "description": "For thousands of years before Burgundy, Champagne, Rioja, Napa cab, you name it \u2014 wine lived on the Mediterranean. It spread from Phoenician trading cities like Tyre in present-day Lebanon all the way to the gates of Hercules.",
+      "description": "Join us for a tasting class exploring wines from the Mediterranean.",
       "date": "2026-07-17",
       "startTime": "19:00",
       "endTime": null,
@@ -8684,16 +8759,30 @@
         "neighborhood": "carroll gardens"
       },
       "categories": [
-        "books"
+        "food"
       ],
       "source": "lizsbookbar",
       "sourceUrl": "https://lizsbookbar.com/events/5705220260717",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/web_orb_WineBWLines.png?cb=1781797589",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.523945",
+      "scrapedAt": "2026-06-30T23:54:30.025736",
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "eventbrite",
+        "lizsbookbar"
+      ],
+      "likes": 0,
+      "comments": 0,
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
-      "score": 0.726,
-      "highlights": []
+      "score": 0.776,
+      "highlights": [
+        "verified"
+      ]
     },
     {
       "id": "9fae2d7be54aeb09",
@@ -8791,7 +8880,7 @@
       "sourceUrl": "https://www.eastvillecomedy.com/events/prime-time-comedy-in-brooklyn-2026-07-17200000",
       "imageUrl": "/img/shows/Gemini-Generated-Image-4bidgu4bidgu4bid-710f13e1-large-thumb.png",
       "price": "$25",
-      "scrapedAt": "2026-06-30T22:46:18.056140",
+      "scrapedAt": "2026-06-30T23:55:00.726155",
       "organizer": "Eastville Comedy Club",
       "organizerUrl": "https://www.eastvillecomedy.com",
       "userSaved": false,
@@ -8829,7 +8918,7 @@
       "sourceUrl": "https://www.brooklyncomedycollective.com/show-schedule/time-hop-7-17",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1781553112727-65Q9OYV8502GWZFCW40Z/Time+Hop.png",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.218517",
+      "scrapedAt": "2026-06-30T23:54:29.843065",
       "firstSeenAt": "2026-06-29T01:34:41.842206+00:00",
       "score": 0.57,
       "highlights": []
@@ -8854,7 +8943,7 @@
       "sourceUrl": "https://www.eastvillecomedy.com/events/tgif-comedy-in-brooklyn-2026-07-17214500",
       "imageUrl": "/img/events/59-Edp-6f330751-large-thumb.jpg",
       "price": "$25",
-      "scrapedAt": "2026-06-30T22:46:18.058486",
+      "scrapedAt": "2026-06-30T23:55:00.728709",
       "organizer": "Eastville Comedy Club",
       "organizerUrl": "https://www.eastvillecomedy.com",
       "userSaved": false,
@@ -8982,7 +9071,7 @@
       "sourceUrl": "https://lu.ma/readingrhythms-manhattan",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/4q/bd9305a2-6b4c-4d8c-bcd5-4a610355d3b6.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.235667",
+      "scrapedAt": "2026-06-30T23:55:17.256146",
       "firstSeenAt": "2026-06-18T17:41:33.349007+00:00",
       "account": "readingrhythms-manhattan",
       "userFollowing": true,
@@ -9079,7 +9168,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/fp-movement-kit-check",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/dec1db52-6562-4f8c-bfbc-d23adc25fee2/fp_movement_dates_banner_1200x397_V5.webp",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.155262",
+      "scrapedAt": "2026-06-30T23:54:29.052867",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -9183,7 +9272,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/4609920260718",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/GonzoFest.png?cb=1770739931",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.657954",
+      "scrapedAt": "2026-06-30T23:54:30.065432",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -9192,6 +9281,34 @@
       "score": 1.0,
       "highlights": [
         "following"
+      ]
+    },
+    {
+      "id": "2648f42fd195fa01",
+      "title": "The New York City Poetry Festival After Party",
+      "description": "Join us for our first-ever NYC Poetry Festival After Party, a celebration and toast to our 15th annual festival on Governors Island!",
+      "date": "2026-07-19",
+      "startTime": "19:00",
+      "endTime": null,
+      "location": {
+        "name": "Bird MMXXIII",
+        "address": "758 Enright Road",
+        "neighborhood": "manhattan"
+      },
+      "categories": [
+        "books",
+        "parties",
+        "special"
+      ],
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/the-new-york-city-poetry-festival-after-party-tickets-1989620875598",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1184635937%2F571709152049%2F1%2Foriginal.20260514-210847?crop=focalpoint&fit=crop&w=512&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=7b768e127ed330f078129a967294f354",
+      "price": "unknown",
+      "scrapedAt": "2026-06-30T23:54:54.648620",
+      "firstSeenAt": "2026-06-30T23:57:03.343496+00:00",
+      "score": 0.811,
+      "highlights": [
+        "festival"
       ]
     },
     {
@@ -9213,7 +9330,7 @@
       "sourceUrl": "https://www.brooklyncomedycollective.com/show-schedule/sunday-dinner-7-19",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1781207583227-FX828NDXT07KLKOG5A4R/Sunday+Dinner+%286%29.png",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.231116",
+      "scrapedAt": "2026-06-30T23:54:29.856379",
       "firstSeenAt": "2026-06-29T01:34:41.842206+00:00",
       "score": 0.763,
       "highlights": []
@@ -9239,7 +9356,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/fifa-world-cup-2026-final-watch-party",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/c894f448-e006-4380-9380-055a167dc010/IMG_4202.PNG",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.160010",
+      "scrapedAt": "2026-06-30T23:54:29.058105",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -9268,7 +9385,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5684620260720",
       "imageUrl": "/i/9911545/Recurring/BODA.avif?cb=1736269507",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.659795",
+      "scrapedAt": "2026-06-30T23:54:30.067174",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -9309,7 +9426,7 @@
       "sourceUrl": "https://lu.ma/readingrhythms-manhattan",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/49/c41c02f1-6e68-4bd0-8c82-82e506def1c9.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.237845",
+      "scrapedAt": "2026-06-30T23:55:17.258406",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -9349,7 +9466,7 @@
       "sourceUrl": "https://lizsbookbar.com/events/5716220260720",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/LecturesOnTap.png?cb=1742243299",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.525762",
+      "scrapedAt": "2026-06-30T23:54:30.027475",
       "firstSeenAt": "2026-06-20T18:53:16.897996+00:00",
       "score": 0.902,
       "highlights": []
@@ -9373,7 +9490,7 @@
       "sourceUrl": "https://lu.ma/readingrhythms-manhattan",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/68/d087367b-cf72-4dbe-bcd8-cc0da7fe908d.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.242193",
+      "scrapedAt": "2026-06-30T23:55:17.262916",
       "firstSeenAt": "2026-06-16T04:28:07.259518+00:00",
       "account": "readingrhythms-manhattan",
       "userFollowing": true,
@@ -9403,7 +9520,7 @@
       "sourceUrl": "https://allevents.in/brooklyn/shakira-at-barclays-center/2400029907337340",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czEwL2Jhbm5lcnMvMTBkMjhiYjAtNTljMS0xMWYxLTgzMzktNDEwYzEzMGE4MDNlLXJpbWctdzEyMDAtaDYyOC1kYzE5MmQ0OC1nbWlyLmpwZz92PTE3Nzk4ODIxMTc.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:06.261283",
+      "scrapedAt": "2026-06-30T23:54:47.883647",
       "firstSeenAt": "2026-06-02T04:13:51.117502+00:00",
       "score": 0.573,
       "highlights": []
@@ -9428,7 +9545,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5681120260721",
       "imageUrl": null,
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.660908",
+      "scrapedAt": "2026-06-30T23:54:30.068239",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -9557,7 +9674,7 @@
       "sourceUrl": "https://lizsbookbar.com/events/5779120260721",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/little_nights.png?cb=1754416559",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.527319",
+      "scrapedAt": "2026-06-30T23:54:30.028955",
       "firstSeenAt": "2026-06-30T17:18:22.572097+00:00",
       "score": 0.715,
       "highlights": []
@@ -9581,7 +9698,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5716520260721",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/sipnscript.png?cb=1781983849",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.662303",
+      "scrapedAt": "2026-06-30T23:54:30.069546",
       "firstSeenAt": "2026-06-20T20:02:49.014009+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -9612,7 +9729,7 @@
       "sourceUrl": "https://www.nypl.org/events/programs/2026/07/22/summer-scares-princess-party-cj-leede",
       "imageUrl": "https://drupal.nypl.org/sites-drupal/default/files/2023-01/default_events_img_868x455.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:53.972260",
+      "scrapedAt": "2026-06-30T23:54:40.720181",
       "firstSeenAt": "2026-06-28T02:03:33.401678+00:00",
       "score": 0.627,
       "highlights": [
@@ -9638,7 +9755,7 @@
       "sourceUrl": "https://lizsbookbar.com/events/5746320260722",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/web_orb_bloom.png?cb=1782402140",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.530241",
+      "scrapedAt": "2026-06-30T23:54:30.031646",
       "firstSeenAt": "2026-06-25T16:15:07.637259+00:00",
       "score": 0.756,
       "highlights": []
@@ -9733,7 +9850,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5502520260722",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/Recurring/NEW_Drink_N_Draft_square.png?cb=1731350152",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.664565",
+      "scrapedAt": "2026-06-30T23:54:30.071582",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -9776,7 +9893,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5742520260722",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/HEA_July_Square.png?cb=1782335502",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.667813",
+      "scrapedAt": "2026-06-30T23:54:30.074536",
       "firstSeenAt": "2026-06-25T00:03:53.232340+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -9877,7 +9994,7 @@
       "sourceUrl": "https://lu.ma/readingrhythms-manhattan",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/ql/c98d122e-4e66-447f-a318-4bf5c4ebc807.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.244334",
+      "scrapedAt": "2026-06-30T23:55:17.265140",
       "firstSeenAt": "2026-06-19T02:08:09.386152+00:00",
       "account": "readingrhythms-manhattan",
       "userFollowing": true,
@@ -9944,7 +10061,7 @@
       "sourceUrl": "https://www.brooklyncomedycollective.com/show-schedule/third-ball-and-friends-7-23",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1782590604096-FX3RF06JU3DAW0FCL60H/ThirdBallVanPoster.PNG",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.244566",
+      "scrapedAt": "2026-06-30T23:54:29.871131",
       "firstSeenAt": "2026-06-29T01:34:41.842206+00:00",
       "score": 0.553,
       "highlights": []
@@ -9970,7 +10087,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/broadway-in-bryant-park-2026",
       "imageUrl": null,
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.170214",
+      "scrapedAt": "2026-06-30T23:54:29.069075",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -9999,7 +10116,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/uno-social-club-brooklyn",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/f2d41e29-25ef-4c50-8154-e7041c02c2a9/Screenshot+2026-06-17+at+10.24.58%E2%80%AFAM.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.165018",
+      "scrapedAt": "2026-06-30T23:54:29.063504",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -10124,7 +10241,7 @@
     {
       "id": "1b4dfffa28301eac",
       "title": "Run the Worlds Largest Fitness Gram Pacer Test 2",
-      "description": "Come try to set the Record for the Worlds Largest Fitness Gram Pacer Test in Central Park (again) Winner gets a medal (1441 going, 1915 interested)",
+      "description": "Come try to set the Record for the Worlds Largest Fitness Gram Pacer Test in Central Park (again) Winner gets a medal (1442 going, 1915 interested)",
       "date": "2026-07-25",
       "startTime": "11:00",
       "endTime": null,
@@ -10176,7 +10293,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5761820260725",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/Indie_June_Square.png?cb=1782600152",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.670239",
+      "scrapedAt": "2026-06-30T23:54:30.076709",
       "firstSeenAt": "2026-06-28T00:19:23.931047+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -10296,7 +10413,7 @@
       "sourceUrl": "https://allevents.in/queens/downtown-jamaica-riddim-and-jazz-festival-the-branford-marsalis-quartet/100001988626799289",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czcvYmFubmVycy82NDkyMGVkMDdjNGEyYjFjMzAyNWMwYjczMzgxOTA0ODNlOGQyNTU2MzliY2VlNTIyNWMyZDg1YmRiMzU0M2IyLXJpbWctdzEyMDAtaDYwMC1kYzQ2NDY0Ni1nbWlyLmpwZz92PTE3Nzc3OTIxMzk.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:09.969803",
+      "scrapedAt": "2026-06-30T23:54:51.816975",
       "firstSeenAt": "2026-06-05T08:45:09.242900+00:00",
       "score": 0.81,
       "highlights": [
@@ -10323,10 +10440,39 @@
       "sourceUrl": "https://www.brooklyncomedycollective.com/show-schedule/i-clint-i-have-mono-7-25",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1782770621500-9ZX06CO9T8SOOUFJTH4R/D6C70181-1FCF-43E3-B8DC-585A446E3BB3.jpeg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.256508",
+      "scrapedAt": "2026-06-30T23:54:29.884367",
       "firstSeenAt": "2026-06-29T22:46:13.635537+00:00",
       "score": 0.561,
       "highlights": []
+    },
+    {
+      "id": "2fdb88814285ec28",
+      "title": "Adobo's 8th Year Anniversary",
+      "description": "It's our 8th Anniversary y'all. We celebrating 8 years of ADOBO with you at our favorite warehouse in DC! **DJ Sets by: Lelynd Darkes & Pedro Night** **Hosted by: GetBoxed & Waltero** THIS INDOOR EVENT IS RAIN OR SHINE! NO DRESS CODE. MUST BE 21+ TO ENTER. ALL SALES ARE FINAL. NO REFUNDS.",
+      "date": "2026-07-25",
+      "startTime": "22:00",
+      "endTime": null,
+      "location": {
+        "name": "530 Penn St NE",
+        "address": "530 Penn Street Northeast, Washington, District of Columbia 20002, United States",
+        "neighborhood": null,
+        "lat": 38.910392,
+        "lng": -76.996571
+      },
+      "categories": [
+        "music",
+        "special"
+      ],
+      "source": "dice",
+      "sourceUrl": "https://dice.fm/event/dko8po-adobos-8th-year-anniversary-25th-jul-530-penn-st-ne-washington-tickets",
+      "imageUrl": "https://dice-media.imgix.net/attachments/2026-06-30/d959c5a1-3974-4d08-8844-dfbf2c7e2560.jpg?rect=0%2C307%2C1536%2C922",
+      "price": "unknown",
+      "scrapedAt": "2026-06-30T23:54:31.112158",
+      "firstSeenAt": "2026-06-30T23:57:03.343496+00:00",
+      "score": 0.806,
+      "highlights": [
+        "nightlife"
+      ]
     },
     {
       "id": "28e2d99ee9ba3e38",
@@ -10348,7 +10494,7 @@
       "sourceUrl": "https://lu.ma/litclub.nyc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/l0/8de08c44-958d-4ca5-9747-7029d4b48f37.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.857836",
+      "scrapedAt": "2026-06-30T23:55:17.701853",
       "firstSeenAt": "2026-06-04T20:30:33.459254+00:00",
       "account": "litclub.nyc",
       "userFollowing": true,
@@ -10501,7 +10647,7 @@
       "sourceUrl": "https://lu.ma/litclub.nyc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/1w/6e7b62db-8330-4ee6-b451-ca64e264ff2a.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.860008",
+      "scrapedAt": "2026-06-30T23:55:17.704092",
       "firstSeenAt": "2026-06-04T20:30:33.459254+00:00",
       "account": "litclub.nyc",
       "userFollowing": true,
@@ -10568,7 +10714,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5685720260727",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/Recurring/Screenshot_2025_01_08_180657.png?cb=1736377646",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.672477",
+      "scrapedAt": "2026-06-30T23:54:30.078891",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -10696,7 +10842,7 @@
       "sourceUrl": "https://lizsbookbar.com/events/4415620260728",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/little_nights.png?cb=1754416559",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.534862",
+      "scrapedAt": "2026-06-30T23:54:30.035979",
       "firstSeenAt": "2026-06-30T17:18:22.572097+00:00",
       "score": 0.756,
       "highlights": [
@@ -10725,7 +10871,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-whos-that-girl-by-thea-glassman/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/05/Screenshot-2026-05-17-105559.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.403403",
+      "scrapedAt": "2026-06-30T23:54:28.367259",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.882,
       "highlights": []
@@ -10784,7 +10930,7 @@
       "sourceUrl": "https://lu.ma/readingrhythms-manhattan",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/3x/5e1e1645-28b2-4a2c-a8dc-87368f21a8c2.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.248661",
+      "scrapedAt": "2026-06-30T23:55:17.269657",
       "firstSeenAt": "2026-06-28T20:41:08.512533+00:00",
       "account": "readingrhythms-manhattan",
       "userFollowing": true,
@@ -10813,7 +10959,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-once-upon-a-midnight-scroll-by-heidi-becker/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/once-upon-a-midnight-scroll-9798881608217_lg.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.403947",
+      "scrapedAt": "2026-06-30T23:54:28.367928",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.706,
       "highlights": []
@@ -10963,7 +11109,7 @@
     {
       "id": "776a07d9099ff11e",
       "title": "Wine Between the Lines: Sauvignon Blanc / Not Sauvignon Blanc",
-      "description": "Love it or hate it, Sauvignon Blanc is one of the most recognizable grape varieties in the world \u2014 and one of the most distinctive, with an electric acidity and unmistakeable pithy, green aromatic streak. But what are we really saying when we say we like a grape?",
+      "description": "Love it or hate it, Sauvignon Blanc is one of the most recognizable grape varieties in the world. Join us for a tasting class to learn more.",
       "date": "2026-07-31",
       "startTime": "19:00",
       "endTime": null,
@@ -10973,16 +11119,30 @@
         "neighborhood": "carroll gardens"
       },
       "categories": [
-        "books"
+        "food"
       ],
       "source": "lizsbookbar",
       "sourceUrl": "https://lizsbookbar.com/events/5705420260731",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/web_orb_WineBWLines.png?cb=1781797589",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.537026",
+      "scrapedAt": "2026-06-30T23:54:30.038008",
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "eventbrite",
+        "lizsbookbar"
+      ],
+      "likes": 0,
+      "comments": 0,
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
-      "score": 0.726,
-      "highlights": []
+      "score": 0.785,
+      "highlights": [
+        "verified"
+      ]
     },
     {
       "id": "f96b57130517bff5",
@@ -11003,7 +11163,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-blizzard-of-lies-by-dave-wedge/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/blizzard-of-lies.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.404516",
+      "scrapedAt": "2026-06-30T23:54:28.368595",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.736,
       "highlights": []
@@ -11063,7 +11223,7 @@
       "sourceUrl": "https://allevents.in/new-york/latin-party-sunset-cruise-tickets/100001985774557156",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90aHVtYnMvdGh1bWI2YTIyZmQ5NjdiOTg1LmpwZw.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:03.026666",
+      "scrapedAt": "2026-06-30T23:54:45.050595",
       "firstSeenAt": "2026-06-29T20:23:05.404435+00:00",
       "score": 0.719,
       "highlights": [
@@ -11090,7 +11250,7 @@
       "sourceUrl": "https://allevents.in/new-york/sunset-party-cruise-aboard-the-harbor-lights-yacht-tickets/80002944305196",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90aHVtYnMvdGh1bWI2OWZhNjQxZjFjMDAxLmpwZw.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:03.029233",
+      "scrapedAt": "2026-06-30T23:54:45.053441",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -11107,41 +11267,6 @@
       "highlights": [
         "vibes"
       ]
-    },
-    {
-      "id": "79fbbcc7240bdff9",
-      "title": "Spanish Cheese & Wine Tasting",
-      "description": "Take a journey across Spain as you sample an array of Spanish wines expertly selected to pair with Murray\u2019s favorite Spanish cheeses.",
-      "date": "2026-08-01",
-      "startTime": "19:00",
-      "endTime": null,
-      "location": {
-        "name": "Murray's Cheese Shop",
-        "address": "254 Bleecker Street",
-        "neighborhood": "west village"
-      },
-      "categories": [
-        "food"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/spanish-cheese-wine-tasting-tickets-1988427277514",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1181026559%2F141392852881%2F1%2Foriginal.20260330-191216?crop=focalpoint&fit=crop&w=375&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=6d6b0c71fe184067e6b422005077d944",
-      "price": "unknown",
-      "scrapedAt": "2026-06-30T21:05:29.029993",
-      "firstSeenAt": "2026-06-30T21:07:00.519492+00:00",
-      "score": 0.619,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "eventbrite"
-      ],
-      "likes": 0,
-      "comments": 0
     },
     {
       "id": "9370379ce23e2218",
@@ -11162,7 +11287,7 @@
       "sourceUrl": "https://allevents.in/queens/jams-jamaica-arts-and-music-summer-street-fair/100001992599322212",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czEwL2Jhbm5lcnMvNzMyOWM1MzQ1ZGM2ODA3N2JmZGYzYTAxZjQ1ZmIwYmM4ZTgwNGM4MDgwMzQ3Mzk2ZmJmYTU0M2Q2MmI2ZjE2MS1yaW1nLXcxMjAwLWg2MDAtZGMwNDA0MDUtZ21pci5qcGc_dj0xNzgyNjI3OTE1.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:09.954986",
+      "scrapedAt": "2026-06-30T23:54:51.803519",
       "firstSeenAt": "2026-06-28T23:36:26.502201+00:00",
       "score": 0.66,
       "highlights": [
@@ -11188,7 +11313,7 @@
       "sourceUrl": "https://allevents.in/manhattan/bts-live-in-concert-at-metlife-stadium-east-rutherford-nj-tickets/200030084265309",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czkvYmFubmVycy8wYzYzMjQzNzJmNjdmNTZkOGVmMzcwMTY2NTMxYjE5MDczYjBjMDQ3N2Y1YWFkYzcxYmMyNGNlZWNmN2M4MDg0LXJpbWctdzczNi1oMTEwNC1kY2Q1YWFhOC1nbWlyP3Y9MTc4MjQzODc2Mg.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:11.159758",
+      "scrapedAt": "2026-06-30T23:54:52.931205",
       "firstSeenAt": "2026-06-18T22:29:52.571138+00:00",
       "score": 0.651,
       "highlights": []
@@ -11213,7 +11338,7 @@
       "sourceUrl": "https://www.green-wood.com/event/nocturnal-navigators-green-wood-bat-walk-5/2026-08-01/",
       "imageUrl": "https://www.green-wood.com/wp-content/uploads/2026/05/eastern-red-bat.-Image-credit-Evan-Rabeck.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:44.682951",
+      "scrapedAt": "2026-06-30T23:55:47.997382",
       "firstSeenAt": "2026-06-26T01:34:56.345538+00:00",
       "score": 0.718,
       "highlights": []
@@ -11239,7 +11364,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/nomad-jazz-festival-1",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/e80ab35f-5bbd-4231-9cc5-5dfca11f99c9/SnapInsta.to_635031113_17889463281426245_1826849756407842346_n.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.184928",
+      "scrapedAt": "2026-06-30T23:54:29.084969",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -11269,7 +11394,7 @@
       "sourceUrl": "https://lu.ma/readingrhythms-manhattan",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/s7/a74ce8be-8744-492c-80a5-99e937ddbec8.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.257428",
+      "scrapedAt": "2026-06-30T23:55:17.279059",
       "firstSeenAt": "2026-06-28T23:36:26.502201+00:00",
       "account": "readingrhythms-manhattan",
       "userFollowing": true,
@@ -11299,7 +11424,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-united-states-of-oligarchy-by-casey-michel/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/71ZM7czEE0L._UF10001000_QL80_.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.405027",
+      "scrapedAt": "2026-06-30T23:54:28.369197",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.706,
       "highlights": []
@@ -11428,7 +11553,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5638320260804",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/08_August/BOOK_CLUB___Aug_Square__1_.png?cb=1781044355",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.675836",
+      "scrapedAt": "2026-06-30T23:54:30.082013",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -11458,7 +11583,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-the-wound-is-where-the-light-enters-by-chris-young/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/The-Wound-is-Where-the-Light-Enters_cover-image.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.406035",
+      "scrapedAt": "2026-06-30T23:54:28.370488",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.706,
       "highlights": []
@@ -11525,7 +11650,7 @@
       "sourceUrl": "https://allevents.in/queens/warm-up-badsista-toccororo-toxe-nguyendowsxp/100001991410125292",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czEwL2Jhbm5lcnMvZGE5ZmZmYzNmYWQ4YWYwMDViMjQ4NDQzMTUzYzQ1YzNhZWViYzdjMDczNzFkODU1MDNmNmVhMzQ1MWI4OTVjMC1yaW1nLXcxMjAwLWg4MDAtZGMxODEzMTQtZ21pci5qcGc_dj0xNzgxMzI0MzAz.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:09.974689",
+      "scrapedAt": "2026-06-30T23:54:51.822429",
       "firstSeenAt": "2026-06-15T17:48:01.495636+00:00",
       "score": 0.69,
       "highlights": []
@@ -11622,7 +11747,7 @@
       "sourceUrl": "https://lu.ma/litclub.nyc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/lu/31460463-7f0c-4710-8807-3045f011414c.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.862239",
+      "scrapedAt": "2026-06-30T23:55:17.706403",
       "firstSeenAt": "2026-06-04T22:01:11.062134+00:00",
       "account": "litclub.nyc",
       "userFollowing": true,
@@ -11688,7 +11813,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-now-were-cooking-by-matt-broussard/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/NowWereCooking_FINALcover.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.406509",
+      "scrapedAt": "2026-06-30T23:54:28.371071",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.706,
       "highlights": []
@@ -11713,7 +11838,7 @@
       "sourceUrl": "https://lizsbookbar.com/events/5602320260811",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/web_orb_steftalk.png?cb=1781648050",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.539414",
+      "scrapedAt": "2026-06-30T23:54:30.040235",
       "firstSeenAt": "2026-06-30T21:07:00.519492+00:00",
       "score": 0.722,
       "highlights": []
@@ -11737,7 +11862,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5730920260811",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/08_August/Sweet_Nothings_Generic_Image.png?cb=1782227491",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.678611",
+      "scrapedAt": "2026-06-30T23:54:30.084629",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -11778,7 +11903,7 @@
       "sourceUrl": "https://lu.ma/readingrhythms-manhattan",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/db/b42fb791-0075-4f1e-a26f-2c6be3f7f5ba.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.259577",
+      "scrapedAt": "2026-06-30T23:55:17.281485",
       "firstSeenAt": "2026-06-28T18:40:50.420242+00:00",
       "account": "readingrhythms-manhattan",
       "userFollowing": true,
@@ -11903,7 +12028,7 @@
       "sourceUrl": "https://lu.ma/litclub.nyc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/u1/7f6f14ff-c76e-4607-b1cd-53bcb2c3f65b.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.864398",
+      "scrapedAt": "2026-06-30T23:55:17.708623",
       "firstSeenAt": "2026-06-21T13:22:11.933951+00:00",
       "account": "litclub.nyc",
       "userFollowing": true,
@@ -11934,7 +12059,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-exhumed-by-aaron-mahnke/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/9798894141817_RetailCover_RetailAndCatalog.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.407013",
+      "scrapedAt": "2026-06-30T23:54:28.371694",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.706,
       "highlights": []
@@ -11993,7 +12118,7 @@
       "sourceUrl": "https://lu.ma/litclub.nyc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/jm/3bde2409-c92d-45ef-ad06-dd9233bebe49.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.866561",
+      "scrapedAt": "2026-06-30T23:55:17.710847",
       "firstSeenAt": "2026-06-04T20:30:33.459254+00:00",
       "account": "litclub.nyc",
       "userFollowing": true,
@@ -12025,7 +12150,7 @@
       "sourceUrl": "https://lu.ma/litclub.nyc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/6i/7dbe9bf4-286c-40c6-8c5c-9f6f12765250.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.868707",
+      "scrapedAt": "2026-06-30T23:55:17.713089",
       "firstSeenAt": "2026-06-04T20:30:33.459254+00:00",
       "account": "litclub.nyc",
       "userFollowing": true,
@@ -12132,7 +12257,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-mud-on-the-moon-by-nita-noveno-in-conversation-with-wah-ming-chang/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/9781636284910_FC-scaled-1.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.407526",
+      "scrapedAt": "2026-06-30T23:54:28.372289",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.732,
       "highlights": []
@@ -12193,7 +12318,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/harmless-harvest-taste-the-good-tour",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/ef36492d-78a6-4487-8a7f-cf8423fe081b/SnapInsta.to_722666685_18594397072033913_8332340686683601005_n.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.200468",
+      "scrapedAt": "2026-06-30T23:54:29.101719",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -12224,7 +12349,7 @@
       "sourceUrl": "https://allevents.in/queens/warm-up-special-guest-de-schuurman-keiyaa-dj-working-class/100001991423044935",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czMvYmFubmVycy84MWVmZWExZWI3ZWRmMTI3OGRlMWE1YWY5MjRhN2Q3MWM0YTVlYjdiNjJmZjU3MDlkODQ0MDgwNWU0YzliYWVhLXJpbWctdzEyMDAtaDgwMC1kYzE4MTQxMy1nbWlyLmpwZz92PTE3ODEzMjQxNzU.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:09.972249",
+      "scrapedAt": "2026-06-30T23:54:51.819702",
       "firstSeenAt": "2026-06-22T01:43:37.787288+00:00",
       "score": 0.69,
       "highlights": []
@@ -12286,7 +12411,7 @@
       "sourceUrl": "https://lu.ma/litclub.nyc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/t4/41420a4e-e501-4254-a205-bb10e4240cfe.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.870943",
+      "scrapedAt": "2026-06-30T23:55:17.715344",
       "firstSeenAt": "2026-06-04T20:30:33.459254+00:00",
       "account": "litclub.nyc",
       "userFollowing": true,
@@ -12352,7 +12477,7 @@
       "sourceUrl": "https://lu.ma/litclub.nyc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/lw/65251e33-a339-4087-82e0-13e911ea1d21.png",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:46:35.873179",
+      "scrapedAt": "2026-06-30T23:55:17.717809",
       "firstSeenAt": "2026-06-04T20:30:33.459254+00:00",
       "account": "litclub.nyc",
       "userFollowing": true,
@@ -12383,7 +12508,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5686120260901",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/09_September/91_IAN_ROSENBERG_SQUARE.png?cb=1781626990",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:48.688805",
+      "scrapedAt": "2026-06-30T23:54:30.093998",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -12416,7 +12541,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-garden-variety-by-timothy-pakron-in-conversation-with-halle-burns/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/gv-cover-web.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.408020",
+      "scrapedAt": "2026-06-30T23:54:28.372892",
       "firstSeenAt": "2026-06-26T21:23:08.831505+00:00",
       "score": 0.732,
       "highlights": []
@@ -12478,7 +12603,7 @@
       "sourceUrl": "https://allevents.in/new-york/new-york-fashion-week-runway-show-tickets/80001835871156",
       "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90aHVtYnMvdGh1bWI2YTMyMzM1YWM1MmY5LmpwZw.avif",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:46:02.999182",
+      "scrapedAt": "2026-06-30T23:54:45.020835",
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -12515,7 +12640,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-dear-dealer-by-nadia-bowers/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/DEAR-DEALER.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.408518",
+      "scrapedAt": "2026-06-30T23:54:28.373500",
       "firstSeenAt": "2026-06-30T17:59:36.010843+00:00",
       "score": 0.706,
       "highlights": []
@@ -12541,7 +12666,7 @@
       "sourceUrl": "https://www.bookclubbar.com/events/5657220260915",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/Recurring/COSMIC_HH_2.png?cb=1731350089",
       "price": "$8",
-      "scrapedAt": "2026-06-30T22:45:48.698183",
+      "scrapedAt": "2026-06-30T23:54:30.102439",
       "firstSeenAt": "2026-06-20T03:56:35.413105+00:00",
       "account": "bookclubbar",
       "userFollowing": true,
@@ -12642,7 +12767,7 @@
       "sourceUrl": "https://powerhousearena.com/events/book-launch-against-tech-oligarchy-by-js-tan-and-clarissa-redwine/",
       "imageUrl": "https://powerhousearena.com/arena/wp-content/uploads/2026/06/Screenshot-2026-06-30-133950.jpg",
       "price": "unknown",
-      "scrapedAt": "2026-06-30T22:45:47.409064",
+      "scrapedAt": "2026-06-30T23:54:28.374134",
       "firstSeenAt": "2026-06-30T17:59:36.010843+00:00",
       "score": 0.706,
       "highlights": []
@@ -12701,7 +12826,7 @@
       "sourceUrl": "https://www.nycforfree.co/events/tinx-x-under-armour-summer-of-outside",
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/638d4bce5f72f36d3f2c5f81/3ad86a6e-93b4-4ff0-b450-aa801221e91c/TINX.jpg",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.205703",
+      "scrapedAt": "2026-06-30T23:54:29.107466",
       "firstSeenAt": "2026-06-30T15:08:55.183929+00:00",
       "account": "nycforfree",
       "userFollowing": true,
@@ -12838,7 +12963,7 @@
       "sourceUrl": "https://lizsbookbar.com/events/5760320260928",
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/web_orb_deesha.png?cb=1782580766",
       "price": "free",
-      "scrapedAt": "2026-06-30T22:45:48.543015",
+      "scrapedAt": "2026-06-30T23:54:30.043567",
       "firstSeenAt": "2026-06-27T18:43:22.624130+00:00",
       "score": 0.76,
       "highlights": [
@@ -13054,7 +13179,7 @@
       "comments": 0
     }
   ],
-  "lastUpdated": "2026-06-30T22:48:13.703212+00:00",
+  "lastUpdated": "2026-06-30T23:57:15.463550+00:00",
   "topAccounts": [
     {
       "username": "explorenycfree",
