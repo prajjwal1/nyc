@@ -18,6 +18,7 @@ from scrapers.normalize import (
     DEFAULT_MIN_SCORE,
     IG_CURATED_MIN_SCORE,
     _backfill_neighborhood_from_venue,
+    _infer_time_from_text,
     _dedup_fuzzy_title,
     _dedup_same_account_recurring,
     _is_distinct_schedule_source,
@@ -437,6 +438,148 @@ class TestBackfillNeighborhood:
         _backfill_neighborhood_from_venue(events)
         assert events[0]["location"]["neighborhood"] == "carroll gardens"
 
+    def test_venue_name_explicit_token_beats_table_default(self):
+        # fb-189: "New York Comedy Club Upper West Side" maps to 'east
+        # village' by table default (the flagship branch), but the name
+        # literally names the branch. The explicit token must win.
+        events = [
+            {
+                "title": "Stand-Up Comedy: Carmen Lynch",
+                "location": {
+                    "name": "New York Comedy Club Upper West Side",
+                    "neighborhood": "east village",  # wrong tag currently shipped
+                    "address": "236 w 78th street, new york, ny",
+                },
+            }
+        ]
+        _backfill_neighborhood_from_venue(events)
+        assert events[0]["location"]["neighborhood"] == "upper west side"
+
+    def test_book_club_bar_bushwick_is_bushwick_not_east_village(self):
+        # fb-189 canonical case: "Book Club Bar Bushwick, 380 Troutman St"
+        # → bushwick, NOT east village (the table default for "book club bar").
+        events = [
+            {
+                "title": 'Indie Press Book Club: "Persona"',
+                "location": {
+                    "name": "Book Club Bar Bushwick, 380 Troutman Street",
+                    "neighborhood": "east village",
+                    "address": "197 e 3rd st, new york, ny 10009",
+                },
+            }
+        ]
+        _backfill_neighborhood_from_venue(events)
+        assert events[0]["location"]["neighborhood"] == "bushwick"
+
+    def test_mcnally_jackson_williamsburg_branch(self):
+        # fb-189: "McNally Jackson Williamsburg" → williamsburg, not soho.
+        events = [
+            {
+                "title": "Unusual Appetites Book Club",
+                "location": {
+                    "name": "McNally Jackson Williamsburg",
+                    "neighborhood": "soho",
+                    "address": "76 north 4th street",
+                },
+            }
+        ]
+        _backfill_neighborhood_from_venue(events)
+        assert events[0]["location"]["neighborhood"] == "williamsburg"
+
+    def test_les_abbrev_does_not_match_inside_word(self):
+        # fb-189 root cause: the 3-char "les" LES keyword substring-matched
+        # inside "fiddlesticks", tagging an Astoria run as Lower East Side.
+        # Word-boundary matching + explicit-token precedence fix it.
+        events = [
+            {
+                "title": "Run & Chug - Fiddlesticks Pub",
+                "location": {
+                    "name": "Astoria Park",
+                    "neighborhood": "lower east side",
+                    "address": "19 19st, astoria, ny",
+                },
+            }
+        ]
+        _backfill_neighborhood_from_venue(events)
+        assert events[0]["location"]["neighborhood"] == "astoria"
+
+    def test_no_explicit_token_keeps_table_default(self):
+        # Regression guard: a bare "Book Club Bar" (no branch token) must
+        # still resolve to the table default 'east village'.
+        events = [
+            {
+                "title": "Lit Talk",
+                "location": {
+                    "name": "Book Club Bar",
+                    "neighborhood": None,
+                    "address": "",
+                },
+            }
+        ]
+        _backfill_neighborhood_from_venue(events)
+        assert events[0]["location"]["neighborhood"] == "east village"
+
     def test_empty_list_no_error(self):
         # Just shouldn't raise
         _backfill_neighborhood_from_venue([])
+
+
+# ---------------------------------------------------------------------------
+# _infer_time_from_text — body-text start-time inference (fb-186).
+# ---------------------------------------------------------------------------
+
+
+class TestInferTimeFromText:
+    def test_doors_at_7pm(self):
+        assert _infer_time_from_text("Concert", "doors at 7pm") == "19:00"
+
+    def test_show_starts_8pm(self):
+        assert _infer_time_from_text("Show", "show starts 8pm") == "20:00"
+
+    def test_starts_at_with_minutes(self):
+        assert _infer_time_from_text("", "starts at 7:30pm") == "19:30"
+
+    def test_doors_open_at_with_minutes(self):
+        assert _infer_time_from_text("", "doors open at 7:30pm") == "19:30"
+
+    def test_kicks_off(self):
+        assert _infer_time_from_text("", "kicks off at 8pm") == "20:00"
+
+    def test_begins(self):
+        assert _infer_time_from_text("", "begins 6:30pm") == "18:30"
+
+    def test_bare_7pm(self):
+        # fb-186: bare "7pm" with no keyword cue is filled when unambiguous.
+        assert _infer_time_from_text("7pm", "") == "19:00"
+
+    def test_bare_730pm(self):
+        assert _infer_time_from_text("7:30pm", "") == "19:30"
+
+    def test_bare_single_time_in_body(self):
+        assert _infer_time_from_text("Yoga", "join us at 6:30pm for flow") == "18:30"
+
+    def test_earliest_keyword_match_wins(self):
+        # doors precede the show — earliest keyword time wins.
+        assert (
+            _infer_time_from_text("Party", "doors 8pm, show starts 9pm") == "20:00"
+        )
+
+    def test_ambiguous_multi_time_bare_returns_none(self):
+        # Two distinct bare times, no keyword cue → ambiguous → no fill.
+        assert (
+            _infer_time_from_text("", "meet at 7pm then afterparty at 11pm") is None
+        )
+
+    def test_range_returns_none(self):
+        # "2pm to 5pm" is a range — two distinct times, no start cue.
+        assert _infer_time_from_text("", "event from 2pm to 5pm") is None
+
+    def test_no_ampm_returns_none(self):
+        assert _infer_time_from_text("", "show at 8") is None
+
+    def test_early_am_below_floor_returns_none(self):
+        # 5am is below the 06:00 plausible-start floor.
+        assert _infer_time_from_text("", "5am sunrise run") is None
+
+    def test_empty_returns_none(self):
+        assert _infer_time_from_text("", "") is None

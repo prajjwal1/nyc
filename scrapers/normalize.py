@@ -789,11 +789,53 @@ _VENUE_NAME_TO_NEIGHBORHOOD = {
 }
 
 
+# Neighborhood *name* tokens that, when they appear verbatim in a venue name
+# or address, are an explicit self-declaration of location and must win over
+# the _VENUE_NAME_TO_NEIGHBORHOOD default (fb-189). A chain venue like
+# "New York Comedy Club Upper West Side" maps to 'east village' by table
+# default (its flagship), but the name literally says which branch this is.
+# Matched with word boundaries so 'les' can't hit inside 'fiddlesticks'.
+_EXPLICIT_HOOD_NAMES = [
+    "east williamsburg", "williamsburg", "greenpoint", "east village",
+    "west village", "lower east side", "upper east side", "upper west side",
+    "financial district", "crown heights", "fort greene", "prospect heights",
+    "park slope", "carroll gardens", "cobble hill", "boerum hill",
+    "brooklyn heights", "long island city", "red hook", "bed-stuy",
+    "bushwick", "astoria", "dumbo", "soho", "noho", "tribeca", "chelsea",
+    "midtown", "harlem", "gowanus", "ridgewood", "flatbush", "fidi",
+]
+_EXPLICIT_HOOD_RES = [
+    (h, re.compile(r"\b" + re.escape(h) + r"\b", re.IGNORECASE))
+    for h in _EXPLICIT_HOOD_NAMES
+]
+
+
+def _explicit_hood_in_text(text: str) -> str | None:
+    """Return the longest explicit neighborhood-NAME token that appears
+    verbatim (word-boundaried) in `text`, else None. Longest-match wins so
+    'east village' isn't shadowed by a shorter accidental hit."""
+    if not text:
+        return None
+    t = text.lower()
+    best = None
+    for hood, rx in _EXPLICIT_HOOD_RES:
+        if rx.search(t):
+            if best is None or len(hood) > len(best):
+                best = hood
+    return best
+
+
 def _backfill_neighborhood_from_venue(events: list[dict]) -> None:
     """Re-derive neighborhoods on every normalize pass:
-    1. If a venue NAME maps to a known neighborhood, use that (most
-       reliable — fixed-venue scrapers like Liz's Book Bar lack addresses).
-    2. If an address is present, re-run infer_neighborhood with the
+    0. If the venue NAME or ADDRESS literally names a neighborhood
+       (word-boundaried), that explicit self-declaration wins outright —
+       even over the venue-name table (fb-189: "New York Comedy Club Upper
+       West Side" must not resolve to 'east village', "Book Club Bar
+       Bushwick" must not resolve to 'east village').
+    1. Else if a venue NAME maps to a known neighborhood, use that (most
+       reliable for fixed-venue scrapers like Liz's Book Bar that lack
+       addresses).
+    2. Else if an address is present, re-run infer_neighborhood with the
        current keyword list — catches stale tags from older keyword sets
        (e.g. "broadway" used to falsely tag Times Square as SoHo).
     3. Leave the existing tag alone only if nothing better can be derived.
@@ -806,11 +848,17 @@ def _backfill_neighborhood_from_venue(events: list[dict]) -> None:
         addr = (loc.get("address") or "").strip()
         existing = loc.get("neighborhood")
         new_hood: str | None = None
-        # Step 1: venue-name lookup (strongest signal)
-        for venue, hood in _VENUE_NAME_TO_NEIGHBORHOOD.items():
-            if venue in name:
-                new_hood = hood
-                break
+        # Step 0: explicit neighborhood token in the venue name/address wins
+        # over everything (fb-189). The name/address self-declares the branch.
+        explicit = _explicit_hood_in_text(f"{name} {addr}")
+        if explicit is not None:
+            new_hood = explicit
+        # Step 1: venue-name lookup (table default for single-location venues).
+        if new_hood is None:
+            for venue, hood in _VENUE_NAME_TO_NEIGHBORHOOD.items():
+                if venue in name:
+                    new_hood = hood
+                    break
         # Step 2: address inference (always re-runs, can override stale tags).
         # Also fold in title + location.name so titles like
         # "The 9:30 Comedy Show - Williamsburg" recover their neighborhood
@@ -825,7 +873,6 @@ def _backfill_neighborhood_from_venue(events: list[dict]) -> None:
         if new_hood != existing:
             loc["neighborhood"] = new_hood
             ev["location"] = loc
-
 
 # Re-export event_parser's authoritative tuples. Both lists used to be
 # duplicated (iter 167 dedup'd the indoor-arena list; iter 168 dedup'd the
@@ -969,41 +1016,74 @@ def collapse_title_spam(events: list[dict]) -> list[dict]:
     return keep
 
 
+# Keyword-anchored time: "doors at 7pm", "show starts 8pm", "kicks off at 8".
+# Highest-confidence — an explicit start/door cue immediately precedes a time.
 _TIME_IN_TEXT_RE = re.compile(
-    r"\b(?:doors?(?:\s+(?:open|at))?|starts?(?:\s+at)?|"
-    r"kicks?\s+off(?:\s+at)?|show)\s*:?\s*"
-    r"(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m\.?",
+    r"\b(?:doors?(?:\s+(?:open|at))?|starts?(?:\s+at)?|begins?(?:\s+at)?|"
+    r"kicks?\s+off(?:\s+at)?|show(?:\s+at)?)\s*:?\s*"
+    r"(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m\.?",
     re.I,
 )
 
+# Bare clock time anywhere in text: "7pm", "7:30pm", "10 AM". Used only as a
+# fallback when no keyword-anchored cue exists AND the text has exactly one
+# distinct plausible time (ambiguous multi-time text is left for a real parse).
+_BARE_TIME_RE = re.compile(r"\b(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m\.?\b", re.I)
 
-def _infer_time_from_text(title: str, description: str) -> str | None:
-    """Infer an HH:MM start time from caption/body text like 'doors at 7pm'
-    or 'show starts at 8'. Returns the EARLIEST plausible 06:00–23:59 match
-    (doors usually precede show). Used only to fill an absent startTime —
-    never to overwrite a parsed one. Source-agnostic; no IG session needed.
+
+def _to_minutes(hour_s, minute_s, ampm):
+    try:
+        hour = int(hour_s)
+        minute = int(minute_s) if minute_s else 0
+    except (TypeError, ValueError):
+        return None
+    ampm = ampm.lower()
+    if hour < 1 or hour > 12 or minute > 59:
+        return None
+    if hour == 12:
+        hour = 0
+    if ampm == "p":
+        hour += 12
+    if not (6 <= hour <= 23):
+        return None
+    return (hour, minute)
+
+
+def _infer_time_from_text(title, description):
+    """Infer an HH:MM start time from caption/body text.
+
+    Two tiers:
+      1. Keyword-anchored ("doors at 7pm", "show starts 8pm", "begins 6:30pm",
+         "kicks off at 8pm") — return the EARLIEST such match (doors precede
+         show). High confidence: an explicit start cue names the time.
+      2. If no keyword cue, fall back to a BARE clock time ("7pm", "7:30pm")
+         ONLY when the text has exactly ONE distinct plausible (06:00-23:59)
+         time. Multi-time text ("7pm ... afterparty 11pm", ranges "2pm-5pm")
+         is ambiguous and left unfilled for a real parse.
+
+    Only fills an ABSENT startTime — never overwrites a parsed one.
     """
     text = f"{title or ''}  {description or ''}"
+
+    # Tier 1: keyword-anchored — earliest wins.
     best = None
     for m in _TIME_IN_TEXT_RE.finditer(text):
-        try:
-            hour = int(m.group(1))
-            minute = int(m.group(2)) if m.group(2) else 0
-        except (TypeError, ValueError):
-            continue
-        ampm = m.group(3).lower()
-        if hour == 12:
-            hour = 0
-        if ampm == "p":
-            hour += 12
-        if not (6 <= hour <= 23) or not (0 <= minute <= 59):
-            continue
-        if best is None or (hour, minute) < best:
-            best = (hour, minute)
-    if best is None:
-        return None
-    return f"{best[0]:02d}:{best[1]:02d}"
+        hm = _to_minutes(m.group(1), m.group(2), m.group(3))
+        if hm is not None and (best is None or hm < best):
+            best = hm
+    if best is not None:
+        return f"{best[0]:02d}:{best[1]:02d}"
 
+    # Tier 2: bare-time fallback — only if exactly one distinct time.
+    distinct = set()
+    for m in _BARE_TIME_RE.finditer(text):
+        hm = _to_minutes(m.group(1), m.group(2), m.group(3))
+        if hm is not None:
+            distinct.add(hm)
+    if len(distinct) == 1:
+        hm = next(iter(distinct))
+        return f"{hm[0]:02d}:{hm[1]:02d}"
+    return None
 
 def _likely_past_midnight(event: dict) -> bool:
     """Detect events expected to run past midnight. User explicitly

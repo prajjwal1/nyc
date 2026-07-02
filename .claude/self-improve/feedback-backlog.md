@@ -93,6 +93,34 @@ These are the durable preferences the user has stated. They're marked `addressed
 
 ## Open items (top of list = highest priority)
 
+### fb-189 — Neighborhood contradicts venue name (normalizer bug, ~8/375 events)
+- created_at: 2026-07-02
+- source: agent-proposal (ui-agent flag; scrape-independent + unit-testable)
+- status: open
+- body: ~8 of 375 events in the frozen feed carry a `location.neighborhood` that CONTRADICTS the venue name — e.g. name "Bushwick, 380 Troutman Street" but `neighborhood` "east village". `infer_neighborhood` / `_reinfer_neighborhood` picked a wrong neighborhood from the address (or a default) while the venue name/title held the true neighborhood token. This is scrape-independent (present in the current committed events.json), unit-testable, and degrades the neighborhood badge + neighborhood filtering the user relies on. IMPORTANT: b6a0cf3 U2 only SUPPRESSES the redundant display suffix when the venue name already contains the neighborhood — it does NOT correct the underlying data; the wrong neighborhood still ships and still misfilters. This is the top directive for this round precisely because it needs no scrape.
+- "addressed" criterion: for any event whose venue name (or title) contains an explicit NYC neighborhood token, `location.neighborhood` never contradicts that token (name-token wins the tie); a unit test covers "Bushwick, 380 Troutman St → bushwick (not east village)" plus ≥2 more; the count of name/neighborhood-conflict events in the committed events.json drops from ~8 to 0.
+
+### fb-190 — Fix lu.ma/philosophy (+ all lu.ma curators) silently not surfacing
+- created_at: 2026-07-02
+- source: user-explicit ("why am I not seeing lu.ma/philosophy events" / "fix" / "fix all the issues you know of", 2026-06-26→06-29)
+- status: addressed: 8d10fc2
+- body: User asked why lu.ma/philosophy events weren't showing, and to fix that + "all the issues you know of." Root cause (philosophy yielded 10 events live but 0 reached the feed): (1) shell filter — luma is description-required, philosophy events have empty descriptions, and lu.ma/philosophy was never in user_curated_sources hosts (unlike litclub/readingrhythms) → all dropped; (2) score floor — explicit high-conviction signals (userFollowing/Saved/Tagged/Affinity) only granted the 0.40 floor when source==instagram, so a followed lu.ma calendar sat at the 0.55 default and dropped.
+- resolution: `_is_curated_host` now auto-treats ANY lu.ma/<handle> curator calendar as curated (no current/future curator can silently lose events again); high-conviction signals now grant the curated floor regardless of source (extracted testable `_min_score_floor`). Result: philosophy 0→7 events survive. Added `scrapers/maintenance/audit_source_survival.py` (flags ZERO-RAW/ZERO-SURV/LOW-SURV silent-filter class), parametrized regression test over EVERY lu.ma curator in LUMA_PAGES + 5 `_min_score_floor` cases, and fixed a date-relative test flake. INVESTIGATION FINDING (recorded for future agents): most OTHER audit-flagged sources are NOT bugs — empty calendars, by-design floor+caps, redundant parse-rot, or JS-blocked museums; do not chase them as source-yield work.
+
+### fb-191 — Add openbookclub IG account
+- created_at: 2026-07-02
+- source: user-explicit ("add openbookclub from IG", 2026-07-02)
+- status: addressed: b6a0cf3
+- body: User asked to add `openbookclub` from IG.
+- resolution: added `openbookclub` (no-dot handle) to `scrapers/config.py::IG_ACCOUNTS`; the dotted variant `open.bookclub` was kept as well.
+
+### fb-192 — Improve the UI (day scent, cleaner location, distinct heroes, empty-state copy)
+- created_at: 2026-07-02
+- source: user-explicit ("also improve the UI", 2026-07-02)
+- status: addressed: b6a0cf3
+- body: User asked to also improve the UI.
+- resolution: U1 relative-day pill ("Today"/"Tomorrow"/"Sat"/"Jul 12") on hero cards (Tonight/Weekend/Just-Added/Following/Saved) via a showDay prop, grouped date-lists keep their header (no duplication); U2 suppress redundant neighborhood suffix when the venue name already contains it (kills "…East Village · east village"); U3 repaint Just Added slate so sky consistently = "from your follow graph" (matches conviction ring + Following hero); U4 fix stale empty-state copy referencing the removed FilterBar. 269 tests pass; next build clean.
+
 ### fb-179 — Incorporate more fitness-based events + run clubs (recurring ones too)
 - created_at: 2026-06-22
 - source: user-explicit
@@ -872,6 +900,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: open (low priority)
 - body: U1 (run 2026-06-22) + this round's fb-182 give the FeedCard a numeric gray price pill and a qualitative sky price pill. `EventModal.tsx:172` still renders any non-free/non-unknown price as verbatim text (so qualitative words already show there, un-styled). Low-priority cosmetic consistency: give the modal the same numeric-gray / qualitative-sky pill treatment. Cosmetic-only; no behavior change.
 - files: `site/app/components/EventModal.tsx` (~line 172).
+
+### fb-193 — Venue alias normalization (BK Bowl ↔ Brooklyn Bowl, etc.) (D2)
+- created_at: 2026-07-02
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-07-02-1735)
+- status: open
+- body: Normalize venue-name aliases so the same venue expressed differently collapses to one canonical form ("BK Bowl" ↔ "Brooklyn Bowl", "MoMA" ↔ "Museum of Modern Art", etc.). Compounds directly with the fb-189 Step-0 explicit-neighborhood matcher (`_explicit_hood_in_text`) and cross-source dedup (`_dedup_fuzzy_title`) — a canonical venue name improves both neighborhood inference and duplicate collapse. Note: fb-111 already added some venue-abbrev expansion in `_normalize_venue_name`; this extends/consolidates it. Deferred because the payoff (fewer dupes / better neighborhood tags in the feed) is only measurable post-scrape.
+- files: `scrapers/normalize.py` (`_normalize_venue_name` / venue-key path).
 
 <!-- Append new feedback above this comment as it comes in. Top of list is highest priority. -->
 

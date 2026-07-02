@@ -169,11 +169,27 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
                 FREE
               </span>
             )}
-            {event.price && event.price !== "free" && event.price !== "unknown" && (
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-700">
-                {event.price}
-              </span>
-            )}
+            {/* fb-188 (run 2026-07-02-1735): parity with FeedCard — numeric
+                prices as a gray pill, qualitative low-commitment words
+                (donation/PWYC/sliding-scale) as a sky pill. Same guards as
+                EventCard so "varies"/"TBA"/"unknown" render nothing (no junk
+                pill), consistent across card and modal. */}
+            {event.price &&
+              event.price !== "free" &&
+              event.price !== "unknown" &&
+              event.price !== "varies" &&
+              /\d/.test(event.price) && (
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-gray-100 text-gray-700">
+                  {event.price}
+                </span>
+              )}
+            {event.price &&
+              !/\d/.test(event.price) &&
+              /donation|pay what|pwyc|sliding scale|suggested/i.test(event.price) && (
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-sky-50 text-sky-700">
+                  {event.price}
+                </span>
+              )}
           </div>
 
           {/* Title */}

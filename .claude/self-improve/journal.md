@@ -181,3 +181,29 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Verification:** 256 tests pass (253+3 new); next build clean; sanity_check 2 criticals (backgammon, IG-dominant) IDENTICAL to pre-run — pre-existing data conditions, not regressions (events.json unmodified). No revert. Test/probe-induced `scrapers/data/` churn reverted to HEAD (code+docs-only commit).
 
 **Hypothesis for next round:** STOP grinding code-only rounds — RUN A SCRAPE first to land ~3 rounds of accumulated fitness/dance/contra levers, then measure. Post-scrape, confirm: (1) fitness/run/dance event count rises (P1 + 12 new slugs), (2) the eventbrite=100 cap didn't evict music below its CRITICAL_CHECK floor of 15 (P1 cap-eviction risk), (3) folk-dance landed participatory ratio (fb-187), (4) brooklyncontra 10 dances + recurring run clubs present. If a scrape still can't run (IG/IP blocks), the binding constraint is infra/user-action, not code.
+
+## 2026-07-02 1735 — run-id 2026-07-02-1735
+
+**⚠ STALE-FEED (3rd consecutive frozen round):** feed unchanged since 2026-06-15 (408h). Metrics frozen at 30.0% / 0-zero-topics / 17.5% for the 3rd round running. ~4 rounds of committed levers remain UNLANDED. Between the last self-improve run and this one, direct user requests were handled (committed, unpushed): 8d10fc2 (lu.ma/philosophy shell+floor fix, philosophy 0→7, + source-survival audit tool + test-flake fix — fb-190) and b6a0cf3 (openbookclub IG seed fb-191; UI day-scent/location-dedup/slate-hero/empty-copy fb-192). This round deliberately scoped to scrape-INDEPENDENT verifiable work only (per D1 gate).
+
+**Shipped (commit <sha>):**
+- ingestion-fb189 (APPROVE): neighborhood/venue-name contradiction fix — `_explicit_hood_in_text` Step-0 in `_backfill_neighborhood_from_venue` (explicit word-boundaried neighborhood token in name/addr wins over venue-table default + address inference) + word-boundary match for short ≤3-char keywords (les/ues/uws) in `event_parser.infer_neighborhood`. Critic-verified on frozen feed: conflicts 10→0, also fixed "Singles Night"→LES mistag, WGB CRITICAL_CHECK 36→38, no regression. +5 tests.
+- ingestion-fb186 (APPROVE): rebuilt `_infer_time_from_text` (keyword-anchored cues earliest-wins + guarded bare-clock am/pm fallback; ranges/multi-time abstain; fill-only, never overwrite). Critic adversarially probed 13 hostile inputs. +15 tests. Unblocks the fb-184 fitness startTime gate.
+- ui-fb188 (APPROVE): EventModal price-pill parity with FeedCard (numeric-gray + qualitative-sky; junk strings render nothing).
+
+**Process note:** the ingestion worker APPLIED (not just proposed) its changes via Bash; the Critic reviewed the live diffs (verifying independently, not trusting the report) and APPROVED both to stay. UI proposed→applied by orchestrator. source-curator died mid-response (API error), re-invoked once per operational rule → validation-only pass succeeded (12 IG seeds fb-106/exclusion-clean; folk-dance lean-keep).
+
+**Rejected:** none — Critic APPROVE on all 3.
+
+**Deferred (backlog):** D1 (Did-you-go calibration) → already tracked as open fb-178, not duplicated. D2 (venue alias normalization) → new fb-193 (compounds with fb-189 Step-0).
+
+**Feedback gate:** CLOSED (newest user-explicit feedback is today; ≥3 open items). No question. Captured this session's user requests as fb-190/191/192 (addressed).
+
+**Metric delta (code-only; events.json not re-scraped — frozen):**
+- Follow-graph coverage: 15/50 (30.0%) → 15/50 (30.0%).
+- Topic coverage: 0 zero-topics → 0 zero-topics.
+- High-conviction ratio: 64/365 (17.5%) → 64/365 (17.5%).
+
+**Verification:** 289 tests pass (20 new); next build clean; sanity_check 2 criticals (backgammon, IG-dominant) IDENTICAL to pre-run — pre-existing frozen-feed artifacts, not regressions. No revert. Probe/test-induced `scrapers/data/` churn reverted to HEAD.
+
+**Hypothesis for next round:** The binding constraint is now unambiguous and has held for 3 rounds: **a scrape must run.** Code quality is well ahead of what the frozen feed can demonstrate. Next action should be a residential-IP `run_all` (Critic + source-curator both endorse), then a round that MEASURES: fitness/dance count, philosophy surfacing (0→~7 expected), neighborhood-conflict count (→0), music CRITICAL_CHECK not cap-evicted, brooklyncontra + recurring run clubs present. Absent a scrape, further code-only rounds have sharply diminishing value.
