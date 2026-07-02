@@ -96,7 +96,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-189 — Neighborhood contradicts venue name (normalizer bug, ~8/375 events)
 - created_at: 2026-07-02
 - source: agent-proposal (ui-agent flag; scrape-independent + unit-testable)
-- status: open
+- status: addressed: d39f664 (run 2026-07-02-1735 — `_explicit_hood_in_text` Step-0 + word-boundary short-keyword match; conflicts 10→0 on frozen feed, Critic-verified, +5 tests. Live-feed count re-verifies post-scrape.)
 - body: ~8 of 375 events in the frozen feed carry a `location.neighborhood` that CONTRADICTS the venue name — e.g. name "Bushwick, 380 Troutman Street" but `neighborhood` "east village". `infer_neighborhood` / `_reinfer_neighborhood` picked a wrong neighborhood from the address (or a default) while the venue name/title held the true neighborhood token. This is scrape-independent (present in the current committed events.json), unit-testable, and degrades the neighborhood badge + neighborhood filtering the user relies on. IMPORTANT: b6a0cf3 U2 only SUPPRESSES the redundant display suffix when the venue name already contains the neighborhood — it does NOT correct the underlying data; the wrong neighborhood still ships and still misfilters. This is the top directive for this round precisely because it needs no scrape.
 - "addressed" criterion: for any event whose venue name (or title) contains an explicit NYC neighborhood token, `location.neighborhood` never contradicts that token (name-token wins the tie); a unit test covers "Bushwick, 380 Troutman St → bushwick (not east village)" plus ≥2 more; the count of name/neighborhood-conflict events in the committed events.json drops from ~8 to 0.
 
@@ -883,7 +883,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-186 — Strengthen body-text time inference ("doors at 7pm") to unblock the fb-184 fitness gate
 - created_at: 2026-06-23
 - source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-06-23-1816)
-- status: open
+- status: addressed: d39f664 (run 2026-07-02-1735 — rebuilt `_infer_time_from_text`: keyword-anchored cues + guarded bare-clock am/pm fallback, ranges/multi-time abstain, fill-only. Critic adversarially probed 13 hostile inputs; +15 tests.)
 - body: The fb-184 P1 fitness/run/dance score-recovery boost (shipped this round) is HARD-GATED on a parsed `startTime` (+ venue) to preserve the 0.55 quality floor. Many user-requested Eventbrite-category fitness/run/dance events carry their time only in body text ("doors at 7pm", "starts 8pm") so they fail that gate even though they're well-formed. A robust body-text time extractor recovers their yield HONESTLY (raises completeness rather than overriding the floor) and improves the feed-wide `time_q` signal. NOTE: a `_infer_time_from_text` pass already exists in `scrapers/normalize.py` (added 2026-06-04) — this item is to AUDIT/STRENGTHEN it (coverage of "doors"/"starts"/bare "Npm", single-unambiguous-match gating, never overwrite a parsed time) and confirm it runs before scoring so the P1 gate sees the inferred time. Compounds directly with fb-184.
 - files: `scrapers/normalize.py` (`_infer_time_from_text` + its call ordering in `process`).
 
@@ -897,7 +897,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-188 — EventModal: style non-free price as a pill (cross-surface consistency with U1)
 - created_at: 2026-06-23
 - source: agent-proposal (Critic nicety, run 2026-06-23-1816)
-- status: open (low priority)
+- status: addressed: d39f664 (run 2026-07-02-1735 — EventModal now uses FeedCard's numeric-gray + qualitative-sky guards; junk strings render nothing)
 - body: U1 (run 2026-06-22) + this round's fb-182 give the FeedCard a numeric gray price pill and a qualitative sky price pill. `EventModal.tsx:172` still renders any non-free/non-unknown price as verbatim text (so qualitative words already show there, un-styled). Low-priority cosmetic consistency: give the modal the same numeric-gray / qualitative-sky pill treatment. Cosmetic-only; no behavior change.
 - files: `site/app/components/EventModal.tsx` (~line 172).
 
