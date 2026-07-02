@@ -11,12 +11,36 @@ interface EventCardProps {
   onAccountClick?: (account: string) => void;
   onHide?: (eventId: string) => void;
   onSelect?: (event: Event) => void;
+  // Show a relative-day pill ("Today"/"Tomorrow"/"Sat"/"Jul 12") in the meta
+  // row. Heroes (Tonight/Following/Saved/Just-Added) drop the date entirely,
+  // so they pass true; grouped date-lists already have a day header and pass
+  // false (the default) to avoid duplication.
+  showDay?: boolean;
+}
+
+// Relative-day label for the card meta row. Returns null for past/unparseable
+// dates (heroes only show upcoming events anyway).
+function relDay(iso: string | undefined): string | null {
+  if (!iso) return null;
+  try {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const d = new Date(iso + "T00:00:00");
+    const diff = Math.round((d.getTime() - today.getTime()) / 86400000);
+    if (isNaN(diff) || diff < 0) return null;
+    if (diff === 0) return "Today";
+    if (diff === 1) return "Tomorrow";
+    if (diff <= 6) return d.toLocaleDateString("en-US", { weekday: "short" });
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  } catch {
+    return null;
+  }
 }
 
 // iter 215: removed grid variant + MediaFirstCard variant. All events
 // now render through FeedCard for uniform sizing — IG events no longer
 // take 4-5x the vertical space of other sources.
-export default function EventCard({ event, variant = "feed", onAccountClick, onHide, onSelect }: EventCardProps) {
+export default function EventCard({ event, variant = "feed", onAccountClick, onHide, onSelect, showDay = false }: EventCardProps) {
   const timeStr = event.startTime
     ? formatTime(event.startTime) +
       (event.endTime ? ` – ${formatTime(event.endTime)}` : "")
@@ -26,7 +50,7 @@ export default function EventCard({ event, variant = "feed", onAccountClick, onH
     return <CompactCard event={event} timeStr={timeStr} />;
   }
 
-  return <FeedCard event={event} timeStr={timeStr} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelect} />;
+  return <FeedCard event={event} timeStr={timeStr} showDay={showDay} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelect} />;
 }
 
 function isStartingSoon(event: Event): boolean {
@@ -84,12 +108,14 @@ function formatDateLabel(iso: string): string {
 function FeedCard({
   event,
   timeStr,
+  showDay = false,
   onAccountClick,
   onHide,
   onSelect,
 }: {
   event: Event;
   timeStr: string | null;
+  showDay?: boolean;
   onAccountClick?: (account: string) => void;
   onHide?: (eventId: string) => void;
   onSelect?: (event: Event) => void;
@@ -127,6 +153,11 @@ function FeedCard({
     !desc.toLowerCase().startsWith("photo by");
 
   const openedFeed = isEventOpened(event.id);
+  const dayLabel = relDay(event.date);
+  const _nb = event.location?.neighborhood?.trim();
+  const showNeighborhood = Boolean(
+    _nb && !(event.location?.name || "").toLowerCase().includes(_nb.toLowerCase())
+  );
   const convictionFollow = !!event.userFollowing;
   const convictionAffinity = !convictionFollow && !!event.userAffinity;
   const feedChrome = convictionFollow
@@ -173,6 +204,10 @@ function FeedCard({
           </h3>
 
           <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500">
+            {/* U1: relative-day scent for hero cards (which drop the date). */}
+            {showDay && dayLabel && (
+              <span className="font-semibold text-gray-700">{dayLabel}</span>
+            )}
             {timeStr && (
               <span className="flex items-center gap-1">
                 <ClockIcon />
@@ -183,7 +218,11 @@ function FeedCard({
               <span className="flex items-center gap-1 truncate">
                 <PinIcon />
                 <span className="truncate">{event.location.name}</span>
-                {event.location.neighborhood && (
+                {/* U2: only show the neighborhood suffix when the venue name
+                    doesn't already contain it — avoids "…East Village · east
+                    village" redundancy and stops amplifying name/neighborhood
+                    conflicts. */}
+                {showNeighborhood && (
                   <span className="text-gray-400 shrink-0">· {event.location.neighborhood}</span>
                 )}
               </span>

@@ -209,6 +209,8 @@ IG_ACCOUNTS = list(
             "philosophy.nyc",
             "queerfeetnyc",
             "open.bookclub",
+            "openbookclub",  # user-added; no-dot handle (open.bookclub is the
+            # dotted variant — keep both, dedupe + skip-if-missing handle it)
             "booksaremagicbk",
             "center4fiction",
             "nycsprintcollective",
