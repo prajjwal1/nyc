@@ -105,6 +105,46 @@ WARNING_CHECKS = [
 ]
 
 
+def _event_field_text(e: dict, field: str) -> str:
+    """Return the searchable text for a must-surface manifest field."""
+    if field == "categories":
+        return " ".join(e.get("categories") or [])
+    if field == "location":
+        loc = e.get("location") or {}
+        return f"{loc.get('name','')} {loc.get('address','')}"
+    return str(e.get(field, "") or "")
+
+
+def _must_surface_matches(e: dict, item: dict) -> bool:
+    """True if event e matches a must-surface manifest item (case-insensitive
+    substring of any needle in any listed field)."""
+    fields = item.get("fields") or ["title", "description"]
+    needles = [n.lower() for n in (item.get("needles") or [])]
+    hay = " ".join(_event_field_text(e, f) for f in fields).lower()
+    return any(n in hay for n in needles)
+
+
+def load_must_surface_checks(path: str | None = None) -> list:
+    """Read scrapers/data/must_surface.json → list of (name, check, min)
+    tuples in the WARNING_CHECKS shape. Data-driven so the user can add a
+    'thing I asked for' by editing JSON, no code change. Empty on any error
+    (never breaks the run)."""
+    import os as _os
+
+    if path is None:
+        path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "data", "must_surface.json")
+    try:
+        with open(path) as f:
+            manifest = json.load(f)
+    except Exception:
+        return []
+    out = []
+    for item in manifest.get("items", []):
+        name = f"MUST-SURFACE: {item.get('id','?')}"
+        out.append((name, (lambda it: (lambda e: _must_surface_matches(e, it)))(item), int(item.get("min", 1)), item))
+    return out
+
+
 def main(events_path: str = "data/events.json", *, write_stats: bool = False, hard_fail: bool = False) -> int:
     if not os.path.isfile(events_path):
         print(f"ERROR: {events_path} not found")
@@ -165,6 +205,25 @@ def main(events_path: str = "data/events.json", *, write_stats: bool = False, ha
             for e in matching[:2]:
                 print(f"      - {e['title'][:60]} ({e['source']})")
 
+    # MUST-SURFACE (strict) — the specific things the user asked to see.
+    # A miss here means a user-requested source silently produced nothing;
+    # print it loudly with the why + hint so it can't quietly slip.
+    must_surface = load_must_surface_checks()
+    must_missing = []
+    if must_surface:
+        print("\n--- MUST-SURFACE (strict — user-requested) ---")
+        for name, check, min_count, item in must_surface:
+            matching = [e for e in events if check(e)]
+            ok = len(matching) >= min_count
+            symbol = "✓" if ok else "⚠ MISSING"
+            print(f"  {symbol} {name}: {len(matching)} events (need {min_count}+)")
+            if ok and matching:
+                print(f"      e.g. {matching[0]['title'][:60]} ({matching[0]['source']})")
+            if not ok:
+                must_missing.append(name)
+                print(f"      why: {item.get('why','')}")
+                print(f"      hint: {item.get('hint','')}")
+
     # Top events spot-check
     print("\n--- TOP 10 EVENTS BY SCORE ---")
     top = sorted(events, key=lambda e: e.get("score", 0), reverse=True)[:10]
@@ -192,8 +251,12 @@ def main(events_path: str = "data/events.json", *, write_stats: bool = False, ha
     print(f"\n=== SUMMARY ===")
     print(f"Critical failures: {len(failures)}")
     print(f"Warnings: {len(warnings)}")
+    if must_missing:
+        print(f"Must-surface MISSING: {len(must_missing)}")
     if failures:
         print(f"\nMUST FIX: {', '.join(failures)}")
+    if must_missing:
+        print(f"\n⚠ USER-REQUESTED BUT MISSING: {', '.join(must_missing)}")
     if warnings:
         print(f"Could improve: {', '.join(warnings)}")
 

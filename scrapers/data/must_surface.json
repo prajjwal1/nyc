@@ -1,0 +1,37 @@
+{
+  "_doc": "STRICT-CHECK manifest — things the user explicitly asked to see on the site. scrapers/sanity_check.py turns each item into a WARNING_CHECK (name prefixed 'MUST-SURFACE:') and asserts >=`min` matching events in the feed. A miss prints loudly as ⚠ MUST-SURFACE MISSING with its `why` + `hint`, so a requested source silently yielding nothing (stale feed, over-aggressive filter, unmerged fix, dead scraper) is caught instead of quietly dropped. This closes the loop 'what I asked for actually shows up'. Grows as the user asks for specific things — add an item, no code change needed. Matching: case-insensitive substring of any `needle` in any listed `field` (title/description/sourceUrl/account/instagramAccount/source/location; `categories` matches list membership).",
+  "items": [
+    {
+      "id": "philosophy (NYC Philosophy Club / lu.ma/philosophy)",
+      "why": "user asked repeatedly why NYC Philosophy Club lu.ma events weren't showing",
+      "fields": ["title", "sourceUrl"],
+      "needles": ["lu.ma/philosophy", "philosophy club", "philosophy at the museum"],
+      "min": 1,
+      "hint": "lu.ma/philosophy curator calendar; needs the curated-host shell bypass (commit 8d10fc2) live on main + a scrape that reaches lu.ma"
+    },
+    {
+      "id": "run clubs / fitness",
+      "why": "user: incorporate more fitness-based events + more run clubs (recurring too)",
+      "fields": ["title", "description", "categories"],
+      "needles": ["run club", "running", "fitness"],
+      "min": 2,
+      "hint": "Meetup fitness searches + Eventbrite run-club slug + fitness IG seeds; check score floor didn't trim them"
+    },
+    {
+      "id": "brooklyn contra dance",
+      "why": "user: add contra dancing brooklyn (brooklyncontra.org)",
+      "fields": ["source", "sourceUrl", "title"],
+      "needles": ["brooklyncontra", "contra dance"],
+      "min": 1,
+      "hint": "dedicated brooklyncontra scraper; DISTINCT_SCHEDULE_SOURCES dedup exemption keeps distinct dates"
+    },
+    {
+      "id": "openbookclub",
+      "why": "user: add openbookclub from IG",
+      "fields": ["account", "instagramAccount", "sourceUrl", "title"],
+      "needles": ["openbookclub", "open.bookclub", "open book club"],
+      "min": 1,
+      "hint": "IG seed; gated on IG sweep working (fb-174) — may only surface via cross-source enrichment until IG unblocks"
+    }
+  ]
+}
