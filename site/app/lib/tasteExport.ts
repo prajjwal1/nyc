@@ -12,7 +12,7 @@
 //    once; stored in localStorage. Committing triggers CI → next scrape learns.
 //  - Fallback: download the JSON to drop into scrapers/data/ manually.
 
-import { loadProfile } from "./interests";
+import { loadProfile, loadSavedStubs } from "./interests";
 
 const GH_TOKEN_KEY = "nyc-events:ghtoken:v1";
 const REPO = "prajjwal1/nyc";
@@ -26,10 +26,22 @@ export interface TasteSnapshot {
   hosts: Record<string, number>;
   negAccounts: Record<string, number>;
   negHosts: Record<string, number>;
+  // Liked-event TEXT — training examples for the semantic taste model (WS2,
+  // scrapers/utils/taste.py). Derived from saved-event stubs.
+  positiveTexts: string[];
+  negativeTexts: string[];
 }
 
 export function buildTasteSnapshot(): TasteSnapshot {
   const p = loadProfile();
+  const positiveTexts = loadSavedStubs()
+    .map((s) =>
+      [s.title, s.locationName, s.instagramAccount]
+        .filter(Boolean)
+        .join(" ")
+        .trim(),
+    )
+    .filter((t) => t.length > 0);
   return {
     updatedAt: new Date().toISOString(),
     accounts: p.accounts || {},
@@ -37,6 +49,8 @@ export function buildTasteSnapshot(): TasteSnapshot {
     hosts: p.hosts || {},
     negAccounts: p.negAccounts || {},
     negHosts: p.negHosts || {},
+    positiveTexts,
+    negativeTexts: [],
   };
 }
 

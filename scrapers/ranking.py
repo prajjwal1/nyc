@@ -268,6 +268,9 @@ def compute_score(event: dict) -> float:
         + dow_fit
         + tod_fit
         + geo_proximity
+        # WS2: semantic taste — similarity to events the user saves/attends.
+        # Bounded in taste.py (+0.15/−0.10); 0.0 until the user syncs taste.
+        + (event.get("tasteScore", 0.0) or 0.0)
     )
     # dow_fit/tod_fit/geo_proximity can be negative; preserve their downward
     # signal but cap the positive sum so ranking still differentiates.
@@ -884,6 +887,18 @@ def _user_curated_boost(event: dict) -> float:
 
 
 def rank_events(events: list[dict]) -> list[dict]:
+    # WS2: build the semantic taste model once over the batch and stash a
+    # per-event taste score (similarity to what the user saves/attends).
+    # Inert (0.0) until the user has synced liked-event text — safe cold start.
+    try:
+        from .utils.taste import build_taste_model
+
+        taste = build_taste_model(events)
+        if taste.active:
+            for event in events:
+                event["tasteScore"] = round(taste.score(event), 4)
+    except Exception as exc:
+        print(f"[ranking] taste model skipped: {exc}")
     for event in events:
         event["score"] = round(compute_score(event), 3)
         event["highlights"] = _compute_highlights(event)
