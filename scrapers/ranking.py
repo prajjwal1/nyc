@@ -274,7 +274,13 @@ def compute_score(event: dict) -> float:
     )
     # dow_fit/tod_fit/geo_proximity can be negative; preserve their downward
     # signal but cap the positive sum so ranking still differentiates.
-    capped_stack = min(0.55, max(-0.20, stacked_boosts))
+    # Cap lowered 0.55→0.32 (critic P1): at 0.55 almost any broadly-social
+    # event maxed the stack → base(~0.45)+0.55≈1.0, saturating 30+ events at
+    # 1.0 and making the top of the feed unordered. A tighter cap leaves
+    # headroom so explicit conviction (saved/following) + the semantic taste
+    # signal actually differentiate the top — e.g. a Warm Up the user's taste
+    # matches now beats a generic wine tasting instead of tying it.
+    capped_stack = min(0.32, max(-0.20, stacked_boosts))
 
     final = base_score + explicit_boost + capped_stack - soft_penalty - audience_penalty
     return max(0.0, min(1.0, final))

@@ -1475,6 +1475,19 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     if _looks_like_ocr_garbage(title):
         return True
 
+    # Critic P5: specific IG-caption/OCR residue that reached score 1.0 at the
+    # top of the feed. These signatures never occur in a real event title:
+    #   "© BOOKSANDBOUNTY @ by author - Edited"  (leading ©, "@ by author",
+    #    trailing "- Edited"); "OMe NTH CULTURE" i" (stray trailing quote+letter).
+    _t = title.strip()
+    if _t.startswith("©") or _t.startswith("®"):
+        return True
+    _tl = _t.lower()
+    if "@ by author" in _tl or _tl.endswith("- edited") or _tl.endswith("- edit"):
+        return True
+    if re.search(r'["”]\s+\w{1,2}$', _t):  # dangling close-quote + 1-2 char OCR tail
+        return True
+
     title_lower = title.lower().strip()
     title_stripped = title.strip()
     # Normalize curly quotes/apostrophes to ASCII so block patterns with

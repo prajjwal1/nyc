@@ -1132,6 +1132,9 @@ def clean_title(title: str) -> str:
     if not title:
         return title
     t = title.strip()
+    # Strip Eventbrite's "Copy of " duplication prefix (critic P5) — organizers
+    # clone a listing and the artifact prefix leaks into the feed.
+    t = re.sub(r"^copy of\s+", "", t, flags=re.IGNORECASE)
     # Decode common HTML entities
     t = t.replace("&amp;", "&").replace("&quot;", '"').replace("&#39;", "'")
     # OCR'd @ glyph: image-OCR sometimes reads the @ symbol on a flyer

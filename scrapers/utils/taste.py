@@ -130,6 +130,19 @@ def build_taste_model(events: list[dict], data_dir: str = _DATA_DIR) -> TasteMod
     except Exception:
         pass
 
+    # Cold-start (critic P6): until the user syncs explicit saves/attends, seed
+    # the positive taste centroid from the FOLLOW GRAPH — events the user
+    # follows / has affinity with / has saved from are themselves a preference
+    # signal. This activates the taste model on day one instead of leaving it
+    # inert (which left the feed generic). Synced explicit signals override
+    # this the moment they arrive.
+    if not pos_texts:
+        pos_texts = [
+            _event_text(e)
+            for e in events
+            if e.get("userFollowing") or e.get("userSaved") or e.get("userAffinity")
+        ]
+
     pos = _centroid(pos_texts, idf, default_idf) if pos_texts else {}
     neg = _centroid(neg_texts, idf, default_idf) if neg_texts else {}
     return TasteModel(idf, pos, neg, default_idf)
