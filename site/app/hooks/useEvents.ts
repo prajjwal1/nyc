@@ -8,6 +8,7 @@ import { loadProfile, interestBoost, InterestProfile } from "../lib/interests";
 export function useEvents() {
   const [data, setData] = useState<EventsData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [selectedDate, setSelectedDate] = useState<string>(
     new Date().toISOString().split("T")[0]
   );
@@ -19,6 +20,7 @@ export function useEvents() {
   useEffect(() => {
     loadEvents()
       .then(setData)
+      .catch(() => setLoadError(true))
       .finally(() => setLoading(false));
     setProfile(loadProfile());
   }, []);
@@ -71,6 +73,7 @@ export function useEvents() {
 
   return {
     loading,
+    loadError,
     events: filteredEvents,
     selectedDate,
     setSelectedDate,

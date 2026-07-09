@@ -19,6 +19,10 @@ export interface Event {
   price: string;
   score: number;
   scrapedAt: string;
+  // WS2 semantic taste: similarity to what the user saves/attends (bounded
+  // ~ -0.10..0.15). Present only once the user has synced taste; drives the
+  // "matches your taste" explainer chip.
+  tasteScore?: number;
   instagramAccount?: string;
   account?: string;  // source-agnostic provenance alias (mirrors instagramAccount on IG)
   highlights?: string[];

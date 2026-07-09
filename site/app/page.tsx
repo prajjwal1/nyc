@@ -17,6 +17,7 @@ type View = "for-you" | "calendar";
 export default function Home() {
   const {
     loading,
+    loadError,
     events,
     selectedDate,
     setSelectedDate,
@@ -157,6 +158,24 @@ export default function Home() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-gray-400 text-lg">Loading events...</div>
+      </div>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen gap-3 px-6 text-center">
+        <div className="text-gray-700 text-lg font-semibold">Couldn&apos;t load events</div>
+        <p className="text-sm text-gray-500 max-w-sm">
+          The events feed failed to load. It may be a temporary network issue —
+          please refresh. If it persists, the scraper may not have published yet.
+        </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-1 px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-700"
+        >
+          Refresh
+        </button>
       </div>
     );
   }

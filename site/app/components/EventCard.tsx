@@ -241,6 +241,22 @@ function FeedCard({
           )}
 
           <div className="mt-1.5 flex flex-wrap items-center gap-1">
+            {/* WS2: "matches your taste" — the payoff of the learning loop.
+                Shown only when the semantic taste model (fed by your synced
+                saves/attends) scores this event highly AND it isn't already a
+                save/follow conviction event (avoid stacking signals). Genuinely
+                new info the ★ ring doesn't convey; absent until you sync. */}
+            {(event.tasteScore ?? 0) >= 0.06 &&
+              !event.userSaved &&
+              !event.userFollowing &&
+              !event.userAffinity && (
+                <span
+                  className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-indigo-50 text-indigo-700"
+                  title="Similar to events you've saved or attended"
+                >
+                  ✨ your taste
+                </span>
+              )}
             {/* Highlight badges first — most important signals.
                 following/affinity now surface via card-level ribbon (U1). */}
             {(event.highlights || [])
