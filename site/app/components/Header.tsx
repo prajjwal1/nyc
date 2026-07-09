@@ -1,6 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {
+  hasTasteSignal,
+  getStoredToken,
+  setStoredToken,
+  syncTasteToRepo,
+  downloadTasteSnapshot,
+} from "../lib/tasteExport";
 
 interface HeaderProps {
   totalEvents: number;
@@ -16,6 +23,40 @@ export default function Header({
   newSinceLastVisit,
 }: HeaderProps) {
   const [copied, setCopied] = useState(false);
+  // Taste sync (WS1): only shown once there's engagement to sync. Reads
+  // localStorage, so gate behind mount to avoid SSR hydration mismatch.
+  const [showSync, setShowSync] = useState(false);
+  const [syncMsg, setSyncMsg] = useState<string | null>(null);
+  const [syncing, setSyncing] = useState(false);
+  useEffect(() => {
+    setShowSync(hasTasteSignal());
+  }, []);
+  const flash = (m: string) => {
+    setSyncMsg(m);
+    setTimeout(() => setSyncMsg(null), 5000);
+  };
+  const handleSync = async () => {
+    let token = getStoredToken();
+    if (!token) {
+      const entered = window.prompt(
+        "Sync your taste so the scraper learns from what you save/hide.\n\n" +
+          "Paste a GitHub fine-grained token (Contents: read+write on prajjwal1/nyc).\n" +
+          "Leave blank to download the file and add it manually instead.",
+      );
+      if (!entered || !entered.trim()) {
+        downloadTasteSnapshot();
+        flash("Downloaded — add to scrapers/data/user_engagement.json");
+        return;
+      }
+      token = entered.trim();
+      setStoredToken(token);
+    }
+    setSyncing(true);
+    setSyncMsg("Syncing…");
+    const res = await syncTasteToRepo(token);
+    setSyncing(false);
+    flash(res.message);
+  };
   const handleShare = async () => {
     if (typeof window === "undefined") return;
     const url = window.location.href;
@@ -88,6 +129,25 @@ export default function Header({
             </p>
           </div>
           <div className="flex items-center gap-3">
+            {syncMsg && (
+              <span className="text-[11px] text-gray-500 max-w-[220px] truncate" title={syncMsg}>
+                {syncMsg}
+              </span>
+            )}
+            {showSync && (
+              <button
+                onClick={handleSync}
+                disabled={syncing}
+                className="text-xs text-gray-500 hover:text-gray-900 flex items-center gap-1 disabled:opacity-50"
+                title="Sync your saves/hides so the scraper learns your taste"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                {syncing ? "Syncing…" : "Sync taste"}
+              </button>
+            )}
             {updatedStr && (
               <p className={`text-xs ${updatedColorClass}`} title={updatedTooltip}>
                 Updated {updatedStr}
