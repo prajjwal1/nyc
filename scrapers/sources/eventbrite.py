@@ -8,10 +8,45 @@ from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_
 # These list ALL of an organizer's events in one place — useful for
 # brand-curated event series the user follows. Add to user_curated_sources
 # .json simultaneously so events from these get the +0.15 boost.
+# Seed organizer pages. NOTE: prefer NOT hardcoding organizers here — the
+# canonical way to add a vetted organizer is to put its host in
+# scrapers/data/user_curated_sources.json (the learned preference layer),
+# which _curated_organizer_urls() reads at scrape time. That way vetting a
+# source is a data/preference signal, not a code edit, and the same entry
+# also drives the curation boost + score-floor bypass. This list is just a
+# cold-start seed for anything not yet represented in the preference layer.
 ORGANIZER_URLS = [
-    # Lululemon — user added (fitness events priority)
+    # Lululemon — legacy seed (also in user_curated_sources).
     "https://www.eventbrite.com/o/14861961557",
 ]
+
+
+def _curated_organizer_urls() -> list[str]:
+    """Derive Eventbrite organizer scrape targets from the user's LEARNED
+    preference layer (user_curated_sources.json), rather than hardcoding
+    them. Any curated host shaped `eventbrite.com/o/<id>` becomes an
+    organizer page we scrape — so when the user vets a top organizer, it is
+    picked up automatically (and, being curated, its events get the boost +
+    the lower score floor). Generalizes 'learn my preferences' to sources.
+    """
+    import os as _os
+
+    path = _os.path.join(
+        _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))),
+        "data",
+        "user_curated_sources.json",
+    )
+    urls: list[str] = []
+    try:
+        with open(path) as f:
+            hosts = (json.load(f).get("hosts") or {})
+        for host in hosts:
+            m = re.search(r"eventbrite\.com/o/(\d+)", host)
+            if m:
+                urls.append(f"https://www.eventbrite.com/o/{m.group(1)}")
+    except Exception:
+        pass
+    return urls
 
 
 # Topics that map cleanly onto Eventbrite's URL search slugs and are
@@ -131,10 +166,14 @@ async def scrape() -> list[dict]:
                 events.extend(_parse_search_page(html, url))
             except Exception as e:
                 print(f"[eventbrite-interest] Failed {url}: {e}")
-    # Then specific organizer pages (user-curated). Organizer pages don't
-    # ship JSON-LD; they hydrate from a __NEXT_DATA__ blob. Use the
-    # organizer-specific parser.
-    for url in ORGANIZER_URLS:
+    # Then organizer pages — the seed list PLUS any organizer the user has
+    # vetted in the preference layer (user_curated_sources.json). Organizer
+    # pages don't ship JSON-LD; they hydrate from a __NEXT_DATA__ blob. Use
+    # the organizer-specific parser.
+    organizer_urls = list(dict.fromkeys(ORGANIZER_URLS + _curated_organizer_urls()))
+    if len(organizer_urls) > len(ORGANIZER_URLS):
+        print(f"[eventbrite-organizer] {len(organizer_urls)} organizers ({len(organizer_urls)-len(ORGANIZER_URLS)} from preference layer)")
+    for url in organizer_urls:
         try:
             html = await fetch_text(url)
             org_events = _parse_organizer_page(html, url)

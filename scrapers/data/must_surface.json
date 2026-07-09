@@ -26,6 +26,14 @@
       "hint": "dedicated brooklyncontra scraper; DISTINCT_SCHEDULE_SOURCES dedup exemption keeps distinct dates"
     },
     {
+      "id": "MoMA PS1 Warm Up (vetted top organizer)",
+      "why": "user pointed at the Warm Up series as a top-quality vetted Eventbrite organizer",
+      "fields": ["title", "sourceUrl", "organizerUrl", "location"],
+      "needles": ["warm up", "moma ps1", "o/8184194121"],
+      "min": 1,
+      "hint": "Eventbrite organizer /o/8184194121 in ORGANIZER_URLS + user_curated_sources; needs a scrape reaching eventbrite"
+    },
+    {
       "id": "openbookclub",
       "why": "user: add openbookclub from IG",
       "fields": ["account", "instagramAccount", "sourceUrl", "title"],

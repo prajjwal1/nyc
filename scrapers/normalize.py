@@ -1619,6 +1619,13 @@ def _min_score_floor(event: dict, curated_ig: set[str] | None = None) -> float:
         or event.get("userFollowing")
     ):
         return IG_CURATED_MIN_SCORE
+    # Events from a host the user has explicitly vetted/curated (learned
+    # preference layer: user_curated_sources.json — e.g. a top Eventbrite
+    # organizer, a lu.ma curator, a followed venue) get the lower curated
+    # floor too, REGARDLESS of source. Generalizes "surface what I vet":
+    # a vetted source's events shouldn't be trimmed by the 0.55 default.
+    if _is_curated_host(event):
+        return IG_CURATED_MIN_SCORE
     if event.get("source") != "instagram":
         return DEFAULT_MIN_SCORE
     if curated_ig is None:
