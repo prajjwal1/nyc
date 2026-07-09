@@ -106,6 +106,21 @@ def run_sync_scraper(name: str, scrape_fn) -> list[dict]:
 async def main():
     all_events = []
 
+    # Learn from the user's in-app engagement BEFORE scraping/ranking, so this
+    # run's curated/excluded preference files (and thus ranking) reflect the
+    # latest saves/hides/attended synced from the browser. No-op if absent.
+    try:
+        from scrapers.utils.engagement import apply_engagement
+
+        eng = apply_engagement()
+        if eng.get("present"):
+            print(
+                f"[run_all] Engagement applied: +{eng['curated_added']} curated, "
+                f"+{eng['excluded_added']} excluded"
+            )
+    except Exception as exc:  # never let engagement ingest break a scrape
+        print(f"[run_all] Engagement ingest skipped: {exc}")
+
     # Snapshot previous events to preserve firstSeenAt across runs.
     previous_index = _load_previous_events_index(OUTPUT_PATH)
     print(f"[run_all] Previous events.json: {len(previous_index)} events")

@@ -39,15 +39,20 @@ CRITICAL_CHECKS = [
         lambda e: e.get("price") == "free",
         20,
     ),
-    (
-        "Instagram is dominant source",
-        lambda e: e.get("source") == "instagram",
-        50,
-    ),
 ]
 
 # Sources we'd LIKE to have, but won't fail without.
 WARNING_CHECKS = [
+    (
+        # Reframed from CRITICAL (fb-174): the IG account-sweep is blocked
+        # fleet-wide and the session dies ~monthly — both user-action/infra,
+        # not code regressions. A hard CRITICAL here false-alarmed on every
+        # run. Kept as a loud WARNING; a genuinely dead session is caught by
+        # the session-staleness print + freshness-monitor.yml.
+        "Instagram share (≥50 — session/infra gated, see fb-174)",
+        lambda e: e.get("source") == "instagram",
+        50,
+    ),
     (
         "Book Club Bar (via @bookclubbar)",
         lambda e: "book club bar" in (
