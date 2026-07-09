@@ -540,6 +540,19 @@ def _day_of_week_fit_boost(event: dict) -> float:
     ):
         if not is_weekend:
             boost += 0.03
+    # fb-184: profile-aligned fitness/run/dance Eventbrite-category events
+    # score ~0.36-0.51 on completeness/title/time and miss the 0.55 floor
+    # despite being user-requested (fb-179). Recover ONLY well-formed ones:
+    # require BOTH a parsed startTime AND a venue name, so a low-info
+    # caption-only event still floors out (preserves the 0.55 quality gate —
+    # this is NOT a category-wide exemption). The +0.05 lifts the verified
+    # 0.49-0.54 cluster over 0.55; the final clamp below caps total stacking
+    # at +0.06 so it can't run away.
+    if cats & {"fitness", "wellness", "outdoors"} or any(
+        k in text for k in ("run club", "yoga", "pilates", "contra", "swing dance")
+    ):
+        if event.get("startTime") and (event.get("location", {}) or {}).get("name"):
+            boost += 0.05
     # Brunch / food on weekends
     if "food" in cats and any(k in text for k in ("brunch", "morning", "breakfast")):
         if is_weekend:
@@ -666,19 +679,44 @@ def _load_user_excluded_sources() -> dict:
         "user_excluded_sources.json",
     )
     if not _os.path.isfile(path):
-        _USER_EXCLUDED_CACHE = {"accounts": set(), "hosts": [], "title_hints": []}
+        _USER_EXCLUDED_CACHE = {
+            "accounts": set(),
+            "hosts": [],
+            "title_hints": [],
+            "title_hint_matchers": [],
+        }
         return _USER_EXCLUDED_CACHE
     try:
         with open(path) as f:
             raw = _json.load(f)
+        title_hints = [k.lower() for k in (raw.get("title_hints") or {}).keys()]
+        # fb-181: short single-word hints (e.g. "rave") substring-matched into
+        # legitimate words ("Raven & Goose", "travel", "gravel", "brave"),
+        # dropping events the user actually wants. Precompile a word-boundary
+        # matcher for any hint that is a single short alpha word; keep plain
+        # substring matching for multi-word / longer / non-alpha hints (e.g.
+        # "warehouse rave", "@ 99 scott", "abacus.ai") where substring is
+        # intended. Cached on the cfg so is_user_excluded doesn't recompile.
+        title_hint_matchers = []
+        for h in title_hints:
+            if len(h) <= 6 and " " not in h and h.isalpha():
+                title_hint_matchers.append(re.compile(rf"\b{re.escape(h)}\b"))
+            else:
+                title_hint_matchers.append(h)
         _USER_EXCLUDED_CACHE = {
             "accounts": {k.lower() for k in (raw.get("accounts") or {}).keys()},
             "hosts": [k.lower() for k in (raw.get("hosts") or {}).keys()],
-            "title_hints": [k.lower() for k in (raw.get("title_hints") or {}).keys()],
+            "title_hints": title_hints,
+            "title_hint_matchers": title_hint_matchers,
         }
         return _USER_EXCLUDED_CACHE
     except Exception:
-        _USER_EXCLUDED_CACHE = {"accounts": set(), "hosts": [], "title_hints": []}
+        _USER_EXCLUDED_CACHE = {
+            "accounts": set(),
+            "hosts": [],
+            "title_hints": [],
+            "title_hint_matchers": [],
+        }
         return _USER_EXCLUDED_CACHE
 
 
@@ -731,12 +769,16 @@ def is_user_excluded(event: dict) -> bool:
     for host in cfg["hosts"]:
         if host in url:
             return True
-    if cfg["title_hints"]:
+    matchers = cfg.get("title_hint_matchers") or cfg["title_hints"]
+    if matchers:
         text = (
             (event.get("title") or "") + " " + (event.get("description") or "")[:300]
         ).lower()
-        if any(h in text for h in cfg["title_hints"]):
-            return True
+        for m in matchers:
+            # m is a compiled \bword\b pattern (short single-word hint) or a
+            # plain substring (multi-word / longer / non-alpha hint).
+            if m.search(text) if hasattr(m, "search") else m in text:
+                return True
     return False
 
 

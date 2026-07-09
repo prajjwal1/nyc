@@ -26,7 +26,7 @@ export default function EventList({ events, selectedDate, onAccountClick }: Even
       {events.length === 0 ? (
         <div className="text-center py-12 text-gray-400">
           <p className="text-lg">No events on this day</p>
-          <p className="text-sm mt-1">Try selecting another date or adjusting filters</p>
+          <p className="text-sm mt-1">Try another date — scroll the calendar for busier days</p>
         </div>
       ) : (
         <div className="space-y-3">

@@ -93,6 +93,58 @@ These are the durable preferences the user has stated. They're marked `addressed
 
 ## Open items (top of list = highest priority)
 
+### fb-189 — Neighborhood contradicts venue name (normalizer bug, ~8/375 events)
+- created_at: 2026-07-02
+- source: agent-proposal (ui-agent flag; scrape-independent + unit-testable)
+- status: addressed: d39f664 (run 2026-07-02-1735 — `_explicit_hood_in_text` Step-0 + word-boundary short-keyword match; conflicts 10→0 on frozen feed, Critic-verified, +5 tests. Live-feed count re-verifies post-scrape.)
+- body: ~8 of 375 events in the frozen feed carry a `location.neighborhood` that CONTRADICTS the venue name — e.g. name "Bushwick, 380 Troutman Street" but `neighborhood` "east village". `infer_neighborhood` / `_reinfer_neighborhood` picked a wrong neighborhood from the address (or a default) while the venue name/title held the true neighborhood token. This is scrape-independent (present in the current committed events.json), unit-testable, and degrades the neighborhood badge + neighborhood filtering the user relies on. IMPORTANT: b6a0cf3 U2 only SUPPRESSES the redundant display suffix when the venue name already contains the neighborhood — it does NOT correct the underlying data; the wrong neighborhood still ships and still misfilters. This is the top directive for this round precisely because it needs no scrape.
+- "addressed" criterion: for any event whose venue name (or title) contains an explicit NYC neighborhood token, `location.neighborhood` never contradicts that token (name-token wins the tie); a unit test covers "Bushwick, 380 Troutman St → bushwick (not east village)" plus ≥2 more; the count of name/neighborhood-conflict events in the committed events.json drops from ~8 to 0.
+
+### fb-190 — Fix lu.ma/philosophy (+ all lu.ma curators) silently not surfacing
+- created_at: 2026-07-02
+- source: user-explicit ("why am I not seeing lu.ma/philosophy events" / "fix" / "fix all the issues you know of", 2026-06-26→06-29)
+- status: addressed: 8d10fc2
+- body: User asked why lu.ma/philosophy events weren't showing, and to fix that + "all the issues you know of." Root cause (philosophy yielded 10 events live but 0 reached the feed): (1) shell filter — luma is description-required, philosophy events have empty descriptions, and lu.ma/philosophy was never in user_curated_sources hosts (unlike litclub/readingrhythms) → all dropped; (2) score floor — explicit high-conviction signals (userFollowing/Saved/Tagged/Affinity) only granted the 0.40 floor when source==instagram, so a followed lu.ma calendar sat at the 0.55 default and dropped.
+- resolution: `_is_curated_host` now auto-treats ANY lu.ma/<handle> curator calendar as curated (no current/future curator can silently lose events again); high-conviction signals now grant the curated floor regardless of source (extracted testable `_min_score_floor`). Result: philosophy 0→7 events survive. Added `scrapers/maintenance/audit_source_survival.py` (flags ZERO-RAW/ZERO-SURV/LOW-SURV silent-filter class), parametrized regression test over EVERY lu.ma curator in LUMA_PAGES + 5 `_min_score_floor` cases, and fixed a date-relative test flake. INVESTIGATION FINDING (recorded for future agents): most OTHER audit-flagged sources are NOT bugs — empty calendars, by-design floor+caps, redundant parse-rot, or JS-blocked museums; do not chase them as source-yield work.
+
+### fb-191 — Add openbookclub IG account
+- created_at: 2026-07-02
+- source: user-explicit ("add openbookclub from IG", 2026-07-02)
+- status: addressed: b6a0cf3
+- body: User asked to add `openbookclub` from IG.
+- resolution: added `openbookclub` (no-dot handle) to `scrapers/config.py::IG_ACCOUNTS`; the dotted variant `open.bookclub` was kept as well.
+
+### fb-192 — Improve the UI (day scent, cleaner location, distinct heroes, empty-state copy)
+- created_at: 2026-07-02
+- source: user-explicit ("also improve the UI", 2026-07-02)
+- status: addressed: b6a0cf3
+- body: User asked to also improve the UI.
+- resolution: U1 relative-day pill ("Today"/"Tomorrow"/"Sat"/"Jul 12") on hero cards (Tonight/Weekend/Just-Added/Following/Saved) via a showDay prop, grouped date-lists keep their header (no duplication); U2 suppress redundant neighborhood suffix when the venue name already contains it (kills "…East Village · east village"); U3 repaint Just Added slate so sky consistently = "from your follow graph" (matches conviction ring + Following hero); U4 fix stale empty-state copy referencing the removed FilterBar. 269 tests pass; next build clean.
+
+### fb-179 — Incorporate more fitness-based events + run clubs (recurring ones too)
+- created_at: 2026-06-22
+- source: user-explicit
+- status: addressed: d9eb82e (run 2026-06-22-1501; +P1 scope-skip "every <weekday>" soft-penalty for fitness, +S1/S6 Eventbrite run-club/pilates slugs)
+- body: incorporate more fitness based events, more run clubs (recurring ones should show up too)
+- resolution (this session, pending commit): Meetup +4 fitness/run-club search URLs; removed the `"running club"` soft-penalty in `scrapers/quality.py`; bumped fitness boost 1.1→1.3 and wellness 1.05→1.2 in `scrapers/config.py`; +10 run-club/fitness IG seed accounts in `scrapers/config.py`. The recurring-run-club path (`detect_recurring_weekday` → `expand_recurring_event`) was verified to work so recurring weekly runs surface as dated occurrences.
+- "addressed" criterion: fitness/run-club events increase on the next scrape AND at least one recurring run club surfaces as multiple dated occurrences; no run-club event is soft-penalized.
+
+### fb-180 — Add Brooklyn Contra dancing (brooklyncontra.org)
+- created_at: 2026-06-22
+- source: user-explicit
+- status: addressed: d9eb82e (run 2026-06-22-1501; +P3 fuzzy-title-dedup exemption → 10 dances incl. both Sep-26 sessions; +S2–S5 NYC-wide social-dance slugs)
+- body: add contra dancing brooklyn https://www.brooklyncontra.org/tickets
+- resolution (this session, pending commit): new dedicated scraper `scrapers/sources/brooklyncontra.py` (parses the Squarespace store; date from title; year inference), registered in `run_all.py` with `SOURCE_QUALITY=0.8`; added a `DISTINCT_SCHEDULE_SOURCES` exemption in `scrapers/normalize.py` so each scheduled dance survives the recurring-merge. Verified 8 dances surface (scores 0.59–0.76).
+- known-minor: the Oct-4 "Raven & Goose" dance is dropped by a PRE-EXISTING false positive — the user's `'rave'` title-exclusion substring-matches "Rave"n. Tracked separately as fb-181 (pre-existing exclusion bug, not contra-specific).
+- "addressed" criterion: Brooklyn Contra dances surface on the next scrape as distinct dated events (≥ the 8 verified, modulo the fb-181 false positive).
+
+### fb-181 — `'rave'` title-exclusion substring-matches legitimate words ("Raven", "rave reviews", etc.)
+- created_at: 2026-06-22
+- source: agent-proposal (discovered during fb-180 contra work)
+- status: addressed: d9eb82e (run 2026-06-22-1501; P2 — generalized `\b<hint>\b` word-boundary match for short single-word exclusion hints, precompiled+cached. Verified: "Raven & Goose"/"travel"/"gravel" survive; "warehouse rave"/standalone "RAVE" still blocked)
+- body: The `'rave'` title-exclusion is matched as a bare substring, so it incorrectly drops legitimate titles that merely contain the letters "rave" — e.g. Brooklyn Contra's Oct-4 "Raven & Goose" dance, and would also catch "rave reviews", "gravel", "travel", "bravery", "grave". The exclusion should be word-boundary anchored (`\brave\b`, optionally also `\braves?\b`) so it still blocks actual rave events without false-positiving on substrings.
+- "addressed" criterion: "Raven & Goose" (and a representative set like "rave reviews"/"travel") survive the filter while a literal "Rave" / "warehouse rave" title is still excluded; verified against the contra feed and a small FP probe set.
+
 ### fb-106 — IG_ACCOUNTS must only contain socializing-oriented accounts; no individual people
 - created_at: 2026-05-28
 - source: user-explicit (mid-run-1552 correction)
@@ -799,6 +851,62 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: open
 - body: Convert passive saves into explicit attend/skip ground truth to close the calibration loop (README §341-369). For events whose date is in the past AND were saved (`isSavedLocal`), render a minimal "Did you go? Yes / No" on the FeedCard (no new widget chrome — consistent with the iter-215 simplification). Persist to localStorage `attended:<eventId>`. A later round adds an ingest path (`scrapers/data/user_attendance.json`) that re-weights `userAffinity` + the topic_counts derivation. Deferred because it needs a storage/ingest design beyond a no-backend round.
 - files: `site/app/components/EventCard.tsx` (past+saved branch) + `site/app/lib/interests.ts` (localStorage helper).
+
+### fb-182 — Render qualitative/low-commitment price words as a positive pill (D1)
+- created_at: 2026-06-22
+- source: agent-proposal (dreamer-critic D1, DREAM-DEFER, run 2026-06-22-1501)
+- status: addressed: 8699d96 (run 2026-06-23-1816, U1 — qualitative sky pill, numeric-wins precedence; no-op until a qualitative-price source lands)
+- body: U1 (run 2026-06-22-1501) added a digit-only non-free price pill on the FeedCard, intentionally suppressing qualitative price words ("donation", "pay what you can", "PWYC", "sliding scale", "suggested"). But those are POSITIVE low-commitment signals a meet-people user wants at a glance — surfacing them nudges attendance. Add a branch after U1's numeric pill: if `event.price` matches `/donation|pay what|pwyc|sliding scale|suggested/i`, render a distinct subtle pill (e.g. `bg-sky-50 text-sky-700`), visually lighter than FREE so it reads "cheap/flexible" not "free".
+- files: `site/app/components/EventCard.tsx` (same badge row U1 touches).
+
+### fb-183 — Consolidate DISTINCT_SCHEDULE_SOURCES into a shared helper + queue fb-106-clean IG fitness/dance candidates (D2)
+- created_at: 2026-06-22
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-06-22-1501)
+- status: addressed-partial: 8699d96 (run 2026-06-23-1816 — part 1 DONE: `_is_distinct_schedule_source` helper extracted + used by both dedup passes + 3 unit tests. Part 2 (queue the 6 fb-106-clean IG fitness/dance handles) remains OPEN, blocked on fb-174 IG-sweep restoration.)
+- body: Two parts. (1) MAINTENANCE: `DISTINCT_SCHEDULE_SOURCES` is now checked at TWO call-sites in `scrapers/normalize.py` (`_dedup_same_account_recurring` and `_dedup_fuzzy_title`). The 3rd+ distinct-schedule source someone adds will need both edits and someone will forget one → a silent merge-back that quietly drops user-requested dated events. Extract `def _is_distinct_schedule_source(ev): return ev.get("source") in DISTINCT_SCHEDULE_SOURCES`, call from both passes, add a unit test asserting a 2nd source bypasses BOTH. Pure refactor, behavior-identical. (2) QUEUED-FOR-IG-REFRESH: source-curator's BFS surfaced on-vector, fb-106-clean IG fitness/dance handles that are unprobeable while the IG sweep is blocked (fb-174): `outopia.run`, `eastriverpilates`, `danceparadenyc`, `barcontranyc`, `residentrunners`, `danceherenownyc`. Probe + add when fb-174 clears so they aren't lost.
+- files: `scrapers/normalize.py` (helper); `scrapers/config.py::IG_ACCOUNTS` (when fb-174 clears).
+
+### fb-184 — Investigate the 6 inert legacy Eventbrite fitness/dance slugs (0-yield despite 500+ fetches)
+- created_at: 2026-06-23
+- source: agent-proposal (source-curator finding, run 2026-06-22-1501; surfaced in that run's hypothesis #2)
+- status: addressed: 8699d96 (run 2026-06-23-1816) — RE-SCOPED: premise DISPROVEN. Both backend workers live-probed the 6 legacy slugs and found they parse ~20 events EACH (not inert; url_health emitted_total 80-440). The events die DOWNSTREAM at MIN_SCORE 0.55 + the eventbrite=100 cap, not at extraction. Fix shipped is score-recovery (P1: +0.05 fitness/run/dance boost gated on startTime AND venue), not a parse fix. The legacy slugs are KEPT (they work). NEXT-SCRAPE verify: fitness/dance count rises AND music CRITICAL_CHECK (≥15) not regressed by cap-eviction.
+- body: The source-curator's run-2026-06-22-1501 probe found that the pre-existing broad running/yoga/fitness/dance Eventbrite slugs in `scrapers/sources/generic.py` are INERT — they yield 0 events despite being fetched every scrape (500+ cumulative fetches across the session). The 6 NEW narrow slugs added that round (run-club/contra/swing/folk/salsa/pilates) all live-verified at 20/20 future, so the pattern works; the legacy broad slugs are silently returning nothing. Most likely a JSON-LD shape change or a too-broad keyword slug that Eventbrite no longer resolves (cf. fb-155: generic single-word slugs substring-match nothing or the wrong venues). This is a cheap, high-leverage recovery: the user explicitly asked for more fitness/run-club coverage (fb-179), so reviving these slugs (or swapping them for the verified narrow-slug pattern) directly serves that request and the North Star. Ingestion lane: probe each legacy slug's live yield + JSON-LD shape, then either fix the parse path, swap to a verified narrow slug, or remove the dead fetch.
+- "addressed" criterion: each of the 6 legacy fitness/dance slugs is classified (working / swapped-to-verified-slug / removed-as-dead) with a live-probe yield count recorded; net fitness/dance event count does not regress and ideally rises on the next scrape.
+
+### fb-185 — Prune duplicate `ny--brooklyn/running--events/` (100% dup of NYC slug)
+- created_at: 2026-06-23
+- source: agent-proposal (ingestion P1b + Critic APPROVE, run 2026-06-23-1816)
+- status: open (blocked-on: user opt-in — additive-only rule)
+- body: `https://www.eventbrite.com/d/ny--brooklyn/running--events/` (`scrapers/sources/generic.py:212`) is a 100% duplicate of `ny--new-york/running--events/` (:213) — Eventbrite ignores the borough segment for category search (live overlap verified 18/18 identical). Safe to remove with zero event loss; saves one fetch/round. Removal blocked by the additive-only rule (same class as fb-104). Batch with fb-104 prune opt-ins when the user green-lights deletions.
+- "addressed" criterion: user opts into source prunes → remove the line; confirm no event-count regression.
+
+### fb-186 — Strengthen body-text time inference ("doors at 7pm") to unblock the fb-184 fitness gate
+- created_at: 2026-06-23
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-06-23-1816)
+- status: addressed: d39f664 (run 2026-07-02-1735 — rebuilt `_infer_time_from_text`: keyword-anchored cues + guarded bare-clock am/pm fallback, ranges/multi-time abstain, fill-only. Critic adversarially probed 13 hostile inputs; +15 tests.)
+- body: The fb-184 P1 fitness/run/dance score-recovery boost (shipped this round) is HARD-GATED on a parsed `startTime` (+ venue) to preserve the 0.55 quality floor. Many user-requested Eventbrite-category fitness/run/dance events carry their time only in body text ("doors at 7pm", "starts 8pm") so they fail that gate even though they're well-formed. A robust body-text time extractor recovers their yield HONESTLY (raises completeness rather than overriding the floor) and improves the feed-wide `time_q` signal. NOTE: a `_infer_time_from_text` pass already exists in `scrapers/normalize.py` (added 2026-06-04) — this item is to AUDIT/STRENGTHEN it (coverage of "doors"/"starts"/bare "Npm", single-unambiguous-match gating, never overwrite a parsed time) and confirm it runs before scoring so the P1 gate sees the inferred time. Compounds directly with fb-184.
+- files: `scrapers/normalize.py` (`_infer_time_from_text` + its call ordering in `process`).
+
+### fb-187 — folk-dance Eventbrite slug is provisional (~55% participatory)
+- created_at: 2026-06-23
+- source: agent-proposal (Critic keep-but-watch, run 2026-06-23-1816)
+- status: open (watch)
+- body: `https://www.eventbrite.com/d/ny--new-york/folk-dance--events/` (added 2026-06-22, `scrapers/sources/generic.py`) was independently re-probed this round by both ingestion + source-curator at ~55% participatory (the rest are performances/parties/talks mis-bucketed: "Ayazamana", "Bowie Dance Party"). It clears the bar and additive-only forbids unilateral removal, but it's the weakest dance slug. WATCH: if the next scrape's LANDED folk-dance events under-engage or skew >50% performance, surface as a user opt-in prune.
+- "addressed" criterion: next-scrape folk-dance landed-yield assessed; kept if ≥50% participatory, else surfaced for opt-in prune.
+
+### fb-188 — EventModal: style non-free price as a pill (cross-surface consistency with U1)
+- created_at: 2026-06-23
+- source: agent-proposal (Critic nicety, run 2026-06-23-1816)
+- status: addressed: d39f664 (run 2026-07-02-1735 — EventModal now uses FeedCard's numeric-gray + qualitative-sky guards; junk strings render nothing)
+- body: U1 (run 2026-06-22) + this round's fb-182 give the FeedCard a numeric gray price pill and a qualitative sky price pill. `EventModal.tsx:172` still renders any non-free/non-unknown price as verbatim text (so qualitative words already show there, un-styled). Low-priority cosmetic consistency: give the modal the same numeric-gray / qualitative-sky pill treatment. Cosmetic-only; no behavior change.
+- files: `site/app/components/EventModal.tsx` (~line 172).
+
+### fb-193 — Venue alias normalization (BK Bowl ↔ Brooklyn Bowl, etc.) (D2)
+- created_at: 2026-07-02
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-07-02-1735)
+- status: open
+- body: Normalize venue-name aliases so the same venue expressed differently collapses to one canonical form ("BK Bowl" ↔ "Brooklyn Bowl", "MoMA" ↔ "Museum of Modern Art", etc.). Compounds directly with the fb-189 Step-0 explicit-neighborhood matcher (`_explicit_hood_in_text`) and cross-source dedup (`_dedup_fuzzy_title`) — a canonical venue name improves both neighborhood inference and duplicate collapse. Note: fb-111 already added some venue-abbrev expansion in `_normalize_venue_name`; this extends/consolidates it. Deferred because the payoff (fewer dupes / better neighborhood tags in the feed) is only measurable post-scrape.
+- files: `scrapers/normalize.py` (`_normalize_venue_name` / venue-key path).
 
 <!-- Append new feedback above this comment as it comes in. Top of list is highest priority. -->
 

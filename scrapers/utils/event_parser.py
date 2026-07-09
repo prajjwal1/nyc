@@ -825,6 +825,20 @@ NYC_NEIGHBORHOODS = {
 }
 
 
+_NEIGHBORHOOD_KW_RE_CACHE: dict[str, "re.Pattern"] = {}
+
+
+def _re_neighborhood_word(kw: str):
+    """Word-boundaried compiled regex for a short neighborhood keyword,
+    memoized. Prevents 3-char abbreviations like "les" (Lower East Side)
+    from substring-matching inside unrelated words (fb-189)."""
+    rx = _NEIGHBORHOOD_KW_RE_CACHE.get(kw)
+    if rx is None:
+        rx = re.compile(r"\b" + re.escape(kw) + r"\b")
+        _NEIGHBORHOOD_KW_RE_CACHE[kw] = rx
+    return rx
+
+
 def infer_neighborhood(address: str, *extras: str) -> str | None:
     """Match the address — and any additional context strings (title,
     location.name, etc.) — against the NYC_NEIGHBORHOODS keyword map.
@@ -838,8 +852,17 @@ def infer_neighborhood(address: str, *extras: str) -> str | None:
         return None
     lower = " ".join(parts).lower()
     for hood, keywords in NYC_NEIGHBORHOODS.items():
-        if any(kw in lower for kw in keywords):
-            return hood
+        for kw in keywords:
+            # Short keywords (<=3 chars, e.g. the "les" LES abbreviation)
+            # are matched with word boundaries so they can't fire inside a
+            # larger word ("les" in "fiddlesticks" wrongly tagged Astoria
+            # events as Lower East Side — fb-189). Longer, distinctive
+            # keywords keep the cheap substring match.
+            if len(kw) <= 3:
+                if _re_neighborhood_word(kw).search(lower):
+                    return hood
+            elif kw in lower:
+                return hood
     if "brooklyn" in lower:
         return "brooklyn"
     if "manhattan" in lower or "new york" in lower or "ny " in lower:

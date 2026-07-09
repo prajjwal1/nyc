@@ -126,3 +126,84 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Verification:** next build clean; 253 tests pass; sanity_check has 2 criticals (backgammon, IG-dominant) — BOTH pre-existing data conditions, NOT caused by this run's code-only edits (events.json unmodified by the edits; confirmed). No revert.
 
 **Hypothesis for next round:** D1 establishes that non-IG enrichment can move follow-graph coverage independent of the IG block — future rounds can push coverage further by enriching more signal accounts' events via non-IG sources (lu.ma curators, venue sites). The IG sweep + CI-IP blocks remain the binding constraints (user-action / infra). Consider implementing fb-178 (attend feedback) to start building calibration ground-truth.
+
+## 2026-06-22 1501 — run-id 2026-06-22-1501
+
+**Theme:** user-explicit (this session) — "more fitness-based events + run clubs (recurring too)" (fb-179) and "add contra dancing brooklyn" (fb-180). Both implemented in-session before the loop ran; the loop audited, hardened, and broadened them.
+
+**Shipped (pre-loop session work + loop edits, all in this run's commit):**
+- fb-179 (fitness/run-clubs): Meetup +4 run-club/running/fitness search URLs (`scrapers/sources/meetup.py`); removed `"running club"` from SOFT_PENALTY_KEYWORDS (`scrapers/quality.py`); fitness boost 1.1→1.3, wellness 1.05→1.2, +10 run-club/fitness IG seeds (`scrapers/config.py`). All +10 seeds fb-106-clean (clubs/orgs/studios).
+- fb-180 (Brooklyn Contra): new dedicated `scrapers/sources/brooklyncontra.py` (Squarespace-store parser; date-from-title; year inference), registered in `run_all.py` + `SOURCE_QUALITY=0.8`; `DISTINCT_SCHEDULE_SOURCES` exemption in `normalize.py`.
+- ingestion-P1 (APPROVE): scope-skip "every <weekday>" soft-penalty for fitness/wellness/outdoors text — `scrapers/quality.py::quality_signals`.
+- ingestion-P2 (MODIFY): generalized `\b<hint>\b` word-boundary matching for short single-word exclusion title-hints (len≤6/no-space/alpha), precompiled+cached — `scrapers/ranking.py`. Fixes fb-181 ('rave'→"Raven & Goose").
+- ingestion-P3 (APPROVE): DISTINCT_SCHEDULE_SOURCES also bypasses `_dedup_fuzzy_title` — `scrapers/normalize.py`. Contra 8→10 (both Sep-26 sessions recovered).
+- source-pool S1–S3,S5,S6 (APPROVE) + S4 (MODIFY/provisional): +6 live-probed Eventbrite slugs (run-club/contra/swing/folk/salsa/pilates), 20/20 future each — `scrapers/sources/generic.py`. Curator finding: existing broad running/yoga/fitness/dance slugs are INERT (0-yield) — flagged for ingestion next round.
+- ui-U1 (APPROVE): non-free digit-price pill on FeedCard — `site/app/components/EventCard.tsx`.
+
+**Rejected:** none — Critic APPROVE/MODIFY on all 11 proposals; zero directives deferred-rejected.
+
+**Deferred (added to backlog):** D1→fb-182 (qualitative price-word pills); D2→fb-183 (shared `_is_distinct_schedule_source` helper + queued fb-106-clean IG fitness/dance candidates for when fb-174 clears).
+
+**Feedback gate:** CLOSED (≥3 open items; newest user-explicit feedback is this session). No calibration question. Captured this session's two requests as fb-179/fb-180.
+
+**Metric delta (code-only round; events.json not re-scraped — deltas land on next CI scrape):**
+- Follow-graph coverage: 15/50 (30.0%) → 15/50 (30.0%).
+- Topic coverage: 0 zero-topics → 0 zero-topics (run=26, bk=42 stable; run-club/dance slugs reinforce run+dance next scrape).
+- High-conviction ratio: 64/365 (17.5%) → 64/365 (17.5%).
+
+**Verification:** 253 tests pass; next build clean; sanity_check 2 criticals (backgammon, IG-dominant) — IDENTICAL to pre-run, pre-existing data conditions (fb-174 IG block), NOT regressions (events.json unmodified). No revert. Note: the configured black formatter reflowed long lines across config/normalize/run_all/generic (cosmetic, behavior-preserving; content verified intact — IG_ACCOUNTS 167→176, SOURCE_QUALITY +brooklyncontra). Test-induced state-file churn (url_health/user_interest_profile) reverted to HEAD.
+
+**Hypothesis for next round:** the fitness/run-club/dance levers are now in place but their payoff is gated on the next CI scrape (Meetup live-verified 74 fitness/run events; Brooklyn Contra 10 dated dances verified through normalize). Next round should: (1) re-probe the 6 NEW Eventbrite slugs' LANDED yield (esp. folk-dance/pilates for performance/studio-spam) and the provisional S4; (2) investigate WHY the 6 legacy fitness slugs yield 0 (silent JSON-LD shape change — could recover yield cheaply); (3) measure the fitness/dance event-count lift in the deployed feed.
+
+## 2026-06-23 1816 — run-id 2026-06-23-1816
+
+**⚠ STALE-FEED (D1, headline):** 2nd consecutive code-only round with 0 observable metric movement — no CI scrape has run since ~2026-06-15. ~3 rounds of committed levers are stacked UNLANDED (last round's Meetup/Eventbrite/IG/contra/boost + this round's). The single highest-leverage action now is a SCRAPE (residential IP per fb-173), not more code. Deltas for all of it are unverifiable until `run_all` runs.
+
+**Premise overturned this round:** fb-184 assumed 6 legacy Eventbrite fitness/dance slugs were INERT (0-yield). BOTH backend workers live-disproved it: the slugs parse ~20 events each; events die DOWNSTREAM at MIN_SCORE 0.55 + the eventbrite=100 cap (e.g. fitness 0/20 clear the floor), not at extraction. fb-184 re-scoped from parse-fix → score-recovery.
+
+**Shipped (commit <sha>):**
+- ingestion-P1 (MODIFY): fb-184 score-recovery — +0.05 for fitness/wellness/outdoors (+ run-club/yoga/pilates/contra/swing text) HARD-GATED on `startTime AND location.name` so low-info events still floor out (preserves the 0.55 quality gate; self-limited by the existing +0.06 clamp) — `scrapers/ranking.py`. Verified: well-formed 0.637 clears, low-info 0.536 floored. Critic tightened worker's "OR" gate to "AND" + dropped +0.06→+0.05 to shrink cap-eviction footprint on music-category events.
+- ingestion-P2 (APPROVE, fb-183): extracted `_is_distinct_schedule_source(ev)` helper used by both dedup passes + 3 unit tests (bypasses BOTH passes; control merges) — `scrapers/normalize.py`, `scrapers/tests/test_normalize.py`.
+- source-pool S1–S4 + trivia + climbing (APPROVE/promote): +6 Eventbrite slugs (hiking, walking-tour, board-games, chess, trivia, climbing), all live-probed ≥19 future + exclusion-clean; cap-bound (deepen pool). Corrected the now-false "INERT slugs" comment — `scrapers/sources/generic.py`.
+- ui-U1 (APPROVE, fb-182): qualitative low-commitment price pill (donation/PWYC/sliding-scale), sky-50/700, numeric-wins precedence — `site/app/components/EventCard.tsx`. No-op on current feed; lights up when a qualitative-price source lands.
+
+**Rejected:** none — Critic APPROVE/MODIFY on all proposals.
+
+**Deferred (backlog):** D2→fb-186 (strengthen body-text time inference; compounds with P1's startTime gate). P1b→fb-185 (prune dup Brooklyn running slug — additive-only, user opt-in). fb-187 (folk-dance provisional ~55% participatory watch). fb-188 (EventModal price-pill consistency nicety).
+
+**Feedback gate:** CLOSED (no new user feedback; ≥3 open items; newest user-explicit feedback fb-179/180 from yesterday). No question.
+
+**Metric delta (code-only; events.json not re-scraped — deltas land next scrape):**
+- Follow-graph coverage: 15/50 (30.0%) → 15/50 (30.0%).
+- Topic coverage: 0 zero-topics → 0 zero-topics (stable).
+- High-conviction ratio: 64/365 (17.5%) → 64/365 (17.5%).
+
+**Verification:** 256 tests pass (253+3 new); next build clean; sanity_check 2 criticals (backgammon, IG-dominant) IDENTICAL to pre-run — pre-existing data conditions, not regressions (events.json unmodified). No revert. Test/probe-induced `scrapers/data/` churn reverted to HEAD (code+docs-only commit).
+
+**Hypothesis for next round:** STOP grinding code-only rounds — RUN A SCRAPE first to land ~3 rounds of accumulated fitness/dance/contra levers, then measure. Post-scrape, confirm: (1) fitness/run/dance event count rises (P1 + 12 new slugs), (2) the eventbrite=100 cap didn't evict music below its CRITICAL_CHECK floor of 15 (P1 cap-eviction risk), (3) folk-dance landed participatory ratio (fb-187), (4) brooklyncontra 10 dances + recurring run clubs present. If a scrape still can't run (IG/IP blocks), the binding constraint is infra/user-action, not code.
+
+## 2026-07-02 1735 — run-id 2026-07-02-1735
+
+**⚠ STALE-FEED (3rd consecutive frozen round):** feed unchanged since 2026-06-15 (408h). Metrics frozen at 30.0% / 0-zero-topics / 17.5% for the 3rd round running. ~4 rounds of committed levers remain UNLANDED. Between the last self-improve run and this one, direct user requests were handled (committed, unpushed): 8d10fc2 (lu.ma/philosophy shell+floor fix, philosophy 0→7, + source-survival audit tool + test-flake fix — fb-190) and b6a0cf3 (openbookclub IG seed fb-191; UI day-scent/location-dedup/slate-hero/empty-copy fb-192). This round deliberately scoped to scrape-INDEPENDENT verifiable work only (per D1 gate).
+
+**Shipped (commit <sha>):**
+- ingestion-fb189 (APPROVE): neighborhood/venue-name contradiction fix — `_explicit_hood_in_text` Step-0 in `_backfill_neighborhood_from_venue` (explicit word-boundaried neighborhood token in name/addr wins over venue-table default + address inference) + word-boundary match for short ≤3-char keywords (les/ues/uws) in `event_parser.infer_neighborhood`. Critic-verified on frozen feed: conflicts 10→0, also fixed "Singles Night"→LES mistag, WGB CRITICAL_CHECK 36→38, no regression. +5 tests.
+- ingestion-fb186 (APPROVE): rebuilt `_infer_time_from_text` (keyword-anchored cues earliest-wins + guarded bare-clock am/pm fallback; ranges/multi-time abstain; fill-only, never overwrite). Critic adversarially probed 13 hostile inputs. +15 tests. Unblocks the fb-184 fitness startTime gate.
+- ui-fb188 (APPROVE): EventModal price-pill parity with FeedCard (numeric-gray + qualitative-sky; junk strings render nothing).
+
+**Process note:** the ingestion worker APPLIED (not just proposed) its changes via Bash; the Critic reviewed the live diffs (verifying independently, not trusting the report) and APPROVED both to stay. UI proposed→applied by orchestrator. source-curator died mid-response (API error), re-invoked once per operational rule → validation-only pass succeeded (12 IG seeds fb-106/exclusion-clean; folk-dance lean-keep).
+
+**Rejected:** none — Critic APPROVE on all 3.
+
+**Deferred (backlog):** D1 (Did-you-go calibration) → already tracked as open fb-178, not duplicated. D2 (venue alias normalization) → new fb-193 (compounds with fb-189 Step-0).
+
+**Feedback gate:** CLOSED (newest user-explicit feedback is today; ≥3 open items). No question. Captured this session's user requests as fb-190/191/192 (addressed).
+
+**Metric delta (code-only; events.json not re-scraped — frozen):**
+- Follow-graph coverage: 15/50 (30.0%) → 15/50 (30.0%).
+- Topic coverage: 0 zero-topics → 0 zero-topics.
+- High-conviction ratio: 64/365 (17.5%) → 64/365 (17.5%).
+
+**Verification:** 289 tests pass (20 new); next build clean; sanity_check 2 criticals (backgammon, IG-dominant) IDENTICAL to pre-run — pre-existing frozen-feed artifacts, not regressions. No revert. Probe/test-induced `scrapers/data/` churn reverted to HEAD.
+
+**Hypothesis for next round:** The binding constraint is now unambiguous and has held for 3 rounds: **a scrape must run.** Code quality is well ahead of what the frozen feed can demonstrate. Next action should be a residential-IP `run_all` (Critic + source-curator both endorse), then a round that MEASURES: fitness/dance count, philosophy surfacing (0→~7 expected), neighborhood-conflict count (→0), music CRITICAL_CHECK not cap-evicted, brooklyncontra + recurring run clubs present. Absent a scrape, further code-only rounds have sharply diminishing value.

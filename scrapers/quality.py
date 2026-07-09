@@ -686,7 +686,10 @@ SOFT_PENALTY_KEYWORDS = [
     "yoga class",
     "pilates class",
     "meditation class",
-    "running club",
+    # "running club" removed (user explicitly wants MORE run clubs) — run
+    # clubs are social, recurring, meet-people events that fit the goal.
+    # The fitness boost + social_run / run-club SOCIAL_KEYWORDS now carry
+    # them upward instead of penalizing.
     "trivia night",
     # Heavy-drinking emphasis — user's stated preference is to avoid
     # excessive-drinking culture. Soft-penalty (not block) so events
@@ -1134,8 +1137,24 @@ def quality_signals(event: dict) -> dict:
     text = _searchable_text(event).lower()
     title_lower = event.get("title", "").lower()
 
-    # Count keyword hits
-    soft_penalty_hits = sum(1 for kw in SOFT_PENALTY_KEYWORDS if kw in text)
+    # Count keyword hits.
+    # fb-179: recurring run clubs / fitness classes legitimately say "every
+    # Tuesday" — that's the recurring-event feature the user explicitly asked
+    # for, not "weekly meeting" admin spam. Skip the generic "every <weekday>"
+    # soft-penalty markers when the event reads as fitness/wellness/outdoors
+    # (by category or by run/yoga/workout text) so run clubs aren't suppressed.
+    _RECURRING_WEEKDAY_PENALTIES = {"every monday", "every tuesday", "every wednesday"}
+    _is_fitness = bool(
+        set(event.get("categories") or []) & {"fitness", "wellness", "outdoors"}
+    ) or any(
+        k in text
+        for k in ("run club", "run-club", "running", "yoga", "workout", "pilates")
+    )
+    soft_penalty_hits = sum(
+        1
+        for kw in SOFT_PENALTY_KEYWORDS
+        if kw in text and not (_is_fitness and kw in _RECURRING_WEEKDAY_PENALTIES)
+    )
     high_value_hits = sum(1 for kw in HIGH_VALUE_KEYWORDS if kw in text)
     social_hits = sum(1 for kw in SOCIAL_KEYWORDS if kw in text)
     alcohol_free_hits = sum(1 for kw in ALCOHOL_FREE_KEYWORDS if kw in text)

@@ -3,6 +3,7 @@
 Tries multiple universal extraction strategies (JSON-LD, OpenGraph, iCal)
 to scrape events from arbitrary URLs without per-site code.
 """
+
 import json
 import os
 import re
@@ -11,7 +12,13 @@ from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 
 from ..utils.http import fetch_text
-from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
+from ..utils.event_parser import (
+    build_event,
+    parse_date,
+    parse_time,
+    parse_iso_to_local,
+    parse_offers_price,
+)
 
 # High-value NYC venue/cultural URLs
 # Calendar-style sources that expose `/calendar/YYYY-MM` (or `/events/YYYY-MM`)
@@ -30,6 +37,7 @@ def _dynamic_calendar_urls() -> list[str]:
     """Generate next 3 months of calendar URLs at scrape time so we don't
     have to hardcode dates that go stale every month."""
     from datetime import date as _date
+
     today = _date.today()
     urls: list[str] = []
     for offset in (0, 1, 2):
@@ -99,7 +107,7 @@ GENERIC_URLS = [
     #  bookcourt.com appears closed/redirected.)
     "https://www.barnesandnoble.com/h/events/store/2675",
     # Major concert venues with calendar pages (kept the working ones)
-    "https://www.terminal5nyc.com/calendar/",       # Returns events ✓
+    "https://www.terminal5nyc.com/calendar/",  # Returns events ✓
     "https://www.boweryballroom.com/calendar/",
     "https://www.websterhall.com/events/",
     "https://www.brooklynsteel.com/calendar/",
@@ -159,13 +167,13 @@ GENERIC_URLS = [
     # The real pagination uses time-window paths (`/today`, `/tomorrow`,
     # `/this-weekend`, `/upcoming`, `/all`) which return distinct event
     # slices. Replaced the `?page=N` block with time-window URLs.
-    "https://allevents.in/new-york",          # 65 events (default)
-    "https://allevents.in/new-york/today",     # 15 distinct
+    "https://allevents.in/new-york",  # 65 events (default)
+    "https://allevents.in/new-york/today",  # 15 distinct
     "https://allevents.in/new-york/tomorrow",  # 15 distinct
     "https://allevents.in/new-york/this-weekend",  # 15 distinct
     "https://allevents.in/new-york/upcoming",  # 15 distinct
-    "https://allevents.in/new-york/all",       # 45 broader
-    "https://allevents.in/brooklyn",          # 64 events
+    "https://allevents.in/new-york/all",  # 45 broader
+    "https://allevents.in/brooklyn",  # 64 events
     "https://allevents.in/brooklyn/today",
     "https://allevents.in/brooklyn/this-weekend",
     "https://allevents.in/queens",
@@ -185,7 +193,7 @@ GENERIC_URLS = [
     "https://allevents.in/new-york/fitness",
     "https://allevents.in/brooklyn/yoga",
     "https://allevents.in/brooklyn/fitness",
-    "https://allevents.in/new-york/coffee",          # 45 events confirmed
+    "https://allevents.in/new-york/coffee",  # 45 events confirmed
     "https://allevents.in/new-york/poetry",
     "https://allevents.in/brooklyn/books",
     # 2026-05-28 self-improve run: close the `bk` topic gap (S1).
@@ -208,6 +216,36 @@ GENERIC_URLS = [
     "https://www.eventbrite.com/d/ny--brooklyn/sports-and-fitness--events/",
     "https://www.eventbrite.com/d/ny--new-york/sports-and-fitness--events/",
     "https://www.eventbrite.com/d/ny--new-york/fitness--events/",
+    # fb-179/fb-180 (run 2026-06-22-1501): MORE SPECIFIC fitness/dance slugs
+    # that live-probe to 20/20 future-dated events (exclusion-clean, volume-
+    # capped at eventbrite=100). run-club serves fb-179; the dance slugs
+    # broaden fb-180 (Brooklyn Contra) to NYC-wide social dance.
+    # CORRECTION (fb-184, run 2026-06-23-1816): the broad slugs above
+    # (running/yoga/fitness/etc.) are NOT inert as a prior comment claimed —
+    # live-probing shows they parse ~20 events each. Their events were
+    # dying DOWNSTREAM at MIN_SCORE 0.55 + the eventbrite=100 cap, not at
+    # extraction. The fb-184 P1 boost (ranking.py) recovers well-formed
+    # fitness/run/dance events over the floor. Do not "fix the parse" — it
+    # works. NOTE: folk-dance is PROVISIONAL (~55% participatory; re-probe
+    # landed yield next scrape, retire if it skews to performances).
+    "https://www.eventbrite.com/d/ny--new-york/run-club--events/",
+    "https://www.eventbrite.com/d/ny--new-york/contra-dance--events/",
+    "https://www.eventbrite.com/d/ny--new-york/swing-dance--events/",
+    "https://www.eventbrite.com/d/ny--new-york/folk-dance--events/",
+    "https://www.eventbrite.com/d/ny--new-york/salsa--events/",
+    "https://www.eventbrite.com/d/ny--new-york/pilates--events/",
+    # fb-184 / source-pool (run 2026-06-23-1816): additional on-vector
+    # participatory slugs, all live-probed ≥19 future-dated + exclusion-clean.
+    # Cap-bound (eventbrite=100) so they deepen the pool with on-vector
+    # content rather than enlarge the feed. board-games/chess at games-boost
+    # 1.3 are the highest-yield (recurring meet-people clubs); hiking/
+    # walking-tour serve outdoors/exploration; trivia/climbing are social.
+    "https://www.eventbrite.com/d/ny--new-york/hiking--events/",
+    "https://www.eventbrite.com/d/ny--new-york/walking-tour--events/",
+    "https://www.eventbrite.com/d/ny--new-york/board-games--events/",
+    "https://www.eventbrite.com/d/ny--new-york/chess--events/",
+    "https://www.eventbrite.com/d/ny--new-york/trivia--events/",
+    "https://www.eventbrite.com/d/ny--new-york/climbing--events/",
     "https://www.eventbrite.com/d/ny--brooklyn/book-club--events/",
     "https://www.eventbrite.com/d/ny--new-york/book-club--events/",
     "https://www.eventbrite.com/d/ny--brooklyn/literary--events/",
@@ -363,7 +401,7 @@ def _domain_source(url: str) -> str:
         # took parts[0] as the slug. Strip the 'events' subdomain like 'www'
         # so each university gets its own label.
         if host.startswith("events."):
-            host = host[len("events."):]
+            host = host[len("events.") :]
         parts = host.split(".")
         if len(parts) >= 2:
             # Use the registrable name; for short slugs (like "lu") keep the suffix too
@@ -500,13 +538,17 @@ def _ld_event_to_dict(data: dict, source: str, fallback_url: str) -> dict | None
             org_name = (org_name.get("@value") or "").strip()
         if org_name:
             ev["organizer"] = org_name[:120]
-        org_url = (org.get("url") or "").strip() if isinstance(org.get("url"), str) else ""
+        org_url = (
+            (org.get("url") or "").strip() if isinstance(org.get("url"), str) else ""
+        )
         if org_url and not ev.get("organizerUrl"):
             ev["organizerUrl"] = org_url
     return ev
 
 
-def _walk_jsonld(node, source: str, fallback_url: str, results: list[dict], _seen: set | None = None) -> None:
+def _walk_jsonld(
+    node, source: str, fallback_url: str, results: list[dict], _seen: set | None = None
+) -> None:
     """Recursively walk a JSON-LD structure, extracting any Event objects.
 
     Handles: direct Event, lists, @graph, Organization with nested events,
@@ -565,7 +607,9 @@ def _walk_jsonld(node, source: str, fallback_url: str, results: list[dict], _see
                     _walk_jsonld(inner, source, fallback_url, results, _seen)
 
 
-def _parse_jsonld_strategy(soup: BeautifulSoup, source: str, fallback_url: str) -> list[dict]:
+def _parse_jsonld_strategy(
+    soup: BeautifulSoup, source: str, fallback_url: str
+) -> list[dict]:
     events: list[dict] = []
     for script in soup.find_all("script", type="application/ld+json"):
         raw = script.string or script.get_text() or ""
@@ -611,9 +655,7 @@ _TITLE_SUFFIXES = [
     r"\s+Tickets,\s+\w+,\s+\w+\s+\d+(?:\s*•[^|]*)?$",
     r"\s+Tickets\s*$",
 ]
-_TITLE_SUFFIX_RE = re.compile(
-    "|".join(_TITLE_SUFFIXES), re.IGNORECASE
-)
+_TITLE_SUFFIX_RE = re.compile("|".join(_TITLE_SUFFIXES), re.IGNORECASE)
 
 
 def _clean_html_title(title: str) -> str:
@@ -634,7 +676,9 @@ def _clean_html_title(title: str) -> str:
     return cleaned
 
 
-def _parse_opengraph_strategy(soup: BeautifulSoup, source: str, fallback_url: str) -> list[dict]:
+def _parse_opengraph_strategy(
+    soup: BeautifulSoup, source: str, fallback_url: str
+) -> list[dict]:
     """Extract a single event from OpenGraph metadata.
 
     Robust to bot-stripped pages: falls back to <title> and meta name=description
@@ -928,7 +972,9 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
     if _is_link_aggregator(url):
         added = _expand_link_aggregator(soup, url)
         if added:
-            print(f"[generic] {url}: aggregator → harvested {added} event-platform URLs")
+            print(
+                f"[generic] {url}: aggregator → harvested {added} event-platform URLs"
+            )
         # Treat as successful so we don't mark it dead.
         _record_url_success(url)
         return []
@@ -958,13 +1004,18 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
         # hidden API in the same run — no 2-cycle indirection.
         try:
             from ..utils.bookmanager import is_bookmanager, detect_san, scrape_san
+
             if is_bookmanager(html):
                 san = detect_san(html)
                 if san:
                     parsed = urlparse(url)
-                    label = (parsed.netloc.lower().replace("www.", "").split(".")[0]
-                             or "bookmanager")
-                    public_tmpl = f"{parsed.scheme}://{parsed.netloc}/events/{{event_id}}"
+                    label = (
+                        parsed.netloc.lower().replace("www.", "").split(".")[0]
+                        or "bookmanager"
+                    )
+                    public_tmpl = (
+                        f"{parsed.scheme}://{parsed.netloc}/events/{{event_id}}"
+                    )
                     bm_events = await scrape_san(
                         san=san,
                         source_label=label,
@@ -972,7 +1023,9 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
                     )
                     if bm_events:
                         events.extend(bm_events)
-                        print(f"[generic] {url}: Bookmanager API → {len(bm_events)} events (SAN={san})")
+                        print(
+                            f"[generic] {url}: Bookmanager API → {len(bm_events)} events (SAN={san})"
+                        )
         except Exception as exc:
             print(f"[generic] {url}: Bookmanager probe failed: {exc}")
 
@@ -984,9 +1037,11 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
         # detect once, scrape any venue on the platform.
         try:
             from ..utils.squarespace import try_scrape_ical_for_squarespace
+
             parsed = urlparse(url)
-            label = (parsed.netloc.lower().replace("www.", "").split(".")[0]
-                     or "squarespace")
+            label = (
+                parsed.netloc.lower().replace("www.", "").split(".")[0] or "squarespace"
+            )
             ss_events = await try_scrape_ical_for_squarespace(url, html, label)
             if ss_events:
                 events.extend(ss_events)
@@ -1005,7 +1060,9 @@ async def scrape_url(url: str, default_source: str = "generic") -> list[dict]:
         # venue showing 0 events and showing all of them.
         salvaged = _salvage_event_urls_from_html(html, url)
         if salvaged:
-            print(f"[generic] {url}: SPA salvage → +{salvaged} event URLs queued for next run")
+            print(
+                f"[generic] {url}: SPA salvage → +{salvaged} event URLs queued for next run"
+            )
             # Salvage counts as success — the URL DID surface event content,
             # we just need an extra hop. Reset the failure counter so the
             # URL doesn't get marked dead while it's actively producing
@@ -1071,7 +1128,10 @@ _SALVAGE_PATH_RES = [
     re.compile(r'href="(/e/[a-z0-9\-]{4,80})"', re.IGNORECASE),
     # Absolute event URLs in any inline JSON/text — captures patterns
     # like {"url":"https://venue.com/events/123"} in hydration state.
-    re.compile(r'"(https?://[^"]+/events?/(?:[a-z0-9][a-z0-9\-]{3,80}|\d{6,18}))"', re.IGNORECASE),
+    re.compile(
+        r'"(https?://[^"]+/events?/(?:[a-z0-9][a-z0-9\-]{3,80}|\d{6,18}))"',
+        re.IGNORECASE,
+    ),
 ]
 
 # Cap salvage output per page so a sitemap-style payload listing thousands
@@ -1147,23 +1207,46 @@ _EVENT_PATH_PROBED_HOSTS: set[str] = set()
 # Hosts where probing /events makes no sense — they're aggregator platforms,
 # IG/social, or hosts whose canonical event-listing URLs we already seed.
 _PROBE_SKIP_HOSTS = {
-    "instagram.com", "www.instagram.com",
-    "facebook.com", "www.facebook.com", "m.facebook.com",
-    "twitter.com", "x.com", "t.co",
-    "lu.ma", "luma.com", "www.lu.ma",
-    "eventbrite.com", "www.eventbrite.com",
-    "meetup.com", "www.meetup.com",
-    "partiful.com", "www.partiful.com",
-    "allevents.in", "www.allevents.in",
-    "songkick.com", "www.songkick.com",
-    "dice.fm", "www.dice.fm",
-    "ra.co", "www.ra.co",
-    "ticketmaster.com", "www.ticketmaster.com",
-    "ticketweb.com", "www.ticketweb.com",
-    "youtube.com", "www.youtube.com", "youtu.be",
-    "tiktok.com", "www.tiktok.com",
-    "linktr.ee", "beacons.ai", "linkin.bio", "bio.link",
-    "google.com", "maps.google.com",
+    "instagram.com",
+    "www.instagram.com",
+    "facebook.com",
+    "www.facebook.com",
+    "m.facebook.com",
+    "twitter.com",
+    "x.com",
+    "t.co",
+    "lu.ma",
+    "luma.com",
+    "www.lu.ma",
+    "eventbrite.com",
+    "www.eventbrite.com",
+    "meetup.com",
+    "www.meetup.com",
+    "partiful.com",
+    "www.partiful.com",
+    "allevents.in",
+    "www.allevents.in",
+    "songkick.com",
+    "www.songkick.com",
+    "dice.fm",
+    "www.dice.fm",
+    "ra.co",
+    "www.ra.co",
+    "ticketmaster.com",
+    "www.ticketmaster.com",
+    "ticketweb.com",
+    "www.ticketweb.com",
+    "youtube.com",
+    "www.youtube.com",
+    "youtu.be",
+    "tiktok.com",
+    "www.tiktok.com",
+    "linktr.ee",
+    "beacons.ai",
+    "linkin.bio",
+    "bio.link",
+    "google.com",
+    "maps.google.com",
     "substack.com",
 }
 
@@ -1326,7 +1409,12 @@ def _harvest_luma_curator_urls(soup: BeautifulSoup) -> int:
         # Skip event shortcodes (8-10 alphanumeric, no hyphen) — those are
         # individual events, not calendars. Calendars typically have hyphens
         # or descriptive names.
-        if _LUMA_EVENT_SHORTCODE_RE.match(slug) and "-" not in slug and "." not in slug and "_" not in slug:
+        if (
+            _LUMA_EVENT_SHORTCODE_RE.match(slug)
+            and "-" not in slug
+            and "." not in slug
+            and "_" not in slug
+        ):
             continue
         normalized = f"https://lu.ma/{slug}"
         _add_discovered_url(normalized, "luma_organizer_jsonld")
@@ -1400,6 +1488,7 @@ def _save_url_health(data: dict) -> None:
 
 def _record_url_failure(url: str) -> None:
     from datetime import datetime, timezone
+
     data = _load_url_health()
     entry = data.setdefault(url, {"failures": 0, "successes": 0})
     entry["failures"] = entry.get("failures", 0) + 1
@@ -1409,6 +1498,7 @@ def _record_url_failure(url: str) -> None:
 
 def _record_url_success(url: str, event_count: int = 0) -> None:
     from datetime import datetime, timezone
+
     data = _load_url_health()
     entry = data.setdefault(url, {"failures": 0, "successes": 0})
     entry["successes"] = entry.get("successes", 0) + 1
@@ -1453,6 +1543,7 @@ def _prune_stale_urls() -> int:
     Returns count of pruned URLs. Idempotent.
     """
     from datetime import datetime, timezone, timedelta
+
     health = _load_url_health()
     if not health:
         return 0
@@ -1497,7 +1588,8 @@ def _prune_stale_urls() -> int:
                 data = json.load(f)
             items = data if isinstance(data, list) else data.get("urls", [])
             kept = [
-                it for it in items
+                it
+                for it in items
                 if (it["url"] if isinstance(it, dict) else it) not in dead
             ]
             os.makedirs(os.path.dirname(DISCOVERED_URLS_PATH), exist_ok=True)
@@ -1518,6 +1610,7 @@ def _select_dead_urls_for_retest(health: dict, all_urls: list[str]) -> list[str]
     Cap at _RETEST_PER_RUN to bound wasted requests.
     """
     from datetime import datetime, timezone, timedelta
+
     now = datetime.now(timezone.utc)
     cutoff = now - timedelta(days=_RETEST_COOLDOWN_DAYS)
 
@@ -1559,11 +1652,14 @@ def _add_discovered_url(url: str, source: str) -> None:
         if url in seen:
             return
         from datetime import datetime, timezone
-        existing.append({
-            "url": url,
-            "discovered_at": datetime.now(timezone.utc).isoformat(),
-            "discovered_via": source,
-        })
+
+        existing.append(
+            {
+                "url": url,
+                "discovered_at": datetime.now(timezone.utc).isoformat(),
+                "discovered_via": source,
+            }
+        )
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w") as f:
             json.dump(existing, f, indent=2)
@@ -1637,12 +1733,18 @@ async def scrape() -> list[dict]:
     health = _load_url_health()
     retest_urls = _select_dead_urls_for_retest(health, urls)
     before = len(urls)
-    urls = [u for u in urls if health.get(u, {}).get("failures", 0) < 5 or u in set(retest_urls)]
+    urls = [
+        u
+        for u in urls
+        if health.get(u, {}).get("failures", 0) < 5 or u in set(retest_urls)
+    ]
     skipped = before - len(urls)
     if skipped:
         print(f"[generic] Skipping {skipped} dead URLs (5+ failures)")
     if retest_urls:
-        print(f"[generic] Re-testing {len(retest_urls)} previously-dead URLs after {_RETEST_COOLDOWN_DAYS}d cooldown")
+        print(
+            f"[generic] Re-testing {len(retest_urls)} previously-dead URLs after {_RETEST_COOLDOWN_DAYS}d cooldown"
+        )
 
     # Order URLs by historical event yield so high-yield sources scrape first.
     # Untracked URLs (no successes yet) get a neutral middle priority so they
@@ -1662,6 +1764,7 @@ async def scrape() -> list[dict]:
         if y >= 1:
             return (1, -y)
         return (3, -y)
+
     urls = sorted(urls, key=_yield_priority)
 
     all_events: list[dict] = []

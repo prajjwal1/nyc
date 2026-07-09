@@ -85,7 +85,7 @@ def _dedup_perceptual_hash(events: list[dict]) -> list[dict]:
         # For p-hash we want a SOFT venue scope so cross-account flyers
         # bucket together. Use just the location name (no ig:account prefix)
         # so events from different IG accounts at the same venue can match.
-        loc = ((ev.get("location") or {}).get("name") or "")
+        loc = (ev.get("location") or {}).get("name") or ""
         loc_norm = _normalize_venue_name(loc)
         if not d or not loc_norm or len(loc_norm) < 3:
             continue
@@ -124,7 +124,10 @@ def _dedup_perceptual_hash(events: list[dict]) -> list[dict]:
                 ib = idx_list[b]
                 if ib in merged_into:
                     continue
-                if hamming_distance(idx_to_hash[ia], idx_to_hash[ib]) <= HAMMING_THRESHOLD:
+                if (
+                    hamming_distance(idx_to_hash[ia], idx_to_hash[ib])
+                    <= HAMMING_THRESHOLD
+                ):
                     events[ia] = _merge(events[ia], events[ib])
                     merged_into[ib] = ia
                     merges += 1
@@ -136,11 +139,34 @@ def _dedup_perceptual_hash(events: list[dict]) -> list[dict]:
         pass
 
     if merges:
-        print(f"[normalize] Perceptual-hash merged {merges} same-flyer duplicates "
-              f"(hashed {hashes_computed} images)")
+        print(
+            f"[normalize] Perceptual-hash merged {merges} same-flyer duplicates "
+            f"(hashed {hashes_computed} images)"
+        )
 
     out = [ev for i, ev in enumerate(events) if i not in merged_into]
     return out
+
+
+# Sources whose listings are individually-scheduled, individually-ticketed
+# events that legitimately repeat a near-identical title across dates (e.g.
+# brooklyncontra: "Brooklyn Contra Dance — Live Music & Caller" every other
+# Saturday; multiple distinct sessions on one date). These are NOT duplicate
+# posts of one event, so they bypass BOTH dedup passes (_dedup_same_account_
+# recurring and _dedup_fuzzy_title) — each scheduled night/session is its own
+# card. The source scraper is responsible for exact (date,title) dedup.
+DISTINCT_SCHEDULE_SOURCES = {"brooklyncontra"}
+
+
+def _is_distinct_schedule_source(ev: dict) -> bool:
+    """True if the event comes from a distinct-schedule source — one whose
+    listings are individually-scheduled, individually-ticketed events that
+    legitimately repeat a near-identical title across dates. Such events must
+    bypass BOTH dedup passes (_dedup_same_account_recurring and
+    _dedup_fuzzy_title). Single source of truth so a future distinct-schedule
+    source can't be half-exempted (fb-183).
+    """
+    return ev.get("source") in DISTINCT_SCHEDULE_SOURCES
 
 
 def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:
@@ -158,9 +184,13 @@ def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:
     in URL), eventbrite (organizer slug), bookclubbar/lizsbookbar venues.
     """
     from urllib.parse import urlparse
+
     by_acct: dict[str, list[dict]] = {}
     out: list[dict] = []
     for ev in events:
+        if _is_distinct_schedule_source(ev):
+            out.append(ev)
+            continue
         # Build a publisher key per source. For non-IG: just source+netloc.
         # Trying to include path-prefix backfires when ticketing platforms
         # embed dates/IDs in the slug (e.g. ticketmaster.com/why-are-you-
@@ -211,7 +241,7 @@ def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:
                 if jacc >= 0.75 or len(a & b) >= 4 or (jacc >= 0.9 and len(a) >= 2):
                     # Keep the earlier-dated one; merge later into earlier
                     earlier, later = i, j
-                    if group[j].get("date","") < group[i].get("date",""):
+                    if group[j].get("date", "") < group[i].get("date", ""):
                         earlier, later = j, i
                     group[earlier] = _merge(group[earlier], group[later])
                     group[earlier]["recurring"] = True
@@ -236,7 +266,7 @@ def _dedup_cross_ig_account(events: list[dict]) -> list[dict]:
             out.append(ev)
             continue
         d = ev.get("date") or ""
-        loc = ((ev.get("location") or {}).get("name") or "")
+        loc = (ev.get("location") or {}).get("name") or ""
         if not d or not loc:
             out.append(ev)
             continue
@@ -287,12 +317,16 @@ def _dedup_cross_ig_account(events: list[dict]) -> list[dict]:
         for k in keep_indices:
             out.append(bucket[k])
     if cross_merges:
-        print(f"[normalize] Cross-IG-account merged {cross_merges} duplicate promotions")
+        print(
+            f"[normalize] Cross-IG-account merged {cross_merges} duplicate promotions"
+        )
     return out
 
 
 def _title_token_set(title: str) -> set[str]:
-    title_clean = "".join(c if c.isalnum() or c == " " else " " for c in (title or "").lower())
+    title_clean = "".join(
+        c if c.isalnum() or c == " " else " " for c in (title or "").lower()
+    )
     return {w for w in title_clean.split() if w not in _STOPWORDS and len(w) > 2}
 
 
@@ -322,7 +356,9 @@ _VENUE_SYNONYMS = {
     r"\bhoy\b": "house of yes",
     r"\bthe met\b": "metropolitan museum",
 }
-_VENUE_SYNONYM_RES = [(re.compile(pat, re.IGNORECASE), repl) for pat, repl in _VENUE_SYNONYMS.items()]
+_VENUE_SYNONYM_RES = [
+    (re.compile(pat, re.IGNORECASE), repl) for pat, repl in _VENUE_SYNONYMS.items()
+]
 
 
 def _normalize_venue_name(loc: str) -> str:
@@ -366,6 +402,7 @@ def _venue_key(ev: dict) -> str:
     if ev.get("source") == "eventbrite":
         try:
             from urllib.parse import urlparse
+
             p = urlparse(ev.get("sourceUrl") or "")
             tokens = (p.path or "").split("/")[:3]
             return "eb:" + "/".join(tokens)
@@ -386,6 +423,16 @@ def _dedup_fuzzy_title(events: list[dict]) -> list[dict]:
     by_bucket: dict[tuple[str, str], list[dict]] = {}
     out: list[dict] = []
     for ev in events:
+        # fb-180: individually-ticketed distinct-schedule sources (e.g.
+        # brooklyncontra) run multiple distinct sessions on the SAME date
+        # (Harvest Ball Advanced + Evening on Sep 26) that share tokens
+        # {harvest,ball,dance} and would wrongly fuzzy-merge. They already
+        # dedupe exact (date,title) internally, so each survivor is genuinely
+        # distinct — bypass the fuzzy-merge. Mirrors the same exemption in
+        # _dedup_same_account_recurring.
+        if _is_distinct_schedule_source(ev):
+            out.append(ev)
+            continue
         d = ev.get("date") or ""
         v = _venue_key(ev)
         if not d or not v:
@@ -482,10 +529,41 @@ def _dedup_by_image(events: list[dict]) -> list[dict]:
 
 
 _STOPWORDS = {
-    "a", "an", "the", "at", "in", "on", "of", "for", "with", "to", "and",
-    "or", "is", "are", "by", "from", "this", "that", "your", "our", "my",
-    "presents", "presented", "live", "show", "event", "ticket", "tickets",
-    "free", "nyc", "ny", "new", "york", "brooklyn", "manhattan",
+    "a",
+    "an",
+    "the",
+    "at",
+    "in",
+    "on",
+    "of",
+    "for",
+    "with",
+    "to",
+    "and",
+    "or",
+    "is",
+    "are",
+    "by",
+    "from",
+    "this",
+    "that",
+    "your",
+    "our",
+    "my",
+    "presents",
+    "presented",
+    "live",
+    "show",
+    "event",
+    "ticket",
+    "tickets",
+    "free",
+    "nyc",
+    "ny",
+    "new",
+    "york",
+    "brooklyn",
+    "manhattan",
 }
 
 
@@ -520,6 +598,7 @@ def _merge(a: dict, b: dict) -> dict:
     # the fresh scrape's time reflects the current code path.
     def _newer(x: dict, y: dict) -> bool:
         return (x.get("scrapedAt") or "") > (y.get("scrapedAt") or "")
+
     if not merged.get("startTime"):
         if b.get("startTime"):
             merged["startTime"] = b["startTime"]
@@ -560,8 +639,12 @@ def _merge(a: dict, b: dict) -> dict:
     merged["ocrEnriched"] = bool(a.get("ocrEnriched") or b.get("ocrEnriched"))
 
     # Track all sources contributing to this event (cross-source validation).
-    a_sources = set(a.get("contributingSources", [a.get("source")] if a.get("source") else []))
-    b_sources = set(b.get("contributingSources", [b.get("source")] if b.get("source") else []))
+    a_sources = set(
+        a.get("contributingSources", [a.get("source")] if a.get("source") else [])
+    )
+    b_sources = set(
+        b.get("contributingSources", [b.get("source")] if b.get("source") else [])
+    )
     merged["contributingSources"] = sorted(a_sources | b_sources)
 
     # Track which IG accounts mentioned this event (cross-account validation).
@@ -613,39 +696,62 @@ _FAR_FUTURE_DAYS = 180
 # The far-future misparsed-date heuristic doesn't apply to them — when an
 # author tour is booked 8 months out, that's a real date, not a date-parser
 # defaulting to next year.
-_TRUSTED_FAR_FUTURE_SOURCES = frozenset({
-    "bookclubbar",
-    "lizsbookbar",
-    "mcnallyjackson",       # iter 102: dedicated month-pagination scraper
-    "powerhousearena",      # iter 110: Squarespace eventlist with explicit dates
-    "centerforfiction",     # iter 110: WordPress event pages with explicit dates
-    "brooklyncomedy",       # iter 106: Squarespace eventlist with explicit dates
-    "nycforfree",           # iter 100: Squarespace eventlist with explicit dates
-    "museums",
-    "music_venues",
-    "greenwoodcemetery",    # iter 103: dedicated scraper
-})
+_TRUSTED_FAR_FUTURE_SOURCES = frozenset(
+    {
+        "bookclubbar",
+        "lizsbookbar",
+        "mcnallyjackson",  # iter 102: dedicated month-pagination scraper
+        "powerhousearena",  # iter 110: Squarespace eventlist with explicit dates
+        "centerforfiction",  # iter 110: WordPress event pages with explicit dates
+        "brooklyncomedy",  # iter 106: Squarespace eventlist with explicit dates
+        "nycforfree",  # iter 100: Squarespace eventlist with explicit dates
+        "museums",
+        "music_venues",
+        "greenwoodcemetery",  # iter 103: dedicated scraper
+    }
+)
 
 
-_COMEDY_LINEUP_SOURCES = frozenset({
-    "newyorkcomedyclub", "eastvillecomedy", "thebellhouseny",
-    "brooklyncomedy",   # iter 169: brooklyncomedy.py (iter 106) — verified
-                        # source value is 'brooklyncomedy', matches the check
-    # (Removed iter 169: 'comedycellar', 'ucbtheatre', 'thecaveatnyc' —
-    # these are IG account handles, not source-field values. The check
-    # `ev.get("source") not in ...` would never fire on them since IG
-    # events have source='instagram'. They were dead set entries.)
-})
+_COMEDY_LINEUP_SOURCES = frozenset(
+    {
+        "newyorkcomedyclub",
+        "eastvillecomedy",
+        "thebellhouseny",
+        "brooklyncomedy",  # iter 169: brooklyncomedy.py (iter 106) — verified
+        # source value is 'brooklyncomedy', matches the check
+        # (Removed iter 169: 'comedycellar', 'ucbtheatre', 'thecaveatnyc' —
+        # these are IG account handles, not source-field values. The check
+        # `ev.get("source") not in ...` would never fire on them since IG
+        # events have source='instagram'. They were dead set entries.)
+    }
+)
 # A title is a "comedian lineup" when it's 3+ comma-separated person-name
 # tokens (First [Middle] Last) and contains no event-format keyword.
 _COMEDIAN_NAME_RE = re.compile(
     r"^[A-Z][a-zA-Z'’\-\.]+(?:\s+[A-Z][a-zA-Z'’\-\.]+){1,3}$"
 )
-_COMEDY_KEYWORDS = frozenset({
-    "comedy", "stand-up", "standup", "stand up", "show", "presents",
-    "lineup", "live", "tour", "special", "headliner", "podcast",
-    "open mic", "roast", "improv", "sketch", "showcase", "series",
-})
+_COMEDY_KEYWORDS = frozenset(
+    {
+        "comedy",
+        "stand-up",
+        "standup",
+        "stand up",
+        "show",
+        "presents",
+        "lineup",
+        "live",
+        "tour",
+        "special",
+        "headliner",
+        "podcast",
+        "open mic",
+        "roast",
+        "improv",
+        "sketch",
+        "showcase",
+        "series",
+    }
+)
 
 
 _BOOK_TITLE_RE = re.compile(r"[\"“][^\"”]{2,80}[\"”]")
@@ -683,33 +789,82 @@ _VENUE_NAME_TO_NEIGHBORHOOD = {
 }
 
 
+# Neighborhood *name* tokens that, when they appear verbatim in a venue name
+# or address, are an explicit self-declaration of location and must win over
+# the _VENUE_NAME_TO_NEIGHBORHOOD default (fb-189). A chain venue like
+# "New York Comedy Club Upper West Side" maps to 'east village' by table
+# default (its flagship), but the name literally says which branch this is.
+# Matched with word boundaries so 'les' can't hit inside 'fiddlesticks'.
+_EXPLICIT_HOOD_NAMES = [
+    "east williamsburg", "williamsburg", "greenpoint", "east village",
+    "west village", "lower east side", "upper east side", "upper west side",
+    "financial district", "crown heights", "fort greene", "prospect heights",
+    "park slope", "carroll gardens", "cobble hill", "boerum hill",
+    "brooklyn heights", "long island city", "red hook", "bed-stuy",
+    "bushwick", "astoria", "dumbo", "soho", "noho", "tribeca", "chelsea",
+    "midtown", "harlem", "gowanus", "ridgewood", "flatbush", "fidi",
+]
+_EXPLICIT_HOOD_RES = [
+    (h, re.compile(r"\b" + re.escape(h) + r"\b", re.IGNORECASE))
+    for h in _EXPLICIT_HOOD_NAMES
+]
+
+
+def _explicit_hood_in_text(text: str) -> str | None:
+    """Return the longest explicit neighborhood-NAME token that appears
+    verbatim (word-boundaried) in `text`, else None. Longest-match wins so
+    'east village' isn't shadowed by a shorter accidental hit."""
+    if not text:
+        return None
+    t = text.lower()
+    best = None
+    for hood, rx in _EXPLICIT_HOOD_RES:
+        if rx.search(t):
+            if best is None or len(hood) > len(best):
+                best = hood
+    return best
+
+
 def _backfill_neighborhood_from_venue(events: list[dict]) -> None:
     """Re-derive neighborhoods on every normalize pass:
-    1. If a venue NAME maps to a known neighborhood, use that (most
-       reliable — fixed-venue scrapers like Liz's Book Bar lack addresses).
-    2. If an address is present, re-run infer_neighborhood with the
+    0. If the venue NAME or ADDRESS literally names a neighborhood
+       (word-boundaried), that explicit self-declaration wins outright —
+       even over the venue-name table (fb-189: "New York Comedy Club Upper
+       West Side" must not resolve to 'east village', "Book Club Bar
+       Bushwick" must not resolve to 'east village').
+    1. Else if a venue NAME maps to a known neighborhood, use that (most
+       reliable for fixed-venue scrapers like Liz's Book Bar that lack
+       addresses).
+    2. Else if an address is present, re-run infer_neighborhood with the
        current keyword list — catches stale tags from older keyword sets
        (e.g. "broadway" used to falsely tag Times Square as SoHo).
     3. Leave the existing tag alone only if nothing better can be derived.
     """
     from .utils.event_parser import infer_neighborhood
+
     for ev in events:
         loc = ev.get("location") or {}
         name = (loc.get("name") or "").lower().strip()
         addr = (loc.get("address") or "").strip()
         existing = loc.get("neighborhood")
         new_hood: str | None = None
-        # Step 1: venue-name lookup (strongest signal)
-        for venue, hood in _VENUE_NAME_TO_NEIGHBORHOOD.items():
-            if venue in name:
-                new_hood = hood
-                break
+        # Step 0: explicit neighborhood token in the venue name/address wins
+        # over everything (fb-189). The name/address self-declares the branch.
+        explicit = _explicit_hood_in_text(f"{name} {addr}")
+        if explicit is not None:
+            new_hood = explicit
+        # Step 1: venue-name lookup (table default for single-location venues).
+        if new_hood is None:
+            for venue, hood in _VENUE_NAME_TO_NEIGHBORHOOD.items():
+                if venue in name:
+                    new_hood = hood
+                    break
         # Step 2: address inference (always re-runs, can override stale tags).
         # Also fold in title + location.name so titles like
         # "The 9:30 Comedy Show - Williamsburg" recover their neighborhood
         # even when the address has no neighborhood keyword (iter 72).
         if new_hood is None:
-            title = (ev.get("title") or "")
+            title = ev.get("title") or ""
             if addr or name or title:
                 new_hood = infer_neighborhood(addr, name, title)
         # If the existing tag was derivable from current address keywords, keep
@@ -718,7 +873,6 @@ def _backfill_neighborhood_from_venue(events: list[dict]) -> None:
         if new_hood != existing:
             loc["neighborhood"] = new_hood
             ev["location"] = loc
-
 
 # Re-export event_parser's authoritative tuples. Both lists used to be
 # duplicated (iter 167 dedup'd the indoor-arena list; iter 168 dedup'd the
@@ -737,7 +891,9 @@ def _strip_outdoors_indoor_arena(events: list[dict]) -> None:
         if "outdoors" not in cats:
             continue
         text = f"{ev.get('title','')} {ev.get('description','')} {(ev.get('location') or {}).get('name','')}".lower()
-        if any(v in text for v in _OUTDOORS_INDOOR_ARENAS) and not any(s in text for s in _OUTDOORS_STRONG_SIGNALS):
+        if any(v in text for v in _OUTDOORS_INDOOR_ARENAS) and not any(
+            s in text for s in _OUTDOORS_STRONG_SIGNALS
+        ):
             ev["categories"] = [c for c in cats if c != "outdoors"] or ["other"]
 
 
@@ -794,6 +950,7 @@ def collapse_title_spam(events: list[dict]) -> list[dict]:
     Keep the earliest occurrence; drop the rest.
     """
     from collections import defaultdict
+
     groups: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for ev in events:
         key = (
@@ -821,9 +978,19 @@ def collapse_title_spam(events: list[dict]) -> list[dict]:
         desc = (group[0].get("description", "") or "").lower()
         title = (group[0].get("title", "") or "").lower()
         recurring_markers = (
-            "every ", "weekly", "each week", "monthly", "each month",
-            "first ", "second ", "third ", "fourth ", "last ",
-            "biweekly", "fortnightly", "every other",
+            "every ",
+            "weekly",
+            "each week",
+            "monthly",
+            "each month",
+            "first ",
+            "second ",
+            "third ",
+            "fourth ",
+            "last ",
+            "biweekly",
+            "fortnightly",
+            "every other",
         )
         if any(m in desc or m in title for m in recurring_markers):
             keep.extend(group)
@@ -843,45 +1010,80 @@ def collapse_title_spam(events: list[dict]) -> list[dict]:
         dropped += len(group) - 1
 
     if dropped:
-        print(f"[normalize] Collapsed {dropped} title-spam events (suspected bad recurring expansion)")
+        print(
+            f"[normalize] Collapsed {dropped} title-spam events (suspected bad recurring expansion)"
+        )
     return keep
 
 
+# Keyword-anchored time: "doors at 7pm", "show starts 8pm", "kicks off at 8".
+# Highest-confidence — an explicit start/door cue immediately precedes a time.
 _TIME_IN_TEXT_RE = re.compile(
-    r"\b(?:doors?(?:\s+(?:open|at))?|starts?(?:\s+at)?|"
-    r"kicks?\s+off(?:\s+at)?|show)\s*:?\s*"
-    r"(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m\.?",
+    r"\b(?:doors?(?:\s+(?:open|at))?|starts?(?:\s+at)?|begins?(?:\s+at)?|"
+    r"kicks?\s+off(?:\s+at)?|show(?:\s+at)?)\s*:?\s*"
+    r"(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m\.?",
     re.I,
 )
 
+# Bare clock time anywhere in text: "7pm", "7:30pm", "10 AM". Used only as a
+# fallback when no keyword-anchored cue exists AND the text has exactly one
+# distinct plausible time (ambiguous multi-time text is left for a real parse).
+_BARE_TIME_RE = re.compile(r"\b(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m\.?\b", re.I)
 
-def _infer_time_from_text(title: str, description: str) -> str | None:
-    """Infer an HH:MM start time from caption/body text like 'doors at 7pm'
-    or 'show starts at 8'. Returns the EARLIEST plausible 06:00–23:59 match
-    (doors usually precede show). Used only to fill an absent startTime —
-    never to overwrite a parsed one. Source-agnostic; no IG session needed.
+
+def _to_minutes(hour_s, minute_s, ampm):
+    try:
+        hour = int(hour_s)
+        minute = int(minute_s) if minute_s else 0
+    except (TypeError, ValueError):
+        return None
+    ampm = ampm.lower()
+    if hour < 1 or hour > 12 or minute > 59:
+        return None
+    if hour == 12:
+        hour = 0
+    if ampm == "p":
+        hour += 12
+    if not (6 <= hour <= 23):
+        return None
+    return (hour, minute)
+
+
+def _infer_time_from_text(title, description):
+    """Infer an HH:MM start time from caption/body text.
+
+    Two tiers:
+      1. Keyword-anchored ("doors at 7pm", "show starts 8pm", "begins 6:30pm",
+         "kicks off at 8pm") — return the EARLIEST such match (doors precede
+         show). High confidence: an explicit start cue names the time.
+      2. If no keyword cue, fall back to a BARE clock time ("7pm", "7:30pm")
+         ONLY when the text has exactly ONE distinct plausible (06:00-23:59)
+         time. Multi-time text ("7pm ... afterparty 11pm", ranges "2pm-5pm")
+         is ambiguous and left unfilled for a real parse.
+
+    Only fills an ABSENT startTime — never overwrites a parsed one.
     """
     text = f"{title or ''}  {description or ''}"
+
+    # Tier 1: keyword-anchored — earliest wins.
     best = None
     for m in _TIME_IN_TEXT_RE.finditer(text):
-        try:
-            hour = int(m.group(1))
-            minute = int(m.group(2)) if m.group(2) else 0
-        except (TypeError, ValueError):
-            continue
-        ampm = m.group(3).lower()
-        if hour == 12:
-            hour = 0
-        if ampm == "p":
-            hour += 12
-        if not (6 <= hour <= 23) or not (0 <= minute <= 59):
-            continue
-        if best is None or (hour, minute) < best:
-            best = (hour, minute)
-    if best is None:
-        return None
-    return f"{best[0]:02d}:{best[1]:02d}"
+        hm = _to_minutes(m.group(1), m.group(2), m.group(3))
+        if hm is not None and (best is None or hm < best):
+            best = hm
+    if best is not None:
+        return f"{best[0]:02d}:{best[1]:02d}"
 
+    # Tier 2: bare-time fallback — only if exactly one distinct time.
+    distinct = set()
+    for m in _BARE_TIME_RE.finditer(text):
+        hm = _to_minutes(m.group(1), m.group(2), m.group(3))
+        if hm is not None:
+            distinct.add(hm)
+    if len(distinct) == 1:
+        hm = next(iter(distinct))
+        return f"{hm[0]:02d}:{hm[1]:02d}"
+    return None
 
 def _likely_past_midnight(event: dict) -> bool:
     """Detect events expected to run past midnight. User explicitly
@@ -914,7 +1116,7 @@ def _likely_past_midnight(event: dict) -> bool:
             # Many sources emit endTime="00:00" as a "not set" sentinel
             # rather than literal midnight. Skip the next-day-wrap check
             # in that case to avoid over-pruning.
-            is_zero_sentinel = (eh == 0 and em == 0)
+            is_zero_sentinel = eh == 0 and em == 0
             if not is_zero_sentinel:
                 # End-time wrap: end < start = overnight
                 if start and ":" in start:
@@ -931,10 +1133,13 @@ def _likely_past_midnight(event: dict) -> bool:
     # Text signals — limit to title + FIRST 200 CHARS of description so
     # we don't false-match phrases buried deep in long descriptions
     # (e.g., "open from 11pm to 1am" mentioned as venue trivia).
-    text = (event.get("title", "") + " " + (event.get("description", "") or "")[:200]).lower()
+    text = (
+        event.get("title", "") + " " + (event.get("description", "") or "")[:200]
+    ).lower()
     overnight_patterns = [
-        r"\b(?:1|2|3|4|5)\s*am\b",            # "1am", "2 am" etc.
-        r"\bpast midnight\b", r"\bafter midnight\b",
+        r"\b(?:1|2|3|4|5)\s*am\b",  # "1am", "2 am" etc.
+        r"\bpast midnight\b",
+        r"\bafter midnight\b",
         r"\btill\s*(?:1|2|3|4|5)\s*am\b",
         r"\buntil\s*(?:1|2|3|4|5)\s*am\b",
         r"\btil\s*(?:1|2|3|4|5)\s*am\b",
@@ -942,10 +1147,15 @@ def _likely_past_midnight(event: dict) -> bool:
         r"\bclosing\s*at\s*(?:1|2|3|4|5)\s*am\b",
         r"\b(?:doors?|show)\s*(?:at|until)\s*1[12]\s*pm",  # late doors
         # Nightclub culture markers — these events typically run 4-5 AM
-        r"\bnightclub\b", r"\bnight\s*club\b",
-        r"\bbottle\s*service\b", r"\bvip\s*table\b", r"\bvip\s*booth\b",
-        r"\btable\s*service\b", r"\bbottle\s*package\b",
-        r"\bafter\s*hours?\b", r"\bafterhours?\b",
+        r"\bnightclub\b",
+        r"\bnight\s*club\b",
+        r"\bbottle\s*service\b",
+        r"\bvip\s*table\b",
+        r"\bvip\s*booth\b",
+        r"\btable\s*service\b",
+        r"\bbottle\s*package\b",
+        r"\bafter\s*hours?\b",
+        r"\bafterhours?\b",
         # Late-night DJ sets in club venues
         r"\b(?:edm|techno|house)\s*(?:rave|warehouse|club)\b",
         r"\bwarehouse\s*(?:party|set|rave)\b",
@@ -1003,17 +1213,40 @@ def _apply_default_images(events: list[dict]) -> None:
 # handles often map to accounts the user follows on IG. Extracting them
 # lets us extend the follow-graph signal (userFollowing) to non-IG events.
 import re as _re
+
 _LUMA_HANDLE_RE = _re.compile(r"^https?://(?:lu\.ma|luma\.com)/([A-Za-z0-9_.\-]+)/?$")
-_PARTIFUL_HANDLE_RE = _re.compile(r"^https?://(?:www\.)?partiful\.com/@([A-Za-z0-9_.\-]+)")
+_PARTIFUL_HANDLE_RE = _re.compile(
+    r"^https?://(?:www\.)?partiful\.com/@([A-Za-z0-9_.\-]+)"
+)
 
 
 # Hosts that are generic aggregators / event platforms — their second-level
 # domain is NOT a curator handle. Don't extract a "handle" from these.
 _AGGREGATOR_HOSTS = {
-    "eventbrite", "meetup", "lu", "luma", "songkick", "allevents",
-    "instagram", "facebook", "twitter", "linktr", "partiful", "ticketmaster",
-    "dice", "ra", "shotgun", "posh", "tixr", "substack", "youtube", "spotify",
-    "google", "apple", "linkedin", "tiktok",
+    "eventbrite",
+    "meetup",
+    "lu",
+    "luma",
+    "songkick",
+    "allevents",
+    "instagram",
+    "facebook",
+    "twitter",
+    "linktr",
+    "partiful",
+    "ticketmaster",
+    "dice",
+    "ra",
+    "shotgun",
+    "posh",
+    "tixr",
+    "substack",
+    "youtube",
+    "spotify",
+    "google",
+    "apple",
+    "linkedin",
+    "tiktok",
 }
 
 
@@ -1033,6 +1266,7 @@ def _extract_handle_from_url(url: str) -> str | None:
     # often is their canonical handle. Skip aggregators.
     try:
         from urllib.parse import urlparse
+
         host = (urlparse(url).hostname or "").lower().replace("www.", "")
         if not host or "." not in host:
             return None
@@ -1050,6 +1284,7 @@ def _load_user_following_set() -> set[str]:
     events whose curator handle matches one of these."""
     import json as _json
     import os as _os
+
     path = _os.path.join(
         _os.path.dirname(_os.path.abspath(__file__)),
         "data",
@@ -1063,14 +1298,17 @@ def _load_user_following_set() -> set[str]:
         return {
             a["username"].lower()
             for a in data.get("accounts", [])
-            if isinstance(a, dict) and a.get("discovered_via") == "user_following"
+            if isinstance(a, dict)
+            and a.get("discovered_via") == "user_following"
             and a.get("username")
         }
     except Exception:
         return set()
 
 
-_HANDLE_LOCATION_SUFFIX_RE = _re.compile(r"-(?:manhattan|brooklyn|queens|bronx|bk|nyc|ny|williamsburg)$")
+_HANDLE_LOCATION_SUFFIX_RE = _re.compile(
+    r"-(?:manhattan|brooklyn|queens|bronx|bk|nyc|ny|williamsburg)$"
+)
 
 
 def _handle_candidates(handle: str) -> list[str]:
@@ -1130,6 +1368,7 @@ def _load_account_quality_map() -> dict:
     'readingrhythms' resolves to the underscore-keyed record.
     """
     import json as _json, os as _os
+
     path = _os.path.join(
         _os.path.dirname(_os.path.abspath(__file__)),
         "data",
@@ -1237,7 +1476,9 @@ def _enrich_provenance_from_url(events: list[dict]) -> None:
         for candidate_field in ("organizer", "_location_name"):
             if candidate_field == "_location_name":
                 loc = ev.get("location") or {}
-                candidate = (loc.get("name") or "").strip() if isinstance(loc, dict) else ""
+                candidate = (
+                    (loc.get("name") or "").strip() if isinstance(loc, dict) else ""
+                )
             else:
                 candidate = (ev.get(candidate_field) or "").strip()
             if not candidate or len(candidate) < 3:
@@ -1249,7 +1490,7 @@ def _enrich_provenance_from_url(events: list[dict]) -> None:
             # Suffix-strip
             for suffix in ("nyc", "ny", "brooklyn", "manhattan", "bk"):
                 if cand_norm.endswith(suffix) and len(cand_norm) - len(suffix) >= 5:
-                    cand_variants.add(cand_norm[:-len(suffix)])
+                    cand_variants.add(cand_norm[: -len(suffix)])
             # Suffix-add (venues often drop "nyc"/"bk" but the IG handle has
             # it). "houseofyes" → also try "houseofyesnyc"; "franklinpark"
             # → "franklinparkbk".
@@ -1264,30 +1505,43 @@ def _enrich_provenance_from_url(events: list[dict]) -> None:
                 organizer_matched += 1
                 break  # don't double-count if both organizer + location match
     if matched:
-        print(f"[normalize] Enriched {matched} non-IG events with userFollowing via curator-handle URL match")
+        print(
+            f"[normalize] Enriched {matched} non-IG events with userFollowing via curator-handle URL match"
+        )
     if organizer_matched:
-        print(f"[normalize] Enriched {organizer_matched} non-IG events with userFollowing via organizer/venue-name match")
+        print(
+            f"[normalize] Enriched {organizer_matched} non-IG events with userFollowing via organizer/venue-name match"
+        )
 
 
-_IMAGE_REQUIRED_SOURCES = frozenset({
-    # Partiful events without images are usually private-event placeholders
-    # with bare titles — drop them. Generic JSON-LD without an image is
-    # often a bare listing-page entry. Substack newsletters legitimately
-    # publish text-only event roundups (theskint, onefinedaynyc) — losing
-    # them to an image filter silences high-signal content. Keep substack
-    # OUT of the strict set and instead trust the source-level quality
-    # score + caption-fragment filters to weed out news commentary.
-    "partiful", "generic",
-})
+_IMAGE_REQUIRED_SOURCES = frozenset(
+    {
+        # Partiful events without images are usually private-event placeholders
+        # with bare titles — drop them. Generic JSON-LD without an image is
+        # often a bare listing-page entry. Substack newsletters legitimately
+        # publish text-only event roundups (theskint, onefinedaynyc) — losing
+        # them to an image filter silences high-signal content. Keep substack
+        # OUT of the strict set and instead trust the source-level quality
+        # score + caption-fragment filters to weed out news commentary.
+        "partiful",
+        "generic",
+    }
+)
 
 
-_DESCRIPTION_REQUIRED_SOURCES = frozenset({
-    # Non-IG sources where an event with empty description is a bare
-    # listing — no context for the user, can't be categorized properly,
-    # and signals the upstream page lacked real content. IG captions
-    # are the description so IG isn't in this set.
-    "luma", "eventbrite", "partiful", "allevents", "songkick",
-})
+_DESCRIPTION_REQUIRED_SOURCES = frozenset(
+    {
+        # Non-IG sources where an event with empty description is a bare
+        # listing — no context for the user, can't be categorized properly,
+        # and signals the upstream page lacked real content. IG captions
+        # are the description so IG isn't in this set.
+        "luma",
+        "eventbrite",
+        "partiful",
+        "allevents",
+        "songkick",
+    }
+)
 
 
 def _is_curated_host(event: dict) -> bool:
@@ -1305,6 +1559,7 @@ def _is_curated_host(event: dict) -> bool:
     """
     try:
         from .ranking import _load_user_curated_sources
+
         cfg = _load_user_curated_sources()
         # Check both sourceUrl AND organizerUrl (events scraped from
         # organizer pages keep the org URL in organizerUrl while sourceUrl
@@ -1316,6 +1571,19 @@ def _is_curated_host(event: dict) -> bool:
         for url in urls:
             if url and any(h in url for h in cfg.get("hosts", {})):
                 return True
+        # lu.ma curator-calendar URLs are hand-curated single-curator
+        # calendars (lu.ma/<handle>, e.g. lu.ma/philosophy, lu.ma/thinkolio),
+        # as opposed to the lu.ma/nyc[/<category>] aggregate feeds. Their
+        # events are often description-less, and they'd otherwise be dropped
+        # by the description-required shell filter. Treat them as curated
+        # automatically so a new curator added to luma.LUMA_PAGES doesn't
+        # silently lose all its events without also being hand-added to
+        # user_curated_sources.json (the gap that hid lu.ma/philosophy).
+        if event.get("source") == "luma":
+            src_url = (event.get("sourceUrl") or "").lower()
+            m = re.search(r"lu\.ma/([^/?#]+)", src_url)
+            if m and m.group(1) != "nyc":
+                return True
         title = (event.get("title") or "").lower()
         desc = (event.get("description") or "")[:300].lower()
         text = title + " " + desc
@@ -1324,6 +1592,43 @@ def _is_curated_host(event: dict) -> bool:
         return False
     except Exception:
         return False
+
+
+# Score floors for the final quality gate. DEFAULT applies to generic /
+# aggregator events; the lower CURATED floor applies to events the user has
+# explicitly designated (followed / saved / tagged / affinity, or an IG event
+# from a curated seed account) — the curator's pick is itself quality signal.
+DEFAULT_MIN_SCORE = 0.55
+IG_CURATED_MIN_SCORE = 0.40
+
+
+def _min_score_floor(event: dict, curated_ig: set[str] | None = None) -> float:
+    """Return the minimum score an event must clear to survive the final
+    quality gate. Module-level + parameterized so it's unit-testable.
+
+    Explicit high-conviction signals (userFollowing / userSaved / userTagged /
+    userAffinity) grant the lower CURATED floor REGARDLESS of source — this is
+    what lets non-IG curator calendars the user follows (e.g. lu.ma/philosophy
+    → philosophy.nyc) survive instead of getting filtered at the 0.55 default.
+    IG events from a curated seed account also get the lower floor.
+    """
+    if (
+        event.get("userSaved")
+        or event.get("userTagged")
+        or event.get("userAffinity")
+        or event.get("userFollowing")
+    ):
+        return IG_CURATED_MIN_SCORE
+    if event.get("source") != "instagram":
+        return DEFAULT_MIN_SCORE
+    if curated_ig is None:
+        from .config import IG_ACCOUNTS
+
+        curated_ig = {a.lower() for a in IG_ACCOUNTS}
+    acct = (event.get("instagramAccount") or "").lower()
+    if acct in curated_ig:
+        return IG_CURATED_MIN_SCORE
+    return DEFAULT_MIN_SCORE
 
 
 def _is_shell_event(event: dict) -> bool:
@@ -1354,8 +1659,7 @@ def _is_shell_event(event: dict) -> bool:
         return True
     # Empty descriptions on listing aggregators are bare placeholder rows.
     # IG captions are the description, so IG events aren't checked.
-    if (len(desc) < 15
-            and event.get("source") in _DESCRIPTION_REQUIRED_SOURCES):
+    if len(desc) < 15 and event.get("source") in _DESCRIPTION_REQUIRED_SOURCES:
         return True
     if not desc and not img and not loc and not addr:
         return True
@@ -1398,13 +1702,16 @@ def filter_far_future_misparsed(events: list[dict]) -> list[dict]:
         # can mention an unrelated year and let a misparsed date through).
         text = (ev.get("title", "") + " " + ev.get("description", ""))[:600]
         import re as _re
+
         if _re.search(rf"\b{ev_date.year}\b", text):
             out.append(ev)
     return out
 
 
 def sort_by_date(events: list[dict]) -> list[dict]:
-    return sorted(events, key=lambda e: (e.get("date", ""), e.get("startTime", "") or ""))
+    return sorted(
+        events, key=lambda e: (e.get("date", ""), e.get("startTime", "") or "")
+    )
 
 
 _TITLE_DATE_RE = re.compile(
@@ -1412,8 +1719,18 @@ _TITLE_DATE_RE = re.compile(
     re.IGNORECASE,
 )
 _MONTHS = {
-    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
-    "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+    "jan": 1,
+    "feb": 2,
+    "mar": 3,
+    "apr": 4,
+    "may": 5,
+    "jun": 6,
+    "jul": 7,
+    "aug": 8,
+    "sep": 9,
+    "oct": 10,
+    "nov": 11,
+    "dec": 12,
 }
 
 
@@ -1434,6 +1751,7 @@ def _is_phantom_recurring(event: dict) -> bool:
     title_day = int(m.group(2))
     try:
         from datetime import date as _date
+
         ev_date = _date.fromisoformat(date_str)
         # If title specifies a date and the event date doesn't match, it's phantom
         if (ev_date.month, ev_date.day) != (title_month, title_day):
@@ -1446,6 +1764,7 @@ def _is_phantom_recurring(event: dict) -> bool:
 def _load_previous_events_index(path: str) -> dict:
     """Load previous events.json keyed by event id, for firstSeenAt preservation."""
     import json, os
+
     if not os.path.isfile(path):
         return {}
     try:
@@ -1472,7 +1791,8 @@ def _learn_excluded_from_hidden(events: list[dict]) -> None:
         return
     path = _os.path.join(
         _os.path.dirname(_os.path.abspath(__file__)),
-        "data", "user_excluded_sources.json",
+        "data",
+        "user_excluded_sources.json",
     )
     if _os.path.isfile(path):
         try:
@@ -1489,11 +1809,14 @@ def _learn_excluded_from_hidden(events: list[dict]) -> None:
         acct = (ev.get("instagramAccount") or "").lower()
         if not acct:
             continue
-        entry = cfg["accounts"].setdefault(acct, {
-            "reason": "engagement_hidden",
-            "added_at": _dt.utcnow().date().isoformat(),
-            "hide_count": 0,
-        })
+        entry = cfg["accounts"].setdefault(
+            acct,
+            {
+                "reason": "engagement_hidden",
+                "added_at": _dt.utcnow().date().isoformat(),
+                "hide_count": 0,
+            },
+        )
         entry["hide_count"] = (entry.get("hide_count") or 0) + 1
         changed = True
 
@@ -1525,7 +1848,8 @@ def _learn_curated_from_saved(events: list[dict]) -> None:
         return
     path = _os.path.join(
         _os.path.dirname(_os.path.abspath(__file__)),
-        "data", "user_curated_sources.json",
+        "data",
+        "user_curated_sources.json",
     )
     if _os.path.isfile(path):
         try:
@@ -1548,12 +1872,15 @@ def _learn_curated_from_saved(events: list[dict]) -> None:
         host = host.lower().replace("www.", "")
         if not host:
             continue
-        entry = cfg["hosts"].setdefault(host, {
-            "score": 0.0,
-            "added_at": _dt.utcnow().date().isoformat(),
-            "source": "engagement_saved",
-            "save_count": 0,
-        })
+        entry = cfg["hosts"].setdefault(
+            host,
+            {
+                "score": 0.0,
+                "added_at": _dt.utcnow().date().isoformat(),
+                "source": "engagement_saved",
+                "save_count": 0,
+            },
+        )
         entry["save_count"] = (entry.get("save_count") or 0) + 1
         # Score saturates at 1.0; each save adds 0.2 (capped). After 5
         # saves from a host it's "fully curated".
@@ -1583,7 +1910,9 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     time_filled = 0
     for ev in events:
         if not (ev.get("startTime") or "").strip():
-            inferred = _infer_time_from_text(ev.get("title", ""), ev.get("description", ""))
+            inferred = _infer_time_from_text(
+                ev.get("title", ""), ev.get("description", "")
+            )
             if inferred:
                 ev["startTime"] = inferred
                 time_filled += 1
@@ -1599,7 +1928,9 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     events = filter_far_future_misparsed(events)
     far_future_dropped = before - len(events)
     if far_future_dropped:
-        print(f"[normalize] Dropped {far_future_dropped} far-future misparsed events (>{_FAR_FUTURE_DAYS}d, no year mention)")
+        print(
+            f"[normalize] Dropped {far_future_dropped} far-future misparsed events (>{_FAR_FUTURE_DAYS}d, no year mention)"
+        )
 
     # Hard-filter blocked events (kids/utility/services/non-NYC/captions)
     before = len(events)
@@ -1623,6 +1954,7 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # scrapers/data/user_excluded_sources.json. Auto-grows from hides.
     try:
         from .ranking import is_user_excluded
+
         before = len(events)
         events = [ev for ev in events if not is_user_excluded(ev)]
         excluded = before - len(events)
@@ -1638,7 +1970,9 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     events = [ev for ev in events if not _is_shell_event(ev)]
     shells = before - len(events)
     if shells:
-        print(f"[normalize] Dropped {shells} shell events (no description/image/location)")
+        print(
+            f"[normalize] Dropped {shells} shell events (no description/image/location)"
+        )
 
     # Drop events likely to run past midnight — user explicitly excluded
     # these. Not appropriate for the meet-people-at-events use case.
@@ -1655,7 +1989,9 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     events = [ev for ev in events if not _is_phantom_recurring(ev)]
     phantom = before - len(events)
     if phantom:
-        print(f"[normalize] Dropped {phantom} phantom recurring events (title-date mismatch)")
+        print(
+            f"[normalize] Dropped {phantom} phantom recurring events (title-date mismatch)"
+        )
 
     # Expand recurring events ("every Saturday at Smorgasburg" → 3 weeks of
     # dates). Skip events already marked recurring=True (already an expanded
@@ -1676,7 +2012,9 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
         else:
             expanded.append(ev)
     if recurring_count:
-        print(f"[normalize] Expanded {recurring_count} recurring events into {len(expanded) - len(events) + recurring_count} total occurrences")
+        print(
+            f"[normalize] Expanded {recurring_count} recurring events into {len(expanded) - len(events) + recurring_count} total occurrences"
+        )
     events = expanded
 
     events = deduplicate(events)
@@ -1712,6 +2050,7 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # scrapes, and titles like "GETTING UNSTUCK: On Sunday, ..." linger
     # for weeks in the feed.
     from .utils.event_parser import clean_title as _clean_title
+
     for ev in events:
         t = ev.get("title") or ""
         cleaned = _clean_title(t)
@@ -1764,7 +2103,9 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
             except Exception:
                 pass
     if velocity_count:
-        print(f"[normalize] {velocity_count} events have positive engagement velocity since last scrape")
+        print(
+            f"[normalize] {velocity_count} events have positive engagement velocity since last scrape"
+        )
 
     # Promote hosts of saved events into user_curated_sources.json so the
     # next run ranks them higher. Auto-learning, no code changes needed.
@@ -1779,6 +2120,7 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     try:
         from .utils.interest_profile import build_profile
         import scrapers.utils.interest_profile as _ip
+
         build_profile()
         _ip._CACHE = None
     except Exception as exc:
@@ -1793,6 +2135,7 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # categorizer is the source of truth. Runs AFTER provenance enrichment
     # so the IG-handle topic-hint fallback can use the enriched `account`.
     from .utils.event_parser import infer_categories as _infer_categories
+
     for ev in events:
         # Prefer `account` (set by iter 1 P2 mirror, or by enrichment) but
         # fall back to `instagramAccount` for events emitted by older
@@ -1833,30 +2176,15 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # interest_profile_boost (+0.15 for signal accounts) compensates for
     # events the user genuinely cares about. Marginal-quality long tail
     # in 0.45-0.55 was 133 events; trimming that.
-    DEFAULT_MIN_SCORE = 0.55
-    IG_CURATED_MIN_SCORE = 0.40
     from .config import IG_ACCOUNTS
-    _curated_ig = {a.lower() for a in IG_ACCOUNTS}
 
-    def _floor_for(ev: dict) -> float:
-        if ev.get("source") != "instagram":
-            return DEFAULT_MIN_SCORE
-        # Curator-signal IG events: from accounts in the curated seed list
-        # OR from accounts the user explicitly follows / has saved-from /
-        # was tagged in / has built up affinity with.
-        acct = (ev.get("instagramAccount") or "").lower()
-        if acct in _curated_ig:
-            return IG_CURATED_MIN_SCORE
-        if (ev.get("userSaved") or ev.get("userTagged")
-                or ev.get("userAffinity") or ev.get("userFollowing")):
-            return IG_CURATED_MIN_SCORE
-        return DEFAULT_MIN_SCORE
+    _curated_ig = {a.lower() for a in IG_ACCOUNTS}
 
     before = len(events)
     kept = []
     ig_kept_curated = 0
     for ev in events:
-        floor = _floor_for(ev)
+        floor = _min_score_floor(ev, _curated_ig)
         if ev.get("score", 0) >= floor:
             kept.append(ev)
             if ev.get("source") == "instagram" and floor < DEFAULT_MIN_SCORE:
@@ -1874,6 +2202,7 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # user-relevant content. Keep top-N by score per capped source so
     # the For You feed has real diversity.
     from .config import SOURCE_VOLUME_CAPS
+
     if SOURCE_VOLUME_CAPS:
         by_source: dict[str, list] = {}
         for ev in events:
@@ -1889,7 +2218,9 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
             capped.extend(src_events[:cap])
             cap_drops += len(src_events) - cap
         if cap_drops:
-            print(f"[normalize] Volume-capped {cap_drops} events from heavy aggregator sources")
+            print(
+                f"[normalize] Volume-capped {cap_drops} events from heavy aggregator sources"
+            )
         events = capped
 
     events = sort_by_date(events)

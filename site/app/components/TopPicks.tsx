@@ -369,7 +369,7 @@ export default function TopPicks({
           </h3>
           <div className="space-y-2">
             {tonightEvents.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+              <EventCard key={event.id} event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
             ))}
           </div>
         </div>
@@ -383,21 +383,23 @@ export default function TopPicks({
           </h3>
           <div className="space-y-2">
             {weekendEvents.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+              <EventCard key={event.id} event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
             ))}
           </div>
         </div>
       )}
 
-      {/* ✨ Just Added — events first seen in last 72 hours */}
+      {/* ✨ Just Added — events first seen in last 72 hours.
+          Slate-toned (not sky) so sky consistently means "from your follow
+          graph" — matching the card conviction ring + the Following hero. */}
       {recentlyAdded.length > 0 && (
-        <div className="mb-8 -mx-1 px-1 py-3 bg-sky-50/60 rounded-2xl border border-sky-200">
-          <h3 className="text-sm font-semibold text-sky-900 uppercase tracking-wide mb-2 px-2">
+        <div className="mb-8 -mx-1 px-1 py-3 bg-slate-50 rounded-2xl border border-slate-200">
+          <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-2 px-2">
             ✨ Just Added
           </h3>
           <div className="space-y-2">
             {recentlyAdded.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+              <EventCard key={event.id} event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
             ))}
           </div>
         </div>
@@ -413,7 +415,7 @@ export default function TopPicks({
           </h3>
           <div className="space-y-2">
             {followingUpcoming.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+              <EventCard key={event.id} event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
             ))}
           </div>
         </div>
@@ -427,7 +429,7 @@ export default function TopPicks({
           </h3>
           <div className="space-y-2">
             {savedUpcoming.map((event) => (
-              <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+              <EventCard key={event.id} event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
             ))}
           </div>
         </div>
