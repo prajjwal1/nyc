@@ -37,7 +37,8 @@ export function useEvents() {
     const now = new Date();
     const cutoffMin = now.getHours() * 60 + now.getMinutes() - 180; // 3h buffer
     const stillUpcoming = (e: typeof data.events[number]): boolean => {
-      if (e.date !== today) return true;       // not today — irrelevant
+      if (e.date < today) return false;        // past date — never show
+      if (e.date !== today) return true;       // future date — keep
       if (!e.startTime) return true;           // no time — keep
       const parts = e.startTime.split(":");
       if (parts.length < 2) return true;

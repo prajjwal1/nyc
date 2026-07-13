@@ -11,6 +11,7 @@ import {
   isSameDay,
   addMonths,
   subMonths,
+  isAfter,
 } from "date-fns";
 import { useState } from "react";
 
@@ -39,13 +40,23 @@ export default function Calendar({
 
   const today = new Date();
   const todayStr = format(today, "yyyy-MM-dd");
+  // Don't let the user browse into the past — the feed only shows events from
+  // today onwards, so backward calendar navigation would land on empty months.
+  const thisMonthStart = startOfMonth(today);
+  const canGoBack = isAfter(currentMonth, thisMonthStart);
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-4">
       <div className="flex items-center justify-between mb-4">
         <button
-          onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
-          className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-600"
+          onClick={() => canGoBack && setCurrentMonth(subMonths(currentMonth, 1))}
+          disabled={!canGoBack}
+          aria-label="Previous month"
+          className={`p-1.5 rounded-lg focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none ${
+            canGoBack
+              ? "hover:bg-gray-100 text-gray-600"
+              : "text-gray-200 cursor-not-allowed"
+          }`}
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -56,7 +67,8 @@ export default function Calendar({
         </h2>
         <button
           onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
-          className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-600"
+          aria-label="Next month"
+          className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-600 focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -78,15 +90,19 @@ export default function Calendar({
           const inMonth = isSameMonth(day, currentMonth);
           const hasEvents = eventDates.has(dateStr);
           const count = eventCountByDate.get(dateStr) || 0;
+          // Past dates aren't selectable — the feed is today-onwards only.
+          const isPast = dateStr < todayStr;
 
           return (
             <button
               key={dateStr}
-              onClick={() => onSelectDate(dateStr)}
+              onClick={() => !isPast && onSelectDate(dateStr)}
+              disabled={isPast}
+              aria-label={isPast ? `${dateStr} (past)` : dateStr}
               className={`
-                relative py-2 text-sm rounded-lg transition-colors
-                ${!inMonth ? "text-gray-300" : "text-gray-700"}
-                ${isSelected ? "bg-gray-900 text-white font-semibold" : "hover:bg-gray-50"}
+                relative py-2 text-sm rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none
+                ${isPast ? "text-gray-200 cursor-not-allowed" : !inMonth ? "text-gray-300" : "text-gray-700"}
+                ${isSelected ? "bg-gray-900 text-white font-semibold" : isPast ? "" : "hover:bg-gray-50"}
                 ${isToday && !isSelected ? "font-bold text-gray-900 ring-1 ring-gray-300" : ""}
               `}
             >
