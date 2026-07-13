@@ -68,7 +68,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-t-2xl sm:rounded-2xl w-full max-w-2xl max-h-[95vh] overflow-y-auto"
+        className="relative bg-white rounded-t-2xl sm:rounded-2xl w-full max-w-2xl max-h-[90vh] sm:max-h-[95vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}

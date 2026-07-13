@@ -79,6 +79,11 @@ def _harvest_and_save_post_urls(html_or_text: str) -> int:
 
 FEEDS = [
     "https://onefinedaynyc.substack.com/feed",
+    # Open Book Club — user-requested (2026-07-13). A social book club running
+    # karaoke/magician/book nights; IG-blocked (fb-174) so Substack is the
+    # path. Non-roundup first-person posts → whole-post fallback dated to
+    # pubDate (no future-date fabrication); curated host boosts its events.
+    "https://openbookclubnyc.substack.com/feed",
     # The Skint — daily curated free/cheap NYC events newsletter (legendary)
     "https://www.theskint.com/feed/",
     # Brooklyn Vegan — extensive concert / live music NY listings

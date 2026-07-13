@@ -93,6 +93,28 @@ These are the durable preferences the user has stated. They're marked `addressed
 
 ## Open items (top of list = highest priority)
 
+
+### fb-194 — Queens/LIC neighborhood mistag (MoMA PS1 → "midtown") + ~19% null neighborhoods
+- created_at: 2026-07-13
+- source: user-inferred (Critic review of the deployed feed, 2026-07-09; deferred there)
+- status: open
+- body: The 2026-07-09 Critic review of the live feed (the review incorporated in f81a75f) flagged a Queens/LIC neighborhood-normalizer data bug: MoMA PS1 is tagged "midtown" (it's in Long Island City, Queens), and ~19% of events carry a null `location.neighborhood`. This is scrape-independent (present in the committed events.json), unit-testable, and degrades the neighborhood badge + neighborhood filter the user relies on. Distinct from fb-189 (which handled name/neighborhood CONTRADICTIONS via `_explicit_hood_in_text`) — this is a Queens/LIC-specific venue→neighborhood mapping gap plus a broader null-rate problem. Reuse the fb-189 Step-0 path and fb-193 venue-alias path.
+- "addressed" criterion: "MoMA PS1" (and any LIC/Queens venue token) resolves to a Queens neighborhood (long-island-city / queens), never "midtown"; a unit test covers "MoMA PS1 → long island city (not midtown)" + ≥2 more Queens cases; the null-neighborhood share in the committed events.json drops below 19% (target ≤15%).
+
+### fb-195 — Retire/validate the ~600 keyword lists in quality.py against the now-active taste model (Phase C part 2)
+- created_at: 2026-07-13
+- source: agent-proposal (unblocked follow-on to Phase C, 62a08f9; per orchestrator brief)
+- status: open
+- body: Phase C (62a08f9) shipped a semantic TF-IDF taste model (`scrapers/utils/taste.py`) that ranks events by similarity to what the user saves/attends; the f81a75f P6 change cold-started it from the follow-graph so the loop is now ACTIVE on all 423 events. Phase C deliberately DEFERRED retiring the ~600 hand-maintained keyword boost/penalty lists in `scrapers/quality.py` until the taste signal was validated on the full feed — that precondition is now met, so this is unblocked. Compare the taste signal against the keyword clusters and classify each (keep / redundant-with-taste / retire). The additive-only rule does NOT block this: it is refactoring a ranking signal, not deleting a source. IMPORTANT: the fb-001..fb-009 README hard rules (nightclub/late-night/networking blocks, drinking penalties, alcohol-free boosts) are user-explicit and must be preserved regardless of what the taste model says.
+- "addressed" criterion: taste-vs-keyword agreement recorded per cluster; each keyword cluster classified; at least the clearly-redundant clusters removed OR a documented finding (Critic-approved) explains why the keyword lists must stay; the fb-001..fb-009 hard rules verified still enforced.
+
+### fb-196 — Close user-named coverage gaps: backgammon/chess, underground-electronic, social dance
+- created_at: 2026-07-13
+- source: user-explicit (gaps the user named) via Critic review, 2026-07-09; deferred there
+- status: open
+- body: The 2026-07-09 Critic review surfaced three coverage gaps the user explicitly named that the feed still doesn't serve: (a) NO backgammon/chess events surface (nycbackgammonclub is a chronic sanity_check CRITICAL); (b) underground-electronic is thin beyond Warm Up — the user wants Nowadays / Public Records / Elsewhere depth; (c) social dance is contra-only (Brooklyn Contra from fb-180) with no other participatory social-dance source. These target the North Star directly (surface events the user would actually attend). Source-curator lane. Mind the exclusion constraints: HoY/KDC are user-EXCLUDED (fb-153, `user_excluded_sources.json`) — do NOT re-add them for the electronic gap; all IG adds must be fb-106-clean (no personal accounts); and do NOT propose IG-sweep-dependent paths (fb-174 is fleet-blocked).
+- "addressed" criterion: at least one live-probed parseable path (≥5 future events, exclusion-clean, fb-106-clean) added toward EACH of the three gaps, OR a live-verified honest negative per gap (path probed, <5 yield, root cause recorded) that defers that sub-item with a Critic-accepted rationale.
+
 ### fb-189 — Neighborhood contradicts venue name (normalizer bug, ~8/375 events)
 - created_at: 2026-07-02
 - source: agent-proposal (ui-agent flag; scrape-independent + unit-testable)
@@ -907,6 +929,20 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: open
 - body: Normalize venue-name aliases so the same venue expressed differently collapses to one canonical form ("BK Bowl" ↔ "Brooklyn Bowl", "MoMA" ↔ "Museum of Modern Art", etc.). Compounds directly with the fb-189 Step-0 explicit-neighborhood matcher (`_explicit_hood_in_text`) and cross-source dedup (`_dedup_fuzzy_title`) — a canonical venue name improves both neighborhood inference and duplicate collapse. Note: fb-111 already added some venue-abbrev expansion in `_normalize_venue_name`; this extends/consolidates it. Deferred because the payoff (fewer dupes / better neighborhood tags in the feed) is only measurable post-scrape.
 - files: `scrapers/normalize.py` (`_normalize_venue_name` / venue-key path).
+
+### fb-197 — Big /plan directive: learn from preferences, stop hardcoding, better suggestions, reimagine UI, make IG scraping work
+- created_at: 2026-07-09
+- source: user-explicit (/plan, 2026-07-09)
+- status: addressed: 23128fd, af4c066, 62a08f9, 6862a8b
+- body: User: "learn from my preferences, stop hardcoding; better suggestions; reimagine UI; make IG scraping work." Delivered as a 4-phase program, all shipped to main.
+- resolution: Phase A (23128fd) — engagement→preference feedback loop (`scrapers/utils/engagement.py`) + IG reframe/runbook. Phase B (af4c066) — client "Sync taste" UI (`tasteExport.ts`), closing the browser→pipeline loop. Phase C (62a08f9) — semantic TF-IDF taste model (`scrapers/utils/taste.py`), rank by similarity to saves/attends; keyword-list retirement deferred until validated (now tracked as fb-195). Phase D (6862a8b) — "✨ your taste" explainability chip + graceful feed-load error state. Note: "make IG scraping work" is structurally bounded by fb-174 (GraphQL account-sweep 400-blocked fleet-wide) — Phase A reframed the IG approach around the still-working saved-posts path rather than the blocked sweep.
+
+### fb-198 — Incorporate Critic review of the deployed feed (2026-07-09)
+- created_at: 2026-07-09
+- source: user-inferred (Critic review of the live deployed feed)
+- status: addressed: f81a75f
+- body: Critic review of the deployed feed (2026-07-09) and its incorporation.
+- resolution: shipped in f81a75f. P1 — de-saturated ranking (score cap 0.55→0.32; wine 1.0→0.69, Warm Up 0.77→0.88) so a few sources stop dominating. P6 — taste cold-start from the follow-graph, so the Phase-C taste loop is now active on all 423 events (this is what unblocks fb-195). P5 — purged OCR-garbage and "Copy of" titles. Still-open items from the same review are tracked as fb-194 (Queens/LIC neighborhood P3) and fb-196 (coverage gaps P7).
 
 <!-- Append new feedback above this comment as it comes in. Top of list is highest priority. -->
 

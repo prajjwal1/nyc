@@ -221,7 +221,10 @@ export default function TopPicks({
       }
     })
     .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
-    .slice(0, 6);
+    // U4 (critic): discovery heroes capped at 4 (vs 6 for the higher-
+    // conviction Tonight/Following/Saved) so the ranked feed isn't buried
+    // ~30 cards down on mobile. Heroes preserved, just leaner.
+    .slice(0, 4);
   const recentIds = new Set(recentlyAdded.map((e) => e.id));
 
   // 🎉 This Weekend — low-key Saturday/Sunday social events.
@@ -280,7 +283,7 @@ export default function TopPicks({
         && isLowKeySocial(e)
       )
       .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
-      .slice(0, 6);
+      .slice(0, 4);  // U4: discovery hero capped at 4 (see Just Added)
     return { events: ev, ids: new Set(ev.map((e) => e.id)) };
   })();
   const weekendEvents = weekend.events;

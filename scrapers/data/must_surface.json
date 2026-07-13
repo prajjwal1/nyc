@@ -35,11 +35,11 @@
     },
     {
       "id": "openbookclub",
-      "why": "user: add openbookclub from IG",
-      "fields": ["account", "instagramAccount", "sourceUrl", "title"],
-      "needles": ["openbookclub", "open.bookclub", "open book club"],
+      "why": "user: add openbookclub (via Substack, 2026-07-13, since IG-blocked)",
+      "fields": ["account", "instagramAccount", "sourceUrl", "title", "description"],
+      "needles": ["openbookclub", "open.bookclub", "open book club", "openbookclubnyc"],
       "min": 1,
-      "hint": "IG seed; gated on IG sweep working (fb-174) — may only surface via cross-source enrichment until IG unblocks"
+      "hint": "Now sourced via substack.FEEDS openbookclubnyc.substack.com + curated host. Surfaces when a FUTURE-dated post lands (current posts are past-dated → filtered). Also gated on IG sweep (fb-174) for the IG path."
     }
   ]
 }

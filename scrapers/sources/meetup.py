@@ -22,6 +22,12 @@ SEARCH_URLS = [
     "https://www.meetup.com/find/?keywords=run%20club&location=us--ny--Brooklyn&source=EVENTS",
     "https://www.meetup.com/find/?keywords=running&location=us--ny--New%20York&source=EVENTS",
     "https://www.meetup.com/find/?keywords=fitness&location=us--ny--New%20York&source=EVENTS",
+    # Games the user explicitly named (backgammon/chess) — Meetup is the only
+    # viable supply (Eventbrite/lu.ma have ~zero real backgammon). Also feeds
+    # the NYC-Backgammon-Club sanity_check CRITICAL. (Chess also covered via
+    # the Chess Place Eventbrite organizer in user_curated_sources.)
+    "https://www.meetup.com/find/?keywords=backgammon&location=us--ny--New%20York&source=EVENTS",
+    "https://www.meetup.com/find/?keywords=chess&location=us--ny--New%20York&source=EVENTS",
 ]
 
 

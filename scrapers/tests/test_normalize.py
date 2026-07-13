@@ -390,6 +390,51 @@ class TestBackfillNeighborhood:
         _backfill_neighborhood_from_venue(events)
         assert events[0]["location"]["neighborhood"] == "east village"
 
+    def test_moma_ps1_to_long_island_city_not_midtown(self):
+        # fb-194: "MoMA PS1" contains "moma" as a substring; the bare "moma"
+        # table entry maps to midtown. The longest-match lookup + explicit
+        # "moma ps1" entry must win → long island city (Queens), not midtown.
+        events = [
+            {
+                "title": "Warm Up: BADSISTA/ TOCCORORO",
+                "location": {
+                    "name": "MoMA PS1",
+                    "neighborhood": "midtown",
+                    "address": "22-25 Jackson Ave, Queens, NY 11101",
+                },
+            }
+        ]
+        _backfill_neighborhood_from_venue(events)
+        assert events[0]["location"]["neighborhood"] == "long island city"
+
+    def test_bare_moma_still_midtown(self):
+        # The generic "moma" entry must still resolve MoMA (Manhattan flagship)
+        # to midtown — the longest-match change must not regress it.
+        events = [
+            {
+                "title": "Art Opening",
+                "location": {"name": "MoMA", "neighborhood": None, "address": ""},
+            }
+        ]
+        _backfill_neighborhood_from_venue(events)
+        assert events[0]["location"]["neighborhood"] == "midtown"
+
+    def test_queens_address_backfills_to_queens_not_manhattan(self):
+        # fb-194: a Queens address with no neighborhood keyword must resolve
+        # to a Queens tag via infer_neighborhood, never "manhattan".
+        events = [
+            {
+                "title": "Beer Garden Party",
+                "location": {
+                    "name": "Bohemian Beer Garden",
+                    "neighborhood": "manhattan",
+                    "address": "29-19 24th Ave, Queens, NY",
+                },
+            }
+        ]
+        _backfill_neighborhood_from_venue(events)
+        assert events[0]["location"]["neighborhood"] == "astoria"
+
     def test_address_fallback_when_no_venue_match(self):
         # No venue-name match → re-runs infer_neighborhood on address
         events = [

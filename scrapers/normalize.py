@@ -776,6 +776,11 @@ _VENUE_NAME_TO_NEIGHBORHOOD = {
     "bam": "fort greene",
     "the box": "lower east side",
     "the strand": "east village",
+    # fb-194: MoMA PS1 is in Long Island City, Queens — NOT midtown. It must
+    # be listed BEFORE bare "moma" so the longest-match venue lookup below
+    # picks the specific entry (bare "moma" is a substring of "moma ps1").
+    "moma ps1": "long island city",
+    "ps1 contemporary": "long island city",
     "moma": "midtown",
     "the met": "upper east side",
     "metropolitan museum of art": "upper east side",
@@ -854,11 +859,14 @@ def _backfill_neighborhood_from_venue(events: list[dict]) -> None:
         if explicit is not None:
             new_hood = explicit
         # Step 1: venue-name lookup (table default for single-location venues).
+        # fb-194: match the LONGEST venue key that is a substring of the name
+        # so a specific branch ("moma ps1") wins over a generic one ("moma").
         if new_hood is None:
+            best_venue = None
             for venue, hood in _VENUE_NAME_TO_NEIGHBORHOOD.items():
-                if venue in name:
+                if venue in name and (best_venue is None or len(venue) > len(best_venue)):
+                    best_venue = venue
                     new_hood = hood
-                    break
         # Step 2: address inference (always re-runs, can override stale tags).
         # Also fold in title + location.name so titles like
         # "The 9:30 Comedy Show - Williamsburg" recover their neighborhood
@@ -1544,7 +1552,7 @@ _DESCRIPTION_REQUIRED_SOURCES = frozenset(
 )
 
 
-def _is_curated_host(event: dict) -> bool:
+def _is_curated_host(event: dict, floor_context: bool = False) -> bool:
     """True if the event's sourceUrl matches a host in
     user_curated_sources.json, OR title/desc matches a title_hint.
     Curated hosts/hints are user-explicit high-signal sources — they
@@ -1556,11 +1564,20 @@ def _is_curated_host(event: dict) -> bool:
     URL is the only URL kept (e.g. Lululemon's eventbrite organizer
     'No Regrets Runners' event URL is /e/no-regrets-runners-tickets-X,
     not /o/14861961557, but the title hint 'no regrets runners' fires).
+
+    `floor_context=True` (called from the MIN_SCORE floor) excludes hosts
+    tagged `"floor_bypass": false` — "boost-only" sources that get the
+    ranking boost but must still clear the normal 0.55 quality floor. Used
+    for venues that book on-taste content AND off-taste late-night (e.g.
+    Elsewhere): boost their good shows without force-surfacing a thin
+    below-floor one-off (Critic S4, run 2026-07-13-2033).
     """
     try:
         from .ranking import _load_user_curated_sources
 
         cfg = _load_user_curated_sources()
+        hosts = cfg.get("hosts", {})
+        no_floor = cfg.get("no_floor_hosts", set())
         # Check both sourceUrl AND organizerUrl (events scraped from
         # organizer pages keep the org URL in organizerUrl while sourceUrl
         # points to the specific event slug).
@@ -1569,7 +1586,13 @@ def _is_curated_host(event: dict) -> bool:
             (event.get("organizerUrl") or "").lower(),
         )
         for url in urls:
-            if url and any(h in url for h in cfg.get("hosts", {})):
+            if not url:
+                continue
+            for h in hosts:
+                if h not in url:
+                    continue
+                if floor_context and h in no_floor:
+                    continue  # boost-only host: no floor bypass
                 return True
         # lu.ma curator-calendar URLs are hand-curated single-curator
         # calendars (lu.ma/<handle>, e.g. lu.ma/philosophy, lu.ma/thinkolio),
@@ -1624,7 +1647,8 @@ def _min_score_floor(event: dict, curated_ig: set[str] | None = None) -> float:
     # organizer, a lu.ma curator, a followed venue) get the lower curated
     # floor too, REGARDLESS of source. Generalizes "surface what I vet":
     # a vetted source's events shouldn't be trimmed by the 0.55 default.
-    if _is_curated_host(event):
+    # floor_context=True honors "floor_bypass": false (boost-only) hosts.
+    if _is_curated_host(event, floor_context=True):
         return IG_CURATED_MIN_SCORE
     if event.get("source") != "instagram":
         return DEFAULT_MIN_SCORE

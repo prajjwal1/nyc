@@ -828,10 +828,18 @@ def _load_user_curated_sources() -> dict:
                 k.lower(): float(v.get("score", 1.0))
                 for k, v in (raw.get("title_hints") or {}).items()
             },
+            # Hosts tagged "floor_bypass": false are "boost-only" — they get
+            # the ranking boost but must still clear the 0.55 MIN_SCORE floor
+            # (Critic S4: e.g. Elsewhere books on-taste AND off-taste late shows).
+            "no_floor_hosts": {
+                k.lower()
+                for k, v in (raw.get("hosts") or {}).items()
+                if isinstance(v, dict) and v.get("floor_bypass") is False
+            },
         }
         return _USER_CURATED_CACHE
     except Exception:
-        _USER_CURATED_CACHE = {"hosts": {}, "title_hints": {}}
+        _USER_CURATED_CACHE = {"hosts": {}, "title_hints": {}, "no_floor_hosts": set()}
         return _USER_CURATED_CACHE
 
 

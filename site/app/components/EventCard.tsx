@@ -180,7 +180,7 @@ function FeedCard({
     >
       <div className="flex gap-3 p-3">
         {event.imageUrl && !imgFailedF && (
-          <div className="shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-gray-100">
+          <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden bg-gray-100">
             <img
               src={event.imageUrl}
               alt=""

@@ -766,8 +766,33 @@ NYC_NEIGHBORHOODS = {
     "boerum hill": ["boerum hill", "atlantic ave"],
     "crown heights": ["crown heights", "franklin ave", "kingston ave", "nostrand ave"],
     "bed-stuy": ["bed-stuy", "bedford-stuyvesant", "tompkins ave"],
-    "long island city": ["long island city", "lic ", "vernon blvd", "jackson ave", "43rd ave queens"],
-    "astoria": ["astoria", "ditmars", "30th ave queens"],
+    "long island city": [
+        "long island city", "lic ", "vernon blvd", "jackson ave",
+        "43rd ave queens", "moma ps1", "jacx",
+        # LIC zip codes — the address rarely spells the neighborhood but
+        # the ZIP is unambiguous (fb-194). 11101/11109 = LIC/Hunters Point.
+        "11101", "11109",
+    ],
+    "astoria": [
+        "astoria", "ditmars", "30th ave queens", "steinway",
+        "bohemian beer garden",
+        "11102", "11103", "11105", "11106",  # Astoria ZIPs (fb-194)
+    ],
+    # Queens neighborhoods added fb-194: Queens venues were falling through
+    # infer_neighborhood's borough logic to "manhattan" (any "new york"/"ny"
+    # in the address matched). These give finer granularity; the "queens"
+    # borough fallback below is the safety net for the long tail.
+    "ridgewood": ["ridgewood", "wyckoff avenue", "trans-pecos", "trans pecos"],
+    "flushing": [
+        "flushing", "flushing meadows", "seaver way", "citi field",
+        "kupferberg", "colden auditorium",
+    ],
+    "rockaway": ["rockaway", "rockaway beach", "far rockaway"],
+    "forest hills": ["forest hills"],
+    "jamaica": ["jamaica ave", "jamaica avenue", "rufus king park", "parsons blvd"],
+    "corona": ["corona park", "flushing meadows corona"],
+    "woodside": ["woodside queens"],
+    "sunnyside": ["sunnyside queens"],
     "soho": ["soho", "spring st", "prince st", "greene st", "mercer st", "wooster st"],
     "noho": ["noho", "great jones st", "lafayette st nyc"],
     "tribeca": ["tribeca", "franklin st", "leonard st", "white st", "harrison st"],
@@ -865,6 +890,16 @@ def infer_neighborhood(address: str, *extras: str) -> str | None:
                 return hood
     if "brooklyn" in lower:
         return "brooklyn"
+    # fb-194: a Queens/Bronx/Staten-Island borough token must win BEFORE the
+    # generic "new york"/"ny" → manhattan fallthrough. Queens addresses almost
+    # always also contain "New York" (e.g. "22-25 Jackson Ave, Queens, NY"),
+    # so without this check they silently mis-resolved to "manhattan".
+    if re.search(r"\bqueens\b", lower):
+        return "queens"
+    if re.search(r"\bbronx\b", lower):
+        return "bronx"
+    if re.search(r"\bstaten island\b", lower):
+        return "staten island"
     if "manhattan" in lower or "new york" in lower or "ny " in lower:
         return "manhattan"
     return None

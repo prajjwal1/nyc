@@ -276,6 +276,37 @@ class TestInferNeighborhood:
         # An address with no neighborhood/borough keyword
         assert infer_neighborhood("Mars") is None
 
+    # fb-194: Queens venues previously fell through to "manhattan" because a
+    # Queens address ("22-25 Jackson Ave, Queens, NY 11101") also contains
+    # "New York"/"NY". A borough token now wins before the manhattan fallback,
+    # and Queens neighborhood keywords give finer granularity.
+    def test_moma_ps1_address_long_island_city(self):
+        assert infer_neighborhood("22-25 Jackson Ave, Queens, NY 11101") == "long island city"
+
+    def test_lic_zip_11101(self):
+        assert infer_neighborhood("5-25 46th Rd, NY 11101") == "long island city"
+
+    def test_forest_hills_stadium(self):
+        assert infer_neighborhood("1 Tennis Pl, Forest Hills, NY") == "forest hills"
+
+    def test_rockaway_beach(self):
+        assert infer_neighborhood("108-10 Rockaway Beach Dr., Rockaway Beach, NY") == "rockaway"
+
+    def test_flushing_meadows(self):
+        assert infer_neighborhood("Flushing Meadows Corona Park, Queens, NY") == "flushing"
+
+    def test_queens_borough_fallback_not_manhattan(self):
+        # A bare Queens address with no neighborhood keyword must resolve to
+        # "queens", NOT "manhattan" (the regression fb-194 fixes).
+        assert infer_neighborhood("70-10 Grand Avenue, Queens, NY 11378") == "queens"
+
+    def test_queens_beats_new_york_fallthrough(self):
+        # "New York" present but Queens borough token wins.
+        assert infer_neighborhood("41 Seaver Way, New York, NY (Queens)") == "flushing"
+
+    def test_bronx_borough_fallback(self):
+        assert infer_neighborhood("Crotona Park, Bronx, NY") == "bronx"
+
 
 # ---------------------------------------------------------------------------
 # parse_iso_to_local — UTC conversion to ET, date-only handling, malformed
