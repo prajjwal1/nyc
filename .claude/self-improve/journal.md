@@ -207,3 +207,26 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Verification:** 289 tests pass (20 new); next build clean; sanity_check 2 criticals (backgammon, IG-dominant) IDENTICAL to pre-run — pre-existing frozen-feed artifacts, not regressions. No revert. Probe/test-induced `scrapers/data/` churn reverted to HEAD.
 
 **Hypothesis for next round:** The binding constraint is now unambiguous and has held for 3 rounds: **a scrape must run.** Code quality is well ahead of what the frozen feed can demonstrate. Next action should be a residential-IP `run_all` (Critic + source-curator both endorse), then a round that MEASURES: fitness/dance count, philosophy surfacing (0→~7 expected), neighborhood-conflict count (→0), music CRITICAL_CHECK not cap-evicted, brooklyncontra + recurring run clubs present. Absent a scrape, further code-only rounds have sharply diminishing value.
+
+## 2026-07-13 2033 — run-id 2026-07-13-2033
+
+**Context:** first round on a FRESH feed after the /plan program landed (run coverage 26→46, conviction 17.5%→22.5%). Tackled the deferred critic items on real data.
+
+**Shipped (commit f53488a):**
+- fb-194 (APPROVE): Queens/LIC neighborhood mistag fix — `infer_neighborhood` borough checks before the manhattan fallthrough + Queens hoods (LIC/Astoria/Ridgewood/Flushing/Rockaway); `_VENUE_NAME_TO_NEIGHBORHOOD` moma ps1→LIC + longest-key-wins. Queens-mistag 14→1, null 15.6%. +11 tests. Critic adversarially verified no Brooklyn/Manhattan regression.
+- fb-196 (APPROVE, coverage gaps): Chess Place (o/115357260611) + Harlem Swing Dance (o/10662501681) Eventbrite organizers → curated; backgammon + chess Meetup keyword searches → meetup.py (also feeds NYC-Backgammon CRITICAL); Elsewhere organizer (o/105655500371) added boost-only.
+- Elsewhere floor_bypass:false (Critic S4 MODIFY): new `_is_curated_host(floor_context=True)` + `no_floor_hosts` set — boost-only curated hosts get +0.15 but still clear the 0.55 floor (bounds late-night leak). Verified.
+- openbookclub via Substack (user-directed, MODIFY): openbookclubnyc.substack.com → FEEDS + curated + must_surface. Non-roundup posts date to pubDate (no fabrication, verified); surfaces on future posts.
+- UI U3 (mobile responsive: card image w-20 sm:w-24, modal max-h-90vh sm:95vh) + U4 (discovery heroes 6→4, ranked feed surfaces sooner; heroes preserved).
+
+**Deferred:** fb-195 keyword-retirement (SOUND — taste 0.03 mean << keyword 0.12-0.15, zero negatives; would regress). UI U1 conviction chip + U2 aria/focus → task #6 (visual pass). Dreams D1→fb-199 (retire zero-hit keyword clusters), D2→fb-200 (ZIP-priority tie-break).
+
+**Rejected:** none (Critic APPROVE/MODIFY on all).
+
+**Feedback gate:** CLOSED (newest user-explicit 2026-07-09). Captured the /plan program (fb-197) + critic-incorporation (fb-198) + openbookclub-substack (fb-201).
+
+**Metric delta:** follow-graph 30.0%→30.0%; topic all-present (run 46); conviction 17.5%→22.5% (program landing, not this commit — this commit's source/neighborhood deltas land next scrape).
+
+**Verification:** 310 tests pass; sanity_check Critical failures 0 (IG reframed to warning last round); next build clean. Elsewhere floor_bypass verified (shell-survives, floor-gated, +0.15 boost).
+
+**Hypothesis for next round:** after the next scrape, verify backgammon/chess/swing/Elsewhere counts rise and MoMA→LIC. The keyword→taste retirement (fb-195/199) unblocks once the client syncs real engagement (adds negative taste examples + raises taste magnitude); until then the taste signal is follow-graph-seeded (positive-only). Consider the client-sync onboarding nudge to get real engagement flowing.

@@ -97,7 +97,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-194 — Queens/LIC neighborhood mistag (MoMA PS1 → "midtown") + ~19% null neighborhoods
 - created_at: 2026-07-13
 - source: user-inferred (Critic review of the deployed feed, 2026-07-09; deferred there)
-- status: open
+- status: addressed: f53488a (run 2026-07-13-2033 — borough checks before manhattan fallthrough + moma ps1→LIC longest-key-wins; Queens-mistag 14→1, null 15.6%, +11 tests, Critic-verified no regression)
 - body: The 2026-07-09 Critic review of the live feed (the review incorporated in f81a75f) flagged a Queens/LIC neighborhood-normalizer data bug: MoMA PS1 is tagged "midtown" (it's in Long Island City, Queens), and ~19% of events carry a null `location.neighborhood`. This is scrape-independent (present in the committed events.json), unit-testable, and degrades the neighborhood badge + neighborhood filter the user relies on. Distinct from fb-189 (which handled name/neighborhood CONTRADICTIONS via `_explicit_hood_in_text`) — this is a Queens/LIC-specific venue→neighborhood mapping gap plus a broader null-rate problem. Reuse the fb-189 Step-0 path and fb-193 venue-alias path.
 - "addressed" criterion: "MoMA PS1" (and any LIC/Queens venue token) resolves to a Queens neighborhood (long-island-city / queens), never "midtown"; a unit test covers "MoMA PS1 → long island city (not midtown)" + ≥2 more Queens cases; the null-neighborhood share in the committed events.json drops below 19% (target ≤15%).
 
@@ -111,7 +111,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-196 — Close user-named coverage gaps: backgammon/chess, underground-electronic, social dance
 - created_at: 2026-07-13
 - source: user-explicit (gaps the user named) via Critic review, 2026-07-09; deferred there
-- status: open
+- status: addressed: f53488a (run 2026-07-13-2033 — Chess Place + Harlem Swing Eventbrite organizers + backgammon/chess Meetup searches + Elsewhere organizer boost-only; each live-probed ≥5, exclusion-clean. Verify counts post-scrape.)
 - body: The 2026-07-09 Critic review surfaced three coverage gaps the user explicitly named that the feed still doesn't serve: (a) NO backgammon/chess events surface (nycbackgammonclub is a chronic sanity_check CRITICAL); (b) underground-electronic is thin beyond Warm Up — the user wants Nowadays / Public Records / Elsewhere depth; (c) social dance is contra-only (Brooklyn Contra from fb-180) with no other participatory social-dance source. These target the North Star directly (surface events the user would actually attend). Source-curator lane. Mind the exclusion constraints: HoY/KDC are user-EXCLUDED (fb-153, `user_excluded_sources.json`) — do NOT re-add them for the electronic gap; all IG adds must be fb-106-clean (no personal accounts); and do NOT propose IG-sweep-dependent paths (fb-174 is fleet-blocked).
 - "addressed" criterion: at least one live-probed parseable path (≥5 future events, exclusion-clean, fb-106-clean) added toward EACH of the three gaps, OR a live-verified honest negative per gap (path probed, <5 yield, root cause recorded) that defers that sub-item with a Critic-accepted rationale.
 
@@ -943,6 +943,26 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: addressed: f81a75f
 - body: Critic review of the deployed feed (2026-07-09) and its incorporation.
 - resolution: shipped in f81a75f. P1 — de-saturated ranking (score cap 0.55→0.32; wine 1.0→0.69, Warm Up 0.77→0.88) so a few sources stop dominating. P6 — taste cold-start from the follow-graph, so the Phase-C taste loop is now active on all 423 events (this is what unblocks fb-195). P5 — purged OCR-garbage and "Copy of" titles. Still-open items from the same review are tracked as fb-194 (Queens/LIC neighborhood P3) and fb-196 (coverage gaps P7).
+
+### fb-199 — Retire measured zero-hit keyword clusters (provable 0-delta first step of fb-195)
+- created_at: 2026-07-13
+- source: agent-proposal (dreamer-critic D1, DREAM-DEFER, run 2026-07-13-2033)
+- status: open
+- body: fb-195 (full keyword→taste retirement) was correctly deferred (taste magnitude 0.03 mean << keyword 0.12-0.15, no negative examples yet). The safe FIRST step: identify SOFT_PENALTY/SOCIAL/HIGH_VALUE keyword entries in quality.py that currently match ZERO events in the live feed (measured 0-hit), and retire those as a provable 0-delta cleanup — shrinks the hardcoded surface with no ranking change. Preserve fb-001..009 hard blocks.
+- files: `scrapers/quality.py`.
+
+### fb-200 — ZIP-code-priority tie-break in infer_neighborhood (corrupted-address edge)
+- created_at: 2026-07-13
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-07-13-2033)
+- status: open
+- body: fb-194 fixed Queens/LIC borough routing but ~1 residual conflict traced to a corrupted doubled address ("Queens, NE, Queens, NE"). Add a ZIP-code-priority tie-break in `infer_neighborhood`: when the address carries a NYC ZIP, map ZIP→neighborhood first (most authoritative), before token heuristics. Kills the corrupted-address edge + tightens accuracy generally.
+- files: `scrapers/utils/event_parser.py`.
+
+### fb-201 — Open Book Club added via Substack (openbookclubnyc.substack.com)
+- created_at: 2026-07-13
+- source: user-explicit ("we have to include openbookclub … lets add it through substack", 2026-07-13)
+- status: addressed: f53488a (run 2026-07-13-2033 — openbookclubnyc.substack.com → substack.FEEDS + curated host + must_surface entry updated. IG path (fb-191) is sweep-blocked; Substack is the working path. Non-roundup posts date to pubDate, no fabrication. Surfaces on a future-dated post; current 3 posts are past-dated.)
+- body: The user asked to add Open Book Club — a social book club (karaoke/magician/book nights) — via its Substack since the IG account is sweep-blocked (fb-174). Added the feed + curated the host so its events get the boost + survive filters.
 
 <!-- Append new feedback above this comment as it comes in. Top of list is highest priority. -->
 
