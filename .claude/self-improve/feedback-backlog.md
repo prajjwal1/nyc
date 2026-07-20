@@ -97,14 +97,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-202 — Top-of-feed saturated by one followed venue (Book Club Bar wall); other named tastes buried
 - created_at: 2026-07-20
 - source: user-explicit (verification request "verify the latest website / does it live up to expectations", 2026-07-20) → verification finding
-- status: open
+- status: addressed: edcfde6 (run 2026-07-20-1815 — `_apply_diversity_penalty` per-source+per-topic graduated demotion + floor-clamp + music-slot guarantee; top-12 source max 8→2, music/run/dance now surface, conviction leads top-4; +6 tests; CRITICAL_CHECKS not regressed)
 - body: On the deployed feed the top-of-feed is a monotone Book Club Bar wall (top-12 = 8 bookclubbar + 4 luma), and the user's music / underground-electronic taste (plus run-clubs, comedy, dance) is buried below the fold. One prolific followed venue is saturating the top because its per-source userFollowing boost fires on every one of its many events. This directly works against the North Star (surface events the user would ACTUALLY attend — which is a diverse mix, not one venue). Verification also confirmed: site up, 0 exclusion leakage, coverage broad; chess=0 (see fb-203); null-neighborhood ~17%.
 - "addressed" criterion: add a per-source / per-organizer diversity penalty in ranking (compute_score / rank_events) so no single venue owns the top of the feed — measurable as: no single source/organizer holds >N of the top-12 (target ≤3), AND at least one music/electronic AND one run-club/comedy/dance event surface in the top-12 on the current feed. No fb-001..009 hard rule relaxed.
 
 ### fb-203 — Missing-sources audit across the user's confirmed interests + chess yields 0
 - created_at: 2026-07-20
 - source: user-explicit ("find out if we are missing some sources we should have", 2026-07-20)
-- status: open
+- status: addressed: edcfde6 (run 2026-07-20-1815 — audit done: most interests over-covered; +6 Meetup keyword searches for thin gaps [salsa/swing/singles/social-club/hiking], live-probed ≥5 exclusion-clean. chess=0 was STALE — feed has 4 chess/9 backgammon, a positive not a bug. Underground-electronic is a visibility problem [fb-202], not supply [HoY/KDC excluded ceiling].)
 - body: User asked to find out whether we are missing sources we should have. Audit high-quality NYC sources we SHOULD have but don't, across the user's confirmed interests: music / underground-electronic, run-clubs, contra/social dance, literary, singles/social, games (incl. chess/backgammon), comedy, outdoors. Live-probe candidates and recommend/add the vetted ones. Also investigate WHY chess yields 0 despite last round adding the Chess Place Eventbrite organizer + chess Meetup keyword search (f53488a) — either downstream score/cap eviction, a parse gap, or a genuine no-future-events negative. Mind exclusion constraints: HoY/KDC user-EXCLUDED (do NOT re-add for the electronic gap); all IG adds fb-106-clean (no personal accounts); do NOT propose IG-sweep-dependent paths (fb-174 fleet-blocked).
 - "addressed" criterion: at least one live-probed parseable path (≥5 future events, exclusion-clean, fb-106-clean) added toward the thinnest confirmed-interest gaps, OR a live-verified honest negative per probed gap (root cause recorded); chess-0 root cause identified (fix OR documented negative with Critic-accepted rationale).
 
@@ -984,6 +984,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 - source: user-explicit ("we have to include openbookclub … lets add it through substack", 2026-07-13)
 - status: addressed: f53488a (run 2026-07-13-2033 — openbookclubnyc.substack.com → substack.FEEDS + curated host + must_surface entry updated. IG path (fb-191) is sweep-blocked; Substack is the working path. Non-roundup posts date to pubDate, no fabrication. Surfaces on a future-dated post; current 3 posts are past-dated.)
 - body: The user asked to add Open Book Club — a social book club (karaoke/magician/book nights) — via its Substack since the IG account is sweep-blocked (fb-174). Added the feed + curated the host so its events get the boost + survive filters.
+
+### fb-205 — Map view off existing lat/lng (D1)
+- created_at: 2026-07-20
+- source: agent-proposal (dreamer-critic D1, DREAM-DEFER, run 2026-07-20-1815)
+- status: open
+- body: A map view of upcoming events using the lat/lng many events already carry — lets the user browse by proximity to Williamsburg (their home neighborhood). Deferred: only a minority of events have coordinates today; would need a geocoding backfill (compounds with fb-194/fb-200 neighborhood work) before a map is worth building. Static/no-backend friendly (client-side map lib over the baked feed).
+- files: `site/app/components/` (new MapView), `site/app/page.tsx` (3rd view toggle).
 
 <!-- Append new feedback above this comment as it comes in. Top of list is highest priority. -->
 

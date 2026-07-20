@@ -230,3 +230,23 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Verification:** 310 tests pass; sanity_check Critical failures 0 (IG reframed to warning last round); next build clean. Elsewhere floor_bypass verified (shell-survives, floor-gated, +0.15 boost).
 
 **Hypothesis for next round:** after the next scrape, verify backgammon/chess/swing/Elsewhere counts rise and MoMA→LIC. The keyword→taste retirement (fb-195/199) unblocks once the client syncs real engagement (adds negative taste examples + raises taste magnitude); until then the taste signal is follow-graph-seeded (positive-only). Consider the client-sync onboarding nudge to get real engagement flowing.
+
+## 2026-07-20 1815 — run-id 2026-07-20-1815
+
+**Context:** first round after last round's live-site verification found the top-of-feed was a monotone Book Club Bar wall. Fixed that + a user-requested missing-sources audit + deferred a11y.
+
+**Shipped (commit edcfde6):**
+- fb-202 (FLAGSHIP, Critic MODIFY): `_apply_diversity_penalty` in ranking.rank_events — per-source + per-topic graduated demotion (first 2 free; SRC/TOP steps) with a floor-safe clamp (only re-orders survivors, never drops), PLUS a deterministic music-slot guarantee (graduated subtraction alone couldn't get music into top-12). `_diversity_primary_topic` reuses the categorizer + title-heuristic for run/dance co-tags + a DJ/electronic regex. Live-verified: top-12 source max 8→2, music + run/dance now surface, conviction still leads top-4. +6 unit tests. **Critic caught that the worker falsely reported this APPLIED — orchestrator applied the modified version.**
+- D2 (APPROVE-DREAM): DJ/electronic categorizer fix — word-bounded dj/b2b + "warm up" → music (event_parser).
+- fb-203 (missing-sources audit, user-requested): +6 Meetup keyword searches (salsa/swing/singles/social-club/hiking), live-probed ≥5, exclusion-clean. chess=0 was STALE (4 chess/9 backgammon now). Underground-electronic = visibility (fb-202) not supply (HoY/KDC excluded ceiling).
+- UI a11y: U1 "★ following" non-color conviction pill (WCAG 1.4.1); U2 focus-visible rings on @account buttons + Feed/Calendar toggles + aria-pressed. (Extends c2be7e8's Calendar a11y.)
+
+**Rejected:** none (Critic APPROVE/MODIFY on all). **Deferred:** fb-195 (keyword retirement — needs synced negatives); D1 map view → fb-205.
+
+**Feedback gate:** CLOSED (newest user-explicit today). Captured fb-202/203/204 + fb-205.
+
+**Metric delta:** follow-graph 30.0%→30.0%; topic all-present; conviction 22.7%→22.7% (this round is ranking/UX — reshuffles the top, doesn't change counts). CRITICAL_CHECKS all ✓ (music 151, free 101, WGB 45).
+
+**Verification:** 315 tests pass; sanity_check Critical failures 0; next build clean. Live-feed top-12 before/after verified (8→2 source max, music/run/dance present).
+
+**Hypothesis for next round:** the diversity cap + DJ-categorizer make the top a genuine mix; verify post-scrape that the deployed top-12 matches (it's re-scored each scrape). The keyword→taste retirement (fb-195/199) still awaits real synced engagement. Consider whether the music-slot's score-bump interacts oddly with the Following hero (it shouldn't — heroes filter by conviction, not raw score).
