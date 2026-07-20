@@ -241,6 +241,18 @@ function FeedCard({
           )}
 
           <div className="mt-1.5 flex flex-wrap items-center gap-1">
+            {/* U1 (a11y, WCAG 1.4.1): the follow-graph conviction signal was
+                color-only (sky ring). A compact "★ following" label makes it
+                perceivable without color. Following-tier only (affinity keeps
+                its ring) to avoid badge clutter. Not the removed prose ribbon. */}
+            {convictionFollow && (
+              <span
+                className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-sky-100 text-sky-800"
+                title="From an account you follow"
+              >
+                ★ following
+              </span>
+            )}
             {/* WS2: "matches your taste" — the payoff of the learning loop.
                 Shown only when the semantic taste model (fed by your synced
                 saves/attends) scores this event highly AND it isn't already a
@@ -323,7 +335,7 @@ function FeedCard({
                     trackAccountClick(event.instagramAccount);
                 onAccountClick?.(event.instagramAccount!);
                   }}
-                  className="hover:text-gray-700 hover:underline focus:outline-none"
+                  className="hover:text-gray-700 hover:underline rounded-sm focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none"
                   title={`See more from @${event.instagramAccount}`}
                 >
                   @{event.instagramAccount}
@@ -340,7 +352,7 @@ function FeedCard({
                     trackAccountClick(event.account);
                     onAccountClick?.(event.account!);
                   }}
-                  className="hover:text-gray-700 hover:underline focus:outline-none"
+                  className="hover:text-gray-700 hover:underline rounded-sm focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none"
                   title={`See more from @${event.account}`}
                 >
                   @{event.account}

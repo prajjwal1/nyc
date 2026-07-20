@@ -195,7 +195,8 @@ export default function Home() {
         <div className="bg-white rounded-xl border border-gray-200 p-1 flex mb-6 max-w-xs">
           <button
             onClick={() => setView("for-you")}
-            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+            aria-pressed={view === "for-you"}
+            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none ${
               view === "for-you" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-50"
             }`}
           >
@@ -203,7 +204,8 @@ export default function Home() {
           </button>
           <button
             onClick={() => setView("calendar")}
-            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+            aria-pressed={view === "calendar"}
+            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none ${
               view === "calendar" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-50"
             }`}
           >

@@ -28,6 +28,24 @@ SEARCH_URLS = [
     # the Chess Place Eventbrite organizer in user_curated_sources.)
     "https://www.meetup.com/find/?keywords=backgammon&location=us--ny--New%20York&source=EVENTS",
     "https://www.meetup.com/find/?keywords=chess&location=us--ny--New%20York&source=EVENTS",
+    # fb-203 missing-sources audit (2026-07-20): thin confirmed-interest gaps
+    # that had NO parseable supply. Eventbrite organizers + lu.ma category
+    # slugs for these are empty/one-off; the Meetup keyword lane is the only
+    # reliable ≥5-yield parseable path (live-probed, NYC-located, exclusion-
+    # clean — speed-dating title_hint still drops any speed-dating leak).
+    # Social/partner dance (salsa/swing) — user's contra & social-dance vector
+    # beyond the single Brooklyn Contra scraper. Live-probed salsa 27/25,
+    # swing 14/15 (NY/BK).
+    "https://www.meetup.com/find/?keywords=salsa%20dance&location=us--ny--New%20York&source=EVENTS",
+    "https://www.meetup.com/find/?keywords=salsa%20dance&location=us--ny--Brooklyn&source=EVENTS",
+    "https://www.meetup.com/find/?keywords=swing%20dancing&location=us--ny--New%20York&source=EVENTS",
+    # Singles / meet-people (top-priority interest). Live-probed 19/18 (NY/BK).
+    "https://www.meetup.com/find/?keywords=singles&location=us--ny--New%20York&source=EVENTS",
+    # Social clubs / mixers — meet-people social vector. Live-probed 28/28.
+    "https://www.meetup.com/find/?keywords=social%20club&location=us--ny--New%20York&source=EVENTS",
+    # Outdoors / hiking (confirmed interest, previously no dedicated supply).
+    # Live-probed 32/32 (NY/BK).
+    "https://www.meetup.com/find/?keywords=hiking&location=us--ny--New%20York&source=EVENTS",
 ]
 
 

@@ -900,6 +900,122 @@ def _user_curated_boost(event: dict) -> float:
     return min(_USER_CURATED_MAX_BOOST, boost * _USER_CURATED_MAX_BOOST)
 
 
+# --- fb-202: top-of-feed diversity (per-source + per-topic) ---------------
+# A single prolific followed venue (Book Club Bar) was saturating the top of
+# the feed (top-12 = 8 bookclubbar + 4 readingrhythms; 20/25 books), burying
+# the user's other named tastes. compute_score is per-event; rank_events sees
+# the whole batch, so the diversity pass lives here.
+
+# Graduated demotion: first 2 events from a source (and a topic) are free —
+# protects a followed venue's best 1-2 events (conviction preserved); the 3rd+
+# is progressively demoted so no one venue/topic owns the top.
+_SRC_STEPS = [0.0, 0.0, 0.16, 0.24, 0.32, 0.40]
+_TOP_STEPS = [0.0, 0.0, 0.10, 0.16, 0.22, 0.27, 0.31, 0.34]
+
+
+def _conviction(e: dict) -> bool:
+    return bool(
+        e.get("userSaved") or e.get("userTagged")
+        or e.get("userAffinity") or e.get("userFollowing")
+    )
+
+
+def _diversity_floor(e: dict) -> float:
+    # Conservative inline mirror of normalize._min_score_floor (avoids a
+    # circular import). Always <= the real floor, so the clamp can only be
+    # MORE lenient — it never drops an event the real gate would keep.
+    return 0.40 if _conviction(e) else 0.55
+
+
+def _diversity_source_key(e: dict) -> str:
+    acct = (e.get("account") or e.get("instagramAccount") or "").strip().lower()
+    if acct:
+        return f"acct:{acct}"
+    org = (e.get("organizerUrl") or e.get("organizer") or "").strip().lower()
+    if org:
+        return f"org:{org}"
+    loc = ((e.get("location") or {}).get("name") or "").strip().lower()
+    if loc:
+        return f"srcloc:{e.get('source','')}|{loc}"
+    return f"src:{e.get('source','')}"
+
+
+_MUSIC_DJ_RE = re.compile(r"\b(dj|techno|house music|warm up|b2b)\b", re.IGNORECASE)
+
+
+def _diversity_primary_topic(e: dict) -> str:
+    """One topic per event for the diversity cap. Reuse the categorizer's
+    categories first; only fall back to title heuristics for the KNOWN co-tag
+    case (run clubs / social dances are tagged `music` because their titles say
+    'Live Music'). DJ/electronic titles miscategorized as `other` count as music."""
+    cats = e.get("categories") or []
+    title = (e.get("title") or "").lower()
+    # Co-tag correction: run/dance hidden under a music tag.
+    if "run" in title and ("run club" in title or "run " in title or title.endswith("run")):
+        return "run"
+    if any(k in title for k in ("contra", "salsa", "swing danc", "lindy", "bachata")):
+        return "dance"
+    # DJ/electronic often lands in `other` — pull it into music (user's taste).
+    if _MUSIC_DJ_RE.search(title):
+        return "music"
+    for t in ("run", "dance", "comedy", "books", "music", "fitness", "wellness",
+              "outdoors", "singles", "parties", "food", "art", "games", "film"):
+        if t in cats:
+            return t
+    return cats[0] if cats else "other"
+
+
+def _apply_diversity_penalty(events: list[dict]) -> None:
+    """Demote 3rd+ events from the same source/topic (floor-clamped), then
+    guarantee ≥1 music/electronic event in the top-12 (fb-202)."""
+    by_src: dict[str, list[dict]] = {}
+    by_top: dict[str, list[dict]] = {}
+    for e in events:
+        by_src.setdefault(_diversity_source_key(e), []).append(e)
+        by_top.setdefault(_diversity_primary_topic(e), []).append(e)
+    srank = {}
+    for group in by_src.values():
+        for i, e in enumerate(sorted(group, key=lambda x: -(x.get("score") or 0))):
+            srank[id(e)] = i
+    trank = {}
+    for group in by_top.values():
+        for i, e in enumerate(sorted(group, key=lambda x: -(x.get("score") or 0))):
+            trank[id(e)] = i
+    for e in events:
+        raw = e.get("score") or 0.0
+        pen = (_SRC_STEPS[min(srank[id(e)], len(_SRC_STEPS) - 1)]
+               + _TOP_STEPS[min(trank[id(e)], len(_TOP_STEPS) - 1)])
+        if pen <= 0:
+            continue
+        new = raw - pen
+        floor = _diversity_floor(e)
+        if raw >= floor:  # floor-safe clamp: only re-order survivors
+            new = max(floor, new)
+        e["score"] = round(new, 3)
+
+    # Deterministic music-slot: graduated subtraction alone can't guarantee a
+    # music event in top-12 (highest music base often sits below the literary
+    # cluster). If none is present, bump the best floor-clearing music event
+    # just above the lowest non-conviction, non-music event in the top-12.
+    top_n = 12
+    ordered = sorted(events, key=lambda x: -(x.get("score") or 0))
+    top = ordered[:top_n]
+    if any(_diversity_primary_topic(e) == "music" for e in top):
+        return
+    music = [e for e in events
+             if _diversity_primary_topic(e) == "music" and (e.get("score") or 0) >= _diversity_floor(e)]
+    if not music:
+        return
+    best = max(music, key=lambda x: x.get("score") or 0)
+    if best in top:
+        return
+    displaceable = [e for e in top if not _conviction(e) and _diversity_primary_topic(e) != "music"]
+    if not displaceable:
+        return  # don't displace conviction; rare all-conviction top
+    victim = min(displaceable, key=lambda x: x.get("score") or 0)
+    best["score"] = round(min(1.0, (victim.get("score") or 0) + 0.005), 3)
+
+
 def rank_events(events: list[dict]) -> list[dict]:
     # WS2: build the semantic taste model once over the batch and stash a
     # per-event taste score (similarity to what the user saves/attends).
@@ -916,6 +1032,8 @@ def rank_events(events: list[dict]) -> list[dict]:
     for event in events:
         event["score"] = round(compute_score(event), 3)
         event["highlights"] = _compute_highlights(event)
+    # fb-202: diversity pass over the whole batch (after base scores).
+    _apply_diversity_penalty(events)
     return events
 
 

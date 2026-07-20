@@ -280,6 +280,11 @@ CATEGORY_KEYWORDS = {
         "blues", "reggae", "metal ", "punk ", "karaoke",
         "music venue", "live show", "vinyl night", "listening party",
         "house music", "techno", "indie band", "songwriter", "open mic",
+        # fb-202/D2: DJ/electronic sets were landing in `other`, making the
+        # user's underground-electronic taste invisible. "dj"/"b2b" are
+        # word-bounded (len<6, no space) so they won't false-match adjacent/
+        # budget; "(DJ)" tags via \bdj\b. "warm up" catches the MoMA PS1 series.
+        "dj", "b2b", "warm up",
         "music festival", "live performance", " performance", " set ",
         "sofar", "bowery", "elsewhere", "knockdown center",
         "lo-fi", "chillout", "ambient", "experimental music",
