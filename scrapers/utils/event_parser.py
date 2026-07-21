@@ -461,6 +461,15 @@ CATEGORY_KEYWORDS = {
         "swing dance", "ballroom", "tango social",
         "salsa festival", "salsa social", "bachata", "kizomba",
         "vogue ", "ballet ", "dance battle",
+        # fb-202 follow-up (2026-07-21): social/partner-dance events from the
+        # new salsa/swing Meetup searches were tagging other/parties/music, not
+        # dance. Add the bare genre + social/partner terms. "salsa"/"lindy"/
+        # "tango" are word-bounded (len>5 → \\b in infer_categories) so no
+        # 'salsafy'/'linda' false-match; "swing" stays multi-word to avoid
+        # 'swing set'/'mood swing'.
+        "salsa", "lindy", "tango", "merengue", "zouk", "forró", "forro",
+        "west coast swing", "east coast swing", "social dance",
+        "partner dance", "line dancing", "contra dance",
         # iter 178: 'Ecstatic Dance' (somatic / wellness-y dance event,
         # popular in NYC), 'Contemporary Dance Show', 'Hip Hop Class' all
         # missed before. Bare 'ecstatic dance' / 'contemporary dance'

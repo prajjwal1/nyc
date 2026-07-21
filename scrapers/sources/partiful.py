@@ -16,6 +16,7 @@ Robustness:
   - Clear logging — never a silent zero.
 """
 import json
+import os
 
 from bs4 import BeautifulSoup
 
@@ -24,6 +25,17 @@ from ..utils.event_parser import build_event, parse_date, parse_iso_to_local, in
 
 EXPLORE_URL = "https://partiful.com/explore/nyc"
 DISCOVER_URL = "https://partiful.com/discover"  # NYC-filtered fallback
+
+# Individual partiful.com/e/<id> event URLs harvested from IG bios/captions +
+# substack posts (e.g. Open Book Club's karaoke night) land in
+# discovered_urls.json but partiful's explore/discover pages never list them,
+# and the generic scraper can't parse partiful's __NEXT_DATA__. Resolve them
+# here via the same _parse_event_obj path so a followed curator's actual dated
+# event surfaces (fixes openbookclub — its Substack RSVP links to a Partiful).
+_DISCOVERED_URLS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "discovered_urls.json"
+)
+_MAX_DISCOVERED = 60  # bound the per-run individual-page fetches
 
 # Timezones we treat as NYC-area. Partiful tags each event with an IANA tz;
 # everything on /explore/nyc should be America/New_York, but guard anyway so a
@@ -54,8 +66,50 @@ async def scrape() -> list[dict]:
         print("[partiful] explore/nyc yielded 0 — falling back to /discover (NYC only)")
         _merge(events, seen, await _scrape_discover_nyc())
 
+    # Resolve individual /e/<id> URLs harvested from bios/captions/substacks.
+    disc = await _scrape_discovered_events(seen)
+    _merge(events, seen, disc)
+    if disc:
+        print(f"[partiful] +{len(disc)} events from harvested /e/ URLs")
+
     print(f"[partiful] {len(events)} NYC events")
     return events
+
+
+def _discovered_partiful_urls() -> list[str]:
+    try:
+        with open(_DISCOVERED_URLS_PATH) as f:
+            d = json.load(f)
+        items = d if isinstance(d, list) else d.get("urls", [])
+        urls = [(it["url"] if isinstance(it, dict) else it) for it in items]
+        return [u for u in urls if "partiful.com/e/" in u]
+    except Exception:
+        return []
+
+
+async def _scrape_discovered_events(seen: set[str]) -> list[dict]:
+    """Fetch each harvested partiful.com/e/<id> page and parse its event via
+    the same __NEXT_DATA__ path used for explore. Reuses _parse_event_obj so
+    NYC-gating, tz conversion, and categorization stay consistent."""
+    out: list[dict] = []
+    urls = [u for u in _discovered_partiful_urls() if u not in seen][:_MAX_DISCOVERED]
+    for url in urls:
+        html = await _fetch(url)
+        if not html:
+            continue
+        data = _next_data(html)
+        if not data:
+            continue
+        ev = (data.get("props", {}).get("pageProps", {}) or {}).get("event")
+        if not isinstance(ev, dict):
+            continue
+        try:
+            built = _parse_event_obj(ev)
+        except Exception:  # noqa: BLE001
+            continue
+        if built and built != "non-nyc":
+            out.append(built)
+    return out
 
 
 def _merge(events: list[dict], seen: set[str], new: list[dict]) -> None:
