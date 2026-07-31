@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.nyc-events.instagram-browser</string>
+  <key>ProgramArguments</key><array>
+    <string>REPO_PATH/venv/bin/python</string>
+    <string>-m</string><string>scrapers.instagram_browser_worker</string><string>--push</string>
+  </array>
+  <key>WorkingDirectory</key><string>REPO_PATH</string>
+  <key>StartInterval</key><integer>3600</integer>
+  <key>RunAtLoad</key><true/>
+  <key>StandardOutPath</key><string>/tmp/nyc-events-instagram.log</string>
+  <key>StandardErrorPath</key><string>/tmp/nyc-events-instagram.err</string>
+</dict></plist>

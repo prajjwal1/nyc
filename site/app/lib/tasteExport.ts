@@ -12,7 +12,7 @@
 //    once; stored in localStorage. Committing triggers CI → next scrape learns.
 //  - Fallback: download the JSON to drop into scrapers/data/ manually.
 
-import { loadProfile, loadSavedStubs } from "./interests";
+import { loadProfile, loadSavedStubs, loadHiddenStubs } from "./interests";
 
 const GH_TOKEN_KEY = "nyc-events:ghtoken:v1";
 const REPO = "prajjwal1/nyc";
@@ -26,6 +26,9 @@ export interface TasteSnapshot {
   hosts: Record<string, number>;
   negAccounts: Record<string, number>;
   negHosts: Record<string, number>;
+  negCategories: Record<string, number>;
+  timeBuckets: Record<string, number>;
+  dayOfWeek: Record<string, number>;
   // Liked-event TEXT — training examples for the semantic taste model (WS2,
   // scrapers/utils/taste.py). Derived from saved-event stubs.
   positiveTexts: string[];
@@ -34,13 +37,15 @@ export interface TasteSnapshot {
 
 export function buildTasteSnapshot(): TasteSnapshot {
   const p = loadProfile();
-  const positiveTexts = loadSavedStubs()
-    .map((s) =>
-      [s.title, s.locationName, s.instagramAccount]
+  const eventText = (s: ReturnType<typeof loadSavedStubs>[number]) =>
+      [s.title, s.description, ...(s.categories || []), s.locationName,
+       s.organizer, s.account, s.instagramAccount]
         .filter(Boolean)
         .join(" ")
-        .trim(),
-    )
+        .trim();
+  const positiveTexts = loadSavedStubs().map(eventText)
+    .filter((t) => t.length > 0);
+  const negativeTexts = loadHiddenStubs().map(eventText)
     .filter((t) => t.length > 0);
   return {
     updatedAt: new Date().toISOString(),
@@ -49,8 +54,11 @@ export function buildTasteSnapshot(): TasteSnapshot {
     hosts: p.hosts || {},
     negAccounts: p.negAccounts || {},
     negHosts: p.negHosts || {},
+    negCategories: p.negCategories || {},
+    timeBuckets: p.timeBuckets || {},
+    dayOfWeek: p.dayOfWeek || {},
     positiveTexts,
-    negativeTexts: [],
+    negativeTexts,
   };
 }
 
@@ -58,7 +66,9 @@ export function buildTasteSnapshot(): TasteSnapshot {
 export function hasTasteSignal(): boolean {
   const s = buildTasteSnapshot();
   const n = (o: Record<string, number>) => Object.keys(o).length;
-  return n(s.accounts) + n(s.hosts) + n(s.negAccounts) + n(s.negHosts) > 0;
+  return n(s.accounts) + n(s.categories) + n(s.hosts) + n(s.negAccounts) +
+    n(s.negCategories) + n(s.negHosts) + s.positiveTexts.length +
+    s.negativeTexts.length > 0;
 }
 
 export function getStoredToken(): string | null {

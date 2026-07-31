@@ -17,6 +17,7 @@ Robustness:
 """
 import json
 import os
+import asyncio
 
 from bs4 import BeautifulSoup
 
@@ -72,6 +73,7 @@ async def scrape() -> list[dict]:
     if disc:
         print(f"[partiful] +{len(disc)} events from harvested /e/ URLs")
 
+    events = await _hydrate_public_details(events)
     print(f"[partiful] {len(events)} NYC events")
     return events
 
@@ -81,6 +83,13 @@ def _discovered_partiful_urls() -> list[str]:
         with open(_DISCOVERED_URLS_PATH) as f:
             d = json.load(f)
         items = d if isinstance(d, list) else d.get("urls", [])
+        # New links are far more likely to point at future events. The old
+        # first-N behavior permanently favored May links over fresh saves.
+        items = sorted(
+            items,
+            key=lambda it: (it.get("discovered_at", "") if isinstance(it, dict) else ""),
+            reverse=True,
+        )
         urls = [(it["url"] if isinstance(it, dict) else it) for it in items]
         return [u for u in urls if "partiful.com/e/" in u]
     except Exception:
@@ -100,16 +109,45 @@ async def _scrape_discovered_events(seen: set[str]) -> list[dict]:
         data = _next_data(html)
         if not data:
             continue
-        ev = (data.get("props", {}).get("pageProps", {}) or {}).get("event")
+        pp = data.get("props", {}).get("pageProps", {}) or {}
+        ev = pp.get("event")
         if not isinstance(ev, dict):
             continue
         try:
-            built = _parse_event_obj(ev)
+            built = _parse_event_obj(ev, pp.get("hosts") or [])
         except Exception:  # noqa: BLE001
             continue
         if built and built != "non-nyc":
             out.append(built)
     return out
+
+
+async def _hydrate_public_details(events: list[dict], limit: int = 100) -> list[dict]:
+    """Hydrate public event pages for host identity and complete venue data."""
+    sem = asyncio.Semaphore(5)
+
+    async def one(existing: dict) -> dict:
+        if existing.get("organizer"):
+            return existing
+        url = existing.get("sourceUrl") or ""
+        if "/e/" not in url:
+            return existing
+        async with sem:
+            html = await _fetch(url)
+        data = _next_data(html) if html else None
+        pp = (data or {}).get("props", {}).get("pageProps", {}) or {}
+        raw = pp.get("event")
+        if not isinstance(raw, dict):
+            return existing
+        try:
+            hydrated = _parse_event_obj(raw, pp.get("hosts") or [])
+            return hydrated if isinstance(hydrated, dict) else existing
+        except Exception:
+            return existing
+
+    head = events[:limit]
+    hydrated = await asyncio.gather(*(one(e) for e in head))
+    return hydrated + events[limit:]
 
 
 def _merge(events: list[dict], seen: set[str], new: list[dict]) -> None:
@@ -215,7 +253,7 @@ async def _scrape_discover_nyc() -> list[dict]:
     return events
 
 
-def _parse_event_obj(event: dict):
+def _parse_event_obj(event: dict, hosts: list[dict] | None = None):
     """Build an event dict from a Partiful event object. Returns the event
     dict, the sentinel "non-nyc" to signal a cross-listed non-NYC event, or
     None when it isn't usable."""
@@ -269,6 +307,12 @@ def _parse_event_obj(event: dict):
 
     source_url = f"https://partiful.com/e/{event_id}" if event_id else EXPLORE_URL
 
+    hosts = [h for h in (hosts or []) if isinstance(h, dict)]
+    primary_host = next((h for h in hosts if h.get("isManaged")), hosts[0] if hosts else {})
+    organizer = (primary_host.get("name") or "").strip()
+    instagram = (((primary_host.get("socials") or {}).get("instagram") or {}).get("value") or "").strip()
+    organizer_url = f"https://www.instagram.com/{instagram}/" if instagram else None
+
     return build_event(
         title=title,
         description=full_desc,
@@ -281,4 +325,6 @@ def _parse_event_obj(event: dict):
         source_url=source_url,
         image_url=cover or None,
         categories=infer_categories(title, description),
+        organizer=organizer or None,
+        organizer_url=organizer_url,
     )

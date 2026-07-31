@@ -25,6 +25,10 @@ export interface Event {
   tasteScore?: number;
   instagramAccount?: string;
   account?: string;  // source-agnostic provenance alias (mirrors instagramAccount on IG)
+  organizer?: string;
+  organizerUrl?: string;
+  discoveryLane?: "personal" | "explore";
+  recommendationReasons?: string[];
   highlights?: string[];
   userSaved?: boolean;
   userTagged?: boolean;
@@ -88,6 +92,14 @@ export interface EventsData {
   events: Event[];
   lastUpdated: string;
   topAccounts?: TopAccount[];
+  ingestionStats?: {
+    sources: Record<string, number>;
+    discoveryLanes: Record<string, number>;
+    withDescription: number;
+    withOrganizer: number;
+    withLocation: number;
+    browserCapturedInstagram: number;
+  };
 }
 
 export const CATEGORY_CONFIG: Record<string, { label: string; color: string }> = {

@@ -7,6 +7,7 @@ event details (dates, times, locations, URLs), and handles multi-event posts.
 import os
 import re
 import time
+import json
 from datetime import datetime
 
 import instaloader
@@ -46,6 +47,79 @@ _ACCOUNT_CURSORS_CACHE: dict = {}
 # growth (velocity), and accumulating comment attendance signals. 3 strikes
 # the balance between freshness and rate-limit cost.
 _MIN_FRESH_REFETCH = 3
+
+_BROWSER_SNAPSHOT_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data",
+    "instagram_browser_snapshot.json",
+)
+
+
+def _scrape_browser_snapshot() -> list[dict]:
+    """Parse the sanitized snapshot produced by the local browser worker."""
+    try:
+        with open(_BROWSER_SNAPSHOT_PATH) as f:
+            snapshot = json.load(f)
+    except Exception:
+        return []
+    try:
+        from datetime import timezone
+
+        generated = datetime.fromisoformat((snapshot.get("generatedAt") or "").replace("Z", "+00:00"))
+        if generated.tzinfo is None:
+            generated = generated.replace(tzinfo=timezone.utc)
+        age_h = (datetime.now(timezone.utc) - generated).total_seconds() / 3600
+        if age_h > 6:
+            print(f"[instagram-browser] WARNING snapshot is {age_h:.1f}h old; retaining future events")
+    except Exception:
+        print("[instagram-browser] WARNING snapshot timestamp missing or invalid")
+
+    events: list[dict] = []
+    posts = snapshot.get("posts") or []
+    for raw in posts:
+        if not isinstance(raw, dict):
+            continue
+        owner = (raw.get("owner") or "").lower()
+        if not owner or not raw.get("url"):
+            continue
+        raw_date = raw.get("takenAt") or raw.get("capturedAt") or ""
+        try:
+            captured_date = datetime.fromisoformat(str(raw_date).replace("Z", "+00:00"))
+        except Exception:
+            captured_date = datetime.now()
+        post = {
+            "caption": raw.get("caption") or "",
+            "date": captured_date,
+            "url": raw.get("url") or "",
+            "image": raw.get("image") or "",
+            "all_images": raw.get("images") or ([raw.get("image")] if raw.get("image") else []),
+            "owner": owner,
+            "bio_url": raw.get("bioUrl") or "",
+            "likes": raw.get("likes") or 0,
+            "comments": raw.get("comments") or 0,
+            "tagged_users": raw.get("taggedUsers") or [],
+            "is_video": bool(raw.get("isVideo")),
+            "is_pinned": bool(raw.get("isPinned")),
+        }
+        extracted = _try_ocr_first_then_caption(post, owner)
+        lane = raw.get("lane") or "feed"
+        for event in extracted:
+            event["account"] = owner
+            if lane == "saved":
+                event["userSaved"] = True
+            elif lane == "tagged":
+                event["userTagged"] = True
+            elif lane == "story":
+                event["isStory"] = True
+                event["discoveredVia"] = "ig_story_browser"
+            elif lane == "highlight":
+                event["isHighlight"] = True
+                event["discoveredVia"] = "ig_highlight_browser"
+            event["browserCaptured"] = True
+        events.extend(extracted)
+    if posts:
+        print(f"[instagram-browser] {len(events)} events parsed from {len(posts)} captured posts")
+    return events
 
 
 from scrapers.utils.user_excluded import load_excluded_account_set as _load_excluded_account_set  # noqa: E402
@@ -103,13 +177,19 @@ def scrape_saved_only() -> list[dict]:
     global _AFFINITY_ACCOUNTS_CACHE
     _AFFINITY_ACCOUNTS_CACHE = _load_affinity_accounts()
 
+    browser_events = _scrape_browser_snapshot()
     loader = _get_authenticated_loader()
     if loader is None:
-        return []
+        return browser_events
 
     saved_events, _ = _scrape_saved_posts(loader)
     tagged_events, _ = _scrape_tagged_posts(loader)
-    return saved_events + tagged_events
+    return browser_events + saved_events + tagged_events
+
+
+def scrape_browser_only() -> list[dict]:
+    """CI-safe adapter for snapshots committed by the local worker."""
+    return _scrape_browser_snapshot()
 
 
 def scrape() -> list[dict]:
@@ -126,11 +206,12 @@ def scrape() -> list[dict]:
     _ACCOUNT_QUALITY_CACHE = _load_account_quality()
     print(f"[instagram] Cache: {len(_AFFINITY_ACCOUNTS_CACHE)} affinity, {len(_FOLLOWING_ACCOUNTS_CACHE)} following")
 
+    browser_events = _scrape_browser_snapshot()
     loader = _get_authenticated_loader()
     if loader is None:
-        return []
+        return browser_events
 
-    all_events: list[dict] = []
+    all_events: list[dict] = list(browser_events)
 
     # 1. Saved posts — highest priority since user curated them
     saved_events, saved_accounts = _scrape_saved_posts(loader)

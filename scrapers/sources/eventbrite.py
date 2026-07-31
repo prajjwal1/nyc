@@ -1,5 +1,6 @@
 import json
 import re
+import asyncio
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
@@ -59,6 +60,7 @@ _SUPPORTED_INTEREST_TOPICS = {
     "music", "food", "dance", "running", "fitness", "literary",
     "queer", "social", "poetry", "pottery", "jazz", "vinyl",
     "read",        # iter 145: maps to books slug
+    "outdoor",
 }
 
 # Special-case topic → eventbrite slug mapping where the literal topic
@@ -69,6 +71,7 @@ _TOPIC_URL_SLUG = {
     "book": "books",
     "read": "books",         # iter 145: same target as 'book'
     "park": "outdoor",
+    "outdoor": "outdoor",
     "literary": "books",
     "vinyl": "music",
     "jazz": "music",
@@ -96,7 +99,28 @@ def _build_interest_topic_urls() -> list[str]:
     except Exception:
         return []
 
-    topics = (prof.get("topic_counts") or {})
+    topics = dict(prof.get("topic_counts") or {})
+    # Explicit in-app behavior is more authoritative than username
+    # substrings. Fold category weights into the same URL planner.
+    engagement_path = os.path.join(os.path.dirname(profile_path), "user_engagement.json")
+    try:
+        with open(engagement_path) as f:
+            engagement = _json.load(f)
+        category_topics = {
+            "books": "book", "fitness": "fitness", "wellness": "wellness",
+            "music": "music", "comedy": "comedy", "food": "food",
+            "art": "art", "dance": "dance", "singles": "social",
+            "games": "gaming", "outdoors": "outdoor",
+        }
+        negative = engagement.get("negCategories") or {}
+        for category, weight in (engagement.get("categories") or {}).items():
+            if (negative.get(category, 0) or 0) >= (weight or 0):
+                continue
+            topic = category_topics.get(category)
+            if topic:
+                topics[topic] = topics.get(topic, 0) + max(1, weight or 0)
+    except Exception:
+        pass
     urls: list[str] = []
     seen_slugs: set[str] = set()
     for topic, count in sorted(topics.items(), key=lambda kv: -kv[1]):
@@ -112,60 +136,72 @@ def _build_interest_topic_urls() -> list[str]:
         urls.append(f"https://www.eventbrite.com/d/ny--brooklyn/{slug}--events/")
     return urls
 
-SEARCH_URLS = [
-    # Geographic + time (density)
+# Broad searches are intentionally bounded. The previous implementation hit
+# 40+ overlapping pages every run and routinely triggered Eventbrite 429s.
+_EXPLORATION_URLS = [
     "https://www.eventbrite.com/d/ny--new-york/events--this-week/",
     "https://www.eventbrite.com/d/ny--new-york/events--this-weekend/",
-    "https://www.eventbrite.com/d/ny--new-york/events--next-week/",
-    "https://www.eventbrite.com/d/ny--new-york/events--this-month/",
-    "https://www.eventbrite.com/d/ny--new-york/events--next-month/",
     "https://www.eventbrite.com/d/ny--brooklyn/events--this-week/",
     "https://www.eventbrite.com/d/ny--brooklyn/events--this-weekend/",
-    "https://www.eventbrite.com/d/ny--brooklyn/events--this-month/",
     "https://www.eventbrite.com/d/ny--new-york/free--events/",
-    # Category filters (NYC 20s-30s lifestyle)
-    "https://www.eventbrite.com/d/ny--new-york/music--events/",
-    "https://www.eventbrite.com/d/ny--new-york/comedy--events/",
-    "https://www.eventbrite.com/d/ny--new-york/food-and-drink--events/",
-    "https://www.eventbrite.com/d/ny--new-york/nightlife--events/",
-    "https://www.eventbrite.com/d/ny--new-york/arts--events/",
-    "https://www.eventbrite.com/d/ny--new-york/film-and-media--events/",
-    "https://www.eventbrite.com/d/ny--new-york/dating--events/",
-    "https://www.eventbrite.com/d/ny--new-york/performing-and-visual-arts--events/",
-    "https://www.eventbrite.com/d/ny--new-york/holiday--events/",
-    "https://www.eventbrite.com/d/ny--new-york/sports-and-fitness--events/",
-    "https://www.eventbrite.com/d/ny--new-york/health-and-wellness--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/music--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/comedy--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/nightlife--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/food-and-drink--events/",
-    # Williamsburg / specific neighborhoods
     "https://www.eventbrite.com/d/ny--williamsburg/events/",
-    "https://www.eventbrite.com/d/ny--bushwick/events/",
-    "https://www.eventbrite.com/d/ny--greenpoint/events/",
 ]
+
+
+def _search_plan() -> list[tuple[str, str]]:
+    """Twelve taste-driven queries plus six bounded exploration queries."""
+    personal = _build_interest_topic_urls()[:12]
+    # Cold-start fallback uses the highest-value categories, not all legacy
+    # URLs. Engagement/profile-driven URLs replace these as soon as available.
+    if not personal:
+        preferred = ("books", "music", "comedy", "sports-and-fitness", "arts", "food-and-drink")
+        personal = [
+            f"https://www.eventbrite.com/d/ny--new-york/{slug}--events/"
+            for slug in preferred
+        ]
+    out = [(u, "personal") for u in personal]
+    out.extend((u, "explore") for u in _EXPLORATION_URLS if u not in personal)
+    return out[:18]
+
+
+async def _fetch_with_backoff(url: str, attempts: int = 3) -> str:
+    last = None
+    for attempt in range(attempts):
+        try:
+            return await fetch_text(url)
+        except Exception as exc:  # Eventbrite exposes 429 through httpx text
+            last = exc
+            msg = str(exc).lower()
+            if "429" not in msg and "too many requests" not in msg:
+                raise
+            if attempt < attempts - 1:
+                await asyncio.sleep(1.0 * (2**attempt))
+    raise last  # type: ignore[misc]
 
 
 async def scrape() -> list[dict]:
     events = []
-    # Pull search-density pages first
-    for url in SEARCH_URLS:
+    # Personalized, bounded search pages first.
+    plan = _search_plan()
+    print(f"[eventbrite] bounded search plan: {len(plan)} pages")
+    consecutive_rate_limits = 0
+    for url, lane in plan:
         try:
-            html = await fetch_text(url)
-            events.extend(_parse_search_page(html, url))
+            html = await _fetch_with_backoff(url)
+            consecutive_rate_limits = 0
+            parsed = _parse_search_page(html, url)
+            for event in parsed:
+                event["discoveryLane"] = lane
+            events.extend(parsed)
+            await asyncio.sleep(0.25)
         except Exception as e:
             print(f"[eventbrite] Failed {url}: {e}")
-    # Topic search URLs built dynamically from the user's interest profile.
-    # Auto-evolves with the IG follow graph — no per-topic config edits.
-    interest_urls = _build_interest_topic_urls()
-    if interest_urls:
-        print(f"[eventbrite-interest] {len(interest_urls)} interest-driven URLs from profile")
-        for url in interest_urls:
-            try:
-                html = await fetch_text(url)
-                events.extend(_parse_search_page(html, url))
-            except Exception as e:
-                print(f"[eventbrite-interest] Failed {url}: {e}")
+            if "429" in str(e) or "too many requests" in str(e).lower():
+                consecutive_rate_limits += 1
+                if consecutive_rate_limits >= 2:
+                    print("[eventbrite] search circuit open after repeated 429s; preserving organizer lane/carryover")
+                    break
+    events = await _hydrate_shortlist(events, limit=40)
     # Then organizer pages — the seed list PLUS any organizer the user has
     # vetted in the preference layer (user_curated_sources.json). Organizer
     # pages don't ship JSON-LD; they hydrate from a __NEXT_DATA__ blob. Use
@@ -175,13 +211,50 @@ async def scrape() -> list[dict]:
         print(f"[eventbrite-organizer] {len(organizer_urls)} organizers ({len(organizer_urls)-len(ORGANIZER_URLS)} from preference layer)")
     for url in organizer_urls:
         try:
-            html = await fetch_text(url)
+            html = await _fetch_with_backoff(url)
             org_events = _parse_organizer_page(html, url)
             events.extend(org_events)
             print(f"[eventbrite-organizer] {url}: {len(org_events)} events")
         except Exception as e:
             print(f"[eventbrite-organizer] Failed {url}: {e}")
     return events
+
+
+async def _hydrate_shortlist(events: list[dict], limit: int = 40) -> list[dict]:
+    """Hydrate unique personal candidates missing organizer/detail fields."""
+    targets: list[str] = []
+    for event in events:
+        url = event.get("sourceUrl") or ""
+        if event.get("discoveryLane") != "personal" or "/e/" not in url:
+            continue
+        if url not in targets and not event.get("organizer"):
+            targets.append(url)
+        if len(targets) >= limit:
+            break
+    sem = asyncio.Semaphore(2)
+
+    async def hydrate(url: str):
+        async with sem:
+            try:
+                html = await _fetch_with_backoff(url, attempts=2)
+                parsed = _parse_search_page(html, url)
+                return parsed[0] if parsed else None
+            except Exception:
+                return None
+
+    details = await asyncio.gather(*(hydrate(url) for url in targets)) if targets else []
+    by_url = {url: event for url, event in zip(targets, details) if event}
+    if by_url:
+        print(f"[eventbrite] hydrated {len(by_url)}/{len(targets)} personalized event pages")
+    out = []
+    for event in events:
+        detail = by_url.get(event.get("sourceUrl"))
+        if detail:
+            detail["discoveryLane"] = event.get("discoveryLane", "personal")
+            out.append(detail)
+        else:
+            out.append(event)
+    return out
 
 
 def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
@@ -196,7 +269,10 @@ def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
         data = json.loads(m.group(1))
     except Exception:
         return []
-    upcoming = (data.get("props", {}).get("pageProps", {}).get("upcomingEvents") or [])
+    page_props = data.get("props", {}).get("pageProps", {})
+    upcoming = page_props.get("upcomingEvents") or []
+    organizer_obj = page_props.get("organizer") or {}
+    organizer_name = organizer_obj.get("name", "") if isinstance(organizer_obj, dict) else ""
     events: list[dict] = []
     for raw in upcoming:
         if not isinstance(raw, dict):
@@ -233,6 +309,8 @@ def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
             source_url=url,
             image_url=image,
             price=price,
+            organizer=(raw.get("organizer", {}).get("name") if isinstance(raw.get("organizer"), dict) else None) or organizer_name or None,
+            organizer_url=source_url,
         )
         # Stamp the organizer-page URL so downstream filters can match
         # it against user_curated_sources.json (the per-event sourceUrl
@@ -369,6 +447,12 @@ def _parse_ld_event(data: dict) -> dict | None:
         return None
     url = data.get("url", "")
 
+    organizer = data.get("organizer") or {}
+    if isinstance(organizer, list):
+        organizer = organizer[0] if organizer else {}
+    organizer_name = organizer.get("name", "") if isinstance(organizer, dict) else ""
+    organizer_url = organizer.get("url", "") if isinstance(organizer, dict) else ""
+
     price = parse_offers_price(data.get("offers"))
 
     image = data.get("image", "")
@@ -386,4 +470,6 @@ def _parse_ld_event(data: dict) -> dict | None:
         source_url=url,
         image_url=image if image else None,
         price=price,
+        organizer=organizer_name or None,
+        organizer_url=organizer_url or None,
     )

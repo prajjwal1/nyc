@@ -69,8 +69,11 @@ SYNC_SCRAPERS = [
 # Allow CI to skip slow sources for fast partial scrapes.
 SKIP_INSTAGRAM = os.environ.get("SKIP_INSTAGRAM", "0") == "1"
 IG_SAVED_ONLY = os.environ.get("IG_SAVED_ONLY", "0") == "1"
+IG_BROWSER_ONLY = os.environ.get("IG_BROWSER_ONLY", "0") == "1"
 
-if SKIP_INSTAGRAM:
+if IG_BROWSER_ONLY:
+    SYNC_SCRAPERS = [("instagram-browser", instagram.scrape_browser_only)]
+elif SKIP_INSTAGRAM:
     SYNC_SCRAPERS = []
 elif IG_SAVED_ONLY:
     # Quick-scrape mode: only user's saved posts (30s-2min).
@@ -120,6 +123,18 @@ async def main():
             )
     except Exception as exc:  # never let engagement ingest break a scrape
         print(f"[run_all] Engagement ingest skipped: {exc}")
+
+    # Query-generating scrapers (notably Eventbrite) must see this run's
+    # engagement. Previously the profile rebuilt only inside normalize(),
+    # after all source searches had already been chosen.
+    try:
+        from scrapers.utils.interest_profile import build_profile
+        import scrapers.utils.interest_profile as _ip
+
+        build_profile()
+        _ip._CACHE = None
+    except Exception as exc:
+        print(f"[run_all] Pre-scrape interest profile rebuild skipped: {exc}")
 
     # Snapshot previous events to preserve firstSeenAt across runs.
     previous_index = _load_previous_events_index(OUTPUT_PATH)
@@ -246,6 +261,7 @@ def _write_events(events: list[dict], primary_path: str = OUTPUT_PATH) -> None:
         # produced a 4-hour skew for users west of UTC).
         "lastUpdated": _dt.datetime.now(_dt.timezone.utc).isoformat(),
         "topAccounts": _top_ig_accounts(events, n=12),
+        "ingestionStats": _ingestion_stats(events),
     }
     for path in (primary_path, SITE_PUBLIC_PATH):
         os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -253,6 +269,24 @@ def _write_events(events: list[dict], primary_path: str = OUTPUT_PATH) -> None:
         with open(tmp, "w") as f:
             json.dump(payload, f, indent=2)
         os.replace(tmp, path)
+
+
+def _ingestion_stats(events: list[dict]) -> dict:
+    """Small public health summary for coverage/completeness monitoring."""
+    from collections import Counter
+
+    sources = Counter(e.get("source") or "unknown" for e in events)
+    lanes = Counter(e.get("discoveryLane") or "unclassified" for e in events)
+    return {
+        "sources": dict(sources),
+        "discoveryLanes": dict(lanes),
+        "withDescription": sum(bool(e.get("description")) for e in events),
+        "withOrganizer": sum(bool(e.get("organizer") or e.get("account")) for e in events),
+        "withLocation": sum(bool((e.get("location") or {}).get("name")) for e in events),
+        "browserCapturedInstagram": sum(
+            e.get("source") == "instagram" and bool(e.get("browserCaptured")) for e in events
+        ),
+    }
 
 
 def _top_ig_accounts(events: list[dict], n: int = 12) -> list[dict]:

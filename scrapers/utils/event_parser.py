@@ -1317,6 +1317,8 @@ def build_event(
     categories: list[str] | None = None,
     lat: float | None = None,
     lng: float | None = None,
+    organizer: str | None = None,
+    organizer_url: str | None = None,
 ) -> dict:
     if isinstance(event_date, date):
         date_str = event_date.isoformat()
@@ -1388,6 +1390,13 @@ def build_event(
         "price": price or extract_price(f"{title} {description}"),
         "scrapedAt": datetime.now().isoformat(),
     }
+    # Source-agnostic organizer identity is essential for personalization.
+    # Platform hostnames (luma.com/eventbrite.com/partiful.com) are too broad
+    # to learn from; the actual organizer is the stable preference signal.
+    if organizer:
+        out["organizer"] = organizer.strip()
+    if organizer_url:
+        out["organizerUrl"] = organizer_url
     # Only include extraImages when present — keeps non-carousel events lean
     if extras:
         out["extraImages"] = extras[:9]  # cap at 9 (10 slides total) to bound payload

@@ -37,6 +37,21 @@ function relDay(iso: string | undefined): string | null {
   }
 }
 
+function preferenceAccount(event: Event): string | undefined {
+  return event.account || event.organizer || event.instagramAccount;
+}
+
+function preferenceStub(event: Event) {
+  return {
+    id: event.id, title: event.title, description: event.description,
+    categories: event.categories, date: event.date, sourceUrl: event.sourceUrl,
+    imageUrl: event.imageUrl, instagramAccount: event.instagramAccount,
+    account: event.account, organizer: event.organizer,
+    organizerUrl: event.organizerUrl, accountVerified: event.accountVerified,
+    startTime: event.startTime, locationName: event.location?.name,
+  };
+}
+
 // iter 215: removed grid variant + MediaFirstCard variant. All events
 // now render through FeedCard for uniform sizing — IG events no longer
 // take 4-5x the vertical space of other sources.
@@ -127,23 +142,24 @@ function FeedCard({
       e.preventDefault();
       onSelect(event);
     } else {
-      trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl, event.startTime, event.date);
+      trackEventOpen(preferenceAccount(event), event.categories, event.organizerUrl || event.sourceUrl, event.startTime, event.date);
     }
   };
   const handleHide = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     hideEvent(event.id, {
-      account: event.instagramAccount,
+      account: preferenceAccount(event),
       categories: event.categories,
-      sourceUrl: event.sourceUrl,
+      sourceUrl: event.organizerUrl || event.sourceUrl,
+      stub: preferenceStub(event),
     });
     onHide?.(event.id);
   };
   const handleSaveF = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setSavedF(toggleSavedLocal(event.id, { account: event.instagramAccount, categories: event.categories, sourceUrl: event.sourceUrl, stub: { id: event.id, title: event.title, date: event.date, sourceUrl: event.sourceUrl, imageUrl: event.imageUrl, instagramAccount: event.instagramAccount, accountVerified: event.accountVerified, startTime: event.startTime, locationName: event.location?.name } }));
+    setSavedF(toggleSavedLocal(event.id, { account: preferenceAccount(event), categories: event.categories, sourceUrl: event.organizerUrl || event.sourceUrl, stub: preferenceStub(event) }));
   };
   // Show description only if it's high-signal (not just a fragment of a larger caption)
   const desc = event.description?.trim();
@@ -237,6 +253,12 @@ function FeedCard({
           {showDesc && (
             <p className="mt-1.5 text-xs text-gray-600 line-clamp-2 leading-relaxed">
               {desc}
+            </p>
+          )}
+
+          {event.recommendationReasons?.[0] && (
+            <p className="mt-1 text-[10px] font-medium text-indigo-600">
+              {event.discoveryLane === "explore" ? "↗ " : "✨ "}{event.recommendationReasons[0]}
             </p>
           )}
 

@@ -209,6 +209,8 @@ export function trackEventOpen(
 export function interestBoost(
   event: {
     instagramAccount?: string;
+    account?: string;
+    organizer?: string;
     categories?: string[];
     sourceUrl?: string;
     startTime?: string | null;
@@ -217,7 +219,7 @@ export function interestBoost(
   profile: InterestProfile,
 ): number {
   let boost = 0;
-  const acct = (event.instagramAccount || "").toLowerCase();
+  const acct = (event.account || event.organizer || event.instagramAccount || "").toLowerCase();
   if (acct && profile.accounts[acct]) {
     const n = profile.accounts[acct];
     // saturating: 1 click +0.04, 3 clicks +0.07, 10+ +0.10
@@ -321,6 +323,11 @@ export interface SavedEventStub {
   sourceUrl: string;
   imageUrl: string | null;
   instagramAccount?: string;
+  account?: string;
+  organizer?: string;
+  organizerUrl?: string;
+  categories?: string[];
+  description?: string;
   accountVerified?: boolean;
   startTime?: string | null;
   locationName?: string;
@@ -521,6 +528,21 @@ export function markAttended(
 // Hidden-events memory — explicit negative signal. Stored separately from
 // the interest profile so user can clear interests without un-hiding.
 const HIDDEN_KEY = "nyc-events:hidden:v1";
+const HIDDEN_CACHE_KEY = "nyc-events:hiddenCache:v1";
+
+function loadHiddenCache(): Record<string, SavedEventStub> {
+  if (typeof window === "undefined") return {};
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(HIDDEN_CACHE_KEY) || "{}");
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+export function loadHiddenStubs(): SavedEventStub[] {
+  return Object.values(loadHiddenCache());
+}
 
 function loadHidden(): Set<string> {
   if (typeof window === "undefined") return new Set();
@@ -551,12 +573,22 @@ export function hideEvent(
     account?: string;
     categories?: string[];
     sourceUrl?: string;
+    stub?: SavedEventStub;
   }
 ): void {
   const s = loadHidden();
   if (s.has(eventId)) return; // already hidden — don't double-bump negatives
   s.add(eventId);
   saveHidden(s);
+  if (hint?.stub) {
+    const cache = loadHiddenCache();
+    cache[eventId] = hint.stub;
+    try {
+      window.localStorage.setItem(HIDDEN_CACHE_KEY, JSON.stringify(cache));
+    } catch {
+      // ignore quota errors
+    }
+  }
 
   // Feed the hide into the negative profile so other events from the
   // same account/categories/host get deboosted in subsequent rankings.
@@ -583,6 +615,7 @@ export function isHidden(eventId: string): boolean {
 export function unhideAll(): void {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(HIDDEN_KEY);
+  window.localStorage.removeItem(HIDDEN_CACHE_KEY);
 }
 
 export function topAccounts(profile: InterestProfile, n = 5): string[] {
@@ -611,6 +644,7 @@ export function clearAllLocalState(): void {
     window.localStorage.removeItem(SAVED_KEY);
     window.localStorage.removeItem(SAVED_CACHE_KEY);
     window.localStorage.removeItem(HIDDEN_KEY);
+    window.localStorage.removeItem(HIDDEN_CACHE_KEY);
     window.localStorage.removeItem(OPENED_KEY);
     window.localStorage.removeItem(SEARCH_HISTORY_KEY);
     window.localStorage.removeItem("nyc-events:lastVisitedAt:v1");

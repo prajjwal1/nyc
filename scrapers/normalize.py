@@ -2188,6 +2188,18 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     # still gets tagged outdoors. This pass scans location.name too.
     _strip_outdoors_indoor_arena(events)
 
+    # Label every event as a strong taste match or an exploration pick.  The
+    # ranker consumes this lane as a bounded preference signal; the same
+    # metadata powers cap selection and recommendation explanations.
+    try:
+        from .utils.discovery_plan import annotate_event, preference_snapshot
+
+        _prefs = preference_snapshot()
+        for _event in events:
+            annotate_event(_event, _prefs)
+    except Exception as exc:
+        print(f"[normalize] discovery-lane annotation skipped: {exc}")
+
     events = rank_events(events)
 
     # Drop low-score events — every event must justify its position.
@@ -2245,8 +2257,11 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
             if cap is None or len(src_events) <= cap:
                 capped.extend(src_events)
                 continue
-            src_events.sort(key=lambda e: e.get("score", 0), reverse=True)
-            capped.extend(src_events[:cap])
+            # Reserve 30% for adjacent discovery instead of allowing a cap to
+            # become a pure popularity contest. Strong matches retain 70%.
+            from .utils.discovery_plan import select_mixed
+
+            capped.extend(select_mixed(src_events, cap))
             cap_drops += len(src_events) - cap
         if cap_drops:
             print(

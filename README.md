@@ -2,6 +2,28 @@
 
 > **Goal**: be the central place for New Yorkers to **discover cool spots, see which places/events are trending, find events to socialize and meet people, and have fun experiences**. Replace scrolling Instagram entirely. The user is single, lives in Williamsburg, is in their 20s/30s. Hosted at `github.com/prajjwal1/nyc`, deployed to GitHub Pages.
 
+## Local Instagram browser worker
+
+Instagram's unofficial account-feed API is no longer reliable, so the primary
+IG collector can run through a normal authenticated browser on the user's Mac.
+Cookies remain in a dedicated local browser profile and are never committed.
+
+```bash
+venv/bin/pip install -r scrapers/requirements-local.txt
+venv/bin/playwright install chromium
+# macOS, for local flyer/story OCR:
+brew install tesseract
+venv/bin/python -m scrapers.instagram_browser_worker --login
+venv/bin/python -m scrapers.instagram_browser_worker --headed  # smoke test
+venv/bin/python -m scrapers.instagram_browser_worker --push
+```
+
+For hourly collection, copy `scrapers/instagram-browser-launchagent.plist.example`
+to `~/Library/LaunchAgents/com.nyc-events.instagram-browser.plist`, replace
+`REPO_PATH` with this checkout's absolute path, then load it with `launchctl`.
+The worker captures saved/tagged posts, priority accounts, rotating curated
+accounts, and stories; the committed snapshot triggers CI processing.
+
 **Two content kinds, one feed**:
 - **Dated events** — concerts, parties, classes, run clubs, etc. (most content)
 - **Cool spots** — evergreen place picks from `IG_SPOTS_ACCOUNTS` (`@wherethefuckdowego`, `@infatuation`, etc.). Always-current; render with teal "🗺 Spot" pill instead of date pill.

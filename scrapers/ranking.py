@@ -271,6 +271,10 @@ def compute_score(event: dict) -> float:
         # WS2: semantic taste — similarity to events the user saves/attends.
         # Bounded in taste.py (+0.15/−0.10); 0.0 until the user syncs taste.
         + (event.get("tasteScore", 0.0) or 0.0)
+        # Shared query/candidate planner. Small enough that exploration can
+        # still win on quality; strong enough to sustain the intended 70/30
+        # personal-versus-adjacent mix near the top of the feed.
+        + (0.04 if event.get("discoveryLane") == "personal" else 0.0)
     )
     # dow_fit/tod_fit/geo_proximity can be negative; preserve their downward
     # signal but cap the positive sum so ranking still differentiates.

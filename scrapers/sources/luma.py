@@ -4,84 +4,10 @@ from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
 
-LUMA_PAGES = [
-    # /nyc is Luma's curated NYC discover page — broad mix, ~20 events per fetch.
-    "https://lu.ma/nyc",
-    # Per-category NYC pages — each yields 20 events with strong topical
-    # overlap to user interests (social/parties = meet-people focus).
-    "https://lu.ma/nyc/social",
-    "https://lu.ma/nyc/parties",
-    "https://lu.ma/nyc/networking",
-    "https://lu.ma/nyc/community",
-    "https://lu.ma/nyc/music",
-    "https://lu.ma/nyc/art",
-    "https://lu.ma/nyc/food",
-    "https://lu.ma/nyc/comedy",
-    "https://lu.ma/nyc/literary",
-    "https://lu.ma/nyc/wellness",
-    "https://lu.ma/nyc/fitness",
-    "https://lu.ma/nyc/running",
-    "https://lu.ma/nyc/run-clubs",
-    "https://lu.ma/nyc/yoga",
-    # Singles / meeting people — directly serves user's primary goal
-    "https://lu.ma/nyc/dating",
-    "https://lu.ma/nyc/singles",
-    "https://lu.ma/nyc/queer",
-    # Music / creative
-    "https://lu.ma/nyc/jazz",
-    "https://lu.ma/nyc/dance",
-    "https://lu.ma/nyc/open-mic",
-    "https://lu.ma/nyc/acoustic",
-    "https://lu.ma/nyc/photography",
-    "https://lu.ma/nyc/design",
-    # Active / outdoor social
-    "https://lu.ma/nyc/climbing",
-    "https://lu.ma/nyc/biking",
-    "https://lu.ma/nyc/volleyball",
-    # Hands-on social workshops
-    "https://lu.ma/nyc/pottery",
-    "https://lu.ma/nyc/craft",
-    "https://lu.ma/nyc/workshops",
-    # Food
-    "https://lu.ma/nyc/breakfast",
-    "https://lu.ma/nyc/brunch",
-    "https://lu.ma/nyc/mixology",
-    # Games + meditation (aligns with games/wellness interests)
-    "https://lu.ma/nyc/gaming",
-    "https://lu.ma/nyc/meditation",
-    # Nightlife / drinks (social goal)
-    "https://lu.ma/nyc/nightlife",
-    "https://lu.ma/nyc/drinks",
-    "https://lu.ma/nyc/bars",
-    "https://lu.ma/nyc/cocktails",
-    "https://lu.ma/nyc/wine",
-    "https://lu.ma/nyc/beer",
-    "https://lu.ma/nyc/wine-tasting",
-    # Outdoors
-    "https://lu.ma/nyc/parks",
-    "https://lu.ma/nyc/hiking",
-    # Special / one-time
-    "https://lu.ma/nyc/festivals",
-    "https://lu.ma/nyc/markets",
-    "https://lu.ma/nyc/pop-up",
-    "https://lu.ma/nyc/immersive",
-    "https://lu.ma/nyc/screenings",
-    # Meet-people-tier social
-    "https://lu.ma/nyc/supper-club",
-    "https://lu.ma/nyc/friends",
-    "https://lu.ma/nyc/social-clubs",
-    # Talks / panels
-    "https://lu.ma/nyc/panel",
-    "https://lu.ma/nyc/talks",
-    # Dance — meet-people via partner-dance
-    "https://lu.ma/nyc/salsa",
-    "https://lu.ma/nyc/bachata",
-    "https://lu.ma/nyc/swing",
-    # Music / comedy specifics (cross-tag verification with /music, /comedy)
-    "https://lu.ma/nyc/live-music",
-    "https://lu.ma/nyc/jazz-clubs",
-    "https://lu.ma/nyc/comedy-shows",
-    # Curator calendars (verified live)
+LUMA_CURATOR_PAGES = [
+    # Curator calendars are real distinct sources. In contrast, Luma now
+    # aliases every /nyc/<category> route back to the same generic 20-event
+    # /nyc list, so the old 60-route fan-out created ~1,200 duplicates.
     "https://lu.ma/nycbackgammonclub",
     "https://lu.ma/readingrhythms-manhattan",
     "https://lu.ma/litclub.nyc",
@@ -93,14 +19,40 @@ LUMA_PAGES = [
     "https://lu.ma/philosophy",
 ]
 
+LUMA_PAGES = ["https://lu.ma/nyc", *LUMA_CURATOR_PAGES]
+
 
 async def scrape() -> list[dict]:
     """Scrape Luma calendars.  Retries with browser-like headers on 403."""
+    import asyncio
+
     events = []
     for url in LUMA_PAGES:
         page_events = await _try_luma_url(url)
         events.extend(page_events)
-    return events
+
+    # The discover listing intentionally omits descriptions. Hydrate its
+    # canonical event URLs before normalization; otherwise the description
+    # shell filter discards the entire broad Luma discovery lane.
+    canonical = {}
+    for event in events:
+        url = event.get("sourceUrl") or ""
+        if url not in LUMA_CURATOR_PAGES and re.match(
+            r"https?://(?:lu\.ma|luma\.com)/[a-z0-9-]{6,}/?$", url, re.I
+        ):
+            canonical[url] = event
+    sem = asyncio.Semaphore(4)
+
+    async def hydrate(url: str) -> dict:
+        async with sem:
+            detailed = await _try_luma_url(url)
+        if detailed:
+            return detailed[0]
+        return canonical[url]
+
+    hydrated = await asyncio.gather(*(hydrate(url) for url in canonical)) if canonical else []
+    by_url = {e.get("sourceUrl"): e for e in hydrated}
+    return [by_url.get(e.get("sourceUrl"), e) for e in events]
 
 
 async def _try_luma_url(url: str) -> list[dict]:
@@ -361,6 +313,13 @@ def _parse_ld_json(data: dict, source_url: str) -> dict | list | None:
         if p and float(p) > 0:
             price = f"${p}"
 
+    canonical_url = data.get("url") or data.get("@id") or source_url
+    organizer = data.get("organizer") or {}
+    if isinstance(organizer, list):
+        organizer = organizer[0] if organizer else {}
+    organizer_name = organizer.get("name", "") if isinstance(organizer, dict) else ""
+    organizer_url = organizer.get("url", "") if isinstance(organizer, dict) else ""
+
     return build_event(
         title=title,
         description=desc,
@@ -370,9 +329,11 @@ def _parse_ld_json(data: dict, source_url: str) -> dict | list | None:
         location_name=loc_name,
         address=loc_addr,
         source="luma",
-        source_url=source_url,
+        source_url=canonical_url,
         image_url=image if image else None,
         price=price,
+        organizer=organizer_name or None,
+        organizer_url=organizer_url or None,
     )
 
 

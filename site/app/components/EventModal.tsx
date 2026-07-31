@@ -175,6 +175,11 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
                   ✨ your taste
                 </span>
               )}
+            {event.recommendationReasons?.slice(0, 2).map((reason) => (
+              <span key={reason} className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-sky-50 text-sky-700">
+                {event.discoveryLane === "explore" ? "↗" : "✨"} {reason}
+              </span>
+            ))}
             {event.price === "free" && (
               <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800">
                 FREE
@@ -339,7 +344,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
               href={event.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackEventOpen(event.instagramAccount, event.categories, event.sourceUrl, event.startTime, event.date)}
+              onClick={() => trackEventOpen(event.account || event.organizer || event.instagramAccount, event.categories, event.organizerUrl || event.sourceUrl, event.startTime, event.date)}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
             >
               Open original
@@ -349,7 +354,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
             </a>
             <button
               onClick={() => {
-                setSaved(toggleSavedLocal(event.id, { account: event.instagramAccount, categories: event.categories, sourceUrl: event.sourceUrl, stub: { id: event.id, title: event.title, date: event.date, sourceUrl: event.sourceUrl, imageUrl: event.imageUrl, instagramAccount: event.instagramAccount, accountVerified: event.accountVerified, startTime: event.startTime, locationName: event.location?.name } }));
+                setSaved(toggleSavedLocal(event.id, { account: event.account || event.organizer || event.instagramAccount, categories: event.categories, sourceUrl: event.organizerUrl || event.sourceUrl, stub: { id: event.id, title: event.title, description: event.description, categories: event.categories, date: event.date, sourceUrl: event.sourceUrl, imageUrl: event.imageUrl, instagramAccount: event.instagramAccount, account: event.account, organizer: event.organizer, organizerUrl: event.organizerUrl, accountVerified: event.accountVerified, startTime: event.startTime, locationName: event.location?.name } }));
               }}
               className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border text-sm font-medium transition-colors ${
                 saved
@@ -377,9 +382,10 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
             <button
               onClick={() => {
                 hideEvent(event.id, {
-                  account: event.instagramAccount,
+                  account: event.account || event.organizer || event.instagramAccount,
                   categories: event.categories,
-                  sourceUrl: event.sourceUrl,
+                  sourceUrl: event.organizerUrl || event.sourceUrl,
+                  stub: { id: event.id, title: event.title, description: event.description, categories: event.categories, date: event.date, sourceUrl: event.sourceUrl, imageUrl: event.imageUrl, instagramAccount: event.instagramAccount, account: event.account, organizer: event.organizer, organizerUrl: event.organizerUrl, accountVerified: event.accountVerified, startTime: event.startTime, locationName: event.location?.name },
                 });
                 onClose();
               }}
@@ -400,9 +406,9 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
             const todayStr = new Date().toISOString().split("T")[0];
             if (!event.date || event.date >= todayStr) return null;
             const hint = {
-              account: event.instagramAccount,
+              account: event.account || event.organizer || event.instagramAccount,
               categories: event.categories,
-              sourceUrl: event.sourceUrl,
+              sourceUrl: event.organizerUrl || event.sourceUrl,
             };
             return (
               <div className="mt-3 flex flex-wrap items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm">
