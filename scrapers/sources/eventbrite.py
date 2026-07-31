@@ -1,6 +1,7 @@
 import json
 import re
 import asyncio
+import os
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
@@ -159,9 +160,11 @@ def _search_plan() -> list[tuple[str, str]]:
             f"https://www.eventbrite.com/d/ny--new-york/{slug}--events/"
             for slug in preferred
         ]
-    out = [(u, "personal") for u in personal]
+    quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
+    personal_limit, total_limit = (8, 12) if quick else (12, 18)
+    out = [(u, "personal") for u in personal[:personal_limit]]
     out.extend((u, "explore") for u in _EXPLORATION_URLS if u not in personal)
-    return out[:18]
+    return out[:total_limit]
 
 
 async def _fetch_with_backoff(url: str, attempts: int = 3) -> str:
@@ -201,7 +204,8 @@ async def scrape() -> list[dict]:
                 if consecutive_rate_limits >= 2:
                     print("[eventbrite] search circuit open after repeated 429s; preserving organizer lane/carryover")
                     break
-    events = await _hydrate_shortlist(events, limit=40)
+    detail_limit = 10 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else 40
+    events = await _hydrate_shortlist(events, limit=detail_limit)
     # Then organizer pages — the seed list PLUS any organizer the user has
     # vetted in the preference layer (user_curated_sources.json). Organizer
     # pages don't ship JSON-LD; they hydrate from a __NEXT_DATA__ blob. Use

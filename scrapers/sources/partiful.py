@@ -73,7 +73,8 @@ async def scrape() -> list[dict]:
     if disc:
         print(f"[partiful] +{len(disc)} events from harvested /e/ URLs")
 
-    events = await _hydrate_public_details(events)
+    detail_limit = 25 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else 100
+    events = await _hydrate_public_details(events, limit=detail_limit)
     print(f"[partiful] {len(events)} NYC events")
     return events
 

@@ -71,6 +71,14 @@ SKIP_INSTAGRAM = os.environ.get("SKIP_INSTAGRAM", "0") == "1"
 IG_SAVED_ONLY = os.environ.get("IG_SAVED_ONLY", "0") == "1"
 IG_BROWSER_ONLY = os.environ.get("IG_BROWSER_ONLY", "0") == "1"
 
+# The old "quick" workflow still launched every scraper despite its name,
+# which made the richer detail-hydration pipeline exceed the 15-minute job
+# timeout. Quick mode refreshes only fast/high-churn platforms and carries all
+# other still-future events forward; the four-hour full sweep remains broad.
+if IG_SAVED_ONLY:
+    _QUICK_ASYNC = {"luma", "eventbrite", "partiful", "substack"}
+    ASYNC_SCRAPERS = [(name, fn) for name, fn in ASYNC_SCRAPERS if name in _QUICK_ASYNC]
+
 if IG_BROWSER_ONLY:
     SYNC_SCRAPERS = [("instagram-browser", instagram.scrape_browser_only)]
 elif SKIP_INSTAGRAM:
@@ -186,6 +194,11 @@ async def main():
         # rotate, so stale ones age out via filter_future.
         "partiful",
     }
+    if IG_SAVED_ONLY:
+        # A quick refresh must never erase sources it intentionally skipped.
+        CARRYOVER_SOURCES.update(
+            e.get("source") for e in previous_index.values() if e.get("source")
+        )
     carryover = [
         e for e in previous_index.values() if e.get("source") in CARRYOVER_SOURCES
     ]
