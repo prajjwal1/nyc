@@ -45,6 +45,18 @@ ROTATING_PER_RUN = 10
 POSTS_PER_PROFILE = 2
 MAX_CAPTURED_PER_RUN = 40
 
+# Small, taste-balanced core instead of letting generic aggregator affinity
+# accounts consume every protected slot. Each maps to a stated user interest
+# and several are Williamsburg/Greenpoint-local.
+BROWSER_CORE_ACCOUNTS = (
+    "greenpointers",
+    "nowadays.nyc",
+    "northbrooklynrunners",
+    "reading_rhythms",
+    "nycbackgammonclub",
+    "greenpointcomedyclub",
+)
+
 
 def _browser_launch_options() -> dict:
     configured = os.environ.get("NYC_EVENTS_IG_BROWSER", "")
@@ -81,12 +93,14 @@ def _account_plan(rotation_cursor: int | None = None) -> tuple[list[str], list[s
         row = quality.get((account or "").lower(), {})
         return (row.get("events_emitted", 0) or 0) / max(1, row.get("posts_scraped", 0) or 0)
 
-    priority = list(dict.fromkeys(
-        str(a).lower() for a in [*affinity, *follows, *IG_ACCOUNTS] if a
+    affinity_set = {str(x).lower() for x in affinity}
+    protected = list(BROWSER_CORE_ACCOUNTS[:PROTECTED_PER_RUN])
+    remaining = list(dict.fromkeys(
+        str(a).lower()
+        for a in [*affinity, *follows, *IG_ACCOUNTS]
+        if a and str(a).lower() not in protected
     ))
-    priority.sort(key=lambda a: (a not in {str(x).lower() for x in affinity}, -yield_score(a)))
-    protected = priority[:PROTECTED_PER_RUN]
-    remaining = priority[PROTECTED_PER_RUN:]
+    remaining.sort(key=lambda a: (a not in affinity_set, -yield_score(a)))
     # Persist the rotation cursor across runs. Deriving it from hour-of-day
     # visited only chunks 0-3 forever, leaving most of a large account pool
     # completely unseen.
