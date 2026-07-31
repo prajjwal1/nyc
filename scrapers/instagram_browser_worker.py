@@ -18,7 +18,9 @@ import json
 import os
 import re
 import subprocess
+import sys
 import time
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -39,6 +41,13 @@ STATE = Path(os.environ.get(
 LANE_PRIORITY = {"feed": 0, "highlight": 1, "story": 2, "tagged": 3, "saved": 4}
 
 
+def _browser_launch_options() -> dict:
+    configured = os.environ.get("NYC_EVENTS_IG_BROWSER", "")
+    mac_chrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    executable = configured or (mac_chrome if sys.platform == "darwin" and Path(mac_chrome).exists() else "")
+    return {"executable_path": executable} if executable else {}
+
+
 def _json(name: str, default):
     try:
         with open(DATA / name) as f:
@@ -47,7 +56,14 @@ def _json(name: str, default):
         return default
 
 
-def _account_plan() -> tuple[list[str], list[str]]:
+def _state() -> dict:
+    try:
+        return json.loads(STATE.read_text())
+    except Exception:
+        return {}
+
+
+def _account_plan(rotation_cursor: int | None = None) -> tuple[list[str], list[str], int]:
     affinity = _json("user_affinity_accounts.json", {}).get("accounts", [])
     discovered = _json("discovered_accounts.json", {}).get("accounts", [])
     follows = [
@@ -66,10 +82,13 @@ def _account_plan() -> tuple[list[str], list[str]]:
     priority.sort(key=lambda a: (a not in {str(x).lower() for x in affinity}, -yield_score(a)))
     protected = priority[:25]
     remaining = priority[25:]
-    # Deterministic six-hour rotation through the remaining curated pool.
-    chunk = (datetime.now().hour // 6) % max(1, (len(remaining) + 29) // 30)
-    rotating = remaining[chunk * 30:(chunk + 1) * 30]
-    return protected, rotating
+    # Persist the rotation cursor across runs. Deriving it from hour-of-day
+    # visited only chunks 0-3 forever, leaving most of a large account pool
+    # completely unseen.
+    chunks = max(1, (len(remaining) + 29) // 30)
+    cursor = int(_state().get("rotationCursor", 0) if rotation_cursor is None else rotation_cursor) % chunks
+    rotating = remaining[cursor * 30:(cursor + 1) * 30]
+    return protected, rotating, (cursor + 1) % chunks
 
 
 def _post_links(page, url: str, limit: int) -> list[str]:
@@ -224,6 +243,23 @@ def _sanitize_posts(posts: list[dict]) -> list[dict]:
     return out
 
 
+def _merge_snapshot_posts(current: list[dict], previous: list[dict], limit: int = 1500) -> list[dict]:
+    """Retain sanitized candidates while the long-tail account plan rotates."""
+    merged = _dedupe([*current, *previous])
+    merged.sort(key=lambda p: p.get("capturedAt") or p.get("takenAt") or "", reverse=True)
+    return merged[:limit]
+
+
+def _assert_logged_in(page) -> None:
+    page.goto("https://www.instagram.com/", wait_until="domcontentloaded", timeout=45_000)
+    page.wait_for_timeout(1200)
+    if "/accounts/login" in page.url or page.locator('input[name="username"]').count():
+        raise RuntimeError(
+            "Instagram browser session is not logged in; run "
+            "`venv/bin/python -m scrapers.instagram_browser_worker --login`"
+        )
+
+
 def collect(headless: bool = True) -> dict:
     try:
         from playwright.sync_api import sync_playwright
@@ -231,14 +267,16 @@ def collect(headless: bool = True) -> dict:
         raise SystemExit("Install local dependencies: pip install -r scrapers/requirements-local.txt") from exc
 
     PROFILE.mkdir(parents=True, exist_ok=True)
-    protected, rotating = _account_plan()
+    protected, rotating, next_cursor = _account_plan()
     posts: list[dict] = []
     failures = 0
     with sync_playwright() as p:
         context = p.chromium.launch_persistent_context(
             str(PROFILE), headless=headless, viewport={"width": 1280, "height": 1000},
+            **_browser_launch_options(),
         )
         page = context.pages[0] if context.pages else context.new_page()
+        _assert_logged_in(page)
         # Explicit user signals first.
         for lane, url, limit in (
             ("saved", f"https://www.instagram.com/{IG_USERNAME}/saved/", 50),
@@ -270,14 +308,25 @@ def collect(headless: bool = True) -> dict:
             if story:
                 posts.append(story)
         context.close()
+    sanitized = _sanitize_posts(posts)
+    previous = _json("instagram_browser_snapshot.json", {}).get("posts", [])
+    retained = _merge_snapshot_posts(sanitized, previous)
+    owner_counts = Counter(p.get("owner", "unknown") for p in retained)
+    lane_counts = Counter(p.get("lane", "unknown") for p in retained)
     return {
         "version": 1,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
-        "posts": _sanitize_posts(posts),
+        "posts": retained,
         "diagnostics": {
             "protectedScheduled": len(protected),
             "rotatingScheduled": len(rotating),
+            "rotationCursor": next_cursor,
             "failures": failures,
+            "capturedThisRun": len(sanitized),
+            "retainedPosts": len(retained),
+            "uniqueOwners": len(owner_counts),
+            "laneCounts": dict(lane_counts),
+            "topOwners": dict(owner_counts.most_common(10)),
         },
     }
 
@@ -287,7 +336,9 @@ def login() -> None:
 
     PROFILE.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
-        context = p.chromium.launch_persistent_context(str(PROFILE), headless=False)
+        context = p.chromium.launch_persistent_context(
+            str(PROFILE), headless=False, **_browser_launch_options()
+        )
         page = context.pages[0] if context.pages else context.new_page()
         page.goto("https://www.instagram.com/accounts/login/")
         print("Log in to Instagram in the browser, then press Enter here.")
@@ -296,12 +347,18 @@ def login() -> None:
 
 
 def write_snapshot(snapshot: dict) -> None:
+    if not snapshot.get("posts"):
+        raise RuntimeError("Refusing to replace the Instagram snapshot with zero event candidates")
     DATA.mkdir(parents=True, exist_ok=True)
     tmp = SNAPSHOT.with_suffix(".json.tmp")
     tmp.write_text(json.dumps(snapshot, indent=2))
     tmp.replace(SNAPSHOT)
     STATE.parent.mkdir(parents=True, exist_ok=True)
-    STATE.write_text(json.dumps({"lastSuccess": snapshot["generatedAt"], "posts": len(snapshot["posts"])}, indent=2))
+    STATE.write_text(json.dumps({
+        "lastSuccess": snapshot["generatedAt"],
+        "posts": len(snapshot["posts"]),
+        "rotationCursor": snapshot.get("diagnostics", {}).get("rotationCursor", 0),
+    }, indent=2))
 
 
 def push_snapshot() -> None:

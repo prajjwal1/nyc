@@ -1,7 +1,7 @@
 import json
 
 from scrapers.sources import eventbrite, instagram, luma
-from scrapers.instagram_browser_worker import _sanitize_posts
+from scrapers.instagram_browser_worker import _account_plan, _merge_snapshot_posts, _sanitize_posts
 
 
 def test_luma_listing_uses_canonical_url_and_organizer():
@@ -74,3 +74,29 @@ def test_browser_snapshot_does_not_commit_arbitrary_saved_content():
     clean = _sanitize_posts(posts)
     assert [p["owner"] for p in clean] == ["venue"]
     assert "cookie" not in clean[0]
+
+
+def test_browser_account_rotation_advances_past_daily_four_chunks(monkeypatch):
+    accounts = [
+        {"username": f"account{i}", "discovered_via": "user_following"}
+        for i in range(200)
+    ]
+    monkeypatch.setattr(
+        "scrapers.instagram_browser_worker._json",
+        lambda name, default: (
+            {"accounts": accounts} if name == "discovered_accounts.json"
+            else {"accounts": []} if name == "user_affinity_accounts.json"
+            else {}
+        ),
+    )
+    protected, rotating, next_cursor = _account_plan(rotation_cursor=5)
+    assert len(protected) == 25
+    assert rotating[0] == "account175"
+    assert next_cursor == 6
+
+
+def test_browser_snapshot_retains_other_rotation_candidates():
+    current = [{"url": "https://instagram.com/p/new/", "owner": "new", "capturedAt": "2026-07-31"}]
+    previous = [{"url": "https://instagram.com/p/old/", "owner": "old", "capturedAt": "2026-07-30"}]
+    merged = _merge_snapshot_posts(current, previous)
+    assert [post["owner"] for post in merged] == ["new", "old"]
