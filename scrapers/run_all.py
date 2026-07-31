@@ -95,9 +95,18 @@ OUTPUT_PATH = os.path.join(
 async def run_scraper(name: str, scrape_fn) -> list[dict]:
     try:
         print(f"[{name}] Scraping...")
-        events = await scrape_fn()
+        # A single blocked platform must not consume the entire quick-scrape
+        # job. Full sweeps remain unrestricted; quick runs preserve the
+        # previous source payload when this deadline is hit.
+        if IG_SAVED_ONLY:
+            events = await asyncio.wait_for(scrape_fn(), timeout=150)
+        else:
+            events = await scrape_fn()
         print(f"[{name}] Found {len(events)} events")
         return events
+    except asyncio.TimeoutError:
+        print(f"[{name}] TIMEOUT after 150s; using carried-over events")
+        return []
     except Exception as e:
         print(f"[{name}] ERROR: {e}")
         return []

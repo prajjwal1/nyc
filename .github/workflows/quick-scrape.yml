@@ -1,8 +1,9 @@
 name: Quick Scrape (no Instagram)
 
 # A fast 5-10 minute scrape that runs only the reliable, fast sources
-# (Eventbrite, Substack, Luma, Partiful) PLUS just the user's
-# saved IG posts (~30s).  Skips the heavy account-by-account IG sweep.
+# (Eventbrite, Substack, Luma, Partiful). Instagram is carried forward here;
+# fresh IG coverage comes from the browser-snapshot workflow, avoiding a
+# synchronous saved-post request blocking the whole quick refresh.
 # Runs every 30 min so the live site always has fresh events.
 
 on:
@@ -43,10 +44,11 @@ jobs:
           mkdir -p ~/.config/instaloader
           echo "$IG_SESSION_B64" | base64 -d > ~/.config/instaloader/session-${IG_USERNAME:-prajfb}
 
-      - name: Run quick scrapers (saved IG only)
+      - name: Run bounded quick scrapers
         env:
           IG_USERNAME: ${{ secrets.IG_USERNAME }}
-          IG_SAVED_ONLY: "1"  # only saved IG posts, not full sweep
+          IG_SAVED_ONLY: "1"  # activates bounded quick-source mode
+          SKIP_INSTAGRAM: "1" # preserve existing IG; browser worker refreshes it
         run: python -m scrapers.run_all
 
       - name: Sanity check + stats logging
