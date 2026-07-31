@@ -161,7 +161,7 @@ def _search_plan() -> list[tuple[str, str]]:
             for slug in preferred
         ]
     quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
-    personal_limit, total_limit = (8, 12) if quick else (12, 18)
+    personal_limit, total_limit = (4, 6) if quick else (12, 18)
     out = [(u, "personal") for u in personal[:personal_limit]]
     out.extend((u, "explore") for u in _EXPLORATION_URLS if u not in personal)
     return out[:total_limit]
@@ -204,7 +204,7 @@ async def scrape() -> list[dict]:
                 if consecutive_rate_limits >= 2:
                     print("[eventbrite] search circuit open after repeated 429s; preserving organizer lane/carryover")
                     break
-    detail_limit = 10 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else 40
+    detail_limit = 0 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else 40
     events = await _hydrate_shortlist(events, limit=detail_limit)
     # Then organizer pages — the seed list PLUS any organizer the user has
     # vetted in the preference layer (user_curated_sources.json). Organizer
@@ -226,6 +226,8 @@ async def scrape() -> list[dict]:
 
 async def _hydrate_shortlist(events: list[dict], limit: int = 40) -> list[dict]:
     """Hydrate unique personal candidates missing organizer/detail fields."""
+    if limit <= 0:
+        return events
     targets: list[str] = []
     for event in events:
         url = event.get("sourceUrl") or ""

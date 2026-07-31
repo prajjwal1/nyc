@@ -73,7 +73,7 @@ async def scrape() -> list[dict]:
     if disc:
         print(f"[partiful] +{len(disc)} events from harvested /e/ URLs")
 
-    detail_limit = 25 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else 100
+    detail_limit = 0 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else 100
     events = await _hydrate_public_details(events, limit=detail_limit)
     print(f"[partiful] {len(events)} NYC events")
     return events
@@ -102,7 +102,8 @@ async def _scrape_discovered_events(seen: set[str]) -> list[dict]:
     the same __NEXT_DATA__ path used for explore. Reuses _parse_event_obj so
     NYC-gating, tz conversion, and categorization stay consistent."""
     out: list[dict] = []
-    urls = [u for u in _discovered_partiful_urls() if u not in seen][:_MAX_DISCOVERED]
+    max_discovered = 5 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else _MAX_DISCOVERED
+    urls = [u for u in _discovered_partiful_urls() if u not in seen][:max_discovered]
     for url in urls:
         html = await _fetch(url)
         if not html:

@@ -34,10 +34,11 @@ async def scrape() -> list[dict]:
     # The discover listing intentionally omits descriptions. Hydrate its
     # canonical event URLs before normalization; otherwise the description
     # shell filter discards the entire broad Luma discovery lane.
+    quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
     canonical = {}
     for event in events:
         url = event.get("sourceUrl") or ""
-        if url not in LUMA_CURATOR_PAGES and re.match(
+        if not quick and url not in LUMA_CURATOR_PAGES and re.match(
             r"https?://(?:lu\.ma|luma\.com)/[a-z0-9-]{6,}/?$", url, re.I
         ):
             canonical[url] = event
