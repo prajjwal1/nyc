@@ -217,6 +217,11 @@ async def main():
     carryover = [
         e for e in previous_index.values() if e.get("source") in CARRYOVER_SOURCES
     ]
+    if IG_BROWSER_ONLY:
+        # Re-parse the current sanitized snapshot as the source of truth for
+        # browser-derived events. Otherwise rejected false positives survive
+        # forever through generic Instagram carryover.
+        carryover = [e for e in carryover if not e.get("browserCaptured")]
     if carryover:
         all_events.extend(carryover)
         # Per-source count for monitoring.
