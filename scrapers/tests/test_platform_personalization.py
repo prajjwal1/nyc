@@ -90,8 +90,8 @@ def test_browser_account_rotation_advances_past_daily_four_chunks(monkeypatch):
         ),
     )
     protected, rotating, next_cursor = _account_plan(rotation_cursor=5)
-    assert len(protected) == 25
-    assert rotating[0] == "account175"
+    assert len(protected) == 6
+    assert rotating[0] == "account56"
     assert next_cursor == 6
 
 

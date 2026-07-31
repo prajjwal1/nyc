@@ -18,11 +18,13 @@ venv/bin/python -m scrapers.instagram_browser_worker --headed  # smoke test
 venv/bin/python -m scrapers.instagram_browser_worker --push
 ```
 
-For hourly collection, copy `scrapers/instagram-browser-launchagent.plist.example`
+For conservative six-hour collection, copy `scrapers/instagram-browser-launchagent.plist.example`
 to `~/Library/LaunchAgents/com.nyc-events.instagram-browser.plist`, replace
 `REPO_PATH` with this checkout's absolute path, then load it with `launchctl`.
-The worker captures saved/tagged posts, priority accounts, rotating curated
-accounts, and stories; the committed snapshot triggers CI processing.
+The worker captures a small saved/tagged sample plus 6 priority and 10 rotating
+accounts per run, with randomized cooldowns and a 40-post hard cap. Stories are
+excluded from unattended runs to reduce Instagram traffic. The committed
+snapshot triggers CI processing.
 
 **Two content kinds, one feed**:
 - **Dated events** — concerts, parties, classes, run clubs, etc. (most content)

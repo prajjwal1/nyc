@@ -16,6 +16,7 @@ import argparse
 import io
 import json
 import os
+import random
 import re
 import subprocess
 import sys
@@ -39,6 +40,10 @@ STATE = Path(os.environ.get(
 ))
 
 LANE_PRIORITY = {"feed": 0, "highlight": 1, "story": 2, "tagged": 3, "saved": 4}
+PROTECTED_PER_RUN = 6
+ROTATING_PER_RUN = 10
+POSTS_PER_PROFILE = 2
+MAX_CAPTURED_PER_RUN = 40
 
 
 def _browser_launch_options() -> dict:
@@ -80,14 +85,14 @@ def _account_plan(rotation_cursor: int | None = None) -> tuple[list[str], list[s
         str(a).lower() for a in [*affinity, *follows, *IG_ACCOUNTS] if a
     ))
     priority.sort(key=lambda a: (a not in {str(x).lower() for x in affinity}, -yield_score(a)))
-    protected = priority[:25]
-    remaining = priority[25:]
+    protected = priority[:PROTECTED_PER_RUN]
+    remaining = priority[PROTECTED_PER_RUN:]
     # Persist the rotation cursor across runs. Deriving it from hour-of-day
     # visited only chunks 0-3 forever, leaving most of a large account pool
     # completely unseen.
-    chunks = max(1, (len(remaining) + 29) // 30)
+    chunks = max(1, (len(remaining) + ROTATING_PER_RUN - 1) // ROTATING_PER_RUN)
     cursor = int(_state().get("rotationCursor", 0) if rotation_cursor is None else rotation_cursor) % chunks
-    rotating = remaining[cursor * 30:(cursor + 1) * 30]
+    rotating = remaining[cursor * ROTATING_PER_RUN:(cursor + 1) * ROTATING_PER_RUN]
     return protected, rotating, (cursor + 1) % chunks
 
 
@@ -279,8 +284,8 @@ def collect(headless: bool = True) -> dict:
         _assert_logged_in(page)
         # Explicit user signals first.
         for lane, url, limit in (
-            ("saved", f"https://www.instagram.com/{IG_USERNAME}/saved/", 50),
-            ("tagged", f"https://www.instagram.com/{IG_USERNAME}/tagged/", 30),
+            ("saved", f"https://www.instagram.com/{IG_USERNAME}/saved/", 10),
+            ("tagged", f"https://www.instagram.com/{IG_USERNAME}/tagged/", 5),
         ):
             try:
                 for link in _post_links(page, url, limit):
@@ -292,21 +297,25 @@ def collect(headless: bool = True) -> dict:
                 print(f"[instagram-browser] {lane} failed: {exc}")
         # Hourly protected feeds, then the six-hour rotating long tail.
         for account in [*protected, *rotating]:
+            if len(posts) >= MAX_CAPTURED_PER_RUN:
+                break
             try:
-                for link in _post_links(page, f"https://www.instagram.com/{account}/", 6 if account in protected else 9):
+                for link in _post_links(
+                    page, f"https://www.instagram.com/{account}/", POSTS_PER_PROFILE
+                ):
                     post = _capture_post(page, link, "feed", account)
                     if post:
                         posts.append(post)
-                time.sleep(1.2)
+                    time.sleep(random.uniform(1.5, 3.0))
+                # Human-scale pacing avoids bursty profile traversal.
+                time.sleep(random.uniform(4.0, 8.0))
             except Exception as exc:
                 failures += 1
                 print(f"[instagram-browser] feed failed @{account}: {exc}")
                 if "challenge" in str(exc).lower():
                     break
-        for account in protected[:15]:
-            story = _capture_story(page, account)
-            if story:
-                posts.append(story)
+        # Stories are intentionally excluded from unattended runs: each one
+        # adds a profile navigation for ephemeral, low-parse-yield content.
         context.close()
     sanitized = _sanitize_posts(posts)
     previous = _json("instagram_browser_snapshot.json", {}).get("posts", [])
