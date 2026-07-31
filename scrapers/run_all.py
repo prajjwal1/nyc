@@ -79,6 +79,12 @@ if IG_SAVED_ONLY:
     _QUICK_ASYNC = {"luma", "eventbrite", "partiful", "substack"}
     ASYNC_SCRAPERS = [(name, fn) for name, fn in ASYNC_SCRAPERS if name in _QUICK_ASYNC]
 
+# A local browser snapshot already contains the new source material. Its CI
+# consumer should only parse/merge that snapshot, not launch a full platform
+# sweep that can delay deployment or fail for unrelated reasons.
+if IG_BROWSER_ONLY:
+    ASYNC_SCRAPERS = []
+
 if IG_BROWSER_ONLY:
     SYNC_SCRAPERS = [("instagram-browser", instagram.scrape_browser_only)]
 elif SKIP_INSTAGRAM:
@@ -203,7 +209,7 @@ async def main():
         # rotate, so stale ones age out via filter_future.
         "partiful",
     }
-    if IG_SAVED_ONLY:
+    if IG_SAVED_ONLY or IG_BROWSER_ONLY:
         # A quick refresh must never erase sources it intentionally skipped.
         CARRYOVER_SOURCES.update(
             e.get("source") for e in previous_index.values() if e.get("source")
