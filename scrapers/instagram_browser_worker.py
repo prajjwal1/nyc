@@ -114,7 +114,7 @@ def _post_links(page, url: str, limit: int) -> list[str]:
 
 def _caption_from_og(value: str) -> str:
     # Typical form: 123 likes, 5 comments - account on Date: "caption"
-    match = re.search(r':\s*["“](.*)["”]\s*$', value or "", re.S)
+    match = re.search(r':\s*["“](.*)["”][.!]?\s*$', value or "", re.S)
     return match.group(1).strip() if match else (value or "").strip()
 
 
@@ -232,6 +232,12 @@ def _sanitize_posts(posts: list[dict]) -> list[dict]:
     out = []
     for post in _dedupe(posts):
         caption = str(post.get("caption") or "")[:6000]
+        lower = caption.lower()
+        if any(marker in lower for marker in (
+            "no purchase required", "nation wide freebie", "giving away",
+            "giveaway", "code will drop", "enter to win",
+        )):
+            continue
         if not _looks_like_event_post(
             caption,
             has_image=bool(post.get("image")),

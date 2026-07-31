@@ -1,7 +1,9 @@
 import json
 
 from scrapers.sources import eventbrite, instagram, luma
-from scrapers.instagram_browser_worker import _account_plan, _merge_snapshot_posts, _sanitize_posts
+from scrapers.instagram_browser_worker import (
+    _account_plan, _caption_from_og, _merge_snapshot_posts, _sanitize_posts,
+)
 
 
 def test_luma_listing_uses_canonical_url_and_organizer():
@@ -100,3 +102,17 @@ def test_browser_snapshot_retains_other_rotation_candidates():
     previous = [{"url": "https://instagram.com/p/old/", "owner": "old", "capturedAt": "2026-07-30"}]
     merged = _merge_snapshot_posts(current, previous)
     assert [post["owner"] for post in merged] == ["new", "old"]
+
+
+def test_browser_og_caption_strips_post_metadata_and_trailing_period():
+    raw = '626 likes - venue on July 31, 2026: "Concert August 5 at 7pm".'
+    assert _caption_from_og(raw) == "Concert August 5 at 7pm"
+
+
+def test_browser_snapshot_rejects_retail_giveaways():
+    posts = [{
+        "url": "https://instagram.com/p/promo/", "owner": "freebies",
+        "lane": "feed", "caption": "Free item August 5, no purchase required",
+        "image": "https://cdn/x.jpg",
+    }]
+    assert _sanitize_posts(posts) == []

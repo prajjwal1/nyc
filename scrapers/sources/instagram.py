@@ -87,8 +87,21 @@ def _scrape_browser_snapshot() -> list[dict]:
             captured_date = datetime.fromisoformat(str(raw_date).replace("Z", "+00:00"))
         except Exception:
             captured_date = datetime.now()
+        caption = raw.get("caption") or ""
+        # Older browser snapshots may contain Instagram's OG wrapper
+        # ("123 likes - account on July 31: \"caption\"."). Strip it so the
+        # post timestamp cannot win date parsing over the actual event date.
+        wrapped = re.search(r':\s*["“](.*)["”][.!]?\s*$', caption, re.S)
+        if wrapped:
+            caption = wrapped.group(1).strip()
+        lower_caption = caption.lower()
+        if any(marker in lower_caption for marker in (
+            "no purchase required", "nation wide freebie", "giving away",
+            "giveaway", "code will drop", "enter to win",
+        )):
+            continue
         post = {
-            "caption": raw.get("caption") or "",
+            "caption": caption,
             "date": captured_date,
             "url": raw.get("url") or "",
             "image": raw.get("image") or "",
