@@ -286,7 +286,7 @@ def _assert_logged_in(page) -> None:
         )
 
 
-def collect(headless: bool = True) -> dict:
+def collect(headless: bool = True, core_only: bool = False) -> dict:
     try:
         from playwright.sync_api import sync_playwright
     except ImportError as exc:
@@ -294,6 +294,8 @@ def collect(headless: bool = True) -> dict:
 
     PROFILE.mkdir(parents=True, exist_ok=True)
     protected, rotating, next_cursor = _account_plan()
+    if core_only:
+        rotating = []
     posts: list[dict] = []
     failures = 0
     with sync_playwright() as p:
@@ -357,6 +359,7 @@ def collect(headless: bool = True) -> dict:
             "uniqueOwners": len(owner_counts),
             "laneCounts": dict(lane_counts),
             "topOwners": dict(owner_counts.most_common(10)),
+            "coreOnly": core_only,
         },
     }
 
@@ -405,11 +408,15 @@ def main() -> None:
     parser.add_argument("--login", action="store_true")
     parser.add_argument("--headed", action="store_true")
     parser.add_argument("--push", action="store_true")
+    parser.add_argument(
+        "--core-only", action="store_true",
+        help="Capture only the six taste-balanced core accounts (safe activation run)",
+    )
     args = parser.parse_args()
     if args.login:
         login()
         return
-    snapshot = collect(headless=not args.headed)
+    snapshot = collect(headless=not args.headed, core_only=args.core_only)
     write_snapshot(snapshot)
     print(f"[instagram-browser] wrote {len(snapshot['posts'])} posts to {SNAPSHOT}")
     if args.push:
