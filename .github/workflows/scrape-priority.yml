@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: scrape-priority
@@ -97,3 +98,6 @@ jobs:
             scrapers/data/user_interest_profile.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Priority IG scrape $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
+
+      - name: Deploy refreshed feed
+        run: gh workflow run deploy.yml --ref main

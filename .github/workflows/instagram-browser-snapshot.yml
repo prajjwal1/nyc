@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: instagram-browser-snapshot
@@ -36,3 +37,6 @@ jobs:
           git add data/events.json site/public/events.json scrapers/data/stats_history.jsonl
           git diff --cached --quiet || git commit -m "Process local Instagram snapshot"
           git push
+
+      - name: Deploy refreshed feed
+        run: gh workflow run deploy.yml --ref main
