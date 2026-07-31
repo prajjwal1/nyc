@@ -235,7 +235,8 @@ def _sanitize_posts(posts: list[dict]) -> list[dict]:
         lower = caption.lower()
         if any(marker in lower for marker in (
             "no purchase required", "nation wide freebie", "giving away",
-            "giveaway", "code will drop", "enter to win",
+            "giveaway", "code will drop", "enter to win", "full year of perks",
+            "annual membership", "full article",
         )):
             continue
         if not _looks_like_event_post(

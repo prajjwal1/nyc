@@ -1,6 +1,7 @@
 import json
 
 from scrapers.sources import eventbrite, instagram, luma
+from scrapers.normalize import _is_distinct_schedule_source
 from scrapers.instagram_browser_worker import (
     _account_plan, _caption_from_og, _merge_snapshot_posts, _sanitize_posts,
 )
@@ -83,6 +84,13 @@ def test_browser_roundup_events_get_distinct_clickable_urls(tmp_path, monkeypatc
     events = instagram._scrape_browser_snapshot()
     assert len({event["sourceUrl"] for event in events}) == 2
     assert all(event["sourceUrl"].startswith("https://www.instagram.com/p/roundup/#event-") for event in events)
+
+
+def test_browser_roundup_items_are_distinct_scheduled_events():
+    assert _is_distinct_schedule_source({
+        "source": "instagram", "browserCaptured": True,
+        "sourceUrl": "https://instagram.com/p/x/#event-2026-08-04-2",
+    })
 
 
 def test_browser_snapshot_does_not_commit_arbitrary_saved_content():

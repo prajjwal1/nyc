@@ -166,7 +166,16 @@ def _is_distinct_schedule_source(ev: dict) -> bool:
     _dedup_fuzzy_title). Single source of truth so a future distinct-schedule
     source can't be half-exempted (fb-183).
     """
-    return ev.get("source") in DISTINCT_SCHEDULE_SOURCES
+    if ev.get("source") in DISTINCT_SCHEDULE_SOURCES:
+        return True
+    # Browser-captured IG roundups explicitly index individually dated items
+    # in one post. Similar wording ("in conversation", "celebration of")
+    # is a series template, not evidence that August 4/5/8 are duplicates.
+    return bool(
+        ev.get("source") == "instagram"
+        and ev.get("browserCaptured")
+        and "#event-" in (ev.get("sourceUrl") or "")
+    )
 
 
 def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:

@@ -97,7 +97,8 @@ def _scrape_browser_snapshot() -> list[dict]:
         lower_caption = caption.lower()
         if any(marker in lower_caption for marker in (
             "no purchase required", "nation wide freebie", "giving away",
-            "giveaway", "code will drop", "enter to win",
+            "giveaway", "code will drop", "enter to win", "full year of perks",
+            "annual membership", "full article",
         )):
             continue
         post = {
@@ -117,6 +118,17 @@ def _scrape_browser_snapshot() -> list[dict]:
         extracted = _try_ocr_first_then_caption(post, owner)
         lane = raw.get("lane") or "feed"
         for index, event in enumerate(extracted):
+            if re.match(r"^(?:tickets?|rsvp|link)(?:\s*:|\s+in\s+bio|$)", event.get("title") or "", re.I):
+                description = event.get("description") or caption
+                candidate = re.search(
+                    r"([^.!?\n]{0,100}\b(?:party|concert|festival|screening|reading|talk|show|dance)\b[^.!?\n]{0,100})",
+                    description,
+                    re.I,
+                )
+                if candidate:
+                    repaired = re.sub(r"^(?:next up|coming up)\W*", "", candidate.group(1), flags=re.I).strip(" -:,.!")
+                    if len(repaired) >= 12:
+                        event["title"] = repaired[:180]
             # A single roundup post can describe a dozen distinct events.
             # They previously shared one sourceUrl and normalization collapsed
             # the whole roundup to one item. A stable fragment preserves the
