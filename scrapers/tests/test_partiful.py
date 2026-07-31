@@ -45,6 +45,16 @@ class TestNYCGate:
         # explore/nyc is NYC-scoped; a missing tz shouldn't drop the event.
         assert isinstance(_parse_event_obj(_event(timezone="")), dict)
 
+    def test_new_jersey_address_is_dropped_even_with_new_york_timezone(self):
+        event = _event(locationInfo={
+            "mapsInfo": {
+                "name": "Birdies & Lattes",
+                "addressLines": ["1781 Lincoln Hwy", "Edison, NJ 08817"],
+                "approximateLocation": "Edison, NJ",
+            }
+        })
+        assert _parse_event_obj(event) == "non-nyc"
+
 
 class TestDateConversion:
     def test_utc_evening_converts_to_correct_et_date(self):

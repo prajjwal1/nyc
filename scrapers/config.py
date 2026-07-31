@@ -416,8 +416,9 @@ SOURCE_VOLUME_CAPS = {
     # iter 110 venue scrapers — low-volume but cap defensively.
     "powerhousearena": 15,
     "centerforfiction": 15,
-    # partiful /explore/nyc now yields ~60 NYC events (was 5 via /discover).
-    # These are high-signal social/meet-people events the user wants, but cap
-    # so one source can't dominate — top-40 by score bubble up.
-    "partiful": 40,
+    # The bounded public Discover API union now yields ~138 NYC events across
+    # category/borough feeds plus harvested links. Partiful is unusually
+    # high-signal for social/meet-people plans, so retain up to 70 after all
+    # quality, geography, late-night, and score filters have run.
+    "partiful": 70,
 }

@@ -1,0 +1,46 @@
+name: Refresh Luma and Partiful
+
+on:
+  schedule:
+    - cron: "15 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: platform-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r scrapers/requirements.txt
+      - name: Fetch full Luma and Partiful inventories
+        env:
+          SOURCE_ONLY: "luma,partiful"
+          SKIP_INSTAGRAM: "1"
+        run: python -m scrapers.run_all
+      - name: Commit refreshed feed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          .github/scripts/safe-pull.sh \
+            data/events.json site/public/events.json \
+            scrapers/data/discovered_urls.json scrapers/data/stats_history.jsonl
+          git add data/events.json site/public/events.json \
+            scrapers/data/discovered_urls.json scrapers/data/stats_history.jsonl
+          git diff --cached --quiet || git commit -m "Refresh Luma and Partiful $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
+      - name: Deploy refreshed feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main

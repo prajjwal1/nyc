@@ -18,6 +18,9 @@ Robustness:
 import json
 import os
 import asyncio
+import re
+
+import httpx
 
 from bs4 import BeautifulSoup
 
@@ -42,6 +45,11 @@ _MAX_DISCOVERED = 60  # bound the per-run individual-page fetches
 # everything on /explore/nyc should be America/New_York, but guard anyway so a
 # cross-listed LA/SF event can never slip into the feed.
 _NYC_TZS = {"America/New_York", ""}
+_DISCOVER_API = "https://api.partiful.com"
+_DISCOVER_TAGS = (
+    "DISCOVER_HOME", "MUSIC", "COMMUNITY", "ARTS", "FITNESS", "FOOD",
+    "NYC_BROOKLYN", "NYC_MANHATTAN",
+)
 
 _HEADER_VARIANTS = [
     {
@@ -61,6 +69,16 @@ async def scrape() -> list[dict]:
 
     explore = await _scrape_explore()
     _merge(events, seen, explore)
+
+    # The server-rendered page contains only ~63 of the 147 events Partiful
+    # reports for NYC. Full sweeps union the same public, bounded category and
+    # borough feeds used by the Explore UI (currently ~111 unique events).
+    # Quick runs retain the HTML path to stay comfortably inside CI budgets.
+    if not os.environ.get("IG_SAVED_ONLY", "0") == "1":
+        api_events = await _scrape_discover_api()
+        before = len(events)
+        _merge(events, seen, api_events)
+        print(f"[partiful] +{len(events) - before} events from Discover API union")
 
     # Fallback only if the explore page yielded nothing (shape drift / block).
     if not events:
@@ -230,6 +248,72 @@ async def _scrape_explore() -> list[dict]:
     return events
 
 
+async def _discover_api_call(function: str, tag: str) -> list[dict]:
+    params = {"region": "NYC", "tagId": tag}
+    if function == "getDiscoverFeed":
+        params["allowedFeedPresentationStyles"] = ["rows"]
+    else:
+        params.update({
+            "allowedSectionPresentationStyles": [
+                "carousel-small", "carousel-medium", "carousel-large", "rows"
+            ],
+            "locale": "en-US",
+        })
+    payload = {"data": {"params": params, "paging": {"maxResults": 100}}}
+    try:
+        async with httpx.AsyncClient(timeout=20, follow_redirects=True) as client:
+            response = await client.post(
+                f"{_DISCOVER_API}/{function}",
+                json=payload,
+                headers={"Origin": "https://partiful.com", "Referer": EXPLORE_URL},
+            )
+            response.raise_for_status()
+            data = (response.json().get("result") or {}).get("data") or {}
+    except Exception as exc:
+        print(f"[partiful] {function}/{tag} failed: {exc}")
+        return []
+
+    containers = data.get("sections") or [data]
+    raw: dict[str, dict] = {}
+    for container in containers:
+        for item in (container.get("items") or []) if isinstance(container, dict) else []:
+            event = item.get("event") if isinstance(item, dict) else None
+            if isinstance(event, dict) and event.get("id"):
+                raw.setdefault(event["id"], event)
+    return list(raw.values())
+
+
+async def _scrape_discover_api() -> list[dict]:
+    calls = [
+        _discover_api_call(function, tag)
+        for tag in _DISCOVER_TAGS
+        for function in ("getDiscoverSections", "getDiscoverFeed")
+    ]
+    pages = await asyncio.gather(*calls)
+    raw_by_id: dict[str, dict] = {}
+    for page in pages:
+        for event in page:
+            raw_by_id.setdefault(event["id"], event)
+
+    events = []
+    skipped_nonnyc = 0
+    for raw in raw_by_id.values():
+        try:
+            built = _parse_event_obj(raw)
+        except Exception as exc:
+            print(f"[partiful] API skip event {raw.get('id', '?')}: {exc}")
+            continue
+        if built == "non-nyc":
+            skipped_nonnyc += 1
+        elif built:
+            events.append(built)
+    print(
+        f"[partiful] Discover API: {len(raw_by_id)} unique, "
+        f"{len(events)} NYC ({skipped_nonnyc} explicit non-NYC skipped)"
+    )
+    return events
+
+
 async def _scrape_discover_nyc() -> list[dict]:
     """Fallback: the legacy /discover page, NYC region only."""
     html = await _fetch(DISCOVER_URL)
@@ -294,6 +378,15 @@ def _parse_event_obj(event: dict, hosts: list[dict] | None = None):
     if not lines and isinstance(loc_info, dict):
         lines = loc_info.get("displayAddressLines") or []
     address = ", ".join(lines) if isinstance(lines, list) else ""
+    approximate = maps.get("approximateLocation", "") if isinstance(maps, dict) else ""
+    location_blob = f"{address} {approximate}".lower()
+    # America/New_York includes NJ/CT and is not by itself an NYC guarantee.
+    # Keep hidden/approximate locations, but reject clearly out-of-city states
+    # and common nearby cities when Partiful cross-lists them into NYC.
+    if re.search(r"\b(?:nj|new jersey|ct|connecticut|pa|pennsylvania)\b", location_blob):
+        return "non-nyc"
+    if re.search(r"\b(?:edison|hoboken|jersey city|newark|yonkers|white plains)\b", location_blob):
+        return "non-nyc"
 
     # Guest counts → description enrichment.
     description = event.get("description", "") or ""

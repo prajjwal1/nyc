@@ -1,4 +1,5 @@
 import json
+import os
 import re
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
@@ -26,10 +27,14 @@ async def scrape() -> list[dict]:
     """Scrape Luma calendars.  Retries with browser-like headers on 403."""
     import asyncio
 
-    events = []
-    for url in LUMA_PAGES:
-        page_events = await _try_luma_url(url)
-        events.extend(page_events)
+    sem = asyncio.Semaphore(4)
+
+    async def calendar(url: str) -> list[dict]:
+        async with sem:
+            return await _try_luma_url(url)
+
+    results = await asyncio.gather(*(calendar(url) for url in LUMA_PAGES))
+    events = [event for page_events in results for event in page_events]
 
     # The discover listing intentionally omits descriptions. Hydrate its
     # canonical event URLs before normalization; otherwise the description

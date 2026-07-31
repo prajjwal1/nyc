@@ -70,6 +70,9 @@ SYNC_SCRAPERS = [
 SKIP_INSTAGRAM = os.environ.get("SKIP_INSTAGRAM", "0") == "1"
 IG_SAVED_ONLY = os.environ.get("IG_SAVED_ONLY", "0") == "1"
 IG_BROWSER_ONLY = os.environ.get("IG_BROWSER_ONLY", "0") == "1"
+SOURCE_ONLY = {
+    name.strip() for name in os.environ.get("SOURCE_ONLY", "").split(",") if name.strip()
+}
 
 # The old "quick" workflow still launched every scraper despite its name,
 # which made the richer detail-hydration pipeline exceed the 15-minute job
@@ -84,6 +87,10 @@ if IG_SAVED_ONLY:
 # sweep that can delay deployment or fail for unrelated reasons.
 if IG_BROWSER_ONLY:
     ASYNC_SCRAPERS = []
+
+if SOURCE_ONLY:
+    ASYNC_SCRAPERS = [(name, fn) for name, fn in ASYNC_SCRAPERS if name in SOURCE_ONLY]
+    SYNC_SCRAPERS = [(name, fn) for name, fn in SYNC_SCRAPERS if name in SOURCE_ONLY]
 
 if IG_BROWSER_ONLY:
     SYNC_SCRAPERS = [("instagram-browser", instagram.scrape_browser_only)]
@@ -209,7 +216,7 @@ async def main():
         # rotate, so stale ones age out via filter_future.
         "partiful",
     }
-    if IG_SAVED_ONLY or IG_BROWSER_ONLY:
+    if IG_SAVED_ONLY or IG_BROWSER_ONLY or SOURCE_ONLY:
         # A quick refresh must never erase sources it intentionally skipped.
         CARRYOVER_SOURCES.update(
             e.get("source") for e in previous_index.values() if e.get("source")
