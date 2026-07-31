@@ -65,6 +65,26 @@ def test_browser_snapshot_is_parsed_without_instaloader(tmp_path, monkeypatch):
     assert events[0]["browserCaptured"] is True
 
 
+def test_browser_roundup_events_get_distinct_clickable_urls(tmp_path, monkeypatch):
+    path = tmp_path / "snapshot.json"
+    path.write_text(json.dumps({
+        "generatedAt": "2026-07-30T12:00:00+00:00",
+        "posts": [{
+            "owner": "bookstore", "lane": "feed",
+            "url": "https://www.instagram.com/p/roundup/",
+            "caption": "August events", "capturedAt": "2026-07-30T12:00:00+00:00",
+        }],
+    }))
+    monkeypatch.setattr(instagram, "_BROWSER_SNAPSHOT_PATH", str(path))
+    monkeypatch.setattr(instagram, "_try_ocr_first_then_caption", lambda post, owner: [
+        {"date": "2026-08-04", "sourceUrl": post["url"], "title": "First"},
+        {"date": "2026-08-05", "sourceUrl": post["url"], "title": "Second"},
+    ])
+    events = instagram._scrape_browser_snapshot()
+    assert len({event["sourceUrl"] for event in events}) == 2
+    assert all(event["sourceUrl"].startswith("https://www.instagram.com/p/roundup/#event-") for event in events)
+
+
 def test_browser_snapshot_does_not_commit_arbitrary_saved_content():
     posts = [
         {"url": "https://www.instagram.com/p/dog/", "owner": "friend", "lane": "saved",

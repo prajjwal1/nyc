@@ -116,7 +116,15 @@ def _scrape_browser_snapshot() -> list[dict]:
         }
         extracted = _try_ocr_first_then_caption(post, owner)
         lane = raw.get("lane") or "feed"
-        for event in extracted:
+        for index, event in enumerate(extracted):
+            # A single roundup post can describe a dozen distinct events.
+            # They previously shared one sourceUrl and normalization collapsed
+            # the whole roundup to one item. A stable fragment preserves the
+            # original clickable post while giving each event its own identity.
+            if len(extracted) > 1:
+                base_url = (event.get("sourceUrl") or raw.get("url") or "").split("#", 1)[0]
+                date_key = str(event.get("date") or "unknown")
+                event["sourceUrl"] = f"{base_url}#event-{date_key}-{index + 1}"
             event["account"] = owner
             if lane == "saved":
                 event["userSaved"] = True
