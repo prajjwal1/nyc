@@ -33,8 +33,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          .github/scripts/safe-pull.sh data/events.json site/public/events.json scrapers/data/stats_history.jsonl
-          git add data/events.json site/public/events.json scrapers/data/stats_history.jsonl
+          .github/scripts/safe-pull.sh data/events.json site/public/events.json data/communities.json site/public/communities.json scrapers/data/stats_history.jsonl
+          git add data/events.json site/public/events.json data/communities.json site/public/communities.json scrapers/data/stats_history.jsonl
           git diff --cached --quiet || git commit -m "Process local Instagram snapshot"
           git push
 

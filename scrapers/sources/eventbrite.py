@@ -317,6 +317,13 @@ def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
             price=price,
             organizer=(raw.get("organizer", {}).get("name") if isinstance(raw.get("organizer"), dict) else None) or organizer_name or None,
             organizer_url=source_url,
+            organizer_refs=[{
+                "platform": "eventbrite",
+                "externalId": (re.search(r"/o/(\d+)", source_url).group(1) if re.search(r"/o/(\d+)", source_url) else source_url),
+                "name": (raw.get("organizer", {}).get("name") if isinstance(raw.get("organizer"), dict) else None) or organizer_name or "",
+                "url": source_url,
+                "role": "host",
+            }],
         )
         # Stamp the organizer-page URL so downstream filters can match
         # it against user_curated_sources.json (the per-event sourceUrl
@@ -478,4 +485,11 @@ def _parse_ld_event(data: dict) -> dict | None:
         price=price,
         organizer=organizer_name or None,
         organizer_url=organizer_url or None,
+        organizer_refs=[{
+            "platform": "eventbrite",
+            "externalId": (re.search(r"/o/(\d+)", organizer_url).group(1) if organizer_url and re.search(r"/o/(\d+)", organizer_url) else organizer_url),
+            "name": organizer_name,
+            "url": organizer_url,
+            "role": "host",
+        }] if organizer_name or organizer_url else None,
     )

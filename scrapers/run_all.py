@@ -294,6 +294,12 @@ def _write_events(events: list[dict], primary_path: str = OUTPUT_PATH) -> None:
     """Write events.json to both data/ and site/public/ atomically."""
     import datetime as _dt
 
+    # Community linkage is additive to the event schema. Build it before
+    # serializing either copy so both public artifacts share the same IDs.
+    from scrapers.communities import build_communities
+
+    communities = build_communities(events, update_registry=False)
+
     payload = {
         "events": events,
         # tz-aware UTC so the site's `new Date(lastUpdated)` parses
@@ -302,6 +308,10 @@ def _write_events(events: list[dict], primary_path: str = OUTPUT_PATH) -> None:
         "lastUpdated": _dt.datetime.now(_dt.timezone.utc).isoformat(),
         "topAccounts": _top_ig_accounts(events, n=12),
         "ingestionStats": _ingestion_stats(events),
+        "communityStats": {
+            "communities": len(communities),
+            "linkedEvents": sum(bool(e.get("communityIds")) for e in events),
+        },
     }
     for path in (primary_path, SITE_PUBLIC_PATH):
         os.makedirs(os.path.dirname(path), exist_ok=True)

@@ -78,6 +78,19 @@ class TestFieldExtraction:
         ev = _parse_event_obj(_event(id="XYZ789"))
         assert ev["sourceUrl"] == "https://partiful.com/e/XYZ789"
 
+    def test_all_partiful_hosts_keep_stable_identity_and_roles(self):
+        raw = _event(ownerIds=["host-a", "host-b"])
+        hosts = [
+            {"id": "host-a", "name": "Chess Friends", "isManaged": True,
+             "socials": {"instagram": {"value": "chessfriends"}}},
+            {"id": "host-b", "name": "Cafe Partner"},
+        ]
+        ev = _parse_event_obj(raw, hosts)
+        assert [(r["externalId"], r["role"]) for r in ev["organizerRefs"]] == [
+            ("host-a", "host"), ("host-b", "cohost")
+        ]
+        assert ev["organizerRefs"][0]["handle"] == "chessfriends"
+
     def test_guest_counts_in_description(self):
         ev = _parse_event_obj(_event())
         assert "42 going" in ev["description"]

@@ -80,7 +80,10 @@ class TestSpotAccountEvergreen:
         assert len(got & expected) >= 3
 
     def test_single_spot_post_stays_evergreen(self):
-        events = _extract_events_from_caption(_post(SPOT_CAPTION, when=datetime(2026, 6, 4, 12, 0)),
+        # Use a current post timestamp: the extractor intentionally ignores
+        # stale social posts before deciding whether their content is an
+        # evergreen spot recommendation.
+        events = _extract_events_from_caption(_post(SPOT_CAPTION, when=datetime.now()),
                                               "onefinedaynyc")
         assert len(events) == 1
         assert events[0].get("evergreen") is True

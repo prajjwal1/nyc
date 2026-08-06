@@ -1,4 +1,5 @@
 import json
+import re
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import (
@@ -182,6 +183,13 @@ def _from_ld(data: dict) -> dict | None:
     # Extract price from offers — most meetup events are free; users
     # benefit from seeing the FREE pill prominently.
     price = parse_offers_price(data.get("offers"))
+    organizer = data.get("organizer") or {}
+    if isinstance(organizer, list):
+        organizer = organizer[0] if organizer else {}
+    organizer_name = organizer.get("name", "") if isinstance(organizer, dict) else ""
+    organizer_url = organizer.get("url", "") if isinstance(organizer, dict) else ""
+    group_match = re.search(r"meetup\.com/([^/?#]+)", organizer_url or url, re.I)
+    group_slug = group_match.group(1) if group_match else ""
 
     return build_event(
         title=title,
@@ -194,4 +202,13 @@ def _from_ld(data: dict) -> dict | None:
         source_url=url,
         image_url=image if image else None,
         price=price,
+        organizer=organizer_name or None,
+        organizer_url=organizer_url or (f"https://www.meetup.com/{group_slug}/" if group_slug else None),
+        organizer_refs=[{
+            "platform": "meetup",
+            "externalId": group_slug,
+            "name": organizer_name,
+            "url": organizer_url or (f"https://www.meetup.com/{group_slug}/" if group_slug else ""),
+            "role": "host",
+        }] if group_slug or organizer_name else None,
     )

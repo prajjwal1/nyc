@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
 import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, markEventOpened, getAttendedState, markAttended } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
+import CommunityChips from "./CommunityChips";
 
 interface Props {
   event: Event | null;
@@ -212,6 +213,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
           <h2 className="text-xl font-semibold text-gray-900 leading-tight">
             {event.title}
           </h2>
+          <CommunityChips ids={event.communityIds || (event.primaryCommunityId ? [event.primaryCommunityId] : [])} />
 
           {/* Location */}
           {event.location.name && (

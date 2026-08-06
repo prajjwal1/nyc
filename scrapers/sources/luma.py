@@ -221,6 +221,7 @@ def _parse_luma_next_data(data, source_url: str) -> list[dict]:
             if api_id:
                 seen_ids.add(api_id)
             desc = ev.get("description_mirror") or ev.get("description") or ""
+            calendar_handle = source_url.rstrip("/").rsplit("/", 1)[-1]
             events.append(build_event(
                 title=title,
                 description=desc[:1000] if isinstance(desc, str) else "",
@@ -235,6 +236,13 @@ def _parse_luma_next_data(data, source_url: str) -> list[dict]:
                 # can fire and tag userFollowing — the point of this path.
                 source_url=source_url,
                 image_url=image,
+                organizer_refs=[{
+                    "platform": "luma",
+                    "externalId": calendar_handle,
+                    "name": calendar_handle.replace("-", " ").replace(".", " ").strip().title(),
+                    "url": source_url,
+                    "role": "host",
+                }] if calendar_handle != "nyc" else None,
             ))
         except Exception:
             continue
@@ -340,6 +348,13 @@ def _parse_ld_json(data: dict, source_url: str) -> dict | list | None:
         price=price,
         organizer=organizer_name or None,
         organizer_url=organizer_url or None,
+        organizer_refs=[{
+            "platform": "luma",
+            "externalId": (organizer_url or canonical_url).rstrip("/").rsplit("/", 1)[-1],
+            "name": organizer_name,
+            "url": organizer_url or canonical_url,
+            "role": "host",
+        }] if organizer_name or organizer_url else None,
     )
 
 

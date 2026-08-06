@@ -35,8 +35,10 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           .github/scripts/safe-pull.sh \
             data/events.json site/public/events.json \
+            data/communities.json site/public/communities.json \
             scrapers/data/discovered_urls.json scrapers/data/stats_history.jsonl
           git add data/events.json site/public/events.json \
+            data/communities.json site/public/communities.json \
             scrapers/data/discovered_urls.json scrapers/data/stats_history.jsonl
           git diff --cached --quiet || git commit -m "Refresh Luma and Partiful $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push

@@ -1,0 +1,47 @@
+name: Refresh Communities
+
+on:
+  schedule:
+    - cron: "35 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+# Share the event-ingestion lock: the registry reads one complete events.json
+# snapshot, and no scraper can commit a competing history update.
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate community registry and public aggregate
+        run: python -m scrapers.communities
+
+      - name: Commit community data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          .github/scripts/safe-pull.sh \
+            data/events.json site/public/events.json \
+            data/communities.json data/community_history.json \
+            data/community_candidates.json site/public/communities.json
+          git add data/events.json site/public/events.json \
+            data/communities.json data/community_history.json \
+            data/community_candidates.json site/public/communities.json
+          git diff --cached --quiet || git commit -m "Refresh community data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
+
+      - name: Deploy refreshed communities
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main

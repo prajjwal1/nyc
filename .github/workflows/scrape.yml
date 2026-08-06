@@ -72,6 +72,7 @@ jobs:
         run: |
           .github/scripts/safe-pull.sh \
             data/events.json site/public/events.json \
+            data/communities.json site/public/communities.json \
             scrapers/data/discovered_accounts.json \
             scrapers/data/discovered_urls.json \
             scrapers/data/user_affinity_accounts.json \
@@ -89,6 +90,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/events.json site/public/events.json \
+            data/communities.json site/public/communities.json \
             scrapers/data/discovered_accounts.json \
             scrapers/data/discovered_urls.json \
             scrapers/data/user_affinity_accounts.json \

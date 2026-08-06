@@ -6,6 +6,7 @@ on:
     paths:
       - "site/**"
       - "data/events.json"
+      - "data/communities.json"
   schedule:
     # GitHub Actions does NOT trigger workflows for commits made by
     # GITHUB_TOKEN (the bot account our scrape workflows use). Without a
@@ -40,8 +41,10 @@ jobs:
         working-directory: site
         run: npm ci
 
-      - name: Copy events data
-        run: cp data/events.json site/public/events.json
+      - name: Copy public data
+        run: |
+          cp data/events.json site/public/events.json
+          cp data/communities.json site/public/communities.json
 
       - name: Build
         working-directory: site

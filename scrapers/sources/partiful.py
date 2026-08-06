@@ -407,6 +407,24 @@ def _parse_event_obj(event: dict, hosts: list[dict] | None = None):
     organizer = (primary_host.get("name") or "").strip()
     instagram = (((primary_host.get("socials") or {}).get("instagram") or {}).get("value") or "").strip()
     organizer_url = f"https://www.instagram.com/{instagram}/" if instagram else None
+    organizer_refs = []
+    host_by_id = {
+        str(h.get("id") or h.get("userId") or h.get("api_id")): h
+        for h in hosts
+        if h.get("id") or h.get("userId") or h.get("api_id")
+    }
+    owner_ids = [str(owner_id) for owner_id in (event.get("ownerIds") or []) if owner_id]
+    for index, owner_id in enumerate(owner_ids):
+        host = host_by_id.get(owner_id, {})
+        handle = (((host.get("socials") or {}).get("instagram") or {}).get("value") or "").strip()
+        organizer_refs.append({
+            "platform": "partiful",
+            "externalId": owner_id,
+            "name": (host.get("name") or "").strip(),
+            "url": f"https://www.instagram.com/{handle}/" if handle else "",
+            "handle": handle,
+            "role": "host" if index == 0 else "cohost",
+        })
 
     return build_event(
         title=title,
@@ -422,4 +440,5 @@ def _parse_event_obj(event: dict, hosts: list[dict] | None = None):
         categories=infer_categories(title, description),
         organizer=organizer or None,
         organizer_url=organizer_url,
+        organizer_refs=organizer_refs,
     )

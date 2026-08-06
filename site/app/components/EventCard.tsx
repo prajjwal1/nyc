@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
 import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, isEventOpened, getAttendedState } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
+import CommunityChips from "./CommunityChips";
 
 interface EventCardProps {
   event: Event;
@@ -218,6 +219,7 @@ function FeedCard({
               </span>
             )}
           </h3>
+          <CommunityChips ids={event.communityIds || (event.primaryCommunityId ? [event.primaryCommunityId] : [])} />
 
           <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500">
             {/* U1: relative-day scent for hero cards (which drop the date). */}

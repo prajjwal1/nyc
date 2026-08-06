@@ -11,6 +11,7 @@ import TopPicks from "./components/TopPicks";
 import EventModal from "./components/EventModal";
 import { Event } from "./lib/types";
 import { readAndAdvanceLastVisited } from "./lib/interests";
+import CommunitySpotlight from "./components/CommunitySpotlight";
 
 type View = "for-you" | "calendar";
 
@@ -190,6 +191,7 @@ export default function Home() {
       />
 
       <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+        <CommunitySpotlight />
         {/* Compact Feed/Calendar toggle — single bar across top, no sidebar
             on the Feed view (iter 215: dropped the FilterBar sidebar). */}
         <div className="bg-white rounded-xl border border-gray-200 p-1 flex mb-6 max-w-xs">

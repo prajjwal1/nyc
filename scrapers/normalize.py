@@ -647,6 +647,26 @@ def _merge(a: dict, b: dict) -> dict:
     merged["recurring"] = bool(a.get("recurring") or b.get("recurring"))
     merged["ocrEnriched"] = bool(a.get("ocrEnriched") or b.get("ocrEnriched"))
 
+    # Preserve every structured host identity across source/dedup merges.
+    # Community resolution relies on stable platform IDs rather than fuzzy
+    # display names, especially for co-hosted events.
+    refs = []
+    seen_refs = set()
+    for ref in [*(a.get("organizerRefs") or []), *(b.get("organizerRefs") or [])]:
+        if not isinstance(ref, dict):
+            continue
+        key = (
+            str(ref.get("platform", "")).lower(),
+            str(ref.get("externalId") or ref.get("url") or ref.get("handle") or ref.get("name", "")).lower(),
+            str(ref.get("role", "host")).lower(),
+        )
+        if not key[1] or key in seen_refs:
+            continue
+        seen_refs.add(key)
+        refs.append(ref)
+    if refs:
+        merged["organizerRefs"] = refs
+
     # Track all sources contributing to this event (cross-source validation).
     a_sources = set(
         a.get("contributingSources", [a.get("source")] if a.get("source") else [])

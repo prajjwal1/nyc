@@ -1319,6 +1319,7 @@ def build_event(
     lng: float | None = None,
     organizer: str | None = None,
     organizer_url: str | None = None,
+    organizer_refs: list[dict] | None = None,
 ) -> dict:
     if isinstance(event_date, date):
         date_str = event_date.isoformat()
@@ -1397,6 +1398,25 @@ def build_event(
         out["organizer"] = organizer.strip()
     if organizer_url:
         out["organizerUrl"] = organizer_url
+    if organizer_refs:
+        refs = []
+        seen_refs = set()
+        allowed = {"platform", "externalId", "name", "url", "role", "handle"}
+        for raw in organizer_refs:
+            if not isinstance(raw, dict):
+                continue
+            ref = {k: raw[k] for k in allowed if raw.get(k) not in (None, "")}
+            key = (
+                str(ref.get("platform", "")).lower(),
+                str(ref.get("externalId") or ref.get("url") or ref.get("handle") or ref.get("name", "")).lower(),
+                str(ref.get("role", "host")).lower(),
+            )
+            if not key[1] or key in seen_refs:
+                continue
+            seen_refs.add(key)
+            refs.append(ref)
+        if refs:
+            out["organizerRefs"] = refs
     # Only include extraImages when present — keeps non-carousel events lean
     if extras:
         out["extraImages"] = extras[:9]  # cap at 9 (10 slides total) to bound payload

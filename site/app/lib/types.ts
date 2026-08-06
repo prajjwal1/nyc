@@ -55,7 +55,29 @@ export interface Event {
   highlightTitle?: string; // e.g. "Upcoming Shows" when isHighlight=true
   venueTaggedFrom?: string;// venue account whose tagged-posts surfaced this
   attendanceSignal?: number;
+  communityIds?: string[];
+  primaryCommunityId?: string;
 }
+
+export interface CommunityLink { label?: string; url: string; type?: string }
+export interface CommunitySchedule {
+  cadence?: string;
+  typicalDays?: string[];
+  typicalTime?: string;
+  confidence?: number;
+  sampleSize?: number;
+}
+export interface CommunityActivity { state?: "active" | "quiet" | "stale" | "unverified"; eventCount90d?: number; lastEventDate?: string }
+export interface Community {
+  id: string; slug: string; name: string; tagline?: string; description?: string;
+  imageUrl?: string | null; categories: string[]; tags?: string[]; kind?: string;
+  links?: CommunityLink[]; neighborhoods?: string[]; homeVenue?: string;
+  schedule?: CommunitySchedule; activity?: CommunityActivity;
+  upcomingEventIds?: string[]; similarCommunityIds?: string[];
+  sourceAttributions?: string[]; lastVerifiedAt?: string;
+  newcomerFriendly?: boolean; cost?: string; accessNotes?: string;
+}
+export interface CommunitiesData { communities: Community[]; lastUpdated?: string; version?: number }
 
 export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> = {
   saved: { label: "★ Saved", color: "bg-amber-200 text-amber-900" },

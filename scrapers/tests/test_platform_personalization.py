@@ -19,6 +19,7 @@ def test_luma_listing_uses_canonical_url_and_organizer():
     assert event["sourceUrl"] == "https://luma.com/abc12345"
     assert event["organizer"] == "Reading Rhythms"
     assert event["organizerUrl"] == "https://luma.com/readingrhythms"
+    assert event["organizerRefs"][0]["platform"] == "luma"
 
 
 def test_luma_no_longer_fans_out_fake_category_routes():
@@ -44,6 +45,7 @@ def test_eventbrite_extracts_organizer():
     event = eventbrite._parse_ld_event(raw)
     assert event["organizer"] == "Chess Place"
     assert event["organizerUrl"].endswith("/o/123")
+    assert event["organizerRefs"][0]["externalId"] == "123"
 
 
 def test_browser_snapshot_is_parsed_without_instaloader(tmp_path, monkeypatch):
