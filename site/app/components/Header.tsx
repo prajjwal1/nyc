@@ -67,7 +67,7 @@ export default function Header({
     try {
       const nav = navigator as Navigator & { share?: (data: ShareData) => Promise<void> };
       if (nav.share) {
-        await nav.share({ title: "City Kin", url });
+        await nav.share({ title: "NYC Events", url });
         return;
       }
       await navigator.clipboard.writeText(url);

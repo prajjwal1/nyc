@@ -1,7 +1,16 @@
 from datetime import date
 import json
+import pytest
 
 from scrapers.communities import _cadence, build_communities, platform_identities, platform_identity
+
+
+@pytest.fixture(autouse=True)
+def empty_discovery_index(tmp_path, monkeypatch):
+    import scrapers.communities as module
+    discovery_path = tmp_path / "empty-discovery.json"
+    discovery_path.write_text('{"communities": []}')
+    monkeypatch.setattr(module, "DISCOVERY_INDEX_PATH", discovery_path)
 
 
 def event(event_id, day, **extra):
@@ -100,25 +109,49 @@ def test_partiful_host_and_instagram_alias_resolve_to_one_community(tmp_path, mo
     assert not any(c["name"] == "Game Night" for c in result)
 
 
-def test_exact_analog_match_adds_attributed_reference_only(tmp_path, monkeypatch):
+def test_exact_directory_match_does_not_duplicate_enriched_profile(tmp_path, monkeypatch):
     import scrapers.communities as module
     community_id = module._community_id("meetup:chess-nyc")
-    analog_path = tmp_path / "analog.json"
-    analog_path.write_text(json.dumps({"communities": [{
+    discovery_path = tmp_path / "discovery.json"
+    discovery_path.write_text(json.dumps({"communities": [{
         "matchedCommunityId": community_id,
-        "sourceUrl": "https://analog.directory/communities/chess-nyc",
+        "directorySlug": "chess-nyc",
+        "name": "Chess NYC",
     }]}))
-    monkeypatch.setattr(module, "ANALOG_INDEX_PATH", analog_path)
+    monkeypatch.setattr(module, "DISCOVERY_INDEX_PATH", discovery_path)
     monkeypatch.setattr(module, "HISTORY_PATH", tmp_path / "history.json")
     monkeypatch.setattr(module, "CANDIDATES_PATH", tmp_path / "candidates.json")
     monkeypatch.setattr(module, "PUBLIC_PATHS", (tmp_path / "communities.json",))
     result = build_communities([event("a", "2026-08-11"), event("b", "2026-08-18")], today=date(2026, 8, 6))
-    assert result[0]["links"][-1] == {
-        "type": "directory_reference",
-        "label": "Analog Directory reference",
-        "url": "https://analog.directory/communities/chess-nyc",
-    }
-    assert "Analog Directory (reference)" in result[0]["sourceAttributions"]
+    assert len(result) == 1
+    assert result[0]["id"] == community_id
+
+
+def test_all_unmatched_leads_become_transparent_discovery_profiles(tmp_path, monkeypatch):
+    import scrapers.communities as module
+    discovery_path = tmp_path / "discovery.json"
+    discovery_path.write_text(json.dumps({
+        "generatedAt": "2026-08-06T00:00:00+00:00",
+        "communities": [{
+            "directorySlug": "night-owls-nyc",
+            "name": "Night Owls NYC",
+        }],
+    }))
+    monkeypatch.setattr(module, "DISCOVERY_INDEX_PATH", discovery_path)
+    monkeypatch.setattr(module, "HISTORY_PATH", tmp_path / "history.json")
+    monkeypatch.setattr(module, "CANDIDATES_PATH", tmp_path / "candidates.json")
+    monkeypatch.setattr(module, "PUBLIC_PATHS", (tmp_path / "communities.json",))
+
+    result = build_communities([], today=date(2026, 8, 6))
+
+    assert len(result) == 1
+    profile = result[0]
+    assert profile["name"] == "Night Owls NYC"
+    assert profile["profileStatus"] == "directory_reference"
+    assert profile["verified"] is False
+    assert profile["activity"]["state"] == "unverified"
+    assert profile["links"] == []
+    assert "independently verified" in profile["description"]
 
 
 def test_recurring_community_has_factual_description_and_newcomer_evidence(tmp_path, monkeypatch):

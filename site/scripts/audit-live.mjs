@@ -4,7 +4,7 @@ import path from "node:path";
 
 const baseUrl = (process.env.SITE_URL || "https://prajjwal1.github.io/nyc/").replace(/\/?$/, "/");
 const outputDir = process.env.AUDIT_OUTPUT_DIR || "../audit-output";
-const routes = ["", "events/", "communities/", "map/", "saved/"];
+const routes = ["", "events/", "communities/", "saved/"];
 const viewports = [
   { name: "mobile", width: 390, height: 844 },
   { name: "desktop", width: 1440, height: 900 },

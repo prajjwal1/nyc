@@ -31,7 +31,22 @@ def test_audit_excludes_caption_leak_from_showcase_and_flags_raw_data():
     assert result["showcase"]["captionLike"] == []
     assert "0" not in result["showcase"]["eventIds"]
     assert result["feed"]["captionLikeNext7Days"] == 1
-    assert any("150-community" in warning for warning in result["warnings"])
+    assert any("independently enriched" in warning for warning in result["warnings"])
+
+
+def test_audit_separates_directory_references_from_enriched_communities():
+    communities = ([{"profileStatus": "directory_reference"}] * 1000) + ([{}] * 20)
+    result = audit_payloads(
+        {"lastUpdated": "2026-08-06T11:30:00+00:00", "events": [event(i) for i in range(110)]},
+        {"communities": communities},
+        now=datetime(2026, 8, 6, 12, tzinfo=timezone.utc),
+    )
+
+    assert result["communities"]["count"] == 1020
+    assert result["communities"]["directoryReferenceCount"] == 1000
+    assert result["communities"]["eventBackedCount"] == 20
+    assert not any("fewer than 1,000 profiles" in warning for warning in result["warnings"])
+    assert any("independently enriched" in warning for warning in result["warnings"])
 
 
 def test_audit_flags_stale_or_unavailable_deployment():

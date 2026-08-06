@@ -25,13 +25,13 @@ GENERIC_TITLE = re.compile(r"^(event|untitled|tba|coming soon|meetup group\b)", 
 
 
 def _fetch_json(url: str, timeout: int = 25) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "City-Kin-quality-audit/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "NYC-events-quality-audit/1.0"})
     with urllib.request.urlopen(req, timeout=timeout) as response:
         return json.load(response)
 
 
 def _fetch_status(url: str, timeout: int = 20) -> int:
-    req = urllib.request.Request(url, headers={"User-Agent": "City-Kin-quality-audit/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "NYC-events-quality-audit/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as response:
             return response.status
@@ -114,6 +114,8 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
     today = now.date()
     events = events_doc.get("events") or []
     communities = communities_doc.get("communities") or []
+    directory_references = sum(1 for community in communities if community.get("profileStatus") == "directory_reference")
+    event_backed_communities = len(communities) - directory_references
     upcoming = [e for e in events if (e.get("date") or "") >= today.isoformat()]
     next_7_end = (today + timedelta(days=7)).isoformat()
     next_7 = [e for e in upcoming if (e.get("date") or "") < next_7_end]
@@ -185,8 +187,10 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
         warnings.append("showcased image completeness is below 95%")
     if top_source_share > .35:
         warnings.append("one source supplies more than 35% of the next-seven-day feed")
-    if len(communities) < 150:
-        warnings.append("community directory is below the 150-community launch target")
+    if len(communities) < 1000:
+        warnings.append("community discovery directory contains fewer than 1,000 profiles")
+    if event_backed_communities < 150:
+        warnings.append("fewer than 150 communities have independently enriched profiles")
     if upcoming and linked / len(upcoming) < .65:
         warnings.append("fewer than 65% of upcoming events are linked to a community")
     if route_status and any(status != 200 for status in route_status.values()):
@@ -217,6 +221,8 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
         },
         "communities": {
             "count": len(communities),
+            "eventBackedCount": event_backed_communities,
+            "directoryReferenceCount": directory_references,
             "linkedUpcomingEvents": linked,
             "linkedUpcomingRatio": round(linked / max(1, len(upcoming)), 3),
         },
@@ -239,7 +245,7 @@ def markdown_report(audit: dict) -> str:
     showcase = audit["showcase"]
     communities = audit["communities"]
     lines = [
-        "# City Kin deployed-site quality review",
+        "# Deployed-site quality review",
         "",
         f"**Status:** {audit['status'].upper()} · audited {audit['auditedAt']}",
         "",
@@ -250,7 +256,8 @@ def markdown_report(audit: dict) -> str:
         f"| Live feed age | {feed['ageHours']}h | ≤2h |",
         f"| Events in next 7 days | {feed['next7Days']} | ≥100 |",
         f"| Distinct organizers in next 7 days | {feed['distinctOrganizersNext7Days']} | ≥50 |",
-        f"| Community directory | {communities['count']} | ≥150 |",
+        f"| Community discovery directory | {communities['count']} | ≥1,000 |",
+        f"| Independently enriched communities | {communities['eventBackedCount']} | ≥150 |",
         f"| Upcoming events linked to communities | {communities['linkedUpcomingRatio']:.0%} | ≥65% (then 80%) |",
         f"| Showcased events with time | {showcase['detailQuality']['startTime']:.0%} | ≥95% |",
         f"| Showcased events with actionable location | {showcase['detailQuality']['location']:.0%} | ≥90% |",
@@ -307,7 +314,7 @@ def merge_browser_evidence(output_dir: Path) -> dict:
 def run(base_url: str, output_dir: Path) -> dict:
     base = base_url.rstrip("/") + "/"
     routes = {name: _fetch_status(base + suffix) for name, suffix in {
-        "home": "", "events": "events/", "communities": "communities/", "map": "map/", "saved": "saved/"
+        "home": "", "events": "events/", "communities": "communities/", "saved": "saved/"
     }.items()}
     try:
         events_doc = _fetch_json(base + "events.json")

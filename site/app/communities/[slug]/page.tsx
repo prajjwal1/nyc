@@ -12,7 +12,7 @@ function readJson<T>(name:string, fallback:T):T {
   }
 }
 function communityList():Community[]{const d=readJson<CommunitiesData|Community[]>("communities.json",[]);return Array.isArray(d)?d:d.communities||[]}
-export function generateStaticParams(){const params=communityList().map(c=>({slug:c.slug}));return params.length?params:[{slug:"preview"}]}
+export function generateStaticParams(){const params=communityList().filter(c=>c.profileStatus!=="directory_reference").map(c=>({slug:c.slug}));return params.length?params:[{slug:"preview"}]}
 export const dynamicParams=false;
 export default async function CommunityProfile({params}:{params:Promise<{slug:string}>}){
   const {slug}=await params, communities=communityList(), community=communities.find(c=>c.slug===slug);

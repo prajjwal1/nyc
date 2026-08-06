@@ -71,10 +71,13 @@ export interface CommunityActivity { state?: "active" | "quiet" | "stale" | "unv
 export interface Community {
   id: string; slug: string; name: string; tagline?: string; description?: string;
   imageUrl?: string | null; categories: string[]; tags?: string[]; kind?: string;
+  profileStatus?: "directory_reference" | "event_backed";
   links?: CommunityLink[]; neighborhoods?: string[]; homeVenue?: string;
   schedule?: CommunitySchedule; activity?: CommunityActivity;
   upcomingEventIds?: string[]; similarCommunityIds?: string[];
   sourceAttributions?: string[]; lastVerifiedAt?: string;
+  lastIndexedAt?: string;
+  verified?: boolean; verificationStatus?: string;
   newcomerFriendly?: boolean; cost?: string; accessNotes?: string;
 }
 export interface CommunitiesData { communities: Community[]; lastUpdated?: string; version?: number }

@@ -1,9 +1,10 @@
 """Deterministic community identity, history, and public aggregation.
 
-This module deliberately does no network discovery.  It turns the canonical
-identities already attached to events into a small, auditable community
-registry.  Exact platform IDs/URLs are the only automatic merge keys; fuzzy
-name matches are emitted as candidates rather than silently merged.
+This module deliberately does no network discovery. It turns the canonical
+identities already attached to events into an auditable community registry and
+adds lightweight profiles from the community discovery index. Exact
+platform IDs/URLs are the only automatic merge keys; fuzzy name matches are
+emitted as candidates rather than silently merged.
 """
 
 from __future__ import annotations
@@ -20,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OVERRIDES_PATH = ROOT / "scrapers" / "data" / "community_overrides.json"
 HISTORY_PATH = ROOT / "data" / "community_history.json"
 CANDIDATES_PATH = ROOT / "data" / "community_candidates.json"
-ANALOG_INDEX_PATH = ROOT / "data" / "analog_directory_index.json"
+DISCOVERY_INDEX_PATH = ROOT / "data" / "community_discovery_index.json"
 PUBLIC_PATHS = (ROOT / "data" / "communities.json", ROOT / "site" / "public" / "communities.json")
 
 DEDICATED_SOURCES = {
@@ -151,6 +152,44 @@ def _community_id(identity: str) -> str:
     return "com_" + hashlib.sha256(identity.encode()).hexdigest()[:12]
 
 
+def _discovery_reference(entry: dict, generated_at: str | None = None) -> dict:
+    """Create a public, explicitly unverified profile from one discovery lead."""
+    directory_slug = str(entry.get("directorySlug") or "").strip()
+    name = _display_name(str(entry.get("name") or directory_slug))
+    cid = _community_id(f"directory:{directory_slug}")
+    return {
+        "id": cid,
+        "slug": f"discover-{directory_slug}",
+        "name": name,
+        "kind": "directory_reference",
+        "profileStatus": "directory_reference",
+        "tagline": "Community discovery profile.",
+        "description": (
+            f"We are still building the {name} profile. Its schedule, location, and "
+            "upcoming events have not yet been independently verified."
+        ),
+        "categories": [],
+        "tags": [],
+        "neighborhoods": [],
+        "homeVenue": "",
+        "imageUrl": None,
+        "links": [],
+        "joinMethod": "Follow for future details",
+        "activity": {"state": "unverified", "lastEventDate": None, "upcomingEventCount": 0, "eventCount90d": 0},
+        "schedule": None,
+        "upcomingEventIds": [],
+        "sourceAttributions": [],
+        "lastIndexedAt": generated_at,
+        "verified": False,
+        "verificationStatus": "directory_reference",
+        "qualificationEvidence": {"observedDateCount": 0, "hasFirstPartyIdentity": False},
+        "newcomerFriendly": False,
+        "newcomerEvidence": [],
+        "aliases": [],
+        "similarCommunityIds": [],
+    }
+
+
 def _partiful_name_looks_personal(name: str) -> bool:
     if COMMUNITY_NAME_RE.search(name or ""):
         return False
@@ -243,11 +282,8 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
     override_doc = _load(OVERRIDES_PATH, {"communities": {}})
     overrides = override_doc.get("communities", {})
     previous = _load(HISTORY_PATH, {"communities": {}}).get("communities", {})
-    analog_by_community_id = {
-        entry.get("matchedCommunityId"): entry
-        for entry in (_load(ANALOG_INDEX_PATH, {"communities": []}).get("communities") or [])
-        if entry.get("matchedCommunityId") and entry.get("sourceUrl")
-    }
+    discovery_doc = _load(DISCOVERY_INDEX_PATH, {"communities": []})
+    discovery_entries = discovery_doc.get("communities") or []
     # Community links are derived output. Clear old links before re-resolving so
     # entities that no longer meet the quality threshold cannot remain attached.
     for event in events:
@@ -423,14 +459,6 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
             "aliases": list(dict.fromkeys(override.get("aliases", []) + alias_keys)),
             "similarCommunityIds": [],
         }
-        analog_reference = analog_by_community_id.get(cid)
-        if analog_reference:
-            community["links"].append({
-                "type": "directory_reference",
-                "label": "Analog Directory reference",
-                "url": analog_reference["sourceUrl"],
-            })
-            community["sourceAttributions"].append("Analog Directory (reference)")
         communities.append(community)
 
     # Transparent, deterministic similarity. Popularity is never an input.
@@ -447,6 +475,18 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
             if score > 0:
                 scored.append((score, other["id"]))
         community["similarCommunityIds"] = [cid for _, cid in sorted(scored, key=lambda x: (-x[0], x[1]))[:6]]
+
+    # All indexed leads are useful for discovery before we have independent
+    # event evidence. Exact matches use the richer event-backed profile; every
+    # other lead receives a transparent details-in-progress profile.
+    represented_ids = {community["id"] for community in communities}
+    directory_references = [
+        _discovery_reference(entry, discovery_doc.get("generatedAt"))
+        for entry in discovery_entries
+        if entry.get("matchedCommunityId") not in represented_ids
+    ]
+    directory_references.sort(key=lambda community: (community["name"].lower(), community["id"]))
+    communities.extend(directory_references)
 
     if persist:
         generated = datetime.now(timezone.utc).isoformat()
