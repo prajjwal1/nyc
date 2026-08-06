@@ -1,0 +1,41 @@
+name: Refresh Analog Discovery Index
+
+on:
+  schedule:
+    - cron: "45 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: analog-discovery-index
+  cancel-in-progress: true
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh attributed sitemap index
+        run: python -m scrapers.analog_directory
+
+      - name: Commit discovery leads
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          .github/scripts/safe-pull.sh data/analog_directory_index.json
+          git add data/analog_directory_index.json
+          git diff --cached --quiet || git commit -m "Refresh Analog discovery index $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
+
+      - name: Relink independently verified communities
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run community-refresh.yml --ref main

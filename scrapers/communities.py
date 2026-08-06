@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OVERRIDES_PATH = ROOT / "scrapers" / "data" / "community_overrides.json"
 HISTORY_PATH = ROOT / "data" / "community_history.json"
 CANDIDATES_PATH = ROOT / "data" / "community_candidates.json"
+ANALOG_INDEX_PATH = ROOT / "data" / "analog_directory_index.json"
 PUBLIC_PATHS = (ROOT / "data" / "communities.json", ROOT / "site" / "public" / "communities.json")
 
 DEDICATED_SOURCES = {
@@ -173,6 +174,11 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
     override_doc = _load(OVERRIDES_PATH, {"communities": {}})
     overrides = override_doc.get("communities", {})
     previous = _load(HISTORY_PATH, {"communities": {}}).get("communities", {})
+    analog_by_community_id = {
+        entry.get("matchedCommunityId"): entry
+        for entry in (_load(ANALOG_INDEX_PATH, {"communities": []}).get("communities") or [])
+        if entry.get("matchedCommunityId") and entry.get("sourceUrl")
+    }
     parent = {}
     def find(x):
         parent.setdefault(x, x)
@@ -299,6 +305,14 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
             "aliases": list(dict.fromkeys(override.get("aliases", []) + alias_keys)),
             "similarCommunityIds": [],
         }
+        analog_reference = analog_by_community_id.get(cid)
+        if analog_reference:
+            community["links"].append({
+                "type": "directory_reference",
+                "label": "Analog Directory reference",
+                "url": analog_reference["sourceUrl"],
+            })
+            community["sourceAttributions"].append("Analog Directory (reference)")
         communities.append(community)
 
     # Transparent, deterministic similarity. Popularity is never an input.
