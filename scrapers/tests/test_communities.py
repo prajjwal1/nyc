@@ -38,8 +38,10 @@ def test_same_name_different_platform_ids_do_not_merge(tmp_path, monkeypatch):
     a = event("a", "2026-08-11", organizer="Chess NYC", organizerUrl="https://eventbrite.com/o/111", source="eventbrite", sourceUrl="https://eventbrite.com/e/a")
     b = event("b", "2026-08-12", organizer="Chess NYC", organizerUrl="https://eventbrite.com/o/222", source="eventbrite", sourceUrl="https://eventbrite.com/e/b")
     result = build_communities([a, b], today=date(2026, 8, 6))
-    assert len(result) == 2
-    assert a["primaryCommunityId"] != b["primaryCommunityId"]
+    assert result == []
+    candidates = json.loads((tmp_path / "candidates.json").read_text())["candidates"]
+    assert len(candidates) == 2
+    assert candidates[0]["identity"] != candidates[1]["identity"]
 
 
 def test_instagram_publishers_are_candidates_not_automatic_communities(tmp_path, monkeypatch):
@@ -76,8 +78,8 @@ def test_organizer_refs_link_cohosts_and_ignore_venues(tmp_path, monkeypatch):
     ])
     assert len(platform_identities(item)) == 3  # two hosts + cohost's IG alias
     result = build_communities([item], today=date(2026, 8, 6))
-    assert len(result) == 2
-    assert len(item["communityIds"]) == 2
+    assert result == []
+    assert "communityIds" not in item
 
 
 def test_partiful_host_and_instagram_alias_resolve_to_one_community(tmp_path, monkeypatch):
@@ -91,11 +93,11 @@ def test_partiful_host_and_instagram_alias_resolve_to_one_community(tmp_path, mo
     ])
     instagram = event("i", "2026-08-18", source="instagram", sourceUrl="https://instagram.com/p/i", instagramAccount="chessfriends")
     result = build_communities([hosted, instagram], today=date(2026, 8, 6))
-    assert len(result) == 2
+    assert len(result) == 1
     primary = next(c for c in result if c["name"] == "Chess Friends")
     assert instagram["primaryCommunityId"] == primary["id"]
     assert primary["id"] in hosted["communityIds"]
-    assert any(c["name"] == "Game Night" for c in result)
+    assert not any(c["name"] == "Game Night" for c in result)
 
 
 def test_exact_analog_match_adds_attributed_reference_only(tmp_path, monkeypatch):
@@ -110,10 +112,62 @@ def test_exact_analog_match_adds_attributed_reference_only(tmp_path, monkeypatch
     monkeypatch.setattr(module, "HISTORY_PATH", tmp_path / "history.json")
     monkeypatch.setattr(module, "CANDIDATES_PATH", tmp_path / "candidates.json")
     monkeypatch.setattr(module, "PUBLIC_PATHS", (tmp_path / "communities.json",))
-    result = build_communities([event("a", "2026-08-11")], today=date(2026, 8, 6))
+    result = build_communities([event("a", "2026-08-11"), event("b", "2026-08-18")], today=date(2026, 8, 6))
     assert result[0]["links"][-1] == {
         "type": "directory_reference",
         "label": "Analog Directory reference",
         "url": "https://analog.directory/communities/chess-nyc",
     }
     assert "Analog Directory (reference)" in result[0]["sourceAttributions"]
+
+
+def test_recurring_community_has_factual_description_and_newcomer_evidence(tmp_path, monkeypatch):
+    import scrapers.communities as module
+    monkeypatch.setattr(module, "HISTORY_PATH", tmp_path / "history.json")
+    monkeypatch.setattr(module, "CANDIDATES_PATH", tmp_path / "candidates.json")
+    monkeypatch.setattr(module, "PUBLIC_PATHS", (tmp_path / "communities.json",))
+    events = [
+        event("a", "2026-08-11", title="Beginner chess night", description="No experience needed; beginners welcome."),
+        event("b", "2026-08-18", title="Chess night"),
+    ]
+    result = build_communities(events, today=date(2026, 8, 6))
+    assert result[0]["verificationStatus"] == "observed_recurring"
+    assert result[0]["verified"] is False
+    assert result[0]["newcomerFriendly"] is True
+    assert "Based on 2 observed event dates" in result[0]["description"]
+
+
+def test_community_display_name_collapses_source_whitespace(tmp_path, monkeypatch):
+    import scrapers.communities as module
+    monkeypatch.setattr(module, "HISTORY_PATH", tmp_path / "history.json")
+    monkeypatch.setattr(module, "CANDIDATES_PATH", tmp_path / "candidates.json")
+    monkeypatch.setattr(module, "PUBLIC_PATHS", (tmp_path / "communities.json",))
+    events = [
+        event("a", "2026-08-11", organizer="A  Club", organizerUrl="https://example.com/a-club"),
+        event("b", "2026-08-18", organizer="A  Club", organizerUrl="https://example.com/a-club"),
+    ]
+
+    result = build_communities(events, today=date(2026, 8, 6))
+
+    assert result[0]["name"] == "A Club"
+
+
+def test_recurring_media_publisher_and_personal_partiful_host_stay_candidates(tmp_path, monkeypatch):
+    import scrapers.communities as module
+    monkeypatch.setattr(module, "HISTORY_PATH", tmp_path / "history.json")
+    monkeypatch.setattr(module, "CANDIDATES_PATH", tmp_path / "candidates.json")
+    monkeypatch.setattr(module, "PUBLIC_PATHS", (tmp_path / "communities.json",))
+    media = [
+        event("i1", "2026-08-11", source="instagram", sourceUrl="https://instagram.com/p/1", instagramAccount="explorenyc"),
+        event("i2", "2026-08-18", source="instagram", sourceUrl="https://instagram.com/p/2", instagramAccount="explorenyc"),
+    ]
+    people = [
+        event("p1", "2026-08-12", source="partiful", sourceUrl="https://partiful.com/e/1", organizerRefs=[{"platform": "partiful", "externalId": "julia", "name": "Julia", "role": "host"}]),
+        event("p2", "2026-08-19", source="partiful", sourceUrl="https://partiful.com/e/2", organizerRefs=[{"platform": "partiful", "externalId": "julia", "name": "Julia", "role": "host"}]),
+    ]
+    assert build_communities(media + people, today=date(2026, 8, 6)) == []
+    candidates = json.loads((tmp_path / "candidates.json").read_text())["candidates"]
+    assert {candidate["reason"] for candidate in candidates} == {
+        "publisher_not_confirmed_as_community",
+        "personal_host_not_confirmed_as_community",
+    }

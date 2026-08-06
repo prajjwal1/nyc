@@ -1,6 +1,7 @@
 "use client";
 
 import { format, parseISO } from "date-fns";
+import Link from "next/link";
 import { useState } from "react";
 import { Event } from "../lib/types";
 import EventCard from "./EventCard";
@@ -48,10 +49,31 @@ interface TopPicksProps {
   onSelectEvent?: (event: Event) => void;
 }
 
-const MAX_PER_DAY = 8;
-const MAX_DAYS = 30;
+const MAX_PER_DAY = 4;
+const MAX_DAYS = 10;
 const MAX_SAVED = 6;
 const MAX_FOLLOWING = 6;
+
+const CAPTION_LIKE_TITLE = /^(if you(?:['’]re| are)|when you|the cutest little|pov\b|tag (?:a|your)|send this|who else|things to do\b)/i;
+const GENERIC_TITLE = /^(event|untitled|tba|coming soon|meetup group\b)/i;
+
+// The home feed is an editorial decision surface, not a dump of every parsed
+// listing. Incomplete events remain available in Calendar/Events, but only
+// actionable listings earn a featured card here.
+function isFeatureReady(e: Event): boolean {
+  const location = e.location || { name: "", address: "", neighborhood: null };
+  const actionableLocation = [location.name, location.address, location.neighborhood]
+    .some((value) => value && !["nyc", "new york", "tba", "online"].includes(value.toLowerCase().trim()));
+  return Boolean(
+    e.startTime
+    && e.sourceUrl?.startsWith("http")
+    && e.imageUrl
+    && (e.description || "").trim().length >= 20
+    && actionableLocation
+    && !CAPTION_LIKE_TITLE.test((e.title || "").trim())
+    && !GENERIC_TITLE.test((e.title || "").trim())
+  );
+}
 
 // Source identifier for organizer/account-level cap. IG events use the
 // account; Eventbrite events use organizer host; otherwise fall back to source.
@@ -190,9 +212,10 @@ export default function TopPicks({
   const upcoming = collapseRecurring(
     visible.filter((e) => e.date >= todayStr),
   );
+  const featureReady = upcoming.filter(isFeatureReady);
 
-  // 🔥 Tonight — events happening today, evening start (after 4pm) or no time set
-  const tonightEvents = upcoming
+  // 🔥 Tonight — feature-ready events happening today after 4pm
+  const tonightEvents = featureReady
     .filter((e) => e.date === todayStr)
     .filter((e) => {
       if (!e.startTime) return true;
@@ -208,7 +231,7 @@ export default function TopPicks({
   // events repeatedly; truly fresh additions trickle in slowly. A tight 30h
   // window left this hero empty on most visits, which made the site feel
   // stale. 72h keeps it consistently populated without becoming uninteresting.
-  const recentlyAdded = upcoming
+  const recentlyAdded = featureReady
     .filter((e) => {
       if (tonightIds.has(e.id)) return false;
       const fs = (e as Event & { firstSeenAt?: string }).firstSeenAt;
@@ -275,7 +298,7 @@ export default function TopPicks({
     };
     // Time: anytime on weekends is fine (brunch, afternoon walks, evening
     // events all work). No 5pm-only filter.
-    const ev = upcoming
+    const ev = featureReady
       .filter((e) =>
         !tonightIds.has(e.id)
         && !recentIds.has(e.id)
@@ -299,7 +322,7 @@ export default function TopPicks({
   // before). The iter-71 card ribbon already shows both with sky/amber
   // distinction; the hero filter should match. Affinity is rarer than
   // following, so this won't dominate.
-  const followingUpcoming = upcoming
+  const followingUpcoming = featureReady
     .filter((e) =>
       (e.userFollowing || e.userAffinity)
       && !tonightIds.has(e.id)
@@ -326,7 +349,7 @@ export default function TopPicks({
 
   // Group remaining by date — exclude events already shown in hero sections
   const grouped = new Map<string, Event[]>();
-  for (const e of upcoming) {
+  for (const e of featureReady) {
     if (savedIds.has(e.id) || tonightIds.has(e.id) || recentIds.has(e.id) || weekendIds.has(e.id) || followingIds.has(e.id)) continue;
     const list = grouped.get(e.date) ?? [];
     list.push(e);
@@ -490,6 +513,11 @@ export default function TopPicks({
             </div>
           );
         })}
+      </div>
+      <div className="mt-8 text-center">
+        <Link href="/events" className="inline-flex rounded-full border border-[#173c35] px-5 py-2.5 text-sm font-semibold text-[#173c35] hover:bg-[#173c35] hover:text-white">
+          Browse every upcoming event
+        </Link>
       </div>
     </div>
   );

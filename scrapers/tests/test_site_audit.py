@@ -1,6 +1,8 @@
 from datetime import datetime, timezone
 
-from scrapers.site_audit import audit_payloads
+import json
+
+from scrapers.site_audit import audit_payloads, merge_browser_evidence
 
 
 def event(i, **updates):
@@ -16,7 +18,7 @@ def event(i, **updates):
     return value
 
 
-def test_audit_flags_caption_leak_and_thin_communities():
+def test_audit_excludes_caption_leak_from_showcase_and_flags_raw_data():
     events = [event(i) for i in range(110)]
     events[0]["title"] = "If you're looking for a new cocktail bar, this is it"
     result = audit_payloads(
@@ -25,8 +27,10 @@ def test_audit_flags_caption_leak_and_thin_communities():
         now=datetime(2026, 8, 6, 12, tzinfo=timezone.utc),
         route_status={"home": 200},
     )
-    assert result["status"] == "fail"
-    assert result["showcase"]["captionLike"][0]["id"] == "0"
+    assert result["status"] == "attention"
+    assert result["showcase"]["captionLike"] == []
+    assert "0" not in result["showcase"]["eventIds"]
+    assert result["feed"]["captionLikeNext7Days"] == 1
     assert any("150-community" in warning for warning in result["warnings"])
 
 
@@ -40,3 +44,20 @@ def test_audit_flags_stale_or_unavailable_deployment():
     assert result["status"] == "fail"
     assert any("two hours" in failure for failure in result["failures"])
     assert any("routes" in failure for failure in result["failures"])
+
+
+def test_merge_browser_evidence_uses_exact_rendered_ids(tmp_path):
+    audit = audit_payloads(
+        {"lastUpdated": "2026-08-06T11:30:00+00:00", "events": [event(i) for i in range(110)]},
+        {"communities": [{}] * 150},
+        now=datetime(2026, 8, 6, 12, tzinfo=timezone.utc),
+        route_status={"home": 200},
+    )
+    (tmp_path / "audit.json").write_text(json.dumps(audit))
+    (tmp_path / "browser-audit.json").write_text(json.dumps({"results": [
+        {"route": "home", "status": 200, "viewport": "mobile", "showcased": [{"id": "7", "section": "tonight", "rank": 1}]},
+        {"route": "home", "status": 200, "viewport": "desktop", "showcased": [{"id": "7", "section": "tonight", "rank": 1}, {"id": "8", "section": "date", "rank": 1}]},
+    ]}))
+    merged = merge_browser_evidence(tmp_path)
+    assert merged["showcase"]["rendered"]["eventIds"] == ["7", "8"]
+    assert merged["showcase"]["rendered"]["mobileCount"] == 1

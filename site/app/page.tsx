@@ -38,7 +38,7 @@ export default function Home() {
   // On first load, read previous-visit timestamp THEN advance it. This way
   // the current session sees the prior visit's stamp for "new since" math.
   useEffect(() => {
-    setLastVisitedAt(readAndAdvanceLastVisited());
+    queueMicrotask(() => setLastVisitedAt(readAndAdvanceLastVisited()));
   }, []);
 
   // URL permalinks: read ?date=YYYY-MM-DD&view=for-you|calendar&account=X
@@ -51,18 +51,16 @@ export default function Home() {
     const d = p.get("date");
     const v = p.get("view");
     const acct = p.get("account");
-    if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) {
-      setSelectedDate(d);
-      // If a date is in the URL, default to calendar view (since the
-      // user is asking to see a specific day).
-      if (!v || v === "calendar") setView("calendar");
-    }
-    if (v === "for-you" || v === "calendar") setView(v);
-    // Account filter: stored in `search` as "@<handle>". Only accept
-    // safe handles to keep XSS surface minimal.
-    if (acct && /^[A-Za-z0-9_.\-]{1,40}$/.test(acct)) {
-      setSearch("@" + acct.toLowerCase());
-    }
+    queueMicrotask(() => {
+      if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) {
+        setSelectedDate(d);
+        if (!v || v === "calendar") setView("calendar");
+      }
+      if (v === "for-you" || v === "calendar") setView(v);
+      if (acct && /^[A-Za-z0-9_.\-]{1,40}$/.test(acct)) {
+        setSearch("@" + acct.toLowerCase());
+      }
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

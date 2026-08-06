@@ -5,7 +5,8 @@
       "verified": true,
       "name": "Brooklyn Contra",
       "type": "club",
-      "joinMethod": "RSVP for an upcoming dance; beginners are welcome"
+      "joinMethod": "RSVP for an upcoming dance; beginners are welcome",
+      "newcomerFriendly": true
     },
     "source:bookclubbar": {
       "verified": true,
@@ -16,6 +17,12 @@
       "verified": true,
       "name": "Liz's Book Bar",
       "type": "community_space"
+    },
+    "url:https://www.eventbrite.com/o/elsewhere-105655500371": {
+      "mergeWith": "eventbrite:105655500371"
+    },
+    "url:https://luma.com/readingrhythms-manhattan": {
+      "mergeWith": "luma:readingrhythms-manhattan"
     }
   }
 }

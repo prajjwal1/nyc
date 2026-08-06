@@ -78,9 +78,15 @@ def match_verified_communities(entries: list[dict], communities_doc: dict) -> in
             by_name.setdefault(key, []).append(community)
     matched = 0
     for entry in entries:
+        # A one-word name is too ambiguous for a name-only cross-directory
+        # join (e.g. "Elsewhere"). Keep it as a lead until an official URL or
+        # platform ID independently bridges the identities.
+        if len(re.findall(r"[A-Za-z0-9]+", entry["nameHint"])) < 2:
+            continue
         candidates = by_name.get(_fold(entry["nameHint"]), [])
         if len(candidates) == 1:
             entry["matchedCommunityId"] = candidates[0].get("id")
+            entry["matchMethod"] = "exact_normalized_multiword_name"
             entry["status"] = "matched_to_independently_verified_community"
             matched += 1
     return matched

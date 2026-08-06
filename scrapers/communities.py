@@ -33,9 +33,31 @@ DEDICATED_SOURCES = {
     "powerhousearena": ("POWERHOUSE Arena", "institutional_program"),
 }
 
+# These sources primarily identify performers or one-off event pages, not
+# durable community organizers. They can still be promoted by a manual
+# override, but recurrence alone must not turn an artist into a community.
+NON_COMMUNITY_SOURCES = {"songkick", "dice"}
+NEWCOMER_RE = re.compile(
+    r"\b(beginner(?:s)?|newcomer(?:s)?|first[- ]timer(?:s)?|first time|"
+    r"all levels|no experience|open to (?:all|everyone)|everyone welcome|"
+    r"beginners? welcome)\b",
+    re.I,
+)
+COMMUNITY_NAME_RE = re.compile(
+    r"\b(club|collective|community|society|group|meetup|rhythms?|runners?|"
+    r"studio|gallery|center|books?|dance|chess|yoga|walkers?|social|network|"
+    r"association|coalition|choir|friends|agency|lit|works|museum|brewery)\b",
+    re.I,
+)
+
 
 def _fold(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", (value or "").lower()).strip("-")
+
+
+def _display_name(value: str) -> str:
+    """Keep source naming while removing presentation-breaking whitespace."""
+    return re.sub(r"\s+", " ", value or "").strip()
 
 
 def _load(path: Path, default):
@@ -129,6 +151,17 @@ def _community_id(identity: str) -> str:
     return "com_" + hashlib.sha256(identity.encode()).hexdigest()[:12]
 
 
+def _partiful_name_looks_personal(name: str) -> bool:
+    if COMMUNITY_NAME_RE.search(name or ""):
+        return False
+    words = re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ]+", name or "")
+    if not words or len(words) > 3:
+        return False
+    if len(words) == 1:
+        return not words[0].isupper()
+    return all(word[:1].isupper() for word in words)
+
+
 def _infer_type(source: str, name: str) -> str:
     if source in DEDICATED_SOURCES:
         return DEDICATED_SOURCES[source][1]
@@ -168,6 +201,42 @@ def _cadence(observations: list[dict]) -> dict | None:
     }
 
 
+def _time_label(start_time: str | None) -> str | None:
+    try:
+        hour = int((start_time or "").split(":", 1)[0])
+    except (ValueError, IndexError):
+        return None
+    if hour < 12:
+        return "mornings"
+    if hour < 17:
+        return "afternoons"
+    return "evenings"
+
+
+def _community_summary(name: str, kind: str, categories: list[str], neighborhoods: list[str], cadence: dict | None, sample_size: int) -> str:
+    labels = {
+        "club": "community club",
+        "community_space": "community space",
+        "institutional_program": "community program",
+        "recurring_series": "recurring event series",
+    }
+    subject = labels.get(kind, "NYC community")
+    useful_categories = [c for c in categories if c not in {"other", "free"}][:3]
+    focus = " centered on " + ", ".join(useful_categories) if useful_categories else ""
+    place = " in " + ", ".join(neighborhoods[:2]) if neighborhoods else " across NYC"
+    summary = f"{name} is a {subject}{focus}{place}."
+    if cadence:
+        rhythm = cadence["label"]
+        days = cadence.get("typicalWeekdays") or []
+        when = " on " + " and ".join(days) if days else ""
+        time_label = _time_label((cadence.get("typicalStartTimes") or [None])[0])
+        if time_label:
+            when += f" {time_label}"
+        rhythm_text = {"occasional": "occasionally"}.get(rhythm, rhythm)
+        summary += f" Based on {sample_size} observed event dates, it meets {rhythm_text}{when}."
+    return summary
+
+
 def build_communities(events: list[dict], *, today: date | None = None, persist: bool = True, update_registry: bool = True) -> list[dict]:
     """Link events in-place and return the qualified public communities."""
     today = today or datetime.now(timezone.utc).date()
@@ -179,6 +248,11 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
         for entry in (_load(ANALOG_INDEX_PATH, {"communities": []}).get("communities") or [])
         if entry.get("matchedCommunityId") and entry.get("sourceUrl")
     }
+    # Community links are derived output. Clear old links before re-resolving so
+    # entities that no longer meet the quality threshold cannot remain attached.
+    for event in events:
+        event.pop("communityIds", None)
+        event.pop("primaryCommunityId", None)
     parent = {}
     def find(x):
         parent.setdefault(x, x)
@@ -203,6 +277,13 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
                 find(identity[0])
             for identity in group[1:]:
                 union(group[0][0], identity[0])
+
+    # Human-authored exact alias bridges are the only supported way to merge
+    # platform identities that do not expose a shared canonical ID.
+    for identity, settings in overrides.items():
+        merge_with = settings.get("mergeWith") if isinstance(settings, dict) else None
+        if merge_with and identity in parent and merge_with in parent:
+            union(identity, merge_with)
 
     grouped: dict[str, list[dict]] = defaultdict(list)
     metadata = {}
@@ -232,7 +313,7 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
         override = {}
         for alias in alias_keys:
             override.update(overrides.get(alias, {}))
-        name = override.get("name") or name
+        name = _display_name(override.get("name") or name)
         old_cids = [old_cid for old_cid, old in previous.items() if old.get("identity") in alias_keys or set(old.get("aliases", [])) & set(alias_keys)]
         cid = override.get("id") or (sorted(old_cids)[0] if old_cids else _community_id(key))
         old_obs = previous.get(cid, {}).get("observations", [])
@@ -250,16 +331,31 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
         observations = sorted(obs_by_id.values(), key=lambda o: (o.get("date") or "", o.get("eventId") or ""))
         history_out[cid] = {"identity": key, "aliases": alias_keys, "observations": observations}
 
-        # Exact organizer/calendar channels qualify. Instagram remains opt-in;
-        # weak singletons without organizer identity remain candidates.
-        qualified = bool(
-            override.get("verified")
-            or source in DEDICATED_SOURCES
-            or key in explicit_ref_keys
-            or (not key.startswith("instagram:") and (len(observations) >= 2 or key.startswith(("url:", "meetup:", "luma:"))))
+        distinct_dates = {o.get("date") for o in observations if o.get("date")}
+        manually_verified = bool(override.get("verified"))
+        dedicated = key.startswith("source:") and source in DEDICATED_SOURCES
+        has_non_instagram_alias = any(not alias.startswith("instagram:") for alias in alias_keys)
+        pure_instagram_publisher = key.startswith("instagram:") and not has_non_instagram_alias
+        personal_partiful_host = source == "partiful" and _partiful_name_looks_personal(name)
+        recurring_observed = (
+            len(distinct_dates) >= 2
+            and source not in NON_COMMUNITY_SOURCES
+            and not pure_instagram_publisher
+            and not personal_partiful_host
         )
+        qualified = manually_verified or dedicated or recurring_observed
         if not qualified:
-            candidates.append({"identity": key, "name": name, "url": url, "eventCount": len(current_events), "reason": "needs_first_party_verification"})
+            reason = (
+                "performer_or_event_source" if source in NON_COMMUNITY_SOURCES
+                else "publisher_not_confirmed_as_community" if pure_instagram_publisher
+                else "personal_host_not_confirmed_as_community" if personal_partiful_host
+                else "needs_recurring_or_manual_verification"
+            )
+            candidates.append({
+                "identity": key, "name": name, "url": url,
+                "eventCount": len(current_events), "observedDateCount": len(distinct_dates),
+                "reason": reason,
+            })
             continue
 
         for event in current_events:
@@ -280,14 +376,29 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
         ninety_days_ago = (today - timedelta(days=90)).isoformat()
         event_count_90d = sum(ninety_days_ago <= (o.get("date") or "") <= today.isoformat() for o in observations)
         slug = override.get("slug") or f"{_fold(name) or 'community'}-{cid[-6:]}"
+        kind = override.get("kind") or override.get("type") or _infer_type(source, name)
+        top_categories = [x for x, _ in cats.most_common(5)]
+        top_neighborhoods = [x for x, _ in neighborhoods.most_common(4)]
+        newcomer_evidence = []
+        for event in current_events:
+            text = f"{event.get('title') or ''} {event.get('description') or ''}"
+            match = NEWCOMER_RE.search(text)
+            if match:
+                newcomer_evidence.append({"eventId": event.get("id"), "signal": match.group(0).lower()})
+        description = override.get("description") or _community_summary(
+            name, kind, top_categories, top_neighborhoods, cadence, len(distinct_dates)
+        )
+        generated_tagline = description.split(". ", 1)[0].rstrip(".") + "."
+        newcomer_friendly = bool(override.get("newcomerFriendly") or newcomer_evidence)
+        verification_status = "manually_verified" if manually_verified else "first_party_source" if dedicated else "observed_recurring"
         community = {
             "id": cid, "slug": slug, "name": name,
-            "kind": override.get("kind") or override.get("type") or _infer_type(source, name),
-            "tagline": override.get("tagline") or (f"{name} events in NYC" if name else ""),
-            "description": override.get("description") or "",
-            "categories": [x for x, _ in cats.most_common(5)],
-            "tags": [x for x, _ in cats.most_common(5)],
-            "neighborhoods": [x for x, _ in neighborhoods.most_common(4)],
+            "kind": kind,
+            "tagline": override.get("tagline") or generated_tagline,
+            "description": description,
+            "categories": top_categories,
+            "tags": top_categories,
+            "neighborhoods": top_neighborhoods,
             "homeVenue": venues.most_common(1)[0][0] if venues else "",
             "imageUrl": override.get("imageUrl") or (images[0] if images else None),
             "links": [{"type": source, "label": f"View on {source.title()}", "url": override.get("officialUrl") or url}] if (override.get("officialUrl") or url) else [],
@@ -301,7 +412,14 @@ def build_communities(events: list[dict], *, today: date | None = None, persist:
             "upcomingEventIds": [e.get("id") for e in upcoming[:12] if e.get("id")],
             "sourceAttributions": [source],
             "lastVerifiedAt": today.isoformat(),
-            "verified": True,
+            "verified": manually_verified or dedicated,
+            "verificationStatus": verification_status,
+            "qualificationEvidence": {
+                "observedDateCount": len(distinct_dates),
+                "hasFirstPartyIdentity": key in explicit_ref_keys or key.startswith(("url:", "meetup:", "luma:")),
+            },
+            "newcomerFriendly": newcomer_friendly,
+            "newcomerEvidence": newcomer_evidence[:3],
             "aliases": list(dict.fromkeys(override.get("aliases", []) + alias_keys)),
             "similarCommunityIds": [],
         }

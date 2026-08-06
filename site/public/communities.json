@@ -5,19 +5,19 @@
       "slug": "elsewhere-de77ba",
       "name": "Elsewhere",
       "kind": "recurring_series",
-      "tagline": "Elsewhere events in NYC",
-      "description": "",
+      "tagline": "Elsewhere is a recurring event series centered on music, parties, outdoors in bushwick, brooklyn.",
+      "description": "Elsewhere is a recurring event series centered on music, parties, outdoors in bushwick, brooklyn. Based on 7 observed event dates, it meets weekly on Thursday and Saturday evenings.",
       "categories": [
         "other",
+        "music",
         "parties",
-        "outdoors",
-        "music"
+        "outdoors"
       ],
       "tags": [
         "other",
+        "music",
         "parties",
-        "outdoors",
-        "music"
+        "outdoors"
       ],
       "neighborhoods": [
         "bushwick",
@@ -29,25 +29,25 @@
         {
           "type": "eventbrite",
           "label": "View on Eventbrite",
-          "url": "https://www.eventbrite.com/o/105655500371"
+          "url": "https://www.eventbrite.com/o/elsewhere-105655500371"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 10,
         "eventCount90d": 1
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Saturday",
-          "Thursday"
+          "Thursday",
+          "Saturday"
         ],
-        "typicalTime": "18:00",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "typicalTime": "19:00",
+        "confidence": 1.0,
+        "sampleSize": 7
       },
       "upcomingEventIds": [
         "9fbc1eb549b8c750",
@@ -57,23 +57,33 @@
         "60742709b516904a",
         "7477d91fbce7420a",
         "6cb24c57eb1e46ac",
-        "6ffc84c4f3a5a5c6"
+        "6ffc84c4f3a5a5c6",
+        "ff487f32295021c0",
+        "c65ab39ef5533d68"
       ],
       "sourceAttributions": [
         "eventbrite"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 7,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
-        "eventbrite:105655500371"
+        "eventbrite:105655500371",
+        "url:https://www.eventbrite.com/o/elsewhere-105655500371"
       ],
       "similarCommunityIds": [
         "com_cdd5daa67222",
         "com_ab8259bb35a4",
         "com_b0e15eaab803",
         "com_c1410c07c4dd",
-        "com_c04dbb08991e",
-        "com_d8a5203885a9"
+        "com_d8a5203885a9",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -81,8 +91,8 @@
       "slug": "the-harlem-swing-dance-society-e8b1e0",
       "name": "The Harlem Swing Dance Society",
       "kind": "club",
-      "tagline": "The Harlem Swing Dance Society events in NYC",
-      "description": "",
+      "tagline": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem.",
+      "description": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem. Based on 3 observed event dates, it meets occasionally on Thursday and Tuesday mornings.",
       "categories": [
         "dance",
         "special"
@@ -129,17 +139,21 @@
         "eventbrite"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "eventbrite:10662501681"
       ],
       "similarCommunityIds": [
         "com_218b97d674a6",
-        "com_50cc0136690a",
-        "com_823ce6cac1bb",
-        "com_b6e8c2cea07e",
-        "com_cddbade35661",
-        "com_c34ac9108435"
+        "com_3837f308cd75",
+        "com_ed8d42fb031d"
       ]
     },
     {
@@ -147,8 +161,8 @@
       "slug": "chess-place-fb031d",
       "name": "Chess Place",
       "kind": "recurring_series",
-      "tagline": "Chess Place events in NYC",
-      "description": "",
+      "tagline": "Chess Place is a recurring event series centered on games in manhattan, lower east side.",
+      "description": "Chess Place is a recurring event series centered on games in manhattan, lower east side. Based on 4 observed event dates, it meets weekly on Friday and Thursday evenings.",
       "categories": [
         "games"
       ],
@@ -203,26 +217,38 @@
         "Analog Directory (reference)"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 4,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "afea7840fa2071f7",
+          "signal": "beginner"
+        }
+      ],
       "aliases": [
         "eventbrite:115357260611"
       ],
       "similarCommunityIds": [
-        "com_726ecf683d79",
         "com_b0e15eaab803",
-        "com_3b104adba072",
-        "com_edfb5374c3ad",
         "com_318c39363fe6",
-        "com_c1410c07c4dd"
+        "com_c1410c07c4dd",
+        "com_cdd5daa67222",
+        "com_0cc8630779d7",
+        "com_33a530deb7aa"
       ]
     },
     {
       "id": "com_02ba15552329",
       "slug": "lululemon-williamsburg-552329",
-      "name": "lululemon  Williamsburg",
+      "name": "lululemon Williamsburg",
       "kind": "recurring_series",
-      "tagline": "lululemon  Williamsburg events in NYC",
-      "description": "",
+      "tagline": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg.",
+      "description": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg. Based on 3 observed event dates, it meets biweekly on Thursday and Wednesday evenings.",
       "categories": [
         "fitness"
       ],
@@ -267,17 +293,24 @@
         "eventbrite"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "eventbrite:14861961557"
       ],
       "similarCommunityIds": [
         "com_83fdf02633ef",
-        "com_319476b701b8",
-        "com_7908de333124",
-        "com_2330b31e1c43",
-        "com_50cc0136690a",
-        "com_12e44581fb7d"
+        "com_a37c903facd1",
+        "com_218b97d674a6",
+        "com_3837f308cd75",
+        "com_a7c30be0b35f",
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -285,8 +318,8 @@
       "slug": "pioneer-works-08cd75",
       "name": "Pioneer Works",
       "kind": "recurring_series",
-      "tagline": "Pioneer Works events in NYC",
-      "description": "",
+      "tagline": "Pioneer Works is a recurring event series centered on music, art, special in brooklyn.",
+      "description": "Pioneer Works is a recurring event series centered on music, art, special in brooklyn. Based on 6 observed event dates, it meets biweekly on Friday and Sunday evenings.",
       "categories": [
         "music",
         "other",
@@ -346,17 +379,24 @@
         "Analog Directory (reference)"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 6,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
         "com_218b97d674a6",
-        "com_b6e8c2cea07e",
-        "com_0651a5ccea62",
         "com_83fdf02633ef",
-        "com_a44523f85699",
-        "com_a69d9f598375"
+        "com_d8a5203885a9",
+        "com_b0e15eaab803",
+        "com_b766b6de77ba",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -364,8 +404,8 @@
       "slug": "moma-ps1-074e3a",
       "name": "MoMA PS1",
       "kind": "recurring_series",
-      "tagline": "MoMA PS1 events in NYC",
-      "description": "",
+      "tagline": "MoMA PS1 is a recurring event series centered on music in long island city.",
+      "description": "MoMA PS1 is a recurring event series centered on music in long island city. Based on 4 observed event dates, it meets weekly on Friday afternoons.",
       "categories": [
         "music"
       ],
@@ -410,222 +450,23 @@
         "eventbrite"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 4,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "eventbrite:8184194121"
       ],
       "similarCommunityIds": [
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d",
-        "com_2c41432e531f",
-        "com_45b84e2a0a85",
-        "com_47ff5f17b52c"
-      ]
-    },
-    {
-      "id": "com_fe8f983b8bfd",
-      "slug": "a-chief-of-staff-new-york-events-3b8bfd",
-      "name": "A Chief of Staff New York Events",
-      "kind": "recurring_series",
-      "tagline": "A Chief of Staff New York Events events in NYC",
-      "description": "",
-      "categories": [
-        "parties"
-      ],
-      "tags": [
-        "parties"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "New York, NY",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/kh/8692a74c-6125-43df-8456-8cd7e80929d2.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/achiefofstaff"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "6abc3a6dc55982ea"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:achiefofstaff"
-      ],
-      "similarCommunityIds": [
-        "com_6954705bbff8",
-        "com_75763531b801",
-        "com_8fffc878152d",
-        "com_cf259109a1eb",
-        "com_3e76fc0a0fa9",
-        "com_201c9ab32403"
-      ]
-    },
-    {
-      "id": "com_ad995228adb9",
-      "slug": "nanotech-nyc-28adb9",
-      "name": "Nanotech NYC",
-      "kind": "recurring_series",
-      "tagline": "Nanotech NYC events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [],
-      "homeVenue": "Ellington in the Park",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/ew/51f7b1e4-1ab9-4383-9777-3c2c5ed8f039.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/calendar/cal-pDIUBMU5VzUR9cM"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "e3cdce6e42603358"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:cal-pdiubmu5vzur9cm"
-      ],
-      "similarCommunityIds": [
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d",
-        "com_2c41432e531f",
-        "com_45b84e2a0a85",
-        "com_47ff5f17b52c"
-      ]
-    },
-    {
-      "id": "com_e74385ce1c64",
-      "slug": "collective-z-gallery-ce1c64",
-      "name": "Collective Z Gallery",
-      "kind": "recurring_series",
-      "tagline": "Collective Z Gallery events in NYC",
-      "description": "",
-      "categories": [
-        "art"
-      ],
-      "tags": [
-        "art"
-      ],
-      "neighborhoods": [],
-      "homeVenue": "Collective Z Gallery",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/t9/bc014adb-3b68-4d37-a27a-aa3e66530f29.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/user/collectivez"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "88b6542fb2c6b7f7"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:collectivez"
-      ],
-      "similarCommunityIds": [
-        "com_0cc234e74615",
-        "com_461df71246b5",
-        "com_5fbd5a567d17",
-        "com_2330b31e1c43",
-        "com_b6e8c2cea07e",
-        "com_0651a5ccea62"
-      ]
-    },
-    {
-      "id": "com_e16f898c348f",
-      "slug": "brooklyn-community-pride-center-8c348f",
-      "name": "Brooklyn Community Pride Center",
-      "kind": "institutional_program",
-      "tagline": "Brooklyn Community Pride Center events in NYC",
-      "description": "",
-      "categories": [
-        "other"
-      ],
-      "tags": [
-        "other"
-      ],
-      "neighborhoods": [
-        "crown heights"
-      ],
-      "homeVenue": "Brooklyn Community Pride Center Crown Heights",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/0d/b23ce110-07e4-4d82-adf4-cda41b11dc60.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/lgbtbrooklyn"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "92d898750b3adbe5"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:lgbtbrooklyn"
-      ],
-      "similarCommunityIds": [
-        "com_1e20d3d5e3fd",
-        "com_3837f308cd75",
+        "com_318c39363fe6",
+        "com_d8a5203885a9",
+        "com_b0e15eaab803",
         "com_b766b6de77ba",
+        "com_218b97d674a6",
         "com_ab8259bb35a4"
       ]
     },
@@ -634,8 +475,8 @@
       "slug": "lit-club-nyc-calendar-deb7aa",
       "name": "Lit Club NYC Calendar",
       "kind": "club",
-      "tagline": "Lit Club NYC Calendar events in NYC",
-      "description": "",
+      "tagline": "Lit Club NYC Calendar is a community club centered on books, outdoors, comedy in fort greene.",
+      "description": "Lit Club NYC Calendar is a community club centered on books, outdoors, comedy in fort greene. Based on 7 observed event dates, it meets weekly on Sunday and Monday afternoons.",
       "categories": [
         "books",
         "outdoors",
@@ -688,123 +529,24 @@
         "luma"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 7,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "luma:litclub.nyc"
       ],
       "similarCommunityIds": [
         "com_eef1ca956dae",
-        "com_070bf55ee818",
         "com_0cc8630779d7",
         "com_c1410c07c4dd",
         "com_cdd5daa67222",
-        "com_318c39363fe6"
-      ]
-    },
-    {
-      "id": "com_5fbd5a567d17",
-      "slug": "maum-market-567d17",
-      "name": "Maum Market",
-      "kind": "recurring_series",
-      "tagline": "Maum Market events in NYC",
-      "description": "",
-      "categories": [
-        "art"
-      ],
-      "tags": [
-        "art"
-      ],
-      "neighborhoods": [],
-      "homeVenue": "Pier 17",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/2b/88e5c008-2b66-4f06-96c4-2c029231a7a6.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/user/maummarket"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "132bea1076a34793"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:maummarket"
-      ],
-      "similarCommunityIds": [
-        "com_0cc234e74615",
-        "com_461df71246b5",
-        "com_e74385ce1c64",
-        "com_2330b31e1c43",
-        "com_b6e8c2cea07e",
-        "com_0651a5ccea62"
-      ]
-    },
-    {
-      "id": "com_c04dbb08991e",
-      "slug": "matcha-beats-club-calendar-08991e",
-      "name": "Matcha Beats Club Calendar",
-      "kind": "club",
-      "tagline": "Matcha Beats Club Calendar events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "parties"
-      ],
-      "tags": [
-        "music",
-        "parties"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Sea Thai Brooklyn",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/86/a38d5733-79c4-4b49-adae-839347e9fa4e.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/mbcnyc"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "2d5a5202970bb351"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:mbcnyc"
-      ],
-      "similarCommunityIds": [
-        "com_201c9ab32403",
-        "com_7f62e69e5667",
-        "com_c3f3e1d8f414",
-        "com_e740254e09b9",
-        "com_edf8c65705de",
-        "com_a44523f85699"
+        "com_318c39363fe6",
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -812,8 +554,8 @@
       "slug": "nyc-backgammon-club-aab803",
       "name": "NYC Backgammon Club",
       "kind": "club",
-      "tagline": "NYC Backgammon Club events in NYC",
-      "description": "",
+      "tagline": "NYC Backgammon Club is a community club centered on games, art, music in soho, brooklyn.",
+      "description": "NYC Backgammon Club is a community club centered on games, art, music in soho, brooklyn. Based on 5 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "games",
         "art",
@@ -872,17 +614,24 @@
         "Analog Directory (reference)"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 5,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
-        "com_0651a5ccea62",
         "com_ab8259bb35a4",
         "com_b766b6de77ba",
         "com_d8a5203885a9",
         "com_cdd5daa67222",
-        "com_a7c30be0b35f"
+        "com_a7c30be0b35f",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -890,8 +639,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club events in NYC",
-      "description": "",
+      "tagline": "The New York Philosophy Club is a community club centered on art, outdoors, music in upper east side, williamsburg.",
+      "description": "The New York Philosophy Club is a community club centered on art, outdoors, music in upper east side, williamsburg. Based on 7 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
         "art",
@@ -957,17 +706,24 @@
         "Analog Directory (reference)"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 7,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "luma:philosophy"
       ],
       "similarCommunityIds": [
         "com_b0e15eaab803",
         "com_b766b6de77ba",
-        "com_0651a5ccea62",
         "com_c1410c07c4dd",
         "com_cdd5daa67222",
-        "com_7061a5aff23f"
+        "com_3837f308cd75",
+        "com_9a5c4d074e3a"
       ]
     },
     {
@@ -975,8 +731,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC events in NYC",
-      "description": "",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, music in astoria, greenpoint.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, music in astoria, greenpoint. Based on 14 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "outdoors",
@@ -992,12 +748,12 @@
         "parties"
       ],
       "neighborhoods": [
-        "greenpoint",
         "astoria",
+        "greenpoint",
         "manhattan",
         "brooklyn"
       ],
-      "homeVenue": "Brooklyn Army Terminal",
+      "homeVenue": "Astoria Park",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/v7/5fb0fdd5-020a-4aa4-82c3-08673b5be327.jpg",
       "links": [
         {
@@ -1010,7 +766,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 15,
+        "upcomingEventCount": 16,
         "eventCount90d": 6
       },
       "schedule": {
@@ -1041,9 +797,17 @@
         "luma"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 14,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
-        "luma:readingrhythms-manhattan"
+        "luma:readingrhythms-manhattan",
+        "url:https://luma.com/readingrhythms-manhattan"
       ],
       "similarCommunityIds": [
         "com_b766b6de77ba",
@@ -1055,1114 +819,12 @@
       ]
     },
     {
-      "id": "com_5d8c82342a12",
-      "slug": "the-kindling-342a12",
-      "name": "The Kindling",
-      "kind": "recurring_series",
-      "tagline": "The Kindling events in NYC",
-      "description": "",
-      "categories": [
-        "parties",
-        "wellness"
-      ],
-      "tags": [
-        "parties",
-        "wellness"
-      ],
-      "neighborhoods": [
-        "williamsburg"
-      ],
-      "homeVenue": "Othership Williamsburg",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/up/9d72510e-e908-4f3d-b639-c6550cf13fd1.jpg",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/thekindling"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "ff26e6ce54eee83d"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:thekindling"
-      ],
-      "similarCommunityIds": [
-        "com_823ce6cac1bb",
-        "com_a37c903facd1",
-        "com_3e76fc0a0fa9",
-        "com_6954705bbff8",
-        "com_75763531b801",
-        "com_8fffc878152d"
-      ]
-    },
-    {
-      "id": "com_0cc234e74615",
-      "slug": "diana-carla-rowe-e74615",
-      "name": "diana carla rowe",
-      "kind": "recurring_series",
-      "tagline": "diana carla rowe events in NYC",
-      "description": "",
-      "categories": [
-        "art"
-      ],
-      "tags": [
-        "art"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Ace Hotel New York",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/ev/ef4f6497-864f-40b5-aeb0-88399069345b.jpg",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/user/usr-aggy8GFvxxYUm53"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "635b5064391ea711"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:usr-aggy8gfvxxyum53"
-      ],
-      "similarCommunityIds": [
-        "com_461df71246b5",
-        "com_5fbd5a567d17",
-        "com_e74385ce1c64",
-        "com_2330b31e1c43",
-        "com_b6e8c2cea07e",
-        "com_059542131d21"
-      ]
-    },
-    {
-      "id": "com_1e20d3d5e3fd",
-      "slug": "linda-d5e3fd",
-      "name": "Linda",
-      "kind": "recurring_series",
-      "tagline": "Linda events in NYC",
-      "description": "",
-      "categories": [
-        "other"
-      ],
-      "tags": [
-        "other"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "New York, NY",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/2g/68ca1dd2-0e91-4c0a-ac6f-cb08fa83e4eb.jpg",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/user/usr-CEoGI8trADT4g3X"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "5f0a71c309309716"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:usr-ceogi8tradt4g3x"
-      ],
-      "similarCommunityIds": [
-        "com_e16f898c348f",
-        "com_059542131d21",
-        "com_0cc234e74615",
-        "com_15afad4c450d",
-        "com_201c9ab32403",
-        "com_2e1c316abf64"
-      ]
-    },
-    {
-      "id": "com_3f25c0b09e9d",
-      "slug": "nyadw-b09e9d",
-      "name": "nyadw",
-      "kind": "recurring_series",
-      "tagline": "nyadw events in NYC",
-      "description": "",
-      "categories": [
-        "design"
-      ],
-      "tags": [
-        "design"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Gallery 456 / Chinese American Arts Council",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/no/384a7582-380a-4e88-8375-aba8e36d3c17.jpg",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/user/usr-jPvIrdNklwdUYFy"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "4ac08dc50e979a0c"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:usr-jpvirdnklwduyfy"
-      ],
-      "similarCommunityIds": [
-        "com_059542131d21",
-        "com_0cc234e74615",
-        "com_15afad4c450d",
-        "com_1e20d3d5e3fd",
-        "com_201c9ab32403",
-        "com_2e1c316abf64"
-      ]
-    },
-    {
-      "id": "com_059542131d21",
-      "slug": "jamie-131d21",
-      "name": "jamie",
-      "kind": "recurring_series",
-      "tagline": "jamie events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "New York, NY",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/bv/2749989c-f693-40c7-865c-8719c382f157.jpg",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/user/usr-OrOchlvrL08TDzO"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "c82ed868699ded58"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "luma:usr-orochlvrl08tdzo"
-      ],
-      "similarCommunityIds": [
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d",
-        "com_2c41432e531f",
-        "com_45b84e2a0a85",
-        "com_47ff5f17b52c",
-        "com_713bbaf2401a"
-      ]
-    },
-    {
-      "id": "com_669fb7673a8c",
-      "slug": "amcnynj-673a8c",
-      "name": "Amcnynj",
-      "kind": "club",
-      "tagline": "Amcnynj events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors",
-        "exploration"
-      ],
-      "tags": [
-        "outdoors",
-        "exploration"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Rivian Showroom",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-4-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/amcnynj/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "ba2ce40fc41a5696"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:amcnynj"
-      ],
-      "similarCommunityIds": [
-        "com_8ca3b01963c3",
-        "com_7956e76bd7e6",
-        "com_a62b05cde98b",
-        "com_aeb55adc22cb",
-        "com_e680c4a9a49d",
-        "com_726ecf683d79"
-      ]
-    },
-    {
-      "id": "com_d6b77e41ea77",
-      "slug": "astoriarunners-41ea77",
-      "name": "Astoriarunners",
-      "kind": "club",
-      "tagline": "Astoriarunners events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors",
-        "food",
-        "theater",
-        "fitness"
-      ],
-      "tags": [
-        "outdoors",
-        "food",
-        "theater",
-        "fitness"
-      ],
-      "neighborhoods": [
-        "astoria"
-      ],
-      "homeVenue": "Astoria Park Track",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-3-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/astoriarunners/"
-        },
-        {
-          "type": "directory_reference",
-          "label": "Analog Directory reference",
-          "url": "https://analog.directory/communities/astoria-runners"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "175892ea7235052e"
-      ],
-      "sourceAttributions": [
-        "meetup",
-        "Analog Directory (reference)"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:astoriarunners"
-      ],
-      "similarCommunityIds": [
-        "com_ecbe70d7bf3a",
-        "com_c1410c07c4dd",
-        "com_02ba15552329",
-        "com_27b019b131e6",
-        "com_319476b701b8",
-        "com_7908de333124"
-      ]
-    },
-    {
-      "id": "com_3e76fc0a0fa9",
-      "slug": "awkward-to-awesome-be-yourself-be-confident-find-love-0a0fa9",
-      "name": "Awkward To Awesome Be Yourself Be Confident Find Love",
-      "kind": "club",
-      "tagline": "Awkward To Awesome Be Yourself Be Confident Find Love events in NYC",
-      "description": "",
-      "categories": [
-        "parties"
-      ],
-      "tags": [
-        "parties"
-      ],
-      "neighborhoods": [],
-      "homeVenue": "",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-5-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/awkward-to-awesome-be-yourself-be-confident-find-love/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "33fee56588e3f420"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:awkward-to-awesome-be-yourself-be-confident-find-love"
-      ],
-      "similarCommunityIds": [
-        "com_6954705bbff8",
-        "com_75763531b801",
-        "com_8fffc878152d",
-        "com_cf259109a1eb",
-        "com_fe8f983b8bfd",
-        "com_201c9ab32403"
-      ]
-    },
-    {
-      "id": "com_edfb5374c3ad",
-      "slug": "brooklyn-strategist-evening-events-games-meetup-74c3ad",
-      "name": "Brooklyn Strategist Evening Events Games Meetup",
-      "kind": "club",
-      "tagline": "Brooklyn Strategist Evening Events Games Meetup events in NYC",
-      "description": "",
-      "categories": [
-        "parties",
-        "games"
-      ],
-      "tags": [
-        "parties",
-        "games"
-      ],
-      "neighborhoods": [
-        "carroll gardens"
-      ],
-      "homeVenue": "The Brooklyn Strategist",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-1-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/brooklyn-strategist-evening-events-games-meetup/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "fd3583ee43b0cef4"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:brooklyn-strategist-evening-events-games-meetup"
-      ],
-      "similarCommunityIds": [
-        "com_cda593967b10",
-        "com_3e76fc0a0fa9",
-        "com_6954705bbff8",
-        "com_75763531b801",
-        "com_8fffc878152d",
-        "com_cf259109a1eb"
-      ]
-    },
-    {
-      "id": "com_26192b389882",
-      "slug": "central-jersey-salsa-bachata-dancing-meetup-group-389882",
-      "name": "Central Jersey Salsa Bachata Dancing Meetup Group",
-      "kind": "club",
-      "tagline": "Central Jersey Salsa Bachata Dancing Meetup Group events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "outdoors",
-        "dance"
-      ],
-      "tags": [
-        "music",
-        "outdoors",
-        "dance"
-      ],
-      "neighborhoods": [],
-      "homeVenue": "Bayview Park",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-2-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/central-jersey-salsa-bachata-dancing-meetup-group/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "81119b741a83bff0"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:central-jersey-salsa-bachata-dancing-meetup-group"
-      ],
-      "similarCommunityIds": [
-        "com_218b97d674a6",
-        "com_7061a5aff23f",
-        "com_c57456936631",
-        "com_0651a5ccea62",
-        "com_51034699464a",
-        "com_b0e15eaab803"
-      ]
-    },
-    {
-      "id": "com_cddbade35661",
-      "slug": "freewalkers-e35661",
-      "name": "Freewalkers",
-      "kind": "club",
-      "tagline": "Freewalkers events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors",
-        "special"
-      ],
-      "tags": [
-        "outdoors",
-        "special"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Oculus World Trade Center",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-3-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/freewalkers/"
-        },
-        {
-          "type": "directory_reference",
-          "label": "Analog Directory reference",
-          "url": "https://analog.directory/communities/freewalkers"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "ed31733601adb606"
-      ],
-      "sourceAttributions": [
-        "meetup",
-        "Analog Directory (reference)"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:freewalkers"
-      ],
-      "similarCommunityIds": [
-        "com_27b019b131e6",
-        "com_f512a8b0ddfa",
-        "com_070bf55ee818",
-        "com_b6e8c2cea07e",
-        "com_0651a5ccea62",
-        "com_3837f308cd75"
-      ]
-    },
-    {
-      "id": "com_50cc0136690a",
-      "slug": "jerseyshoresalsa-36690a",
-      "name": "Jerseyshoresalsa",
-      "kind": "club",
-      "tagline": "Jerseyshoresalsa events in NYC",
-      "description": "",
-      "categories": [
-        "dance",
-        "fitness"
-      ],
-      "tags": [
-        "dance",
-        "fitness"
-      ],
-      "neighborhoods": [],
-      "homeVenue": "Chilango's Authentic Mexican Food",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-4-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/jerseyshoresalsa/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "a930da3b5d59ea51"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:jerseyshoresalsa"
-      ],
-      "similarCommunityIds": [
-        "com_02ba15552329",
-        "com_319476b701b8",
-        "com_7908de333124",
-        "com_83fdf02633ef",
-        "com_218b97d674a6",
-        "com_2330b31e1c43"
-      ]
-    },
-    {
-      "id": "com_88d70c5fb6bc",
-      "slug": "meetup-group-biqedzyu-5fb6bc",
-      "name": "Meetup Group Biqedzyu",
-      "kind": "club",
-      "tagline": "Meetup Group Biqedzyu events in NYC",
-      "description": "",
-      "categories": [
-        "books",
-        "parties",
-        "outdoors"
-      ],
-      "tags": [
-        "books",
-        "parties",
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "midtown"
-      ],
-      "homeVenue": "Young Ethel\u2019s",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-2-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/meetup-group-biqedzyu/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "223f45064703df71"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:meetup-group-biqedzyu"
-      ],
-      "similarCommunityIds": [
-        "com_42859a78e094",
-        "com_dd1535dd6085",
-        "com_ebf7599ed103",
-        "com_fbea6d9fe826",
-        "com_7061a5aff23f",
-        "com_e2892569c9c4"
-      ]
-    },
-    {
-      "id": "com_e680c4a9a49d",
-      "slug": "nyc-hiking-tours-a9a49d",
-      "name": "Nyc Hiking Tours",
-      "kind": "club",
-      "tagline": "Nyc Hiking Tours events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors"
-      ],
-      "tags": [
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "To Be Determined",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-5-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/nyc-hiking-tours/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "343ad07d12b6dd22"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:nyc-hiking-tours"
-      ],
-      "similarCommunityIds": [
-        "com_a62b05cde98b",
-        "com_aeb55adc22cb",
-        "com_27b019b131e6",
-        "com_669fb7673a8c",
-        "com_726ecf683d79",
-        "com_c57456936631"
-      ]
-    },
-    {
-      "id": "com_319476b701b8",
-      "slug": "outsiders-ny-b701b8",
-      "name": "Outsiders Ny",
-      "kind": "club",
-      "tagline": "Outsiders Ny events in NYC",
-      "description": "",
-      "categories": [
-        "fitness"
-      ],
-      "tags": [
-        "fitness"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Impact Kitchen",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-3-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/outsiders-ny/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "dcfc960e7ac5ec52"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:outsiders-ny"
-      ],
-      "similarCommunityIds": [
-        "com_02ba15552329",
-        "com_7908de333124",
-        "com_83fdf02633ef",
-        "com_2330b31e1c43",
-        "com_50cc0136690a",
-        "com_059542131d21"
-      ]
-    },
-    {
-      "id": "com_7908de333124",
-      "slug": "runningsouls-net-333124",
-      "name": "Runningsouls Net",
-      "kind": "club",
-      "tagline": "Runningsouls Net events in NYC",
-      "description": "",
-      "categories": [
-        "fitness"
-      ],
-      "tags": [
-        "fitness"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "15 St- Prospect Park ( F, G) Station",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-4-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/runningsouls-net/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "3fcd65adc1d4bcb8"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:runningsouls-net"
-      ],
-      "similarCommunityIds": [
-        "com_83fdf02633ef",
-        "com_02ba15552329",
-        "com_319476b701b8",
-        "com_2330b31e1c43",
-        "com_50cc0136690a",
-        "com_0651a5ccea62"
-      ]
-    },
-    {
-      "id": "com_7f62e69e5667",
-      "slug": "sofar-social-club-9e5667",
-      "name": "Sofar Social Club",
-      "kind": "club",
-      "tagline": "Sofar Social Club events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "parties"
-      ],
-      "tags": [
-        "music",
-        "parties"
-      ],
-      "neighborhoods": [
-        "lower east side"
-      ],
-      "homeVenue": "Lower East Side",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-4-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/sofar-social-club/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "fbec9d6b1ff41ecd"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:sofar-social-club"
-      ],
-      "similarCommunityIds": [
-        "com_201c9ab32403",
-        "com_c04dbb08991e",
-        "com_c3f3e1d8f414",
-        "com_e740254e09b9",
-        "com_edf8c65705de",
-        "com_0c5c253e6ad4"
-      ]
-    },
-    {
-      "id": "com_edf8c65705de",
-      "slug": "uptown-nyc-board-gamers-5705de",
-      "name": "Uptown Nyc Board Gamers",
-      "kind": "club",
-      "tagline": "Uptown Nyc Board Gamers events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "parties"
-      ],
-      "tags": [
-        "music",
-        "parties"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Bryant Park",
-      "imageUrl": "https://www.meetup.com/images/fallbacks/redesign/group-cover-4-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/uptown-nyc-board-gamers/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "187a416014815272"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "meetup:uptown-nyc-board-gamers"
-      ],
-      "similarCommunityIds": [
-        "com_201c9ab32403",
-        "com_c3f3e1d8f414",
-        "com_e740254e09b9",
-        "com_51034699464a",
-        "com_d37cf64daad9",
-        "com_7f62e69e5667"
-      ]
-    },
-    {
-      "id": "com_f512a8b0ddfa",
-      "slug": "katie-colosimo-b0ddfa",
-      "name": "Katie Colosimo",
-      "kind": "recurring_series",
-      "tagline": "Katie Colosimo events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors",
-        "exploration",
-        "film",
-        "special"
-      ],
-      "tags": [
-        "outdoors",
-        "exploration",
-        "film",
-        "special"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F0A4Y2XrMwsZVRxciH67qvZosfb32%2FqLhINt-Bx3UqWwG4lSSt_?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/helloiamkatie/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "4392d4d8dca24b1e"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:helloiamkatie",
-        "partiful:0a4y2xrmwszvrxcih67qvzosfb32"
-      ],
-      "similarCommunityIds": [
-        "com_cddbade35661",
-        "com_eef1ca956dae",
-        "com_27b019b131e6",
-        "com_7eb41c1f73b7",
-        "com_b9133d809e0f",
-        "com_070bf55ee818"
-      ]
-    },
-    {
-      "id": "com_27b019b131e6",
-      "slug": "open-air-art-club-b131e6",
-      "name": "Open Air Art Club",
-      "kind": "club",
-      "tagline": "Open Air Art Club events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors"
-      ],
-      "tags": [
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "McCarren Park",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F1gq76DFDncYFeyWWkQbZ%2FMUuRGQ2T310NmvUbs93xs?alt=media&token=1a1e762a-ed0b-4f03-872f-7a9392395a2e",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/openairartclub/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "48236f2eabf010a5"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:openairartclub",
-        "partiful:1gq76dfdncyfeywwkqbz"
-      ],
-      "similarCommunityIds": [
-        "com_a62b05cde98b",
-        "com_aeb55adc22cb",
-        "com_e680c4a9a49d",
-        "com_070bf55ee818",
-        "com_cddbade35661",
-        "com_0651a5ccea62"
-      ]
-    },
-    {
       "id": "com_a7c30be0b35f",
       "slug": "the-travel-agency-e0b35f",
       "name": "The Travel Agency",
       "kind": "recurring_series",
-      "tagline": "The Travel Agency events in NYC",
-      "description": "",
+      "tagline": "The Travel Agency is a recurring event series centered on art, fitness, comedy in soho.",
+      "description": "The Travel Agency is a recurring event series centered on art, fitness, comedy in soho. Based on 2 observed event dates, it meets weekly on Saturday and Tuesday mornings.",
       "categories": [
         "art",
         "fitness",
@@ -2212,2467 +874,25 @@
         "partiful"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "instagram:thetravelagency.co",
         "partiful:4kaeqq973ugzbp5rf6sc79vz4ri2"
       ],
       "similarCommunityIds": [
-        "com_2330b31e1c43",
         "com_b0e15eaab803",
         "com_eeb4e424a504",
         "com_0cc8630779d7",
         "com_318c39363fe6",
-        "com_d8a5203885a9"
-      ]
-    },
-    {
-      "id": "com_e36dbe932c1f",
-      "slug": "devin-932c1f",
-      "name": "Devin",
-      "kind": "recurring_series",
-      "tagline": "Devin events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Alphaville",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FEKFDMT7xm0XjIXgnQ83M0B7PN9N2%2FWVPEYzrKI6F9Qa6t2giIS?alt=media&token=68746fd3-96f4-4636-85de-e20c2a8dad09",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "096533cffc73562d"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:4q4ksmndagwmbli29vnnw2zhfm33"
-      ],
-      "similarCommunityIds": [
-        "com_a44523f85699",
-        "com_a69d9f598375",
-        "com_af1ac9fd6ca1",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d"
-      ]
-    },
-    {
-      "id": "com_0ac032d707b7",
-      "slug": "lit-out-loud-d707b7",
-      "name": "Lit out Loud",
-      "kind": "community_space",
-      "tagline": "Lit out Loud events in NYC",
-      "description": "",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [
-        "east village"
-      ],
-      "homeVenue": "Book Club Bar",
-      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/08_August/Lit_Out_Loud___August_2026.png?cb=1784995122",
-      "links": [
-        {
-          "type": "bookclubbar",
-          "label": "View on Bookclubbar",
-          "url": "https://www.instagram.com/litoutloudnyc/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "a18db4afaa1f563c"
-      ],
-      "sourceAttributions": [
-        "bookclubbar"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:litoutloudnyc",
-        "partiful:62m5smdtjmplvdrqq6x3"
-      ],
-      "similarCommunityIds": [
-        "com_35a48ca12d76",
-        "com_3bdfff4f961c",
-        "com_98c6b84d4dd5",
-        "com_0cc8630779d7",
-        "com_62fb3f2901f0",
-        "com_697fb9ef56a8"
-      ]
-    },
-    {
-      "id": "com_a060d1b12a22",
-      "slug": "davidfromnashville-b12a22",
-      "name": "davidfromnashville",
-      "kind": "recurring_series",
-      "tagline": "davidfromnashville events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "singles"
-      ],
-      "tags": [
-        "music",
-        "singles"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F8sYM5HBUJUa1A0l9mVjG04A0V3R2%2FijtJcqsFfK6wEjgzL7aXb?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/davidfromnashville/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "809d87445796b063"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:davidfromnashville",
-        "partiful:8sym5hbujua1a0l9mvjg04a0v3r2"
-      ],
-      "similarCommunityIds": [
-        "com_74aff58e2a8b",
-        "com_a44523f85699",
-        "com_a69d9f598375",
-        "com_af1ac9fd6ca1",
-        "com_e36dbe932c1f",
-        "com_218b97d674a6"
-      ]
-    },
-    {
-      "id": "com_c925dc42a95c",
-      "slug": "adina-beck-42a95c",
-      "name": "Adina Beck",
-      "kind": "recurring_series",
-      "tagline": "Adina Beck events in NYC",
-      "description": "",
-      "categories": [
-        "photography",
-        "exploration"
-      ],
-      "tags": [
-        "photography",
-        "exploration"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FI7mkexrGJwddQ0k8mYFOU2g1PvI3%2Fy0Q9aaDugOZrehQswpDLD?alt=media&token=5ad29cd2-44a8-4c28-b820-a821da9dfe33",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "067f085e2eff4df1"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:bjyrfcrdnxbmdf5xfdjwy2zmmvs1"
-      ],
-      "similarCommunityIds": [
-        "com_1f29fedc8966",
-        "com_36307041a226",
-        "com_617437adfd27",
-        "com_ae66a44fd903",
-        "com_7eb41c1f73b7",
-        "com_b9133d809e0f"
-      ]
-    },
-    {
-      "id": "com_e740254e09b9",
-      "slug": "plur-nyc-4e09b9",
-      "name": "plur.nyc",
-      "kind": "recurring_series",
-      "tagline": "plur.nyc events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "parties"
-      ],
-      "tags": [
-        "music",
-        "parties"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Artbean Coffee",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FC4StcXhBqMyhqkGmgogY%2FhC11kWtHwC9QiYCFvx9DY?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/plur.nyc/"
-        },
-        {
-          "type": "directory_reference",
-          "label": "Analog Directory reference",
-          "url": "https://analog.directory/communities/plur-nyc"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "a263fc854243a5e5"
-      ],
-      "sourceAttributions": [
-        "partiful",
-        "Analog Directory (reference)"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:plur.nyc",
-        "partiful:c4stcxhbqmyhqkgmgogy"
-      ],
-      "similarCommunityIds": [
-        "com_201c9ab32403",
-        "com_c3f3e1d8f414",
-        "com_edf8c65705de",
-        "com_51034699464a",
-        "com_d37cf64daad9",
-        "com_7f62e69e5667"
-      ]
-    },
-    {
-      "id": "com_ebf7599ed103",
-      "slug": "comets-sports-club-9ed103",
-      "name": "Comets Sports Club",
-      "kind": "club",
-      "tagline": "Comets Sports Club events in NYC",
-      "description": "",
-      "categories": [
-        "parties",
-        "outdoors"
-      ],
-      "tags": [
-        "parties",
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Isham Park",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2Fjll25mlWJvMkjrxa7poxHwhiNMq1%2Fg-avBsQ6zl43GhAvbJ7RU?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "2a7d346b08ae9b7f"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:cahd80tpfr5prooeegjy"
-      ],
-      "similarCommunityIds": [
-        "com_dd1535dd6085",
-        "com_fbea6d9fe826",
-        "com_6954705bbff8",
-        "com_75763531b801",
-        "com_8fffc878152d",
-        "com_a62b05cde98b"
-      ]
-    },
-    {
-      "id": "com_36307041a226",
-      "slug": "julia-41a226",
-      "name": "Julia",
-      "kind": "recurring_series",
-      "tagline": "Julia events in NYC",
-      "description": "",
-      "categories": [
-        "photography",
-        "exploration"
-      ],
-      "tags": [
-        "photography",
-        "exploration"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FI7mkexrGJwddQ0k8mYFOU2g1PvI3%2Fy0Q9aaDugOZrehQswpDLD?alt=media&token=5ad29cd2-44a8-4c28-b820-a821da9dfe33",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "067f085e2eff4df1"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:cowocliunaypqsvlu9jnairbxbe2"
-      ],
-      "similarCommunityIds": [
-        "com_1f29fedc8966",
-        "com_617437adfd27",
-        "com_ae66a44fd903",
-        "com_c925dc42a95c",
-        "com_7eb41c1f73b7",
-        "com_b9133d809e0f"
-      ]
-    },
-    {
-      "id": "com_1f29fedc8966",
-      "slug": "chris-dc8966",
-      "name": "Chris",
-      "kind": "recurring_series",
-      "tagline": "Chris events in NYC",
-      "description": "",
-      "categories": [
-        "photography",
-        "exploration"
-      ],
-      "tags": [
-        "photography",
-        "exploration"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FI7mkexrGJwddQ0k8mYFOU2g1PvI3%2Fy0Q9aaDugOZrehQswpDLD?alt=media&token=5ad29cd2-44a8-4c28-b820-a821da9dfe33",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "067f085e2eff4df1"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:ctfs4xqcv4vr5corrlvgq0s1nx72"
-      ],
-      "similarCommunityIds": [
-        "com_36307041a226",
-        "com_617437adfd27",
-        "com_ae66a44fd903",
-        "com_c925dc42a95c",
-        "com_7eb41c1f73b7",
-        "com_b9133d809e0f"
-      ]
-    },
-    {
-      "id": "com_35a48ca12d76",
-      "slug": "jacob-a12d76",
-      "name": "Jacob",
-      "kind": "recurring_series",
-      "tagline": "Jacob events in NYC",
-      "description": "",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [
-        "east village"
-      ],
-      "homeVenue": "KGB Bar",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2Fd4CbcU9VqFTuN3XMkKxWlom6o663%2FMoxVbH4knL8tZb5F5fNJm?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "317e45e96c4c4307"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:d4cbcu9vqftun3xmkkxwlom6o663"
-      ],
-      "similarCommunityIds": [
-        "com_0ac032d707b7",
-        "com_3bdfff4f961c",
-        "com_98c6b84d4dd5",
-        "com_0cc8630779d7",
-        "com_62fb3f2901f0",
-        "com_697fb9ef56a8"
-      ]
-    },
-    {
-      "id": "com_7956e76bd7e6",
-      "slug": "ashley-overbeek-6bd7e6",
-      "name": "Ashley Overbeek",
-      "kind": "recurring_series",
-      "tagline": "Ashley Overbeek events in NYC",
-      "description": "",
-      "categories": [
-        "exploration"
-      ],
-      "tags": [
-        "exploration"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Jamagansett",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FdE4DtAUzrgWRQwSX7JoAcJ2jv7L2%2FxP7dROYzxNoxktSaFmOiS?alt=media&token=1339438f-98ee-4423-9a98-cb1edb86385a",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "8cab271ee946b8ef"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:de4dtauzrgwrqwsx7joacj2jv7l2"
-      ],
-      "similarCommunityIds": [
-        "com_7eb41c1f73b7",
-        "com_b9133d809e0f",
-        "com_669fb7673a8c",
-        "com_1f29fedc8966",
-        "com_36307041a226",
-        "com_617437adfd27"
-      ]
-    },
-    {
-      "id": "com_a44523f85699",
-      "slug": "josh-govier-f85699",
-      "name": "Josh Govier",
-      "kind": "recurring_series",
-      "tagline": "Josh Govier events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Alphaville",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FEKFDMT7xm0XjIXgnQ83M0B7PN9N2%2FWVPEYzrKI6F9Qa6t2giIS?alt=media&token=68746fd3-96f4-4636-85de-e20c2a8dad09",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "096533cffc73562d"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:ekfdmt7xm0xjixgnq83m0b7pn9n2"
-      ],
-      "similarCommunityIds": [
-        "com_a69d9f598375",
-        "com_af1ac9fd6ca1",
-        "com_e36dbe932c1f",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d"
-      ]
-    },
-    {
-      "id": "com_e5890718b1bf",
-      "slug": "irena-18b1bf",
-      "name": "Irena",
-      "kind": "recurring_series",
-      "tagline": "Irena events in NYC",
-      "description": "",
-      "categories": [
-        "parties",
-        "food",
-        "exploration"
-      ],
-      "tags": [
-        "parties",
-        "food",
-        "exploration"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Lise & Vito",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FEKwuwWKkddXlfyRlRakZHEnY7y13%2FguOR_Sw_9ohDwGJt02roi?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "52979b056d07cd39"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:ekwuwwkkddxlfyrlrakzheny7y13"
-      ],
-      "similarCommunityIds": [
-        "com_7eb41c1f73b7",
-        "com_b9133d809e0f",
-        "com_1f29fedc8966",
-        "com_36307041a226",
-        "com_617437adfd27",
-        "com_ae66a44fd903"
-      ]
-    },
-    {
-      "id": "com_ae66a44fd903",
-      "slug": "l-k-4fd903",
-      "name": "L K",
-      "kind": "recurring_series",
-      "tagline": "L K events in NYC",
-      "description": "",
-      "categories": [
-        "photography",
-        "exploration"
-      ],
-      "tags": [
-        "photography",
-        "exploration"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FI7mkexrGJwddQ0k8mYFOU2g1PvI3%2Fy0Q9aaDugOZrehQswpDLD?alt=media&token=5ad29cd2-44a8-4c28-b820-a821da9dfe33",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "067f085e2eff4df1"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:ezlwa0yduiuxnkzj4yx6xj13qet1"
-      ],
-      "similarCommunityIds": [
-        "com_1f29fedc8966",
-        "com_36307041a226",
-        "com_617437adfd27",
-        "com_c925dc42a95c",
-        "com_7eb41c1f73b7",
-        "com_b9133d809e0f"
-      ]
-    },
-    {
-      "id": "com_3bdfff4f961c",
-      "slug": "temi-4f961c",
-      "name": "temi",
-      "kind": "community_space",
-      "tagline": "temi events in NYC",
-      "description": "",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [
-        "east village"
-      ],
-      "homeVenue": "Book Club Bar",
-      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/08_August/Lit_Out_Loud___August_2026.png?cb=1784995122",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "a18db4afaa1f563c"
-      ],
-      "sourceAttributions": [
-        "bookclubbar"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:guzsvndkebqrssqguzgc1qrk8sv2"
-      ],
-      "similarCommunityIds": [
-        "com_0ac032d707b7",
-        "com_35a48ca12d76",
-        "com_98c6b84d4dd5",
-        "com_0cc8630779d7",
-        "com_62fb3f2901f0",
-        "com_697fb9ef56a8"
-      ]
-    },
-    {
-      "id": "com_cf259109a1eb",
-      "slug": "mirari-09a1eb",
-      "name": "MIRARI",
-      "kind": "recurring_series",
-      "tagline": "MIRARI events in NYC",
-      "description": "",
-      "categories": [
-        "parties"
-      ],
-      "tags": [
-        "parties"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FIR9KVbfS9bRoke6zmqhfFRhmh313%2FrOrPOprxbbWdgpexEqKA4?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/miraripresents/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "091b9d31644a9774"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:miraripresents",
-        "partiful:hb9v0gafalj8pqy21dio"
-      ],
-      "similarCommunityIds": [
-        "com_6954705bbff8",
-        "com_75763531b801",
-        "com_8fffc878152d",
-        "com_fe8f983b8bfd",
-        "com_3e76fc0a0fa9",
-        "com_201c9ab32403"
-      ]
-    },
-    {
-      "id": "com_201c9ab32403",
-      "slug": "ed-junting-b32403",
-      "name": "ed (JUNTING)",
-      "kind": "recurring_series",
-      "tagline": "ed (JUNTING) events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "parties"
-      ],
-      "tags": [
-        "music",
-        "parties"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Artbean Coffee",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FC4StcXhBqMyhqkGmgogY%2FhC11kWtHwC9QiYCFvx9DY?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/junting.mp3/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "a263fc854243a5e5"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:junting.mp3",
-        "partiful:hqteun7l0kggidgfdcwawpmhgc42"
-      ],
-      "similarCommunityIds": [
-        "com_c3f3e1d8f414",
-        "com_e740254e09b9",
-        "com_edf8c65705de",
-        "com_51034699464a",
-        "com_d37cf64daad9",
-        "com_7f62e69e5667"
-      ]
-    },
-    {
-      "id": "com_823ce6cac1bb",
-      "slug": "whatifwenyc-cac1bb",
-      "name": "WhatIfWeNYC",
-      "kind": "recurring_series",
-      "tagline": "WhatIfWeNYC events in NYC",
-      "description": "",
-      "categories": [
-        "parties",
-        "dance"
-      ],
-      "tags": [
-        "parties",
-        "dance"
-      ],
-      "neighborhoods": [
-        "williamsburg"
-      ],
-      "homeVenue": "Cafe Balearica",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FhZXP0STHfrVhBrtbqeOKoLBuPTT2%2Ff_-LR9z5J8HFG6wDsCcGm?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/whatifwenyc/"
-        },
-        {
-          "type": "directory_reference",
-          "label": "Analog Directory reference",
-          "url": "https://analog.directory/communities/whatifwenyc"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "62ebd8f4d7a75be6"
-      ],
-      "sourceAttributions": [
-        "partiful",
-        "Analog Directory (reference)"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:whatifwenyc",
-        "partiful:hzxp0sthfrvhbrtbqeokolbuptt2",
-        "partiful:l47qplukq7luvq13nbrj"
-      ],
-      "similarCommunityIds": [
-        "com_5d8c82342a12",
-        "com_51034699464a",
-        "com_a37c903facd1",
-        "com_3e76fc0a0fa9",
-        "com_6954705bbff8",
-        "com_75763531b801"
-      ]
-    },
-    {
-      "id": "com_617437adfd27",
-      "slug": "subin-lee-adfd27",
-      "name": "Subin Lee",
-      "kind": "recurring_series",
-      "tagline": "Subin Lee events in NYC",
-      "description": "",
-      "categories": [
-        "photography",
-        "exploration"
-      ],
-      "tags": [
-        "photography",
-        "exploration"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FI7mkexrGJwddQ0k8mYFOU2g1PvI3%2Fy0Q9aaDugOZrehQswpDLD?alt=media&token=5ad29cd2-44a8-4c28-b820-a821da9dfe33",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "067f085e2eff4df1"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:i7mkexrgjwddq0k8myfou2g1pvi3"
-      ],
-      "similarCommunityIds": [
-        "com_1f29fedc8966",
-        "com_36307041a226",
-        "com_ae66a44fd903",
-        "com_c925dc42a95c",
-        "com_7eb41c1f73b7",
-        "com_b9133d809e0f"
-      ]
-    },
-    {
-      "id": "com_8fffc878152d",
-      "slug": "kt-78152d",
-      "name": "Kt",
-      "kind": "recurring_series",
-      "tagline": "Kt events in NYC",
-      "description": "",
-      "categories": [
-        "parties"
-      ],
-      "tags": [
-        "parties"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FIR9KVbfS9bRoke6zmqhfFRhmh313%2FrOrPOprxbbWdgpexEqKA4?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/Ktferrarii/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "091b9d31644a9774"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:ktferrarii",
-        "partiful:ir9kvbfs9broke6zmqhffrhmh313"
-      ],
-      "similarCommunityIds": [
-        "com_6954705bbff8",
-        "com_75763531b801",
-        "com_cf259109a1eb",
-        "com_fe8f983b8bfd",
-        "com_3e76fc0a0fa9",
-        "com_201c9ab32403"
-      ]
-    },
-    {
-      "id": "com_98c6b84d4dd5",
-      "slug": "kennedy-avery-4d4dd5",
-      "name": "Kennedy Avery",
-      "kind": "community_space",
-      "tagline": "Kennedy Avery events in NYC",
-      "description": "",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [
-        "east village"
-      ],
-      "homeVenue": "Book Club Bar",
-      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/08_August/Lit_Out_Loud___August_2026.png?cb=1784995122",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "a18db4afaa1f563c"
-      ],
-      "sourceAttributions": [
-        "bookclubbar"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:iub7eywiaoyu3dqddwszhcr3lsx1"
-      ],
-      "similarCommunityIds": [
-        "com_0ac032d707b7",
-        "com_35a48ca12d76",
-        "com_3bdfff4f961c",
-        "com_0cc8630779d7",
-        "com_62fb3f2901f0",
-        "com_697fb9ef56a8"
-      ]
-    },
-    {
-      "id": "com_dd1535dd6085",
-      "slug": "jordan-haber-dd6085",
-      "name": "Jordan Haber",
-      "kind": "recurring_series",
-      "tagline": "Jordan Haber events in NYC",
-      "description": "",
-      "categories": [
-        "parties",
-        "outdoors"
-      ],
-      "tags": [
-        "parties",
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Isham Park",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2Fjll25mlWJvMkjrxa7poxHwhiNMq1%2Fg-avBsQ6zl43GhAvbJ7RU?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/J_Haber/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "2a7d346b08ae9b7f"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:j_haber",
-        "partiful:jll25mlwjvmkjrxa7poxhwhinmq1"
-      ],
-      "similarCommunityIds": [
-        "com_ebf7599ed103",
-        "com_fbea6d9fe826",
-        "com_6954705bbff8",
-        "com_75763531b801",
-        "com_8fffc878152d",
-        "com_a62b05cde98b"
-      ]
-    },
-    {
-      "id": "com_cda593967b10",
-      "slug": "molly-s-cupcakes-nyc-967b10",
-      "name": "Molly's Cupcakes NYC",
-      "kind": "recurring_series",
-      "tagline": "Molly's Cupcakes NYC events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "parties",
-        "games"
-      ],
-      "tags": [
-        "music",
-        "parties",
-        "games"
-      ],
-      "neighborhoods": [
-        "west village"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2Fli3BCb67D5QIqFzlwqwb%2FXM6NHnZC4vhvG9WCBr2tR?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "4517e25ad3ee3ddd"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:li3bcb67d5qiqfzlwqwb"
-      ],
-      "similarCommunityIds": [
-        "com_201c9ab32403",
-        "com_3b104adba072",
-        "com_7f62e69e5667",
-        "com_c04dbb08991e",
-        "com_c3f3e1d8f414",
-        "com_e740254e09b9"
-      ]
-    },
-    {
-      "id": "com_42859a78e094",
-      "slug": "rachel-gilman-78e094",
-      "name": "Rachel Gilman",
-      "kind": "recurring_series",
-      "tagline": "Rachel Gilman events in NYC",
-      "description": "",
-      "categories": [
-        "books",
-        "parties"
-      ],
-      "tags": [
-        "books",
-        "parties"
-      ],
-      "neighborhoods": [
-        "east village"
-      ],
-      "homeVenue": "Ten Degrees Bar",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FLrZm7b6SlcTmGgZA6kv3o6ty6tp2%2FK8FZaVKUpLou44OvJpE_5?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "1e3fe4a413d679f4"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:lrzm7b6slctmggza6kv3o6ty6tp2"
-      ],
-      "similarCommunityIds": [
-        "com_0ac032d707b7",
-        "com_35a48ca12d76",
-        "com_3bdfff4f961c",
-        "com_98c6b84d4dd5",
-        "com_88d70c5fb6bc",
-        "com_a37c903facd1"
-      ]
-    },
-    {
-      "id": "com_fbea6d9fe826",
-      "slug": "stuart-faith-9fe826",
-      "name": "stuart faith",
-      "kind": "recurring_series",
-      "tagline": "stuart faith events in NYC",
-      "description": "",
-      "categories": [
-        "parties",
-        "outdoors"
-      ],
-      "tags": [
-        "parties",
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "rockaway"
-      ],
-      "homeVenue": "Beach 102nd St",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FmJpupWQsoxP9H5PrrkM7ExyygtC3%2F4VqXVpittwhvedAgkxAfb?alt=media&token=7eee0b48-c3f2-4298-8bb9-8d87b4f74b07",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/stufaith/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "29c56a89cc748b1a"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:stufaith",
-        "partiful:mjpupwqsoxp9h5prrkm7exyygtc3"
-      ],
-      "similarCommunityIds": [
-        "com_dd1535dd6085",
-        "com_ebf7599ed103",
-        "com_88d70c5fb6bc",
-        "com_27b019b131e6",
-        "com_3e76fc0a0fa9",
-        "com_6954705bbff8"
-      ]
-    },
-    {
-      "id": "com_6e3345560480",
-      "slug": "nigerians-in-new-york-560480",
-      "name": "Nigerians in New York",
-      "kind": "recurring_series",
-      "tagline": "Nigerians in New York events in NYC",
-      "description": "",
-      "categories": [
-        "comedy"
-      ],
-      "tags": [
-        "comedy"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2Fn9UwFJUmvV6QshCPncMb%2FVV7hfFlhGcRq0mWRcEph6?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "02aa8935927b90a0"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:n9uwfjumvv6qshcpncmb"
-      ],
-      "similarCommunityIds": [
-        "com_f7ca4289152b",
-        "com_070bf55ee818",
-        "com_318c39363fe6",
         "com_d8a5203885a9",
-        "com_059542131d21",
-        "com_0cc234e74615"
-      ]
-    },
-    {
-      "id": "com_0c5c253e6ad4",
-      "slug": "george-3e6ad4",
-      "name": "George",
-      "kind": "recurring_series",
-      "tagline": "George events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "lower east side"
-      ],
-      "homeVenue": "Arlene's Grocery",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2Fq5SXG6iNRH29lvU43bxi%2Fj3U_W16V2d46twl0nUEgs?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "8e5bea75ec60ed5b"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:ngtfe4dk9nxeoyeg6bhi5zuphvw2"
-      ],
-      "similarCommunityIds": [
-        "com_2c41432e531f",
-        "com_059542131d21",
-        "com_12e44581fb7d",
-        "com_45b84e2a0a85",
-        "com_47ff5f17b52c",
-        "com_713bbaf2401a"
-      ]
-    },
-    {
-      "id": "com_74aff58e2a8b",
-      "slug": "doolittle-8e2a8b",
-      "name": "doolittle",
-      "kind": "recurring_series",
-      "tagline": "doolittle events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "singles"
-      ],
-      "tags": [
-        "music",
-        "singles"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F8sYM5HBUJUa1A0l9mVjG04A0V3R2%2FijtJcqsFfK6wEjgzL7aXb?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/doolittlenyc/"
-        },
-        {
-          "type": "directory_reference",
-          "label": "Analog Directory reference",
-          "url": "https://analog.directory/communities/doolittle"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "809d87445796b063"
-      ],
-      "sourceAttributions": [
-        "partiful",
-        "Analog Directory (reference)"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:doolittlenyc",
-        "partiful:ni7omwwvrobnttrdquwv"
-      ],
-      "similarCommunityIds": [
-        "com_a060d1b12a22",
-        "com_a44523f85699",
-        "com_a69d9f598375",
-        "com_af1ac9fd6ca1",
-        "com_e36dbe932c1f",
-        "com_218b97d674a6"
-      ]
-    },
-    {
-      "id": "com_3b104adba072",
-      "slug": "curated-by-field-notes-nyc-dba072",
-      "name": "curated by field notes nyc",
-      "kind": "recurring_series",
-      "tagline": "curated by field notes nyc events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "games"
-      ],
-      "tags": [
-        "music",
-        "games"
-      ],
-      "neighborhoods": [
-        "flushing"
-      ],
-      "homeVenue": "Flushing Meadows Corona Park",
-      "imageUrl": "https://assets.getpartiful.com/posters/US-OPEN-TENNIS",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/fieldnotes.nyc/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "d692cfc71e42eca7"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:fieldnotes.nyc",
-        "partiful:o7edm3y5tr24cnnq3qay"
-      ],
-      "similarCommunityIds": [
-        "com_cda593967b10",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d",
-        "com_2c41432e531f",
-        "com_45b84e2a0a85"
-      ]
-    },
-    {
-      "id": "com_e2892569c9c4",
-      "slug": "raneem-elsayed-69c9c4",
-      "name": "Raneem Elsayed",
-      "kind": "recurring_series",
-      "tagline": "Raneem Elsayed events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors",
-        "movies"
-      ],
-      "tags": [
-        "outdoors",
-        "movies"
-      ],
-      "neighborhoods": [
-        "midtown"
-      ],
-      "homeVenue": "Bryant Park",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FP6G7GxBDzBR49CRKz1mOtdB1Sei2%2FvZl24kXh9Udzxn8efnHTx?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "952587cc3299309f"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:p6g7gxbdzbr49crkz1motdb1sei2"
-      ],
-      "similarCommunityIds": [
-        "com_7061a5aff23f",
-        "com_88d70c5fb6bc",
-        "com_27b019b131e6",
-        "com_a62b05cde98b",
-        "com_aeb55adc22cb",
-        "com_e680c4a9a49d"
-      ]
-    },
-    {
-      "id": "com_75763531b801",
-      "slug": "ishan-singh-31b801",
-      "name": "Ishan Singh",
-      "kind": "recurring_series",
-      "tagline": "Ishan Singh events in NYC",
-      "description": "",
-      "categories": [
-        "parties"
-      ],
-      "tags": [
-        "parties"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Seven Sins",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FPLyjKxF4bDSQoNywctI02oEJTBE2%2Ft6Ts9YXtWZrGwpWUN7RQ-?alt=media&token=79436b74-b7d7-4945-b3be-f9b3a8b062d6",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/NotIshanSingh/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "4b1b979eb19dce14"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:notishansingh",
-        "partiful:plyjkxf4bdsqonywcti02oejtbe2"
-      ],
-      "similarCommunityIds": [
-        "com_6954705bbff8",
-        "com_8fffc878152d",
-        "com_cf259109a1eb",
-        "com_fe8f983b8bfd",
-        "com_3e76fc0a0fa9",
-        "com_201c9ab32403"
-      ]
-    },
-    {
-      "id": "com_2e1c316abf64",
-      "slug": "ariela-orgel-6abf64",
-      "name": "Ariela Orgel",
-      "kind": "recurring_series",
-      "tagline": "Ariela Orgel events in NYC",
-      "description": "",
-      "categories": [
-        "singles"
-      ],
-      "tags": [
-        "singles"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Aux Merveilleux de Fred",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FrH3RNvXETXsXtu6ChB0r%2FlSukHG7PajuvyKy8YcCLI?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "f40bc6971d6443a7"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:px6e3gqjaobhegq0dsgn1gywmg22"
-      ],
-      "similarCommunityIds": [
-        "com_15afad4c450d",
-        "com_74aff58e2a8b",
-        "com_a060d1b12a22",
-        "com_059542131d21",
-        "com_0cc234e74615",
-        "com_1e20d3d5e3fd"
-      ]
-    },
-    {
-      "id": "com_2c41432e531f",
-      "slug": "the-vinyl-word-2e531f",
-      "name": "The Vinyl Word",
-      "kind": "recurring_series",
-      "tagline": "The Vinyl Word events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "lower east side"
-      ],
-      "homeVenue": "Arlene's Grocery",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2Fq5SXG6iNRH29lvU43bxi%2Fj3U_W16V2d46twl0nUEgs?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/the_vinyl_word_/"
-        },
-        {
-          "type": "directory_reference",
-          "label": "Analog Directory reference",
-          "url": "https://analog.directory/communities/the-vinyl-word"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "8e5bea75ec60ed5b"
-      ],
-      "sourceAttributions": [
-        "partiful",
-        "Analog Directory (reference)"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:the_vinyl_word_",
-        "partiful:q5sxg6inrh29lvu43bxi"
-      ],
-      "similarCommunityIds": [
-        "com_0c5c253e6ad4",
-        "com_059542131d21",
-        "com_12e44581fb7d",
-        "com_45b84e2a0a85",
-        "com_47ff5f17b52c",
-        "com_713bbaf2401a"
-      ]
-    },
-    {
-      "id": "com_070bf55ee818",
-      "slug": "durty-chai-studios-5ee818",
-      "name": "durty chai studios",
-      "kind": "recurring_series",
-      "tagline": "durty chai studios events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors",
-        "comedy"
-      ],
-      "tags": [
-        "outdoors",
-        "comedy"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Brooklyn",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FqAOx8dnlUAj44uPzRr7R%2F14O0zxXkXpV_V1bQUwlSs?alt=media&token=4ce2fbc4-3779-4fd9-9d18-5da3fc8fcbc2",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/itsadurtychai/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "87cd271007a7062c"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:itsadurtychai",
-        "partiful:qaox8dnluaj44upzrr7r"
-      ],
-      "similarCommunityIds": [
-        "com_27b019b131e6",
-        "com_cddbade35661",
-        "com_d8a5203885a9",
-        "com_33a530deb7aa",
-        "com_0651a5ccea62",
-        "com_eef1ca956dae"
-      ]
-    },
-    {
-      "id": "com_b9133d809e0f",
-      "slug": "for-example-809e0f",
-      "name": "For Example",
-      "kind": "recurring_series",
-      "tagline": "For Example events in NYC",
-      "description": "",
-      "categories": [
-        "exploration"
-      ],
-      "tags": [
-        "exploration"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Land to Sea",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FqNoSxBUTmsyHYBJUNga9%2FhHTdtoamx7FHe8hbLtBjt?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/forexample.nyc/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "1e5029c6ba750f30"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:forexample.nyc",
-        "partiful:qnosxbutmsyhybjunga9"
-      ],
-      "similarCommunityIds": [
-        "com_7eb41c1f73b7",
-        "com_7956e76bd7e6",
-        "com_1f29fedc8966",
-        "com_36307041a226",
-        "com_617437adfd27",
-        "com_ae66a44fd903"
-      ]
-    },
-    {
-      "id": "com_726ecf683d79",
-      "slug": "mimi-s-683d79",
-      "name": "Mimi's",
-      "kind": "recurring_series",
-      "tagline": "Mimi's events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors",
-        "games"
-      ],
-      "tags": [
-        "outdoors",
-        "games"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Hero Beach Club",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FQwqgJGt42dM9SnHezAyQaSMHyA02%2FhRXboNwl5w4rms_hRmZDf?alt=media&token=fd84106b-813c-4d22-91ce-9edefe5552ed",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "ed2cff091d675e8a"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:qwqgjgt42dm9snhezayqasmhya02"
-      ],
-      "similarCommunityIds": [
-        "com_a62b05cde98b",
-        "com_aeb55adc22cb",
-        "com_e680c4a9a49d",
-        "com_669fb7673a8c",
-        "com_c57456936631",
-        "com_dd1535dd6085"
-      ]
-    },
-    {
-      "id": "com_7eb41c1f73b7",
-      "slug": "buenos-diaz-coffee-1f73b7",
-      "name": "Buenos Diaz Coffee",
-      "kind": "recurring_series",
-      "tagline": "Buenos Diaz Coffee events in NYC",
-      "description": "",
-      "categories": [
-        "exploration"
-      ],
-      "tags": [
-        "exploration"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Obscure Coffee Roasters",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FxJd5zdnUU7f3NYju5lbEF5kuDPu1%2F9VhUWG6xiuxAidSPbTiyx?alt=media&token=57d89672-6085-4b0c-9e9c-a35bd634fdbc",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/Buenosdiaznyc/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "f9f5e24b65762ad7"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:buenosdiaznyc",
-        "partiful:r1bz1coc1ernlrhfrfde"
-      ],
-      "similarCommunityIds": [
-        "com_b9133d809e0f",
-        "com_7956e76bd7e6",
-        "com_1f29fedc8966",
-        "com_36307041a226",
-        "com_617437adfd27",
-        "com_ae66a44fd903"
-      ]
-    },
-    {
-      "id": "com_15afad4c450d",
-      "slug": "convo-nyc-4c450d",
-      "name": "Convo NYC",
-      "kind": "recurring_series",
-      "tagline": "Convo NYC events in NYC",
-      "description": "",
-      "categories": [
-        "singles"
-      ],
-      "tags": [
-        "singles"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Aux Merveilleux de Fred",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FrH3RNvXETXsXtu6ChB0r%2FlSukHG7PajuvyKy8YcCLI?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/convo.nyc/"
-        },
-        {
-          "type": "directory_reference",
-          "label": "Analog Directory reference",
-          "url": "https://analog.directory/communities/convo-nyc"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "f40bc6971d6443a7"
-      ],
-      "sourceAttributions": [
-        "partiful",
-        "Analog Directory (reference)"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:convo.nyc",
-        "partiful:rh3rnvxetxsxtu6chb0r"
-      ],
-      "similarCommunityIds": [
-        "com_2e1c316abf64",
-        "com_74aff58e2a8b",
-        "com_a060d1b12a22",
-        "com_059542131d21",
-        "com_0cc234e74615",
-        "com_1e20d3d5e3fd"
-      ]
-    },
-    {
-      "id": "com_af1ac9fd6ca1",
-      "slug": "chris-sunshine-fd6ca1",
-      "name": "Chris Sunshine",
-      "kind": "recurring_series",
-      "tagline": "Chris Sunshine events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Alphaville",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FEKFDMT7xm0XjIXgnQ83M0B7PN9N2%2FWVPEYzrKI6F9Qa6t2giIS?alt=media&token=68746fd3-96f4-4636-85de-e20c2a8dad09",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "096533cffc73562d"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:rwt1guu3bheimpxoxiijckzzuop2"
-      ],
-      "similarCommunityIds": [
-        "com_a44523f85699",
-        "com_a69d9f598375",
-        "com_e36dbe932c1f",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d"
-      ]
-    },
-    {
-      "id": "com_f7ca4289152b",
-      "slug": "nin-89152b",
-      "name": "NIN",
-      "kind": "recurring_series",
-      "tagline": "NIN events in NYC",
-      "description": "",
-      "categories": [
-        "comedy"
-      ],
-      "tags": [
-        "comedy"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2Fn9UwFJUmvV6QshCPncMb%2FVV7hfFlhGcRq0mWRcEph6?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "02aa8935927b90a0"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:spcgn0yh3dpor8tc4v8zu2t3hcr1"
-      ],
-      "similarCommunityIds": [
-        "com_6e3345560480",
-        "com_070bf55ee818",
-        "com_318c39363fe6",
-        "com_d8a5203885a9",
-        "com_059542131d21",
-        "com_0cc234e74615"
-      ]
-    },
-    {
-      "id": "com_9847fae06973",
-      "slug": "ramya-baratam-e06973",
-      "name": "Ramya Baratam",
-      "kind": "recurring_series",
-      "tagline": "Ramya Baratam events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "williamsburg"
-      ],
-      "homeVenue": "Williamsburg",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FsyLlR6Yf8UVT4TaqvPcRpjpNjSO2%2FqNgp5ZA6wLFYVykSWwIz9?alt=media&token=11623163-ce4a-4acb-b971-b20f93617de3",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/ramyabaratam_/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "7e817870a0c5c572"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:ramyabaratam_",
-        "partiful:syllr6yf8uvt4taqvpcrpjpnjso2"
-      ],
-      "similarCommunityIds": [
-        "com_12e44581fb7d",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_2c41432e531f",
-        "com_45b84e2a0a85",
-        "com_47ff5f17b52c"
-      ]
-    },
-    {
-      "id": "com_45b84e2a0a85",
-      "slug": "st-gloria-2a0a85",
-      "name": "St.Gloria",
-      "kind": "recurring_series",
-      "tagline": "St.Gloria events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "bushwick"
-      ],
-      "homeVenue": "Bushwick",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FtanYSK73GsZs19IrPkjb%2F3DYBBDcc7XBVMP2Rm1-VS?alt=media",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "54033cc2edee25c0"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:tanysk73gszs19irpkjb"
-      ],
-      "similarCommunityIds": [
-        "com_c34ac9108435",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d",
-        "com_2c41432e531f",
-        "com_47ff5f17b52c"
-      ]
-    },
-    {
-      "id": "com_0651a5ccea62",
-      "slug": "daniel-pag-n-ccea62",
-      "name": "Daniel Pag\u00e1n",
-      "kind": "recurring_series",
-      "tagline": "Daniel Pag\u00e1n events in NYC",
-      "description": "",
-      "categories": [
-        "art",
-        "music",
-        "outdoors"
-      ],
-      "tags": [
-        "art",
-        "music",
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Ornithology Jazz Club",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FUVZ8FOIObfXxNyOpUTa8L3cicZA3%2Fd1GJwWc7JaYzSkFH4OCSX?alt=media&token=db0a126b-7e4d-42af-b16a-8835a2b6adac",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/dpgosinski/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "f56026427bbc261b"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:dpgosinski",
-        "partiful:uvz8foiobfxxnyoputa8l3cicza3"
-      ],
-      "similarCommunityIds": [
-        "com_b0e15eaab803",
-        "com_3837f308cd75",
-        "com_27b019b131e6",
-        "com_a44523f85699",
-        "com_a69d9f598375",
-        "com_af1ac9fd6ca1"
-      ]
-    },
-    {
-      "id": "com_8ca3b01963c3",
-      "slug": "threes-brewing-1963c3",
-      "name": "Threes Brewing",
-      "kind": "recurring_series",
-      "tagline": "Threes Brewing events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors",
-        "exploration"
-      ],
-      "tags": [
-        "outdoors",
-        "exploration"
-      ],
-      "neighborhoods": [
-        "greenpoint"
-      ],
-      "homeVenue": "Threes Brewing",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FwMSd6LkNvEXF4h1vAt8a%2F9btCLKKaUJgq5aTwbQhLl?alt=media&token=0b4a283c-2ddb-4b2b-afd3-d5dcc8c52d3f",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "1142dad1c727122d"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:wmsd6lknvexf4h1vat8a"
-      ],
-      "similarCommunityIds": [
-        "com_669fb7673a8c",
-        "com_27b019b131e6",
-        "com_7956e76bd7e6",
-        "com_7eb41c1f73b7",
-        "com_a62b05cde98b",
-        "com_aeb55adc22cb"
-      ]
-    },
-    {
-      "id": "com_c3f3e1d8f414",
-      "slug": "subtle-asian-mixers-d8f414",
-      "name": "subtle asian mixers",
-      "kind": "recurring_series",
-      "tagline": "subtle asian mixers events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "parties"
-      ],
-      "tags": [
-        "music",
-        "parties"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Artbean Coffee",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FC4StcXhBqMyhqkGmgogY%2FhC11kWtHwC9QiYCFvx9DY?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/subtleasianmixers/"
-        },
-        {
-          "type": "directory_reference",
-          "label": "Analog Directory reference",
-          "url": "https://analog.directory/communities/subtle-asian-mixers"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "a263fc854243a5e5"
-      ],
-      "sourceAttributions": [
-        "partiful",
-        "Analog Directory (reference)"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:subtleasianmixers",
-        "partiful:xz9v599g4wuezjqqr6qn"
-      ],
-      "similarCommunityIds": [
-        "com_201c9ab32403",
-        "com_e740254e09b9",
-        "com_edf8c65705de",
-        "com_51034699464a",
-        "com_d37cf64daad9",
-        "com_7f62e69e5667"
-      ]
-    },
-    {
-      "id": "com_6954705bbff8",
-      "slug": "tal-mordukhay-5bbff8",
-      "name": "Tal Mordukhay",
-      "kind": "recurring_series",
-      "tagline": "Tal Mordukhay events in NYC",
-      "description": "",
-      "categories": [
-        "parties"
-      ],
-      "tags": [
-        "parties"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Seven Sins",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FPLyjKxF4bDSQoNywctI02oEJTBE2%2Ft6Ts9YXtWZrGwpWUN7RQ-?alt=media&token=79436b74-b7d7-4945-b3be-f9b3a8b062d6",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "4b1b979eb19dce14"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:xzkgourofnw4d9ncpsqwvwdupsa2"
-      ],
-      "similarCommunityIds": [
-        "com_75763531b801",
-        "com_8fffc878152d",
-        "com_cf259109a1eb",
-        "com_fe8f983b8bfd",
-        "com_3e76fc0a0fa9",
-        "com_201c9ab32403"
-      ]
-    },
-    {
-      "id": "com_fc88669d42d3",
-      "slug": "kennedy-wright-9d42d3",
-      "name": "Kennedy Wright",
-      "kind": "recurring_series",
-      "tagline": "Kennedy Wright events in NYC",
-      "description": "",
-      "categories": [
-        "parties",
-        "movies"
-      ],
-      "tags": [
-        "parties",
-        "movies"
-      ],
-      "neighborhoods": [
-        "lower east side"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FYiqu57hmshQypZhzoQ0VpPyVtlz2%2FVjrjxYkUXxyOufaTeyIY_?alt=media",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/ilovegreenday/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "afe9bf18a4245e37"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "instagram:ilovegreenday",
-        "partiful:yiqu57hmshqypzhzoq0vppyvtlz2"
-      ],
-      "similarCommunityIds": [
-        "com_7f62e69e5667",
-        "com_3e76fc0a0fa9",
-        "com_6954705bbff8",
-        "com_75763531b801",
-        "com_8fffc878152d",
-        "com_cf259109a1eb"
-      ]
-    },
-    {
-      "id": "com_2330b31e1c43",
-      "slug": "whitney-1e1c43",
-      "name": "Whitney",
-      "kind": "recurring_series",
-      "tagline": "Whitney events in NYC",
-      "description": "",
-      "categories": [
-        "art",
-        "fitness"
-      ],
-      "tags": [
-        "art",
-        "fitness"
-      ],
-      "neighborhoods": [
-        "soho"
-      ],
-      "homeVenue": "The Travel Agency SoHo",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F4kAeQq973ugZbp5rF6sC79Vz4ri2%2FIP6bgx0fDUa9plCIgBRaP?alt=media&token=32bea1c3-f598-4148-bf22-f3ce2441af4d",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "727782d06116ec5b"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "partiful:yixsxbi2bvrac0ivgg0brogsseh1"
-      ],
-      "similarCommunityIds": [
-        "com_a7c30be0b35f",
-        "com_02ba15552329",
-        "com_0cc234e74615",
-        "com_319476b701b8",
-        "com_461df71246b5",
-        "com_5fbd5a567d17"
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -4680,8 +900,8 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar events in NYC",
-      "description": "",
+      "tagline": "Book Club Bar is a community space centered on books, parties, food in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, parties, food in east village, bushwick. Based on 13 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -4745,6 +965,13 @@
       ],
       "lastVerifiedAt": "2026-08-06",
       "verified": true,
+      "verificationStatus": "manually_verified",
+      "qualificationEvidence": {
+        "observedDateCount": 13,
+        "hasFirstPartyIdentity": false
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "source:bookclubbar"
       ],
@@ -4753,8 +980,8 @@
         "com_cdd5daa67222",
         "com_b766b6de77ba",
         "com_33a530deb7aa",
-        "com_42859a78e094",
-        "com_88d70c5fb6bc"
+        "com_b0e15eaab803",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -4762,8 +989,8 @@
       "slug": "brooklyn-comedy-collective-3885a9",
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
-      "tagline": "Brooklyn Comedy Collective events in NYC",
-      "description": "",
+      "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, music in brooklyn.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, music in brooklyn. Based on 3 observed event dates, it meets weekly on Friday and Sunday evenings.",
       "categories": [
         "comedy",
         "music"
@@ -4816,16 +1043,23 @@
       ],
       "lastVerifiedAt": "2026-08-06",
       "verified": true,
+      "verificationStatus": "first_party_source",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": false
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "source:brooklyncomedy"
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
-        "com_a44523f85699",
-        "com_a69d9f598375",
-        "com_af1ac9fd6ca1",
-        "com_e36dbe932c1f",
-        "com_9a5c4d074e3a"
+        "com_9a5c4d074e3a",
+        "com_218b97d674a6",
+        "com_b0e15eaab803",
+        "com_b766b6de77ba",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -4833,8 +1067,8 @@
       "slug": "brooklyn-contra-d674a6",
       "name": "Brooklyn Contra",
       "kind": "club",
-      "tagline": "Brooklyn Contra events in NYC",
-      "description": "",
+      "tagline": "Brooklyn Contra is a community club centered on music, dance in brooklyn.",
+      "description": "Brooklyn Contra is a community club centered on music, dance in brooklyn. Based on 5 observed event dates, it meets biweekly on Saturday and Sunday evenings.",
       "categories": [
         "music",
         "dance"
@@ -4885,16 +1119,23 @@
       ],
       "lastVerifiedAt": "2026-08-06",
       "verified": true,
+      "verificationStatus": "manually_verified",
+      "qualificationEvidence": {
+        "observedDateCount": 5,
+        "hasFirstPartyIdentity": false
+      },
+      "newcomerFriendly": true,
+      "newcomerEvidence": [],
       "aliases": [
         "source:brooklyncontra"
       ],
       "similarCommunityIds": [
         "com_3837f308cd75",
-        "com_a44523f85699",
-        "com_a69d9f598375",
-        "com_af1ac9fd6ca1",
-        "com_e36dbe932c1f",
-        "com_74aff58e2a8b"
+        "com_d8a5203885a9",
+        "com_83fdf02633ef",
+        "com_9a5c4d074e3a",
+        "com_b0e15eaab803",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -4902,8 +1143,8 @@
       "slug": "liz-s-book-bar-24a504",
       "name": "Liz's Book Bar",
       "kind": "community_space",
-      "tagline": "Liz's Book Bar events in NYC",
-      "description": "",
+      "tagline": "Liz's Book Bar is a community space centered on books, art, fitness in carroll gardens.",
+      "description": "Liz's Book Bar is a community space centered on books, art, fitness in carroll gardens. Based on 16 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "art",
@@ -4965,6 +1206,13 @@
       ],
       "lastVerifiedAt": "2026-08-06",
       "verified": true,
+      "verificationStatus": "manually_verified",
+      "qualificationEvidence": {
+        "observedDateCount": 16,
+        "hasFirstPartyIdentity": false
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "source:lizsbookbar"
       ],
@@ -4982,8 +1230,8 @@
       "slug": "mcnally-jackson-0779d7",
       "name": "McNally Jackson",
       "kind": "institutional_program",
-      "tagline": "McNally Jackson events in NYC",
-      "description": "",
+      "tagline": "McNally Jackson is a community program centered on books in soho, williamsburg.",
+      "description": "McNally Jackson is a community program centered on books in soho, williamsburg. Based on 4 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
         "books"
       ],
@@ -5030,16 +1278,23 @@
       ],
       "lastVerifiedAt": "2026-08-06",
       "verified": true,
+      "verificationStatus": "first_party_source",
+      "qualificationEvidence": {
+        "observedDateCount": 4,
+        "hasFirstPartyIdentity": false
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "source:mcnallyjackson"
       ],
       "similarCommunityIds": [
-        "com_0ac032d707b7",
-        "com_35a48ca12d76",
-        "com_3bdfff4f961c",
-        "com_62fb3f2901f0",
-        "com_697fb9ef56a8",
-        "com_98c6b84d4dd5"
+        "com_a37c903facd1",
+        "com_33a530deb7aa",
+        "com_eef1ca956dae",
+        "com_a7c30be0b35f",
+        "com_c1410c07c4dd",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -5047,8 +1302,8 @@
       "slug": "powerhouse-arena-956dae",
       "name": "POWERHOUSE Arena",
       "kind": "institutional_program",
-      "tagline": "POWERHOUSE Arena events in NYC",
-      "description": "",
+      "tagline": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn.",
+      "description": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn. Based on 12 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
         "books",
         "celebrities",
@@ -5105,131 +1360,23 @@
       ],
       "lastVerifiedAt": "2026-08-06",
       "verified": true,
+      "verificationStatus": "first_party_source",
+      "qualificationEvidence": {
+        "observedDateCount": 12,
+        "hasFirstPartyIdentity": false
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "source:powerhousearena"
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
-        "com_f512a8b0ddfa",
         "com_33a530deb7aa",
         "com_d8a5203885a9",
         "com_cdd5daa67222",
-        "com_27b019b131e6"
-      ]
-    },
-    {
-      "id": "com_a62b05cde98b",
-      "slug": "bagel-entrepreneurs-cde98b",
-      "name": "Bagel Entrepreneurs",
-      "kind": "recurring_series",
-      "tagline": "Bagel Entrepreneurs events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors"
-      ],
-      "tags": [
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "New York, New York",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/59/432b74f6-96bb-4524-8f34-1b75e3c3ab63.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/bagelsnyc"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "dcf09bb7873ba06c"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://luma.com/bagelsnyc"
-      ],
-      "similarCommunityIds": [
-        "com_aeb55adc22cb",
-        "com_e680c4a9a49d",
-        "com_27b019b131e6",
-        "com_669fb7673a8c",
-        "com_726ecf683d79",
-        "com_c57456936631"
-      ]
-    },
-    {
-      "id": "com_ecbe70d7bf3a",
-      "slug": "reading-rhythms-nyc-d7bf3a",
-      "name": "Reading Rhythms NYC",
-      "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC events in NYC",
-      "description": "",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [
-        "astoria"
-      ],
-      "homeVenue": "Astoria Park",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/h6/1b6b7d42-189b-4ece-ba10-1d71b2bbdca7.jpg",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/readingrhythms-manhattan"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": {
-        "cadence": "biweekly",
-        "typicalDays": [
-          "Monday",
-          "Thursday"
-        ],
-        "typicalTime": "18:30",
-        "confidence": 0.83,
-        "sampleSize": 5
-      },
-      "upcomingEventIds": [
-        "0e789ebba664c406"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://luma.com/readingrhythms-manhattan"
-      ],
-      "similarCommunityIds": [
-        "com_0ac032d707b7",
-        "com_0cc8630779d7",
-        "com_35a48ca12d76",
-        "com_3bdfff4f961c",
-        "com_62fb3f2901f0",
-        "com_697fb9ef56a8"
+        "com_b0e15eaab803",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -5237,8 +1384,8 @@
       "slug": "eastville-comedy-club-363fe6",
       "name": "Eastville Comedy Club",
       "kind": "club",
-      "tagline": "Eastville Comedy Club events in NYC",
-      "description": "",
+      "tagline": "Eastville Comedy Club is a community club centered on comedy, music in east village.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music in east village. Based on 5 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "comedy",
         "music"
@@ -5286,355 +1433,24 @@
         "eastvillecomedy"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 5,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
         "com_d8a5203885a9",
-        "com_efa10ee0a677",
         "com_9a5c4d074e3a",
         "com_33a530deb7aa",
-        "com_059542131d21",
-        "com_0c5c253e6ad4"
-      ]
-    },
-    {
-      "id": "com_c34ac9108435",
-      "slug": "elsewhere-108435",
-      "name": "Elsewhere",
-      "kind": "recurring_series",
-      "tagline": "Elsewhere events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "bushwick"
-      ],
-      "homeVenue": "Elsewhere - The Hall",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1189078421%2F2576419391761%2F1%2Foriginal.20260717-154937?crop=focalpoint&fit=crop&w=940&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=d3f09af96bf4bceffdc4c5d04f2e9fe7",
-      "links": [
-        {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
-          "url": "https://www.eventbrite.com/o/elsewhere-105655500371"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 2,
-        "eventCount90d": 0
-      },
-      "schedule": {
-        "cadence": "occasional",
-        "typicalDays": [
-          "Tuesday",
-          "Thursday"
-        ],
-        "typicalTime": "19:00",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [
-        "ff487f32295021c0",
-        "c65ab39ef5533d68"
-      ],
-      "sourceAttributions": [
-        "eventbrite"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.eventbrite.com/o/elsewhere-105655500371"
-      ],
-      "similarCommunityIds": [
-        "com_45b84e2a0a85",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d",
-        "com_2c41432e531f",
-        "com_47ff5f17b52c"
-      ]
-    },
-    {
-      "id": "com_ffe8218f3318",
-      "slug": "after-eden-8f3318",
-      "name": "After Eden",
-      "kind": "recurring_series",
-      "tagline": "After Eden events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "food"
-      ],
-      "tags": [
-        "music",
-        "food"
-      ],
-      "neighborhoods": [
-        "lower east side"
-      ],
-      "homeVenue": "After Eden",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FJwhpvnRv0yRFuRwYNce5UGWY4wC2%2FXSKRbT1sZ6F6loA0rOJ7g?alt=media&token=250b8072-c51e-4635-989a-ff7f4bfdd272",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/aftereden.nyc/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "3bde3f826ddad3b5"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.instagram.com/aftereden.nyc"
-      ],
-      "similarCommunityIds": [
-        "com_0c5c253e6ad4",
-        "com_2c41432e531f",
-        "com_7f62e69e5667",
-        "com_059542131d21",
-        "com_12e44581fb7d",
-        "com_45b84e2a0a85"
-      ]
-    },
-    {
-      "id": "com_d37cf64daad9",
-      "slug": "alexandra-ebright-4daad9",
-      "name": "Alexandra Ebright",
-      "kind": "recurring_series",
-      "tagline": "Alexandra Ebright events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "parties",
-        "celebrities"
-      ],
-      "tags": [
-        "music",
-        "parties",
-        "celebrities"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F1nWHvDpsTqTx2AFtJla7ckjtkdA3%2F4-TlEQExmGqJHU3XUv1jb?alt=media&token=4a5cc793-31ac-4c29-86d1-bb20add64b39",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/alexandraw_rose/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "4f56d2b9c8a3e5f2"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.instagram.com/alexandraw_rose"
-      ],
-      "similarCommunityIds": [
-        "com_201c9ab32403",
-        "com_c3f3e1d8f414",
-        "com_e740254e09b9",
-        "com_edf8c65705de",
-        "com_51034699464a",
-        "com_059542131d21"
-      ]
-    },
-    {
-      "id": "com_51034699464a",
-      "slug": "bowery-palace-99464a",
-      "name": "Bowery Palace",
-      "kind": "recurring_series",
-      "tagline": "Bowery Palace events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "parties",
-        "dance"
-      ],
-      "tags": [
-        "music",
-        "parties",
-        "dance"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F51Quj8ByzmPya0QyFrLd%2FT_olyH9ajDturpFUU109e?alt=media&token=300750fc-8ead-4746-928d-906dcfce7cec",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/bowerypalace/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "80e776689b2c02bb"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.instagram.com/bowerypalace"
-      ],
-      "similarCommunityIds": [
-        "com_201c9ab32403",
-        "com_c3f3e1d8f414",
-        "com_e740254e09b9",
-        "com_edf8c65705de",
-        "com_d37cf64daad9",
-        "com_059542131d21"
-      ]
-    },
-    {
-      "id": "com_461df71246b5",
-      "slug": "vice-1246b5",
-      "name": "Vice",
-      "kind": "recurring_series",
-      "tagline": "Vice events in NYC",
-      "description": "",
-      "categories": [
-        "art"
-      ],
-      "tags": [
-        "art"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Fridman Gallery",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FabRaebr1JeVOqd0jjGKbt6Kc0j52%2FiSl_hxcPaJCn1prbZVleD?alt=media&token=3edd03dd-974e-4f4d-8b8a-61aa69843b6b",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/Creativevice/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "d5afa99958590bc6"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.instagram.com/creativevice"
-      ],
-      "similarCommunityIds": [
-        "com_0cc234e74615",
-        "com_5fbd5a567d17",
-        "com_e74385ce1c64",
-        "com_2330b31e1c43",
-        "com_b6e8c2cea07e",
-        "com_059542131d21"
-      ]
-    },
-    {
-      "id": "com_aeb55adc22cb",
-      "slug": "hiccup-sibold-dc22cb",
-      "name": "Hiccup Sibold",
-      "kind": "recurring_series",
-      "tagline": "Hiccup Sibold events in NYC",
-      "description": "",
-      "categories": [
-        "outdoors"
-      ],
-      "tags": [
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Jacob Riis Park Beach",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FY7eWPdM2xhbeBeAvdXi9gAs6rDF3%2FupxrjO-C9MvzONDJRj8wk?alt=media&token=7f582288-71fa-4b70-b5e7-9ba7b1ae373f",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/hiccupsibold/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "89003cf27b44b61a"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.instagram.com/hiccupsibold"
-      ],
-      "similarCommunityIds": [
-        "com_a62b05cde98b",
-        "com_e680c4a9a49d",
-        "com_27b019b131e6",
-        "com_669fb7673a8c",
-        "com_726ecf683d79",
-        "com_c57456936631"
+        "com_a7c30be0b35f",
+        "com_b0e15eaab803",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -5642,8 +1458,8 @@
       "slug": "lefrak-center-at-lakeside-2633ef",
       "name": "Lefrak Center at lakeside",
       "kind": "institutional_program",
-      "tagline": "Lefrak Center at lakeside events in NYC",
-      "description": "",
+      "tagline": "Lefrak Center at lakeside is a community program centered on fitness in brooklyn.",
+      "description": "Lefrak Center at lakeside is a community program centered on fitness in brooklyn. Based on 2 observed event dates, it meets biweekly on Friday evenings.",
       "categories": [
         "fitness"
       ],
@@ -5686,345 +1502,24 @@
         "partiful"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "url:https://www.instagram.com/lakesideprospectpark"
       ],
       "similarCommunityIds": [
-        "com_7908de333124",
         "com_02ba15552329",
-        "com_319476b701b8",
         "com_218b97d674a6",
         "com_3837f308cd75",
-        "com_2330b31e1c43"
-      ]
-    },
-    {
-      "id": "com_b6e8c2cea07e",
-      "slug": "lts-studio-cea07e",
-      "name": "LTS Studio",
-      "kind": "recurring_series",
-      "tagline": "LTS Studio events in NYC",
-      "description": "",
-      "categories": [
-        "art",
-        "special"
-      ],
-      "tags": [
-        "art",
-        "special"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "The Living Gallery",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FhA0snHV7vWZ251qjYoVUfzCGyDg2%2FKWW3_Rvm9MuGp_Cm8kvQi?alt=media&token=47a06b07-05d8-4f68-9fdc-82ddb923b144",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/lynnettetherese/"
-        },
-        {
-          "type": "directory_reference",
-          "label": "Analog Directory reference",
-          "url": "https://analog.directory/communities/lts-studio"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "37f19b9d58b8b5f9"
-      ],
-      "sourceAttributions": [
-        "partiful",
-        "Analog Directory (reference)"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.instagram.com/lynnettetherese"
-      ],
-      "similarCommunityIds": [
-        "com_3837f308cd75",
-        "com_cddbade35661",
-        "com_0651a5ccea62",
-        "com_f512a8b0ddfa",
-        "com_0cc234e74615",
-        "com_461df71246b5"
-      ]
-    },
-    {
-      "id": "com_efa10ee0a677",
-      "slug": "michael-isaak-e0a677",
-      "name": "Michael Isaak",
-      "kind": "recurring_series",
-      "tagline": "Michael Isaak events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "east village"
-      ],
-      "homeVenue": "Nublu",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FZObnHyEZhpNdJUGd3kId0NJQ04n2%2FCwXRczxRduU6HXrLMz_lc?alt=media&token=373a8d44-83f0-4fa5-b288-b7225e42281f",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/michaelisaakk/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "404979e98ff942e3"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.instagram.com/michaelisaakk"
-      ],
-      "similarCommunityIds": [
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d",
-        "com_2c41432e531f",
-        "com_45b84e2a0a85",
-        "com_47ff5f17b52c"
-      ]
-    },
-    {
-      "id": "com_a69d9f598375",
-      "slug": "viraj-shriwardhankar-598375",
-      "name": "Viraj Shriwardhankar",
-      "kind": "recurring_series",
-      "tagline": "Viraj Shriwardhankar events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Time Out Market",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FCkcqpnb8eLY6bYdvyUxHuItpFlH3%2FVNacTFtrlkj1yezQ9-Pqq?alt=media&token=2b924538-0983-4a14-9d23-6fff14fda28c",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://www.instagram.com/viraj.shri/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "b37c0ac4809d63c1"
-      ],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.instagram.com/viraj.shri"
-      ],
-      "similarCommunityIds": [
-        "com_a44523f85699",
-        "com_af1ac9fd6ca1",
-        "com_e36dbe932c1f",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d"
-      ]
-    },
-    {
-      "id": "com_62fb3f2901f0",
-      "slug": "books-and-restaurants-2901f0",
-      "name": "Books and Restaurants",
-      "kind": "club",
-      "tagline": "Books and Restaurants events in NYC",
-      "description": "",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [
-        "upper east side"
-      ],
-      "homeVenue": "JoJo",
-      "imageUrl": "/images/fallbacks/redesign/group-cover-3-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/books-and-restaurants/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "2374a196f0de4777"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.meetup.com/books-and-restaurants"
-      ],
-      "similarCommunityIds": [
-        "com_0ac032d707b7",
-        "com_0cc8630779d7",
-        "com_35a48ca12d76",
-        "com_3bdfff4f961c",
-        "com_697fb9ef56a8",
-        "com_98c6b84d4dd5"
-      ]
-    },
-    {
-      "id": "com_697fb9ef56a8",
-      "slug": "fantasy-and-romantasy-book-club-ef56a8",
-      "name": "Fantasy and Romantasy Book Club",
-      "kind": "club",
-      "tagline": "Fantasy and Romantasy Book Club events in NYC",
-      "description": "",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "",
-      "imageUrl": "/images/fallbacks/redesign/group-cover-2-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/for-the-love-of-power-book-club/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "146e50f75908b953"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.meetup.com/for-the-love-of-power-book-club"
-      ],
-      "similarCommunityIds": [
-        "com_0ac032d707b7",
-        "com_0cc8630779d7",
-        "com_35a48ca12d76",
-        "com_3bdfff4f961c",
-        "com_62fb3f2901f0",
-        "com_98c6b84d4dd5"
-      ]
-    },
-    {
-      "id": "com_b2697fbae509",
-      "slug": "manhattan-women-s-social-meetup-bae509",
-      "name": "Manhattan Women's Social Meetup",
-      "kind": "club",
-      "tagline": "Manhattan Women's Social Meetup events in NYC",
-      "description": "",
-      "categories": [
-        "books",
-        "wellness"
-      ],
-      "tags": [
-        "books",
-        "wellness"
-      ],
-      "neighborhoods": [
-        "upper east side"
-      ],
-      "homeVenue": "Consulate General of India, New York",
-      "imageUrl": "/images/fallbacks/redesign/group-cover-3-square.webp",
-      "links": [
-        {
-          "type": "meetup",
-          "label": "View on Meetup",
-          "url": "https://www.meetup.com/manhattan-womens-social/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "d471c04a9832e013"
-      ],
-      "sourceAttributions": [
-        "meetup"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.meetup.com/manhattan-womens-social"
-      ],
-      "similarCommunityIds": [
-        "com_62fb3f2901f0",
-        "com_0ac032d707b7",
-        "com_0cc8630779d7",
-        "com_35a48ca12d76",
-        "com_3bdfff4f961c",
-        "com_697fb9ef56a8"
+        "com_d8a5203885a9",
+        "com_eef1ca956dae",
+        "com_a7c30be0b35f"
       ]
     },
     {
@@ -6032,8 +1527,8 @@
       "slug": "the-writing-group-3facd1",
       "name": "The Writing Group",
       "kind": "club",
-      "tagline": "The Writing Group events in NYC",
-      "description": "",
+      "tagline": "The Writing Group is a community club centered on books, parties, food in williamsburg.",
+      "description": "The Writing Group is a community club centered on books, parties, food in williamsburg. Based on 2 observed event dates, it meets weekly on Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -6085,343 +1580,28 @@
         "Analog Directory (reference)"
       ],
       "lastVerifiedAt": "2026-08-06",
-      "verified": true,
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "url:https://www.meetup.com/thewritinggroup"
       ],
       "similarCommunityIds": [
         "com_c1410c07c4dd",
         "com_0cc8630779d7",
-        "com_42859a78e094",
-        "com_5d8c82342a12",
-        "com_823ce6cac1bb",
-        "com_cdd5daa67222"
-      ]
-    },
-    {
-      "id": "com_c57456936631",
-      "slug": "kaleo-936631",
-      "name": "KALEO",
-      "kind": "recurring_series",
-      "tagline": "KALEO events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "outdoors"
-      ],
-      "tags": [
-        "music",
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "The Rooftop at Pier 17",
-      "imageUrl": "https://images.sk-static.com/images/media/profile_images/artists/66144/huge_avatar",
-      "links": [
-        {
-          "type": "songkick",
-          "label": "View on Songkick",
-          "url": "https://www.songkick.com/concerts/42999119-kaleo-at-rooftop-at-pier-17?utm_medium=organic&utm_source=microformat"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "bfd2de21b68f9f77"
-      ],
-      "sourceAttributions": [
-        "songkick"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.songkick.com/concerts/42999119-kaleo-at-rooftop-at-pier-17"
-      ],
-      "similarCommunityIds": [
-        "com_7061a5aff23f",
-        "com_059542131d21",
-        "com_a62b05cde98b",
-        "com_aeb55adc22cb",
-        "com_e680c4a9a49d",
-        "com_201c9ab32403"
-      ]
-    },
-    {
-      "id": "com_47ff5f17b52c",
-      "slug": "hayla-17b52c",
-      "name": "Hayla",
-      "kind": "recurring_series",
-      "tagline": "Hayla events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "east williamsburg"
-      ],
-      "homeVenue": "Brooklyn Steel",
-      "imageUrl": "https://images.sk-static.com/images/media/profile_images/artists/3986106/huge_avatar",
-      "links": [
-        {
-          "type": "songkick",
-          "label": "View on Songkick",
-          "url": "https://www.songkick.com/concerts/43182752-hayla-at-brooklyn-steel?utm_medium=organic&utm_source=microformat"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "038c53739054870a"
-      ],
-      "sourceAttributions": [
-        "songkick"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.songkick.com/concerts/43182752-hayla-at-brooklyn-steel"
-      ],
-      "similarCommunityIds": [
-        "com_713bbaf2401a",
-        "com_bd14f9c1efca",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d",
-        "com_2c41432e531f"
-      ]
-    },
-    {
-      "id": "com_713bbaf2401a",
-      "slug": "citizen-f2401a",
-      "name": "Citizen",
-      "kind": "recurring_series",
-      "tagline": "Citizen events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "east williamsburg"
-      ],
-      "homeVenue": "Brooklyn Steel",
-      "imageUrl": "https://images.sk-static.com/images/media/profile_images/artists/324205/huge_avatar",
-      "links": [
-        {
-          "type": "songkick",
-          "label": "View on Songkick",
-          "url": "https://www.songkick.com/concerts/43185321-citizen-at-brooklyn-steel?utm_medium=organic&utm_source=microformat"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "61581f0fe76ffdaf"
-      ],
-      "sourceAttributions": [
-        "songkick"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.songkick.com/concerts/43185321-citizen-at-brooklyn-steel"
-      ],
-      "similarCommunityIds": [
-        "com_47ff5f17b52c",
-        "com_bd14f9c1efca",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d",
-        "com_2c41432e531f"
-      ]
-    },
-    {
-      "id": "com_7061a5aff23f",
-      "slug": "andrew-bird-aff23f",
-      "name": "Andrew Bird",
-      "kind": "recurring_series",
-      "tagline": "Andrew Bird events in NYC",
-      "description": "",
-      "categories": [
-        "music",
-        "outdoors"
-      ],
-      "tags": [
-        "music",
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "midtown"
-      ],
-      "homeVenue": "SummerStage, Central Park",
-      "imageUrl": "https://images.sk-static.com/images/media/profile_images/artists/395944/huge_avatar",
-      "links": [
-        {
-          "type": "songkick",
-          "label": "View on Songkick",
-          "url": "https://www.songkick.com/concerts/43185947-andrew-bird-at-summerstage-central-park?utm_medium=organic&utm_source=microformat"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "b0fcdf068dea3c22"
-      ],
-      "sourceAttributions": [
-        "songkick"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.songkick.com/concerts/43185947-andrew-bird-at-summerstage-central-park"
-      ],
-      "similarCommunityIds": [
-        "com_c57456936631",
-        "com_e2892569c9c4",
-        "com_0651a5ccea62",
-        "com_26192b389882",
-        "com_88d70c5fb6bc",
-        "com_ab8259bb35a4"
-      ]
-    },
-    {
-      "id": "com_bd14f9c1efca",
-      "slug": "agalloch-c1efca",
-      "name": "Agalloch",
-      "kind": "recurring_series",
-      "tagline": "Agalloch events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "east williamsburg"
-      ],
-      "homeVenue": "Brooklyn Steel",
-      "imageUrl": "https://images.sk-static.com/images/media/profile_images/artists/525609/huge_avatar",
-      "links": [
-        {
-          "type": "songkick",
-          "label": "View on Songkick",
-          "url": "https://www.songkick.com/concerts/43241190-agalloch-at-brooklyn-steel?utm_medium=organic&utm_source=microformat"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 1,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "3c9c7197d89d0e8c"
-      ],
-      "sourceAttributions": [
-        "songkick"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.songkick.com/concerts/43241190-agalloch-at-brooklyn-steel"
-      ],
-      "similarCommunityIds": [
-        "com_47ff5f17b52c",
-        "com_713bbaf2401a",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_12e44581fb7d",
-        "com_2c41432e531f"
-      ]
-    },
-    {
-      "id": "com_12e44581fb7d",
-      "slug": "digable-planets-81fb7d",
-      "name": "Digable Planets",
-      "kind": "recurring_series",
-      "tagline": "Digable Planets events in NYC",
-      "description": "",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "williamsburg"
-      ],
-      "homeVenue": "Brooklyn Bowl",
-      "imageUrl": "https://images.sk-static.com/images/media/profile_images/artists/241482/huge_avatar",
-      "links": [
-        {
-          "type": "songkick",
-          "label": "View on Songkick",
-          "url": "https://www.songkick.com/concerts/43251240-digable-planets-at-brooklyn-bowl?utm_medium=organic&utm_source=microformat"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": null,
-      "upcomingEventIds": [
-        "f964e57d162708cb"
-      ],
-      "sourceAttributions": [
-        "songkick"
-      ],
-      "lastVerifiedAt": "2026-08-06",
-      "verified": true,
-      "aliases": [
-        "url:https://www.songkick.com/concerts/43251240-digable-planets-at-brooklyn-bowl"
-      ],
-      "similarCommunityIds": [
-        "com_9847fae06973",
-        "com_059542131d21",
-        "com_0c5c253e6ad4",
-        "com_2c41432e531f",
-        "com_45b84e2a0a85",
-        "com_47ff5f17b52c"
+        "com_cdd5daa67222",
+        "com_33a530deb7aa",
+        "com_b766b6de77ba",
+        "com_eef1ca956dae"
       ]
     }
   ],
-  "lastUpdated": "2026-08-06T18:03:51.995329+00:00",
+  "lastUpdated": "2026-08-06T18:49:54.492630+00:00",
   "version": 1,
   "schemaVersion": 1
 }

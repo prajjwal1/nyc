@@ -3,7 +3,8 @@
     "com_b766b6de77ba": {
       "identity": "eventbrite:105655500371",
       "aliases": [
-        "eventbrite:105655500371"
+        "eventbrite:105655500371",
+        "url:https://www.eventbrite.com/o/elsewhere-105655500371"
       ],
       "observations": [
         {
@@ -69,6 +70,22 @@
           "title": "Elsewhere x No Strings Present: pluko @ Market Hotel",
           "neighborhood": "brooklyn",
           "venue": "Market Hotel"
+        },
+        {
+          "eventId": "ff487f32295021c0",
+          "date": "2026-09-15",
+          "startTime": "19:00",
+          "title": "Melt-Banana + Special Guests",
+          "neighborhood": "bushwick",
+          "venue": "Elsewhere - The Hall"
+        },
+        {
+          "eventId": "c65ab39ef5533d68",
+          "date": "2026-11-05",
+          "startTime": "19:00",
+          "title": "Deerhoof, Mercy, My Trio",
+          "neighborhood": "bushwick",
+          "venue": "Elsewhere - The Hall"
         }
       ]
     },
@@ -787,7 +804,8 @@
     "com_cdd5daa67222": {
       "identity": "luma:readingrhythms-manhattan",
       "aliases": [
-        "luma:readingrhythms-manhattan"
+        "luma:readingrhythms-manhattan",
+        "url:https://luma.com/readingrhythms-manhattan"
       ],
       "observations": [
         {
@@ -917,6 +935,14 @@
           "title": "Reading Rhythms Midtown: Nonfiction Night! August 25th",
           "neighborhood": "midtown",
           "venue": "Leonetta"
+        },
+        {
+          "eventId": "0e789ebba664c406",
+          "date": "2026-08-30",
+          "startTime": "11:00",
+          "title": "Reading Rhythms Queens: August 30th",
+          "neighborhood": "astoria",
+          "venue": "Astoria Park"
         },
         {
           "eventId": "d345e3488b29dc09",
@@ -2593,54 +2619,6 @@
         }
       ]
     },
-    "com_ecbe70d7bf3a": {
-      "identity": "url:https://luma.com/readingrhythms-manhattan",
-      "aliases": [
-        "url:https://luma.com/readingrhythms-manhattan"
-      ],
-      "observations": [
-        {
-          "eventId": "64b5bb76965f61cf",
-          "date": "2026-08-13",
-          "startTime": "18:30",
-          "title": "Reading Rhythms Long Island: August 13th",
-          "neighborhood": null,
-          "venue": "The Wandering Page Bookshop"
-        },
-        {
-          "eventId": "164710b371f88a23",
-          "date": "2026-08-25",
-          "startTime": "18:30",
-          "title": "Writing Rhythms @ Lightning Society",
-          "neighborhood": null,
-          "venue": "Lightning Society"
-        },
-        {
-          "eventId": "0e789ebba664c406",
-          "date": "2026-08-30",
-          "startTime": "11:00",
-          "title": "Reading Rhythms Queens: August 30th",
-          "neighborhood": "astoria",
-          "venue": "Astoria Park"
-        },
-        {
-          "eventId": "8f6f96e5617c2956",
-          "date": "2026-08-31",
-          "startTime": "18:30",
-          "title": "Reading Rhythms Lower Manhattan: August 31st",
-          "neighborhood": "manhattan",
-          "venue": "21 E 1st St"
-        },
-        {
-          "eventId": "43f64d52a99095b9",
-          "date": "2026-09-14",
-          "startTime": "19:00",
-          "title": "Reading Rhythms Williamsburg: September 14th",
-          "neighborhood": "williamsburg",
-          "venue": "recess grove"
-        }
-      ]
-    },
     "com_318c39363fe6": {
       "identity": "url:https://www.eastvillecomedy.com",
       "aliases": [
@@ -2718,30 +2696,6 @@
           "title": "Close the Door Behind You - Every Last Saturday",
           "neighborhood": "east village",
           "venue": "Eastville Comedy Club"
-        }
-      ]
-    },
-    "com_c34ac9108435": {
-      "identity": "url:https://www.eventbrite.com/o/elsewhere-105655500371",
-      "aliases": [
-        "url:https://www.eventbrite.com/o/elsewhere-105655500371"
-      ],
-      "observations": [
-        {
-          "eventId": "ff487f32295021c0",
-          "date": "2026-09-15",
-          "startTime": "19:00",
-          "title": "Melt-Banana + Special Guests",
-          "neighborhood": "bushwick",
-          "venue": "Elsewhere - The Hall"
-        },
-        {
-          "eventId": "c65ab39ef5533d68",
-          "date": "2026-11-05",
-          "startTime": "19:00",
-          "title": "Deerhoof, Mercy, My Trio",
-          "neighborhood": "bushwick",
-          "venue": "Elsewhere - The Hall"
         }
       ]
     },
@@ -3066,5 +3020,5 @@
       ]
     }
   },
-  "updatedAt": "2026-08-06T18:03:51.995329+00:00"
+  "updatedAt": "2026-08-06T18:49:54.492630+00:00"
 }

@@ -34,15 +34,16 @@ export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
   const [pastOpen, setPastOpen] = useState(false);
 
   useEffect(() => {
-    setProfile(loadProfile());
-    setSavedCount(getSavedCount());
-    setHiddenCount(getHiddenCount());
-    // Past saves: stubs whose date < today, sorted most-recent first
-    const today = new Date().toISOString().split("T")[0];
-    const past = loadSavedStubs()
-      .filter((s) => s.date && s.date < today)
-      .sort((a, b) => b.date.localeCompare(a.date));
-    setPastSaves(past);
+    queueMicrotask(() => {
+      setProfile(loadProfile());
+      setSavedCount(getSavedCount());
+      setHiddenCount(getHiddenCount());
+      const today = new Date().toISOString().split("T")[0];
+      const past = loadSavedStubs()
+        .filter((s) => s.date && s.date < today)
+        .sort((a, b) => b.date.localeCompare(a.date));
+      setPastSaves(past);
+    });
   }, []);
 
   if (!profile) return null;

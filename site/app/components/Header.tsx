@@ -28,8 +28,12 @@ export default function Header({
   const [showSync, setShowSync] = useState(false);
   const [syncMsg, setSyncMsg] = useState<string | null>(null);
   const [syncing, setSyncing] = useState(false);
+  const [currentTime, setCurrentTime] = useState<number | null>(null);
   useEffect(() => {
-    setShowSync(hasTasteSignal());
+    queueMicrotask(() => {
+      setShowSync(hasTasteSignal());
+      setCurrentTime(Date.now());
+    });
   }, []);
   const flash = (m: string) => {
     setSyncMsg(m);
@@ -85,8 +89,8 @@ export default function Header({
   // they're looking at old data (the IG-session-refresh bottleneck has
   // left feeds stale before). gray = fresh (<8h), amber = stale (8-48h),
   // red = very stale (>48h).
-  const ageHours = lastUpdated
-    ? (Date.now() - new Date(lastUpdated).getTime()) / 3_600_000
+  const ageHours = lastUpdated && currentTime != null
+    ? (currentTime - new Date(lastUpdated).getTime()) / 3_600_000
     : null;
   const updatedColorClass =
     ageHours == null

@@ -26,12 +26,12 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
 
   useEffect(() => {
     if (event) {
-      setSaved(isSavedLocal(event.id));
-      setAttended(getAttendedState(event.id));
-      setImgIdx(0);
-      // Opening the modal is a strong "I considered this event" signal —
-      // mark it as opened so the card dims on next visit.
-      markEventOpened(event.id);
+      queueMicrotask(() => {
+        setSaved(isSavedLocal(event.id));
+        setAttended(getAttendedState(event.id));
+        setImgIdx(0);
+        markEventOpened(event.id);
+      });
     }
   }, [event]);
 

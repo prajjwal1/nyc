@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-06T18:03:47.886171+00:00",
+  "generatedAt": "2026-08-06T18:48:32.210465+00:00",
   "source": {
     "name": "Analog Directory",
     "url": "https://analog.directory/",
@@ -15,8 +15,8 @@
   },
   "stats": {
     "communityLeads": 1082,
-    "matchedVerifiedCommunities": 15,
-    "unverifiedLeads": 1067
+    "matchedVerifiedCommunities": 6,
+    "unverifiedLeads": 1076
   },
   "communities": [
     {
@@ -409,8 +409,7 @@
       "nameHint": "Astoria Runners",
       "sourceUrl": "https://analog.directory/communities/astoria-runners",
       "source": "analog-directory",
-      "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_d6b77e41ea77"
+      "status": "discovery_only"
     },
     {
       "analogSlug": "astoria-trash-club",
@@ -1146,7 +1145,8 @@
       "sourceUrl": "https://analog.directory/communities/brooklyn-comedy-collective",
       "source": "analog-directory",
       "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_d8a5203885a9"
+      "matchedCommunityId": "com_d8a5203885a9",
+      "matchMethod": "exact_normalized_multiword_name"
     },
     {
       "analogSlug": "brooklyn-conservatory-of-music-studio-collective",
@@ -1665,7 +1665,8 @@
       "sourceUrl": "https://analog.directory/communities/chess-place",
       "source": "analog-directory",
       "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_ed8d42fb031d"
+      "matchedCommunityId": "com_ed8d42fb031d",
+      "matchMethod": "exact_normalized_multiword_name"
     },
     {
       "analogSlug": "chilltown-street-club",
@@ -1931,8 +1932,7 @@
       "nameHint": "Convo NYC",
       "sourceUrl": "https://analog.directory/communities/convo-nyc",
       "source": "analog-directory",
-      "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_15afad4c450d"
+      "status": "discovery_only"
     },
     {
       "analogSlug": "cookbook-club-steph-lau",
@@ -2226,8 +2226,7 @@
       "nameHint": "Doolittle",
       "sourceUrl": "https://analog.directory/communities/doolittle",
       "source": "analog-directory",
-      "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_74aff58e2a8b"
+      "status": "discovery_only"
     },
     {
       "analogSlug": "dorot",
@@ -2836,8 +2835,7 @@
       "nameHint": "Freewalkers",
       "sourceUrl": "https://analog.directory/communities/freewalkers",
       "source": "analog-directory",
-      "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_cddbade35661"
+      "status": "discovery_only"
     },
     {
       "analogSlug": "fresh-vibes-market-at-brookdale-hospital",
@@ -4041,8 +4039,7 @@
       "nameHint": "Lts Studio",
       "sourceUrl": "https://analog.directory/communities/lts-studio",
       "source": "analog-directory",
-      "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_b6e8c2cea07e"
+      "status": "discovery_only"
     },
     {
       "analogSlug": "lucky-strike-chelsea-piers-bowling-leagues",
@@ -4778,7 +4775,8 @@
       "sourceUrl": "https://analog.directory/communities/nyc-backgammon-club",
       "source": "analog-directory",
       "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_b0e15eaab803"
+      "matchedCommunityId": "com_b0e15eaab803",
+      "matchMethod": "exact_normalized_multiword_name"
     },
     {
       "analogSlug": "nyc-bird-alliance",
@@ -5234,7 +5232,8 @@
       "sourceUrl": "https://analog.directory/communities/pioneer-works",
       "source": "analog-directory",
       "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_3837f308cd75"
+      "matchedCommunityId": "com_3837f308cd75",
+      "matchMethod": "exact_normalized_multiword_name"
     },
     {
       "analogSlug": "pioneer-works-supper-club",
@@ -5290,8 +5289,7 @@
       "nameHint": "Plur NYC",
       "sourceUrl": "https://analog.directory/communities/plur-nyc",
       "source": "analog-directory",
-      "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_e740254e09b9"
+      "status": "discovery_only"
     },
     {
       "analogSlug": "poe-park-greenmarket",
@@ -6306,8 +6304,7 @@
       "nameHint": "Subtle Asian Mixers",
       "sourceUrl": "https://analog.directory/communities/subtle-asian-mixers",
       "source": "analog-directory",
-      "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_c3f3e1d8f414"
+      "status": "discovery_only"
     },
     {
       "analogSlug": "summerstage",
@@ -6791,7 +6788,8 @@
       "sourceUrl": "https://analog.directory/communities/the-new-york-philosophy-club",
       "source": "analog-directory",
       "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_ab8259bb35a4"
+      "matchedCommunityId": "com_ab8259bb35a4",
+      "matchMethod": "exact_normalized_multiword_name"
     },
     {
       "analogSlug": "the-noterie-a-fragrarance-community",
@@ -6945,8 +6943,7 @@
       "nameHint": "The Vinyl Word",
       "sourceUrl": "https://analog.directory/communities/the-vinyl-word",
       "source": "analog-directory",
-      "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_2c41432e531f"
+      "status": "discovery_only"
     },
     {
       "analogSlug": "the-waylon",
@@ -6996,7 +6993,8 @@
       "sourceUrl": "https://analog.directory/communities/the-writing-group",
       "source": "analog-directory",
       "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_a37c903facd1"
+      "matchedCommunityId": "com_a37c903facd1",
+      "matchMethod": "exact_normalized_multiword_name"
     },
     {
       "analogSlug": "the-yale-club-of-new-york-city",
@@ -7444,8 +7442,7 @@
       "nameHint": "Whatifwenyc",
       "sourceUrl": "https://analog.directory/communities/whatifwenyc",
       "source": "analog-directory",
-      "status": "matched_to_independently_verified_community",
-      "matchedCommunityId": "com_823ce6cac1bb"
+      "status": "discovery_only"
     },
     {
       "analogSlug": "williamsburg-chess-club",

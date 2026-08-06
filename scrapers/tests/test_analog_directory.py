@@ -18,7 +18,7 @@ def test_sitemap_import_is_links_only_and_exact_matches():
     assert result["stats"] == {"communityLeads": 2, "matchedVerifiedCommunities": 1, "unverifiedLeads": 1}
     assert result["communities"][0]["matchedCommunityId"] == "com_1"
     assert result["policy"]["listingPagesFetched"] is False
-    assert set(result["communities"][0]) <= {"analogSlug", "nameHint", "sourceUrl", "source", "status", "matchedCommunityId"}
+    assert set(result["communities"][0]) <= {"analogSlug", "nameHint", "sourceUrl", "source", "status", "matchedCommunityId", "matchMethod"}
 
 
 def test_refuses_update_without_explicit_search_permission():

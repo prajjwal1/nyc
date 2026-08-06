@@ -48,6 +48,9 @@ jobs:
           AUDIT_OUTPUT_DIR: ../audit-output
         run: node scripts/audit-live.mjs
 
+      - name: Reconcile exact rendered feed evidence
+        run: python -m scrapers.site_audit --output-dir audit-output --merge-browser
+
       - name: Run independent design and feed critics
         env:
           GH_MODELS_TOKEN: ${{ github.token }}
@@ -59,9 +62,30 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           python - <<'PY'
-          import json, os, subprocess
+          import json, subprocess
+          from datetime import datetime, timezone
           audit = json.load(open("audit-output/audit.json"))
           def dispatch(workflow):
+              runs = subprocess.run(
+                  ["gh", "run", "list", "--workflow", workflow, "--limit", "5", "--json", "status,createdAt"],
+                  capture_output=True, text=True, check=False,
+              )
+              try:
+                  recent = json.loads(runs.stdout or "[]")
+              except json.JSONDecodeError:
+                  recent = []
+              now = datetime.now(timezone.utc)
+              for run in recent:
+                  if run.get("status") in {"queued", "pending", "in_progress", "waiting"}:
+                      print(f"skip {workflow}: run already active")
+                      return
+                  try:
+                      created = datetime.fromisoformat(run["createdAt"].replace("Z", "+00:00"))
+                      if (now - created).total_seconds() < 7200:
+                          print(f"skip {workflow}: two-hour cooldown")
+                          return
+                  except (KeyError, ValueError):
+                      pass
               subprocess.run(["gh", "workflow", "run", workflow, "--ref", "main"], check=False)
           routes_bad = any(value != 200 for value in audit.get("routeStatus", {}).values())
           age = audit.get("feed", {}).get("ageHours")
@@ -72,8 +96,6 @@ jobs:
           if audit.get("gaps", {}).get("sources", {}).get("instagram", 0) < 20:
               dispatch("scrape-priority.yml")
               dispatch("discover.yml")
-          if audit.get("communities", {}).get("count", 0) < 150:
-              dispatch("community-refresh.yml")
           PY
 
       - name: Update the deduplicated quality issue
@@ -81,7 +103,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           title="Automated 12-hour site quality review"
-          issue="$(gh issue list --state open --search \"$title in:title\" --json number --jq '.[0].number // empty')"
+          issue="$(gh issue list --state open --search "$title" --json number --jq '.[0].number // empty')"
           {
             cat audit-output/report.md
             printf '\n'

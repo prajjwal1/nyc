@@ -61,13 +61,25 @@ def _actionable_location(event: dict) -> bool:
     return any(v and str(v).strip().lower() not in {"nyc", "new york", "tba", "online"} for v in values)
 
 
+def _feature_ready(event: dict) -> bool:
+    return bool(
+        event.get("startTime")
+        and str(event.get("sourceUrl") or "").startswith("http")
+        and event.get("imageUrl")
+        and len((event.get("description") or "").strip()) >= 20
+        and _actionable_location(event)
+        and not CAPTION_LIKE.search((event.get("title") or "").strip())
+        and not GENERIC_TITLE.search((event.get("title") or "").strip())
+    )
+
+
 def _showcase(events: list[dict], today: date, now: datetime) -> list[dict]:
     """Approximate the unauthenticated home feed's visible inventory.
 
     Browser instrumentation records the exact rendered IDs. This deterministic
     projection remains useful when Pages itself is unavailable.
     """
-    upcoming = [e for e in events if (e.get("date") or "") >= today.isoformat()]
+    upcoming = [e for e in events if (e.get("date") or "") >= today.isoformat() and _feature_ready(e)]
     upcoming.sort(key=lambda e: (e.get("date") or "", -(e.get("score") or 0)))
     picked: list[dict] = []
     seen: set[str] = set()
@@ -92,8 +104,8 @@ def _showcase(events: list[dict], today: date, now: datetime) -> list[dict]:
     for event in upcoming:
         if event.get("id") not in seen:
             by_date[event.get("date") or ""].append(event)
-    for event_date in sorted(by_date)[:30]:
-        take(by_date[event_date], 8)
+    for event_date in sorted(by_date)[:10]:
+        take(by_date[event_date], 4)
     return picked
 
 
@@ -105,6 +117,7 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
     upcoming = [e for e in events if (e.get("date") or "") >= today.isoformat()]
     next_7_end = (today + timedelta(days=7)).isoformat()
     next_7 = [e for e in upcoming if (e.get("date") or "") < next_7_end]
+    feature_ready_upcoming = [e for e in upcoming if _feature_ready(e)]
     showcased = _showcase(events, today, now)
     updated = _parse_time(events_doc.get("lastUpdated"))
     age_hours = round((now - updated).total_seconds() / 3600, 2) if updated else None
@@ -133,6 +146,7 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
     duplicate_keys = Counter((_normalized_title(e), e.get("date")) for e in upcoming)
     duplicate_count = sum(count - 1 for (title, _), count in duplicate_keys.items() if title and count > 1)
     caption_like = [e for e in showcased if CAPTION_LIKE.search((e.get("title") or "").strip())]
+    raw_caption_like = [e for e in next_7 if CAPTION_LIKE.search((e.get("title") or "").strip())]
     generic = [e for e in showcased if GENERIC_TITLE.search((e.get("title") or "").strip())]
 
     def ratio(predicate, pool=showcased) -> float:
@@ -159,6 +173,8 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
         warnings.append("fewer than 50 distinct organizers in the next seven days")
     if caption_like or generic:
         failures.append("caption-like or generic titles leak into the showcased feed")
+    if raw_caption_like:
+        warnings.append("caption-like titles remain in the full upcoming dataset but are excluded from the featured feed")
     if detail_quality["startTime"] < .95:
         warnings.append("showcased start-time completeness is below 95%")
     if detail_quality["location"] < .90:
@@ -186,8 +202,10 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
             "next7Days": len(next_7),
             "distinctOrganizersNext7Days": len(organizers),
             "duplicateUpcoming": duplicate_count,
+            "featureReadyUpcoming": len(feature_ready_upcoming),
             "topSourceShareNext7Days": top_source_share,
             "topOrganizerShareNext7Days": top_organizer_share,
+            "captionLikeNext7Days": len(raw_caption_like),
         },
         "showcase": {
             "count": len(showcased),
@@ -239,15 +257,51 @@ def markdown_report(audit: dict) -> str:
         f"| Showcased events with useful description | {showcase['detailQuality']['description']:.0%} | ≥85% |",
         f"| Showcased events with image | {showcase['detailQuality']['image']:.0%} | ≥95% |",
         "",
-        "## Findings",
-        "",
     ]
+    rendered = showcase.get("rendered") or {}
+    if rendered:
+        lines.extend([
+            "## Exact rendered feed evidence",
+            "",
+            f"- Unique rendered event IDs: {rendered.get('uniqueEventCount', 0)}",
+            f"- Mobile rendered cards: {rendered.get('mobileCount', 0)}",
+            f"- Desktop rendered cards: {rendered.get('desktopCount', 0)}",
+            "",
+        ])
+    lines.extend(["## Findings", ""])
     findings = [("Failure", item) for item in audit["failures"]] + [("Watch", item) for item in audit["warnings"]]
     lines.extend([f"- **{level}:** {item}" for level, item in findings] or ["- No threshold violations."])
     lines.extend(["", "## Events currently projected for the feed", ""])
     lines.extend([f"- `{e['id']}` — **{e['title']}** · {e['date']} · {e['source']} · score {e['score']}" for e in showcase["events"][:20]])
     lines.extend(["", "## Seven-day coverage gaps", "", f"- Weekdays: {audit['gaps']['weekdays']}", f"- Dayparts: {audit['gaps']['dayparts']}", f"- Sources: {audit['gaps']['sources']}", f"- Neighborhoods: {audit['gaps']['neighborhoods']}"])
     return "\n".join(lines) + "\n"
+
+
+def merge_browser_evidence(output_dir: Path) -> dict:
+    audit_path = output_dir / "audit.json"
+    browser_path = output_dir / "browser-audit.json"
+    audit = json.loads(audit_path.read_text())
+    browser = json.loads(browser_path.read_text())
+    home_results = [result for result in browser.get("results", []) if result.get("route") == "home" and result.get("status") == 200]
+    rendered_events = []
+    for result in home_results:
+        for event in result.get("showcased") or []:
+            rendered_events.append({**event, "viewport": result.get("viewport")})
+    unique_ids = list(dict.fromkeys(event.get("id") for event in rendered_events if event.get("id")))
+    audit["showcase"]["rendered"] = {
+        "uniqueEventCount": len(unique_ids),
+        "eventIds": unique_ids,
+        "mobileCount": sum(1 for event in rendered_events if event.get("viewport") == "mobile"),
+        "desktopCount": sum(1 for event in rendered_events if event.get("viewport") == "desktop"),
+        "events": rendered_events,
+    }
+    if home_results and not unique_ids:
+        audit["failures"].append("deployed home page exposed no instrumented showcased events")
+        audit["failures"] = list(dict.fromkeys(audit["failures"]))
+        audit["status"] = "fail"
+    audit_path.write_text(json.dumps(audit, indent=2) + "\n")
+    (output_dir / "report.md").write_text(markdown_report(audit))
+    return audit
 
 
 def run(base_url: str, output_dir: Path) -> dict:
@@ -278,8 +332,9 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", default="https://prajjwal1.github.io/nyc/")
     parser.add_argument("--output-dir", type=Path, default=Path("audit-output"))
+    parser.add_argument("--merge-browser", action="store_true")
     args = parser.parse_args()
-    result = run(args.base_url, args.output_dir)
+    result = merge_browser_evidence(args.output_dir) if args.merge_browser else run(args.base_url, args.output_dir)
     print(json.dumps({"status": result["status"], "failures": result["failures"], "warnings": result["warnings"]}, indent=2))
 
 

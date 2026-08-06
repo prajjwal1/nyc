@@ -22,7 +22,7 @@ export function useEvents() {
       .then(setData)
       .catch(() => setLoadError(true))
       .finally(() => setLoading(false));
-    setProfile(loadProfile());
+    queueMicrotask(() => setProfile(loadProfile()));
   }, []);
 
   // Re-rank events with the user's learned interest profile so the feed

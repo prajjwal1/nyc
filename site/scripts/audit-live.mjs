@@ -41,6 +41,12 @@ for (const viewport of viewports) {
         path: path.join(outputDir, `${viewport.name}-${routeName}.png`),
         fullPage: true,
       });
+      await page.screenshot({
+        path: path.join(outputDir, `${viewport.name}-${routeName}-critic.jpg`),
+        type: "jpeg",
+        quality: 68,
+        fullPage: false,
+      });
       const facts = await page.evaluate(() => {
         const images = [...document.images];
         const showcased = [...document.querySelectorAll("[data-event-id]")].map((node) => ({
