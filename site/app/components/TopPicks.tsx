@@ -371,8 +371,10 @@ export default function TopPicks({
             🔥 Tonight
           </h3>
           <div className="space-y-2">
-            {tonightEvents.map((event) => (
-              <EventCard key={event.id} event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            {tonightEvents.map((event, rank) => (
+              <div key={event.id} data-event-id={event.id} data-feed-section="tonight" data-rank={rank + 1}>
+                <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+              </div>
             ))}
           </div>
         </div>
@@ -385,8 +387,10 @@ export default function TopPicks({
             ☕ This Weekend
           </h3>
           <div className="space-y-2">
-            {weekendEvents.map((event) => (
-              <EventCard key={event.id} event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            {weekendEvents.map((event, rank) => (
+              <div key={event.id} data-event-id={event.id} data-feed-section="weekend" data-rank={rank + 1}>
+                <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+              </div>
             ))}
           </div>
         </div>
@@ -401,8 +405,10 @@ export default function TopPicks({
             ✨ Just Added
           </h3>
           <div className="space-y-2">
-            {recentlyAdded.map((event) => (
-              <EventCard key={event.id} event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            {recentlyAdded.map((event, rank) => (
+              <div key={event.id} data-event-id={event.id} data-feed-section="just-added" data-rank={rank + 1}>
+                <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+              </div>
             ))}
           </div>
         </div>
@@ -417,8 +423,10 @@ export default function TopPicks({
             ★ Following
           </h3>
           <div className="space-y-2">
-            {followingUpcoming.map((event) => (
-              <EventCard key={event.id} event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            {followingUpcoming.map((event, rank) => (
+              <div key={event.id} data-event-id={event.id} data-feed-section="following" data-rank={rank + 1}>
+                <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+              </div>
             ))}
           </div>
         </div>
@@ -431,8 +439,10 @@ export default function TopPicks({
             ★ Saved by you
           </h3>
           <div className="space-y-2">
-            {savedUpcoming.map((event) => (
-              <EventCard key={event.id} event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            {savedUpcoming.map((event, rank) => (
+              <div key={event.id} data-event-id={event.id} data-feed-section="saved" data-rank={rank + 1}>
+                <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+              </div>
             ))}
           </div>
         </div>
@@ -463,8 +473,10 @@ export default function TopPicks({
                   : format(dateObj, "EEEE, MMM d")}
               </button>
               <div className="space-y-2">
-                {dayEvents.map((event) => (
-                  <EventCard key={event.id} event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+                {dayEvents.map((event, rank) => (
+                  <div key={event.id} data-event-id={event.id} data-feed-section={`date:${date}`} data-rank={rank + 1}>
+                    <EventCard event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+                  </div>
                 ))}
               </div>
               {total > MAX_PER_DAY && (

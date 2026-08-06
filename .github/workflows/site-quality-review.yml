@@ -1,0 +1,103 @@
+name: 12-hour Site Quality Review
+
+on:
+  schedule:
+    - cron: "25 0,12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+  issues: write
+  models: read
+
+concurrency:
+  group: site-quality-review
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install browser audit dependencies
+        working-directory: site
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Audit deployed data and routes
+        run: python -m scrapers.site_audit --output-dir audit-output
+
+      - name: Capture desktop and mobile experience
+        working-directory: site
+        env:
+          SITE_URL: https://prajjwal1.github.io/nyc/
+          AUDIT_OUTPUT_DIR: ../audit-output
+        run: node scripts/audit-live.mjs
+
+      - name: Run independent design and feed critics
+        env:
+          GH_MODELS_TOKEN: ${{ github.token }}
+        run: python -m scrapers.ai_site_critic --audit-dir audit-output
+        continue-on-error: true
+
+      - name: Apply bounded remediation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, subprocess
+          audit = json.load(open("audit-output/audit.json"))
+          def dispatch(workflow):
+              subprocess.run(["gh", "workflow", "run", workflow, "--ref", "main"], check=False)
+          routes_bad = any(value != 200 for value in audit.get("routeStatus", {}).values())
+          age = audit.get("feed", {}).get("ageHours")
+          if routes_bad:
+              dispatch("deploy.yml")
+          if age is None or age > 2 or audit.get("feed", {}).get("next7Days", 0) < 100:
+              dispatch("quick-scrape.yml")
+          if audit.get("gaps", {}).get("sources", {}).get("instagram", 0) < 20:
+              dispatch("scrape-priority.yml")
+              dispatch("discover.yml")
+          if audit.get("communities", {}).get("count", 0) < 150:
+              dispatch("community-refresh.yml")
+          PY
+
+      - name: Update the deduplicated quality issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Automated 12-hour site quality review"
+          issue="$(gh issue list --state open --search \"$title in:title\" --json number --jq '.[0].number // empty')"
+          {
+            cat audit-output/report.md
+            printf '\n'
+            cat audit-output/critique.md
+            printf '\n---\n[Full browser evidence and screenshots](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n'
+          } > audit-output/issue.md
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --body-file audit-output/issue.md
+          else
+            gh issue create --title "$title" --body-file audit-output/issue.md
+          fi
+
+      - name: Upload evidence bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-quality-review-${{ github.run_id }}
+          path: audit-output
+          retention-days: 30

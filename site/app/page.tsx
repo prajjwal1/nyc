@@ -182,7 +182,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#f8f3e8]">
       <Header
         totalEvents={totalEvents}
         thisWeekCount={thisWeekCount}

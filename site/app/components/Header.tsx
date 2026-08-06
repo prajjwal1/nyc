@@ -63,7 +63,7 @@ export default function Header({
     try {
       const nav = navigator as Navigator & { share?: (data: ShareData) => Promise<void> };
       if (nav.share) {
-        await nav.share({ title: "NYC Events", url });
+        await nav.share({ title: "City Kin", url });
         return;
       }
       await navigator.clipboard.writeText(url);
@@ -106,11 +106,11 @@ export default function Header({
       : `${(ageHours / 24).toFixed(1)} days ago — the scraper hasn't run successfully. IG session likely expired.`;
 
   return (
-    <header className="border-b border-gray-200 bg-white">
+    <header className="border-b border-[#d8d0c1] bg-[#fffdf8]">
       <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">NYC Events</h1>
+            <h1 className="font-editorial text-2xl font-bold text-[#173c35]">What&apos;s happening in NYC</h1>
             <p className="text-sm text-gray-500">
               {thisWeekCount !== undefined && thisWeekCount > 0 ? (
                 <>

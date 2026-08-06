@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 // "things to do this weekend brooklyn", "free events nyc this week",
 // "[interest] events nyc", "events near me".
 const SITE_URL = "https://prajjwal1.github.io/nyc";
-const SITE_TITLE = "NYC Events — Things to do tonight, this weekend, this week in New York City";
+const SITE_TITLE = "City Kin — NYC events and communities worth joining";
 const SITE_DESCRIPTION =
   "The most comprehensive guide to NYC events: live music, parties, free events, book clubs, "
   + "art openings, comedy shows, run clubs, yoga, food festivals, and more. Curated and "
@@ -30,10 +30,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: "%s — NYC Events",
+    template: "%s — City Kin",
   },
   description: SITE_DESCRIPTION,
-  applicationName: "NYC Events",
+  applicationName: "City Kin",
   keywords: [
     "nyc events", "things to do nyc", "events tonight nyc", "events this weekend nyc",
     "events this week nyc", "free events nyc", "brooklyn events", "manhattan events",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     "run clubs nyc", "yoga nyc", "art openings nyc", "singles events nyc", "meet people nyc",
     "what's happening in nyc", "nyc nightlife", "rooftop events nyc", "food events nyc",
   ],
-  authors: [{ name: "NYC Events" }],
-  creator: "NYC Events",
-  publisher: "NYC Events",
+  authors: [{ name: "City Kin" }],
+  creator: "City Kin",
+  publisher: "City Kin",
   formatDetection: { email: false, address: false, telephone: false },
   alternates: {
     canonical: "/",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    siteName: "NYC Events",
+    siteName: "City Kin",
   },
   twitter: {
     card: "summary_large_image",
@@ -98,7 +98,7 @@ export default function RootLayout({
                 {
                   "@type": "WebSite",
                   url: SITE_URL,
-                  name: "NYC Events",
+                  name: "City Kin",
                   description: SITE_DESCRIPTION,
                   potentialAction: {
                     "@type": "SearchAction",
@@ -109,7 +109,7 @@ export default function RootLayout({
                 {
                   "@type": "Organization",
                   url: SITE_URL,
-                  name: "NYC Events",
+                  name: "City Kin",
                   description:
                     "A curated, continuously-updated directory of NYC events across Instagram, Eventbrite, Lu.ma, and more.",
                   areaServed: {

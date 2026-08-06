@@ -12,6 +12,15 @@ import pytest
 from scrapers.quality import _is_caption_fragment, is_blocked
 
 
+def test_narrative_recommendation_captions_are_not_event_titles():
+    titles = [
+        "If you’re looking for a new cocktail bar to try this summer in NYC, this is it!",
+        "When you need a little slice of nature, but don’t want to leave NYC…go here!",
+        "The cutest little shop just opened up in Chelsea and it’s a dream for coastal grandmas!",
+    ]
+    assert all(_is_caption_fragment(title, title) for title in titles)
+
+
 def _ev(title, desc="", source="instagram"):
     return {
         "title": title,
