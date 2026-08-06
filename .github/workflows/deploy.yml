@@ -23,7 +23,9 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  # Only the newest site snapshot matters. A stale queued build must never
+  # prevent a fresh events/community snapshot from reaching production.
+  cancel-in-progress: true
 
 jobs:
   build:
