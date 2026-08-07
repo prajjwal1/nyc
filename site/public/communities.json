@@ -6,7 +6,7 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music, parties, outdoors in bushwick, brooklyn.",
-      "description": "Elsewhere is a recurring event series centered on music, parties, outdoors in bushwick, brooklyn. Based on 7 observed event dates, it meets weekly on Thursday and Saturday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music, parties, outdoors in bushwick, brooklyn. Based on 8 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "other",
         "music",
@@ -23,7 +23,7 @@
         "bushwick",
         "brooklyn"
       ],
-      "homeVenue": "Elsewhere - The Rooftop",
+      "homeVenue": "Elsewhere",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1189125131%2F2604663727761%2F1%2Foriginal.20260718-151550?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=329a6ae42b81f32bf695cfd9d71384d9",
       "links": [
         {
@@ -36,18 +36,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-07",
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 11,
         "eventCount90d": 2
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Saturday"
+          "Friday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
         "bf3ee6a1ab635fc4",
@@ -55,6 +55,7 @@
         "7f0544a42d3989c1",
         "60742709b516904a",
         "7477d91fbce7420a",
+        "053c103cd6244311",
         "6cb24c57eb1e46ac",
         "6ffc84c4f3a5a5c6",
         "37576659a40ab40b",
@@ -68,7 +69,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -40302,7 +40303,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-07T20:56:41.849103+00:00",
+  "lastUpdated": "2026-08-07T21:05:19.950182+00:00",
   "version": 1,
   "schemaVersion": 1
 }
