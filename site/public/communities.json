@@ -91,7 +91,7 @@
       "name": "The Harlem Swing Dance Society",
       "kind": "club",
       "tagline": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem.",
-      "description": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem. Based on 3 observed event dates, it meets occasionally on Thursday and Tuesday mornings.",
+      "description": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem. Based on 4 observed event dates, it meets weekly on Thursday and Friday mornings.",
       "categories": [
         "dance",
         "special"
@@ -103,8 +103,8 @@
       "neighborhoods": [
         "harlem"
       ],
-      "homeVenue": "Lt Joseph P. Kennedy, Jr Community Center",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1184013812%2F105999570117%2F1%2Foriginal.20260507-130255?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.998&fp-y=1.0&s=bfbcda19d0597e2b97531f9fa8305e9e",
+      "homeVenue": "Harlem",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1182243892%2F105999570117%2F1%2Foriginal.20260415-162301?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.427&fp-y=0.348&s=345b487d315eb4e0081e6771b59eee1c",
       "links": [
         {
           "type": "eventbrite",
@@ -115,21 +115,22 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-08-06",
-        "upcomingEventCount": 2,
-        "eventCount90d": 1
+        "lastEventDate": "2026-08-07",
+        "upcomingEventCount": 3,
+        "eventCount90d": 2
       },
       "schedule": {
-        "cadence": "occasional",
+        "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Tuesday"
+          "Friday"
         ],
         "typicalTime": "09:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
+        "143e4da159aaf26a",
         "f3865ae04e3b1590",
         "95932b43786962d0"
       ],
@@ -140,7 +141,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -149,9 +150,12 @@
         "eventbrite:10662501681"
       ],
       "similarCommunityIds": [
+        "com_ed8d42fb031d",
         "com_218b97d674a6",
-        "com_3837f308cd75",
-        "com_ed8d42fb031d"
+        "com_0cc8630779d7",
+        "com_318c39363fe6",
+        "com_33a530deb7aa",
+        "com_9a5c4d074e3a"
       ]
     },
     {
@@ -229,9 +233,9 @@
         "com_b0e15eaab803",
         "com_eeb4e424a504",
         "com_318c39363fe6",
+        "com_a393a0e8b1e0",
         "com_c1410c07c4dd",
-        "com_cdd5daa67222",
-        "com_0cc8630779d7"
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -40295,7 +40299,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-07T00:13:23.928698+00:00",
+  "lastUpdated": "2026-08-07T00:34:35.721120+00:00",
   "version": 1,
   "schemaVersion": 1
 }
