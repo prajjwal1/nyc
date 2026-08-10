@@ -127,14 +127,14 @@ def test_exact_directory_match_does_not_duplicate_enriched_profile(tmp_path, mon
     assert result[0]["id"] == community_id
 
 
-def test_all_unmatched_leads_become_transparent_discovery_profiles(tmp_path, monkeypatch):
+def test_all_unmatched_leads_get_useful_search_links_and_name_derived_context(tmp_path, monkeypatch):
     import scrapers.communities as module
     discovery_path = tmp_path / "discovery.json"
     discovery_path.write_text(json.dumps({
         "generatedAt": "2026-08-06T00:00:00+00:00",
         "communities": [{
-            "directorySlug": "night-owls-nyc",
-            "name": "Night Owls NYC",
+            "directorySlug": "brooklyn-book-runners",
+            "name": "Brooklyn Book Runners",
         }],
     }))
     monkeypatch.setattr(module, "DISCOVERY_INDEX_PATH", discovery_path)
@@ -146,12 +146,15 @@ def test_all_unmatched_leads_become_transparent_discovery_profiles(tmp_path, mon
 
     assert len(result) == 1
     profile = result[0]
-    assert profile["name"] == "Night Owls NYC"
+    assert profile["name"] == "Brooklyn Book Runners"
     assert profile["profileStatus"] == "directory_reference"
     assert profile["verified"] is False
     assert profile["activity"]["state"] == "unverified"
-    assert profile["links"] == []
-    assert "independently verified" in profile["description"]
+    assert profile["categories"] == ["books", "fitness"]
+    assert profile["neighborhoods"] == ["brooklyn"]
+    assert profile["links"][0]["type"] == "web_search"
+    assert "Brooklyn+Book+Runners" in profile["links"][0]["url"]
+    assert "based on its public name" in profile["description"]
 
 
 def test_recurring_community_has_factual_description_and_newcomer_evidence(tmp_path, monkeypatch):

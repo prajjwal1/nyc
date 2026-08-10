@@ -15,7 +15,7 @@ import re
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import quote_plus, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 OVERRIDES_PATH = ROOT / "scrapers" / "data" / "community_overrides.json"
@@ -49,6 +49,42 @@ COMMUNITY_NAME_RE = re.compile(
     r"studio|gallery|center|books?|dance|chess|yoga|walkers?|social|network|"
     r"association|coalition|choir|friends|agency|lit|works|museum|brewery)\b",
     re.I,
+)
+
+DISCOVERY_INTERESTS = (
+    (re.compile(r"\b(book|books|reading|reader|literary|literature|writer|writing|poet|poetry)\b", re.I), "books", "books and reading"),
+    (re.compile(r"\b(run|runs|running|runner|runners|fitness|workout|cycling|cyclist|bike|biking|climb|climbing)\b", re.I), "fitness", "fitness and movement"),
+    (re.compile(r"\b(yoga|wellness|meditation|mindful|mindfulness|healing|pilates)\b", re.I), "wellness", "wellness"),
+    (re.compile(r"\b(art|arts|artist|artists|gallery|museum|ceramic|ceramics|pottery|paint|painting|drawing|craft|crafts)\b", re.I), "art", "art and making"),
+    (re.compile(r"\b(music|musical|jazz|choir|sing|singing|concert|dj|band|orchestra|sound)\b", re.I), "music", "music"),
+    (re.compile(r"\b(dance|dancing|salsa|swing|bachata|contra|ballet)\b", re.I), "dance", "dance"),
+    (re.compile(r"\b(food|dining|dinner|supper|cook|cooking|bake|baking|coffee|wine|beer|brew|culinary)\b", re.I), "food", "food and drink"),
+    (re.compile(r"\b(chess|game|games|gaming|boardgame|backgammon|poker|trivia|mahjong)\b", re.I), "games", "games"),
+    (re.compile(r"\b(outdoor|outdoors|hike|hiking|walk|walking|garden|gardening|park|nature|bird|birding|beach)\b", re.I), "outdoors", "the outdoors"),
+    (re.compile(r"\b(comedy|comedian|improv)\b", re.I), "comedy", "comedy"),
+    (re.compile(r"\b(film|films|cinema|movie|movies|screening)\b", re.I), "movies", "film and cinema"),
+    (re.compile(r"\b(theater|theatre|acting|actors|performance|performing)\b", re.I), "theater", "theater and performance"),
+    (re.compile(r"\b(tech|technology|developer|developers|coding|code|software|startup|startups|founder|founders|ai)\b", re.I), "tech", "technology"),
+    (re.compile(r"\b(design|designer|designers|architecture|architects|ux)\b", re.I), "design", "design"),
+    (re.compile(r"\b(volunteer|volunteers|volunteering|mutual aid|service)\b", re.I), "volunteering", "volunteering and mutual aid"),
+    (re.compile(r"\b(parent|parents|parenting|moms|mothers|dads|fathers|families|family|kids|children)\b", re.I), "family", "families and parenting"),
+    (re.compile(r"\b(queer|lgbtq|gay|lesbian|trans|nonbinary)\b", re.I), "queer", "queer community"),
+    (re.compile(r"\b(network|networking|professional|professionals|business|entrepreneur|entrepreneurs|career|careers)\b", re.I), "professional", "professional connection"),
+)
+
+DISCOVERY_NEIGHBORHOODS = (
+    ("williamsburg", "williamsburg"), ("greenpoint", "greenpoint"), ("bushwick", "bushwick"),
+    ("bed stuy", "bed-stuy"), ("bedford stuyvesant", "bed-stuy"), ("crown heights", "crown heights"),
+    ("park slope", "park slope"), ("fort greene", "fort greene"), ("carroll gardens", "carroll gardens"),
+    ("prospect heights", "prospect heights"), ("cobble hill", "cobble hill"), ("red hook", "red hook"),
+    ("downtown brooklyn", "downtown brooklyn"), ("brooklyn", "brooklyn"),
+    ("astoria", "astoria"), ("long island city", "long island city"), ("jackson heights", "jackson heights"),
+    ("flushing", "flushing"), ("ridgewood", "ridgewood"), ("queens", "queens"),
+    ("harlem", "harlem"), ("washington heights", "washington heights"), ("upper east side", "upper east side"),
+    ("upper west side", "upper west side"), ("lower east side", "lower east side"), ("east village", "east village"),
+    ("west village", "west village"), ("soho", "soho"), ("tribeca", "tribeca"),
+    ("midtown", "midtown"), ("manhattan", "manhattan"), ("bronx", "bronx"),
+    ("staten island", "staten island"),
 )
 
 
@@ -152,29 +188,59 @@ def _community_id(identity: str) -> str:
     return "com_" + hashlib.sha256(identity.encode()).hexdigest()[:12]
 
 
+def _discovery_details(name: str) -> tuple[list[str], list[str], str, str]:
+    categories = []
+    focuses = []
+    for pattern, category, focus in DISCOVERY_INTERESTS:
+        if pattern.search(name):
+            categories.append(category)
+            focuses.append(focus)
+    folded_name = re.sub(r"[^a-z0-9]+", " ", name.lower()).strip()
+    neighborhoods = []
+    for hint, neighborhood in DISCOVERY_NEIGHBORHOODS:
+        if re.search(rf"\b{re.escape(hint)}\b", folded_name):
+            neighborhoods.append(neighborhood)
+    categories = list(dict.fromkeys(categories))[:3]
+    focuses = list(dict.fromkeys(focuses))[:2]
+    neighborhoods = list(dict.fromkeys(neighborhoods))[:2]
+    if focuses:
+        focus_text = " and ".join(focuses)
+        tagline = f"Explore a NYC community connected to {focus_text}."
+        description = (
+            f"{name} appears connected to {focus_text}, based on its public name. "
+            "Use the search link to confirm its official page, current schedule, and how to join."
+        )
+    else:
+        tagline = f"Find current information and ways to connect with {name}."
+        description = (
+            f"Search for the official {name} page to confirm its focus, current schedule, "
+            "location, and how to join."
+        )
+    return categories, neighborhoods, tagline, description
+
+
 def _discovery_reference(entry: dict, generated_at: str | None = None) -> dict:
     """Create a public, explicitly unverified profile from one discovery lead."""
     directory_slug = str(entry.get("directorySlug") or "").strip()
     name = _display_name(str(entry.get("name") or directory_slug))
     cid = _community_id(f"directory:{directory_slug}")
+    categories, neighborhoods, tagline, description = _discovery_details(name)
+    search_url = "https://www.google.com/search?q=" + quote_plus(f'"{name}" NYC community')
     return {
         "id": cid,
         "slug": f"discover-{directory_slug}",
         "name": name,
         "kind": "directory_reference",
         "profileStatus": "directory_reference",
-        "tagline": "Community discovery profile.",
-        "description": (
-            f"We are still building the {name} profile. Its schedule, location, and "
-            "upcoming events have not yet been independently verified."
-        ),
-        "categories": [],
-        "tags": [],
-        "neighborhoods": [],
+        "tagline": tagline,
+        "description": description,
+        "categories": categories,
+        "tags": categories,
+        "neighborhoods": neighborhoods,
         "homeVenue": "",
         "imageUrl": None,
-        "links": [],
-        "joinMethod": "Follow for future details",
+        "links": [{"type": "web_search", "label": "Find the official page", "url": search_url}],
+        "joinMethod": "Find the official page",
         "activity": {"state": "unverified", "lastEventDate": None, "upcomingEventCount": 0, "eventCount90d": 0},
         "schedule": None,
         "upcomingEventIds": [],

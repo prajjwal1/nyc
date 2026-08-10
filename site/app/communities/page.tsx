@@ -56,7 +56,7 @@ export default function CommunitiesPage() {
   const deferredQuery = useDeferredValue(q);
   const [category, setCategory] = useState("all");
   const [neighborhood, setNeighborhood] = useState("all");
-  const [collection, setCollection] = useState<CollectionFilter>("all");
+  const [collection, setCollection] = useState<CollectionFilter>("event_backed");
   const [firstTimers, setFirstTimers] = useState(false);
   const [followedOnly, setFollowedOnly] = useState(false);
   const [availability, setAvailability] = useState<string[]>([]);
@@ -116,7 +116,7 @@ export default function CommunitiesPage() {
   }, [communities, deferredQuery, category, neighborhood, collection, firstTimers, followedOnly, availability, followedIds]);
 
   const displayed = visible.slice(0, displayLimit);
-  const filtersActive = !!q || category !== "all" || neighborhood !== "all" || collection !== "all"
+  const filtersActive = !!q || category !== "all" || neighborhood !== "all" || collection !== "event_backed"
     || firstTimers || followedOnly || availability.length > 0;
 
   const restartList = () => setDisplayLimit(PAGE_SIZE);
@@ -124,7 +124,7 @@ export default function CommunitiesPage() {
     setQ("");
     setCategory("all");
     setNeighborhood("all");
-    setCollection("all");
+    setCollection("event_backed");
     setFirstTimers(false);
     setFollowedOnly(false);
     setAvailability([]);
@@ -143,21 +143,21 @@ export default function CommunitiesPage() {
       <div className="mx-auto max-w-7xl">
         <header className="grid gap-10 border-b border-[#d8d7d0] pb-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div className="max-w-4xl">
-            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#99704d]">The community index</p>
+            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#99704d]">Communities you can join</p>
             <h1 className="font-editorial text-[clamp(3.3rem,8vw,7.6rem)] font-medium leading-[0.83] tracking-[-0.055em] text-[#15372f]">
               Find your people<br /><span className="italic text-[#ad5b3d]">in New York.</span>
             </h1>
             <p className="mt-7 max-w-xl text-base leading-7 text-[#5d6964] sm:text-lg">
-              A living field guide to clubs, collectives, and recurring gatherings—organized around how you want to spend your time.
+              Start with communities that have real upcoming events. Search the wider directory when you want to explore beyond what is happening this week.
             </p>
           </div>
           <dl className="grid grid-cols-2 gap-6 border-t border-[#d8d7d0] pt-5 lg:border-t-0 lg:pt-0">
             <div>
-              <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#7b837f]">With activity</dt>
+              <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#7b837f]">With upcoming events</dt>
               <dd className="mt-2 font-editorial text-4xl text-[#15372f]">{loading ? "—" : eventBackedCount.toLocaleString()}</dd>
             </div>
             <div>
-              <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#7b837f]">Being mapped</dt>
+              <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#7b837f]">More to explore</dt>
               <dd className="mt-2 font-editorial text-4xl text-[#15372f]">{loading ? "—" : discoveryCount.toLocaleString()}</dd>
             </div>
           </dl>
@@ -170,7 +170,7 @@ export default function CommunitiesPage() {
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#78817d]"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
               <input
                 value={q}
-                onChange={(event) => { setQ(event.target.value); restartList(); }}
+                onChange={(event) => { setQ(event.target.value); if (event.target.value.trim()) setCollection("all"); restartList(); }}
                 placeholder="Search chess, running, book clubs…"
                 className="h-12 w-full rounded-full border border-[#cfcec6] bg-[#fbfaf7] pl-11 pr-4 text-sm outline-none transition placeholder:text-[#8b918e] focus:border-[#8a9c94] focus:ring-2 focus:ring-[#15372f]/10"
               />
@@ -189,9 +189,9 @@ export default function CommunitiesPage() {
 
           <div className="mt-3 flex items-center gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {([
-              ["all", "All profiles"],
-              ["event_backed", "Events tracked"],
-              ["directory_reference", "Discovery profiles"],
+              ["event_backed", "With upcoming events"],
+              ["all", "All communities"],
+              ["directory_reference", "Wider directory"],
             ] as const).map(([value, label]) => (
               <button key={value} onClick={() => { setCollection(value); restartList(); }} aria-pressed={collection === value} className={`shrink-0 rounded-full px-3.5 py-2 text-xs font-medium transition ${collection === value ? "bg-[#15372f] text-white" : "border border-[#cfcec6] bg-[#fbfaf7] text-[#53615c] hover:border-[#9fa8a4]"}`}>{label}</button>
             ))}
@@ -224,7 +224,7 @@ export default function CommunitiesPage() {
 
         <div className="flex items-end justify-between gap-4 py-8">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8a918e]">Browse the index</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8a918e]">{collection === "event_backed" ? "Ready to join" : collection === "directory_reference" ? "Search the wider directory" : "Search results"}</p>
             <h2 className="mt-1 font-editorial text-3xl tracking-[-0.02em] text-[#15372f]">
               {loading ? "Looking around the city…" : `${visible.length.toLocaleString()} ${visible.length === 1 ? "community" : "communities"}`}
             </h2>
