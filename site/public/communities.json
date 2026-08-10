@@ -784,6 +784,75 @@
       ]
     },
     {
+      "id": "com_27b019b131e6",
+      "slug": "open-air-art-club-b131e6",
+      "name": "Open Air Art Club",
+      "kind": "club",
+      "tagline": "Open Air Art Club is a community club centered on outdoors in brooklyn.",
+      "description": "Open Air Art Club is a community club centered on outdoors in brooklyn. Based on 2 observed event dates, it meets monthly on Sunday afternoons.",
+      "categories": [
+        "outdoors"
+      ],
+      "tags": [
+        "outdoors"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "McCarren Park",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2F1gq76DFDncYFeyWWkQbZ%2Fyr3ASli9YdjfHuphyDAio?alt=media&token=2caa697b-7216-477e-a2b3-49f3d33a65ca",
+      "links": [
+        {
+          "type": "partiful",
+          "label": "View on Partiful",
+          "url": "https://www.instagram.com/openairartclub/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-08-09",
+        "upcomingEventCount": 1,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "monthly",
+        "typicalDays": [
+          "Sunday"
+        ],
+        "typicalTime": "16:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "bab183591e770b8f"
+      ],
+      "sourceAttributions": [
+        "partiful"
+      ],
+      "lastVerifiedAt": "2026-08-10",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:openairartclub",
+        "partiful:1gq76dfdncyfeywwkqbz"
+      ],
+      "similarCommunityIds": [
+        "com_eef1ca956dae",
+        "com_b766b6de77ba",
+        "com_218b97d674a6",
+        "com_3837f308cd75",
+        "com_83fdf02633ef",
+        "com_b0e15eaab803"
+      ]
+    },
+    {
       "id": "com_a7c30be0b35f",
       "slug": "the-travel-agency-e0b35f",
       "name": "The Travel Agency",
@@ -1088,8 +1157,8 @@
         "com_d8a5203885a9",
         "com_83fdf02633ef",
         "com_9a5c4d074e3a",
-        "com_b766b6de77ba",
-        "com_eef1ca956dae"
+        "com_27b019b131e6",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -1323,9 +1392,9 @@
         "com_33a530deb7aa",
         "com_cdd5daa67222",
         "com_d8a5203885a9",
+        "com_27b019b131e6",
         "com_b766b6de77ba",
-        "com_b0e15eaab803",
-        "com_0cc8630779d7"
+        "com_b0e15eaab803"
       ]
     },
     {
@@ -1462,9 +1531,9 @@
         "com_02ba15552329",
         "com_218b97d674a6",
         "com_3837f308cd75",
+        "com_27b019b131e6",
         "com_d8a5203885a9",
-        "com_eef1ca956dae",
-        "com_a7c30be0b35f"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -40276,7 +40345,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-10T00:41:36.810014+00:00",
+  "lastUpdated": "2026-08-10T02:31:44.386522+00:00",
   "version": 1,
   "schemaVersion": 1
 }
