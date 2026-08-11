@@ -67,7 +67,7 @@ export interface CommunitySchedule {
   confidence?: number;
   sampleSize?: number;
 }
-export interface CommunityActivity { state?: "active" | "quiet" | "stale" | "unverified"; eventCount90d?: number; lastEventDate?: string }
+export interface CommunityActivity { state?: "active" | "quiet" | "stale" | "unverified"; eventCount90d?: number; upcomingEventCount?: number; lastEventDate?: string }
 export interface Community {
   id: string; slug: string; name: string; tagline?: string; description?: string;
   imageUrl?: string | null; categories: string[]; tags?: string[]; kind?: string;

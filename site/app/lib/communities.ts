@@ -2,6 +2,7 @@ import { CommunitiesData, Community } from "./types";
 
 let cache: CommunitiesData | null = null;
 const COMMUNITY_DIRECTORY_STATE_KEY = "nyc-community-directory-state-v1";
+export const COMMUNITY_FOLLOW_EVENT = "nyc-community-follow-change";
 
 export type CommunityCollectionFilter = "all" | "event_backed" | "directory_reference";
 
@@ -53,11 +54,21 @@ export async function loadCommunities(): Promise<CommunitiesData> {
 export const communityHref = (c: Community | string) => `/communities/${typeof c === "string" ? c : c.slug}`;
 export const followedCommunityIds = (): string[] => {
   if (typeof window === "undefined") return [];
-  try { return JSON.parse(localStorage.getItem("nyc-community-follows-v1") || "[]"); } catch { return []; }
+  try {
+    const value = JSON.parse(localStorage.getItem("nyc-community-follows-v1") || "[]");
+    return Array.isArray(value) ? value.filter((id): id is string => typeof id === "string") : [];
+  } catch {
+    return [];
+  }
 };
 export function toggleCommunityFollow(id: string): string[] {
   const ids = followedCommunityIds();
   const next = ids.includes(id) ? ids.filter(x => x !== id) : [...ids, id];
-  localStorage.setItem("nyc-community-follows-v1", JSON.stringify(next));
+  try {
+    localStorage.setItem("nyc-community-follows-v1", JSON.stringify(next));
+    window.dispatchEvent(new Event(COMMUNITY_FOLLOW_EVENT));
+  } catch {
+    return ids;
+  }
   return next;
 }
