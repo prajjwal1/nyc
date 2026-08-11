@@ -11,7 +11,7 @@ function formatLabel(value: string) {
   return value.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
-export default function CommunityCard({ community, priority = false }: { community: Community; priority?: boolean }) {
+export default function CommunityCard({ community, priority = false, onOpen }: { community: Community; priority?: boolean; onOpen?: () => void }) {
   const [following, setFollowing] = useState(() => followedCommunityIds().includes(community.id));
   const isDiscovery = community.profileStatus === "directory_reference";
   const activity = community.activity?.state || "unverified";
@@ -69,7 +69,7 @@ export default function CommunityCard({ community, priority = false }: { communi
           <div className="min-w-0 flex-1">
             <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#9a684e]">{category}</p>
             <h3 className="mt-1.5 font-editorial text-[1.55rem] font-medium leading-tight tracking-[-0.02em] text-[#173a31]">
-              <Link href={`/communities/${community.slug}`} className="decoration-1 underline-offset-4 outline-none transition hover:text-[#a95136] focus-visible:underline">{community.name}</Link>
+              <Link href={`/communities/${community.slug}`} onNavigate={onOpen} className="decoration-1 underline-offset-4 outline-none transition hover:text-[#a95136] focus-visible:underline">{community.name}</Link>
             </h3>
           </div>
           <button onClick={toggleFollow} aria-label={`${following ? "Unfollow" : "Follow"} ${community.name}`} aria-pressed={following} className={`shrink-0 rounded-full px-3 py-1.5 text-[10px] font-semibold transition ${following ? "bg-[#173a31] text-white" : "border border-[#b8beb9] text-[#43564f] hover:border-[#173a31]"}`}>{following ? "Following" : "Follow"}</button>
@@ -82,7 +82,7 @@ export default function CommunityCard({ community, priority = false }: { communi
             <p className="truncate font-medium text-[#41534c]">{place}</p>
             <p className="mt-0.5 truncate">{community.schedule?.cadence || "Schedule varies"}</p>
           </div>
-          <Link href={`/communities/${community.slug}`} className="shrink-0 font-semibold text-[#9f4f36] transition hover:text-[#713625]">View profile <span aria-hidden="true">→</span></Link>
+          <Link href={`/communities/${community.slug}`} onNavigate={onOpen} className="shrink-0 font-semibold text-[#9f4f36] transition hover:text-[#713625]">View profile <span aria-hidden="true">→</span></Link>
         </div>
         <span className="sr-only">Activity status: {activity}</span>
       </div>

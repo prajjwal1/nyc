@@ -2,7 +2,13 @@
 
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import CommunityCard from "../components/CommunityCard";
-import { followedCommunityIds, loadCommunities } from "../lib/communities";
+import {
+  CommunityCollectionFilter,
+  followedCommunityIds,
+  loadCommunities,
+  readCommunityDirectoryState,
+  writeCommunityDirectoryState,
+} from "../lib/communities";
 import { Community } from "../lib/types";
 
 const AVAIL_KEY = "nyc-community-availability-v1";
@@ -10,7 +16,6 @@ const FOLLOW_EVENT = "nyc-community-follow-change";
 const PAGE_SIZE = 48;
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const BANDS = ["morning", "afternoon", "evening"];
-type CollectionFilter = "all" | "event_backed" | "directory_reference";
 
 function timeBand(value?: string) {
   if (!value) return "";
@@ -56,13 +61,14 @@ export default function CommunitiesPage() {
   const deferredQuery = useDeferredValue(q);
   const [category, setCategory] = useState("all");
   const [neighborhood, setNeighborhood] = useState("all");
-  const [collection, setCollection] = useState<CollectionFilter>("event_backed");
+  const [collection, setCollection] = useState<CommunityCollectionFilter>("event_backed");
   const [firstTimers, setFirstTimers] = useState(false);
   const [followedOnly, setFollowedOnly] = useState(false);
   const [availability, setAvailability] = useState<string[]>([]);
   const [showAvailability, setShowAvailability] = useState(false);
   const [displayLimit, setDisplayLimit] = useState(PAGE_SIZE);
   const [followedIds, setFollowedIds] = useState<string[]>([]);
+  const [directoryStateReady, setDirectoryStateReady] = useState(false);
 
   useEffect(() => {
     loadCommunities()
@@ -70,13 +76,62 @@ export default function CommunitiesPage() {
       .catch(() => setLoadError(true))
       .finally(() => setLoading(false));
     queueMicrotask(() => {
-      try { setAvailability(JSON.parse(localStorage.getItem(AVAIL_KEY) || "[]")); } catch {}
+      const saved = readCommunityDirectoryState();
+      let storedAvailability: string[] = [];
+      try { storedAvailability = JSON.parse(localStorage.getItem(AVAIL_KEY) || "[]"); } catch {}
+      if (typeof saved.q === "string") setQ(saved.q);
+      if (typeof saved.category === "string") setCategory(saved.category);
+      if (typeof saved.neighborhood === "string") setNeighborhood(saved.neighborhood);
+      if (["all", "event_backed", "directory_reference"].includes(saved.collection || "")) {
+        setCollection(saved.collection as CommunityCollectionFilter);
+      }
+      if (typeof saved.firstTimers === "boolean") setFirstTimers(saved.firstTimers);
+      if (typeof saved.followedOnly === "boolean") setFollowedOnly(saved.followedOnly);
+      setAvailability(Array.isArray(saved.availability) ? saved.availability : storedAvailability);
+      if (typeof saved.showAvailability === "boolean") setShowAvailability(saved.showAvailability);
+      if (typeof saved.displayLimit === "number" && Number.isFinite(saved.displayLimit)) {
+        setDisplayLimit(Math.max(PAGE_SIZE, Math.min(saved.displayLimit, 5000)));
+      }
       setFollowedIds(followedCommunityIds());
+      setDirectoryStateReady(true);
     });
     const refreshFollows = () => setFollowedIds(followedCommunityIds());
     window.addEventListener(FOLLOW_EVENT, refreshFollows);
     return () => window.removeEventListener(FOLLOW_EVENT, refreshFollows);
   }, []);
+
+  useEffect(() => {
+    if (!directoryStateReady) return;
+    writeCommunityDirectoryState({
+      q,
+      category,
+      neighborhood,
+      collection,
+      firstTimers,
+      followedOnly,
+      availability,
+      showAvailability,
+      displayLimit,
+    });
+  }, [directoryStateReady, q, category, neighborhood, collection, firstTimers, followedOnly, availability, showAvailability, displayLimit]);
+
+  useEffect(() => {
+    if (!directoryStateReady || loading) return;
+    const saved = readCommunityDirectoryState();
+    if (!saved.restoreOnReturn || typeof saved.scrollY !== "number") return;
+    const restorePosition = () => window.scrollTo(0, saved.scrollY || 0);
+    const secondFrame = { id: 0 };
+    const firstFrame = requestAnimationFrame(() => {
+      secondFrame.id = requestAnimationFrame(restorePosition);
+    });
+    const afterImagesSettle = window.setTimeout(restorePosition, 300);
+    writeCommunityDirectoryState({ restoreOnReturn: false });
+    return () => {
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame.id);
+      window.clearTimeout(afterImagesSettle);
+    };
+  }, [directoryStateReady, loading]);
 
   const categories = useMemo(
     () => [...new Set(communities.flatMap((community) => community.categories))].sort(),
@@ -136,6 +191,21 @@ export default function CommunitiesPage() {
     setAvailability(next);
     setDisplayLimit(PAGE_SIZE);
     localStorage.setItem(AVAIL_KEY, JSON.stringify(next));
+  };
+  const rememberDirectoryPosition = () => {
+    writeCommunityDirectoryState({
+      q,
+      category,
+      neighborhood,
+      collection,
+      firstTimers,
+      followedOnly,
+      availability,
+      showAvailability,
+      displayLimit,
+      scrollY: window.scrollY,
+      restoreOnReturn: true,
+    });
   };
 
   return (
@@ -246,7 +316,7 @@ export default function CommunitiesPage() {
         ) : (
           <>
             <div className="grid gap-x-5 gap-y-6 md:grid-cols-2 xl:grid-cols-3">
-              {displayed.map((community, index) => <CommunityCard key={community.id} community={community} priority={index < 6} />)}
+              {displayed.map((community, index) => <CommunityCard key={community.id} community={community} priority={index < 6} onOpen={rememberDirectoryPosition} />)}
             </div>
             {displayed.length < visible.length && (
               <div className="mt-12 border-t border-[#d8d7d0] pt-8 text-center">
