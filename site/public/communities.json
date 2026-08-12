@@ -92,7 +92,7 @@
       "name": "The Harlem Swing Dance Society",
       "kind": "club",
       "tagline": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem.",
-      "description": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem. Based on 6 observed event dates, it meets weekly on Thursday and Friday mornings.",
+      "description": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem. Based on 7 observed event dates, it meets weekly on Tuesday and Thursday mornings.",
       "categories": [
         "dance",
         "special"
@@ -117,21 +117,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-12",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 6
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Thursday",
-          "Friday"
+          "Tuesday",
+          "Thursday"
         ],
         "typicalTime": "09:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
         "b8fe0efd137b1400",
+        "2c8b219c22a0362a",
         "95932b43786962d0"
       ],
       "sourceAttributions": [
@@ -141,7 +142,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -48594,7 +48595,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-12T00:04:04.275823+00:00",
+  "lastUpdated": "2026-08-12T02:31:12.188842+00:00",
   "version": 1,
   "schemaVersion": 1
 }
