@@ -12,6 +12,8 @@ import EventModal from "./components/EventModal";
 import { Event } from "./lib/types";
 import { readAndAdvanceLastVisited } from "./lib/interests";
 import CommunitySpotlight from "./components/CommunitySpotlight";
+import SearchBar from "./components/SearchBar";
+import Footer from "./components/Footer";
 
 type View = "for-you" | "calendar";
 
@@ -155,8 +157,29 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-gray-400 text-lg">Loading events...</div>
+      <div className="min-h-screen bg-[#f8f3e8]">
+        <Header totalEvents={0} thisWeekCount={0} lastUpdated={undefined} newSinceLastVisit={0} />
+        <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+          <div className="mb-8 animate-pulse">
+            <div className="h-7 w-48 rounded bg-[#e7e1d2]" />
+            <div className="mt-3 h-4 w-64 rounded bg-[#e7e1d2]" />
+          </div>
+          <div className="mb-6 h-11 w-full max-w-md rounded-full bg-white border border-gray-200" />
+          <div className="space-y-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="rounded-xl border border-gray-200 bg-white p-4 animate-pulse">
+                <div className="flex gap-3">
+                  <div className="h-20 w-20 rounded-lg bg-[#ece7d8]" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-4 w-3/4 rounded bg-[#ece7d8]" />
+                    <div className="h-3 w-1/2 rounded bg-[#f0ebe0]" />
+                    <div className="h-3 w-2/3 rounded bg-[#f0ebe0]" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </main>
       </div>
     );
   }
@@ -189,28 +212,41 @@ export default function Home() {
       />
 
       <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+        <SearchBar value={search} onChange={setSearch} />
         <CommunitySpotlight />
-        {/* Compact Feed/Calendar toggle — single bar across top, no sidebar
-            on the Feed view (iter 215: dropped the FilterBar sidebar). */}
-        <div className="bg-white rounded-xl border border-gray-200 p-1 flex mb-6 max-w-xs">
-          <button
-            onClick={() => setView("for-you")}
-            aria-pressed={view === "for-you"}
-            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none ${
-              view === "for-you" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-50"
-            }`}
-          >
-            Feed
-          </button>
-          <button
-            onClick={() => setView("calendar")}
-            aria-pressed={view === "calendar"}
-            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none ${
-              view === "calendar" ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-50"
-            }`}
-          >
-            Calendar
-          </button>
+        {/* Compact controls: Feed/Calendar toggle + result count */}
+        <div className="flex items-center justify-between gap-3 mb-6">
+          <div className="bg-white rounded-full border border-[#d7d5cd] p-1 flex max-w-[220px] shadow-[0_1px_0_rgba(23,58,49,0.03)]">
+            <button
+              onClick={() => setView("for-you")}
+              aria-pressed={view === "for-you"}
+              className={`flex-1 px-4 py-1.5 rounded-full text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none ${
+                view === "for-you" ? "bg-[#173c35] text-white shadow-sm" : "text-[#5d6964] hover:bg-[#f4f1e8]"
+              }`}
+            >
+              Feed
+            </button>
+            <button
+              onClick={() => setView("calendar")}
+              aria-pressed={view === "calendar"}
+              className={`flex-1 px-4 py-1.5 rounded-full text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none ${
+                view === "calendar" ? "bg-[#173c35] text-white shadow-sm" : "text-[#5d6964] hover:bg-[#f4f1e8]"
+              }`}
+            >
+              Calendar
+            </button>
+          </div>
+          {search && (
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-[#8b918e]">{events.length} result{events.length !== 1 ? "s" : ""}</span>
+              <button
+                onClick={() => setSearch("")}
+                className="text-xs font-medium text-[#9a684e] hover:underline"
+              >
+                Clear
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
@@ -294,6 +330,7 @@ export default function Home() {
         relatedEvents={events}
         onSelectEvent={setOpenEvent}
       />
+      <Footer lastUpdated={lastUpdated} totalEvents={totalEvents} />
     </div>
   );
 }

@@ -54,6 +54,33 @@ const MAX_DAYS = 10;
 const MAX_SAVED = 6;
 const MAX_FOLLOWING = 6;
 
+function HeroSection({
+  title,
+  count,
+  accent,
+  children,
+}: {
+  title: string;
+  count: number;
+  accent: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="mb-7 overflow-hidden rounded-[1.5rem] border border-[#ddd9cc] bg-[#fffef9] shadow-[0_1px_0_rgba(23,58,49,0.03)]">
+      <div className="flex items-center justify-between gap-3 border-b border-[#ece7d8] bg-[#fdfaf0] px-5 py-3">
+        <h3 className="flex items-center gap-2 font-editorial text-[15px] font-semibold tracking-[-0.01em] text-[#173c35]">
+          <span className={`h-1.5 w-1.5 rounded-full ${accent}`} aria-hidden="true" />
+          {title}
+        </h3>
+        <span className="rounded-full bg-white px-2 py-0.5 text-[11px] font-medium text-[#8b918e] border border-[#e6e0d0]">
+          {count}
+        </span>
+      </div>
+      <div className="space-y-2.5 p-3 sm:p-3.5 bg-white/60">{children}</div>
+    </div>
+  );
+}
+
 const CAPTION_LIKE_TITLE = /^(if you(?:['’]re| are)|when you|the cutest little|pov\b|tag (?:a|your)|send this|who else|things to do\b)/i;
 const GENERIC_TITLE = /^(event|untitled|tba|coming soon|meetup group\b)/i;
 
@@ -387,91 +414,58 @@ export default function TopPicks({
         );
       })()}
 
-      {/* 🔥 Tonight — happening today, evening events */}
+      {/* Shared hero shell — editorial, subtle, consistent. */}
       {tonightEvents.length > 0 && (
-        <div className="mb-8 -mx-1 px-1 py-3 bg-rose-50/60 rounded-2xl border border-rose-200">
-          <h3 className="text-sm font-semibold text-rose-900 uppercase tracking-wide mb-2 px-2">
-            🔥 Tonight
-          </h3>
-          <div className="space-y-2">
-            {tonightEvents.map((event, rank) => (
-              <div key={event.id} data-event-id={event.id} data-feed-section="tonight" data-rank={rank + 1}>
-                <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
-              </div>
-            ))}
-          </div>
-        </div>
+        <HeroSection title="Tonight" count={tonightEvents.length} accent="bg-[#bd4f34]">
+          {tonightEvents.map((event, rank) => (
+            <div key={event.id} data-event-id={event.id} data-feed-section="tonight" data-rank={rank + 1}>
+              <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            </div>
+          ))}
+        </HeroSection>
       )}
 
-      {/* ☕ This Weekend — low-key social: brunch, books, runs, art, comedy */}
       {weekendEvents.length > 0 && (
-        <div className="mb-8 -mx-1 px-1 py-3 bg-emerald-50/60 rounded-2xl border border-emerald-200">
-          <h3 className="text-sm font-semibold text-emerald-900 uppercase tracking-wide mb-2 px-2">
-            ☕ This Weekend
-          </h3>
-          <div className="space-y-2">
-            {weekendEvents.map((event, rank) => (
-              <div key={event.id} data-event-id={event.id} data-feed-section="weekend" data-rank={rank + 1}>
-                <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
-              </div>
-            ))}
-          </div>
-        </div>
+        <HeroSection title="This Weekend" count={weekendEvents.length} accent="bg-emerald-600">
+          {weekendEvents.map((event, rank) => (
+            <div key={event.id} data-event-id={event.id} data-feed-section="weekend" data-rank={rank + 1}>
+              <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            </div>
+          ))}
+        </HeroSection>
       )}
 
-      {/* ✨ Just Added — events first seen in last 72 hours.
-          Slate-toned (not sky) so sky consistently means "from your follow
-          graph" — matching the card conviction ring + the Following hero. */}
       {recentlyAdded.length > 0 && (
-        <div className="mb-8 -mx-1 px-1 py-3 bg-slate-50 rounded-2xl border border-slate-200">
-          <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-2 px-2">
-            ✨ Just Added
-          </h3>
-          <div className="space-y-2">
-            {recentlyAdded.map((event, rank) => (
-              <div key={event.id} data-event-id={event.id} data-feed-section="just-added" data-rank={rank + 1}>
-                <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
-              </div>
-            ))}
-          </div>
-        </div>
+        <HeroSection title="Just Added" count={recentlyAdded.length} accent="bg-slate-500">
+          {recentlyAdded.map((event, rank) => (
+            <div key={event.id} data-event-id={event.id} data-feed-section="just-added" data-rank={rank + 1}>
+              <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            </div>
+          ))}
+        </HeroSection>
       )}
 
-      {/* Following hero — highest-conviction signal. Heading deliberately
-          minimal (iter 214): the ★ glyph on cards already signals the
-          source. Verbose 'Because you follow @X' text removed per user. */}
       {followingUpcoming.length > 0 && (
-        <div className="mb-8 -mx-1 px-1 py-3 bg-sky-50/60 rounded-2xl border border-sky-200">
-          <h3 className="text-sm font-semibold text-sky-900 uppercase tracking-wide mb-2 px-2">
-            ★ Following
-          </h3>
-          <div className="space-y-2">
-            {followingUpcoming.map((event, rank) => (
-              <div key={event.id} data-event-id={event.id} data-feed-section="following" data-rank={rank + 1}>
-                <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
-              </div>
-            ))}
-          </div>
-        </div>
+        <HeroSection title="From accounts you follow" count={followingUpcoming.length} accent="bg-sky-600">
+          {followingUpcoming.map((event, rank) => (
+            <div key={event.id} data-event-id={event.id} data-feed-section="following" data-rank={rank + 1}>
+              <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            </div>
+          ))}
+        </HeroSection>
       )}
 
-      {/* ★ Saved hero */}
       {savedUpcoming.length > 0 && (
-        <div className="mb-8 -mx-1 px-1 py-3 bg-amber-50/50 rounded-2xl border border-amber-200">
-          <h3 className="text-sm font-semibold text-amber-900 uppercase tracking-wide mb-2 px-2">
-            ★ Saved by you
-          </h3>
-          <div className="space-y-2">
-            {savedUpcoming.map((event, rank) => (
-              <div key={event.id} data-event-id={event.id} data-feed-section="saved" data-rank={rank + 1}>
-                <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
-              </div>
-            ))}
-          </div>
-        </div>
+        <HeroSection title="Saved by you" count={savedUpcoming.length} accent="bg-amber-600">
+          {savedUpcoming.map((event, rank) => (
+            <div key={event.id} data-event-id={event.id} data-feed-section="saved" data-rank={rank + 1}>
+              <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
+            </div>
+          ))}
+        </HeroSection>
       )}
 
-      <div className="space-y-6">
+      <div className="space-y-8">
         {sortedDates.map((date) => {
           const dateObj = parseISO(date + "T12:00:00");
           const isToday = date === todayStr;
@@ -482,20 +476,25 @@ export default function TopPicks({
           const total = grouped.get(date)!.length;
 
           return (
-            <div key={date}>
+            <div key={date} className="rounded-[1.25rem] bg-white/60">
               <button
                 onClick={() => onSelectDate(date)}
-                className={`mb-2 hover:text-gray-900 ${
-                  isToday
-                    ? "text-base font-bold text-gray-900"
-                    : "text-xs font-semibold text-gray-500 uppercase tracking-wide"
+                className={`group mb-3 flex items-baseline gap-3 px-1 text-left ${
+                  isToday ? "" : ""
                 }`}
               >
-                {isToday
-                  ? `Today · ${format(dateObj, "EEEE, MMM d")}`
-                  : format(dateObj, "EEEE, MMM d")}
+                <span
+                  className={`font-editorial tracking-[-0.015em] ${
+                    isToday ? "text-[22px] font-bold text-[#173c35]" : "text-[17px] font-semibold text-[#3a4d48]"
+                  }`}
+                >
+                  {isToday ? `Today · ${format(dateObj, "EEEE, MMM d")}` : format(dateObj, "EEEE, MMM d")}
+                </span>
+                <span className="text-[11px] font-medium text-[#8b918e] group-hover:text-[#5d6964]">
+                  {total} event{total !== 1 ? "s" : ""} →
+                </span>
               </button>
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 {dayEvents.map((event, rank) => (
                   <div key={event.id} data-event-id={event.id} data-feed-section={`date:${date}`} data-rank={rank + 1}>
                     <EventCard event={event} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
@@ -505,7 +504,7 @@ export default function TopPicks({
               {total > MAX_PER_DAY && (
                 <button
                   onClick={() => onSelectDate(date)}
-                  className="text-xs text-gray-400 hover:text-gray-700 pl-1 mt-2 inline-block"
+                  className="mt-3 inline-flex rounded-full border border-[#d7d5cd] bg-white px-3 py-1 text-xs font-medium text-[#5d6964] hover:border-[#173c35] hover:text-[#173c35]"
                 >
                   +{total - MAX_PER_DAY} more on {format(dateObj, "MMM d")}
                 </button>
@@ -514,9 +513,13 @@ export default function TopPicks({
           );
         })}
       </div>
-      <div className="mt-8 text-center">
-        <Link href="/events" className="inline-flex rounded-full border border-[#173c35] px-5 py-2.5 text-sm font-semibold text-[#173c35] hover:bg-[#173c35] hover:text-white">
+      <div className="mt-10 flex justify-center">
+        <Link
+          href="/events"
+          className="inline-flex items-center gap-1.5 rounded-full bg-[#173c35] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#204b40] transition"
+        >
           Browse every upcoming event
+          <span aria-hidden="true">→</span>
         </Link>
       </div>
     </div>

@@ -1,3 +1,5 @@
+import type { Event } from "./types";
+
 // Client-side interest tracking. Compounds across visits without any backend.
 //
 // Tracks three signals from user behavior:
@@ -305,6 +307,15 @@ export function readAndAdvanceLastVisited(): string | null {
   }
 }
 
+export function readLastVisited(): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return window.localStorage.getItem(LAST_VISITED_KEY);
+  } catch {
+    return null;
+  }
+}
+
 // Locally-saved events — explicit positive signal the user controls. The
 // IG-saved signal already exists for IG events the user bookmarked on IG
 // itself; this is the equivalent for non-IG events (Eventbrite, Luma, etc.)
@@ -331,6 +342,30 @@ export interface SavedEventStub {
   accountVerified?: boolean;
   startTime?: string | null;
   locationName?: string;
+}
+
+export function savedStubToEvent(stub: SavedEventStub): Event {
+  return {
+    id: stub.id,
+    title: stub.title,
+    description: stub.description || "",
+    date: stub.date,
+    startTime: stub.startTime || null,
+    endTime: null,
+    location: { name: stub.locationName || "", address: "", neighborhood: null },
+    categories: stub.categories || [],
+    source: "saved",
+    sourceUrl: stub.sourceUrl,
+    imageUrl: stub.imageUrl,
+    price: "unknown",
+    score: 0,
+    scrapedAt: new Date().toISOString(),
+    instagramAccount: stub.instagramAccount,
+    account: stub.account,
+    organizer: stub.organizer,
+    organizerUrl: stub.organizerUrl,
+    accountVerified: stub.accountVerified,
+  };
 }
 
 function loadSavedCache(): Record<string, SavedEventStub> {

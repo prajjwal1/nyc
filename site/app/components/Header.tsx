@@ -111,30 +111,41 @@ export default function Header({
 
   return (
     <header className="border-b border-[#d8d0c1] bg-[#fffdf8]">
-      <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="font-editorial text-2xl font-bold text-[#173c35]">What&apos;s happening in NYC</h1>
-            <p className="text-sm text-gray-500">
+      <div className="mx-auto max-w-5xl px-4 py-5 sm:px-6 sm:py-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div className="min-w-0">
+            <h1 className="font-editorial text-[26px] font-bold leading-[1.1] tracking-[-0.02em] text-[#173c35] sm:text-[28px]">
+              What&apos;s happening in NYC
+            </h1>
+            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#6b7570]">
               {thisWeekCount !== undefined && thisWeekCount > 0 ? (
                 <>
-                  <span className="font-semibold text-gray-700">{thisWeekCount}</span>
-                  {" "}this week
-                  <span className="text-gray-400"> · {totalEvents} total</span>
+                  <span>
+                    <span className="font-semibold text-[#173c35]">{thisWeekCount}</span> this week
+                    <span className="text-[#a8a59d]"> · {totalEvents} total</span>
+                  </span>
                 </>
               ) : (
-                <>{totalEvents} events from across the city</>
+                <span>{totalEvents} events from across the city</span>
               )}
-              {newSinceLastVisit && newSinceLastVisit > 0 ? (
-                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[11px] font-semibold">
+              {updatedStr && (
+                <span className={`text-[11px] ${updatedColorClass}`} title={updatedTooltip}>
+                  Updated {updatedStr}
+                  {ageHours != null && ageHours >= 48 && <span className="ml-1">⚠ stale</span>}
+                </span>
+              )}
+            </div>
+            {newSinceLastVisit && newSinceLastVisit > 0 ? (
+              <div className="mt-2">
+                <span className="inline-flex items-center rounded-full bg-[#173c35] px-2.5 py-1 text-[11px] font-semibold text-white">
                   ✨ {newSinceLastVisit} new since you last visited
                 </span>
-              ) : null}
-            </p>
+              </div>
+            ) : null}
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:justify-end">
             {syncMsg && (
-              <span className="text-[11px] text-gray-500 max-w-[220px] truncate" title={syncMsg}>
+              <span className="max-w-[220px] truncate text-[11px] text-[#5d6964]" title={syncMsg}>
                 {syncMsg}
               </span>
             )}
@@ -142,38 +153,30 @@ export default function Header({
               <button
                 onClick={handleSync}
                 disabled={syncing}
-                className="text-xs text-gray-500 hover:text-gray-900 flex items-center gap-1 disabled:opacity-50"
+                className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-[#d7d5cd] bg-white px-3 text-xs font-medium text-[#5d6964] hover:border-[#173c35] hover:text-[#173c35] disabled:opacity-50"
                 title="Sync your saves/hides so the scraper learns your taste"
               >
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
                 {syncing ? "Syncing…" : "Sync taste"}
               </button>
             )}
-            {updatedStr && (
-              <p className={`text-xs ${updatedColorClass}`} title={updatedTooltip}>
-                Updated {updatedStr}
-                {ageHours != null && ageHours >= 48 && (
-                  <span className="ml-1">⚠</span>
-                )}
-              </p>
-            )}
             <button
               onClick={handleShare}
-              className="text-xs text-gray-500 hover:text-gray-900 flex items-center gap-1"
+              className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-[#d7d5cd] bg-white px-3 text-xs font-medium text-[#5d6964] hover:border-[#173c35] hover:text-[#173c35]"
               title="Copy link to current view"
             >
               {copied ? (
-                <span className="text-emerald-600">Copied!</span>
+                <span className="text-emerald-700">Copied!</span>
               ) : (
                 <>
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                       d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                   </svg>
-                  Share view
+                  Share
                 </>
               )}
             </button>

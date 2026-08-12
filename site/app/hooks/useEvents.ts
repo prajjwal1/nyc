@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { format } from "date-fns";
 import { EventsData } from "../lib/types";
 import { loadEvents, filterEvents, getEventDates } from "../lib/events";
 import { loadProfile, interestBoost, InterestProfile } from "../lib/interests";
@@ -10,7 +11,7 @@ export function useEvents() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [selectedDate, setSelectedDate] = useState<string>(
-    new Date().toISOString().split("T")[0]
+    format(new Date(), "yyyy-MM-dd")
   );
   const [categories, setCategories] = useState<string[]>([]);
   const [search, setSearch] = useState("");
@@ -33,7 +34,7 @@ export function useEvents() {
   // unknown end stay if they started within the last 3 hours.
   const personalizedEvents = useMemo(() => {
     if (!data) return [];
-    const today = new Date().toISOString().split("T")[0];
+    const today = format(new Date(), "yyyy-MM-dd");
     const now = new Date();
     const cutoffMin = now.getHours() * 60 + now.getMinutes() - 180; // 3h buffer
     const stillUpcoming = (e: typeof data.events[number]): boolean => {

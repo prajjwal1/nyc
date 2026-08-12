@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
+import { format } from "date-fns";
+import { Event, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
 import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, isEventOpened, getAttendedState } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 import CommunityChips from "./CommunityChips";
@@ -11,6 +12,7 @@ interface EventCardProps {
   variant?: "compact" | "feed";
   onAccountClick?: (account: string) => void;
   onHide?: (eventId: string) => void;
+  onSaveChange?: (eventId: string, saved: boolean) => void;
   onSelect?: (event: Event) => void;
   // Show a relative-day pill ("Today"/"Tomorrow"/"Sat"/"Jul 12") in the meta
   // row. Heroes (Tonight/Following/Saved/Just-Added) drop the date entirely,
@@ -56,7 +58,7 @@ function preferenceStub(event: Event) {
 // iter 215: removed grid variant + MediaFirstCard variant. All events
 // now render through FeedCard for uniform sizing — IG events no longer
 // take 4-5x the vertical space of other sources.
-export default function EventCard({ event, variant = "feed", onAccountClick, onHide, onSelect, showDay = false }: EventCardProps) {
+export default function EventCard({ event, variant = "feed", onAccountClick, onHide, onSaveChange, onSelect, showDay = false }: EventCardProps) {
   const timeStr = event.startTime
     ? formatTime(event.startTime) +
       (event.endTime ? ` – ${formatTime(event.endTime)}` : "")
@@ -66,22 +68,7 @@ export default function EventCard({ event, variant = "feed", onAccountClick, onH
     return <CompactCard event={event} timeStr={timeStr} />;
   }
 
-  return <FeedCard event={event} timeStr={timeStr} showDay={showDay} onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelect} />;
-}
-
-function isStartingSoon(event: Event): boolean {
-  if (!event.startTime) return false;
-  try {
-    const todayStr = new Date().toISOString().split("T")[0];
-    if (event.date !== todayStr) return false;
-    const [h, m] = event.startTime.split(":").map(Number);
-    const start = new Date();
-    start.setHours(h, m, 0, 0);
-    const diffMs = start.getTime() - new Date().getTime();
-    return diffMs > 0 && diffMs < 2.5 * 3600 * 1000; // starts in next 2.5h
-  } catch {
-    return false;
-  }
+  return <FeedCard event={event} timeStr={timeStr} showDay={showDay} onAccountClick={onAccountClick} onHide={onHide} onSaveChange={onSaveChange} onSelect={onSelect} />;
 }
 
 
@@ -112,21 +99,13 @@ function CalendarIcon() {
   );
 }
 
-function formatDateLabel(iso: string): string {
-  try {
-    const d = new Date(iso + "T00:00:00");
-    return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  } catch {
-    return iso;
-  }
-}
-
 function FeedCard({
   event,
   timeStr,
   showDay = false,
   onAccountClick,
   onHide,
+  onSaveChange,
   onSelect,
 }: {
   event: Event;
@@ -134,16 +113,17 @@ function FeedCard({
   showDay?: boolean;
   onAccountClick?: (account: string) => void;
   onHide?: (eventId: string) => void;
+  onSaveChange?: (eventId: string, saved: boolean) => void;
   onSelect?: (event: Event) => void;
 }) {
   const [savedF, setSavedF] = useState(() => isSavedLocal(event.id));
   const [imgFailedF, setImgFailedF] = useState(false);
-  const handleCardClick = (e: React.MouseEvent) => {
-    if (onSelect) {
+  const handleCardClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    trackEventOpen(preferenceAccount(event), event.categories, event.organizerUrl || event.sourceUrl, event.startTime, event.date);
+    const plainPrimaryClick = e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey;
+    if (onSelect && plainPrimaryClick) {
       e.preventDefault();
       onSelect(event);
-    } else {
-      trackEventOpen(preferenceAccount(event), event.categories, event.organizerUrl || event.sourceUrl, event.startTime, event.date);
     }
   };
   const handleHide = (e: React.MouseEvent) => {
@@ -160,7 +140,9 @@ function FeedCard({
   const handleSaveF = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setSavedF(toggleSavedLocal(event.id, { account: preferenceAccount(event), categories: event.categories, sourceUrl: event.organizerUrl || event.sourceUrl, stub: preferenceStub(event) }));
+    const saved = toggleSavedLocal(event.id, { account: preferenceAccount(event), categories: event.categories, sourceUrl: event.organizerUrl || event.sourceUrl, stub: preferenceStub(event) });
+    setSavedF(saved);
+    onSaveChange?.(event.id, saved);
   };
   // Show description only if it's high-signal (not just a fragment of a larger caption)
   const desc = event.description?.trim();
@@ -178,23 +160,28 @@ function FeedCard({
   const convictionFollow = !!event.userFollowing;
   const convictionAffinity = !convictionFollow && !!event.userAffinity;
   const feedChrome = convictionFollow
-    ? "ring-1 ring-sky-300 shadow-[inset_3px_0_0_0_#0ea5e9]"
+    ? "border border-[#7db7d8] shadow-[inset_3px_0_0_0_#0ea5e9] hover:border-[#5aa3cc] bg-[#fcfeff]"
     : convictionAffinity
-    ? "ring-1 ring-amber-300 shadow-[inset_3px_0_0_0_#f59e0b]"
-    : "border border-gray-200 hover:border-gray-300";
-  const todayStrF = new Date().toISOString().split("T")[0];
+    ? "border border-[#e8d090] shadow-[inset_3px_0_0_0_#d9a91a] hover:border-[#d9a91a] bg-[#fffef5]"
+    : "border border-[#ddd9cc] hover:border-[#8a9c94] bg-white";
+  const todayStrF = format(new Date(), "yyyy-MM-dd");
   const isPastF = !!event.date && event.date < todayStrF;
   const attendedF = isPastF ? getAttendedState(event.id) : undefined;
+
   return (
-    <a
-      href={event.sourceUrl}
-      onClick={handleCardClick}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`block bg-white rounded-xl ${feedChrome} hover:shadow-sm transition-all overflow-hidden ${
+    <article
+      className={`group relative block bg-white rounded-xl ${feedChrome} hover:shadow-sm hover:-translate-y-[1px] transition-all overflow-hidden text-left cursor-pointer ${
         openedFeed ? "opacity-60" : ""
       }`}
     >
+      <a
+        href={event.sourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleCardClick}
+        aria-label={`Open ${event.title}`}
+        className="absolute inset-0 z-[1] rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sky-500"
+      />
       <div className="flex gap-3 p-3">
         {event.imageUrl && !imgFailedF && (
           <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden bg-gray-100">
@@ -345,7 +332,7 @@ function FeedCard({
             {/* iter 215: category chips removed — visual noise. Categories
                 still drive ranking + diversity internally; the user does
                 not need to see them on every card. */}
-            <span className="text-[10px] text-gray-400 ml-auto uppercase tracking-wide flex items-center gap-1">
+            <span className="relative z-10 text-[10px] text-gray-400 ml-auto uppercase tracking-wide flex items-center gap-1">
               {event.likes && event.likes > 30 ? (
                 <span title="Likes" className="normal-case tracking-normal">
                   ❤ {formatCount(event.likes)}
@@ -419,7 +406,7 @@ function FeedCard({
           </div>
         </div>
       </div>
-    </a>
+    </article>
   );
 }
 
