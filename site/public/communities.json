@@ -72,10 +72,10 @@
         "url:https://www.eventbrite.com/o/elsewhere-105655500371"
       ],
       "similarCommunityIds": [
+        "com_3837f308cd75",
         "com_9a5c4d074e3a",
         "com_ab8259bb35a4",
         "com_318c39363fe6",
-        "com_3837f308cd75",
         "com_c1410c07c4dd",
         "com_b0e15eaab803"
       ]
@@ -144,12 +144,12 @@
         "eventbrite:10662501681"
       ],
       "similarCommunityIds": [
+        "com_3837f308cd75",
         "com_ed8d42fb031d",
         "com_218b97d674a6",
         "com_02ba15552329",
         "com_0cc8630779d7",
-        "com_318c39363fe6",
-        "com_33a530deb7aa"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -296,8 +296,8 @@
         "com_0cc8630779d7",
         "com_318c39363fe6",
         "com_33a530deb7aa",
-        "com_9a5c4d074e3a",
-        "com_a393a0e8b1e0"
+        "com_3837f308cd75",
+        "com_9a5c4d074e3a"
       ]
     },
     {
@@ -306,17 +306,17 @@
       "name": "Pioneer Works",
       "kind": "recurring_series",
       "tagline": "Pioneer Works is a recurring event series centered on art, music, special in brooklyn.",
-      "description": "Pioneer Works is a recurring event series centered on art, music, special in brooklyn. Based on 6 observed event dates, it meets biweekly on Friday and Sunday evenings.",
+      "description": "Pioneer Works is a recurring event series centered on art, music, special in brooklyn. Based on 8 observed event dates, it meets weekly on Friday and Tuesday evenings.",
       "categories": [
+        "other",
         "art",
         "music",
-        "other",
         "special"
       ],
       "tags": [
+        "other",
         "art",
         "music",
-        "other",
         "special"
       ],
       "neighborhoods": [
@@ -328,31 +328,33 @@
         {
           "type": "eventbrite",
           "label": "View on Eventbrite",
-          "url": "https://www.eventbrite.com/o/20002618011"
+          "url": "https://eventbrite.com/o/20002618011"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-09",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 6,
         "eventCount90d": 2
       },
       "schedule": {
-        "cadence": "biweekly",
+        "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Sunday"
+          "Tuesday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 8
       },
       "upcomingEventIds": [
         "e748a73f737cb4ca",
         "553f9eb07171358c",
+        "0ae1573c036c9a27",
         "43dd51050dac2cc3",
-        "c1d12b6b68a4b8ee"
+        "c1d12b6b68a4b8ee",
+        "dfd7856b168aa52e"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -361,7 +363,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -370,12 +372,12 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
-        "com_218b97d674a6",
-        "com_83fdf02633ef",
         "com_b766b6de77ba",
         "com_b0e15eaab803",
         "com_eef1ca956dae",
-        "com_9a5c4d074e3a"
+        "com_218b97d674a6",
+        "com_9a5c4d074e3a",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -441,10 +443,10 @@
       "similarCommunityIds": [
         "com_318c39363fe6",
         "com_b766b6de77ba",
+        "com_3837f308cd75",
         "com_218b97d674a6",
         "com_b0e15eaab803",
-        "com_02ba15552329",
-        "com_0cc8630779d7"
+        "com_02ba15552329"
       ]
     },
     {
@@ -593,12 +595,12 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
+        "com_3837f308cd75",
         "com_cdd5daa67222",
         "com_eef1ca956dae",
         "com_c1410c07c4dd",
         "com_0cc8630779d7",
-        "com_9a5c4d074e3a",
-        "com_a7c30be0b35f"
+        "com_9a5c4d074e3a"
       ]
     },
     {
@@ -664,11 +666,11 @@
       ],
       "similarCommunityIds": [
         "com_b766b6de77ba",
+        "com_3837f308cd75",
         "com_cdd5daa67222",
         "com_02ba15552329",
         "com_0cc8630779d7",
-        "com_318c39363fe6",
-        "com_33a530deb7aa"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -828,7 +830,7 @@
         "com_33a530deb7aa",
         "com_b0e15eaab803",
         "com_02ba15552329",
-        "com_9a5c4d074e3a"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -981,8 +983,8 @@
         "source:brooklyncontra"
       ],
       "similarCommunityIds": [
-        "com_3837f308cd75",
         "com_83fdf02633ef",
+        "com_3837f308cd75",
         "com_9a5c4d074e3a",
         "com_eef1ca956dae",
         "com_b0e15eaab803",
@@ -1060,9 +1062,9 @@
         "com_0cc8630779d7",
         "com_33a530deb7aa",
         "com_cdd5daa67222",
+        "com_3837f308cd75",
         "com_eef1ca956dae",
-        "com_b0e15eaab803",
-        "com_c1410c07c4dd"
+        "com_b0e15eaab803"
       ]
     },
     {
@@ -1208,11 +1210,11 @@
       ],
       "similarCommunityIds": [
         "com_33a530deb7aa",
+        "com_3837f308cd75",
         "com_cdd5daa67222",
         "com_b0e15eaab803",
         "com_0cc8630779d7",
-        "com_eeb4e424a504",
-        "com_c1410c07c4dd"
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -1282,8 +1284,8 @@
         "com_a7c30be0b35f",
         "com_b766b6de77ba",
         "com_33a530deb7aa",
-        "com_c1410c07c4dd",
-        "com_b0e15eaab803"
+        "com_3837f308cd75",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -48535,7 +48537,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-17T16:43:41.947733+00:00",
+  "lastUpdated": "2026-08-17T16:50:35.280631+00:00",
   "version": 1,
   "schemaVersion": 1
 }
