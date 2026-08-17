@@ -19,6 +19,7 @@ from ..utils.event_parser import (
     parse_iso_to_local,
     parse_offers_price,
 )
+from ..utils.platform_discovery import is_dedicated_platform_url
 
 # High-value NYC venue/cultural URLs
 # Calendar-style sources that expose `/calendar/YYYY-MM` (or `/events/YYYY-MM`)
@@ -64,20 +65,6 @@ GENERIC_URLS = [
     # returns 503 / Bad Gateway on the bare host. The direct events path
     # works: yields ~10 events including evening tours / After Hours.
     "https://www.green-wood.com/events",
-    # Iter 113 audit: the Eventbrite venue-search URL pattern
-    # `/d/<location>/<slug>/` is a KEYWORD search, NOT a strict venue
-    # match. Generic slugs ("blue-note", "brooklyn-bowl", "mercury-lounge",
-    # "comedy-cellar", "village-vanguard", "smoke-jazz-club") returned
-    # 0/20 events at the target venue — Eventbrite was substring-matching
-    # the slug across unrelated venues. Only sufficiently-unique slugs
-    # work: elsewhere (18/20), littlefield (20/20), caveat (20/20),
-    # pioneer-works (17/20).
-    # The 11 false-positive URLs (HoY + KDC + the 9 generic-slug ones) were
-    # removed from this list. Keeping the 4 verified.
-    "https://www.eventbrite.com/d/ny--brooklyn/elsewhere/",
-    "https://www.eventbrite.com/d/ny--brooklyn/littlefield/",
-    "https://www.eventbrite.com/d/ny--manhattan/caveat/",
-    "https://www.eventbrite.com/d/ny--brooklyn/pioneer-works/",
     "https://www.theinvisibledog.org/upcoming-events",
     "https://www.openhousenewyork.org/calendar/",
     "https://hudsonyards.com/discover/events/",
@@ -123,40 +110,6 @@ GENERIC_URLS = [
     "https://www.theshed.org/calendar",
     # Bell House comedy/music (works well)
     "https://thebellhouseny.com/calendar/",
-    # Eventbrite NYC category pages — JSON-LD structured listings, 18-20 events each.
-    # Iter 90 audit: `?page=N` query param paginates correctly (each page returns
-    # 20 distinct events). Added page 2 + 3 for the high-density all-events
-    # URLs and page 2 for high-value categorical filters. Combined with the
-    # new eventbrite=100 SOURCE_VOLUME_CAPS entry, this lets the top-100 best
-    # events bubble up from a deeper pool without dominating the feed.
-    "https://www.eventbrite.com/d/ny--new-york/all-events/",
-    "https://www.eventbrite.com/d/ny--new-york/all-events/?page=2",
-    "https://www.eventbrite.com/d/ny--new-york/all-events/?page=3",
-    "https://www.eventbrite.com/d/ny--brooklyn/all-events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/all-events/?page=2",
-    "https://www.eventbrite.com/d/ny--brooklyn/all-events/?page=3",
-    "https://www.eventbrite.com/d/ny--brooklyn/free--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/free--events--this-weekend/",
-    "https://www.eventbrite.com/d/ny--queens/all-events/",
-    "https://www.eventbrite.com/d/ny--queens/all-events/?page=2",
-    "https://www.eventbrite.com/d/ny--new-york/music--events/",
-    "https://www.eventbrite.com/d/ny--new-york/music--events/?page=2",
-    "https://www.eventbrite.com/d/ny--new-york/comedy--events/",
-    "https://www.eventbrite.com/d/ny--new-york/comedy--events/?page=2",
-    "https://www.eventbrite.com/d/ny--new-york/food-and-drink--events/",
-    "https://www.eventbrite.com/d/ny--new-york/free--events--this-weekend/",
-    # Time-windowed + topic-targeted Eventbrite searches (~20 events each)
-    "https://www.eventbrite.com/d/ny--new-york/events--this-weekend/",
-    "https://www.eventbrite.com/d/ny--new-york/events--today/",
-    "https://www.eventbrite.com/d/ny--new-york/events--this-week/",
-    "https://www.eventbrite.com/d/ny--brooklyn/dating--events/",
-    "https://www.eventbrite.com/d/ny--new-york/parties--events/",
-    "https://www.eventbrite.com/d/ny--new-york/parties--events/?page=2",
-    "https://www.eventbrite.com/d/ny--new-york/networking--events/",
-    "https://www.eventbrite.com/d/ny--new-york/dating--events/",
-    "https://www.eventbrite.com/d/ny--new-york/dating--events/?page=2",
-    "https://www.eventbrite.com/d/ny--new-york/singles--events/",
-    "https://www.eventbrite.com/d/ny--new-york/singles--events/?page=2",
     # Meetup search-result pages (structured JSON-LD listings)
     "https://www.meetup.com/find/?keywords=&source=EVENTS&location=us--ny--Brooklyn",
     "https://www.meetup.com/find/events/?source=EVENTS&location=us--ny--New%20York",
@@ -206,62 +159,6 @@ GENERIC_URLS = [
     # per `audit_urls.py`. AllEvents likely lacks events under these
     # category slugs at the borough level. The borough-level catch-all
     # /brooklyn pages cover the events that would have appeared.)
-    "https://www.eventbrite.com/d/ny--brooklyn/parties--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/comedy--events/",
-    # Eventbrite NYC categorical pages — running, yoga, fitness, books, art
-    "https://www.eventbrite.com/d/ny--brooklyn/running--events/",
-    "https://www.eventbrite.com/d/ny--new-york/running--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/yoga--events/",
-    "https://www.eventbrite.com/d/ny--new-york/yoga--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/sports-and-fitness--events/",
-    "https://www.eventbrite.com/d/ny--new-york/sports-and-fitness--events/",
-    "https://www.eventbrite.com/d/ny--new-york/fitness--events/",
-    # fb-179/fb-180 (run 2026-06-22-1501): MORE SPECIFIC fitness/dance slugs
-    # that live-probe to 20/20 future-dated events (exclusion-clean, volume-
-    # capped at eventbrite=100). run-club serves fb-179; the dance slugs
-    # broaden fb-180 (Brooklyn Contra) to NYC-wide social dance.
-    # CORRECTION (fb-184, run 2026-06-23-1816): the broad slugs above
-    # (running/yoga/fitness/etc.) are NOT inert as a prior comment claimed —
-    # live-probing shows they parse ~20 events each. Their events were
-    # dying DOWNSTREAM at MIN_SCORE 0.55 + the eventbrite=100 cap, not at
-    # extraction. The fb-184 P1 boost (ranking.py) recovers well-formed
-    # fitness/run/dance events over the floor. Do not "fix the parse" — it
-    # works. NOTE: folk-dance is PROVISIONAL (~55% participatory; re-probe
-    # landed yield next scrape, retire if it skews to performances).
-    "https://www.eventbrite.com/d/ny--new-york/run-club--events/",
-    "https://www.eventbrite.com/d/ny--new-york/contra-dance--events/",
-    "https://www.eventbrite.com/d/ny--new-york/swing-dance--events/",
-    "https://www.eventbrite.com/d/ny--new-york/folk-dance--events/",
-    "https://www.eventbrite.com/d/ny--new-york/salsa--events/",
-    "https://www.eventbrite.com/d/ny--new-york/pilates--events/",
-    # fb-184 / source-pool (run 2026-06-23-1816): additional on-vector
-    # participatory slugs, all live-probed ≥19 future-dated + exclusion-clean.
-    # Cap-bound (eventbrite=100) so they deepen the pool with on-vector
-    # content rather than enlarge the feed. board-games/chess at games-boost
-    # 1.3 are the highest-yield (recurring meet-people clubs); hiking/
-    # walking-tour serve outdoors/exploration; trivia/climbing are social.
-    "https://www.eventbrite.com/d/ny--new-york/hiking--events/",
-    "https://www.eventbrite.com/d/ny--new-york/walking-tour--events/",
-    "https://www.eventbrite.com/d/ny--new-york/board-games--events/",
-    "https://www.eventbrite.com/d/ny--new-york/chess--events/",
-    "https://www.eventbrite.com/d/ny--new-york/trivia--events/",
-    "https://www.eventbrite.com/d/ny--new-york/climbing--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/book-club--events/",
-    "https://www.eventbrite.com/d/ny--new-york/book-club--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/literary--events/",
-    "https://www.eventbrite.com/d/ny--new-york/literary--events/",
-    "https://www.eventbrite.com/d/ny--manhattan/art-gallery--events/",
-    "https://www.eventbrite.com/d/ny--brooklyn/art-gallery--events/",
-    "https://www.eventbrite.com/d/ny--new-york/art-exhibits--events/",
-    "https://www.eventbrite.com/d/ny--new-york/visual-arts--events/",
-    "https://www.eventbrite.com/d/ny--new-york/jazz--events/",
-    "https://www.eventbrite.com/d/ny--new-york/dance--events/",
-    "https://www.eventbrite.com/d/ny--new-york/photography--events/",
-    "https://www.eventbrite.com/d/ny--new-york/film--events/",
-    "https://www.eventbrite.com/d/ny--new-york/theater--events/",
-    "https://www.eventbrite.com/d/ny--new-york/wellness--events/",
-    "https://www.eventbrite.com/d/ny--new-york/lgbtq--events/",
-    "https://www.eventbrite.com/d/ny--new-york/wine-tasting--events/",
     # Meetup keyword searches: run clubs, yoga, book clubs, coffee meetups
     "https://www.meetup.com/find/?keywords=run+club&location=us--ny--Brooklyn",
     "https://www.meetup.com/find/?keywords=run+club&location=us--ny--New%20York",
@@ -1723,7 +1620,10 @@ async def scrape() -> list[dict]:
     # Append discovered URLs while preserving order and deduping
     seen = set(urls)
     for u in _load_discovered_urls():
-        if u not in seen:
+        # Eventbrite, Luma, and Partiful have platform-aware adapters that can
+        # paginate listings and learn organizers. Fetching them here as plain
+        # pages duplicated requests and split discovery state across owners.
+        if not is_dedicated_platform_url(u) and u not in seen:
             urls.append(u)
             seen.add(u)
 

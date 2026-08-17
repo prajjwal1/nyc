@@ -23,16 +23,28 @@ def test_luma_listing_uses_canonical_url_and_organizer():
 
 
 def test_luma_no_longer_fans_out_fake_category_routes():
-    assert luma.LUMA_PAGES[0] == "https://lu.ma/nyc"
-    assert not any("/nyc/" in url for url in luma.LUMA_PAGES)
+    assert luma.LUMA_PAGES == [luma.LUMA_DISCOVER_URL]
+    assert not hasattr(luma, "LUMA_CURATOR_PAGES")
 
 
 def test_eventbrite_search_plan_is_bounded(monkeypatch):
-    monkeypatch.setattr(eventbrite, "_build_interest_topic_urls", lambda: [f"https://x/{i}" for i in range(30)])
+    topics = list(eventbrite._TOPIC_SEARCH_SLUG)
+    monkeypatch.setattr(eventbrite, "ranked_topics", lambda: [
+        (topic, 2.0 if index < 6 else 0.25, "personal" if index < 6 else "explore")
+        for index, topic in enumerate(topics)
+    ])
     plan = eventbrite._search_plan()
     assert len(plan) == 18
     assert sum(lane == "personal" for _, lane in plan) == 12
     assert sum(lane == "explore" for _, lane in plan) == 6
+    # Breadth first: all twelve canonical categories appear before any
+    # Brooklyn deepening, including the previously missed health + film lanes.
+    first_pass = [url for url, _lane in plan[:12]]
+    assert any("sports-and-fitness" in url for url in first_pass)
+    assert any("health-and-wellness" in url for url in first_pass)
+    assert any("film-and-media" in url for url in first_pass)
+    assert any("books" in url for url in first_pass)
+    assert all("?page=2" in url for url, _lane in plan[12:])
 
 
 def test_eventbrite_extracts_organizer():
@@ -46,6 +58,12 @@ def test_eventbrite_extracts_organizer():
     assert event["organizer"] == "Chess Place"
     assert event["organizerUrl"].endswith("/o/123")
     assert event["organizerRefs"][0]["externalId"] == "123"
+
+
+def test_eventbrite_extracts_slugged_organizer_id():
+    assert eventbrite._eventbrite_organizer_id(
+        "https://www.eventbrite.com/o/st-mazie-5803675324"
+    ) == "5803675324"
 
 
 def test_browser_snapshot_is_parsed_without_instaloader(tmp_path, monkeypatch):

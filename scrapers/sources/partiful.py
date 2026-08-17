@@ -26,19 +26,13 @@ from bs4 import BeautifulSoup
 
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_iso_to_local, infer_categories
+from ..utils.platform_discovery import extract_tokens, platform_frontier
 
 EXPLORE_URL = "https://partiful.com/explore/nyc"
 DISCOVER_URL = "https://partiful.com/discover"  # NYC-filtered fallback
 
 # Individual partiful.com/e/<id> event URLs harvested from IG bios/captions +
-# substack posts (e.g. Open Book Club's karaoke night) land in
-# discovered_urls.json but partiful's explore/discover pages never list them,
-# and the generic scraper can't parse partiful's __NEXT_DATA__. Resolve them
-# here via the same _parse_event_obj path so a followed curator's actual dated
-# event surfaces (fixes openbookclub — its Substack RSVP links to a Partiful).
-_DISCOVERED_URLS_PATH = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "discovered_urls.json"
-)
+# newsletters are supplied by the shared platform frontier.
 _MAX_DISCOVERED = 60  # bound the per-run individual-page fetches
 
 # Timezones we treat as NYC-area. Partiful tags each event with an IANA tz;
@@ -46,10 +40,7 @@ _MAX_DISCOVERED = 60  # bound the per-run individual-page fetches
 # cross-listed LA/SF event can never slip into the feed.
 _NYC_TZS = {"America/New_York", ""}
 _DISCOVER_API = "https://api.partiful.com"
-_DISCOVER_TAGS = (
-    "DISCOVER_HOME", "MUSIC", "COMMUNITY", "ARTS", "FITNESS", "FOOD",
-    "NYC_BROOKLYN", "NYC_MANHATTAN",
-)
+_DISCOVER_BOOTSTRAP_TAG = "DISCOVER_HOME"
 
 _HEADER_VARIANTS = [
     {
@@ -67,7 +58,7 @@ async def scrape() -> list[dict]:
     events: list[dict] = []
     seen: set[str] = set()
 
-    explore = await _scrape_explore()
+    explore, discover_tags = await _scrape_explore_with_tags()
     _merge(events, seen, explore)
 
     # The server-rendered page contains only ~63 of the 147 events Partiful
@@ -75,7 +66,7 @@ async def scrape() -> list[dict]:
     # borough feeds used by the Explore UI (currently ~111 unique events).
     # Quick runs retain the HTML path to stay comfortably inside CI budgets.
     if not os.environ.get("IG_SAVED_ONLY", "0") == "1":
-        api_events = await _scrape_discover_api()
+        api_events = await _scrape_discover_api(discover_tags)
         before = len(events)
         _merge(events, seen, api_events)
         print(f"[partiful] +{len(events) - before} events from Discover API union")
@@ -98,21 +89,10 @@ async def scrape() -> list[dict]:
 
 
 def _discovered_partiful_urls() -> list[str]:
-    try:
-        with open(_DISCOVERED_URLS_PATH) as f:
-            d = json.load(f)
-        items = d if isinstance(d, list) else d.get("urls", [])
-        # New links are far more likely to point at future events. The old
-        # first-N behavior permanently favored May links over fresh saves.
-        items = sorted(
-            items,
-            key=lambda it: (it.get("discovered_at", "") if isinstance(it, dict) else ""),
-            reverse=True,
-        )
-        urls = [(it["url"] if isinstance(it, dict) else it) for it in items]
-        return [u for u in urls if "partiful.com/e/" in u]
-    except Exception:
-        return []
+    return [
+        item.url
+        for item in platform_frontier("partiful", kinds={"event"}, limit=500)
+    ]
 
 
 async def _scrape_discovered_events(seen: set[str]) -> list[dict]:
@@ -204,14 +184,53 @@ def _next_data(html: str) -> dict | None:
 
 
 async def _scrape_explore() -> list[dict]:
+    events, _tags = await _scrape_explore_with_tags()
+    return events
+
+
+def _extract_discover_tags(data: dict) -> set[str]:
+    """Learn Partiful's current public tag ids from Explore hydration data."""
+    tags = extract_tokens(data, {"tagId", "tag_id"})
+
+    def walk(node, depth: int = 0) -> None:
+        if depth > 12:
+            return
+        if isinstance(node, list):
+            for child in node:
+                walk(child, depth + 1)
+            return
+        if not isinstance(node, dict):
+            return
+        # Tag metadata has changed shape before. Accept an `id` only when its
+        # surrounding object explicitly describes a tag/filter, never event ids.
+        marker = " ".join(
+            str(node.get(key) or "") for key in ("type", "kind", "name", "label", "title")
+        ).lower()
+        candidate = node.get("id")
+        if "tag" in marker and isinstance(candidate, str):
+            tags.add(candidate)
+        for child in node.values():
+            walk(child, depth + 1)
+
+    walk(data)
+    return {
+        tag.strip()
+        for tag in tags
+        if re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]{1,50}", tag.strip())
+    }
+
+
+async def _scrape_explore_with_tags() -> tuple[list[dict], set[str]]:
     html = await _fetch(EXPLORE_URL)
     if not html:
-        return []
+        return [], {_DISCOVER_BOOTSTRAP_TAG}
     data = _next_data(html)
     if not data:
         print("[partiful] explore/nyc: no __NEXT_DATA__")
-        return []
+        return [], {_DISCOVER_BOOTSTRAP_TAG}
     pp = data.get("props", {}).get("pageProps", {})
+    tags = _extract_discover_tags(pp)
+    tags.add(_DISCOVER_BOOTSTRAP_TAG)
 
     # Collect every event object across the page's containers, deduped by id.
     raw_by_id: dict[str, dict] = {}
@@ -245,10 +264,11 @@ async def _scrape_explore() -> list[dict]:
             events.append(built)
     if skipped_nonnyc:
         print(f"[partiful] explore/nyc: skipped {skipped_nonnyc} non-NYC cross-listed events")
-    return events
+    print(f"[partiful] discovered {len(tags)} API tags from Explore metadata")
+    return events, tags
 
 
-async def _discover_api_call(function: str, tag: str) -> list[dict]:
+async def _discover_api_payload(function: str, tag: str) -> dict:
     params = {"region": "NYC", "tagId": tag}
     if function == "getDiscoverFeed":
         params["allowedFeedPresentationStyles"] = ["rows"]
@@ -271,8 +291,11 @@ async def _discover_api_call(function: str, tag: str) -> list[dict]:
             data = (response.json().get("result") or {}).get("data") or {}
     except Exception as exc:
         print(f"[partiful] {function}/{tag} failed: {exc}")
-        return []
+        return {}
+    return data
 
+
+def _events_from_discover_data(data: dict) -> list[dict]:
     containers = data.get("sections") or [data]
     raw: dict[str, dict] = {}
     for container in containers:
@@ -283,14 +306,31 @@ async def _discover_api_call(function: str, tag: str) -> list[dict]:
     return list(raw.values())
 
 
-async def _scrape_discover_api() -> list[dict]:
+async def _discover_api_call(function: str, tag: str) -> list[dict]:
+    return _events_from_discover_data(await _discover_api_payload(function, tag))
+
+
+async def _scrape_discover_api(tags: set[str] | None = None) -> list[dict]:
+    tags = tags or {_DISCOVER_BOOTSTRAP_TAG}
+    # The root section is both an event page and a live description of the
+    # current tag taxonomy. This avoids freezing Partiful's category enum in
+    # source code when the Explore HTML omits a newly launched filter.
+    bootstrap = await _discover_api_payload("getDiscoverSections", _DISCOVER_BOOTSTRAP_TAG)
+    learned_tags = _extract_discover_tags(bootstrap)
+    tags = {*tags, *learned_tags, _DISCOVER_BOOTSTRAP_TAG}
+    # Never let a malformed or unexpectedly huge metadata payload create an
+    # unbounded API fan-out. The root tag is protected; the rest are stable.
+    tags = {_DISCOVER_BOOTSTRAP_TAG, *sorted(tags - {_DISCOVER_BOOTSTRAP_TAG})[:15]}
     calls = [
         _discover_api_call(function, tag)
-        for tag in _DISCOVER_TAGS
+        for tag in sorted(tags)
         for function in ("getDiscoverSections", "getDiscoverFeed")
+        if not (tag == _DISCOVER_BOOTSTRAP_TAG and function == "getDiscoverSections")
     ]
     pages = await asyncio.gather(*calls)
     raw_by_id: dict[str, dict] = {}
+    for event in _events_from_discover_data(bootstrap):
+        raw_by_id.setdefault(event["id"], event)
     for page in pages:
         for event in page:
             raw_by_id.setdefault(event["id"], event)
@@ -308,7 +348,7 @@ async def _scrape_discover_api() -> list[dict]:
         elif built:
             events.append(built)
     print(
-        f"[partiful] Discover API: {len(raw_by_id)} unique, "
+        f"[partiful] Discover API ({len(tags)} learned tags): {len(raw_by_id)} unique, "
         f"{len(events)} NYC ({skipped_nonnyc} explicit non-NYC skipped)"
     )
     return events

@@ -4,37 +4,78 @@ import re
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
+from ..utils.platform_discovery import FrontierItem, platform_frontier, rotating_luma_probes
 
-LUMA_CURATOR_PAGES = [
-    # Curator calendars are real distinct sources. In contrast, Luma now
-    # aliases every /nyc/<category> route back to the same generic 20-event
-    # /nyc list, so the old 60-route fan-out created ~1,200 duplicates.
-    "https://lu.ma/nycbackgammonclub",
-    "https://lu.ma/readingrhythms-manhattan",
-    "https://lu.ma/litclub.nyc",
-    "https://lu.ma/thinkolio",
-    "https://lu.ma/founderscoffee",
-    "https://lu.ma/cinemaclub",
-    # philosophy.nyc signal account — 7 live NYC philosophy salon events
-    # (Met, McCarren Parkhouse, Ethical Culture). Yields via __NEXT_DATA__.
-    "https://lu.ma/philosophy",
-]
+LUMA_DISCOVER_URL = "https://lu.ma/nyc"
+# Compatibility for maintenance/tests. Runtime coverage comes from
+# _calendar_plan(), not from appending URLs to this constant.
+LUMA_PAGES = [LUMA_DISCOVER_URL]
 
-LUMA_PAGES = ["https://lu.ma/nyc", *LUMA_CURATOR_PAGES]
+
+def _calendar_plan() -> list[FrontierItem]:
+    """Return learned calendars, harvested events, and rotating probes."""
+    quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
+    learned_calendars = platform_frontier(
+        "luma", kinds={"calendar"}, limit=5 if quick else 14
+    )
+    direct_events = platform_frontier(
+        "luma", kinds={"event"}, limit=4 if quick else 16
+    )
+    probes = [] if quick else rotating_luma_probes(limit=4)
+    items = [
+        FrontierItem(
+            url=LUMA_DISCOVER_URL,
+            kind="discover",
+            lane="explore",
+            score=1.0,
+            via="city_discover",
+        ),
+        *learned_calendars,
+        *direct_events,
+        *probes,
+    ]
+    out: list[FrontierItem] = []
+    seen: set[str] = set()
+    for item in items:
+        if item.url in seen:
+            continue
+        seen.add(item.url)
+        out.append(item)
+    return out
 
 
 async def scrape() -> list[dict]:
-    """Scrape Luma calendars.  Retries with browser-like headers on 403."""
+    """Scrape a learned Luma frontier. Retries with browser-like headers."""
     import asyncio
 
+    plan = _calendar_plan()
+    print(
+        f"[luma] dynamic frontier: {len(plan)} targets "
+        f"({sum(item.kind == 'calendar' for item in plan)} calendars, "
+        f"{sum(item.kind == 'event' for item in plan)} direct events)"
+    )
     sem = asyncio.Semaphore(4)
 
-    async def calendar(url: str) -> list[dict]:
+    async def calendar(item: FrontierItem) -> tuple[FrontierItem, list[dict]]:
         async with sem:
-            return await _try_luma_url(url)
+            page_events = await _try_luma_url(item.url)
+        for event in page_events:
+            event["discoveryLane"] = item.lane
+            if item.kind == "discover":
+                event["_lumaNeedsHydration"] = True
+        return item, page_events
 
-    results = await asyncio.gather(*(calendar(url) for url in LUMA_PAGES))
-    events = [event for page_events in results for event in page_events]
+    results = await asyncio.gather(*(calendar(item) for item in plan))
+    events = [event for _item, page_events in results for event in page_events]
+
+    # Organizer URLs exposed by the city listing are new calendar candidates.
+    # Fetch a bounded set immediately instead of waiting for a code/config edit.
+    planned = {item.url.rstrip("/") for item in plan}
+    promoted = _promoted_calendars(events, planned, limit=8 if not os.environ.get("IG_SAVED_ONLY") == "1" else 2)
+    if promoted:
+        promoted_results = await asyncio.gather(*(calendar(item) for item in promoted))
+        events.extend(event for _item, page_events in promoted_results for event in page_events)
+        print(f"[luma] promoted {len(promoted)} organizers from current results")
 
     # The discover listing intentionally omits descriptions. Hydrate its
     # canonical event URLs before normalization; otherwise the description
@@ -43,7 +84,7 @@ async def scrape() -> list[dict]:
     canonical = {}
     for event in events:
         url = event.get("sourceUrl") or ""
-        if not quick and url not in LUMA_CURATOR_PAGES and re.match(
+        if not quick and event.get("_lumaNeedsHydration") and re.match(
             r"https?://(?:lu\.ma|luma\.com)/[a-z0-9-]{6,}/?$", url, re.I
         ):
             canonical[url] = event
@@ -58,7 +99,45 @@ async def scrape() -> list[dict]:
 
     hydrated = await asyncio.gather(*(hydrate(url) for url in canonical)) if canonical else []
     by_url = {e.get("sourceUrl"): e for e in hydrated}
-    return [by_url.get(e.get("sourceUrl"), e) for e in events]
+    out = [by_url.get(e.get("sourceUrl"), e) for e in events]
+    for event in out:
+        event.pop("_lumaNeedsHydration", None)
+    return out
+
+
+def _promoted_calendars(
+    events: list[dict],
+    excluded: set[str],
+    *,
+    limit: int = 8,
+) -> list[FrontierItem]:
+    by_url: dict[str, dict] = {}
+    for event in events:
+        raw = (event.get("organizerUrl") or "").strip().rstrip("/")
+        match = re.match(r"https?://(?:www\.)?(?:lu\.ma|luma\.com)/([a-z0-9._-]+)$", raw, re.I)
+        if not match:
+            continue
+        url = f"https://lu.ma/{match.group(1)}"
+        if url in excluded or match.group(1).lower() == "nyc":
+            continue
+        rec = by_url.setdefault(url, {"score": 0.0, "personal": False})
+        rec["score"] += 1.0
+        if event.get("discoveryLane") == "personal" or any(
+            event.get(flag) for flag in ("userSaved", "userFollowing", "userAffinity")
+        ):
+            rec["score"] += 3.0
+            rec["personal"] = True
+    ranked = sorted(by_url.items(), key=lambda row: (-row[1]["score"], row[0]))
+    return [
+        FrontierItem(
+            url=url,
+            kind="calendar",
+            lane="personal" if rec["personal"] else "explore",
+            score=rec["score"],
+            via="current_discover_results",
+        )
+        for url, rec in ranked[:limit]
+    ]
 
 
 async def _try_luma_url(url: str) -> list[dict]:

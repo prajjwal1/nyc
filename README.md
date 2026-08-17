@@ -479,10 +479,10 @@ Every IG behavior has a mirror or equivalent here:
 ## Working with this system
 
 **If the user says "expand the search":**
-1. Probe new categorical URLs (Lu.ma `/nyc/<topic>`, Eventbrite category pages, AllEvents tags)
-2. Verify yield ≥ 5 events live
-3. Add to `LUMA_PAGES` or `GENERIC_URLS`
-4. Commit + push
+1. Inspect `scrapers/utils/platform_discovery.py` and the relevant platform adapter
+2. Extend canonical topic/platform vocabulary only when the platform exposes a new filter
+3. Let harvested links and prior organizer/calendar yield graduate sources into the frontier
+4. Keep breadth-first and direct-link budgets bounded; verify coverage with tests and a live dry-run
 
 **If the user says "improve IG":**
 1. Look at `scrapers/sources/instagram.py` and the IG-specific items in this README
@@ -507,7 +507,7 @@ Every IG behavior has a mirror or equivalent here:
 **If the user gives a specific complaint** (e.g., "no run clubs", "i don't see vital run club"):
 1. Check `IG_ACCOUNTS` in `scrapers/config.py` first
 2. Add IG accounts they mention
-3. Probe Lu.ma `/nyc/<topic>` and Eventbrite categorical for the topic
+3. Check the shared topic score and learned platform frontier; do not append one-off platform URLs
 4. Add Meetup keyword searches if relevant
 5. Don't just fix one source — go holistic across all 5+ platforms
 

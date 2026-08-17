@@ -27,30 +27,11 @@ from scrapers.normalize import (
     _strip_outdoors_indoor_arena,
     deduplicate,
 )
-from scrapers.sources.luma import LUMA_PAGES
-
-
-def _luma_curator_urls():
-    """The hand-curated single-curator lu.ma calendars in LUMA_PAGES —
-    lu.ma/<handle>, as opposed to the lu.ma/nyc[/<category>] aggregate feeds."""
-    out = []
-    for u in LUMA_PAGES:
-        if "lu.ma/" not in u:
-            continue
-        path = u.split("lu.ma/", 1)[1].strip("/")
-        if path == "nyc" or path.startswith("nyc/"):
-            continue
-        out.append(u)
-    return out
-
-
 # ---------------------------------------------------------------------------
 # Curated-source survival — regression guard for the lu.ma/philosophy bug:
-# a curator calendar added to LUMA_PAGES whose (description-less) events were
-# silently dropped by the description-required shell filter because the host
-# was never added to user_curated_sources.json. The fix treats ALL lu.ma
-# curator calendars as curated automatically, so this can't recur for any
-# current OR future curator added to LUMA_PAGES.
+# a dynamically learned curator calendar whose description-less events were
+# silently dropped by the description-required shell filter. The fix applies
+# to any lu.ma/<handle> frontier target, with no static source list required.
 # ---------------------------------------------------------------------------
 
 
@@ -69,12 +50,13 @@ class TestCuratedSourceSurvival:
             "sourceUrl": url,
         }
 
-    @pytest.mark.parametrize("url", _luma_curator_urls())
+    @pytest.mark.parametrize("url", [
+        "https://lu.ma/dynamic-curator",
+        "https://lu.ma/philosophy",
+    ])
     def test_every_luma_curator_calendar_survives_shell_filter(self, url):
-        # Every configured lu.ma curator calendar must NOT be shell-dropped
-        # when it emits a description-less (but image+venue) event — the
-        # exact failure mode that hid lu.ma/philosophy. Adding a new curator
-        # to LUMA_PAGES that regresses this will fail here.
+        # Any learned lu.ma curator calendar must NOT be shell-dropped when it
+        # emits a description-less (but image+venue) event.
         ev = self._descless_luma_event(url)
         assert not _is_shell_event(ev), (
             f"{url}: description-less curator event dropped as shell — "

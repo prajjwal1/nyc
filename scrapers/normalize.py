@@ -1623,13 +1623,13 @@ def _is_curated_host(event: dict, floor_context: bool = False) -> bool:
                 if floor_context and h in no_floor:
                     continue  # boost-only host: no floor bypass
                 return True
-        # lu.ma curator-calendar URLs are hand-curated single-curator
-        # calendars (lu.ma/<handle>, e.g. lu.ma/philosophy, lu.ma/thinkolio),
+        # lu.ma curator-calendar URLs are learned single-curator calendars
+        # (lu.ma/<handle>, e.g. lu.ma/philosophy),
         # as opposed to the lu.ma/nyc[/<category>] aggregate feeds. Their
         # events are often description-less, and they'd otherwise be dropped
         # by the description-required shell filter. Treat them as curated
-        # automatically so a new curator added to luma.LUMA_PAGES doesn't
-        # silently lose all its events without also being hand-added to
+        # automatically so a new frontier calendar doesn't silently lose all
+        # its events without also being hand-added to
         # user_curated_sources.json (the gap that hid lu.ma/philosophy).
         if event.get("source") == "luma":
             src_url = (event.get("sourceUrl") or "").lower()

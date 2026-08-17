@@ -5,166 +5,84 @@ import os
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
-
-# Specific organizer pages the user has flagged as high-priority.
-# These list ALL of an organizer's events in one place — useful for
-# brand-curated event series the user follows. Add to user_curated_sources
-# .json simultaneously so events from these get the +0.15 boost.
-# Seed organizer pages. NOTE: prefer NOT hardcoding organizers here — the
-# canonical way to add a vetted organizer is to put its host in
-# scrapers/data/user_curated_sources.json (the learned preference layer),
-# which _curated_organizer_urls() reads at scrape time. That way vetting a
-# source is a data/preference signal, not a code edit, and the same entry
-# also drives the curation boost + score-floor bypass. This list is just a
-# cold-start seed for anything not yet represented in the preference layer.
-ORGANIZER_URLS = [
-    # Lululemon — legacy seed (also in user_curated_sources).
-    "https://www.eventbrite.com/o/14861961557",
-]
+from ..utils.platform_discovery import FrontierItem, platform_frontier, ranked_topics
 
 
-def _curated_organizer_urls() -> list[str]:
-    """Derive Eventbrite organizer scrape targets from the user's LEARNED
-    preference layer (user_curated_sources.json), rather than hardcoding
-    them. Any curated host shaped `eventbrite.com/o/<id>` becomes an
-    organizer page we scrape — so when the user vets a top organizer, it is
-    picked up automatically (and, being curated, its events get the boost +
-    the lower score floor). Generalizes 'learn my preferences' to sources.
-    """
-    import os as _os
-
-    path = _os.path.join(
-        _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))),
-        "data",
-        "user_curated_sources.json",
-    )
-    urls: list[str] = []
-    try:
-        with open(path) as f:
-            hosts = (json.load(f).get("hosts") or {})
-        for host in hosts:
-            m = re.search(r"eventbrite\.com/o/(\d+)", host)
-            if m:
-                urls.append(f"https://www.eventbrite.com/o/{m.group(1)}")
-    except Exception:
-        pass
-    return urls
-
-
-# Topics that map cleanly onto Eventbrite's URL search slugs and are
-# meaningful event categories (vs. location markers, demographics, or
-# already-excluded categories). Auto-built into search URLs based on
-# the user's interest profile — scalable: as the user's IG follows
-# evolve, the topic counts change, and the search URLs change with them.
-_SUPPORTED_INTEREST_TOPICS = {
-    "yoga", "run", "book", "comedy", "wine", "park", "art",
-    "music", "food", "dance", "running", "fitness", "literary",
-    "queer", "social", "poetry", "pottery", "jazz", "vinyl",
-    "read",        # iter 145: maps to books slug
-    "outdoor",
+# Platform vocabulary, not a source list. Coverage is generated from the
+# shared interest taxonomy and always includes a floor for categories that a
+# narrow historical profile could otherwise hide forever.
+_TOPIC_SEARCH_SLUG = {
+    "fitness": "sports-and-fitness",
+    "music": "music",
+    "books": "books",
+    "wellness": "health-and-wellness",
+    "movies": "film-and-media",
+    "art": "performing-and-visual-arts",
+    "food": "food-and-drink",
+    "comedy": "comedy",
+    "games": "hobbies",
+    "outdoors": "outdoor",
+    "social": "community",
+    "dance": "dance",
 }
+_SEARCH_LOCATIONS = ("new-york", "brooklyn", "queens")
 
-# Special-case topic → eventbrite slug mapping where the literal topic
-# word doesn't match the URL convention.
-_TOPIC_URL_SLUG = {
-    "run": "running",        # user's profile has "run", eventbrite slug is "running"
-    "running": "running",
-    "book": "books",
-    "read": "books",         # iter 145: same target as 'book'
-    "park": "outdoor",
-    "outdoor": "outdoor",
-    "literary": "books",
-    "vinyl": "music",
-    "jazz": "music",
-}
+
+def _eventbrite_organizer_id(url: str) -> str:
+    """Return an organizer id from numeric or slugged Eventbrite URLs."""
+    match = re.search(r"/o/(?:[^/?#]*-)?(\d+)(?:[/?#]|$)", url or "", re.I)
+    return match.group(1) if match else ""
 
 
 def _build_interest_topic_urls() -> list[str]:
-    """Read the user interest profile and construct eventbrite search URLs
-    for topics the user's IG follow graph has surfaced.
+    """Compatibility helper: return the generated topic frontier URLs."""
+    return [url for url, _lane in _generated_search_candidates()]
 
-    No hardcoded per-topic URL list — the function generates URLs at
-    runtime based on the live profile. New topics that appear in the
-    profile automatically get searched.
+
+def _generated_search_candidates() -> list[tuple[str, str]]:
+    """Generate category searches with breadth before pagination/geography.
+
+    Every canonical category gets a city-wide page before a second borough
+    page is scheduled. This specifically prevents the old `[:12]` truncation
+    from spending the entire budget on the first six interests.
     """
-    import os, json as _json
-    profile_path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "data", "user_interest_profile.json",
-    )
-    if not os.path.isfile(profile_path):
-        return []
-    try:
-        with open(profile_path) as f:
-            prof = _json.load(f)
-    except Exception:
-        return []
-
-    topics = dict(prof.get("topic_counts") or {})
-    # Explicit in-app behavior is more authoritative than username
-    # substrings. Fold category weights into the same URL planner.
-    engagement_path = os.path.join(os.path.dirname(profile_path), "user_engagement.json")
-    try:
-        with open(engagement_path) as f:
-            engagement = _json.load(f)
-        category_topics = {
-            "books": "book", "fitness": "fitness", "wellness": "wellness",
-            "music": "music", "comedy": "comedy", "food": "food",
-            "art": "art", "dance": "dance", "singles": "social",
-            "games": "gaming", "outdoors": "outdoor",
-        }
-        negative = engagement.get("negCategories") or {}
-        for category, weight in (engagement.get("categories") or {}).items():
-            if (negative.get(category, 0) or 0) >= (weight or 0):
+    topics = ranked_topics()
+    candidates: list[tuple[str, str]] = []
+    primary: list[tuple[str, str]] = []
+    for topic, _score, lane in topics:
+        slug = _TOPIC_SEARCH_SLUG.get(topic)
+        if not slug:
+            continue
+        primary.append((
+            f"https://www.eventbrite.com/d/ny--new-york/{slug}--events/",
+            lane,
+        ))
+    candidates.extend(primary)
+    # Page two is usually 20 new events and costs less overlap than repeating
+    # the city-wide query for a borough. It is therefore the first depth lane.
+    candidates.extend((f"{url}?page=2", lane) for url, lane in primary if lane == "personal")
+    # If a future/full budget grows, continue into borough-specific discovery.
+    for location in _SEARCH_LOCATIONS[1:]:
+        for topic, _score, lane in topics:
+            if lane != "personal":
                 continue
-            topic = category_topics.get(category)
-            if topic:
-                topics[topic] = topics.get(topic, 0) + max(1, weight or 0)
-    except Exception:
-        pass
-    urls: list[str] = []
-    seen_slugs: set[str] = set()
-    for topic, count in sorted(topics.items(), key=lambda kv: -kv[1]):
-        if topic not in _SUPPORTED_INTEREST_TOPICS:
-            continue
-        if count < 1:
-            continue
-        slug = _TOPIC_URL_SLUG.get(topic, topic)
-        if slug in seen_slugs:
-            continue
-        seen_slugs.add(slug)
-        urls.append(f"https://www.eventbrite.com/d/ny--new-york/{slug}--events/")
-        urls.append(f"https://www.eventbrite.com/d/ny--brooklyn/{slug}--events/")
-    return urls
-
-# Broad searches are intentionally bounded. The previous implementation hit
-# 40+ overlapping pages every run and routinely triggered Eventbrite 429s.
-_EXPLORATION_URLS = [
-    "https://www.eventbrite.com/d/ny--new-york/events--this-week/",
-    "https://www.eventbrite.com/d/ny--new-york/events--this-weekend/",
-    "https://www.eventbrite.com/d/ny--brooklyn/events--this-week/",
-    "https://www.eventbrite.com/d/ny--brooklyn/events--this-weekend/",
-    "https://www.eventbrite.com/d/ny--new-york/free--events/",
-    "https://www.eventbrite.com/d/ny--williamsburg/events/",
-]
+            slug = _TOPIC_SEARCH_SLUG.get(topic)
+            if slug:
+                candidates.append((
+                    f"https://www.eventbrite.com/d/ny--{location}/{slug}--events/",
+                    lane,
+                ))
+    return candidates
 
 
 def _search_plan() -> list[tuple[str, str]]:
-    """Twelve taste-driven queries plus six bounded exploration queries."""
-    personal = _build_interest_topic_urls()[:12]
-    # Cold-start fallback uses the highest-value categories, not all legacy
-    # URLs. Engagement/profile-driven URLs replace these as soon as available.
-    if not personal:
-        preferred = ("books", "music", "comedy", "sports-and-fitness", "arts", "food-and-drink")
-        personal = [
-            f"https://www.eventbrite.com/d/ny--new-york/{slug}--events/"
-            for slug in preferred
-        ]
+    """Bounded, generated search frontier with category coverage."""
     quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
-    personal_limit, total_limit = (4, 6) if quick else (12, 18)
-    out = [(u, "personal") for u in personal[:personal_limit]]
-    out.extend((u, "explore") for u in _EXPLORATION_URLS if u not in personal)
-    return out[:total_limit]
+    total_limit = 6 if quick else 18
+    candidates = _generated_search_candidates()
+    if quick:
+        candidates = [item for item in candidates if item[1] == "personal"] or candidates
+    return candidates[:total_limit]
 
 
 async def _fetch_with_backoff(url: str, attempts: int = 3) -> str:
@@ -183,8 +101,47 @@ async def _fetch_with_backoff(url: str, attempts: int = 3) -> str:
 
 
 async def scrape() -> list[dict]:
-    events = []
-    # Personalized, bounded search pages first.
+    events: list[dict] = []
+    quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
+
+    # Protect learned organizers from broad-search rate limiting. The frontier
+    # is rebuilt from harvested links, curated hosts, and prior event yield;
+    # no organizer needs to be added to source code.
+    organizer_limit = 4 if quick else 14
+    known_organizers = platform_frontier(
+        "eventbrite", kinds={"organizer"}, limit=organizer_limit
+    )
+    fetched_organizers: set[str] = set()
+    if known_organizers:
+        print(f"[eventbrite] learned organizer frontier: {len(known_organizers)}")
+    for item in known_organizers:
+        try:
+            html = await _fetch_with_backoff(item.url)
+            parsed = _parse_organizer_page(html, item.url)
+            for event in parsed:
+                event["discoveryLane"] = item.lane
+            events.extend(parsed)
+            fetched_organizers.add(item.url)
+            print(f"[eventbrite-organizer] {item.url}: {len(parsed)} events")
+        except Exception as exc:
+            print(f"[eventbrite-organizer] Failed {item.url}: {exc}")
+
+    # Canonical event links harvested from followed accounts/newsletters are
+    # higher-signal than anonymous search results and often never rank on a
+    # broad Eventbrite page.
+    direct_limit = 3 if quick else 10
+    direct_items = platform_frontier("eventbrite", kinds={"event"}, limit=direct_limit)
+    for item in direct_items:
+        try:
+            html = await _fetch_with_backoff(item.url, attempts=2)
+            parsed = _parse_search_page(html, item.url)
+            for event in parsed:
+                event["discoveryLane"] = item.lane
+            events.extend(parsed)
+        except Exception as exc:
+            print(f"[eventbrite-direct] Failed {item.url}: {exc}")
+
+    # Generated category × geography coverage comes after high-signal lanes.
     plan = _search_plan()
     print(f"[eventbrite] bounded search plan: {len(plan)} pages")
     consecutive_rate_limits = 0
@@ -204,24 +161,61 @@ async def scrape() -> list[dict]:
                 if consecutive_rate_limits >= 2:
                     print("[eventbrite] search circuit open after repeated 429s; preserving organizer lane/carryover")
                     break
-    detail_limit = 0 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else 40
+    detail_limit = 0 if quick else 12
     events = await _hydrate_shortlist(events, limit=detail_limit)
-    # Then organizer pages — the seed list PLUS any organizer the user has
-    # vetted in the preference layer (user_curated_sources.json). Organizer
-    # pages don't ship JSON-LD; they hydrate from a __NEXT_DATA__ blob. Use
-    # the organizer-specific parser.
-    organizer_urls = list(dict.fromkeys(ORGANIZER_URLS + _curated_organizer_urls()))
-    if len(organizer_urls) > len(ORGANIZER_URLS):
-        print(f"[eventbrite-organizer] {len(organizer_urls)} organizers ({len(organizer_urls)-len(ORGANIZER_URLS)} from preference layer)")
-    for url in organizer_urls:
+
+    # Search/detail results teach the engine new organizers immediately. A
+    # small frequency- and preference-ranked promotion lane turns a single
+    # matching event into the organizer's complete upcoming calendar.
+    promoted = _promoted_organizers(events, fetched_organizers, limit=2 if quick else 6)
+    for item in promoted:
         try:
-            html = await _fetch_with_backoff(url)
-            org_events = _parse_organizer_page(html, url)
+            html = await _fetch_with_backoff(item.url)
+            org_events = _parse_organizer_page(html, item.url)
+            for event in org_events:
+                event["discoveryLane"] = item.lane
             events.extend(org_events)
-            print(f"[eventbrite-organizer] {url}: {len(org_events)} events")
+            print(f"[eventbrite-organizer:new] {item.url}: {len(org_events)} events")
         except Exception as e:
-            print(f"[eventbrite-organizer] Failed {url}: {e}")
+            print(f"[eventbrite-organizer:new] Failed {item.url}: {e}")
     return events
+
+
+def _promoted_organizers(
+    events: list[dict],
+    excluded: set[str] | None = None,
+    *,
+    limit: int = 10,
+) -> list[FrontierItem]:
+    """Promote useful organizers found in this run into calendar fetches."""
+    excluded = excluded or set()
+    by_url: dict[str, dict] = {}
+    for event in events:
+        raw_url = event.get("organizerUrl") or ""
+        organizer_id = _eventbrite_organizer_id(raw_url)
+        if not organizer_id:
+            continue
+        url = f"https://eventbrite.com/o/{organizer_id}"
+        if url in excluded or url.replace("https://", "https://www.") in excluded:
+            continue
+        rec = by_url.setdefault(url, {"score": 0.0, "personal": False})
+        rec["score"] += 1.0
+        if event.get("discoveryLane") == "personal" or any(
+            event.get(flag) for flag in ("userSaved", "userFollowing", "userAffinity")
+        ):
+            rec["score"] += 3.0
+            rec["personal"] = True
+    ranked = sorted(by_url.items(), key=lambda row: (-row[1]["score"], row[0]))
+    return [
+        FrontierItem(
+            url=url,
+            kind="organizer",
+            lane="personal" if rec["personal"] else "explore",
+            score=rec["score"],
+            via="current_search_results",
+        )
+        for url, rec in ranked[:limit]
+    ]
 
 
 async def _hydrate_shortlist(events: list[dict], limit: int = 40) -> list[dict]:
@@ -264,22 +258,65 @@ async def _hydrate_shortlist(events: list[dict], limit: int = 40) -> list[dict]:
 
 
 def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
-    """Parse an Eventbrite organizer page (/o/<id>) via __NEXT_DATA__.
-    Organizer pages don't include JSON-LD — they hydrate from a Next.js
-    data blob. Extracts upcoming events with full venue + ticket info.
-    """
+    """Parse an Eventbrite organizer page across old/new hydration shapes."""
     m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.DOTALL)
-    if not m:
-        return []
-    try:
-        data = json.loads(m.group(1))
-    except Exception:
-        return []
-    page_props = data.get("props", {}).get("pageProps", {})
-    upcoming = page_props.get("upcomingEvents") or []
-    organizer_obj = page_props.get("organizer") or {}
-    organizer_name = organizer_obj.get("name", "") if isinstance(organizer_obj, dict) else ""
+    data = None
+    if m:
+        try:
+            data = json.loads(m.group(1))
+        except Exception:
+            data = None
+
+    upcoming: list[dict] = []
+    organizer_name = ""
+
+    def walk(node, parent_key: str = "", depth: int = 0) -> None:
+        nonlocal organizer_name
+        if depth > 14:
+            return
+        if isinstance(node, list):
+            for child in node:
+                walk(child, parent_key, depth + 1)
+            return
+        if not isinstance(node, dict):
+            return
+        if parent_key.lower().startswith("organizer") and not organizer_name:
+            name = node.get("name")
+            if isinstance(name, str):
+                organizer_name = name
+        title = node.get("name")
+        if isinstance(title, dict):
+            title = title.get("text")
+        has_start = any(node.get(key) for key in ("start_date", "startDate", "start_time"))
+        has_event_identity = node.get("url") or node.get("id") or node.get("event_id")
+        if isinstance(title, str) and title.strip() and has_start and has_event_identity:
+            upcoming.append(node)
+            return
+        for key, child in node.items():
+            walk(child, str(key), depth + 1)
+
+    if data:
+        walk(data)
+
+    # Some organizer pages now include JSON-LD even when their private Next.js
+    # object changes. Keep that standards-based path as a durable fallback.
+    if not upcoming:
+        fallback = _parse_search_page(html, source_url)
+        for event in fallback:
+            event["organizerUrl"] = source_url
+            organizer_id = _eventbrite_organizer_id(source_url) or source_url
+            if not event.get("organizerRefs"):
+                event["organizerRefs"] = [{
+                    "platform": "eventbrite",
+                    "externalId": organizer_id,
+                    "name": event.get("organizer") or "",
+                    "url": source_url,
+                    "role": "host",
+                }]
+        return fallback
+
     events: list[dict] = []
+    seen: set[str] = set()
     for raw in upcoming:
         if not isinstance(raw, dict):
             continue
@@ -288,21 +325,41 @@ def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
             title = title.get("text") or ""
         if not title:
             continue
-        date_str = raw.get("start_date") or ""
-        event_date = parse_date(date_str)
+        start_obj = raw.get("start") or {}
+        date_str = raw.get("start_date") or raw.get("startDate") or (
+            start_obj.get("utc") if isinstance(start_obj, dict) else ""
+        ) or ""
+        local_date, iso_time = parse_iso_to_local(date_str)
+        event_date = parse_date(local_date or date_str)
         if not event_date:
             continue
-        start_time = (raw.get("start_time") or "")[:5] or None
-        end_time = (raw.get("end_time") or "")[:5] or None
+        start_time = (raw.get("start_time") or "")[:5] or iso_time or None
+        end_raw = raw.get("end_date") or raw.get("endDate") or ""
+        _end_date, iso_end_time = parse_iso_to_local(end_raw)
+        end_time = (raw.get("end_time") or "")[:5] or iso_end_time or None
         url = raw.get("url") or source_url
-        image = ((raw.get("image") or {}).get("url") or None)
-        venue = raw.get("primary_venue") or {}
+        if url in seen:
+            continue
+        seen.add(url)
+        image_obj = raw.get("image") or {}
+        image = image_obj.get("url") if isinstance(image_obj, dict) else image_obj or None
+        venue = raw.get("primary_venue") or raw.get("venue") or {}
         venue_name = venue.get("name") or ""
         addr_obj = venue.get("address") or {}
-        venue_addr = addr_obj.get("localized_address_display") or ""
+        venue_addr = (
+            addr_obj.get("localized_address_display")
+            or addr_obj.get("localized_area_display")
+            or addr_obj.get("address_1")
+            or ""
+        ) if isinstance(addr_obj, dict) else str(addr_obj or "")
         is_free = ((raw.get("ticket_availability") or {}).get("is_free"))
         price = "free" if is_free else None
-        summary = raw.get("summary") or ""
+        summary = raw.get("summary") or raw.get("description") or ""
+        if isinstance(summary, dict):
+            summary = summary.get("text") or ""
+        raw_organizer = raw.get("organizer") or {}
+        raw_organizer_name = raw_organizer.get("name") if isinstance(raw_organizer, dict) else ""
+        organizer_id = _eventbrite_organizer_id(source_url) or source_url
         ev = build_event(
             title=title,
             description=summary[:500],
@@ -315,12 +372,12 @@ def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
             source_url=url,
             image_url=image,
             price=price,
-            organizer=(raw.get("organizer", {}).get("name") if isinstance(raw.get("organizer"), dict) else None) or organizer_name or None,
+            organizer=raw_organizer_name or organizer_name or None,
             organizer_url=source_url,
             organizer_refs=[{
                 "platform": "eventbrite",
-                "externalId": (re.search(r"/o/(\d+)", source_url).group(1) if re.search(r"/o/(\d+)", source_url) else source_url),
-                "name": (raw.get("organizer", {}).get("name") if isinstance(raw.get("organizer"), dict) else None) or organizer_name or "",
+                "externalId": organizer_id,
+                "name": raw_organizer_name or organizer_name or "",
                 "url": source_url,
                 "role": "host",
             }],
@@ -487,7 +544,7 @@ def _parse_ld_event(data: dict) -> dict | None:
         organizer_url=organizer_url or None,
         organizer_refs=[{
             "platform": "eventbrite",
-            "externalId": (re.search(r"/o/(\d+)", organizer_url).group(1) if organizer_url and re.search(r"/o/(\d+)", organizer_url) else organizer_url),
+            "externalId": _eventbrite_organizer_id(organizer_url) or organizer_url,
             "name": organizer_name,
             "url": organizer_url,
             "role": "host",

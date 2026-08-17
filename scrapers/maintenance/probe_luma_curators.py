@@ -1,19 +1,18 @@
-"""Probe lu.ma/<handle> for every signal_account + curated IG_ACCOUNTS handle.
+"""Audit lu.ma/<handle> yield for signal-account discovery candidates.
 
 The Critic's run 2026-05-28-1552 D1 dream proposal (fb-105). Probes one
-lu.ma curator-calendar URL per account; if it yields ≥ 3 distinct events
-not already in the bare /nyc list, the URL becomes a candidate add to
-`LUMA_PAGES` in `scrapers/sources/luma.py`.
+lu.ma curator-calendar URL per account; if it yields ≥ 3 distinct events not
+already in the bare /nyc list, the URL is recorded as a productive frontier
+candidate. Runtime discovery is automatic and needs no source-list edit.
 
 Run as a one-off:
     python -m scrapers.maintenance.probe_luma_curators
 
-Output: prints a report and writes proposed additions to
-`scrapers/data/luma_curator_candidates.json` so the next /self-improve
-run can pick them up.
+Output: prints a report and writes an offline audit to
+`scrapers/data/luma_curator_candidates.json`.
 
 Hard-rule compliance:
-- Read-only against existing `LUMA_PAGES` (no edits in this script).
+- Read-only against the shared learned frontier (no source edits).
 - No removals proposed.
 - All candidates yield ≥ 3 net-new events (event-key not in bare-/nyc set).
 """
@@ -25,7 +24,8 @@ import os
 from pathlib import Path
 
 from scrapers.config import IG_ACCOUNTS
-from scrapers.sources.luma import LUMA_PAGES, _try_luma_url
+from scrapers.sources.luma import LUMA_DISCOVER_URL, _try_luma_url
+from scrapers.utils.platform_discovery import platform_frontier
 
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -39,13 +39,17 @@ def _event_key(ev: dict) -> str:
 
 
 def _existing_handles() -> set[str]:
-    """Curator handles already covered by LUMA_PAGES.
+    """Curator handles already covered by the learned frontier.
     Skip the bare `lu.ma/nyc` discover and `lu.ma/nyc/<topic>` category
     URLs, but DO include curator handles like `nycbackgammonclub` (the
     earlier `startswith("nyc")` filter was too broad and falsely excluded
     legit handles that happen to start with "nyc")."""
     handles: set[str] = set()
-    for url in LUMA_PAGES:
+    urls = [
+        item.url
+        for item in platform_frontier("luma", kinds={"calendar"}, limit=500)
+    ]
+    for url in urls:
         # Strip the lu.ma/luma.com prefix and split. `lu.ma/nyc` → path=["nyc"];
         # `lu.ma/nyc/run` → path=["nyc","run"]; `lu.ma/litclub.nyc` → path=["litclub.nyc"].
         try:
@@ -80,7 +84,7 @@ def _candidate_handles() -> list[str]:
 async def _fetch_baseline() -> set[str]:
     """Bare /nyc discover-page event-keys — anything we already get without
     a curator probe."""
-    events = await _try_luma_url("https://lu.ma/nyc")
+    events = await _try_luma_url(LUMA_DISCOVER_URL)
     return {_event_key(e) for e in events}
 
 
