@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const links: Array<[string, string]> = [
   ["/", "Feed"],
-  ["/events", "All events"],
+  ["/events", "Events"],
   ["/communities", "Communities"],
   ["/saved", "Saved"],
 ];
@@ -13,12 +13,12 @@ const links: Array<[string, string]> = [
 export default function SiteNav() {
   const path = usePathname();
   return (
-    <nav aria-label="Primary" className="sticky top-0 z-40 border-b border-[#d8d0c1] bg-[#f8f3e8]/90 backdrop-blur supports-[backdrop-filter]:bg-[#f8f3e8]/80">
-      <div className="mx-auto flex max-w-5xl items-center gap-5 px-4 py-2.5 sm:px-6 sm:py-3">
+    <nav aria-label="Primary" className="sticky top-0 z-40 border-b border-[#d8d0c1] bg-[#fffdf8]/95 backdrop-blur">
+      <div className="mx-auto flex max-w-5xl items-center gap-4 px-4 sm:px-6">
         <Link href="/" className="mr-auto font-editorial text-[18px] font-bold tracking-tight text-[#173c35]">
           NYC Events
         </Link>
-        <div className="flex items-center gap-1 overflow-x-auto">
+        <div className="flex items-center gap-4 overflow-x-auto sm:gap-6">
           {links.map(([href, label]) => {
             const active = path === href || (href !== "/" && path.startsWith(href));
             return (
@@ -26,8 +26,8 @@ export default function SiteNav() {
                 key={href}
                 href={href}
                 aria-current={active ? "page" : undefined}
-                className={`shrink-0 rounded-full px-3 py-1.5 text-[13px] font-medium transition ${
-                  active ? "bg-[#173c35] text-white" : "text-[#52645e] hover:bg-white hover:text-[#173c35]"
+                className={`shrink-0 border-b-2 py-3 text-[13px] font-medium transition-colors ${
+                  active ? "border-[#173c35] text-[#173c35]" : "border-transparent text-[#66716c] hover:text-[#173c35]"
                 }`}
               >
                 {label}

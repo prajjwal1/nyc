@@ -44,7 +44,7 @@ export default function SearchBar({ value, onChange, placeholder }: Props) {
   const showDropdown = focused && (history.length > 0 || value.length === 0);
 
   return (
-    <div ref={wrapRef} className="relative mb-5">
+    <div ref={wrapRef} className="relative mb-6">
       <form onSubmit={handleSubmit} className="relative">
         <svg
           aria-hidden="true"
@@ -65,7 +65,7 @@ export default function SearchBar({ value, onChange, placeholder }: Props) {
           }}
           placeholder={placeholder || "Search events, venues, @accounts..."}
           enterKeyHint="search"
-          className="h-11 w-full rounded-full border border-[#d7d5cd] bg-white pl-10 pr-10 text-[15px] outline-none transition placeholder:text-sm placeholder:text-[#8b918e] focus:border-[#8a9c94] focus:ring-2 focus:ring-[#173c35]/10"
+          className="h-11 w-full rounded-xl border border-[#d8d0c1] bg-[#fffdf8] pl-10 pr-10 text-[15px] outline-none transition placeholder:text-sm placeholder:text-[#8b918e] focus:border-[#8a9c94] focus:ring-2 focus:ring-[#173c35]/10"
         />
         {value && (
           <button
@@ -80,7 +80,7 @@ export default function SearchBar({ value, onChange, placeholder }: Props) {
       </form>
 
       {showDropdown && history.length > 0 && (
-        <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-20 rounded-2xl border border-[#d7d5cd] bg-white p-2 shadow-[0_16px_36px_rgba(23,58,49,0.08)]">
+        <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-20 rounded-xl border border-[#d7d5cd] bg-white p-2 shadow-[0_12px_28px_rgba(23,58,49,0.08)]">
           <div className="mb-1 flex items-center justify-between px-2 py-1">
             <span className="text-[10px] font-semibold uppercase tracking-wide text-[#8b918e]">Recent</span>
             <button

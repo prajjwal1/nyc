@@ -110,11 +110,11 @@ export default function Header({
       : `${(ageHours / 24).toFixed(1)} days ago — the scraper hasn't run successfully. IG session likely expired.`;
 
   return (
-    <header className="border-b border-[#d8d0c1] bg-[#fffdf8]">
-      <div className="mx-auto max-w-5xl px-4 py-5 sm:px-6 sm:py-6">
+    <header>
+      <div className="mx-auto max-w-5xl px-4 pb-5 pt-8 sm:px-6 sm:pb-6 sm:pt-10">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
-            <h1 className="font-editorial text-[26px] font-bold leading-[1.1] tracking-[-0.02em] text-[#173c35] sm:text-[28px]">
+            <h1 className="font-editorial text-[30px] font-bold leading-[1.08] tracking-[-0.025em] text-[#173c35] sm:text-[34px]">
               What&apos;s happening in NYC
             </h1>
             <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#6b7570]">
@@ -136,9 +136,10 @@ export default function Header({
               )}
             </div>
             {newSinceLastVisit && newSinceLastVisit > 0 ? (
-              <div className="mt-2">
-                <span className="inline-flex items-center rounded-full bg-[#173c35] px-2.5 py-1 text-[11px] font-semibold text-white">
-                  ✨ {newSinceLastVisit} new since you last visited
+              <div className="mt-2 flex items-center gap-1.5 text-[11px] font-medium text-[#31554c]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#31554c]" aria-hidden="true" />
+                <span>
+                  {newSinceLastVisit} new since you last visited
                 </span>
               </div>
             ) : null}
@@ -153,7 +154,7 @@ export default function Header({
               <button
                 onClick={handleSync}
                 disabled={syncing}
-                className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-[#d7d5cd] bg-white px-3 text-xs font-medium text-[#5d6964] hover:border-[#173c35] hover:text-[#173c35] disabled:opacity-50"
+                className="inline-flex min-h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium text-[#5d6964] hover:bg-white/70 hover:text-[#173c35] disabled:opacity-50"
                 title="Sync your saves/hides so the scraper learns your taste"
               >
                 <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -165,7 +166,7 @@ export default function Header({
             )}
             <button
               onClick={handleShare}
-              className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-[#d7d5cd] bg-white px-3 text-xs font-medium text-[#5d6964] hover:border-[#173c35] hover:text-[#173c35]"
+              className="inline-flex min-h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium text-[#5d6964] hover:bg-white/70 hover:text-[#173c35]"
               title="Copy link to current view"
             >
               {copied ? (

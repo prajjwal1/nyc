@@ -11,7 +11,6 @@ import TopPicks from "./components/TopPicks";
 import EventModal from "./components/EventModal";
 import { Event } from "./lib/types";
 import { readAndAdvanceLastVisited } from "./lib/interests";
-import CommunitySpotlight from "./components/CommunitySpotlight";
 import SearchBar from "./components/SearchBar";
 import Footer from "./components/Footer";
 
@@ -213,24 +212,28 @@ export default function Home() {
 
       <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
         <SearchBar value={search} onChange={setSearch} />
-        <CommunitySpotlight />
-        {/* Compact controls: Feed/Calendar toggle + result count */}
-        <div className="flex items-center justify-between gap-3 mb-6">
-          <div className="bg-white rounded-full border border-[#d7d5cd] p-1 flex max-w-[220px] shadow-[0_1px_0_rgba(23,58,49,0.03)]">
+        <div className="mb-8 flex items-end justify-between gap-3 border-b border-[#d8d0c1]">
+          <div className="flex gap-6" role="tablist" aria-label="Event view">
             <button
+              id="feed-tab"
               onClick={() => setView("for-you")}
-              aria-pressed={view === "for-you"}
-              className={`flex-1 px-4 py-1.5 rounded-full text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none ${
-                view === "for-you" ? "bg-[#173c35] text-white shadow-sm" : "text-[#5d6964] hover:bg-[#f4f1e8]"
+              role="tab"
+              aria-selected={view === "for-you"}
+              aria-controls="event-view-panel"
+              className={`-mb-px border-b-2 pb-3 text-sm font-medium transition-colors ${
+                view === "for-you" ? "border-[#173c35] text-[#173c35]" : "border-transparent text-[#66716c] hover:text-[#173c35]"
               }`}
             >
               Feed
             </button>
             <button
+              id="calendar-tab"
               onClick={() => setView("calendar")}
-              aria-pressed={view === "calendar"}
-              className={`flex-1 px-4 py-1.5 rounded-full text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none ${
-                view === "calendar" ? "bg-[#173c35] text-white shadow-sm" : "text-[#5d6964] hover:bg-[#f4f1e8]"
+              role="tab"
+              aria-selected={view === "calendar"}
+              aria-controls="event-view-panel"
+              className={`-mb-px border-b-2 pb-3 text-sm font-medium transition-colors ${
+                view === "calendar" ? "border-[#173c35] text-[#173c35]" : "border-transparent text-[#66716c] hover:text-[#173c35]"
               }`}
             >
               Calendar
@@ -261,7 +264,12 @@ export default function Home() {
             </aside>
           )}
 
-          <section className="flex-1 min-w-0 order-3 lg:order-2">
+          <section
+            id="event-view-panel"
+            role="tabpanel"
+            aria-labelledby={view === "for-you" ? "feed-tab" : "calendar-tab"}
+            className="flex-1 min-w-0 order-3 lg:order-2"
+          >
             {view === "for-you" ? (
               <TopPicks
                 events={events}

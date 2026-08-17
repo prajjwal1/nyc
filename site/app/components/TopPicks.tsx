@@ -57,27 +57,24 @@ const MAX_FOLLOWING = 6;
 function HeroSection({
   title,
   count,
-  accent,
   children,
 }: {
   title: string;
   count: number;
-  accent: string;
   children: React.ReactNode;
 }) {
   return (
-    <div className="mb-7 overflow-hidden rounded-[1.5rem] border border-[#ddd9cc] bg-[#fffef9] shadow-[0_1px_0_rgba(23,58,49,0.03)]">
-      <div className="flex items-center justify-between gap-3 border-b border-[#ece7d8] bg-[#fdfaf0] px-5 py-3">
-        <h3 className="flex items-center gap-2 font-editorial text-[15px] font-semibold tracking-[-0.01em] text-[#173c35]">
-          <span className={`h-1.5 w-1.5 rounded-full ${accent}`} aria-hidden="true" />
+    <section className="mb-10">
+      <div className="mb-3 flex items-baseline justify-between gap-3 border-b border-[#ddd9cc] pb-2">
+        <h3 className="font-editorial text-[18px] font-semibold tracking-[-0.015em] text-[#173c35]">
           {title}
         </h3>
-        <span className="rounded-full bg-white px-2 py-0.5 text-[11px] font-medium text-[#8b918e] border border-[#e6e0d0]">
+        <span className="text-[11px] font-medium text-[#8b918e]">
           {count}
         </span>
       </div>
-      <div className="space-y-2.5 p-3 sm:p-3.5 bg-white/60">{children}</div>
-    </div>
+      <div className="space-y-2.5">{children}</div>
+    </section>
   );
 }
 
@@ -416,7 +413,7 @@ export default function TopPicks({
 
       {/* Shared hero shell — editorial, subtle, consistent. */}
       {tonightEvents.length > 0 && (
-        <HeroSection title="Tonight" count={tonightEvents.length} accent="bg-[#bd4f34]">
+        <HeroSection title="Tonight" count={tonightEvents.length}>
           {tonightEvents.map((event, rank) => (
             <div key={event.id} data-event-id={event.id} data-feed-section="tonight" data-rank={rank + 1}>
               <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
@@ -426,7 +423,7 @@ export default function TopPicks({
       )}
 
       {weekendEvents.length > 0 && (
-        <HeroSection title="This Weekend" count={weekendEvents.length} accent="bg-emerald-600">
+        <HeroSection title="This Weekend" count={weekendEvents.length}>
           {weekendEvents.map((event, rank) => (
             <div key={event.id} data-event-id={event.id} data-feed-section="weekend" data-rank={rank + 1}>
               <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
@@ -436,7 +433,7 @@ export default function TopPicks({
       )}
 
       {recentlyAdded.length > 0 && (
-        <HeroSection title="Just Added" count={recentlyAdded.length} accent="bg-slate-500">
+        <HeroSection title="Just Added" count={recentlyAdded.length}>
           {recentlyAdded.map((event, rank) => (
             <div key={event.id} data-event-id={event.id} data-feed-section="just-added" data-rank={rank + 1}>
               <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
@@ -446,7 +443,7 @@ export default function TopPicks({
       )}
 
       {followingUpcoming.length > 0 && (
-        <HeroSection title="From accounts you follow" count={followingUpcoming.length} accent="bg-sky-600">
+        <HeroSection title="From accounts you follow" count={followingUpcoming.length}>
           {followingUpcoming.map((event, rank) => (
             <div key={event.id} data-event-id={event.id} data-feed-section="following" data-rank={rank + 1}>
               <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
@@ -456,7 +453,7 @@ export default function TopPicks({
       )}
 
       {savedUpcoming.length > 0 && (
-        <HeroSection title="Saved by you" count={savedUpcoming.length} accent="bg-amber-600">
+        <HeroSection title="Saved by you" count={savedUpcoming.length}>
           {savedUpcoming.map((event, rank) => (
             <div key={event.id} data-event-id={event.id} data-feed-section="saved" data-rank={rank + 1}>
               <EventCard event={event} showDay onAccountClick={onAccountClick} onHide={onHide} onSelect={onSelectEvent} />
@@ -476,12 +473,10 @@ export default function TopPicks({
           const total = grouped.get(date)!.length;
 
           return (
-            <div key={date} className="rounded-[1.25rem] bg-white/60">
+            <div key={date}>
               <button
                 onClick={() => onSelectDate(date)}
-                className={`group mb-3 flex items-baseline gap-3 px-1 text-left ${
-                  isToday ? "" : ""
-                }`}
+                className="group mb-3 flex items-baseline gap-3 text-left"
               >
                 <span
                   className={`font-editorial tracking-[-0.015em] ${
