@@ -306,7 +306,7 @@
       "name": "Pioneer Works",
       "kind": "recurring_series",
       "tagline": "Pioneer Works is a recurring event series centered on art, music, special in brooklyn.",
-      "description": "Pioneer Works is a recurring event series centered on art, music, special in brooklyn. Based on 9 observed event dates, it meets weekly on Friday and Tuesday evenings.",
+      "description": "Pioneer Works is a recurring event series centered on art, music, special in brooklyn. Based on 11 observed event dates, it meets weekly on Friday and Sunday evenings.",
       "categories": [
         "other",
         "art",
@@ -323,7 +323,7 @@
         "brooklyn"
       ],
       "homeVenue": "Pioneer Works",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1189882033%2F204556076966%2F1%2Foriginal.20260729-151024?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=345e1414b30a477488a1d706f408eb7d",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1186609652%2F2265686114913%2F1%2Foriginal.20260610-170918?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.699&fp-y=0.541&s=eabca85708afaeef4dfb8a48e793ea01",
       "links": [
         {
           "type": "eventbrite",
@@ -335,21 +335,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-09",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 9,
         "eventCount90d": 2
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Tuesday"
+          "Sunday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 11
       },
       "upcomingEventIds": [
+        "1c80e1c54c1f02d9",
         "e748a73f737cb4ca",
+        "bb89e8732372cd30",
         "553f9eb07171358c",
         "0ae1573c036c9a27",
         "43dd51050dac2cc3",
@@ -364,7 +366,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -48826,7 +48828,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-18T19:40:58.095231+00:00",
+  "lastUpdated": "2026-08-18T19:45:29.888381+00:00",
   "version": 1,
   "schemaVersion": 1
 }
