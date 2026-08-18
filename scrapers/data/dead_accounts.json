@@ -1330,8 +1330,8 @@
     },
     "explorenycfree": {
       "failure_count": 0,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
-      "last_transient_at": "2026-07-24T06:45:34.819874+00:00"
+      "last_reason": "JSON Query to api/v1/users/web_profile_info/: 429 Too Many Requests when accessing https://www.instagram.com/api/v1/users/web_profile_info/?username=explorenycfree",
+      "last_transient_at": "2026-08-18T21:34:45.278660+00:00"
     },
     "sipsandstoriesnyc": {
       "failure_count": 0,
