@@ -76,8 +76,8 @@
         "com_9a5c4d074e3a",
         "com_ab8259bb35a4",
         "com_318c39363fe6",
-        "com_c1410c07c4dd",
-        "com_218b97d674a6"
+        "com_c58670960684",
+        "com_14e2dae511e1"
       ]
     },
     {
@@ -149,7 +149,7 @@
         "com_218b97d674a6",
         "com_02ba15552329",
         "com_0cc8630779d7",
-        "com_318c39363fe6"
+        "com_14e2dae511e1"
       ]
     },
     {
@@ -293,11 +293,11 @@
       ],
       "similarCommunityIds": [
         "com_83fdf02633ef",
+        "com_14e2dae511e1",
         "com_0cc8630779d7",
         "com_318c39363fe6",
         "com_33a530deb7aa",
-        "com_3837f308cd75",
-        "com_9a5c4d074e3a"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -374,11 +374,11 @@
       ],
       "similarCommunityIds": [
         "com_b766b6de77ba",
+        "com_c58670960684",
         "com_b0e15eaab803",
         "com_eef1ca956dae",
         "com_218b97d674a6",
-        "com_9a5c4d074e3a",
-        "com_ab8259bb35a4"
+        "com_9a5c4d074e3a"
       ]
     },
     {
@@ -448,6 +448,228 @@
         "com_218b97d674a6",
         "com_02ba15552329",
         "com_0cc8630779d7"
+      ]
+    },
+    {
+      "id": "com_c58670960684",
+      "slug": "the-new-york-philosophy-club-960684",
+      "name": "The New York Philosophy Club",
+      "kind": "club",
+      "tagline": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "categories": [
+        "other",
+        "art"
+      ],
+      "tags": [
+        "other",
+        "art"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "upper east side"
+      ],
+      "homeVenue": "New York Society for Ethical Culture",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/philosophy"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Saturday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "e5592a5ab610b98e",
+        "12f9eba00f911c8b"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-08-18",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:philosophy.nyc",
+        "luma:cal-dgp82mvkrg1frmr"
+      ],
+      "similarCommunityIds": [
+        "com_ab8259bb35a4",
+        "com_3837f308cd75",
+        "com_14e2dae511e1",
+        "com_ebf7599ed103",
+        "com_b766b6de77ba",
+        "com_eeb4e424a504"
+      ]
+    },
+    {
+      "id": "com_7fab201ed5e1",
+      "slug": "industrious-1ed5e1",
+      "name": "Industrious",
+      "kind": "recurring_series",
+      "tagline": "Industrious is a recurring event series centered on comedy, parties in manhattan.",
+      "description": "Industrious is a recurring event series centered on comedy, parties in manhattan. Based on 2 observed event dates, it meets weekly on Thursday evenings.",
+      "categories": [
+        "comedy",
+        "parties"
+      ],
+      "tags": [
+        "comedy",
+        "parties"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "190 Bowery",
+      "imageUrl": "https://images.lumacdn.com/uploads/f2/aed6b3ca-51cb-476e-a9bd-ec9f6982f72d.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/after-hours-at-190bowery"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "5cd1de9b139431ff",
+        "7301a2e70123697e"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-08-18",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-fodorrhu3yohvgx"
+      ],
+      "similarCommunityIds": [
+        "com_14e2dae511e1",
+        "com_ebf7599ed103",
+        "com_ab8259bb35a4",
+        "com_cdd5daa67222",
+        "com_318c39363fe6",
+        "com_a7c30be0b35f"
+      ]
+    },
+    {
+      "id": "com_14e2dae511e1",
+      "slug": "andrew-s-yeung-s-tech-events-e511e1",
+      "name": "Andrew's Yeung's Tech Events",
+      "kind": "recurring_series",
+      "tagline": "Andrew's Yeung's Tech Events is a recurring event series centered on parties, outdoors in manhattan, williamsburg.",
+      "description": "Andrew's Yeung's Tech Events is a recurring event series centered on parties, outdoors in manhattan, williamsburg. Based on 2 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "categories": [
+        "other",
+        "parties",
+        "outdoors"
+      ],
+      "tags": [
+        "other",
+        "parties",
+        "outdoors"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "williamsburg"
+      ],
+      "homeVenue": "NoMad",
+      "imageUrl": "https://images.lumacdn.com/uploads/k7/d9d13836-8650-479b-929b-0a420c2e22ee.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/andrewsmixers"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Tuesday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "3f6014222a07cd3e",
+        "cff7d0d1afd4d3ad",
+        "2017480386ef8214"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-08-18",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:andrew.today",
+        "luma:cal-kcwhmbis2x0y2xb"
+      ],
+      "similarCommunityIds": [
+        "com_ebf7599ed103",
+        "com_cdd5daa67222",
+        "com_ab8259bb35a4",
+        "com_b0e15eaab803",
+        "com_7fab201ed5e1",
+        "com_c58670960684"
       ]
     },
     {
@@ -521,8 +743,8 @@
         "com_eef1ca956dae",
         "com_0cc8630779d7",
         "com_318c39363fe6",
-        "com_a7c30be0b35f",
-        "com_eeb4e424a504"
+        "com_7fab201ed5e1",
+        "com_a7c30be0b35f"
       ]
     },
     {
@@ -592,11 +814,11 @@
       ],
       "similarCommunityIds": [
         "com_eef1ca956dae",
+        "com_14e2dae511e1",
         "com_cdd5daa67222",
+        "com_ebf7599ed103",
         "com_3837f308cd75",
-        "com_c1410c07c4dd",
-        "com_ed8d42fb031d",
-        "com_33a530deb7aa"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -661,12 +883,12 @@
         "luma:philosophy"
       ],
       "similarCommunityIds": [
+        "com_c58670960684",
+        "com_14e2dae511e1",
+        "com_ebf7599ed103",
         "com_b766b6de77ba",
-        "com_3837f308cd75",
-        "com_cdd5daa67222",
-        "com_02ba15552329",
-        "com_0cc8630779d7",
-        "com_318c39363fe6"
+        "com_7fab201ed5e1",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -749,12 +971,12 @@
         "url:https://luma.com/readingrhythms-manhattan"
       ],
       "similarCommunityIds": [
+        "com_14e2dae511e1",
+        "com_ebf7599ed103",
         "com_33a530deb7aa",
         "com_b0e15eaab803",
         "com_c1410c07c4dd",
-        "com_eef1ca956dae",
-        "com_0cc8630779d7",
-        "com_eeb4e424a504"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -823,10 +1045,85 @@
       "similarCommunityIds": [
         "com_0cc8630779d7",
         "com_318c39363fe6",
+        "com_7fab201ed5e1",
         "com_33a530deb7aa",
         "com_02ba15552329",
-        "com_3837f308cd75",
-        "com_9a5c4d074e3a"
+        "com_14e2dae511e1"
+      ]
+    },
+    {
+      "id": "com_ebf7599ed103",
+      "slug": "comets-sports-club-9ed103",
+      "name": "Comets Sports Club",
+      "kind": "club",
+      "tagline": "Comets Sports Club is a community club centered on parties, outdoors in manhattan, flushing.",
+      "description": "Comets Sports Club is a community club centered on parties, outdoors in manhattan, flushing. Based on 2 observed event dates, it meets weekly on Saturday mornings.",
+      "categories": [
+        "parties",
+        "outdoors",
+        "other"
+      ],
+      "tags": [
+        "parties",
+        "outdoors",
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "flushing"
+      ],
+      "homeVenue": "Isham Park",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2Fjll25mlWJvMkjrxa7poxHwhiNMq1%2Fg-avBsQ6zl43GhAvbJ7RU?alt=media",
+      "links": [
+        {
+          "type": "partiful",
+          "label": "View on Partiful",
+          "url": "https://www.instagram.com/CometsSportsClub/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Saturday"
+        ],
+        "typicalTime": "10:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "2a7d346b08ae9b7f",
+        "e468f51b6986e41b"
+      ],
+      "sourceAttributions": [
+        "partiful"
+      ],
+      "lastVerifiedAt": "2026-08-18",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:cometssportsclub",
+        "partiful:cahd80tpfr5prooeegjy"
+      ],
+      "similarCommunityIds": [
+        "com_14e2dae511e1",
+        "com_cdd5daa67222",
+        "com_ab8259bb35a4",
+        "com_b0e15eaab803",
+        "com_7fab201ed5e1",
+        "com_c58670960684"
       ]
     },
     {
@@ -906,7 +1203,7 @@
         "com_ed8d42fb031d",
         "com_0cc8630779d7",
         "com_318c39363fe6",
-        "com_b766b6de77ba"
+        "com_7fab201ed5e1"
       ]
     },
     {
@@ -1052,11 +1349,11 @@
       ],
       "similarCommunityIds": [
         "com_0cc8630779d7",
+        "com_c58670960684",
         "com_33a530deb7aa",
         "com_cdd5daa67222",
         "com_3837f308cd75",
-        "com_c1410c07c4dd",
-        "com_eef1ca956dae"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -1273,11 +1570,11 @@
       ],
       "similarCommunityIds": [
         "com_9a5c4d074e3a",
+        "com_7fab201ed5e1",
         "com_a7c30be0b35f",
         "com_b766b6de77ba",
         "com_33a530deb7aa",
-        "com_3837f308cd75",
-        "com_c1410c07c4dd"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -48529,7 +48826,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-18T19:03:18.142901+00:00",
+  "lastUpdated": "2026-08-18T19:40:58.095231+00:00",
   "version": 1,
   "schemaVersion": 1
 }
