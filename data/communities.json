@@ -73,12 +73,12 @@
         "url:https://www.eventbrite.com/o/elsewhere-105655500371"
       ],
       "similarCommunityIds": [
+        "com_037b24ee6417",
         "com_3837f308cd75",
         "com_9a5c4d074e3a",
         "com_ab8259bb35a4",
         "com_318c39363fe6",
-        "com_c58670960684",
-        "com_14e2dae511e1"
+        "com_c58670960684"
       ]
     },
     {
@@ -149,8 +149,8 @@
         "com_ed8d42fb031d",
         "com_218b97d674a6",
         "com_02ba15552329",
-        "com_0cc8630779d7",
-        "com_14e2dae511e1"
+        "com_037b24ee6417",
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -228,7 +228,7 @@
         "com_318c39363fe6",
         "com_a393a0e8b1e0",
         "com_02ba15552329",
-        "com_0cc8630779d7"
+        "com_037b24ee6417"
       ]
     },
     {
@@ -294,11 +294,11 @@
       ],
       "similarCommunityIds": [
         "com_83fdf02633ef",
+        "com_037b24ee6417",
         "com_14e2dae511e1",
+        "com_c58670960684",
         "com_0cc8630779d7",
-        "com_318c39363fe6",
-        "com_33a530deb7aa",
-        "com_3837f308cd75"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -381,7 +381,7 @@
         "com_b0e15eaab803",
         "com_eef1ca956dae",
         "com_218b97d674a6",
-        "com_9a5c4d074e3a"
+        "com_037b24ee6417"
       ]
     },
     {
@@ -450,35 +450,34 @@
         "com_3837f308cd75",
         "com_218b97d674a6",
         "com_02ba15552329",
-        "com_0cc8630779d7"
+        "com_037b24ee6417"
       ]
     },
     {
-      "id": "com_c58670960684",
-      "slug": "the-new-york-philosophy-club-960684",
-      "name": "The New York Philosophy Club",
-      "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "id": "com_d2ccb56c071d",
+      "slug": "accent-is-a-superpower-online-offline-events-6c071d",
+      "name": "Accent Is A Superpower (online & offline events)",
+      "kind": "recurring_series",
+      "tagline": "Accent Is A Superpower (online & offline events) is a recurring event series centered on books in midtown.",
+      "description": "Accent Is A Superpower (online & offline events) is a recurring event series centered on books in midtown. Based on 2 observed event dates, it meets monthly on Sunday and Tuesday afternoons.",
       "categories": [
         "other",
-        "art"
+        "books"
       ],
       "tags": [
         "other",
-        "art"
+        "books"
       ],
       "neighborhoods": [
-        "manhattan",
-        "upper east side"
+        "midtown"
       ],
-      "homeVenue": "New York Society for Ethical Culture",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
+      "homeVenue": "Accent Sisters \u91cd\u97f3\u793e",
+      "imageUrl": "https://images.lumacdn.com/uploads/0o/b7e41fab-5f55-45e8-8ef4-988096dad4f3.jpg",
       "links": [
         {
           "type": "luma",
           "label": "View on Luma",
-          "url": "https://luma.com/philosophy"
+          "url": "https://luma.com/accentaccent"
         }
       ],
       "joinMethod": "View an upcoming event",
@@ -489,18 +488,18 @@
         "eventCount90d": 0
       },
       "schedule": {
-        "cadence": "weekly",
+        "cadence": "monthly",
         "typicalDays": [
-          "Wednesday",
-          "Saturday"
+          "Sunday",
+          "Tuesday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "15:00",
         "confidence": 0.33,
         "sampleSize": 2
       },
       "upcomingEventIds": [
-        "e5592a5ab610b98e",
-        "12f9eba00f911c8b"
+        "58e534dd3acb22f5",
+        "2c8a184378eaec8c"
       ],
       "sourceAttributions": [
         "luma"
@@ -515,16 +514,93 @@
       "newcomerFriendly": false,
       "newcomerEvidence": [],
       "aliases": [
+        "instagram:accentsisters",
+        "luma:cal-3apwvrk64gfvakd",
+        "luma:cal-sc85bazzq7gzize"
+      ],
+      "similarCommunityIds": [
+        "com_037b24ee6417",
+        "com_0cc8630779d7",
+        "com_ab8259bb35a4",
+        "com_cdd5daa67222",
+        "com_b766b6de77ba",
+        "com_c58670960684"
+      ]
+    },
+    {
+      "id": "com_c58670960684",
+      "slug": "the-new-york-philosophy-club-960684",
+      "name": "The New York Philosophy Club",
+      "kind": "club",
+      "tagline": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side. Based on 3 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "categories": [
+        "other",
+        "art"
+      ],
+      "tags": [
+        "other",
+        "art"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "upper east side",
+        "williamsburg"
+      ],
+      "homeVenue": "New York Society for Ethical Culture",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/philosophy"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Saturday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.5,
+        "sampleSize": 3
+      },
+      "upcomingEventIds": [
+        "e5592a5ab610b98e",
+        "12f9eba00f911c8b",
+        "9b7e3a2d1f92b3e2"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-08-18",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
         "instagram:philosophy.nyc",
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
+        "com_037b24ee6417",
         "com_ab8259bb35a4",
-        "com_3837f308cd75",
         "com_14e2dae511e1",
+        "com_3837f308cd75",
         "com_ebf7599ed103",
-        "com_b766b6de77ba",
-        "com_eeb4e424a504"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -668,11 +744,83 @@
       ],
       "similarCommunityIds": [
         "com_ebf7599ed103",
+        "com_037b24ee6417",
         "com_cdd5daa67222",
         "com_ab8259bb35a4",
-        "com_b0e15eaab803",
-        "com_7fab201ed5e1",
-        "com_c58670960684"
+        "com_c58670960684",
+        "com_b0e15eaab803"
+      ]
+    },
+    {
+      "id": "com_037b24ee6417",
+      "slug": "studio-bumi-ee6417",
+      "name": "Studio Bumi",
+      "kind": "recurring_series",
+      "tagline": "Studio Bumi is a recurring event series in williamsburg, manhattan.",
+      "description": "Studio Bumi is a recurring event series in williamsburg, manhattan. Based on 2 observed event dates, it meets weekly on Saturday and Sunday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "williamsburg",
+        "manhattan"
+      ],
+      "homeVenue": "Sabah",
+      "imageUrl": "https://images.lumacdn.com/uploads/bp/c10a10aa-98a2-4d89-a676-34ea88be8499.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/studiobumi"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Saturday",
+          "Sunday"
+        ],
+        "typicalTime": "12:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "38386fba894fa256",
+        "773d8808277d8215"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-08-18",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:studiobumi.nyc",
+        "luma:cal-siarkedrlh99bqv"
+      ],
+      "similarCommunityIds": [
+        "com_ab8259bb35a4",
+        "com_c58670960684",
+        "com_14e2dae511e1",
+        "com_b766b6de77ba",
+        "com_ebf7599ed103",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -886,12 +1034,12 @@
         "luma:philosophy"
       ],
       "similarCommunityIds": [
+        "com_037b24ee6417",
         "com_c58670960684",
         "com_14e2dae511e1",
         "com_ebf7599ed103",
         "com_b766b6de77ba",
-        "com_7fab201ed5e1",
-        "com_3837f308cd75"
+        "com_7fab201ed5e1"
       ]
     },
     {
@@ -1051,7 +1199,7 @@
         "com_7fab201ed5e1",
         "com_33a530deb7aa",
         "com_02ba15552329",
-        "com_14e2dae511e1"
+        "com_037b24ee6417"
       ]
     },
     {
@@ -1125,8 +1273,8 @@
         "com_cdd5daa67222",
         "com_ab8259bb35a4",
         "com_b0e15eaab803",
-        "com_7fab201ed5e1",
-        "com_c58670960684"
+        "com_037b24ee6417",
+        "com_7fab201ed5e1"
       ]
     },
     {
@@ -48829,7 +48977,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-18T23:41:44.279869+00:00",
+  "lastUpdated": "2026-08-18T23:57:07.061861+00:00",
   "version": 1,
   "schemaVersion": 1
 }
