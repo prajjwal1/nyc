@@ -456,7 +456,7 @@
       "name": "Lit Club NYC Calendar",
       "kind": "club",
       "tagline": "Lit Club NYC Calendar is a community club centered on books, comedy, outdoors across NYC.",
-      "description": "Lit Club NYC Calendar is a community club centered on books, comedy, outdoors across NYC. Based on 8 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "Lit Club NYC Calendar is a community club centered on books, comedy, outdoors across NYC. Based on 9 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "books",
         "comedy",
@@ -468,8 +468,8 @@
         "outdoors"
       ],
       "neighborhoods": [],
-      "homeVenue": "Cherry on Top",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/jm/3bde2409-c92d-45ef-ad06-dd9233bebe49.png",
+      "homeVenue": "55 W 87th St",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/pn/8990810a-2ea9-4fd2-a51e-25185fce4496.png",
       "links": [
         {
           "type": "luma",
@@ -480,21 +480,22 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-08-16",
-        "upcomingEventCount": 4,
-        "eventCount90d": 4
+        "lastEventDate": "2026-08-18",
+        "upcomingEventCount": 5,
+        "eventCount90d": 5
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Monday"
+          "Tuesday"
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 9
       },
       "upcomingEventIds": [
+        "da9e55c8b8d8ad9c",
         "0b852617906ce1e1",
         "80ac3cb83706dd9d",
         "47a289cc5b5591a6",
@@ -507,7 +508,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 9,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -48528,7 +48529,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-18T16:15:25.373867+00:00",
+  "lastUpdated": "2026-08-18T16:46:52.665621+00:00",
   "version": 1,
   "schemaVersion": 1
 }
