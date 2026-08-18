@@ -186,7 +186,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
                 FREE
               </span>
             )}
-            {/* fb-188 (run 2026-07-02-1735): parity with FeedCard — numeric
+            {/* fb-188 (run 2026-07-02-1735): parity with EventCard — numeric
                 prices as a gray pill, qualitative low-commitment words
                 (donation/PWYC/sliding-scale) as a sky pill. Same guards as
                 EventCard so "varies"/"TBA"/"unknown" render nothing (no junk

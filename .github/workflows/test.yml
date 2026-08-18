@@ -9,10 +9,12 @@ on:
   push:
     paths:
       - "scrapers/**"
+      - "site/**"
       - ".github/workflows/test.yml"
   pull_request:
     paths:
       - "scrapers/**"
+      - "site/**"
   workflow_dispatch:
 
 permissions:
@@ -39,3 +41,33 @@ jobs:
 
       - name: Run scraper unit tests
         run: python -m pytest scrapers/tests/ -q
+
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        working-directory: site
+        run: npm ci
+
+      - name: Lint and build
+        working-directory: site
+        run: |
+          npm run lint
+          npm run build
+
+      - name: Install Chromium
+        working-directory: site
+        run: npx playwright install --with-deps chromium
+
+      - name: Run UI checks
+        working-directory: site
+        run: npm run test:ui

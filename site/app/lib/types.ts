@@ -124,6 +124,24 @@ export interface EventsData {
     withOrganizer: number;
     withLocation: number;
     browserCapturedInstagram: number;
+    nextSevenDays?: {
+      events: number;
+      organizers: number;
+      sources: Record<string, number>;
+      topSourceShare: number;
+    };
+    platformCatalogs?: Record<string, {
+      advertised?: number;
+      fetched: number;
+      coverage?: number;
+      missingImages: number;
+    }>;
+    run?: {
+      runCompleted: boolean;
+      partialRun: boolean;
+      timedOutSources: string[];
+      instagram?: Record<string, unknown>;
+    };
   };
 }
 
@@ -172,7 +190,6 @@ export const SOURCE_LABELS: Record<string, string> = {
   music_venues: "Music Venues",
   nyc_parks: "NYC Parks",
   theskint: "The Skint",
-  meetup: "Meetup",
   dice: "Dice.fm",
   instagram: "Instagram",
   substack: "Substack",

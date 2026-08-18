@@ -1,4 +1,5 @@
 import { CommunitiesData, Community } from "./types";
+import { trackCommunityFollow } from "./interests";
 
 let cache: CommunitiesData | null = null;
 const COMMUNITY_DIRECTORY_STATE_KEY = "nyc-community-directory-state-v1";
@@ -7,7 +8,6 @@ export const COMMUNITY_FOLLOW_EVENT = "nyc-community-follow-change";
 export type CommunityCollectionFilter = "all" | "event_backed" | "directory_reference";
 
 export interface CommunityDirectoryState {
-  q: string;
   category: string;
   neighborhood: string;
   collection: CommunityCollectionFilter;
@@ -66,6 +66,7 @@ export function toggleCommunityFollow(id: string): string[] {
   const next = ids.includes(id) ? ids.filter(x => x !== id) : [...ids, id];
   try {
     localStorage.setItem("nyc-community-follows-v1", JSON.stringify(next));
+    trackCommunityFollow(id, next.includes(id));
     window.dispatchEvent(new Event(COMMUNITY_FOLLOW_EVENT));
   } catch {
     return ids;

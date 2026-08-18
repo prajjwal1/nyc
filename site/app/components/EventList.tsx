@@ -30,8 +30,15 @@ export default function EventList({ events, selectedDate, onAccountClick }: Even
         </div>
       ) : (
         <div className="space-y-3">
-          {events.map((event) => (
-            <EventCard key={event.id} event={event} onAccountClick={onAccountClick} />
+          {events.map((event, index) => (
+            <div
+              key={event.id}
+              data-event-id={event.id}
+              data-calendar-section={selectedDate}
+              data-rank={index + 1}
+            >
+              <EventCard event={event} onAccountClick={onAccountClick} />
+            </div>
           ))}
         </div>
       )}

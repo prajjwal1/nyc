@@ -324,8 +324,7 @@ USER_INTERESTS = {
         "fitness": 1.3,  # Run clubs are great for meeting people — and
         # the user explicitly asked for more of them +
         # recurring ones. Bumped 1.1→1.3 (matches games/
-        # books) so run clubs clear the 0.55 floor and
-        # survive volume caps instead of being trimmed.
+        # books) so run clubs rank prominently in the broad index.
     },
     "home_neighborhood": "williamsburg",
     "preferred_price": "free",
@@ -350,7 +349,6 @@ SOURCE_QUALITY = {
     "mcnallyjackson": 0.85,
     # Aggregators
     "eventbrite": 0.55,
-    "meetup": 0.5,
     "nypl": 0.45,
     "nyc_parks": 0.65,
     "dice": 0.65,
@@ -385,40 +383,3 @@ SOURCE_QUALITY = {
 
 # Per-source volume caps. Aggregator sources have hundreds of events
 # each — without a cap they crowd out user-relevant content
-# (IG events, books, social mixers). Top-N by score per source.
-SOURCE_VOLUME_CAPS = {
-    # Aggregator caps tightened per user 'less is more' direction.
-    # These sources dump hundreds of concert-listing events that
-    # crowd out social/literary/discovery content. Top-N by score
-    # is kept per source — same diversity, less long-tail.
-    "allevents": 40,
-    "songkick": 25,
-    "newyorkcomedyclub": 15,
-    "eastvillecomedy": 10,
-    "thebellhouseny": 10,
-    "meetup": 60,
-    # Iter 90: eventbrite pagination now reaches pages 2-3 — yield could
-    # grow from ~111 to 200+. Cap at 100 so the top-100 best events
-    # bubble up from a deeper pool without dominating the feed.
-    "eventbrite": 100,
-    # Iter 126: caps for sources that grew significantly this session and
-    # could otherwise dominate. nycforfree.py iter-100 rewrite yields ~83
-    # future events; mcnallyjackson iter-102 dynamic month URLs yields
-    # ~44. Both are user-interested (free events + literary) so the cap is
-    # generous, but bounds it so they don't crowd out other content.
-    "nycforfree": 40,
-    "mcnallyjackson": 30,
-    # Iter 155: brooklyncomedy yields 119 raw events (iter 106 Squarespace
-    # scraper). Cap at 20 — Brooklyn Comedy Collective programs an
-    # enormous indie comedy schedule but the user values diversity over
-    # one venue's volume.
-    "brooklyncomedy": 20,
-    # iter 110 venue scrapers — low-volume but cap defensively.
-    "powerhousearena": 15,
-    "centerforfiction": 15,
-    # The bounded public Discover API union now yields ~138 NYC events across
-    # category/borough feeds plus harvested links. Partiful is unusually
-    # high-signal for social/meet-people plans, so retain up to 70 after all
-    # quality, geography, late-night, and score filters have run.
-    "partiful": 70,
-}

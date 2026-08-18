@@ -26,7 +26,7 @@ accounts per run, with randomized cooldowns and a 40-post hard cap. Stories are
 excluded from unattended runs to reduce Instagram traffic. The committed
 snapshot triggers CI processing.
 
-**Two content kinds, one feed**:
+**Two content kinds, one guide**:
 - **Dated events** — concerts, parties, classes, run clubs, etc. (most content)
 - **Cool spots** — evergreen place picks from `IG_SPOTS_ACCOUNTS` (`@wherethefuckdowego`, `@infatuation`, etc.). Always-current; render with teal "🗺 Spot" pill instead of date pill.
 
@@ -61,7 +61,7 @@ Build on top of these principles. Don't break them.
        └──────────────────────────────────┘
 ```
 
-- **GitHub Actions** runs the Python scrapers on schedule (full sweep + every-30min quick scrape)
+- **GitHub Actions** runs the Python scrapers continuously: alternating 30-minute source refreshes, hourly priority Instagram, and a four-hour full sweep
 - Output is `data/events.json` (and `site/public/events.json`)
 - **Next.js** static site reads events.json and renders
 - All **personalization is client-side** (localStorage) — no backend, fully private
@@ -76,17 +76,17 @@ Build on top of these principles. Don't break them.
 | Source | File | Pattern | Notes |
 |---|---|---|---|
 | **Instagram** | `scrapers/sources/instagram.py` | Authenticated via instaloader session | Most curated; user's saves/tags/follows drive ranking |
-| **Lu.ma** | `scrapers/sources/luma.py` | `lu.ma/nyc/<category>` + curator calendars | ~80 URLs. Every `/nyc/<topic>` returns ~20 events |
+| **Luma** | `scrapers/sources/luma.py` | Paginated NYC discovery API + learned curator calendars | Reads the advertised city inventory and follows every cursor |
 | **Eventbrite** | `scrapers/sources/eventbrite.py` + `generic.py` | Categorical pages + organizer auto-discovery | ~30 categorical URLs |
 | **AllEvents.in** | `generic.py` (URLs) | `/new-york?page=N`, `/<borough>/<category>` | Pagination through page 5 |
 | **Songkick** | `generic.py` (URLs) | `/metro-areas/7644-us-new-york` + venue pages | Live music focus |
 | **Substack** | `scrapers/sources/substack.py` | RSS feeds — onefinedaynyc, theskint, hyperallergic, etc. | Body URLs harvested from each post |
 | **Reddit** | `scrapers/sources/reddit.py` | r/AskNYC, r/nyc, r/Brooklyn, r/Queens | URL harvest from selftext + comments |
-| **Meetup** | `sources/meetup.py` + URL search | Search-result + topic pages | NYC location filter |
-| **NYPL / Bookclubbar / NYC4Free / Museums / Music venues / Parks / The Skint / Partiful** | per-source files | Direct API/HTML | Lower volume |
+| **NYPL / Bookclubbar / NYC4Free / Museums / Music venues / Parks / The Skint / Partiful** | per-source files | Direct API/HTML | Partiful unions its full public NYC Explore page and discovery API |
 
 ### Sources tried and blocked (don't waste time re-probing)
 
+- **Meetup** — intentionally disabled by product decision; do not fetch or carry its events forward
 - **Bandsintown** — 403s consistently with browser-like headers
 - **Resident Advisor (ra.co)** — 403s
 - **Time Out NY** — 404s on most calendar URLs
@@ -124,7 +124,7 @@ The system grows its source pool every run without manual input. Each loop **har
 
 | Loop | Trigger | What it harvests |
 |---|---|---|
-| **IG caption URLs** | Every IG post scraped | `lu.ma`/`eventbrite`/`partiful`/`posh`/`ra.co`/`dice.fm`/`tixr`/`shotgun`/`meetup` URLs in caption text |
+| **IG caption URLs** | Every IG post scraped | `lu.ma`/`eventbrite`/`partiful`/`posh`/`ra.co`/`dice.fm`/`tixr`/`shotgun` URLs in caption text |
 | **IG comments mining** | Saved + tagged posts only | URLs from top 8 comments (rate-limit-safe scope) |
 | **IG geo-tags** | Every post with `post.location` | Extracts venue name + lat/lng for ranking |
 | **IG hashtag discovery** | Full sweep only (gated by `IG_HASHTAG_DISCOVERY=1`) | Posts from 10 NYC hashtags + user-derived hashtags from saves |
@@ -185,7 +185,7 @@ The system grows its source pool every run without manual input. Each loop **har
 | `soft_penalty` | up to -0.40 | `soft_penalty_hits` from SOFT_BLOCK_KEYWORDS |
 | `audience_penalty` | -0.50 | `audience_mismatch` (kids/seniors/etc.) |
 
-**MIN_SCORE filter**: events below 0.5 get dropped from the final feed. This bar keeps quality high.
+**Admission vs ranking**: every structurally valid upcoming listing is retained unless it falls below the low near-noise backstop (0.35; 0.25 for curated/followed sources). Score primarily controls ordering. The calendar and Events index remain expansive.
 
 ---
 
@@ -215,7 +215,7 @@ In order of application in `normalize.process()`:
 5. **`_is_phantom_recurring`** — drop events whose title mentions a specific date that doesn't match the event date (buggy past expansions)
 6. **Recurring expansion** — `detect_recurring_weekday` + `expand_recurring_event` (6 weeks ahead)
 7. **`collapse_title_spam`** — when 4+ events share `(title, sourceUrl)` without explicit "every"/"weekly" markers, keep only the earliest (defensive cleanup of bad expansions)
-8. **MIN_SCORE = 0.5** — drop low-score events
+8. **Low score backstop** — drop only near-noise scores (<0.35, or <0.25 for curated/followed sources); do not use score as a broad inventory cap
 
 **IG-specific quality** (`scrapers/sources/instagram.py`):
 - `_NON_EVENT_SIGNALS` — past-recap rejection ("thanks for joining", "great pics from", "rained out", "preorders open")
@@ -231,23 +231,22 @@ Stored under `nyc-events:*` keys. Reset via Activity Panel.
 
 | Key | Content | Purpose |
 |---|---|---|
-| `nyc-events:interests:v1` | `{accounts, categories, hosts, updatedAt}` | Interest profile from clicks/saves |
+| `nyc-events:interests:v1` | `{accounts, categories, hosts, communities, …}` | Interest profile from clicks, saves, hides, attendance, and follows |
 | `nyc-events:saved:v1` | Set of event IDs | Locally-saved (★ button) |
 | `nyc-events:savedCache:v1` | Map of `id → SavedEventStub` | Past saves persist after pipeline drops them |
-| `nyc-events:hidden:v1` | Set of event IDs | × Hide button — excludes from feed |
+| `nyc-events:hidden:v1` | Set of event IDs | × Hide button — excludes from event views |
 | `nyc-events:opened:v1` | Set of event IDs | Visited events — fade-out signal |
 | `nyc-events:lastVisitedAt:v1` | ISO timestamp | "X new since you last visited" badge |
-| `nyc-events:viewMode` | `"detail"` or `"grid"` | Toggle persistence |
-| `nyc-events:searchHistory:v1` | Array of last 8 queries | Search dropdown |
 
 ### Interest learning weights
 - **Account-chip click**: +2 to that account
 - **Category-chip toggle**: +1 to that category
 - **Card open** (modal/external): +3 to account, +1 each category, +1 host
 - **★ Save**: +5 to account, +3 each category, +2 host (strongest signal)
-- **× Hide**: excludes from feed (no profile bump; explicit removal)
+- **Community follow**: immediately boosts linked events from that community
+- **× Hide**: excludes the event and deboosts matching accounts/categories/hosts
 
-`interestBoost` adds up to +0.15 to event score on the client side based on profile match.
+`interestBoost` re-ranks in the browser immediately; no account, token, or manual sync is required.
 
 ---
 
@@ -255,25 +254,21 @@ Stored under `nyc-events:*` keys. Reset via Activity Panel.
 
 ### Components
 - `Header.tsx` — title, total count, "X new since you last visited" badge, Share-view button
-- `FilterBar.tsx` — search (with history dropdown), quick-filter chips (Today/Weekend/Week/Meet People/Saved/Free), category/source/price chips, sort toggle
 - `Calendar.tsx` — date picker with event-density indicators
 - `EventList.tsx` — list of events for a selected date
-- `EventCard.tsx` — three variants: `MediaFirstCard` (IG events with images), `FeedCard` (text-forward), `GridCard` (square thumbnails for grid mode); each has Save/Hide/Calendar/Share buttons; opened events fade
+- `EventCard.tsx` — uniform event card with Save/Hide/Calendar actions; opened events fade
 - `EventModal.tsx` — full-screen tap-to-expand: hero image carousel (multi-image swiper for carousel posts), full description, source attribution, "Recommended by @X" provenance, action buttons, "More from @account" + "More \<Category\> like this" strips
-- `TopPicks.tsx` — For You feed with 4 hero sections (Tonight / This Weekend / Just Added / Saved) + per-day grouped feed; Detail/Grid mode toggle
-- `TopAccounts.tsx` — sidebar widget split into "From accounts you save" + "Suggested for you"
-- `AccountBanner.tsx` — appears when `search` starts with `@`; account stats + "Open on IG" link
 - `ActivityPanel.tsx` — surfaces interest profile (top accounts/categories), saved/hidden counts, **bulk Export to calendar**, Past saves collapsible section, reset button
 
 ### Hooks/lib
 - `lib/types.ts` — TypeScript types (Event, EventsData, TopAccount, etc.)
 - `lib/events.ts` — `loadEvents`, `filterEvents`, `getEventDates`
-- `lib/interests.ts` — all localStorage helpers (interest profile, saves, hides, opened, search history, saved cache)
+- `lib/interests.ts` — all localStorage helpers (interest profile, saves, hides, attendance, opened state, saved cache)
 - `lib/ics.ts` — single + bulk `.ics` calendar export
 - `hooks/useEvents.ts` — loads events, applies interest profile re-rank, exposes filtered events
 
 ### URL state
-`?date=YYYY-MM-DD&view=for-you|calendar` — shareable bookmarks. `Share view` button in Header copies the URL.
+`?date=YYYY-MM-DD&account=HANDLE` — shareable date and account bookmarks. Calendar is the only homepage view; free-text search is intentionally absent.
 
 ---
 
@@ -394,7 +389,7 @@ What's NOT done that future agents could ship:
 5. **Caption-section pairing** — when carousel splits title and date into separate sections, pair them.
 
 ### User value
-1. **Per-account dedicated route** — `/account/<username>` with full stats + chronological events. Currently AccountBanner is the closest equivalent.
+1. **Per-account dedicated route** — `/account/<username>` with full stats + chronological events. Query-param account views are the current lightweight equivalent.
 2. **"Did you go?" feedback** — small thumbs button on past saves that bumps interest profile.
 3. **Multi-day URL permalinks** — currently single-date. Range view would help "this weekend" sharing.
 4. **Email digest** — out of scope without backend; could ship as RSS instead.
@@ -433,7 +428,7 @@ What's NOT done that future agents could ship:
 ## Decisions made & why (don't undo without good reason)
 
 - **Williamsburg coords** (40.7081, -73.9571) hardcoded in `_distance_proximity_boost` — user lives there. Make configurable in `config.py` if user moves.
-- **MIN_SCORE = 0.5** — quality bar that drops the bottom ~20% of events. Lower it cautiously.
+- **Layered discovery** — retain broad valid inventory, rank it aggressively, and keep calendar ordering useful through relevance and diversity.
 - **Lu.ma is highest-yield source** — every `/nyc/<topic>` URL returns 20 events. Adding more category URLs is cheap and boosts cross-source verification density.
 - **IG comments mining gated to saved/tagged posts only** — to bound rate-limit risk. Don't extend to curated/hashtag posts.
 - **Static neighborhood proximity table over real geocoding** for non-IG events — geocoding everything is overkill given the text matching gets us ~80% of the value.
@@ -449,7 +444,7 @@ Every IG behavior has a mirror or equivalent here:
 
 | IG behavior | Our equivalent |
 |---|---|
-| Home feed (followed accounts) | For You feed with `userFollowing` boost |
+| Followed-account discovery | Calendar/index ranking with `userFollowing` boost |
 | Stories at the top | 🔥 Tonight hero |
 | Weekly highlights | 🎉 This Weekend hero |
 | What's new | ✨ Just Added hero + "X new since last visited" badge |
@@ -508,8 +503,8 @@ Every IG behavior has a mirror or equivalent here:
 1. Check `IG_ACCOUNTS` in `scrapers/config.py` first
 2. Add IG accounts they mention
 3. Check the shared topic score and learned platform frontier; do not append one-off platform URLs
-4. Add Meetup keyword searches if relevant
-5. Don't just fix one source — go holistic across all 5+ platforms
+4. Do not add Meetup back; use Luma, Partiful, Eventbrite, Instagram, newsletters, and first-party calendars
+5. Don't just fix one source — go holistic across the active platforms
 
 ---
 
@@ -547,12 +542,11 @@ feedback. Do not silently drop entries.
   - Spot-curators (`IG_SPOTS_ACCOUNTS`, posts treated as evergreen "🗺 Spot"): `@wherethefuckdowego`, `@thishappensnewyork`, `@newyorkguide`, `@newyorker.eats`, `@tastingny`, `@infatuation`, `@onefinedaynyc`
 
 ### UI preferences
-- **Left sidebar**: removed TopAccounts and ActivityPanel widgets per user request. Sidebar shows only view-toggle, calendar, and search/filters.
+- **Calendar is the homepage**: there is no Feed tab and no free-text search bar. The full Events route remains the expansive chronological index.
 - **Empty placeholders**: when an event has no image, render text-only — DO NOT show empty gray gradient boxes (applied to ActivityPanel past saves, EventModal "More from"/"More like this" strips, GridCard).
-- **"This Weekend" hero**: must NOT be parties/nightclub/drinking-heavy. Filters TO low-key social: brunch, books, runs, art, outdoors, comedy, supper-club, workshops. Excludes `parties` cat, `nightlife` highlight, drinking-text patterns. Saturday + Sunday only (not Friday).
 
 ### Content kinds + structure
-- **Two content kinds**: dated events (most) AND **cool spots** (evergreen, from `IG_SPOTS_ACCOUNTS`). Both render in same For You feed; spots get teal "🗺 Spot" pill, events get date pill.
+- **Two content kinds**: dated events (most) AND **cool spots** (evergreen, from `IG_SPOTS_ACCOUNTS`).
 - **Multi-photo IG carousels matter**: 10-slide roundup posts must produce ~10 events (carousel OCR fan-out runs on saved/tagged/curated/hashtag paths).
 
 ### System goals
@@ -564,7 +558,9 @@ feedback. Do not silently drop entries.
 - **No custom per-source code**. Generalizable solutions only. Examples: bookclubbar.com event URLs are caught by the **generic** `_EVENT_PLATFORM_RE` venue-events pattern (`*/events/<id>`) → discovered_urls → generic OG fallback. No bookclubbar-specific scraper code.
 - **Don't break existing functionality**. Every change additive.
 - **Rethink assumptions**. When something looks broken, audit the filters that may be over-pruning (we hit this with the run-club + stale-prune issue).
-- **Quality bar**: it's the STACK of filters (shell / recap / fragment / phantom / title-spam / late-night / hard-blocks) plus `MIN_SCORE = 0.50`. Don't add a single high threshold — stack specific filters for what's actually noise.
+- **Quality bar**: use the STACK of specific filters (shell / recap / fragment / phantom / title-spam / late-night / hard-blocks). The low score backstop is only for near-noise; do not substitute a single high threshold for precise filtering.
+- **Freshness**: use GitHub Actions aggressively. Luma + Partiful refresh fully at :15/:45, Eventbrite + newsletters at :00/:30, and the 15-minute monitor repairs stale data or a lagging deployment.
+- **Platform breadth**: ingest the full public NYC inventories from Luma and Partiful, including their event graphics; monitor advertised/fetched coverage in CI.
 
 ---
 

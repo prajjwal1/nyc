@@ -25,6 +25,7 @@ export default function CommunityCard({
   onOpen?: () => void;
 }) {
   const [following, setFollowing] = useState(() => followedCommunityIds().includes(community.id));
+  const [imageFailed, setImageFailed] = useState(false);
   const isDiscovery = community.profileStatus === "directory_reference";
   const category = community.categories[0] ? formatLabel(community.categories[0]) : "NYC community";
   const place = community.neighborhoods?.[0] ? formatLabel(community.neighborhoods[0]) : "New York City";
@@ -71,10 +72,10 @@ export default function CommunityCard({
     <article className="group flex min-h-[350px] flex-col overflow-hidden rounded-[1.5rem] border border-[#d4d2ca] bg-[#fbfaf7] shadow-[0_1px_0_rgba(23,58,49,0.03)] transition duration-300 hover:-translate-y-0.5 hover:border-[#b9bbb4] hover:shadow-[0_18px_45px_rgba(34,55,47,0.08)]">
       <div className="relative h-36 overflow-hidden border-b border-[#e1dfd7] bg-[#e7e5dc] sm:h-40">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(173,91,61,0.18),transparent_38%),linear-gradient(135deg,#e5e7df,#efebe3)]" />
-        {community.imageUrl && (
+        {community.imageUrl && !imageFailed && (
           /* Remote community artwork has many hosts; the stable frame prevents layout shift. */
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={community.imageUrl} alt="" loading={priority ? "eager" : "lazy"} className="relative h-full w-full object-cover saturate-[0.78] transition duration-700 group-hover:scale-[1.025] group-hover:saturate-100" />
+          <img src={community.imageUrl} alt="" loading={priority ? "eager" : "lazy"} onError={() => setImageFailed(true)} className="relative h-full w-full object-cover saturate-[0.78] transition duration-700 group-hover:scale-[1.025] group-hover:saturate-100" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-[#102720]/45 via-transparent to-transparent" />
         <div className="absolute left-4 top-4 rounded-full border border-white/60 bg-[#fbfaf7]/92 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#3d514a] shadow-sm backdrop-blur">

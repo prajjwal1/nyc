@@ -39,7 +39,7 @@ export default function Calendar({
 
   const today = new Date();
   const todayStr = format(today, "yyyy-MM-dd");
-  // Don't let the user browse into the past — the feed only shows events from
+  // Don't let the user browse into the past — the calendar only shows events from
   // today onwards, so backward calendar navigation would land on empty months.
   const thisMonthStart = startOfMonth(today);
   const canGoBack = isAfter(currentMonth, thisMonthStart);

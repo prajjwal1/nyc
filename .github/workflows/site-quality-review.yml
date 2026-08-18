@@ -9,7 +9,6 @@ permissions:
   contents: read
   actions: write
   issues: write
-  models: read
 
 concurrency:
   group: site-quality-review
@@ -48,14 +47,11 @@ jobs:
           AUDIT_OUTPUT_DIR: ../audit-output
         run: node scripts/audit-live.mjs
 
-      - name: Reconcile exact rendered feed evidence
+      - name: Reconcile exact rendered calendar evidence
         run: python -m scrapers.site_audit --output-dir audit-output --merge-browser
 
-      - name: Run independent design and feed critics
-        env:
-          GH_MODELS_TOKEN: ${{ github.token }}
+      - name: Record independent critic availability
         run: python -m scrapers.ai_site_critic --audit-dir audit-output
-        continue-on-error: true
 
       - name: Apply bounded remediation
         env:
@@ -91,7 +87,7 @@ jobs:
           age = audit.get("feed", {}).get("ageHours")
           if routes_bad:
               dispatch("deploy.yml")
-          if age is None or age > 2 or audit.get("feed", {}).get("next7Days", 0) < 100:
+          if age is None or age > 2:
               dispatch("quick-scrape.yml")
           if audit.get("gaps", {}).get("sources", {}).get("instagram", 0) < 20:
               dispatch("scrape-priority.yml")

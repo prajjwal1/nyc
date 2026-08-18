@@ -51,16 +51,24 @@ for (const viewport of viewports) {
         const images = [...document.images];
         const showcased = [...document.querySelectorAll("[data-event-id]")].map((node) => ({
           id: node.getAttribute("data-event-id"),
-          section: node.getAttribute("data-feed-section"),
+          section: node.getAttribute("data-calendar-section") || node.getAttribute("data-feed-section"),
           rank: Number(node.getAttribute("data-rank") || 0),
         }));
         return {
           title: document.title,
           bodyTextLength: document.body.innerText.length,
           horizontalOverflow: document.documentElement.scrollWidth > window.innerWidth + 2,
+          searchInputs: document.querySelectorAll('input[type="search"], input[placeholder*="search" i]').length,
           brokenImages: images.filter((image) => image.complete && image.naturalWidth === 0).map((image) => image.currentSrc || image.src).slice(0, 20),
           showcased,
           navLabels: [...document.querySelectorAll("nav a")].map((node) => node.textContent?.trim()),
+          clippedNavLabels: [...document.querySelectorAll("nav a")]
+            .filter((node) => {
+              const rect = node.getBoundingClientRect();
+              return rect.left < 0 || rect.right > window.innerWidth;
+            })
+            .map((node) => node.textContent?.trim()),
+          calendarControls: document.querySelectorAll('button[aria-label^="Previous month"], button[aria-label^="Next month"]').length,
           h1: document.querySelector("h1")?.textContent?.trim() || null,
         };
       });

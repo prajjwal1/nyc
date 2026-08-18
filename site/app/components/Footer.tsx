@@ -26,16 +26,16 @@ export default function Footer({ lastUpdated, totalEvents }: { lastUpdated?: str
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wide text-[#8b918e]">Explore</h4>
             <ul className="mt-3 space-y-2 text-sm">
-              <li><Link href="/" className="text-[#52645e] hover:text-[#173c35] hover:underline">Feed — tonight, weekend, following</Link></li>
+              <li><Link href="/" className="text-[#52645e] hover:text-[#173c35] hover:underline">Calendar — choose a date</Link></li>
               <li><Link href="/communities" className="text-[#52645e] hover:text-[#173c35] hover:underline">Communities you can join</Link></li>
               <li><Link href="/events" className="text-[#52645e] hover:text-[#173c35] hover:underline">Browse every event</Link></li>
               <li><Link href="/saved" className="text-[#52645e] hover:text-[#173c35] hover:underline">Your saved</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wide text-[#8b918e]">About the feed</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wide text-[#8b918e]">About the guide</h4>
             <ul className="mt-3 space-y-1.5 text-xs leading-5 text-[#66716c]">
-              <li>Sources: Instagram, Luma, Eventbrite, Substack, The Skint, Dice, Meetup, museums & more</li>
+              <li>Sources: Instagram, Luma, Eventbrite, Substack, The Skint, Dice, museums & more</li>
               <li>Ranking: cross-source verification, your follow graph, social & proximity signals</li>
               <li>Personalization: 100% localStorage — private to your browser</li>
               {updated && <li>Last scrape: {updated}</li>}

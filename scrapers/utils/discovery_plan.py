@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import os
 import re
+from datetime import date
 from urllib.parse import urlparse
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
@@ -48,6 +49,34 @@ def _fold(value: str) -> str:
     return re.sub(r"[^a-z0-9]", "", (value or "").lower())
 
 
+def _fallback_reason(event: dict) -> str:
+    """Return a specific, user-legible reason for non-conviction picks."""
+    if (event.get("tasteScore") or 0) >= 0.04:
+        return "Similar to events you liked"
+    highlights = set(event.get("highlights") or [])
+    if "meet-people" in highlights:
+        return "Good for meeting people"
+    if "trending" in highlights:
+        return "Trending across NYC"
+    neighborhood = ((event.get("location") or {}).get("neighborhood") or "").strip()
+    if neighborhood.lower() in {"williamsburg", "greenpoint", "bushwick", "ridgewood"}:
+        return f"Nearby in {neighborhood.title()}"
+    sources = event.get("contributingSources") or []
+    if len(sources) >= 2:
+        return f"Confirmed by {len(sources)} sources"
+    try:
+        days = (date.fromisoformat(event.get("date") or "") - date.today()).days
+        if 0 <= days <= 7:
+            return "Happening this week"
+    except ValueError:
+        pass
+    categories = [c for c in (event.get("categories") or []) if c not in {"other", "free"}]
+    if categories:
+        return f"A strong {categories[0]} pick"
+    source = (event.get("source") or "").replace("_", " ").strip()
+    return f"From {source.title()}" if source else "New to the feed"
+
+
 def annotate_event(event: dict, prefs: dict | None = None) -> dict:
     prefs = prefs or preference_snapshot()
     reasons: list[str] = []
@@ -82,12 +111,12 @@ def annotate_event(event: dict, prefs: dict | None = None) -> dict:
 
     planned_personal = event.get("discoveryLane") == "personal"
     if not reasons and planned_personal:
-        reasons.append("Based on your interests")
+        reasons.append(_fallback_reason(event))
     event["discoveryLane"] = "personal" if reasons else "explore"
     if reasons:
         event["recommendationReasons"] = list(dict.fromkeys(reasons))[:3]
     else:
-        event["recommendationReasons"] = ["Exploration pick"]
+        event["recommendationReasons"] = [_fallback_reason(event)]
     return event
 
 

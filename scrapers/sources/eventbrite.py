@@ -78,7 +78,7 @@ def _generated_search_candidates() -> list[tuple[str, str]]:
 def _search_plan() -> list[tuple[str, str]]:
     """Bounded, generated search frontier with category coverage."""
     quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
-    total_limit = 6 if quick else 18
+    total_limit = 8 if quick else 24
     candidates = _generated_search_candidates()
     if quick:
         candidates = [item for item in candidates if item[1] == "personal"] or candidates
@@ -107,7 +107,7 @@ async def scrape() -> list[dict]:
     # Protect learned organizers from broad-search rate limiting. The frontier
     # is rebuilt from harvested links, curated hosts, and prior event yield;
     # no organizer needs to be added to source code.
-    organizer_limit = 4 if quick else 14
+    organizer_limit = 8 if quick else 20
     known_organizers = platform_frontier(
         "eventbrite", kinds={"organizer"}, limit=organizer_limit
     )
@@ -129,7 +129,7 @@ async def scrape() -> list[dict]:
     # Canonical event links harvested from followed accounts/newsletters are
     # higher-signal than anonymous search results and often never rank on a
     # broad Eventbrite page.
-    direct_limit = 3 if quick else 10
+    direct_limit = 5 if quick else 14
     direct_items = platform_frontier("eventbrite", kinds={"event"}, limit=direct_limit)
     for item in direct_items:
         try:
@@ -161,13 +161,13 @@ async def scrape() -> list[dict]:
                 if consecutive_rate_limits >= 2:
                     print("[eventbrite] search circuit open after repeated 429s; preserving organizer lane/carryover")
                     break
-    detail_limit = 0 if quick else 12
+    detail_limit = 0 if quick else 18
     events = await _hydrate_shortlist(events, limit=detail_limit)
 
     # Search/detail results teach the engine new organizers immediately. A
     # small frequency- and preference-ranked promotion lane turns a single
     # matching event into the organizer's complete upcoming calendar.
-    promoted = _promoted_organizers(events, fetched_organizers, limit=2 if quick else 6)
+    promoted = _promoted_organizers(events, fetched_organizers, limit=4 if quick else 8)
     for item in promoted:
         try:
             html = await _fetch_with_backoff(item.url)

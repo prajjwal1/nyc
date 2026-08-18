@@ -2,7 +2,7 @@
 
 The scheduled workflow uses this module before asking an independent model for
 qualitative product criticism. Keeping the facts deterministic makes trends
-comparable and prevents an AI review from declaring a thin or stale feed good.
+comparable and prevents an AI review from declaring a thin or stale catalog good.
 """
 
 from __future__ import annotations
@@ -12,9 +12,11 @@ import json
 import re
 import urllib.error
 import urllib.request
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+
+from scrapers.ranking_audit import evaluate_ranked_feed
 
 
 CAPTION_LIKE = re.compile(
@@ -74,39 +76,21 @@ def _feature_ready(event: dict) -> bool:
 
 
 def _showcase(events: list[dict], today: date, now: datetime) -> list[dict]:
-    """Approximate the unauthenticated home feed's visible inventory.
+    """Approximate the calendar homepage's initially selected day.
 
     Browser instrumentation records the exact rendered IDs. This deterministic
     projection remains useful when Pages itself is unavailable.
     """
-    upcoming = [e for e in events if (e.get("date") or "") >= today.isoformat() and _feature_ready(e)]
-    upcoming.sort(key=lambda e: (e.get("date") or "", -(e.get("score") or 0)))
-    picked: list[dict] = []
-    seen: set[str] = set()
-
-    def take(pool: list[dict], limit: int) -> None:
-        added = 0
-        for event in sorted(pool, key=lambda e: -(e.get("score") or 0)):
-            event_id = str(event.get("id") or "")
-            if event_id and event_id not in seen and added < limit:
-                picked.append(dict(event))
-                seen.add(event_id)
-                added += 1
-
-    today_s = today.isoformat()
-    take([e for e in upcoming if e.get("date") == today_s], 6)
-    recent_cutoff = now - timedelta(hours=72)
-    take([e for e in upcoming if (_parse_time(e.get("firstSeenAt")) or datetime.min.replace(tzinfo=timezone.utc)) >= recent_cutoff], 4)
-    take([e for e in upcoming if e.get("userFollowing") or e.get("userAffinity")], 6)
-    take([e for e in upcoming if e.get("userSaved")], 6)
-
-    by_date: dict[str, list[dict]] = defaultdict(list)
-    for event in upcoming:
-        if event.get("id") not in seen:
-            by_date[event.get("date") or ""].append(event)
-    for event_date in sorted(by_date)[:10]:
-        take(by_date[event_date], 4)
-    return picked
+    del now
+    upcoming = [e for e in events if (e.get("date") or "") >= today.isoformat()]
+    if not upcoming:
+        return []
+    dates = {e.get("date") for e in upcoming if e.get("date")}
+    selected_date = today.isoformat() if today.isoformat() in dates else min(dates)
+    return sorted(
+        (dict(event) for event in upcoming if event.get("date") == selected_date),
+        key=lambda event: -(event.get("score") or 0),
+    )
 
 
 def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | None = None, route_status: dict | None = None) -> dict:
@@ -121,6 +105,7 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
     next_7 = [e for e in upcoming if (e.get("date") or "") < next_7_end]
     feature_ready_upcoming = [e for e in upcoming if _feature_ready(e)]
     showcased = _showcase(events, today, now)
+    ranking = evaluate_ranked_feed(upcoming, top_n=30, today=today.isoformat())
     updated = _parse_time(events_doc.get("lastUpdated"))
     age_hours = round((now - updated).total_seconds() / 3600, 2) if updated else None
 
@@ -168,15 +153,13 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
     failures = []
     warnings = []
     if age_hours is None or age_hours > 2:
-        failures.append("live feed is more than two hours old")
-    if len(next_7) < 100:
-        failures.append("fewer than 100 upcoming events in the next seven days")
+        failures.append("live event data is more than two hours old")
     if len(organizers) < 50:
         warnings.append("fewer than 50 distinct organizers in the next seven days")
     if caption_like or generic:
-        failures.append("caption-like or generic titles leak into the showcased feed")
+        failures.append("caption-like or generic titles leak into the default calendar day")
     if raw_caption_like:
-        warnings.append("caption-like titles remain in the full upcoming dataset but are excluded from the featured feed")
+        warnings.append("caption-like titles remain in the upcoming calendar inventory")
     if detail_quality["startTime"] < .95:
         warnings.append("showcased start-time completeness is below 95%")
     if detail_quality["location"] < .90:
@@ -186,7 +169,15 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
     if detail_quality["image"] < .95:
         warnings.append("showcased image completeness is below 95%")
     if top_source_share > .35:
-        warnings.append("one source supplies more than 35% of the next-seven-day feed")
+        warnings.append("one source supplies more than 35% of the next-seven-day inventory")
+    if ranking["personalRatio"] < .30:
+        warnings.append("fewer than 30% of the top-ranked events carry a personal relevance signal")
+    if ranking["distinctCategories"] < 6:
+        warnings.append("fewer than six categories appear in the top-ranked events")
+    if ranking["topSourceShare"] > .35:
+        warnings.append("one source occupies more than 35% of the top-ranked events")
+    if ranking["maxRepeatedSeries"] > 2:
+        warnings.append("one recurring series appears more than twice in the top-ranked events")
     if len(communities) < 1000:
         warnings.append("community discovery directory contains fewer than 1,000 profiles")
     if event_backed_communities < 150:
@@ -219,6 +210,7 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
             "genericTitles": [{"id": e.get("id"), "title": e.get("title")} for e in generic],
             "detailQuality": detail_quality,
         },
+        "ranking": ranking,
         "communities": {
             "count": len(communities),
             "eventBackedCount": event_backed_communities,
@@ -243,6 +235,7 @@ def audit_payloads(events_doc: dict, communities_doc: dict, *, now: datetime | N
 def markdown_report(audit: dict) -> str:
     feed = audit["feed"]
     showcase = audit["showcase"]
+    ranking = audit["ranking"]
     communities = audit["communities"]
     lines = [
         "# Deployed-site quality review",
@@ -253,8 +246,8 @@ def markdown_report(audit: dict) -> str:
         "",
         "| Signal | Result | Target |",
         "|---|---:|---:|",
-        f"| Live feed age | {feed['ageHours']}h | ≤2h |",
-        f"| Events in next 7 days | {feed['next7Days']} | ≥100 |",
+        f"| Live event-data age | {feed['ageHours']}h | ≤2h |",
+        f"| Events in next 7 days | {feed['next7Days']} | Track breadth; no hard quota |",
         f"| Distinct organizers in next 7 days | {feed['distinctOrganizersNext7Days']} | ≥50 |",
         f"| Community discovery directory | {communities['count']} | ≥1,000 |",
         f"| Independently enriched communities | {communities['eventBackedCount']} | ≥150 |",
@@ -263,12 +256,16 @@ def markdown_report(audit: dict) -> str:
         f"| Showcased events with actionable location | {showcase['detailQuality']['location']:.0%} | ≥90% |",
         f"| Showcased events with useful description | {showcase['detailQuality']['description']:.0%} | ≥85% |",
         f"| Showcased events with image | {showcase['detailQuality']['image']:.0%} | ≥95% |",
+        f"| Personal signal in top recommendations | {ranking['personalRatio']:.0%} | ≥30% |",
+        f"| Categories in top recommendations | {ranking['distinctCategories']} | ≥6 |",
+        f"| Top recommendation source share | {ranking['topSourceShare']:.0%} | ≤35% |",
+        f"| Max repeated series in top recommendations | {ranking['maxRepeatedSeries']} | ≤2 |",
         "",
     ]
     rendered = showcase.get("rendered") or {}
     if rendered:
         lines.extend([
-            "## Exact rendered feed evidence",
+            "## Exact rendered calendar evidence",
             "",
             f"- Unique rendered event IDs: {rendered.get('uniqueEventCount', 0)}",
             f"- Mobile rendered cards: {rendered.get('mobileCount', 0)}",
@@ -278,7 +275,7 @@ def markdown_report(audit: dict) -> str:
     lines.extend(["## Findings", ""])
     findings = [("Failure", item) for item in audit["failures"]] + [("Watch", item) for item in audit["warnings"]]
     lines.extend([f"- **{level}:** {item}" for level, item in findings] or ["- No threshold violations."])
-    lines.extend(["", "## Events currently projected for the feed", ""])
+    lines.extend(["", "## Events projected for the default calendar day", ""])
     lines.extend([f"- `{e['id']}` — **{e['title']}** · {e['date']} · {e['source']} · score {e['score']}" for e in showcase["events"][:20]])
     lines.extend(["", "## Seven-day coverage gaps", "", f"- Weekdays: {audit['gaps']['weekdays']}", f"- Dayparts: {audit['gaps']['dayparts']}", f"- Sources: {audit['gaps']['sources']}", f"- Neighborhoods: {audit['gaps']['neighborhoods']}"])
     return "\n".join(lines) + "\n"
@@ -295,16 +292,43 @@ def merge_browser_evidence(output_dir: Path) -> dict:
         for event in result.get("showcased") or []:
             rendered_events.append({**event, "viewport": result.get("viewport")})
     unique_ids = list(dict.fromkeys(event.get("id") for event in rendered_events if event.get("id")))
+    search_inputs = sum(int(result.get("searchInputs") or 0) for result in browser.get("results", []))
+    clipped_navigation = [
+        label
+        for result in browser.get("results", [])
+        for label in (result.get("clippedNavLabels") or [])
+        if label
+    ]
+    calendar_results = [result for result in home_results if "calendarControls" in result]
+    feed_navigation = [
+        label
+        for result in home_results
+        for label in (result.get("navLabels") or [])
+        if label == "Feed"
+    ]
     audit["showcase"]["rendered"] = {
         "uniqueEventCount": len(unique_ids),
         "eventIds": unique_ids,
         "mobileCount": sum(1 for event in rendered_events if event.get("viewport") == "mobile"),
         "desktopCount": sum(1 for event in rendered_events if event.get("viewport") == "desktop"),
         "events": rendered_events,
+        "searchInputs": search_inputs,
+        "clippedNavigation": list(dict.fromkeys(clipped_navigation)),
     }
     if home_results and not unique_ids:
         audit["failures"].append("deployed home page exposed no instrumented showcased events")
         audit["failures"] = list(dict.fromkeys(audit["failures"]))
+        audit["status"] = "fail"
+    if search_inputs:
+        audit["failures"].append("one or more free-text search inputs remain in the deployed product")
+    if clipped_navigation:
+        audit["failures"].append("primary navigation is clipped at one or more audited viewports")
+    if calendar_results and any(int(result.get("calendarControls") or 0) < 2 for result in calendar_results):
+        audit["failures"].append("calendar controls are missing from the deployed homepage")
+    if feed_navigation:
+        audit["failures"].append("the removed Feed view still appears in primary navigation")
+    audit["failures"] = list(dict.fromkeys(audit["failures"]))
+    if audit["failures"]:
         audit["status"] = "fail"
     audit_path.write_text(json.dumps(audit, indent=2) + "\n")
     (output_dir / "report.md").write_text(markdown_report(audit))

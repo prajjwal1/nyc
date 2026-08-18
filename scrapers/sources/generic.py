@@ -110,9 +110,6 @@ GENERIC_URLS = [
     "https://www.theshed.org/calendar",
     # Bell House comedy/music (works well)
     "https://thebellhouseny.com/calendar/",
-    # Meetup search-result pages (structured JSON-LD listings)
-    "https://www.meetup.com/find/?keywords=&source=EVENTS&location=us--ny--Brooklyn",
-    "https://www.meetup.com/find/events/?source=EVENTS&location=us--ny--New%20York",
     # AllEvents.in — major aggregator with structured JSON-LD per borough.
     # Pagination is real — each page returns ~88-95 unique events.
     # AllEvents.in pagination: `?page=N` returns the same page-1 events.
@@ -150,7 +147,8 @@ GENERIC_URLS = [
     "https://allevents.in/new-york/poetry",
     "https://allevents.in/brooklyn/books",
     # 2026-05-28 self-improve run: close the `bk` topic gap (S1).
-    # Each probed live with yield ≥ 8; capped by SOURCE_VOLUME_CAPS["allevents"]=40.
+    # Each probed live with yield ≥ 8; ranking/display diversity prevents any
+    # single aggregator from dominating the editorial feed.
     "https://allevents.in/brooklyn/free",
     "https://allevents.in/brooklyn/dating",
     "https://allevents.in/brooklyn/comedy",
@@ -159,15 +157,6 @@ GENERIC_URLS = [
     # per `audit_urls.py`. AllEvents likely lacks events under these
     # category slugs at the borough level. The borough-level catch-all
     # /brooklyn pages cover the events that would have appeared.)
-    # Meetup keyword searches: run clubs, yoga, book clubs, coffee meetups
-    "https://www.meetup.com/find/?keywords=run+club&location=us--ny--Brooklyn",
-    "https://www.meetup.com/find/?keywords=run+club&location=us--ny--New%20York",
-    "https://www.meetup.com/find/?keywords=yoga&location=us--ny--Brooklyn",
-    "https://www.meetup.com/find/?keywords=yoga&location=us--ny--New%20York",
-    "https://www.meetup.com/find/?keywords=book+club&location=us--ny--New%20York",
-    "https://www.meetup.com/find/?keywords=coffee&location=us--ny--New%20York",
-    "https://www.meetup.com/topics/running/us/ny/new_york/",
-    "https://www.meetup.com/topics/yoga/us/ny/new_york/",
     "https://allevents.in/new-york/film",
     "https://allevents.in/new-york/literature",
     "https://allevents.in/new-york/sports",
@@ -801,10 +790,18 @@ _LINK_AGGREGATOR_HOSTS = (
 
 _EVENT_PLATFORM_HOSTS_RE = re.compile(
     r"(?:lu\.ma|luma\.com|eventbrite\.com|partiful\.com|posh\.vip|"
-    r"ra\.co|shotgun\.live|withtopography\.com|tixr\.com|dice\.fm|"
-    r"meetup\.com)",
+    r"ra\.co|shotgun\.live|withtopography\.com|tixr\.com|dice\.fm)",
     re.IGNORECASE,
 )
+
+
+def _is_disabled_source_url(url: str) -> bool:
+    """Sources the product has explicitly opted out of fetching."""
+    try:
+        host = (urlparse(url).hostname or "").lower().removeprefix("www.")
+    except Exception:
+        return False
+    return host == "meetup.com" or host.endswith(".meetup.com")
 
 
 def _is_link_aggregator(url: str) -> bool:
@@ -1534,6 +1531,8 @@ def _select_dead_urls_for_retest(health: dict, all_urls: list[str]) -> list[str]
 
 def _add_discovered_url(url: str, source: str) -> None:
     """Add a URL to discovered_urls.json (deduped)."""
+    if _is_disabled_source_url(url):
+        return
     path = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
         "data",
@@ -1597,7 +1596,7 @@ def _load_discovered_urls() -> list[str]:
     urls = []
     for item in items:
         u = _extract(item)
-        if u and isinstance(u, str) and u.startswith("http"):
+        if u and isinstance(u, str) and u.startswith("http") and not _is_disabled_source_url(u):
             urls.append(u)
     return urls
 

@@ -10,7 +10,7 @@ normalize.process(), reporting raw vs survived.
 Usage:
     python -m scrapers.maintenance.audit_source_survival            # default set
     python -m scrapers.maintenance.audit_source_survival --all      # incl. slow
-    python -m scrapers.maintenance.audit_source_survival luma meetup # named only
+    python -m scrapers.maintenance.audit_source_survival luma partiful # named only
 
 Flags:
   ZERO-RAW   : scraper returned nothing live (dead handle / empty / parse break)
@@ -32,7 +32,6 @@ from scrapers import normalize
 # eventbrite, instagram) are gated behind --all.
 DEFAULT_SOURCES = [
     "luma",
-    "meetup",
     "dice",
     "partiful",
     "bookclubbar",

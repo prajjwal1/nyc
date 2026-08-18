@@ -2,6 +2,20 @@ import hashlib
 import os
 import re
 from datetime import date, datetime, timezone
+from urllib.parse import urlparse
+
+
+DISABLED_SOURCES = {"meetup"}
+
+
+def _is_disabled_source_event(event: dict) -> bool:
+    if (event.get("source") or "").lower() in DISABLED_SOURCES:
+        return True
+    try:
+        host = (urlparse(event.get("sourceUrl") or "").hostname or "").lower().removeprefix("www.")
+    except Exception:
+        return False
+    return host == "meetup.com" or host.endswith(".meetup.com")
 
 
 def deduplicate(events: list[dict]) -> list[dict]:
@@ -1596,7 +1610,7 @@ def _is_curated_host(event: dict, floor_context: bool = False) -> bool:
 
     `floor_context=True` (called from the MIN_SCORE floor) excludes hosts
     tagged `"floor_bypass": false` — "boost-only" sources that get the
-    ranking boost but must still clear the normal 0.55 quality floor. Used
+    ranking boost but must still clear the normal score floor. Used
     for venues that book on-taste content AND off-taste late-night (e.g.
     Elsewhere): boost their good shows without force-surfacing a thin
     below-floor one-off (Critic S4, run 2026-07-13-2033).
@@ -1646,12 +1660,13 @@ def _is_curated_host(event: dict, floor_context: bool = False) -> bool:
         return False
 
 
-# Score floors for the final quality gate. DEFAULT applies to generic /
-# aggregator events; the lower CURATED floor applies to events the user has
-# explicitly designated (followed / saved / tagged / affinity, or an IG event
-# from a curated seed account) — the curator's pick is itself quality signal.
-DEFAULT_MIN_SCORE = 0.55
-IG_CURATED_MIN_SCORE = 0.40
+# Broad inventory should be expansive; ranking decides prominence. These low
+# floors remain only as a backstop for records that survived the specific hard
+# filters but still scored as near-noise. The home feed separately applies
+# feature-readiness and diversity rules, so widening the complete Events index
+# does not turn the editorial surface into a raw scraper dump.
+DEFAULT_MIN_SCORE = 0.35
+IG_CURATED_MIN_SCORE = 0.25
 
 
 def _min_score_floor(event: dict, curated_ig: set[str] | None = None) -> float:
@@ -1661,7 +1676,7 @@ def _min_score_floor(event: dict, curated_ig: set[str] | None = None) -> float:
     Explicit high-conviction signals (userFollowing / userSaved / userTagged /
     userAffinity) grant the lower CURATED floor REGARDLESS of source — this is
     what lets non-IG curator calendars the user follows (e.g. lu.ma/philosophy
-    → philosophy.nyc) survive instead of getting filtered at the 0.55 default.
+    → philosophy.nyc) survive even when their listing metadata is sparse.
     IG events from a curated seed account also get the lower floor.
     """
     if (
@@ -1675,7 +1690,7 @@ def _min_score_floor(event: dict, curated_ig: set[str] | None = None) -> float:
     # preference layer: user_curated_sources.json — e.g. a top Eventbrite
     # organizer, a lu.ma curator, a followed venue) get the lower curated
     # floor too, REGARDLESS of source. Generalizes "surface what I vet":
-    # a vetted source's events shouldn't be trimmed by the 0.55 default.
+    # a vetted source's events get a slightly more permissive backstop.
     # floor_context=True honors "floor_bypass": false (boost-only) hosts.
     if _is_curated_host(event, floor_context=True):
         return IG_CURATED_MIN_SCORE
@@ -1714,6 +1729,11 @@ def _is_shell_event(event: dict) -> bool:
     img = (event.get("imageUrl") or "").strip()
     loc = (event.get("location") or {}).get("name", "").strip()
     addr = (event.get("location") or {}).get("address", "").strip()
+    # Luma's paginated NYC catalog deliberately omits descriptions but gives
+    # us a real event graphic, canonical URL, host and location. Keep those
+    # useful listings without hammering every detail page and getting 429ed.
+    if event.get("catalogSource") == "luma_nyc" and img and (loc or addr):
+        return False
     # Stricter: image required for listing-aggregator sources.
     if not img and event.get("source") in _IMAGE_REQUIRED_SOURCES:
         return True
@@ -1961,7 +1981,11 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     from .quality import is_blocked
     from .utils.event_parser import detect_recurring_weekday, expand_recurring_event
 
-    events = [ev for ev in events if ev.get("title") and ev.get("date")]
+    events = [
+        ev
+        for ev in events
+        if ev.get("title") and ev.get("date") and not _is_disabled_source_event(ev)
+    ]
     events = filter_future(events)
 
     # Fill missing startTime from body text ("doors at 7pm", "show starts at
@@ -2231,23 +2255,16 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
 
     events = rank_events(events)
 
-    # Drop low-score events — every event must justify its position.
-    # Quality bar — when combined with all the per-source filters
+    # Drop only near-noise scores. Specific structural filters do the real
+    # admission work; score primarily controls ordering.
+    # This backstop is combined with all the per-source filters
     # (shell-event filter, recap rejection, fragment-title filter,
     # recurring-spam collapse, far-future filter, late-night filter,
     # hard-blocks for nightclubs/professionals/language-mixers), this
     # is the safety net for what slipped through with weak signal.
     #
-    # Per-source floors: Instagram from CURATED or AFFINITY accounts gets
-    # a lower bar (0.20) because the user has explicitly designated IG
-    # as the primary discovery channel — the curator's pick is itself
-    # quality signal. Random hashtag-discovered or unknown-account IG
-    # events still meet the default 0.30 floor.
-    # User explicitly: "it's okay to see less events than to see events
-    # which are not useful". Iter 7 raises floors again now that the
-    # interest_profile_boost (+0.15 for signal accounts) compensates for
-    # events the user genuinely cares about. Marginal-quality long tail
-    # in 0.45-0.55 was 133 events; trimming that.
+    # Curated/followed events get the lower floor because source conviction is
+    # useful evidence even when a listing is less complete.
     from .config import IG_ACCOUNTS
 
     _curated_ig = {a.lower() for a in IG_ACCOUNTS}
@@ -2268,35 +2285,6 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
         if ig_kept_curated:
             msg += f" (kept {ig_kept_curated} IG curated events at lower {IG_CURATED_MIN_SCORE} floor)"
         print(msg)
-
-    # Per-source volume caps. Aggregator sources (allevents, songkick,
-    # comedy clubs) ship hundreds of events that crowd out IG and other
-    # user-relevant content. Keep top-N by score per capped source so
-    # the For You feed has real diversity.
-    from .config import SOURCE_VOLUME_CAPS
-
-    if SOURCE_VOLUME_CAPS:
-        by_source: dict[str, list] = {}
-        for ev in events:
-            by_source.setdefault(ev.get("source", ""), []).append(ev)
-        capped: list[dict] = []
-        cap_drops = 0
-        for src, src_events in by_source.items():
-            cap = SOURCE_VOLUME_CAPS.get(src)
-            if cap is None or len(src_events) <= cap:
-                capped.extend(src_events)
-                continue
-            # Reserve 30% for adjacent discovery instead of allowing a cap to
-            # become a pure popularity contest. Strong matches retain 70%.
-            from .utils.discovery_plan import select_mixed
-
-            capped.extend(select_mixed(src_events, cap))
-            cap_drops += len(src_events) - cap
-        if cap_drops:
-            print(
-                f"[normalize] Volume-capped {cap_drops} events from heavy aggregator sources"
-            )
-        events = capped
 
     events = sort_by_date(events)
     return events

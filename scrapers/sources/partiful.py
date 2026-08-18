@@ -41,6 +41,7 @@ _MAX_DISCOVERED = 60  # bound the per-run individual-page fetches
 _NYC_TZS = {"America/New_York", ""}
 _DISCOVER_API = "https://api.partiful.com"
 _DISCOVER_BOOTSTRAP_TAG = "DISCOVER_HOME"
+_LAST_CATALOG_HEALTH: dict = {}
 
 _HEADER_VARIANTS = [
     {
@@ -61,9 +62,8 @@ async def scrape() -> list[dict]:
     explore, discover_tags = await _scrape_explore_with_tags()
     _merge(events, seen, explore)
 
-    # The server-rendered page contains only ~63 of the 147 events Partiful
-    # reports for NYC. Full sweeps union the same public, bounded category and
-    # borough feeds used by the Explore UI (currently ~111 unique events).
+    # The server-rendered page and API can expose different slices as Partiful
+    # evolves its Explore UI. Full sweeps union both public, bounded views.
     # Quick runs retain the HTML path to stay comfortably inside CI budgets.
     if not os.environ.get("IG_SAVED_ONLY", "0") == "1":
         api_events = await _scrape_discover_api(discover_tags)
@@ -84,8 +84,17 @@ async def scrape() -> list[dict]:
 
     detail_limit = 0 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else 100
     events = await _hydrate_public_details(events, limit=detail_limit)
+    global _LAST_CATALOG_HEALTH
+    _LAST_CATALOG_HEALTH = {
+        "fetched": len(events),
+        "missingImages": sum(not event.get("imageUrl") for event in events),
+    }
     print(f"[partiful] {len(events)} NYC events")
     return events
+
+
+def catalog_health() -> dict:
+    return dict(_LAST_CATALOG_HEALTH)
 
 
 def _discovered_partiful_urls() -> list[str]:

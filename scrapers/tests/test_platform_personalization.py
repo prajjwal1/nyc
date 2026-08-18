@@ -1,6 +1,6 @@
 import json
 
-from scrapers.sources import eventbrite, instagram, luma
+from scrapers.sources import eventbrite, generic, instagram, luma
 from scrapers.normalize import _is_distinct_schedule_source
 from scrapers.instagram_browser_worker import (
     _account_plan, _caption_from_og, _merge_snapshot_posts, _sanitize_posts,
@@ -27,6 +27,66 @@ def test_luma_no_longer_fans_out_fake_category_routes():
     assert not hasattr(luma, "LUMA_CURATOR_PAGES")
 
 
+def test_luma_fast_refresh_is_catalog_first_and_bounded(monkeypatch):
+    monkeypatch.setenv("PLATFORM_FAST_REFRESH", "1")
+    plan = luma._calendar_plan()
+    assert plan[0].kind == "discover"
+    assert len(plan) <= 5
+    assert all(item.kind != "event" for item in plan)
+
+
+def test_luma_city_api_row_keeps_graphic_canonical_url_and_host():
+    row = {
+        "api_id": "evt-1",
+        "event": {
+            "name": "Open Studio",
+            "url": "open-studio-nyc",
+            "start_at": "2026-08-22T23:00:00.000Z",
+            "end_at": "2026-08-23T01:00:00.000Z",
+            "cover_url": "https://images.lumacdn.com/open-studio.jpg",
+            "geo_address_info": {
+                "city": "Brooklyn",
+                "address": "Pioneer Works",
+                "full_address": "159 Pioneer St, Brooklyn, NY 11231",
+            },
+        },
+        "calendar": {"api_id": "cal-1", "name": "Arts NYC", "slug": "artsnyc"},
+        "hosts": [{"api_id": "usr-1", "name": "Arts NYC", "instagram_handle": "artsnyc"}],
+        "ticket_info": {"is_free": True},
+        "guest_count": 42,
+    }
+
+    event = luma._parse_luma_discover_entry(row)
+
+    assert event["sourceUrl"] == "https://luma.com/open-studio-nyc"
+    assert event["imageUrl"] == "https://images.lumacdn.com/open-studio.jpg"
+    assert event["organizerUrl"] == "https://luma.com/artsnyc"
+    assert event["organizerRefs"][0]["handle"] == "artsnyc"
+    assert event["attendingCount"] == 42
+    assert event["catalogSource"] == "luma_nyc"
+
+
+def test_luma_city_bootstrap_reads_advertised_inventory():
+    html = """
+    <script id="__NEXT_DATA__" type="application/json">
+      {"props":{"pageProps":{"initialData":{"data":{"place":{"api_id":"disc-nyc","event_count":84}}}}}}
+    </script>
+    """
+    assert luma._luma_discover_bootstrap(html) == ("disc-nyc", 84)
+
+
+def test_generic_crawler_never_fetches_meetup(tmp_path, monkeypatch):
+    path = tmp_path / "discovered_urls.json"
+    path.write_text(json.dumps([
+        {"url": "https://www.meetup.com/group/events/1"},
+        {"url": "https://example.com/events"},
+    ]))
+    monkeypatch.setattr(generic, "DISCOVERED_URLS_PATH", str(path))
+
+    assert all("meetup.com" not in url for url in generic.GENERIC_URLS)
+    assert generic._load_discovered_urls() == ["https://example.com/events"]
+
+
 def test_eventbrite_search_plan_is_bounded(monkeypatch):
     topics = list(eventbrite._TOPIC_SEARCH_SLUG)
     monkeypatch.setattr(eventbrite, "ranked_topics", lambda: [
@@ -34,8 +94,8 @@ def test_eventbrite_search_plan_is_bounded(monkeypatch):
         for index, topic in enumerate(topics)
     ])
     plan = eventbrite._search_plan()
-    assert len(plan) == 18
-    assert sum(lane == "personal" for _, lane in plan) == 12
+    assert len(plan) == 24
+    assert sum(lane == "personal" for _, lane in plan) == 18
     assert sum(lane == "explore" for _, lane in plan) == 6
     # Breadth first: all twelve canonical categories appear before any
     # Brooklyn deepening, including the previously missed health + film lanes.
@@ -44,7 +104,8 @@ def test_eventbrite_search_plan_is_bounded(monkeypatch):
     assert any("health-and-wellness" in url for url in first_pass)
     assert any("film-and-media" in url for url in first_pass)
     assert any("books" in url for url in first_pass)
-    assert all("?page=2" in url for url, _lane in plan[12:])
+    assert all("?page=2" in url for url, _lane in plan[12:18])
+    assert all("ny--brooklyn" in url for url, _lane in plan[18:])
 
 
 def test_eventbrite_extracts_organizer():

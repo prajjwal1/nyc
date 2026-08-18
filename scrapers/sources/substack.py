@@ -22,8 +22,7 @@ _EVENT_PLATFORM_RE = re.compile(
     r"ra\.co/(?:events|promoters)/[^\s)>\]\"'<]+|"
     r"dice\.fm/event/[^\s)>\]\"'<]+|"
     r"shotgun\.live/(?:[a-z]{2}/)?events/[^\s)>\]\"'<]+|"
-    r"tixr\.com/(?:groups|e)/[^\s)>\]\"'<]+|"
-    r"meetup\.com/[^\s)>\]\"'<]+/events/[^\s)>\]\"'<]+"
+    r"tixr\.com/(?:groups|e)/[^\s)>\]\"'<]+"
     r")",
     re.IGNORECASE,
 )

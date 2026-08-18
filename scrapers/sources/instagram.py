@@ -40,6 +40,7 @@ except ImportError:
 _AFFINITY_ACCOUNTS_CACHE: set[str] = set()
 _FOLLOWING_ACCOUNTS_CACHE: set[str] = set()
 _ACCOUNT_CURSORS_CACHE: dict = {}
+_LAST_RUN_STATS: dict = {}
 
 # Number of most-recent posts to re-process on EVERY scrape, regardless of
 # whether their shortcode matches the stored cursor. Picks up caption edits
@@ -47,6 +48,29 @@ _ACCOUNT_CURSORS_CACHE: dict = {}
 # growth (velocity), and accumulating comment attendance signals. 3 strikes
 # the balance between freshness and rate-limit cost.
 _MIN_FRESH_REFETCH = 3
+
+
+def get_last_run_stats() -> dict:
+    return dict(_LAST_RUN_STATS)
+
+
+def _select_priority_cohort(
+    protected: list[str],
+    *,
+    always_limit: int,
+    rotating_limit: int,
+    slot: int,
+) -> list[str]:
+    """Keep the best accounts every run and rotate through the remainder."""
+    always = protected[:max(0, always_limit)]
+    remaining = protected[len(always):]
+    if rotating_limit <= 0 or not remaining:
+        return always
+    if len(remaining) <= rotating_limit:
+        return always + remaining
+    start = (max(0, slot) * rotating_limit) % len(remaining)
+    rotated = remaining[start:] + remaining[:start]
+    return always + rotated[:rotating_limit]
 
 _BROWSER_SNAPSHOT_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
@@ -232,7 +256,16 @@ def scrape() -> list[dict]:
     1. User's SAVED posts — highest signal (user explicitly bookmarked these)
     2. Curated IG_ACCOUNTS + BFS-discovered accounts
     """
-    global _AFFINITY_ACCOUNTS_CACHE, _FOLLOWING_ACCOUNTS_CACHE, _ACCOUNT_CURSORS_CACHE, _ACCOUNT_QUALITY_CACHE
+    global _AFFINITY_ACCOUNTS_CACHE, _FOLLOWING_ACCOUNTS_CACHE, _ACCOUNT_CURSORS_CACHE, _ACCOUNT_QUALITY_CACHE, _LAST_RUN_STATS
+    run_started = time.time()
+    _LAST_RUN_STATS = {
+        "attemptedAccounts": 0,
+        "completedAccounts": 0,
+        "productiveAccounts": 0,
+        "selectedAccounts": 0,
+        "deadlineHit": False,
+        "protectedOnly": os.environ.get("IG_PROTECTED_ONLY", "0") == "1",
+    }
     _AFFINITY_ACCOUNTS_CACHE = _load_affinity_accounts()
     _FOLLOWING_ACCOUNTS_CACHE = _load_following_accounts()
     _ACCOUNT_CURSORS_CACHE = _load_account_cursors()
@@ -242,7 +275,9 @@ def scrape() -> list[dict]:
     browser_events = _scrape_browser_snapshot()
     loader = _get_authenticated_loader()
     if loader is None:
+        _LAST_RUN_STATS["sessionAvailable"] = False
         return browser_events
+    _LAST_RUN_STATS["sessionAvailable"] = True
 
     all_events: list[dict] = list(browser_events)
 
@@ -373,7 +408,7 @@ def scrape() -> list[dict]:
     # we have so the rest of the pipeline (Eventbrite, Substack, etc.) can run.
     import time as _time
     ig_budget_seconds = float(os.environ.get("IG_TIME_BUDGET_SECONDS", "2400"))  # 40 min default
-    started = _time.time()
+    started = run_started
 
     # Priority order so the most relevant accounts are guaranteed scraped
     # within the time budget. Tier (lower = higher priority):
@@ -434,11 +469,27 @@ def scrape() -> list[dict]:
     # a tight schedule without competing with the full sweep.
     protected_only = os.environ.get("IG_PROTECTED_ONLY", "0") == "1"
     if protected_only:
+        always_limit = int(os.environ.get("IG_PRIORITY_ALWAYS_ACCOUNTS", "12"))
+        rotating_limit = int(os.environ.get("IG_PRIORITY_ROTATING_ACCOUNTS", "18"))
+        cohort_slot = int(os.environ.get("IG_PRIORITY_COHORT_SLOT", str(int(_time.time() // 3600))))
+        before = len(protected)
+        protected = _select_priority_cohort(
+            protected,
+            always_limit=always_limit,
+            rotating_limit=rotating_limit,
+            slot=cohort_slot,
+        )
         budgeted = []
+        print(
+            f"[instagram] Priority cohort selected {len(protected)}/{before} accounts "
+            f"({min(always_limit, len(protected))} always + rotating cohort)"
+        )
+    _LAST_RUN_STATS["selectedAccounts"] = len(protected) + len(budgeted)
     print(f"[instagram] {len(protected)} protected + {len(budgeted)} budgeted accounts"
           + (" [PROTECTED_ONLY]" if protected_only else ""))
 
     def _scrape_one_account(account: str) -> None:
+        _LAST_RUN_STATS["attemptedAccounts"] += 1
         try:
             posts = _fetch_posts(loader, account)
             account_event_count = 0
@@ -463,11 +514,18 @@ def scrape() -> list[dict]:
                         _record_tagged_user_discovery(account, tagged, is_author_affinity)
             if posts:
                 _record_account_activity(account, len(posts), account_event_count)
+            _LAST_RUN_STATS["completedAccounts"] += 1
+            if account_event_count:
+                _LAST_RUN_STATS["productiveAccounts"] += 1
         except Exception as exc:
             print(f"[instagram] Failed @{account}: {exc}")
 
-    # Pass 1: protected (no budget check)
+    # Pass 1: highest-value accounts first, while still honoring the deadline.
     for idx, account in enumerate(protected):
+        if _time.time() - started >= ig_budget_seconds:
+            _LAST_RUN_STATS["deadlineHit"] = True
+            print(f"[instagram] Budget exhausted during protected cohort after {idx} accounts")
+            break
         _scrape_one_account(account)
         if idx < len(protected) - 1:
             _time.sleep(IG_SLEEP_BETWEEN_ACCOUNTS)
@@ -476,6 +534,7 @@ def scrape() -> list[dict]:
     for idx, account in enumerate(budgeted):
         elapsed = _time.time() - started
         if elapsed > ig_budget_seconds:
+            _LAST_RUN_STATS["deadlineHit"] = True
             print(f"[instagram] Budget exhausted after {len(protected)} protected + {idx} budgeted accounts ({elapsed:.0f}s)")
             break
         _scrape_one_account(account)
@@ -581,6 +640,8 @@ def scrape() -> list[dict]:
     if _ACCOUNT_QUALITY_CACHE:
         _save_account_quality(_ACCOUNT_QUALITY_CACHE)
 
+    _LAST_RUN_STATS["elapsedSeconds"] = round(_time.time() - started, 1)
+    _LAST_RUN_STATS["eventsFound"] = len(all_events)
     print(f"[instagram] Scraped {len(all_events)} events from {len(all_accounts)} accounts + saved")
     return all_events
 

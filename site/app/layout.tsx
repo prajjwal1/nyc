@@ -86,11 +86,6 @@ export default function RootLayout({
                   url: SITE_URL,
                   name: "NYC Events",
                   description: SITE_DESCRIPTION,
-                  potentialAction: {
-                    "@type": "SearchAction",
-                    target: `${SITE_URL}/?q={search_term_string}`,
-                    "query-input": "required name=search_term_string",
-                  },
                 },
                 {
                   "@type": "Organization",

@@ -35,3 +35,16 @@ def test_organizer_match_produces_explanation():
     discovery_plan.annotate_event(event, prefs)
     assert event["discoveryLane"] == "personal"
     assert event["recommendationReasons"][0] == "From Reading Rhythms"
+
+
+def test_exploration_reason_is_specific():
+    prefs = {
+        "categories": {}, "neg_categories": {}, "accounts": {},
+        "hosts": {}, "topics": {}, "signal_accounts": set(),
+        "curated_hosts": set(), "excluded_accounts": set(), "excluded_hosts": set(),
+    }
+    event = _event(1, .8, ["art"])
+    event["location"] = {"neighborhood": "Bushwick"}
+    discovery_plan.annotate_event(event, prefs)
+    assert event["discoveryLane"] == "explore"
+    assert event["recommendationReasons"] == ["Nearby in Bushwick"]

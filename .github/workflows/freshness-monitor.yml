@@ -1,17 +1,13 @@
 name: Freshness Monitor
 
-# Every 15 min, check whether the live events.json is stale.
-# If it's > 90 minutes old, dispatch a quick scrape.
-# This guarantees the live site never goes more than ~2 hours stale.
-
 on:
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:
-  contents: write
-  actions: write  # to dispatch other workflows
+  contents: read
+  actions: write
 
 concurrency:
   group: freshness-monitor
@@ -26,49 +22,83 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Check freshness and dispatch if stale
+      - name: Compare repository and deployed freshness
+        id: freshness
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LIVE_EVENTS_URL: https://prajjwal1.github.io/nyc/events.json
         run: |
-          python3 - <<'PY'
-          import json, os, sys, subprocess
+          python - <<'PY'
+          import json, os, time, urllib.request
           from datetime import datetime, timezone
-          path = "data/events.json"
-          if not os.path.isfile(path):
-            print("events.json missing — needs scrape")
-            sys.exit(0)
-          with open(path) as f:
-            d = json.load(f)
-          ts = d.get("lastUpdated", "")
-          if not ts:
-            print("no lastUpdated — needs scrape")
-            sys.exit(0)
-          try:
-            t = datetime.fromisoformat(ts.replace("Z", "+00:00"))
-            now = datetime.now(t.tzinfo) if t.tzinfo else datetime.now()
-            age_min = (now - t).total_seconds() / 60
-            print(f"events.json age: {age_min:.0f} min")
-            if age_min > 90:
-              print("STALE — dispatching quick-scrape")
-              # Use the GH_TOKEN to trigger quick-scrape.yml
-              import urllib.request, json as _json
-              req = urllib.request.Request(
-                "https://api.github.com/repos/${{ github.repository }}/actions/workflows/quick-scrape.yml/dispatches",
-                method="POST",
-                data=_json.dumps({"ref": "main"}).encode(),
-                headers={
-                  "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
-                  "Accept": "application/vnd.github+json",
-                  "Content-Type": "application/json",
-                },
-              )
+
+          def parse(value):
+              if not value:
+                  return None
               try:
-                urllib.request.urlopen(req, timeout=10)
-                print("quick-scrape dispatched")
-              except Exception as e:
-                print(f"dispatch failed: {e}")
-            else:
-              print("fresh enough")
-          except Exception as e:
-            print(f"parse error: {e}")
+                  parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+                  return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
+              except ValueError:
+                  return None
+
+          try:
+              repo = json.load(open("data/events.json"))
+          except Exception as exc:
+              print(f"repository payload unavailable: {exc}")
+              repo = {}
+          try:
+              request = urllib.request.Request(
+                  f"{os.environ['LIVE_EVENTS_URL']}?freshness={int(time.time())}",
+                  headers={"Cache-Control": "no-cache", "User-Agent": "nyc-events-freshness-monitor"},
+              )
+              with urllib.request.urlopen(request, timeout=20) as response:
+                  live = json.load(response)
+          except Exception as exc:
+              print(f"deployed payload unavailable: {exc}")
+              live = {}
+
+          now = datetime.now(timezone.utc)
+          repo_time = parse(repo.get("lastUpdated"))
+          live_time = parse(live.get("lastUpdated"))
+          repo_age = (now - repo_time).total_seconds() / 60 if repo_time else None
+          live_age = (now - live_time).total_seconds() / 60 if live_time else None
+          print(f"repository age: {repo_age:.1f} min" if repo_age is not None else "repository timestamp missing")
+          print(f"deployed age: {live_age:.1f} min" if live_age is not None else "deployed timestamp missing")
+
+          catalogs = (repo.get("ingestionStats") or {}).get("platformCatalogs") or {}
+          luma = catalogs.get("luma") or {}
+          partiful = catalogs.get("partiful") or {}
+          platform_bad = (
+              int(luma.get("fetched") or 0) == 0
+              or int(partiful.get("fetched") or 0) == 0
+              or (luma.get("advertised") and float(luma.get("coverage") or 0) < 0.8)
+          )
+          scrape_needed = repo_age is None or repo_age > 45
+          deploy_needed = live_age is None or live_age > 60 or (
+              repo_time is not None and (live_time is None or live_time < repo_time)
+          )
+          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
+              output.write(f"scrape_needed={'true' if scrape_needed else 'false'}\n")
+              output.write(f"platform_needed={'true' if scrape_needed or platform_bad else 'false'}\n")
+              output.write(f"deploy_needed={'true' if deploy_needed else 'false'}\n")
           PY
+
+      - name: Dispatch recovery workflows without duplicate runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SCRAPE_NEEDED: ${{ steps.freshness.outputs.scrape_needed }}
+          PLATFORM_NEEDED: ${{ steps.freshness.outputs.platform_needed }}
+          DEPLOY_NEEDED: ${{ steps.freshness.outputs.deploy_needed }}
+        run: |
+          dispatch_if_idle() {
+            workflow="$1"
+            active="$(gh run list --workflow "$workflow" --limit 10 --json status --jq '[.[] | select(.status == "queued" or .status == "in_progress" or .status == "waiting" or .status == "pending")] | length')"
+            if [ "$active" = "0" ]; then
+              gh workflow run "$workflow" --ref main
+              echo "dispatched $workflow"
+            else
+              echo "$workflow already active"
+            fi
+          }
+          if [ "$SCRAPE_NEEDED" = "true" ]; then dispatch_if_idle quick-scrape.yml; fi
+          if [ "$PLATFORM_NEEDED" = "true" ]; then dispatch_if_idle platform-refresh.yml; fi
+          if [ "$DEPLOY_NEEDED" = "true" ]; then dispatch_if_idle deploy.yml; fi

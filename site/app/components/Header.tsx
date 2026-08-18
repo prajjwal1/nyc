@@ -1,16 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  hasTasteSignal,
-  getStoredToken,
-  setStoredToken,
-  syncTasteToRepo,
-  downloadTasteSnapshot,
-} from "../lib/tasteExport";
 
 interface HeaderProps {
   totalEvents: number;
+  title?: string;
   thisWeekCount?: number;
   lastUpdated?: string;
   newSinceLastVisit?: number;
@@ -18,49 +12,16 @@ interface HeaderProps {
 
 export default function Header({
   totalEvents,
+  title = "What's happening in NYC",
   thisWeekCount,
   lastUpdated,
   newSinceLastVisit,
 }: HeaderProps) {
   const [copied, setCopied] = useState(false);
-  // Taste sync (WS1): only shown once there's engagement to sync. Reads
-  // localStorage, so gate behind mount to avoid SSR hydration mismatch.
-  const [showSync, setShowSync] = useState(false);
-  const [syncMsg, setSyncMsg] = useState<string | null>(null);
-  const [syncing, setSyncing] = useState(false);
   const [currentTime, setCurrentTime] = useState<number | null>(null);
   useEffect(() => {
-    queueMicrotask(() => {
-      setShowSync(hasTasteSignal());
-      setCurrentTime(Date.now());
-    });
+    queueMicrotask(() => setCurrentTime(Date.now()));
   }, []);
-  const flash = (m: string) => {
-    setSyncMsg(m);
-    setTimeout(() => setSyncMsg(null), 5000);
-  };
-  const handleSync = async () => {
-    let token = getStoredToken();
-    if (!token) {
-      const entered = window.prompt(
-        "Sync your taste so the scraper learns from what you save/hide.\n\n" +
-          "Paste a GitHub fine-grained token (Contents: read+write on prajjwal1/nyc).\n" +
-          "Leave blank to download the file and add it manually instead.",
-      );
-      if (!entered || !entered.trim()) {
-        downloadTasteSnapshot();
-        flash("Downloaded — add to scrapers/data/user_engagement.json");
-        return;
-      }
-      token = entered.trim();
-      setStoredToken(token);
-    }
-    setSyncing(true);
-    setSyncMsg("Syncing…");
-    const res = await syncTasteToRepo(token);
-    setSyncing(false);
-    flash(res.message);
-  };
   const handleShare = async () => {
     if (typeof window === "undefined") return;
     const url = window.location.href;
@@ -87,27 +48,27 @@ export default function Header({
     : null;
   // Iter 105: surface staleness as a color cue so the user knows when
   // they're looking at old data (the IG-session-refresh bottleneck has
-  // left feeds stale before). gray = fresh (<8h), amber = stale (8-48h),
-  // red = very stale (>48h).
+  // left event data stale before). With quarter-hour CI monitoring, data is
+  // fresh under an hour, delayed from one to two hours, and stale after two.
   const ageHours = lastUpdated && currentTime != null
     ? (currentTime - new Date(lastUpdated).getTime()) / 3_600_000
     : null;
   const updatedColorClass =
     ageHours == null
       ? "text-gray-400"
-      : ageHours < 8
+      : ageHours < 1
       ? "text-gray-400"
-      : ageHours < 48
+      : ageHours < 2
       ? "text-amber-600"
       : "text-rose-600 font-semibold";
   const updatedTooltip =
     ageHours == null
       ? undefined
-      : ageHours < 8
+      : ageHours < 1
       ? `${ageHours.toFixed(1)}h ago`
-      : ageHours < 48
-      ? `${ageHours.toFixed(1)}h ago — feed is getting stale; the scraper may be blocked`
-      : `${(ageHours / 24).toFixed(1)} days ago — the scraper hasn't run successfully. IG session likely expired.`;
+      : ageHours < 2
+      ? `${ageHours.toFixed(1)}h ago — event data is getting stale; the scraper may be blocked`
+      : `${ageHours.toFixed(1)}h ago — automated refresh or deployment is delayed.`;
 
   return (
     <header>
@@ -115,7 +76,7 @@ export default function Header({
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
             <h1 className="font-editorial text-[30px] font-bold leading-[1.08] tracking-[-0.025em] text-[#173c35] sm:text-[34px]">
-              What&apos;s happening in NYC
+              {title}
             </h1>
             <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#6b7570]">
               {thisWeekCount !== undefined && thisWeekCount > 0 ? (
@@ -131,7 +92,7 @@ export default function Header({
               {updatedStr && (
                 <span className={`text-[11px] ${updatedColorClass}`} title={updatedTooltip}>
                   Updated {updatedStr}
-                  {ageHours != null && ageHours >= 48 && <span className="ml-1">⚠ stale</span>}
+                  {ageHours != null && ageHours >= 2 && <span className="ml-1">⚠ stale</span>}
                 </span>
               )}
             </div>
@@ -145,25 +106,6 @@ export default function Header({
             ) : null}
           </div>
           <div className="flex items-center gap-2 sm:justify-end">
-            {syncMsg && (
-              <span className="max-w-[220px] truncate text-[11px] text-[#5d6964]" title={syncMsg}>
-                {syncMsg}
-              </span>
-            )}
-            {showSync && (
-              <button
-                onClick={handleSync}
-                disabled={syncing}
-                className="inline-flex min-h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium text-[#5d6964] hover:bg-white/70 hover:text-[#173c35] disabled:opacity-50"
-                title="Sync your saves/hides so the scraper learns your taste"
-              >
-                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-                {syncing ? "Syncing…" : "Sync taste"}
-              </button>
-            )}
             <button
               onClick={handleShare}
               className="inline-flex min-h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium text-[#5d6964] hover:bg-white/70 hover:text-[#173c35]"

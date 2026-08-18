@@ -22,11 +22,29 @@ from scrapers.normalize import (
     _dedup_fuzzy_title,
     _dedup_same_account_recurring,
     _is_distinct_schedule_source,
+    _is_disabled_source_event,
     _is_shell_event,
     _min_score_floor,
     _strip_outdoors_indoor_arena,
     deduplicate,
 )
+
+
+def test_meetup_is_disabled_by_source_or_url():
+    assert _is_disabled_source_event({"source": "meetup", "sourceUrl": "https://example.com/event"})
+    assert _is_disabled_source_event({"source": "generic", "sourceUrl": "https://www.meetup.com/group/events/1"})
+    assert not _is_disabled_source_event({"source": "partiful", "sourceUrl": "https://partiful.com/e/1"})
+
+
+def test_image_backed_luma_city_catalog_event_is_not_a_shell():
+    assert not _is_shell_event({
+        "source": "luma",
+        "catalogSource": "luma_nyc",
+        "description": "",
+        "imageUrl": "https://images.lumacdn.com/event.jpg",
+        "location": {"name": "Williamsburg", "address": "Brooklyn, NY"},
+    })
+
 # ---------------------------------------------------------------------------
 # Curated-source survival — regression guard for the lu.ma/philosophy bug:
 # a dynamically learned curator calendar whose description-less events were
@@ -74,11 +92,15 @@ class TestCuratedSourceSurvival:
 # ---------------------------------------------------------------------------
 # Score-floor — followed/curated events get the lower floor REGARDLESS of
 # source (the 2nd half of the philosophy bug: followed lu.ma events sat at
-# the 0.55 default and were filtered despite being followed).
+# the default and were filtered despite being followed).
 # ---------------------------------------------------------------------------
 
 
 class TestMinScoreFloor:
+    def test_expansive_inventory_uses_low_backstops(self):
+        assert DEFAULT_MIN_SCORE == 0.35
+        assert IG_CURATED_MIN_SCORE == 0.25
+
     def test_followed_non_ig_event_gets_curated_floor(self):
         ev = {"source": "luma", "userFollowing": True}
         assert _min_score_floor(ev, set()) == IG_CURATED_MIN_SCORE

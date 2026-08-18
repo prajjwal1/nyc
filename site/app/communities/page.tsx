@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CommunityCard from "../components/CommunityCard";
 import {
   COMMUNITY_FOLLOW_EVENT,
@@ -26,29 +26,6 @@ function timeBand(value?: string) {
   return hour < 12 ? "morning" : hour < 17 ? "afternoon" : "evening";
 }
 
-function matchesPhrase(community: Community, query: string) {
-  const tokens = query.toLowerCase().match(/[a-z0-9]+/g) || [];
-  if (!tokens.length) return true;
-  const text = [
-    community.name,
-    community.tagline,
-    community.description,
-    ...community.categories,
-    ...(community.tags || []),
-    ...(community.neighborhoods || []),
-  ].join(" ").toLowerCase();
-  const days = (community.schedule?.typicalDays || []).map((day) => day.toLowerCase());
-  const band = timeBand(community.schedule?.typicalTime);
-  return tokens.every((token) => {
-    if (["near", "in", "on", "at", "the", "nyc", "community", "club"].includes(token)) return true;
-    if (["beginner", "newcomer", "first", "solo"].includes(token)) return !!community.newcomerFriendly;
-    if (BANDS.includes(token)) return band === token;
-    const matchingDay = DAYS.find((day) => day.toLowerCase().startsWith(token.slice(0, 3)));
-    if (matchingDay) return days.some((day) => day.startsWith(matchingDay.toLowerCase().slice(0, 3)));
-    return text.includes(token);
-  });
-}
-
 function isEventBacked(community: Community) {
   return community.profileStatus !== "directory_reference";
 }
@@ -65,8 +42,6 @@ export default function CommunitiesPage() {
   const [communities, setCommunities] = useState<Community[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
-  const [q, setQ] = useState("");
-  const deferredQuery = useDeferredValue(q);
   const [category, setCategory] = useState("all");
   const [neighborhood, setNeighborhood] = useState("all");
   const [collection, setCollection] = useState<CommunityCollectionFilter>("event_backed");
@@ -90,7 +65,6 @@ export default function CommunitiesPage() {
         const value = JSON.parse(localStorage.getItem(AVAIL_KEY) || "[]");
         if (Array.isArray(value)) storedAvailability = value.filter((slot): slot is string => typeof slot === "string");
       } catch {}
-      if (typeof saved.q === "string") setQ(saved.q);
       if (typeof saved.category === "string") setCategory(saved.category);
       if (typeof saved.neighborhood === "string") setNeighborhood(saved.neighborhood);
       if (["all", "event_backed", "directory_reference"].includes(saved.collection || "")) {
@@ -114,7 +88,6 @@ export default function CommunitiesPage() {
   useEffect(() => {
     if (!directoryStateReady) return;
     writeCommunityDirectoryState({
-      q,
       category,
       neighborhood,
       collection,
@@ -124,7 +97,7 @@ export default function CommunitiesPage() {
       showAvailability,
       displayLimit,
     });
-  }, [directoryStateReady, q, category, neighborhood, collection, firstTimers, followedOnly, availability, showAvailability, displayLimit]);
+  }, [directoryStateReady, category, neighborhood, collection, firstTimers, followedOnly, availability, showAvailability, displayLimit]);
 
   useEffect(() => {
     if (!directoryStateReady || loading) return;
@@ -162,7 +135,6 @@ export default function CommunitiesPage() {
           || (collection === "event_backed" && isEventBacked(community))
           || (collection === "directory_reference" && !isEventBacked(community));
         return profileMatches
-          && matchesPhrase(community, deferredQuery)
           && (category === "all" || community.categories.includes(category))
           && (neighborhood === "all" || community.neighborhoods?.includes(neighborhood))
           && (!firstTimers || community.newcomerFriendly)
@@ -179,16 +151,14 @@ export default function CommunitiesPage() {
         const activityDifference = Number(b.activity?.state === "active") - Number(a.activity?.state === "active");
         return activityDifference || a.name.localeCompare(b.name);
       });
-  }, [communities, deferredQuery, category, neighborhood, collection, firstTimers, followedOnly, availability, followedIds]);
+  }, [communities, category, neighborhood, collection, firstTimers, followedOnly, availability, followedIds]);
 
   const displayed = visible.slice(0, displayLimit);
-  const searchPending = q !== deferredQuery;
-  const filtersActive = !!q || category !== "all" || neighborhood !== "all" || collection !== "event_backed"
+  const filtersActive = category !== "all" || neighborhood !== "all" || collection !== "event_backed"
     || firstTimers || followedOnly || availability.length > 0;
 
   const restartList = () => setDisplayLimit(PAGE_SIZE);
   const clearFilters = () => {
-    setQ("");
     setCategory("all");
     setNeighborhood("all");
     setCollection("event_backed");
@@ -207,7 +177,6 @@ export default function CommunitiesPage() {
   };
   const rememberDirectoryPosition = () => {
     writeCommunityDirectoryState({
-      q,
       category,
       neighborhood,
       collection,
@@ -222,7 +191,7 @@ export default function CommunitiesPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f4f3ee] px-4 pb-24 pt-9 text-[#182923] sm:px-6 sm:pt-14">
+    <main className="min-h-screen bg-[#f8f3e8] px-4 pb-24 pt-9 text-[#182923] sm:px-6 sm:pt-14">
       <div className="mx-auto max-w-7xl">
         <header className="grid gap-8 border-b border-[#d8d7d0] pb-9 sm:pb-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div className="max-w-4xl">
@@ -231,7 +200,7 @@ export default function CommunitiesPage() {
               Find your people<br /><span className="italic text-[#ad5b3d]">in New York.</span>
             </h1>
             <p className="mt-6 max-w-xl text-[15px] leading-6 text-[#5d6964] sm:mt-7 sm:text-lg sm:leading-7">
-              Start with communities that have real upcoming events. Search the wider directory when you want to explore beyond what is happening this week.
+              Start with communities that have real upcoming events, then narrow by interest, neighborhood, or the times you are usually free.
             </p>
           </div>
           <dl className="grid grid-cols-2 gap-5 border-t border-[#d8d7d0] pt-5 lg:border-t-0 lg:pt-0">
@@ -246,21 +215,8 @@ export default function CommunitiesPage() {
           </dl>
         </header>
 
-        <section aria-label="Community filters" className="sticky top-[84px] z-30 -mx-4 border-b border-[#d8d7d0] bg-[#f4f3ee]/95 px-4 py-3 shadow-[0_8px_20px_rgba(23,58,49,0.03)] backdrop-blur-xl sm:top-[53px] sm:mx-0 sm:py-4 sm:shadow-none">
-          <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
-            <label className="relative block min-w-0 flex-1">
-              <span className="sr-only">Search communities</span>
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#78817d]"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-              <input
-                value={q}
-                onChange={(event) => { setQ(event.target.value); if (event.target.value.trim()) setCollection("all"); restartList(); }}
-                placeholder="Search chess, running, book clubs…"
-                enterKeyHint="search"
-                className="h-12 w-full rounded-full border border-[#cfcec6] bg-[#fbfaf7] pl-11 pr-11 text-base outline-none transition placeholder:text-sm placeholder:text-[#8b918e] focus:border-[#8a9c94] focus:ring-2 focus:ring-[#15372f]/10 sm:text-sm"
-              />
-              {q && <button type="button" onClick={() => { setQ(""); restartList(); }} aria-label="Clear search" className="absolute right-1.5 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full text-lg text-[#66716c] hover:bg-[#ebeae4]">×</button>}
-            </label>
-            <div className="grid grid-cols-2 gap-2 sm:flex">
+        <section aria-label="Community filters" className="sticky top-[49px] z-30 -mx-4 border-b border-[#d8d7d0] bg-[#f8f3e8]/95 px-4 py-3 shadow-[0_8px_20px_rgba(23,58,49,0.03)] backdrop-blur-xl sm:top-[53px] sm:mx-0 sm:py-4 sm:shadow-none">
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
               <select value={category} onChange={(event) => { setCategory(event.target.value); restartList(); }} aria-label="Filter by interest" className="h-12 min-w-0 rounded-full border border-[#cfcec6] bg-[#fbfaf7] px-3 text-sm outline-none focus:border-[#8a9c94] sm:px-4">
                 <option value="all">All interests</option>
                 {categories.map((item) => <option key={item}>{item}</option>)}
@@ -269,7 +225,6 @@ export default function CommunitiesPage() {
                 <option value="all">All neighborhoods</option>
                 {neighborhoods.map((item) => <option key={item}>{item}</option>)}
               </select>
-            </div>
           </div>
 
           <div className="mt-2.5 flex items-center gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mt-3">
@@ -313,9 +268,9 @@ export default function CommunitiesPage() {
 
         <div className="flex items-end justify-between gap-4 py-7 sm:py-8">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8a918e]">{collection === "event_backed" ? "Ready to join" : collection === "directory_reference" ? "Search the wider directory" : "Search results"}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8a918e]">{collection === "event_backed" ? "Ready to join" : collection === "directory_reference" ? "Browse the wider directory" : "Filtered communities"}</p>
             <h2 aria-live="polite" className="mt-1 font-editorial text-[1.75rem] tracking-[-0.02em] text-[#15372f] sm:text-3xl">
-              {loading ? "Looking around the city…" : searchPending ? "Searching…" : `${visible.length.toLocaleString()} ${visible.length === 1 ? "community" : "communities"}`}
+              {loading ? "Looking around the city…" : `${visible.length.toLocaleString()} ${visible.length === 1 ? "community" : "communities"}`}
             </h2>
           </div>
           {!loading && visible.length > PAGE_SIZE && <p className="hidden text-xs text-[#737c78] sm:block">Showing {displayed.length.toLocaleString()} of {visible.length.toLocaleString()}</p>}
@@ -333,7 +288,7 @@ export default function CommunitiesPage() {
           </div>
         ) : !loading && !visible.length ? (
           <div className="border-y border-[#d8d7d0] py-20 text-center">
-            <h2 className="font-editorial text-3xl text-[#15372f]">No exact match yet.</h2>
+            <h2 className="font-editorial text-3xl text-[#15372f]">No communities in this combination yet.</h2>
             <p className="mt-2 text-sm text-[#65706b]">Try another interest, neighborhood, or time.</p>
             <button type="button" onClick={clearFilters} className="mt-6 min-h-12 rounded-full border border-[#15372f] px-6 text-sm font-semibold text-[#15372f]">Reset filters</button>
           </div>

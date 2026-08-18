@@ -61,6 +61,7 @@ export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
       accounts: {},
       categories: {},
       hosts: {},
+      communities: {},
       negAccounts: {},
       negCategories: {},
       negHosts: {},

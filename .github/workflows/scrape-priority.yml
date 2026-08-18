@@ -58,9 +58,13 @@ jobs:
           IG_PROTECTED_ONLY: "1"
           IG_MAX_POSTS_PER_ACCOUNT: "12"
           IG_SLEEP_BETWEEN_ACCOUNTS: "0.5"
-          # Budget irrelevant in protected-only mode (no budget check on
-          # protected pass), but set anyway as a safety ceiling.
-          IG_TIME_BUDGET_SECONDS: "900"
+          # Keep the highest-value accounts on every run and rotate the rest.
+          IG_PRIORITY_ALWAYS_ACCOUNTS: "12"
+          IG_PRIORITY_ROTATING_ACCOUNTS: "18"
+          # The scraper returns partial results before the 20-minute job cap,
+          # leaving time to normalize, commit, and deploy.
+          IG_TIME_BUDGET_SECONDS: "780"
+          IG_SYNC_DEADLINE_SECONDS: "840"
           # Skip hashtag/venue-tagged/highlights — those run in full sweep.
           IG_HASHTAG_DISCOVERY: "0"
           IG_VENUE_TAGGED: "0"

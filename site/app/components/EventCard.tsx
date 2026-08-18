@@ -9,7 +9,7 @@ import CommunityChips from "./CommunityChips";
 
 interface EventCardProps {
   event: Event;
-  variant?: "compact" | "feed";
+  variant?: "compact" | "default";
   onAccountClick?: (account: string) => void;
   onHide?: (eventId: string) => void;
   onSaveChange?: (eventId: string, saved: boolean) => void;
@@ -56,9 +56,9 @@ function preferenceStub(event: Event) {
 }
 
 // iter 215: removed grid variant + MediaFirstCard variant. All events
-// now render through FeedCard for uniform sizing — IG events no longer
+// now render through EventCardBody for uniform sizing — IG events no longer
 // take 4-5x the vertical space of other sources.
-export default function EventCard({ event, variant = "feed", onAccountClick, onHide, onSaveChange, onSelect, showDay = false }: EventCardProps) {
+export default function EventCard({ event, variant = "default", onAccountClick, onHide, onSaveChange, onSelect, showDay = false }: EventCardProps) {
   const timeStr = event.startTime
     ? formatTime(event.startTime) +
       (event.endTime ? ` – ${formatTime(event.endTime)}` : "")
@@ -68,7 +68,7 @@ export default function EventCard({ event, variant = "feed", onAccountClick, onH
     return <CompactCard event={event} timeStr={timeStr} />;
   }
 
-  return <FeedCard event={event} timeStr={timeStr} showDay={showDay} onAccountClick={onAccountClick} onHide={onHide} onSaveChange={onSaveChange} onSelect={onSelect} />;
+  return <EventCardBody event={event} timeStr={timeStr} showDay={showDay} onAccountClick={onAccountClick} onHide={onHide} onSaveChange={onSaveChange} onSelect={onSelect} />;
 }
 
 
@@ -99,7 +99,7 @@ function CalendarIcon() {
   );
 }
 
-function FeedCard({
+function EventCardBody({
   event,
   timeStr,
   showDay = false,
@@ -151,7 +151,7 @@ function FeedCard({
     !desc.toLowerCase().startsWith("link in bio") &&
     !desc.toLowerCase().startsWith("photo by");
 
-  const openedFeed = isEventOpened(event.id);
+  const openedEvent = isEventOpened(event.id);
   const dayLabel = relDay(event.date);
   const _nb = event.location?.neighborhood?.trim();
   const showNeighborhood = Boolean(
@@ -159,7 +159,7 @@ function FeedCard({
   );
   const convictionFollow = !!event.userFollowing;
   const convictionAffinity = !convictionFollow && !!event.userAffinity;
-  const feedChrome = convictionFollow
+  const cardChrome = convictionFollow
     ? "border border-[#7db7d8] shadow-[inset_3px_0_0_0_#0ea5e9] hover:border-[#5aa3cc] bg-[#fcfeff]"
     : convictionAffinity
     ? "border border-[#e8d090] shadow-[inset_3px_0_0_0_#d9a91a] hover:border-[#d9a91a] bg-[#fffef5]"
@@ -170,8 +170,8 @@ function FeedCard({
 
   return (
     <article
-      className={`group relative block bg-white rounded-xl ${feedChrome} hover:shadow-sm hover:-translate-y-[1px] transition-all overflow-hidden text-left cursor-pointer ${
-        openedFeed ? "opacity-60" : ""
+      className={`group relative block bg-white rounded-xl ${cardChrome} hover:shadow-sm hover:-translate-y-[1px] transition-all overflow-hidden text-left cursor-pointer ${
+        openedEvent ? "opacity-60" : ""
       }`}
     >
       <a
@@ -303,7 +303,7 @@ function FeedCard({
               </span>
             )}
             {/* U1 (run 2026-06-22-1501): surface a non-free price at a glance.
-                The feed previously badged only FREE, so paid fitness/dance
+                Event cards previously badged only FREE, so paid fitness/dance
                 events (Brooklyn Contra $15, run-club drop-ins) showed no price
                 until the modal. Digit-only guard avoids junk pills ("varies",
                 "unknown"); qualitative words ("donation"/PWYC) deferred to D1. */}
@@ -354,8 +354,7 @@ function FeedCard({
               ) : event.account && (event.userFollowing || event.userAffinity) ? (
                 // Cross-source-enriched conviction event: surface WHICH follow
                 // drove it, as a clickable per-account filter (fb-169). The
-                // account filter now keys on event.account (lib/events.ts), and
-                // AccountBanner suppresses the IG link for these non-IG handles.
+                // account filter now keys on event.account (lib/events.ts).
                 <button
                   onClick={(e) => {
                     e.preventDefault();

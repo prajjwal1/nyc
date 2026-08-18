@@ -30,8 +30,14 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      expected_updated: ${{ steps.snapshot.outputs.expected_updated }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Record data snapshot
+        id: snapshot
+        run: echo "expected_updated=$(jq -r '.lastUpdated' data/events.json)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-node@v4
         with:
@@ -67,3 +73,29 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify deployed data matches the repository snapshot
+        env:
+          EXPECTED_UPDATED: ${{ needs.build.outputs.expected_updated }}
+        run: |
+          python - <<'PY'
+          import json, os, time, urllib.request
+          from datetime import datetime
+
+          expected = datetime.fromisoformat(os.environ["EXPECTED_UPDATED"].replace("Z", "+00:00"))
+          last_error = None
+          for attempt in range(12):
+              try:
+                  url = f"https://prajjwal1.github.io/nyc/events.json?deploy={int(time.time())}"
+                  request = urllib.request.Request(url, headers={"Cache-Control": "no-cache"})
+                  with urllib.request.urlopen(request, timeout=20) as response:
+                      payload = json.load(response)
+                  actual = datetime.fromisoformat(payload["lastUpdated"].replace("Z", "+00:00"))
+                  print(f"expected {expected.isoformat()}, deployed {actual.isoformat()}")
+                  if actual >= expected:
+                      raise SystemExit(0)
+                  last_error = f"deployed timestamp {actual.isoformat()} is behind"
+              except Exception as exc:
+                  last_error = str(exc)
+              time.sleep(10)
+          raise SystemExit(f"deployment verification failed: {last_error}")
+          PY

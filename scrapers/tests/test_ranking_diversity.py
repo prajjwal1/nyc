@@ -33,10 +33,10 @@ def test_top1_and_floor_clamp_invariant():
     _apply_diversity_penalty(events)
     # top-1 (best base) is never demoted
     assert max(events, key=lambda x: x["score"]) is top1_before
-    # floor-clamp: nothing that started >=0.55 ends <0.55 (non-conviction floor)
+    # floor-clamp: nothing above the broad inventory floor ends below it.
     for e in events:
-        if starts[id(e)] >= 0.55:
-            assert e["score"] >= 0.55, f"floor clamp broken: {e['title']} → {e['score']}"
+        if starts[id(e)] >= 0.35:
+            assert e["score"] >= 0.35, f"floor clamp broken: {e['title']} → {e['score']}"
 
 
 def test_music_slot_guarantee():

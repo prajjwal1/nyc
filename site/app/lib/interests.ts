@@ -9,15 +9,18 @@ import type { Event } from "./types";
 //
 // The aggregated profile re-ranks events client-side: events matching
 // learned signals get a small boost on top of the server-side score, so
-// the feed adapts to what the user actually engages with over time.
+// the calendar adapts to what the user actually engages with over time.
 
 const STORAGE_KEY = "nyc-events:interests:v1";
+export const PROFILE_CHANGE_EVENT = "nyc-events-profile-change";
 
 export interface InterestProfile {
   accounts: Record<string, number>;
   categories: Record<string, number>;
   // Track distinct event domains/hosts to learn source preferences
   hosts: Record<string, number>;
+  // Followed communities are a direct signal for linked events.
+  communities: Record<string, number>;
   // Negative signals: counts of hides per account/category/host. Symmetric
   // with the positive maps so a user's "no thanks" on one event from
   // @somenightclub deboosts other events from that same account.
@@ -26,7 +29,7 @@ export interface InterestProfile {
   negHosts: Record<string, number>;
   // Schedule learning: count of events the user has opened by start-time
   // bucket (key: "morning" | "midday" | "afternoon" | "evening" | "late")
-  // and by day-of-week (key: "0".."6", Sunday=0). Lets the feed adapt to
+  // and by day-of-week (key: "0".."6", Sunday=0). Lets the calendar adapt to
   // a 7am-runner profile vs a 10pm-show-goer.
   timeBuckets: Record<string, number>;
   dayOfWeek: Record<string, number>;
@@ -38,6 +41,7 @@ const empty = (): InterestProfile => ({
   accounts: {},
   categories: {},
   hosts: {},
+  communities: {},
   negAccounts: {},
   negCategories: {},
   negHosts: {},
@@ -46,16 +50,29 @@ const empty = (): InterestProfile => ({
   updatedAt: new Date().toISOString(),
 });
 
+function followedCommunityProfile(): Record<string, number> {
+  if (typeof window === "undefined") return {};
+  try {
+    const ids = JSON.parse(window.localStorage.getItem("nyc-community-follows-v1") || "[]");
+    return Array.isArray(ids)
+      ? Object.fromEntries(ids.filter((id): id is string => typeof id === "string").map((id) => [id, 5]))
+      : {};
+  } catch {
+    return {};
+  }
+}
+
 export function loadProfile(): InterestProfile {
   if (typeof window === "undefined") return empty();
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return empty();
+    if (!raw) return { ...empty(), communities: followedCommunityProfile() };
     const parsed = JSON.parse(raw);
     return {
       accounts: parsed.accounts || {},
       categories: parsed.categories || {},
       hosts: parsed.hosts || {},
+      communities: { ...followedCommunityProfile(), ...(parsed.communities || {}) },
       negAccounts: parsed.negAccounts || {},
       negCategories: parsed.negCategories || {},
       negHosts: parsed.negHosts || {},
@@ -72,8 +89,15 @@ export function saveProfile(p: InterestProfile): void {
   if (typeof window === "undefined") return;
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
+    window.dispatchEvent(new Event(PROFILE_CHANGE_EVENT));
   } catch {
     // localStorage may be full / disabled — silently no-op
+  }
+}
+
+function notifyProfileChange(): void {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event(PROFILE_CHANGE_EVENT));
   }
 }
 
@@ -93,67 +117,6 @@ export function trackAccountClick(account: string | undefined): void {
 export function trackCategoryClick(category: string): void {
   const p = loadProfile();
   bump(p.categories, category, 1);
-  p.updatedAt = new Date().toISOString();
-  saveProfile(p);
-}
-
-// Search query terms that map to category labels — when the user searches
-// for these words, treat it as a category-interest signal too.
-const _SEARCH_CATEGORY_HINTS: Record<string, string> = {
-  jazz: "music",
-  concert: "music",
-  music: "music",
-  comedy: "comedy",
-  yoga: "wellness",
-  run: "fitness",
-  running: "fitness",
-  "run club": "fitness",
-  fitness: "fitness",
-  art: "art",
-  gallery: "art",
-  museum: "art",
-  book: "books",
-  books: "books",
-  reading: "books",
-  bookclub: "books",
-  "book club": "books",
-  film: "film",
-  movie: "film",
-  screening: "film",
-  food: "food",
-  brunch: "food",
-  dinner: "food",
-  rooftop: "outdoors",
-  park: "outdoors",
-  hike: "outdoors",
-  outdoor: "outdoors",
-  outdoors: "outdoors",
-  dance: "dance",
-  workshop: "workshop",
-  class: "workshop",
-};
-
-// Treat a committed search as a soft engagement signal: an @-handle
-// becomes a strong account-interest bump, and category-keyword queries
-// fold into the category map. Lower weights than clicks so a stray
-// search doesn't dominate.
-export function trackSearchSignal(query: string): void {
-  const q = (query || "").trim().toLowerCase();
-  if (!q || q.length < 2) return;
-  const p = loadProfile();
-  if (q.startsWith("@")) {
-    // @-handle — explicit account interest. Strong signal (user typed it).
-    const handle = q.slice(1).split(/[\s/]/)[0];
-    if (handle) bump(p.accounts, handle, 2);
-  } else {
-    // Free-text — see if it maps to a known category. Multi-word matches first.
-    for (const [phrase, cat] of Object.entries(_SEARCH_CATEGORY_HINTS)) {
-      if (q.includes(phrase)) {
-        bump(p.categories, cat, 1);
-        break;
-      }
-    }
-  }
   p.updatedAt = new Date().toISOString();
   saveProfile(p);
 }
@@ -217,6 +180,8 @@ export function interestBoost(
     sourceUrl?: string;
     startTime?: string | null;
     date?: string;
+    communityIds?: string[];
+    primaryCommunityId?: string;
   },
   profile: InterestProfile,
 ): number {
@@ -239,6 +204,10 @@ export function interestBoost(
     } catch {
       // ignore
     }
+  }
+  const communityIds = event.communityIds || (event.primaryCommunityId ? [event.primaryCommunityId] : []);
+  if (communityIds.some((id) => (profile.communities?.[id] || 0) > 0)) {
+    boost += 0.08;
   }
   // Schedule match: small boost for events at times the user actually opens.
   // Compute the user's preferred bucket share; if this event's bucket is
@@ -289,6 +258,52 @@ export function interestBoost(
   const negative = Math.min(0.25, neg);
 
   return positive - negative;
+}
+
+export function interestReason(
+  event: {
+    instagramAccount?: string;
+    account?: string;
+    organizer?: string;
+    categories?: string[];
+    sourceUrl?: string;
+    communityIds?: string[];
+    primaryCommunityId?: string;
+  },
+  profile: InterestProfile,
+): string | null {
+  const displayAccount = event.account || event.organizer || event.instagramAccount || "";
+  const account = displayAccount.toLowerCase();
+  if (account && (profile.accounts[account] || 0) > 0) return `More from ${displayAccount}`;
+
+  const communityIds = event.communityIds || (event.primaryCommunityId ? [event.primaryCommunityId] : []);
+  if (communityIds.some((id) => (profile.communities?.[id] || 0) > 0)) {
+    return "From a community you follow";
+  }
+
+  const category = [...(event.categories || [])]
+    .filter((item) => (profile.categories[item] || 0) > 0)
+    .sort((a, b) => (profile.categories[b] || 0) - (profile.categories[a] || 0))[0];
+  if (category) return `Matches your ${category} interests`;
+
+  if (event.sourceUrl) {
+    try {
+      const host = new URL(event.sourceUrl).hostname.toLowerCase();
+      if ((profile.hosts[host] || 0) > 0) return `More from ${host.replace(/^www\./, "")}`;
+    } catch {
+      // Ignore unparseable source URLs.
+    }
+  }
+  return null;
+}
+
+export function trackCommunityFollow(communityId: string, following: boolean): void {
+  if (!communityId) return;
+  const profile = loadProfile();
+  if (following) profile.communities[communityId] = 5;
+  else delete profile.communities[communityId];
+  profile.updatedAt = new Date().toISOString();
+  saveProfile(profile);
 }
 
 // Last-visited timestamp — tracked on page load so we can show "X new
@@ -444,7 +459,7 @@ export function toggleSavedLocal(
     if (hint?.stub) {
       cache[eventId] = hint.stub;
     }
-    // Saving is the strongest explicit positive signal — feed it heavily
+    // Saving is the strongest explicit positive signal — weight it heavily
     // into the interest profile so other events from the same account/
     // categories/source rise in subsequent rankings. 5x the per-click bump.
     if (hint) {
@@ -465,6 +480,7 @@ export function toggleSavedLocal(
   }
   saveSavedSet(s);
   saveSavedCache(cache);
+  notifyProfileChange();
   return saved;
 }
 
@@ -625,9 +641,12 @@ export function hideEvent(
     }
   }
 
-  // Feed the hide into the negative profile so other events from the
+  // Apply the hide to the negative profile so other events from the
   // same account/categories/host get deboosted in subsequent rankings.
-  if (!hint) return;
+  if (!hint) {
+    notifyProfileChange();
+    return;
+  }
   const p = loadProfile();
   if (hint.account) bump(p.negAccounts, hint.account.toLowerCase(), 1);
   for (const c of hint.categories || []) bump(p.negCategories, c, 1);
@@ -651,6 +670,7 @@ export function unhideAll(): void {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(HIDDEN_KEY);
   window.localStorage.removeItem(HIDDEN_CACHE_KEY);
+  notifyProfileChange();
 }
 
 export function topAccounts(profile: InterestProfile, n = 5): string[] {
@@ -669,7 +689,7 @@ export function topCategories(profile: InterestProfile, n = 5): Array<[string, n
 export function totalEngagementCount(profile: InterestProfile): number {
   const sum = (m: Record<string, number>) =>
     Object.values(m).reduce((a, b) => a + b, 0);
-  return sum(profile.accounts) + sum(profile.categories) + sum(profile.hosts);
+  return sum(profile.accounts) + sum(profile.categories) + sum(profile.hosts) + sum(profile.communities || {});
 }
 
 export function clearAllLocalState(): void {
@@ -681,9 +701,10 @@ export function clearAllLocalState(): void {
     window.localStorage.removeItem(HIDDEN_KEY);
     window.localStorage.removeItem(HIDDEN_CACHE_KEY);
     window.localStorage.removeItem(OPENED_KEY);
-    window.localStorage.removeItem(SEARCH_HISTORY_KEY);
+    window.localStorage.removeItem("nyc-events:searchHistory:v1");
     window.localStorage.removeItem("nyc-events:lastVisitedAt:v1");
     window.localStorage.removeItem("nyc-events:viewMode");
+    notifyProfileChange();
   } catch {
     // ignore
   }
@@ -695,47 +716,6 @@ export function getSavedCount(): number {
 
 export function getHiddenCount(): number {
   return loadHidden().size;
-}
-
-// Search history — last 8 distinct queries the user has typed. Surfaces
-// in the search bar dropdown so they can re-issue without retyping.
-const SEARCH_HISTORY_KEY = "nyc-events:searchHistory:v1";
-
-export function loadSearchHistory(): string[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = window.localStorage.getItem(SEARCH_HISTORY_KEY);
-    if (!raw) return [];
-    const arr = JSON.parse(raw);
-    return Array.isArray(arr) ? arr.filter((s) => typeof s === "string") : [];
-  } catch {
-    return [];
-  }
-}
-
-export function pushSearchHistory(query: string): void {
-  if (typeof window === "undefined") return;
-  const q = (query || "").trim();
-  if (!q || q.length < 2) return;
-  try {
-    const existing = loadSearchHistory();
-    // Move-to-front: drop existing match (case-insensitive), prepend
-    const lower = q.toLowerCase();
-    const dedup = existing.filter((s) => s.toLowerCase() !== lower);
-    const next = [q, ...dedup].slice(0, 8);
-    window.localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(next));
-  } catch {
-    // ignore
-  }
-}
-
-export function clearSearchHistory(): void {
-  if (typeof window === "undefined") return;
-  try {
-    window.localStorage.removeItem(SEARCH_HISTORY_KEY);
-  } catch {
-    // ignore
-  }
 }
 
 // Already-opened events: fade-out signal so the user can scan for what's

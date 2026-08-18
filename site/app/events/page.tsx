@@ -5,7 +5,6 @@ import { format, parseISO } from "date-fns";
 import { useEvents } from "../hooks/useEvents";
 import EventCard from "../components/EventCard";
 import Header from "../components/Header";
-import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
 import EventModal from "../components/EventModal";
 import { Event } from "../lib/types";
@@ -22,8 +21,8 @@ export default function AllEventsPage() {
     loading,
     loadError,
     events,
-    search,
-    setSearch,
+    accountFilter,
+    setAccountFilter,
     lastUpdated,
     totalEvents,
   } = useEvents();
@@ -44,7 +43,19 @@ export default function AllEventsPage() {
           .filter((event) => event.date < format(new Date(), "yyyy-MM-dd")),
       );
     });
+    const params = new URLSearchParams(window.location.search);
+    const account = params.get("account");
+    if (account && account.trim().length <= 80) setAccountFilter(account.trim());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (accountFilter) params.set("account", accountFilter);
+    else params.delete("account");
+    const query = params.toString();
+    window.history.replaceState(null, "", window.location.pathname + (query ? `?${query}` : ""));
+  }, [accountFilter]);
 
   const thisWeekCount = useMemo(() => {
     const today = new Date();
@@ -60,7 +71,7 @@ export default function AllEventsPage() {
   const grouped = useMemo(() => {
     const map = new Map<string, Event[]>();
     const candidates = showPast
-      ? [...events, ...filterEvents(pastSavedEvents, { search })]
+      ? [...events, ...filterEvents(pastSavedEvents, { account: accountFilter })]
       : events;
     for (const e of candidates) {
       if (hiddenEventIds.has(e.id) || isHidden(e.id)) continue;
@@ -78,12 +89,12 @@ export default function AllEventsPage() {
       if (aIsPast !== bIsPast) return aIsPast ? 1 : -1;
       return aIsPast ? dateB.localeCompare(dateA) : dateA.localeCompare(dateB);
     });
-  }, [events, hiddenEventIds, pastSavedEvents, search, showPast, todayStr]);
+  }, [events, hiddenEventIds, pastSavedEvents, accountFilter, showPast, todayStr]);
 
   if (loading) {
     return (
       <div className="min-h-screen bg-[#f8f3e8]">
-        <Header totalEvents={0} thisWeekCount={0} lastUpdated={undefined} newSinceLastVisit={0} />
+        <Header title="Every upcoming event" totalEvents={0} thisWeekCount={0} lastUpdated={undefined} newSinceLastVisit={0} />
         <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
           <div className="space-y-3">
             {Array.from({ length: 10 }).map((_, i) => (
@@ -106,7 +117,7 @@ export default function AllEventsPage() {
   if (loadError) {
     return (
       <div className="min-h-screen bg-[#f8f3e8]">
-        <Header totalEvents={0} thisWeekCount={0} />
+        <Header title="Every upcoming event" totalEvents={0} thisWeekCount={0} />
         <div className="mx-auto max-w-5xl px-4 py-20 text-center">
           <p className="font-semibold text-[#173c35]">Couldn&apos;t load events</p>
           <button onClick={() => window.location.reload()} className="mt-4 rounded-full bg-[#173c35] px-5 py-2 text-sm text-white">
@@ -134,6 +145,7 @@ export default function AllEventsPage() {
   return (
     <div className="min-h-screen bg-[#f8f3e8]">
       <Header
+        title="Every upcoming event"
         totalEvents={totalEvents}
         thisWeekCount={thisWeekCount}
         lastUpdated={lastUpdated}
@@ -141,16 +153,9 @@ export default function AllEventsPage() {
       />
 
       <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
-        <div className="mb-6">
-          <h1 className="font-editorial text-3xl font-bold tracking-[-0.02em] text-[#173c35] sm:text-4xl">
-            Every upcoming event
-          </h1>
-          <p className="mt-2 text-sm text-[#66716c]">
-            The full feed — {events.length} events sorted by date, ranked by curation signal. Search to narrow.
-          </p>
-        </div>
-
-        <SearchBar value={search} onChange={setSearch} />
+        <p className="mb-6 text-sm text-[#66716c]">
+          The full index — {events.length} events sorted by date and ranked by curation signal.
+        </p>
 
         <div className="mb-6 flex items-center gap-2">
           <button
@@ -162,23 +167,29 @@ export default function AllEventsPage() {
           >
             {showPast ? "Hide past saves" : "Include past saves"}
           </button>
-          {search && (
-            <span className="text-xs text-[#8b918e]">
-              {events.length} match{events.length !== 1 ? "es" : ""}
-            </span>
+          {accountFilter && (
+            <button
+              type="button"
+              onClick={() => setAccountFilter("")}
+              className="rounded-full border border-[#9bb7ae] bg-[#edf5f1] px-3 py-1 text-xs font-semibold text-[#173c35]"
+            >
+              Viewing @{accountFilter} · clear
+            </button>
           )}
         </div>
 
         {grouped.length === 0 ? (
           <div className="rounded-[1.5rem] border border-dashed border-[#d7d5cd] bg-white p-10 text-center">
-            <p className="font-medium text-[#173c35]">No events match</p>
-            <p className="mt-1 text-sm text-[#8b918e]">Try a different search or clear filters.</p>
-            <button
-              onClick={() => setSearch("")}
-              className="mt-4 rounded-full border border-[#173c35] px-4 py-2 text-xs font-semibold text-[#173c35]"
-            >
-              Clear search
-            </button>
+            <p className="font-medium text-[#173c35]">{accountFilter ? "No events from this account" : "No upcoming events are available"}</p>
+            <p className="mt-1 text-sm text-[#8b918e]">{accountFilter ? "This account has no upcoming events in the current index." : "The next refresh will repopulate this page."}</p>
+            {accountFilter && (
+              <button
+                onClick={() => setAccountFilter("")}
+                className="mt-4 rounded-full border border-[#173c35] px-4 py-2 text-xs font-semibold text-[#173c35]"
+              >
+                Show every event
+              </button>
+            )}
           </div>
         ) : (
           <div className="space-y-10">
@@ -199,7 +210,7 @@ export default function AllEventsPage() {
                         <EventCard
                           event={event}
                           showDay
-                          onAccountClick={(acct) => setSearch("@" + acct)}
+                          onAccountClick={setAccountFilter}
                           onHide={(eventId) => {
                             setHiddenEventIds((current) => new Set(current).add(eventId));
                           }}
@@ -222,7 +233,7 @@ export default function AllEventsPage() {
 
       <Footer lastUpdated={lastUpdated} totalEvents={totalEvents} />
 
-      <EventModal event={openEvent} onClose={() => setOpenEvent(null)} onAccountClick={(acct) => setSearch("@" + acct)} relatedEvents={events} onSelectEvent={setOpenEvent} />
+      <EventModal event={openEvent} onClose={() => setOpenEvent(null)} onAccountClick={setAccountFilter} relatedEvents={events} onSelectEvent={setOpenEvent} />
     </div>
   );
 }

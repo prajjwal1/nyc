@@ -2,7 +2,9 @@ name: Refresh Luma and Partiful
 
 on:
   schedule:
-    - cron: "15 */2 * * *"
+    # Full public-platform inventories at :15 and :45. These sources change
+    # quickly and are cheap enough to keep fresher than the four-hour sweep.
+    - cron: "15,45 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -16,7 +18,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,7 +30,30 @@ jobs:
         env:
           SOURCE_ONLY: "luma,partiful"
           SKIP_INSTAGRAM: "1"
+          PLATFORM_FAST_REFRESH: "1"
         run: python -m scrapers.run_all
+      - name: Verify platform coverage and graphics
+        run: |
+          python - <<'PY'
+          import json
+          payload = json.load(open("data/events.json"))
+          catalogs = (payload.get("ingestionStats") or {}).get("platformCatalogs") or {}
+          failures = []
+          for source in ("luma", "partiful"):
+              health = catalogs.get(source) or {}
+              fetched = int(health.get("fetched") or 0)
+              missing = int(health.get("missingImages") or 0)
+              print(f"{source}: fetched={fetched}, missingImages={missing}, health={health}")
+              if fetched == 0:
+                  failures.append(f"{source} returned no catalog events")
+              if fetched and missing / fetched > 0.05:
+                  failures.append(f"{source} has more than 5% missing graphics")
+          luma = catalogs.get("luma") or {}
+          if luma.get("advertised") and float(luma.get("coverage") or 0) < 0.8:
+              failures.append("Luma pagination captured less than 80% of its advertised NYC catalog")
+          if failures:
+              raise SystemExit("; ".join(failures))
+          PY
       - name: Commit refreshed feed
         run: |
           git config user.name "github-actions[bot]"

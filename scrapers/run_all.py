@@ -1,7 +1,9 @@
 import asyncio
 import inspect
 import json
+import math
 import os
+import signal
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -18,7 +20,6 @@ from scrapers.sources import (
     music_venues,
     parks,
     theskint,
-    meetup,
     dice,
     instagram,
     substack,
@@ -55,7 +56,6 @@ ASYNC_SCRAPERS = [
     ("smorgasburg", smorgasburg.scrape),
     ("brooklyncontra", brooklyncontra.scrape),
     ("theskint", theskint.scrape),
-    ("meetup", meetup.scrape),
     ("dice", dice.scrape),
     ("substack", substack.scrape),
     ("partiful", partiful.scrape),
@@ -70,6 +70,7 @@ SYNC_SCRAPERS = [
 SKIP_INSTAGRAM = os.environ.get("SKIP_INSTAGRAM", "0") == "1"
 IG_SAVED_ONLY = os.environ.get("IG_SAVED_ONLY", "0") == "1"
 IG_BROWSER_ONLY = os.environ.get("IG_BROWSER_ONLY", "0") == "1"
+IG_PROTECTED_ONLY = os.environ.get("IG_PROTECTED_ONLY", "0") == "1"
 SOURCE_ONLY = {
     name.strip() for name in os.environ.get("SOURCE_ONLY", "").split(",") if name.strip()
 }
@@ -88,6 +89,12 @@ if IG_SAVED_ONLY:
 if IG_BROWSER_ONLY:
     ASYNC_SCRAPERS = []
 
+# The hourly priority workflow exists solely to refresh followed/affinity IG
+# accounts. Running every web platform first consumed most of its 20-minute
+# job window and repeatedly cancelled the Instagram pass before publication.
+if IG_PROTECTED_ONLY:
+    ASYNC_SCRAPERS = []
+
 if SOURCE_ONLY:
     ASYNC_SCRAPERS = [(name, fn) for name, fn in ASYNC_SCRAPERS if name in SOURCE_ONLY]
     SYNC_SCRAPERS = [(name, fn) for name, fn in SYNC_SCRAPERS if name in SOURCE_ONLY]
@@ -104,6 +111,17 @@ OUTPUT_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "events.json"
 )
 
+_RUN_TELEMETRY = {
+    "runCompleted": False,
+    "partialRun": False,
+    "timedOutSources": [],
+    "instagram": {},
+}
+
+
+class _SyncScraperDeadline(BaseException):
+    pass
+
 
 async def run_scraper(name: str, scrape_fn) -> list[dict]:
     try:
@@ -119,6 +137,8 @@ async def run_scraper(name: str, scrape_fn) -> list[dict]:
         return events
     except asyncio.TimeoutError:
         print(f"[{name}] TIMEOUT after 150s; using carried-over events")
+        _RUN_TELEMETRY["partialRun"] = True
+        _RUN_TELEMETRY["timedOutSources"].append(name)
         return []
     except Exception as e:
         print(f"[{name}] ERROR: {e}")
@@ -126,14 +146,38 @@ async def run_scraper(name: str, scrape_fn) -> list[dict]:
 
 
 def run_sync_scraper(name: str, scrape_fn) -> list[dict]:
+    timeout = float(os.environ.get("IG_SYNC_DEADLINE_SECONDS", "0")) if name.startswith("instagram") else 0
+    previous_handler = None
+
+    def deadline_handler(_signum, _frame):
+        raise _SyncScraperDeadline()
+
     try:
         print(f"[{name}] Scraping...")
+        if timeout > 0 and hasattr(signal, "SIGALRM"):
+            previous_handler = signal.signal(signal.SIGALRM, deadline_handler)
+            signal.alarm(max(1, math.ceil(timeout)))
         events = scrape_fn()
         print(f"[{name}] Found {len(events)} events")
         return events
+    except _SyncScraperDeadline:
+        print(f"[{name}] HARD DEADLINE after {timeout:.0f}s; publishing carried-over and completed source results")
+        _RUN_TELEMETRY["partialRun"] = True
+        _RUN_TELEMETRY["timedOutSources"].append(name)
+        return []
     except Exception as e:
         print(f"[{name}] ERROR: {e}")
         return []
+    finally:
+        if timeout > 0 and hasattr(signal, "SIGALRM"):
+            signal.alarm(0)
+            if previous_handler is not None:
+                signal.signal(signal.SIGALRM, previous_handler)
+        if name.startswith("instagram"):
+            try:
+                _RUN_TELEMETRY["instagram"] = instagram.get_last_run_stats()
+            except Exception:
+                pass
 
 
 async def main():
@@ -188,8 +232,6 @@ async def main():
     #     ~80 user-facing events per failed eventbrite sweep.
     #   - songkick: 300+ events per healthy run (iter 88 pagination);
     #     occasional HTTP 5xx wipes the music section of the feed.
-    #   - meetup: anti-bot blocking on GH Actions IPs causes silent
-    #     near-zero pulls. Past events naturally age out via filter_future.
     #   - substack / mcnallyjackson / centerforfiction / nyc_parks / museums:
     #     all observed returning HTTP 403/429 to the GH Actions runner IP in a
     #     full scrape (2026-06-05) while serving fine from a residential IP.
@@ -201,7 +243,6 @@ async def main():
         "instagram",
         "eventbrite",
         "songkick",
-        "meetup",
         "substack",
         "mcnallyjackson",
         "centerforfiction",
@@ -216,7 +257,7 @@ async def main():
         # rotate, so stale ones age out via filter_future.
         "partiful",
     }
-    if IG_SAVED_ONLY or IG_BROWSER_ONLY or SOURCE_ONLY:
+    if IG_SAVED_ONLY or IG_BROWSER_ONLY or IG_PROTECTED_ONLY or SOURCE_ONLY:
         # A quick refresh must never erase sources it intentionally skipped.
         CARRYOVER_SOURCES.update(
             e.get("source") for e in previous_index.values() if e.get("source")
@@ -268,6 +309,7 @@ async def main():
     processed = process(all_events, previous_index)
     print(f"After processing: {len(processed)} events")
 
+    _RUN_TELEMETRY["runCompleted"] = True
     _write_events(processed, OUTPUT_PATH)
     print(f"Written to {OUTPUT_PATH}")
 
@@ -327,6 +369,32 @@ def _ingestion_stats(events: list[dict]) -> dict:
 
     sources = Counter(e.get("source") or "unknown" for e in events)
     lanes = Counter(e.get("discoveryLane") or "unclassified" for e in events)
+    import datetime as _dt
+
+    today = _dt.date.today().isoformat()
+    end = (_dt.date.today() + _dt.timedelta(days=7)).isoformat()
+    next_seven = [e for e in events if today <= (e.get("date") or "") < end]
+    next_sources = Counter(e.get("source") or "unknown" for e in next_seven)
+    organizers = {
+        (e.get("instagramAccount") or e.get("account") or e.get("organizer") or e.get("source") or "unknown").lower()
+        for e in next_seven
+    }
+    platform_catalogs = {}
+    try:
+        with open(OUTPUT_PATH) as file:
+            previous_payload = json.load(file)
+        platform_catalogs.update(
+            ((previous_payload.get("ingestionStats") or {}).get("platformCatalogs") or {})
+        )
+    except Exception:
+        pass
+    for name, health in {
+        "luma": luma.catalog_health(),
+        "partiful": partiful.catalog_health(),
+    }.items():
+        if health:
+            platform_catalogs[name] = health
+
     return {
         "sources": dict(sources),
         "discoveryLanes": dict(lanes),
@@ -336,6 +404,17 @@ def _ingestion_stats(events: list[dict]) -> dict:
         "browserCapturedInstagram": sum(
             e.get("source") == "instagram" and bool(e.get("browserCaptured")) for e in events
         ),
+        "nextSevenDays": {
+            "events": len(next_seven),
+            "organizers": len(organizers),
+            "sources": dict(next_sources),
+            "topSourceShare": round(max(next_sources.values(), default=0) / max(1, len(next_seven)), 3),
+        },
+        "platformCatalogs": platform_catalogs,
+        "run": {
+            **_RUN_TELEMETRY,
+            "timedOutSources": list(dict.fromkeys(_RUN_TELEMETRY["timedOutSources"])),
+        },
     }
 
 

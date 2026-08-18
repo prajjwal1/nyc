@@ -553,14 +553,11 @@ def _day_of_week_fit_boost(event: dict) -> float:
     ):
         if not is_weekend:
             boost += 0.03
-    # fb-184: profile-aligned fitness/run/dance Eventbrite-category events
-    # score ~0.36-0.51 on completeness/title/time and miss the 0.55 floor
-    # despite being user-requested (fb-179). Recover ONLY well-formed ones:
+    # Profile-aligned fitness/run/dance listings get a small fit boost when
+    # they are actionable (time + venue), without bypassing quality filters:
     # require BOTH a parsed startTime AND a venue name, so a low-info
-    # caption-only event still floors out (preserves the 0.55 quality gate —
-    # this is NOT a category-wide exemption). The +0.05 lifts the verified
-    # 0.49-0.54 cluster over 0.55; the final clamp below caps total stacking
-    # at +0.06 so it can't run away.
+    # caption-only records remain weak. The final clamp below keeps this
+    # category fit signal from running away.
     if cats & {"fitness", "wellness", "outdoors"} or any(
         k in text for k in ("run club", "yoga", "pilates", "contra", "swing dance")
     ):
@@ -833,7 +830,7 @@ def _load_user_curated_sources() -> dict:
                 for k, v in (raw.get("title_hints") or {}).items()
             },
             # Hosts tagged "floor_bypass": false are "boost-only" — they get
-            # the ranking boost but must still clear the 0.55 MIN_SCORE floor
+            # the ranking boost but must still clear the normal score floor
             # (Critic S4: e.g. Elsewhere books on-taste AND off-taste late shows).
             "no_floor_hosts": {
                 k.lower()
@@ -928,7 +925,7 @@ def _diversity_floor(e: dict) -> float:
     # Conservative inline mirror of normalize._min_score_floor (avoids a
     # circular import). Always <= the real floor, so the clamp can only be
     # MORE lenient — it never drops an event the real gate would keep.
-    return 0.40 if _conviction(e) else 0.55
+    return 0.25 if _conviction(e) else 0.35
 
 
 def _diversity_source_key(e: dict) -> str:

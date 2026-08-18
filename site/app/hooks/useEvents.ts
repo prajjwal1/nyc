@@ -4,7 +4,13 @@ import { useState, useEffect, useMemo } from "react";
 import { format } from "date-fns";
 import { EventsData } from "../lib/types";
 import { loadEvents, filterEvents, getEventDates } from "../lib/events";
-import { loadProfile, interestBoost, InterestProfile } from "../lib/interests";
+import {
+  loadProfile,
+  interestBoost,
+  interestReason,
+  InterestProfile,
+  PROFILE_CHANGE_EVENT,
+} from "../lib/interests";
 
 export function useEvents() {
   const [data, setData] = useState<EventsData | null>(null);
@@ -13,9 +19,7 @@ export function useEvents() {
   const [selectedDate, setSelectedDate] = useState<string>(
     format(new Date(), "yyyy-MM-dd")
   );
-  const [categories, setCategories] = useState<string[]>([]);
-  const [search, setSearch] = useState("");
-  const [priceFilter, setPriceFilter] = useState<"all" | "free" | "paid">("all");
+  const [accountFilter, setAccountFilter] = useState("");
   const [profile, setProfile] = useState<InterestProfile | null>(null);
 
   useEffect(() => {
@@ -26,7 +30,13 @@ export function useEvents() {
     queueMicrotask(() => setProfile(loadProfile()));
   }, []);
 
-  // Re-rank events with the user's learned interest profile so the feed
+  useEffect(() => {
+    const refresh = () => setProfile(loadProfile());
+    window.addEventListener(PROFILE_CHANGE_EVENT, refresh);
+    return () => window.removeEventListener(PROFILE_CHANGE_EVENT, refresh);
+  }, []);
+
+  // Re-rank events with the user's learned interest profile so the calendar
   // adapts to what they actually engage with. Server-side score is the
   // base; interestBoost is small (max +0.15) so saved/tagged still win.
   // Also drop today's events whose start time clearly passed (>3h ago) —
@@ -49,15 +59,21 @@ export function useEvents() {
     };
     const upcoming = data.events.filter(stillUpcoming);
     if (!profile) return upcoming;
-    return upcoming.map((e) => ({
-      ...e,
-      score: (e.score ?? 0) + interestBoost(e, profile),
-    }));
+    return upcoming.map((e) => {
+      const reason = interestReason(e, profile);
+      return {
+        ...e,
+        score: (e.score ?? 0) + interestBoost(e, profile),
+        recommendationReasons: reason
+          ? [reason, ...(e.recommendationReasons || []).filter((item) => item !== reason)].slice(0, 3)
+          : e.recommendationReasons,
+      };
+    });
   }, [data, profile]);
 
   const filteredEvents = useMemo(() => {
-    return filterEvents(personalizedEvents, { categories, search, priceFilter });
-  }, [personalizedEvents, categories, search, priceFilter]);
+    return filterEvents(personalizedEvents, { account: accountFilter });
+  }, [personalizedEvents, accountFilter]);
 
   const eventDates = useMemo(() => getEventDates(filteredEvents), [filteredEvents]);
 
@@ -65,11 +81,6 @@ export function useEvents() {
     const dayEvents = filteredEvents.filter((e) => e.date === selectedDate);
     return [...dayEvents].sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
   }, [filteredEvents, selectedDate]);
-
-  const allCategories = useMemo(() => {
-    if (!data) return [];
-    return [...new Set(data.events.flatMap((e) => e.categories))].sort();
-  }, [data]);
 
   const refreshProfile = () => setProfile(loadProfile());
 
@@ -81,16 +92,10 @@ export function useEvents() {
     setSelectedDate,
     selectedDayEvents,
     eventDates,
-    categories,
-    setCategories,
-    search,
-    setSearch,
-    priceFilter,
-    setPriceFilter,
-    allCategories,
+    accountFilter,
+    setAccountFilter,
     lastUpdated: data?.lastUpdated,
     totalEvents: data?.events.length ?? 0,
-    topAccounts: data?.topAccounts,
     refreshProfile,
   };
 }

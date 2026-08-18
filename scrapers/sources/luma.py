@@ -2,11 +2,16 @@ import json
 import os
 import re
 from bs4 import BeautifulSoup
-from ..utils.http import fetch_text
+from urllib.parse import urlencode
+
+from ..utils.http import fetch_json, fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
 from ..utils.platform_discovery import FrontierItem, platform_frontier, rotating_luma_probes
 
 LUMA_DISCOVER_URL = "https://lu.ma/nyc"
+LUMA_DISCOVER_API = "https://api.lu.ma/discover/get-paginated-events"
+LUMA_NYC_PLACE_ID = "discplace-Izx1rQVSh8njYpP"
+_LAST_CATALOG_HEALTH: dict = {}
 # Compatibility for maintenance/tests. Runtime coverage comes from
 # _calendar_plan(), not from appending URLs to this constant.
 LUMA_PAGES = [LUMA_DISCOVER_URL]
@@ -15,13 +20,14 @@ LUMA_PAGES = [LUMA_DISCOVER_URL]
 def _calendar_plan() -> list[FrontierItem]:
     """Return learned calendars, harvested events, and rotating probes."""
     quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
+    fast_refresh = os.environ.get("PLATFORM_FAST_REFRESH", "0") == "1"
     learned_calendars = platform_frontier(
-        "luma", kinds={"calendar"}, limit=5 if quick else 14
+        "luma", kinds={"calendar"}, limit=4 if fast_refresh else 8 if quick else 20
     )
     direct_events = platform_frontier(
-        "luma", kinds={"event"}, limit=4 if quick else 16
+        "luma", kinds={"event"}, limit=0 if fast_refresh else 6 if quick else 20
     )
-    probes = [] if quick else rotating_luma_probes(limit=4)
+    probes = [] if quick or fast_refresh else rotating_luma_probes(limit=6)
     items = [
         FrontierItem(
             url=LUMA_DISCOVER_URL,
@@ -58,11 +64,13 @@ async def scrape() -> list[dict]:
 
     async def calendar(item: FrontierItem) -> tuple[FrontierItem, list[dict]]:
         async with sem:
-            page_events = await _try_luma_url(item.url)
+            page_events = (
+                await _scrape_luma_discover_api()
+                if item.kind == "discover"
+                else await _try_luma_url(item.url)
+            )
         for event in page_events:
             event["discoveryLane"] = item.lane
-            if item.kind == "discover":
-                event["_lumaNeedsHydration"] = True
         return item, page_events
 
     results = await asyncio.gather(*(calendar(item) for item in plan))
@@ -71,23 +79,36 @@ async def scrape() -> list[dict]:
     # Organizer URLs exposed by the city listing are new calendar candidates.
     # Fetch a bounded set immediately instead of waiting for a code/config edit.
     planned = {item.url.rstrip("/") for item in plan}
-    promoted = _promoted_calendars(events, planned, limit=8 if not os.environ.get("IG_SAVED_ONLY") == "1" else 2)
+    promoted_limit = 0 if os.environ.get("PLATFORM_FAST_REFRESH") == "1" else 12 if not os.environ.get("IG_SAVED_ONLY") == "1" else 4
+    promoted = _promoted_calendars(events, planned, limit=promoted_limit)
     if promoted:
         promoted_results = await asyncio.gather(*(calendar(item) for item in promoted))
         events.extend(event for _item, page_events in promoted_results for event in page_events)
         print(f"[luma] promoted {len(promoted)} organizers from current results")
 
-    # The discover listing intentionally omits descriptions. Hydrate its
-    # canonical event URLs before normalization; otherwise the description
-    # shell filter discards the entire broad Luma discovery lane.
+    # Reuse detail-page content for learned calendar/direct-event results.
+    # The broad NYC cursor API is intentionally kept lightweight: its rows
+    # already have canonical URL, graphic, date, host and location, and
+    # hitting every detail page twice an hour causes avoidable 429s.
     quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
+    previous_details = _load_previous_luma_details()
     canonical = {}
     for event in events:
         url = event.get("sourceUrl") or ""
         if not quick and event.get("_lumaNeedsHydration") and re.match(
             r"https?://(?:lu\.ma|luma\.com)/[a-z0-9-]{6,}/?$", url, re.I
         ):
-            canonical[url] = event
+            previous = previous_details.get(url)
+            if previous and previous.get("description"):
+                event["description"] = previous["description"]
+                if not (event.get("location") or {}).get("name"):
+                    event["location"] = previous.get("location") or event.get("location")
+                event["organizer"] = event.get("organizer") or previous.get("organizer")
+                event["organizerUrl"] = event.get("organizerUrl") or previous.get("organizerUrl")
+                event["organizerRefs"] = event.get("organizerRefs") or previous.get("organizerRefs")
+                event.pop("_lumaNeedsHydration", None)
+            else:
+                canonical[url] = event
     sem = asyncio.Semaphore(4)
 
     async def hydrate(url: str) -> dict:
@@ -103,6 +124,173 @@ async def scrape() -> list[dict]:
     for event in out:
         event.pop("_lumaNeedsHydration", None)
     return out
+
+
+def _load_previous_luma_details() -> dict[str, dict]:
+    """Reuse stable detail-page fields so frequent refreshes hydrate only new events."""
+    path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        "data",
+        "events.json",
+    )
+    try:
+        with open(path) as file:
+            payload = json.load(file)
+    except Exception:
+        return {}
+    events = payload.get("events", []) if isinstance(payload, dict) else payload
+    return {
+        event.get("sourceUrl"): event
+        for event in events
+        if isinstance(event, dict)
+        and event.get("source") == "luma"
+        and event.get("sourceUrl")
+    }
+
+
+def _luma_discover_bootstrap(html: str) -> tuple[str, int]:
+    """Read the public city catalog id and advertised event count."""
+    soup = BeautifulSoup(html, "html.parser")
+    script = soup.find("script", id="__NEXT_DATA__")
+    if not script or not script.string:
+        return "", 0
+    try:
+        payload = json.loads(script.string)
+        place = payload["props"]["pageProps"]["initialData"]["data"]["place"]
+        return str(place.get("api_id") or ""), int(place.get("event_count") or 0)
+    except (KeyError, TypeError, ValueError, json.JSONDecodeError):
+        return "", 0
+
+
+def _parse_luma_discover_entry(entry: dict) -> dict | str | None:
+    """Convert one public NYC discovery API row into the shared event schema."""
+    raw = entry.get("event") or {}
+    title = (raw.get("name") or "").strip()
+    slug = (raw.get("url") or "").strip().strip("/")
+    start = raw.get("start_at") or entry.get("start_at") or ""
+    if not title or not slug or not start:
+        return None
+
+    geo = raw.get("geo_address_info") or {}
+    if geo and not _is_nyc_address(geo):
+        return "non-nyc"
+    date_str, start_time = parse_iso_to_local(start)
+    event_date = parse_date(date_str) if date_str else None
+    if not event_date:
+        return None
+    _, end_time = parse_iso_to_local(raw.get("end_at") or "")
+
+    calendar = entry.get("calendar") or {}
+    hosts = entry.get("hosts") or []
+    primary_host = hosts[0] if hosts and isinstance(hosts[0], dict) else {}
+    organizer = (calendar.get("name") or primary_host.get("name") or "").strip()
+    calendar_slug = (calendar.get("slug") or "").strip()
+    organizer_url = f"https://luma.com/{calendar_slug}" if calendar_slug else None
+    organizer_id = calendar.get("api_id") or primary_host.get("api_id") or organizer
+
+    location_name = (
+        geo.get("address")
+        or geo.get("name")
+        or geo.get("sublocality")
+        or geo.get("city_state")
+        or ""
+    )
+    address = geo.get("full_address") or geo.get("short_address") or geo.get("city_state") or ""
+    image = raw.get("cover_url") or raw.get("social_image_url") or calendar.get("cover_image_url")
+    ticket = entry.get("ticket_info") or {}
+    price = "free" if ticket.get("is_free") else "unknown"
+
+    built = build_event(
+        title=title,
+        description="",
+        event_date=event_date,
+        start_time=start_time,
+        end_time=end_time,
+        location_name=location_name,
+        address=address,
+        source="luma",
+        source_url=f"https://luma.com/{slug}",
+        image_url=image,
+        price=price,
+        organizer=organizer or None,
+        organizer_url=organizer_url,
+        organizer_refs=[{
+            "platform": "luma",
+            "externalId": organizer_id,
+            "name": organizer,
+            "handle": primary_host.get("instagram_handle") or None,
+            "url": organizer_url or primary_host.get("website") or "",
+            "role": "host",
+        }] if organizer_id else None,
+    )
+    if built is not None:
+        built["attendingCount"] = int(entry.get("guest_count") or 0)
+        built["catalogSource"] = "luma_nyc"
+    return built
+
+
+async def _scrape_luma_discover_api() -> list[dict]:
+    """Fetch every page in Luma's public NYC catalog, not only the first 20."""
+    try:
+        html = await fetch_text(LUMA_DISCOVER_URL)
+        place_id, advertised_count = _luma_discover_bootstrap(html)
+    except Exception as exc:
+        print(f"[luma] city bootstrap failed: {exc}")
+        place_id, advertised_count = LUMA_NYC_PLACE_ID, 0
+    place_id = place_id or LUMA_NYC_PLACE_ID
+
+    rows: dict[str, dict] = {}
+    cursor = ""
+    seen_cursors: set[str] = set()
+    for _page in range(6):
+        params = {"discover_place_api_id": place_id, "pagination_limit": 50}
+        if cursor:
+            params["pagination_cursor"] = cursor
+        try:
+            payload = await fetch_json(
+                f"{LUMA_DISCOVER_API}?{urlencode(params)}",
+                headers={"Accept": "application/json", "Referer": LUMA_DISCOVER_URL},
+            )
+        except Exception as exc:
+            print(f"[luma] city catalog page failed: {exc}")
+            break
+        for row in payload.get("entries") or []:
+            if isinstance(row, dict) and row.get("api_id"):
+                rows.setdefault(row["api_id"], row)
+        next_cursor = payload.get("next_cursor") or ""
+        if not payload.get("has_more") or not next_cursor or next_cursor in seen_cursors:
+            break
+        seen_cursors.add(next_cursor)
+        cursor = next_cursor
+
+    events: list[dict] = []
+    non_nyc = 0
+    for row in rows.values():
+        parsed = _parse_luma_discover_entry(row)
+        if parsed == "non-nyc":
+            non_nyc += 1
+        elif isinstance(parsed, dict):
+            events.append(parsed)
+    advertised_count = advertised_count or len(rows)
+    coverage = len(events) / advertised_count if advertised_count else 1.0
+    global _LAST_CATALOG_HEALTH
+    _LAST_CATALOG_HEALTH = {
+        "advertised": advertised_count,
+        "fetched": len(events),
+        "coverage": round(coverage, 3),
+        "missingImages": sum(not event.get("imageUrl") for event in events),
+    }
+    print(
+        f"[luma] city catalog: {len(events)}/{advertised_count or '?'} events "
+        f"({coverage:.0%} coverage, {non_nyc} explicit non-NYC skipped)"
+    )
+    if advertised_count and coverage < 0.8:
+        print("[luma] WARNING: city catalog coverage below 80%")
+    return events
+
+
+def catalog_health() -> dict:
+    return dict(_LAST_CATALOG_HEALTH)
 
 
 def _promoted_calendars(

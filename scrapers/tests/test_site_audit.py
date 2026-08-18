@@ -18,7 +18,7 @@ def event(i, **updates):
     return value
 
 
-def test_audit_excludes_caption_leak_from_showcase_and_flags_raw_data():
+def test_audit_flags_caption_leak_on_default_calendar_day():
     events = [event(i) for i in range(110)]
     events[0]["title"] = "If you're looking for a new cocktail bar, this is it"
     result = audit_payloads(
@@ -27,11 +27,11 @@ def test_audit_excludes_caption_leak_from_showcase_and_flags_raw_data():
         now=datetime(2026, 8, 6, 12, tzinfo=timezone.utc),
         route_status={"home": 200},
     )
-    assert result["status"] == "attention"
-    assert result["showcase"]["captionLike"] == []
-    assert "0" not in result["showcase"]["eventIds"]
+    assert result["status"] == "fail"
+    assert result["showcase"]["captionLike"] == [{"id": "0", "title": "If you're looking for a new cocktail bar, this is it"}]
+    assert "0" in result["showcase"]["eventIds"]
     assert result["feed"]["captionLikeNext7Days"] == 1
-    assert any("independently enriched" in warning for warning in result["warnings"])
+    assert any("default calendar day" in failure for failure in result["failures"])
 
 
 def test_audit_separates_directory_references_from_enriched_communities():
@@ -61,6 +61,16 @@ def test_audit_flags_stale_or_unavailable_deployment():
     assert any("routes" in failure for failure in result["failures"])
 
 
+def test_sparse_week_is_diagnostic_not_a_deployment_failure():
+    result = audit_payloads(
+        {"lastUpdated": "2026-08-06T11:30:00+00:00", "events": [event(i) for i in range(20)]},
+        {"communities": [{}] * 150},
+        now=datetime(2026, 8, 6, 12, tzinfo=timezone.utc),
+        route_status={"home": 200},
+    )
+    assert not any("100 upcoming events" in failure for failure in result["failures"])
+
+
 def test_merge_browser_evidence_uses_exact_rendered_ids(tmp_path):
     audit = audit_payloads(
         {"lastUpdated": "2026-08-06T11:30:00+00:00", "events": [event(i) for i in range(110)]},
@@ -76,3 +86,22 @@ def test_merge_browser_evidence_uses_exact_rendered_ids(tmp_path):
     merged = merge_browser_evidence(tmp_path)
     assert merged["showcase"]["rendered"]["eventIds"] == ["7", "8"]
     assert merged["showcase"]["rendered"]["mobileCount"] == 1
+
+
+def test_merge_browser_evidence_rejects_search_and_clipped_navigation(tmp_path):
+    audit = audit_payloads(
+        {"lastUpdated": "2026-08-06T11:30:00+00:00", "events": [event(i) for i in range(110)]},
+        {"communities": [{}] * 150},
+        now=datetime(2026, 8, 6, 12, tzinfo=timezone.utc),
+        route_status={"home": 200},
+    )
+    (tmp_path / "audit.json").write_text(json.dumps(audit))
+    (tmp_path / "browser-audit.json").write_text(json.dumps({"results": [
+        {"route": "home", "status": 200, "viewport": "mobile", "showcased": [{"id": "7"}], "searchInputs": 1, "clippedNavLabels": ["Saved"]},
+    ]}))
+
+    merged = merge_browser_evidence(tmp_path)
+
+    assert merged["status"] == "fail"
+    assert any("search inputs" in failure for failure in merged["failures"])
+    assert any("navigation is clipped" in failure for failure in merged["failures"])

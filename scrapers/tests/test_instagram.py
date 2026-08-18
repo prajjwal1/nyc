@@ -16,7 +16,7 @@ from datetime import datetime
 import pytest
 
 from scrapers.config import IG_SPOTS_ACCOUNTS
-from scrapers.sources.instagram import _extract_events_from_caption
+from scrapers.sources.instagram import _extract_events_from_caption, _select_priority_cohort
 
 
 def _post(caption, when=datetime(2026, 6, 1, 12, 0), slides=1):
@@ -97,3 +97,14 @@ class TestNonSpotControl:
         events = _extract_events_from_caption(_post(ROUNDUP_CAPTION, slides=5), "somerandomvenue")
         assert len(events) >= 3
         assert all(not e.get("evergreen") for e in events)
+
+
+def test_priority_cohort_keeps_best_and_rotates_remainder():
+    accounts = [f"account{i}" for i in range(10)]
+    first = _select_priority_cohort(accounts, always_limit=2, rotating_limit=3, slot=0)
+    second = _select_priority_cohort(accounts, always_limit=2, rotating_limit=3, slot=1)
+
+    assert first[:2] == accounts[:2]
+    assert second[:2] == accounts[:2]
+    assert first[2:] == accounts[2:5]
+    assert second[2:] == accounts[5:8]

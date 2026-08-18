@@ -1,7 +1,8 @@
 name: Quick Scrape (no Instagram)
 
-# A fast 5-10 minute scrape that runs only the reliable, fast sources
-# (Eventbrite, Substack, Luma, Partiful). Instagram is carried forward here;
+# A fast scrape for Eventbrite and newsletter links. Luma and Partiful have
+# their own full-inventory workflow at :15/:45, so this lane never replaces a
+# full platform snapshot with a bounded quick-mode result. Instagram is carried forward here;
 # fresh IG coverage comes from the browser-snapshot workflow, avoiding a
 # synchronous saved-post request blocking the whole quick refresh.
 # Runs every 30 min so the live site always has fresh events.
@@ -50,6 +51,7 @@ jobs:
           IG_USERNAME: ${{ secrets.IG_USERNAME }}
           IG_SAVED_ONLY: "1"  # activates bounded quick-source mode
           SKIP_INSTAGRAM: "1" # preserve existing IG; browser worker refreshes it
+          SOURCE_ONLY: "eventbrite,substack"
         run: python -m scrapers.run_all
 
       - name: Sanity check + stats logging
