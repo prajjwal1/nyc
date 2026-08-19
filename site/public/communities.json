@@ -519,9 +519,9 @@
         "com_037b24ee6417",
         "com_0cc8630779d7",
         "com_ab8259bb35a4",
+        "com_c4469caf0091",
         "com_eeb4e424a504",
-        "com_cdd5daa67222",
-        "com_b766b6de77ba"
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -672,6 +672,75 @@
       ]
     },
     {
+      "id": "com_c4469caf0091",
+      "slug": "lit-club-nyc-calendar-af0091",
+      "name": "Lit Club NYC Calendar",
+      "kind": "club",
+      "tagline": "Lit Club NYC Calendar is a community club centered on books across NYC.",
+      "description": "Lit Club NYC Calendar is a community club centered on books across NYC. Based on 2 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "categories": [
+        "books"
+      ],
+      "tags": [
+        "books"
+      ],
+      "neighborhoods": [],
+      "homeVenue": "Cherry on Top",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/jm/3bde2409-c92d-45ef-ad06-dd9233bebe49.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/litclub.nyc"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday",
+          "Tuesday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "0b852617906ce1e1",
+        "fe764000ad27607a"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-08-19",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:litclub.nyc",
+        "luma:cal-ittr6nq7r4wivff"
+      ],
+      "similarCommunityIds": [
+        "com_0cc8630779d7",
+        "com_eeb4e424a504",
+        "com_33a530deb7aa",
+        "com_4e69412cb0a5",
+        "com_cdd5daa67222",
+        "com_c1410c07c4dd"
+      ]
+    },
+    {
       "id": "com_14e2dae511e1",
       "slug": "andrew-s-yeung-s-tech-events-e511e1",
       "name": "Andrew's Yeung's Tech Events",
@@ -745,7 +814,87 @@
         "com_cdd5daa67222",
         "com_ab8259bb35a4",
         "com_c58670960684",
-        "com_b0e15eaab803"
+        "com_4e69412cb0a5"
+      ]
+    },
+    {
+      "id": "com_4e69412cb0a5",
+      "slug": "reading-rhythms-nyc-2cb0a5",
+      "name": "Reading Rhythms NYC",
+      "kind": "recurring_series",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in astoria, lower east side.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in astoria, lower east side. Based on 5 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "categories": [
+        "books",
+        "outdoors",
+        "parties"
+      ],
+      "tags": [
+        "books",
+        "outdoors",
+        "parties"
+      ],
+      "neighborhoods": [
+        "astoria",
+        "lower east side",
+        "greenpoint"
+      ],
+      "homeVenue": "10-15 43rd Ave",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/i9/9eba1667-45fc-422f-8d8e-e0d99fd48e61.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/readingrhythms-manhattan"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 5,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Tuesday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.83,
+        "sampleSize": 5
+      },
+      "upcomingEventIds": [
+        "2c0a4efc9443af79",
+        "164710b371f88a23",
+        "60bff7d282d5d6ce",
+        "d345e3488b29dc09",
+        "93ead61777a93573"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-08-19",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 5,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:reading_rhythms",
+        "luma:cal-q8l315usvmwb6h6"
+      ],
+      "similarCommunityIds": [
+        "com_cdd5daa67222",
+        "com_14e2dae511e1",
+        "com_33a530deb7aa",
+        "com_b0e15eaab803",
+        "com_ebf7599ed103",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -886,12 +1035,12 @@
         "luma:litclub.nyc"
       ],
       "similarCommunityIds": [
+        "com_4e69412cb0a5",
         "com_cdd5daa67222",
         "com_eef1ca956dae",
         "com_0cc8630779d7",
-        "com_eeb4e424a504",
-        "com_318c39363fe6",
-        "com_7fab201ed5e1"
+        "com_c4469caf0091",
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -962,10 +1111,10 @@
       "similarCommunityIds": [
         "com_eef1ca956dae",
         "com_14e2dae511e1",
+        "com_4e69412cb0a5",
         "com_cdd5daa67222",
         "com_ebf7599ed103",
-        "com_3837f308cd75",
-        "com_c1410c07c4dd"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -1118,12 +1267,12 @@
         "url:https://luma.com/readingrhythms-manhattan"
       ],
       "similarCommunityIds": [
+        "com_4e69412cb0a5",
         "com_14e2dae511e1",
         "com_ebf7599ed103",
         "com_33a530deb7aa",
         "com_b0e15eaab803",
-        "com_c1410c07c4dd",
-        "com_eef1ca956dae"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -1268,9 +1417,9 @@
         "com_14e2dae511e1",
         "com_cdd5daa67222",
         "com_ab8259bb35a4",
+        "com_4e69412cb0a5",
         "com_b0e15eaab803",
-        "com_037b24ee6417",
-        "com_7fab201ed5e1"
+        "com_037b24ee6417"
       ]
     },
     {
@@ -1345,12 +1494,12 @@
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
+        "com_4e69412cb0a5",
         "com_b0e15eaab803",
         "com_cdd5daa67222",
         "com_ed8d42fb031d",
         "com_0cc8630779d7",
-        "com_eeb4e424a504",
-        "com_318c39363fe6"
+        "com_c4469caf0091"
       ]
     },
     {
@@ -1493,11 +1642,11 @@
       ],
       "similarCommunityIds": [
         "com_0cc8630779d7",
+        "com_c4469caf0091",
         "com_33a530deb7aa",
+        "com_4e69412cb0a5",
         "com_cdd5daa67222",
-        "com_c1410c07c4dd",
-        "com_eef1ca956dae",
-        "com_d2ccb56c071d"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -1561,12 +1710,12 @@
         "source:mcnallyjackson"
       ],
       "similarCommunityIds": [
+        "com_c4469caf0091",
         "com_eeb4e424a504",
         "com_a7c30be0b35f",
         "com_33a530deb7aa",
-        "com_cdd5daa67222",
-        "com_c1410c07c4dd",
-        "com_eef1ca956dae"
+        "com_4e69412cb0a5",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -1644,9 +1793,9 @@
         "com_b0e15eaab803",
         "com_33a530deb7aa",
         "com_3837f308cd75",
+        "com_4e69412cb0a5",
         "com_cdd5daa67222",
-        "com_0cc8630779d7",
-        "com_eeb4e424a504"
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -48969,7 +49118,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-19T16:52:01.890250+00:00",
+  "lastUpdated": "2026-08-19T17:04:30.375364+00:00",
   "version": 1,
   "schemaVersion": 1
 }
