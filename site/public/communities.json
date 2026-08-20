@@ -223,9 +223,9 @@
         "com_c1410c07c4dd",
         "com_b0e15eaab803",
         "com_318c39363fe6",
+        "com_3b104adba072",
         "com_a393a0e8b1e0",
-        "com_02ba15552329",
-        "com_037b24ee6417"
+        "com_02ba15552329"
       ]
     },
     {
@@ -446,8 +446,8 @@
         "com_b766b6de77ba",
         "com_3837f308cd75",
         "com_218b97d674a6",
-        "com_02ba15552329",
-        "com_037b24ee6417"
+        "com_3b104adba072",
+        "com_02ba15552329"
       ]
     },
     {
@@ -1417,6 +1417,80 @@
         "com_b0e15eaab803",
         "com_037b24ee6417",
         "com_7fab201ed5e1"
+      ]
+    },
+    {
+      "id": "com_3b104adba072",
+      "slug": "curated-by-field-notes-nyc-dba072",
+      "name": "curated by field notes nyc",
+      "kind": "recurring_series",
+      "tagline": "curated by field notes nyc is a recurring event series centered on music, games in flushing, williamsburg.",
+      "description": "curated by field notes nyc is a recurring event series centered on music, games in flushing, williamsburg. Based on 2 observed event dates, it meets monthly on Sunday and Thursday evenings.",
+      "categories": [
+        "music",
+        "games"
+      ],
+      "tags": [
+        "music",
+        "games"
+      ],
+      "neighborhoods": [
+        "flushing",
+        "williamsburg"
+      ],
+      "homeVenue": "Flushing Meadows Corona Park",
+      "imageUrl": "https://assets.getpartiful.com/posters/US-OPEN-TENNIS",
+      "links": [
+        {
+          "type": "partiful",
+          "label": "View on Partiful",
+          "url": "https://www.instagram.com/fieldnotes.nyc/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "monthly",
+        "typicalDays": [
+          "Sunday",
+          "Thursday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "d692cfc71e42eca7",
+        "9ac9620466869f5b"
+      ],
+      "sourceAttributions": [
+        "partiful"
+      ],
+      "lastVerifiedAt": "2026-08-20",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:fieldnotes.nyc",
+        "partiful:o7edm3y5tr24cnnq3qay"
+      ],
+      "similarCommunityIds": [
+        "com_9a5c4d074e3a",
+        "com_ed8d42fb031d",
+        "com_218b97d674a6",
+        "com_318c39363fe6",
+        "com_b766b6de77ba",
+        "com_d2ccb56c071d"
       ]
     },
     {
@@ -49156,7 +49230,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-20T03:35:02.789436+00:00",
+  "lastUpdated": "2026-08-20T03:57:13.608342+00:00",
   "version": 1,
   "schemaVersion": 1
 }
