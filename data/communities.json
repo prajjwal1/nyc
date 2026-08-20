@@ -234,7 +234,7 @@
       "name": "lululemon Williamsburg",
       "kind": "recurring_series",
       "tagline": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg.",
-      "description": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg. Based on 4 observed event dates, it meets weekly on Thursday and Wednesday mornings.",
+      "description": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg. Based on 5 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "fitness"
       ],
@@ -250,14 +250,14 @@
         {
           "type": "eventbrite",
           "label": "View on Eventbrite",
-          "url": "https://www.eventbrite.com/o/14861961557"
+          "url": "https://eventbrite.com/o/14861961557"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-20",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 4
       },
       "schedule": {
@@ -266,12 +266,13 @@
           "Thursday",
           "Wednesday"
         ],
-        "typicalTime": "07:45",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "typicalTime": "18:00",
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
-        "11059ef31bd861fc"
+        "11059ef31bd861fc",
+        "79c57c9b701c3620"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -280,7 +281,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -49155,7 +49156,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-20T01:49:45.835442+00:00",
+  "lastUpdated": "2026-08-20T01:56:39.420472+00:00",
   "version": 1,
   "schemaVersion": 1
 }
