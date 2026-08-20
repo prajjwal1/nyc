@@ -76,8 +76,8 @@
         "com_037b24ee6417",
         "com_216dd4aaa8b8",
         "com_3837f308cd75",
-        "com_9a5c4d074e3a",
         "com_318c39363fe6",
+        "com_9a5c4d074e3a",
         "com_c58670960684"
       ]
     },
@@ -387,13 +387,15 @@
       "slug": "moma-ps1-074e3a",
       "name": "MoMA PS1",
       "kind": "recurring_series",
-      "tagline": "MoMA PS1 is a recurring event series centered on music in long island city.",
-      "description": "MoMA PS1 is a recurring event series centered on music in long island city. Based on 4 observed event dates, it meets weekly on Friday afternoons.",
+      "tagline": "MoMA PS1 is a recurring event series centered on music, exploration in long island city.",
+      "description": "MoMA PS1 is a recurring event series centered on music, exploration in long island city. Based on 5 observed event dates, it meets weekly on Friday and Saturday afternoons.",
       "categories": [
-        "music"
+        "music",
+        "exploration"
       ],
       "tags": [
-        "music"
+        "music",
+        "exploration"
       ],
       "neighborhoods": [
         "long island city"
@@ -404,28 +406,30 @@
         {
           "type": "eventbrite",
           "label": "View on Eventbrite",
-          "url": "https://www.eventbrite.com/o/8184194121"
+          "url": "https://eventbrite.com/o/8184194121"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-14",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 2
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Friday"
+          "Friday",
+          "Saturday"
         ],
         "typicalTime": "16:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "9644730fdfb156b0",
-        "dcb91d9e07cb9b93"
+        "dcb91d9e07cb9b93",
+        "4a05664b65a27ca0"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -434,7 +438,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -446,9 +450,9 @@
         "com_318c39363fe6",
         "com_b766b6de77ba",
         "com_3837f308cd75",
+        "com_eef1ca956dae",
         "com_218b97d674a6",
-        "com_3b104adba072",
-        "com_02ba15552329"
+        "com_3b104adba072"
       ]
     },
     {
@@ -1485,10 +1489,10 @@
         "partiful:o7edm3y5tr24cnnq3qay"
       ],
       "similarCommunityIds": [
-        "com_9a5c4d074e3a",
         "com_ed8d42fb031d",
         "com_218b97d674a6",
         "com_318c39363fe6",
+        "com_9a5c4d074e3a",
         "com_b766b6de77ba",
         "com_d2ccb56c071d"
       ]
@@ -1640,10 +1644,10 @@
       "similarCommunityIds": [
         "com_83fdf02633ef",
         "com_3837f308cd75",
-        "com_9a5c4d074e3a",
         "com_216dd4aaa8b8",
         "com_b0e15eaab803",
-        "com_eef1ca956dae"
+        "com_eef1ca956dae",
+        "com_318c39363fe6"
       ]
     },
     {
@@ -1930,8 +1934,8 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_9a5c4d074e3a",
         "com_7fab201ed5e1",
+        "com_9a5c4d074e3a",
         "com_a7c30be0b35f",
         "com_b766b6de77ba",
         "com_33a530deb7aa",
@@ -49230,7 +49234,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-20T16:57:02.537109+00:00",
+  "lastUpdated": "2026-08-20T17:20:04.384310+00:00",
   "version": 1,
   "schemaVersion": 1
 }
