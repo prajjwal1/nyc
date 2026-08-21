@@ -734,7 +734,6 @@ SOCIAL_KEYWORDS = [
     "singles event",
     "singles mixer",
     "singles party",
-    "matchmaking",
     "date my friend",
     "blind date",
     "first dates",
@@ -814,7 +813,16 @@ ALCOHOL_FREE_KEYWORDS = [
 
 
 HIGH_VALUE_KEYWORDS = [
-    # Live music — major boost (NYC 20s-30s love this)
+    # Generic, event-level signals only. Specific venue names belong in
+    # SOURCE_QUALITY / user_curated_sources.json, where they can be learned or
+    # changed without another code edit. Terms that are hard-blocked (for
+    # example "nightclub" and "after hours") must not also appear here.
+    #
+    # The list remains a cold-start nudge, not a substitute for the semantic
+    # taste score. quality_signals intentionally collapses overlapping matches
+    # to one hit so phrases such as "live performance" do not consume the
+    # entire bounded boost stack by matching both "performance" variants.
+    # Live music
     "live music",
     "live jazz",
     "jazz night",
@@ -851,12 +859,10 @@ HIGH_VALUE_KEYWORDS = [
     "warehouse",
     "underground",
     "secret",
-    "after hours",
     "late night",
     "natural wine bar",
     "wine bar",
     "cocktail bar",
-    "nightclub",
     # Special / time-limited
     "opening night",
     "premiere",
@@ -905,13 +911,6 @@ HIGH_VALUE_KEYWORDS = [
     "gala",
     "benefit",
     "fundraiser dinner",
-    # 20s-30s NYC lifestyle
-    "brooklyn brewery",
-    "brooklyn bowl",
-    "house of yes",
-    "elsewhere",
-    "the broadway",
-    "knockdown center",
 ]
 
 # Audience targeting markers - if event explicitly targets demographics
@@ -1155,7 +1154,11 @@ def quality_signals(event: dict) -> dict:
         for kw in SOFT_PENALTY_KEYWORDS
         if kw in text and not (_is_fitness and kw in _RECURRING_WEEKDAY_PENALTIES)
     )
-    high_value_hits = sum(1 for kw in HIGH_VALUE_KEYWORDS if kw in text)
+    # Legacy high-value phrases are only a single bounded cold-start nudge.
+    # Counting overlapping substrings made one idea stack repeatedly (for
+    # example "live performance" matched both itself and "performance"),
+    # crowding the learned taste score out of the shared boost budget.
+    high_value_hits = int(any(kw in text for kw in HIGH_VALUE_KEYWORDS))
     social_hits = sum(1 for kw in SOCIAL_KEYWORDS if kw in text)
     alcohol_free_hits = sum(1 for kw in ALCOHOL_FREE_KEYWORDS if kw in text)
     audience_mismatch = any(kw in text for kw in NON_TARGET_AUDIENCE)

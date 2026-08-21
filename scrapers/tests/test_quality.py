@@ -11,7 +11,13 @@ and add the iteration note (or remove the case if it no longer makes sense).
 
 import pytest
 
-from scrapers.quality import _is_caption_fragment
+from scrapers.quality import (
+    HARD_BLOCK_KEYWORDS,
+    HIGH_VALUE_KEYWORDS,
+    SOCIAL_KEYWORDS,
+    _is_caption_fragment,
+    quality_signals,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -222,3 +228,29 @@ class TestCaptionFragmentStructuralRules:
 
     def test_location_label_prefix(self):
         assert _is_caption_fragment("Location: Brooklyn Bowl", "") is True
+
+
+class TestRankingKeywordSignals:
+    def test_overlapping_high_value_phrases_count_once(self):
+        event = {
+            "title": "Live Performance Festival",
+            "description": "A live performance at a neighborhood festival.",
+            "location": {"name": "Prospect Park"},
+        }
+
+        assert quality_signals(event)["high_value_hits"] == 1
+
+    def test_positive_signal_lists_do_not_reward_hard_blocked_terms(self):
+        blocked = set(HARD_BLOCK_KEYWORDS)
+
+        assert blocked.isdisjoint(HIGH_VALUE_KEYWORDS)
+        assert blocked.isdisjoint(SOCIAL_KEYWORDS)
+
+    def test_specific_venue_name_is_not_a_global_high_value_signal(self):
+        event = {
+            "title": "Elsewhere presents a new artist",
+            "description": "",
+            "location": {"name": "Elsewhere"},
+        }
+
+        assert quality_signals(event)["high_value_hits"] == 0

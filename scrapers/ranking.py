@@ -91,7 +91,10 @@ def compute_score(event: dict) -> float:
     time_q = signals["time_score"]
 
     # Engagement boosts/penalties
-    high_value_boost = min(0.30, signals["high_value_hits"] * 0.15)
+    # One generic high-value cue is enough. quality_signals collapses
+    # overlapping phrases so this legacy cold-start heuristic cannot crowd
+    # the learned taste score out of the shared boost budget.
+    high_value_boost = signals["high_value_hits"] * 0.15
     # Alcohol-free boost — user wants to see more sober-friendly events.
     # Drinking-centric events still surface (soft_penalty already pushes
     # them down a bit), this just floats alcohol-free options up.
