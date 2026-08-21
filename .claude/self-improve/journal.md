@@ -250,3 +250,27 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Verification:** 315 tests pass; sanity_check Critical failures 0; next build clean. Live-feed top-12 before/after verified (8→2 source max, music/run/dance present).
 
 **Hypothesis for next round:** the diversity cap + DJ-categorizer make the top a genuine mix; verify post-scrape that the deployed top-12 matches (it's re-scored each scrape). The keyword→taste retirement (fb-195/199) still awaits real synced engagement. Consider whether the music-slot's score-bump interacts oddly with the Following hero (it shouldn't — heroes filter by conviction, not raw score).
+
+## 2026-08-21 1622 — run-id 2026-08-21-1622
+
+**Context:** the checkout was 225 automated data commits behind `origin/main`; fast-forwarded to the current 286-event feed before measuring. Follow-graph coverage is now 50/50 (100%), so this round focused on ranking quality rather than source expansion.
+
+**Shipped (commit 4da61644):**
+- fb-195 (APPROVE, conservative scope): classified all quality-keyword clusters against the current feed and taste model. Kept user-explicit hard blocks, soft drinking/low-value penalties, alcohol-free boosts, and the meet-people social prior.
+- Removed exact positive/hard-block contradictions (`after hours`, `nightclub`, `matchmaking`) and six source-specific venue literals from global positive keywords. Venue preference remains data-driven through source quality and user-curated sources.
+- Collapsed overlapping high-value phrases to one +0.15 nudge per event. Previously 19 events double/triple matched phrases such as `live performance` + `performance`, consuming the +0.30 boost before learned taste could contribute.
+- Added three regression tests for non-stacking, hard-block disjointness, and source-specific venue scoring.
+
+**Deferred:** fb-138/139 require Reddit OAuth credentials; fb-158/fb-104/fb-185 source deletions require fresh probes and user opt-in. fb-199 is partially addressed; broad deletion of every current zero-hit phrase remains unsafe without explicit negative engagement examples.
+
+**Feedback gate:** CLOSED (more than three open items). No calibration question.
+
+**Metric delta (code-only; inventory unchanged):**
+- Follow-graph coverage: 50/50 (100.0%) → 50/50 (100.0%).
+- Topic coverage: 0 missing → 0 missing.
+- High-conviction ratio: 36/286 (12.6%) → 36/286 (12.6%).
+- Projected ranking quality: top-12 mean taste 0.0582→0.0650; explicit conviction 8/12→10/12. Top-30 mean taste 0.0395→0.0452; explicit conviction 11/30→13/30. Organizer diversity stays 24 and max organizer share stays 6.7%.
+
+**Verification:** 367 tests pass (3 expected xfails); all 5 sanity critical checks pass; Next.js production build clean; `git diff --check` clean.
+
+**Hypothesis for next round:** restore a real explicit engagement snapshot before further keyword retirement. With negative examples available, re-run the cluster audit and retire additional positive/social phrases only where ranking quality improves without reducing interest coverage.

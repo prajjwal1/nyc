@@ -125,7 +125,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-195 — Retire/validate the ~600 keyword lists in quality.py against the now-active taste model (Phase C part 2)
 - created_at: 2026-07-13
 - source: agent-proposal (unblocked follow-on to Phase C, 62a08f9; per orchestrator brief)
-- status: open
+- status: addressed: 4da61644 (run 2026-08-21-1622 — classified every quality-keyword cluster against the live feed/taste model; preserved explicit hard/soft/alcohol-free policy and the social prior; removed source-specific and hard-blocked positive terms; collapsed overlapping high-value matches to one bounded nudge. Top-12 mean taste 0.0582→0.0650 and explicit conviction 8/12→10/12.)
 - body: Phase C (62a08f9) shipped a semantic TF-IDF taste model (`scrapers/utils/taste.py`) that ranks events by similarity to what the user saves/attends; the f81a75f P6 change cold-started it from the follow-graph so the loop is now ACTIVE on all 423 events. Phase C deliberately DEFERRED retiring the ~600 hand-maintained keyword boost/penalty lists in `scrapers/quality.py` until the taste signal was validated on the full feed — that precondition is now met, so this is unblocked. Compare the taste signal against the keyword clusters and classify each (keep / redundant-with-taste / retire). The additive-only rule does NOT block this: it is refactoring a ranking signal, not deleting a source. IMPORTANT: the fb-001..fb-009 README hard rules (nightclub/late-night/networking blocks, drinking penalties, alcohol-free boosts) are user-explicit and must be preserved regardless of what the taste model says.
 - "addressed" criterion: taste-vs-keyword agreement recorded per cluster; each keyword cluster classified; at least the clearly-redundant clusters removed OR a documented finding (Critic-approved) explains why the keyword lists must stay; the fb-001..fb-009 hard rules verified still enforced.
 
@@ -968,7 +968,7 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-199 — Retire measured zero-hit keyword clusters (provable 0-delta first step of fb-195)
 - created_at: 2026-07-13
 - source: agent-proposal (dreamer-critic D1, DREAM-DEFER, run 2026-07-13-2033)
-- status: open
+- status: addressed-partial: 4da61644 (removed the structurally redundant zero-yield subset: hard-block overlaps and source-specific venue literals. Broad one-snapshot zero-hit pruning remains open until explicit engagement provides negative taste examples.)
 - body: fb-195 (full keyword→taste retirement) was correctly deferred (taste magnitude 0.03 mean << keyword 0.12-0.15, no negative examples yet). The safe FIRST step: identify SOFT_PENALTY/SOCIAL/HIGH_VALUE keyword entries in quality.py that currently match ZERO events in the live feed (measured 0-hit), and retire those as a provable 0-delta cleanup — shrinks the hardcoded surface with no ranking change. Preserve fb-001..009 hard blocks.
 - files: `scrapers/quality.py`.
 
