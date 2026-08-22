@@ -5,15 +5,17 @@
       "slug": "elsewhere-de77ba",
       "name": "Elsewhere",
       "kind": "recurring_series",
-      "tagline": "Elsewhere is a recurring event series centered on music in bushwick.",
-      "description": "Elsewhere is a recurring event series centered on music in bushwick. Based on 15 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "tagline": "Elsewhere is a recurring event series centered on music, outdoors in bushwick.",
+      "description": "Elsewhere is a recurring event series centered on music, outdoors in bushwick. Based on 16 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "music",
-        "other"
+        "other",
+        "outdoors"
       ],
       "tags": [
         "music",
-        "other"
+        "other",
+        "outdoors"
       ],
       "neighborhoods": [
         "bushwick"
@@ -31,7 +33,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-22",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 9,
         "eventCount90d": 19
       },
       "schedule": {
@@ -42,7 +44,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 15
+        "sampleSize": 16
       },
       "upcomingEventIds": [
         "0816b16e8d656c6e",
@@ -50,6 +52,8 @@
         "f434ff5d8da7b6dd",
         "4e7c8c0dd2ce3978",
         "7c422db7eca6e0ac",
+        "84137a52d4c99d14",
+        "80f9c61221fd9cdd",
         "ff487f32295021c0",
         "c65ab39ef5533d68"
       ],
@@ -60,7 +64,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 15,
+        "observedDateCount": 16,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -70,12 +74,12 @@
         "url:https://www.eventbrite.com/o/elsewhere-105655500371"
       ],
       "similarCommunityIds": [
+        "com_ebf7599ed103",
+        "com_3837f308cd75",
         "com_037b24ee6417",
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
-        "com_3837f308cd75",
-        "com_318c39363fe6",
-        "com_9a5c4d074e3a"
+        "com_14e2dae511e1"
       ]
     },
     {
@@ -370,8 +374,8 @@
       ],
       "similarCommunityIds": [
         "com_216dd4aaa8b8",
-        "com_b766b6de77ba",
         "com_c58670960684",
+        "com_b766b6de77ba",
         "com_eef1ca956dae",
         "com_218b97d674a6",
         "com_037b24ee6417"
@@ -512,8 +516,8 @@
       "similarCommunityIds": [
         "com_037b24ee6417",
         "com_216dd4aaa8b8",
-        "com_b766b6de77ba",
         "com_c58670960684",
+        "com_b766b6de77ba",
         "com_ebf7599ed103",
         "com_3837f308cd75"
       ]
@@ -1021,8 +1025,8 @@
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
         "com_c58670960684",
-        "com_b766b6de77ba",
         "com_ebf7599ed103",
+        "com_b766b6de77ba",
         "com_3837f308cd75"
       ]
     },
@@ -1321,9 +1325,9 @@
         "com_037b24ee6417",
         "com_359bbb5a9a91",
         "com_3837f308cd75",
-        "com_b766b6de77ba",
         "com_c58670960684",
-        "com_eef1ca956dae"
+        "com_eef1ca956dae",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -1469,8 +1473,8 @@
         "com_cdd5daa67222",
         "com_7fab201ed5e1",
         "com_4e69412cb0a5",
-        "com_037b24ee6417",
-        "com_216dd4aaa8b8"
+        "com_b766b6de77ba",
+        "com_037b24ee6417"
       ]
     },
     {
@@ -1544,7 +1548,7 @@
         "com_318c39363fe6",
         "com_9a5c4d074e3a",
         "com_b0e15eaab803",
-        "com_b766b6de77ba"
+        "com_d2ccb56c071d"
       ]
     },
     {
@@ -1984,8 +1988,8 @@
       "similarCommunityIds": [
         "com_9a5c4d074e3a",
         "com_a7c30be0b35f",
-        "com_b766b6de77ba",
         "com_33a530deb7aa",
+        "com_b766b6de77ba",
         "com_3837f308cd75",
         "com_c1410c07c4dd"
       ]
@@ -49281,7 +49285,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-22T04:56:46.482254+00:00",
+  "lastUpdated": "2026-08-22T05:14:58.359288+00:00",
   "version": 1,
   "schemaVersion": 1
 }
