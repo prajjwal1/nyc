@@ -76,8 +76,8 @@
         "com_037b24ee6417",
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
-        "com_c58670960684",
-        "com_ebf7599ed103"
+        "com_7673728388d5",
+        "com_c58670960684"
       ]
     },
     {
@@ -443,12 +443,12 @@
         "eventbrite:8184194121"
       ],
       "similarCommunityIds": [
+        "com_7673728388d5",
         "com_318c39363fe6",
         "com_b766b6de77ba",
         "com_3837f308cd75",
         "com_eef1ca956dae",
-        "com_218b97d674a6",
-        "com_3b104adba072"
+        "com_218b97d674a6"
       ]
     },
     {
@@ -514,10 +514,10 @@
       "similarCommunityIds": [
         "com_037b24ee6417",
         "com_216dd4aaa8b8",
+        "com_7673728388d5",
         "com_c58670960684",
         "com_ebf7599ed103",
-        "com_b766b6de77ba",
-        "com_3837f308cd75"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -590,8 +590,8 @@
         "com_0cc8630779d7",
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
-        "com_c4469caf0091",
-        "com_c58670960684"
+        "com_7673728388d5",
+        "com_c4469caf0091"
       ]
     },
     {
@@ -659,9 +659,9 @@
         "com_037b24ee6417",
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
+        "com_7673728388d5",
         "com_ebf7599ed103",
-        "com_02ba15552329",
-        "com_14e2dae511e1"
+        "com_02ba15552329"
       ]
     },
     {
@@ -874,6 +874,76 @@
       ]
     },
     {
+      "id": "com_7673728388d5",
+      "slug": "personal-8388d5",
+      "name": "Personal",
+      "kind": "recurring_series",
+      "tagline": "Personal is a recurring event series in long island city.",
+      "description": "Personal is a recurring event series in long island city. Based on 2 observed event dates, it meets weekly on Saturday and Sunday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "long island city"
+      ],
+      "homeVenue": "Spot Dessert Bar Long Island City",
+      "imageUrl": "https://images.lumacdn.com/uploads/t2/f30834dc-9918-4bf9-b0f6-cc5bba109e84.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://www.spotdessertbar.com/catering-events"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-08-23",
+        "upcomingEventCount": 1,
+        "eventCount90d": 2
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Saturday",
+          "Sunday"
+        ],
+        "typicalTime": "12:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "aa0fd90af5c5158c"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-08-23",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:spotdessertbar",
+        "luma:cal-oe75w3xibb67fyt"
+      ],
+      "similarCommunityIds": [
+        "com_037b24ee6417",
+        "com_216dd4aaa8b8",
+        "com_359bbb5a9a91",
+        "com_c58670960684",
+        "com_ebf7599ed103",
+        "com_9a5c4d074e3a"
+      ]
+    },
+    {
       "id": "com_4e69412cb0a5",
       "slug": "reading-rhythms-nyc-2cb0a5",
       "name": "Reading Rhythms NYC",
@@ -1016,10 +1086,10 @@
       "similarCommunityIds": [
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
+        "com_7673728388d5",
         "com_c58670960684",
         "com_ebf7599ed103",
-        "com_7fab201ed5e1",
-        "com_b766b6de77ba"
+        "com_7fab201ed5e1"
       ]
     },
     {
@@ -1316,10 +1386,10 @@
       "similarCommunityIds": [
         "com_037b24ee6417",
         "com_359bbb5a9a91",
+        "com_7673728388d5",
         "com_c58670960684",
         "com_ebf7599ed103",
-        "com_3837f308cd75",
-        "com_eef1ca956dae"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -1458,9 +1528,9 @@
         "com_037b24ee6417",
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
+        "com_7673728388d5",
         "com_c58670960684",
-        "com_b766b6de77ba",
-        "com_3837f308cd75"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -49270,7 +49340,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-23T01:53:02.332102+00:00",
+  "lastUpdated": "2026-08-23T01:58:22.562401+00:00",
   "version": 1,
   "schemaVersion": 1
 }
