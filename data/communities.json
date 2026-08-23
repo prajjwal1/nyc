@@ -81,7 +81,7 @@
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
         "com_7673728388d5",
-        "com_c58670960684"
+        "com_ebf7599ed103"
       ]
     },
     {
@@ -376,11 +376,11 @@
       ],
       "similarCommunityIds": [
         "com_216dd4aaa8b8",
+        "com_c58670960684",
         "com_b766b6de77ba",
         "com_eef1ca956dae",
         "com_218b97d674a6",
-        "com_037b24ee6417",
-        "com_359bbb5a9a91"
+        "com_037b24ee6417"
       ]
     },
     {
@@ -519,8 +519,8 @@
         "com_037b24ee6417",
         "com_216dd4aaa8b8",
         "com_7673728388d5",
-        "com_c58670960684",
         "com_ebf7599ed103",
+        "com_c58670960684",
         "com_b766b6de77ba"
       ]
     },
@@ -603,16 +603,19 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club in williamsburg.",
-      "description": "The New York Philosophy Club is a community club in williamsburg. Based on 3 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in williamsburg, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art in williamsburg, upper east side. Based on 4 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
-        "other"
+        "other",
+        "art"
       ],
       "tags": [
-        "other"
+        "other",
+        "art"
       ],
       "neighborhoods": [
-        "williamsburg"
+        "williamsburg",
+        "upper east side"
       ],
       "homeVenue": "McCarren Parkhouse",
       "imageUrl": "https://images.lumacdn.com/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
@@ -627,7 +630,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-22",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
@@ -637,11 +640,12 @@
           "Saturday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
-        "9b7e3a2d1f92b3e2"
+        "9b7e3a2d1f92b3e2",
+        "d29bd2c68dffd0ff"
       ],
       "sourceAttributions": [
         "luma"
@@ -650,7 +654,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -663,9 +667,9 @@
         "com_037b24ee6417",
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
+        "com_3837f308cd75",
         "com_7673728388d5",
-        "com_ebf7599ed103",
-        "com_02ba15552329"
+        "com_ebf7599ed103"
       ]
     },
     {
@@ -873,8 +877,8 @@
         "com_cdd5daa67222",
         "com_7fab201ed5e1",
         "com_02ba15552329",
-        "com_c58670960684",
-        "com_b0e15eaab803"
+        "com_b0e15eaab803",
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -942,8 +946,8 @@
         "com_037b24ee6417",
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
-        "com_c58670960684",
         "com_ebf7599ed103",
+        "com_c58670960684",
         "com_9a5c4d074e3a"
       ]
     },
@@ -1091,8 +1095,8 @@
         "com_216dd4aaa8b8",
         "com_359bbb5a9a91",
         "com_7673728388d5",
-        "com_c58670960684",
         "com_ebf7599ed103",
+        "com_c58670960684",
         "com_7fab201ed5e1"
       ]
     },
@@ -1391,9 +1395,9 @@
         "com_037b24ee6417",
         "com_359bbb5a9a91",
         "com_7673728388d5",
-        "com_c58670960684",
         "com_ebf7599ed103",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_c58670960684"
       ]
     },
     {
@@ -49344,7 +49348,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-23T14:10:46.227586+00:00",
+  "lastUpdated": "2026-08-23T14:37:04.688877+00:00",
   "version": 1,
   "schemaVersion": 1
 }
