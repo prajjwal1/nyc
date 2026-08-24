@@ -6,15 +6,15 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music, outdoors in bushwick.",
-      "description": "Elsewhere is a recurring event series centered on music, outdoors in bushwick. Based on 19 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music, outdoors in bushwick. Based on 20 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
-        "music",
         "other",
+        "music",
         "outdoors"
       ],
       "tags": [
-        "music",
         "other",
+        "music",
         "outdoors"
       ],
       "neighborhoods": [
@@ -33,7 +33,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-23",
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 12,
         "eventCount90d": 20
       },
       "schedule": {
@@ -44,7 +44,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 19
+        "sampleSize": 20
       },
       "upcomingEventIds": [
         "7c422db7eca6e0ac",
@@ -55,6 +55,8 @@
         "c68788dc3c8ee063",
         "11a79adc7cf2467b",
         "324212688c0e8f78",
+        "669c2253a4855b2c",
+        "5920eee4e17f7f43",
         "ff487f32295021c0",
         "c65ab39ef5533d68"
       ],
@@ -65,7 +67,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 19,
+        "observedDateCount": 20,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -49199,7 +49201,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-24T04:59:54.644093+00:00",
+  "lastUpdated": "2026-08-24T05:07:12.897173+00:00",
   "version": 1,
   "schemaVersion": 1
 }
