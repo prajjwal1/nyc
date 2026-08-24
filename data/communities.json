@@ -1106,7 +1106,7 @@
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
       "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in manhattan, midtown.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in manhattan, midtown. Based on 21 observed event dates, it meets weekly on Thursday and Monday evenings.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in manhattan, midtown. Based on 22 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "parties",
@@ -1136,18 +1136,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-24",
-        "upcomingEventCount": 15,
+        "upcomingEventCount": 16,
         "eventCount90d": 14
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Thursday",
-          "Monday"
+          "Monday",
+          "Thursday"
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 21
+        "sampleSize": 22
       },
       "upcomingEventIds": [
         "a3d3d87b9c52fb3b",
@@ -1159,9 +1159,9 @@
         "d345e3488b29dc09",
         "8f6f96e5617c2956",
         "085c31d4ff332f1f",
+        "9f066c22d1b8a527",
         "efaf210899b82c30",
-        "77816db6393ea46f",
-        "43f64d52a99095b9"
+        "77816db6393ea46f"
       ],
       "sourceAttributions": [
         "luma"
@@ -1170,7 +1170,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 21,
+        "observedDateCount": 22,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -49201,7 +49201,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-24T11:49:13.264650+00:00",
+  "lastUpdated": "2026-08-24T12:01:45.521353+00:00",
   "version": 1,
   "schemaVersion": 1
 }
