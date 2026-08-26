@@ -150,10 +150,10 @@
       "similarCommunityIds": [
         "com_ed8d42fb031d",
         "com_3837f308cd75",
-        "com_cdd5daa67222",
         "com_218b97d674a6",
         "com_02ba15552329",
-        "com_0cc8630779d7"
+        "com_0cc8630779d7",
+        "com_216dd4aaa8b8"
       ]
     },
     {
@@ -225,9 +225,9 @@
         "com_b0e15eaab803",
         "com_a393a0e8b1e0",
         "com_c1410c07c4dd",
-        "com_cdd5daa67222",
         "com_02ba15552329",
-        "com_0cc8630779d7"
+        "com_0cc8630779d7",
+        "com_216dd4aaa8b8"
       ]
     },
     {
@@ -809,8 +809,8 @@
         "com_c4469caf0091",
         "com_eeb4e424a504",
         "com_33a530deb7aa",
-        "com_4e69412cb0a5",
-        "com_cdd5daa67222"
+        "com_cdd5daa67222",
+        "com_4e69412cb0a5"
       ]
     },
     {
@@ -957,8 +957,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in astoria, lower east side.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in astoria, lower east side. Based on 23 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in astoria, midtown.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in astoria, midtown. Based on 24 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "parties",
@@ -971,9 +971,9 @@
       ],
       "neighborhoods": [
         "astoria",
+        "midtown",
         "lower east side",
-        "manhattan",
-        "harlem"
+        "manhattan"
       ],
       "homeVenue": "Astoria Park",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/m6/702b1b48-b615-4547-afed-dae0352dfef3.png",
@@ -988,7 +988,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-25",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 15,
         "eventCount90d": 16
       },
       "schedule": {
@@ -999,7 +999,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 23
+        "sampleSize": 24
       },
       "upcomingEventIds": [
         "60bff7d282d5d6ce",
@@ -1022,7 +1022,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 23,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -48981,7 +48981,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-26T15:57:42.463040+00:00",
+  "lastUpdated": "2026-08-26T16:34:12.053225+00:00",
   "version": 1,
   "schemaVersion": 1
 }
