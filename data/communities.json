@@ -6,7 +6,7 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music in bushwick.",
-      "description": "Elsewhere is a recurring event series centered on music in bushwick. Based on 20 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music in bushwick. Based on 21 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "music",
         "other"
@@ -31,7 +31,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-27",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 11,
         "eventCount90d": 25
       },
       "schedule": {
@@ -42,7 +42,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 20
+        "sampleSize": 21
       },
       "upcomingEventIds": [
         "9c8d7a080fcff2ed",
@@ -52,6 +52,8 @@
         "324212688c0e8f78",
         "669c2253a4855b2c",
         "5920eee4e17f7f43",
+        "6442400368250992",
+        "20af519ba63d1541",
         "ff487f32295021c0",
         "c65ab39ef5533d68"
       ],
@@ -62,7 +64,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 20,
+        "observedDateCount": 21,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -76,8 +78,8 @@
         "com_3837f308cd75",
         "com_ebf7599ed103",
         "com_c1410c07c4dd",
-        "com_9a5c4d074e3a",
-        "com_c58670960684"
+        "com_c58670960684",
+        "com_318c39363fe6"
       ]
     },
     {
@@ -223,7 +225,7 @@
         "com_0cc8630779d7",
         "com_216dd4aaa8b8",
         "com_318c39363fe6",
-        "com_33a530deb7aa"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -376,7 +378,7 @@
         "com_b766b6de77ba",
         "com_c58670960684",
         "com_eef1ca956dae",
-        "com_218b97d674a6"
+        "com_9a5c4d074e3a"
       ]
     },
     {
@@ -384,14 +386,18 @@
       "slug": "moma-ps1-074e3a",
       "name": "MoMA PS1",
       "kind": "recurring_series",
-      "tagline": "MoMA PS1 is a recurring event series centered on music, exploration in long island city.",
-      "description": "MoMA PS1 is a recurring event series centered on music, exploration in long island city. Based on 5 observed event dates, it meets weekly on Friday and Saturday afternoons.",
+      "tagline": "MoMA PS1 is a recurring event series centered on art, music, parties in long island city.",
+      "description": "MoMA PS1 is a recurring event series centered on art, music, parties in long island city. Based on 5 observed event dates, it meets weekly on Friday and Saturday afternoons.",
       "categories": [
+        "art",
         "music",
+        "parties",
         "exploration"
       ],
       "tags": [
+        "art",
         "music",
+        "parties",
         "exploration"
       ],
       "neighborhoods": [
@@ -444,11 +450,11 @@
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
-        "com_b766b6de77ba",
         "com_318c39363fe6",
         "com_3837f308cd75",
-        "com_3b104adba072",
-        "com_c1410c07c4dd"
+        "com_c1410c07c4dd",
+        "com_d8a5203885a9",
+        "com_f23f8820878b"
       ]
     },
     {
@@ -512,11 +518,11 @@
       ],
       "similarCommunityIds": [
         "com_0cc8630779d7",
-        "com_33a530deb7aa",
         "com_c4469caf0091",
         "com_d2ccb56c071d",
         "com_4e69412cb0a5",
-        "com_cdd5daa67222"
+        "com_cdd5daa67222",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -590,7 +596,7 @@
         "com_ebf7599ed103",
         "com_b766b6de77ba",
         "com_02ba15552329",
-        "com_0cc8630779d7"
+        "com_9a5c4d074e3a"
       ]
     },
     {
@@ -655,9 +661,9 @@
       "similarCommunityIds": [
         "com_4e69412cb0a5",
         "com_cdd5daa67222",
-        "com_33a530deb7aa",
         "com_c4469caf0091",
         "com_318c39363fe6",
+        "com_9a5c4d074e3a",
         "com_c1410c07c4dd"
       ]
     },
@@ -723,12 +729,12 @@
         "luma:cal-ittr6nq7r4wivff"
       ],
       "similarCommunityIds": [
-        "com_33a530deb7aa",
         "com_0cc8630779d7",
         "com_715c917d96c2",
         "com_d2ccb56c071d",
         "com_4e69412cb0a5",
-        "com_cdd5daa67222"
+        "com_cdd5daa67222",
+        "com_7fab201ed5e1"
       ]
     },
     {
@@ -801,10 +807,10 @@
       "similarCommunityIds": [
         "com_cdd5daa67222",
         "com_0cc8630779d7",
-        "com_33a530deb7aa",
         "com_715c917d96c2",
         "com_7fab201ed5e1",
-        "com_c4469caf0091"
+        "com_c4469caf0091",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -870,80 +876,11 @@
       ],
       "similarCommunityIds": [
         "com_0cc8630779d7",
-        "com_33a530deb7aa",
         "com_715c917d96c2",
         "com_c4469caf0091",
         "com_4e69412cb0a5",
-        "com_cdd5daa67222"
-      ]
-    },
-    {
-      "id": "com_33a530deb7aa",
-      "slug": "lit-club-nyc-calendar-deb7aa",
-      "name": "Lit Club NYC Calendar",
-      "kind": "club",
-      "tagline": "Lit Club NYC Calendar is a community club centered on books in manhattan.",
-      "description": "Lit Club NYC Calendar is a community club centered on books in manhattan. Based on 8 observed event dates, it meets weekly on Sunday and Monday evenings.",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "VICTORIA!",
-      "imageUrl": "https://images.lumacdn.com/uploads/lw/65251e33-a339-4087-82e0-13e911ea1d21.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/litclub.nyc"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-08-25",
-        "upcomingEventCount": 1,
-        "eventCount90d": 6
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Sunday",
-          "Monday"
-        ],
-        "typicalTime": "18:30",
-        "confidence": 1.0,
-        "sampleSize": 8
-      },
-      "upcomingEventIds": [
-        "fe764000ad27607a"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-08-27",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 8,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "luma:litclub.nyc"
-      ],
-      "similarCommunityIds": [
-        "com_c4469caf0091",
-        "com_0cc8630779d7",
-        "com_715c917d96c2",
-        "com_d2ccb56c071d",
-        "com_4e69412cb0a5",
-        "com_cdd5daa67222"
+        "com_cdd5daa67222",
+        "com_3b104adba072"
       ]
     },
     {
@@ -952,7 +889,7 @@
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
       "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in manhattan, midtown.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in manhattan, midtown. Based on 25 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in manhattan, midtown. Based on 26 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "parties",
@@ -982,7 +919,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-27",
-        "upcomingEventCount": 16,
+        "upcomingEventCount": 15,
         "eventCount90d": 17
       },
       "schedule": {
@@ -993,15 +930,15 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 25
+        "sampleSize": 26
       },
       "upcomingEventIds": [
         "60bff7d282d5d6ce",
         "d345e3488b29dc09",
         "8f6f96e5617c2956",
         "085c31d4ff332f1f",
-        "73d19760491f4db3",
         "9f066c22d1b8a527",
+        "0927eaaf59f46eca",
         "efaf210899b82c30",
         "77816db6393ea46f",
         "fe74dc85e54c169e",
@@ -1016,7 +953,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 25,
+        "observedDateCount": 26,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1026,11 +963,11 @@
       ],
       "similarCommunityIds": [
         "com_4e69412cb0a5",
-        "com_33a530deb7aa",
         "com_7fab201ed5e1",
         "com_c4469caf0091",
         "com_0cc8630779d7",
-        "com_715c917d96c2"
+        "com_715c917d96c2",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -1234,11 +1171,11 @@
       ],
       "similarCommunityIds": [
         "com_218b97d674a6",
-        "com_9a5c4d074e3a",
         "com_b766b6de77ba",
         "com_02ba15552329",
         "com_318c39363fe6",
-        "com_d2ccb56c071d"
+        "com_d2ccb56c071d",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -1246,20 +1183,20 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, parties, food in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, parties, food in east village, bushwick. Based on 32 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick. Based on 33 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
-        "food",
         "music",
+        "food",
         "singles"
       ],
       "tags": [
         "books",
         "parties",
-        "food",
         "music",
+        "food",
         "singles"
       ],
       "neighborhoods": [
@@ -1279,7 +1216,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-26",
-        "upcomingEventCount": 29,
+        "upcomingEventCount": 30,
         "eventCount90d": 12
       },
       "schedule": {
@@ -1290,7 +1227,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 32
+        "sampleSize": 33
       },
       "upcomingEventIds": [
         "5932cb08e0bed8cc",
@@ -1313,7 +1250,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 32,
+        "observedDateCount": 33,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -1332,7 +1269,7 @@
         "com_f23f8820878b",
         "com_b766b6de77ba",
         "com_cdd5daa67222",
-        "com_eeb4e424a504"
+        "com_9a5c4d074e3a"
       ]
     },
     {
@@ -1341,7 +1278,7 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 23 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 25 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -1372,18 +1309,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-27",
-        "upcomingEventCount": 37,
+        "upcomingEventCount": 42,
         "eventCount90d": 3
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Thursday"
+          "Saturday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 23
+        "sampleSize": 25
       },
       "upcomingEventIds": [
         "0742f47dae48262c",
@@ -1406,11 +1343,16 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 23,
+        "observedDateCount": 25,
         "hasFirstPartyIdentity": false
       },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "9787dd3f210b5544",
+          "signal": "first time"
+        }
+      ],
       "aliases": [
         "source:brooklyncomedy"
       ],
@@ -1420,7 +1362,7 @@
         "com_f23f8820878b",
         "com_216dd4aaa8b8",
         "com_eef1ca956dae",
-        "com_218b97d674a6"
+        "com_9a5c4d074e3a"
       ]
     },
     {
@@ -1503,17 +1445,19 @@
       "slug": "liz-s-book-bar-24a504",
       "name": "Liz's Book Bar",
       "kind": "community_space",
-      "tagline": "Liz's Book Bar is a community space centered on books, music, celebrities in carroll gardens.",
-      "description": "Liz's Book Bar is a community space centered on books, music, celebrities in carroll gardens. Based on 27 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "tagline": "Liz's Book Bar is a community space centered on books, music, art in carroll gardens.",
+      "description": "Liz's Book Bar is a community space centered on books, music, art in carroll gardens. Based on 28 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
+        "art",
         "celebrities",
         "exploration"
       ],
       "tags": [
         "books",
         "music",
+        "art",
         "celebrities",
         "exploration"
       ],
@@ -1533,7 +1477,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-26",
-        "upcomingEventCount": 13,
+        "upcomingEventCount": 14,
         "eventCount90d": 14
       },
       "schedule": {
@@ -1544,12 +1488,13 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 27
+        "sampleSize": 28
       },
       "upcomingEventIds": [
         "31d10316e06fb3db",
         "158cb5f310498e91",
         "1ad9c7d0f4606663",
+        "833063c315e74962",
         "4f87d3d3041bc3e1",
         "1eded0551b851d24",
         "8f419e108775f3eb",
@@ -1557,8 +1502,7 @@
         "320f533b24346d0b",
         "e1c98268f825480f",
         "591c7898d17384b4",
-        "33981c049bdc79f0",
-        "fa2471d5cc61d2be"
+        "33981c049bdc79f0"
       ],
       "sourceAttributions": [
         "lizsbookbar"
@@ -1567,7 +1511,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 27,
+        "observedDateCount": 28,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -1583,10 +1527,10 @@
       "similarCommunityIds": [
         "com_9a5c4d074e3a",
         "com_eef1ca956dae",
+        "com_3837f308cd75",
         "com_c1410c07c4dd",
         "com_f23f8820878b",
-        "com_0cc8630779d7",
-        "com_33a530deb7aa"
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -1650,12 +1594,12 @@
         "source:mcnallyjackson"
       ],
       "similarCommunityIds": [
-        "com_33a530deb7aa",
         "com_715c917d96c2",
         "com_c4469caf0091",
         "com_d2ccb56c071d",
         "com_4e69412cb0a5",
-        "com_cdd5daa67222"
+        "com_cdd5daa67222",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -1752,7 +1696,7 @@
       "name": "New York Comedy Club Upper West Side",
       "kind": "club",
       "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in east village, upper west side.",
-      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in east village, upper west side. Based on 16 observed event dates, it meets weekly on Thursday and Sunday evenings.",
+      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in east village, upper west side. Based on 17 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -1784,32 +1728,32 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-27",
-        "upcomingEventCount": 29,
+        "upcomingEventCount": 36,
         "eventCount90d": 1
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Sunday"
+          "Friday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 16
+        "sampleSize": 17
       },
       "upcomingEventIds": [
         "c70692a23b8724c7",
         "66eae19c79930728",
-        "1d79202d79f20f9a",
+        "ea032749e312fe9c",
+        "692e77034b38fdd3",
+        "693b3d26b5786de3",
         "f7f46684f92460bb",
         "e39297c098f6d097",
-        "2650f9ef61d97411",
         "ab84c70548d89bff",
-        "a70d390b4cd4ebf0",
-        "c0ac169a34021344",
-        "4bdef314c3b4f51b",
-        "6dd94923d85bf7d8",
-        "3ef43ab3fedb0bf4"
+        "2650f9ef61d97411",
+        "b913a76b9d7a6c67",
+        "3947e29493349fc2",
+        "aa6d25060a6d066a"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -1818,7 +1762,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 16,
+        "observedDateCount": 17,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1831,8 +1775,8 @@
         "com_d8a5203885a9",
         "com_c1410c07c4dd",
         "com_cdd5daa67222",
-        "com_eeb4e424a504",
-        "com_eef1ca956dae"
+        "com_9a5c4d074e3a",
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -1841,7 +1785,7 @@
       "name": "Eastville Comedy Club",
       "kind": "club",
       "tagline": "Eastville Comedy Club is a community club centered on comedy, music, parties in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music, parties in east village. Based on 18 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, parties in east village. Based on 19 observed event dates, it meets weekly on Saturday and Friday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -1868,18 +1812,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-27",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 18,
         "eventCount90d": 9
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Friday",
-          "Saturday"
+          "Saturday",
+          "Friday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 18
+        "sampleSize": 19
       },
       "upcomingEventIds": [
         "988469948f460a58",
@@ -1902,7 +1846,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 18,
+        "observedDateCount": 19,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1914,9 +1858,9 @@
         "com_f23f8820878b",
         "com_d8a5203885a9",
         "com_c1410c07c4dd",
+        "com_9a5c4d074e3a",
         "com_7fab201ed5e1",
-        "com_4e69412cb0a5",
-        "com_9a5c4d074e3a"
+        "com_4e69412cb0a5"
       ]
     },
     {
@@ -49209,7 +49153,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-27T21:01:02.863011+00:00",
+  "lastUpdated": "2026-08-27T23:07:22.938619+00:00",
   "version": 1,
   "schemaVersion": 1
 }
