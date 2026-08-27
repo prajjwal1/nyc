@@ -77,7 +77,7 @@
         "com_ebf7599ed103",
         "com_c1410c07c4dd",
         "com_9a5c4d074e3a",
-        "com_318c39363fe6"
+        "com_c58670960684"
       ]
     },
     {
@@ -289,11 +289,11 @@
       ],
       "similarCommunityIds": [
         "com_83fdf02633ef",
+        "com_c58670960684",
         "com_3b104adba072",
         "com_0cc8630779d7",
         "com_216dd4aaa8b8",
-        "com_318c39363fe6",
-        "com_33a530deb7aa"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -374,9 +374,9 @@
         "com_d8a5203885a9",
         "com_216dd4aaa8b8",
         "com_b766b6de77ba",
+        "com_c58670960684",
         "com_eef1ca956dae",
-        "com_218b97d674a6",
-        "com_c58670960684"
+        "com_218b97d674a6"
       ]
     },
     {
@@ -524,16 +524,19 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art in upper east side. Based on 4 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg. Based on 5 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
-        "art"
+        "art",
+        "other"
       ],
       "tags": [
-        "art"
+        "art",
+        "other"
       ],
       "neighborhoods": [
-        "upper east side"
+        "upper east side",
+        "williamsburg"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/uploads/yp/7da9a96e-eda0-46d1-976f-82f86acba635.jpg",
@@ -548,7 +551,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-26",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 3
       },
       "schedule": {
@@ -558,11 +561,12 @@
           "Saturday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
-        "d29bd2c68dffd0ff"
+        "d29bd2c68dffd0ff",
+        "3867a050be74d601"
       ],
       "sourceAttributions": [
         "luma"
@@ -571,7 +575,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -581,12 +585,12 @@
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
-        "com_3837f308cd75",
-        "com_02ba15552329",
-        "com_0cc8630779d7",
         "com_216dd4aaa8b8",
-        "com_318c39363fe6",
-        "com_33a530deb7aa"
+        "com_3837f308cd75",
+        "com_ebf7599ed103",
+        "com_b766b6de77ba",
+        "com_02ba15552329",
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -947,8 +951,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in midtown, lower east side.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in midtown, lower east side. Based on 24 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in manhattan, midtown.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in manhattan, midtown. Based on 25 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "parties",
@@ -960,12 +964,12 @@
         "outdoors"
       ],
       "neighborhoods": [
+        "manhattan",
         "midtown",
         "lower east side",
-        "astoria",
-        "manhattan"
+        "astoria"
       ],
-      "homeVenue": "recess grove",
+      "homeVenue": "21 E 1st St",
       "imageUrl": "https://images.lumacdn.com/api-uploads/m6/702b1b48-b615-4547-afed-dae0352dfef3.png",
       "links": [
         {
@@ -978,7 +982,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-27",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 16,
         "eventCount90d": 17
       },
       "schedule": {
@@ -989,7 +993,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 24
+        "sampleSize": 25
       },
       "upcomingEventIds": [
         "60bff7d282d5d6ce",
@@ -1003,7 +1007,7 @@
         "fe74dc85e54c169e",
         "43f64d52a99095b9",
         "93ead61777a93573",
-        "0d229d902d993ba5"
+        "12a25e1653fd1d14"
       ],
       "sourceAttributions": [
         "luma"
@@ -1012,7 +1016,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 24,
+        "observedDateCount": 25,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1093,9 +1097,9 @@
         "com_ebf7599ed103",
         "com_3837f308cd75",
         "com_b766b6de77ba",
+        "com_c58670960684",
         "com_d8a5203885a9",
-        "com_eef1ca956dae",
-        "com_218b97d674a6"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -1161,10 +1165,10 @@
       "similarCommunityIds": [
         "com_216dd4aaa8b8",
         "com_b766b6de77ba",
+        "com_c58670960684",
         "com_3837f308cd75",
         "com_02ba15552329",
-        "com_0cc8630779d7",
-        "com_318c39363fe6"
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -49205,7 +49209,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-27T20:49:23.212253+00:00",
+  "lastUpdated": "2026-08-27T21:01:02.863011+00:00",
   "version": 1,
   "schemaVersion": 1
 }
