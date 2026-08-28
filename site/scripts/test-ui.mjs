@@ -75,6 +75,43 @@ try {
     await page.goto(`http://127.0.0.1:${port}/nyc/?view=for-you`, { waitUntil: "networkidle" });
     if (new URL(page.url()).searchParams.has("view")) throw new Error("legacy Feed URL state was not removed");
     if (!(await page.getByRole("heading", { name: "Choose a date" }).count())) throw new Error("legacy Feed URL did not resolve to Calendar");
+
+    if (viewport.width === 1280) {
+      await page.evaluate(() => {
+        const stub = (id, title) => ({
+          id, title, description: `${title} description`, categories: ["books"],
+          date: "2026-08-01", sourceUrl: "https://example.com/event", imageUrl: null,
+          organizer: "Example Books", locationName: "Brooklyn",
+        });
+        localStorage.setItem("nyc-events:saved:v1", JSON.stringify(["saved-1"]));
+        localStorage.setItem("nyc-events:savedCache:v1", JSON.stringify({ "saved-1": stub("saved-1", "Saved reading") }));
+        localStorage.setItem("nyc-events:hidden:v1", JSON.stringify(["hidden-1"]));
+        localStorage.setItem("nyc-events:hiddenCache:v1", JSON.stringify({ "hidden-1": stub("hidden-1", "Hidden party") }));
+        localStorage.setItem("nyc-events:attended:v1", JSON.stringify({ "yes-1": "yes", "no-1": "no" }));
+        localStorage.setItem("nyc-events:attendedCache:v1", JSON.stringify({
+          "yes-1": { stub: stub("yes-1", "Attended book club") },
+          "no-1": { stub: stub("no-1", "Missed workshop") },
+        }));
+      });
+      await page.reload({ waitUntil: "networkidle" });
+      const beforeAttendance = await page.evaluate(() => localStorage.getItem("nyc-events:attended:v1"));
+      const downloadPromise = page.waitForEvent("download");
+      await page.getByRole("button", { name: "Export taste" }).click();
+      const download = await downloadPromise;
+      if (download.suggestedFilename() !== "user_engagement.json") throw new Error("taste export filename changed");
+      const stream = await download.createReadStream();
+      let contents = "";
+      for await (const chunk of stream) contents += chunk.toString();
+      const snapshot = JSON.parse(contents);
+      if (!snapshot.positiveTexts.some((text) => text.includes("Saved reading"))) throw new Error("saved event missing from taste positives");
+      if (!snapshot.negativeTexts.some((text) => text.includes("Hidden party"))) throw new Error("hidden event missing from taste negatives");
+      if (!snapshot.attendedYesTexts.some((text) => text.includes("Attended book club"))) throw new Error("attended yes missing from taste export");
+      if (!snapshot.attendedNoTexts.some((text) => text.includes("Missed workshop"))) throw new Error("attended no missing from taste export");
+      if (JSON.stringify(snapshot.attended) !== JSON.stringify({ "yes-1": "yes", "no-1": "no" })) throw new Error("attendance states missing from taste export");
+      await page.reload({ waitUntil: "networkidle" });
+      const afterAttendance = await page.evaluate(() => localStorage.getItem("nyc-events:attended:v1"));
+      if (beforeAttendance !== afterAttendance) throw new Error("taste export changed attended:v1");
+    }
     await page.close();
   }
   console.log("UI checks passed: Calendar is the homepage, Feed/search are absent, navigation fits, and account views are shareable.");

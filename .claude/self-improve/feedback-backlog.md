@@ -94,6 +94,37 @@ These are the durable preferences the user has stated. They're marked `addressed
 ## Open items (top of list = highest priority)
 
 
+### fb-206 — Add/verify Liz's Book Bar Eventbrite organizer coverage
+- created_at: 2026-08-28
+- source: user-explicit
+- status: open
+- body: Add/verify Liz’s Book Bar Eventbrite organizer https://www.eventbrite.com/o/lizs-book-bar-83466825333 so its hosted events have website coverage.
+- "addressed" criterion: the stable organizer ID `83466825333` is configured and live-probed; all exclusion-clean hosted events are represented on the website after normalization/dedup, Eventbrite organizer provenance is retained when a dedicated-source duplicate wins, and `Speed Dating Book Club` remains excluded.
+
+### fb-207 — Broaden Eventbrite coverage through high-quality recurring organizers
+- created_at: 2026-08-28
+- source: user-explicit
+- status: open
+- body: Broaden Eventbrite coverage using other high-quality recurring “top organizer” hosts.
+- "addressed" criterion: add a conservative batch of recurring NYC organizer calendars that each live-probe with at least 5 projected surviving events and at least 80% exclusion-clean/on-taste inventory; organizer selection must be bounded, deduplicated against existing sources, and prioritize demonstrated user fit over raw event volume.
+
+### fb-208 — Infer what the user may appreciate from demonstrated taste
+- created_at: 2026-08-28
+- source: user-explicit
+- status: open
+- body: “you should try to infer my interests at this point, know what i may appreciate.”
+- interpretation: Ranking and source curation should use demonstrated follow/save/hide/attendance/taste history rather than generic popularity, while preserving all existing user exclusions and hard quality rules.
+- "addressed" criterion: organizer selection and event ranking measurably prioritize explicit follows and learned positive/negative engagement over anonymous popularity or raw calendar size; the browser-to-pipeline taste path carries saved, hidden, attended-yes, and attended-no evidence; all fb-001..fb-011 exclusions and guardrails remain enforced.
+
+
+### fb-209 — Learn Eventbrite organizer quality across scrapes
+- created_at: 2026-08-28
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-08-28-1706)
+- status: open
+- body: Persist a bounded quality history per Eventbrite organizer: raw events, exclusion-clean events, normalized landed events, current-feed overlap, saves, hides, attended yes/no, and last-seen date. Rank explicit user-mentioned organizers first, then organizers with a reliable learned engagement rate, then clean landed yield. Never auto-remove a user-mentioned organizer; rotate repeatedly weak inferred organizers out of the bounded frontier.
+- "addressed" criterion: `organizer_quality.json` is updated during scrape/normalization, used by Eventbrite frontier ranking with minimum-sample safeguards, and covered by tests for explicit-user precedence and inferred-organizer probation.
+
+
 ### fb-202 — Top-of-feed saturated by one followed venue (Book Club Bar wall); other named tastes buried
 - created_at: 2026-07-20
 - source: user-explicit (verification request "verify the latest website / does it live up to expectations", 2026-07-20) → verification finding

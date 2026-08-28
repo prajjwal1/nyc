@@ -295,15 +295,22 @@ def platform_frontier(
     # Explicitly curated Eventbrite organizer hosts belong in the same learned
     # frontier; the scraper no longer needs a parallel organizer constant.
     curated = _load_json(os.path.join(DATA_DIR, "user_curated_sources.json"), {})
-    for host in (curated.get("hosts") or {}):
-        classified = _classify(platform, str(host), "curated")
+    for host, metadata in (curated.get("hosts") or {}).items():
+        source = str(metadata.get("source") or "curated") if isinstance(metadata, dict) else "curated"
+        via = f"curated:{source}"
+        classified = _classify(platform, str(host), via)
         if not classified:
             continue
         url, kind = classified
         rec = aggregate[(url, kind)]
-        rec["score"] += 8.0
+        if source == "user_mentioned":
+            rec["score"] += 12.0
+        elif source.startswith("engagement_"):
+            rec["score"] += 11.0
+        else:
+            rec["score"] += 8.0
         rec["lane"] = "personal"
-        rec["via"].add("curated")
+        rec["via"].add(via)
 
     rows = []
     for (url, kind), rec in aggregate.items():

@@ -693,7 +693,7 @@ def _is_date_only_title(title: str) -> bool:
     # subhead in theskint posts. Treat as date-only.
     if re.match(r"^(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)$", stripped, re.IGNORECASE):
         return True
-    if re.match(r"^(?:may|june|july|august|september|october|november|december)\s+\d{1,2}\s*(?:to|-|–|—)\s*(?:may|june|july|august|september|october|november|december)?\s*\d{1,2}$", stripped, re.IGNORECASE):
+    if re.match(r"^(?:may|june|july|august|september|october|november|december)\s+\d{1,2}\s*(?:to|through|-|–|—)\s*(?:may|june|july|august|september|october|november|december)?\s*\d{1,2}$", stripped, re.IGNORECASE):
         return True  # date range like "May 30 to June 5"
     return False
 

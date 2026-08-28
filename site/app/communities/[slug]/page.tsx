@@ -1,8 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
+import type { Metadata } from "next";
 import Link from "next/link";
 import FollowButton from "../../components/FollowButton";
 import { Community, CommunitiesData, Event, EventsData } from "../../lib/types";
+import { absoluteUrl, DEFAULT_OG_IMAGE, DEFAULT_TWITTER_IMAGE, eventPath, plainText } from "../../lib/seo";
 
 function readJson<T>(name: string, fallback: T): T {
   try {
@@ -74,6 +76,40 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const community = communityList().find(
+    (item) => item.slug === slug && item.profileStatus !== "directory_reference",
+  );
+  if (!community) return {};
+
+  const title = `${community.name}: NYC Community and Upcoming Events`;
+  const description = plainText(
+    community.description || community.tagline || `Learn about ${community.name}, an active community in New York City.`,
+    155,
+  );
+  const canonical = `/communities/${community.slug}/`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title,
+      description,
+      images: [{ url: community.imageUrl || DEFAULT_OG_IMAGE, alt: community.name }],
+    },
+    twitter: {
+      card: community.imageUrl ? "summary_large_image" : "summary",
+      title,
+      description,
+      images: [community.imageUrl || DEFAULT_TWITTER_IMAGE],
+    },
+  };
+}
+
 export default async function CommunityProfile({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const communities = communityList();
@@ -104,9 +140,20 @@ export default async function CommunityProfile({ params }: { params: Promise<{ s
   const official = community.links?.find((link) => link.type !== "web_search") || community.links?.[0];
   const labels = [...new Set([...community.categories, ...(community.tags || [])])].slice(0, 8);
   const activity = titleCase(community.activity?.state || "unverified");
+  const jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: community.name,
+    url: absoluteUrl(`/communities/${community.slug}/`),
+    description: community.description || community.tagline,
+    image: community.imageUrl || undefined,
+    areaServed: { "@type": "City", name: "New York City" },
+    sameAs: community.links?.map((link) => link.url).filter(Boolean),
+  }).replace(/</g, "\\u003c");
 
   return (
     <main className="min-h-screen bg-[#f4f3ee] pb-24 text-[#182923]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       <div className="mx-auto max-w-6xl px-4 pt-5 sm:px-6 sm:pt-7">
         <Link href="/communities" scroll={false} className="inline-flex min-h-11 items-center gap-2 rounded-full pr-4 text-sm font-semibold text-[#52645e] outline-none transition hover:text-[#ad5b3d] focus-visible:ring-2 focus-visible:ring-[#ad5b3d]">
           <span aria-hidden="true">←</span> Back to communities
@@ -117,7 +164,7 @@ export default async function CommunityProfile({ params }: { params: Promise<{ s
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(224,156,120,0.45),transparent_35%),linear-gradient(145deg,#31564c,#173a31)]" />
             {community.imageUrl && (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={community.imageUrl} alt="" className="relative h-full min-h-52 w-full object-cover saturate-[0.82] sm:min-h-64 md:absolute md:inset-0 md:min-h-full" />
+              <img src={community.imageUrl} alt={community.name} className="relative h-full min-h-52 w-full object-cover saturate-[0.82] sm:min-h-64 md:absolute md:inset-0 md:min-h-full" />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-[#122d25]/50 via-transparent to-transparent" />
             <span className="absolute bottom-4 left-4 rounded-full border border-white/30 bg-[#122d25]/60 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
@@ -159,7 +206,7 @@ export default async function CommunityProfile({ params }: { params: Promise<{ s
               {events.length ? (
                 <div className="mt-4 space-y-3">
                   {events.map((event) => (
-                    <a href={event.sourceUrl} target="_blank" rel="noopener noreferrer" key={event.id} aria-label={`${event.title}, ${eventDate(event.date)} (opens in a new tab)`} className="group/event grid min-h-24 grid-cols-[3.35rem_minmax(0,1fr)_1.5rem] items-center gap-3 rounded-2xl border border-[#d6d5ce] bg-[#fbfaf7] p-3.5 outline-none transition hover:border-[#b9bbb4] hover:shadow-[0_10px_30px_rgba(34,55,47,0.06)] focus-visible:ring-2 focus-visible:ring-[#ad5b3d] sm:grid-cols-[4rem_minmax(0,1fr)_2rem] sm:gap-4 sm:p-4">
+                    <Link href={eventPath(event.id)} key={event.id} aria-label={`${event.title}, ${eventDate(event.date)}`} className="group/event grid min-h-24 grid-cols-[3.35rem_minmax(0,1fr)_1.5rem] items-center gap-3 rounded-2xl border border-[#d6d5ce] bg-[#fbfaf7] p-3.5 outline-none transition hover:border-[#b9bbb4] hover:shadow-[0_10px_30px_rgba(34,55,47,0.06)] focus-visible:ring-2 focus-visible:ring-[#ad5b3d] sm:grid-cols-[4rem_minmax(0,1fr)_2rem] sm:gap-4 sm:p-4">
                       <time dateTime={event.date} className="rounded-xl bg-[#ece9e1] py-2 text-center">
                         <b className="block font-editorial text-2xl font-medium leading-none text-[#ad5b3d]">{dayNumber(event.date)}</b>
                         <span className="mt-1 block text-[9px] font-semibold uppercase tracking-[0.12em] text-[#6c7772]">{shortMonth(event.date)}</span>
@@ -169,8 +216,8 @@ export default async function CommunityProfile({ params }: { params: Promise<{ s
                         <h3 className="mt-1 break-words text-sm font-semibold leading-5 text-[#263d35] group-hover/event:text-[#9f4f36] sm:text-base">{event.title}</h3>
                         <p className="mt-1 truncate text-xs text-[#68746f]">{event.location?.name || event.location?.neighborhood || "Location on event page"}{event.price ? ` · ${event.price}` : ""}</p>
                       </div>
-                      <span aria-hidden="true" className="text-lg text-[#9f4f36]">↗</span>
-                    </a>
+                      <span aria-hidden="true" className="text-lg text-[#9f4f36]">→</span>
+                    </Link>
                   ))}
                 </div>
               ) : (

@@ -765,7 +765,8 @@ NYC_NEIGHBORHOODS = {
     "east village": [
         "east village", "e 3rd", "e 4th", "e 5th", "e 6th", "e 7th", "e 9th",
         "e 10th st", "e 11th st", "e 12th st", "e 13th st", "st marks",
-        "1st ave", "2nd ave", "ave a", "ave b", "ave c",
+        "1st ave", "1st avenue", "2nd ave", "2nd avenue",
+        "ave a", "ave b", "ave c",
     ],
     "lower east side": [
         "lower east side", "les", "ludlow", "rivington", "orchard st",
@@ -865,6 +866,9 @@ NYC_NEIGHBORHOODS = {
 
 
 _NEIGHBORHOOD_KW_RE_CACHE: dict[str, "re.Pattern"] = {}
+_ORDINAL_STREET_KEYWORD_RE = re.compile(
+    r"^\d+(?:st|nd|rd|th)\s+(?:ave|avenue|st|street)$"
+)
 
 
 def _re_neighborhood_word(kw: str):
@@ -873,7 +877,8 @@ def _re_neighborhood_word(kw: str):
     from substring-matching inside unrelated words (fb-189)."""
     rx = _NEIGHBORHOOD_KW_RE_CACHE.get(kw)
     if rx is None:
-        rx = re.compile(r"\b" + re.escape(kw) + r"\b")
+        prefix = r"(?<!\d)" if _ORDINAL_STREET_KEYWORD_RE.fullmatch(kw) else r"\b"
+        rx = re.compile(prefix + re.escape(kw) + r"\b")
         _NEIGHBORHOOD_KW_RE_CACHE[kw] = rx
     return rx
 
@@ -897,7 +902,7 @@ def infer_neighborhood(address: str, *extras: str) -> str | None:
             # larger word ("les" in "fiddlesticks" wrongly tagged Astoria
             # events as Lower East Side — fb-189). Longer, distinctive
             # keywords keep the cheap substring match.
-            if len(kw) <= 3:
+            if len(kw) <= 3 or _ORDINAL_STREET_KEYWORD_RE.fullmatch(kw):
                 if _re_neighborhood_word(kw).search(lower):
                     return hood
             elif kw in lower:

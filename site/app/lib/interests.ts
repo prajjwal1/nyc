@@ -359,6 +359,25 @@ export interface SavedEventStub {
   locationName?: string;
 }
 
+export function eventToSavedStub(event: Event): SavedEventStub {
+  return {
+    id: event.id,
+    title: event.title,
+    description: event.description,
+    categories: event.categories,
+    date: event.date,
+    sourceUrl: event.sourceUrl,
+    imageUrl: event.imageUrl,
+    instagramAccount: event.instagramAccount,
+    account: event.account,
+    organizer: event.organizer,
+    organizerUrl: event.organizerUrl,
+    accountVerified: event.accountVerified,
+    startTime: event.startTime,
+    locationName: event.location?.name,
+  };
+}
+
 export function savedStubToEvent(stub: SavedEventStub): Event {
   return {
     id: stub.id,
@@ -493,10 +512,23 @@ export function isSavedLocal(eventId: string): boolean {
 // {eventId: "yes" | "no"} so we can render the answer on subsequent opens
 // and use it to adjust the interest profile.
 const ATTENDED_KEY = "nyc-events:attended:v1";
+const ATTENDED_CACHE_KEY = "nyc-events:attendedCache:v1";
 
-type AttendedState = "yes" | "no" | undefined;
+export type AttendedAnswer = "yes" | "no";
+type AttendedState = AttendedAnswer | undefined;
 
-function loadAttended(): Record<string, "yes" | "no"> {
+interface AttendanceEffect {
+  account?: { key: string; delta: number };
+  categories: Record<string, number>;
+  host?: { key: string; delta: number };
+}
+
+interface AttendedCacheEntry {
+  stub?: SavedEventStub;
+  effect?: AttendanceEffect;
+}
+
+export function loadAttendedStates(): Record<string, AttendedAnswer> {
   if (typeof window === "undefined") return {};
   try {
     const raw = window.localStorage.getItem(ATTENDED_KEY);
@@ -508,7 +540,7 @@ function loadAttended(): Record<string, "yes" | "no"> {
   }
 }
 
-function saveAttended(map: Record<string, "yes" | "no">): void {
+function saveAttended(map: Record<string, AttendedAnswer>): void {
   if (typeof window === "undefined") return;
   try {
     // Cap at 500 most recent to bound localStorage growth.
@@ -521,11 +553,11 @@ function saveAttended(map: Record<string, "yes" | "no">): void {
 }
 
 export function getAttendedState(eventId: string): AttendedState {
-  return loadAttended()[eventId];
+  return loadAttendedStates()[eventId];
 }
 
 export function getAttendedCount(): { yes: number; no: number } {
-  const map = loadAttended();
+  const map = loadAttendedStates();
   let yes = 0;
   let no = 0;
   for (const v of Object.values(map)) {
@@ -535,45 +567,112 @@ export function getAttendedCount(): { yes: number; no: number } {
   return { yes, no };
 }
 
+function loadAttendedCache(): Record<string, AttendedCacheEntry> {
+  if (typeof window === "undefined") return {};
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(ATTENDED_CACHE_KEY) || "{}");
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveAttendedCache(cache: Record<string, AttendedCacheEntry>): void {
+  if (typeof window === "undefined") return;
+  try {
+    const entries = Object.entries(cache);
+    const trimmed = entries.length > 500 ? Object.fromEntries(entries.slice(-500)) : cache;
+    window.localStorage.setItem(ATTENDED_CACHE_KEY, JSON.stringify(trimmed));
+  } catch {
+    // ignore quota errors
+  }
+}
+
+export function loadAttendedExamples(): Array<{
+  id: string;
+  state: AttendedAnswer;
+  stub?: SavedEventStub;
+}> {
+  const states = loadAttendedStates();
+  const cache = loadAttendedCache();
+  const fallback = new Map<string, SavedEventStub>();
+  for (const stub of [...loadSavedStubs(), ...loadHiddenStubs()]) fallback.set(stub.id, stub);
+  return Object.entries(states).map(([id, state]) => ({
+    id,
+    state,
+    stub: cache[id]?.stub || fallback.get(id),
+  }));
+}
+
+function applyProfileDelta(
+  bucket: Record<string, number>,
+  key: string,
+  requested: number,
+): number {
+  const before = bucket[key] || 0;
+  const after = Math.max(0, before + requested);
+  bucket[key] = after;
+  return after - before;
+}
+
+function reverseAttendanceEffect(profile: InterestProfile, effect?: AttendanceEffect): void {
+  if (!effect) return;
+  if (effect.account) applyProfileDelta(profile.accounts, effect.account.key, -effect.account.delta);
+  for (const [category, delta] of Object.entries(effect.categories || {})) {
+    applyProfileDelta(profile.categories, category, -delta);
+  }
+  if (effect.host) applyProfileDelta(profile.hosts, effect.host.key, -effect.host.delta);
+}
+
 export function markAttended(
   eventId: string,
-  answer: "yes" | "no",
-  hint: { account?: string; categories?: string[]; sourceUrl?: string },
+  answer: AttendedAnswer,
+  hint: { account?: string; categories?: string[]; sourceUrl?: string; stub?: SavedEventStub },
 ): void {
-  const map = loadAttended();
+  const map = loadAttendedStates();
+  const cache = loadAttendedCache();
+  const cached = cache[eventId] || {};
+  if (hint.stub) cached.stub = hint.stub;
+  cache[eventId] = cached;
+  if (map[eventId] === answer) {
+    saveAttendedCache(cache);
+    return;
+  }
+
+  const p = loadProfile();
+  reverseAttendanceEffect(p, cached.effect);
+
+  const effect: AttendanceEffect = { categories: {} };
+  const account = hint.account?.toLowerCase();
+  let host: string | undefined;
+  if (hint.sourceUrl) {
+    try {
+      host = new URL(hint.sourceUrl).hostname.toLowerCase();
+    } catch {
+      // ignore unparseable
+    }
+  }
+
+  if (answer === "yes") {
+    if (account) effect.account = { key: account, delta: applyProfileDelta(p.accounts, account, 8) };
+    for (const category of hint.categories || []) {
+      effect.categories[category] = applyProfileDelta(p.categories, category, 5);
+    }
+    if (host) effect.host = { key: host, delta: applyProfileDelta(p.hosts, host, 3) };
+  } else {
+    if (account) effect.account = { key: account, delta: applyProfileDelta(p.accounts, account, -2) };
+    for (const category of hint.categories || []) {
+      effect.categories[category] = applyProfileDelta(p.categories, category, -1);
+    }
+  }
+
+  cached.effect = effect;
   map[eventId] = answer;
   saveAttended(map);
-  // Profile bump: "yes" is the strongest positive signal (attended >
-  // saved > opened). "no" is a soft negative (planned but didn't make it
-  // — small downweight, not a hide).
-  const p = loadProfile();
-  if (answer === "yes") {
-    if (hint.account) bump(p.accounts, hint.account.toLowerCase(), 8);
-    for (const c of hint.categories || []) bump(p.categories, c, 5);
-    if (hint.sourceUrl) {
-      try {
-        bump(p.hosts, new URL(hint.sourceUrl).hostname.toLowerCase(), 3);
-      } catch {
-        // ignore unparseable
-      }
-    }
-  } else {
-    // "no" — soft downweight. Clamp to 0 so interestBoost's Math.log2 path
-    // can't NaN. "No" still differs from "yes" because future events from
-    // the same account/category don't accumulate further positive bumps.
-    const decAcct = (k: string, by: number) => {
-      const next = (p.accounts[k] || 0) + by;
-      p.accounts[k] = next < 0 ? 0 : next;
-    };
-    const decCat = (k: string, by: number) => {
-      const next = (p.categories[k] || 0) + by;
-      p.categories[k] = next < 0 ? 0 : next;
-    };
-    if (hint.account) decAcct(hint.account.toLowerCase(), -2);
-    for (const c of hint.categories || []) decCat(c, -1);
-  }
+  saveAttendedCache(cache);
   p.updatedAt = new Date().toISOString();
   saveProfile(p);
+  notifyProfileChange();
 }
 
 // Hidden-events memory — explicit negative signal. Stored separately from
@@ -700,6 +799,8 @@ export function clearAllLocalState(): void {
     window.localStorage.removeItem(SAVED_CACHE_KEY);
     window.localStorage.removeItem(HIDDEN_KEY);
     window.localStorage.removeItem(HIDDEN_CACHE_KEY);
+    window.localStorage.removeItem(ATTENDED_KEY);
+    window.localStorage.removeItem(ATTENDED_CACHE_KEY);
     window.localStorage.removeItem(OPENED_KEY);
     window.localStorage.removeItem("nyc-events:searchHistory:v1");
     window.localStorage.removeItem("nyc-events:lastVisitedAt:v1");

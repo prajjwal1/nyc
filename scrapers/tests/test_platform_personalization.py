@@ -108,6 +108,20 @@ def test_eventbrite_search_plan_is_bounded(monkeypatch):
     assert all("ny--brooklyn" in url for url, _lane in plan[18:])
 
 
+def test_eventbrite_adds_folk_dance_search_for_personal_dance_interest(monkeypatch):
+    monkeypatch.setattr(eventbrite, "ranked_topics", lambda: [
+        ("dance", 5.0, "personal"),
+        ("books", 0.25, "explore"),
+    ])
+
+    candidates = eventbrite._generated_search_candidates()
+
+    assert (
+        "https://www.eventbrite.com/d/ny--new-york/folk-dance--events/",
+        "personal",
+    ) in candidates
+
+
 def test_eventbrite_extracts_organizer():
     raw = {
         "@type": "Event", "name": "Social Chess",
@@ -119,6 +133,19 @@ def test_eventbrite_extracts_organizer():
     assert event["organizer"] == "Chess Place"
     assert event["organizerUrl"].endswith("/o/123")
     assert event["organizerRefs"][0]["externalId"] == "123"
+
+
+def test_eventbrite_equal_jsonld_end_time_is_omitted():
+    event = eventbrite._parse_ld_event({
+        "@type": "Event",
+        "name": "Book Talk",
+        "startDate": "2026-09-02T19:00:00-04:00",
+        "endDate": "2026-09-02T19:00:00-04:00",
+        "url": "https://eventbrite.com/e/book-talk-1",
+    })
+
+    assert event["startTime"] == "19:00"
+    assert event["endTime"] is None
 
 
 def test_eventbrite_extracts_slugged_organizer_id():

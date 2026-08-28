@@ -66,6 +66,68 @@
       "source": "discovered_similar_to_litclub",
       "note": "LES smart-fun venue \u2014 debates, science nights, literary"
     },
+    "eventbrite.com/o/13580085802": {
+      "score": 1.0,
+      "added_at": "2026-08-28",
+      "source": "agent_recommended_vetted",
+      "note": "Caveat Eventbrite organizer \u2014 smart comedy, science, storytelling, podcasts, and literary shows. Live-probed 12 upcoming events; normal score floor retained.",
+      "floor_bypass": false
+    },
+    "eventbrite.com/o/17899496497": {
+      "score": 1.0,
+      "added_at": "2026-08-28",
+      "source": "agent_recommended_vetted",
+      "note": "Union Hall Eventbrite organizer \u2014 curated comedy and variety programming. Live-probed 12 upcoming events; normal score floor retained.",
+      "floor_bypass": false
+    },
+    "eventbrite.com/o/40513431663": {
+      "score": 1.0,
+      "added_at": "2026-08-28",
+      "source": "agent_recommended_vetted",
+      "note": "Book Club Bar Eventbrite organizer fallback \u2014 10/11 projected rows already covered by its dedicated calendar; retained for resilience and provenance with the normal score floor.",
+      "floor_bypass": false
+    },
+    "eventbrite.com/o/52255937823": {
+      "score": 1.0,
+      "added_at": "2026-08-28",
+      "source": "inferred_from_taste",
+      "note": "Book Club for the Book Hoes Eventbrite organizer \u2014 recurring genre book clubs and book-exchange socials. Live-probed 10 upcoming events; normal score floor retained.",
+      "floor_bypass": false
+    },
+    "eventbrite.com/o/6140247955": {
+      "score": 1.0,
+      "added_at": "2026-08-28",
+      "source": "inferred_from_taste",
+      "note": "The National Arts Club Eventbrite organizer \u2014 artist talks, cultural history, books, design, and public programs. Live-probed 10 upcoming events; normal score floor retained.",
+      "floor_bypass": false
+    },
+    "eventbrite.com/o/83466825333": {
+      "score": 1.0,
+      "added_at": "2026-08-28",
+      "source": "user_mentioned",
+      "note": "Liz's Book Bar Eventbrite organizer \u2014 user-provided fallback for the dedicated Bookmanager source. Live-probed 10 future events, 9 exclusion-clean."
+    },
+    "eventbrite.com/o/46113016283": {
+      "score": 1.0,
+      "added_at": "2026-08-28",
+      "source": "inferred_from_taste",
+      "note": "High Line Programs \u2014 outdoor fitness, public art, and community programming. Live-probed 12 clean future events with 7 projected survivors.",
+      "floor_bypass": false
+    },
+    "eventbrite.com/o/121441877858": {
+      "score": 1.0,
+      "added_at": "2026-08-28",
+      "source": "inferred_from_taste",
+      "note": "The Ripped Bodice Brooklyn \u2014 literary and social book-club programming. Live-probed 12 clean future events with 9 projected survivors.",
+      "floor_bypass": false
+    },
+    "eventbrite.com/o/30058841244": {
+      "score": 1.0,
+      "added_at": "2026-08-28",
+      "source": "inferred_from_named_bookstore_preference",
+      "note": "Strand Bookstore \u2014 adult author talks and literary events. Live-probed 12 future events with 10 projected survivors; family filters and normal floor retained.",
+      "floor_bypass": false
+    },
     "murmrr": {
       "score": 1.0,
       "added_at": "2026-05-22",
@@ -228,5 +290,5 @@
       "source": "discovered_similar_to_litclub"
     }
   },
-  "lastUpdated": "2026-07-13"
+  "lastUpdated": "2026-08-28"
 }

@@ -1076,7 +1076,13 @@ _NON_NYC_CITIES = [
     "jersey city",
     "hoboken",
     "newark",
+    "edmonton",
 ]
+
+_NON_NYC_ADDRESS_STATE_RE = re.compile(
+    r"(?:,\s*(?:nj|ct|pa)\b(?:\s+\d{5}(?:-\d{4})?)?|\b(?:new jersey|connecticut|pennsylvania)\b)",
+    re.IGNORECASE,
+)
 
 # NYC-positive markers (presence of these suggests it IS in NYC)
 _NYC_MARKERS = [
@@ -1119,6 +1125,11 @@ def _is_non_nyc(event: dict) -> bool:
     desc = event.get("description", "").lower()
 
     combined = f"{address} {loc_name} {title} {desc}"
+
+    # An explicit neighboring-state address is authoritative even when an
+    # aggregator injects "New York" elsewhere in the title or description.
+    if address and _NON_NYC_ADDRESS_STATE_RE.search(address):
+        return True
 
     # Strong non-NYC marker
     has_other_city = any(c in combined for c in _NON_NYC_CITIES)

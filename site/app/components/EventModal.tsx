@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, markEventOpened, getAttendedState, markAttended } from "../lib/interests";
+import { eventToSavedStub, trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, markEventOpened, getAttendedState, markAttended } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 import CommunityChips from "./CommunityChips";
 
@@ -92,7 +92,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
             <div className="relative w-full bg-gray-100 max-h-[70vh] overflow-hidden">
               <img
                 src={current}
-                alt=""
+                alt={`${event.title} event poster${images.length > 1 ? ` ${imgIdx + 1}` : ""}`}
                 className="w-full h-auto object-contain max-h-[70vh]"
                 onError={() => setHeroImgFailed(true)}
               />
@@ -356,7 +356,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
             </a>
             <button
               onClick={() => {
-                setSaved(toggleSavedLocal(event.id, { account: event.account || event.organizer || event.instagramAccount, categories: event.categories, sourceUrl: event.organizerUrl || event.sourceUrl, stub: { id: event.id, title: event.title, description: event.description, categories: event.categories, date: event.date, sourceUrl: event.sourceUrl, imageUrl: event.imageUrl, instagramAccount: event.instagramAccount, account: event.account, organizer: event.organizer, organizerUrl: event.organizerUrl, accountVerified: event.accountVerified, startTime: event.startTime, locationName: event.location?.name } }));
+                setSaved(toggleSavedLocal(event.id, { account: event.account || event.organizer || event.instagramAccount, categories: event.categories, sourceUrl: event.organizerUrl || event.sourceUrl, stub: eventToSavedStub(event) }));
               }}
               className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border text-sm font-medium transition-colors ${
                 saved
@@ -387,7 +387,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
                   account: event.account || event.organizer || event.instagramAccount,
                   categories: event.categories,
                   sourceUrl: event.organizerUrl || event.sourceUrl,
-                  stub: { id: event.id, title: event.title, description: event.description, categories: event.categories, date: event.date, sourceUrl: event.sourceUrl, imageUrl: event.imageUrl, instagramAccount: event.instagramAccount, account: event.account, organizer: event.organizer, organizerUrl: event.organizerUrl, accountVerified: event.accountVerified, startTime: event.startTime, locationName: event.location?.name },
+                  stub: eventToSavedStub(event),
                 });
                 onClose();
               }}
@@ -411,6 +411,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
               account: event.account || event.organizer || event.instagramAccount,
               categories: event.categories,
               sourceUrl: event.organizerUrl || event.sourceUrl,
+              stub: eventToSavedStub(event),
             };
             return (
               <div className="mt-3 flex flex-wrap items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm">

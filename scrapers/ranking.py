@@ -45,7 +45,7 @@ def compute_score(event: dict) -> float:
     signals = quality_signals(event)
 
     # Caption fragments get nuked entirely
-    if signals["is_caption_fragment"]:
+    if signals["is_caption_fragment"] and not event.get("structuredTitle"):
         return 0.0
 
     # Title quality below 0.3 = clearly bad title, nuke
@@ -851,6 +851,19 @@ _USER_CURATED_CACHE: dict | None = None
 _USER_CURATED_MAX_BOOST = 0.15
 
 
+def _curated_host_matches_url(host: str, url: str) -> bool:
+    """Match configured URL fragments, including Eventbrite slug variants."""
+    host = (host or "").lower()
+    url = (url or "").lower()
+    if not host or not url:
+        return False
+    if host in url:
+        return True
+    host_match = re.search(r"eventbrite\.com/o/(?:[^/?#]*-)?(\d+)(?:[/?#]|$)", host)
+    url_match = re.search(r"eventbrite\.com/o/(?:[^/?#]*-)?(\d+)(?:[/?#]|$)", url)
+    return bool(host_match and url_match and host_match.group(1) == url_match.group(1))
+
+
 def _user_curated_boost(event: dict) -> float:
     """Boost for events from user-curated hosts or title-matching series.
     Magnitude scales with the score in user_curated_sources.json, capped at
@@ -871,7 +884,7 @@ def _user_curated_boost(event: dict) -> float:
 
         if _is_caption_fragment(
             event.get("title", ""), event.get("description", "") or ""
-        ):
+        ) and not event.get("structuredTitle"):
             return 0.0
     except Exception:
         pass
@@ -892,7 +905,7 @@ def _user_curated_boost(event: dict) -> float:
         if not url:
             continue
         for host, weight in cfg["hosts"].items():
-            if host in url:
+            if _curated_host_matches_url(host, url):
                 boost = max(boost, weight)
     if boost < 1.0:
         text = (

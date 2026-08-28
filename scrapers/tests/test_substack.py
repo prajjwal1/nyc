@@ -23,9 +23,15 @@ from bs4 import BeautifulSoup
 from scrapers.sources import substack
 from scrapers.sources.substack import (
     _extract_pin_marker_events,
+    _is_date_only_title,
     _parse_marker_date,
     _parse_item,
 )
+
+
+def test_through_date_range_is_not_an_event_title():
+    assert _is_date_only_title("September 5 through 27")
+    assert not _is_date_only_title("A Festival Running September 5 through 27")
 
 
 # ---------------------------------------------------------------------------

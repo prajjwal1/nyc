@@ -16,8 +16,26 @@ from scrapers.quality import (
     HIGH_VALUE_KEYWORDS,
     SOCIAL_KEYWORDS,
     _is_caption_fragment,
+    is_blocked,
     quality_signals,
 )
+
+
+def test_explicit_neighboring_state_address_is_blocked_even_with_nyc_text():
+    event = {
+        "title": "NYC-area concert",
+        "description": "For New York music fans",
+        "location": {"name": "The Stone Pony", "address": "913 Ocean Ave, Asbury Park, NJ 07712"},
+    }
+    assert is_blocked(event)
+
+
+def test_edmonton_event_is_blocked():
+    assert is_blocked({
+        "title": "Great Outdoors Comedy Festival - Edmonton",
+        "description": "",
+        "location": {"name": "Central Park", "address": "Edmonton, AB"},
+    })
 
 
 # ---------------------------------------------------------------------------

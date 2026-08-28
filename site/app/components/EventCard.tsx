@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { format } from "date-fns";
+import Link from "next/link";
 import { Event, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, isEventOpened, getAttendedState } from "../lib/interests";
+import { eventToSavedStub, trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, isEventOpened, getAttendedState } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
+import { eventPath } from "../lib/seo";
 import CommunityChips from "./CommunityChips";
 
 interface EventCardProps {
@@ -42,17 +44,6 @@ function relDay(iso: string | undefined): string | null {
 
 function preferenceAccount(event: Event): string | undefined {
   return event.account || event.organizer || event.instagramAccount;
-}
-
-function preferenceStub(event: Event) {
-  return {
-    id: event.id, title: event.title, description: event.description,
-    categories: event.categories, date: event.date, sourceUrl: event.sourceUrl,
-    imageUrl: event.imageUrl, instagramAccount: event.instagramAccount,
-    account: event.account, organizer: event.organizer,
-    organizerUrl: event.organizerUrl, accountVerified: event.accountVerified,
-    startTime: event.startTime, locationName: event.location?.name,
-  };
 }
 
 // iter 215: removed grid variant + MediaFirstCard variant. All events
@@ -133,14 +124,14 @@ function EventCardBody({
       account: preferenceAccount(event),
       categories: event.categories,
       sourceUrl: event.organizerUrl || event.sourceUrl,
-      stub: preferenceStub(event),
+      stub: eventToSavedStub(event),
     });
     onHide?.(event.id);
   };
   const handleSaveF = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    const saved = toggleSavedLocal(event.id, { account: preferenceAccount(event), categories: event.categories, sourceUrl: event.organizerUrl || event.sourceUrl, stub: preferenceStub(event) });
+    const saved = toggleSavedLocal(event.id, { account: preferenceAccount(event), categories: event.categories, sourceUrl: event.organizerUrl || event.sourceUrl, stub: eventToSavedStub(event) });
     setSavedF(saved);
     onSaveChange?.(event.id, saved);
   };
@@ -154,8 +145,10 @@ function EventCardBody({
   const openedEvent = isEventOpened(event.id);
   const dayLabel = relDay(event.date);
   const _nb = event.location?.neighborhood?.trim();
+  const venueName = event.location?.name?.trim();
+  const placeName = venueName || (_nb ? _nb.replace(/\b\w/g, (char) => char.toUpperCase()) : "");
   const showNeighborhood = Boolean(
-    _nb && !(event.location?.name || "").toLowerCase().includes(_nb.toLowerCase())
+    venueName && _nb && !venueName.toLowerCase().includes(_nb.toLowerCase())
   );
   const convictionFollow = !!event.userFollowing;
   const convictionAffinity = !convictionFollow && !!event.userAffinity;
@@ -174,12 +167,10 @@ function EventCardBody({
         openedEvent ? "opacity-60" : ""
       }`}
     >
-      <a
-        href={event.sourceUrl}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        href={eventPath(event.id)}
         onClick={handleCardClick}
-        aria-label={`Open ${event.title}`}
+        aria-label={`View details for ${event.title}`}
         className="absolute inset-0 z-[1] rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sky-500"
       />
       <div className="flex gap-3 p-3">
@@ -187,7 +178,7 @@ function EventCardBody({
           <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden bg-gray-100">
             <img
               src={event.imageUrl}
-              alt=""
+              alt={`${event.title} event poster`}
               className="w-full h-full object-cover"
               loading="lazy"
               onError={() => setImgFailedF(true)}
@@ -219,10 +210,10 @@ function EventCardBody({
                 {timeStr}
               </span>
             )}
-            {event.location.name ? (
+            {placeName ? (
               <span className="flex items-center gap-1 truncate">
                 <PinIcon />
-                <span className="truncate">{event.location.name}</span>
+                <span className="truncate">{placeName}</span>
                 {/* U2: only show the neighborhood suffix when the venue name
                     doesn't already contain it — avoids "…East Village · east
                     village" redundancy and stops amplifying name/neighborhood
@@ -231,7 +222,7 @@ function EventCardBody({
                   <span className="text-gray-400 shrink-0">· {event.location.neighborhood}</span>
                 )}
               </span>
-            ) : event.instagramAccount && !event.location.neighborhood ? (
+            ) : event.instagramAccount ? (
               <span className="flex items-center gap-1 truncate text-gray-400">
                 <PinIcon />
                 <span className="truncate italic">location in caption</span>
@@ -418,10 +409,8 @@ function formatCount(n: number): string {
 function CompactCard({ event, timeStr }: { event: Event; timeStr: string | null }) {
   const [imgFailedC, setImgFailedC] = useState(false);
   return (
-    <a
-      href={event.sourceUrl}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      href={eventPath(event.id)}
       className="block bg-white rounded-xl border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm transition-all"
     >
       <div className="flex gap-4">
@@ -429,7 +418,7 @@ function CompactCard({ event, timeStr }: { event: Event; timeStr: string | null 
           <div className="shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-gray-100">
             <img
               src={event.imageUrl}
-              alt=""
+              alt={`${event.title} event poster`}
               className="w-full h-full object-cover"
               loading="lazy"
               onError={() => setImgFailedC(true)}
@@ -457,7 +446,7 @@ function CompactCard({ event, timeStr }: { event: Event; timeStr: string | null 
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 

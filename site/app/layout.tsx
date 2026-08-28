@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SiteNav from "./components/SiteNav";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "./lib/seo";
 
 // SEO — goal: rank as the canonical "what's happening in NYC" hub.
 // Targets the queries New Yorkers actually type: "events tonight nyc",
 // "things to do this weekend brooklyn", "free events nyc this week",
 // "[interest] events nyc", "events near me".
-const SITE_URL = "https://prajjwal1.github.io/nyc";
-const SITE_TITLE = "NYC events and communities worth joining";
-const SITE_DESCRIPTION =
-  "The most comprehensive guide to NYC events: live music, parties, free events, book clubs, "
-  + "art openings, comedy shows, run clubs, yoga, food festivals, and more. Curated and "
-  + "verified across Instagram, Eventbrite, Lu.ma, Substack, and more — updated continuously. "
-  + "Find things to do tonight, this weekend, or this week across Brooklyn, Manhattan, Queens "
-  + "and beyond.";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -22,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s — NYC Events",
   },
   description: SITE_DESCRIPTION,
-  applicationName: "NYC Events",
+  applicationName: SITE_NAME,
   keywords: [
     "nyc events", "things to do nyc", "events tonight nyc", "events this weekend nyc",
     "events this week nyc", "free events nyc", "brooklyn events", "manhattan events",
@@ -30,9 +22,9 @@ export const metadata: Metadata = {
     "run clubs nyc", "yoga nyc", "art openings nyc", "singles events nyc", "meet people nyc",
     "what's happening in nyc", "nyc nightlife", "rooftop events nyc", "food events nyc",
   ],
-  authors: [{ name: "NYC Events" }],
-  creator: "NYC Events",
-  publisher: "NYC Events",
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   formatDetection: { email: false, address: false, telephone: false },
   alternates: {
     canonical: "/",
@@ -43,7 +35,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    siteName: "NYC Events",
+    siteName: SITE_NAME,
   },
   twitter: {
     card: "summary_large_image",
@@ -84,13 +76,13 @@ export default function RootLayout({
                 {
                   "@type": "WebSite",
                   url: SITE_URL,
-                  name: "NYC Events",
+                  name: SITE_NAME,
                   description: SITE_DESCRIPTION,
                 },
                 {
                   "@type": "Organization",
                   url: SITE_URL,
-                  name: "NYC Events",
+                  name: SITE_NAME,
                   description:
                     "A curated, continuously-updated directory of NYC events across Instagram, Eventbrite, Lu.ma, and more.",
                   areaServed: {

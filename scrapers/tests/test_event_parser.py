@@ -254,6 +254,20 @@ class TestInferNeighborhood:
     def test_carroll_gardens_smith_street(self):
         assert infer_neighborhood("315 Smith Street, Brooklyn") == "carroll gardens"
 
+    def test_31st_avenue_does_not_match_1st_avenue(self):
+        assert infer_neighborhood(
+            "37-14 31st Ave, Queens, NY 11103",
+            "Heart of Gold",
+            "Astoria Gay Book Club",
+        ) == "astoria"
+
+    def test_real_1st_and_2nd_avenue_still_match(self):
+        assert infer_neighborhood("100 1st Ave, New York, NY") == "east village"
+        assert infer_neighborhood("100 2nd Avenue, New York, NY") == "east village"
+
+    def test_21st_avenue_does_not_match_1st_avenue(self):
+        assert infer_neighborhood("21st Ave, Queens, NY") == "queens"
+
     def test_fidi_wall_st(self):
         assert infer_neighborhood("100 Wall St") == "fidi"
 

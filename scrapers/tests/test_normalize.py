@@ -45,6 +45,16 @@ def test_image_backed_luma_city_catalog_event_is_not_a_shell():
         "location": {"name": "Williamsburg", "address": "Brooklyn, NY"},
     })
 
+
+def test_image_backed_eventbrite_organizer_event_is_not_a_shell():
+    assert not _is_shell_event({
+        "source": "eventbrite",
+        "catalogSource": "eventbrite_organizer",
+        "description": "",
+        "imageUrl": "https://img.evbuc.com/event.jpg",
+        "location": {"name": "Caveat", "address": "21 A Clinton St"},
+    })
+
 # ---------------------------------------------------------------------------
 # Curated-source survival — regression guard for the lu.ma/philosophy bug:
 # a dynamically learned curator calendar whose description-less events were
@@ -422,6 +432,22 @@ class TestBackfillNeighborhood:
         ]
         _backfill_neighborhood_from_venue(events)
         assert events[0]["location"]["neighborhood"] == "midtown"
+
+    def test_museum_of_modern_art_alias_still_midtown(self):
+        events = [{
+            "title": "Gallery Talk",
+            "location": {"name": "Museum of Modern Art", "neighborhood": None, "address": ""},
+        }]
+        _backfill_neighborhood_from_venue(events)
+        assert events[0]["location"]["neighborhood"] == "midtown"
+
+    def test_bk_bowl_alias_maps_to_williamsburg(self):
+        events = [{
+            "title": "Live Show",
+            "location": {"name": "BK Bowl", "neighborhood": None, "address": ""},
+        }]
+        _backfill_neighborhood_from_venue(events)
+        assert events[0]["location"]["neighborhood"] == "williamsburg"
 
     def test_queens_address_backfills_to_queens_not_manhattan(self):
         # fb-194: a Queens address with no neighborhood keyword must resolve

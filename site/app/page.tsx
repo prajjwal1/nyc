@@ -107,6 +107,9 @@ export default function Home() {
       <div className="min-h-screen bg-[#f8f3e8]">
         <Header totalEvents={0} thisWeekCount={0} lastUpdated={undefined} newSinceLastVisit={0} />
         <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+          <p className="mb-5 max-w-2xl text-sm leading-6 text-[#66716c]">
+            Discover curated events and things to do today, tonight, and this weekend across Brooklyn, Manhattan, Queens, and the rest of New York City.
+          </p>
           <div className="mb-6 h-14 animate-pulse rounded-lg bg-[#e7e1d2]" />
           <div className="grid gap-6 lg:grid-cols-[20rem_minmax(0,1fr)]">
             <div className="h-[22rem] animate-pulse rounded-xl border border-[#ded7c9] bg-[#fffdf8]" />

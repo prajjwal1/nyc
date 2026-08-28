@@ -96,6 +96,9 @@ export default function AllEventsPage() {
       <div className="min-h-screen bg-[#f8f3e8]">
         <Header title="Every upcoming event" totalEvents={0} thisWeekCount={0} lastUpdated={undefined} newSinceLastVisit={0} />
         <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+          <p className="mb-6 max-w-2xl text-sm leading-6 text-[#66716c]">
+            Browse upcoming NYC events by date, including live music, comedy, art, food, fitness, parties, and free things to do.
+          </p>
           <div className="space-y-3">
             {Array.from({ length: 10 }).map((_, i) => (
               <div key={i} className="rounded-xl border border-gray-200 bg-white p-4 animate-pulse">
@@ -209,7 +212,6 @@ export default function AllEventsPage() {
                       <div key={event.id} data-event-id={event.id} data-rank={rank + 1}>
                         <EventCard
                           event={event}
-                          showDay
                           onAccountClick={setAccountFilter}
                           onHide={(eventId) => {
                             setHiddenEventIds((current) => new Set(current).add(eventId));

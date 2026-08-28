@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { downloadTasteSnapshot, hasTasteSignal } from "../lib/tasteExport";
 
 interface HeaderProps {
   totalEvents: number;
@@ -18,10 +19,20 @@ export default function Header({
   newSinceLastVisit,
 }: HeaderProps) {
   const [copied, setCopied] = useState(false);
+  const [showTasteExport, setShowTasteExport] = useState(false);
+  const [tasteMessage, setTasteMessage] = useState<string | null>(null);
   const [currentTime, setCurrentTime] = useState<number | null>(null);
   useEffect(() => {
-    queueMicrotask(() => setCurrentTime(Date.now()));
+    queueMicrotask(() => {
+      setCurrentTime(Date.now());
+      setShowTasteExport(hasTasteSignal());
+    });
   }, []);
+  const handleTasteExport = () => {
+    downloadTasteSnapshot();
+    setTasteMessage("Downloaded — copy to scrapers/data/user_engagement.json");
+    window.setTimeout(() => setTasteMessage(null), 5000);
+  };
   const handleShare = async () => {
     if (typeof window === "undefined") return;
     const url = window.location.href;
@@ -106,6 +117,20 @@ export default function Header({
             ) : null}
           </div>
           <div className="flex items-center gap-2 sm:justify-end">
+            {tasteMessage && (
+              <span className="max-w-[230px] truncate text-[11px] text-[#5d6964]" title={tasteMessage}>
+                {tasteMessage}
+              </span>
+            )}
+            {showTasteExport && (
+              <button
+                onClick={handleTasteExport}
+                className="inline-flex min-h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium text-[#5d6964] hover:bg-white/70 hover:text-[#173c35]"
+                title="Export saves, hides, and attendance for the recommendation pipeline"
+              >
+                Export taste
+              </button>
+            )}
             <button
               onClick={handleShare}
               className="inline-flex min-h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium text-[#5d6964] hover:bg-white/70 hover:text-[#173c35]"

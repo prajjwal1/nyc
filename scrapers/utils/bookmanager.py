@@ -43,6 +43,13 @@ import httpx
 from .event_parser import build_event, infer_categories
 
 
+_STREET_ADDRESS_RE = re.compile(
+    r"\b\d{1,5}[A-Za-z]?(?:-\d{1,5})?\s+[^,\n]{1,80}?\b"
+    r"(?:St|Street|Ave|Avenue|Rd|Road|Blvd|Boulevard)\b",
+    re.IGNORECASE,
+)
+
+
 _API_BASE = "https://api.bookmanager.com/customer"
 _SETTINGS_URL = f"{_API_BASE}/store/getSettings"
 _EVENT_LIST_URL = f"{_API_BASE}/event/v2/list"
@@ -175,18 +182,25 @@ def _row_to_event(row: dict, source_label: str, default_venue: str,
     if "music" in bm_cat:
         cats = sorted(set(list(cats) + ["music"]))
 
-    return build_event(
+    address = loc_text if _STREET_ADDRESS_RE.search(loc_text) else (default_address or "")
+    event = build_event(
         title=title,
         description=description[:600],
         event_date=event_date,
         start_time=start_time,
         location_name=location_name,
-        address=default_address or "",
+        address=address,
         source=source_label,
         source_url=source_url,
         image_url=image_url,
         categories=cats,
     )
+    # Bookmanager's row.title is a dedicated structured field, not an
+    # Instagram-caption fragment. Keep that provenance through dedup so a
+    # legitimate title such as "Celebrate Patricia Lockwood..." is not
+    # hard-zeroed by a generic social-caption heuristic.
+    event["structuredTitle"] = True
+    return event
 
 
 async def scrape_san(

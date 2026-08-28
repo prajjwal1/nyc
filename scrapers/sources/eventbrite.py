@@ -2,10 +2,13 @@ import json
 import re
 import asyncio
 import os
+from urllib.parse import urlsplit, urlunsplit
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
 from ..utils.platform_discovery import FrontierItem, platform_frontier, ranked_topics
+from ..quality import is_blocked
+from ..ranking import is_user_excluded
 
 
 # Platform vocabulary, not a source list. Coverage is generated from the
@@ -26,6 +29,11 @@ _TOPIC_SEARCH_SLUG = {
     "dance": "dance",
 }
 _SEARCH_LOCATIONS = ("new-york", "brooklyn", "queens")
+_SUPPLEMENTAL_TOPIC_SEARCH_SLUGS = {
+    # fb-187: the broad dance page misses participatory folk/contra inventory.
+    # This remains on the normal score/late-night/exclusion path.
+    "dance": ("folk-dance",),
+}
 
 
 def _eventbrite_organizer_id(url: str) -> str:
@@ -58,6 +66,14 @@ def _generated_search_candidates() -> list[tuple[str, str]]:
             lane,
         ))
     candidates.extend(primary)
+    for topic, _score, lane in topics:
+        if lane != "personal":
+            continue
+        for slug in _SUPPLEMENTAL_TOPIC_SEARCH_SLUGS.get(topic, ()):
+            candidates.append((
+                f"https://www.eventbrite.com/d/ny--new-york/{slug}--events/",
+                lane,
+            ))
     # Page two is usually 20 new events and costs less overlap than repeating
     # the city-wide query for a borough. It is therefore the first depth lane.
     candidates.extend((f"{url}?page=2", lane) for url, lane in primary if lane == "personal")
@@ -120,6 +136,7 @@ async def scrape() -> list[dict]:
             parsed = _parse_organizer_page(html, item.url)
             for event in parsed:
                 event["discoveryLane"] = item.lane
+                event["discoveryVia"] = item.via
             events.extend(parsed)
             fetched_organizers.add(item.url)
             print(f"[eventbrite-organizer] {item.url}: {len(parsed)} events")
@@ -137,6 +154,7 @@ async def scrape() -> list[dict]:
             parsed = _parse_search_page(html, item.url)
             for event in parsed:
                 event["discoveryLane"] = item.lane
+                event["discoveryVia"] = item.via
             events.extend(parsed)
         except Exception as exc:
             print(f"[eventbrite-direct] Failed {item.url}: {exc}")
@@ -152,6 +170,7 @@ async def scrape() -> list[dict]:
             parsed = _parse_search_page(html, url)
             for event in parsed:
                 event["discoveryLane"] = lane
+                event["discoveryVia"] = "eventbrite_search"
             events.extend(parsed)
             await asyncio.sleep(0.25)
         except Exception as e:
@@ -172,13 +191,43 @@ async def scrape() -> list[dict]:
         try:
             html = await _fetch_with_backoff(item.url)
             org_events = _parse_organizer_page(html, item.url)
+            if not _organizer_calendar_is_useful(org_events):
+                clean_count = sum(not is_blocked(event) for event in org_events)
+                print(
+                    f"[eventbrite-organizer:new] Rejected {item.url}: "
+                    f"{len(org_events)} events, {clean_count} quality-clean"
+                )
+                continue
             for event in org_events:
                 event["discoveryLane"] = item.lane
+                event["discoveryVia"] = item.via
             events.extend(org_events)
             print(f"[eventbrite-organizer:new] {item.url}: {len(org_events)} events")
         except Exception as e:
             print(f"[eventbrite-organizer:new] Failed {item.url}: {e}")
     return events
+
+
+def _organizer_calendar_is_useful(
+    events: list[dict],
+    *,
+    min_yield: int = 5,
+    min_clean_ratio: float = 0.8,
+) -> bool:
+    """Require recurring, exclusion-clean inventory and a mostly clean mix."""
+    unique: dict[str, dict] = {}
+    for event in events:
+        key = _canonical_event_url(event.get("sourceUrl") or "") or (
+            f"{event.get('title', '').lower()}:{event.get('date', '')}"
+        )
+        unique.setdefault(key, event)
+    if not unique:
+        return False
+    clean_count = sum(
+        not is_blocked(event) and not is_user_excluded(event)
+        for event in unique.values()
+    )
+    return clean_count >= min_yield and clean_count / len(unique) >= min_clean_ratio
 
 
 def _promoted_organizers(
@@ -191,6 +240,8 @@ def _promoted_organizers(
     excluded = excluded or set()
     by_url: dict[str, dict] = {}
     for event in events:
+        if is_blocked(event) or is_user_excluded(event):
+            continue
         raw_url = event.get("organizerUrl") or ""
         organizer_id = _eventbrite_organizer_id(raw_url)
         if not organizer_id:
@@ -198,23 +249,57 @@ def _promoted_organizers(
         url = f"https://eventbrite.com/o/{organizer_id}"
         if url in excluded or url.replace("https://", "https://www.") in excluded:
             continue
-        rec = by_url.setdefault(url, {"score": 0.0, "personal": False})
-        rec["score"] += 1.0
-        if event.get("discoveryLane") == "personal" or any(
+        rec = by_url.setdefault(url, {
+            "event_urls": set(),
+            "personal_event_urls": set(),
+            "personal": False,
+            "explicit": False,
+            "search_only": True,
+        })
+        event_url = (event.get("sourceUrl") or "").split("?", 1)[0]
+        if event_url:
+            rec["event_urls"].add(event_url)
+        via = str(event.get("discoveryVia") or "")
+        if via != "eventbrite_search":
+            rec["search_only"] = False
+        personal = event.get("discoveryLane") == "personal" or any(
             event.get(flag) for flag in ("userSaved", "userFollowing", "userAffinity")
-        ):
-            rec["score"] += 3.0
+        )
+        if personal and event_url:
+            rec["personal_event_urls"].add(event_url)
+        if personal:
             rec["personal"] = True
-    ranked = sorted(by_url.items(), key=lambda row: (-row[1]["score"], row[0]))
+        if any(event.get(flag) for flag in ("userSaved", "userFollowing", "userAffinity")) or any(
+            token in via.lower() for token in ("user_mentioned", "user_saved", "user_tagged")
+        ):
+            rec["explicit"] = True
+
+    # Broad search pages contain many one-off promoters. Only recurring
+    # organizers graduate from that lane; direct/follow-graph discoveries and
+    # explicit user signals can still promote a single event's organizer.
+    eligible = []
+    for url, rec in by_url.items():
+        event_count = len(rec["event_urls"])
+        if rec["search_only"] and event_count < 2 and not rec["explicit"]:
+            continue
+        personal_count = len(rec["personal_event_urls"])
+        score = float(event_count) + personal_count * 10.0 + (100.0 if rec["explicit"] else 0.0)
+        eligible.append((url, rec, score))
+    ranked = sorted(eligible, key=lambda row: (
+        not row[1]["explicit"],
+        -len(row[1]["personal_event_urls"]),
+        -len(row[1]["event_urls"]),
+        row[0],
+    ))
     return [
         FrontierItem(
             url=url,
             kind="organizer",
-            lane="personal" if rec["personal"] else "explore",
-            score=rec["score"],
-            via="current_search_results",
+            lane="personal" if rec["explicit"] or rec["personal"] else "explore",
+            score=score,
+            via="current_search_results:recurring" if rec["search_only"] else "current_results",
         )
-        for url, rec in ranked[:limit]
+        for url, rec, score in ranked[:limit]
     ]
 
 
@@ -251,6 +336,7 @@ async def _hydrate_shortlist(events: list[dict], limit: int = 40) -> list[dict]:
         detail = by_url.get(event.get("sourceUrl"))
         if detail:
             detail["discoveryLane"] = event.get("discoveryLane", "personal")
+            detail["discoveryVia"] = event.get("discoveryVia", "")
             out.append(detail)
         else:
             out.append(event)
@@ -304,6 +390,7 @@ def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
         fallback = _parse_search_page(html, source_url)
         for event in fallback:
             event["organizerUrl"] = source_url
+            event["catalogSource"] = "eventbrite_organizer"
             organizer_id = _eventbrite_organizer_id(source_url) or source_url
             if not event.get("organizerRefs"):
                 event["organizerRefs"] = [{
@@ -337,6 +424,8 @@ def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
         end_raw = raw.get("end_date") or raw.get("endDate") or ""
         _end_date, iso_end_time = parse_iso_to_local(end_raw)
         end_time = (raw.get("end_time") or "")[:5] or iso_end_time or None
+        if start_time and end_time == start_time:
+            end_time = None
         url = raw.get("url") or source_url
         if url in seen:
             continue
@@ -387,6 +476,7 @@ def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
         # is the specific /e/<slug> URL which doesn't contain the
         # organizer ID).
         ev["organizerUrl"] = source_url
+        ev["catalogSource"] = "eventbrite_organizer"
         events.append(ev)
     return events
 
@@ -401,6 +491,35 @@ def _parse_search_page(html: str, source_url: str) -> list[dict]:
             events.extend(_walk_jsonld(data))
         except (json.JSONDecodeError, Exception):
             continue
+
+    # Search-page JSON-LD omits organizer identity. Eventbrite's embedded
+    # server data includes a stable primary_organizer_id for each result, so
+    # merge it into the standards-based parse. Repeated organizers can then
+    # graduate into full calendar crawls without a hardcoded source list.
+    server_events = _parse_server_search_events(html)
+    if server_events:
+        by_url = {
+            _canonical_event_url(event.get("sourceUrl") or ""): event
+            for event in events
+        }
+        for server_event in server_events:
+            key = _canonical_event_url(server_event.get("sourceUrl") or "")
+            existing = by_url.get(key)
+            if not existing:
+                events.append(server_event)
+                by_url[key] = server_event
+                continue
+            for field in (
+                "description", "imageUrl", "organizer", "organizerUrl", "organizerRefs"
+            ):
+                if not existing.get(field) and server_event.get(field):
+                    existing[field] = server_event[field]
+            existing_location = existing.get("location") or {}
+            server_location = server_event.get("location") or {}
+            for field in ("name", "address", "neighborhood", "lat", "lng"):
+                if not existing_location.get(field) and server_location.get(field):
+                    existing_location[field] = server_location[field]
+            existing["location"] = existing_location
 
     if not events:
         for card in soup.select("[class*='event-card'], [class*='SearchResultCard'], article"):
@@ -438,6 +557,78 @@ def _parse_search_page(html: str, source_url: str) -> list[dict]:
                 price=price,
             ))
 
+    return events
+
+
+def _canonical_event_url(url: str) -> str:
+    """Normalize an Eventbrite event URL for metadata merging/deduping."""
+    try:
+        parsed = urlsplit(url or "")
+        return urlunsplit((parsed.scheme, parsed.netloc, parsed.path.rstrip("/"), "", ""))
+    except Exception:
+        return (url or "").split("?", 1)[0].rstrip("/")
+
+
+def _parse_server_search_events(html: str) -> list[dict]:
+    """Parse search results inside ``window.__SERVER_DATA__``."""
+    marker = re.search(r"window\.__SERVER_DATA__\s*=\s*", html)
+    if not marker:
+        return []
+    try:
+        data, _end = json.JSONDecoder().raw_decode(html[marker.end():])
+        rows = data.get("search_data", {}).get("events", {}).get("results", [])
+    except (AttributeError, json.JSONDecodeError, TypeError, ValueError):
+        return []
+
+    events: list[dict] = []
+    for raw in rows if isinstance(rows, list) else []:
+        if not isinstance(raw, dict):
+            continue
+        title = raw.get("name") or ""
+        event_date = parse_date(raw.get("start_date") or "")
+        source_url = raw.get("url") or ""
+        if not title or not event_date or not source_url:
+            continue
+
+        venue = raw.get("primary_venue") or {}
+        address = (venue.get("address") or {}) if isinstance(venue, dict) else {}
+        organizer_id = str(raw.get("primary_organizer_id") or "").strip()
+        organizer_url = f"https://eventbrite.com/o/{organizer_id}" if organizer_id else ""
+        image = raw.get("image") or {}
+        image_url = image.get("url") if isinstance(image, dict) else image
+        lat = address.get("latitude") if isinstance(address, dict) else None
+        lng = address.get("longitude") if isinstance(address, dict) else None
+        start_time = str(raw.get("start_time") or "")[:5] or None
+        end_time = str(raw.get("end_time") or "")[:5] or None
+        if start_time and end_time == start_time:
+            end_time = None
+        event = build_event(
+            title=str(title),
+            description=str(raw.get("summary") or raw.get("full_description") or "")[:500],
+            event_date=event_date,
+            start_time=start_time,
+            end_time=end_time,
+            location_name=str(venue.get("name") or "") if isinstance(venue, dict) else "",
+            address=str(
+                address.get("localized_address_display")
+                or address.get("address_1")
+                or ""
+            ) if isinstance(address, dict) else "",
+            source="eventbrite",
+            source_url=_canonical_event_url(str(source_url)),
+            image_url=str(image_url) if image_url else None,
+            lat=lat,
+            lng=lng,
+            organizer_url=organizer_url or None,
+            organizer_refs=[{
+                "platform": "eventbrite",
+                "externalId": organizer_id,
+                "name": "",
+                "url": organizer_url,
+                "role": "host",
+            }] if organizer_url else None,
+        )
+        events.append(event)
     return events
 
 
@@ -512,6 +703,9 @@ def _parse_ld_event(data: dict) -> dict | None:
             loc_addr = addr
 
     date_str, start_time = parse_iso_to_local(start)
+    _end_date, end_time = parse_iso_to_local(data.get("endDate", ""))
+    if start_time and end_time == start_time:
+        end_time = None
     event_date = parse_date(date_str) if date_str else None
     if not event_date:
         return None
@@ -534,6 +728,7 @@ def _parse_ld_event(data: dict) -> dict | None:
         description=desc[:500],
         event_date=event_date,
         start_time=start_time,
+        end_time=end_time,
         location_name=loc_name,
         address=loc_addr,
         source="eventbrite",

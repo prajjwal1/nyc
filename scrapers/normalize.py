@@ -660,6 +660,7 @@ def _merge(a: dict, b: dict) -> dict:
     merged["userFollowing"] = bool(a.get("userFollowing") or b.get("userFollowing"))
     merged["recurring"] = bool(a.get("recurring") or b.get("recurring"))
     merged["ocrEnriched"] = bool(a.get("ocrEnriched") or b.get("ocrEnriched"))
+    merged["structuredTitle"] = bool(a.get("structuredTitle") or b.get("structuredTitle"))
 
     # Preserve every structured host identity across source/dedup merges.
     # Community resolution relies on stable platform IDs rather than fuzzy
@@ -905,10 +906,14 @@ def _backfill_neighborhood_from_venue(events: list[dict]) -> None:
         # fb-194: match the LONGEST venue key that is a substring of the name
         # so a specific branch ("moma ps1") wins over a generic one ("moma").
         if new_hood is None:
+            canonical_name = _normalize_venue_name(name)
             best_venue = None
             for venue, hood in _VENUE_NAME_TO_NEIGHBORHOOD.items():
-                if venue in name and (best_venue is None or len(venue) > len(best_venue)):
-                    best_venue = venue
+                canonical_venue = _normalize_venue_name(venue)
+                if canonical_venue in canonical_name and (
+                    best_venue is None or len(canonical_venue) > len(best_venue)
+                ):
+                    best_venue = canonical_venue
                     new_hood = hood
         # Step 2: address inference (always re-runs, can override stale tags).
         # Also fold in title + location.name so titles like
@@ -1616,7 +1621,7 @@ def _is_curated_host(event: dict, floor_context: bool = False) -> bool:
     below-floor one-off (Critic S4, run 2026-07-13-2033).
     """
     try:
-        from .ranking import _load_user_curated_sources
+        from .ranking import _curated_host_matches_url, _load_user_curated_sources
 
         cfg = _load_user_curated_sources()
         hosts = cfg.get("hosts", {})
@@ -1632,7 +1637,7 @@ def _is_curated_host(event: dict, floor_context: bool = False) -> bool:
             if not url:
                 continue
             for h in hosts:
-                if h not in url:
+                if not _curated_host_matches_url(h, url):
                     continue
                 if floor_context and h in no_floor:
                     continue  # boost-only host: no floor bypass
@@ -1732,7 +1737,7 @@ def _is_shell_event(event: dict) -> bool:
     # Luma's paginated NYC catalog deliberately omits descriptions but gives
     # us a real event graphic, canonical URL, host and location. Keep those
     # useful listings without hammering every detail page and getting 429ed.
-    if event.get("catalogSource") == "luma_nyc" and img and (loc or addr):
+    if event.get("catalogSource") in {"luma_nyc", "eventbrite_organizer"} and img and (loc or addr):
         return False
     # Stricter: image required for listing-aggregator sources.
     if not img and event.get("source") in _IMAGE_REQUIRED_SOURCES:

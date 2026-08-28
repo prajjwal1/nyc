@@ -499,6 +499,43 @@ def _print_north_star_metrics(events: list) -> dict:
         metrics["follow_graph_covered"] = with_yield
         metrics["follow_graph_total"] = len(signals)
 
+        def folds(handle: str) -> set[str]:
+            base = "".join(ch for ch in (handle or "").lower() if ch.isalnum())
+            if not base:
+                return set()
+            values = {base}
+            for suffix in (
+                "manhattan", "brooklyn", "queens", "bronx", "statenisland",
+                "williamsburg", "nyc", "ny", "bk",
+            ):
+                if base.endswith(suffix) and len(base) - len(suffix) >= 4:
+                    values.add(base[:-len(suffix)])
+            return values
+
+        signal_by_fold = {
+            folded: account
+            for account in signals
+            for folded in folds(account)
+        }
+        active = set()
+        for event in events:
+            if not event.get("userFollowing"):
+                continue
+            handle = event.get("account") or event.get("instagramAccount") or event.get("organizer") or ""
+            for folded in folds(handle):
+                if folded in signal_by_fold:
+                    active.add(signal_by_fold[folded])
+        active_pct = 100.0 * len(active) / len(signals)
+        missing_active = sorted(set(signals) - active)
+        print(
+            f"Active-feed follow coverage: {len(active)}/{len(signals)} "
+            f"({active_pct:.1f}%) signal_accounts represented now"
+        )
+        if missing_active:
+            print(f"  no current event: {', '.join(missing_active[:12])}")
+        metrics["active_follow_graph_covered"] = len(active)
+        metrics["active_follow_graph_total"] = len(signals)
+
     # 2. Topic coverage — every topic with count >= 2 should appear in the feed.
     # Filter out (a) location topics (not actionable) and (b) "de-boost zone"
     # topics from interest_profile._USERNAME_TOPIC_HINTS — the user follows
