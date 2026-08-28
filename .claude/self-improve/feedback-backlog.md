@@ -97,24 +97,27 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-206 — Add/verify Liz's Book Bar Eventbrite organizer coverage
 - created_at: 2026-08-28
 - source: user-explicit
-- status: open
+- status: addressed: d605d18a
 - body: Add/verify Liz’s Book Bar Eventbrite organizer https://www.eventbrite.com/o/lizs-book-bar-83466825333 so its hosted events have website coverage.
 - "addressed" criterion: the stable organizer ID `83466825333` is configured and live-probed; all exclusion-clean hosted events are represented on the website after normalization/dedup, Eventbrite organizer provenance is retained when a dedicated-source duplicate wins, and `Speed Dating Book Club` remains excluded.
+- resolution: Added the stable organizer as `user_mentioned`; live probe found 10 future events, 9 allowed, with all 9 already represented by the dedicated Liz's Book Bar feed. Organizer-ID matching and structured-title handling preserve provenance and recover legitimate “Celebrate …” book events while the speed-dating exclusion remains enforced.
 
 ### fb-207 — Broaden Eventbrite coverage through high-quality recurring organizers
 - created_at: 2026-08-28
 - source: user-explicit
-- status: open
+- status: addressed: d605d18a
 - body: Broaden Eventbrite coverage using other high-quality recurring “top organizer” hosts.
 - "addressed" criterion: add a conservative batch of recurring NYC organizer calendars that each live-probe with at least 5 projected surviving events and at least 80% exclusion-clean/on-taste inventory; organizer selection must be bounded, deduplicated against existing sources, and prioritize demonstrated user fit over raw event volume.
+- resolution: Added High Line Programs, The Ripped Bodice Brooklyn, Strand Bookstore, Caveat, Union Hall, Book Hoes, National Arts Club, and a Book Club Bar fallback after live yield/quality checks. Inferred organizers retain the normal score floor; explicit user signals outrank anonymous volume. After 5 was withheld because only about 42% of its calendar was useful.
 
 ### fb-208 — Infer what the user may appreciate from demonstrated taste
 - created_at: 2026-08-28
 - source: user-explicit
-- status: open
+- status: addressed: d605d18a
 - body: “you should try to infer my interests at this point, know what i may appreciate.”
 - interpretation: Ranking and source curation should use demonstrated follow/save/hide/attendance/taste history rather than generic popularity, while preserving all existing user exclusions and hard quality rules.
 - "addressed" criterion: organizer selection and event ranking measurably prioritize explicit follows and learned positive/negative engagement over anonymous popularity or raw calendar size; the browser-to-pipeline taste path carries saved, hidden, attended-yes, and attended-no evidence; all fb-001..fb-011 exclusions and guardrails remain enforced.
+- resolution: Eventbrite organizer selection now prioritizes explicit and personal signals before raw yield. The browser can export saved, hidden, attended-yes, and attended-no evidence into the existing pipeline contract, and attendance answer changes no longer double-count or leave stale preference weights.
 
 
 ### fb-209 — Learn Eventbrite organizer quality across scrapes
@@ -922,9 +925,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-178 — "Did you go?" attend/skip affordance on past saved events
 - created_at: 2026-06-15
 - source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-06-15-1724)
-- status: open
+- status: addressed: d605d18a
 - body: Convert passive saves into explicit attend/skip ground truth to close the calibration loop (README §341-369). For events whose date is in the past AND were saved (`isSavedLocal`), render a minimal "Did you go? Yes / No" on the FeedCard (no new widget chrome — consistent with the iter-215 simplification). Persist to localStorage `attended:<eventId>`. A later round adds an ingest path (`scrapers/data/user_attendance.json`) that re-weights `userAffinity` + the topic_counts derivation. Deferred because it needs a storage/ingest design beyond a no-backend round.
 - files: `site/app/components/EventCard.tsx` (past+saved branch) + `site/app/lib/interests.ts` (localStorage helper).
+- resolution: Attendance state is retained under the established `nyc-events:attended:v1` contract, backed by a durable event cache. Same-answer clicks are idempotent, changed answers reverse their old profile effect, and the download-only taste export includes attendance evidence for the recommendation pipeline.
 
 ### fb-182 — Render qualitative/low-commitment price words as a positive pill (D1)
 - created_at: 2026-06-22
@@ -978,9 +982,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-193 — Venue alias normalization (BK Bowl ↔ Brooklyn Bowl, etc.) (D2)
 - created_at: 2026-07-02
 - source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-07-02-1735)
-- status: open
+- status: addressed: d605d18a
 - body: Normalize venue-name aliases so the same venue expressed differently collapses to one canonical form ("BK Bowl" ↔ "Brooklyn Bowl", "MoMA" ↔ "Museum of Modern Art", etc.). Compounds directly with the fb-189 Step-0 explicit-neighborhood matcher (`_explicit_hood_in_text`) and cross-source dedup (`_dedup_fuzzy_title`) — a canonical venue name improves both neighborhood inference and duplicate collapse. Note: fb-111 already added some venue-abbrev expansion in `_normalize_venue_name`; this extends/consolidates it. Deferred because the payoff (fewer dupes / better neighborhood tags in the feed) is only measurable post-scrape.
 - files: `scrapers/normalize.py` (`_normalize_venue_name` / venue-key path).
+- resolution: Neighborhood inference now reuses the same canonical venue key as deduplication; regression coverage confirms BK Bowl and Museum of Modern Art aliases resolve correctly.
 
 ### fb-197 — Big /plan directive: learn from preferences, stop hardcoding, better suggestions, reimagine UI, make IG scraping work
 - created_at: 2026-07-09

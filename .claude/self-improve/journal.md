@@ -274,3 +274,32 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Verification:** 367 tests pass (3 expected xfails); all 5 sanity critical checks pass; Next.js production build clean; `git diff --check` clean.
 
 **Hypothesis for next round:** restore a real explicit engagement snapshot before further keyword retirement. With negative examples available, re-run the cluster audit and retire additional positive/social phrases only where ranking quality improves without reducing interest coverage.
+
+## 2026-08-28 1706 — run-id 2026-08-28-1706
+
+**Context:** User asked whether the site was deployed, requested SEO discoverability, invoked the self-improvement loop, explicitly requested Liz's Book Bar Eventbrite coverage plus other high-quality Eventbrite organizers, and asked the system to infer what they would appreciate. Fast-forwarded the local checkout by 418 automated data commits before building so SEO pages reflect the current 537-event feed.
+
+**Shipped (commit d605d18a):**
+- SEO: statically generated 537 crawlable event detail pages, 22 category pages, canonical metadata, Event/ItemList JSON-LD, sitemap, robots, social cards, and internal links. Production build emits 593 total pages.
+- Liz's Book Bar: added Eventbrite organizer `83466825333` as an explicit-user fallback. Live audit found 10 future / 9 allowed Eventbrite rows; all 9 are already represented by the dedicated source, while the deployed snapshot contains 14 direct Liz events. Stable organizer-ID matching preserves provenance through slug variants and dedup. Structured Bookmanager titles recover the legitimate Patricia Lockwood “Celebrate …” event without bypassing hard blocks or user exclusions.
+- Eventbrite breadth: added vetted calendars for High Line Programs, The Ripped Bodice Brooklyn, Strand, Caveat, Union Hall, Book Hoes, National Arts Club, plus a Book Club Bar fallback. Inferred sources retain the normal score floor. Withheld After 5 because only ~42% of its calendar was useful; added only the exact `ai apocalypse` exclusion.
+- Taste: organizer promotion now ranks explicit/personal signal ahead of anonymous volume. Restored a local download-only `user_engagement.json` export covering saves, hides, attended-yes, and attended-no; attendance changes are idempotent and reversible.
+- Data quality: canonical venue aliases feed neighborhood inference; ordinal street matching is boundary-safe; Bookmanager keeps credible offsite addresses; equal Eventbrite end times are omitted; Substack date-range junk, nearby-state addresses, and Edmonton leakage are rejected.
+- UI: SEO event pages retain preference provenance and add Save / Add to calendar / Hide; cards show neighborhood fallback and grouped pages remove repeated day labels.
+- Observability: sanity checks now report active-feed follow coverage (6/50) separately from lifetime yield coverage (50/50).
+
+**Rejected/withheld:** After 5 organizer `120724085237` — only ~42% useful after location/taste filtering, below the >=80% recurring-organizer standard.
+
+**Deferred (backlog):** D2 → fb-209, persist learned organizer quality across scrapes. fb-187 remains open until the restored folk-dance query lands >=5 events with >=50% strict participatory fit.
+
+**Feedback gate:** New direct user feedback was captured as fb-206 (Liz), fb-207 (Eventbrite top organizers), and fb-208 (infer taste). All three were addressed in d605d18a.
+
+**Metric delta:**
+- Follow-graph coverage: 50/50 (100.0%) → 50/50 (100.0%).
+- Topic coverage: all tracked topics represented → all tracked topics represented.
+- High-conviction ratio: 90/536 (16.8%) → 90/537 (16.8%).
+- Active-feed follow coverage: newly measured at 6/50 (12.0%).
+
+**Verification:** 387 tests pass (3 expected xfails); targeted regressions 294 pass (3 expected xfails); sanity_check has 0 critical failures; ESLint has 0 errors; Next.js production build succeeds and generates 593 pages. The Playwright smoke suite could not launch Chromium because macOS denied its Mach-port registration before any product assertion ran.
+
+**Hypothesis for next round:** the next platform refresh should reveal whether taste-aligned organizer additions improve useful literary/outdoors/comedy depth without diluting conviction. Measure landed per-organizer clean yield and engagement, close fb-187 only if folk-dance clears its survivor/participation bar, and use fb-209 to keep bounded organizer slots adaptive rather than permanently accumulating inferred calendars.
