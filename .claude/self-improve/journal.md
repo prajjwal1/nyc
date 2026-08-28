@@ -280,7 +280,7 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Context:** User asked whether the site was deployed, requested SEO discoverability, invoked the self-improvement loop, explicitly requested Liz's Book Bar Eventbrite coverage plus other high-quality Eventbrite organizers, and asked the system to infer what they would appreciate. Fast-forwarded the local checkout by 418 automated data commits, then rebased once more over a concurrent platform refresh, so SEO pages reflect the current 539-event feed.
 
 **Shipped (commit ac1f143c):**
-- SEO: statically generated 539 crawlable event detail pages, 22 category pages, canonical metadata, Event/ItemList JSON-LD, sitemap, robots, social cards, and internal links. Production build emits 595 total pages.
+- SEO: statically generated crawlable event detail and category pages, canonical metadata, Event/ItemList JSON-LD, sitemap, robots, social cards, and internal links. After an immediate Eventbrite refresh, CI emitted 616 total pages from the 556-event feed; the live sitemap contains 608 URLs.
 - Liz's Book Bar: added Eventbrite organizer `83466825333` as an explicit-user fallback. Live audit found 10 future / 9 allowed Eventbrite rows; all 9 are already represented by the dedicated source, while the deployed snapshot contains 14 direct Liz events. Stable organizer-ID matching preserves provenance through slug variants and dedup. Structured Bookmanager titles recover the legitimate Patricia Lockwood “Celebrate …” event without bypassing hard blocks or user exclusions.
 - Eventbrite breadth: added vetted calendars for High Line Programs, The Ripped Bodice Brooklyn, Strand, Caveat, Union Hall, Book Hoes, National Arts Club, plus a Book Club Bar fallback. Inferred sources retain the normal score floor. Withheld After 5 because only ~42% of its calendar was useful; added only the exact `ai apocalypse` exclusion.
 - Taste: organizer promotion now ranks explicit/personal signal ahead of anonymous volume. Restored a local download-only `user_engagement.json` export covering saves, hides, attended-yes, and attended-no; attendance changes are idempotent and reversible.
@@ -297,9 +297,9 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Metric delta:**
 - Follow-graph coverage: 50/50 (100.0%) → 50/50 (100.0%).
 - Topic coverage: all tracked topics represented → all tracked topics represented.
-- High-conviction ratio: 90/536 (16.8%) → 90/539 (16.7%); two unflagged events arrived in the concurrent automated refresh.
+- High-conviction ratio: 90/536 (16.8%) → 90/556 (16.2%); new organizer inventory is deliberately not mislabeled as explicit conviction.
 - Active-feed follow coverage: newly measured at 6/50 (12.0%).
 
-**Verification:** 387 tests pass (3 expected xfails); targeted regressions 294 pass (3 expected xfails); sanity_check has 0 critical failures; ESLint has 0 errors; Next.js production build succeeds and generates 595 pages. The Playwright smoke suite could not launch Chromium because macOS denied its Mach-port registration before any product assertion ran.
+**Verification:** 387 tests pass (3 expected xfails); targeted regressions 294 pass (3 expected xfails); sanity_check has 0 critical failures; ESLint has 0 errors; local Next.js production build succeeds. Both the main push deployment and the post-refresh deployment completed successfully, with the latter generating 616 pages and passing its deployed-data timestamp check. The Playwright smoke suite could not launch Chromium because macOS denied its Mach-port registration before any product assertion ran.
 
 **Hypothesis for next round:** the next platform refresh should reveal whether taste-aligned organizer additions improve useful literary/outdoors/comedy depth without diluting conviction. Measure landed per-organizer clean yield and engagement, close fb-187 only if folk-dance clears its survivor/participation bar, and use fb-209 to keep bounded organizer slots adaptive rather than permanently accumulating inferred calendars.
