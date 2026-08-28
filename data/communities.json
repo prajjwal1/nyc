@@ -74,12 +74,12 @@
         "url:https://www.eventbrite.com/o/elsewhere-105655500371"
       ],
       "similarCommunityIds": [
+        "com_4a9490cb3534",
         "com_216dd4aaa8b8",
         "com_3837f308cd75",
         "com_ebf7599ed103",
-        "com_c1410c07c4dd",
-        "com_9a5c4d074e3a",
-        "com_c58670960684"
+        "com_b736e77bdf93",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -229,6 +229,87 @@
       ]
     },
     {
+      "id": "com_4a9490cb3534",
+      "slug": "the-ripped-bodice-bk-cb3534",
+      "name": "The Ripped Bodice BK",
+      "kind": "recurring_series",
+      "tagline": "The Ripped Bodice BK is a recurring event series centered on books, music in brooklyn.",
+      "description": "The Ripped Bodice BK is a recurring event series centered on books, music in brooklyn. Based on 9 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "categories": [
+        "other",
+        "books",
+        "music"
+      ],
+      "tags": [
+        "other",
+        "books",
+        "music"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "The Ripped Bodice",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190400224%2F3004693892694%2F1%2Foriginal.20260805-190717?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=96ffe79e0b059dc614afb6b2f8e9d52d",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/121441877858"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 9,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Thursday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 1.0,
+        "sampleSize": 9
+      },
+      "upcomingEventIds": [
+        "a41be7980dd03f73",
+        "ee2015d2b10bfd32",
+        "4e537713ecd08f3e",
+        "b421ead084198fe7",
+        "32657e397ce06f1b",
+        "0497401f49f043c8",
+        "2173917b8ef81aee",
+        "5f98658f44483c0e",
+        "93e5ece37e67131e"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-08-28",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 9,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:121441877858"
+      ],
+      "similarCommunityIds": [
+        "com_b736e77bdf93",
+        "com_3837f308cd75",
+        "com_216dd4aaa8b8",
+        "com_b766b6de77ba",
+        "com_d8a5203885a9",
+        "com_eef1ca956dae"
+      ]
+    },
+    {
       "id": "com_02ba15552329",
       "slug": "lululemon-williamsburg-552329",
       "name": "lululemon Williamsburg",
@@ -296,6 +377,91 @@
         "com_216dd4aaa8b8",
         "com_318c39363fe6",
         "com_3837f308cd75"
+      ]
+    },
+    {
+      "id": "com_b736e77bdf93",
+      "slug": "the-tiny-cupboard-7bdf93",
+      "name": "The Tiny Cupboard",
+      "kind": "recurring_series",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on music, comedy, books in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on music, comedy, books in brooklyn. Based on 6 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "categories": [
+        "music",
+        "comedy",
+        "other",
+        "books",
+        "movies"
+      ],
+      "tags": [
+        "music",
+        "comedy",
+        "other",
+        "books",
+        "movies"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "The Tiny Cupboard",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1180624244%2F2995589689275%2F1%2Foriginal.20260325-012846?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.011&fp-y=0.492&s=0ed3663ad53d88b4c944fcfb8388c3ea",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/18898315629"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-08-28",
+        "upcomingEventCount": 9,
+        "eventCount90d": 2
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Saturday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 1.0,
+        "sampleSize": 6
+      },
+      "upcomingEventIds": [
+        "e3129631e48c2264",
+        "53aaa599439344a6",
+        "dab3be80683da26b",
+        "41a7dbe9b0ac4bfd",
+        "c73e6206059b3e5d",
+        "f143de088cd3ae42",
+        "55339135bf66ab0d",
+        "be28d5806cf96f85",
+        "747f79f08c89af0f"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-08-28",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 6,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:18898315629"
+      ],
+      "similarCommunityIds": [
+        "com_4a9490cb3534",
+        "com_3837f308cd75",
+        "com_d8a5203885a9",
+        "com_216dd4aaa8b8",
+        "com_eef1ca956dae",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -373,12 +539,12 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
+        "com_4a9490cb3534",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_216dd4aaa8b8",
         "com_b766b6de77ba",
-        "com_c58670960684",
-        "com_eef1ca956dae",
-        "com_218b97d674a6"
+        "com_c58670960684"
       ]
     },
     {
@@ -445,12 +611,173 @@
         "eventbrite:8184194121"
       ],
       "similarCommunityIds": [
-        "com_eeb4e424a504",
+        "com_5582e2e97f1a",
         "com_b766b6de77ba",
         "com_318c39363fe6",
+        "com_4a9490cb3534",
         "com_3837f308cd75",
-        "com_3b104adba072",
-        "com_c1410c07c4dd"
+        "com_3b104adba072"
+      ]
+    },
+    {
+      "id": "com_5582e2e97f1a",
+      "slug": "liz-s-book-bar-e97f1a",
+      "name": "Liz\u2019s Book Bar",
+      "kind": "community_space",
+      "tagline": "Liz\u2019s Book Bar is a community space centered on books, music, art in carroll gardens.",
+      "description": "Liz\u2019s Book Bar is a community space centered on books, music, art in carroll gardens. Based on 9 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "categories": [
+        "books",
+        "music",
+        "art",
+        "celebrities",
+        "exploration"
+      ],
+      "tags": [
+        "books",
+        "music",
+        "art",
+        "celebrities",
+        "exploration"
+      ],
+      "neighborhoods": [
+        "carroll gardens"
+      ],
+      "homeVenue": "Liz's Book Bar",
+      "imageUrl": "https://cdn1.bookmanager.com/i/9936106/web_orb_litfic.png?cb=1783709447",
+      "links": [
+        {
+          "type": "lizsbookbar",
+          "label": "View on Lizsbookbar",
+          "url": "https://eventbrite.com/o/83466825333"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 9,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Thursday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 1.0,
+        "sampleSize": 9
+      },
+      "upcomingEventIds": [
+        "158cb5f310498e91",
+        "1ad9c7d0f4606663",
+        "833063c315e74962",
+        "4f87d3d3041bc3e1",
+        "1eded0551b851d24",
+        "8f419e108775f3eb",
+        "320f533b24346d0b",
+        "33981c049bdc79f0",
+        "fa2471d5cc61d2be"
+      ],
+      "sourceAttributions": [
+        "lizsbookbar"
+      ],
+      "lastVerifiedAt": "2026-08-28",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 9,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:83466825333"
+      ],
+      "similarCommunityIds": [
+        "com_eeb4e424a504",
+        "com_eef1ca956dae",
+        "com_9a5c4d074e3a",
+        "com_4a9490cb3534",
+        "com_3837f308cd75",
+        "com_b736e77bdf93"
+      ]
+    },
+    {
+      "id": "com_359bbb5a9a91",
+      "slug": "alfreda-s-cinema-5a9a91",
+      "name": "Alfreda's Cinema",
+      "kind": "recurring_series",
+      "tagline": "Alfreda's Cinema is a recurring event series centered on outdoors in brooklyn, flatbush.",
+      "description": "Alfreda's Cinema is a recurring event series centered on outdoors in brooklyn, flatbush. Based on 5 observed event dates, it meets biweekly on Sunday and Friday evenings.",
+      "categories": [
+        "other",
+        "outdoors"
+      ],
+      "tags": [
+        "other",
+        "outdoors"
+      ],
+      "neighborhoods": [
+        "brooklyn",
+        "flatbush"
+      ],
+      "homeVenue": "Lincoln Terrace / Arthur S. Somers Park",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1185342121%2F141404545158%2F1%2Foriginal.20260525-033233?w=940&auto=format%2Ccompress&q=75&sharp=10&s=8aacef303396b0d423abfb4fb445e966",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/8387562806"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 5,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Sunday",
+          "Friday"
+        ],
+        "typicalTime": "20:00",
+        "confidence": 0.83,
+        "sampleSize": 5
+      },
+      "upcomingEventIds": [
+        "93910392682c9d68",
+        "0f2e14642ee4bfe4",
+        "2bd80251e30938e9",
+        "f7534b3bd47d1000",
+        "fd4f348e5f7db120"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-08-28",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 5,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:8387562806"
+      ],
+      "similarCommunityIds": [
+        "com_216dd4aaa8b8",
+        "com_218b97d674a6",
+        "com_83fdf02633ef",
+        "com_ebf7599ed103",
+        "com_4a9490cb3534",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -515,10 +842,10 @@
       "similarCommunityIds": [
         "com_4e69412cb0a5",
         "com_c4469caf0091",
+        "com_eeb4e424a504",
         "com_d2ccb56c071d",
-        "com_cdd5daa67222",
-        "com_c1410c07c4dd",
-        "com_eeb4e424a504"
+        "com_4a9490cb3534",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -591,8 +918,8 @@
         "com_3837f308cd75",
         "com_ebf7599ed103",
         "com_b766b6de77ba",
-        "com_02ba15552329",
-        "com_eeb4e424a504"
+        "com_4a9490cb3534",
+        "com_02ba15552329"
       ]
     },
     {
@@ -659,10 +986,10 @@
       "similarCommunityIds": [
         "com_4e69412cb0a5",
         "com_715c917d96c2",
+        "com_eeb4e424a504",
         "com_d2ccb56c071d",
         "com_cdd5daa67222",
-        "com_c1410c07c4dd",
-        "com_eeb4e424a504"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -731,10 +1058,10 @@
       "similarCommunityIds": [
         "com_715c917d96c2",
         "com_c4469caf0091",
+        "com_eeb4e424a504",
         "com_d2ccb56c071d",
         "com_cdd5daa67222",
-        "com_c1410c07c4dd",
-        "com_eeb4e424a504"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -802,9 +1129,9 @@
         "com_4e69412cb0a5",
         "com_715c917d96c2",
         "com_c4469caf0091",
+        "com_eeb4e424a504",
         "com_cdd5daa67222",
-        "com_3b104adba072",
-        "com_c1410c07c4dd"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -891,7 +1218,7 @@
         "com_715c917d96c2",
         "com_c1410c07c4dd",
         "com_d8a5203885a9",
-        "com_eef1ca956dae"
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -956,11 +1283,11 @@
       ],
       "similarCommunityIds": [
         "com_ebf7599ed103",
+        "com_4a9490cb3534",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_b766b6de77ba",
-        "com_c58670960684",
-        "com_d8a5203885a9",
-        "com_eef1ca956dae"
+        "com_c58670960684"
       ]
     },
     {
@@ -1027,9 +1354,9 @@
         "com_216dd4aaa8b8",
         "com_b766b6de77ba",
         "com_c58670960684",
+        "com_4a9490cb3534",
         "com_3837f308cd75",
-        "com_02ba15552329",
-        "com_318c39363fe6"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -1099,7 +1426,7 @@
         "com_b766b6de77ba",
         "com_02ba15552329",
         "com_318c39363fe6",
-        "com_d2ccb56c071d"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -1191,9 +1518,9 @@
         "com_318c39363fe6",
         "com_f23f8820878b",
         "com_b766b6de77ba",
+        "com_4a9490cb3534",
         "com_cdd5daa67222",
-        "com_d8a5203885a9",
-        "com_eeb4e424a504"
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -1283,10 +1610,10 @@
       "similarCommunityIds": [
         "com_3837f308cd75",
         "com_f23f8820878b",
+        "com_b736e77bdf93",
         "com_318c39363fe6",
-        "com_eef1ca956dae",
-        "com_216dd4aaa8b8",
-        "com_cdd5daa67222"
+        "com_4a9490cb3534",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -1357,11 +1684,11 @@
       ],
       "similarCommunityIds": [
         "com_83fdf02633ef",
+        "com_4a9490cb3534",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_3b104adba072",
-        "com_216dd4aaa8b8",
-        "com_eef1ca956dae"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -1369,21 +1696,13 @@
       "slug": "liz-s-book-bar-24a504",
       "name": "Liz's Book Bar",
       "kind": "community_space",
-      "tagline": "Liz's Book Bar is a community space centered on books, music, art in carroll gardens.",
-      "description": "Liz's Book Bar is a community space centered on books, music, art in carroll gardens. Based on 28 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "tagline": "Liz's Book Bar is a community space centered on books in carroll gardens.",
+      "description": "Liz's Book Bar is a community space centered on books in carroll gardens. Based on 27 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
       "categories": [
-        "books",
-        "music",
-        "art",
-        "celebrities",
-        "exploration"
+        "books"
       ],
       "tags": [
-        "books",
-        "music",
-        "art",
-        "celebrities",
-        "exploration"
+        "books"
       ],
       "neighborhoods": [
         "carroll gardens"
@@ -1401,7 +1720,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-26",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 5,
         "eventCount90d": 14
       },
       "schedule": {
@@ -1412,21 +1731,14 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 28
+        "sampleSize": 27
       },
       "upcomingEventIds": [
         "31d10316e06fb3db",
-        "158cb5f310498e91",
-        "1ad9c7d0f4606663",
-        "833063c315e74962",
-        "4f87d3d3041bc3e1",
-        "1eded0551b851d24",
-        "8f419e108775f3eb",
         "3a27df3b5d1516ac",
-        "320f533b24346d0b",
         "e1c98268f825480f",
         "591c7898d17384b4",
-        "33981c049bdc79f0"
+        "3da086e7021937e1"
       ],
       "sourceAttributions": [
         "lizsbookbar"
@@ -1435,7 +1747,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 28,
+        "observedDateCount": 27,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -1449,12 +1761,12 @@
         "source:lizsbookbar"
       ],
       "similarCommunityIds": [
-        "com_eef1ca956dae",
-        "com_9a5c4d074e3a",
-        "com_3837f308cd75",
-        "com_c1410c07c4dd",
-        "com_f23f8820878b",
-        "com_4e69412cb0a5"
+        "com_4e69412cb0a5",
+        "com_715c917d96c2",
+        "com_c4469caf0091",
+        "com_d2ccb56c071d",
+        "com_5582e2e97f1a",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -1537,12 +1849,12 @@
         "source:powerhousearena"
       ],
       "similarCommunityIds": [
+        "com_4a9490cb3534",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_eeb4e424a504",
+        "com_5582e2e97f1a",
         "com_216dd4aaa8b8",
-        "com_3837f308cd75",
-        "com_cdd5daa67222",
-        "com_f23f8820878b"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -1630,8 +1942,8 @@
         "com_d8a5203885a9",
         "com_c1410c07c4dd",
         "com_cdd5daa67222",
-        "com_eeb4e424a504",
-        "com_eef1ca956dae"
+        "com_5582e2e97f1a",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -1713,9 +2025,9 @@
         "com_f23f8820878b",
         "com_d8a5203885a9",
         "com_c1410c07c4dd",
+        "com_b736e77bdf93",
         "com_9a5c4d074e3a",
-        "com_b766b6de77ba",
-        "com_cdd5daa67222"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -1780,10 +2092,10 @@
       "similarCommunityIds": [
         "com_02ba15552329",
         "com_218b97d674a6",
+        "com_359bbb5a9a91",
         "com_216dd4aaa8b8",
         "com_3837f308cd75",
-        "com_d8a5203885a9",
-        "com_eef1ca956dae"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -49008,7 +49320,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-28T17:42:31.499329+00:00",
+  "lastUpdated": "2026-08-28T18:04:42.060922+00:00",
   "version": 1,
   "schemaVersion": 1
 }
