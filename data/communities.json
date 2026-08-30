@@ -149,9 +149,9 @@
         "com_ed8d42fb031d",
         "com_3837f308cd75",
         "com_d8a5203885a9",
+        "com_cdd5daa67222",
         "com_218b97d674a6",
-        "com_02ba15552329",
-        "com_1466f20a9300"
+        "com_02ba15552329"
       ]
     },
     {
@@ -223,9 +223,9 @@
         "com_a393a0e8b1e0",
         "com_b736e77bdf93",
         "com_c1410c07c4dd",
+        "com_cdd5daa67222",
         "com_02ba15552329",
-        "com_1466f20a9300",
-        "com_216dd4aaa8b8"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1637,8 +1637,8 @@
       "slug": "reading-rhythms-nyc-2cb0a5",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books in astoria, greenpoint.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books in astoria, greenpoint. Based on 5 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books in greenpoint, astoria.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books in greenpoint, astoria. Based on 6 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
       "categories": [
         "books"
       ],
@@ -1646,11 +1646,11 @@
         "books"
       ],
       "neighborhoods": [
-        "astoria",
-        "greenpoint"
+        "greenpoint",
+        "astoria"
       ],
-      "homeVenue": "Astoria Park",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/8h/e664c2aa-9ac1-4734-bd5a-236dcf071c8e.jpg",
+      "homeVenue": "Red Rover",
+      "imageUrl": "https://images.lumacdn.com/api-uploads/ej/37e5d92b-c7c7-4af3-8757-897fb1c08356.jpg",
       "links": [
         {
           "type": "luma",
@@ -1672,12 +1672,12 @@
           "Tuesday"
         ],
         "typicalTime": "18:30",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
       "upcomingEventIds": [
-        "d345e3488b29dc09",
-        "93ead61777a93573"
+        "93ead61777a93573",
+        "596a50cb6f1ca954"
       ],
       "sourceAttributions": [
         "luma"
@@ -1686,7 +1686,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1701,7 +1701,7 @@
         "com_eeb4e424a504",
         "com_d2ccb56c071d",
         "com_f171cd222ca5",
-        "com_cdd5daa67222"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -1855,7 +1855,7 @@
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
       "tagline": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in manhattan, midtown.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in manhattan, midtown. Based on 26 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in manhattan, midtown. Based on 27 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "outdoors",
@@ -1870,10 +1870,10 @@
         "manhattan",
         "midtown",
         "queens",
-        "astoria"
+        "harlem"
       ],
       "homeVenue": "21 E 1st St",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/8h/e664c2aa-9ac1-4734-bd5a-236dcf071c8e.jpg",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/on/0c822f20-0b2a-4bb8-a672-3c956f48f5b6.png",
       "links": [
         {
           "type": "luma",
@@ -1896,10 +1896,9 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 26
+        "sampleSize": 27
       },
       "upcomingEventIds": [
-        "d345e3488b29dc09",
         "8f6f96e5617c2956",
         "085c31d4ff332f1f",
         "9f066c22d1b8a527",
@@ -1909,6 +1908,7 @@
         "fe74dc85e54c169e",
         "43f64d52a99095b9",
         "93ead61777a93573",
+        "596a50cb6f1ca954",
         "12a25e1653fd1d14",
         "0d229d902d993ba5"
       ],
@@ -1919,7 +1919,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 26,
+        "observedDateCount": 27,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2423,7 +2423,7 @@
       "name": "POWERHOUSE Arena",
       "kind": "institutional_program",
       "tagline": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn.",
-      "description": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn. Based on 26 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
+      "description": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn. Based on 28 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "books",
         "celebrities",
@@ -2454,7 +2454,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-27",
-        "upcomingEventCount": 19,
+        "upcomingEventCount": 20,
         "eventCount90d": 8
       },
       "schedule": {
@@ -2465,7 +2465,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 26
+        "sampleSize": 28
       },
       "upcomingEventIds": [
         "5e3e88afeaeceb7e",
@@ -2475,11 +2475,11 @@
         "9b882f1976b547b8",
         "72a20942dbaf29ca",
         "16056d3caad147aa",
-        "f1e194af28a77ce8",
+        "c7426da63a7dd192",
         "4b3af3dc060b0c6c",
         "7704c7f6892d89ce",
-        "fcdd126e023c2306",
-        "8bddf6fe958abf5c"
+        "79afe7017306d088",
+        "fcdd126e023c2306"
       ],
       "sourceAttributions": [
         "powerhousearena"
@@ -2488,7 +2488,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 26,
+        "observedDateCount": 28,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -2543,7 +2543,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-30",
-        "upcomingEventCount": 25,
+        "upcomingEventCount": 24,
         "eventCount90d": 16
       },
       "schedule": {
@@ -2561,14 +2561,14 @@
         "c0ac169a34021344",
         "4bdef314c3b4f51b",
         "6dd94923d85bf7d8",
-        "19f0d1b45cc0a486",
         "3ef43ab3fedb0bf4",
         "c390e1dc657cbbdb",
         "7fe1b1dace0306dc",
         "fab36dd4c0359903",
         "83e482e35807d42a",
         "96dc4c9d70ba40fd",
-        "5b768c6cf29dfa8c"
+        "5b768c6cf29dfa8c",
+        "2eaee7d4ff80775f"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -49900,7 +49900,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-30T22:05:26.405530+00:00",
+  "lastUpdated": "2026-08-30T23:38:43.473931+00:00",
   "version": 1,
   "schemaVersion": 1
 }
