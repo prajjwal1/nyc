@@ -6,7 +6,7 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music in bushwick.",
-      "description": "Elsewhere is a recurring event series centered on music in bushwick. Based on 23 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music in bushwick. Based on 24 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "other",
         "music"
@@ -18,7 +18,7 @@
       "neighborhoods": [
         "bushwick"
       ],
-      "homeVenue": "Elsewhere - Zone One",
+      "homeVenue": "Elsewhere - The Rooftop",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190198149%2F2569518370411%2F1%2Foriginal.20260803-144702?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=62e7ef8992a7f2a2212c2d73f7e5d620",
       "links": [
         {
@@ -31,7 +31,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-30",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 11,
         "eventCount90d": 30
       },
       "schedule": {
@@ -42,7 +42,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 23
+        "sampleSize": 24
       },
       "upcomingEventIds": [
         "5920eee4e17f7f43",
@@ -52,6 +52,8 @@
         "a9423bf8ccd473f2",
         "d58d22ef6de87a9c",
         "811c72641e0e7334",
+        "0a6e0df5fa4a3515",
+        "5adce18e84914f3c",
         "ff487f32295021c0",
         "c65ab39ef5533d68"
       ],
@@ -62,7 +64,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 23,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -530,21 +532,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on music, movies, art in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on music, movies, art in brooklyn. Based on 8 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on music, comedy, movies in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on music, comedy, movies in brooklyn. Based on 8 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "music",
+        "comedy",
         "other",
         "movies",
-        "art",
-        "comedy"
+        "art"
       ],
       "tags": [
         "music",
+        "comedy",
         "other",
         "movies",
-        "art",
-        "comedy"
+        "art"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -562,8 +564,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-30",
-        "upcomingEventCount": 8,
-        "eventCount90d": 6
+        "upcomingEventCount": 9,
+        "eventCount90d": 7
       },
       "schedule": {
         "cadence": "weekly",
@@ -577,6 +579,7 @@
       },
       "upcomingEventIds": [
         "41a7dbe9b0ac4bfd",
+        "7a3af0f55778357b",
         "c73e6206059b3e5d",
         "f143de088cd3ae42",
         "55339135bf66ab0d",
@@ -699,8 +702,8 @@
       "slug": "strand-bookstore-d2d6c9",
       "name": "Strand Bookstore",
       "kind": "recurring_series",
-      "tagline": "Strand Bookstore is a recurring event series in east village, manhattan.",
-      "description": "Strand Bookstore is a recurring event series in east village, manhattan. Based on 9 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Strand Bookstore is a recurring event series in manhattan, east village.",
+      "description": "Strand Bookstore is a recurring event series in manhattan, east village. Based on 9 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "other"
       ],
@@ -708,8 +711,8 @@
         "other"
       ],
       "neighborhoods": [
-        "east village",
-        "manhattan"
+        "manhattan",
+        "east village"
       ],
       "homeVenue": "The Strand Building",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190997700%2F1871930968773%2F1%2Foriginal.20260813-174427?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=3e4d636dff216869c725d5e850304c0e",
@@ -724,7 +727,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 0
       },
       "schedule": {
@@ -746,7 +749,8 @@
         "668ed73244ed774d",
         "c9c89a7524d2a2a9",
         "669716d44dcb2460",
-        "a80328c8bc57eb33"
+        "a80328c8bc57eb33",
+        "f0764e221b9dc2c5"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -49889,7 +49893,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-30T07:00:20.385870+00:00",
+  "lastUpdated": "2026-08-30T10:46:03.638674+00:00",
   "version": 1,
   "schemaVersion": 1
 }
