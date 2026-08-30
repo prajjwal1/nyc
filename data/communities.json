@@ -315,7 +315,7 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series in manhattan.",
-      "description": "Caveat is a recurring event series in manhattan. Based on 5 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "Caveat is a recurring event series in manhattan. Based on 6 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "other"
       ],
@@ -338,7 +338,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-30",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 2
       },
       "schedule": {
@@ -348,8 +348,8 @@
           "Monday"
         ],
         "typicalTime": "21:30",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
       "upcomingEventIds": [
         "4ca56b8d8413e9fd",
@@ -357,7 +357,8 @@
         "dba8665415e7c487",
         "6261bae378337b56",
         "60eee95647cb61d3",
-        "c64f2115cf736695"
+        "c64f2115cf736695",
+        "e045c30e2299c0f2"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -366,7 +367,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -49900,7 +49901,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-30T23:38:43.473931+00:00",
+  "lastUpdated": "2026-08-30T23:57:43.681961+00:00",
   "version": 1,
   "schemaVersion": 1
 }
