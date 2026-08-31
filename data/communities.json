@@ -303,9 +303,9 @@
         "com_1466f20a9300",
         "com_216dd4aaa8b8",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_b766b6de77ba",
-        "com_cb019f4e9752",
-        "com_b736e77bdf93"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -337,7 +337,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-31",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 3
       },
       "schedule": {
@@ -346,7 +346,7 @@
           "Sunday",
           "Monday"
         ],
-        "typicalTime": "21:30",
+        "typicalTime": "19:00",
         "confidence": 1.0,
         "sampleSize": 6
       },
@@ -355,7 +355,8 @@
         "6261bae378337b56",
         "60eee95647cb61d3",
         "c64f2115cf736695",
-        "e045c30e2299c0f2"
+        "e045c30e2299c0f2",
+        "dda55228e81510ff"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -457,7 +458,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series centered on wellness, comedy in brooklyn.",
-      "description": "Union Hall is a recurring event series centered on wellness, comedy in brooklyn. Based on 5 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "Union Hall is a recurring event series centered on wellness, comedy in brooklyn. Based on 6 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "other",
         "wellness",
@@ -484,7 +485,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-31",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 2
       },
       "schedule": {
@@ -494,15 +495,16 @@
           "Monday"
         ],
         "typicalTime": "19:30",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
       "upcomingEventIds": [
         "70343b6eb04f62d2",
         "644b96f0e57bdd5e",
         "17b06188ec1f8f7c",
         "8e10f6c133313b2d",
-        "ab3847c35e76db72"
+        "ab3847c35e76db72",
+        "beb2a5bc070c05cc"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -511,7 +513,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -533,21 +535,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on games, movies, art in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on games, movies, art in brooklyn. Based on 9 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on comedy, music, games in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on comedy, music, games in brooklyn. Based on 10 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
+        "comedy",
         "other",
+        "music",
         "games",
-        "movies",
-        "art",
-        "comedy"
+        "movies"
       ],
       "tags": [
+        "comedy",
         "other",
+        "music",
         "games",
-        "movies",
-        "art",
-        "comedy"
+        "movies"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -565,8 +567,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-31",
-        "upcomingEventCount": 7,
-        "eventCount90d": 8
+        "upcomingEventCount": 9,
+        "eventCount90d": 9
       },
       "schedule": {
         "cadence": "weekly",
@@ -576,16 +578,18 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "7c01f10b1943d570",
+        "52a783ff7289587e",
         "f143de088cd3ae42",
         "55339135bf66ab0d",
         "be28d5806cf96f85",
         "747f79f08c89af0f",
         "6437fb2ca008f719",
-        "4d7edddd7f586052"
+        "4d7edddd7f586052",
+        "2bc4412525e77a70"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -594,7 +598,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -603,12 +607,12 @@
         "eventbrite:18898315629"
       ],
       "similarCommunityIds": [
+        "com_d8a5203885a9",
+        "com_4a9490cb3534",
         "com_cb019f4e9752",
         "com_3837f308cd75",
-        "com_d8a5203885a9",
         "com_1466f20a9300",
-        "com_216dd4aaa8b8",
-        "com_4a9490cb3534"
+        "com_216dd4aaa8b8"
       ]
     },
     {
@@ -2240,7 +2244,7 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 25 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 27 observed event dates, it meets weekly on Friday and Thursday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -2259,7 +2263,7 @@
         "brooklyn"
       ],
       "homeVenue": "Brooklyn Comedy Collective (Eris Mainstage)",
-      "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1787850066148-3Z3DCO9I1E24425Z8PCD/WELL+BEHAVED+STUDENTS.png",
+      "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1677106199968-O4Y38E2DDCU6Q4ZLTWWJ/BCC_LogoClass_Square.png",
       "links": [
         {
           "type": "brooklyncomedy",
@@ -2271,22 +2275,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-30",
-        "upcomingEventCount": 33,
+        "upcomingEventCount": 34,
         "eventCount90d": 16
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Saturday"
+          "Thursday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 25
+        "sampleSize": 27
       },
       "upcomingEventIds": [
-        "9c7573bae6b49ab1",
+        "49bd6c3aec8557ee",
         "54e4c402422e7520",
+        "c2b7c18405a651a1",
         "b00a0d76b3c9414c",
         "2a17f839397cea5c",
         "7ca05829c350c3c5",
@@ -2295,8 +2300,7 @@
         "f19d257a4af7ed53",
         "1709a2ecec05da43",
         "1b78d8e5b397557f",
-        "723af2941be545d8",
-        "884101d51ef3470e"
+        "723af2941be545d8"
       ],
       "sourceAttributions": [
         "brooklyncomedy"
@@ -2305,7 +2309,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 25,
+        "observedDateCount": 27,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -2319,8 +2323,8 @@
         "source:brooklyncomedy"
       ],
       "similarCommunityIds": [
-        "com_3837f308cd75",
         "com_b736e77bdf93",
+        "com_3837f308cd75",
         "com_318c39363fe6",
         "com_4a9490cb3534",
         "com_cb019f4e9752",
@@ -2396,10 +2400,10 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_3b104adba072",
-        "com_1466f20a9300",
-        "com_216dd4aaa8b8"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2575,7 +2579,7 @@
       "name": "New York Comedy Club Upper West Side",
       "kind": "club",
       "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, music, parties in east village, upper west side.",
-      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, parties in east village, upper west side. Based on 18 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, parties in east village, upper west side. Based on 20 observed event dates, it meets weekly on Thursday and Sunday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -2605,18 +2609,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-30",
-        "upcomingEventCount": 19,
+        "upcomingEventCount": 21,
         "eventCount90d": 16
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Friday"
+          "Sunday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 18
+        "sampleSize": 20
       },
       "upcomingEventIds": [
         "c390e1dc657cbbdb",
@@ -2628,9 +2632,9 @@
         "2eaee7d4ff80775f",
         "758badf3276d3e49",
         "77fa1bfc8a56be9b",
+        "f9508ff672233564",
         "aff4a722b5e2d972",
-        "37dfc19851feb57a",
-        "98f9b02e95742d63"
+        "ea8119a0b1ec467d"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -2639,7 +2643,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 18,
+        "observedDateCount": 20,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2652,8 +2656,8 @@
         "com_55ca36db453a",
         "com_d8a5203885a9",
         "com_cdd5daa67222",
-        "com_c1410c07c4dd",
-        "com_359bbb5a9a91"
+        "com_b736e77bdf93",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -2662,7 +2666,7 @@
       "name": "Eastville Comedy Club",
       "kind": "club",
       "tagline": "Eastville Comedy Club is a community club centered on comedy, music, parties in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music, parties in east village. Based on 19 observed event dates, it meets weekly on Saturday and Friday evenings.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, parties in east village. Based on 20 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -2689,18 +2693,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-30",
-        "upcomingEventCount": 12,
+        "upcomingEventCount": 13,
         "eventCount90d": 15
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Saturday",
-          "Friday"
+          "Sunday"
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 19
+        "sampleSize": 20
       },
       "upcomingEventIds": [
         "b688202546fe4f36",
@@ -2709,12 +2713,12 @@
         "377b9882afb8d93b",
         "78ea2c75e740b627",
         "a59e51d19a6b7eb8",
+        "0a49d94f48e89b9b",
         "f1c6d58fc7d25728",
         "87cd08252d0ab87c",
         "99767d1adde8bcf4",
         "d9b449223b407be1",
-        "1459f9232dc89bab",
-        "5016b7559441e003"
+        "1459f9232dc89bab"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -2723,7 +2727,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 19,
+        "observedDateCount": 20,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2735,9 +2739,9 @@
         "com_f23f8820878b",
         "com_d8a5203885a9",
         "com_55ca36db453a",
+        "com_b736e77bdf93",
         "com_c1410c07c4dd",
-        "com_b766b6de77ba",
-        "com_f171cd222ca5"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -49962,7 +49966,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-08-31T03:33:46.144124+00:00",
+  "lastUpdated": "2026-08-31T05:29:49.221796+00:00",
   "version": 1,
   "schemaVersion": 1
 }
