@@ -955,7 +955,7 @@
         "com_4e69412cb0a5",
         "com_715c917d96c2",
         "com_c1410c07c4dd",
-        "com_55ca36db453a"
+        "com_5c5238bcd1c7"
       ]
     },
     {
@@ -1415,8 +1415,8 @@
         "com_eeb4e424a504",
         "com_a786c70979d0",
         "com_d2ccb56c071d",
-        "com_f171cd222ca5",
-        "com_4a9490cb3534"
+        "com_5c5238bcd1c7",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -1636,8 +1636,8 @@
         "com_eeb4e424a504",
         "com_a786c70979d0",
         "com_d2ccb56c071d",
-        "com_f171cd222ca5",
-        "com_4a9490cb3534"
+        "com_5c5238bcd1c7",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -1706,8 +1706,82 @@
         "com_715c917d96c2",
         "com_a786c70979d0",
         "com_eeb4e424a504",
+        "com_5c5238bcd1c7",
+        "com_f171cd222ca5"
+      ]
+    },
+    {
+      "id": "com_5c5238bcd1c7",
+      "slug": "gosadi-stitch-up-events-bcd1c7",
+      "name": "GoSadi & Stitch Up Events",
+      "kind": "recurring_series",
+      "tagline": "GoSadi & Stitch Up Events is a recurring event series centered on books, movies in manhattan, dumbo.",
+      "description": "GoSadi & Stitch Up Events is a recurring event series centered on books, movies in manhattan, dumbo. Based on 2 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "categories": [
+        "books",
+        "movies"
+      ],
+      "tags": [
+        "books",
+        "movies"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "dumbo"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/ju/e68f7741-af5b-4b10-9dbf-a8e54b27cfdc.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/GoSadi"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-09-02",
+        "upcomingEventCount": 2,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Friday"
+        ],
+        "typicalTime": "20:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "ed89d700b4255f14",
+        "937240cd57dfa8d6"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-09-02",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:stitchmorewithgosadi",
+        "luma:cal-udqujphjgtqyz4f"
+      ],
+      "similarCommunityIds": [
+        "com_4e69412cb0a5",
+        "com_715c917d96c2",
+        "com_eeb4e424a504",
         "com_f171cd222ca5",
-        "com_cdd5daa67222"
+        "com_4c3ca28533f5",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -1936,8 +2010,8 @@
         "com_715c917d96c2",
         "com_d2ccb56c071d",
         "com_eeb4e424a504",
-        "com_f171cd222ca5",
-        "com_4a9490cb3534"
+        "com_5c5238bcd1c7",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -49880,7 +49954,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-02T16:43:31.842264+00:00",
+  "lastUpdated": "2026-09-02T17:53:49.091086+00:00",
   "version": 1,
   "schemaVersion": 1
 }
