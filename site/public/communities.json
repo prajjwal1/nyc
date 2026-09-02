@@ -549,7 +549,7 @@
       "name": "Pioneer Works",
       "kind": "recurring_series",
       "tagline": "Pioneer Works is a recurring event series centered on art, music, food in brooklyn.",
-      "description": "Pioneer Works is a recurring event series centered on art, music, food in brooklyn. Based on 13 observed event dates, it meets weekly on Tuesday and Friday evenings.",
+      "description": "Pioneer Works is a recurring event series centered on art, music, food in brooklyn. Based on 14 observed event dates, it meets weekly on Tuesday and Sunday evenings.",
       "categories": [
         "other",
         "art",
@@ -580,18 +580,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-29",
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 11,
         "eventCount90d": 3
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Tuesday",
-          "Friday"
+          "Sunday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 13
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "e748a73f737cb4ca",
@@ -601,6 +601,7 @@
         "43dd51050dac2cc3",
         "a1e1bb600dafa245",
         "223266ab3e8846d4",
+        "78756c75448719bd",
         "6122f3260a587261",
         "c1d12b6b68a4b8ee",
         "dfd7856b168aa52e"
@@ -612,7 +613,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 13,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -49954,7 +49955,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-02T23:18:03.214210+00:00",
+  "lastUpdated": "2026-09-02T23:23:55.440524+00:00",
   "version": 1,
   "schemaVersion": 1
 }
