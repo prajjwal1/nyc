@@ -314,7 +314,7 @@
       "name": "lululemon Williamsburg",
       "kind": "recurring_series",
       "tagline": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg.",
-      "description": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg. Based on 6 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
+      "description": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg. Based on 7 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "fitness"
       ],
@@ -325,7 +325,7 @@
         "williamsburg"
       ],
       "homeVenue": "97 N 6th St",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1176514672%2F222507638384%2F1%2Foriginal.20260203-000446?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.735&fp-y=0.387&s=4e86fc9a8cfd8901290c62bae57df3cb",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1181222020%2F222507638384%2F1%2Foriginal.20260401-181510?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=5ffc2a68a2fe489e34801ebde13e9635",
       "links": [
         {
           "type": "eventbrite",
@@ -337,7 +337,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-20",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 4
       },
       "schedule": {
@@ -348,9 +348,10 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
+        "02f10573ffe3eb15",
         "0c37c44d8887ae2b",
         "79c57c9b701c3620"
       ],
@@ -361,7 +362,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -786,11 +787,11 @@
       ],
       "similarCommunityIds": [
         "com_cdd5daa67222",
-        "com_f23f8820878b",
         "com_318c39363fe6",
         "com_c1410c07c4dd",
         "com_5582e2e97f1a",
-        "com_f171cd222ca5"
+        "com_f171cd222ca5",
+        "com_f23f8820878b"
       ]
     },
     {
@@ -2127,7 +2128,7 @@
         "brooklyn"
       ],
       "homeVenue": "Brooklyn Comedy Collective (Eris Mainstage)",
-      "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1768292839672-VVJKXFWXPC4NU8VUM4X3/Duchess+BCC+Evergreen+Poster.jpg",
+      "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1787850066148-3Z3DCO9I1E24425Z8PCD/WELL+BEHAVED+STUDENTS.png",
       "links": [
         {
           "type": "brooklyncomedy",
@@ -2139,7 +2140,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-02",
-        "upcomingEventCount": 36,
+        "upcomingEventCount": 38,
         "eventCount90d": 20
       },
       "schedule": {
@@ -2153,18 +2154,18 @@
         "sampleSize": 29
       },
       "upcomingEventIds": [
+        "9c7573bae6b49ab1",
         "54e4c402422e7520",
         "c2b7c18405a651a1",
         "b00a0d76b3c9414c",
         "2a17f839397cea5c",
+        "6cc2a0f49824d813",
         "7ca05829c350c3c5",
         "cc96b2f3ea1bc551",
         "735b1347e8aa8986",
         "f19d257a4af7ed53",
         "1709a2ecec05da43",
-        "1b78d8e5b397557f",
-        "723af2941be545d8",
-        "884101d51ef3470e"
+        "1b78d8e5b397557f"
       ],
       "sourceAttributions": [
         "brooklyncomedy"
@@ -2188,11 +2189,11 @@
       ],
       "similarCommunityIds": [
         "com_b736e77bdf93",
-        "com_f23f8820878b",
         "com_3837f308cd75",
         "com_318c39363fe6",
         "com_1466f20a9300",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -2354,7 +2355,7 @@
       "name": "POWERHOUSE Arena",
       "kind": "institutional_program",
       "tagline": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn.",
-      "description": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn. Based on 28 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
+      "description": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn. Based on 30 observed event dates, it meets weekly on Thursday and Monday evenings.",
       "categories": [
         "books",
         "celebrities",
@@ -2385,23 +2386,24 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-27",
-        "upcomingEventCount": 20,
+        "upcomingEventCount": 22,
         "eventCount90d": 8
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Wednesday"
+          "Monday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 28
+        "sampleSize": 30
       },
       "upcomingEventIds": [
         "5e3e88afeaeceb7e",
         "307baab13923476b",
         "ebd6f5556483a551",
+        "93a0af1786503535",
         "bacfdff80d08fa7c",
         "9b882f1976b547b8",
         "72a20942dbaf29ca",
@@ -2409,8 +2411,7 @@
         "c7426da63a7dd192",
         "4b3af3dc060b0c6c",
         "7704c7f6892d89ce",
-        "79afe7017306d088",
-        "fcdd126e023c2306"
+        "79afe7017306d088"
       ],
       "sourceAttributions": [
         "powerhousearena"
@@ -2419,7 +2420,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 28,
+        "observedDateCount": 30,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -2441,21 +2442,21 @@
       "slug": "new-york-comedy-club-on-4th-street-20878b",
       "name": "New York Comedy Club on 4th Street",
       "kind": "club",
-      "tagline": "New York Comedy Club on 4th Street is a community club centered on comedy, special, music in east village, upper west side.",
-      "description": "New York Comedy Club on 4th Street is a community club centered on comedy, special, music in east village, upper west side. Based on 28 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "tagline": "New York Comedy Club on 4th Street is a community club centered on comedy, music, special in east village, upper west side.",
+      "description": "New York Comedy Club on 4th Street is a community club centered on comedy, music, special in east village, upper west side. Based on 29 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "comedy",
-        "special",
         "music",
+        "special",
         "outdoors",
-        "parties"
+        "celebrities"
       ],
       "tags": [
         "comedy",
-        "special",
         "music",
+        "special",
         "outdoors",
-        "parties"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
@@ -2474,7 +2475,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-02",
-        "upcomingEventCount": 36,
+        "upcomingEventCount": 47,
         "eventCount90d": 20
       },
       "schedule": {
@@ -2485,21 +2486,21 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 28
+        "sampleSize": 29
       },
       "upcomingEventIds": [
         "7fe1b1dace0306dc",
         "83e482e35807d42a",
         "96dc4c9d70ba40fd",
         "5b768c6cf29dfa8c",
+        "0fa96ddbdbe5b25c",
+        "18c7ea2202cbef4a",
+        "a654cb42b9785534",
         "2eaee7d4ff80775f",
-        "758badf3276d3e49",
-        "77fa1bfc8a56be9b",
-        "f9508ff672233564",
-        "aff4a722b5e2d972",
-        "ea8119a0b1ec467d",
-        "37dfc19851feb57a",
-        "98f9b02e95742d63"
+        "2d13bce73967247d",
+        "26c095456376af00",
+        "9fce378b0cf0b18d",
+        "ab39597c27963538"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -2508,7 +2509,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 28,
+        "observedDateCount": 29,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2520,8 +2521,8 @@
         "com_318c39363fe6",
         "com_d8a5203885a9",
         "com_55ca36db453a",
-        "com_cdd5daa67222",
         "com_3837f308cd75",
+        "com_5582e2e97f1a",
         "com_b736e77bdf93"
       ]
     },
@@ -2601,9 +2602,9 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_f23f8820878b",
         "com_d8a5203885a9",
         "com_55ca36db453a",
+        "com_f23f8820878b",
         "com_b736e77bdf93",
         "com_c1410c07c4dd",
         "com_1466f20a9300"
@@ -49877,7 +49878,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-02T01:09:10.299295+00:00",
+  "lastUpdated": "2026-09-02T04:37:41.878764+00:00",
   "version": 1,
   "schemaVersion": 1
 }
