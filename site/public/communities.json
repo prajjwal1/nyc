@@ -711,9 +711,9 @@
       "id": "com_55ca36db453a",
       "slug": "book-club-bar-db453a",
       "name": "Book Club Bar",
-      "kind": "club",
-      "tagline": "Book Club Bar is a community club centered on books, parties, music in east village, bushwick.",
-      "description": "Book Club Bar is a community club centered on books, parties, music in east village, bushwick. Based on 10 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "kind": "community_space",
+      "tagline": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick. Based on 11 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -736,8 +736,8 @@
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/Recurring/Stage_Dive___Square.png?cb=1742237970",
       "links": [
         {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
+          "type": "bookclubbar",
+          "label": "View on Bookclubbar",
           "url": "https://eventbrite.com/o/40513431663"
         }
       ],
@@ -745,7 +745,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-02",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 2
       },
       "schedule": {
@@ -756,7 +756,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 11
       },
       "upcomingEventIds": [
         "200db00f89e1e683",
@@ -769,16 +769,17 @@
         "b71974965fe2dec2",
         "90c758dac5bd2370",
         "bdceb25e90a2f1e5",
-        "7eca02c791c27155"
+        "7eca02c791c27155",
+        "0d43431f99f016e6"
       ],
       "sourceAttributions": [
-        "eventbrite"
+        "bookclubbar"
       ],
       "lastVerifiedAt": "2026-09-02",
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2048,7 +2049,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-02",
-        "upcomingEventCount": 21,
+        "upcomingEventCount": 20,
         "eventCount90d": 15
       },
       "schedule": {
@@ -49879,7 +49880,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-02T09:56:21.353698+00:00",
+  "lastUpdated": "2026-09-02T10:24:40.434218+00:00",
   "version": 1,
   "schemaVersion": 1
 }
