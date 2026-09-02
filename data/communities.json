@@ -226,9 +226,9 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_b766b6de77ba",
         "com_cb019f4e9752",
-        "com_b736e77bdf93",
         "com_d8a5203885a9"
       ]
     },
@@ -449,11 +449,11 @@
         "eventbrite:17899496497"
       ],
       "similarCommunityIds": [
+        "com_b736e77bdf93",
         "com_a1e1c13a75f0",
         "com_1466f20a9300",
         "com_4a9490cb3534",
         "com_3837f308cd75",
-        "com_b736e77bdf93",
         "com_d8a5203885a9"
       ]
     },
@@ -463,20 +463,20 @@
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
       "tagline": "The Tiny Cupboard is a recurring event series centered on music, movies, art in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on music, movies, art in brooklyn. Based on 10 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "The Tiny Cupboard is a recurring event series centered on music, movies, art in brooklyn. Based on 11 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "music",
+        "other",
         "movies",
         "art",
-        "comedy",
-        "games"
+        "comedy"
       ],
       "tags": [
         "music",
+        "other",
         "movies",
         "art",
-        "comedy",
-        "games"
+        "comedy"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -494,7 +494,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-02",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 12
       },
       "schedule": {
@@ -503,9 +503,9 @@
           "Friday",
           "Saturday"
         ],
-        "typicalTime": "18:00",
+        "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 11
       },
       "upcomingEventIds": [
         "55339135bf66ab0d",
@@ -514,7 +514,8 @@
         "747f79f08c89af0f",
         "6437fb2ca008f719",
         "4d7edddd7f586052",
-        "2bc4412525e77a70"
+        "2bc4412525e77a70",
+        "350db2d2163777e4"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -523,7 +524,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -532,12 +533,12 @@
         "eventbrite:18898315629"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
         "com_3837f308cd75",
+        "com_d8a5203885a9",
         "com_1466f20a9300",
         "com_4a9490cb3534",
         "com_cb019f4e9752",
-        "com_eef1ca956dae"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -618,9 +619,9 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
+        "com_b736e77bdf93",
         "com_1466f20a9300",
         "com_4a9490cb3534",
-        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_cb019f4e9752",
         "com_b766b6de77ba"
@@ -1027,9 +1028,9 @@
         "com_4a9490cb3534",
         "com_b766b6de77ba",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_9fed174eeff3",
-        "com_cb019f4e9752",
-        "com_b736e77bdf93"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -49876,7 +49877,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-02T00:31:39.469456+00:00",
+  "lastUpdated": "2026-09-02T01:09:10.299295+00:00",
   "version": 1,
   "schemaVersion": 1
 }
