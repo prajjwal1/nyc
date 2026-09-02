@@ -1493,7 +1493,7 @@
       "name": "ObliqueTableNYC",
       "kind": "recurring_series",
       "tagline": "ObliqueTableNYC is a recurring event series in manhattan.",
-      "description": "ObliqueTableNYC is a recurring event series in manhattan. Based on 2 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "ObliqueTableNYC is a recurring event series in manhattan. Based on 3 observed event dates, it meets weekly on Saturday and Friday evenings.",
       "categories": [
         "other"
       ],
@@ -1516,21 +1516,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Friday",
-          "Saturday"
+          "Saturday",
+          "Friday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "380543efd6a51114",
+        "095cfcb0a8c5f95d",
         "b06baf01dd815393"
       ],
       "sourceAttributions": [
@@ -1540,7 +1541,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -1786,7 +1787,7 @@
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
       "tagline": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in midtown, queens.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in midtown, queens. Based on 27 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in midtown, queens. Based on 28 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "outdoors",
@@ -1816,7 +1817,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-01",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 15,
         "eventCount90d": 22
       },
       "schedule": {
@@ -1827,7 +1828,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 27
+        "sampleSize": 28
       },
       "upcomingEventIds": [
         "9f066c22d1b8a527",
@@ -1839,9 +1840,9 @@
         "93ead61777a93573",
         "596a50cb6f1ca954",
         "12a25e1653fd1d14",
+        "b59dd0c680a943c1",
         "0d229d902d993ba5",
-        "533adbfd84152fe8",
-        "12590e526412177f"
+        "533adbfd84152fe8"
       ],
       "sourceAttributions": [
         "luma"
@@ -1850,7 +1851,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 27,
+        "observedDateCount": 28,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -49875,7 +49876,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-02T00:13:10.217534+00:00",
+  "lastUpdated": "2026-09-02T00:31:39.469456+00:00",
   "version": 1,
   "schemaVersion": 1
 }
