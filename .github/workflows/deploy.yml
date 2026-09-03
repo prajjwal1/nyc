@@ -39,6 +39,32 @@ jobs:
         id: snapshot
         run: echo "expected_updated=$(jq -r '.lastUpdated' data/events.json)" >> "$GITHUB_OUTPUT"
 
+      - name: Refuse a stale or past-dated feed
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          from zoneinfo import ZoneInfo
+
+          payload = json.load(open("data/events.json"))
+          stamp = datetime.fromisoformat(payload["lastUpdated"].replace("Z", "+00:00"))
+          if stamp.tzinfo is None:
+              stamp = stamp.replace(tzinfo=timezone.utc)
+          age_hours = (datetime.now(timezone.utc) - stamp).total_seconds() / 3600
+          if age_hours > 6:
+              raise SystemExit(f"refusing stale deployment: feed is {age_hours:.1f} hours old")
+
+          today = datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+          past = [event for event in payload.get("events", []) if (event.get("date") or "") < today]
+          if past:
+              raise SystemExit(f"refusing deployment with {len(past)} past-dated events")
+
+          run = ((payload.get("ingestionStats") or {}).get("run") or {})
+          if run.get("runCompleted") is not True:
+              raise SystemExit("refusing deployment: latest scrape did not complete")
+          print(f"fresh feed accepted: {len(payload.get('events', []))} events, age={age_hours:.2f}h")
+          PY
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20

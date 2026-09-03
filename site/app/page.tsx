@@ -150,27 +150,22 @@ export default function Home() {
         newSinceLastVisit={newSinceLastVisit}
       />
 
-      <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-3 border-b border-[#d8d0c1] pb-4">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a684e]">Calendar</p>
-            <h1 className="mt-1 font-editorial text-2xl font-bold text-[#173c35]">Choose a date</h1>
-            <p className="mt-1 text-sm text-[#66716c]">Event counts show which days have the most going on.</p>
+      <main className="mx-auto max-w-5xl px-4 py-3 sm:px-6 sm:py-6">
+        {accountFilter && (
+          <div className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-[#c9d8d2] bg-[#edf5f1] px-3 py-2">
+            <span className="truncate text-xs font-semibold text-[#31554c]">
+              Showing @{accountFilter} · {events.length} events
+            </span>
+            <button
+              onClick={() => setAccountFilter("")}
+              className="shrink-0 rounded-full px-2 py-1 text-xs font-semibold text-[#9a684e] hover:bg-white/70"
+            >
+              Clear
+            </button>
           </div>
-          {accountFilter && (
-            <div className="flex items-center gap-2 rounded-full bg-[#edf5f1] px-3 py-1.5">
-              <span className="text-xs font-medium text-[#31554c]">@{accountFilter} · {events.length}</span>
-              <button
-                onClick={() => setAccountFilter("")}
-                className="text-xs font-semibold text-[#9a684e] hover:underline"
-              >
-                Clear
-              </button>
-            </div>
-          )}
-        </div>
+        )}
 
-        <div className="grid gap-6 lg:grid-cols-[20rem_minmax(0,1fr)]">
+        <div className="grid gap-4 lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-6">
           <aside className="lg:sticky lg:top-20 lg:self-start">
             <Calendar
               selectedDate={selectedDate}

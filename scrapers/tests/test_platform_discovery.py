@@ -86,6 +86,41 @@ def test_curated_eventbrite_frontier_prefers_explicit_user_signal(tmp_path, monk
     assert rows[1].via == "curated:inferred_from_taste"
 
 
+def test_discovered_user_mentioned_organizer_outranks_inferred_curated_host(
+    tmp_path, monkeypatch
+):
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    _write(data_dir / "discovered_urls.json", [{
+        "url": "https://www.eventbrite.com/o/st-mazie-5803675324",
+        "discovered_at": "2026-09-03T12:00:00Z",
+        "discovered_via": "user_mentioned",
+    }])
+    _write(data_dir / "user_curated_sources.json", {"hosts": {
+        "eventbrite.com/o/inferred-host-111": {
+            "source": "inferred_from_taste",
+            "score": 1.0,
+        },
+    }})
+    events_path = tmp_path / "events.json"
+    _write(events_path, [{
+        "source": "eventbrite",
+        "organizerUrl": "https://eventbrite.com/o/111",
+        "sourceUrl": f"https://eventbrite.com/e/inferred-{index}",
+    } for index in range(10)])
+    monkeypatch.setattr(discovery, "DATA_DIR", str(data_dir))
+    monkeypatch.setattr(
+        discovery, "DISCOVERED_URLS_PATH", str(data_dir / "discovered_urls.json")
+    )
+    monkeypatch.setattr(discovery, "EVENTS_PATH", str(events_path))
+
+    rows = discovery.platform_frontier("eventbrite", kinds={"organizer"})
+
+    assert rows[0].url == "https://eventbrite.com/o/5803675324"
+    assert rows[0].via == "user_mentioned"
+    assert rows[1].url == "https://eventbrite.com/o/111"
+
+
 def test_repeated_luma_source_graduates_to_calendar(tmp_path, monkeypatch):
     data_dir = tmp_path / "data"
     data_dir.mkdir()

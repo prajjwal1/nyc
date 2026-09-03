@@ -56,8 +56,8 @@ try {
         .map((link) => link.textContent?.trim()));
       if (clipped.length) throw new Error(`${route || "home"} clips navigation: ${clipped.join(", ")}`);
       if (!route) {
-        if (!(await page.getByRole("heading", { name: "Choose a date" }).count())) {
-          throw new Error("homepage did not render the calendar-first heading");
+        if (!(await page.getByRole("heading", { name: "What's happening in NYC" }).count())) {
+          throw new Error("homepage did not render its primary heading");
         }
         if ((await page.getByRole("tab").count()) !== 0) throw new Error("homepage still renders Feed/Calendar tabs");
         if ((await page.getByRole("link", { name: "Feed", exact: true }).count()) !== 0) {
@@ -66,15 +66,39 @@ try {
         if ((await page.locator('button[aria-label^="Previous month"], button[aria-label^="Next month"]').count()) < 2) {
           throw new Error("homepage calendar controls are missing");
         }
+        const card = page.locator("[data-event-id]").first();
+        if (await card.count()) {
+          const minimumTarget = viewport.width < 640 ? 44 : 36;
+          for (const name of ["Save", "Add to calendar", "Hide"]) {
+            const control = card.getByRole("button", { name });
+            const box = await control.boundingBox();
+            if (!box || box.width < minimumTarget || box.height < minimumTarget) {
+              throw new Error(`${name} touch target is smaller than ${minimumTarget}px`);
+            }
+          }
+        }
       }
     }
     await page.goto(`http://127.0.0.1:${port}/nyc/?account=${encodeURIComponent(accountCandidate)}`, { waitUntil: "networkidle" });
-    if (!(await page.getByText(new RegExp(`^@${escapedAccount} · \\d+$`)).count())) {
+    if (!(await page.getByText(new RegExp(`^Showing @${escapedAccount} · \\d+ events$`)).count())) {
       throw new Error("shareable account view did not render its account filter");
     }
     await page.goto(`http://127.0.0.1:${port}/nyc/?view=for-you`, { waitUntil: "networkidle" });
     if (new URL(page.url()).searchParams.has("view")) throw new Error("legacy Feed URL state was not removed");
-    if (!(await page.getByRole("heading", { name: "Choose a date" }).count())) throw new Error("legacy Feed URL did not resolve to Calendar");
+    if (!(await page.getByRole("heading", { name: "What's happening in NYC" }).count())) throw new Error("legacy Feed URL did not resolve to Calendar");
+
+    const firstCard = page.locator("[data-event-id]").first();
+    if (await firstCard.count()) {
+      const hiddenId = await firstCard.getAttribute("data-event-id");
+      await firstCard.getByRole("button", { name: "Hide" }).click();
+      if (await page.locator(`[data-event-id="${hiddenId}"]`).count()) {
+        throw new Error("hidden event remained visible on the homepage");
+      }
+      await page.reload({ waitUntil: "networkidle" });
+      if (await page.locator(`[data-event-id="${hiddenId}"]`).count()) {
+        throw new Error("hidden event returned after reload");
+      }
+    }
 
     if (viewport.width === 1280) {
       await page.evaluate(() => {
@@ -114,7 +138,7 @@ try {
     }
     await page.close();
   }
-  console.log("UI checks passed: Calendar is the homepage, Feed/search are absent, navigation fits, and account views are shareable.");
+  console.log("UI checks passed: compact calendar hierarchy, touch-safe actions, persistent Hide, navigation, account views, and taste export.");
 } finally {
   await browser.close();
   await new Promise((resolve) => server.close(resolve));

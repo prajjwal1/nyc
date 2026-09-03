@@ -150,8 +150,27 @@ function EventCardBody({
   const showNeighborhood = Boolean(
     venueName && _nb && !venueName.toLowerCase().includes(_nb.toLowerCase())
   );
+  const filterableAccount = event.instagramAccount || event.account;
+  const sourceIdentity = filterableAccount
+    ? `@${filterableAccount}`
+    : event.organizer?.trim() || "";
+  const convictionSaved = savedF || !!event.userSaved;
   const convictionFollow = !!event.userFollowing;
   const convictionAffinity = !convictionFollow && !!event.userAffinity;
+  const convictionLabel = convictionSaved
+    ? `★ Saved by you${sourceIdentity ? ` · ${sourceIdentity}` : ""}`
+    : convictionFollow
+      ? `★ Following${sourceIdentity ? ` · ${sourceIdentity}` : ""}`
+      : convictionAffinity
+        ? `✨ From your saves${sourceIdentity ? ` · ${sourceIdentity}` : ""}`
+        : null;
+  const filterToAccount = (e: React.MouseEvent) => {
+    if (!filterableAccount || !onAccountClick) return;
+    e.preventDefault();
+    e.stopPropagation();
+    trackAccountClick(filterableAccount);
+    onAccountClick(filterableAccount);
+  };
   const cardChrome = convictionFollow
     ? "border border-[#7db7d8] shadow-[inset_3px_0_0_0_#0ea5e9] hover:border-[#5aa3cc] bg-[#fcfeff]"
     : convictionAffinity
@@ -236,24 +255,28 @@ function EventCardBody({
             </p>
           )}
 
-          {event.recommendationReasons?.[0] && (
+          {!convictionLabel && event.recommendationReasons?.[0] && (
             <p className="mt-1 text-[10px] font-medium text-indigo-600">
               {event.discoveryLane === "explore" ? "↗ " : "✨ "}{event.recommendationReasons[0]}
             </p>
           )}
 
           <div className="mt-1.5 flex flex-wrap items-center gap-1">
-            {/* U1 (a11y, WCAG 1.4.1): the follow-graph conviction signal was
-                color-only (sky ring). A compact "★ following" label makes it
-                perceivable without color. Following-tier only (affinity keeps
-                its ring) to avoid badge clutter. Not the removed prose ribbon. */}
-            {convictionFollow && (
-              <span
-                className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-sky-100 text-sky-800"
-                title="From an account you follow"
-              >
-                ★ following
-              </span>
+            {convictionLabel && (
+              filterableAccount && onAccountClick ? (
+                <button
+                  type="button"
+                  onClick={filterToAccount}
+                  className="relative z-10 inline-flex max-w-full items-center truncate rounded-full bg-sky-100 px-2 py-1 text-[11px] font-semibold text-sky-900 hover:bg-sky-200 focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none"
+                  title={`See more from ${sourceIdentity}`}
+                >
+                  <span className="truncate">{convictionLabel}</span>
+                </button>
+              ) : (
+                <span className="inline-flex max-w-full items-center truncate rounded-full bg-sky-100 px-2 py-1 text-[11px] font-semibold text-sky-900">
+                  <span className="truncate">{convictionLabel}</span>
+                </span>
+              )
             )}
             {/* WS2: "matches your taste" — the payoff of the learning loop.
                 Shown only when the semantic taste model (fed by your synced
@@ -261,7 +284,7 @@ function EventCardBody({
                 save/follow conviction event (avoid stacking signals). Genuinely
                 new info the ★ ring doesn't convey; absent until you sync. */}
             {(event.tasteScore ?? 0) >= 0.06 &&
-              !event.userSaved &&
+              !convictionSaved &&
               !event.userFollowing &&
               !event.userAffinity && (
                 <span
@@ -271,8 +294,8 @@ function EventCardBody({
                   ✨ your taste
                 </span>
               )}
-            {/* Highlight badges first — most important signals.
-                following/affinity now surface via card-level ribbon (U1). */}
+            {/* Following/affinity are consolidated into the provenance chip
+                above, so the remaining highlights do not repeat them. */}
             {(event.highlights || [])
               .filter((h) => h !== "free" && h !== "following" && h !== "affinity")
               .slice(0, 3)
@@ -323,50 +346,39 @@ function EventCardBody({
             {/* iter 215: category chips removed — visual noise. Categories
                 still drive ranking + diversity internally; the user does
                 not need to see them on every card. */}
-            <span className="relative z-10 text-[10px] text-gray-400 ml-auto uppercase tracking-wide flex items-center gap-1">
+          </div>
+
+          <div className="mt-2 flex items-center justify-between gap-2 border-t border-[#eee9dc] pt-2">
+            <span className="relative z-10 flex min-w-0 items-center gap-1 truncate text-[10px] uppercase tracking-wide text-[#8b918e]">
               {event.likes && event.likes > 30 ? (
-                <span title="Likes" className="normal-case tracking-normal">
+                <span title="Likes" className="shrink-0 normal-case tracking-normal">
                   ❤ {formatCount(event.likes)}
                 </span>
               ) : null}
-              {event.instagramAccount ? (
+              {!convictionLabel && filterableAccount ? (
                 <button
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    trackAccountClick(event.instagramAccount);
-                onAccountClick?.(event.instagramAccount!);
+                    trackAccountClick(filterableAccount);
+                    onAccountClick?.(filterableAccount);
                   }}
-                  className="hover:text-gray-700 hover:underline rounded-sm focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none"
-                  title={`See more from @${event.instagramAccount}`}
+                  className="truncate rounded-sm hover:text-gray-700 hover:underline focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none"
+                  title={`See more from @${filterableAccount}`}
                 >
-                  @{event.instagramAccount}
-                </button>
-              ) : event.account && (event.userFollowing || event.userAffinity) ? (
-                // Cross-source-enriched conviction event: surface WHICH follow
-                // drove it, as a clickable per-account filter (fb-169). The
-                // account filter now keys on event.account (lib/events.ts).
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    trackAccountClick(event.account);
-                    onAccountClick?.(event.account!);
-                  }}
-                  className="hover:text-gray-700 hover:underline rounded-sm focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none"
-                  title={`See more from @${event.account}`}
-                >
-                  @{event.account}
+                  @{filterableAccount}
                 </button>
               ) : (
-                <span>{SOURCE_LABELS[event.source] || event.source}</span>
+                <span className="truncate">{SOURCE_LABELS[event.source] || event.source}</span>
               )}
               {event.accountVerified && (
                 <span className="text-blue-500" title="Verified">✓</span>
               )}
+            </span>
+            <div className="relative z-10 flex shrink-0 items-center gap-0.5" aria-label="Event actions">
               <button
                 onClick={handleSaveF}
-                className={`transition-colors ${savedF ? "text-amber-500" : "text-gray-400 hover:text-amber-500"}`}
+                className={`grid min-h-11 min-w-11 place-items-center rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-amber-500 focus:outline-none sm:min-h-9 sm:min-w-9 ${savedF ? "bg-amber-50 text-amber-500" : "text-gray-400 hover:bg-amber-50 hover:text-amber-500"}`}
                 title={savedF ? "Unsave" : "Save"}
                 aria-label={savedF ? "Unsave" : "Save"}
               >
@@ -378,7 +390,7 @@ function EventCardBody({
                   e.stopPropagation();
                   downloadIcs(event);
                 }}
-                className="text-gray-400 hover:text-gray-700 transition-colors"
+                className="grid min-h-11 min-w-11 place-items-center rounded-full text-gray-400 transition-colors hover:bg-[#edf5f1] hover:text-[#173c35] focus-visible:ring-2 focus-visible:ring-[#173c35] focus:outline-none sm:min-h-9 sm:min-w-9"
                 title="Add to calendar"
                 aria-label="Add to calendar"
               >
@@ -386,13 +398,13 @@ function EventCardBody({
               </button>
               <button
                 onClick={handleHide}
-                className="text-gray-300 hover:text-rose-500 transition-colors"
+                className="grid min-h-11 min-w-11 place-items-center rounded-full text-gray-300 transition-colors hover:bg-rose-50 hover:text-rose-500 focus-visible:ring-2 focus-visible:ring-rose-500 focus:outline-none sm:min-h-9 sm:min-w-9"
                 title="Hide this event"
                 aria-label="Hide"
               >
                 <HideIcon />
               </button>
-            </span>
+            </div>
           </div>
         </div>
       </div>

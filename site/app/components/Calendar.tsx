@@ -45,8 +45,8 @@ export default function Calendar({
   const canGoBack = isAfter(currentMonth, thisMonthStart);
 
   return (
-    <div className="rounded-[1.5rem] border border-[#ddd9cc] bg-[#fffef9] p-4 shadow-[0_1px_0_rgba(23,58,49,0.03)]">
-      <div className="mb-4 flex items-center justify-between">
+    <div className="rounded-[1.5rem] border border-[#ddd9cc] bg-[#fffef9] p-3 shadow-[0_1px_0_rgba(23,58,49,0.03)] sm:p-4">
+      <div className="mb-3 flex items-center justify-between sm:mb-4">
         <button
           onClick={() => canGoBack && setCurrentMonth(subMonths(currentMonth, 1))}
           disabled={!canGoBack}
@@ -98,7 +98,7 @@ export default function Calendar({
               disabled={isPast}
               aria-label={isPast ? `${dateStr} (past)` : `${dateStr}, ${count} events`}
               className={`
-                relative grid h-9 w-full place-items-center rounded-full text-sm transition focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none
+                relative grid h-8 w-full place-items-center rounded-full text-sm transition focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none sm:h-9
                 ${isPast ? "text-[#d6d3c9] cursor-not-allowed" : !inMonth ? "text-[#c1beb6]" : "text-[#3a4d48]"}
                 ${isSelected ? "bg-[#173c35] text-white font-semibold shadow-sm" : isPast ? "" : "hover:bg-[#f4f1e8]"}
                 ${isToday && !isSelected ? "font-bold text-[#173c35] ring-1 ring-[#173c35]/30" : ""}
@@ -131,7 +131,7 @@ export default function Calendar({
           setCurrentMonth(startOfMonth(today));
           onSelectDate(todayStr);
         }}
-        className="mt-4 w-full rounded-full border border-[#d7d5cd] bg-white py-2 text-xs font-medium text-[#5d6964] hover:border-[#173c35] hover:text-[#173c35]"
+        className="mt-3 w-full rounded-full border border-[#d7d5cd] bg-white py-2 text-xs font-medium text-[#5d6964] hover:border-[#173c35] hover:text-[#173c35] sm:mt-4"
       >
         Today
       </button>

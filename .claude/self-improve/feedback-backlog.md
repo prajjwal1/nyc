@@ -94,6 +94,43 @@ These are the durable preferences the user has stated. They're marked `addressed
 ## Open items (top of list = highest priority)
 
 
+### fb-210 — Update the website
+- created_at: 2026-09-03
+- source: user-explicit
+- status: open
+- body: “update the website”
+- "addressed" criterion: approved content, ingestion, and UI improvements from this run are integrated into the production-facing site; required tests and the production build pass; the deployed site is verified against the final commit.
+
+### fb-211 — Make the website fresh
+- created_at: 2026-09-03
+- source: user-explicit
+- status: open
+- body: “make it fresh”
+- interpretation: Refresh both the event inventory and the presentation so the live site feels current, while preserving the user's established curation and exclusion preferences.
+- "addressed" criterion: the final deployment uses a newly generated today-onwards event feed rather than the 2026-08-28 snapshot, exposes an accurate freshness timestamp, and contains no stale/past-event regression; visual changes also avoid stale or repetitive presentation.
+
+### fb-212 — Improve the design
+- created_at: 2026-09-03
+- source: user-explicit
+- status: open
+- body: “improve the design”
+- "addressed" criterion: ship a coherent responsive design improvement that strengthens discovery hierarchy and event decision details on mobile and desktop, with visual QA and a clean production build; do not reintroduce sidebar clutter, placeholder image boxes, or a party-heavy weekend hero.
+
+### fb-213 — Run the self-improvement loop
+- created_at: 2026-09-03
+- source: user-explicit
+- status: open
+- body: “self improve”
+- "addressed" criterion: complete the documented feedback → worker → critic → apply → verify loop, ship at least one measurable North-Star improvement or a Critic-approved evidence-based deferral, and record the outcome in the journal without relaxing existing user rules.
+
+### fb-214 — Deploy the website after the work is complete
+- created_at: 2026-09-03
+- source: user-explicit
+- status: open
+- body: “deploy the website once done.”
+- "addressed" criterion: after all approved changes pass sanity checks and the production build, push the final commit, confirm the deployment workflow succeeds, and verify the public site serves the final event timestamp and UI assets.
+
+
 ### fb-206 — Add/verify Liz's Book Bar Eventbrite organizer coverage
 - created_at: 2026-08-28
 - source: user-explicit
@@ -126,6 +163,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: open
 - body: Persist a bounded quality history per Eventbrite organizer: raw events, exclusion-clean events, normalized landed events, current-feed overlap, saves, hides, attended yes/no, and last-seen date. Rank explicit user-mentioned organizers first, then organizers with a reliable learned engagement rate, then clean landed yield. Never auto-remove a user-mentioned organizer; rotate repeatedly weak inferred organizers out of the bounded frontier.
 - "addressed" criterion: `organizer_quality.json` is updated during scrape/normalization, used by Eventbrite frontier ranking with minimum-sample safeguards, and covered by tests for explicit-user precedence and inferred-organizer probation.
+
+
+### fb-215 — External freshness heartbeat outside GitHub Actions
+- created_at: 2026-09-03
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-09-03-2205)
+- status: open
+- body: Monitor the public `events.json.lastUpdated` from a service outside GitHub Actions and alert when it is older than 90 minutes. The current freshness monitor shares the same scheduler and failure domain as every scraper, so a scheduler-wide outage can leave the site stale without any recovery job running.
+- "addressed" criterion: an independently hosted, read-only heartbeat checks the deployed timestamp at least every 30 minutes and sends an alert through a user-authorized channel; it must not mutate the repository or auto-deploy.
 
 
 ### fb-202 — Top-of-feed saturated by one followed venue (Book Club Bar wall); other named tastes buried

@@ -765,6 +765,10 @@ export function isHidden(eventId: string): boolean {
   return loadHidden().has(eventId);
 }
 
+export function loadHiddenIds(): Set<string> {
+  return loadHidden();
+}
+
 export function unhideAll(): void {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(HIDDEN_KEY);

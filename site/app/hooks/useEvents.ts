@@ -9,6 +9,7 @@ import {
   interestBoost,
   interestReason,
   InterestProfile,
+  loadHiddenIds,
   PROFILE_CHANGE_EVENT,
 } from "../lib/interests";
 
@@ -57,7 +58,10 @@ export function useEvents() {
       if (Number.isNaN(eMin)) return true;
       return eMin >= cutoffMin;                // started <3h ago or later
     };
-    const upcoming = data.events.filter(stillUpcoming);
+    const hidden = loadHiddenIds();
+    const upcoming = data.events
+      .filter(stillUpcoming)
+      .filter((event) => !hidden.has(event.id));
     if (!profile) return upcoming;
     return upcoming.map((e) => {
       const reason = interestReason(e, profile);

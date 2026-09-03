@@ -6,6 +6,8 @@ Returns non-zero exit code if critical sources are missing.
 import json
 import os
 import sys
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 
 # Sources we MUST have events from. If any of these return 0 events, fail.
@@ -108,6 +110,46 @@ WARNING_CHECKS = [
         1,
     ),
 ]
+
+
+def _active_follow_accounts(
+    events: list[dict], signals: list[str], *, today: str | None = None
+) -> set[str]:
+    """Return followed signal accounts represented by today-or-future rows."""
+    today = today or datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+
+    def folds(handle: str) -> set[str]:
+        base = "".join(ch for ch in (handle or "").lower() if ch.isalnum())
+        if not base:
+            return set()
+        values = {base}
+        for suffix in (
+            "manhattan", "brooklyn", "queens", "bronx", "statenisland",
+            "williamsburg", "nyc", "ny", "bk",
+        ):
+            if base.endswith(suffix) and len(base) - len(suffix) >= 4:
+                values.add(base[: -len(suffix)])
+        return values
+
+    signal_by_fold = {
+        folded: account
+        for account in signals
+        for folded in folds(account)
+    }
+    active: set[str] = set()
+    for event in events:
+        if (event.get("date") or "") < today or not event.get("userFollowing"):
+            continue
+        handle = (
+            event.get("account")
+            or event.get("instagramAccount")
+            or event.get("organizer")
+            or ""
+        )
+        for folded in folds(handle):
+            if folded in signal_by_fold:
+                active.add(signal_by_fold[folded])
+    return active
 
 
 def _event_field_text(e: dict, field: str) -> str:
@@ -499,32 +541,7 @@ def _print_north_star_metrics(events: list) -> dict:
         metrics["follow_graph_covered"] = with_yield
         metrics["follow_graph_total"] = len(signals)
 
-        def folds(handle: str) -> set[str]:
-            base = "".join(ch for ch in (handle or "").lower() if ch.isalnum())
-            if not base:
-                return set()
-            values = {base}
-            for suffix in (
-                "manhattan", "brooklyn", "queens", "bronx", "statenisland",
-                "williamsburg", "nyc", "ny", "bk",
-            ):
-                if base.endswith(suffix) and len(base) - len(suffix) >= 4:
-                    values.add(base[:-len(suffix)])
-            return values
-
-        signal_by_fold = {
-            folded: account
-            for account in signals
-            for folded in folds(account)
-        }
-        active = set()
-        for event in events:
-            if not event.get("userFollowing"):
-                continue
-            handle = event.get("account") or event.get("instagramAccount") or event.get("organizer") or ""
-            for folded in folds(handle):
-                if folded in signal_by_fold:
-                    active.add(signal_by_fold[folded])
+        active = _active_follow_accounts(events, signals)
         active_pct = 100.0 * len(active) / len(signals)
         missing_active = sorted(set(signals) - active)
         print(

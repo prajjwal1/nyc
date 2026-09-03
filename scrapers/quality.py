@@ -2324,6 +2324,16 @@ def _is_caption_fragment(title: str, desc: str) -> bool:
     months = "(?:january|february|march|april|may|june|july|august|september|october|november|december)"
     if re.match(rf"^{months}\s+\d{{1,2}}(?:st|nd|rd|th)?\.?$", title_lower):
         return True
+    # Pure date-range headings can survive through source carryover even
+    # after the source parser learns to reject them. Keep this anchored so a
+    # real title such as "A Festival Running September 5 through 27" remains.
+    if re.match(
+        rf"^{months}\s+\d{{1,2}}(?:st|nd|rd|th)?\s*"
+        rf"(?:through|to|[-–—])\s*(?:{months}\s+)?"
+        rf"\d{{1,2}}(?:st|nd|rd|th)?\.?$",
+        title_lower,
+    ):
+        return True
     if re.match(r"^\d{1,2}(?:st|nd|rd|th)?\.?$", title_lower.strip(":!. ")):
         return True
     # Pure timestamp titles like "Thursday, May 28 at 8:14 pm ET" or

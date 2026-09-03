@@ -210,6 +210,24 @@ class TestCaptionFragmentStructuralRules:
     def test_pure_date_title(self):
         assert _is_caption_fragment("May 17", "") is True
 
+    @pytest.mark.parametrize(
+        "title",
+        [
+            "September 5 through 27",
+            "September 5 to 27",
+            "September 5-27",
+            "September 5 – October 2",
+            "September 5 — October 2",
+        ],
+    )
+    def test_pure_date_range_title(self, title):
+        assert _is_caption_fragment(title, "") is True
+
+    def test_subject_with_date_range_is_not_a_fragment(self):
+        assert _is_caption_fragment(
+            "A Festival Running September 5 through 27", ""
+        ) is False
+
     def test_at_mention_carveout_for_lowercase_artist(self):
         # Lowercase artist names with @-mention are legitimate concert titles
         assert _is_caption_fragment("sunflwr @ Brooklyn Steel", "") is False

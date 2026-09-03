@@ -245,7 +245,13 @@ def platform_frontier(
 ) -> list[FrontierItem]:
     """Rank learned platform URLs from harvested links and prior yield."""
     aggregate: dict[tuple[str, str], dict] = defaultdict(
-        lambda: {"score": 0.0, "lane": "explore", "date": "", "via": set()}
+        lambda: {
+            "score": 0.0,
+            "preference_tier": 0,
+            "lane": "explore",
+            "date": "",
+            "via": set(),
+        }
     )
 
     for item in _raw_discovered_items():
@@ -258,6 +264,7 @@ def platform_frontier(
         rec["score"] += 2.0
         if any(token in via.lower() for token in ("user_mentioned", "user_saved", "user_tagged")):
             rec["score"] += 4.0
+            rec["preference_tier"] = max(rec["preference_tier"], 3)
             rec["lane"] = "personal"
         rec["date"] = max(rec["date"], str(item.get("discovered_at") or ""))
         rec["via"].add(via)
@@ -289,6 +296,7 @@ def platform_frontier(
             rec["score"] += 1.0 if kind in {"organizer", "calendar"} else 0.15
             if personal:
                 rec["score"] += 4.0
+                rec["preference_tier"] = max(rec["preference_tier"], 2)
                 rec["lane"] = "personal"
             rec["via"].add(via)
 
@@ -305,24 +313,30 @@ def platform_frontier(
         rec = aggregate[(url, kind)]
         if source == "user_mentioned":
             rec["score"] += 12.0
+            rec["preference_tier"] = max(rec["preference_tier"], 3)
         elif source.startswith("engagement_"):
             rec["score"] += 11.0
+            rec["preference_tier"] = max(rec["preference_tier"], 2)
         else:
             rec["score"] += 8.0
+            rec["preference_tier"] = max(rec["preference_tier"], 1)
         rec["lane"] = "personal"
         rec["via"].add(via)
 
-    rows = []
+    rows: list[tuple[FrontierItem, int]] = []
     for (url, kind), rec in aggregate.items():
         if kinds and kind not in kinds:
             continue
-        rows.append(FrontierItem(
-            url=url,
-            kind=kind,
-            lane=rec["lane"],
-            score=rec["score"],
-            discovered_at=rec["date"],
-            via=",".join(sorted(rec["via"])),
+        rows.append((
+            FrontierItem(
+                url=url,
+                kind=kind,
+                lane=rec["lane"],
+                score=rec["score"],
+                discovered_at=rec["date"],
+                via=",".join(sorted(rec["via"])),
+            ),
+            rec["preference_tier"],
         ))
     def date_rank(value: str) -> float:
         if not value:
@@ -332,10 +346,14 @@ def platform_frontier(
         except (TypeError, ValueError):
             return 0.0
 
-    rows.sort(key=lambda item: (
-        item.lane != "personal", -item.score, -date_rank(item.discovered_at), item.url
+    rows.sort(key=lambda row: (
+        -row[1],
+        row[0].lane != "personal",
+        -row[0].score,
+        -date_rank(row[0].discovered_at),
+        row[0].url,
     ))
-    return rows[: max(0, limit)]
+    return [item for item, _tier in rows[: max(0, limit)]]
 
 
 def rotating_luma_probes(limit: int = 6, slot: int | None = None) -> list[FrontierItem]:
