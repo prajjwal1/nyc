@@ -426,6 +426,18 @@
       "tasteScore": 0.0211,
       "score": 0.368,
       "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
       "communityIds": [
         "com_1466f20a9300"
       ],
@@ -1355,64 +1367,6 @@
       ]
     },
     {
-      "id": "b3fa7cd6277461b7",
-      "title": "Alfreda's Cinema, Ten Minuets to Live (1932) w/ Live Vinyl Score",
-      "description": "",
-      "date": "2026-09-03",
-      "startTime": "20:00",
-      "endTime": null,
-      "location": {
-        "name": "Lefferts Historic House",
-        "address": "452 Flatbush Avenue, Brooklyn, NY 11225",
-        "neighborhood": "flatbush"
-      },
-      "categories": [
-        "other"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/alfredas-cinema-ten-minuets-to-live-1932-w-live-vinyl-score-tickets-1999121493201",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192142544%2F141404545158%2F1%2Foriginal.20260828-192000?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=1fcf3ef3972460602628dca670625f72",
-      "price": "unknown",
-      "scrapedAt": "2026-08-28T22:30:21.978689",
-      "organizer": "Alfreda's Cinema",
-      "organizerUrl": "https://eventbrite.com/o/8387562806",
-      "organizerRefs": [
-        {
-          "role": "host",
-          "name": "Alfreda's Cinema",
-          "url": "https://eventbrite.com/o/8387562806",
-          "externalId": "8387562806",
-          "platform": "eventbrite"
-        }
-      ],
-      "catalogSource": "eventbrite_organizer",
-      "discoveryLane": "explore",
-      "discoveryVia": "current_results",
-      "firstSeenAt": "2026-08-28T22:30:23.773510+00:00",
-      "recommendationReasons": [
-        "Happening this week"
-      ],
-      "tasteScore": 0.0104,
-      "score": 0.35,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "structuredTitle": false,
-      "contributingSources": [
-        "eventbrite"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "communityIds": [
-        "com_359bbb5a9a91"
-      ],
-      "primaryCommunityId": "com_359bbb5a9a91"
-    },
-    {
       "id": "7807f166c563a6cf",
       "title": "Jazz & Blues with Samoa Wilson",
       "description": "",
@@ -1469,6 +1423,64 @@
         "com_1466f20a9300"
       ],
       "primaryCommunityId": "com_1466f20a9300"
+    },
+    {
+      "id": "b3fa7cd6277461b7",
+      "title": "Alfreda's Cinema, Ten Minuets to Live (1932) w/ Live Vinyl Score",
+      "description": "",
+      "date": "2026-09-03",
+      "startTime": "20:00",
+      "endTime": null,
+      "location": {
+        "name": "Lefferts Historic House",
+        "address": "452 Flatbush Avenue, Brooklyn, NY 11225",
+        "neighborhood": "flatbush"
+      },
+      "categories": [
+        "other"
+      ],
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/alfredas-cinema-ten-minuets-to-live-1932-w-live-vinyl-score-tickets-1999121493201",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192142544%2F141404545158%2F1%2Foriginal.20260828-192000?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=1fcf3ef3972460602628dca670625f72",
+      "price": "unknown",
+      "scrapedAt": "2026-08-28T22:30:21.978689",
+      "organizer": "Alfreda's Cinema",
+      "organizerUrl": "https://eventbrite.com/o/8387562806",
+      "organizerRefs": [
+        {
+          "role": "host",
+          "name": "Alfreda's Cinema",
+          "url": "https://eventbrite.com/o/8387562806",
+          "externalId": "8387562806",
+          "platform": "eventbrite"
+        }
+      ],
+      "catalogSource": "eventbrite_organizer",
+      "discoveryLane": "explore",
+      "discoveryVia": "current_results",
+      "firstSeenAt": "2026-08-28T22:30:23.773510+00:00",
+      "recommendationReasons": [
+        "Happening this week"
+      ],
+      "tasteScore": 0.0104,
+      "score": 0.35,
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "communityIds": [
+        "com_359bbb5a9a91"
+      ],
+      "primaryCommunityId": "com_359bbb5a9a91"
     },
     {
       "id": "d62a912bc4a562d1",
@@ -33540,7 +33552,7 @@
       ]
     }
   ],
-  "lastUpdated": "2026-09-03T22:45:53.583982+00:00",
+  "lastUpdated": "2026-09-03T23:21:27.081793+00:00",
   "topAccounts": [
     {
       "username": "explorenycfree",
