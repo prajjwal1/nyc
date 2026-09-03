@@ -76,8 +76,8 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_4a9490cb3534",
-        "com_9fed174eeff3",
         "com_99343fce4c7a",
+        "com_9fed174eeff3",
         "com_d2d455d2d6c9",
         "com_3837f308cd75"
       ]
@@ -302,8 +302,8 @@
         "com_cb019f4e9752",
         "com_99343fce4c7a",
         "com_d2d455d2d6c9",
-        "com_9fed174eeff3",
         "com_4c3ca28533f5",
+        "com_9fed174eeff3",
         "com_e9748c1176c1"
       ]
     },
@@ -370,12 +370,12 @@
         "eventbrite:14861961557"
       ],
       "similarCommunityIds": [
+        "com_9fed174eeff3",
         "com_3b104adba072",
         "com_cdd5daa67222",
         "com_1466f20a9300",
         "com_318c39363fe6",
-        "com_359bbb5a9a91",
-        "com_3837f308cd75"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -697,10 +697,10 @@
       "similarCommunityIds": [
         "com_99343fce4c7a",
         "com_a1e1c13a75f0",
-        "com_9fed174eeff3",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
-        "com_b766b6de77ba"
+        "com_b766b6de77ba",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -1028,7 +1028,7 @@
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_cb019f4e9752",
-        "com_9fed174eeff3"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -1415,6 +1415,76 @@
       ]
     },
     {
+      "id": "com_c58670960684",
+      "slug": "the-new-york-philosophy-club-960684",
+      "name": "The New York Philosophy Club",
+      "kind": "club",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "categories": [
+        "art"
+      ],
+      "tags": [
+        "art"
+      ],
+      "neighborhoods": [
+        "upper east side"
+      ],
+      "homeVenue": "The Metropolitan Museum of Art",
+      "imageUrl": "https://images.lumacdn.com/uploads/r8/106375f7-a01e-47f9-b47a-bf236ee56979.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/philosophy"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-09-02",
+        "upcomingEventCount": 1,
+        "eventCount90d": 6
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Saturday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 1.0,
+        "sampleSize": 6
+      },
+      "upcomingEventIds": [
+        "c31ff076da1ce37d"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-09-03",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 6,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:philosophy.nyc",
+        "luma:cal-dgp82mvkrg1frmr"
+      ],
+      "similarCommunityIds": [
+        "com_3837f308cd75",
+        "com_5582e2e97f1a",
+        "com_55ca36db453a",
+        "com_b736e77bdf93",
+        "com_02ba15552329",
+        "com_1466f20a9300"
+      ]
+    },
+    {
       "id": "com_99343fce4c7a",
       "slug": "obliquetablenyc-ce4c7a",
       "name": "ObliqueTableNYC",
@@ -1485,8 +1555,8 @@
       "similarCommunityIds": [
         "com_d2d455d2d6c9",
         "com_a1e1c13a75f0",
-        "com_9fed174eeff3",
         "com_4c3ca28533f5",
+        "com_9fed174eeff3",
         "com_e9748c1176c1",
         "com_1466f20a9300"
       ]
@@ -1638,22 +1708,24 @@
       "slug": "kanso-phone-free-experiences-4eeff3",
       "name": "Kanso: Phone-Free Experiences",
       "kind": "recurring_series",
-      "tagline": "Kanso: Phone-Free Experiences is a recurring event series centered on wellness, music in manhattan.",
-      "description": "Kanso: Phone-Free Experiences is a recurring event series centered on wellness, music in manhattan. Based on 4 observed event dates, it meets weekly on Thursday and Saturday evenings.",
+      "tagline": "Kanso: Phone-Free Experiences is a recurring event series centered on wellness, music, fitness in manhattan.",
+      "description": "Kanso: Phone-Free Experiences is a recurring event series centered on wellness, music, fitness in manhattan. Based on 5 observed event dates, it meets weekly on Thursday and Saturday evenings.",
       "categories": [
-        "other",
         "wellness",
-        "music"
+        "other",
+        "music",
+        "fitness"
       ],
       "tags": [
-        "other",
         "wellness",
-        "music"
+        "other",
+        "music",
+        "fitness"
       ],
       "neighborhoods": [
         "manhattan"
       ],
-      "homeVenue": "Encinitas, CA",
+      "homeVenue": "New York, NY",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/3k/29dbd913-263b-4a0c-aa85-deaf8abc2173.png",
       "links": [
         {
@@ -1666,7 +1738,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-03",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 1
       },
       "schedule": {
@@ -1676,13 +1748,14 @@
           "Saturday"
         ],
         "typicalTime": "18:30",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "e078c82fdccffcd8",
         "66f8030a11c53a07",
-        "da5ebeeda0ced5d6"
+        "da5ebeeda0ced5d6",
+        "7108ecd062ac2d50"
       ],
       "sourceAttributions": [
         "luma"
@@ -1691,7 +1764,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1702,10 +1775,10 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
-        "com_1466f20a9300",
-        "com_b766b6de77ba",
         "com_a1e1c13a75f0",
-        "com_e9748c1176c1"
+        "com_e9748c1176c1",
+        "com_1466f20a9300",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -49803,7 +49876,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-03T01:13:52.821415+00:00",
+  "lastUpdated": "2026-09-03T01:26:39.439709+00:00",
   "version": 1,
   "schemaVersion": 1
 }
