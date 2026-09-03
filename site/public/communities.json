@@ -783,11 +783,11 @@
       ],
       "similarCommunityIds": [
         "com_99343fce4c7a",
+        "com_bad972d799e8",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_b766b6de77ba",
-        "com_cb019f4e9752",
-        "com_4c3ca28533f5"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -953,10 +953,10 @@
       "similarCommunityIds": [
         "com_9fed174eeff3",
         "com_e9748c1176c1",
+        "com_bad972d799e8",
         "com_99343fce4c7a",
         "com_a1e1c13a75f0",
-        "com_359bbb5a9a91",
-        "com_d2d455d2d6c9"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -1429,12 +1429,12 @@
         "eventbrite:8387562806"
       ],
       "similarCommunityIds": [
+        "com_bad972d799e8",
         "com_1466f20a9300",
         "com_cb019f4e9752",
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
-        "com_d2d455d2d6c9",
-        "com_4a9490cb3534"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -1576,6 +1576,79 @@
       ]
     },
     {
+      "id": "com_bad972d799e8",
+      "slug": "planeteer-capital-d799e8",
+      "name": "Planeteer Capital",
+      "kind": "recurring_series",
+      "tagline": "Planeteer Capital is a recurring event series centered on outdoors in midtown, manhattan.",
+      "description": "Planeteer Capital is a recurring event series centered on outdoors in midtown, manhattan. Based on 2 observed event dates, it meets weekly on Monday and Wednesday mornings.",
+      "categories": [
+        "other",
+        "outdoors"
+      ],
+      "tags": [
+        "other",
+        "outdoors"
+      ],
+      "neighborhoods": [
+        "midtown",
+        "manhattan"
+      ],
+      "homeVenue": "On Flagship Store NYC Flatiron",
+      "imageUrl": "https://images.lumacdn.com/event-covers/7j/3d2c2884-1387-42e1-836c-5fb245b30786.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/planeteer"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday",
+          "Wednesday"
+        ],
+        "typicalTime": "06:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "4c63c818e29c51c3",
+        "4a0a33a65b68e811"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-09-03",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-gg27oagc7gb9a7o"
+      ],
+      "similarCommunityIds": [
+        "com_359bbb5a9a91",
+        "com_4c3ca28533f5",
+        "com_99343fce4c7a",
+        "com_d2d455d2d6c9",
+        "com_9fed174eeff3",
+        "com_a1e1c13a75f0"
+      ]
+    },
+    {
       "id": "com_99343fce4c7a",
       "slug": "obliquetablenyc-ce4c7a",
       "name": "ObliqueTableNYC",
@@ -1645,11 +1718,11 @@
       ],
       "similarCommunityIds": [
         "com_d2d455d2d6c9",
+        "com_bad972d799e8",
         "com_4c3ca28533f5",
         "com_9fed174eeff3",
         "com_a1e1c13a75f0",
-        "com_e9748c1176c1",
-        "com_1466f20a9300"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -49925,7 +49998,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-03T21:09:12.833325+00:00",
+  "lastUpdated": "2026-09-03T21:20:18.599847+00:00",
   "version": 1,
   "schemaVersion": 1
 }
