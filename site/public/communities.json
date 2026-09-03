@@ -491,8 +491,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-03",
-        "upcomingEventCount": 7,
-        "eventCount90d": 16
+        "upcomingEventCount": 8,
+        "eventCount90d": 17
       },
       "schedule": {
         "cadence": "weekly",
@@ -507,6 +507,7 @@
       "upcomingEventIds": [
         "be28d5806cf96f85",
         "ed594d063ead0f3d",
+        "bf0b48105f392f02",
         "747f79f08c89af0f",
         "6437fb2ca008f719",
         "4d7edddd7f586052",
@@ -876,7 +877,7 @@
       "name": "Book Club for the Book Hoes",
       "kind": "club",
       "tagline": "Book Club for the Book Hoes is a community club centered on books, parties in brooklyn, flatbush.",
-      "description": "Book Club for the Book Hoes is a community club centered on books, parties in brooklyn, flatbush. Based on 9 observed event dates, it meets weekly on Sunday and Tuesday afternoons.",
+      "description": "Book Club for the Book Hoes is a community club centered on books, parties in brooklyn, flatbush. Based on 10 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "books",
         "parties"
@@ -904,7 +905,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-02",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 3
       },
       "schedule": {
@@ -913,9 +914,9 @@
           "Sunday",
           "Tuesday"
         ],
-        "typicalTime": "14:00",
+        "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "8fda70033745f2b4",
@@ -925,7 +926,8 @@
         "12bfa498d0a70fdd",
         "c786bd3bfa0d1716",
         "60ac3bea977da7f2",
-        "f6308459125e51d0"
+        "f6308459125e51d0",
+        "3bdafea5d8f455c4"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -934,7 +936,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -49801,7 +49803,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-03T00:34:28.086594+00:00",
+  "lastUpdated": "2026-09-03T01:13:52.821415+00:00",
   "version": 1,
   "schemaVersion": 1
 }
