@@ -87,19 +87,21 @@
       "slug": "the-harlem-swing-dance-society-e8b1e0",
       "name": "The Harlem Swing Dance Society",
       "kind": "club",
-      "tagline": "The Harlem Swing Dance Society is a community club centered on special in harlem.",
-      "description": "The Harlem Swing Dance Society is a community club centered on special in harlem. Based on 9 observed event dates, it meets weekly on Tuesday and Thursday mornings.",
+      "tagline": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem.",
+      "description": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem. Based on 10 observed event dates, it meets weekly on Tuesday and Thursday mornings.",
       "categories": [
+        "dance",
         "special"
       ],
       "tags": [
+        "dance",
         "special"
       ],
       "neighborhoods": [
         "harlem"
       ],
-      "homeVenue": "Riverbank State Park",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1183490252%2F105999570117%2F1%2Foriginal.20260501-021003?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.015&fp-y=0.035&s=48cab4130c21f7840c41571c03254c6d",
+      "homeVenue": "Lt Joseph P. Kennedy, Jr Community Center",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191478266%2F105999570117%2F1%2Foriginal.20260820-011606?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.054&fp-y=0.128&s=7b8b7919b9e23e8c97685a92de1ad63c",
       "links": [
         {
           "type": "eventbrite",
@@ -111,7 +113,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-01",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 9
       },
       "schedule": {
@@ -122,9 +124,10 @@
         ],
         "typicalTime": "09:00",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 10
       },
       "upcomingEventIds": [
+        "842b88de7362123b",
         "95932b43786962d0"
       ],
       "sourceAttributions": [
@@ -134,7 +137,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -146,8 +149,83 @@
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_f23f8820878b",
-        "com_02ba15552329",
-        "com_1466f20a9300",
+        "com_ed8d42fb031d",
+        "com_218b97d674a6",
+        "com_02ba15552329"
+      ]
+    },
+    {
+      "id": "com_ed8d42fb031d",
+      "slug": "chess-place-fb031d",
+      "name": "Chess Place",
+      "kind": "recurring_series",
+      "tagline": "Chess Place is a recurring event series centered on games in manhattan, lower east side.",
+      "description": "Chess Place is a recurring event series centered on games in manhattan, lower east side. Based on 4 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "categories": [
+        "games"
+      ],
+      "tags": [
+        "games"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "lower east side",
+        "harlem",
+        "east village"
+      ],
+      "homeVenue": "La Fonda NYC",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1187523918%2F2878666947471%2F1%2Foriginal.20260623-233023?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=b6d771c1211f97bef21ab27a8397c2f7",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/115357260611"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 4,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Thursday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.67,
+        "sampleSize": 4
+      },
+      "upcomingEventIds": [
+        "9a2c003b75c74bc9",
+        "a23107b98d279ec4",
+        "17cdb9af3ebf9e13",
+        "ef028a5acdc33ced"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-09-03",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 4,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:115357260611"
+      ],
+      "similarCommunityIds": [
+        "com_a1e1c13a75f0",
+        "com_c1410c07c4dd",
+        "com_b736e77bdf93",
+        "com_d2d455d2d6c9",
+        "com_f171cd222ca5",
         "com_318c39363fe6"
       ]
     },
@@ -236,15 +314,17 @@
       "slug": "caveat-3a75f0",
       "name": "Caveat",
       "kind": "recurring_series",
-      "tagline": "Caveat is a recurring event series centered on comedy in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy in manhattan. Based on 7 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "tagline": "Caveat is a recurring event series centered on comedy, games in manhattan.",
+      "description": "Caveat is a recurring event series centered on comedy, games in manhattan. Based on 8 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "other",
-        "comedy"
+        "comedy",
+        "games"
       ],
       "tags": [
         "other",
-        "comedy"
+        "comedy",
+        "games"
       ],
       "neighborhoods": [
         "manhattan"
@@ -262,7 +342,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-03",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 5
       },
       "schedule": {
@@ -273,7 +353,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
         "60eee95647cb61d3",
@@ -281,7 +361,8 @@
         "e045c30e2299c0f2",
         "dda55228e81510ff",
         "d4eac68d9bc84410",
-        "2b7c419e02319e7f"
+        "2b7c419e02319e7f",
+        "d1648407544430dd"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -290,7 +371,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -299,9 +380,9 @@
         "eventbrite:13580085802"
       ],
       "similarCommunityIds": [
-        "com_cb019f4e9752",
         "com_99343fce4c7a",
-        "com_d2d455d2d6c9",
+        "com_cb019f4e9752",
+        "com_b736e77bdf93",
         "com_4c3ca28533f5",
         "com_9fed174eeff3",
         "com_e9748c1176c1"
@@ -384,7 +465,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series centered on comedy in brooklyn.",
-      "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 7 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 8 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
         "other",
         "comedy"
@@ -409,7 +490,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-02",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 3
       },
       "schedule": {
@@ -420,7 +501,7 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
         "17b06188ec1f8f7c",
@@ -428,7 +509,8 @@
         "8e10f6c133313b2d",
         "ab3847c35e76db72",
         "beb2a5bc070c05cc",
-        "fa6fa7b461e6343a"
+        "fa6fa7b461e6343a",
+        "c419a55732e0752f"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -437,7 +519,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -446,9 +528,9 @@
         "eventbrite:17899496497"
       ],
       "similarCommunityIds": [
-        "com_a1e1c13a75f0",
         "com_b736e77bdf93",
         "com_1466f20a9300",
+        "com_a1e1c13a75f0",
         "com_4a9490cb3534",
         "com_3837f308cd75",
         "com_d8a5203885a9"
@@ -709,7 +791,7 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick. Based on 11 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick. Based on 12 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -741,7 +823,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-02",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 2
       },
       "schedule": {
@@ -752,7 +834,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "b0701556f4691c90",
@@ -765,7 +847,8 @@
         "90c758dac5bd2370",
         "bdceb25e90a2f1e5",
         "7eca02c791c27155",
-        "0d43431f99f016e6"
+        "0d43431f99f016e6",
+        "15a52252351548d9"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -774,7 +857,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -783,8 +866,8 @@
         "eventbrite:40513431663"
       ],
       "similarCommunityIds": [
-        "com_cdd5daa67222",
         "com_318c39363fe6",
+        "com_cdd5daa67222",
         "com_c1410c07c4dd",
         "com_f171cd222ca5",
         "com_5582e2e97f1a",
@@ -959,7 +1042,7 @@
       "name": "St Mazie",
       "kind": "recurring_series",
       "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 8 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 9 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "music",
         "other"
@@ -984,7 +1067,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-03",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 4
       },
       "schedule": {
@@ -995,7 +1078,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 9
       },
       "upcomingEventIds": [
         "7807f166c563a6cf",
@@ -1005,7 +1088,8 @@
         "f297b45539868e17",
         "3002d3203d4f00cf",
         "53e3a225a8770d64",
-        "185ad881962c0ba3"
+        "185ad881962c0ba3",
+        "f845dfb980fcee6d"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1014,7 +1098,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 9,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1266,7 +1350,7 @@
         "com_55ca36db453a",
         "com_eef1ca956dae",
         "com_4a9490cb3534",
-        "com_3837f308cd75"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -1476,12 +1560,12 @@
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
+        "com_318c39363fe6",
         "com_3837f308cd75",
         "com_5582e2e97f1a",
         "com_55ca36db453a",
         "com_b736e77bdf93",
-        "com_02ba15552329",
-        "com_1466f20a9300"
+        "com_02ba15552329"
       ]
     },
     {
@@ -2002,8 +2086,8 @@
         "com_218b97d674a6",
         "com_b766b6de77ba",
         "com_02ba15552329",
-        "com_318c39363fe6",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_d2ccb56c071d"
       ]
     },
     {
@@ -2096,9 +2180,9 @@
         "com_f171cd222ca5",
         "com_55ca36db453a",
         "com_cdd5daa67222",
-        "com_318c39363fe6",
         "com_4a9490cb3534",
-        "com_3837f308cd75"
+        "com_ed8d42fb031d",
+        "com_318c39363fe6"
       ]
     },
     {
@@ -2107,7 +2191,7 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 29 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 30 observed event dates, it meets weekly on Friday and Thursday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -2138,7 +2222,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-03",
-        "upcomingEventCount": 36,
+        "upcomingEventCount": 37,
         "eventCount90d": 21
       },
       "schedule": {
@@ -2149,7 +2233,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 29
+        "sampleSize": 30
       },
       "upcomingEventIds": [
         "c2b7c18405a651a1",
@@ -2172,7 +2256,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 29,
+        "observedDateCount": 30,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -2188,10 +2272,10 @@
       "similarCommunityIds": [
         "com_3837f308cd75",
         "com_b736e77bdf93",
-        "com_318c39363fe6",
         "com_1466f20a9300",
         "com_cb019f4e9752",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_318c39363fe6"
       ]
     },
     {
@@ -2275,7 +2359,7 @@
       "name": "Liz's Book Bar",
       "kind": "community_space",
       "tagline": "Liz's Book Bar is a community space centered on books in carroll gardens.",
-      "description": "Liz's Book Bar is a community space centered on books in carroll gardens. Based on 28 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "description": "Liz's Book Bar is a community space centered on books in carroll gardens. Based on 29 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
         "books"
       ],
@@ -2291,32 +2375,33 @@
         {
           "type": "lizsbookbar",
           "label": "View on Lizsbookbar",
-          "url": "https://lizsbookbar.com/events/6031920261001"
+          "url": "https://lizsbookbar.com/events/1462720261006"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-01",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 15
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Thursday",
-          "Tuesday"
+          "Tuesday",
+          "Thursday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 28
+        "sampleSize": 29
       },
       "upcomingEventIds": [
         "ef43d077df8d59f1",
         "3a27df3b5d1516ac",
         "e1c98268f825480f",
         "591c7898d17384b4",
-        "3da086e7021937e1"
+        "3da086e7021937e1",
+        "4b99c1cce178b1ea"
       ],
       "sourceAttributions": [
         "lizsbookbar"
@@ -2325,7 +2410,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 28,
+        "observedDateCount": 29,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -2441,7 +2526,7 @@
       "name": "New York Comedy Club on 4th Street",
       "kind": "club",
       "tagline": "New York Comedy Club on 4th Street is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club on 4th Street is a community club centered on comedy, music, special in east village, upper west side. Based on 29 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "New York Comedy Club on 4th Street is a community club centered on comedy, music, special in east village, upper west side. Based on 30 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -2473,7 +2558,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-03",
-        "upcomingEventCount": 44,
+        "upcomingEventCount": 46,
         "eventCount90d": 21
       },
       "schedule": {
@@ -2484,21 +2569,21 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 29
+        "sampleSize": 30
       },
       "upcomingEventIds": [
         "96dc4c9d70ba40fd",
-        "18c7ea2202cbef4a",
         "5b768c6cf29dfa8c",
         "0fa96ddbdbe5b25c",
+        "18c7ea2202cbef4a",
         "a654cb42b9785534",
         "2eaee7d4ff80775f",
+        "2d13bce73967247d",
         "26c095456376af00",
         "9fce378b0cf0b18d",
         "ab39597c27963538",
         "c2eae523f5aef2d2",
-        "f03edb27c06a01f0",
-        "758badf3276d3e49"
+        "f03edb27c06a01f0"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -2507,7 +2592,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 29,
+        "observedDateCount": 30,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2529,16 +2614,18 @@
       "slug": "eastville-comedy-club-363fe6",
       "name": "Eastville Comedy Club",
       "kind": "club",
-      "tagline": "Eastville Comedy Club is a community club centered on comedy, music, parties in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music, parties in east village. Based on 21 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "Eastville Comedy Club is a community club centered on comedy, music, art in east village.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, art in east village. Based on 24 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "comedy",
         "music",
+        "art",
         "parties"
       ],
       "tags": [
         "comedy",
         "music",
+        "art",
         "parties"
       ],
       "neighborhoods": [
@@ -2557,32 +2644,32 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-30",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 17,
         "eventCount90d": 15
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Friday",
-          "Saturday"
+          "Saturday",
+          "Sunday"
         ],
-        "typicalTime": "18:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 21
+        "sampleSize": 24
       },
       "upcomingEventIds": [
         "b688202546fe4f36",
-        "3a810df1fb92a066",
-        "48cea02c35c05353",
+        "14fe75a5714f22cb",
         "377b9882afb8d93b",
+        "27d8397cf26a6587",
         "78ea2c75e740b627",
         "a59e51d19a6b7eb8",
-        "0a49d94f48e89b9b",
+        "a01aabef1a2bb973",
         "f1c6d58fc7d25728",
+        "e6c6362954313545",
         "87cd08252d0ab87c",
-        "99767d1adde8bcf4",
-        "d9b449223b407be1",
-        "1459f9232dc89bab"
+        "72a800c9822a8549",
+        "99767d1adde8bcf4"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -2591,7 +2678,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 21,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2600,12 +2687,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
         "com_55ca36db453a",
+        "com_b736e77bdf93",
+        "com_d8a5203885a9",
         "com_f23f8820878b",
         "com_f171cd222ca5",
-        "com_b736e77bdf93",
-        "com_c1410c07c4dd"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -12938,52 +13025,6 @@
           "type": "web_search",
           "label": "Find the official page",
           "url": "https://www.google.com/search?q=%22Chelsea+Piers+Fitness+Outdoor+Classes%22+NYC+community"
-        }
-      ],
-      "joinMethod": "Find the official page",
-      "activity": {
-        "state": "unverified",
-        "lastEventDate": null,
-        "upcomingEventCount": 0,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [],
-      "sourceAttributions": [],
-      "lastIndexedAt": "2026-08-06T18:48:32.210465+00:00",
-      "verified": false,
-      "verificationStatus": "directory_reference",
-      "qualificationEvidence": {
-        "observedDateCount": 0,
-        "hasFirstPartyIdentity": false
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [],
-      "similarCommunityIds": []
-    },
-    {
-      "id": "com_aae28e84ae02",
-      "slug": "discover-chess-place",
-      "name": "Chess Place",
-      "kind": "directory_reference",
-      "profileStatus": "directory_reference",
-      "tagline": "Explore a NYC community connected to games.",
-      "description": "Chess Place appears connected to games, based on its public name. Use the search link to confirm its official page, current schedule, and how to join.",
-      "categories": [
-        "games"
-      ],
-      "tags": [
-        "games"
-      ],
-      "neighborhoods": [],
-      "homeVenue": "",
-      "imageUrl": null,
-      "links": [
-        {
-          "type": "web_search",
-          "label": "Find the official page",
-          "url": "https://www.google.com/search?q=%22Chess+Place%22+NYC+community"
         }
       ],
       "joinMethod": "Find the official page",
@@ -49876,7 +49917,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-03T01:26:39.439709+00:00",
+  "lastUpdated": "2026-09-03T04:38:32.222787+00:00",
   "version": 1,
   "schemaVersion": 1
 }
