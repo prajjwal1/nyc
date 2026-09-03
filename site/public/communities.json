@@ -2199,7 +2199,7 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 30 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 31 observed event dates, it meets weekly on Friday and Sunday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -2230,18 +2230,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-03",
-        "upcomingEventCount": 37,
+        "upcomingEventCount": 40,
         "eventCount90d": 21
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Thursday"
+          "Sunday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 30
+        "sampleSize": 31
       },
       "upcomingEventIds": [
         "c2b7c18405a651a1",
@@ -2264,7 +2264,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 30,
+        "observedDateCount": 31,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -2446,7 +2446,7 @@
       "name": "POWERHOUSE Arena",
       "kind": "institutional_program",
       "tagline": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn.",
-      "description": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn. Based on 30 observed event dates, it meets weekly on Thursday and Monday evenings.",
+      "description": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn. Based on 31 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "books",
         "celebrities",
@@ -2484,11 +2484,11 @@
         "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Monday"
+          "Friday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 30
+        "sampleSize": 31
       },
       "upcomingEventIds": [
         "5e3e88afeaeceb7e",
@@ -2496,9 +2496,9 @@
         "ebd6f5556483a551",
         "93a0af1786503535",
         "bacfdff80d08fa7c",
-        "9b882f1976b547b8",
         "72a20942dbaf29ca",
         "16056d3caad147aa",
+        "7004e7f5c99f40b8",
         "c7426da63a7dd192",
         "4b3af3dc060b0c6c",
         "7704c7f6892d89ce",
@@ -2511,7 +2511,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 30,
+        "observedDateCount": 31,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -2534,7 +2534,7 @@
       "name": "New York Comedy Club on 4th Street",
       "kind": "club",
       "tagline": "New York Comedy Club on 4th Street is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club on 4th Street is a community club centered on comedy, music, special in east village, upper west side. Based on 30 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "New York Comedy Club on 4th Street is a community club centered on comedy, music, special in east village, upper west side. Based on 31 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -2553,7 +2553,7 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
+      "homeVenue": "New York Comedy Club on 4th Street",
       "imageUrl": "/img/events/Thursday-Mic-NYCC-Comedy-Mob-973c0f7e-large-thumb.png",
       "links": [
         {
@@ -2566,7 +2566,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-03",
-        "upcomingEventCount": 45,
+        "upcomingEventCount": 47,
         "eventCount90d": 21
       },
       "schedule": {
@@ -2577,21 +2577,21 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 30
+        "sampleSize": 31
       },
       "upcomingEventIds": [
         "96dc4c9d70ba40fd",
-        "18c7ea2202cbef4a",
         "5b768c6cf29dfa8c",
         "0fa96ddbdbe5b25c",
+        "18c7ea2202cbef4a",
         "a654cb42b9785534",
         "2eaee7d4ff80775f",
+        "2d13bce73967247d",
         "26c095456376af00",
         "9fce378b0cf0b18d",
         "ab39597c27963538",
         "c2eae523f5aef2d2",
-        "f03edb27c06a01f0",
-        "758badf3276d3e49"
+        "f03edb27c06a01f0"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -2600,7 +2600,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 30,
+        "observedDateCount": 31,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -49925,7 +49925,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-03T18:57:53.726849+00:00",
+  "lastUpdated": "2026-09-03T20:25:53.715371+00:00",
   "version": 1,
   "schemaVersion": 1
 }
