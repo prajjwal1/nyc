@@ -1965,7 +1965,7 @@
       "name": "Van Alen Institute",
       "kind": "recurring_series",
       "tagline": "Van Alen Institute is a recurring event series centered on books across NYC.",
-      "description": "Van Alen Institute is a recurring event series centered on books across NYC. Based on 2 observed event dates, it meets biweekly on Tuesday and Monday evenings.",
+      "description": "Van Alen Institute is a recurring event series centered on books across NYC. Based on 3 observed event dates, it meets biweekly on Tuesday and Monday evenings.",
       "categories": [
         "books"
       ],
@@ -1986,7 +1986,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
@@ -1996,12 +1996,13 @@
           "Monday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "e33483f12e520bae",
-        "6534b139c4606f04"
+        "6534b139c4606f04",
+        "3f64745deb93b452"
       ],
       "sourceAttributions": [
         "luma"
@@ -2010,7 +2011,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -49924,7 +49925,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-03T18:08:52.110884+00:00",
+  "lastUpdated": "2026-09-03T18:37:05.704510+00:00",
   "version": 1,
   "schemaVersion": 1
 }
