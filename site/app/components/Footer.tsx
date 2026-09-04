@@ -16,8 +16,6 @@ export default function Footer() {
               <li><Link href="/" className="text-[#52645e] hover:text-[#173c35] hover:underline">Calendar — choose a date</Link></li>
               <li><Link href="/events" className="text-[#52645e] hover:text-[#173c35] hover:underline">Browse every event</Link></li>
               <li><Link href="/categories/music" className="text-[#52645e] hover:text-[#173c35] hover:underline">Live music in NYC</Link></li>
-              <li><Link href="/categories/free" className="text-[#52645e] hover:text-[#173c35] hover:underline">Free things to do</Link></li>
-              <li><Link href="/saved" className="text-[#52645e] hover:text-[#173c35] hover:underline">Your saved</Link></li>
             </ul>
           </div>
         </div>

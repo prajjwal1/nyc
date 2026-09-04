@@ -55,7 +55,7 @@ try {
         })
         .map((link) => link.textContent?.trim()));
       if (clipped.length) throw new Error(`${route || "home"} clips navigation: ${clipped.join(", ")}`);
-      for (const removedTab of ["Events", "Communities", "Saved"]) {
+      for (const removedTab of ["Calendar", "Events", "Communities", "Saved"]) {
         const count = await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: removedTab, exact: true }).count();
         if (count) throw new Error(`primary navigation still exposes ${removedTab}`);
       }
