@@ -12,6 +12,7 @@ import {
   plainText,
 } from "../../lib/seo";
 import EventDetailActions from "../../components/EventDetailActions";
+import { eventOrganizerDetails } from "../../lib/organizer";
 
 export const dynamicParams = false;
 
@@ -135,6 +136,7 @@ export default async function EventPage({ params }: Props) {
   const preferenceLabel = event.account || event.instagramAccount
     ? `@${event.account || event.instagramAccount}`
     : event.organizer;
+  const organizer = eventOrganizerDetails(event);
   const jsonLd = JSON.stringify(eventJsonLd(event)).replace(/</g, "\\u003c");
 
   return (
@@ -160,6 +162,15 @@ export default async function EventPage({ params }: Props) {
           <h1 className="mt-2 font-editorial text-3xl font-bold leading-tight text-[#173c35] sm:text-5xl">
             {event.title}
           </h1>
+          <a
+            href={organizer.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center gap-1 text-sm text-[#52645e] hover:text-[#173c35] hover:underline"
+          >
+            <span className="text-[#8b918e]">{organizer.isOrganizer ? "By" : "More info"}</span>{" "}
+            <span className="font-semibold">{organizer.label} ↗</span>
+          </a>
           {event.userFollowing && preferenceAccount && (
             <p className="mt-3 text-sm font-semibold text-sky-800">★ Because you follow {preferenceLabel}</p>
           )}

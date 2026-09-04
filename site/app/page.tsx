@@ -185,7 +185,7 @@ export default function Home() {
         </div>
       </main>
 
-      <Footer lastUpdated={lastUpdated} totalEvents={totalEvents} />
+      <Footer />
     </div>
   );
 }

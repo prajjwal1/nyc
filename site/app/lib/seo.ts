@@ -3,7 +3,7 @@ export const SITE_NAME = "NYC Events";
 
 export const SITE_TITLE = "NYC Events: Things to Do Today & This Weekend";
 export const SITE_DESCRIPTION =
-  "Discover curated NYC events, free things to do, live music, comedy, art, food, fitness, and communities across Brooklyn, Manhattan, Queens, and beyond.";
+  "Discover curated NYC events, free things to do, live music, comedy, art, food, and fitness across Brooklyn, Manhattan, Queens, and beyond.";
 export const DEFAULT_OG_IMAGE = "/opengraph-image";
 export const DEFAULT_TWITTER_IMAGE = "/twitter-image";
 

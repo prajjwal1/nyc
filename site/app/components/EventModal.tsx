@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { eventToSavedStub, trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, markEventOpened, getAttendedState, markAttended } from "../lib/interests";
+import { eventToSavedStub, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, markEventOpened, getAttendedState, markAttended } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
-import CommunityChips from "./CommunityChips";
+import OrganizerLink from "./OrganizerLink";
 
 interface Props {
   event: Event | null;
@@ -213,7 +213,10 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
           <h2 className="text-xl font-semibold text-gray-900 leading-tight">
             {event.title}
           </h2>
-          <CommunityChips ids={event.communityIds || (event.primaryCommunityId ? [event.primaryCommunityId] : [])} />
+          <OrganizerLink
+            event={event}
+            className="inline-flex max-w-full items-center gap-1 text-sm text-[#52645e] hover:text-[#173c35] hover:underline focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#173c35] focus:outline-none"
+          />
 
           {/* Location */}
           {event.location.name && (
@@ -262,22 +265,10 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
 
           {/* Source attribution */}
           <div className="flex items-center gap-2 text-xs text-gray-500 pt-2 border-t border-gray-100">
-            {event.instagramAccount ? (
-              <button
-                onClick={() => {
-                  trackAccountClick(event.instagramAccount);
-                  onAccountClick(event.instagramAccount!);
-                  onClose();
-                }}
-                className="font-medium text-gray-700 hover:text-gray-900 hover:underline"
-              >
-                @{event.instagramAccount}
-              </button>
-            ) : (
-              <span className="font-medium text-gray-700">
-                {SOURCE_LABELS[event.source] || event.source}
-              </span>
-            )}
+            <span>Listed on</span>
+            <span className="font-medium text-gray-700">
+              {SOURCE_LABELS[event.source] || event.source}
+            </span>
             {event.accountVerified && (
               <span className="text-blue-500" title="Verified">✓</span>
             )}

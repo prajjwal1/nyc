@@ -7,7 +7,7 @@ import { Event, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
 import { eventToSavedStub, trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, isEventOpened, getAttendedState } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 import { eventPath } from "../lib/seo";
-import CommunityChips from "./CommunityChips";
+import OrganizerLink from "./OrganizerLink";
 
 interface EventCardProps {
   event: Event;
@@ -216,7 +216,10 @@ function EventCardBody({
               </span>
             )}
           </h3>
-          <CommunityChips ids={event.communityIds || (event.primaryCommunityId ? [event.primaryCommunityId] : [])} />
+          <OrganizerLink
+            event={event}
+            className="relative z-10 mt-1 inline-flex max-w-full items-center gap-1 truncate text-[11px] text-[#52645e] hover:text-[#173c35] hover:underline focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#173c35] focus:outline-none"
+          />
 
           <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500">
             {/* U1: relative-day scent for hero cards (which drop the date). */}
@@ -355,22 +358,7 @@ function EventCardBody({
                   ❤ {formatCount(event.likes)}
                 </span>
               ) : null}
-              {!convictionLabel && filterableAccount ? (
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    trackAccountClick(filterableAccount);
-                    onAccountClick?.(filterableAccount);
-                  }}
-                  className="truncate rounded-sm hover:text-gray-700 hover:underline focus-visible:ring-2 focus-visible:ring-sky-500 focus:outline-none"
-                  title={`See more from @${filterableAccount}`}
-                >
-                  @{filterableAccount}
-                </button>
-              ) : (
-                <span className="truncate">{SOURCE_LABELS[event.source] || event.source}</span>
-              )}
+              <span className="truncate">{SOURCE_LABELS[event.source] || event.source}</span>
               {event.accountVerified && (
                 <span className="text-blue-500" title="Verified">✓</span>
               )}
@@ -439,6 +427,10 @@ function CompactCard({ event, timeStr }: { event: Event; timeStr: string | null 
         )}
         <div className="flex-1 min-w-0">
           <h3 className="font-semibold text-gray-900 line-clamp-2">{event.title}</h3>
+          <OrganizerLink
+            event={event}
+            className="mt-1 inline-flex max-w-full items-center gap-1 truncate text-xs text-[#52645e] hover:text-[#173c35] hover:underline"
+          />
           <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500">
             {timeStr && (
               <span className="flex items-center gap-1">

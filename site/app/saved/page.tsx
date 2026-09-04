@@ -2,24 +2,21 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { format } from "date-fns";
-import CommunityCard from "../components/CommunityCard";
 import EventCard from "../components/EventCard";
 import Footer from "../components/Footer";
-import { loadCommunities, followedCommunityIds } from "../lib/communities";
 import { loadEvents } from "../lib/events";
 import { isSavedLocal, loadSavedStubs, savedStubToEvent } from "../lib/interests";
-import type { Community, Event } from "../lib/types";
+import type { Event } from "../lib/types";
 import EventModal from "../components/EventModal";
 
 export default function SavedPage() {
   const [events, setEvents] = useState<Event[]>([]);
-  const [communities, setCommunities] = useState<Community[]>([]);
   const [loading, setLoading] = useState(true);
   const [openEvent, setOpenEvent] = useState<Event | null>(null);
 
   useEffect(() => {
-    Promise.all([loadEvents(), loadCommunities()])
-      .then(([eventData, communityData]) => {
+    loadEvents()
+      .then((eventData) => {
         const savedStubs = loadSavedStubs();
         // Prefer live event data, but keep stub data for past saves that fell out of events.json
         const liveMap = new Map(eventData.events.map((e) => [e.id, e]));
@@ -29,8 +26,6 @@ export default function SavedPage() {
           if (isSavedLocal(ev.id) && !merged.find((m) => m.id === ev.id)) merged.push(ev);
         }
         setEvents(merged);
-        const followed = new Set(followedCommunityIds());
-        setCommunities((communityData.communities || []).filter((c) => followed.has(c.id)));
       })
       .finally(() => setLoading(false));
   }, []);
@@ -52,7 +47,7 @@ export default function SavedPage() {
           <p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#bd4f34]">Your city — private to this browser</p>
           <h1 className="font-editorial mt-3 text-5xl font-bold tracking-[-0.03em] text-[#173c35] sm:text-6xl">Saved for later.</h1>
           <p className="mt-4 max-w-xl text-[15px] leading-6 text-[#5d6964]">
-            Communities you follow and events you starred. No account, no backend — just localStorage.
+            Events you starred, kept privately in this browser.
           </p>
 
           {loading ? (
@@ -64,27 +59,6 @@ export default function SavedPage() {
           ) : (
             <>
               <section className="mt-12">
-                <div className="flex items-baseline justify-between">
-                  <h2 className="font-editorial text-2xl font-bold tracking-[-0.01em] text-[#173c35] sm:text-3xl">
-                    Followed communities
-                  </h2>
-                  <span className="text-xs text-[#8b918e]">{communities.length}</span>
-                </div>
-                {communities.length ? (
-                  <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                    {communities.map((c) => (
-                      <CommunityCard key={c.id} community={c} />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="mt-4 rounded-[1.25rem] border border-dashed border-[#d7d5cd] bg-[#fffef9] p-6">
-                    <p className="text-sm font-medium text-[#173c35]">No follows yet.</p>
-                    <p className="mt-1 text-sm text-[#66716c]">Follow communities to build a personal rhythm across the city.</p>
-                  </div>
-                )}
-              </section>
-
-              <section className="mt-14">
                 <div className="flex items-baseline justify-between">
                   <h2 className="font-editorial text-2xl font-bold tracking-[-0.01em] text-[#173c35] sm:text-3xl">
                     Saved events · upcoming
@@ -135,7 +109,7 @@ export default function SavedPage() {
           )}
         </div>
       </main>
-      <Footer totalEvents={events.length} />
+      <Footer />
       <EventModal event={openEvent} onClose={() => setOpenEvent(null)} onAccountClick={() => {}} relatedEvents={events} onSelectEvent={setOpenEvent} />
     </div>
   );

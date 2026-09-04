@@ -5,9 +5,6 @@ import { usePathname } from "next/navigation";
 
 const links: Array<[string, string]> = [
   ["/", "Calendar"],
-  ["/events", "Events"],
-  ["/communities", "Communities"],
-  ["/saved", "Saved"],
 ];
 
 export default function SiteNav() {

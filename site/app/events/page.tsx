@@ -233,7 +233,7 @@ export default function AllEventsPage() {
         )}
       </main>
 
-      <Footer lastUpdated={lastUpdated} totalEvents={totalEvents} />
+      <Footer />
 
       <EventModal event={openEvent} onClose={() => setOpenEvent(null)} onAccountClick={setAccountFilter} relatedEvents={events} onSelectEvent={setOpenEvent} />
     </div>

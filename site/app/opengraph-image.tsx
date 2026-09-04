@@ -28,7 +28,7 @@ export default function OpenGraphImage() {
             What&apos;s happening in NYC
           </div>
           <div style={{ color: "#52645e", display: "flex", fontSize: 34, lineHeight: 1.35, marginTop: 30 }}>
-            Events, communities, and genuinely good things to do across the city.
+            Genuinely good things to do across the city.
           </div>
         </div>
       </div>
