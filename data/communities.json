@@ -773,10 +773,10 @@
       "similarCommunityIds": [
         "com_99343fce4c7a",
         "com_bad972d799e8",
+        "com_c58670960684",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
-        "com_b766b6de77ba",
-        "com_cb019f4e9752"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -1496,16 +1496,19 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art in upper east side. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, east village.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side, east village. Based on 7 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
-        "art"
+        "art",
+        "other"
       ],
       "tags": [
-        "art"
+        "art",
+        "other"
       ],
       "neighborhoods": [
-        "upper east side"
+        "upper east side",
+        "east village"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/uploads/r8/106375f7-a01e-47f9-b47a-bf236ee56979.jpg",
@@ -1520,7 +1523,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-02",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 6
       },
       "schedule": {
@@ -1531,10 +1534,11 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
-        "c31ff076da1ce37d"
+        "c31ff076da1ce37d",
+        "fa548bf55855972b"
       ],
       "sourceAttributions": [
         "luma"
@@ -1543,7 +1547,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1553,12 +1557,12 @@
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
+        "com_d2d455d2d6c9",
+        "com_99343fce4c7a",
         "com_318c39363fe6",
         "com_3837f308cd75",
-        "com_5582e2e97f1a",
-        "com_55ca36db453a",
         "com_b736e77bdf93",
-        "com_02ba15552329"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2757,8 +2761,8 @@
         "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_f23f8820878b",
-        "com_a1e1c13a75f0",
-        "com_3837f308cd75"
+        "com_c58670960684",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -49983,7 +49987,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-05T19:09:24.597880+00:00",
+  "lastUpdated": "2026-09-05T20:23:05.304058+00:00",
   "version": 1,
   "schemaVersion": 1
 }
