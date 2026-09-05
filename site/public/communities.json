@@ -535,21 +535,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on music, movies, art in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on music, movies, art in brooklyn. Based on 14 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn. Based on 14 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
+        "comedy",
         "music",
         "movies",
-        "art",
-        "comedy"
+        "art"
       ],
       "tags": [
         "other",
+        "comedy",
         "music",
         "movies",
-        "art",
-        "comedy"
+        "art"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -567,8 +567,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-05",
-        "upcomingEventCount": 7,
-        "eventCount90d": 21
+        "upcomingEventCount": 8,
+        "eventCount90d": 22
       },
       "schedule": {
         "cadence": "weekly",
@@ -576,12 +576,13 @@
           "Friday",
           "Saturday"
         ],
-        "typicalTime": "18:00",
+        "typicalTime": "19:00",
         "confidence": 1.0,
         "sampleSize": 14
       },
       "upcomingEventIds": [
         "4d7edddd7f586052",
+        "f66e9e7f49082e21",
         "2bc4412525e77a70",
         "350db2d2163777e4",
         "be41f5829d1c45a3",
@@ -1033,7 +1034,7 @@
       "name": "St Mazie",
       "kind": "recurring_series",
       "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 11 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 12 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "music",
         "other"
@@ -1058,7 +1059,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-05",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 11,
         "eventCount90d": 10
       },
       "schedule": {
@@ -1069,7 +1070,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "f297b45539868e17",
@@ -1079,7 +1080,10 @@
         "185ad881962c0ba3",
         "f845dfb980fcee6d",
         "d5edc5aeaf90b889",
-        "e5ed00bc0f9356ac"
+        "e5ed00bc0f9356ac",
+        "fac20aa1bd807c50",
+        "ceee723052bdee49",
+        "de95a368c4424863"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1088,7 +1092,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -49979,7 +49983,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-05T05:44:01.008537+00:00",
+  "lastUpdated": "2026-09-05T08:29:33.702038+00:00",
   "version": 1,
   "schemaVersion": 1
 }
