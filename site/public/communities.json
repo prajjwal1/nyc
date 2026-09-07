@@ -77,9 +77,9 @@
         "com_4a9490cb3534",
         "com_1466f20a9300",
         "com_3837f308cd75",
+        "com_a1e1c13a75f0",
         "com_d2d455d2d6c9",
-        "com_55ca36db453a",
-        "com_a1e1c13a75f0"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -306,29 +306,33 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
+        "com_a1e1c13a75f0",
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_cb019f4e9752",
-        "com_b766b6de77ba"
+        "com_cb019f4e9752"
       ]
     },
     {
       "id": "com_a1e1c13a75f0",
       "slug": "caveat-3a75f0",
       "name": "Caveat",
-      "kind": "recurring_series",
-      "tagline": "Caveat is a recurring event series centered on games, music in manhattan.",
-      "description": "Caveat is a recurring event series centered on games, music in manhattan. Based on 11 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "kind": "community_space",
+      "tagline": "Caveat is a community space centered on games, music, books in manhattan.",
+      "description": "Caveat is a community space centered on games, music, books in manhattan. Based on 12 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "other",
         "games",
-        "music"
+        "music",
+        "books",
+        "parties"
       ],
       "tags": [
         "other",
         "games",
-        "music"
+        "music",
+        "books",
+        "parties"
       ],
       "neighborhoods": [
         "manhattan"
@@ -337,8 +341,8 @@
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190586599%2F207096185123%2F1%2Foriginal.20260808-004944?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C1080%2C540&s=106f4082acf6f1c077f948dcd91bf1fa",
       "links": [
         {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
+          "type": "bookclubbar",
+          "label": "View on Bookclubbar",
           "url": "https://eventbrite.com/o/13580085802"
         }
       ],
@@ -346,7 +350,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-07",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 11
       },
       "schedule": {
@@ -357,22 +361,23 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "d1648407544430dd",
         "d4b44d19c80b5721",
         "273aaf64b7344d79",
-        "08baf04966c824b2"
+        "08baf04966c824b2",
+        "9682b2057ce75c9a"
       ],
       "sourceAttributions": [
-        "eventbrite"
+        "bookclubbar"
       ],
       "lastVerifiedAt": "2026-09-07",
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -381,12 +386,12 @@
         "eventbrite:13580085802"
       ],
       "similarCommunityIds": [
-        "com_9fed174eeff3",
-        "com_99343fce4c7a",
-        "com_1466f20a9300",
+        "com_4a9490cb3534",
         "com_4c3ca28533f5",
+        "com_9fed174eeff3",
         "com_e9748c1176c1",
-        "com_bad972d799e8"
+        "com_99343fce4c7a",
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -784,8 +789,8 @@
         "com_99343fce4c7a",
         "com_e9748c1176c1",
         "com_f171cd222ca5",
-        "com_4a9490cb3534",
-        "com_4e69412cb0a5"
+        "com_a1e1c13a75f0",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -953,8 +958,8 @@
         "com_e9748c1176c1",
         "com_bad972d799e8",
         "com_d2d455d2d6c9",
-        "com_99343fce4c7a",
-        "com_a1e1c13a75f0"
+        "com_a1e1c13a75f0",
+        "com_99343fce4c7a"
       ]
     },
     {
@@ -1112,8 +1117,8 @@
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_cb019f4e9752",
-        "com_a1e1c13a75f0",
-        "com_d8a5203885a9"
+        "com_d8a5203885a9",
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -1194,8 +1199,8 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_d2d455d2d6c9",
-        "com_99343fce4c7a",
         "com_a1e1c13a75f0",
+        "com_99343fce4c7a",
         "com_9fed174eeff3",
         "com_5582e2e97f1a"
       ]
@@ -1445,7 +1450,7 @@
       ],
       "neighborhoods": [],
       "homeVenue": "Accent Sisters \u91cd\u97f3\u793e",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/gallery-images/i7/ebede73c-2afc-4013-ade9-43dbfada487d.png",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/a5/37c81e36-9594-4312-b91a-7c3c5df16ab1.jpg",
       "links": [
         {
           "type": "luma",
@@ -1457,7 +1462,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 1,
         "eventCount90d": 0
       },
       "schedule": {
@@ -1471,7 +1476,6 @@
         "sampleSize": 2
       },
       "upcomingEventIds": [
-        "c55cf1d8c1deae71",
         "bd7c04d495b46c8c"
       ],
       "sourceAttributions": [
@@ -1641,8 +1645,8 @@
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
         "com_d2d455d2d6c9",
-        "com_a1e1c13a75f0",
-        "com_cdd5daa67222"
+        "com_cdd5daa67222",
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -1712,12 +1716,12 @@
         "luma:cal-krxxlcjykkduk3v"
       ],
       "similarCommunityIds": [
-        "com_a1e1c13a75f0",
         "com_bad972d799e8",
         "com_d2d455d2d6c9",
         "com_4c3ca28533f5",
         "com_9fed174eeff3",
-        "com_e9748c1176c1"
+        "com_e9748c1176c1",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -1932,8 +1936,8 @@
         "luma:kanso"
       ],
       "similarCommunityIds": [
-        "com_a1e1c13a75f0",
         "com_4c3ca28533f5",
+        "com_a1e1c13a75f0",
         "com_99343fce4c7a",
         "com_e9748c1176c1",
         "com_1466f20a9300",
@@ -2022,9 +2026,9 @@
         "com_55ca36db453a",
         "com_4c3ca28533f5",
         "com_bad972d799e8",
+        "com_a1e1c13a75f0",
         "com_4a9490cb3534",
-        "com_f171cd222ca5",
-        "com_4e69412cb0a5"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -2161,9 +2165,9 @@
         "com_1466f20a9300",
         "com_218b97d674a6",
         "com_02ba15552329",
-        "com_a1e1c13a75f0",
         "com_d2ccb56c071d",
-        "com_318c39363fe6"
+        "com_318c39363fe6",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -2205,7 +2209,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-02",
-        "upcomingEventCount": 19,
+        "upcomingEventCount": 18,
         "eventCount90d": 15
       },
       "schedule": {
@@ -2223,14 +2227,14 @@
         "00640e38514f6c6e",
         "0058fa2b3996bab9",
         "f3acc46406c2c0aa",
-        "9682b2057ce75c9a",
         "f0c75e46ccd344a7",
         "dc03883e6ce1f304",
         "160b4a6c563a3c13",
         "e151d8cb9656fefa",
         "456246204da9a2d0",
         "bddde94e7097822f",
-        "8b73693325e66f63"
+        "8b73693325e66f63",
+        "7e070e0cafd5f7a3"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -2254,11 +2258,11 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
+        "com_a1e1c13a75f0",
         "com_4a9490cb3534",
         "com_f171cd222ca5",
         "com_cdd5daa67222",
-        "com_d2d455d2d6c9",
-        "com_ed8d42fb031d"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -49993,7 +49997,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-07T06:04:27.236965+00:00",
+  "lastUpdated": "2026-09-07T10:12:52.634459+00:00",
   "version": 1,
   "schemaVersion": 1
 }
