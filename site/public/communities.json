@@ -1,6 +1,88 @@
 {
   "communities": [
     {
+      "id": "com_b766b6de77ba",
+      "slug": "elsewhere-de77ba",
+      "name": "Elsewhere",
+      "kind": "recurring_series",
+      "tagline": "Elsewhere is a recurring event series centered on music, books, special in bushwick.",
+      "description": "Elsewhere is a recurring event series centered on music, books, special in bushwick. Based on 29 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "categories": [
+        "music",
+        "other",
+        "books",
+        "special"
+      ],
+      "tags": [
+        "music",
+        "other",
+        "books",
+        "special"
+      ],
+      "neighborhoods": [
+        "bushwick"
+      ],
+      "homeVenue": "Elsewhere",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1170789468%2F2569518370411%2F1%2Foriginal.20251112-153342?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=1485f14ce7b076cc8b347a32175e4d8c",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://www.eventbrite.com/o/elsewhere-105655500371"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-09-06",
+        "upcomingEventCount": 7,
+        "eventCount90d": 41
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Saturday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 1.0,
+        "sampleSize": 29
+      },
+      "upcomingEventIds": [
+        "526c71bd6e0bfb6d",
+        "af04a6202ff7b12e",
+        "6a3af4e5649686cb",
+        "a541531f7c1e6fb9",
+        "45521f45d5f45dcc",
+        "ff487f32295021c0",
+        "c65ab39ef5533d68"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-09-07",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 29,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:105655500371",
+        "url:https://www.eventbrite.com/o/elsewhere-105655500371"
+      ],
+      "similarCommunityIds": [
+        "com_4a9490cb3534",
+        "com_1466f20a9300",
+        "com_3837f308cd75",
+        "com_d2d455d2d6c9",
+        "com_55ca36db453a",
+        "com_a1e1c13a75f0"
+      ]
+    },
+    {
       "id": "com_a393a0e8b1e0",
       "slug": "the-harlem-swing-dance-society-e8b1e0",
       "name": "The Harlem Swing Dance Society",
@@ -64,12 +146,12 @@
         "eventbrite:10662501681"
       ],
       "similarCommunityIds": [
+        "com_b766b6de77ba",
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_f23f8820878b",
         "com_ed8d42fb031d",
-        "com_218b97d674a6",
-        "com_02ba15552329"
+        "com_218b97d674a6"
       ]
     },
     {
@@ -92,7 +174,7 @@
         "east village"
       ],
       "homeVenue": "La Fonda NYC",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1187523918%2F2878666947471%2F1%2Foriginal.20260623-233023?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=b6d771c1211f97bef21ab27a8397c2f7",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192674351%2F2878666947471%2F1%2Foriginal.20260904-122255?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=0fce5893fa268a528074eeb99c92514c",
       "links": [
         {
           "type": "eventbrite",
@@ -142,9 +224,9 @@
         "com_a1e1c13a75f0",
         "com_c1410c07c4dd",
         "com_d2d455d2d6c9",
+        "com_f171cd222ca5",
         "com_318c39363fe6",
-        "com_4c3ca28533f5",
-        "com_99343fce4c7a"
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -152,14 +234,18 @@
       "slug": "the-ripped-bodice-bk-cb3534",
       "name": "The Ripped Bodice BK",
       "kind": "recurring_series",
-      "tagline": "The Ripped Bodice BK is a recurring event series centered on music in brooklyn.",
-      "description": "The Ripped Bodice BK is a recurring event series centered on music in brooklyn. Based on 11 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "tagline": "The Ripped Bodice BK is a recurring event series centered on books, parties, music in brooklyn.",
+      "description": "The Ripped Bodice BK is a recurring event series centered on books, parties, music in brooklyn. Based on 13 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
         "other",
+        "books",
+        "parties",
         "music"
       ],
       "tags": [
         "other",
+        "books",
+        "parties",
         "music"
       ],
       "neighborhoods": [
@@ -178,27 +264,29 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-06",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 10,
         "eventCount90d": 3
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Thursday"
+          "Sunday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 13
       },
       "upcomingEventIds": [
         "b421ead084198fe7",
+        "99cb9eb3cedde822",
         "32657e397ce06f1b",
         "0497401f49f043c8",
         "2173917b8ef81aee",
         "5f98658f44483c0e",
         "93e5ece37e67131e",
         "a1dd014aa17effaf",
+        "7dfbc5a698b633e2",
         "d7aa30ab412a8f3b"
       ],
       "sourceAttributions": [
@@ -208,7 +296,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 13,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -218,11 +306,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
-        "com_cb019f4e9752",
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_359bbb5a9a91"
+        "com_cb019f4e9752",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -231,12 +319,14 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on games, music in manhattan.",
-      "description": "Caveat is a recurring event series centered on games, music in manhattan. Based on 9 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "Caveat is a recurring event series centered on games, music in manhattan. Based on 11 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
+        "other",
         "games",
         "music"
       ],
       "tags": [
+        "other",
         "games",
         "music"
       ],
@@ -256,7 +346,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-07",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 4,
         "eventCount90d": 11
       },
       "schedule": {
@@ -267,11 +357,13 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 11
       },
       "upcomingEventIds": [
         "d1648407544430dd",
-        "d4b44d19c80b5721"
+        "d4b44d19c80b5721",
+        "273aaf64b7344d79",
+        "08baf04966c824b2"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -280,7 +372,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -290,11 +382,11 @@
       ],
       "similarCommunityIds": [
         "com_9fed174eeff3",
-        "com_ed8d42fb031d",
-        "com_b766b6de77ba",
-        "com_4c3ca28533f5",
         "com_99343fce4c7a",
-        "com_e9748c1176c1"
+        "com_1466f20a9300",
+        "com_4c3ca28533f5",
+        "com_e9748c1176c1",
+        "com_bad972d799e8"
       ]
     },
     {
@@ -372,13 +464,15 @@
       "slug": "union-hall-4e9752",
       "name": "Union Hall",
       "kind": "recurring_series",
-      "tagline": "Union Hall is a recurring event series in brooklyn.",
-      "description": "Union Hall is a recurring event series in brooklyn. Based on 8 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "tagline": "Union Hall is a recurring event series centered on comedy in brooklyn.",
+      "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 10 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
-        "other"
+        "other",
+        "comedy"
       ],
       "tags": [
-        "other"
+        "other",
+        "comedy"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -396,23 +490,26 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-05",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 6,
         "eventCount90d": 7
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Sunday"
+          "Friday"
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "beb2a5bc070c05cc",
         "fa6fa7b461e6343a",
-        "c419a55732e0752f"
+        "c419a55732e0752f",
+        "f9cd7c60cccfa8e8",
+        "58e9b6c33103ca29",
+        "9006f9bc67f47b18"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -421,7 +518,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -430,12 +527,12 @@
         "eventbrite:17899496497"
       ],
       "similarCommunityIds": [
-        "com_99343fce4c7a",
+        "com_b736e77bdf93",
         "com_1466f20a9300",
         "com_4a9490cb3534",
-        "com_359bbb5a9a91",
         "com_3837f308cd75",
-        "com_b736e77bdf93"
+        "com_d8a5203885a9",
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -515,8 +612,8 @@
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_1466f20a9300",
-        "com_4a9490cb3534",
         "com_cb019f4e9752",
+        "com_4a9490cb3534",
         "com_318c39363fe6"
       ]
     },
@@ -604,7 +701,7 @@
         "com_4a9490cb3534",
         "com_d8a5203885a9",
         "com_cb019f4e9752",
-        "com_c58670960684"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -685,8 +782,8 @@
         "com_99343fce4c7a",
         "com_e9748c1176c1",
         "com_f171cd222ca5",
-        "com_4e69412cb0a5",
-        "com_715c917d96c2"
+        "com_4a9490cb3534",
+        "com_4e69412cb0a5"
       ]
     },
     {
@@ -749,8 +846,8 @@
         "0d15e7a1487ea414",
         "b71974965fe2dec2",
         "90c758dac5bd2370",
-        "7eca02c791c27155",
         "bdceb25e90a2f1e5",
+        "7eca02c791c27155",
         "0d43431f99f016e6",
         "15a52252351548d9"
       ],
@@ -774,7 +871,7 @@
         "com_cdd5daa67222",
         "com_f23f8820878b",
         "com_c1410c07c4dd",
-        "com_5582e2e97f1a",
+        "com_4a9490cb3534",
         "com_b766b6de77ba"
       ]
     },
@@ -855,7 +952,7 @@
         "com_bad972d799e8",
         "com_d2d455d2d6c9",
         "com_99343fce4c7a",
-        "com_359bbb5a9a91"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -864,7 +961,7 @@
       "name": "Book Club for the Book Hoes",
       "kind": "club",
       "tagline": "Book Club for the Book Hoes is a community club centered on books in brooklyn, east village.",
-      "description": "Book Club for the Book Hoes is a community club centered on books in brooklyn, east village. Based on 11 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "Book Club for the Book Hoes is a community club centered on books in brooklyn, east village. Based on 12 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "books"
       ],
@@ -874,6 +971,7 @@
       "neighborhoods": [
         "brooklyn",
         "east village",
+        "manhattan",
         "carroll gardens"
       ],
       "homeVenue": "Spritzenhaus33",
@@ -889,7 +987,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-07",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 8
       },
       "schedule": {
@@ -900,12 +998,13 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "12bfa498d0a70fdd",
         "c786bd3bfa0d1716",
         "60ac3bea977da7f2",
+        "c657128690e0984f",
         "f6308459125e51d0",
         "3bdafea5d8f455c4",
         "309caf45f972f012"
@@ -917,7 +1016,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1007,11 +1106,11 @@
       ],
       "similarCommunityIds": [
         "com_4a9490cb3534",
-        "com_cb019f4e9752",
         "com_3837f308cd75",
         "com_b736e77bdf93",
-        "com_d8a5203885a9",
-        "com_359bbb5a9a91"
+        "com_cb019f4e9752",
+        "com_a1e1c13a75f0",
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -1093,9 +1192,9 @@
         "com_4c3ca28533f5",
         "com_d2d455d2d6c9",
         "com_99343fce4c7a",
+        "com_a1e1c13a75f0",
         "com_9fed174eeff3",
-        "com_5582e2e97f1a",
-        "com_eef1ca956dae"
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -1321,11 +1420,11 @@
       ],
       "similarCommunityIds": [
         "com_bad972d799e8",
-        "com_cb019f4e9752",
         "com_1466f20a9300",
-        "com_4a9490cb3534",
+        "com_cb019f4e9752",
         "com_4c3ca28533f5",
-        "com_99343fce4c7a"
+        "com_99343fce4c7a",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -1364,13 +1463,13 @@
           "Wednesday",
           "Friday"
         ],
-        "typicalTime": "17:00",
+        "typicalTime": "18:30",
         "confidence": 0.33,
         "sampleSize": 2
       },
       "upcomingEventIds": [
         "c55cf1d8c1deae71",
-        "b5dc18bb39d184b6"
+        "bd7c04d495b46c8c"
       ],
       "sourceAttributions": [
         "luma"
@@ -1463,11 +1562,11 @@
       ],
       "similarCommunityIds": [
         "com_99343fce4c7a",
-        "com_cb019f4e9752",
         "com_d2d455d2d6c9",
         "com_318c39363fe6",
         "com_3837f308cd75",
-        "com_b736e77bdf93"
+        "com_b736e77bdf93",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1538,8 +1637,8 @@
         "com_359bbb5a9a91",
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
-        "com_cb019f4e9752",
         "com_d2d455d2d6c9",
+        "com_a1e1c13a75f0",
         "com_cdd5daa67222"
       ]
     },
@@ -1610,7 +1709,7 @@
         "luma:cal-krxxlcjykkduk3v"
       ],
       "similarCommunityIds": [
-        "com_cb019f4e9752",
+        "com_a1e1c13a75f0",
         "com_bad972d799e8",
         "com_d2d455d2d6c9",
         "com_4c3ca28533f5",
@@ -1830,12 +1929,12 @@
         "luma:kanso"
       ],
       "similarCommunityIds": [
+        "com_a1e1c13a75f0",
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
-        "com_a1e1c13a75f0",
         "com_e9748c1176c1",
         "com_1466f20a9300",
-        "com_4a9490cb3534"
+        "com_bad972d799e8"
       ]
     },
     {
@@ -1920,9 +2019,9 @@
         "com_55ca36db453a",
         "com_4c3ca28533f5",
         "com_bad972d799e8",
-        "com_4e69412cb0a5",
-        "com_715c917d96c2",
-        "com_c1410c07c4dd"
+        "com_4a9490cb3534",
+        "com_f171cd222ca5",
+        "com_4e69412cb0a5"
       ]
     },
     {
@@ -2056,12 +2155,12 @@
         "partiful:o7edm3y5tr24cnnq3qay"
       ],
       "similarCommunityIds": [
-        "com_b766b6de77ba",
         "com_1466f20a9300",
         "com_218b97d674a6",
-        "com_4a9490cb3534",
+        "com_02ba15552329",
         "com_a1e1c13a75f0",
-        "com_02ba15552329"
+        "com_d2ccb56c071d",
+        "com_318c39363fe6"
       ]
     },
     {
@@ -2152,11 +2251,11 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
+        "com_4a9490cb3534",
         "com_f171cd222ca5",
         "com_cdd5daa67222",
         "com_d2d455d2d6c9",
-        "com_ed8d42fb031d",
-        "com_318c39363fe6"
+        "com_ed8d42fb031d"
       ]
     },
     {
@@ -2245,11 +2344,11 @@
       ],
       "similarCommunityIds": [
         "com_b736e77bdf93",
+        "com_4a9490cb3534",
         "com_f23f8820878b",
         "com_3837f308cd75",
         "com_1466f20a9300",
-        "com_4a9490cb3534",
-        "com_318c39363fe6"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -2486,11 +2585,11 @@
         "source:powerhousearena"
       ],
       "similarCommunityIds": [
+        "com_4a9490cb3534",
         "com_e9748c1176c1",
         "com_5582e2e97f1a",
         "com_1466f20a9300",
         "com_3837f308cd75",
-        "com_4a9490cb3534",
         "com_b736e77bdf93"
       ]
     },
@@ -2500,7 +2599,7 @@
       "name": "New York Comedy Club on 4th Street",
       "kind": "club",
       "tagline": "New York Comedy Club on 4th Street is a community club centered on comedy, special, music in east village, upper west side.",
-      "description": "New York Comedy Club on 4th Street is a community club centered on comedy, special, music in east village, upper west side. Based on 31 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "New York Comedy Club on 4th Street is a community club centered on comedy, special, music in east village, upper west side. Based on 33 observed event dates, it meets weekly on Thursday and Sunday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -2520,7 +2619,7 @@
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club Upper West Side",
-      "imageUrl": "/img/events/eggs-5-76c307b8-large-thumb.png",
+      "imageUrl": "/img/events/New-Jokes-Newbie-1072-x-680-px-Blue-1-1d1b1125-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -2532,32 +2631,32 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-07",
-        "upcomingEventCount": 33,
+        "upcomingEventCount": 36,
         "eventCount90d": 36
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Friday"
+          "Sunday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 31
+        "sampleSize": 33
       },
       "upcomingEventIds": [
-        "fea617e27838b441",
         "f9508ff672233564",
         "e42feb1bd57a5428",
         "bf30a3b906a84d4d",
         "ce211fc412881caf",
         "aff4a722b5e2d972",
+        "ba9199eec6152eb3",
+        "d698d8fc94fd40ba",
+        "0e3f8234376ffc84",
         "ea8119a0b1ec467d",
         "3ed868a7f0f9f7b1",
         "37dfc19851feb57a",
-        "98f9b02e95742d63",
-        "f063dc9a8818c258",
-        "21902f230ba24173"
+        "98f9b02e95742d63"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -2566,7 +2665,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 31,
+        "observedDateCount": 33,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2579,8 +2678,8 @@
         "com_d8a5203885a9",
         "com_55ca36db453a",
         "com_cdd5daa67222",
-        "com_3837f308cd75",
-        "com_b736e77bdf93"
+        "com_4a9490cb3534",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -2618,7 +2717,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-05",
-        "upcomingEventCount": 16,
+        "upcomingEventCount": 18,
         "eventCount90d": 19
       },
       "schedule": {
@@ -2633,17 +2732,17 @@
       },
       "upcomingEventIds": [
         "377b9882afb8d93b",
+        "6508b4d3c93f4982",
         "27d8397cf26a6587",
         "78ea2c75e740b627",
         "a59e51d19a6b7eb8",
         "a01aabef1a2bb973",
         "f1c6d58fc7d25728",
         "e6c6362954313545",
+        "152870700273b661",
         "72a800c9822a8549",
         "99767d1adde8bcf4",
-        "98335288f6d79dcf",
-        "1459f9232dc89bab",
-        "ce92a5729288a1db"
+        "98335288f6d79dcf"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -2666,77 +2765,7 @@
         "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_c58670960684",
-        "com_3837f308cd75"
-      ]
-    },
-    {
-      "id": "com_b766b6de77ba",
-      "slug": "elsewhere-de77ba",
-      "name": "Elsewhere",
-      "kind": "recurring_series",
-      "tagline": "Elsewhere is a recurring event series centered on music in bushwick.",
-      "description": "Elsewhere is a recurring event series centered on music in bushwick. Based on 25 observed event dates, it meets weekly on Thursday and Friday evenings.",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "bushwick"
-      ],
-      "homeVenue": "Elsewhere - The Hall",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1189078421%2F2576419391761%2F1%2Foriginal.20260717-154937?crop=focalpoint&fit=crop&w=940&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=d3f09af96bf4bceffdc4c5d04f2e9fe7",
-      "links": [
-        {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
-          "url": "https://www.eventbrite.com/o/elsewhere-105655500371"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-09-06",
-        "upcomingEventCount": 2,
-        "eventCount90d": 41
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Thursday",
-          "Friday"
-        ],
-        "typicalTime": "19:00",
-        "confidence": 1.0,
-        "sampleSize": 25
-      },
-      "upcomingEventIds": [
-        "ff487f32295021c0",
-        "c65ab39ef5533d68"
-      ],
-      "sourceAttributions": [
-        "eventbrite"
-      ],
-      "lastVerifiedAt": "2026-09-07",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 25,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "url:https://www.eventbrite.com/o/elsewhere-105655500371"
-      ],
-      "similarCommunityIds": [
-        "com_3b104adba072",
-        "com_1466f20a9300",
-        "com_4a9490cb3534",
-        "com_a1e1c13a75f0",
-        "com_55ca36db453a",
-        "com_318c39363fe6"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -49961,7 +49990,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-07T01:00:06.131962+00:00",
+  "lastUpdated": "2026-09-07T04:37:36.285394+00:00",
   "version": 1,
   "schemaVersion": 1
 }
