@@ -398,19 +398,21 @@
       "slug": "lululemon-williamsburg-552329",
       "name": "lululemon Williamsburg",
       "kind": "recurring_series",
-      "tagline": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg.",
-      "description": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg. Based on 7 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
+      "tagline": "lululemon Williamsburg is a recurring event series centered on fitness, wellness in williamsburg.",
+      "description": "lululemon Williamsburg is a recurring event series centered on fitness, wellness in williamsburg. Based on 8 observed event dates, it meets weekly on Thursday and Wednesday mornings.",
       "categories": [
-        "fitness"
+        "fitness",
+        "wellness"
       ],
       "tags": [
-        "fitness"
+        "fitness",
+        "wellness"
       ],
       "neighborhoods": [
         "williamsburg"
       ],
       "homeVenue": "97 N 6th St",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1176514672%2F222507638384%2F1%2Foriginal.20260203-000446?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.735&fp-y=0.387&s=4e86fc9a8cfd8901290c62bae57df3cb",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191470537%2F222507638384%2F1%2Foriginal.20260819-224339?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=5c1ed1aa70d59f96057c7f04ce803fbe",
       "links": [
         {
           "type": "eventbrite",
@@ -422,7 +424,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-03",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 5
       },
       "schedule": {
@@ -431,11 +433,12 @@
           "Thursday",
           "Wednesday"
         ],
-        "typicalTime": "18:00",
+        "typicalTime": "07:45",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
+        "17bb73313d7adb40",
         "0c37c44d8887ae2b",
         "79c57c9b701c3620"
       ],
@@ -446,7 +449,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -456,11 +459,11 @@
       ],
       "similarCommunityIds": [
         "com_9fed174eeff3",
+        "com_4c3ca28533f5",
         "com_3b104adba072",
         "com_1466f20a9300",
         "com_318c39363fe6",
-        "com_359bbb5a9a91",
-        "com_3837f308cd75"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -1937,8 +1940,8 @@
         "com_a1e1c13a75f0",
         "com_99343fce4c7a",
         "com_e9748c1176c1",
-        "com_1466f20a9300",
-        "com_bad972d799e8"
+        "com_02ba15552329",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -49992,7 +49995,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-08T17:30:24.428750+00:00",
+  "lastUpdated": "2026-09-08T17:38:27.683737+00:00",
   "version": 1,
   "schemaVersion": 1
 }
