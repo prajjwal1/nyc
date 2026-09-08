@@ -105,9 +105,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-213 — Run the self-improvement loop
 - created_at: 2026-09-03
 - source: user-explicit
-- status: open
+- status: addressed: 621348fa
 - body: “self improve”
 - "addressed" criterion: complete the documented feedback → worker → critic → apply → verify loop, ship at least one measurable North-Star improvement or a Critic-approved evidence-based deferral, and record the outcome in the journal without relaxing existing user rules.
+- resolution: Completed the feedback → worker → critic → apply → verify loop. Exact structured organizer provenance projects two additional followed-organizer matches; four explicit non-NYC Partiful rows and one late-night leak are removed on the next normalization. Added a quality-gated Eventbrite collection lane, removed false AI interest inference, passed 414 scraper tests and the production build, and retained fb-216 as open because network failure prevented honest source admission.
 
 ### fb-214 — Deploy the website after the work is complete
 - created_at: 2026-09-03

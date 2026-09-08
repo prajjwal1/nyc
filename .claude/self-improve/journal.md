@@ -303,3 +303,29 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Verification:** 387 tests pass (3 expected xfails); targeted regressions 294 pass (3 expected xfails); sanity_check has 0 critical failures; ESLint has 0 errors; local Next.js production build succeeds. Both the main push deployment and the post-refresh deployment completed successfully, with the latter generating 616 pages and passing its deployed-data timestamp check. The Playwright smoke suite could not launch Chromium because macOS denied its Mach-port registration before any product assertion ran.
 
 **Hypothesis for next round:** the next platform refresh should reveal whether taste-aligned organizer additions improve useful literary/outdoors/comedy depth without diluting conviction. Measure landed per-organizer clean yield and engagement, close fb-187 only if folk-dance clears its survivor/participation bar, and use fb-209 to keep bounded organizer slots adaptive rather than permanently accumulating inferred calendars.
+
+## 2026-09-08 2135 — run-id 2026-09-08-2135
+
+**Context:** User explicitly requested another self-improvement/source-expansion pass and deployment. The checked-in feed is 645 events but stale since 2026-09-04. Outbound HTTPS failed before every response, including the approved retry, so no candidate could honestly satisfy the live source-admission gate.
+
+**Shipped (commit 621348fa):**
+- ingestion-P1 (MODIFY): Eventbrite now schedules a bounded collection frontier (2 quick / 6 full) before broad search and admits only canonical-deduplicated calendars with at least five future events and at least 80% exclusion-clean, personal-topic-aligned rows. This activates already discovered collection inventory without adding an unverified URL.
+- ingestion-P2 (MODIFY): exact structured `organizerUrl` / `organizerRefs` matches are credited before shell filtering; snapshot replay recovers two followed-organizer rows without allowing fuzzy location matches to rescue empty shells.
+- ingestion-P3/P4 (APPROVE): explicit New York ZIPs outside NYC are rejected from Partiful, and the late-night text window grows from 200 to 300 characters. Snapshot replay identifies four non-NYC rows and one `9pm-4am` row.
+- dream-D1 (APPROVE-DREAM): removed false `ai` interest inferred from `anaiswinebk` / `likeafriendsaid.nyc` letter substrings and regenerated the profile.
+- UI U1/U2 (APPROVE deferral): no UI change; organizer/source fallback links already expose the right next click, while exact distance lacks trusted upstream data.
+
+**Rejected/withheld:** no Critic rejection. Four candidate calendars were withheld because network failure prevented the required live >=5 future / >=80% clean-and-on-taste proof. They remain a queue, not configured sources.
+
+**Deferred (backlog):** source expansion remains open as fb-216; dream-D2 added fb-217 for warning-only source-yield cliff detection. Deployment/freshness fb-214 remains open until the push, workflow, and public timestamp are verified.
+
+**Feedback gate:** CLOSED (newest user-explicit feedback is today and at least three open items existed). No calibration question. Captured today's source-expansion request as fb-216.
+
+**Metric delta (checked-in artifact unchanged):**
+- Follow-graph coverage: 50/50 (100.0%) -> 50/50 (100.0%).
+- Topic coverage: 9 represented tokens -> 8/8 truthful represented tokens after removing the false `ai` topic.
+- High-conviction ratio: 49/645 (7.6%) -> 49/645 (7.6%). Frozen-snapshot normalization projects 51/640 (8.0%), but that is not claimed as deployed until a scrape lands.
+
+**Verification:** 414 scraper tests pass (3 expected xfails); focused regressions 122 pass; `git diff --check` clean; Next.js 16.2.4 production build succeeds. Sanity retains one pre-existing critical (NYC Backgammon Club 0) and two warnings (Instagram share 5; Brooklyn Museum 0). No current-feed file changed, and freshness remains about 103 hours at verification time.
+
+**Hypothesis for next round:** run from a connected worker first. Re-probe the four queued book/run calendars, investigate the `nycforfree` 53 -> 0 and Backgammon cliffs, then measure the collection lane and structured-organizer recovery on a newly normalized feed before promoting any source.
