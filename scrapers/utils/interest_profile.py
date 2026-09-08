@@ -107,7 +107,6 @@ _USERNAME_TOPIC_HINTS = (
     "flea",  # shopping/exploration
     "dance",  # dance
     "tech",
-    "ai",
     "startup",
     "founder",  # (de-boost zone)
 )

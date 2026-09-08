@@ -1,4 +1,6 @@
 import json
+import asyncio
+from datetime import date, timedelta
 
 from scrapers.sources import eventbrite, generic, partiful
 from scrapers.utils import platform_discovery as discovery
@@ -231,6 +233,79 @@ def test_eventbrite_automatic_organizer_requires_yield_and_clean_mix(monkeypatch
     assert not eventbrite._organizer_calendar_is_useful(
         clean + [{"title": "AI Apocalypse", "excluded": True}, {"excluded": True}]
     )
+
+
+def _collection_event(index, *, category="books", event_date=None, blocked=False):
+    return {
+        "title": f"Collection event {index}",
+        "date": event_date or (date.today() + timedelta(days=7)).isoformat(),
+        "sourceUrl": f"https://eventbrite.com/e/collection-{index}",
+        "categories": [category],
+        "blocked": blocked,
+    }
+
+
+def test_eventbrite_collection_gate_rejects_past_only(monkeypatch):
+    monkeypatch.setattr(eventbrite, "is_blocked", lambda event: event.get("blocked", False))
+    monkeypatch.setattr(eventbrite, "is_user_excluded", lambda event: False)
+    rows = [_collection_event(i, event_date="2026-01-01") for i in range(6)]
+
+    assert eventbrite._accepted_collection_events(
+        rows, personal_topics={"books"}, today="2026-09-08"
+    ) == []
+
+
+def test_eventbrite_collection_gate_rejects_sub_eighty_percent_fit(monkeypatch):
+    monkeypatch.setattr(eventbrite, "is_blocked", lambda event: event.get("blocked", False))
+    monkeypatch.setattr(eventbrite, "is_user_excluded", lambda event: False)
+    rows = [_collection_event(i, category="books" if i < 3 else "music") for i in range(5)]
+
+    assert eventbrite._accepted_collection_events(
+        rows, personal_topics={"books"}, today="2026-09-08"
+    ) == []
+
+
+def test_eventbrite_collection_gate_canonicalizes_duplicate_urls(monkeypatch):
+    monkeypatch.setattr(eventbrite, "is_blocked", lambda event: False)
+    monkeypatch.setattr(eventbrite, "is_user_excluded", lambda event: False)
+    rows = [_collection_event(i) for i in range(5)]
+    duplicate = dict(rows[0], sourceUrl=rows[0]["sourceUrl"] + "?aff=duplicate")
+
+    accepted = eventbrite._accepted_collection_events(
+        rows + [duplicate], personal_topics={"books"}, today="2026-09-08"
+    )
+
+    assert len(accepted) == 5
+
+
+def test_eventbrite_scrape_schedules_collection_frontier(monkeypatch):
+    item = discovery.FrontierItem(
+        url="https://eventbrite.com/cc/existing-collection-123",
+        kind="collection",
+        lane="personal",
+        via="historical_probe",
+    )
+    monkeypatch.setenv("IG_SAVED_ONLY", "1")
+    monkeypatch.setattr(
+        eventbrite,
+        "platform_frontier",
+        lambda _platform, *, kinds, limit: [item] if kinds == {"collection"} else [],
+    )
+
+    async def fake_fetch(_url, attempts=3):
+        return "collection html"
+
+    monkeypatch.setattr(eventbrite, "_fetch_with_backoff", fake_fetch)
+    monkeypatch.setattr(eventbrite, "_search_plan", lambda: [])
+    monkeypatch.setattr(eventbrite, "_parse_search_page", lambda _html, _url: [
+        _collection_event(index) for index in range(5)
+    ])
+    monkeypatch.setattr(eventbrite, "ranked_topics", lambda: [("books", 4.0, "personal")])
+
+    events = asyncio.run(eventbrite.scrape())
+
+    assert len(events) == 5
+    assert all(event["discoveryVia"] == "historical_probe" for event in events)
 
 
 def test_eventbrite_search_parser_merges_server_organizer_id():

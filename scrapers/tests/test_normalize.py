@@ -18,12 +18,14 @@ from scrapers.normalize import (
     DEFAULT_MIN_SCORE,
     IG_CURATED_MIN_SCORE,
     _backfill_neighborhood_from_venue,
+    _enrich_structured_organizer_provenance,
     _infer_time_from_text,
     _dedup_fuzzy_title,
     _dedup_same_account_recurring,
     _is_distinct_schedule_source,
     _is_disabled_source_event,
     _is_shell_event,
+    _likely_past_midnight,
     _min_score_floor,
     _strip_outdoors_indoor_arena,
     deduplicate,
@@ -54,6 +56,76 @@ def test_image_backed_eventbrite_organizer_event_is_not_a_shell():
         "imageUrl": "https://img.evbuc.com/event.jpg",
         "location": {"name": "Caveat", "address": "21 A Clinton St"},
     })
+
+
+class TestStructuredOrganizerProvenance:
+    @staticmethod
+    def _shell_event(**overrides):
+        event = {
+            "source": "luma",
+            "title": "Small Reading Group",
+            "description": "",
+            "imageUrl": "",
+            "location": {"name": "", "address": ""},
+            "date": "2026-09-12",
+            "sourceUrl": "https://luma.com/event123",
+        }
+        event.update(overrides)
+        return event
+
+    def test_exact_organizer_ref_handle_survives_shell_filter(self, monkeypatch):
+        monkeypatch.setattr(normalize, "_user_following_normalized", lambda: {"litclub.nyc", "litclubnyc"})
+        monkeypatch.setattr(normalize, "_load_account_quality_map", lambda: {})
+        event = self._shell_event(organizerRefs=[{"handle": "litclub.nyc", "role": "host"}])
+
+        _enrich_structured_organizer_provenance([event])
+
+        assert event["account"] == "litclub.nyc"
+        assert event["userFollowing"] is True
+        assert not _is_shell_event(event)
+
+    def test_exact_organizer_url_matches_suffix_normalized_follow(self, monkeypatch):
+        monkeypatch.setattr(normalize, "_user_following_normalized", lambda: {"philosophy"})
+        monkeypatch.setattr(normalize, "_load_account_quality_map", lambda: {})
+        event = self._shell_event(organizerUrl="https://luma.com/philosophy")
+
+        _enrich_structured_organizer_provenance([event])
+
+        assert event["account"] == "philosophy"
+        assert event["userFollowing"] is True
+
+    def test_excluded_follow_is_not_enriched(self, monkeypatch):
+        monkeypatch.setattr(normalize, "_load_user_following_set", lambda: {"houseofyesnyc"})
+        monkeypatch.setattr(normalize, "_load_user_excluded_accounts", lambda: {"houseofyesnyc"})
+        event = self._shell_event(organizerRefs=[{"handle": "houseofyesnyc"}])
+
+        _enrich_structured_organizer_provenance([event])
+
+        assert not event.get("userFollowing")
+        assert _is_shell_event(event)
+
+    def test_unrelated_cohost_and_fuzzy_location_do_not_rescue_shell(self, monkeypatch):
+        monkeypatch.setattr(normalize, "_user_following_normalized", lambda: {"litclub.nyc", "litclubnyc"})
+        monkeypatch.setattr(normalize, "_load_account_quality_map", lambda: {})
+        event = self._shell_event(
+            organizerRefs=[{"handle": "unrelatedclub", "role": "cohost"}],
+            location={"name": "Lit Club NYC", "address": ""},
+        )
+
+        _enrich_structured_organizer_provenance([event])
+
+        assert not event.get("userFollowing")
+        assert _is_shell_event(event)
+
+
+def test_late_night_marker_between_200_and_300_description_chars_is_caught():
+    event = {
+        "title": "Weekend Dance",
+        "description": "A" * 230 + " Doors at 9pm, dancing until 4am.",
+        "startTime": "21:00",
+        "endTime": None,
+    }
+    assert _likely_past_midnight(event)
 
 # ---------------------------------------------------------------------------
 # Curated-source survival — regression guard for the lu.ma/philosophy bug:

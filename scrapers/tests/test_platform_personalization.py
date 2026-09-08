@@ -5,6 +5,12 @@ from scrapers.normalize import _is_distinct_schedule_source
 from scrapers.instagram_browser_worker import (
     _account_plan, _caption_from_og, _merge_snapshot_posts, _sanitize_posts,
 )
+from scrapers.utils.interest_profile import _username_topics
+
+
+def test_usernames_do_not_infer_ai_interest_from_letter_substrings():
+    assert "ai" not in _username_topics("anaiswinebk")
+    assert "ai" not in _username_topics("likeafriendsaid.nyc")
 
 
 def test_luma_listing_uses_canonical_url_and_organizer():

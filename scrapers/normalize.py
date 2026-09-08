@@ -1186,11 +1186,11 @@ def _likely_past_midnight(event: dict) -> bool:
         except Exception:
             pass
 
-    # Text signals — limit to title + FIRST 200 CHARS of description so
+    # Text signals — limit to title + FIRST 300 CHARS of description so
     # we don't false-match phrases buried deep in long descriptions
     # (e.g., "open from 11pm to 1am" mentioned as venue trivia).
     text = (
-        event.get("title", "") + " " + (event.get("description", "") or "")[:200]
+        event.get("title", "") + " " + (event.get("description", "") or "")[:300]
     ).lower()
     overnight_patterns = [
         r"\b(?:1|2|3|4|5)\s*am\b",  # "1am", "2 am" etc.
@@ -1473,6 +1473,55 @@ def _apply_quality_for(ev: dict, handle: str, quality: dict) -> None:
         ev["accountPostsSeen"] = posts
 
 
+def _enrich_structured_organizer_provenance(events: list[dict]) -> None:
+    """Credit exact followed-organizer metadata before shell filtering.
+
+    This deliberately inspects only structured organizer fields. The broader
+    source/organizer/location fuzzy enrichment remains later in the pipeline so
+    it cannot rescue otherwise empty shell rows.
+    """
+    following = _user_following_normalized()
+    if not following:
+        return
+    quality = _load_account_quality_map()
+    matched = 0
+    for ev in events:
+        if ev.get("instagramAccount"):
+            continue
+        candidates: list[tuple[str, str]] = []
+        organizer_url = (ev.get("organizerUrl") or "").strip()
+        if organizer_url:
+            candidates.append((organizer_url, ""))
+        for ref in ev.get("organizerRefs") or []:
+            if not isinstance(ref, dict):
+                continue
+            preferred_handle = (ref.get("handle") or "").strip()
+            for field in ("handle", "url", "name"):
+                value = (ref.get(field) or "").strip()
+                if value:
+                    candidates.append((value, preferred_handle))
+
+        for raw_value, preferred_handle in candidates:
+            handle = _extract_handle_from_url(raw_value) or raw_value
+            match = next(
+                (candidate for candidate in _handle_candidates(handle) if candidate in following),
+                None,
+            )
+            if not match:
+                continue
+            if not ev.get("account"):
+                ev["account"] = (preferred_handle or handle) if " " not in handle else match
+            ev["userFollowing"] = True
+            ev["_structuredFollowingMatch"] = True
+            _apply_quality_for(ev, match, quality)
+            matched += 1
+            break
+    if matched:
+        print(
+            f"[normalize] Enriched {matched} events with userFollowing via structured organizer metadata"
+        )
+
+
 def _enrich_provenance_from_url(events: list[dict]) -> None:
     """Set `account` + `userFollowing` on non-IG events whose sourceUrl
     encodes a curator handle that the user follows on IG. The audit at
@@ -1723,7 +1772,7 @@ def _is_shell_event(event: dict) -> bool:
     (litclub.nyc, Lululemon, etc.) are always kept regardless — the user
     has explicitly signaled these are high-priority.
     """
-    if event.get("userSaved") or event.get("userTagged"):
+    if event.get("userSaved") or event.get("userTagged") or event.get("_structuredFollowingMatch"):
         return False
     # User-curated hosts bypass the aggregator-style filters. A litclub
     # luma event with no description still belongs in the feed because
@@ -2052,6 +2101,10 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
     except Exception as exc:
         print(f"[normalize] user-exclusion filter failed: {exc}")
 
+    # Exact structured organizer handles/URLs are safe enough to credit before
+    # shell filtering. Keep looser URL/name/location enrichment later.
+    _enrich_structured_organizer_provenance(events)
+
     # Drop "shell" events — no description AND no image AND no location.
     # These are typically placeholder rows from listing scrapes that didn't
     # extract any useful detail. They waste rank slots without informing.
@@ -2062,6 +2115,8 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
         print(
             f"[normalize] Dropped {shells} shell events (no description/image/location)"
         )
+    for ev in events:
+        ev.pop("_structuredFollowingMatch", None)
 
     # Drop events likely to run past midnight — user explicitly excluded
     # these. Not appropriate for the meet-people-at-events use case.

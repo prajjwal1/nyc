@@ -436,6 +436,16 @@ def _parse_event_obj(event: dict, hosts: list[dict] | None = None):
         return "non-nyc"
     if re.search(r"\b(?:edison|hoboken|jersey city|newark|yonkers|white plains)\b", location_blob):
         return "non-nyc"
+    ny_zip = re.search(r"\bny\s+(\d{5})(?:-\d{4})?\b", location_blob, re.I)
+    if ny_zip:
+        zip_code = int(ny_zip.group(1))
+        is_nyc_zip = (
+            10000 <= zip_code <= 10499
+            or zip_code in {11004, 11005}
+            or 11100 <= zip_code <= 11699
+        )
+        if not is_nyc_zip:
+            return "non-nyc"
 
     # Guest counts → description enrichment.
     description = event.get("description", "") or ""

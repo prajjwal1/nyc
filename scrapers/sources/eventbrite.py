@@ -2,7 +2,9 @@ import json
 import re
 import asyncio
 import os
+from datetime import datetime
 from urllib.parse import urlsplit, urlunsplit
+from zoneinfo import ZoneInfo
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
@@ -143,6 +145,31 @@ async def scrape() -> list[dict]:
         except Exception as exc:
             print(f"[eventbrite-organizer] Failed {item.url}: {exc}")
 
+    # Eventbrite collections are a distinct high-signal surface. Discovery has
+    # long classified /cc/ URLs, but the adapter previously never scheduled
+    # them. Keep this lane small and admit only current, taste-aligned calendars.
+    collection_limit = 2 if quick else 6
+    known_collections = platform_frontier(
+        "eventbrite", kinds={"collection"}, limit=collection_limit
+    )
+    if known_collections:
+        print(f"[eventbrite] learned collection frontier: {len(known_collections)}")
+    for item in known_collections:
+        try:
+            html = await _fetch_with_backoff(item.url)
+            parsed = _parse_search_page(html, item.url)
+            accepted = _accepted_collection_events(parsed)
+            if not accepted:
+                print(f"[eventbrite-collection] Rejected {item.url}: {len(parsed)} events")
+                continue
+            for event in accepted:
+                event["discoveryLane"] = item.lane
+                event["discoveryVia"] = item.via
+            events.extend(accepted)
+            print(f"[eventbrite-collection] {item.url}: {len(accepted)} events")
+        except Exception as exc:
+            print(f"[eventbrite-collection] Failed {item.url}: {exc}")
+
     # Canonical event links harvested from followed accounts/newsletters are
     # higher-signal than anonymous search results and often never rank on a
     # broad Eventbrite page.
@@ -228,6 +255,44 @@ def _organizer_calendar_is_useful(
         for event in unique.values()
     )
     return clean_count >= min_yield and clean_count / len(unique) >= min_clean_ratio
+
+
+def _accepted_collection_events(
+    events: list[dict],
+    *,
+    personal_topics: set[str] | None = None,
+    today: str | None = None,
+    min_yield: int = 5,
+    min_clean_ratio: float = 0.8,
+) -> list[dict]:
+    """Return deduplicated future rows only for a useful, on-taste collection."""
+    if personal_topics is None:
+        personal_topics = {
+            topic for topic, _score, lane in ranked_topics() if lane == "personal"
+        }
+    today = today or datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+
+    unique: dict[str, dict] = {}
+    for event in events:
+        if (event.get("date") or "") < today:
+            continue
+        key = _canonical_event_url(event.get("sourceUrl") or "") or (
+            f"{event.get('title', '').lower()}:{event.get('date', '')}"
+        )
+        unique.setdefault(key, event)
+
+    rows = list(unique.values())
+    if len(rows) < min_yield:
+        return []
+    clean_and_aligned = sum(
+        not is_blocked(event)
+        and not is_user_excluded(event)
+        and bool(set(event.get("categories") or []) & personal_topics)
+        for event in rows
+    )
+    if clean_and_aligned / len(rows) < min_clean_ratio:
+        return []
+    return rows
 
 
 def _promoted_organizers(

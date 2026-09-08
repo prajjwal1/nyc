@@ -55,6 +55,26 @@ class TestNYCGate:
         })
         assert _parse_event_obj(event) == "non-nyc"
 
+    @pytest.mark.parametrize("zip_code", ["10520", "10921", "11954", "12446"])
+    def test_explicit_non_nyc_new_york_zip_is_dropped(self, zip_code):
+        event = _event(locationInfo={
+            "mapsInfo": {
+                "name": "Upstate Event",
+                "addressLines": [f"10 Main St", f"Somewhere, NY {zip_code}"],
+            }
+        })
+        assert _parse_event_obj(event) == "non-nyc"
+
+    @pytest.mark.parametrize("zip_code", ["10012", "10463", "11004", "11222", "11694"])
+    def test_explicit_nyc_zip_is_kept(self, zip_code):
+        event = _event(locationInfo={
+            "mapsInfo": {
+                "name": "NYC Event",
+                "addressLines": ["10 Main St", f"New York, NY {zip_code}"],
+            }
+        })
+        assert isinstance(_parse_event_obj(event), dict)
+
 
 class TestDateConversion:
     def test_utc_evening_converts_to_correct_et_date(self):

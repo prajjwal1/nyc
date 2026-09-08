@@ -94,27 +94,13 @@ These are the durable preferences the user has stated. They're marked `addressed
 ## Open items (top of list = highest priority)
 
 
-### fb-210 — Update the website
-- created_at: 2026-09-03
+### fb-216 — Expand source coverage along demonstrated taste
+- created_at: 2026-09-08
 - source: user-explicit
 - status: open
-- body: “update the website”
-- "addressed" criterion: approved content, ingestion, and UI improvements from this run are integrated into the production-facing site; required tests and the production build pass; the deployed site is verified against the final commit.
-
-### fb-211 — Make the website fresh
-- created_at: 2026-09-03
-- source: user-explicit
-- status: open
-- body: “make it fresh”
-- interpretation: Refresh both the event inventory and the presentation so the live site feels current, while preserving the user's established curation and exclusion preferences.
-- "addressed" criterion: the final deployment uses a newly generated today-onwards event feed rather than the 2026-08-28 snapshot, exposes an accurate freshness timestamp, and contains no stale/past-event regression; visual changes also avoid stale or repetitive presentation.
-
-### fb-212 — Improve the design
-- created_at: 2026-09-03
-- source: user-explicit
-- status: open
-- body: “improve the design”
-- "addressed" criterion: ship a coherent responsive design improvement that strengthens discovery hierarchy and event decision details on mobile and desktop, with visual QA and a clean production build; do not reintroduce sidebar clutter, placeholder image boxes, or a party-heavy weekend hero.
+- body: “self improve, expand more sources”
+- interpretation: Run the self-improvement loop with source expansion as the primary North-Star lever, selecting new NYC event calendars from the user's follow graph and demonstrated interests rather than adding generic volume.
+- "addressed" criterion: add at least 3 net-new, non-duplicate NYC source calendars spanning at least 2 demonstrated-interest areas; every added source must live-probe with at least 5 upcoming events and at least 80% exclusion-clean/on-taste inventory, and the normalized feed must gain at least 5 net-new today-onwards events without relaxing fb-001..fb-011 or re-adding user-excluded sources.
 
 ### fb-213 — Run the self-improvement loop
 - created_at: 2026-09-03
@@ -129,6 +115,28 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: open
 - body: “deploy the website once done.”
 - "addressed" criterion: after all approved changes pass sanity checks and the production build, push the final commit, confirm the deployment workflow succeeds, and verify the public site serves the final event timestamp and UI assets.
+
+### fb-211 — Make the website fresh
+- created_at: 2026-09-03
+- source: user-explicit
+- status: open
+- body: “make it fresh”
+- interpretation: Refresh both the event inventory and the presentation so the live site feels current, while preserving the user's established curation and exclusion preferences.
+- "addressed" criterion: the final deployment uses a newly generated today-onwards event feed rather than the 2026-08-28 snapshot, exposes an accurate freshness timestamp, and contains no stale/past-event regression; visual changes also avoid stale or repetitive presentation.
+
+### fb-210 — Update the website
+- created_at: 2026-09-03
+- source: user-explicit
+- status: open
+- body: “update the website”
+- "addressed" criterion: approved content, ingestion, and UI improvements from this run are integrated into the production-facing site; required tests and the production build pass; the deployed site is verified against the final commit.
+
+### fb-212 — Improve the design
+- created_at: 2026-09-03
+- source: user-explicit
+- status: open
+- body: “improve the design”
+- "addressed" criterion: ship a coherent responsive design improvement that strengthens discovery hierarchy and event decision details on mobile and desktop, with visual QA and a clean production build; do not reintroduce sidebar clutter, placeholder image boxes, or a party-heavy weekend hero.
 
 
 ### fb-206 — Add/verify Liz's Book Bar Eventbrite organizer coverage
@@ -171,6 +179,14 @@ These are the durable preferences the user has stated. They're marked `addressed
 - status: open
 - body: Monitor the public `events.json.lastUpdated` from a service outside GitHub Actions and alert when it is older than 90 minutes. The current freshness monitor shares the same scheduler and failure domain as every scraper, so a scheduler-wide outage can leave the site stale without any recovery job running.
 - "addressed" criterion: an independently hosted, read-only heartbeat checks the deployed timestamp at least every 30 minutes and sends an alert through a user-authorized channel; it must not mutate the repository or auto-deploy.
+
+
+### fb-217 — Detect source-yield cliffs as warnings
+- created_at: 2026-09-08
+- source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-09-08-2135)
+- status: open
+- body: Add a warning-only source-survival check comparing each current source count with the rolling median of the last five successful snapshots. Warn when the median is at least 5 and the current count is 0, and print the source plus its last non-zero timestamp. This should surface failures such as `nycforfree` falling 53 -> 0 without making seasonal 1 -> 0 sources noisy.
+- "addressed" criterion: `scrapers/sanity_check.py` reports a non-fatal warning for a 53 -> 0 source cliff, stays quiet for a historically low/seasonal 1 -> 0 source, includes the last non-zero timestamp, and has regression tests for both cases.
 
 
 ### fb-202 — Top-of-feed saturated by one followed venue (Book Club Bar wall); other named tastes buried
