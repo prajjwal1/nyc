@@ -448,12 +448,12 @@
         "eventbrite:14861961557"
       ],
       "similarCommunityIds": [
+        "com_1ab246c8dd88",
+        "com_3bc67889299d",
         "com_9fed174eeff3",
         "com_ab8259bb35a4",
-        "com_4c3ca28533f5",
-        "com_3b104adba072",
-        "com_cdd5daa67222",
-        "com_1466f20a9300"
+        "com_065dafa96d43",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -1260,8 +1260,8 @@
         "com_5582e2e97f1a",
         "com_eef1ca956dae",
         "com_02ba15552329",
-        "com_1466f20a9300",
-        "com_318c39363fe6"
+        "com_065dafa96d43",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1423,6 +1423,220 @@
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
         "com_a1e1c13a75f0"
+      ]
+    },
+    {
+      "id": "com_1ab246c8dd88",
+      "slug": "no-bad-days-run-club-c8dd88",
+      "name": "No Bad Days Run Club",
+      "kind": "club",
+      "tagline": "No Bad Days Run Club is a community club centered on fitness across NYC.",
+      "description": "No Bad Days Run Club is a community club centered on fitness across NYC. Based on 4 observed event dates, it meets weekly on Thursday evenings.",
+      "categories": [
+        "fitness"
+      ],
+      "tags": [
+        "fitness"
+      ],
+      "neighborhoods": [],
+      "homeVenue": "ON store, WillyB",
+      "imageUrl": null,
+      "links": [
+        {
+          "type": "instagram",
+          "label": "View on Instagram",
+          "url": "https://www.instagram.com/nbd_rc/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 4,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday"
+        ],
+        "typicalTime": "18:45",
+        "confidence": 0.67,
+        "sampleSize": 4
+      },
+      "upcomingEventIds": [
+        "99e87d0aee79959d",
+        "f33adb17260e3c58",
+        "17c3abdb4187d92b",
+        "15dd827db30f8fd6"
+      ],
+      "sourceAttributions": [
+        "instagram"
+      ],
+      "lastVerifiedAt": "2026-09-09",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 4,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:nbd_rc",
+        "url:https://www.instagram.com/nbd_rc"
+      ],
+      "similarCommunityIds": [
+        "com_3bc67889299d",
+        "com_02ba15552329",
+        "com_065dafa96d43",
+        "com_9fed174eeff3",
+        "com_1466f20a9300",
+        "com_318c39363fe6"
+      ]
+    },
+    {
+      "id": "com_3bc67889299d",
+      "slug": "nyc-sprint-collective-89299d",
+      "name": "NYC Sprint Collective",
+      "kind": "recurring_series",
+      "tagline": "NYC Sprint Collective is a recurring event series centered on fitness across NYC.",
+      "description": "NYC Sprint Collective is a recurring event series centered on fitness across NYC. Based on 4 observed event dates, it meets weekly on Wednesday evenings.",
+      "categories": [
+        "fitness"
+      ],
+      "tags": [
+        "fitness"
+      ],
+      "neighborhoods": [],
+      "homeVenue": "McCarren track (meet on turf by the 100 meter start)",
+      "imageUrl": null,
+      "links": [
+        {
+          "type": "instagram",
+          "label": "View on Instagram",
+          "url": "https://www.instagram.com/nycsprintcollective/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 4,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.67,
+        "sampleSize": 4
+      },
+      "upcomingEventIds": [
+        "1bf2e53bfafab504",
+        "8e1655ec278cd9ee",
+        "3dce7a3678d457ef",
+        "53bef0efbfc91e68"
+      ],
+      "sourceAttributions": [
+        "instagram"
+      ],
+      "lastVerifiedAt": "2026-09-09",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 4,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:nycsprintcollective",
+        "url:https://www.instagram.com/nycsprintcollective"
+      ],
+      "similarCommunityIds": [
+        "com_1ab246c8dd88",
+        "com_02ba15552329",
+        "com_065dafa96d43",
+        "com_9fed174eeff3",
+        "com_1466f20a9300",
+        "com_318c39363fe6"
+      ]
+    },
+    {
+      "id": "com_065dafa96d43",
+      "slug": "vrc-a96d43",
+      "name": "VRC",
+      "kind": "recurring_series",
+      "tagline": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC.",
+      "description": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC. Based on 4 observed event dates, it meets weekly on Monday evenings.",
+      "categories": [
+        "fitness",
+        "outdoors",
+        "parties"
+      ],
+      "tags": [
+        "fitness",
+        "outdoors",
+        "parties"
+      ],
+      "neighborhoods": [],
+      "homeVenue": "vital bk climbing gym",
+      "imageUrl": null,
+      "links": [
+        {
+          "type": "instagram",
+          "label": "View on Instagram",
+          "url": "https://www.instagram.com/vitalrunclub/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 4,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.67,
+        "sampleSize": 4
+      },
+      "upcomingEventIds": [
+        "56fe5aaf6e310c81",
+        "939e365cceb522d5",
+        "fdaaf9c6182dfd9f",
+        "c737164195408427"
+      ],
+      "sourceAttributions": [
+        "instagram"
+      ],
+      "lastVerifiedAt": "2026-09-09",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 4,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:vitalrunclub",
+        "url:https://www.instagram.com/vitalrunclub"
+      ],
+      "similarCommunityIds": [
+        "com_1ab246c8dd88",
+        "com_3bc67889299d",
+        "com_55ca36db453a",
+        "com_02ba15552329",
+        "com_359bbb5a9a91",
+        "com_bad972d799e8"
       ]
     },
     {
@@ -50028,7 +50242,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-09T23:30:11.505423+00:00",
+  "lastUpdated": "2026-09-09T23:40:34.876864+00:00",
   "version": 1,
   "schemaVersion": 1
 }
