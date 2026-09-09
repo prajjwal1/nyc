@@ -1,8 +1,9 @@
-name: Discover Recurring Clubs and Sources
+name: Refresh Recurring Clubs and Sources
 
 on:
   schedule:
-    - cron: "17 5,17 * * *"
+    # Follow the existing discover.yml graph-expansion run by about an hour.
+    - cron: "17 7,19 * * *"
   workflow_dispatch:
 
 permissions:
@@ -26,20 +27,6 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r scrapers/requirements.txt
-
-      - name: Restore Instagram session
-        env:
-          IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
-          IG_USERNAME: ${{ secrets.IG_USERNAME }}
-        if: env.IG_SESSION_B64 != ''
-        run: |
-          mkdir -p ~/.config/instaloader
-          echo "$IG_SESSION_B64" | base64 -d > ~/.config/instaloader/session-${IG_USERNAME:-prajfb}
-
-      - name: Expand the account and source graph
-        env:
-          IG_USERNAME: ${{ secrets.IG_USERNAME }}
-        run: python -m scrapers.run_discovery
 
       - name: Probe recurring profiles and independent calendars
         env:

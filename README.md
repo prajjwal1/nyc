@@ -77,10 +77,11 @@ still requires an organization identity, NYC evidence, a weekday, exact time,
 and usable meetup location. Accepted schedules are reverified daily, expire
 after 14 days, and link directly to the organizer's Instagram profile.
 
-The twice-daily `source-expansion.yml` workflow expands the account/link graph,
-probes recurring profiles and independent calendars, refreshes the feed, and
-deploys only after the existing quality checks. Fast platform refreshes remain
-responsible for exhaustive Luma, Eventbrite, and Partiful coverage.
+The existing twice-daily `discover.yml` workflow expands the account/link
+graph; `source-expansion.yml` follows it to probe recurring profiles and
+independent calendars, refresh the feed, and deploy after the existing quality
+checks. Fast platform refreshes remain responsible for exhaustive Luma,
+Eventbrite, and Partiful coverage.
 
 ---
 
