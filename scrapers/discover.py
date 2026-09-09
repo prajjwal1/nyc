@@ -25,6 +25,11 @@ import httpx
 import instaloader
 
 from .config import IG_ACCOUNTS, IG_SESSION_FILE, IG_USERNAME
+from .utils.recurring_profiles import (
+    load_state as load_recurring_state,
+    save_state as save_recurring_state,
+    update_profile_state,
+)
 
 # ---------------------------------------------------------------------------
 # Constants & configuration
@@ -127,6 +132,35 @@ _BIO_SCHEDULE_RE = re.compile(
     r"\b\d{1,2}(?::\d{2})?\s*(?:am|pm)\b",
     re.I,
 )
+
+
+def _persist_recurring_profile_observations(observations: list[tuple[object, str]]) -> None:
+    """Feed authenticated discovery metadata into the recurring registry.
+
+    Public Instagram HTML is intermittently reduced to a profile shell in CI.
+    Discovery already has authenticated profile objects, so preserving their
+    public bio/follower fields gives the schedule pipeline a reliable source
+    without making a second Instagram request.
+    """
+    if not observations:
+        return
+    state = load_recurring_state()
+    for profile, origin in observations:
+        username = str(getattr(profile, "username", "") or "").lower()
+        if not username:
+            continue
+        update_profile_state(
+            state,
+            {
+                "username": username,
+                "displayName": str(getattr(profile, "full_name", "") or username),
+                "biography": str(getattr(profile, "biography", "") or ""),
+                "followers": int(getattr(profile, "followers", 0) or 0),
+                "profileUrl": f"https://www.instagram.com/{username}/",
+            },
+            discovered_via=origin,
+        )
+    save_recurring_state(state)
 
 
 # ---------------------------------------------------------------------------
@@ -497,6 +531,7 @@ def _evaluate_and_save_candidates(
     single source of truth for candidate evaluation.
     """
     new: list[dict] = []
+    profile_observations: list[tuple[object, str]] = []
     for handle in handles:
         handle = handle.lower()
         if handle in already_known:
@@ -505,6 +540,8 @@ def _evaluate_and_save_candidates(
             break
         score, profile = _evaluate_candidate(loader, handle)
         time.sleep(sleep_between)
+        if profile is not None and not getattr(profile, "is_private", False):
+            profile_observations.append((profile, origin))
         if profile is None or score < threshold:
             continue
         already_known.add(handle)
@@ -526,6 +563,7 @@ def _evaluate_and_save_candidates(
         state.setdefault("accounts", []).extend(new)
         state["lastDiscovery"] = _now_iso()
         _save_discovered_state(state)
+    _persist_recurring_profile_observations(profile_observations)
     return new
 
 
@@ -661,6 +699,7 @@ def harvest_following_list(loader, max_to_evaluate: int = 200) -> list[str]:
     excluded = _load_user_excluded_account_set()
 
     relevant: list[dict] = []
+    profile_observations: list[tuple[object, str]] = []
     count = 0
     try:
         for followee in my_profile.get_followees():
@@ -671,6 +710,7 @@ def harvest_following_list(loader, max_to_evaluate: int = 200) -> list[str]:
                 continue
             try:
                 score = score_event_account(followee)
+                profile_observations.append((followee, "user_following"))
                 # Be more permissive for user's own follows
                 if score >= USER_FOLLOWING_THRESHOLD:
                     relevant.append({
@@ -687,7 +727,10 @@ def harvest_following_list(loader, max_to_evaluate: int = 200) -> list[str]:
                 continue
     except Exception as exc:
         print(f"[discover] Failed to iterate followees: {exc}")
+        _persist_recurring_profile_observations(profile_observations)
         return []
+
+    _persist_recurring_profile_observations(profile_observations)
 
     # Save them
     if relevant:

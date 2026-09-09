@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta, timezone
 from types import SimpleNamespace
 
+from scrapers import discover
 from scrapers.discover import SCORE_THRESHOLD, score_event_account
 from scrapers.sources import instagram_bios
 from scrapers.utils.recurring_profiles import (
@@ -210,3 +211,23 @@ def test_one_thousand_follower_club_schedule_enters_discovery_pool():
     )
 
     assert score_event_account(profile) >= SCORE_THRESHOLD
+
+
+def test_authenticated_discovery_persists_profile_bio(monkeypatch):
+    state = {"version": 1, "profiles": {}}
+    saved = []
+    monkeypatch.setattr(discover, "load_recurring_state", lambda: state)
+    monkeypatch.setattr(discover, "save_recurring_state", lambda value: saved.append(value))
+    profile = SimpleNamespace(
+        username="beyondfollowclub",
+        full_name="Beyond Follow Run Club NYC",
+        biography="Thursdays 7pm @ McCarren Park, Brooklyn",
+        followers=1_500,
+    )
+
+    discover._persist_recurring_profile_observations([
+        (profile, "suggested_for:anotherclub"),
+    ])
+
+    assert saved == [state]
+    assert state["profiles"]["beyondfollowclub"]["active"] is True
