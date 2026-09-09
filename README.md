@@ -67,6 +67,21 @@ Build on top of these principles. Don't break them.
 - All **personalization is client-side** (localStorage) — no backend, fully private
 - Multiple **self-improvement loops** persist state in `scrapers/data/*.json` between runs
 
+### Recurring organization discovery
+
+`instagram_bios` turns first-party profile schedules into short-horizon events
+without requiring Luma, Partiful, or Eventbrite. It rotates through curated,
+followed, co-mentioned, and suggested organization accounts; profiles with
+1,000+ followers and useful bios are automatically investigated. Publication
+still requires an organization identity, NYC evidence, a weekday, exact time,
+and usable meetup location. Accepted schedules are reverified daily, expire
+after 14 days, and link directly to the organizer's Instagram profile.
+
+The twice-daily `source-expansion.yml` workflow expands the account/link graph,
+probes recurring profiles and independent calendars, refreshes the feed, and
+deploys only after the existing quality checks. Fast platform refreshes remain
+responsible for exhaustive Luma, Eventbrite, and Partiful coverage.
+
 ---
 
 ## Source pool — 17+ source files, 200+ URLs

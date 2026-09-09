@@ -116,6 +116,17 @@ _PLATFORM_HINTS = (
     "lu.ma", "luma", "partiful", "eventbrite", "linktr.ee", "beacons.ai",
     "dice.fm", "ra.co", "shotgun",
 )
+_COMMUNITY_PROFILE_RE = re.compile(
+    r"\b(?:club|collective|community|society|group|meetup|runners?|running|"
+    r"walking|readers?|book\s*club|chess|backgammon|dance|craft|fitness|yoga)\b",
+    re.I,
+)
+_BIO_SCHEDULE_RE = re.compile(
+    r"\b(?:mon(?:day)?|tue(?:sday|s)?|wed(?:nesday|s)?|thu(?:rsday|rs)?|"
+    r"fri(?:day)?|sat(?:urday)?|sun(?:day)?)s?\b.{0,30}"
+    r"\b\d{1,2}(?::\d{2})?\s*(?:am|pm)\b",
+    re.I,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -267,10 +278,21 @@ def score_event_account(profile) -> float:
     # Follower band: real but not mega-influencer.
     followers = getattr(profile, "followers", 0) or 0
     if 1_000 <= followers <= 500_000:
-        score += 0.05
+        score += 0.10
     elif followers > 500_000:
         # Big celebrity/brand accounts almost never deliver actionable events.
         score -= 0.20
+
+    # A 1K+ organization publishing a weekday+time in its own bio should
+    # always enter the investigation pool, even when it does not use generic
+    # event-platform vocabulary. Publication still has stricter NYC/location
+    # gates in recurring_profiles.py.
+    if (
+        followers >= 1_000
+        and _COMMUNITY_PROFILE_RE.search(haystack)
+        and _BIO_SCHEDULE_RE.search(bio)
+    ):
+        score = max(score, SCORE_THRESHOLD)
 
     return max(0.0, min(1.0, score))
 
@@ -489,6 +511,8 @@ def _evaluate_and_save_candidates(
         new.append({
             "username": handle,
             "score": round(score, 3),
+            "followers": int(getattr(profile, "followers", 0) or 0),
+            "bio_schedule": bool(_BIO_SCHEDULE_RE.search(getattr(profile, "biography", "") or "")),
             "discovered_at": _now_iso(),
             "discovered_via": origin,
         })
@@ -652,6 +676,8 @@ def harvest_following_list(loader, max_to_evaluate: int = 200) -> list[str]:
                     relevant.append({
                         "username": followee.username,
                         "score": round(score, 3),
+                        "followers": int(getattr(followee, "followers", 0) or 0),
+                        "bio_schedule": bool(_BIO_SCHEDULE_RE.search(getattr(followee, "biography", "") or "")),
                         "discovered_via": "user_following",
                         "discovered_at": _now_iso(),
                     })

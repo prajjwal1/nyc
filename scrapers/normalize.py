@@ -180,6 +180,12 @@ def _is_distinct_schedule_source(ev: dict) -> bool:
     _dedup_fuzzy_title). Single source of truth so a future distinct-schedule
     source can't be half-exempted (fb-183).
     """
+    # A verified recurring profile intentionally expands into one card per
+    # future occurrence. Treat those generated dates as distinct schedules;
+    # the dated-post preference pass removes only an occurrence for which a
+    # more specific Instagram post exists.
+    if ev.get("scheduleSource") == "instagram_bio":
+        return True
     if ev.get("source") in DISTINCT_SCHEDULE_SOURCES:
         return True
     # Browser-captured IG roundups explicitly index individually dated items
@@ -275,6 +281,53 @@ def _dedup_same_account_recurring(events: list[dict]) -> list[dict]:
                 out.append(e)
     if merges:
         print(f"[normalize] Same-account recurring merged {merges} duplicate posts")
+    return out
+
+
+def _prefer_specific_post_over_bio_schedule(events: list[dict]) -> list[dict]:
+    """Prefer a dated post to a generated bio occurrence for the same slot."""
+    specific: dict[tuple[str, str], list[dict]] = {}
+    for event in events:
+        if event.get("scheduleSource") == "instagram_bio":
+            continue
+        account = (event.get("account") or event.get("instagramAccount") or "").lower()
+        event_date = event.get("date") or ""
+        if account and event_date:
+            specific.setdefault((account, event_date), []).append(event)
+
+    def minutes(value: str | None) -> int | None:
+        try:
+            hour, minute = map(int, str(value).split(":"))
+            return hour * 60 + minute
+        except Exception:
+            return None
+
+    out = []
+    dropped = 0
+    for event in events:
+        if event.get("scheduleSource") != "instagram_bio":
+            out.append(event)
+            continue
+        account = (event.get("account") or event.get("instagramAccount") or "").lower()
+        candidates = specific.get((account, event.get("date") or ""), [])
+        bio_categories = set(event.get("categories") or [])
+        bio_time = minutes(event.get("startTime"))
+        confirmed = False
+        for candidate in candidates:
+            candidate_categories = set(candidate.get("categories") or [])
+            if bio_categories and candidate_categories and not (bio_categories & candidate_categories):
+                continue
+            candidate_time = minutes(candidate.get("startTime"))
+            if bio_time is not None and candidate_time is not None and abs(bio_time - candidate_time) > 120:
+                continue
+            confirmed = True
+            break
+        if confirmed:
+            dropped += 1
+        else:
+            out.append(event)
+    if dropped:
+        print(f"[normalize] Preferred {dropped} dated posts over recurring bio occurrences")
     return out
 
 
@@ -2136,6 +2189,8 @@ def process(events: list[dict], previous_index: dict | None = None) -> list[dict
         print(
             f"[normalize] Dropped {phantom} phantom recurring events (title-date mismatch)"
         )
+
+    events = _prefer_specific_post_over_bio_schedule(events)
 
     # Expand recurring events ("every Saturday at Smorgasburg" → 3 weeks of
     # dates). Skip events already marked recurring=True (already an expanded

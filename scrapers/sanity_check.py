@@ -5,6 +5,7 @@ Returns non-zero exit code if critical sources are missing.
 """
 import json
 import os
+import statistics
 import sys
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -460,13 +461,37 @@ def _print_ig_diagnostics(events: list) -> None:
         pass
 
 
-def _print_source_regressions(sources: dict) -> None:
-    """Flag sources that previously yielded >= 5 events but now yield 0.
+def _source_yield_cliffs(sources: dict, records: list[dict]) -> list[dict]:
+    """Return sources whose current zero is abnormal versus five recent runs."""
+    history = [record for record in records if isinstance(record.get("sources"), dict)][-5:]
+    names = {name for record in history for name in record.get("sources", {})}
+    cliffs = []
+    for source in names:
+        values = [int(record.get("sources", {}).get(source, 0) or 0) for record in history]
+        baseline = statistics.median(values) if values else 0
+        if baseline < 5 or sources.get(source, 0) != 0:
+            continue
+        last_nonzero = next(
+            (
+                record.get("timestamp")
+                for record in reversed(records)
+                if int(record.get("sources", {}).get(source, 0) or 0) > 0
+            ),
+            None,
+        )
+        cliffs.append({
+            "source": source,
+            "median": baseline,
+            "lastNonzeroAt": last_nonzero,
+        })
+    return sorted(cliffs, key=lambda item: (-item["median"], item["source"]))
 
-    Reads the most recent prior stats_history.jsonl record and diffs against
-    `sources`. Print-only; surfaces silent breakage (e.g., a venue
-    changing markup) immediately in the run log instead of waiting for a
-    human to notice the empty section.
+
+def _print_source_regressions(sources: dict) -> None:
+    """Flag sources whose rolling five-run median was >=5 but are now zero.
+
+    Print-only; a warning protects seasonal sources from creating deployment
+    failures while surfacing abrupt parser/source cliffs with useful context.
     """
     data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
     path = os.path.join(data_dir, "stats_history.jsonl")
@@ -477,9 +502,8 @@ def _print_source_regressions(sources: dict) -> None:
             lines = f.readlines()
     except Exception:
         return
-    # Find the most recent valid record different from this run.
-    prior = None
-    for line in reversed(lines):
+    records = []
+    for line in lines:
         line = line.strip()
         if not line:
             continue
@@ -487,24 +511,19 @@ def _print_source_regressions(sources: dict) -> None:
             rec = json.loads(line)
         except Exception:
             continue
-        prior_sources = rec.get("sources") or {}
-        # Skip records that aren't materially different (same timestamp run
-        # or empty). Heuristic: require at least one source with >= 5 events
-        # to consider it a meaningful prior baseline.
-        if any(c >= 5 for c in prior_sources.values()):
-            prior = prior_sources
-            break
-    if not prior:
-        return
-    regressions = [
-        (s, prior[s]) for s in prior
-        if prior[s] >= 5 and sources.get(s, 0) == 0
-    ]
+        if any((count or 0) >= 5 for count in (rec.get("sources") or {}).values()):
+            records.append(rec)
+    regressions = _source_yield_cliffs(sources, records)
     if not regressions:
         return
     print(f"\n⚠ Source regressions ({len(regressions)} sources dropped to 0):")
-    for s, prev in sorted(regressions, key=lambda kv: -kv[1])[:8]:
-        print(f"  {s}: {prev} → 0")
+    for item in regressions[:8]:
+        median = item["median"]
+        median_label = str(int(median)) if float(median).is_integer() else f"{median:.1f}"
+        print(
+            f"  {item['source']}: rolling median {median_label} → 0 "
+            f"(last non-zero {item['lastNonzeroAt'] or 'unknown'})"
+        )
 
 
 def _print_north_star_metrics(events: list) -> dict:

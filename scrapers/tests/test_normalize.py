@@ -27,6 +27,7 @@ from scrapers.normalize import (
     _is_shell_event,
     _likely_past_midnight,
     _min_score_floor,
+    _prefer_specific_post_over_bio_schedule,
     _strip_outdoors_indoor_arena,
     deduplicate,
 )
@@ -127,6 +128,25 @@ def test_late_night_marker_between_200_and_300_description_chars_is_caught():
     }
     assert _likely_past_midnight(event)
 
+
+def test_dated_post_replaces_matching_bio_schedule_but_not_other_club_event():
+    bio = {
+        "title": "VRC Weekly Run", "date": "2026-09-14", "startTime": "19:00",
+        "account": "vitalrunclub", "categories": ["fitness"],
+        "scheduleSource": "instagram_bio",
+    }
+    post = {
+        "title": "VRC Monday Miles", "date": "2026-09-14", "startTime": "19:15",
+        "account": "vitalrunclub", "categories": ["fitness"],
+        "sourceUrl": "https://instagram.com/p/current/",
+    }
+    unrelated = {
+        "title": "VRC Film Night", "date": "2026-09-14", "startTime": "21:30",
+        "account": "vitalrunclub", "categories": ["movies"],
+    }
+
+    assert _prefer_specific_post_over_bio_schedule([bio, post, unrelated]) == [post, unrelated]
+
 # ---------------------------------------------------------------------------
 # Curated-source survival — regression guard for the lu.ma/philosophy bug:
 # a dynamically learned curator calendar whose description-less events were
@@ -216,6 +236,24 @@ class TestDistinctScheduleSources:
         monkeypatch.setattr(normalize, "DISTINCT_SCHEDULE_SOURCES", {"sched"})
         assert _is_distinct_schedule_source({"source": "sched"}) is True
         assert _is_distinct_schedule_source({"source": "other"}) is False
+
+    def test_instagram_bio_occurrences_bypass_recurring_dedup(self):
+        recurring = [
+            {
+                "source": "instagram",
+                "title": "Vital Run Club — Weekly Run",
+                "date": event_date,
+                "sourceUrl": "https://www.instagram.com/vitalrunclub/",
+                "instagramAccount": "vitalrunclub",
+                "scheduleSource": "instagram_bio",
+                "location": {"name": "VITAL Brooklyn"},
+            }
+            for event_date in ("2026-09-14", "2026-09-21", "2026-09-28", "2026-10-05")
+        ]
+
+        assert _is_distinct_schedule_source(recurring[0]) is True
+        assert len(_dedup_same_account_recurring(recurring)) == 4
+        assert len(_dedup_fuzzy_title(recurring)) == 4
 
     def test_distinct_source_bypasses_both_passes(self, monkeypatch):
         monkeypatch.setattr(normalize, "DISTINCT_SCHEDULE_SOURCES", {"sched"})

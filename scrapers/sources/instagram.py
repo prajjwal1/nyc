@@ -41,6 +41,7 @@ _AFFINITY_ACCOUNTS_CACHE: set[str] = set()
 _FOLLOWING_ACCOUNTS_CACHE: set[str] = set()
 _ACCOUNT_CURSORS_CACHE: dict = {}
 _LAST_RUN_STATS: dict = {}
+_PROFILE_OBSERVATIONS: list[dict] = []
 
 # Number of most-recent posts to re-process on EVERY scrape, regardless of
 # whether their shortcode matches the stored cursor. Picks up caption edits
@@ -176,6 +177,45 @@ def _scrape_browser_snapshot() -> list[dict]:
         events.extend(extracted)
     if posts:
         print(f"[instagram-browser] {len(events)} events parsed from {len(posts)} captured posts")
+
+    # Profile biographies are a first-party source for standing schedules.
+    # They use the same persistent registry as the public-profile scanner so
+    # browser, Instaloader and unauthenticated paths converge on one result.
+    profiles = snapshot.get("profiles") or []
+    if profiles:
+        try:
+            from ..utils.recurring_profiles import (
+                cancellation_dates_from_snapshot,
+                events_from_state,
+                load_state,
+                save_state,
+                update_profile_state,
+            )
+
+            state = load_state()
+            for profile in profiles:
+                if not isinstance(profile, dict):
+                    continue
+                try:
+                    checked_at = datetime.fromisoformat(
+                        str(profile.get("capturedAt") or snapshot.get("generatedAt") or "").replace("Z", "+00:00")
+                    )
+                except Exception:
+                    checked_at = None
+                update_profile_state(
+                    state,
+                    profile,
+                    discovered_via=str(profile.get("discoveredVia") or "browser_snapshot"),
+                    checked_at=checked_at,
+                )
+            save_state(state)
+            bio_events = events_from_state(
+                state, cancellations=cancellation_dates_from_snapshot()
+            )
+            events.extend(bio_events)
+            print(f"[instagram-browser] {len(bio_events)} recurring bio events")
+        except Exception as exc:
+            print(f"[instagram-browser] recurring profile ingest failed: {exc}")
     return events
 
 
@@ -256,7 +296,7 @@ def scrape() -> list[dict]:
     1. User's SAVED posts — highest signal (user explicitly bookmarked these)
     2. Curated IG_ACCOUNTS + BFS-discovered accounts
     """
-    global _AFFINITY_ACCOUNTS_CACHE, _FOLLOWING_ACCOUNTS_CACHE, _ACCOUNT_CURSORS_CACHE, _ACCOUNT_QUALITY_CACHE, _LAST_RUN_STATS
+    global _AFFINITY_ACCOUNTS_CACHE, _FOLLOWING_ACCOUNTS_CACHE, _ACCOUNT_CURSORS_CACHE, _ACCOUNT_QUALITY_CACHE, _LAST_RUN_STATS, _PROFILE_OBSERVATIONS
     run_started = time.time()
     _LAST_RUN_STATS = {
         "attemptedAccounts": 0,
@@ -270,6 +310,7 @@ def scrape() -> list[dict]:
     _FOLLOWING_ACCOUNTS_CACHE = _load_following_accounts()
     _ACCOUNT_CURSORS_CACHE = _load_account_cursors()
     _ACCOUNT_QUALITY_CACHE = _load_account_quality()
+    _PROFILE_OBSERVATIONS = []
     print(f"[instagram] Cache: {len(_AFFINITY_ACCOUNTS_CACHE)} affinity, {len(_FOLLOWING_ACCOUNTS_CACHE)} following")
 
     browser_events = _scrape_browser_snapshot()
@@ -639,6 +680,22 @@ def scrape() -> list[dict]:
     # which accounts reliably produce events.
     if _ACCOUNT_QUALITY_CACHE:
         _save_account_quality(_ACCOUNT_QUALITY_CACHE)
+
+    if _PROFILE_OBSERVATIONS:
+        try:
+            from ..utils.recurring_profiles import events_from_state, load_state, save_state, update_profile_state
+
+            state = load_state()
+            for profile in _PROFILE_OBSERVATIONS:
+                update_profile_state(
+                    state,
+                    profile,
+                    discovered_via=str(profile.get("discoveredVia") or "instagram_profile"),
+                )
+            save_state(state)
+            all_events.extend(events_from_state(state))
+        except Exception as exc:
+            print(f"[instagram] recurring profile persist failed: {exc}")
 
     _LAST_RUN_STATS["elapsedSeconds"] = round(_time.time() - started, 1)
     _LAST_RUN_STATS["eventsFound"] = len(all_events)
@@ -2267,6 +2324,18 @@ def _fetch_posts(loader: instaloader.Instaloader, username: str) -> list[dict]:
     #   - Auto-extract venue addresses for accounts not in the
     #     _account_default_location map
     biography = (getattr(profile, "biography", "") or "").strip()
+    _PROFILE_OBSERVATIONS.append({
+        "username": username.lower(),
+        "displayName": (getattr(profile, "full_name", "") or username).strip(),
+        "biography": biography,
+        "followers": int(getattr(profile, "followers", 0) or 0),
+        "profileUrl": f"https://www.instagram.com/{username}/",
+        "discoveredVia": (
+            "user_following" if username.lower() in _FOLLOWING_ACCOUNTS_CACHE
+            else "curated" if username.lower() in {a.lower() for a in IG_ACCOUNTS}
+            else "discovered"
+        ),
+    })
     bio_venue = _venue_from_biography(biography)
     # Closure detection: if the bio explicitly says the venue closed, mark
     # the account dead so we stop wasting budget. Manual unblock available

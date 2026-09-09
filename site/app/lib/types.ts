@@ -41,6 +41,10 @@ export interface Event {
   accountFollowers?: number;
   accountVerified?: boolean;
   recurring?: boolean;
+  recurrenceKey?: string;
+  scheduleSource?: "instagram_bio";
+  scheduleVerifiedAt?: string;
+  scheduleConfidence?: number;
   ocrEnriched?: boolean;
   extraImages?: string[];  // additional carousel slides (IG multi-photo posts)
   affinityComentions?: number;
@@ -132,9 +136,10 @@ export interface EventsData {
     };
     platformCatalogs?: Record<string, {
       advertised?: number;
-      fetched: number;
+      fetched?: number;
       coverage?: number;
-      missingImages: number;
+      missingImages?: number;
+      [metric: string]: number | boolean | undefined;
     }>;
     run?: {
       runCompleted: boolean;

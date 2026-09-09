@@ -3,7 +3,8 @@ import json
 from scrapers.sources import eventbrite, generic, instagram, luma
 from scrapers.normalize import _is_distinct_schedule_source
 from scrapers.instagram_browser_worker import (
-    _account_plan, _caption_from_og, _merge_snapshot_posts, _sanitize_posts,
+    _account_plan, _caption_from_og, _merge_snapshot_posts,
+    _merge_snapshot_profiles, _sanitize_posts,
 )
 from scrapers.utils.interest_profile import _username_topics
 
@@ -244,6 +245,22 @@ def test_browser_snapshot_retains_other_rotation_candidates():
     previous = [{"url": "https://instagram.com/p/old/", "owner": "old", "capturedAt": "2026-07-30"}]
     merged = _merge_snapshot_posts(current, previous)
     assert [post["owner"] for post in merged] == ["new", "old"]
+
+
+def test_browser_snapshot_retains_latest_profile_metadata():
+    current = [{
+        "username": "runclub", "biography": "Mondays 7pm", "followers": 1200,
+        "capturedAt": "2026-09-09T12:00:00Z", "cookie": "secret",
+    }]
+    previous = [{
+        "username": "runclub", "biography": "Old schedule", "followers": 1100,
+        "capturedAt": "2026-09-08T12:00:00Z",
+    }]
+
+    merged = _merge_snapshot_profiles(current, previous)
+
+    assert merged[0]["biography"] == "Mondays 7pm"
+    assert "cookie" not in merged[0]
 
 
 def test_browser_og_caption_strips_post_metadata_and_trailing_period():

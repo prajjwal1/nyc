@@ -232,6 +232,14 @@ function EventCardBody({
                 {timeStr}
               </span>
             )}
+            {event.scheduleSource === "instagram_bio" && (
+              <span
+                className="font-medium text-[#52645e]"
+                title={event.scheduleVerifiedAt ? `Schedule verified ${event.scheduleVerifiedAt.slice(0, 10)}` : "Schedule from organizer bio"}
+              >
+                Weekly · check Instagram
+              </span>
+            )}
             {placeName ? (
               <span className="flex items-center gap-1 truncate">
                 <PinIcon />

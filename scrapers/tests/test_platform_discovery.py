@@ -306,6 +306,10 @@ def test_eventbrite_scrape_schedules_collection_frontier(monkeypatch):
 
     assert len(events) == 5
     assert all(event["discoveryVia"] == "historical_probe" for event in events)
+    health = eventbrite.catalog_health()
+    assert health["collectionTargets"] == 1
+    assert health["collectionTargetsFetched"] == 1
+    assert health["collectionsAdmitted"] == 1
 
 
 def test_eventbrite_search_parser_merges_server_organizer_id():

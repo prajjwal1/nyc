@@ -22,6 +22,7 @@ from scrapers.sources import (
     theskint,
     dice,
     instagram,
+    instagram_bios,
     substack,
     partiful,
     generic,
@@ -57,6 +58,7 @@ ASYNC_SCRAPERS = [
     ("brooklyncontra", brooklyncontra.scrape),
     ("theskint", theskint.scrape),
     ("dice", dice.scrape),
+    ("instagram_bios", instagram_bios.scrape),
     ("substack", substack.scrape),
     ("partiful", partiful.scrape),
     ("generic", generic.scrape),
@@ -80,7 +82,7 @@ SOURCE_ONLY = {
 # timeout. Quick mode refreshes only fast/high-churn platforms and carries all
 # other still-future events forward; the four-hour full sweep remains broad.
 if IG_SAVED_ONLY:
-    _QUICK_ASYNC = {"luma", "eventbrite", "partiful", "substack"}
+    _QUICK_ASYNC = {"luma", "eventbrite", "partiful", "substack", "instagram_bios"}
     ASYNC_SCRAPERS = [(name, fn) for name, fn in ASYNC_SCRAPERS if name in _QUICK_ASYNC]
 
 # A local browser snapshot already contains the new source material. Its CI
@@ -391,6 +393,8 @@ def _ingestion_stats(events: list[dict]) -> dict:
     for name, health in {
         "luma": luma.catalog_health(),
         "partiful": partiful.catalog_health(),
+        "eventbrite": eventbrite.catalog_health(),
+        "instagramBios": instagram_bios.catalog_health(),
     }.items():
         if health:
             platform_catalogs[name] = health

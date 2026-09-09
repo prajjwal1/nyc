@@ -36,6 +36,7 @@ _SUPPLEMENTAL_TOPIC_SEARCH_SLUGS = {
     # This remains on the normal score/late-night/exclusion path.
     "dance": ("folk-dance",),
 }
+_LAST_CATALOG_HEALTH: dict = {}
 
 
 def _eventbrite_organizer_id(url: str) -> str:
@@ -121,6 +122,20 @@ async def _fetch_with_backoff(url: str, attempts: int = 3) -> str:
 async def scrape() -> list[dict]:
     events: list[dict] = []
     quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
+    health = {
+        "organizerTargets": 0,
+        "organizerTargetsFetched": 0,
+        "collectionTargets": 0,
+        "collectionTargetsFetched": 0,
+        "collectionsAdmitted": 0,
+        "directTargets": 0,
+        "directTargetsFetched": 0,
+        "searchPages": 0,
+        "searchPagesFetched": 0,
+        "promotedOrganizers": 0,
+        "promotedOrganizersFetched": 0,
+        "rateLimitCircuitOpened": False,
+    }
 
     # Protect learned organizers from broad-search rate limiting. The frontier
     # is rebuilt from harvested links, curated hosts, and prior event yield;
@@ -129,6 +144,7 @@ async def scrape() -> list[dict]:
     known_organizers = platform_frontier(
         "eventbrite", kinds={"organizer"}, limit=organizer_limit
     )
+    health["organizerTargets"] = len(known_organizers)
     fetched_organizers: set[str] = set()
     if known_organizers:
         print(f"[eventbrite] learned organizer frontier: {len(known_organizers)}")
@@ -141,6 +157,7 @@ async def scrape() -> list[dict]:
                 event["discoveryVia"] = item.via
             events.extend(parsed)
             fetched_organizers.add(item.url)
+            health["organizerTargetsFetched"] += 1
             print(f"[eventbrite-organizer] {item.url}: {len(parsed)} events")
         except Exception as exc:
             print(f"[eventbrite-organizer] Failed {item.url}: {exc}")
@@ -152,11 +169,13 @@ async def scrape() -> list[dict]:
     known_collections = platform_frontier(
         "eventbrite", kinds={"collection"}, limit=collection_limit
     )
+    health["collectionTargets"] = len(known_collections)
     if known_collections:
         print(f"[eventbrite] learned collection frontier: {len(known_collections)}")
     for item in known_collections:
         try:
             html = await _fetch_with_backoff(item.url)
+            health["collectionTargetsFetched"] += 1
             parsed = _parse_search_page(html, item.url)
             accepted = _accepted_collection_events(parsed)
             if not accepted:
@@ -166,6 +185,7 @@ async def scrape() -> list[dict]:
                 event["discoveryLane"] = item.lane
                 event["discoveryVia"] = item.via
             events.extend(accepted)
+            health["collectionsAdmitted"] += 1
             print(f"[eventbrite-collection] {item.url}: {len(accepted)} events")
         except Exception as exc:
             print(f"[eventbrite-collection] Failed {item.url}: {exc}")
@@ -175,9 +195,11 @@ async def scrape() -> list[dict]:
     # broad Eventbrite page.
     direct_limit = 5 if quick else 14
     direct_items = platform_frontier("eventbrite", kinds={"event"}, limit=direct_limit)
+    health["directTargets"] = len(direct_items)
     for item in direct_items:
         try:
             html = await _fetch_with_backoff(item.url, attempts=2)
+            health["directTargetsFetched"] += 1
             parsed = _parse_search_page(html, item.url)
             for event in parsed:
                 event["discoveryLane"] = item.lane
@@ -188,12 +210,14 @@ async def scrape() -> list[dict]:
 
     # Generated category × geography coverage comes after high-signal lanes.
     plan = _search_plan()
+    health["searchPages"] = len(plan)
     print(f"[eventbrite] bounded search plan: {len(plan)} pages")
     consecutive_rate_limits = 0
     for url, lane in plan:
         try:
             html = await _fetch_with_backoff(url)
             consecutive_rate_limits = 0
+            health["searchPagesFetched"] += 1
             parsed = _parse_search_page(html, url)
             for event in parsed:
                 event["discoveryLane"] = lane
@@ -205,6 +229,7 @@ async def scrape() -> list[dict]:
             if "429" in str(e) or "too many requests" in str(e).lower():
                 consecutive_rate_limits += 1
                 if consecutive_rate_limits >= 2:
+                    health["rateLimitCircuitOpened"] = True
                     print("[eventbrite] search circuit open after repeated 429s; preserving organizer lane/carryover")
                     break
     detail_limit = 0 if quick else 18
@@ -214,10 +239,12 @@ async def scrape() -> list[dict]:
     # small frequency- and preference-ranked promotion lane turns a single
     # matching event into the organizer's complete upcoming calendar.
     promoted = _promoted_organizers(events, fetched_organizers, limit=4 if quick else 8)
+    health["promotedOrganizers"] = len(promoted)
     for item in promoted:
         try:
             html = await _fetch_with_backoff(item.url)
             org_events = _parse_organizer_page(html, item.url)
+            health["promotedOrganizersFetched"] += 1
             if not _organizer_calendar_is_useful(org_events):
                 clean_count = sum(not is_blocked(event) for event in org_events)
                 print(
@@ -232,7 +259,21 @@ async def scrape() -> list[dict]:
             print(f"[eventbrite-organizer:new] {item.url}: {len(org_events)} events")
         except Exception as e:
             print(f"[eventbrite-organizer:new] Failed {item.url}: {e}")
+    unique = {
+        _canonical_event_url(event.get("sourceUrl") or "")
+        or f"{event.get('title', '').lower()}:{event.get('date', '')}"
+        for event in events
+    }
+    health["fetched"] = len(unique)
+    health["rawEvents"] = len(events)
+    health["duplicateRows"] = max(0, len(events) - len(unique))
+    global _LAST_CATALOG_HEALTH
+    _LAST_CATALOG_HEALTH = health
     return events
+
+
+def catalog_health() -> dict:
+    return dict(_LAST_CATALOG_HEALTH)
 
 
 def _organizer_calendar_is_useful(

@@ -1,0 +1,80 @@
+name: Discover Recurring Clubs and Sources
+
+on:
+  schedule:
+    - cron: "17 5,17 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: source-expansion
+  cancel-in-progress: true
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r scrapers/requirements.txt
+
+      - name: Restore Instagram session
+        env:
+          IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+        if: env.IG_SESSION_B64 != ''
+        run: |
+          mkdir -p ~/.config/instaloader
+          echo "$IG_SESSION_B64" | base64 -d > ~/.config/instaloader/session-${IG_USERNAME:-prajfb}
+
+      - name: Expand the account and source graph
+        env:
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+        run: python -m scrapers.run_discovery
+
+      - name: Probe recurring profiles and independent calendars
+        env:
+          SOURCE_ONLY: instagram_bios,generic
+          SKIP_INSTAGRAM: "1"
+          IG_BIO_DISCOVERY: "1"
+          IG_BIO_SCAN_LIMIT: "40"
+        run: python -m scrapers.run_all
+
+      - name: Verify feed health
+        run: python -m scrapers.sanity_check --write-stats || true
+
+      - name: Commit accepted schedules and refreshed feed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          .github/scripts/safe-pull.sh \
+            data/events.json site/public/events.json \
+            data/communities.json site/public/communities.json \
+            scrapers/data/discovered_accounts.json \
+            scrapers/data/discovered_urls.json \
+            scrapers/data/recurring_instagram_schedules.json \
+            scrapers/data/url_health.json \
+            scrapers/data/stats_history.jsonl
+          git add data/events.json site/public/events.json \
+            data/communities.json site/public/communities.json \
+            scrapers/data/discovered_accounts.json \
+            scrapers/data/discovered_urls.json \
+            scrapers/data/recurring_instagram_schedules.json \
+            scrapers/data/url_health.json \
+            scrapers/data/stats_history.jsonl
+          git diff --cached --quiet || git commit -m "Refresh recurring Instagram schedules $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
+
+      - name: Deploy refreshed feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main

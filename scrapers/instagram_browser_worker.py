@@ -126,6 +126,29 @@ def _post_links(page, url: str, limit: int) -> list[str]:
     return out
 
 
+def _capture_profile_metadata(page, account: str) -> dict | None:
+    """Capture public profile fields while the account page is already open."""
+    try:
+        from .utils.recurring_profiles import parse_profile_html
+
+        profile = parse_profile_html(page.content(), account)
+        if not profile:
+            return None
+        if not profile.get("biography"):
+            try:
+                header_text = page.locator("header").inner_text().strip()
+                if header_text:
+                    profile["biography"] = header_text[:1500]
+            except Exception:
+                pass
+        profile["capturedAt"] = datetime.now(timezone.utc).isoformat()
+        profile["discoveredVia"] = "browser_profile"
+        return profile
+    except Exception as exc:
+        print(f"[instagram-browser] profile metadata failed @{account}: {exc}")
+        return None
+
+
 def _caption_from_og(value: str) -> str:
     # Typical form: 123 likes, 5 comments - account on Date: "caption"
     match = re.search(r':\s*["“](.*)["”][.!]?\s*$', value or "", re.S)
@@ -276,6 +299,30 @@ def _merge_snapshot_posts(current: list[dict], previous: list[dict], limit: int 
     return merged[:limit]
 
 
+def _merge_snapshot_profiles(current: list[dict], previous: list[dict], limit: int = 1000) -> list[dict]:
+    """Keep the newest public metadata for every visited organization profile."""
+    by_username: dict[str, dict] = {}
+    for profile in [*previous, *current]:
+        if not isinstance(profile, dict):
+            continue
+        username = str(profile.get("username") or "").lower()
+        if not username:
+            continue
+        clean = {
+            key: profile.get(key)
+            for key in (
+                "username", "displayName", "biography", "followers",
+                "profileUrl", "capturedAt", "discoveredVia",
+            )
+            if profile.get(key) not in (None, "")
+        }
+        current_row = by_username.get(username)
+        if current_row is None or str(clean.get("capturedAt") or "") >= str(current_row.get("capturedAt") or ""):
+            by_username[username] = clean
+    rows = sorted(by_username.values(), key=lambda row: str(row.get("capturedAt") or ""), reverse=True)
+    return rows[:limit]
+
+
 def _assert_logged_in(page) -> None:
     page.goto("https://www.instagram.com/", wait_until="domcontentloaded", timeout=45_000)
     page.wait_for_timeout(1200)
@@ -297,6 +344,7 @@ def collect(headless: bool = True, core_only: bool = False) -> dict:
     if core_only:
         rotating = []
     posts: list[dict] = []
+    profiles: list[dict] = []
     failures = 0
     with sync_playwright() as p:
         context = p.chromium.launch_persistent_context(
@@ -323,9 +371,13 @@ def collect(headless: bool = True, core_only: bool = False) -> dict:
             if len(posts) >= MAX_CAPTURED_PER_RUN:
                 break
             try:
-                for link in _post_links(
+                links = _post_links(
                     page, f"https://www.instagram.com/{account}/", POSTS_PER_PROFILE
-                ):
+                )
+                profile = _capture_profile_metadata(page, account)
+                if profile:
+                    profiles.append(profile)
+                for link in links:
                     post = _capture_post(page, link, "feed", account)
                     if post:
                         posts.append(post)
@@ -343,12 +395,15 @@ def collect(headless: bool = True, core_only: bool = False) -> dict:
     sanitized = _sanitize_posts(posts)
     previous = _json("instagram_browser_snapshot.json", {}).get("posts", [])
     retained = _merge_snapshot_posts(sanitized, previous)
+    previous_profiles = _json("instagram_browser_snapshot.json", {}).get("profiles", [])
+    retained_profiles = _merge_snapshot_profiles(profiles, previous_profiles)
     owner_counts = Counter(p.get("owner", "unknown") for p in retained)
     lane_counts = Counter(p.get("lane", "unknown") for p in retained)
     return {
-        "version": 1,
+        "version": 2,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "posts": retained,
+        "profiles": retained_profiles,
         "diagnostics": {
             "protectedScheduled": len(protected),
             "rotatingScheduled": len(rotating),
@@ -357,6 +412,8 @@ def collect(headless: bool = True, core_only: bool = False) -> dict:
             "capturedThisRun": len(sanitized),
             "retainedPosts": len(retained),
             "uniqueOwners": len(owner_counts),
+            "profilesCaptured": len(profiles),
+            "profilesRetained": len(retained_profiles),
             "laneCounts": dict(lane_counts),
             "topOwners": dict(owner_counts.most_common(10)),
             "coreOnly": core_only,

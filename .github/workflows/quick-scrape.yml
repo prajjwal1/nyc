@@ -51,7 +51,7 @@ jobs:
           IG_USERNAME: ${{ secrets.IG_USERNAME }}
           IG_SAVED_ONLY: "1"  # activates bounded quick-source mode
           SKIP_INSTAGRAM: "1" # preserve existing IG; browser worker refreshes it
-          SOURCE_ONLY: "eventbrite,substack"
+          SOURCE_ONLY: "eventbrite,substack,instagram_bios"
         run: python -m scrapers.run_all
 
       - name: Sanity check + stats logging
@@ -69,7 +69,8 @@ jobs:
             scrapers/data/url_health.json \
             scrapers/data/account_cursors.json \
             scrapers/data/account_quality.json \
-            scrapers/data/user_hashtags.json
+            scrapers/data/user_hashtags.json \
+            scrapers/data/recurring_instagram_schedules.json
 
       - name: Commit updated events
         run: |
@@ -87,6 +88,7 @@ jobs:
             scrapers/data/user_hashtags.json \
             scrapers/data/image_hashes.json \
             scrapers/data/user_interest_profile.json 2>/dev/null || true
+          git add scrapers/data/recurring_instagram_schedules.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Quick scrape $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
 
