@@ -1026,9 +1026,9 @@
         "com_eeb4e424a504",
         "com_4e69412cb0a5",
         "com_715c917d96c2",
+        "com_e07415e7f595",
         "com_a786c70979d0",
-        "com_d2ccb56c071d",
-        "com_d2d455d2d6c9"
+        "com_d2ccb56c071d"
       ]
     },
     {
@@ -1703,7 +1703,7 @@
         "com_f171cd222ca5",
         "com_a786c70979d0",
         "com_d2ccb56c071d",
-        "com_cdd5daa67222"
+        "com_e07415e7f595"
       ]
     },
     {
@@ -1997,7 +1997,7 @@
         "com_f171cd222ca5",
         "com_a786c70979d0",
         "com_d2ccb56c071d",
-        "com_cdd5daa67222"
+        "com_e07415e7f595"
       ]
     },
     {
@@ -2065,9 +2065,9 @@
         "com_4e69412cb0a5",
         "com_715c917d96c2",
         "com_a786c70979d0",
+        "com_e07415e7f595",
         "com_eeb4e424a504",
-        "com_f171cd222ca5",
-        "com_cdd5daa67222"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -2381,12 +2381,12 @@
         "luma:vanaleninstitute"
       ],
       "similarCommunityIds": [
+        "com_e07415e7f595",
         "com_4e69412cb0a5",
         "com_715c917d96c2",
         "com_d2ccb56c071d",
         "com_eeb4e424a504",
-        "com_f171cd222ca5",
-        "com_cdd5daa67222"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -2715,11 +2715,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
+        "com_e07415e7f595",
         "com_4a9490cb3534",
         "com_3837f308cd75",
         "com_b736e77bdf93",
-        "com_d8a5203885a9",
-        "com_3b104adba072"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -2798,7 +2798,7 @@
         "com_715c917d96c2",
         "com_a786c70979d0",
         "com_d2ccb56c071d",
-        "com_5582e2e97f1a"
+        "com_e07415e7f595"
       ]
     },
     {
@@ -2890,12 +2890,81 @@
       ]
     },
     {
+      "id": "com_e07415e7f595",
+      "slug": "greenlight-bookstore-e7f595",
+      "name": "Greenlight Bookstore",
+      "kind": "recurring_series",
+      "tagline": "Greenlight Bookstore is a recurring event series centered on books in brooklyn.",
+      "description": "Greenlight Bookstore is a recurring event series centered on books in brooklyn. Based on 2 observed event dates, it meets biweekly on Tuesday evenings.",
+      "categories": [
+        "books"
+      ],
+      "tags": [
+        "books"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "St. Joseph\u2019s University, New York - Brooklyn",
+      "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czQvYmFubmVycy84NzdmZDgwNzJlNGY5NzhkZDMwNDA1ZDNkYThhZGM0ZmZkODMwMTYxN2FlYjI2OGU4ODExYWUwMDA2NTQ1NjZiLXJpbWctdzEyMDAtaDYwMC1kY2Y4YjgwOC1nbWlyLmpwZz92PTE3ODU5ODUzODU.avif",
+      "links": [
+        {
+          "type": "allevents",
+          "label": "View on Allevents",
+          "url": "https://allevents.in/org/greenlight-bookstore/22534074"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Tuesday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "3c2f7090e22fbeb5",
+        "765774bca09b66ab"
+      ],
+      "sourceAttributions": [
+        "allevents"
+      ],
+      "lastVerifiedAt": "2026-09-09",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "url:https://allevents.in/org/greenlight-bookstore/22534074"
+      ],
+      "similarCommunityIds": [
+        "com_a786c70979d0",
+        "com_f171cd222ca5",
+        "com_4e69412cb0a5",
+        "com_715c917d96c2",
+        "com_d2ccb56c071d",
+        "com_eeb4e424a504"
+      ]
+    },
+    {
       "id": "com_f23f8820878b",
       "slug": "new-york-comedy-club-20878b",
       "name": "New York Comedy Club",
       "kind": "club",
       "tagline": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 34 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 38 observed event dates, it meets weekly on Thursday and Sunday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -2927,32 +2996,32 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-09",
-        "upcomingEventCount": 45,
+        "upcomingEventCount": 54,
         "eventCount90d": 40
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Friday"
+          "Sunday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 34
+        "sampleSize": 38
       },
       "upcomingEventIds": [
         "bf30a3b906a84d4d",
         "3fda0aa1adf39870",
         "ce211fc412881caf",
-        "aff4a722b5e2d972",
         "2c8a52d1d4ba9bee",
+        "aff4a722b5e2d972",
         "5498338c4523b9fb",
         "51911eeea06fa8bf",
         "ac1089cc5d25fda0",
         "4726248ab0b5c355",
+        "c303ae3d5a11450f",
         "30cb905af2a3b0fa",
-        "9f2d59fd791c4bcb",
-        "a166f64b05b4d479"
+        "9f2d59fd791c4bcb"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -2961,7 +3030,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 34,
+        "observedDateCount": 38,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50242,7 +50311,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-09T23:40:34.876864+00:00",
+  "lastUpdated": "2026-09-09T23:56:56.017048+00:00",
   "version": 1,
   "schemaVersion": 1
 }
