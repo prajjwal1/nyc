@@ -113,9 +113,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-214 — Deploy the website after the work is complete
 - created_at: 2026-09-03
 - source: user-explicit
-- status: open
+- status: addressed: 1404a998
 - body: “deploy the website once done.”
 - "addressed" criterion: after all approved changes pass sanity checks and the production build, push the final commit, confirm the deployment workflow succeeds, and verify the public site serves the final event timestamp and UI assets.
+- resolution: Pushed the self-improvement commits, ran Quick Scrape successfully, and deployed feed commit 1404a998 through GitHub Pages. The deployment workflow verified the public timestamp; an independent check found 663 events, zero past rows, `runCompleted=true`, and `lastUpdated=2026-09-09T17:47:45.950224+00:00`. Homepage assets load and all requested removed copy remains absent.
 
 ### fb-211 — Make the website fresh
 - created_at: 2026-09-03
