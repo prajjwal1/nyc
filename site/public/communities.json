@@ -449,11 +449,11 @@
       ],
       "similarCommunityIds": [
         "com_9fed174eeff3",
+        "com_ab8259bb35a4",
         "com_4c3ca28533f5",
         "com_3b104adba072",
         "com_cdd5daa67222",
-        "com_1466f20a9300",
-        "com_318c39363fe6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -947,10 +947,10 @@
       "similarCommunityIds": [
         "com_9fed174eeff3",
         "com_e9748c1176c1",
+        "com_ab8259bb35a4",
         "com_bad972d799e8",
         "com_d2d455d2d6c9",
-        "com_99343fce4c7a",
-        "com_a1e1c13a75f0"
+        "com_99343fce4c7a"
       ]
     },
     {
@@ -1558,12 +1558,12 @@
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
+        "com_ab8259bb35a4",
         "com_99343fce4c7a",
         "com_a1e1c13a75f0",
         "com_d2d455d2d6c9",
         "com_318c39363fe6",
-        "com_3837f308cd75",
-        "com_b736e77bdf93"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -1635,8 +1635,8 @@
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
         "com_a1e1c13a75f0",
-        "com_d2d455d2d6c9",
-        "com_9fed174eeff3"
+        "com_ab8259bb35a4",
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -1932,6 +1932,93 @@
         "com_e9748c1176c1",
         "com_02ba15552329",
         "com_1466f20a9300"
+      ]
+    },
+    {
+      "id": "com_ab8259bb35a4",
+      "slug": "the-new-york-philosophy-club-bb35a4",
+      "name": "The New York Philosophy Club",
+      "kind": "club",
+      "tagline": "The New York Philosophy Club is a community club centered on art, wellness, outdoors in manhattan, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness, outdoors in manhattan, upper east side. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "categories": [
+        "other",
+        "art",
+        "wellness",
+        "outdoors"
+      ],
+      "tags": [
+        "other",
+        "art",
+        "wellness",
+        "outdoors"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "upper east side",
+        "midtown",
+        "williamsburg"
+      ],
+      "homeVenue": "The Metropolitan Museum of Art",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/8k/df08b274-765d-4d9b-9288-fb2ab676a78a.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/philosophy"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-09-09",
+        "upcomingEventCount": 10,
+        "eventCount90d": 3
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Saturday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 1.0,
+        "sampleSize": 6
+      },
+      "upcomingEventIds": [
+        "42e27c6730ed079d",
+        "af2d1656d3f010f8",
+        "1323f0288335885b",
+        "56f2ef05309603e5",
+        "c31ff076da1ce37d",
+        "fa548bf55855972b",
+        "2d59d230e1ce75f0",
+        "1f06d2e1dde2d03c",
+        "14a71350cdd64257",
+        "4707053abfc52a15"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-09-09",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 6,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:philosophy"
+      ],
+      "similarCommunityIds": [
+        "com_4c3ca28533f5",
+        "com_bad972d799e8",
+        "com_c58670960684",
+        "com_359bbb5a9a91",
+        "com_9fed174eeff3",
+        "com_99343fce4c7a"
       ]
     },
     {
@@ -44915,48 +45002,6 @@
       "similarCommunityIds": []
     },
     {
-      "id": "com_cd8d73af99c8",
-      "slug": "discover-the-new-york-philosophy-club",
-      "name": "The New York Philosophy Club",
-      "kind": "directory_reference",
-      "profileStatus": "directory_reference",
-      "tagline": "Find current information and ways to connect with The New York Philosophy Club.",
-      "description": "Search for the official The New York Philosophy Club page to confirm its focus, current schedule, location, and how to join.",
-      "categories": [],
-      "tags": [],
-      "neighborhoods": [],
-      "homeVenue": "",
-      "imageUrl": null,
-      "links": [
-        {
-          "type": "web_search",
-          "label": "Find the official page",
-          "url": "https://www.google.com/search?q=%22The+New+York+Philosophy+Club%22+NYC+community"
-        }
-      ],
-      "joinMethod": "Find the official page",
-      "activity": {
-        "state": "unverified",
-        "lastEventDate": null,
-        "upcomingEventCount": 0,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [],
-      "sourceAttributions": [],
-      "lastIndexedAt": "2026-08-06T18:48:32.210465+00:00",
-      "verified": false,
-      "verificationStatus": "directory_reference",
-      "qualificationEvidence": {
-        "observedDateCount": 0,
-        "hasFirstPartyIdentity": false
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [],
-      "similarCommunityIds": []
-    },
-    {
       "id": "com_10772686b686",
       "slug": "discover-the-noterie-a-fragrarance-community",
       "name": "The Noterie A Fragrarance Community",
@@ -49983,7 +50028,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-09T18:35:48.005269+00:00",
+  "lastUpdated": "2026-09-09T18:51:19.472588+00:00",
   "version": 1,
   "schemaVersion": 1
 }
