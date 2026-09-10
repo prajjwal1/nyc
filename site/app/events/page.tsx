@@ -5,7 +5,6 @@ import { format, parseISO } from "date-fns";
 import { useEvents } from "../hooks/useEvents";
 import EventCard from "../components/EventCard";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import EventModal from "../components/EventModal";
 import { Event } from "../lib/types";
 import { filterEvents } from "../lib/events";
@@ -232,8 +231,6 @@ export default function AllEventsPage() {
           </div>
         )}
       </main>
-
-      <Footer />
 
       <EventModal event={openEvent} onClose={() => setOpenEvent(null)} onAccountClick={setAccountFilter} relatedEvents={events} onSelectEvent={setOpenEvent} />
     </div>

@@ -8,7 +8,6 @@ import Calendar from "./components/Calendar";
 import EventList from "./components/EventList";
 import { Event } from "./lib/types";
 import { readAndAdvanceLastVisited } from "./lib/interests";
-import Footer from "./components/Footer";
 
 export default function Home() {
   const {
@@ -185,7 +184,6 @@ export default function Home() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }

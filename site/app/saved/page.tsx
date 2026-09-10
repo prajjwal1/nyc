@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { format } from "date-fns";
 import EventCard from "../components/EventCard";
-import Footer from "../components/Footer";
 import { loadEvents } from "../lib/events";
 import { isSavedLocal, loadSavedStubs, savedStubToEvent } from "../lib/interests";
 import type { Event } from "../lib/types";
@@ -109,7 +108,6 @@ export default function SavedPage() {
           )}
         </div>
       </main>
-      <Footer />
       <EventModal event={openEvent} onClose={() => setOpenEvent(null)} onAccountClick={() => {}} relatedEvents={events} onSelectEvent={setOpenEvent} />
     </div>
   );
