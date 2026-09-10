@@ -1207,19 +1207,19 @@
       "slug": "the-national-arts-club-1176c1",
       "name": "The National Arts Club",
       "kind": "club",
-      "tagline": "The National Arts Club is a community club centered on books, celebrities, exploration in manhattan.",
-      "description": "The National Arts Club is a community club centered on books, celebrities, exploration in manhattan. Based on 9 observed event dates, it meets weekly on Tuesday and Monday evenings.",
+      "tagline": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan.",
+      "description": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan. Based on 11 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
         "other",
+        "exploration",
         "books",
-        "celebrities",
-        "exploration"
+        "celebrities"
       ],
       "tags": [
         "other",
+        "exploration",
         "books",
-        "celebrities",
-        "exploration"
+        "celebrities"
       ],
       "neighborhoods": [
         "manhattan"
@@ -1237,7 +1237,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 12,
         "eventCount90d": 0
       },
       "schedule": {
@@ -1248,7 +1248,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 11
       },
       "upcomingEventIds": [
         "865b495f3413dca3",
@@ -1260,7 +1260,9 @@
         "1a42eb2db0bcb378",
         "d1ec478a586e9014",
         "3203611ff1e96814",
-        "99edbf39a419c412"
+        "99edbf39a419c412",
+        "d53ce6ac6c2b6659",
+        "342b685d3b344d3e"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1269,7 +1271,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1521,7 +1523,7 @@
       "name": "No Bad Days Run Club",
       "kind": "club",
       "tagline": "No Bad Days Run Club is a community club centered on fitness across NYC.",
-      "description": "No Bad Days Run Club is a community club centered on fitness across NYC. Based on 4 observed event dates, it meets weekly on Thursday evenings.",
+      "description": "No Bad Days Run Club is a community club centered on fitness across NYC. Based on 5 observed event dates, it meets weekly on Thursday evenings.",
       "categories": [
         "fitness"
       ],
@@ -1542,7 +1544,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-10",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 1
       },
       "schedule": {
@@ -1551,14 +1553,15 @@
           "Thursday"
         ],
         "typicalTime": "18:45",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "99e87d0aee79959d",
         "f33adb17260e3c58",
         "17c3abdb4187d92b",
-        "15dd827db30f8fd6"
+        "15dd827db30f8fd6",
+        "fecac60a76200e28"
       ],
       "sourceAttributions": [
         "instagram"
@@ -1567,7 +1570,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50579,7 +50582,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-10T21:59:57.418331+00:00",
+  "lastUpdated": "2026-09-10T23:09:59.182596+00:00",
   "version": 1,
   "schemaVersion": 1
 }
