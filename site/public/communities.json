@@ -6,7 +6,7 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music, books, special in bushwick.",
-      "description": "Elsewhere is a recurring event series centered on music, books, special in bushwick. Based on 29 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music, books, special in bushwick. Based on 31 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "music",
         "other",
@@ -22,8 +22,8 @@
       "neighborhoods": [
         "bushwick"
       ],
-      "homeVenue": "Elsewhere",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1170789468%2F2569518370411%2F1%2Foriginal.20251112-153342?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=1485f14ce7b076cc8b347a32175e4d8c",
+      "homeVenue": "Elsewhere - The Rooftop",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192978427%2F2569518370411%2F1%2Foriginal.20260908-154944?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=ffcb100fdf31b78003b925961124a765",
       "links": [
         {
           "type": "eventbrite",
@@ -34,27 +34,31 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-09-06",
-        "upcomingEventCount": 7,
-        "eventCount90d": 41
+        "lastEventDate": "2026-09-10",
+        "upcomingEventCount": 11,
+        "eventCount90d": 42
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Friday",
-          "Saturday"
+          "Thursday",
+          "Friday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 29
+        "sampleSize": 31
       },
       "upcomingEventIds": [
+        "38b1f38b2407bc28",
         "526c71bd6e0bfb6d",
         "af04a6202ff7b12e",
         "6a3af4e5649686cb",
         "a541531f7c1e6fb9",
         "45521f45d5f45dcc",
         "ff487f32295021c0",
+        "5e95890391945b49",
+        "2a750fdabd358ecf",
+        "b4cac5b8cf3d1436",
         "c65ab39ef5533d68"
       ],
       "sourceAttributions": [
@@ -64,7 +68,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 29,
+        "observedDateCount": 31,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -76,10 +80,10 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_1466f20a9300",
+        "com_33a530deb7aa",
         "com_3837f308cd75",
-        "com_d2d455d2d6c9",
-        "com_55ca36db453a",
-        "com_c1410c07c4dd"
+        "com_b736e77bdf93",
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -147,11 +151,88 @@
       ],
       "similarCommunityIds": [
         "com_b766b6de77ba",
+        "com_fe4b6663b721",
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_f23f8820878b",
-        "com_ed8d42fb031d",
-        "com_218b97d674a6"
+        "com_ed8d42fb031d"
+      ]
+    },
+    {
+      "id": "com_fe4b6663b721",
+      "slug": "ciao-evento-63b721",
+      "name": "Ciao Evento",
+      "kind": "recurring_series",
+      "tagline": "Ciao Evento is a recurring event series centered on music, parties, dance in manhattan.",
+      "description": "Ciao Evento is a recurring event series centered on music, parties, dance in manhattan. Based on 3 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "categories": [
+        "other",
+        "music",
+        "parties",
+        "dance"
+      ],
+      "tags": [
+        "other",
+        "music",
+        "parties",
+        "dance"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Ciao Evento",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190387968%2F1365783857803%2F1%2Foriginal.20260805-165121?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.438&fp-y=0.722&s=3940803706dcb48bbc7d00005e37db00",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/114605847281"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Saturday",
+          "Sunday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.5,
+        "sampleSize": 3
+      },
+      "upcomingEventIds": [
+        "7190891519ed8c75",
+        "8988e31bc2fe2ceb",
+        "ab9d21da0f3b5f76"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-09-10",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:114605847281"
+      ],
+      "similarCommunityIds": [
+        "com_9fed174eeff3",
+        "com_a1e1c13a75f0",
+        "com_99343fce4c7a",
+        "com_4a9490cb3534",
+        "com_4c3ca28533f5",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -221,12 +302,12 @@
         "eventbrite:115357260611"
       ],
       "similarCommunityIds": [
+        "com_b0e15eaab803",
         "com_d2d455d2d6c9",
+        "com_ab8259bb35a4",
         "com_f171cd222ca5",
         "com_318c39363fe6",
-        "com_4c3ca28533f5",
-        "com_99343fce4c7a",
-        "com_9fed174eeff3"
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -305,8 +386,8 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
-        "com_3837f308cd75",
         "com_b736e77bdf93",
+        "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_c1410c07c4dd",
         "com_cb019f4e9752"
@@ -317,13 +398,21 @@
       "slug": "caveat-3a75f0",
       "name": "Caveat",
       "kind": "recurring_series",
-      "tagline": "Caveat is a recurring event series in manhattan.",
-      "description": "Caveat is a recurring event series in manhattan. Based on 12 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "tagline": "Caveat is a recurring event series centered on comedy, parties, books in manhattan.",
+      "description": "Caveat is a recurring event series centered on comedy, parties, books in manhattan. Based on 14 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
-        "other"
+        "comedy",
+        "parties",
+        "other",
+        "books",
+        "viewings"
       ],
       "tags": [
-        "other"
+        "comedy",
+        "parties",
+        "other",
+        "books",
+        "viewings"
       ],
       "neighborhoods": [
         "manhattan"
@@ -341,7 +430,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-09",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 5,
         "eventCount90d": 13
       },
       "schedule": {
@@ -352,10 +441,14 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 14
       },
       "upcomingEventIds": [
-        "08baf04966c824b2"
+        "08baf04966c824b2",
+        "9682b2057ce75c9a",
+        "9b2b56563d23f0b7",
+        "47b843e867084bc2",
+        "fd66f8cf7f9c73c4"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -364,7 +457,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -373,12 +466,12 @@
         "eventbrite:13580085802"
       ],
       "similarCommunityIds": [
-        "com_99343fce4c7a",
-        "com_bad972d799e8",
-        "com_d2d455d2d6c9",
         "com_4c3ca28533f5",
-        "com_9fed174eeff3",
-        "com_e9748c1176c1"
+        "com_e9748c1176c1",
+        "com_fe4b6663b721",
+        "com_99343fce4c7a",
+        "com_d2d455d2d6c9",
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -449,9 +542,9 @@
         "com_1ab246c8dd88",
         "com_3bc67889299d",
         "com_9fed174eeff3",
-        "com_ab8259bb35a4",
         "com_065dafa96d43",
-        "com_4c3ca28533f5"
+        "com_4c3ca28533f5",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -460,7 +553,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series centered on comedy in brooklyn.",
-      "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 10 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 11 observed event dates, it meets weekly on Sunday and Wednesday evenings.",
       "categories": [
         "other",
         "comedy"
@@ -485,24 +578,25 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-10",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 11
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Friday"
+          "Sunday",
+          "Wednesday"
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 11
       },
       "upcomingEventIds": [
         "c419a55732e0752f",
         "f9cd7c60cccfa8e8",
         "58e9b6c33103ca29",
-        "9006f9bc67f47b18"
+        "9006f9bc67f47b18",
+        "8759b0781385ab0d"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -511,7 +605,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -525,7 +619,7 @@
         "com_4a9490cb3534",
         "com_3837f308cd75",
         "com_d8a5203885a9",
-        "com_359bbb5a9a91"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -533,21 +627,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn. Based on 18 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on music, art, comedy in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on music, art, comedy in brooklyn. Based on 18 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
-        "comedy",
-        "music",
         "other",
-        "movies",
-        "art"
+        "music",
+        "art",
+        "comedy",
+        "books"
       ],
       "tags": [
-        "comedy",
-        "music",
         "other",
-        "movies",
-        "art"
+        "music",
+        "art",
+        "comedy",
+        "books"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -565,8 +659,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-10",
-        "upcomingEventCount": 6,
-        "eventCount90d": 31
+        "upcomingEventCount": 7,
+        "eventCount90d": 32
       },
       "schedule": {
         "cadence": "weekly",
@@ -580,6 +674,7 @@
       },
       "upcomingEventIds": [
         "bc657ef9e2806b52",
+        "c0db314b3006fdbd",
         "5f06ad0e29f9619b",
         "26474293cc8bef0f",
         "8e8b929ebb892168",
@@ -602,12 +697,12 @@
         "eventbrite:18898315629"
       ],
       "similarCommunityIds": [
+        "com_4a9490cb3534",
         "com_3837f308cd75",
-        "com_d8a5203885a9",
         "com_1466f20a9300",
         "com_cb019f4e9752",
-        "com_4a9490cb3534",
-        "com_318c39363fe6"
+        "com_d8a5203885a9",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -702,8 +797,8 @@
       "slug": "strand-bookstore-d2d6c9",
       "name": "Strand Bookstore",
       "kind": "recurring_series",
-      "tagline": "Strand Bookstore is a recurring event series centered on books in east village, manhattan.",
-      "description": "Strand Bookstore is a recurring event series centered on books in east village, manhattan. Based on 10 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Strand Bookstore is a recurring event series centered on books in manhattan, east village.",
+      "description": "Strand Bookstore is a recurring event series centered on books in manhattan, east village. Based on 10 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "other",
         "books"
@@ -713,8 +808,8 @@
         "books"
       ],
       "neighborhoods": [
-        "east village",
-        "manhattan"
+        "manhattan",
+        "east village"
       ],
       "homeVenue": "The Strand Building",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1186704572%2F1871930968773%2F1%2Foriginal.20260611-185424?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=e5840239efd66acd8d696a1c346d5088",
@@ -771,9 +866,9 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
-        "com_a1e1c13a75f0",
         "com_e9748c1176c1",
         "com_f171cd222ca5",
+        "com_a1e1c13a75f0",
         "com_4a9490cb3534"
       ]
     },
@@ -783,7 +878,7 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick. Based on 12 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick. Based on 13 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -802,7 +897,7 @@
         "east village",
         "bushwick"
       ],
-      "homeVenue": "Book Club Bar East Village, 197 East 3rd Street",
+      "homeVenue": "East Village, 197 E 3rd Street",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/09_September/HTB_JULY_Square.png?cb=1786378850",
       "links": [
         {
@@ -815,7 +910,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-09",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 3
       },
       "schedule": {
@@ -826,7 +921,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 13
       },
       "upcomingEventIds": [
         "6736fbb693a4adda",
@@ -839,6 +934,7 @@
         "bdceb25e90a2f1e5",
         "7eca02c791c27155",
         "0d43431f99f016e6",
+        "39da90f7d6906a27",
         "15a52252351548d9"
       ],
       "sourceAttributions": [
@@ -848,7 +944,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 13,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -862,7 +958,7 @@
         "com_4a9490cb3534",
         "com_b766b6de77ba",
         "com_5582e2e97f1a",
-        "com_cdd5daa67222"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -871,18 +967,18 @@
       "name": "High Line Programs",
       "kind": "recurring_series",
       "tagline": "High Line Programs is a recurring event series centered on outdoors, books, wellness in manhattan.",
-      "description": "High Line Programs is a recurring event series centered on outdoors, books, wellness in manhattan. Based on 8 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "description": "High Line Programs is a recurring event series centered on outdoors, books, wellness in manhattan. Based on 9 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
       "categories": [
         "outdoors",
-        "other",
         "books",
-        "wellness"
+        "wellness",
+        "other"
       ],
       "tags": [
         "outdoors",
-        "other",
         "books",
-        "wellness"
+        "wellness",
+        "other"
       ],
       "neighborhoods": [
         "manhattan"
@@ -900,7 +996,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-10",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 3
       },
       "schedule": {
@@ -909,9 +1005,9 @@
           "Thursday",
           "Tuesday"
         ],
-        "typicalTime": "17:30",
+        "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 9
       },
       "upcomingEventIds": [
         "fc9f3667b3902bc9",
@@ -919,6 +1015,7 @@
         "fd9138a35b321cbb",
         "adaac8da908a83b3",
         "af204902d7fa4e27",
+        "dba6407575d9c8ab",
         "7d7ecf93823f8d32"
       ],
       "sourceAttributions": [
@@ -928,7 +1025,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 9,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -942,7 +1039,7 @@
         "com_ab8259bb35a4",
         "com_bad972d799e8",
         "com_d2d455d2d6c9",
-        "com_99343fce4c7a"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -1180,10 +1277,10 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_d2d455d2d6c9",
-        "com_99343fce4c7a",
         "com_a1e1c13a75f0",
+        "com_99343fce4c7a",
         "com_9fed174eeff3",
-        "com_5582e2e97f1a"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -1334,9 +1431,9 @@
         "com_eeb4e424a504",
         "com_e9748c1176c1",
         "com_55ca36db453a",
+        "com_b736e77bdf93",
         "com_eef1ca956dae",
-        "com_318c39363fe6",
-        "com_f171cd222ca5"
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -1412,7 +1509,7 @@
         "com_cb019f4e9752",
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
-        "com_a1e1c13a75f0"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -1764,10 +1861,10 @@
       "similarCommunityIds": [
         "com_ab8259bb35a4",
         "com_99343fce4c7a",
-        "com_a1e1c13a75f0",
         "com_d2d455d2d6c9",
         "com_318c39363fe6",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -1839,9 +1936,9 @@
         "com_359bbb5a9a91",
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
-        "com_a1e1c13a75f0",
         "com_ab8259bb35a4",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -1911,12 +2008,12 @@
         "luma:cal-krxxlcjykkduk3v"
       ],
       "similarCommunityIds": [
-        "com_a1e1c13a75f0",
         "com_bad972d799e8",
         "com_d2d455d2d6c9",
         "com_4c3ca28533f5",
         "com_9fed174eeff3",
-        "com_e9748c1176c1"
+        "com_e9748c1176c1",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2132,11 +2229,158 @@
       ],
       "similarCommunityIds": [
         "com_4c3ca28533f5",
+        "com_fe4b6663b721",
         "com_99343fce4c7a",
-        "com_a1e1c13a75f0",
         "com_e9748c1176c1",
-        "com_02ba15552329",
-        "com_1466f20a9300"
+        "com_a1e1c13a75f0",
+        "com_02ba15552329"
+      ]
+    },
+    {
+      "id": "com_33a530deb7aa",
+      "slug": "lit-club-nyc-calendar-deb7aa",
+      "name": "Lit Club NYC Calendar",
+      "kind": "club",
+      "tagline": "Lit Club NYC Calendar is a community club centered on books, music in upper east side.",
+      "description": "Lit Club NYC Calendar is a community club centered on books, music in upper east side. Based on 5 observed event dates, it meets weekly on Thursday and Monday evenings.",
+      "categories": [
+        "books",
+        "music"
+      ],
+      "tags": [
+        "books",
+        "music"
+      ],
+      "neighborhoods": [
+        "upper east side"
+      ],
+      "homeVenue": "Quick Eternity",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/6n/9dd70ae2-71e1-4081-bde1-54f6b7eb83e6.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/litclub.nyc"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-09-10",
+        "upcomingEventCount": 5,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Monday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.83,
+        "sampleSize": 5
+      },
+      "upcomingEventIds": [
+        "06119294b77c2c9a",
+        "fe9770a95e5241d0",
+        "2b34d9c0842efd66",
+        "97376543ea5707ec",
+        "c70fff48af1edcbd"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-09-10",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 5,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:litclub.nyc"
+      ],
+      "similarCommunityIds": [
+        "com_4a9490cb3534",
+        "com_4e69412cb0a5",
+        "com_715c917d96c2",
+        "com_b766b6de77ba",
+        "com_eeb4e424a504",
+        "com_f171cd222ca5"
+      ]
+    },
+    {
+      "id": "com_b0e15eaab803",
+      "slug": "nyc-backgammon-club-aab803",
+      "name": "NYC Backgammon Club",
+      "kind": "club",
+      "tagline": "NYC Backgammon Club is a community club centered on games, music in soho.",
+      "description": "NYC Backgammon Club is a community club centered on games, music in soho. Based on 2 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "categories": [
+        "games",
+        "music"
+      ],
+      "tags": [
+        "games",
+        "music"
+      ],
+      "neighborhoods": [
+        "soho"
+      ],
+      "homeVenue": "Soho Grand Hotel",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/6y/fb191419-946a-41ae-a681-521ef3259d6b.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/nycbackgammonclub"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday",
+          "Tuesday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "8806e09746bf8d78",
+        "b69f662e5552a0d7"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-09-10",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:nycbackgammonclub"
+      ],
+      "similarCommunityIds": [
+        "com_ed8d42fb031d",
+        "com_1466f20a9300",
+        "com_33a530deb7aa",
+        "com_318c39363fe6",
+        "com_3b104adba072",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -2161,8 +2405,8 @@
       "neighborhoods": [
         "manhattan",
         "upper east side",
-        "midtown",
-        "williamsburg"
+        "east village",
+        "midtown"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/1s/5b989c2d-dea1-4bde-a175-e4a3110e4726.jpg",
@@ -2176,9 +2420,9 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-09-09",
-        "upcomingEventCount": 7,
-        "eventCount90d": 3
+        "lastEventDate": null,
+        "upcomingEventCount": 9,
+        "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
@@ -2194,10 +2438,12 @@
         "56f2ef05309603e5",
         "c31ff076da1ce37d",
         "fa548bf55855972b",
+        "fdc005c57726956a",
         "2d59d230e1ce75f0",
         "1f06d2e1dde2d03c",
         "14a71350cdd64257",
-        "4707053abfc52a15"
+        "4707053abfc52a15",
+        "58746b0e8e9c6c96"
       ],
       "sourceAttributions": [
         "luma"
@@ -2220,7 +2466,7 @@
         "com_c58670960684",
         "com_359bbb5a9a91",
         "com_9fed174eeff3",
-        "com_99343fce4c7a"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -2228,8 +2474,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties in midtown, queens.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in midtown, queens. Based on 30 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties in queens, manhattan.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in queens, manhattan. Based on 30 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "parties"
@@ -2239,10 +2485,10 @@
         "parties"
       ],
       "neighborhoods": [
-        "midtown",
         "queens",
         "manhattan",
-        "williamsburg"
+        "williamsburg",
+        "greenpoint"
       ],
       "homeVenue": "recess grove",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/ld/6a78a739-99e1-4f03-85a2-68bfb871e537.jpg",
@@ -2300,12 +2546,12 @@
         "luma:readingrhythms-manhattan"
       ],
       "similarCommunityIds": [
+        "com_4e69412cb0a5",
         "com_f171cd222ca5",
         "com_4a9490cb3534",
-        "com_4e69412cb0a5",
         "com_715c917d96c2",
-        "com_eeb4e424a504",
-        "com_d2d455d2d6c9"
+        "com_a1e1c13a75f0",
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -2441,10 +2687,10 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_218b97d674a6",
+        "com_33a530deb7aa",
+        "com_b0e15eaab803",
         "com_02ba15552329",
-        "com_318c39363fe6",
-        "com_d2ccb56c071d",
-        "com_4a9490cb3534"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -2452,8 +2698,8 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, parties in bushwick, east village.",
-      "description": "Book Club Bar is a community space centered on books, music, parties in bushwick, east village. Based on 41 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, parties in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, music, parties in east village, bushwick. Based on 41 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
         "books",
         "music",
@@ -2469,8 +2715,8 @@
         "singles"
       ],
       "neighborhoods": [
-        "bushwick",
         "east village",
+        "bushwick",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -2486,7 +2732,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-10",
-        "upcomingEventCount": 28,
+        "upcomingEventCount": 27,
         "eventCount90d": 20
       },
       "schedule": {
@@ -2501,7 +2747,6 @@
       },
       "upcomingEventIds": [
         "f3acc46406c2c0aa",
-        "9682b2057ce75c9a",
         "5b154803297734bd",
         "f0c75e46ccd344a7",
         "dc03883e6ce1f304",
@@ -2511,7 +2756,8 @@
         "e6ab68112943bec1",
         "456246204da9a2d0",
         "bddde94e7097822f",
-        "207d9dd1f4f4a8e9"
+        "207d9dd1f4f4a8e9",
+        "19dbe97f2cbf0e19"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -2537,9 +2783,9 @@
         "com_55ca36db453a",
         "com_4a9490cb3534",
         "com_b766b6de77ba",
+        "com_33a530deb7aa",
         "com_cdd5daa67222",
-        "com_3837f308cd75",
-        "com_d8a5203885a9"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -2548,7 +2794,7 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 33 observed event dates, it meets weekly on Friday and Sunday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 37 observed event dates, it meets weekly on Friday and Sunday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -2579,7 +2825,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-10",
-        "upcomingEventCount": 40,
+        "upcomingEventCount": 48,
         "eventCount90d": 28
       },
       "schedule": {
@@ -2590,7 +2836,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 33
+        "sampleSize": 37
       },
       "upcomingEventIds": [
         "735b1347e8aa8986",
@@ -2613,7 +2859,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 33,
+        "observedDateCount": 37,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -2627,12 +2873,12 @@
         "source:brooklyncomedy"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_1466f20a9300",
         "com_cb019f4e9752",
-        "com_f23f8820878b"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -2641,7 +2887,7 @@
       "name": "Brooklyn Contra",
       "kind": "club",
       "tagline": "Brooklyn Contra is a community club centered on music, dance in brooklyn.",
-      "description": "Brooklyn Contra is a community club centered on music, dance in brooklyn. Based on 6 observed event dates, it meets biweekly on Saturday and Friday evenings.",
+      "description": "Brooklyn Contra is a community club centered on music, dance in brooklyn. Based on 10 observed event dates, it meets biweekly on Saturday and Sunday evenings.",
       "categories": [
         "music",
         "dance"
@@ -2666,25 +2912,29 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-08-22",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 9,
         "eventCount90d": 2
       },
       "schedule": {
         "cadence": "biweekly",
         "typicalDays": [
           "Saturday",
-          "Friday"
+          "Sunday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "373d6ce12a48a67d",
         "9571523cb6e11a4a",
         "4a022319fa51c2e7",
         "82ca2c7c38283403",
-        "00b177e3895bc89b"
+        "00b177e3895bc89b",
+        "ef035c92d37d9289",
+        "dba37e1aab1ea860",
+        "56fad17f36dfade1",
+        "687cce7a8c81b7f8"
       ],
       "sourceAttributions": [
         "brooklyncontra"
@@ -2693,7 +2943,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -2800,15 +3050,15 @@
         "books",
         "celebrities",
         "exploration",
-        "outdoors",
-        "photography"
+        "photography",
+        "comedy"
       ],
       "tags": [
         "books",
         "celebrities",
         "exploration",
-        "outdoors",
-        "photography"
+        "photography",
+        "comedy"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -2869,12 +3119,12 @@
         "source:powerhousearena"
       ],
       "similarCommunityIds": [
+        "com_b736e77bdf93",
+        "com_cb019f4e9752",
         "com_4a9490cb3534",
+        "com_d8a5203885a9",
         "com_e9748c1176c1",
-        "com_5582e2e97f1a",
-        "com_1466f20a9300",
-        "com_3837f308cd75",
-        "com_b736e77bdf93"
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -2984,7 +3234,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-10",
-        "upcomingEventCount": 49,
+        "upcomingEventCount": 53,
         "eventCount90d": 46
       },
       "schedule": {
@@ -2999,17 +3249,17 @@
       },
       "upcomingEventIds": [
         "ce211fc412881caf",
-        "aff4a722b5e2d972",
         "2c8a52d1d4ba9bee",
+        "aff4a722b5e2d972",
         "5498338c4523b9fb",
         "51911eeea06fa8bf",
         "ac1089cc5d25fda0",
-        "4726248ab0b5c355",
+        "d6faf9b883e6f4e2",
+        "c303ae3d5a11450f",
         "30cb905af2a3b0fa",
         "9f2d59fd791c4bcb",
         "a166f64b05b4d479",
-        "ba9199eec6152eb3",
-        "36369314e10c8401"
+        "ba9199eec6152eb3"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -32741,52 +32991,6 @@
       "similarCommunityIds": []
     },
     {
-      "id": "com_a8db4492d430",
-      "slug": "discover-nyc-backgammon-club",
-      "name": "NYC Backgammon Club",
-      "kind": "directory_reference",
-      "profileStatus": "directory_reference",
-      "tagline": "Explore a NYC community connected to games.",
-      "description": "NYC Backgammon Club appears connected to games, based on its public name. Use the search link to confirm its official page, current schedule, and how to join.",
-      "categories": [
-        "games"
-      ],
-      "tags": [
-        "games"
-      ],
-      "neighborhoods": [],
-      "homeVenue": "",
-      "imageUrl": null,
-      "links": [
-        {
-          "type": "web_search",
-          "label": "Find the official page",
-          "url": "https://www.google.com/search?q=%22NYC+Backgammon+Club%22+NYC+community"
-        }
-      ],
-      "joinMethod": "Find the official page",
-      "activity": {
-        "state": "unverified",
-        "lastEventDate": null,
-        "upcomingEventCount": 0,
-        "eventCount90d": 0
-      },
-      "schedule": null,
-      "upcomingEventIds": [],
-      "sourceAttributions": [],
-      "lastIndexedAt": "2026-08-06T18:48:32.210465+00:00",
-      "verified": false,
-      "verificationStatus": "directory_reference",
-      "qualificationEvidence": {
-        "observedDateCount": 0,
-        "hasFirstPartyIdentity": false
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [],
-      "similarCommunityIds": []
-    },
-    {
       "id": "com_d2094d2dd778",
       "slug": "discover-nyc-bird-alliance",
       "name": "NYC Bird Alliance",
@@ -50299,7 +50503,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-10T01:27:57.322616+00:00",
+  "lastUpdated": "2026-09-10T04:46:17.569162+00:00",
   "version": 1,
   "schemaVersion": 1
 }
