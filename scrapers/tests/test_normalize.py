@@ -30,6 +30,7 @@ from scrapers.normalize import (
     _prefer_specific_post_over_bio_schedule,
     _strip_outdoors_indoor_arena,
     deduplicate,
+    filter_future,
 )
 
 
@@ -127,6 +128,18 @@ def test_late_night_marker_between_200_and_300_description_chars_is_caught():
         "endTime": None,
     }
     assert _likely_past_midnight(event)
+
+
+def test_filter_future_removes_past_dates_but_keeps_today_and_future():
+    events = [
+        {"title": "past", "date": "2026-09-08"},
+        {"title": "today", "date": "2026-09-09"},
+        {"title": "future", "date": "2026-09-10"},
+    ]
+
+    assert [event["title"] for event in filter_future(events, today="2026-09-09")] == [
+        "today", "future",
+    ]
 
 
 def test_dated_post_replaces_matching_bio_schedule_but_not_other_club_event():

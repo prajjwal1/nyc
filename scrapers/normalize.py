@@ -3,6 +3,7 @@ import os
 import re
 from datetime import date, datetime, timezone
 from urllib.parse import urlparse
+from zoneinfo import ZoneInfo
 
 
 DISABLED_SOURCES = {"meetup"}
@@ -771,8 +772,11 @@ def _merge(a: dict, b: dict) -> dict:
     return merged
 
 
-def filter_future(events: list[dict]) -> list[dict]:
-    today = date.today().isoformat()
+def filter_future(events: list[dict], today: str | None = None) -> list[dict]:
+    # Feed dates are NYC-local. GitHub runners use UTC, which is already the
+    # next day after 8pm ET and would otherwise discard still-current evening
+    # events several hours early.
+    today = today or datetime.now(ZoneInfo("America/New_York")).date().isoformat()
     # Evergreen events (spot recommendations from accounts like
     # @wherethefuckdowego) survive — they're place picks, not dated events.
     # We rewrite their date to today so they sort with current content.
