@@ -1775,8 +1775,8 @@
       "slug": "planeteer-capital-d799e8",
       "name": "Planeteer Capital",
       "kind": "recurring_series",
-      "tagline": "Planeteer Capital is a recurring event series centered on outdoors in midtown, manhattan.",
-      "description": "Planeteer Capital is a recurring event series centered on outdoors in midtown, manhattan. Based on 2 observed event dates, it meets weekly on Monday and Wednesday mornings.",
+      "tagline": "Planeteer Capital is a recurring event series centered on outdoors in manhattan, midtown.",
+      "description": "Planeteer Capital is a recurring event series centered on outdoors in manhattan, midtown. Based on 3 observed event dates, it meets weekly on Monday and Wednesday mornings.",
       "categories": [
         "other",
         "outdoors"
@@ -1786,8 +1786,8 @@
         "outdoors"
       ],
       "neighborhoods": [
-        "midtown",
-        "manhattan"
+        "manhattan",
+        "midtown"
       ],
       "homeVenue": "On Flagship Store NYC Flatiron",
       "imageUrl": "https://images.lumacdn.com/event-covers/7j/3d2c2884-1387-42e1-836c-5fb245b30786.png",
@@ -1802,7 +1802,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
@@ -1812,12 +1812,13 @@
           "Wednesday"
         ],
         "typicalTime": "06:30",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "4c63c818e29c51c3",
-        "4a0a33a65b68e811"
+        "4a0a33a65b68e811",
+        "161ba806e22edb20"
       ],
       "sourceAttributions": [
         "luma"
@@ -1826,7 +1827,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50298,7 +50299,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-10T01:17:43.622523+00:00",
+  "lastUpdated": "2026-09-10T01:27:57.322616+00:00",
   "version": 1,
   "schemaVersion": 1
 }
