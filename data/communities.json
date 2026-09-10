@@ -232,9 +232,9 @@
         "com_9fed174eeff3",
         "com_a1e1c13a75f0",
         "com_99343fce4c7a",
+        "com_c913475de34a",
         "com_4a9490cb3534",
-        "com_4c3ca28533f5",
-        "com_e9748c1176c1"
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -305,11 +305,11 @@
       ],
       "similarCommunityIds": [
         "com_b0e15eaab803",
+        "com_c913475de34a",
         "com_d2d455d2d6c9",
         "com_ab8259bb35a4",
         "com_f171cd222ca5",
-        "com_318c39363fe6",
-        "com_4c3ca28533f5"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -473,7 +473,7 @@
         "com_fe4b6663b721",
         "com_99343fce4c7a",
         "com_d2d455d2d6c9",
-        "com_9fed174eeff3"
+        "com_c913475de34a"
       ]
     },
     {
@@ -1945,6 +1945,77 @@
       ]
     },
     {
+      "id": "com_c913475de34a",
+      "slug": "personal-5de34a",
+      "name": "Personal",
+      "kind": "recurring_series",
+      "tagline": "Personal is a recurring event series centered on parties, food in manhattan, lower east side.",
+      "description": "Personal is a recurring event series centered on parties, food in manhattan, lower east side. Based on 2 observed event dates, it meets weekly on Thursday and Sunday evenings.",
+      "categories": [
+        "parties",
+        "food",
+        "other"
+      ],
+      "tags": [
+        "parties",
+        "food",
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "lower east side"
+      ],
+      "homeVenue": "Waiting on a Friend",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2Fm4O3D6va1mFSvf7WWrSV%2FNdYX2XXFweKEp0JASljdh?alt=media&token=e03f368f-3561-4dcf-aad8-4bfa2f2b078c",
+      "links": [],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-09-10",
+        "upcomingEventCount": 2,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Sunday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "a5b4fcb476439b30",
+        "8ab531ec0e6344e3"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-09-10",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:aminasalahou",
+        "luma:cal-jrpnxzqi4akseo4",
+        "partiful:xgsn6ujz5zgelzfzfx73ns7dwan1"
+      ],
+      "similarCommunityIds": [
+        "com_fe4b6663b721",
+        "com_99343fce4c7a",
+        "com_a1e1c13a75f0",
+        "com_4a9490cb3534",
+        "com_bad972d799e8",
+        "com_d2d455d2d6c9"
+      ]
+    },
+    {
       "id": "com_99343fce4c7a",
       "slug": "obliquetablenyc-ce4c7a",
       "name": "ObliqueTableNYC",
@@ -3226,7 +3297,7 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club",
+      "homeVenue": "New York Comedy Club Upper West Side",
       "imageUrl": "/img/events/Thursday-Mic-NYCC-Comedy-Mob-973c0f7e-large-thumb.png",
       "links": [
         {
@@ -3239,7 +3310,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-10",
-        "upcomingEventCount": 54,
+        "upcomingEventCount": 51,
         "eventCount90d": 46
       },
       "schedule": {
@@ -3254,17 +3325,17 @@
       },
       "upcomingEventIds": [
         "ce211fc412881caf",
-        "2c8a52d1d4ba9bee",
         "aff4a722b5e2d972",
+        "2c8a52d1d4ba9bee",
         "5498338c4523b9fb",
         "51911eeea06fa8bf",
         "ac1089cc5d25fda0",
         "d6faf9b883e6f4e2",
-        "c303ae3d5a11450f",
         "30cb905af2a3b0fa",
         "9f2d59fd791c4bcb",
         "a166f64b05b4d479",
-        "ba9199eec6152eb3"
+        "ba9199eec6152eb3",
+        "36369314e10c8401"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -50508,7 +50579,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-10T21:44:20.049911+00:00",
+  "lastUpdated": "2026-09-10T21:54:21.204806+00:00",
   "version": 1,
   "schemaVersion": 1
 }
