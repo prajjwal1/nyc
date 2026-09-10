@@ -73,6 +73,15 @@ try {
         if ((await page.locator('button[aria-label^="Previous month"], button[aria-label^="Next month"]').count()) < 2) {
           throw new Error("homepage calendar controls are missing");
         }
+        const now = new Date();
+        const today = [
+          now.getFullYear(),
+          String(now.getMonth() + 1).padStart(2, "0"),
+          String(now.getDate()).padStart(2, "0"),
+        ].join("-");
+        if (new URL(page.url()).searchParams.get("date") !== today) {
+          throw new Error("homepage did not default to today's date");
+        }
         const card = page.locator("[data-event-id]").first();
         if (await card.count()) {
           const organizerLink = card.locator('a[aria-label^="Organizer:"], a[aria-label^="More information:"]').first();

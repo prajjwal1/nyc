@@ -92,9 +92,9 @@ export default function AllEventsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#f8f3e8]">
+      <div className="min-h-screen bg-[#f4f3ef]">
         <Header title="Every upcoming event" totalEvents={0} thisWeekCount={0} lastUpdated={undefined} newSinceLastVisit={0} />
-        <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+        <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
           <p className="mb-6 max-w-2xl text-sm leading-6 text-[#66716c]">
             Browse upcoming NYC events by date, including live music, comedy, art, food, fitness, parties, and free things to do.
           </p>
@@ -118,9 +118,9 @@ export default function AllEventsPage() {
 
   if (loadError) {
     return (
-      <div className="min-h-screen bg-[#f8f3e8]">
+      <div className="min-h-screen bg-[#f4f3ef]">
         <Header title="Every upcoming event" totalEvents={0} thisWeekCount={0} />
-        <div className="mx-auto max-w-5xl px-4 py-20 text-center">
+        <div className="mx-auto max-w-6xl px-4 py-20 text-center">
           <p className="font-semibold text-[#173c35]">Couldn&apos;t load events</p>
           <button onClick={() => window.location.reload()} className="mt-4 rounded-full bg-[#173c35] px-5 py-2 text-sm text-white">
             Refresh
@@ -145,7 +145,7 @@ export default function AllEventsPage() {
   })();
 
   return (
-    <div className="min-h-screen bg-[#f8f3e8]">
+    <div className="min-h-screen bg-[#f4f3ef]">
       <Header
         title="Every upcoming event"
         totalEvents={totalEvents}
@@ -154,7 +154,7 @@ export default function AllEventsPage() {
         newSinceLastVisit={newSinceLastVisit}
       />
 
-      <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+      <main className="mx-auto max-w-6xl px-4 pb-20 pt-2 sm:px-6">
         <p className="mb-6 text-sm text-[#66716c]">
           The full index — {events.length} events sorted by date and ranked by curation signal.
         </p>
@@ -200,8 +200,8 @@ export default function AllEventsPage() {
               const isToday = date === todayStr;
               return (
                 <div key={date}>
-                  <div className="sticky top-[56px] z-10 -mx-1 mb-3 flex items-baseline gap-3 bg-[#f8f3e8]/90 px-1 py-2 backdrop-blur supports-[backdrop-filter]:bg-[#f8f3e8]/70 sm:top-[53px]">
-                    <h2 className={`font-editorial tracking-[-0.015em] ${isToday ? "text-[22px] font-bold text-[#173c35]" : "text-[18px] font-semibold text-[#3a4d48]"}`}>
+                  <div className="sticky top-[60px] z-10 -mx-1 mb-3 flex items-baseline gap-3 bg-[#f4f3ef]/90 px-1 py-3 backdrop-blur-xl supports-[backdrop-filter]:bg-[#f4f3ef]/75">
+                    <h2 className={`font-editorial tracking-[-0.02em] ${isToday ? "text-[28px] text-[#173c35]" : "text-[22px] text-[#3a4d48]"}`}>
                       {isToday ? `Today · ${format(dateObj, "EEEE, MMM d")}` : format(dateObj, "EEEE, MMM d")}
                     </h2>
                     <span className="text-[11px] text-[#8b918e]">{dayEvents.length} events</span>

@@ -7,7 +7,7 @@ import json
 import os
 import statistics
 import sys
-from datetime import datetime
+from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
 
@@ -111,6 +111,24 @@ WARNING_CHECKS = [
         1,
     ),
 ]
+
+
+def _today_event_count(events: list[dict], *, today: str | None = None) -> int:
+    today = today or datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+    return sum((event.get("date") or "") == today for event in events)
+
+
+def _feed_horizon_days(events: list[dict], *, today: str | None = None) -> int:
+    today_date = date.fromisoformat(
+        today or datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+    )
+    valid_dates = []
+    for event in events:
+        try:
+            valid_dates.append(date.fromisoformat(event.get("date") or ""))
+        except (TypeError, ValueError):
+            continue
+    return max(0, (max(valid_dates, default=today_date) - today_date).days)
 
 
 def _active_follow_accounts(
@@ -231,7 +249,12 @@ def main(events_path: str = "data/events.json", *, write_stats: bool = False, ha
     print("\n--- CRITICAL CHECKS ---")
     failures = []
     critical_results = []
-    for name, check, min_count in CRITICAL_CHECKS:
+    today = datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+    runtime_critical_checks = [
+        ("Events today", lambda event: (event.get("date") or "") == today, 1),
+        *CRITICAL_CHECKS,
+    ]
+    for name, check, min_count in runtime_critical_checks:
         matching = [e for e in events if check(e)]
         ok = len(matching) >= min_count
         symbol = "✓" if ok else "✗"
@@ -252,6 +275,11 @@ def main(events_path: str = "data/events.json", *, write_stats: bool = False, ha
         elif matching and len(matching) <= 3:
             for e in matching[:2]:
                 print(f"      - {e['title'][:60]} ({e['source']})")
+    horizon_days = _feed_horizon_days(events, today=today)
+    horizon_ok = horizon_days >= 60
+    print(f"  {'✓' if horizon_ok else '⚠'} Feed horizon: {horizon_days} days (target 60+)")
+    if not horizon_ok:
+        warnings.append("Feed horizon (60+ days)")
 
     # MUST-SURFACE (strict) — the specific things the user asked to see.
     # A miss here means a user-requested source silently produced nothing;

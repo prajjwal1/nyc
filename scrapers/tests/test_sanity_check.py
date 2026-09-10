@@ -1,4 +1,9 @@
-from scrapers.sanity_check import _active_follow_accounts, _source_yield_cliffs
+from scrapers.sanity_check import (
+    _active_follow_accounts,
+    _feed_horizon_days,
+    _source_yield_cliffs,
+    _today_event_count,
+)
 
 
 def test_active_follow_accounts_excludes_past_events():
@@ -25,6 +30,17 @@ def test_active_follow_accounts_excludes_past_events():
         ["past_club", "today_club", "future_club"],
         today="2026-09-03",
     ) == {"today_club", "future_club"}
+
+
+def test_today_coverage_and_future_horizon():
+    events = [
+        {"date": "2026-09-09"},
+        {"date": "2026-09-10"},
+        {"date": "2026-11-20"},
+    ]
+
+    assert _today_event_count(events, today="2026-09-10") == 1
+    assert _feed_horizon_days(events, today="2026-09-10") == 71
 
 
 def test_source_yield_cliff_warns_for_large_drop_and_includes_timestamp():

@@ -45,15 +45,15 @@ export default function Calendar({
   const canGoBack = isAfter(currentMonth, thisMonthStart);
 
   return (
-    <div className="rounded-[1.5rem] border border-[#ddd9cc] bg-[#fffef9] p-3 shadow-[0_1px_0_rgba(23,58,49,0.03)] sm:p-4">
-      <div className="mb-3 flex items-center justify-between sm:mb-4">
+    <div className="rounded-[22px] border border-[#dedbd3] bg-[#fbfaf7] p-4 shadow-[0_18px_45px_-34px_rgba(20,45,37,0.48)] sm:p-5">
+      <div className="mb-4 flex items-center justify-between sm:mb-5">
         <button
           onClick={() => canGoBack && setCurrentMonth(subMonths(currentMonth, 1))}
           disabled={!canGoBack}
           aria-label="Previous month"
-          className={`grid h-8 w-8 place-items-center rounded-full border focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none ${
+          className={`grid h-9 w-9 place-items-center rounded-full border transition focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none ${
             canGoBack
-              ? "border-[#d7d5cd] bg-white text-[#5d6964] hover:border-[#173c35] hover:text-[#173c35]"
+              ? "border-transparent bg-[#efeee9] text-[#5d6964] hover:bg-[#e4e6e0] hover:text-[#173c35]"
               : "border-transparent text-[#d6d3c9] cursor-not-allowed"
           }`}
         >
@@ -61,13 +61,13 @@ export default function Calendar({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <h2 className="font-editorial text-[16px] font-semibold text-[#173c35]">
+        <h2 className="font-editorial text-[21px] leading-none tracking-[-0.025em] text-[#173c35]">
           {format(currentMonth, "MMMM yyyy")}
         </h2>
         <button
           onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
           aria-label="Next month"
-          className="grid h-8 w-8 place-items-center rounded-full border border-[#d7d5cd] bg-white text-[#5d6964] hover:border-[#173c35] hover:text-[#173c35] focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none"
+          className="grid h-9 w-9 place-items-center rounded-full border border-transparent bg-[#efeee9] text-[#5d6964] transition hover:bg-[#e4e6e0] hover:text-[#173c35] focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -77,7 +77,7 @@ export default function Calendar({
 
       <div className="grid grid-cols-7 gap-0">
         {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((d) => (
-          <div key={d} className="py-2 text-center text-[10px] font-semibold uppercase tracking-wide text-[#9a9d98]">
+          <div key={d} className="py-2 text-center text-[9px] font-semibold uppercase tracking-[0.13em] text-[#989e99]">
             {d}
           </div>
         ))}
@@ -98,10 +98,10 @@ export default function Calendar({
               disabled={isPast}
               aria-label={isPast ? `${dateStr} (past)` : `${dateStr}, ${count} events`}
               className={`
-                relative grid h-8 w-full place-items-center rounded-full text-sm transition focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none sm:h-9
+                relative grid h-9 w-full place-items-center rounded-[11px] text-[13px] font-medium transition focus-visible:ring-2 focus-visible:ring-[#173c35]/20 focus:outline-none sm:h-10
                 ${isPast ? "text-[#d6d3c9] cursor-not-allowed" : !inMonth ? "text-[#c1beb6]" : "text-[#3a4d48]"}
-                ${isSelected ? "bg-[#173c35] text-white font-semibold shadow-sm" : isPast ? "" : "hover:bg-[#f4f1e8]"}
-                ${isToday && !isSelected ? "font-bold text-[#173c35] ring-1 ring-[#173c35]/30" : ""}
+                ${isSelected ? "bg-[#173c35] text-white font-semibold shadow-[0_7px_16px_-8px_rgba(23,60,53,0.8)]" : isPast ? "" : "hover:bg-[#edeee9]"}
+                ${isToday && !isSelected ? "font-semibold text-[#173c35] ring-1 ring-[#89a097]/55" : ""}
               `}
             >
               {format(day, "d")}
@@ -109,7 +109,7 @@ export default function Calendar({
                 <span className="absolute bottom-0.5 left-1/2 flex -translate-x-1/2 gap-0.5">
                   {count <= 3 ? (
                     Array.from({ length: Math.min(count, 3) }).map((_, i) => (
-                      <span key={i} className="h-1 w-1 rounded-full bg-[#173c35]/60" />
+                      <span key={i} className="h-1 w-1 rounded-full bg-[#ad5b3d]/75" />
                     ))
                   ) : (
                     <span className="text-[8px] font-semibold leading-none text-[#6b7570]">{count}</span>
@@ -117,7 +117,7 @@ export default function Calendar({
                 </span>
               )}
               {hasEvents && isSelected && count > 0 && (
-                <span className="absolute -top-1 -right-1 grid h-4 min-w-4 place-items-center rounded-full bg-white px-1 text-[9px] font-bold text-[#173c35] border border-[#173c35]">
+                <span className="absolute -right-1 -top-1 grid h-4 min-w-4 place-items-center rounded-full border border-[#173c35] bg-[#fbfaf7] px-1 text-[9px] font-bold text-[#173c35]">
                   {count > 9 ? "9+" : count}
                 </span>
               )}
@@ -131,7 +131,7 @@ export default function Calendar({
           setCurrentMonth(startOfMonth(today));
           onSelectDate(todayStr);
         }}
-        className="mt-3 w-full rounded-full border border-[#d7d5cd] bg-white py-2 text-xs font-medium text-[#5d6964] hover:border-[#173c35] hover:text-[#173c35] sm:mt-4"
+        className="mt-4 w-full rounded-full border border-[#d8d8d1] bg-transparent py-2.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#5d6964] transition hover:border-[#9caaa4] hover:bg-white hover:text-[#173c35]"
       >
         Today
       </button>

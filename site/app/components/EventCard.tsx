@@ -172,17 +172,17 @@ function EventCardBody({
     onAccountClick(filterableAccount);
   };
   const cardChrome = convictionFollow
-    ? "border border-[#7db7d8] shadow-[inset_3px_0_0_0_#0ea5e9] hover:border-[#5aa3cc] bg-[#fcfeff]"
+    ? "border border-[#aac9bd] shadow-[inset_3px_0_0_0_#4b806f] hover:border-[#7faa9b] bg-[#f9fcfa]"
     : convictionAffinity
-    ? "border border-[#e8d090] shadow-[inset_3px_0_0_0_#d9a91a] hover:border-[#d9a91a] bg-[#fffef5]"
-    : "border border-[#ddd9cc] hover:border-[#8a9c94] bg-white";
+    ? "border border-[#dfcbb6] shadow-[inset_3px_0_0_0_#c17a55] hover:border-[#c99879] bg-[#fcfaf6]"
+    : "border border-[#dedbd3] hover:border-[#aebbb5] bg-[#fbfaf7]";
   const todayStrF = format(new Date(), "yyyy-MM-dd");
   const isPastF = !!event.date && event.date < todayStrF;
   const attendedF = isPastF ? getAttendedState(event.id) : undefined;
 
   return (
     <article
-      className={`group relative block bg-white rounded-xl ${cardChrome} hover:shadow-sm hover:-translate-y-[1px] transition-all overflow-hidden text-left cursor-pointer ${
+      className={`group relative block rounded-[18px] ${cardChrome} overflow-hidden text-left cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_35px_-28px_rgba(20,45,37,0.55)] ${
         openedEvent ? "opacity-60" : ""
       }`}
     >
@@ -190,11 +190,11 @@ function EventCardBody({
         href={eventPath(event.id)}
         onClick={handleCardClick}
         aria-label={`View details for ${event.title}`}
-        className="absolute inset-0 z-[1] rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sky-500"
+        className="absolute inset-0 z-[1] rounded-[18px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#3e7565]"
       />
-      <div className="flex gap-3 p-3">
+      <div className="flex gap-3.5 p-3.5 sm:p-4">
         {event.imageUrl && !imgFailedF && (
-          <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden bg-gray-100">
+          <div className="h-20 w-20 shrink-0 overflow-hidden rounded-[13px] bg-[#ebeae5] sm:h-[102px] sm:w-[102px]">
             <img
               src={event.imageUrl}
               alt={`${event.title} event poster`}
@@ -205,7 +205,7 @@ function EventCardBody({
           </div>
         )}
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">
+          <h3 className="line-clamp-2 text-[15px] font-semibold leading-[1.3] tracking-[-0.012em] text-[#192b25] sm:text-[16px]">
             {event.title}
             {attendedF === "yes" && (
               <span
@@ -218,10 +218,10 @@ function EventCardBody({
           </h3>
           <OrganizerLink
             event={event}
-            className="relative z-10 mt-1 inline-flex max-w-full items-center gap-1 truncate text-[11px] text-[#52645e] hover:text-[#173c35] hover:underline focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#173c35] focus:outline-none"
+            className="relative z-10 mt-1.5 inline-flex max-w-full items-center gap-1 truncate text-[11px] font-medium text-[#60706a] hover:text-[#173c35] hover:underline focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#173c35] focus:outline-none"
           />
 
-          <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500">
+          <div className="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[12px] text-[#69736f]">
             {/* U1: relative-day scent for hero cards (which drop the date). */}
             {showDay && dayLabel && (
               <span className="font-semibold text-gray-700">{dayLabel}</span>
@@ -261,7 +261,7 @@ function EventCardBody({
           </div>
 
           {showDesc && (
-            <p className="mt-1.5 text-xs text-gray-600 line-clamp-2 leading-relaxed">
+            <p className="mt-2 line-clamp-2 text-[12px] leading-[1.55] text-[#58645f]">
               {desc}
             </p>
           )}
@@ -359,8 +359,8 @@ function EventCardBody({
                 not need to see them on every card. */}
           </div>
 
-          <div className="mt-2 flex items-center justify-between gap-2 border-t border-[#eee9dc] pt-2">
-            <span className="relative z-10 flex min-w-0 items-center gap-1 truncate text-[10px] uppercase tracking-wide text-[#8b918e]">
+          <div className="mt-2.5 flex items-center justify-between gap-2 border-t border-[#e7e4dd] pt-2">
+            <span className="relative z-10 flex min-w-0 items-center gap-1.5 truncate text-[9px] font-semibold uppercase tracking-[0.1em] text-[#8a918d]">
               {event.likes && event.likes > 30 ? (
                 <span title="Likes" className="shrink-0 normal-case tracking-normal">
                   ❤ {formatCount(event.likes)}
@@ -419,7 +419,7 @@ function CompactCard({ event, timeStr }: { event: Event; timeStr: string | null 
   return (
     <Link
       href={eventPath(event.id)}
-      className="block bg-white rounded-xl border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm transition-all"
+      className="block rounded-[18px] border border-[#dedbd3] bg-[#fbfaf7] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#aebbb5] hover:shadow-[0_18px_35px_-28px_rgba(20,45,37,0.55)]"
     >
       <div className="flex gap-4">
         {event.imageUrl && !imgFailedC && (

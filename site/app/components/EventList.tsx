@@ -16,20 +16,20 @@ export default function EventList({ events, selectedDate, onAccountClick }: Even
 
   return (
     <div>
-      <div className="mb-4 flex items-center justify-between gap-3 border-b border-[#d8d0c1] pb-3">
-        <h2 className="font-editorial text-xl font-bold text-[#173c35] sm:text-2xl">{dateLabel}</h2>
-        <span className="shrink-0 rounded-full bg-[#eee8da] px-2.5 py-1 text-xs font-medium text-[#66716c]">
+      <div className="mb-5 flex items-end justify-between gap-3 border-b border-[#d8d8d1] pb-4">
+        <h2 className="font-editorial text-[28px] leading-none tracking-[-0.025em] text-[#173c35] sm:text-[34px]">{dateLabel}</h2>
+        <span className="shrink-0 pb-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#7b8580]">
           {events.length} event{events.length !== 1 ? "s" : ""}
         </span>
       </div>
 
       {events.length === 0 ? (
-        <div className="text-center py-12 text-gray-400">
-          <p className="text-lg">No events on this day</p>
-          <p className="text-sm mt-1">Try another date — scroll the calendar for busier days</p>
+        <div className="rounded-[20px] border border-dashed border-[#cfcec7] bg-[#fbfaf7]/70 px-6 py-14 text-center text-[#8a918d]">
+          <p className="font-editorial text-2xl text-[#3f514b]">No events have landed yet</p>
+          <p className="mt-2 text-sm">Today stays selected while the feed refreshes.</p>
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           {events.map((event, index) => (
             <div
               key={event.id}

@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 import SiteNav from "./components/SiteNav";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "./lib/seo";
+
+const geist = localFont({
+  src: "./fonts/geist-latin.woff2",
+  variable: "--font-geist",
+  weight: "100 900",
+  display: "swap",
+});
 
 // SEO — goal: rank as the canonical "what's happening in NYC" hub.
 // Targets the queries New Yorkers actually type: "events tonight nyc",
@@ -62,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className={`h-full antialiased ${geist.variable}`}>
       <body className="min-h-full flex flex-col">
         {/* JSON-LD structured data — helps Google understand this is an
             events directory for NYC. Site-level markup; per-event Event

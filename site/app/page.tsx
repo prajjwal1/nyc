@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { format } from "date-fns";
 import { useEvents } from "./hooks/useEvents";
 import Header from "./components/Header";
@@ -25,9 +25,6 @@ export default function Home() {
   } = useEvents();
 
   const [lastVisitedAt, setLastVisitedAt] = useState<string | null>(null);
-  const explicitDateRef = useRef(false);
-  const initialDateResolvedRef = useRef(false);
-
   useEffect(() => {
     queueMicrotask(() => setLastVisitedAt(readAndAdvanceLastVisited()));
   }, []);
@@ -39,26 +36,12 @@ export default function Home() {
     const params = new URLSearchParams(window.location.search);
     const date = params.get("date");
     const account = params.get("account");
-    if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
-      explicitDateRef.current = true;
-    }
     queueMicrotask(() => {
       if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) setSelectedDate(date);
       if (account && account.trim().length <= 80) setAccountFilter(account.trim());
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // If today is empty, open the next date that actually has events. This
-  // happens once only; later empty-date selections remain under user control.
-  useEffect(() => {
-    if (loading || initialDateResolvedRef.current) return;
-    initialDateResolvedRef.current = true;
-    if (explicitDateRef.current || eventDates.has(selectedDate)) return;
-    const today = format(new Date(), "yyyy-MM-dd");
-    const nextDate = [...eventDates].filter((date) => date >= today).sort()[0];
-    if (nextDate) setSelectedDate(nextDate);
-  }, [loading, eventDates, selectedDate, setSelectedDate]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -103,18 +86,18 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#f8f3e8]">
+      <div className="min-h-screen bg-[#f4f3ef]">
         <Header totalEvents={0} thisWeekCount={0} lastUpdated={undefined} newSinceLastVisit={0} />
-        <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+        <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
           <p className="mb-5 max-w-2xl text-sm leading-6 text-[#66716c]">
             Discover curated events and things to do today, tonight, and this weekend across Brooklyn, Manhattan, Queens, and the rest of New York City.
           </p>
           <div className="mb-6 h-14 animate-pulse rounded-lg bg-[#e7e1d2]" />
           <div className="grid gap-6 lg:grid-cols-[20rem_minmax(0,1fr)]">
-            <div className="h-[22rem] animate-pulse rounded-xl border border-[#ded7c9] bg-[#fffdf8]" />
+            <div className="h-[22rem] animate-pulse rounded-[22px] border border-[#dedbd3] bg-[#fbfaf7]" />
             <div className="space-y-3">
               {Array.from({ length: 5 }).map((_, index) => (
-                <div key={index} className="h-28 animate-pulse rounded-xl border border-[#ded7c9] bg-[#fffdf8]" />
+                <div key={index} className="h-28 animate-pulse rounded-[18px] border border-[#dedbd3] bg-[#fbfaf7]" />
               ))}
             </div>
           </div>
@@ -141,7 +124,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f3e8]">
+    <div className="min-h-screen bg-[#f4f3ef]">
       <Header
         totalEvents={totalEvents}
         thisWeekCount={thisWeekCount}
@@ -149,7 +132,7 @@ export default function Home() {
         newSinceLastVisit={newSinceLastVisit}
       />
 
-      <main className="mx-auto max-w-5xl px-4 py-3 sm:px-6 sm:py-6">
+      <main className="mx-auto max-w-6xl px-4 pb-16 pt-1 sm:px-6 sm:pb-20 sm:pt-2">
         {accountFilter && (
           <div className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-[#c9d8d2] bg-[#edf5f1] px-3 py-2">
             <span className="truncate text-xs font-semibold text-[#31554c]">
@@ -164,8 +147,8 @@ export default function Home() {
           </div>
         )}
 
-        <div className="grid gap-4 lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-6">
-          <aside className="lg:sticky lg:top-20 lg:self-start">
+        <div className="grid gap-6 lg:grid-cols-[21rem_minmax(0,1fr)] lg:gap-9">
+          <aside className="lg:sticky lg:top-[84px] lg:self-start">
             <Calendar
               selectedDate={selectedDate}
               onSelectDate={setSelectedDate}

@@ -191,7 +191,7 @@ export default function CommunitiesPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f8f3e8] px-4 pb-24 pt-9 text-[#182923] sm:px-6 sm:pt-14">
+    <main className="min-h-screen bg-[#f4f3ef] px-4 pb-24 pt-9 text-[#182923] sm:px-6 sm:pt-14">
       <div className="mx-auto max-w-7xl">
         <header className="grid gap-8 border-b border-[#d8d7d0] pb-9 sm:pb-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div className="max-w-4xl">
@@ -215,7 +215,7 @@ export default function CommunitiesPage() {
           </dl>
         </header>
 
-        <section aria-label="Community filters" className="sticky top-[49px] z-30 -mx-4 border-b border-[#d8d7d0] bg-[#f8f3e8]/95 px-4 py-3 shadow-[0_8px_20px_rgba(23,58,49,0.03)] backdrop-blur-xl sm:top-[53px] sm:mx-0 sm:py-4 sm:shadow-none">
+        <section aria-label="Community filters" className="sticky top-[60px] z-30 -mx-4 border-b border-[#d8d7d0] bg-[#f4f3ef]/95 px-4 py-3 shadow-[0_8px_20px_rgba(23,58,49,0.03)] backdrop-blur-xl sm:mx-0 sm:py-4 sm:shadow-none">
           <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
               <select value={category} onChange={(event) => { setCategory(event.target.value); restartList(); }} aria-label="Filter by interest" className="h-12 min-w-0 rounded-full border border-[#cfcec6] bg-[#fbfaf7] px-3 text-sm outline-none focus:border-[#8a9c94] sm:px-4">
                 <option value="all">All interests</option>

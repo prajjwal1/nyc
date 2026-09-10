@@ -109,7 +109,7 @@ export default async function CategoryPage({ params }: Props) {
   };
 
   return (
-    <main className="min-h-screen bg-[#f8f3e8] px-4 py-8 text-[#182923] sm:px-6 sm:py-12">
+    <main className="min-h-screen bg-[#f4f3ef] px-4 py-8 text-[#182923] sm:px-6 sm:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList).replace(/</g, "\\u003c") }}
@@ -123,7 +123,7 @@ export default async function CategoryPage({ params }: Props) {
 
         <header className="border-b border-[#d8d0c1] pb-7">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a684e]">Things to do in New York</p>
-          <h1 className="mt-2 font-editorial text-4xl font-bold leading-tight text-[#173c35] sm:text-6xl">
+          <h1 className="mt-2 font-editorial text-5xl leading-[0.98] tracking-[-0.035em] text-[#173c35] sm:text-7xl">
             {config.label} events in NYC
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-[#52645e]">{description}</p>
@@ -133,7 +133,7 @@ export default async function CategoryPage({ params }: Props) {
         {events.length ? (
           <section aria-label={`${config.label} event listings`} className="mt-8 grid gap-4 md:grid-cols-2">
             {events.map((event) => (
-              <article key={event.id} className="rounded-xl border border-[#ded7c9] bg-[#fffdf8] p-4 shadow-sm">
+              <article key={event.id} className="rounded-[18px] border border-[#dedbd3] bg-[#fbfaf7] p-4 shadow-[0_18px_35px_-30px_rgba(20,45,37,0.5)]">
                 <p className="text-xs font-semibold uppercase tracking-wide text-[#9a684e]">
                   {formatDate(event.date)}{event.startTime ? ` · ${event.startTime}` : ""}
                 </p>

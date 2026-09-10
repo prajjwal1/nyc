@@ -72,13 +72,13 @@ export default function Header({
 
   return (
     <header>
-      <div className="mx-auto max-w-5xl px-4 pb-5 pt-8 sm:px-6 sm:pb-6 sm:pt-10">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div className="mx-auto max-w-6xl px-4 pb-7 pt-10 sm:px-6 sm:pb-9 sm:pt-14">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
-            <h1 className="font-editorial text-[30px] font-bold leading-[1.08] tracking-[-0.025em] text-[#173c35] sm:text-[34px]">
+            <h1 className="max-w-3xl font-editorial text-[42px] leading-[0.98] tracking-[-0.035em] text-[#173c35] sm:text-[56px]">
               {title}
             </h1>
-            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#6b7570]">
+            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[12px] font-medium text-[#6b7570]">
               {thisWeekCount !== undefined && thisWeekCount > 0 ? (
                 <>
                   <span>
@@ -90,15 +90,15 @@ export default function Header({
                 <span>{totalEvents} events from across the city</span>
               )}
               {updatedStr && (
-                <span className={`text-[11px] ${updatedColorClass}`} title={updatedTooltip}>
+                <span className={`text-[10px] uppercase tracking-[0.08em] ${updatedColorClass}`} title={updatedTooltip}>
                   Updated {updatedStr}
                   {ageHours != null && ageHours >= 2 && <span className="ml-1">⚠ stale</span>}
                 </span>
               )}
             </div>
             {newSinceLastVisit && newSinceLastVisit > 0 ? (
-              <div className="mt-2 flex items-center gap-1.5 text-[11px] font-medium text-[#31554c]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#31554c]" aria-hidden="true" />
+              <div className="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-[#31554c]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#ad5b3d]" aria-hidden="true" />
                 <span>
                   {newSinceLastVisit} new since you last visited
                 </span>
@@ -108,7 +108,7 @@ export default function Header({
           <div className="flex items-center gap-2 sm:justify-end">
             <button
               onClick={handleShare}
-              className="inline-flex min-h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium text-[#5d6964] hover:bg-white/70 hover:text-[#173c35]"
+              className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#d9d7d0] bg-[#fbfaf7] px-4 text-xs font-semibold text-[#53625d] shadow-[0_1px_0_rgba(23,60,53,0.04)] transition hover:-translate-y-0.5 hover:border-[#aebbb5] hover:text-[#173c35] hover:shadow-sm"
               title="Copy link to current view"
             >
               {copied ? (

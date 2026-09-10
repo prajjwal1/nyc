@@ -40,11 +40,11 @@ export default function SavedPage() {
   );
 
   return (
-    <div className="min-h-screen bg-[#f8f3e8]">
+    <div className="min-h-screen bg-[#f4f3ef]">
       <main className="px-4 py-10 sm:px-6">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-6xl">
           <p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#bd4f34]">Your city — private to this browser</p>
-          <h1 className="font-editorial mt-3 text-5xl font-bold tracking-[-0.03em] text-[#173c35] sm:text-6xl">Saved for later.</h1>
+          <h1 className="mt-3 font-editorial text-5xl leading-none tracking-[-0.035em] text-[#173c35] sm:text-7xl">Saved for later.</h1>
           <p className="mt-4 max-w-xl text-[15px] leading-6 text-[#5d6964]">
             Events you starred, kept privately in this browser.
           </p>

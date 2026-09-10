@@ -799,6 +799,14 @@ _FAR_FUTURE_DAYS = 180
 # defaulting to next year.
 _TRUSTED_FAR_FUTURE_SOURCES = frozenset(
     {
+        # Structured ticketing/calendar platforms expose explicit ISO dates;
+        # retain their full advertised horizon rather than applying the
+        # caption-oriented 180-day misparse guard.
+        "luma",
+        "eventbrite",
+        "partiful",
+        "dice",
+        "songkick",
         "bookclubbar",
         "lizsbookbar",
         "mcnallyjackson",  # iter 102: dedicated month-pagination scraper
@@ -1860,13 +1868,15 @@ def _is_shell_event(event: dict) -> bool:
     return False
 
 
-def filter_far_future_misparsed(events: list[dict]) -> list[dict]:
+def filter_far_future_misparsed(
+    events: list[dict], *, today: date | None = None
+) -> list[dict]:
     """Drop events dated >180 days out unless the description explicitly
     mentions a year. Most >6-month-out IG events are misparsed (caption
     said "April 12" with no year, parser defaulted to next year when
     current year had passed).
     """
-    today = date.today()
+    today = today or datetime.now(ZoneInfo("America/New_York")).date()
     out = []
     for ev in events:
         d = ev.get("date", "")

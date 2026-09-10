@@ -11,6 +11,8 @@ Locks in:
     carroll gardens and Book Club Bar → east village.
 """
 
+from datetime import date
+
 import pytest
 
 import scrapers.normalize as normalize
@@ -30,6 +32,7 @@ from scrapers.normalize import (
     _prefer_specific_post_over_bio_schedule,
     _strip_outdoors_indoor_arena,
     deduplicate,
+    filter_far_future_misparsed,
     filter_future,
 )
 
@@ -141,6 +144,26 @@ def test_filter_future_removes_past_dates_but_keeps_today_and_future():
         "today", "future",
     ]
 
+
+def test_authoritative_platform_keeps_full_future_horizon():
+    events = [
+        {
+            "title": "Next summer's festival",
+            "description": "Tickets are on sale now.",
+            "date": "2027-07-10",
+            "source": "luma",
+        },
+        {
+            "title": "July meetup",
+            "description": "Save the date.",
+            "date": "2027-07-10",
+            "source": "instagram",
+        },
+    ]
+
+    assert filter_far_future_misparsed(
+        events, today=date(2026, 9, 10)
+    ) == [events[0]]
 
 def test_dated_post_replaces_matching_bio_schedule_but_not_other_club_event():
     bio = {

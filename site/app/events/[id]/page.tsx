@@ -140,7 +140,7 @@ export default async function EventPage({ params }: Props) {
   const jsonLd = JSON.stringify(eventJsonLd(event)).replace(/</g, "\\u003c");
 
   return (
-    <main className="min-h-screen bg-[#f8f3e8] px-4 py-8 text-[#182923] sm:px-6 sm:py-12">
+    <main className="min-h-screen bg-[#f4f3ef] px-4 py-8 text-[#182923] sm:px-6 sm:py-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       <article className="mx-auto max-w-3xl">
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-[#66716c]">
@@ -153,13 +153,13 @@ export default async function EventPage({ params }: Props) {
           <img
             src={event.imageUrl}
             alt={`${event.title} event poster`}
-            className="mb-7 max-h-[34rem] w-full rounded-2xl border border-[#ded7c9] bg-white object-contain"
+            className="mb-7 max-h-[34rem] w-full rounded-[24px] border border-[#dedbd3] bg-[#fbfaf7] object-contain shadow-[0_20px_50px_-38px_rgba(20,45,37,0.5)]"
           />
         )}
 
-        <div className="rounded-2xl border border-[#ded7c9] bg-[#fffdf8] p-5 shadow-sm sm:p-8">
+        <div className="rounded-[24px] border border-[#dedbd3] bg-[#fbfaf7] p-5 shadow-[0_20px_50px_-38px_rgba(20,45,37,0.5)] sm:p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a684e]">NYC event</p>
-          <h1 className="mt-2 font-editorial text-3xl font-bold leading-tight text-[#173c35] sm:text-5xl">
+          <h1 className="mt-2 font-editorial text-4xl leading-[1.02] tracking-[-0.03em] text-[#173c35] sm:text-6xl">
             {event.title}
           </h1>
           <a

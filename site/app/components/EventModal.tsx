@@ -65,11 +65,11 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-end justify-center overflow-y-auto bg-[#10231d]/65 p-0 backdrop-blur-md sm:items-center sm:p-6"
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-t-2xl sm:rounded-2xl w-full max-w-2xl max-h-[90vh] sm:max-h-[95vh] overflow-y-auto"
+        className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-t-[26px] border border-white/40 bg-[#fbfaf7] shadow-[0_30px_90px_-35px_rgba(0,0,0,0.7)] sm:max-h-[95vh] sm:rounded-[26px]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -210,7 +210,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
           </div>
 
           {/* Title */}
-          <h2 className="text-xl font-semibold text-gray-900 leading-tight">
+          <h2 className="font-editorial text-[32px] leading-[1.02] tracking-[-0.025em] text-[#173c35] sm:text-[38px]">
             {event.title}
           </h2>
           <OrganizerLink

@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8f3e8;
-  --foreground: #173c35;
-  --font-ui-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --background: #f4f3ef;
+  --foreground: #172b25;
+  --surface: #fbfaf7;
+  --line: #dedbd3;
+  --muted: #68736f;
+  --accent: #ad5b3d;
+  --font-ui-sans: var(--font-geist), "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
   --font-ui-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
@@ -15,21 +19,32 @@
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 92% -8%, rgba(173, 91, 61, 0.055), transparent 31rem),
+    var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  letter-spacing: -0.008em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
-.font-editorial { font-family: Georgia, "Times New Roman", serif; }
+.font-editorial {
+  font-family: var(--font-geist), "Avenir Next", Avenir, sans-serif;
+  font-weight: 520;
+}
+
+::selection { background: #d9e6df; color: #10271f; }
+
+button:not(:disabled),
+[role="button"] { cursor: pointer; }
 
 /* Subtle custom scrollbar for webkit */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-thumb { background: #d7d5cd; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #b8beb9; }
+::-webkit-scrollbar-thumb { background: #d2d1cb; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #afb8b3; }
 
 /* Focus-visible fallback */
-*:focus-visible { outline: 2px solid #173c35; outline-offset: 2px; }
+*:focus-visible { outline: 2px solid #28584b; outline-offset: 3px; }
 
 /* Line clamp utilities (Tailwind v4 doesn't include by default without plugin) */
 .line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
