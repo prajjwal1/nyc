@@ -79,10 +79,10 @@
         "url:https://www.eventbrite.com/o/elsewhere-105655500371"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
         "com_1466f20a9300",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_c1410c07c4dd",
         "com_33a530deb7aa"
       ]
@@ -386,8 +386,8 @@
         "eventbrite:121441877858"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_1466f20a9300",
+        "com_b736e77bdf93",
         "com_b766b6de77ba",
         "com_3837f308cd75",
         "com_d8a5203885a9",
@@ -611,9 +611,9 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_eef1ca956dae"
       ]
@@ -623,17 +623,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on books, music in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on books, music in brooklyn. Based on 18 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on books, music, movies in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on books, music, movies in brooklyn. Based on 20 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
         "books",
-        "music"
+        "music",
+        "movies",
+        "art"
       ],
       "tags": [
         "other",
         "books",
-        "music"
+        "music",
+        "movies",
+        "art"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -651,7 +655,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-11",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 6,
         "eventCount90d": 34
       },
       "schedule": {
@@ -662,13 +666,15 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 18
+        "sampleSize": 20
       },
       "upcomingEventIds": [
         "26474293cc8bef0f",
         "8e8b929ebb892168",
         "cf75d39123425caf",
-        "e72e07bc6fa322ca"
+        "e72e07bc6fa322ca",
+        "019a20e47605124a",
+        "6a5987b0575416fc"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -677,7 +683,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 18,
+        "observedDateCount": 20,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -687,11 +693,11 @@
       ],
       "similarCommunityIds": [
         "com_4a9490cb3534",
+        "com_3837f308cd75",
         "com_1466f20a9300",
         "com_b766b6de77ba",
-        "com_3837f308cd75",
-        "com_33a530deb7aa",
-        "com_d2d455d2d6c9"
+        "com_d8a5203885a9",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -773,8 +779,8 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
         "com_b736e77bdf93",
+        "com_1466f20a9300",
         "com_b766b6de77ba",
         "com_4a9490cb3534",
         "com_d8a5203885a9",
@@ -856,8 +862,8 @@
         "com_99343fce4c7a",
         "com_e9748c1176c1",
         "com_f171cd222ca5",
-        "com_b736e77bdf93",
-        "com_a1e1c13a75f0"
+        "com_a1e1c13a75f0",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -945,8 +951,8 @@
         "com_318c39363fe6",
         "com_4a9490cb3534",
         "com_5582e2e97f1a",
-        "com_b766b6de77ba",
-        "com_33a530deb7aa"
+        "com_b736e77bdf93",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -1176,9 +1182,9 @@
         "eventbrite:5803675324"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_cb019f4e9752",
         "com_b766b6de77ba",
         "com_d8a5203885a9"
@@ -1417,9 +1423,9 @@
         "com_eeb4e424a504",
         "com_e9748c1176c1",
         "com_55ca36db453a",
+        "com_b736e77bdf93",
         "com_eef1ca956dae",
-        "com_33a530deb7aa",
-        "com_318c39363fe6"
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -2348,12 +2354,12 @@
         "luma:litclub.nyc"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
         "com_4e69412cb0a5",
         "com_715c917d96c2",
         "com_b766b6de77ba",
-        "com_eeb4e424a504"
+        "com_eeb4e424a504",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -2425,7 +2431,7 @@
         "com_33a530deb7aa",
         "com_318c39363fe6",
         "com_9fed174eeff3",
-        "com_b736e77bdf93"
+        "com_3b104adba072"
       ]
     },
     {
@@ -2830,9 +2836,9 @@
         "com_55ca36db453a",
         "com_4a9490cb3534",
         "com_b766b6de77ba",
-        "com_b736e77bdf93",
         "com_33a530deb7aa",
-        "com_cdd5daa67222"
+        "com_cdd5daa67222",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -2922,9 +2928,9 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_1466f20a9300",
         "com_cb019f4e9752",
-        "com_b736e77bdf93",
         "com_eef1ca956dae"
       ]
     },
@@ -3001,9 +3007,9 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_e07415e7f595",
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_d8a5203885a9"
       ]
     },
@@ -3167,8 +3173,8 @@
       ],
       "similarCommunityIds": [
         "com_cb019f4e9752",
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_e9748c1176c1",
         "com_5582e2e97f1a"
@@ -3413,7 +3419,7 @@
         "com_c58670960684",
         "com_3837f308cd75",
         "com_5582e2e97f1a",
-        "com_d8a5203885a9"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -50550,7 +50556,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-11T05:02:45.576588+00:00",
+  "lastUpdated": "2026-09-11T05:58:33.744582+00:00",
   "version": 1,
   "schemaVersion": 1
 }
