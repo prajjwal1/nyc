@@ -401,18 +401,18 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy, parties, books in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, parties, books in manhattan. Based on 14 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy, parties, books in manhattan. Based on 15 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "comedy",
-        "parties",
         "other",
+        "parties",
         "books",
         "viewings"
       ],
       "tags": [
         "comedy",
-        "parties",
         "other",
+        "parties",
         "books",
         "viewings"
       ],
@@ -432,7 +432,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-11",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 7,
         "eventCount90d": 14
       },
       "schedule": {
@@ -443,14 +443,16 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 14
+        "sampleSize": 15
       },
       "upcomingEventIds": [
         "08baf04966c824b2",
         "9682b2057ce75c9a",
         "9b2b56563d23f0b7",
         "47b843e867084bc2",
-        "fd66f8cf7f9c73c4"
+        "fd66f8cf7f9c73c4",
+        "ff049610d7dd1fc0",
+        "01452189edc7b599"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -459,7 +461,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 14,
+        "observedDateCount": 15,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -552,7 +554,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series centered on comedy in brooklyn.",
-      "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 11 observed event dates, it meets weekly on Sunday and Wednesday evenings.",
+      "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 12 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "other",
         "comedy"
@@ -577,23 +579,25 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-11",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 5,
         "eventCount90d": 12
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Wednesday"
+          "Monday"
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "58e9b6c33103ca29",
         "9006f9bc67f47b18",
-        "8759b0781385ab0d"
+        "8759b0781385ab0d",
+        "f31dbf404a4486dd",
+        "f4169d0007e6c072"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -602,7 +606,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50564,7 +50568,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-11T20:58:00.657897+00:00",
+  "lastUpdated": "2026-09-11T21:22:48.168096+00:00",
   "version": 1,
   "schemaVersion": 1
 }
