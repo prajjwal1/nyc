@@ -58,6 +58,91 @@ def test_frontier_normalizes_slugged_eventbrite_organizers(tmp_path, monkeypatch
     ]
 
 
+def test_persisted_platform_links_keep_provenance_and_canonical_identity(
+    tmp_path, monkeypatch
+):
+    path = tmp_path / "discovered_urls.json"
+    _write(path, [])
+    monkeypatch.setattr(discovery, "DISCOVERED_URLS_PATH", str(path))
+
+    added = discovery.persist_discovered_urls(
+        ["https://www.eventbrite.com/o/st-mazie-5803675324?aff=instagram"],
+        discovered_via="instagram_bio_browser",
+        source_account="reading_rhythms",
+        lane="personal",
+    )
+    duplicate = discovery.persist_discovered_urls(
+        ["https://eventbrite.com/o/5803675324"],
+        discovered_via="eventbrite_organizer_graph",
+    )
+
+    rows = json.loads(path.read_text())
+    assert added == 1
+    assert duplicate == 0
+    assert len(rows) == 1
+    assert rows[0]["url"] == "https://eventbrite.com/o/5803675324"
+    assert rows[0]["platform"] == "eventbrite"
+    assert rows[0]["kind"] == "organizer"
+    assert rows[0]["lane"] == "personal"
+    assert rows[0]["source_accounts"] == ["reading_rhythms"]
+    assert rows[0]["discovery_vias"] == [
+        "instagram_bio_browser", "eventbrite_organizer_graph"
+    ]
+
+    discovery.record_platform_results([{
+        "url": "https://eventbrite.com/o/5803675324", "yield": 7,
+    }])
+    discovery.record_platform_survival([{
+        "source": "eventbrite",
+        "sourceUrl": "https://eventbrite.com/e/a-night-123",
+        "organizerUrl": "https://eventbrite.com/o/5803675324",
+    }])
+    row = json.loads(path.read_text())[0]
+    assert row["status"] == "active"
+    assert row["last_parsed_yield"] == 7
+    assert row["last_surviving_yield"] == 1
+
+
+def test_empty_direct_event_expires_after_three_attempts(tmp_path, monkeypatch):
+    path = tmp_path / "discovered_urls.json"
+    _write(path, [])
+    events_path = tmp_path / "events.json"
+    _write(events_path, [])
+    _write(tmp_path / "user_curated_sources.json", {"hosts": {}})
+    monkeypatch.setattr(discovery, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(discovery, "DISCOVERED_URLS_PATH", str(path))
+    monkeypatch.setattr(discovery, "EVENTS_PATH", str(events_path))
+    url = "https://partiful.com/e/past-event"
+    discovery.persist_discovered_urls([url], discovered_via="instagram_bio")
+
+    discovery.record_platform_results([
+        {"url": url, "yield": 0},
+        {"url": url, "yield": 0},
+        {"url": url, "yield": 0},
+    ])
+
+    row = json.loads(path.read_text())[0]
+    assert row["status"] == "stale"
+    assert row["consecutive_empty_runs"] == 3
+    assert row["next_retry_at"] > row["last_attempt_at"]
+    assert discovery.platform_frontier("partiful", kinds={"event"}) == []
+
+
+def test_link_aggregator_html_extracts_only_dedicated_platforms():
+    document = r'''
+      <a href="https:\/\/partiful.com\/e\/party123?c=ig">Party</a>
+      <a href="https://www.eventbrite.com/o/club-name-12345?aff=ig">Club</a>
+      <script>{"url":"https:\/\/lu.ma\/readingrhythms"}</script>
+      <a href="https://example.com/events/ignore-me">Other</a>
+    '''
+
+    assert discovery.extract_platform_links(document) == {
+        "https://partiful.com/e/party123",
+        "https://eventbrite.com/o/12345",
+        "https://lu.ma/readingrhythms",
+    }
+
+
 def test_curated_eventbrite_frontier_prefers_explicit_user_signal(tmp_path, monkeypatch):
     data_dir = tmp_path / "data"
     data_dir.mkdir()
@@ -156,6 +241,60 @@ def test_partiful_tags_are_learned_from_metadata():
     }
 
 
+def test_partiful_organizer_page_exposes_published_events():
+    payload = {
+        "props": {"pageProps": {
+            "user": {"id": "host-a", "name": "Chess Friends"},
+            "initialPublishedEvents": [{
+                "id": "event-a",
+                "title": "Social Chess Night",
+                "startDate": "2026-09-20T23:00:00.000Z",
+                "timezone": "America/New_York",
+                "ownerIds": ["host-a"],
+                "locationInfo": {"mapsInfo": {
+                    "name": "The Nook",
+                    "addressLines": ["45 Irving Ave", "Brooklyn, NY 11237"],
+                }},
+            }],
+        }},
+    }
+    html = f'<script id="__NEXT_DATA__" type="application/json">{json.dumps(payload)}</script>'
+
+    events = partiful._parse_organizer_page(
+        html, "https://partiful.com/u/host-a"
+    )
+
+    assert [event["title"] for event in events] == ["Social Chess Night"]
+    assert events[0]["organizer"] == "Chess Friends"
+    assert events[0]["organizerUrl"] == "https://partiful.com/u/host-a"
+    assert events[0]["catalogSource"] == "partiful_organizer"
+
+
+def test_partiful_promotes_recurring_and_personal_hosts_only():
+    recurring = [{
+        "sourceUrl": f"https://partiful.com/e/{index}",
+        "organizerRefs": [{"platform": "partiful", "externalId": "host-recurring"}],
+        "discoveryLane": "explore",
+    } for index in range(2)]
+    personal = [{
+        "sourceUrl": "https://partiful.com/e/personal",
+        "organizerRefs": [{"platform": "partiful", "externalId": "host-personal"}],
+        "discoveryLane": "personal",
+    }]
+    singleton = [{
+        "sourceUrl": "https://partiful.com/e/one-off",
+        "organizerRefs": [{"platform": "partiful", "externalId": "host-one-off"}],
+        "discoveryLane": "explore",
+    }]
+
+    rows = partiful._promoted_organizers(recurring + personal + singleton)
+
+    assert [row.url for row in rows] == [
+        "https://partiful.com/u/host-personal",
+        "https://partiful.com/u/host-recurring",
+    ]
+
+
 def test_generic_pool_has_no_dedicated_platform_urls():
     assert not any(discovery.is_dedicated_platform_url(url) for url in generic.GENERIC_URLS)
 
@@ -198,6 +337,26 @@ def test_eventbrite_search_promotion_requires_recurring_organizer():
     ])
 
     assert [row.url for row in rows] == ["https://eventbrite.com/o/222"]
+
+
+def test_eventbrite_organizer_frontier_protects_top_and_rotates_tail():
+    items = [
+        discovery.FrontierItem(
+            url=f"https://eventbrite.com/o/{index}", kind="organizer"
+        )
+        for index in range(10)
+    ]
+
+    first = eventbrite._rotating_targets(
+        items, limit=6, protected=2, slot=0
+    )
+    second = eventbrite._rotating_targets(
+        items, limit=6, protected=2, slot=1
+    )
+
+    assert [item.url for item in first[:2]] == [item.url for item in items[:2]]
+    assert [item.url for item in second[:2]] == [item.url for item in items[:2]]
+    assert {item.url for item in first[2:]} != {item.url for item in second[2:]}
 
 
 def test_eventbrite_explicit_organizer_outranks_raw_search_volume():
@@ -296,6 +455,7 @@ def test_eventbrite_scrape_schedules_collection_frontier(monkeypatch):
         return "collection html"
 
     monkeypatch.setattr(eventbrite, "_fetch_with_backoff", fake_fetch)
+    monkeypatch.setattr(eventbrite, "record_platform_results", lambda _results: None)
     monkeypatch.setattr(eventbrite, "_search_plan", lambda: [])
     monkeypatch.setattr(eventbrite, "_parse_search_page", lambda _html, _url: [
         _collection_event(index) for index in range(5)

@@ -4,7 +4,7 @@ from scrapers.sources import eventbrite, generic, instagram, luma
 from scrapers.normalize import _is_distinct_schedule_source
 from scrapers.instagram_browser_worker import (
     _account_plan, _caption_from_og, _merge_snapshot_posts,
-    _merge_snapshot_profiles, _sanitize_posts,
+    _merge_snapshot_profiles, _public_external_urls, _sanitize_posts,
 )
 from scrapers.utils.interest_profile import _username_topics
 
@@ -38,8 +38,9 @@ def test_luma_fast_refresh_is_catalog_first_and_bounded(monkeypatch):
     monkeypatch.setenv("PLATFORM_FAST_REFRESH", "1")
     plan = luma._calendar_plan()
     assert plan[0].kind == "discover"
-    assert len(plan) <= 5
-    assert all(item.kind != "event" for item in plan)
+    assert len(plan) <= 13
+    # Harvested direct links should not wait four hours for the full sweep.
+    assert sum(item.kind == "event" for item in plan) <= 8
 
 
 def test_luma_city_api_row_keeps_graphic_canonical_url_and_host():
@@ -221,6 +222,38 @@ def test_browser_snapshot_does_not_commit_arbitrary_saved_content():
     assert "cookie" not in clean[0]
 
 
+def test_browser_external_links_unwrap_instagram_redirects():
+    rows = _public_external_urls([
+        "https://l.instagram.com/?u=https%3A%2F%2Flu.ma%2Fbookclub%3Futm_source%3Dig&e=x",
+        "https://www.instagram.com/explore/",
+        "javascript:alert(1)",
+        "https://partiful.com/e/abc123#guest-list",
+    ])
+
+    assert rows == [
+        "https://lu.ma/bookclub?utm_source=ig",
+        "https://partiful.com/e/abc123",
+    ]
+
+
+def test_browser_snapshot_keeps_only_public_outbound_links():
+    posts = [{
+        "url": "https://instagram.com/p/event/", "owner": "venue", "lane": "saved",
+        "caption": "Book club August 12 at 7pm in Brooklyn",
+        "image": "https://cdn/y.jpg",
+        "outboundUrls": [
+            "https://eventbrite.com/e/book-night-123?aff=ig",
+            "https://instagram.com/venue/",
+        ],
+    }]
+
+    clean = _sanitize_posts(posts)
+
+    assert clean[0]["outboundUrls"] == [
+        "https://eventbrite.com/e/book-night-123?aff=ig"
+    ]
+
+
 def test_browser_account_rotation_advances_past_daily_four_chunks(monkeypatch):
     accounts = [
         {"username": f"account{i}", "discovered_via": "user_following"}
@@ -251,6 +284,7 @@ def test_browser_snapshot_retains_latest_profile_metadata():
     current = [{
         "username": "runclub", "biography": "Mondays 7pm", "followers": 1200,
         "capturedAt": "2026-09-09T12:00:00Z", "cookie": "secret",
+        "externalUrls": ["https://partiful.com/u/runclub"],
     }]
     previous = [{
         "username": "runclub", "biography": "Old schedule", "followers": 1100,
@@ -260,6 +294,7 @@ def test_browser_snapshot_retains_latest_profile_metadata():
     merged = _merge_snapshot_profiles(current, previous)
 
     assert merged[0]["biography"] == "Mondays 7pm"
+    assert merged[0]["externalUrls"] == ["https://partiful.com/u/runclub"]
     assert "cookie" not in merged[0]
 
 

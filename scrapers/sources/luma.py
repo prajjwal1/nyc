@@ -6,7 +6,13 @@ from urllib.parse import urlencode
 
 from ..utils.http import fetch_json, fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local
-from ..utils.platform_discovery import FrontierItem, platform_frontier, rotating_luma_probes
+from ..utils.platform_discovery import (
+    FrontierItem,
+    persist_discovered_urls,
+    platform_frontier,
+    record_platform_results,
+    rotating_luma_probes,
+)
 
 LUMA_DISCOVER_URL = "https://lu.ma/nyc"
 LUMA_DISCOVER_API = "https://api.lu.ma/discover/get-paginated-events"
@@ -21,21 +27,25 @@ def _calendar_plan() -> list[FrontierItem]:
     """Return learned calendars, harvested events, and rotating probes."""
     quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
     fast_refresh = os.environ.get("PLATFORM_FAST_REFRESH", "0") == "1"
+    followthrough = os.environ.get("PLATFORM_LINK_FOLLOWTHROUGH", "0") == "1"
     learned_calendars = platform_frontier(
-        "luma", kinds={"calendar"}, limit=4 if fast_refresh else 8 if quick else 20
+        "luma", kinds={"calendar"},
+        limit=8 if followthrough else 4 if fast_refresh else 8 if quick else 20,
     )
     direct_events = platform_frontier(
-        "luma", kinds={"event"}, limit=0 if fast_refresh else 6 if quick else 20
+        "luma", kinds={"event"},
+        limit=20 if followthrough else 8 if fast_refresh else 6 if quick else 20,
     )
-    probes = [] if quick or fast_refresh else rotating_luma_probes(limit=6)
+    probes = [] if quick or fast_refresh or followthrough else rotating_luma_probes(limit=6)
+    city = [] if followthrough else [FrontierItem(
+        url=LUMA_DISCOVER_URL,
+        kind="discover",
+        lane="explore",
+        score=1.0,
+        via="city_discover",
+    )]
     items = [
-        FrontierItem(
-            url=LUMA_DISCOVER_URL,
-            kind="discover",
-            lane="explore",
-            score=1.0,
-            via="city_discover",
-        ),
+        *city,
         *learned_calendars,
         *direct_events,
         *probes,
@@ -75,6 +85,10 @@ async def scrape() -> list[dict]:
 
     results = await asyncio.gather(*(calendar(item) for item in plan))
     events = [event for _item, page_events in results for event in page_events]
+    target_results = [
+        {"url": item.url, "yield": len(page_events), "via": item.via, "kind": item.kind}
+        for item, page_events in results if item.kind != "discover"
+    ]
 
     # Organizer URLs exposed by the city listing are new calendar candidates.
     # Fetch a bounded set immediately instead of waiting for a code/config edit.
@@ -84,7 +98,11 @@ async def scrape() -> list[dict]:
     if promoted:
         promoted_results = await asyncio.gather(*(calendar(item) for item in promoted))
         events.extend(event for _item, page_events in promoted_results for event in page_events)
+        target_results.extend({
+            "url": item.url, "yield": len(page_events), "via": item.via, "kind": item.kind
+        } for item, page_events in promoted_results)
         print(f"[luma] promoted {len(promoted)} organizers from current results")
+    record_platform_results(target_results)
 
     # Reuse detail-page content for learned calendar/direct-event results.
     # The broad NYC cursor API is intentionally kept lightweight: its rows
@@ -123,6 +141,13 @@ async def scrape() -> list[dict]:
     out = [by_url.get(e.get("sourceUrl"), e) for e in events]
     for event in out:
         event.pop("_lumaNeedsHydration", None)
+    durable = _promoted_calendars(out, set(), limit=40)
+    for lane in {item.lane for item in durable}:
+        persist_discovered_urls(
+            [item.url for item in durable if item.lane == lane],
+            discovered_via="luma_organizer_graph",
+            lane=lane,
+        )
     return out
 
 

@@ -17,7 +17,9 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+import asyncio
+import html
 import json
 import os
 import re
@@ -30,6 +32,13 @@ DATA_DIR = os.path.join(SCRAPERS_DIR, "data")
 REPO_DIR = os.path.dirname(SCRAPERS_DIR)
 DISCOVERED_URLS_PATH = os.path.join(DATA_DIR, "discovered_urls.json")
 EVENTS_PATH = os.path.join(REPO_DIR, "data", "events.json")
+
+LINK_AGGREGATOR_HOSTS = {
+    "linktr.ee", "linktree.com", "beacons.ai", "linkin.bio", "sprout.link",
+    "stan.store", "withkoji.com", "koji.to", "allmylinks.com", "lnk.bio",
+    "snipfeed.co", "tap.bio", "msha.ke", "campsite.bio", "bio.site",
+    "hoo.be", "solo.to", "milkshake.app",
+}
 
 
 @dataclass(frozen=True)
@@ -237,6 +246,302 @@ def _raw_discovered_items() -> list[dict]:
     return out
 
 
+def _canonical_discovery_url(url: str, discovered_via: str = "") -> tuple[str, str, str]:
+    """Return a stable URL plus its dedicated platform/kind when known.
+
+    Platform URLs are aggressively canonicalized because tracking parameters
+    otherwise turn one Instagram bio link into many frontier entries.  Other
+    public URLs retain their query string because it can be functional.
+    """
+    raw = (url or "").strip()
+    if not raw:
+        return "", "", ""
+    for platform in ("luma", "partiful", "eventbrite"):
+        classified = _classify(platform, raw, discovered_via)
+        if classified:
+            clean, kind = classified
+            return clean, platform, kind
+    try:
+        parsed = urlparse(raw if "://" in raw else f"https://{raw}")
+    except Exception:
+        return "", "", ""
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return "", "", ""
+    host = parsed.netloc.lower().removeprefix("www.")
+    path = re.sub(r"/+", "/", parsed.path).rstrip("/")
+    return urlunparse(("https", host, path, "", parsed.query, "")), "", ""
+
+
+def persist_discovered_urls(
+    urls: list[str] | set[str] | tuple[str, ...],
+    *,
+    discovered_via: str,
+    source_account: str = "",
+    lane: str = "explore",
+) -> int:
+    """Persist public source links with enough provenance to rank them.
+
+    This is intentionally shared by Instagram and the platform adapters.  A
+    discovered organizer/calendar therefore survives after its first event
+    ages out of ``events.json``. Existing legacy rows remain compatible.
+    """
+    raw = _load_json(DISCOVERED_URLS_PATH, [])
+    wrapper = isinstance(raw, dict)
+    items = raw.get("urls", []) if wrapper else raw
+    items = list(items) if isinstance(items, list) else []
+    now = datetime.now(timezone.utc).isoformat()
+
+    by_url: dict[str, dict] = {}
+    passthrough: list[dict] = []
+    for item in items:
+        row = {"url": item} if isinstance(item, str) else dict(item) if isinstance(item, dict) else {}
+        existing_url = str(row.get("url") or "")
+        clean, platform, kind = _canonical_discovery_url(
+            existing_url, str(row.get("discovered_via") or "")
+        )
+        if not clean:
+            if row:
+                passthrough.append(row)
+            continue
+        row["url"] = clean
+        if platform:
+            row.setdefault("platform", platform)
+            row.setdefault("kind", kind)
+        by_url.setdefault(clean, row)
+
+    added = 0
+    changed = False
+    for url in urls:
+        clean, platform, kind = _canonical_discovery_url(str(url), discovered_via)
+        if not clean:
+            continue
+        row = by_url.get(clean)
+        if row is None:
+            row = {
+                "url": clean,
+                "discovered_at": now,
+                "first_seen_at": now,
+                "discovered_via": discovered_via,
+            }
+            by_url[clean] = row
+            added += 1
+            changed = True
+        previous = dict(row)
+        row.setdefault("first_seen_at", row.get("discovered_at") or now)
+        row["last_seen_at"] = now
+        if platform:
+            row["platform"] = platform
+            row["kind"] = kind
+        if source_account:
+            accounts = row.get("source_accounts") or []
+            if isinstance(accounts, str):
+                accounts = [accounts]
+            row["source_accounts"] = list(dict.fromkeys([
+                *[str(account).lower() for account in accounts if account],
+                source_account.lower(),
+            ]))[-12:]
+        if lane == "personal" or row.get("lane") != "personal":
+            row["lane"] = lane
+        vias = row.get("discovery_vias") or []
+        if isinstance(vias, str):
+            vias = [vias]
+        row["discovery_vias"] = list(dict.fromkeys([
+            *[str(via) for via in vias if via], discovered_via,
+        ]))[-12:]
+        changed = changed or row != previous
+
+    if not changed:
+        return 0
+    payload_items = [*passthrough, *by_url.values()]
+    payload = dict(raw) if wrapper else payload_items
+    if wrapper:
+        payload["urls"] = payload_items
+        payload["lastDiscovery"] = now
+    os.makedirs(os.path.dirname(DISCOVERED_URLS_PATH), exist_ok=True)
+    tmp = DISCOVERED_URLS_PATH + ".tmp"
+    with open(tmp, "w") as file:
+        json.dump(payload, file, indent=2)
+    os.replace(tmp, DISCOVERED_URLS_PATH)
+    return added
+
+
+def record_platform_results(results: list[dict]) -> None:
+    """Batch per-target attempt/yield lifecycle data into the frontier."""
+    if not results:
+        return
+    for kind in {str(result.get("kind") or "") for result in results}:
+        persist_discovered_urls(
+            {
+                str(result.get("url") or "") for result in results
+                if str(result.get("kind") or "") == kind
+            },
+            discovered_via=f"platform_{kind}_fetch" if kind else "platform_fetch",
+        )
+    raw = _load_json(DISCOVERED_URLS_PATH, [])
+    wrapper = isinstance(raw, dict)
+    items = raw.get("urls", []) if wrapper else raw
+    if not isinstance(items, list):
+        return
+    now = datetime.now(timezone.utc)
+    by_url = {
+        str(item.get("url") or ""): item
+        for item in items if isinstance(item, dict) and item.get("url")
+    }
+    for result in results:
+        clean, _platform, kind = _canonical_discovery_url(
+            str(result.get("url") or ""),
+            str(result.get("kind") or result.get("via") or "platform_fetch"),
+        )
+        row = by_url.get(clean)
+        if row is None:
+            continue
+        error = str(result.get("error") or "")
+        try:
+            parsed_yield = max(0, int(result.get("yield") or 0))
+        except (TypeError, ValueError):
+            parsed_yield = 0
+        row["last_attempt_at"] = now.isoformat()
+        row["last_parsed_yield"] = parsed_yield
+        if error:
+            failures = int(row.get("consecutive_failures") or 0) + 1
+            row["consecutive_failures"] = failures
+            row["last_error"] = error[:180]
+            row["status"] = "error"
+            row["next_retry_at"] = (
+                now + timedelta(hours=min(24 * 7, 2 ** min(failures, 7)))
+            ).isoformat()
+            continue
+        row["last_success_at"] = now.isoformat()
+        row["consecutive_failures"] = 0
+        row.pop("last_error", None)
+        empty_runs = int(row.get("consecutive_empty_runs") or 0) + 1 if parsed_yield == 0 else 0
+        row["consecutive_empty_runs"] = empty_runs
+        stale_event = (row.get("kind") or kind) == "event" and empty_runs >= 3
+        row["status"] = "stale" if stale_event else "active" if parsed_yield else "empty"
+        row["next_retry_at"] = (
+            now + timedelta(days=30) if stale_event
+            else now + timedelta(hours=6 if parsed_yield else 24)
+        ).isoformat()
+    tmp = DISCOVERED_URLS_PATH + ".tmp"
+    payload = dict(raw) if wrapper else items
+    if wrapper:
+        payload["urls"] = items
+    with open(tmp, "w") as file:
+        json.dump(payload, file, indent=2)
+    os.replace(tmp, DISCOVERED_URLS_PATH)
+
+
+def record_platform_survival(events: list[dict]) -> None:
+    """Record how many normalized feed events each durable source retained."""
+    raw = _load_json(DISCOVERED_URLS_PATH, [])
+    wrapper = isinstance(raw, dict)
+    items = raw.get("urls", []) if wrapper else raw
+    if not isinstance(items, list):
+        return
+    counts: dict[str, int] = defaultdict(int)
+    for event in events:
+        source = str(event.get("source") or "")
+        if source not in {"luma", "partiful", "eventbrite"}:
+            continue
+        event_urls: set[str] = set()
+        for url, via in (
+            (str(event.get("sourceUrl") or ""), "previous_event"),
+            (str(event.get("organizerUrl") or ""), "previous_organizer"),
+        ):
+            clean, platform, _kind = _canonical_discovery_url(url, via)
+            if clean and platform == source:
+                event_urls.add(clean)
+        for clean in event_urls:
+            counts[clean] += 1
+    changed = False
+    for item in items:
+        if not isinstance(item, dict) or not item.get("platform"):
+            continue
+        item["last_surviving_yield"] = counts.get(str(item.get("url") or ""), 0)
+        changed = True
+    if not changed:
+        return
+    tmp = DISCOVERED_URLS_PATH + ".tmp"
+    payload = dict(raw) if wrapper else items
+    if wrapper:
+        payload["urls"] = items
+    with open(tmp, "w") as file:
+        json.dump(payload, file, indent=2)
+    os.replace(tmp, DISCOVERED_URLS_PATH)
+
+
+def _is_link_aggregator_url(url: str) -> bool:
+    try:
+        host = (urlparse(url).hostname or "").lower().removeprefix("www.")
+    except Exception:
+        return False
+    return host in LINK_AGGREGATOR_HOSTS or any(
+        host.endswith(f".{candidate}") for candidate in LINK_AGGREGATOR_HOSTS
+    )
+
+
+def extract_platform_links(document: str) -> set[str]:
+    """Extract canonical dedicated-platform URLs from an aggregator page."""
+    normalized = html.unescape(document or "").replace(r"\/", "/").replace(r"\u002F", "/")
+    candidates = re.findall(r"https?://[^\s\"'<>]+", normalized, re.I)
+    found: set[str] = set()
+    for raw in candidates:
+        clean, platform, _kind = _canonical_discovery_url(raw.rstrip(".,;:!?)\\"))
+        if clean and platform:
+            found.add(clean)
+    return found
+
+
+async def expand_link_aggregator_frontier(limit: int = 30) -> dict[str, int]:
+    """Resolve queued public bio hubs before platform adapters choose work."""
+    from .http import fetch_text
+
+    rows = [
+        row for row in _raw_discovered_items()
+        if _is_link_aggregator_url(str(row.get("url") or ""))
+    ]
+
+    def freshness(row: dict) -> float:
+        value = str(row.get("last_seen_at") or row.get("discovered_at") or "")
+        try:
+            return datetime.fromisoformat(value.replace("Z", "+00:00")).timestamp()
+        except (TypeError, ValueError):
+            return 0.0
+
+    rows.sort(key=lambda row: (
+        str(row.get("lane") or "") != "personal",
+        -freshness(row),
+        str(row.get("url") or ""),
+    ))
+    rows = rows[:max(0, limit)]
+    sem = asyncio.Semaphore(5)
+
+    async def one(row: dict) -> tuple[dict, set[str]]:
+        async with sem:
+            try:
+                document = await fetch_text(str(row.get("url") or ""))
+            except Exception:
+                return row, set()
+        return row, extract_platform_links(document)
+
+    results = await asyncio.gather(*(one(row) for row in rows))
+    found_total = 0
+    added_total = 0
+    for row, links in results:
+        if not links:
+            continue
+        found_total += len(links)
+        accounts = row.get("source_accounts") or []
+        source_account = str(accounts[0]) if isinstance(accounts, list) and accounts else ""
+        added_total += persist_discovered_urls(
+            links,
+            discovered_via="link_aggregator:instagram_bio",
+            source_account=source_account,
+            lane=str(row.get("lane") or "explore"),
+        )
+    return {"pages": len(rows), "links": found_total, "added": added_total}
+
+
 def platform_frontier(
     platform: str,
     *,
@@ -255,6 +560,16 @@ def platform_frontier(
     )
 
     for item in _raw_discovered_items():
+        retry_at = str(item.get("next_retry_at") or "")
+        if item.get("status") in {"error", "stale"} and retry_at:
+            try:
+                retry_time = datetime.fromisoformat(retry_at.replace("Z", "+00:00"))
+                if retry_time.tzinfo is None:
+                    retry_time = retry_time.replace(tzinfo=timezone.utc)
+                if retry_time > datetime.now(timezone.utc):
+                    continue
+            except ValueError:
+                pass
         via = str(item.get("discovered_via") or "harvested")
         classified = _classify(platform, str(item.get("url") or ""), via)
         if not classified:
@@ -262,7 +577,12 @@ def platform_frontier(
         url, kind = classified
         rec = aggregate[(url, kind)]
         rec["score"] += 2.0
-        if any(token in via.lower() for token in ("user_mentioned", "user_saved", "user_tagged")):
+        explicit_lane = str(item.get("lane") or "") == "personal"
+        all_vias = " ".join(str(value) for value in (item.get("discovery_vias") or []))
+        if explicit_lane or any(token in f"{via} {all_vias}".lower() for token in (
+            "user_mentioned", "user_saved", "user_tagged", "instagram_browser_saved",
+            "instagram_browser_tagged",
+        )):
             rec["score"] += 4.0
             rec["preference_tier"] = max(rec["preference_tier"], 3)
             rec["lane"] = "personal"

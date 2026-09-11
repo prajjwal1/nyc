@@ -26,7 +26,13 @@ from bs4 import BeautifulSoup
 
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_iso_to_local, infer_categories
-from ..utils.platform_discovery import extract_tokens, platform_frontier
+from ..utils.platform_discovery import (
+    FrontierItem,
+    extract_tokens,
+    persist_discovered_urls,
+    platform_frontier,
+    record_platform_results,
+)
 
 EXPLORE_URL = "https://partiful.com/explore/nyc"
 DISCOVER_URL = "https://partiful.com/discover"  # NYC-filtered fallback
@@ -58,21 +64,25 @@ _HEADER_VARIANTS = [
 async def scrape() -> list[dict]:
     events: list[dict] = []
     seen: set[str] = set()
+    followthrough = os.environ.get("PLATFORM_LINK_FOLLOWTHROUGH", "0") == "1"
 
-    explore, discover_tags = await _scrape_explore_with_tags()
-    _merge(events, seen, explore)
+    explore: list[dict] = []
+    discover_tags: set[str] = set()
+    if not followthrough:
+        explore, discover_tags = await _scrape_explore_with_tags()
+        _merge(events, seen, explore)
 
     # The server-rendered page and API can expose different slices as Partiful
     # evolves its Explore UI. Full sweeps union both public, bounded views.
     # Quick runs retain the HTML path to stay comfortably inside CI budgets.
-    if not os.environ.get("IG_SAVED_ONLY", "0") == "1":
+    if not followthrough and not os.environ.get("IG_SAVED_ONLY", "0") == "1":
         api_events = await _scrape_discover_api(discover_tags)
         before = len(events)
         _merge(events, seen, api_events)
         print(f"[partiful] +{len(events) - before} events from Discover API union")
 
     # Fallback only if the explore page yielded nothing (shape drift / block).
-    if not events:
+    if not followthrough and not events:
         print("[partiful] explore/nyc yielded 0 — falling back to /discover (NYC only)")
         _merge(events, seen, await _scrape_discover_nyc())
 
@@ -84,10 +94,36 @@ async def scrape() -> list[dict]:
 
     detail_limit = 0 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else 100
     events = await _hydrate_public_details(events, limit=detail_limit)
+
+    quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
+    organizer_limit = 4 if quick else 8 if followthrough else 30
+    known_organizers = platform_frontier(
+        "partiful", kinds={"organizer"}, limit=organizer_limit
+    )
+    known_urls = {item.url for item in known_organizers}
+    promoted = _promoted_organizers(
+        events, known_urls, limit=4 if quick or followthrough else 12
+    )
+    for lane in {item.lane for item in promoted}:
+        persist_discovered_urls(
+            [item.url for item in promoted if item.lane == lane],
+            discovered_via="partiful_host_graph",
+            lane=lane,
+        )
+    organizer_items = [*known_organizers, *promoted]
+    organizer_events, organizer_fetched = await _scrape_organizer_items(organizer_items)
+    _merge(events, seen, organizer_events)
+
     global _LAST_CATALOG_HEALTH
     _LAST_CATALOG_HEALTH = {
         "fetched": len(events),
         "missingImages": sum(not event.get("imageUrl") for event in events),
+        "catalogEvents": len(explore),
+        "directTargets": len(_discovered_partiful_items()),
+        "directEvents": len(disc),
+        "organizerTargets": len(organizer_items),
+        "organizerTargetsFetched": organizer_fetched,
+        "organizerEvents": len(organizer_events),
     }
     print(f"[partiful] {len(events)} NYC events")
     return events
@@ -97,11 +133,12 @@ def catalog_health() -> dict:
     return dict(_LAST_CATALOG_HEALTH)
 
 
+def _discovered_partiful_items() -> list[FrontierItem]:
+    return platform_frontier("partiful", kinds={"event"}, limit=500)
+
+
 def _discovered_partiful_urls() -> list[str]:
-    return [
-        item.url
-        for item in platform_frontier("partiful", kinds={"event"}, limit=500)
-    ]
+    return [item.url for item in _discovered_partiful_items()]
 
 
 async def _scrape_discovered_events(seen: set[str]) -> list[dict]:
@@ -109,26 +146,138 @@ async def _scrape_discovered_events(seen: set[str]) -> list[dict]:
     the same __NEXT_DATA__ path used for explore. Reuses _parse_event_obj so
     NYC-gating, tz conversion, and categorization stay consistent."""
     out: list[dict] = []
-    max_discovered = 5 if os.environ.get("IG_SAVED_ONLY", "0") == "1" else _MAX_DISCOVERED
-    urls = [u for u in _discovered_partiful_urls() if u not in seen][:max_discovered]
-    for url in urls:
-        html = await _fetch(url)
+    target_results: list[dict] = []
+    max_discovered = (
+        5 if os.environ.get("IG_SAVED_ONLY", "0") == "1"
+        else 15 if os.environ.get("PLATFORM_LINK_FOLLOWTHROUGH", "0") == "1"
+        else _MAX_DISCOVERED
+    )
+    items = [item for item in _discovered_partiful_items() if item.url not in seen][:max_discovered]
+    for item in items:
+        html = await _fetch(item.url)
         if not html:
+            target_results.append({"url": item.url, "error": "fetch failed", "via": item.via, "kind": item.kind})
             continue
         data = _next_data(html)
         if not data:
+            target_results.append({"url": item.url, "yield": 0, "via": item.via, "kind": item.kind})
             continue
         pp = data.get("props", {}).get("pageProps", {}) or {}
         ev = pp.get("event")
         if not isinstance(ev, dict):
+            target_results.append({"url": item.url, "yield": 0, "via": item.via, "kind": item.kind})
             continue
         try:
             built = _parse_event_obj(ev, pp.get("hosts") or [])
         except Exception:  # noqa: BLE001
+            target_results.append({"url": item.url, "yield": 0, "via": item.via, "kind": item.kind})
             continue
         if built and built != "non-nyc":
+            built["discoveryLane"] = item.lane
+            built["discoveryVia"] = item.via
             out.append(built)
+            target_results.append({"url": item.url, "yield": 1, "via": item.via, "kind": item.kind})
+        else:
+            target_results.append({"url": item.url, "yield": 0, "via": item.via, "kind": item.kind})
+    record_platform_results(target_results)
     return out
+
+
+def _parse_organizer_page(html: str, source_url: str) -> list[dict]:
+    """Parse a public ``/u/<id>`` page's embedded published events."""
+    data = _next_data(html)
+    pp = (data or {}).get("props", {}).get("pageProps", {}) or {}
+    user = pp.get("user") if isinstance(pp.get("user"), dict) else {}
+    if user:
+        user = dict(user)
+        user.setdefault("isManaged", True)
+    events: list[dict] = []
+    for raw in pp.get("initialPublishedEvents") or []:
+        if not isinstance(raw, dict):
+            continue
+        built = _parse_event_obj(raw, [user] if user else [])
+        if not isinstance(built, dict):
+            continue
+        built["organizerUrl"] = source_url
+        built["catalogSource"] = "partiful_organizer"
+        events.append(built)
+    return events
+
+
+async def _scrape_organizer_items(items: list[FrontierItem]) -> tuple[list[dict], int]:
+    seen: set[str] = set()
+    unique = []
+    for item in items:
+        if item.url not in seen:
+            seen.add(item.url)
+            unique.append(item)
+    sem = asyncio.Semaphore(4)
+
+    async def one(item: FrontierItem) -> tuple[list[dict], bool]:
+        async with sem:
+            html = await _fetch(item.url)
+        if not html:
+            return [], False
+        parsed = _parse_organizer_page(html, item.url)
+        for event in parsed:
+            event["discoveryLane"] = item.lane
+            event["discoveryVia"] = item.via
+        return parsed, True
+
+    results = await asyncio.gather(*(one(item) for item in unique))
+    record_platform_results([
+        {
+            "url": item.url,
+            "yield": len(parsed),
+            "error": "" if fetched else "fetch failed",
+            "via": item.via,
+            "kind": item.kind,
+        }
+        for item, (parsed, fetched) in zip(unique, results)
+    ])
+    return (
+        [event for parsed, _fetched in results for event in parsed],
+        sum(fetched for _parsed, fetched in results),
+    )
+
+
+def _promoted_organizers(
+    events: list[dict], excluded: set[str] | None = None, *, limit: int = 12
+) -> list[FrontierItem]:
+    """Promote recurring or personally sourced Partiful hosts."""
+    excluded = excluded or set()
+    hosts: dict[str, dict] = {}
+    for event in events:
+        personal = event.get("discoveryLane") == "personal" or any(
+            event.get(flag) for flag in ("userSaved", "userFollowing", "userAffinity")
+        )
+        for ref in event.get("organizerRefs") or []:
+            if not isinstance(ref, dict) or ref.get("platform") != "partiful":
+                continue
+            external_id = str(ref.get("externalId") or "").strip()
+            if not external_id:
+                continue
+            url = f"https://partiful.com/u/{external_id}"
+            if url in excluded:
+                continue
+            rec = hosts.setdefault(url, {"events": set(), "personal": False})
+            rec["events"].add(event.get("sourceUrl") or event.get("title"))
+            rec["personal"] = rec["personal"] or personal
+    eligible = [
+        (url, rec) for url, rec in hosts.items()
+        if rec["personal"] or len(rec["events"]) >= 2
+    ]
+    eligible.sort(key=lambda row: (not row[1]["personal"], -len(row[1]["events"]), row[0]))
+    return [
+        FrontierItem(
+            url=url,
+            kind="organizer",
+            lane="personal" if rec["personal"] else "explore",
+            score=float(len(rec["events"])) + (10.0 if rec["personal"] else 0.0),
+            via="partiful_host_graph",
+        )
+        for url, rec in eligible[:limit]
+    ]
 
 
 async def _hydrate_public_details(events: list[dict], limit: int = 100) -> list[dict]:
@@ -463,9 +612,13 @@ def _parse_event_obj(event: dict, hosts: list[dict] | None = None):
 
     hosts = [h for h in (hosts or []) if isinstance(h, dict)]
     primary_host = next((h for h in hosts if h.get("isManaged")), hosts[0] if hosts else {})
-    organizer = (primary_host.get("name") or "").strip()
+    organizer = str(
+        primary_host.get("name")
+        or primary_host.get("displayName")
+        or primary_host.get("username")
+        or ""
+    ).strip()
     instagram = (((primary_host.get("socials") or {}).get("instagram") or {}).get("value") or "").strip()
-    organizer_url = f"https://www.instagram.com/{instagram}/" if instagram else None
     organizer_refs = []
     host_by_id = {
         str(h.get("id") or h.get("userId") or h.get("api_id")): h
@@ -473,14 +626,22 @@ def _parse_event_obj(event: dict, hosts: list[dict] | None = None):
         if h.get("id") or h.get("userId") or h.get("api_id")
     }
     owner_ids = [str(owner_id) for owner_id in (event.get("ownerIds") or []) if owner_id]
+    primary_id = owner_ids[0] if owner_ids else str(
+        primary_host.get("id") or primary_host.get("userId") or primary_host.get("api_id") or ""
+    )
+    organizer_url = (
+        f"https://partiful.com/u/{primary_id}"
+        if primary_id else f"https://www.instagram.com/{instagram}/" if instagram else None
+    )
     for index, owner_id in enumerate(owner_ids):
         host = host_by_id.get(owner_id, {})
         handle = (((host.get("socials") or {}).get("instagram") or {}).get("value") or "").strip()
         organizer_refs.append({
             "platform": "partiful",
             "externalId": owner_id,
-            "name": (host.get("name") or "").strip(),
-            "url": f"https://www.instagram.com/{handle}/" if handle else "",
+            "name": str(host.get("name") or host.get("displayName") or host.get("username") or "").strip(),
+            "url": f"https://partiful.com/u/{owner_id}",
+            "socialUrl": f"https://www.instagram.com/{handle}/" if handle else "",
             "handle": handle,
             "role": "host" if index == 0 else "cohost",
         })

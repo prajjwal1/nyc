@@ -26,6 +26,14 @@ accounts per run, with randomized cooldowns and a 40-post hard cap. Stories are
 excluded from unattended runs to reduce Instagram traffic. The committed
 snapshot triggers CI processing.
 
+The browser snapshot also records public organizer bio/outbound links (never
+cookies or private page state). CI expands Linktree-style hubs first, then
+immediately follows discovered Luma, Partiful, and Eventbrite links. Productive
+calendar/organizer URLs persist with their IG-account provenance, so Instagram
+acts as the discovery layer while the public ticket platform becomes the
+durable event source. Partiful `/u/<id>` profiles are crawled as calendars;
+Luma calendars and Eventbrite organizers are promoted the same way.
+
 **Two content kinds, one guide**:
 - **Dated events** — concerts, parties, classes, run clubs, etc. (most content)
 - **Cool spots** — evergreen place picks from `IG_SPOTS_ACCOUNTS` (`@wherethefuckdowego`, `@infatuation`, etc.). Always-current; render with teal "🗺 Spot" pill instead of date pill.

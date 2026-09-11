@@ -24,6 +24,7 @@ import time
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import parse_qs, unquote, urlparse
 
 from .config import IG_ACCOUNTS, IG_USERNAME
 
@@ -126,6 +127,42 @@ def _post_links(page, url: str, limit: int) -> list[str]:
     return out
 
 
+def _public_external_urls(hrefs: list[str]) -> list[str]:
+    """Normalize public outbound links exposed by an Instagram page.
+
+    Instagram commonly wraps bio destinations in ``l.instagram.com/?u=``.
+    Internal navigation and non-web schemes are excluded so snapshots contain
+    only intentionally public organizer links.
+    """
+    out: list[str] = []
+    for raw in hrefs:
+        href = str(raw or "").strip()
+        if not href:
+            continue
+        try:
+            parsed = urlparse(href)
+            host = (parsed.hostname or "").lower()
+            if host in {"l.instagram.com", "lm.instagram.com"} or (
+                host.endswith("instagram.com") and parsed.path.startswith("/linkshim")
+            ):
+                wrapped = (parse_qs(parsed.query).get("u") or [""])[0]
+                href = unquote(wrapped)
+                parsed = urlparse(href)
+                host = (parsed.hostname or "").lower()
+            if parsed.scheme not in {"http", "https"} or not host:
+                continue
+            if host == "instagram.com" or host.endswith(".instagram.com"):
+                continue
+            if host in {"facebook.com", "www.facebook.com", "threads.net", "www.threads.net"}:
+                continue
+            clean = href.split("#", 1)[0]
+            if clean not in out:
+                out.append(clean)
+        except Exception:
+            continue
+    return out[:12]
+
+
 def _capture_profile_metadata(page, account: str) -> dict | None:
     """Capture public profile fields while the account page is already open."""
     try:
@@ -141,6 +178,15 @@ def _capture_profile_metadata(page, account: str) -> dict | None:
                     profile["biography"] = header_text[:1500]
             except Exception:
                 pass
+        try:
+            hrefs = page.locator("header a[href]").evaluate_all(
+                "els => els.map(e => e.href)"
+            )
+            external_urls = _public_external_urls(hrefs)
+            if external_urls:
+                profile["externalUrls"] = external_urls
+        except Exception:
+            pass
         profile["capturedAt"] = datetime.now(timezone.utc).isoformat()
         profile["discoveredVia"] = "browser_profile"
         return profile
@@ -192,6 +238,11 @@ def _capture_post(page, url: str, lane: str, owner_hint: str = "") -> dict | Non
         images = list(dict.fromkeys(x for x in images if isinstance(x, str) and x.startswith("http")))
         if not images and og_image:
             images = [og_image]
+        outbound_urls = _public_external_urls(
+            page.locator("article a[href]").evaluate_all(
+                "els => els.map(e => e.href)"
+            )
+        )
         if not owner:
             return None
         caption = _caption_from_og(og_desc)
@@ -209,6 +260,7 @@ def _capture_post(page, url: str, lane: str, owner_hint: str = "") -> dict | Non
             "image": images[0] if images else "",
             "images": images[:10],
             "isVideo": "/reel/" in canonical,
+            "outboundUrls": outbound_urls,
         }
     except Exception as exc:
         print(f"[instagram-browser] post failed {url}: {exc}")
@@ -264,7 +316,7 @@ def _sanitize_posts(posts: list[dict]) -> list[dict]:
     allowed = {
         "url", "owner", "lane", "caption", "takenAt", "capturedAt",
         "image", "images", "isVideo", "isPinned", "taggedUsers", "bioUrl",
-        "likes", "comments",
+        "likes", "comments", "outboundUrls",
     }
     out = []
     for post in _dedupe(posts):
@@ -288,6 +340,7 @@ def _sanitize_posts(posts: list[dict]) -> list[dict]:
             u for u in (post.get("images") or [])[:10]
             if isinstance(u, str) and u.startswith("https://")
         ]
+        clean["outboundUrls"] = _public_external_urls(post.get("outboundUrls") or [])
         out.append(clean)
     return out
 
@@ -312,10 +365,12 @@ def _merge_snapshot_profiles(current: list[dict], previous: list[dict], limit: i
             key: profile.get(key)
             for key in (
                 "username", "displayName", "biography", "followers",
-                "profileUrl", "capturedAt", "discoveredVia",
+                "profileUrl", "capturedAt", "discoveredVia", "externalUrls",
             )
             if profile.get(key) not in (None, "")
         }
+        if clean.get("externalUrls"):
+            clean["externalUrls"] = _public_external_urls(clean["externalUrls"])
         current_row = by_username.get(username)
         if current_row is None or str(clean.get("capturedAt") or "") >= str(current_row.get("capturedAt") or ""):
             by_username[username] = clean

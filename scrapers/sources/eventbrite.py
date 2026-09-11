@@ -8,7 +8,13 @@ from zoneinfo import ZoneInfo
 from bs4 import BeautifulSoup
 from ..utils.http import fetch_text
 from ..utils.event_parser import build_event, parse_date, parse_time, parse_iso_to_local, parse_offers_price
-from ..utils.platform_discovery import FrontierItem, platform_frontier, ranked_topics
+from ..utils.platform_discovery import (
+    FrontierItem,
+    persist_discovered_urls,
+    platform_frontier,
+    ranked_topics,
+    record_platform_results,
+)
 from ..quality import is_blocked
 from ..ranking import is_user_excluded
 
@@ -104,6 +110,28 @@ def _search_plan() -> list[tuple[str, str]]:
     return candidates[:total_limit]
 
 
+def _rotating_targets(
+    items: list[FrontierItem],
+    *,
+    limit: int,
+    protected: int,
+    slot: int | None = None,
+) -> list[FrontierItem]:
+    """Protect the highest-signal organizers and rotate the remaining pool."""
+    if limit <= 0 or len(items) <= limit:
+        return items[:max(0, limit)]
+    head = items[:min(protected, limit)]
+    remaining = items[len(head):]
+    capacity = limit - len(head)
+    if capacity <= 0 or not remaining:
+        return head
+    if slot is None:
+        slot = int(datetime.now(ZoneInfo("America/New_York")).timestamp() // 14_400)
+    start = (slot * capacity) % len(remaining)
+    rotated = remaining[start:] + remaining[:start]
+    return [*head, *rotated[:capacity]]
+
+
 async def _fetch_with_backoff(url: str, attempts: int = 3) -> str:
     last = None
     for attempt in range(attempts):
@@ -122,6 +150,8 @@ async def _fetch_with_backoff(url: str, attempts: int = 3) -> str:
 async def scrape() -> list[dict]:
     events: list[dict] = []
     quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
+    followthrough = os.environ.get("PLATFORM_LINK_FOLLOWTHROUGH", "0") == "1"
+    target_results: list[dict] = []
     health = {
         "organizerTargets": 0,
         "organizerTargetsFetched": 0,
@@ -140,14 +170,22 @@ async def scrape() -> list[dict]:
     # Protect learned organizers from broad-search rate limiting. The frontier
     # is rebuilt from harvested links, curated hosts, and prior event yield;
     # no organizer needs to be added to source code.
-    organizer_limit = 8 if quick else 20
-    known_organizers = platform_frontier(
-        "eventbrite", kinds={"organizer"}, limit=organizer_limit
+    organizer_limit = 8 if quick else 12 if followthrough else 60
+    known_organizers = _rotating_targets(
+        platform_frontier("eventbrite", kinds={"organizer"}, limit=500),
+        limit=organizer_limit,
+        protected=4 if quick else 16,
     )
     health["organizerTargets"] = len(known_organizers)
     fetched_organizers: set[str] = set()
     if known_organizers:
         print(f"[eventbrite] learned organizer frontier: {len(known_organizers)}")
+        for lane in {item.lane for item in known_organizers}:
+            persist_discovered_urls(
+                [item.url for item in known_organizers if item.lane == lane],
+                discovered_via="eventbrite_organizer_graph",
+                lane=lane,
+            )
     for item in known_organizers:
         try:
             html = await _fetch_with_backoff(item.url)
@@ -156,16 +194,18 @@ async def scrape() -> list[dict]:
                 event["discoveryLane"] = item.lane
                 event["discoveryVia"] = item.via
             events.extend(parsed)
+            target_results.append({"url": item.url, "yield": len(parsed), "via": item.via, "kind": item.kind})
             fetched_organizers.add(item.url)
             health["organizerTargetsFetched"] += 1
             print(f"[eventbrite-organizer] {item.url}: {len(parsed)} events")
         except Exception as exc:
+            target_results.append({"url": item.url, "error": str(exc), "via": item.via, "kind": item.kind})
             print(f"[eventbrite-organizer] Failed {item.url}: {exc}")
 
     # Eventbrite collections are a distinct high-signal surface. Discovery has
     # long classified /cc/ URLs, but the adapter previously never scheduled
     # them. Keep this lane small and admit only current, taste-aligned calendars.
-    collection_limit = 2 if quick else 6
+    collection_limit = 2 if quick or followthrough else 6
     known_collections = platform_frontier(
         "eventbrite", kinds={"collection"}, limit=collection_limit
     )
@@ -177,6 +217,7 @@ async def scrape() -> list[dict]:
             html = await _fetch_with_backoff(item.url)
             health["collectionTargetsFetched"] += 1
             parsed = _parse_search_page(html, item.url)
+            target_results.append({"url": item.url, "yield": len(parsed), "via": item.via, "kind": item.kind})
             accepted = _accepted_collection_events(parsed)
             if not accepted:
                 print(f"[eventbrite-collection] Rejected {item.url}: {len(parsed)} events")
@@ -188,12 +229,13 @@ async def scrape() -> list[dict]:
             health["collectionsAdmitted"] += 1
             print(f"[eventbrite-collection] {item.url}: {len(accepted)} events")
         except Exception as exc:
+            target_results.append({"url": item.url, "error": str(exc), "via": item.via, "kind": item.kind})
             print(f"[eventbrite-collection] Failed {item.url}: {exc}")
 
     # Canonical event links harvested from followed accounts/newsletters are
     # higher-signal than anonymous search results and often never rank on a
     # broad Eventbrite page.
-    direct_limit = 5 if quick else 14
+    direct_limit = 5 if quick else 15 if followthrough else 30
     direct_items = platform_frontier("eventbrite", kinds={"event"}, limit=direct_limit)
     health["directTargets"] = len(direct_items)
     for item in direct_items:
@@ -201,15 +243,17 @@ async def scrape() -> list[dict]:
             html = await _fetch_with_backoff(item.url, attempts=2)
             health["directTargetsFetched"] += 1
             parsed = _parse_search_page(html, item.url)
+            target_results.append({"url": item.url, "yield": len(parsed), "via": item.via, "kind": item.kind})
             for event in parsed:
                 event["discoveryLane"] = item.lane
                 event["discoveryVia"] = item.via
             events.extend(parsed)
         except Exception as exc:
+            target_results.append({"url": item.url, "error": str(exc), "via": item.via, "kind": item.kind})
             print(f"[eventbrite-direct] Failed {item.url}: {exc}")
 
     # Generated category × geography coverage comes after high-signal lanes.
-    plan = _search_plan()
+    plan = [] if followthrough else _search_plan()
     health["searchPages"] = len(plan)
     print(f"[eventbrite] bounded search plan: {len(plan)} pages")
     consecutive_rate_limits = 0
@@ -232,18 +276,26 @@ async def scrape() -> list[dict]:
                     health["rateLimitCircuitOpened"] = True
                     print("[eventbrite] search circuit open after repeated 429s; preserving organizer lane/carryover")
                     break
-    detail_limit = 0 if quick else 18
+    detail_limit = 0 if quick else 15 if followthrough else 18
     events = await _hydrate_shortlist(events, limit=detail_limit)
 
     # Search/detail results teach the engine new organizers immediately. A
     # small frequency- and preference-ranked promotion lane turns a single
     # matching event into the organizer's complete upcoming calendar.
-    promoted = _promoted_organizers(events, fetched_organizers, limit=4 if quick else 8)
+    durable_promoted = _promoted_organizers(events, fetched_organizers, limit=100)
+    for lane in {item.lane for item in durable_promoted}:
+        persist_discovered_urls(
+            [item.url for item in durable_promoted if item.lane == lane],
+            discovered_via="eventbrite_current_results",
+            lane=lane,
+        )
+    promoted = durable_promoted[:4 if quick or followthrough else 8]
     health["promotedOrganizers"] = len(promoted)
     for item in promoted:
         try:
             html = await _fetch_with_backoff(item.url)
             org_events = _parse_organizer_page(html, item.url)
+            target_results.append({"url": item.url, "yield": len(org_events), "via": item.via, "kind": item.kind})
             health["promotedOrganizersFetched"] += 1
             if not _organizer_calendar_is_useful(org_events):
                 clean_count = sum(not is_blocked(event) for event in org_events)
@@ -258,6 +310,7 @@ async def scrape() -> list[dict]:
             events.extend(org_events)
             print(f"[eventbrite-organizer:new] {item.url}: {len(org_events)} events")
         except Exception as e:
+            target_results.append({"url": item.url, "error": str(e), "via": item.via, "kind": item.kind})
             print(f"[eventbrite-organizer:new] Failed {item.url}: {e}")
     unique = {
         _canonical_event_url(event.get("sourceUrl") or "")
@@ -269,6 +322,7 @@ async def scrape() -> list[dict]:
     health["duplicateRows"] = max(0, len(events) - len(unique))
     global _LAST_CATALOG_HEALTH
     _LAST_CATALOG_HEALTH = health
+    record_platform_results(target_results)
     return events
 
 

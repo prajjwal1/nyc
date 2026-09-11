@@ -212,6 +212,22 @@ async def main():
     except Exception as exc:
         print(f"[run_all] Pre-scrape interest profile rebuild skipped: {exc}")
 
+    # A browser snapshot commonly discovers Linktree/Beacons-style bio hubs.
+    # Expand those public pages before platform adapters build their frontier
+    # so IG -> bio hub -> ticket platform completes in this same run.
+    if os.environ.get("PLATFORM_LINK_FOLLOWTHROUGH", "0") == "1":
+        try:
+            from scrapers.utils.platform_discovery import expand_link_aggregator_frontier
+
+            expansion = await expand_link_aggregator_frontier(limit=30)
+            print(
+                "[run_all] Bio-link expansion: "
+                f"{expansion['pages']} pages, {expansion['links']} platform links, "
+                f"{expansion['added']} new"
+            )
+        except Exception as exc:
+            print(f"[run_all] Bio-link expansion skipped: {exc}")
+
     # Snapshot previous events to preserve firstSeenAt across runs.
     previous_index = _load_previous_events_index(OUTPUT_PATH)
     print(f"[run_all] Previous events.json: {len(previous_index)} events")
@@ -310,6 +326,13 @@ async def main():
     print(f"\nTotal raw events: {len(all_events)}")
     processed = process(all_events, previous_index)
     print(f"After processing: {len(processed)} events")
+
+    try:
+        from scrapers.utils.platform_discovery import record_platform_survival
+
+        record_platform_survival(processed)
+    except Exception as exc:
+        print(f"[run_all] Platform survival telemetry skipped: {exc}")
 
     _RUN_TELEMETRY["runCompleted"] = True
     _write_events(processed, OUTPUT_PATH)

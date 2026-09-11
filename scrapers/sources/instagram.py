@@ -23,6 +23,7 @@ from ..config import (
 )
 from ..discover import load_discovered_accounts
 from ..utils.event_parser import build_event, infer_categories, parse_date, parse_time
+from ..utils.platform_discovery import persist_discovered_urls
 
 # Optional image analysis for posts with incomplete caption data.
 try:
@@ -126,6 +127,19 @@ def _scrape_browser_snapshot() -> list[dict]:
             "annual membership", "full article",
         )):
             continue
+        lane = raw.get("lane") or "feed"
+        outbound_urls = {
+            str(url) for url in (raw.get("outboundUrls") or []) if str(url).startswith("http")
+        }
+        if raw.get("bioUrl"):
+            outbound_urls.add(str(raw["bioUrl"]))
+        if outbound_urls:
+            persist_discovered_urls(
+                outbound_urls,
+                discovered_via=f"instagram_browser_{lane}",
+                source_account=owner,
+                lane="personal" if lane in {"saved", "tagged"} else "explore",
+            )
         post = {
             "caption": caption,
             "date": captured_date,
@@ -141,7 +155,6 @@ def _scrape_browser_snapshot() -> list[dict]:
             "is_pinned": bool(raw.get("isPinned")),
         }
         extracted = _try_ocr_first_then_caption(post, owner)
-        lane = raw.get("lane") or "feed"
         for index, event in enumerate(extracted):
             if re.match(r"^(?:tickets?|rsvp|link)(?:\s*:|\s+in\s+bio|$)", event.get("title") or "", re.I):
                 description = event.get("description") or caption
@@ -183,6 +196,22 @@ def _scrape_browser_snapshot() -> list[dict]:
     # browser, Instaloader and unauthenticated paths converge on one result.
     profiles = snapshot.get("profiles") or []
     if profiles:
+        for profile in profiles:
+            if not isinstance(profile, dict):
+                continue
+            username = str(profile.get("username") or "").lower()
+            external_urls = {
+                str(url) for url in (profile.get("externalUrls") or [])
+                if str(url).startswith("http")
+            }
+            if external_urls:
+                personal = username in _FOLLOWING_ACCOUNTS_CACHE or username in _AFFINITY_ACCOUNTS_CACHE
+                persist_discovered_urls(
+                    external_urls,
+                    discovered_via="instagram_bio_browser",
+                    source_account=username,
+                    lane="personal" if personal else "explore",
+                )
         try:
             from ..utils.recurring_profiles import (
                 cancellation_dates_from_snapshot,
@@ -286,6 +315,9 @@ def scrape_saved_only() -> list[dict]:
 
 def scrape_browser_only() -> list[dict]:
     """CI-safe adapter for snapshots committed by the local worker."""
+    global _AFFINITY_ACCOUNTS_CACHE, _FOLLOWING_ACCOUNTS_CACHE
+    _AFFINITY_ACCOUNTS_CACHE = _load_affinity_accounts()
+    _FOLLOWING_ACCOUNTS_CACHE = _load_following_accounts()
     return _scrape_browser_snapshot()
 
 
@@ -705,42 +737,9 @@ def scrape() -> list[dict]:
 
 def _save_bio_urls(urls: set[str]) -> None:
     """Append IG bio URLs to discovered_urls.json (for the generic scraper)."""
-    import json
-    from datetime import datetime, timezone
-
-    path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "data",
-        "discovered_urls.json",
-    )
     try:
-        existing: list[dict] = []
-        if os.path.isfile(path):
-            with open(path) as f:
-                data = json.load(f)
-                if isinstance(data, list):
-                    existing = data
-                elif isinstance(data, dict):
-                    existing = data.get("urls", [])
-
-        seen = {item["url"] if isinstance(item, dict) else item for item in existing}
-        added = 0
-        now = datetime.now(timezone.utc).isoformat()
-        for url in urls:
-            if url in seen:
-                continue
-            existing.append({
-                "url": url,
-                "discovered_at": now,
-                "discovered_via": "instagram_bio",
-            })
-            seen.add(url)
-            added += 1
-
+        added = persist_discovered_urls(urls, discovered_via="instagram_bio")
         if added:
-            os.makedirs(os.path.dirname(path), exist_ok=True)
-            with open(path, "w") as f:
-                json.dump(existing, f, indent=2)
             print(f"[instagram] Added {added} bio URLs to discovered_urls.json")
     except Exception as exc:
         print(f"[instagram] Failed to save bio URLs: {exc}")
@@ -846,42 +845,9 @@ def _harvest_post_comments(post, max_comments: int = 8) -> tuple[set[str], int]:
 
 def _save_caption_urls(urls: set[str]) -> None:
     """Append IG caption event-platform URLs to discovered_urls.json."""
-    import json
-    from datetime import datetime, timezone
-
-    path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "data",
-        "discovered_urls.json",
-    )
     try:
-        existing: list[dict] = []
-        if os.path.isfile(path):
-            with open(path) as f:
-                data = json.load(f)
-                if isinstance(data, list):
-                    existing = data
-                elif isinstance(data, dict):
-                    existing = data.get("urls", [])
-
-        seen = {item["url"] if isinstance(item, dict) else item for item in existing}
-        added = 0
-        now = datetime.now(timezone.utc).isoformat()
-        for url in urls:
-            if url in seen:
-                continue
-            existing.append({
-                "url": url,
-                "discovered_at": now,
-                "discovered_via": "instagram_caption",
-            })
-            seen.add(url)
-            added += 1
-
+        added = persist_discovered_urls(urls, discovered_via="instagram_caption")
         if added:
-            os.makedirs(os.path.dirname(path), exist_ok=True)
-            with open(path, "w") as f:
-                json.dump(existing, f, indent=2)
             print(f"[instagram] Added {added} caption event URLs to discovered_urls.json")
     except Exception as exc:
         print(f"[instagram] Failed to save caption URLs: {exc}")

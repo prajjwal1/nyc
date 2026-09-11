@@ -17,7 +17,7 @@ concurrency:
 jobs:
   process:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,6 +28,12 @@ jobs:
       - name: Process snapshot with current sources
         env:
           IG_BROWSER_ONLY: "1"
+        run: python -m scrapers.run_all
+      - name: Follow harvested platform links
+        env:
+          SOURCE_ONLY: "luma,partiful,eventbrite"
+          SKIP_INSTAGRAM: "1"
+          PLATFORM_LINK_FOLLOWTHROUGH: "1"
         run: python -m scrapers.run_all
       - name: Commit refreshed feed
         run: |
