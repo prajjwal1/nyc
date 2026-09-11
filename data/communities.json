@@ -317,7 +317,7 @@
       "name": "The Ripped Bodice BK",
       "kind": "recurring_series",
       "tagline": "The Ripped Bodice BK is a recurring event series centered on books, parties, music in brooklyn.",
-      "description": "The Ripped Bodice BK is a recurring event series centered on books, parties, music in brooklyn. Based on 13 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "description": "The Ripped Bodice BK is a recurring event series centered on books, parties, music in brooklyn. Based on 14 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
         "other",
         "books",
@@ -346,7 +346,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-09",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 4
       },
       "schedule": {
@@ -357,7 +357,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 13
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "99cb9eb3cedde822",
@@ -368,7 +368,8 @@
         "93e5ece37e67131e",
         "a1dd014aa17effaf",
         "7dfbc5a698b633e2",
-        "d7aa30ab412a8f3b"
+        "d7aa30ab412a8f3b",
+        "4da2862cf8866ad5"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -377,7 +378,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 13,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -795,7 +796,7 @@
       "name": "Strand Bookstore",
       "kind": "recurring_series",
       "tagline": "Strand Bookstore is a recurring event series centered on books in east village, manhattan.",
-      "description": "Strand Bookstore is a recurring event series centered on books in east village, manhattan. Based on 10 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "description": "Strand Bookstore is a recurring event series centered on books in east village, manhattan. Based on 12 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "other",
         "books"
@@ -821,18 +822,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-11",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 10,
         "eventCount90d": 5
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Monday",
-          "Tuesday"
+          "Wednesday",
+          "Thursday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "05e3ee1d3109b6a5",
@@ -842,7 +843,9 @@
         "a80328c8bc57eb33",
         "f0764e221b9dc2c5",
         "4302dd5fc58ea695",
-        "40a0ea49cc014a71"
+        "40a0ea49cc014a71",
+        "0bf157b47efc08fd",
+        "3e9a8d837c04f5bc"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -851,7 +854,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50560,7 +50563,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-11T14:42:53.101685+00:00",
+  "lastUpdated": "2026-09-11T15:18:38.458373+00:00",
   "version": 1,
   "schemaVersion": 1
 }
