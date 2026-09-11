@@ -1121,7 +1121,7 @@
       "name": "St Mazie",
       "kind": "recurring_series",
       "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 16 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 17 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "music",
         "other"
@@ -1146,18 +1146,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-11",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 19
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Tuesday"
+          "Monday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 16
+        "sampleSize": 17
       },
       "upcomingEventIds": [
         "ceee723052bdee49",
@@ -1166,6 +1166,7 @@
         "ef8af5ab15b5c401",
         "56165fb80f262f4c",
         "ac782149883c8617",
+        "e54345ceb2d52ecc",
         "b56bafbc440eb089",
         "150af02e821b438e"
       ],
@@ -1176,7 +1177,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 16,
+        "observedDateCount": 17,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50559,7 +50560,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-11T10:57:46.504087+00:00",
+  "lastUpdated": "2026-09-11T11:52:16.543680+00:00",
   "version": 1,
   "schemaVersion": 1
 }
