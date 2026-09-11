@@ -1,7 +1,6 @@
 import {
   loadAttendedExamples,
   loadAttendedStates,
-  loadHiddenStubs,
   loadProfile,
   loadSavedStubs,
   SavedEventStub,
@@ -62,7 +61,7 @@ export function buildTasteSnapshot(): TasteSnapshot {
     dayOfWeek: profile.dayOfWeek || {},
     attended: loadAttendedStates(),
     positiveTexts: uniqueTexts([...loadSavedStubs(), ...yesStubs]),
-    negativeTexts: uniqueTexts(loadHiddenStubs()),
+    negativeTexts: [],
     attendedYesTexts: uniqueTexts(yesStubs),
     attendedNoTexts: uniqueTexts(noStubs),
   };
@@ -89,4 +88,3 @@ export function downloadTasteSnapshot(): TasteSnapshot {
   URL.revokeObjectURL(url);
   return snapshot;
 }
-

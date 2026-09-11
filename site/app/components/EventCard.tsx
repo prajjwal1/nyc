@@ -4,7 +4,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 import Link from "next/link";
 import { Event, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { eventToSavedStub, trackAccountClick, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, isEventOpened, getAttendedState } from "../lib/interests";
+import { eventToSavedStub, trackAccountClick, trackEventOpen, toggleSavedLocal, isSavedLocal, isEventOpened, getAttendedState } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 import { eventPath } from "../lib/seo";
 import OrganizerLink from "./OrganizerLink";
@@ -13,7 +13,6 @@ interface EventCardProps {
   event: Event;
   variant?: "compact" | "default";
   onAccountClick?: (account: string) => void;
-  onHide?: (eventId: string) => void;
   onSaveChange?: (eventId: string, saved: boolean) => void;
   onSelect?: (event: Event) => void;
   // Show a relative-day pill ("Today"/"Tomorrow"/"Sat"/"Jul 12") in the meta
@@ -49,7 +48,7 @@ function preferenceAccount(event: Event): string | undefined {
 // iter 215: removed grid variant + MediaFirstCard variant. All events
 // now render through EventCardBody for uniform sizing — IG events no longer
 // take 4-5x the vertical space of other sources.
-export default function EventCard({ event, variant = "default", onAccountClick, onHide, onSaveChange, onSelect, showDay = false }: EventCardProps) {
+export default function EventCard({ event, variant = "default", onAccountClick, onSaveChange, onSelect, showDay = false }: EventCardProps) {
   const timeStr = event.startTime
     ? formatTime(event.startTime) +
       (event.endTime ? ` – ${formatTime(event.endTime)}` : "")
@@ -59,7 +58,7 @@ export default function EventCard({ event, variant = "default", onAccountClick, 
     return <CompactCard event={event} timeStr={timeStr} />;
   }
 
-  return <EventCardBody event={event} timeStr={timeStr} showDay={showDay} onAccountClick={onAccountClick} onHide={onHide} onSaveChange={onSaveChange} onSelect={onSelect} />;
+  return <EventCardBody event={event} timeStr={timeStr} showDay={showDay} onAccountClick={onAccountClick} onSaveChange={onSaveChange} onSelect={onSelect} />;
 }
 
 
@@ -68,15 +67,6 @@ function StarIcon({ filled }: { filled: boolean }) {
     <svg className="w-4 h-4" fill={filled ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
         d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-    </svg>
-  );
-}
-
-function HideIcon() {
-  return (
-    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-        d="M6 18L18 6M6 6l12 12" />
     </svg>
   );
 }
@@ -95,7 +85,6 @@ function EventCardBody({
   timeStr,
   showDay = false,
   onAccountClick,
-  onHide,
   onSaveChange,
   onSelect,
 }: {
@@ -103,7 +92,6 @@ function EventCardBody({
   timeStr: string | null;
   showDay?: boolean;
   onAccountClick?: (account: string) => void;
-  onHide?: (eventId: string) => void;
   onSaveChange?: (eventId: string, saved: boolean) => void;
   onSelect?: (event: Event) => void;
 }) {
@@ -116,17 +104,6 @@ function EventCardBody({
       e.preventDefault();
       onSelect(event);
     }
-  };
-  const handleHide = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    hideEvent(event.id, {
-      account: preferenceAccount(event),
-      categories: event.categories,
-      sourceUrl: event.organizerUrl || event.sourceUrl,
-      stub: eventToSavedStub(event),
-    });
-    onHide?.(event.id);
   };
   const handleSaveF = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -391,14 +368,6 @@ function EventCardBody({
                 aria-label="Add to calendar"
               >
                 <CalendarIcon />
-              </button>
-              <button
-                onClick={handleHide}
-                className="grid min-h-11 min-w-11 place-items-center rounded-full text-gray-300 transition-colors hover:bg-rose-50 hover:text-rose-500 focus-visible:ring-2 focus-visible:ring-rose-500 focus:outline-none sm:min-h-9 sm:min-w-9"
-                title="Hide this event"
-                aria-label="Hide"
-              >
-                <HideIcon />
               </button>
             </div>
           </div>

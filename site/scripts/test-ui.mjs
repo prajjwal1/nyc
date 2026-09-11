@@ -62,6 +62,9 @@ try {
       if (await page.getByRole("button", { name: "Export taste" }).count()) {
         throw new Error("header still exposes Export taste");
       }
+      if (await page.getByRole("button", { name: "Hide", exact: true }).count()) {
+        throw new Error(`${route || "home"} still exposes event hiding`);
+      }
       if (!route) {
         if (!(await page.getByRole("heading", { name: "What's happening in NYC" }).count())) {
           throw new Error("homepage did not render its primary heading");
@@ -89,12 +92,15 @@ try {
             throw new Error("event card is missing its external organizer link");
           }
           const minimumTarget = viewport.width < 640 ? 44 : 36;
-          for (const name of ["Save", "Add to calendar", "Hide"]) {
+          for (const name of ["Save", "Add to calendar"]) {
             const control = card.getByRole("button", { name });
             const box = await control.boundingBox();
             if (!box || box.width < minimumTarget || box.height < minimumTarget) {
               throw new Error(`${name} touch target is smaller than ${minimumTarget}px`);
             }
+          }
+          if (await card.getByRole("button", { name: "Hide" }).count()) {
+            throw new Error("event card still exposes Hide");
           }
         }
       }
@@ -107,22 +113,9 @@ try {
     if (new URL(page.url()).searchParams.has("view")) throw new Error("legacy Feed URL state was not removed");
     if (!(await page.getByRole("heading", { name: "What's happening in NYC" }).count())) throw new Error("legacy Feed URL did not resolve to Calendar");
 
-    const firstCard = page.locator("[data-event-id]").first();
-    if (await firstCard.count()) {
-      const hiddenId = await firstCard.getAttribute("data-event-id");
-      await firstCard.getByRole("button", { name: "Hide" }).click();
-      if (await page.locator(`[data-event-id="${hiddenId}"]`).count()) {
-        throw new Error("hidden event remained visible on the homepage");
-      }
-      await page.reload({ waitUntil: "networkidle" });
-      if (await page.locator(`[data-event-id="${hiddenId}"]`).count()) {
-        throw new Error("hidden event returned after reload");
-      }
-    }
-
     await page.close();
   }
-  console.log("UI checks passed: calendar-first navigation, organizer links, touch-safe actions, persistent Hide, and account views.");
+  console.log("UI checks passed: calendar-first navigation, organizer links, touch-safe actions, no Hide controls, and account views.");
 } finally {
   await browser.close();
   await new Promise((resolve) => server.close(resolve));

@@ -9,7 +9,6 @@ import EventModal from "../components/EventModal";
 import { Event } from "../lib/types";
 import { filterEvents } from "../lib/events";
 import {
-  isHidden,
   loadSavedStubs,
   readLastVisited,
   savedStubToEvent,
@@ -30,7 +29,6 @@ export default function AllEventsPage() {
   const [lastVisitedAt, setLastVisitedAt] = useState<string | null>(null);
   const [showPast, setShowPast] = useState(false);
   const [pastSavedEvents, setPastSavedEvents] = useState<Event[]>([]);
-  const [hiddenEventIds, setHiddenEventIds] = useState<Set<string>>(() => new Set());
   const todayStr = format(new Date(), "yyyy-MM-dd");
 
   useEffect(() => {
@@ -73,7 +71,6 @@ export default function AllEventsPage() {
       ? [...events, ...filterEvents(pastSavedEvents, { account: accountFilter })]
       : events;
     for (const e of candidates) {
-      if (hiddenEventIds.has(e.id) || isHidden(e.id)) continue;
       const list = map.get(e.date) ?? [];
       list.push(e);
       map.set(e.date, list);
@@ -88,7 +85,7 @@ export default function AllEventsPage() {
       if (aIsPast !== bIsPast) return aIsPast ? 1 : -1;
       return aIsPast ? dateB.localeCompare(dateA) : dateA.localeCompare(dateB);
     });
-  }, [events, hiddenEventIds, pastSavedEvents, accountFilter, showPast, todayStr]);
+  }, [events, pastSavedEvents, accountFilter, showPast, todayStr]);
 
   if (loading) {
     return (
@@ -212,9 +209,6 @@ export default function AllEventsPage() {
                         <EventCard
                           event={event}
                           onAccountClick={setAccountFilter}
-                          onHide={(eventId) => {
-                            setHiddenEventIds((current) => new Set(current).add(eventId));
-                          }}
                           onSaveChange={(eventId, saved) => {
                             if (!saved) {
                               setPastSavedEvents((current) => current.filter((item) => item.id !== eventId));

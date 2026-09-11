@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Event, CATEGORY_CONFIG, SOURCE_LABELS, HIGHLIGHT_CONFIG } from "../lib/types";
-import { eventToSavedStub, trackEventOpen, hideEvent, toggleSavedLocal, isSavedLocal, markEventOpened, getAttendedState, markAttended } from "../lib/interests";
+import { eventToSavedStub, trackEventOpen, toggleSavedLocal, isSavedLocal, markEventOpened, getAttendedState, markAttended } from "../lib/interests";
 import { downloadIcs } from "../lib/ics";
 import OrganizerLink from "./OrganizerLink";
 
@@ -372,23 +372,6 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
               Add to calendar
             </button>
             <ShareButton event={event} />
-            <button
-              onClick={() => {
-                hideEvent(event.id, {
-                  account: event.account || event.organizer || event.instagramAccount,
-                  categories: event.categories,
-                  sourceUrl: event.organizerUrl || event.sourceUrl,
-                  stub: eventToSavedStub(event),
-                });
-                onClose();
-              }}
-              className="ml-auto inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-gray-500 hover:bg-gray-50 text-sm font-medium transition-colors"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              Hide
-            </button>
           </div>
 
           {/* "Did you go?" — only on past events, regardless of saved state.

@@ -7,7 +7,6 @@ import {
   topAccounts,
   totalEngagementCount,
   getSavedCount,
-  getHiddenCount,
   clearAllLocalState,
   isSavedLocal,
   loadSavedStubs,
@@ -23,12 +22,11 @@ interface Props {
 }
 
 // "Your Activity" panel — surfaces what the system has learned from the
-// user's clicks/saves/hides so they understand the personalization, plus
+// user's clicks and saves so they understand the personalization, plus
 // a reset button so they can clear and start fresh. Builds trust + control.
 export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
   const [profile, setProfile] = useState<InterestProfile | null>(null);
   const [savedCount, setSavedCount] = useState(0);
-  const [hiddenCount, setHiddenCount] = useState(0);
   const [confirming, setConfirming] = useState(false);
   const [pastSaves, setPastSaves] = useState<SavedEventStub[]>([]);
   const [pastOpen, setPastOpen] = useState(false);
@@ -37,7 +35,6 @@ export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
     queueMicrotask(() => {
       setProfile(loadProfile());
       setSavedCount(getSavedCount());
-      setHiddenCount(getHiddenCount());
       const today = new Date().toISOString().split("T")[0];
       const past = loadSavedStubs()
         .filter((s) => s.date && s.date < today)
@@ -49,8 +46,8 @@ export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
   if (!profile) return null;
 
   const total = totalEngagementCount(profile);
-  // Don't show until the user has any engagement OR has saved/hidden anything
-  if (total === 0 && savedCount === 0 && hiddenCount === 0 && pastSaves.length === 0) return null;
+  // Don't show until the user has any engagement or saved anything.
+  if (total === 0 && savedCount === 0 && pastSaves.length === 0) return null;
 
   const cats = topCategories(profile, 5);
   const accts = topAccounts(profile, 5);
@@ -70,7 +67,6 @@ export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
       updatedAt: new Date().toISOString(),
     });
     setSavedCount(0);
-    setHiddenCount(0);
     setConfirming(false);
   };
 
@@ -99,25 +95,20 @@ export default function ActivityPanel({ onAccountClick, events = [] }: Props) {
           <button
             onClick={() => setConfirming(true)}
             className="text-[10px] text-gray-400 hover:text-rose-600"
-            title="Clear all local data (interests, saves, hides)"
+            title="Clear all local data (interests and saves)"
           >
             reset
           </button>
         )}
       </div>
 
-      {(savedCount > 0 || hiddenCount > 0) && (
+      {savedCount > 0 && (
         <div className="flex items-center justify-between gap-3 text-xs text-gray-600 mb-3">
           <div className="flex gap-3">
             {savedCount > 0 && (
               <span>
                 <span className="font-medium text-amber-700">★</span>{" "}
                 {savedCount} saved
-              </span>
-            )}
-            {hiddenCount > 0 && (
-              <span className="text-gray-400">
-                ✕ {hiddenCount} hidden
               </span>
             )}
           </div>

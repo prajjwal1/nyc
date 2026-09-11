@@ -21,9 +21,8 @@ export interface InterestProfile {
   hosts: Record<string, number>;
   // Followed communities are a direct signal for linked events.
   communities: Record<string, number>;
-  // Negative signals: counts of hides per account/category/host. Symmetric
-  // with the positive maps so a user's "no thanks" on one event from
-  // @somenightclub deboosts other events from that same account.
+  // Kept in the stored shape for backward compatibility. Event hiding was
+  // retired; these maps are always empty and no longer affect ranking.
   negAccounts: Record<string, number>;
   negCategories: Record<string, number>;
   negHosts: Record<string, number>;
@@ -73,9 +72,9 @@ export function loadProfile(): InterestProfile {
       categories: parsed.categories || {},
       hosts: parsed.hosts || {},
       communities: { ...followedCommunityProfile(), ...(parsed.communities || {}) },
-      negAccounts: parsed.negAccounts || {},
-      negCategories: parsed.negCategories || {},
-      negHosts: parsed.negHosts || {},
+      negAccounts: {},
+      negCategories: {},
+      negHosts: {},
       timeBuckets: parsed.timeBuckets || {},
       dayOfWeek: parsed.dayOfWeek || {},
       updatedAt: parsed.updatedAt || new Date().toISOString(),
@@ -169,8 +168,7 @@ export function trackEventOpen(
 }
 
 // Compute a -0.25..+0.15 adjustment for an event given a learned profile.
-// Positive cap is small (saved/tagged still trump it); negative cap is
-// larger because explicit hides are a stronger no-confidence signal.
+// Positive cap stays small so saved/tagged server signals still dominate.
 export function interestBoost(
   event: {
     instagramAccount?: string;
@@ -233,31 +231,7 @@ export function interestBoost(
   }
   const positive = Math.min(0.18, boost);
 
-  // Negative signals — explicit hides translate to deboost on other events
-  // from the same account/category/host. One hide is a soft signal; 3+ on
-  // the same account = "stop showing me this".
-  let neg = 0;
-  if (acct && profile.negAccounts?.[acct]) {
-    const n = profile.negAccounts[acct];
-    // 1 hide -0.04, 3 hides -0.10, 5+ -0.15 (effectively buries).
-    neg += Math.min(0.15, 0.03 + Math.log2(n + 1) * 0.04);
-  }
-  for (const c of event.categories || []) {
-    const n = profile.negCategories?.[c];
-    if (n) neg += Math.min(0.05, n * 0.01);
-  }
-  if (event.sourceUrl) {
-    try {
-      const host = new URL(event.sourceUrl).hostname.toLowerCase();
-      const n = profile.negHosts?.[host];
-      if (n) neg += Math.min(0.04, n * 0.008);
-    } catch {
-      // ignore
-    }
-  }
-  const negative = Math.min(0.25, neg);
-
-  return positive - negative;
+  return positive;
 }
 
 export function interestReason(
@@ -596,7 +570,7 @@ export function loadAttendedExamples(): Array<{
   const states = loadAttendedStates();
   const cache = loadAttendedCache();
   const fallback = new Map<string, SavedEventStub>();
-  for (const stub of [...loadSavedStubs(), ...loadHiddenStubs()]) fallback.set(stub.id, stub);
+  for (const stub of loadSavedStubs()) fallback.set(stub.id, stub);
   return Object.entries(states).map(([id, state]) => ({
     id,
     state,
@@ -675,105 +649,25 @@ export function markAttended(
   notifyProfileChange();
 }
 
-// Hidden-events memory — explicit negative signal. Stored separately from
-// the interest profile so user can clear interests without un-hiding.
-const HIDDEN_KEY = "nyc-events:hidden:v1";
-const HIDDEN_CACHE_KEY = "nyc-events:hiddenCache:v1";
+const LEGACY_HIDDEN_KEY = "nyc-events:hidden:v1";
+const LEGACY_HIDDEN_CACHE_KEY = "nyc-events:hiddenCache:v1";
 
-function loadHiddenCache(): Record<string, SavedEventStub> {
-  if (typeof window === "undefined") return {};
-  try {
-    const parsed = JSON.parse(window.localStorage.getItem(HIDDEN_CACHE_KEY) || "{}");
-    return parsed && typeof parsed === "object" ? parsed : {};
-  } catch {
-    return {};
-  }
-}
-
-export function loadHiddenStubs(): SavedEventStub[] {
-  return Object.values(loadHiddenCache());
-}
-
-function loadHidden(): Set<string> {
-  if (typeof window === "undefined") return new Set();
-  try {
-    const raw = window.localStorage.getItem(HIDDEN_KEY);
-    if (!raw) return new Set();
-    const arr = JSON.parse(raw);
-    return new Set(Array.isArray(arr) ? arr : []);
-  } catch {
-    return new Set();
-  }
-}
-
-function saveHidden(s: Set<string>): void {
+export function clearLegacyHiddenState(): void {
   if (typeof window === "undefined") return;
   try {
-    // Cap at 500 most recent to bound localStorage growth.
-    const arr = Array.from(s).slice(-500);
-    window.localStorage.setItem(HIDDEN_KEY, JSON.stringify(arr));
+    window.localStorage.removeItem(LEGACY_HIDDEN_KEY);
+    window.localStorage.removeItem(LEGACY_HIDDEN_CACHE_KEY);
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const profile = JSON.parse(raw);
+      profile.negAccounts = {};
+      profile.negCategories = {};
+      profile.negHosts = {};
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+    }
   } catch {
-    // ignore quota errors
+    // Ignore malformed or unavailable legacy storage.
   }
-}
-
-export function hideEvent(
-  eventId: string,
-  hint?: {
-    account?: string;
-    categories?: string[];
-    sourceUrl?: string;
-    stub?: SavedEventStub;
-  }
-): void {
-  const s = loadHidden();
-  if (s.has(eventId)) return; // already hidden — don't double-bump negatives
-  s.add(eventId);
-  saveHidden(s);
-  if (hint?.stub) {
-    const cache = loadHiddenCache();
-    cache[eventId] = hint.stub;
-    try {
-      window.localStorage.setItem(HIDDEN_CACHE_KEY, JSON.stringify(cache));
-    } catch {
-      // ignore quota errors
-    }
-  }
-
-  // Apply the hide to the negative profile so other events from the
-  // same account/categories/host get deboosted in subsequent rankings.
-  if (!hint) {
-    notifyProfileChange();
-    return;
-  }
-  const p = loadProfile();
-  if (hint.account) bump(p.negAccounts, hint.account.toLowerCase(), 1);
-  for (const c of hint.categories || []) bump(p.negCategories, c, 1);
-  if (hint.sourceUrl) {
-    try {
-      const host = new URL(hint.sourceUrl).hostname.toLowerCase();
-      bump(p.negHosts, host, 1);
-    } catch {
-      // ignore
-    }
-  }
-  p.updatedAt = new Date().toISOString();
-  saveProfile(p);
-}
-
-export function isHidden(eventId: string): boolean {
-  return loadHidden().has(eventId);
-}
-
-export function loadHiddenIds(): Set<string> {
-  return loadHidden();
-}
-
-export function unhideAll(): void {
-  if (typeof window === "undefined") return;
-  window.localStorage.removeItem(HIDDEN_KEY);
-  window.localStorage.removeItem(HIDDEN_CACHE_KEY);
-  notifyProfileChange();
 }
 
 export function topAccounts(profile: InterestProfile, n = 5): string[] {
@@ -801,8 +695,8 @@ export function clearAllLocalState(): void {
     window.localStorage.removeItem(STORAGE_KEY);
     window.localStorage.removeItem(SAVED_KEY);
     window.localStorage.removeItem(SAVED_CACHE_KEY);
-    window.localStorage.removeItem(HIDDEN_KEY);
-    window.localStorage.removeItem(HIDDEN_CACHE_KEY);
+    window.localStorage.removeItem(LEGACY_HIDDEN_KEY);
+    window.localStorage.removeItem(LEGACY_HIDDEN_CACHE_KEY);
     window.localStorage.removeItem(ATTENDED_KEY);
     window.localStorage.removeItem(ATTENDED_CACHE_KEY);
     window.localStorage.removeItem(OPENED_KEY);
@@ -817,10 +711,6 @@ export function clearAllLocalState(): void {
 
 export function getSavedCount(): number {
   return loadSavedSet().size;
-}
-
-export function getHiddenCount(): number {
-  return loadHidden().size;
 }
 
 // Already-opened events: fade-out signal so the user can scan for what's

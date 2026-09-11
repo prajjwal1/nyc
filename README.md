@@ -64,7 +64,7 @@ Build on top of these principles. Don't break them.
 └─────────────┘   └────────────┘   └──────────────┘   └────────┘
        ▲                                  │
        │   self-improvement loops         │   localStorage
-       │   (URL discovery, account-yield, │   (saves, hides,
+       │   (URL discovery, account-yield, │   (saves, opens,
        │    interest profile)             │    interest profile)
        └──────────────────────────────────┘
 ```
@@ -255,10 +255,9 @@ Stored under `nyc-events:*` keys. Reset via Activity Panel.
 
 | Key | Content | Purpose |
 |---|---|---|
-| `nyc-events:interests:v1` | `{accounts, categories, hosts, communities, …}` | Interest profile from clicks, saves, hides, attendance, and follows |
+| `nyc-events:interests:v1` | `{accounts, categories, hosts, communities, …}` | Interest profile from clicks, saves, attendance, and follows |
 | `nyc-events:saved:v1` | Set of event IDs | Locally-saved (★ button) |
 | `nyc-events:savedCache:v1` | Map of `id → SavedEventStub` | Past saves persist after pipeline drops them |
-| `nyc-events:hidden:v1` | Set of event IDs | × Hide button — excludes from event views |
 | `nyc-events:opened:v1` | Set of event IDs | Visited events — fade-out signal |
 | `nyc-events:lastVisitedAt:v1` | ISO timestamp | "X new since you last visited" badge |
 
@@ -268,7 +267,6 @@ Stored under `nyc-events:*` keys. Reset via Activity Panel.
 - **Card open** (modal/external): +3 to account, +1 each category, +1 host
 - **★ Save**: +5 to account, +3 each category, +2 host (strongest signal)
 - **Community follow**: immediately boosts linked events from that community
-- **× Hide**: excludes the event and deboosts matching accounts/categories/hosts
 
 `interestBoost` re-ranks in the browser immediately; no account, token, or manual sync is required.
 
@@ -280,14 +278,14 @@ Stored under `nyc-events:*` keys. Reset via Activity Panel.
 - `Header.tsx` — title, total count, "X new since you last visited" badge, Share-view button
 - `Calendar.tsx` — date picker with event-density indicators
 - `EventList.tsx` — list of events for a selected date
-- `EventCard.tsx` — uniform event card with Save/Hide/Calendar actions; opened events fade
+- `EventCard.tsx` — uniform event card with Save/Calendar actions; opened events fade
 - `EventModal.tsx` — full-screen tap-to-expand: hero image carousel (multi-image swiper for carousel posts), full description, source attribution, "Recommended by @X" provenance, action buttons, "More from @account" + "More \<Category\> like this" strips
-- `ActivityPanel.tsx` — surfaces interest profile (top accounts/categories), saved/hidden counts, **bulk Export to calendar**, Past saves collapsible section, reset button
+- `ActivityPanel.tsx` — surfaces interest profile (top accounts/categories), saved counts, **bulk Export to calendar**, Past saves collapsible section, reset button
 
 ### Hooks/lib
 - `lib/types.ts` — TypeScript types (Event, EventsData, TopAccount, etc.)
 - `lib/events.ts` — `loadEvents`, `filterEvents`, `getEventDates`
-- `lib/interests.ts` — all localStorage helpers (interest profile, saves, hides, attendance, opened state, saved cache)
+- `lib/interests.ts` — all localStorage helpers (interest profile, saves, attendance, opened state, saved cache); legacy hidden-event keys are cleared on load
 - `lib/ics.ts` — single + bulk `.ics` calendar export
 - `hooks/useEvents.ts` — loads events, applies interest profile re-rank, exposes filtered events
 

@@ -9,7 +9,7 @@ import {
   interestBoost,
   interestReason,
   InterestProfile,
-  loadHiddenIds,
+  clearLegacyHiddenState,
   PROFILE_CHANGE_EVENT,
 } from "../lib/interests";
 
@@ -24,6 +24,7 @@ export function useEvents() {
   const [profile, setProfile] = useState<InterestProfile | null>(null);
 
   useEffect(() => {
+    clearLegacyHiddenState();
     loadEvents()
       .then(setData)
       .catch(() => setLoadError(true))
@@ -58,10 +59,7 @@ export function useEvents() {
       if (Number.isNaN(eMin)) return true;
       return eMin >= cutoffMin;                // started <3h ago or later
     };
-    const hidden = loadHiddenIds();
-    const upcoming = data.events
-      .filter(stillUpcoming)
-      .filter((event) => !hidden.has(event.id));
+    const upcoming = data.events.filter(stillUpcoming);
     if (!profile) return upcoming;
     return upcoming.map((e) => {
       const reason = interestReason(e, profile);
