@@ -388,7 +388,7 @@
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_cb019f4e9752"
+        "com_ccdad62238e9"
       ]
     },
     {
@@ -548,13 +548,15 @@
       "slug": "union-hall-4e9752",
       "name": "Union Hall",
       "kind": "recurring_series",
-      "tagline": "Union Hall is a recurring event series in brooklyn.",
-      "description": "Union Hall is a recurring event series in brooklyn. Based on 12 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "tagline": "Union Hall is a recurring event series centered on comedy in brooklyn.",
+      "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 14 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
-        "other"
+        "other",
+        "comedy"
       ],
       "tags": [
-        "other"
+        "other",
+        "comedy"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -572,24 +574,26 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-12",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 6,
         "eventCount90d": 13
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Sunday",
-          "Monday"
+          "Wednesday",
+          "Sunday"
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "9006f9bc67f47b18",
         "8759b0781385ab0d",
         "f31dbf404a4486dd",
-        "f4169d0007e6c072"
+        "f4169d0007e6c072",
+        "4c3a32f8464a8a9a",
+        "20b93747d29d6666"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -598,7 +602,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -607,12 +611,12 @@
         "eventbrite:17899496497"
       ],
       "similarCommunityIds": [
-        "com_99343fce4c7a",
-        "com_c913475de34a",
+        "com_b736e77bdf93",
         "com_1466f20a9300",
-        "com_359bbb5a9a91",
         "com_3837f308cd75",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_d8a5203885a9",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -691,9 +695,9 @@
       "similarCommunityIds": [
         "com_d8a5203885a9",
         "com_1466f20a9300",
+        "com_cb019f4e9752",
         "com_3837f308cd75",
         "com_4a9490cb3534",
-        "com_cb019f4e9752",
         "com_318c39363fe6"
       ]
     },
@@ -1179,8 +1183,8 @@
       "similarCommunityIds": [
         "com_3837f308cd75",
         "com_4a9490cb3534",
-        "com_cb019f4e9752",
         "com_b736e77bdf93",
+        "com_cb019f4e9752",
         "com_b766b6de77ba",
         "com_d8a5203885a9"
       ]
@@ -1491,8 +1495,8 @@
       ],
       "similarCommunityIds": [
         "com_bad972d799e8",
-        "com_cb019f4e9752",
         "com_1466f20a9300",
+        "com_cb019f4e9752",
         "com_4c3ca28533f5",
         "com_99343fce4c7a",
         "com_ab8259bb35a4"
@@ -1848,9 +1852,9 @@
         "com_ab8259bb35a4",
         "com_99343fce4c7a",
         "com_c913475de34a",
-        "com_cb019f4e9752",
         "com_d2d455d2d6c9",
-        "com_318c39363fe6"
+        "com_318c39363fe6",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -1924,7 +1928,7 @@
         "com_99343fce4c7a",
         "com_ab8259bb35a4",
         "com_c913475de34a",
-        "com_cb019f4e9752"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -1984,11 +1988,11 @@
       ],
       "similarCommunityIds": [
         "com_99343fce4c7a",
-        "com_cb019f4e9752",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_bad972d799e8",
-        "com_c58670960684"
+        "com_c58670960684",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -2059,11 +2063,11 @@
       ],
       "similarCommunityIds": [
         "com_c913475de34a",
-        "com_cb019f4e9752",
         "com_bad972d799e8",
         "com_d2d455d2d6c9",
         "com_4c3ca28533f5",
-        "com_e9748c1176c1"
+        "com_e9748c1176c1",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -3241,12 +3245,12 @@
         "source:powerhousearena"
       ],
       "similarCommunityIds": [
+        "com_cb019f4e9752",
         "com_4a9490cb3534",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_e9748c1176c1",
-        "com_5582e2e97f1a",
-        "com_1466f20a9300"
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -50625,7 +50629,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-12T13:02:46.910020+00:00",
+  "lastUpdated": "2026-09-12T13:11:24.331886+00:00",
   "version": 1,
   "schemaVersion": 1
 }
