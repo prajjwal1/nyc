@@ -397,21 +397,21 @@
       "slug": "caveat-3a75f0",
       "name": "Caveat",
       "kind": "recurring_series",
-      "tagline": "Caveat is a recurring event series centered on comedy, parties, books in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, parties, books in manhattan. Based on 15 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "tagline": "Caveat is a recurring event series centered on comedy, parties, games in manhattan.",
+      "description": "Caveat is a recurring event series centered on comedy, parties, games in manhattan. Based on 16 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "comedy",
         "parties",
+        "games",
         "books",
-        "viewings",
-        "games"
+        "viewings"
       ],
       "tags": [
         "comedy",
         "parties",
+        "games",
         "books",
-        "viewings",
-        "games"
+        "viewings"
       ],
       "neighborhoods": [
         "manhattan"
@@ -429,7 +429,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-12",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 15
       },
       "schedule": {
@@ -440,7 +440,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 15
+        "sampleSize": 16
       },
       "upcomingEventIds": [
         "9682b2057ce75c9a",
@@ -448,7 +448,8 @@
         "47b843e867084bc2",
         "fd66f8cf7f9c73c4",
         "ff049610d7dd1fc0",
-        "01452189edc7b599"
+        "01452189edc7b599",
+        "311f8980eecbd7cd"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -457,7 +458,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 15,
+        "observedDateCount": 16,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50630,7 +50631,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-12T20:59:32.031220+00:00",
+  "lastUpdated": "2026-09-12T21:03:27.345962+00:00",
   "version": 1,
   "schemaVersion": 1
 }
