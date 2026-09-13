@@ -2371,7 +2371,7 @@
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
       "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, williamsburg.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, williamsburg. Based on 30 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, williamsburg. Based on 31 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties"
@@ -2399,18 +2399,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-12",
-        "upcomingEventCount": 13,
+        "upcomingEventCount": 14,
         "eventCount90d": 27
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Monday",
-          "Thursday"
+          "Tuesday"
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 30
+        "sampleSize": 31
       },
       "upcomingEventIds": [
         "43f64d52a99095b9",
@@ -2433,7 +2433,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 30,
+        "observedDateCount": 31,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50470,7 +50470,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-13T14:36:55.679221+00:00",
+  "lastUpdated": "2026-09-13T16:13:37.391605+00:00",
   "version": 1,
   "schemaVersion": 1
 }
