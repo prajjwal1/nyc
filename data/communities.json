@@ -786,7 +786,7 @@
       "name": "Strand Bookstore",
       "kind": "recurring_series",
       "tagline": "Strand Bookstore is a recurring event series centered on books in manhattan, east village.",
-      "description": "Strand Bookstore is a recurring event series centered on books in manhattan, east village. Based on 12 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "description": "Strand Bookstore is a recurring event series centered on books in manhattan, east village. Based on 13 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
         "other",
         "books"
@@ -812,18 +812,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-11",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 5
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Thursday"
+          "Tuesday",
+          "Wednesday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 13
       },
       "upcomingEventIds": [
         "668ed73244ed774d",
@@ -834,7 +834,8 @@
         "4302dd5fc58ea695",
         "40a0ea49cc014a71",
         "0bf157b47efc08fd",
-        "3e9a8d837c04f5bc"
+        "3e9a8d837c04f5bc",
+        "c3e30a189a9347e8"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -843,7 +844,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 13,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50469,7 +50470,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-13T11:46:51.879712+00:00",
+  "lastUpdated": "2026-09-13T12:07:38.986555+00:00",
   "version": 1,
   "schemaVersion": 1
 }
