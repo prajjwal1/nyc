@@ -390,21 +390,21 @@
       "slug": "caveat-3a75f0",
       "name": "Caveat",
       "kind": "recurring_series",
-      "tagline": "Caveat is a recurring event series centered on games, parties, viewings in manhattan.",
-      "description": "Caveat is a recurring event series centered on games, parties, viewings in manhattan. Based on 16 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "tagline": "Caveat is a recurring event series centered on comedy, parties, games in manhattan.",
+      "description": "Caveat is a recurring event series centered on comedy, parties, games in manhattan. Based on 18 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
-        "games",
+        "comedy",
         "parties",
+        "games",
         "viewings",
-        "other",
-        "comedy"
+        "other"
       ],
       "tags": [
-        "games",
+        "comedy",
         "parties",
+        "games",
         "viewings",
-        "other",
-        "comedy"
+        "other"
       ],
       "neighborhoods": [
         "manhattan"
@@ -422,7 +422,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-14",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 7,
         "eventCount90d": 18
       },
       "schedule": {
@@ -433,13 +433,16 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 16
+        "sampleSize": 18
       },
       "upcomingEventIds": [
         "fd66f8cf7f9c73c4",
         "ff049610d7dd1fc0",
         "01452189edc7b599",
-        "311f8980eecbd7cd"
+        "311f8980eecbd7cd",
+        "29e848e6345c2dd5",
+        "f21ab2a0ace9d043",
+        "48f886f8864d4f40"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -448,7 +451,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 16,
+        "observedDateCount": 18,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -541,7 +544,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series centered on comedy in brooklyn.",
-      "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 15 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 16 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
         "other",
         "comedy"
@@ -557,8 +560,8 @@
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1189139076%2F282041210522%2F1%2Foriginal.20260718-204948?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=7a4d480e11a39624872f89ab312a5d71",
       "links": [
         {
-          "type": "allevents",
-          "label": "View on Allevents",
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
           "url": "https://eventbrite.com/o/17899496497"
         }
       ],
@@ -566,34 +569,35 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-14",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 16
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Sunday"
+          "Friday"
         ],
-        "typicalTime": "19:30",
+        "typicalTime": "22:00",
         "confidence": 1.0,
-        "sampleSize": 15
+        "sampleSize": 16
       },
       "upcomingEventIds": [
         "f31dbf404a4486dd",
         "f4169d0007e6c072",
         "4c3a32f8464a8a9a",
         "20b93747d29d6666",
-        "d5b9a2732e2952db"
+        "d5b9a2732e2952db",
+        "b5be5eeed1954383"
       ],
       "sourceAttributions": [
-        "allevents"
+        "eventbrite"
       ],
       "lastVerifiedAt": "2026-09-14",
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 15,
+        "observedDateCount": 16,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50329,7 +50333,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-14T10:22:47.360795+00:00",
+  "lastUpdated": "2026-09-14T13:09:50.097690+00:00",
   "version": 1,
   "schemaVersion": 1
 }
