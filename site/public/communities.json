@@ -382,7 +382,7 @@
         "com_b766b6de77ba",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_ccdad62238e9"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -390,21 +390,21 @@
       "slug": "caveat-3a75f0",
       "name": "Caveat",
       "kind": "recurring_series",
-      "tagline": "Caveat is a recurring event series centered on comedy, games, parties in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, games, parties in manhattan. Based on 16 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "tagline": "Caveat is a recurring event series centered on games, parties, viewings in manhattan.",
+      "description": "Caveat is a recurring event series centered on games, parties, viewings in manhattan. Based on 16 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
-        "comedy",
         "games",
         "parties",
         "viewings",
-        "other"
+        "other",
+        "comedy"
       ],
       "tags": [
-        "comedy",
         "games",
         "parties",
         "viewings",
-        "other"
+        "other",
+        "comedy"
       ],
       "neighborhoods": [
         "manhattan"
@@ -615,21 +615,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn. Based on 22 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on movies, art, comedy in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on movies, art, comedy in brooklyn. Based on 22 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
-        "comedy",
-        "music",
         "other",
         "movies",
-        "art"
+        "art",
+        "comedy",
+        "music"
       ],
       "tags": [
-        "comedy",
-        "music",
         "other",
         "movies",
-        "art"
+        "art",
+        "comedy",
+        "music"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -648,7 +648,7 @@
         "state": "active",
         "lastEventDate": "2026-09-13",
         "upcomingEventCount": 6,
-        "eventCount90d": 38
+        "eventCount90d": 37
       },
       "schedule": {
         "cadence": "weekly",
@@ -656,7 +656,7 @@
           "Friday",
           "Saturday"
         ],
-        "typicalTime": "20:00",
+        "typicalTime": "19:00",
         "confidence": 1.0,
         "sampleSize": 22
       },
@@ -939,10 +939,10 @@
       "similarCommunityIds": [
         "com_c1410c07c4dd",
         "com_4a9490cb3534",
-        "com_5582e2e97f1a",
         "com_33a530deb7aa",
         "com_cdd5daa67222",
-        "com_f23f8820878b"
+        "com_f23f8820878b",
+        "com_318c39363fe6"
       ]
     },
     {
@@ -1260,9 +1260,9 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_d2d455d2d6c9",
+        "com_5582e2e97f1a",
         "com_fe4b6663b721",
         "com_a1e1c13a75f0",
-        "com_5582e2e97f1a",
         "com_eef1ca956dae"
       ]
     },
@@ -1271,19 +1271,17 @@
       "slug": "liz-s-book-bar-e97f1a",
       "name": "Liz\u2019s Book Bar",
       "kind": "community_space",
-      "tagline": "Liz\u2019s Book Bar is a community space centered on books, music, art in carroll gardens.",
-      "description": "Liz\u2019s Book Bar is a community space centered on books, music, art in carroll gardens. Based on 9 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "tagline": "Liz\u2019s Book Bar is a community space centered on books, music, celebrities in carroll gardens.",
+      "description": "Liz\u2019s Book Bar is a community space centered on books, music, celebrities in carroll gardens. Based on 9 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "books",
         "music",
-        "art",
         "celebrities",
         "exploration"
       ],
       "tags": [
         "books",
         "music",
-        "art",
         "celebrities",
         "exploration"
       ],
@@ -1342,10 +1340,10 @@
       "similarCommunityIds": [
         "com_eeb4e424a504",
         "com_e9748c1176c1",
-        "com_55ca36db453a",
-        "com_eef1ca956dae",
         "com_33a530deb7aa",
-        "com_f171cd222ca5"
+        "com_eef1ca956dae",
+        "com_f171cd222ca5",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -1632,9 +1630,9 @@
         "com_02ba15552329",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
-        "com_ccdad62238e9",
         "com_f23f8820878b",
-        "com_359bbb5a9a91"
+        "com_359bbb5a9a91",
+        "com_bad972d799e8"
       ]
     },
     {
@@ -1766,12 +1764,12 @@
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
-        "com_c913475de34a",
         "com_d2d455d2d6c9",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_b766b6de77ba",
-        "com_bad972d799e8"
+        "com_bad972d799e8",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -1844,70 +1842,8 @@
         "com_4c3ca28533f5",
         "com_ab8259bb35a4",
         "com_c58670960684",
-        "com_c913475de34a",
-        "com_d2d455d2d6c9"
-      ]
-    },
-    {
-      "id": "com_c913475de34a",
-      "slug": "personal-5de34a",
-      "name": "Personal",
-      "kind": "recurring_series",
-      "tagline": "Personal is a recurring event series in lower east side.",
-      "description": "Personal is a recurring event series in lower east side. Based on 2 observed event dates, it meets weekly on Thursday and Sunday evenings.",
-      "categories": [
-        "other"
-      ],
-      "tags": [
-        "other"
-      ],
-      "neighborhoods": [
-        "lower east side"
-      ],
-      "homeVenue": "Manhattan",
-      "imageUrl": "https://images.lumacdn.com/uploads/v7/5c240290-fad5-4b8e-b3ca-3ea326c636a9.jpg",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-09-13",
-        "upcomingEventCount": 0,
-        "eventCount90d": 2
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Thursday",
-          "Sunday"
-        ],
-        "typicalTime": "19:00",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-09-14",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 2,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "instagram:aminasalahou",
-        "luma:cal-jrpnxzqi4akseo4"
-      ],
-      "similarCommunityIds": [
-        "com_c58670960684",
-        "com_1466f20a9300",
-        "com_359bbb5a9a91",
-        "com_b766b6de77ba",
-        "com_bad972d799e8",
-        "com_cb019f4e9752"
+        "com_d2d455d2d6c9",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -2194,10 +2130,10 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_4e69412cb0a5",
+        "com_5582e2e97f1a",
         "com_715c917d96c2",
         "com_eeb4e424a504",
-        "com_f171cd222ca5",
-        "com_5582e2e97f1a"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -2439,8 +2375,8 @@
         "com_f171cd222ca5",
         "com_4a9490cb3534",
         "com_715c917d96c2",
-        "com_ccdad62238e9",
-        "com_eeb4e424a504"
+        "com_eeb4e424a504",
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -2510,74 +2446,6 @@
         "com_d2ccb56c071d",
         "com_eeb4e424a504",
         "com_f171cd222ca5"
-      ]
-    },
-    {
-      "id": "com_ccdad62238e9",
-      "slug": "rotten-avocado-2238e9",
-      "name": "Rotten avocado",
-      "kind": "recurring_series",
-      "tagline": "Rotten avocado is a recurring event series centered on parties in brooklyn.",
-      "description": "Rotten avocado is a recurring event series centered on parties in brooklyn. Based on 2 observed event dates, it meets weekly on Friday and Sunday evenings.",
-      "categories": [
-        "parties"
-      ],
-      "tags": [
-        "parties"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FnBNPioIegpX3uDkWhjJtHVLiZrf2%2FtLMG7rtzwBCDBMVL-FEWS?alt=media&token=42e07bf0-fc9d-4cd2-b366-1a37b93eeb68",
-      "links": [
-        {
-          "type": "partiful",
-          "label": "View on Partiful",
-          "url": "https://partiful.com/u/nBNPioIegpX3uDkWhjJtHVLiZrf2"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-09-13",
-        "upcomingEventCount": 0,
-        "eventCount90d": 2
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Friday",
-          "Sunday"
-        ],
-        "typicalTime": "19:00",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "partiful"
-      ],
-      "lastVerifiedAt": "2026-09-14",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 2,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "instagram:rotten_avocadoo",
-        "partiful:nbnpioiegpx3udkwhjjthvlizrf2"
-      ],
-      "similarCommunityIds": [
-        "com_4a9490cb3534",
-        "com_d8a5203885a9",
-        "com_cdd5daa67222",
-        "com_1466f20a9300",
-        "com_3837f308cd75",
-        "com_b736e77bdf93"
       ]
     },
     {
@@ -2838,8 +2706,8 @@
         "com_4a9490cb3534",
         "com_f23f8820878b",
         "com_b736e77bdf93",
-        "com_ccdad62238e9",
-        "com_1466f20a9300"
+        "com_1466f20a9300",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -3083,8 +2951,8 @@
         "com_4a9490cb3534",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_e9748c1176c1",
-        "com_5582e2e97f1a"
+        "com_5582e2e97f1a",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3167,15 +3035,15 @@
         "comedy",
         "special",
         "music",
-        "outdoors",
-        "parties"
+        "parties",
+        "outdoors"
       ],
       "tags": [
         "comedy",
         "special",
         "music",
-        "outdoors",
-        "parties"
+        "parties",
+        "outdoors"
       ],
       "neighborhoods": [
         "east village",
@@ -50461,7 +50329,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-14T01:38:55.483128+00:00",
+  "lastUpdated": "2026-09-14T04:57:22.640994+00:00",
   "version": 1,
   "schemaVersion": 1
 }
