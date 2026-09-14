@@ -158,7 +158,7 @@
       "name": "Ciao Evento",
       "kind": "recurring_series",
       "tagline": "Ciao Evento is a recurring event series centered on music, parties, dance in manhattan.",
-      "description": "Ciao Evento is a recurring event series centered on music, parties, dance in manhattan. Based on 4 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "description": "Ciao Evento is a recurring event series centered on music, parties, dance in manhattan. Based on 5 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "other",
         "music",
@@ -187,7 +187,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-13",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 2
       },
       "schedule": {
@@ -197,11 +197,12 @@
           "Sunday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "ab9d21da0f3b5f76",
+        "e7324f73d1b7da3f",
         "dbf2079f2431327f"
       ],
       "sourceAttributions": [
@@ -211,7 +212,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -619,27 +620,27 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on movies, art, comedy in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on movies, art, comedy in brooklyn. Based on 22 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn. Based on 24 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
-        "other",
-        "movies",
-        "art",
         "comedy",
-        "music"
+        "other",
+        "music",
+        "movies",
+        "art"
       ],
       "tags": [
-        "other",
-        "movies",
-        "art",
         "comedy",
-        "music"
+        "other",
+        "music",
+        "movies",
+        "art"
       ],
       "neighborhoods": [
         "brooklyn"
       ],
       "homeVenue": "The Tiny Cupboard",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1179450430%2F293545126158%2F1%2Foriginal.20260310-022044?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=8ec1a32e86c7415aa058fd6bb8ba2e95",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1188941150%2F293545126158%2F1%2Foriginal.20260715-175543?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=58ee85d6169f11ece90cdbb29f5bfef3",
       "links": [
         {
           "type": "eventbrite",
@@ -650,9 +651,9 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-09-13",
-        "upcomingEventCount": 6,
-        "eventCount90d": 37
+        "lastEventDate": "2026-09-14",
+        "upcomingEventCount": 8,
+        "eventCount90d": 38
       },
       "schedule": {
         "cadence": "weekly",
@@ -660,17 +661,19 @@
           "Friday",
           "Saturday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 22
+        "sampleSize": 24
       },
       "upcomingEventIds": [
+        "24b84f7b951dafa2",
         "e72e07bc6fa322ca",
         "019a20e47605124a",
         "6a5987b0575416fc",
         "8bc1ca6f16fa195f",
         "40321613156f13b4",
-        "dcf368d4ec9cda5d"
+        "dcf368d4ec9cda5d",
+        "e196aa43d4be64b1"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -679,7 +682,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 22,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1139,7 +1142,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-14",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 8,
         "eventCount90d": 23
       },
       "schedule": {
@@ -1158,7 +1161,9 @@
         "150af02e821b438e",
         "49d7ced87656bf92",
         "a0ea828ce159ff3c",
-        "6087a50b0207d5bc"
+        "b9a60ecd79f618a3",
+        "6087a50b0207d5bc",
+        "e1396ef5e1d9b3f1"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -50333,7 +50338,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-14T19:41:54.869735+00:00",
+  "lastUpdated": "2026-09-14T22:09:23.939628+00:00",
   "version": 1,
   "schemaVersion": 1
 }
