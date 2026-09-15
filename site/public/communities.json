@@ -450,11 +450,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
+        "com_33a530deb7aa",
         "com_3837f308cd75",
         "com_b766b6de77ba",
         "com_b736e77bdf93",
-        "com_d8a5203885a9",
-        "com_eef1ca956dae"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -1011,8 +1011,8 @@
       ],
       "similarCommunityIds": [
         "com_c1410c07c4dd",
-        "com_4a9490cb3534",
         "com_33a530deb7aa",
+        "com_4a9490cb3534",
         "com_cdd5daa67222",
         "com_318c39363fe6",
         "com_b766b6de77ba"
@@ -2217,15 +2217,17 @@
       "slug": "lit-club-nyc-calendar-deb7aa",
       "name": "Lit Club NYC Calendar",
       "kind": "club",
-      "tagline": "Lit Club NYC Calendar is a community club centered on books, music in upper east side.",
-      "description": "Lit Club NYC Calendar is a community club centered on books, music in upper east side. Based on 5 observed event dates, it meets weekly on Thursday and Monday evenings.",
+      "tagline": "Lit Club NYC Calendar is a community club centered on books, music, parties in upper east side.",
+      "description": "Lit Club NYC Calendar is a community club centered on books, music, parties in upper east side. Based on 6 observed event dates, it meets weekly on Thursday and Monday evenings.",
       "categories": [
         "books",
-        "music"
+        "music",
+        "parties"
       ],
       "tags": [
         "books",
-        "music"
+        "music",
+        "parties"
       ],
       "neighborhoods": [
         "upper east side"
@@ -2243,7 +2245,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-10",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 1
       },
       "schedule": {
@@ -2253,14 +2255,15 @@
           "Monday"
         ],
         "typicalTime": "18:30",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
       "upcomingEventIds": [
         "fe9770a95e5241d0",
         "2b34d9c0842efd66",
         "97376543ea5707ec",
-        "c70fff48af1edcbd"
+        "c70fff48af1edcbd",
+        "3d23d949b3d9a445"
       ],
       "sourceAttributions": [
         "luma"
@@ -2269,7 +2272,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2279,11 +2282,11 @@
       ],
       "similarCommunityIds": [
         "com_4a9490cb3534",
-        "com_4e69412cb0a5",
+        "com_cdd5daa67222",
+        "com_55ca36db453a",
+        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
-        "com_715c917d96c2",
-        "com_eeb4e424a504",
-        "com_f171cd222ca5"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2354,8 +2357,8 @@
         "com_d8a5203885a9",
         "com_1466f20a9300",
         "com_318c39363fe6",
-        "com_33a530deb7aa",
-        "com_b766b6de77ba"
+        "com_b766b6de77ba",
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -2523,11 +2526,11 @@
       ],
       "similarCommunityIds": [
         "com_4e69412cb0a5",
+        "com_33a530deb7aa",
         "com_f171cd222ca5",
         "com_4a9490cb3534",
         "com_715c917d96c2",
-        "com_a1e1c13a75f0",
-        "com_eeb4e424a504"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -2664,9 +2667,9 @@
         "com_1466f20a9300",
         "com_218b97d674a6",
         "com_318c39363fe6",
-        "com_33a530deb7aa",
         "com_b0e15eaab803",
-        "com_b766b6de77ba"
+        "com_b766b6de77ba",
+        "com_02ba15552329"
       ]
     },
     {
@@ -2762,9 +2765,9 @@
       "similarCommunityIds": [
         "com_55ca36db453a",
         "com_4a9490cb3534",
+        "com_33a530deb7aa",
         "com_b766b6de77ba",
         "com_3837f308cd75",
-        "com_33a530deb7aa",
         "com_cdd5daa67222"
       ]
     },
@@ -50480,7 +50483,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-15T19:06:15.230217+00:00",
+  "lastUpdated": "2026-09-15T19:12:24.201839+00:00",
   "version": 1,
   "schemaVersion": 1
 }
