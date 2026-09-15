@@ -2675,20 +2675,20 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, music, parties in bushwick, east village.",
-      "description": "Book Club Bar is a community space centered on books, music, parties in bushwick, east village. Based on 46 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, music, parties in bushwick, east village. Based on 47 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
         "parties",
         "food",
-        "singles"
+        "art"
       ],
       "tags": [
         "books",
         "music",
         "parties",
         "food",
-        "singles"
+        "art"
       ],
       "neighborhoods": [
         "bushwick",
@@ -2701,14 +2701,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6308220261108"
+          "url": "https://bookclubbar.com/events/6115320261116"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-15",
-        "upcomingEventCount": 25,
+        "upcomingEventCount": 30,
         "eventCount90d": 29
       },
       "schedule": {
@@ -2719,7 +2719,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 46
+        "sampleSize": 47
       },
       "upcomingEventIds": [
         "e151d8cb9656fefa",
@@ -2742,13 +2742,17 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 46,
+        "observedDateCount": 47,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
       "newcomerEvidence": [
         {
           "eventId": "456246204da9a2d0",
+          "signal": "beginners"
+        },
+        {
+          "eventId": "45ca74a60db45547",
           "signal": "beginners"
         }
       ],
@@ -3254,10 +3258,10 @@
       "similarCommunityIds": [
         "com_318c39363fe6",
         "com_d8a5203885a9",
-        "com_c1410c07c4dd",
         "com_3837f308cd75",
         "com_b736e77bdf93",
-        "com_55ca36db453a"
+        "com_55ca36db453a",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -50476,7 +50480,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-15T11:40:08.377718+00:00",
+  "lastUpdated": "2026-09-15T12:45:37.884722+00:00",
   "version": 1,
   "schemaVersion": 1
 }
