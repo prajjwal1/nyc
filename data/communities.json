@@ -6,7 +6,7 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music in bushwick, brooklyn.",
-      "description": "Elsewhere is a recurring event series centered on music in bushwick, brooklyn. Based on 32 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music in bushwick, brooklyn. Based on 33 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "music",
         "other"
@@ -32,7 +32,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-15",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 49
       },
       "schedule": {
@@ -43,7 +43,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 32
+        "sampleSize": 33
       },
       "upcomingEventIds": [
         "ff487f32295021c0",
@@ -52,6 +52,7 @@
         "b4cac5b8cf3d1436",
         "754ae83777602c00",
         "3ebcef0389e5db82",
+        "1e1dab9a568f5391",
         "c65ab39ef5533d68"
       ],
       "sourceAttributions": [
@@ -61,7 +62,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 32,
+        "observedDateCount": 33,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -685,21 +686,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on music, movies, art in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on music, movies, art in brooklyn. Based on 23 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn. Based on 23 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
+        "comedy",
         "music",
         "movies",
-        "art",
-        "comedy"
+        "art"
       ],
       "tags": [
         "other",
+        "comedy",
         "music",
         "movies",
-        "art",
-        "comedy"
+        "art"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -717,8 +718,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-15",
-        "upcomingEventCount": 7,
-        "eventCount90d": 38
+        "upcomingEventCount": 8,
+        "eventCount90d": 39
       },
       "schedule": {
         "cadence": "weekly",
@@ -726,12 +727,13 @@
           "Friday",
           "Saturday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
         "sampleSize": 23
       },
       "upcomingEventIds": [
         "e72e07bc6fa322ca",
+        "99a1c2377499c67b",
         "019a20e47605124a",
         "6a5987b0575416fc",
         "8bc1ca6f16fa195f",
@@ -878,7 +880,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-15",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 7
       },
       "schedule": {
@@ -900,7 +902,8 @@
         "40a0ea49cc014a71",
         "0bf157b47efc08fd",
         "3e9a8d837c04f5bc",
-        "c3e30a189a9347e8"
+        "c3e30a189a9347e8",
+        "91dced6d23cec9e9"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1180,7 +1183,7 @@
       "name": "St Mazie",
       "kind": "recurring_series",
       "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 19 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 20 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "music",
         "other"
@@ -1205,7 +1208,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-15",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 24
       },
       "schedule": {
@@ -1216,7 +1219,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 19
+        "sampleSize": 20
       },
       "upcomingEventIds": [
         "b56bafbc440eb089",
@@ -1225,7 +1228,8 @@
         "a0ea828ce159ff3c",
         "b9a60ecd79f618a3",
         "6087a50b0207d5bc",
-        "e1396ef5e1d9b3f1"
+        "e1396ef5e1d9b3f1",
+        "16a29fdb68227be2"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1234,7 +1238,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 19,
+        "observedDateCount": 20,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1257,7 +1261,7 @@
       "name": "The National Arts Club",
       "kind": "club",
       "tagline": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan.",
-      "description": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan. Based on 11 observed event dates, it meets weekly on Tuesday and Monday evenings.",
+      "description": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan. Based on 12 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
         "other",
         "exploration",
@@ -1286,18 +1290,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-15",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 2
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Tuesday",
-          "Monday"
+          "Thursday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "2fef7d46e03c4807",
@@ -1310,7 +1314,8 @@
         "3203611ff1e96814",
         "99edbf39a419c412",
         "d53ce6ac6c2b6659",
-        "342b685d3b344d3e"
+        "342b685d3b344d3e",
+        "25f13ba0eea39c78"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1319,7 +1324,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50471,7 +50476,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-15T08:05:13.139859+00:00",
+  "lastUpdated": "2026-09-15T10:25:04.690412+00:00",
   "version": 1,
   "schemaVersion": 1
 }
