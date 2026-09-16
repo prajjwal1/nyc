@@ -1633,7 +1633,7 @@
       "name": "NYC Sprint Collective",
       "kind": "recurring_series",
       "tagline": "NYC Sprint Collective is a recurring event series centered on fitness across NYC.",
-      "description": "NYC Sprint Collective is a recurring event series centered on fitness across NYC. Based on 4 observed event dates, it meets weekly on Wednesday evenings.",
+      "description": "NYC Sprint Collective is a recurring event series centered on fitness across NYC. Based on 5 observed event dates, it meets weekly on Wednesday evenings.",
       "categories": [
         "fitness"
       ],
@@ -1654,7 +1654,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-16",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 1
       },
       "schedule": {
@@ -1663,14 +1663,15 @@
           "Wednesday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "1bf2e53bfafab504",
         "8e1655ec278cd9ee",
         "3dce7a3678d457ef",
-        "53bef0efbfc91e68"
+        "53bef0efbfc91e68",
+        "6052a7d017167e85"
       ],
       "sourceAttributions": [
         "instagram"
@@ -1679,7 +1680,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50466,7 +50467,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-16T23:15:05.334785+00:00",
+  "lastUpdated": "2026-09-16T23:55:29.929726+00:00",
   "version": 1,
   "schemaVersion": 1
 }
