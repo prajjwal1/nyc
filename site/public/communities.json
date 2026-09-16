@@ -1002,8 +1002,8 @@
         "com_b736e77bdf93",
         "com_318c39363fe6",
         "com_33a530deb7aa",
-        "com_f23f8820878b",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -1766,9 +1766,9 @@
         "com_02ba15552329",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
-        "com_f23f8820878b",
         "com_359bbb5a9a91",
-        "com_bad972d799e8"
+        "com_bad972d799e8",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -2667,15 +2667,15 @@
         "books",
         "music",
         "parties",
-        "food",
-        "singles"
+        "art",
+        "food"
       ],
       "tags": [
         "books",
         "music",
         "parties",
-        "food",
-        "singles"
+        "art",
+        "food"
       ],
       "neighborhoods": [
         "bushwick",
@@ -2688,14 +2688,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6308220261108"
+          "url": "https://bookclubbar.com/events/6115320261116"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-16",
-        "upcomingEventCount": 23,
+        "upcomingEventCount": 28,
         "eventCount90d": 31
       },
       "schedule": {
@@ -2737,6 +2737,10 @@
         {
           "eventId": "456246204da9a2d0",
           "signal": "beginners"
+        },
+        {
+          "eventId": "45ca74a60db45547",
+          "signal": "beginners"
         }
       ],
       "aliases": [
@@ -2746,9 +2750,9 @@
         "com_55ca36db453a",
         "com_4a9490cb3534",
         "com_33a530deb7aa",
+        "com_b736e77bdf93",
         "com_b766b6de77ba",
-        "com_3837f308cd75",
-        "com_cdd5daa67222"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -2838,10 +2842,10 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_a1e1c13a75f0",
-        "com_f23f8820878b",
         "com_b736e77bdf93",
         "com_cb019f4e9752",
-        "com_1466f20a9300"
+        "com_1466f20a9300",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -3163,20 +3167,20 @@
       "name": "New York Comedy Club",
       "kind": "club",
       "tagline": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 42 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 43 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
         "special",
         "music",
         "outdoors",
-        "parties"
+        "celebrities"
       ],
       "tags": [
         "comedy",
         "special",
         "music",
         "outdoors",
-        "parties"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
@@ -3195,7 +3199,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-16",
-        "upcomingEventCount": 42,
+        "upcomingEventCount": 46,
         "eventCount90d": 74
       },
       "schedule": {
@@ -3206,21 +3210,21 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 42
+        "sampleSize": 43
       },
       "upcomingEventIds": [
         "343207094ea6af55",
         "266f4487085ad742",
-        "46dc6852b975f425",
         "21902f230ba24173",
+        "46dc6852b975f425",
         "f561b47b122ae7bb",
         "557de537e328befc",
         "25d7cfbbce07c4fe",
+        "9b62c391020e448b",
+        "dbab8e710acc0e73",
         "c38b7cf3d5aaff01",
         "a410fc7db581cf64",
-        "9a05428cdf6e338e",
-        "7b16662c3e62b197",
-        "d3766bacf1d4148f"
+        "9a05428cdf6e338e"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -3229,7 +3233,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 42,
+        "observedDateCount": 43,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3238,12 +3242,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
         "com_318c39363fe6",
+        "com_d8a5203885a9",
         "com_55ca36db453a",
+        "com_5582e2e97f1a",
         "com_a1e1c13a75f0",
-        "com_c1410c07c4dd",
-        "com_065dafa96d43"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -50462,7 +50466,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-16T12:00:06.143738+00:00",
+  "lastUpdated": "2026-09-16T12:40:10.519016+00:00",
   "version": 1,
   "schemaVersion": 1
 }
