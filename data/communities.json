@@ -450,10 +450,10 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
-        "com_b736e77bdf93",
         "com_33a530deb7aa",
         "com_3837f308cd75",
         "com_b766b6de77ba",
+        "com_b736e77bdf93",
         "com_d8a5203885a9"
       ]
     },
@@ -686,21 +686,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on music, art, comedy in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on music, art, comedy in brooklyn. Based on 23 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on comedy, music, art in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on comedy, music, art in brooklyn. Based on 24 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
+        "other",
+        "comedy",
         "music",
         "art",
-        "comedy",
-        "books",
-        "other"
+        "food"
       ],
       "tags": [
+        "other",
+        "comedy",
         "music",
         "art",
-        "comedy",
-        "books",
-        "other"
+        "food"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -718,8 +718,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 5,
-        "eventCount90d": 42
+        "upcomingEventCount": 9,
+        "eventCount90d": 45
       },
       "schedule": {
         "cadence": "weekly",
@@ -727,16 +727,20 @@
           "Friday",
           "Saturday"
         ],
-        "typicalTime": "20:00",
+        "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 23
+        "sampleSize": 24
       },
       "upcomingEventIds": [
         "6a5987b0575416fc",
+        "c1a0e7528403f095",
+        "487249f892b7d92b",
+        "9918ca801ff547a2",
         "8bc1ca6f16fa195f",
         "40321613156f13b4",
         "dcf368d4ec9cda5d",
-        "e196aa43d4be64b1"
+        "e196aa43d4be64b1",
+        "3cf8ddbafed50449"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -745,7 +749,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 23,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -754,12 +758,12 @@
         "eventbrite:18898315629"
       ],
       "similarCommunityIds": [
-        "com_4a9490cb3534",
         "com_1466f20a9300",
         "com_3837f308cd75",
+        "com_4a9490cb3534",
         "com_d8a5203885a9",
-        "com_eef1ca956dae",
-        "com_5d96f038b82a"
+        "com_5d96f038b82a",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -1535,7 +1539,7 @@
           "Thursday",
           "Sunday"
         ],
-        "typicalTime": "20:00",
+        "typicalTime": "19:30",
         "confidence": 1.0,
         "sampleSize": 7
       },
@@ -3025,9 +3029,9 @@
       "similarCommunityIds": [
         "com_5582e2e97f1a",
         "com_4a9490cb3534",
-        "com_b736e77bdf93",
         "com_1466f20a9300",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_d8a5203885a9"
       ]
     },
@@ -50404,7 +50408,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-17T15:18:47.752448+00:00",
+  "lastUpdated": "2026-09-17T17:09:28.664636+00:00",
   "version": 1,
   "schemaVersion": 1
 }
