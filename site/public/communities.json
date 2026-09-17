@@ -137,11 +137,11 @@
       ],
       "similarCommunityIds": [
         "com_3837f308cd75",
-        "com_a1e1c13a75f0",
         "com_d8a5203885a9",
         "com_f23f8820878b",
         "com_ed8d42fb031d",
-        "com_cdd5daa67222"
+        "com_cdd5daa67222",
+        "com_02ba15552329"
       ]
     },
     {
@@ -213,11 +213,11 @@
         "eventbrite:114605847281"
       ],
       "similarCommunityIds": [
+        "com_a1e1c13a75f0",
         "com_9fed174eeff3",
         "com_4a9490cb3534",
         "com_4c3ca28533f5",
         "com_e9748c1176c1",
-        "com_a1e1c13a75f0",
         "com_1466f20a9300"
       ]
     },
@@ -455,20 +455,20 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy, games, books in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, games, books in manhattan. Based on 18 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy, games, books in manhattan. Based on 20 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "comedy",
+        "other",
         "games",
         "books",
-        "parties",
-        "special"
+        "parties"
       ],
       "tags": [
         "comedy",
+        "other",
         "games",
         "books",
-        "parties",
-        "special"
+        "parties"
       ],
       "neighborhoods": [
         "manhattan"
@@ -486,7 +486,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 7,
         "eventCount90d": 21
       },
       "schedule": {
@@ -497,13 +497,16 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 18
+        "sampleSize": 20
       },
       "upcomingEventIds": [
         "311f8980eecbd7cd",
         "29e848e6345c2dd5",
         "f21ab2a0ace9d043",
-        "48f886f8864d4f40"
+        "48f886f8864d4f40",
+        "e687efca37a430b1",
+        "3081c2a3e05791a8",
+        "836766d988a2d650"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -512,7 +515,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 18,
+        "observedDateCount": 20,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -521,12 +524,12 @@
         "eventbrite:13580085802"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
         "com_4c3ca28533f5",
         "com_e9748c1176c1",
         "com_fe4b6663b721",
-        "com_cdd5daa67222",
-        "com_55ca36db453a"
+        "com_5d96f038b82a",
+        "com_d2d455d2d6c9",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -676,9 +679,9 @@
         "com_4a9490cb3534",
         "com_1466f20a9300",
         "com_3837f308cd75",
-        "com_55ca36db453a",
         "com_d8a5203885a9",
-        "com_eef1ca956dae"
+        "com_eef1ca956dae",
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -770,7 +773,7 @@
       "name": "Strand Bookstore",
       "kind": "recurring_series",
       "tagline": "Strand Bookstore is a recurring event series centered on books in manhattan, east village.",
-      "description": "Strand Bookstore is a recurring event series centered on books in manhattan, east village. Based on 15 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "description": "Strand Bookstore is a recurring event series centered on books in manhattan, east village. Based on 16 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
         "other",
         "books"
@@ -796,7 +799,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 11,
         "eventCount90d": 10
       },
       "schedule": {
@@ -807,7 +810,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 15
+        "sampleSize": 16
       },
       "upcomingEventIds": [
         "a80328c8bc57eb33",
@@ -819,7 +822,8 @@
         "3e9a8d837c04f5bc",
         "c3e30a189a9347e8",
         "91dced6d23cec9e9",
-        "86034a19c9d0eeff"
+        "86034a19c9d0eeff",
+        "8cd2c55176ef7fdb"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -828,7 +832,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 15,
+        "observedDateCount": 16,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -840,9 +844,9 @@
         "com_4c3ca28533f5",
         "com_e9748c1176c1",
         "com_f171cd222ca5",
+        "com_a1e1c13a75f0",
         "com_3837f308cd75",
-        "com_4a9490cb3534",
-        "com_4e69412cb0a5"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -851,26 +855,26 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, music, parties in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, parties in east village, bushwick. Based on 15 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, music, parties in east village, bushwick. Based on 17 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
         "parties",
         "art",
-        "comedy"
+        "food"
       ],
       "tags": [
         "books",
         "music",
         "parties",
         "art",
-        "comedy"
+        "food"
       ],
       "neighborhoods": [
         "east village",
         "bushwick"
       ],
-      "homeVenue": "Book Club Bar East Village, 197 East 3rd Street",
+      "homeVenue": "Bushwick, 380 Troutman Street",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/09_September/Copy_of_SDBC_x_SNY_x_BCB_NYC_Eventbrite.png?cb=1788995994",
       "links": [
         {
@@ -883,7 +887,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 12,
         "eventCount90d": 8
       },
       "schedule": {
@@ -894,7 +898,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 15
+        "sampleSize": 17
       },
       "upcomingEventIds": [
         "0d15e7a1487ea414",
@@ -904,6 +908,8 @@
         "7eca02c791c27155",
         "0d43431f99f016e6",
         "8b73693325e66f63",
+        "4e5f970072aa41af",
+        "81b352afe79e09f5",
         "39da90f7d6906a27",
         "8d3e669b69943bc4",
         "15a52252351548d9"
@@ -915,7 +921,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 15,
+        "observedDateCount": 17,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -925,11 +931,11 @@
       ],
       "similarCommunityIds": [
         "com_c1410c07c4dd",
-        "com_b736e77bdf93",
-        "com_318c39363fe6",
         "com_33a530deb7aa",
-        "com_f23f8820878b",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_b736e77bdf93",
+        "com_cdd5daa67222",
+        "com_f23f8820878b"
       ]
     },
     {
@@ -1009,8 +1015,8 @@
         "com_ab8259bb35a4",
         "com_bad972d799e8",
         "com_d2d455d2d6c9",
-        "com_9fed174eeff3",
-        "com_fe4b6663b721"
+        "com_a1e1c13a75f0",
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -1248,9 +1254,9 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_d2d455d2d6c9",
+        "com_a1e1c13a75f0",
         "com_5582e2e97f1a",
         "com_fe4b6663b721",
-        "com_a1e1c13a75f0",
         "com_eef1ca956dae"
       ]
     },
@@ -1320,21 +1326,21 @@
         "eventbrite:82384975023"
       ],
       "similarCommunityIds": [
+        "com_a1e1c13a75f0",
         "com_b736e77bdf93",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_b766b6de77ba",
-        "com_bad972d799e8",
-        "com_d2d455d2d6c9"
+        "com_bad972d799e8"
       ]
     },
     {
       "id": "com_5582e2e97f1a",
       "slug": "liz-s-book-bar-e97f1a",
       "name": "Liz\u2019s Book Bar",
-      "kind": "community_space",
-      "tagline": "Liz\u2019s Book Bar is a community space centered on books, music, celebrities in carroll gardens.",
-      "description": "Liz\u2019s Book Bar is a community space centered on books, music, celebrities in carroll gardens. Based on 9 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "kind": "recurring_series",
+      "tagline": "Liz\u2019s Book Bar is a recurring event series centered on books, music, celebrities in carroll gardens.",
+      "description": "Liz\u2019s Book Bar is a recurring event series centered on books, music, celebrities in carroll gardens. Based on 10 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "books",
         "music",
@@ -1354,8 +1360,8 @@
       "imageUrl": "https://cdn1.bookmanager.com/i/9936106/web_orb_septemberSSS.png?cb=1787248097",
       "links": [
         {
-          "type": "lizsbookbar",
-          "label": "View on Lizsbookbar",
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
           "url": "https://eventbrite.com/o/83466825333"
         }
       ],
@@ -1363,7 +1369,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 5
       },
       "schedule": {
@@ -1374,23 +1380,24 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "1eded0551b851d24",
         "8f419e108775f3eb",
         "320f533b24346d0b",
         "33981c049bdc79f0",
-        "fa2471d5cc61d2be"
+        "fa2471d5cc61d2be",
+        "36b53970f9ed7b7b"
       ],
       "sourceAttributions": [
-        "lizsbookbar"
+        "eventbrite"
       ],
       "lastVerifiedAt": "2026-09-17",
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2546,7 +2553,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 29,
+        "upcomingEventCount": 28,
         "eventCount90d": 33
       },
       "schedule": {
@@ -2568,10 +2575,10 @@
         "207d9dd1f4f4a8e9",
         "19dbe97f2cbf0e19",
         "ade88bfe44f79c6e",
-        "4e5f970072aa41af",
         "6cca34e160428b01",
         "d07d131fad2167ae",
-        "b479d3e6372fa4d7"
+        "b479d3e6372fa4d7",
+        "f17fc7f0290e40be"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -2692,11 +2699,11 @@
       ],
       "similarCommunityIds": [
         "com_4a9490cb3534",
-        "com_a1e1c13a75f0",
         "com_f23f8820878b",
         "com_b736e77bdf93",
         "com_1466f20a9300",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -3096,9 +3103,9 @@
         "com_d8a5203885a9",
         "com_318c39363fe6",
         "com_55ca36db453a",
-        "com_a1e1c13a75f0",
         "com_c1410c07c4dd",
-        "com_065dafa96d43"
+        "com_065dafa96d43",
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -3175,10 +3182,10 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_55ca36db453a",
         "com_f23f8820878b",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
+        "com_55ca36db453a",
         "com_1466f20a9300",
         "com_5d96f038b82a"
       ]
@@ -50317,7 +50324,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-17T08:01:06.795761+00:00",
+  "lastUpdated": "2026-09-17T10:15:43.985449+00:00",
   "version": 1,
   "schemaVersion": 1
 }
