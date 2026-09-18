@@ -143,11 +143,11 @@
       ],
       "similarCommunityIds": [
         "com_3837f308cd75",
-        "com_ed8d42fb031d",
         "com_fe4b6663b721",
         "com_a1e1c13a75f0",
         "com_d8a5203885a9",
-        "com_f23f8820878b"
+        "com_f23f8820878b",
+        "com_ed8d42fb031d"
       ]
     },
     {
@@ -232,8 +232,8 @@
       "slug": "chess-place-fb031d",
       "name": "Chess Place",
       "kind": "recurring_series",
-      "tagline": "Chess Place is a recurring event series centered on games in harlem, east village.",
-      "description": "Chess Place is a recurring event series centered on games in harlem, east village. Based on 4 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "tagline": "Chess Place is a recurring event series centered on games in lower east side, harlem.",
+      "description": "Chess Place is a recurring event series centered on games in lower east side, harlem. Based on 5 observed event dates, it meets weekly on Friday and Thursday evenings.",
       "categories": [
         "games"
       ],
@@ -241,11 +241,12 @@
         "games"
       ],
       "neighborhoods": [
+        "lower east side",
         "harlem",
         "east village"
       ],
-      "homeVenue": "The Fox Harlem",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192674724%2F2878666947471%2F1%2Foriginal.20260904-122923?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.515&fp-y=0.631&s=373b3438dfbd2177edddfa7eb9cdb835",
+      "homeVenue": "Moxy NYC Lower East Side",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1187523918%2F2878666947471%2F1%2Foriginal.20260623-233023?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=b6d771c1211f97bef21ab27a8397c2f7",
       "links": [
         {
           "type": "eventbrite",
@@ -257,7 +258,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 2
       },
       "schedule": {
@@ -267,10 +268,11 @@
           "Thursday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
+        "4f92f91834f76edf",
         "17cdb9af3ebf9e13",
         "ef028a5acdc33ced"
       ],
@@ -281,7 +283,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50309,7 +50311,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-18T05:10:03.206001+00:00",
+  "lastUpdated": "2026-09-18T05:20:09.986833+00:00",
   "version": 1,
   "schemaVersion": 1
 }
