@@ -2216,7 +2216,7 @@
       "name": "NYC Backgammon Club",
       "kind": "club",
       "tagline": "NYC Backgammon Club is a community club centered on games, music in soho.",
-      "description": "NYC Backgammon Club is a community club centered on games, music in soho. Based on 2 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "description": "NYC Backgammon Club is a community club centered on games, music in soho. Based on 3 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
         "games",
         "music"
@@ -2241,22 +2241,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Monday",
-          "Tuesday"
+          "Tuesday",
+          "Monday"
         ],
-        "typicalTime": "18:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "typicalTime": "18:30",
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "8806e09746bf8d78",
-        "b69f662e5552a0d7"
+        "b69f662e5552a0d7",
+        "00d2a1545347cc90"
       ],
       "sourceAttributions": [
         "luma"
@@ -2265,7 +2266,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50331,7 +50332,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-18T17:19:48.205724+00:00",
+  "lastUpdated": "2026-09-18T17:40:33.968393+00:00",
   "version": 1,
   "schemaVersion": 1
 }
