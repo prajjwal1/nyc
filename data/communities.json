@@ -71,11 +71,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
         "com_cb019f4e9752",
         "com_5d96f038b82a",
-        "com_fe4b6663b721"
+        "com_b736e77bdf93",
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -142,12 +142,12 @@
         "eventbrite:10662501681"
       ],
       "similarCommunityIds": [
+        "com_1466f20a9300",
         "com_3837f308cd75",
-        "com_fe4b6663b721",
         "com_a1e1c13a75f0",
         "com_d8a5203885a9",
         "com_f23f8820878b",
-        "com_ed8d42fb031d"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -156,18 +156,20 @@
       "name": "Ciao Evento",
       "kind": "recurring_series",
       "tagline": "Ciao Evento is a recurring event series centered on music, parties, dance in manhattan.",
-      "description": "Ciao Evento is a recurring event series centered on music, parties, dance in manhattan. Based on 5 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "description": "Ciao Evento is a recurring event series centered on music, parties, dance in manhattan. Based on 7 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "other",
         "music",
         "parties",
-        "dance"
+        "dance",
+        "food"
       ],
       "tags": [
         "other",
         "music",
         "parties",
-        "dance"
+        "dance",
+        "food"
       ],
       "neighborhoods": [
         "manhattan"
@@ -185,7 +187,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-13",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 5,
         "eventCount90d": 2
       },
       "schedule": {
@@ -195,13 +197,15 @@
           "Sunday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 7
       },
       "upcomingEventIds": [
         "ab9d21da0f3b5f76",
         "e7324f73d1b7da3f",
-        "dbf2079f2431327f"
+        "dbf2079f2431327f",
+        "83639802a6edab94",
+        "ce039abe0d7b37c9"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -210,7 +214,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -220,11 +224,11 @@
       ],
       "similarCommunityIds": [
         "com_a1e1c13a75f0",
+        "com_1466f20a9300",
         "com_9fed174eeff3",
-        "com_4a9490cb3534",
         "com_4c3ca28533f5",
         "com_e9748c1176c1",
-        "com_1466f20a9300"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -366,9 +370,9 @@
         "com_218b97d674a6",
         "com_e07415e7f595",
         "com_4a9490cb3534",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_1466f20a9300",
-        "com_3837f308cd75"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -448,8 +452,8 @@
       ],
       "similarCommunityIds": [
         "com_b736e77bdf93",
-        "com_1466f20a9300",
         "com_d8a5203885a9",
+        "com_1466f20a9300",
         "com_33a530deb7aa",
         "com_3837f308cd75",
         "com_b766b6de77ba"
@@ -531,8 +535,8 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_e9748c1176c1",
-        "com_fe4b6663b721",
         "com_d8a5203885a9",
+        "com_fe4b6663b721",
         "com_d2d455d2d6c9",
         "com_3837f308cd75"
       ]
@@ -670,10 +674,10 @@
       "similarCommunityIds": [
         "com_5d96f038b82a",
         "com_1466f20a9300",
-        "com_b736e77bdf93",
         "com_359bbb5a9a91",
         "com_b766b6de77ba",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -681,17 +685,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on books, music in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on books, music in brooklyn. Based on 24 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on music, books, comedy in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on music, books, comedy in brooklyn. Based on 26 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
+        "music",
         "books",
-        "music"
+        "comedy",
+        "movies"
       ],
       "tags": [
         "other",
+        "music",
         "books",
-        "music"
+        "comedy",
+        "movies"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -709,8 +717,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-18",
-        "upcomingEventCount": 4,
-        "eventCount90d": 43
+        "upcomingEventCount": 9,
+        "eventCount90d": 44
       },
       "schedule": {
         "cadence": "weekly",
@@ -720,13 +728,18 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 24
+        "sampleSize": 26
       },
       "upcomingEventIds": [
         "40321613156f13b4",
+        "5b08f40feff81ea2",
         "dcf368d4ec9cda5d",
         "e196aa43d4be64b1",
-        "3cf8ddbafed50449"
+        "3cf8ddbafed50449",
+        "1caaa64818786b56",
+        "90fe2eb05b917eee",
+        "f6c7dc9fbd56f37c",
+        "3a331df05562e31a"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -735,7 +748,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 24,
+        "observedDateCount": 26,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -745,11 +758,11 @@
       ],
       "similarCommunityIds": [
         "com_4a9490cb3534",
+        "com_d8a5203885a9",
         "com_1466f20a9300",
-        "com_b766b6de77ba",
         "com_3837f308cd75",
-        "com_cb019f4e9752",
-        "com_d8a5203885a9"
+        "com_eef1ca956dae",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -827,8 +840,8 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_cb019f4e9752",
         "com_1466f20a9300",
@@ -910,9 +923,9 @@
         "com_4c3ca28533f5",
         "com_e9748c1176c1",
         "com_f171cd222ca5",
-        "com_b736e77bdf93",
         "com_5d96f038b82a",
-        "com_a1e1c13a75f0"
+        "com_a1e1c13a75f0",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -953,7 +966,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 8
       },
       "schedule": {
@@ -976,6 +989,7 @@
         "4e5f970072aa41af",
         "81b352afe79e09f5",
         "39da90f7d6906a27",
+        "61351d70299e941d",
         "8d3e669b69943bc4",
         "15a52252351548d9"
       ],
@@ -999,8 +1013,8 @@
         "com_33a530deb7aa",
         "com_4a9490cb3534",
         "com_d8a5203885a9",
-        "com_cdd5daa67222",
-        "com_318c39363fe6"
+        "com_fe4b6663b721",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -1166,15 +1180,17 @@
       "slug": "st-mazie-0a9300",
       "name": "St Mazie",
       "kind": "recurring_series",
-      "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 22 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "tagline": "St Mazie is a recurring event series centered on music, dance in brooklyn.",
+      "description": "St Mazie is a recurring event series centered on music, dance in brooklyn. Based on 24 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "music",
-        "other"
+        "other",
+        "dance"
       ],
       "tags": [
         "music",
-        "other"
+        "other",
+        "dance"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -1192,8 +1208,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-18",
-        "upcomingEventCount": 7,
-        "eventCount90d": 28
+        "upcomingEventCount": 10,
+        "eventCount90d": 29
       },
       "schedule": {
         "cadence": "weekly",
@@ -1203,16 +1219,19 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 22
+        "sampleSize": 24
       },
       "upcomingEventIds": [
         "a0ea828ce159ff3c",
+        "2ca5672b00c2ea5c",
         "b9a60ecd79f618a3",
         "6087a50b0207d5bc",
         "e1396ef5e1d9b3f1",
         "16a29fdb68227be2",
         "f4f6120e08236f4e",
-        "3a9ec6f1059cc02d"
+        "3a9ec6f1059cc02d",
+        "12f62c37778306f8",
+        "1774a661a3ff265e"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1221,7 +1240,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 22,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1231,11 +1250,11 @@
       ],
       "similarCommunityIds": [
         "com_b766b6de77ba",
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
+        "com_218b97d674a6",
+        "com_b736e77bdf93",
         "com_cb019f4e9752",
-        "com_5d96f038b82a",
-        "com_3837f308cd75"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -1244,7 +1263,7 @@
       "name": "The National Arts Club",
       "kind": "club",
       "tagline": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan.",
-      "description": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan. Based on 13 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "description": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan. Based on 14 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
         "other",
         "exploration",
@@ -1273,7 +1292,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 3
       },
       "schedule": {
@@ -1284,7 +1303,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 13
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "e6ab0f37ded4f560",
@@ -1297,7 +1316,8 @@
         "d53ce6ac6c2b6659",
         "d76b617f793b3dd8",
         "342b685d3b344d3e",
-        "25f13ba0eea39c78"
+        "25f13ba0eea39c78",
+        "15b7570a3fd31534"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1306,7 +1326,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 13,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1387,11 +1407,11 @@
       ],
       "similarCommunityIds": [
         "com_cb019f4e9752",
-        "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_b766b6de77ba",
         "com_bad972d799e8",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1469,8 +1489,8 @@
         "com_eeb4e424a504",
         "com_e9748c1176c1",
         "com_33a530deb7aa",
-        "com_b736e77bdf93",
-        "com_f171cd222ca5"
+        "com_f171cd222ca5",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -1543,9 +1563,9 @@
         "com_bad972d799e8",
         "com_cb019f4e9752",
         "com_5d96f038b82a",
-        "com_1466f20a9300",
         "com_4c3ca28533f5",
-        "com_ab8259bb35a4"
+        "com_ab8259bb35a4",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -2110,8 +2130,8 @@
         "com_fe4b6663b721",
         "com_a1e1c13a75f0",
         "com_e9748c1176c1",
-        "com_1466f20a9300",
-        "com_318c39363fe6"
+        "com_318c39363fe6",
+        "com_b0e15eaab803"
       ]
     },
     {
@@ -2187,7 +2207,7 @@
         "com_55ca36db453a",
         "com_c1410c07c4dd",
         "com_d8a5203885a9",
-        "com_b736e77bdf93"
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -2255,10 +2275,10 @@
       ],
       "similarCommunityIds": [
         "com_ed8d42fb031d",
-        "com_1466f20a9300",
         "com_318c39363fe6",
         "com_9fed174eeff3",
         "com_b766b6de77ba",
+        "com_1466f20a9300",
         "com_33a530deb7aa"
       ]
     },
@@ -2540,7 +2560,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 27,
+        "upcomingEventCount": 26,
         "eventCount90d": 33
       },
       "schedule": {
@@ -2596,8 +2616,8 @@
         "com_4a9490cb3534",
         "com_33a530deb7aa",
         "com_d8a5203885a9",
-        "com_b736e77bdf93",
-        "com_b766b6de77ba"
+        "com_b766b6de77ba",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2766,8 +2786,8 @@
         "com_1466f20a9300",
         "com_64ebabd98c5c",
         "com_e07415e7f595",
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
+        "com_b736e77bdf93",
         "com_d8a5203885a9"
       ]
     },
@@ -2931,8 +2951,8 @@
       ],
       "similarCommunityIds": [
         "com_5582e2e97f1a",
-        "com_b736e77bdf93",
         "com_4a9490cb3534",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_1466f20a9300",
         "com_3837f308cd75"
@@ -3091,8 +3111,8 @@
         "com_d8a5203885a9",
         "com_5582e2e97f1a",
         "com_a1e1c13a75f0",
-        "com_eef1ca956dae",
-        "com_55ca36db453a"
+        "com_b736e77bdf93",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -3170,9 +3190,9 @@
       ],
       "similarCommunityIds": [
         "com_f23f8820878b",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_55ca36db453a",
-        "com_1466f20a9300",
         "com_9fed174eeff3",
         "com_b0e15eaab803"
       ]
@@ -50311,7 +50331,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-18T06:14:43.473170+00:00",
+  "lastUpdated": "2026-09-18T09:34:58.374118+00:00",
   "version": 1,
   "schemaVersion": 1
 }
