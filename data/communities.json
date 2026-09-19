@@ -1501,7 +1501,7 @@
         "com_eeb4e424a504",
         "com_4a9490cb3534",
         "com_1466f20a9300",
-        "com_33a530deb7aa"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -2214,7 +2214,7 @@
         "com_a1e1c13a75f0",
         "com_e9748c1176c1",
         "com_1466f20a9300",
-        "com_318c39363fe6"
+        "com_b0e15eaab803"
       ]
     },
     {
@@ -2360,8 +2360,8 @@
       "similarCommunityIds": [
         "com_ed8d42fb031d",
         "com_1466f20a9300",
-        "com_318c39363fe6",
         "com_9fed174eeff3",
+        "com_318c39363fe6",
         "com_33a530deb7aa",
         "com_4a9490cb3534"
       ]
@@ -3149,7 +3149,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-19",
-        "upcomingEventCount": 43,
+        "upcomingEventCount": 44,
         "eventCount90d": 91
       },
       "schedule": {
@@ -3205,15 +3205,17 @@
       "slug": "eastville-comedy-club-363fe6",
       "name": "Eastville Comedy Club",
       "kind": "club",
-      "tagline": "Eastville Comedy Club is a community club centered on comedy, music in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music in east village. Based on 29 observed event dates, it meets weekly on Saturday and Friday evenings.",
+      "tagline": "Eastville Comedy Club is a community club centered on comedy, music, celebrities in east village.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, celebrities in east village. Based on 30 observed event dates, it meets weekly on Saturday and Friday evenings.",
       "categories": [
         "comedy",
-        "music"
+        "music",
+        "celebrities"
       ],
       "tags": [
         "comedy",
-        "music"
+        "music",
+        "celebrities"
       ],
       "neighborhoods": [
         "east village"
@@ -3231,7 +3233,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-19",
-        "upcomingEventCount": 15,
+        "upcomingEventCount": 17,
         "eventCount90d": 36
       },
       "schedule": {
@@ -3242,21 +3244,21 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 29
+        "sampleSize": 30
       },
       "upcomingEventIds": [
         "72a800c9822a8549",
         "1fd6db0c01be9cbe",
         "791acfbbea2e3354",
+        "86fd216863df9a0f",
+        "def6acb47e034548",
         "1b1b323af338007e",
         "0ad7f2d9e1463200",
         "98335288f6d79dcf",
         "1459f9232dc89bab",
         "7f054030fd05de11",
         "7b8ff5f2a27fffad",
-        "39a212a18feffa49",
-        "f6cd792cc96be595",
-        "a440a3d5dbdfdde1"
+        "39a212a18feffa49"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -3265,7 +3267,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 29,
+        "observedDateCount": 30,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3275,11 +3277,11 @@
       ],
       "similarCommunityIds": [
         "com_f23f8820878b",
-        "com_d8a5203885a9",
         "com_55ca36db453a",
-        "com_1466f20a9300",
-        "com_9fed174eeff3",
-        "com_b0e15eaab803"
+        "com_5582e2e97f1a",
+        "com_d8a5203885a9",
+        "com_eef1ca956dae",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -50416,7 +50418,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-19T21:02:42.138700+00:00",
+  "lastUpdated": "2026-09-19T21:30:56.192747+00:00",
   "version": 1,
   "schemaVersion": 1
 }
