@@ -81,10 +81,10 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_bad972d799e8",
+        "com_0d8d1184eb1c",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
-        "com_f23f8820878b",
-        "com_fe4b6663b721"
+        "com_f23f8820878b"
       ]
     },
     {
@@ -232,12 +232,12 @@
         "eventbrite:114605847281"
       ],
       "similarCommunityIds": [
+        "com_0d8d1184eb1c",
         "com_a1e1c13a75f0",
         "com_9fed174eeff3",
         "com_4c3ca28533f5",
         "com_e9748c1176c1",
-        "com_4a9490cb3534",
-        "com_b766b6de77ba"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -549,8 +549,8 @@
         "com_e9748c1176c1",
         "com_d8a5203885a9",
         "com_fe4b6663b721",
-        "com_d2d455d2d6c9",
-        "com_3837f308cd75"
+        "com_0d8d1184eb1c",
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -617,9 +617,9 @@
         "com_1ab246c8dd88",
         "com_3bc67889299d",
         "com_065dafa96d43",
+        "com_0d8d1184eb1c",
         "com_1397370b1777",
-        "com_1466f20a9300",
-        "com_318c39363fe6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1642,9 +1642,9 @@
         "com_02ba15552329",
         "com_3bc67889299d",
         "com_065dafa96d43",
+        "com_0d8d1184eb1c",
         "com_1397370b1777",
-        "com_1466f20a9300",
-        "com_318c39363fe6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1712,9 +1712,9 @@
         "com_02ba15552329",
         "com_1ab246c8dd88",
         "com_065dafa96d43",
+        "com_0d8d1184eb1c",
         "com_1397370b1777",
-        "com_1466f20a9300",
-        "com_318c39363fe6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1928,8 +1928,8 @@
         "com_d2d455d2d6c9",
         "com_4c3ca28533f5",
         "com_ab8259bb35a4",
-        "com_1397370b1777",
-        "com_b766b6de77ba"
+        "com_0d8d1184eb1c",
+        "com_1397370b1777"
       ]
     },
     {
@@ -2002,7 +2002,7 @@
         "com_bad972d799e8",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
-        "com_d2d455d2d6c9"
+        "com_0d8d1184eb1c"
       ]
     },
     {
@@ -2143,6 +2143,81 @@
         "com_e07415e7f595",
         "com_eeb4e424a504",
         "com_f171cd222ca5"
+      ]
+    },
+    {
+      "id": "com_0d8d1184eb1c",
+      "slug": "av-events-84eb1c",
+      "name": "AV Events",
+      "kind": "recurring_series",
+      "tagline": "AV Events is a recurring event series centered on parties, food in manhattan, midtown.",
+      "description": "AV Events is a recurring event series centered on parties, food in manhattan, midtown. Based on 2 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "categories": [
+        "other",
+        "parties",
+        "food"
+      ],
+      "tags": [
+        "other",
+        "parties",
+        "food"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "midtown"
+      ],
+      "homeVenue": "Alumni Ventures",
+      "imageUrl": "https://images.lumacdn.com/uploads/6j/f1692c59-07bb-4002-bb61-6ec742656d3b.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/alumniventuresevents"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday",
+          "Wednesday"
+        ],
+        "typicalTime": "17:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "7426bd51e98f9813",
+        "c87909c6125e6cad"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-09-19",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-ym3q6qajxwvefm4"
+      ],
+      "similarCommunityIds": [
+        "com_fe4b6663b721",
+        "com_bad972d799e8",
+        "com_a1e1c13a75f0",
+        "com_b766b6de77ba",
+        "com_1397370b1777",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -2449,7 +2524,7 @@
         "com_359bbb5a9a91",
         "com_d2d455d2d6c9",
         "com_b766b6de77ba",
-        "com_1397370b1777"
+        "com_0d8d1184eb1c"
       ]
     },
     {
@@ -3149,7 +3224,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-19",
-        "upcomingEventCount": 44,
+        "upcomingEventCount": 43,
         "eventCount90d": 91
       },
       "schedule": {
@@ -50418,7 +50493,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-19T21:30:56.192747+00:00",
+  "lastUpdated": "2026-09-19T21:45:47.830146+00:00",
   "version": 1,
   "schemaVersion": 1
 }
