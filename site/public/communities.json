@@ -82,9 +82,9 @@
         "com_4a9490cb3534",
         "com_bad972d799e8",
         "com_0d8d1184eb1c",
-        "com_1466f20a9300",
         "com_359bbb5a9a91",
-        "com_f23f8820878b"
+        "com_f23f8820878b",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -151,12 +151,12 @@
         "eventbrite:10662501681"
       ],
       "similarCommunityIds": [
+        "com_1466f20a9300",
         "com_3837f308cd75",
         "com_a1e1c13a75f0",
         "com_d8a5203885a9",
         "com_f23f8820878b",
-        "com_fe4b6663b721",
-        "com_ed8d42fb031d"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -234,10 +234,10 @@
       "similarCommunityIds": [
         "com_0d8d1184eb1c",
         "com_a1e1c13a75f0",
+        "com_1466f20a9300",
         "com_9fed174eeff3",
         "com_4c3ca28533f5",
-        "com_e9748c1176c1",
-        "com_4a9490cb3534"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -460,8 +460,8 @@
         "eventbrite:121441877858"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
         "com_d8a5203885a9",
+        "com_1466f20a9300",
         "com_33a530deb7aa",
         "com_3837f308cd75",
         "com_b736e77bdf93",
@@ -628,7 +628,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series in brooklyn.",
-      "description": "Union Hall is a recurring event series in brooklyn. Based on 17 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "description": "Union Hall is a recurring event series in brooklyn. Based on 19 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
         "other"
       ],
@@ -639,7 +639,7 @@
         "brooklyn"
       ],
       "homeVenue": "Union Hall",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1127766923%2F282041210522%2F1%2Foriginal.20250918-031114?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=7d81d728d9ba6de21af0a28231ccabb2",
+      "imageUrl": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czMvYmFubmVycy84MjljODcxMGJkMTg0ZGJmYjRiZThkMThjN2VjYjBmZGMzNWM1M2FhZDhlY2Q2OTY5YWE0ZDU4YWRlYWI0NjdjLXJpbWctdzEyMDAtaDYwMC1kY2ZmZmZmZi1nbWlyLmpwZz92PTE3ODAyMzE4Mzk.avif",
       "links": [
         {
           "type": "eventbrite",
@@ -650,9 +650,9 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-09-18",
-        "upcomingEventCount": 1,
-        "eventCount90d": 20
+        "lastEventDate": "2026-09-19",
+        "upcomingEventCount": 3,
+        "eventCount90d": 21
       },
       "schedule": {
         "cadence": "weekly",
@@ -662,10 +662,12 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 17
+        "sampleSize": 19
       },
       "upcomingEventIds": [
-        "1f65f8f78576c90b"
+        "eeb77e66433e97ad",
+        "1f65f8f78576c90b",
+        "e7c6c8a2c6698c77"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -674,7 +676,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 17,
+        "observedDateCount": 19,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1194,14 +1196,16 @@
       "slug": "st-mazie-0a9300",
       "name": "St Mazie",
       "kind": "recurring_series",
-      "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 24 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "tagline": "St Mazie is a recurring event series centered on music, dance in brooklyn.",
+      "description": "St Mazie is a recurring event series centered on music, dance in brooklyn. Based on 25 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "music",
+        "dance",
         "other"
       ],
       "tags": [
         "music",
+        "dance",
         "other"
       ],
       "neighborhoods": [
@@ -1220,8 +1224,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-19",
-        "upcomingEventCount": 7,
-        "eventCount90d": 31
+        "upcomingEventCount": 9,
+        "eventCount90d": 32
       },
       "schedule": {
         "cadence": "weekly",
@@ -1231,16 +1235,18 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 24
+        "sampleSize": 25
       },
       "upcomingEventIds": [
         "6087a50b0207d5bc",
         "e1396ef5e1d9b3f1",
+        "948e2b3c14a348fa",
         "16a29fdb68227be2",
         "f4f6120e08236f4e",
         "3a9ec6f1059cc02d",
         "12f62c37778306f8",
-        "1774a661a3ff265e"
+        "1774a661a3ff265e",
+        "29bf4dfb767fdb79"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1249,7 +1255,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 24,
+        "observedDateCount": 25,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1259,11 +1265,11 @@
       ],
       "similarCommunityIds": [
         "com_4a9490cb3534",
+        "com_218b97d674a6",
         "com_5d96f038b82a",
-        "com_cb019f4e9752",
         "com_b736e77bdf93",
-        "com_3837f308cd75",
-        "com_d8a5203885a9"
+        "com_cb019f4e9752",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -1574,8 +1580,8 @@
         "com_5d96f038b82a",
         "com_cb019f4e9752",
         "com_d2d455d2d6c9",
-        "com_1466f20a9300",
-        "com_1397370b1777"
+        "com_1397370b1777",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -2000,9 +2006,9 @@
         "com_5d96f038b82a",
         "com_cb019f4e9752",
         "com_bad972d799e8",
-        "com_1466f20a9300",
         "com_359bbb5a9a91",
-        "com_0d8d1184eb1c"
+        "com_0d8d1184eb1c",
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -2288,8 +2294,8 @@
         "com_fe4b6663b721",
         "com_a1e1c13a75f0",
         "com_e9748c1176c1",
-        "com_1466f20a9300",
-        "com_b0e15eaab803"
+        "com_b0e15eaab803",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -2434,8 +2440,8 @@
       ],
       "similarCommunityIds": [
         "com_ed8d42fb031d",
-        "com_1466f20a9300",
         "com_9fed174eeff3",
+        "com_1466f20a9300",
         "com_318c39363fe6",
         "com_33a530deb7aa",
         "com_4a9490cb3534"
@@ -50493,7 +50499,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-19T21:45:47.830146+00:00",
+  "lastUpdated": "2026-09-19T21:49:13.272194+00:00",
   "version": 1,
   "schemaVersion": 1
 }
