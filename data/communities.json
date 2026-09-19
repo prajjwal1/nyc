@@ -462,17 +462,17 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy, books, parties in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, books, parties in manhattan. Based on 20 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy, books, parties in manhattan. Based on 21 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
-        "comedy",
         "other",
+        "comedy",
         "books",
         "parties",
         "special"
       ],
       "tags": [
-        "comedy",
         "other",
+        "comedy",
         "books",
         "parties",
         "special"
@@ -493,7 +493,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-19",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 8,
         "eventCount90d": 22
       },
       "schedule": {
@@ -504,7 +504,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 20
+        "sampleSize": 21
       },
       "upcomingEventIds": [
         "29e848e6345c2dd5",
@@ -512,7 +512,9 @@
         "48f886f8864d4f40",
         "e687efca37a430b1",
         "3081c2a3e05791a8",
-        "836766d988a2d650"
+        "836766d988a2d650",
+        "f82411281afd9a64",
+        "8d80b2389b043052"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -521,7 +523,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 20,
+        "observedDateCount": 21,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -847,15 +849,17 @@
       "slug": "strand-bookstore-d2d6c9",
       "name": "Strand Bookstore",
       "kind": "recurring_series",
-      "tagline": "Strand Bookstore is a recurring event series centered on books in manhattan, east village.",
-      "description": "Strand Bookstore is a recurring event series centered on books in manhattan, east village. Based on 16 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "tagline": "Strand Bookstore is a recurring event series centered on books, outdoors in manhattan, east village.",
+      "description": "Strand Bookstore is a recurring event series centered on books, outdoors in manhattan, east village. Based on 17 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
         "other",
-        "books"
+        "books",
+        "outdoors"
       ],
       "tags": [
         "other",
-        "books"
+        "books",
+        "outdoors"
       ],
       "neighborhoods": [
         "manhattan",
@@ -874,7 +878,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-19",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 12
       },
       "schedule": {
@@ -885,7 +889,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 16
+        "sampleSize": 17
       },
       "upcomingEventIds": [
         "4302dd5fc58ea695",
@@ -896,7 +900,8 @@
         "c3e30a189a9347e8",
         "91dced6d23cec9e9",
         "86034a19c9d0eeff",
-        "8cd2c55176ef7fdb"
+        "8cd2c55176ef7fdb",
+        "9a27abf5e8944c3e"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -905,7 +910,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 16,
+        "observedDateCount": 17,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -915,11 +920,11 @@
       ],
       "similarCommunityIds": [
         "com_4c3ca28533f5",
+        "com_bad972d799e8",
+        "com_359bbb5a9a91",
         "com_e9748c1176c1",
-        "com_f171cd222ca5",
-        "com_1397370b1777",
         "com_a1e1c13a75f0",
-        "com_3837f308cd75"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -1017,18 +1022,18 @@
       "name": "High Line Programs",
       "kind": "recurring_series",
       "tagline": "High Line Programs is a recurring event series centered on outdoors, books, wellness in manhattan.",
-      "description": "High Line Programs is a recurring event series centered on outdoors, books, wellness in manhattan. Based on 11 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "description": "High Line Programs is a recurring event series centered on outdoors, books, wellness in manhattan. Based on 12 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
       "categories": [
         "outdoors",
+        "other",
         "books",
-        "wellness",
-        "other"
+        "wellness"
       ],
       "tags": [
         "outdoors",
+        "other",
         "books",
-        "wellness",
-        "other"
+        "wellness"
       ],
       "neighborhoods": [
         "manhattan"
@@ -1046,7 +1051,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-17",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 8,
         "eventCount90d": 5
       },
       "schedule": {
@@ -1057,14 +1062,16 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "adaac8da908a83b3",
         "8d75b23e9214df12",
         "4f7ac24f84514006",
+        "67179d9880076397",
         "af204902d7fa4e27",
         "dba6407575d9c8ab",
+        "4064349602086f43",
         "7d7ecf93823f8d32"
       ],
       "sourceAttributions": [
@@ -1074,7 +1081,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1083,10 +1090,10 @@
         "eventbrite:46113016283"
       ],
       "similarCommunityIds": [
+        "com_d2d455d2d6c9",
         "com_e9748c1176c1",
         "com_ab8259bb35a4",
         "com_bad972d799e8",
-        "com_d2d455d2d6c9",
         "com_a1e1c13a75f0",
         "com_9fed174eeff3"
       ]
@@ -1325,8 +1332,8 @@
       ],
       "similarCommunityIds": [
         "com_4c3ca28533f5",
-        "com_d2d455d2d6c9",
         "com_a1e1c13a75f0",
+        "com_d2d455d2d6c9",
         "com_5582e2e97f1a",
         "com_fe4b6663b721",
         "com_eef1ca956dae"
@@ -1548,9 +1555,9 @@
         "com_bad972d799e8",
         "com_5d96f038b82a",
         "com_cb019f4e9752",
+        "com_d2d455d2d6c9",
         "com_1466f20a9300",
-        "com_1397370b1777",
-        "com_4c3ca28533f5"
+        "com_1397370b1777"
       ]
     },
     {
@@ -1900,11 +1907,11 @@
       ],
       "similarCommunityIds": [
         "com_359bbb5a9a91",
+        "com_d2d455d2d6c9",
         "com_4c3ca28533f5",
         "com_ab8259bb35a4",
         "com_1397370b1777",
-        "com_5d96f038b82a",
-        "com_cb019f4e9752"
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -1975,9 +1982,9 @@
         "com_5d96f038b82a",
         "com_cb019f4e9752",
         "com_bad972d799e8",
-        "com_d2d455d2d6c9",
         "com_1466f20a9300",
-        "com_359bbb5a9a91"
+        "com_359bbb5a9a91",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -2422,9 +2429,9 @@
         "com_4c3ca28533f5",
         "com_bad972d799e8",
         "com_359bbb5a9a91",
+        "com_d2d455d2d6c9",
         "com_1397370b1777",
-        "com_9fed174eeff3",
-        "com_b736e77bdf93"
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -3124,7 +3131,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-19",
-        "upcomingEventCount": 44,
+        "upcomingEventCount": 43,
         "eventCount90d": 91
       },
       "schedule": {
@@ -50391,7 +50398,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-19T11:59:02.191213+00:00",
+  "lastUpdated": "2026-09-19T13:10:01.667681+00:00",
   "version": 1,
   "schemaVersion": 1
 }
