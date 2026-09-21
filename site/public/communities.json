@@ -2767,15 +2767,15 @@
         "books",
         "music",
         "parties",
-        "food",
-        "art"
+        "art",
+        "food"
       ],
       "tags": [
         "books",
         "music",
         "parties",
-        "food",
-        "art"
+        "art",
+        "food"
       ],
       "neighborhoods": [
         "east village",
@@ -2788,14 +2788,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6401120261115"
+          "url": "https://bookclubbar.com/events/6115320261116"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-21",
-        "upcomingEventCount": 21,
+        "upcomingEventCount": 26,
         "eventCount90d": 36
       },
       "schedule": {
@@ -2836,6 +2836,10 @@
       "newcomerEvidence": [
         {
           "eventId": "456246204da9a2d0",
+          "signal": "beginners"
+        },
+        {
+          "eventId": "45ca74a60db45547",
           "signal": "beginners"
         }
       ],
@@ -3294,7 +3298,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-21",
-        "upcomingEventCount": 35,
+        "upcomingEventCount": 37,
         "eventCount90d": 101
       },
       "schedule": {
@@ -3312,14 +3316,14 @@
         "4bca84b76502a64d",
         "62978d93c6c0c6fa",
         "ac662b22a76da827",
+        "f3dee625c0164368",
         "df966fb09cdd40e8",
+        "582599f2e978532e",
         "de4d13c9b16d9a7e",
         "58a1dd05391b4534",
         "81225b36d6cdfe3f",
         "0198364bfa66b889",
-        "a4ec0d3ece930f3f",
-        "a8434c36e6bde285",
-        "ca5028a732d202f6"
+        "a4ec0d3ece930f3f"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -50563,7 +50567,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-21T14:04:38.587853+00:00",
+  "lastUpdated": "2026-09-21T14:17:35.225408+00:00",
   "version": 1,
   "schemaVersion": 1
 }
