@@ -8,14 +8,14 @@
       "tagline": "Elsewhere is a recurring event series centered on music, outdoors, parties in bushwick, ridgewood.",
       "description": "Elsewhere is a recurring event series centered on music, outdoors, parties in bushwick, ridgewood. Based on 39 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
-        "music",
         "other",
+        "music",
         "outdoors",
         "parties"
       ],
       "tags": [
-        "music",
         "other",
+        "music",
         "outdoors",
         "parties"
       ],
@@ -37,7 +37,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-19",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 57
       },
       "schedule": {
@@ -59,6 +59,7 @@
         "da8a5a792ec7d1a4",
         "326c8b501ab904e4",
         "3108f678ae46b3f6",
+        "0609693f6af00448",
         "c65ab39ef5533d68"
       ],
       "sourceAttributions": [
@@ -379,7 +380,7 @@
         "com_e07415e7f595",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_1466f20a9300"
+        "com_00dde3915a0f"
       ]
     },
     {
@@ -471,7 +472,7 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy in manhattan. Based on 22 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy in manhattan. Based on 23 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "other",
         "comedy"
@@ -496,7 +497,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-21",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 8,
         "eventCount90d": 25
       },
       "schedule": {
@@ -507,7 +508,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 22
+        "sampleSize": 23
       },
       "upcomingEventIds": [
         "e687efca37a430b1",
@@ -515,7 +516,9 @@
         "836766d988a2d650",
         "f82411281afd9a64",
         "8d80b2389b043052",
-        "c627abde3e92191f"
+        "c627abde3e92191f",
+        "41fce2ddb956a08b",
+        "c5c1285bb31aeb99"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -524,7 +527,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 22,
+        "observedDateCount": 23,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -606,8 +609,8 @@
         "com_3bc67889299d",
         "com_065dafa96d43",
         "com_ab8259bb35a4",
-        "com_0d8d1184eb1c",
-        "com_1397370b1777"
+        "com_00dde3915a0f",
+        "com_0d8d1184eb1c"
       ]
     },
     {
@@ -768,6 +771,75 @@
         "com_d8a5203885a9",
         "com_5d96f038b82a",
         "com_cb019f4e9752"
+      ]
+    },
+    {
+      "id": "com_00dde3915a0f",
+      "slug": "moli-re-in-the-park-915a0f",
+      "name": "Moli\u00e8re in the Park",
+      "kind": "recurring_series",
+      "tagline": "Moli\u00e8re in the Park is a recurring event series centered on outdoors in brooklyn.",
+      "description": "Moli\u00e8re in the Park is a recurring event series centered on outdoors in brooklyn. Based on 2 observed event dates, it meets weekly on Sunday and Tuesday afternoons.",
+      "categories": [
+        "outdoors"
+      ],
+      "tags": [
+        "outdoors"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "LeFrak Center in Prospect Park",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192728538%2F301990981173%2F1%2Foriginal.20260904-225015?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.902&fp-y=0.94&s=eaa757493c8cdf167542f5e44337c05a",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/19986102204"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-09-20",
+        "upcomingEventCount": 1,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Sunday",
+          "Tuesday"
+        ],
+        "typicalTime": "14:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "0315f40bd88f2ad0"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-09-21",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:19986102204"
+      ],
+      "similarCommunityIds": [
+        "com_359bbb5a9a91",
+        "com_bad972d799e8",
+        "com_1466f20a9300",
+        "com_3048e331f7b6",
+        "com_3837f308cd75",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -988,8 +1060,8 @@
       },
       "upcomingEventIds": [
         "90c758dac5bd2370",
-        "bdceb25e90a2f1e5",
         "7eca02c791c27155",
+        "bdceb25e90a2f1e5",
         "0d43431f99f016e6",
         "8b73693325e66f63",
         "4e5f970072aa41af",
@@ -1648,11 +1720,11 @@
       ],
       "similarCommunityIds": [
         "com_bad972d799e8",
+        "com_00dde3915a0f",
         "com_5d96f038b82a",
         "com_ab8259bb35a4",
         "com_d2d455d2d6c9",
-        "com_1466f20a9300",
-        "com_cb019f4e9752"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1719,9 +1791,9 @@
         "com_02ba15552329",
         "com_3bc67889299d",
         "com_065dafa96d43",
+        "com_00dde3915a0f",
         "com_0d8d1184eb1c",
-        "com_1397370b1777",
-        "com_1466f20a9300"
+        "com_1397370b1777"
       ]
     },
     {
@@ -1789,9 +1861,9 @@
         "com_02ba15552329",
         "com_1ab246c8dd88",
         "com_065dafa96d43",
+        "com_00dde3915a0f",
         "com_0d8d1184eb1c",
-        "com_1397370b1777",
-        "com_1466f20a9300"
+        "com_1397370b1777"
       ]
     },
     {
@@ -1861,11 +1933,11 @@
       ],
       "similarCommunityIds": [
         "com_b766b6de77ba",
+        "com_00dde3915a0f",
         "com_02ba15552329",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
-        "com_359bbb5a9a91",
-        "com_bad972d799e8"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -2841,7 +2913,7 @@
         "e1957413274a2cf4",
         "e3d3520c41c3d128",
         "bd13dcb98dadb102",
-        "41f2854401c7ed5b"
+        "f22e82c22d503108"
       ],
       "sourceAttributions": [
         "brooklyncomedy"
@@ -3209,7 +3281,7 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
+      "homeVenue": "New York Comedy Club on 4th Street",
       "imageUrl": "/img/events/New-Jokes-Newbie-1072-x-680-px-Blue-1-1d1b1125-large-thumb.jpg",
       "links": [
         {
@@ -3222,7 +3294,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-21",
-        "upcomingEventCount": 35,
+        "upcomingEventCount": 36,
         "eventCount90d": 101
       },
       "schedule": {
@@ -3240,14 +3312,14 @@
         "4bca84b76502a64d",
         "62978d93c6c0c6fa",
         "ac662b22a76da827",
+        "f3dee625c0164368",
         "df966fb09cdd40e8",
         "de4d13c9b16d9a7e",
         "58a1dd05391b4534",
         "81225b36d6cdfe3f",
         "0198364bfa66b889",
         "a4ec0d3ece930f3f",
-        "a8434c36e6bde285",
-        "ca5028a732d202f6"
+        "a8434c36e6bde285"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -50491,7 +50563,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-21T07:17:57.354466+00:00",
+  "lastUpdated": "2026-09-21T10:53:59.215546+00:00",
   "version": 1,
   "schemaVersion": 1
 }
