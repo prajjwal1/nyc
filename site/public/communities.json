@@ -3334,7 +3334,7 @@
       "name": "New York Comedy Club",
       "kind": "club",
       "tagline": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 49 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 50 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -3366,7 +3366,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-21",
-        "upcomingEventCount": 36,
+        "upcomingEventCount": 40,
         "eventCount90d": 101
       },
       "schedule": {
@@ -3377,21 +3377,21 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 49
+        "sampleSize": 50
       },
       "upcomingEventIds": [
         "d38fa7c5ef284578",
         "4bca84b76502a64d",
         "62978d93c6c0c6fa",
         "ac662b22a76da827",
+        "f3dee625c0164368",
         "df966fb09cdd40e8",
         "582599f2e978532e",
+        "e4df210b274cec3e",
+        "a8e41b5920e4610d",
         "de4d13c9b16d9a7e",
         "58a1dd05391b4534",
-        "81225b36d6cdfe3f",
-        "0198364bfa66b889",
-        "a4ec0d3ece930f3f",
-        "a8434c36e6bde285"
+        "81225b36d6cdfe3f"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -3400,7 +3400,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 49,
+        "observedDateCount": 50,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3450,7 +3450,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-20",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 18,
         "eventCount90d": 37
       },
       "schedule": {
@@ -3471,11 +3471,11 @@
         "37f4f65f3a099302",
         "98335288f6d79dcf",
         "1459f9232dc89bab",
+        "6ce0c8aa635e4e07",
         "7f054030fd05de11",
         "7b8ff5f2a27fffad",
         "39a212a18feffa49",
-        "f6cd792cc96be595",
-        "8d9902be457fa3a9"
+        "f6cd792cc96be595"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -50635,7 +50635,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-21T21:58:56.300045+00:00",
+  "lastUpdated": "2026-09-21T22:39:39.458724+00:00",
   "version": 1,
   "schemaVersion": 1
 }
