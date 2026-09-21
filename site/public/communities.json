@@ -309,7 +309,7 @@
         "com_318c39363fe6",
         "com_a393a0e8b1e0",
         "com_55ca36db453a",
-        "com_d2d455d2d6c9"
+        "com_c0bc3f282a97"
       ]
     },
     {
@@ -1565,11 +1565,11 @@
       ],
       "similarCommunityIds": [
         "com_1397370b1777",
+        "com_c0bc3f282a97",
         "com_1466f20a9300",
         "com_cb019f4e9752",
         "com_4a9490cb3534",
-        "com_359bbb5a9a91",
-        "com_3048e331f7b6"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -2084,6 +2084,71 @@
       ]
     },
     {
+      "id": "com_c0bc3f282a97",
+      "slug": "mongodb-282a97",
+      "name": "MongoDB",
+      "kind": "recurring_series",
+      "tagline": "MongoDB is a recurring event series in lower east side, chelsea.",
+      "description": "MongoDB is a recurring event series in lower east side, chelsea. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "lower east side",
+        "chelsea"
+      ],
+      "homeVenue": "Lower East Side",
+      "imageUrl": "https://images.lumacdn.com/uploads/24/685c6cfe-1284-4432-93cb-8a4bd26a449e.png",
+      "links": [],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Saturday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "dac9653ca17d95ab",
+        "8bcab8fa70c0ca18"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-09-21",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-knkjbue9rls9fix"
+      ],
+      "similarCommunityIds": [
+        "com_1397370b1777",
+        "com_5d96f038b82a",
+        "com_1466f20a9300",
+        "com_359bbb5a9a91",
+        "com_a1e1c13a75f0",
+        "com_bad972d799e8"
+      ]
+    },
+    {
       "id": "com_1397370b1777",
       "slug": "narrative-change-summit-0b1777",
       "name": "Narrative Change Summit",
@@ -2146,11 +2211,11 @@
       ],
       "similarCommunityIds": [
         "com_5d96f038b82a",
+        "com_c0bc3f282a97",
         "com_a1e1c13a75f0",
         "com_9fed174eeff3",
         "com_bad972d799e8",
-        "com_4c3ca28533f5",
-        "com_e9748c1176c1"
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -50570,7 +50635,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-21T19:36:33.728000+00:00",
+  "lastUpdated": "2026-09-21T21:58:56.300045+00:00",
   "version": 1,
   "schemaVersion": 1
 }
