@@ -65,6 +65,9 @@ try {
       if (await page.getByRole("button", { name: "Hide", exact: true }).count()) {
         throw new Error(`${route || "home"} still exposes event hiding`);
       }
+      if (await page.getByText(/because you follow|from accounts you follow/i).count()) {
+        throw new Error(`${route || "home"} still exposes verbose follow provenance`);
+      }
       if (!route) {
         if (!(await page.getByRole("heading", { name: "What's happening in NYC" }).count())) {
           throw new Error("homepage did not render its primary heading");

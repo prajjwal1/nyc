@@ -90,7 +90,7 @@ export const HIGHLIGHT_CONFIG: Record<string, { label: string; color: string }> 
   saved: { label: "★ Saved", color: "bg-amber-200 text-amber-900" },
   tagged: { label: "✨ You're tagged", color: "bg-pink-100 text-pink-800" },
   affinity: { label: "From accounts you save", color: "bg-amber-50 text-amber-700" },
-  following: { label: "From accounts you follow", color: "bg-blue-50 text-blue-700" },
+  following: { label: "★", color: "bg-blue-50 text-blue-700" },
   verified: { label: "✓ Verified", color: "bg-green-100 text-green-800" },
   "multi-promoted": { label: "📣 Multi-promoted", color: "bg-emerald-100 text-emerald-800" },
   story: { label: "📲 Story (24h)", color: "bg-rose-100 text-rose-800" },

@@ -137,7 +137,7 @@ function EventCardBody({
   const convictionLabel = convictionSaved
     ? `★ Saved by you${sourceIdentity ? ` · ${sourceIdentity}` : ""}`
     : convictionFollow
-      ? `★ Following${sourceIdentity ? ` · ${sourceIdentity}` : ""}`
+      ? "★"
       : convictionAffinity
         ? `✨ From your saves${sourceIdentity ? ` · ${sourceIdentity}` : ""}`
         : null;
@@ -282,8 +282,8 @@ function EventCardBody({
                   ✨ your taste
                 </span>
               )}
-            {/* Following/affinity are consolidated into the provenance chip
-                above, so the remaining highlights do not repeat them. */}
+            {/* Following/affinity are consolidated into the quiet conviction
+                treatment above, so the remaining highlights do not repeat them. */}
             {(event.highlights || [])
               .filter((h) => h !== "free" && h !== "following" && h !== "affinity")
               .slice(0, 3)

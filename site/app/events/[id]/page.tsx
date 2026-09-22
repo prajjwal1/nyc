@@ -171,8 +171,8 @@ export default async function EventPage({ params }: Props) {
             <span className="text-[#8b918e]">{organizer.isOrganizer ? "By" : "More info"}</span>{" "}
             <span className="font-semibold">{organizer.label} ↗</span>
           </a>
-          {event.userFollowing && preferenceAccount && (
-            <p className="mt-3 text-sm font-semibold text-sky-800">★ Because you follow {preferenceLabel}</p>
+          {event.userFollowing && (
+            <span className="mt-3 inline-block text-sm font-semibold text-sky-800" aria-label="Personalized event" title="Personalized event">★</span>
           )}
           {!event.userFollowing && event.userAffinity && preferenceAccount && (
             <p className="mt-3 text-sm font-semibold text-amber-800">From an account you save from · {preferenceLabel}</p>

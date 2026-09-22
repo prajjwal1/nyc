@@ -153,7 +153,7 @@ export default function EventModal({ event, onClose, onAccountClick, relatedEven
                 {timeStr ? ` · ${timeStr}` : ""}
               </span>
             )}
-            {(event.highlights || []).slice(0, 4).map((h) => {
+            {(event.highlights || []).filter((h) => h !== "following").slice(0, 4).map((h) => {
               const config = HIGHLIGHT_CONFIG[h];
               if (!config) return null;
               return (
