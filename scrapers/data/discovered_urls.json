@@ -6751,7 +6751,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-09-23T03:37:09.722222+00:00",
-    "last_surviving_yield": 2
+    "last_surviving_yield": 1
   },
   {
     "url": "https://partiful.com/u/4MvheXow7Ws0wJy2Hufm",
@@ -7791,7 +7791,7 @@
       "luma_organizer_graph",
       "platform_calendar_fetch"
     ],
-    "last_surviving_yield": 1,
+    "last_surviving_yield": 0,
     "last_attempt_at": "2026-09-16T22:42:37.786207+00:00",
     "last_parsed_yield": 1,
     "last_success_at": "2026-09-16T22:42:37.786207+00:00",
@@ -10188,7 +10188,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-09-23T03:37:09.722222+00:00",
-    "last_surviving_yield": 1
+    "last_surviving_yield": 0
   },
   {
     "url": "https://partiful.com/u/ojJ8K9H143eClUvErmPrkodX1Uj1",
@@ -10658,7 +10658,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-09-23T03:37:09.722222+00:00",
-    "last_surviving_yield": 6
+    "last_surviving_yield": 5
   },
   {
     "url": "https://lu.ma/nyc-founders-club",
@@ -11060,6 +11060,146 @@
     "discovery_vias": [
       "luma_organizer_graph"
     ],
-    "last_surviving_yield": 1
+    "last_surviving_yield": 0
+  },
+  {
+    "url": "https://bookclubbar.com/events/",
+    "discovered_at": "2026-09-22T22:13:26.448421+00:00",
+    "discovered_via": "path-probe:bookclubbar.com"
+  },
+  {
+    "url": "https://www.eastvillecomedy.com/events",
+    "discovered_at": "2026-09-22T22:13:30.501039+00:00",
+    "discovered_via": "path-probe:eastvillecomedy.com"
+  },
+  {
+    "url": "https://www.eastvillecomedy.com/events/",
+    "discovered_at": "2026-09-22T22:13:30.511123+00:00",
+    "discovered_via": "path-probe:eastvillecomedy.com"
+  },
+  {
+    "url": "https://www.eastvillecomedy.com/calendar",
+    "discovered_at": "2026-09-22T22:13:30.521105+00:00",
+    "discovered_via": "path-probe:eastvillecomedy.com"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/003205-0826",
+    "discovered_at": "2026-09-22T22:14:36.896975+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/020195-0626",
+    "discovered_at": "2026-09-22T22:14:36.907427+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/006820-1025",
+    "discovered_at": "2026-09-22T22:14:36.917639+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/001440-0726",
+    "discovered_at": "2026-09-22T22:14:36.927795+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/001360-0726",
+    "discovered_at": "2026-09-22T22:14:36.937908+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/001113-0726",
+    "discovered_at": "2026-09-22T22:14:36.948172+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/002230-0826",
+    "discovered_at": "2026-09-22T22:14:36.958375+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/011806-0226",
+    "discovered_at": "2026-09-22T22:14:36.968566+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/000924-0726",
+    "discovered_at": "2026-09-22T22:14:36.979241+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/002206-0826",
+    "discovered_at": "2026-09-22T22:14:36.989455+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/003383-0826",
+    "discovered_at": "2026-09-22T22:14:36.999641+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/003361-0826",
+    "discovered_at": "2026-09-22T22:14:37.009944+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/fuel-up-new-york-a-public-event-with-chelsea-piers-fitness-gainful-tickets-1996299650995",
+    "discovered_at": "2026-09-22T22:15:59.958840+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/1997984886580",
+    "discovered_at": "2026-09-22T22:16:04.717364+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/extra-sauce-an-evening-of-food-tasting-with-zahra-tangorra-tickets-1992791460904",
+    "discovered_at": "2026-09-22T22:16:04.728092+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/bloom-how-you-must-a-guided-workshop-with-tara-pringle-jefferson-tickets-1992576693529",
+    "discovered_at": "2026-09-22T22:16:04.790683+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/deesha-philyaw-launches-the-true-confessions-of-first-lady-freeman-tickets-1992695542008",
+    "discovered_at": "2026-09-22T22:16:04.800908+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/wine-explained-a-guided-tasting-with-dembys-supper-club-tickets-1989923676283",
+    "discovered_at": "2026-09-22T22:16:04.811105+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/paint-n-sip-with-meg-of-soulvine-artistry-tickets-1991924988261",
+    "discovered_at": "2026-09-22T22:16:04.821083+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/wine-between-the-lines-drinking-the-mediterranean-tickets-1991927821736",
+    "discovered_at": "2026-09-22T22:16:04.831086+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/wine-explained-a-guided-tasting-with-dembys-supper-club-tickets-1991926812718",
+    "discovered_at": "2026-09-22T22:16:04.841256+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.facebook.com/altiora.co",
+    "discovered_at": "2026-09-22T22:16:23.159746+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://linktr.ee/s/about/trust-center/report/",
+    "discovered_at": "2026-09-22T22:16:23.169802+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://linktr.ee/",
+    "discovered_at": "2026-09-22T22:16:23.179779+00:00",
+    "discovered_via": "link_aggregator:linktr"
   }
 ]
