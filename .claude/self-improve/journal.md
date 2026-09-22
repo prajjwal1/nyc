@@ -331,3 +331,23 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Hypothesis for next round:** run from a connected worker first. Re-probe the four queued book/run calendars, investigate the `nycforfree` 53 -> 0 and Backgammon cliffs, then measure the collection lane and structured-organizer recovery on a newly normalized feed before promoting any source.
 
 **Deployment follow-up (2026-09-09):** fixed GitHub access by routing this repository through the machine's managed local proxy, rebased over 138 automated data commits, and pushed. Quick Scrape run 34385054295 and Pages run 34385104225 succeeded. Feed commit 1404a998 is live with 663 events, zero past rows, `runCompleted=true`, and timestamp `2026-09-09T17:47:45.950224+00:00`; high conviction is now 60/663 (9.0%). Both discovered Eventbrite collections were exercised and correctly rejected by the new quality gate, so fb-216 remains open for connected candidate expansion.
+
+## 2026-09-22 1436 — run-id 2026-09-22-1436
+
+**Context:** User requested another self-improvement pass and asked that the result be pushed to the website. The deployed feed was fresh and broad (693 events, 183 organizers in the next week), but a title audit found three explicitly excluded AI events and three non-events advertising a private closure.
+
+**Shipped (commit e5bfe876):**
+- ingestion-P1 (APPROVE): added narrow title-only guards for uppercase `AI`, `artificial intelligence`, `private event`, and `closed for/to`. The title-only scope avoids incidental description matches, and a mixed-case `Ai Weiwei` regression protects proper names.
+- Source curator S1 (REJECT): withheld seven candidates. Three Lu.ma topic URLs duplicated the generic NYC catalog; the Eventbrite writing collection was mostly UK/online/kids inventory; three independent sites were 403 or zero-yield.
+- UI U1 (APPROVE deferral): no UI change; the browser audit remained healthy and Hide/× controls remain absent.
+- Closed fb-216 against `344a2f0f` with longitudinal evidence: newly learned personal-lane calendars for The Ripped Bodice BK (12/12 surviving), National Arts Club (12/12), and Pioneer Works (9/9) span literary, art, music, science, and food interests; Eventbrite inventory grew 131→155.
+
+**Deferred (backlog):** dream-D1 → fb-220, bounded source-native description enrichment. The site audit reports 36% showcased description completeness; future work should hydrate only top-window missing descriptions under a strict cached request budget.
+
+**Feedback gate:** CLOSED because at least three actionable open items already existed. Captured fb-218 and fb-219; both are addressed.
+
+**Metric delta:** follow-graph 50/50 (100.0%)→50/50 (100.0%); all meaningful topics remain represented; high conviction 69/693 (9.96%)→68/686 (9.91%) because one falsely personalized AI row was correctly removed; explicit-exclusion/public-availability leaks 6→0.
+
+**Verification:** 452 tests pass (3 expected xfails); all six sanity critical checks pass; ESLint has zero errors; Next.js production build succeeds. Quick Scrape run 35742348048 produced feed commit 04177ad1. Pages run 35742435596 passed build, deploy, and snapshot verification. Independent public JSON check confirms 686 events, `runCompleted=true`, no timed-out sources, and zero matching leaks.
+
+**Hypothesis for next round:** improve Luma/Eventbrite description completeness with bounded, cached hydration targeted only at recommendation candidates; measure fill rate and rate-limit impact before widening it.

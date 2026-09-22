@@ -97,16 +97,18 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-218 — Run another self-improvement cycle
 - created_at: 2026-09-22
 - source: user-explicit
-- status: in-progress
+- status: addressed: e5bfe876
 - body: “self improve”
 - "addressed" criterion: complete the documented audit → proposal → critic → apply → verify loop, ship at least one evidence-backed improvement without weakening existing exclusions, and record the result and metric delta.
+- resolution: Completed the full loop, rejected seven unqualified source aliases/calendars, and shipped title-only guards that remove six verified AI/private-event leaks without weakening source or location coverage. All 452 scraper tests, sanity checks, lint, and the production build passed.
 
 ### fb-219 — Push the completed improvement to the website
 - created_at: 2026-09-22
 - source: user-explicit
-- status: in-progress
+- status: addressed: 04177ad1
 - body: “push the changes to the website once done”
 - "addressed" criterion: push the verified change to `main`, refresh the feed so the pipeline applies it, confirm the Pages deployment succeeds, and independently verify the public feed.
+- resolution: Pushed `e5bfe876`, ran Quick Scrape `35742348048`, and deployed refreshed feed commit `04177ad1` through Pages run `35742435596`. The public feed independently returned 686 events, `runCompleted=true`, no timed-out sources, and zero matching AI/private-event leaks.
 
 ### fb-220 — Bounded source-native description enrichment
 - created_at: 2026-09-22
