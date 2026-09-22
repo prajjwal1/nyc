@@ -94,13 +94,36 @@ These are the durable preferences the user has stated. They're marked `addressed
 ## Open items (top of list = highest priority)
 
 
+### fb-218 — Run another self-improvement cycle
+- created_at: 2026-09-22
+- source: user-explicit
+- status: in-progress
+- body: “self improve”
+- "addressed" criterion: complete the documented audit → proposal → critic → apply → verify loop, ship at least one evidence-backed improvement without weakening existing exclusions, and record the result and metric delta.
+
+### fb-219 — Push the completed improvement to the website
+- created_at: 2026-09-22
+- source: user-explicit
+- status: in-progress
+- body: “push the changes to the website once done”
+- "addressed" criterion: push the verified change to `main`, refresh the feed so the pipeline applies it, confirm the Pages deployment succeeds, and independently verify the public feed.
+
+### fb-220 — Bounded source-native description enrichment
+- created_at: 2026-09-22
+- source: agent-proposal
+- status: open
+- body: Hydrate only missing-description Luma/Eventbrite events that enter the top recommendation window, cache successful detail payloads, enforce a strict per-run request budget, and measure description fill rate plus rate-limit failures before expanding.
+- "addressed" criterion: raise showcased-event description completeness from the current 36% toward at least 60% without increasing source timeouts, freshness age, or rate-limit circuit trips.
+
+
 ### fb-216 — Expand source coverage along demonstrated taste
 - created_at: 2026-09-08
 - source: user-explicit
-- status: open
+- status: addressed: 344a2f0f
 - body: “self improve, expand more sources”
 - interpretation: Run the self-improvement loop with source expansion as the primary North-Star lever, selecting new NYC event calendars from the user's follow graph and demonstrated interests rather than adding generic volume.
 - "addressed" criterion: add at least 3 net-new, non-duplicate NYC source calendars spanning at least 2 demonstrated-interest areas; every added source must live-probe with at least 5 upcoming events and at least 80% exclusion-clean/on-taste inventory, and the normalized feed must gain at least 5 net-new today-onwards events without relaxing fb-001..fb-011 or re-adding user-excluded sources.
+- resolution: `344a2f0f` replaced static-only platform coverage with live learned frontiers. Current evidence shows newly learned, active calendars including The Ripped Bodice BK (12 parsed / 12 surviving), National Arts Club (12/12), and Pioneer Works (9/9), spanning literary, art, music, science, and food interests. Eventbrite inventory grew from 131 on 2026-09-17 to 155 today without relaxing the exclusion rules.
 
 ### fb-213 — Run the self-improvement loop
 - created_at: 2026-09-03

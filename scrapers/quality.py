@@ -972,6 +972,18 @@ _WORD_BOUNDARY_RES = [
     for kw in _WORD_BOUNDARY_KEYWORDS
 ]
 
+# Title-only exclusions for rows that should never be presented as public
+# events.  Keep these separate from HARD_BLOCK_KEYWORDS: descriptions often
+# mention a venue being closed on another date or AI as incidental context,
+# while these phrases in the title describe the event itself.  The AI token
+# intentionally stays case-sensitive so names such as "Ai Weiwei" survive.
+_BLOCKED_TITLE_RES = [
+    _re.compile(r"\bprivate\s+events?\b", _re.IGNORECASE),
+    _re.compile(r"\bclosed\s+(?:for|to)\b", _re.IGNORECASE),
+    _re.compile(r"\bAI\b"),
+    _re.compile(r"\bartificial\s+intelligence\b", _re.IGNORECASE),
+]
+
 
 def is_blocked(event: dict) -> bool:
     """True if event should be entirely filtered out (kids/utility/services/non-NYC).
@@ -981,6 +993,10 @@ def is_blocked(event: dict) -> bool:
     names ("Bruce Springsteen"). Multi-word phrases stay on cheap
     substring matching since they're unambiguous.
     """
+    title = event.get("title", "") or ""
+    if any(pattern.search(title) for pattern in _BLOCKED_TITLE_RES):
+        return True
+
     text = _searchable_text(event).lower()
     # Multi-word phrases: substring match (cheap, unambiguous).
     for kw in HARD_BLOCK_KEYWORDS:

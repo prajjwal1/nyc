@@ -35,6 +35,12 @@ def _ev(title, desc="", source="instagram"):
 
 BLOCKED = [
     "AI Side Income Secrets: Build a Profitable Business In A Day",
+    "Literary Met Tour: AI & Society",
+    "Build Your Content Operating System: An AI + Personal Brand Workshop",
+    "ElevenLabs × Creator Spotlight: How creators are growing with AI audio tooling",
+    "Closed For Private Event",
+    "CLOSED FOR A PRIVATE EVENT @ 8PM",
+    "NO DJ: Downstairs showroom closed for a private event (upstairs bar open)",
     "Intelligent Singles Mixer at St. Regis Hotel in NYC!",
     "Ivy League Singles Mixer at St. Regis Hotel in NYC!",
     "NYC Singles Recruitment for High-Net-Worth Matchmaking Clients",
@@ -91,6 +97,7 @@ LEGIT = [
     "Hive Mind with Allen Aucoin",
     "Donna The Buffalo & Assembly of Dust",
     "Global Wellness Day pop-up",
+    "Ai Weiwei: What You See Is What You See",
 ]
 
 
@@ -98,3 +105,13 @@ LEGIT = [
 def test_legit_events_survive(title):
     assert not is_blocked(_ev(title))
     assert not _is_caption_fragment(title, "")
+
+
+def test_title_only_exclusions_do_not_match_incidental_description_text():
+    event = _ev(
+        "Community Art Workshop",
+        "The venue will be closed for maintenance next Monday; this workshop is open. "
+        "The artist also discusses AI in one chapter of her book.",
+    )
+
+    assert not is_blocked(event)
