@@ -231,10 +231,10 @@
       "similarCommunityIds": [
         "com_0d8d1184eb1c",
         "com_9fed174eeff3",
+        "com_e9748c1176c1",
         "com_6114a53f79a0",
         "com_a1e1c13a75f0",
-        "com_4c3ca28533f5",
-        "com_e9748c1176c1"
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -1083,9 +1083,9 @@
         "com_feb5ce491629",
         "com_4c3ca28533f5",
         "com_359bbb5a9a91",
-        "com_e9748c1176c1",
         "com_ab8259bb35a4",
-        "com_bad972d799e8"
+        "com_bad972d799e8",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -1422,18 +1422,20 @@
       "name": "The National Arts Club",
       "kind": "club",
       "tagline": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan.",
-      "description": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan. Based on 14 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "description": "The National Arts Club is a community club centered on exploration, books, celebrities in manhattan. Based on 15 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
         "other",
         "exploration",
         "books",
-        "celebrities"
+        "celebrities",
+        "music"
       ],
       "tags": [
         "other",
         "exploration",
         "books",
-        "celebrities"
+        "celebrities",
+        "music"
       ],
       "neighborhoods": [
         "manhattan"
@@ -1451,7 +1453,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-23",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 5
       },
       "schedule": {
@@ -1462,7 +1464,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 14
+        "sampleSize": 15
       },
       "upcomingEventIds": [
         "827de646b6511ba3",
@@ -1475,7 +1477,8 @@
         "d76b617f793b3dd8",
         "342b685d3b344d3e",
         "25f13ba0eea39c78",
-        "15b7570a3fd31534"
+        "15b7570a3fd31534",
+        "375c5244fee93f9b"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1484,7 +1487,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 14,
+        "observedDateCount": 15,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1493,12 +1496,12 @@
         "eventbrite:6140247955"
       ],
       "similarCommunityIds": [
-        "com_4c3ca28533f5",
-        "com_6114a53f79a0",
-        "com_a1e1c13a75f0",
-        "com_d2d455d2d6c9",
         "com_9fed174eeff3",
-        "com_fe4b6663b721"
+        "com_4c3ca28533f5",
+        "com_5582e2e97f1a",
+        "com_eef1ca956dae",
+        "com_fe4b6663b721",
+        "com_6114a53f79a0"
       ]
     },
     {
@@ -1507,7 +1510,7 @@
       "name": "Brooklyn Art Haus",
       "kind": "recurring_series",
       "tagline": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn.",
-      "description": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn. Based on 7 observed event dates, it meets weekly on Sunday and Friday evenings.",
+      "description": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn. Based on 7 observed event dates, it meets weekly on Sunday and Friday mornings.",
       "categories": [
         "music",
         "art",
@@ -1547,7 +1550,7 @@
           "Sunday",
           "Friday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "11:00",
         "confidence": 1.0,
         "sampleSize": 7
       },
@@ -1726,9 +1729,9 @@
         "eventbrite:83466825333"
       ],
       "similarCommunityIds": [
+        "com_e9748c1176c1",
         "com_eef1ca956dae",
         "com_eeb4e424a504",
-        "com_e9748c1176c1",
         "com_b0e15eaab803",
         "com_318c39363fe6",
         "com_f171cd222ca5"
@@ -2506,11 +2509,11 @@
       ],
       "similarCommunityIds": [
         "com_4c3ca28533f5",
+        "com_e9748c1176c1",
         "com_fe4b6663b721",
         "com_1466f20a9300",
         "com_6114a53f79a0",
-        "com_a1e1c13a75f0",
-        "com_e9748c1176c1"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -3315,9 +3318,9 @@
         "com_4a9490cb3534",
         "com_d8a5203885a9",
         "com_5582e2e97f1a",
+        "com_e9748c1176c1",
         "com_3837f308cd75",
-        "com_b736e77bdf93",
-        "com_318c39363fe6"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -50695,7 +50698,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-23T01:47:24.415516+00:00",
+  "lastUpdated": "2026-09-23T03:16:17.370295+00:00",
   "version": 1,
   "schemaVersion": 1
 }
