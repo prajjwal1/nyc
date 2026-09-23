@@ -234,8 +234,8 @@
         "com_e9748c1176c1",
         "com_6114a53f79a0",
         "com_a1e1c13a75f0",
-        "com_4c3ca28533f5",
-        "com_b766b6de77ba"
+        "com_1ef101a0cf5a",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -612,8 +612,8 @@
         "com_3bc67889299d",
         "com_6114a53f79a0",
         "com_065dafa96d43",
-        "com_9fed174eeff3",
-        "com_4c3ca28533f5"
+        "com_1ef101a0cf5a",
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -1886,8 +1886,8 @@
         "com_02ba15552329",
         "com_6114a53f79a0",
         "com_065dafa96d43",
-        "com_00dde3915a0f",
-        "com_0d8d1184eb1c"
+        "com_1ef101a0cf5a",
+        "com_00dde3915a0f"
       ]
     },
     {
@@ -1956,8 +1956,8 @@
         "com_02ba15552329",
         "com_6114a53f79a0",
         "com_065dafa96d43",
-        "com_00dde3915a0f",
-        "com_0d8d1184eb1c"
+        "com_1ef101a0cf5a",
+        "com_00dde3915a0f"
       ]
     },
     {
@@ -2026,12 +2026,12 @@
         "url:https://www.instagram.com/vitalrunclub"
       ],
       "similarCommunityIds": [
+        "com_1ef101a0cf5a",
         "com_b766b6de77ba",
         "com_00dde3915a0f",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
-        "com_bad972d799e8",
-        "com_f23f8820878b"
+        "com_bad972d799e8"
       ]
     },
     {
@@ -2163,11 +2163,11 @@
       ],
       "similarCommunityIds": [
         "com_00dde3915a0f",
+        "com_1ef101a0cf5a",
         "com_4c3ca28533f5",
         "com_d2d455d2d6c9",
         "com_359bbb5a9a91",
-        "com_ab8259bb35a4",
-        "com_6114a53f79a0"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -2236,11 +2236,11 @@
       ],
       "similarCommunityIds": [
         "com_a1e1c13a75f0",
+        "com_1ef101a0cf5a",
         "com_9fed174eeff3",
         "com_4c3ca28533f5",
         "com_e9748c1176c1",
-        "com_fe4b6663b721",
-        "com_1ab246c8dd88"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2836,6 +2836,86 @@
         "com_33a530deb7aa",
         "com_cdd5daa67222",
         "com_d2d455d2d6c9"
+      ]
+    },
+    {
+      "id": "com_1ef101a0cf5a",
+      "slug": "dance-social-club-a0cf5a",
+      "name": "DANCE SOCIAL CLUB",
+      "kind": "club",
+      "tagline": "DANCE SOCIAL CLUB is a community club centered on outdoors, parties, fitness in manhattan.",
+      "description": "DANCE SOCIAL CLUB is a community club centered on outdoors, parties, fitness in manhattan. Based on 2 observed event dates, it meets weekly on Sunday and Monday afternoons.",
+      "categories": [
+        "outdoors",
+        "parties",
+        "fitness"
+      ],
+      "tags": [
+        "outdoors",
+        "parties",
+        "fitness"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Central Park",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/external%2Fuser%2FLleMlUAPXeCIqoj2zTjn%2FMfyCyjrOCn4cs8lUgfImU?alt=media&token=8dd44053-7fad-49a6-9b5b-00ef6dc82bbe",
+      "links": [
+        {
+          "type": "partiful",
+          "label": "View on Partiful",
+          "url": "https://partiful.com/u/LleMlUAPXeCIqoj2zTjn"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Sunday",
+          "Monday"
+        ],
+        "typicalTime": "12:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "99da05c5fbe3bd10",
+        "d8c7fae44d152054"
+      ],
+      "sourceAttributions": [
+        "partiful"
+      ],
+      "lastVerifiedAt": "2026-09-23",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "d8c7fae44d152054",
+          "signal": "no experience"
+        }
+      ],
+      "aliases": [
+        "instagram:dancesocialclub_",
+        "partiful:llemluapxeciqoj2ztjn"
+      ],
+      "similarCommunityIds": [
+        "com_065dafa96d43",
+        "com_bad972d799e8",
+        "com_6114a53f79a0",
+        "com_4c3ca28533f5",
+        "com_fe4b6663b721",
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -50647,7 +50727,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-23T17:16:43.097280+00:00",
+  "lastUpdated": "2026-09-23T17:51:21.347565+00:00",
   "version": 1,
   "schemaVersion": 1
 }
