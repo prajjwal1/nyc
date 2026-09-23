@@ -81,9 +81,9 @@
         "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_cb019f4e9752",
+        "com_f23f8820878b",
         "com_fe4b6663b721",
-        "com_ab8259bb35a4",
-        "com_065dafa96d43"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -2031,7 +2031,7 @@
         "com_1ab246c8dd88",
         "com_3bc67889299d",
         "com_bad972d799e8",
-        "com_02ba15552329"
+        "com_f23f8820878b"
       ]
     },
     {
@@ -2995,7 +2995,7 @@
         "e1957413274a2cf4",
         "e3d3520c41c3d128",
         "bd13dcb98dadb102",
-        "f22e82c22d503108"
+        "41f2854401c7ed5b"
       ],
       "sourceAttributions": [
         "brooklyncomedy"
@@ -3016,9 +3016,9 @@
         "com_4a9490cb3534",
         "com_3837f308cd75",
         "com_eef1ca956dae",
+        "com_f23f8820878b",
         "com_3048e331f7b6",
-        "com_b736e77bdf93",
-        "com_1466f20a9300"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -3345,21 +3345,21 @@
       "slug": "new-york-comedy-club-20878b",
       "name": "New York Comedy Club",
       "kind": "club",
-      "tagline": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 54 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "tagline": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side.",
+      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 53 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
-        "music",
         "special",
+        "music",
         "outdoors",
-        "celebrities"
+        "parties"
       ],
       "tags": [
         "comedy",
-        "music",
         "special",
+        "music",
         "outdoors",
-        "celebrities"
+        "parties"
       ],
       "neighborhoods": [
         "east village",
@@ -3378,7 +3378,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-23",
-        "upcomingEventCount": 50,
+        "upcomingEventCount": 42,
         "eventCount90d": 105
       },
       "schedule": {
@@ -3389,21 +3389,21 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 54
+        "sampleSize": 53
       },
       "upcomingEventIds": [
         "ac662b22a76da827",
         "144d2ac0f6e450e4",
         "df966fb09cdd40e8",
         "582599f2e978532e",
-        "e4df210b274cec3e",
         "a8e41b5920e4610d",
+        "e4df210b274cec3e",
         "d8fde6435dec8c91",
-        "63e29fa463150800",
-        "ce659756d5e40855",
         "de4d13c9b16d9a7e",
-        "0e915f3a356b18fa",
-        "5c56b47ec33810b7"
+        "5c56b47ec33810b7",
+        "ef1917f59c557161",
+        "58a1dd05391b4534",
+        "81225b36d6cdfe3f"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -3412,7 +3412,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 54,
+        "observedDateCount": 53,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3421,12 +3421,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_318c39363fe6",
         "com_d8a5203885a9",
-        "com_eef1ca956dae",
-        "com_4a9490cb3534",
+        "com_318c39363fe6",
         "com_b766b6de77ba",
-        "com_d2d455d2d6c9"
+        "com_55ca36db453a",
+        "com_c1410c07c4dd",
+        "com_065dafa96d43"
       ]
     },
     {
@@ -3462,7 +3462,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-23",
-        "upcomingEventCount": 19,
+        "upcomingEventCount": 18,
         "eventCount90d": 40
       },
       "schedule": {
@@ -3485,9 +3485,9 @@
         "1459f9232dc89bab",
         "6ce0c8aa635e4e07",
         "7b8ff5f2a27fffad",
-        "537379272e6c3770",
         "283435919248683f",
-        "f6cd792cc96be595"
+        "f6cd792cc96be595",
+        "8d9902be457fa3a9"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -3505,8 +3505,8 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_f23f8820878b",
         "com_eef1ca956dae",
+        "com_f23f8820878b",
         "com_4a9490cb3534",
         "com_55ca36db453a",
         "com_5582e2e97f1a",
@@ -50647,7 +50647,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-23T05:02:12.799455+00:00",
+  "lastUpdated": "2026-09-23T05:18:44.725736+00:00",
   "version": 1,
   "schemaVersion": 1
 }
