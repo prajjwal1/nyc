@@ -2377,19 +2377,20 @@
       "name": "The New York Philosophy Club",
       "kind": "club",
       "tagline": "The New York Philosophy Club is a community club centered on art in meatpacking, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art in meatpacking, williamsburg. Based on 8 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "description": "The New York Philosophy Club is a community club centered on art in meatpacking, williamsburg. Based on 9 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
-        "art",
-        "other"
+        "other",
+        "art"
       ],
       "tags": [
-        "art",
-        "other"
+        "other",
+        "art"
       ],
       "neighborhoods": [
         "meatpacking",
         "williamsburg",
-        "upper east side"
+        "upper east side",
+        "midtown"
       ],
       "homeVenue": "Whitney Museum of American Art",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/by/e011acfe-1c18-4bf9-9daa-ea13c9b730d4.jpg",
@@ -2404,24 +2405,26 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-23",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 6,
         "eventCount90d": 11
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Saturday",
-          "Wednesday"
+          "Wednesday",
+          "Saturday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 9
       },
       "upcomingEventIds": [
         "5da0a05524a24a05",
         "58746b0e8e9c6c96",
         "18f4cd844abe876d",
-        "5b840595bea635bc"
+        "5b840595bea635bc",
+        "360d0a5f867e14fe",
+        "1a7e8838729f3665"
       ],
       "sourceAttributions": [
         "luma"
@@ -2430,7 +2433,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 9,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50488,7 +50491,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-24T04:09:19.430495+00:00",
+  "lastUpdated": "2026-09-24T04:44:12.637277+00:00",
   "version": 1,
   "schemaVersion": 1
 }
