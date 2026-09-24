@@ -299,10 +299,10 @@
       "similarCommunityIds": [
         "com_b0e15eaab803",
         "com_318c39363fe6",
-        "com_5582e2e97f1a",
         "com_55ca36db453a",
         "com_d2d455d2d6c9",
-        "com_f23f8820878b"
+        "com_f23f8820878b",
+        "com_feb5ce491629"
       ]
     },
     {
@@ -468,12 +468,12 @@
       "tagline": "Caveat is a recurring event series centered on comedy in manhattan.",
       "description": "Caveat is a recurring event series centered on comedy in manhattan. Based on 25 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
-        "other",
-        "comedy"
+        "comedy",
+        "other"
       ],
       "tags": [
-        "other",
-        "comedy"
+        "comedy",
+        "other"
       ],
       "neighborhoods": [
         "manhattan"
@@ -491,7 +491,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-24",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 30
       },
       "schedule": {
@@ -510,7 +510,8 @@
         "c5c1285bb31aeb99",
         "34a39099c87f19aa",
         "9832791eab0f2f5e",
-        "1e4ed5a9af3df067"
+        "1e4ed5a9af3df067",
+        "b280b43466ca36c4"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1076,7 +1077,7 @@
       "name": "Strand Bookstore",
       "kind": "recurring_series",
       "tagline": "Strand Bookstore is a recurring event series centered on books, outdoors in manhattan, east village.",
-      "description": "Strand Bookstore is a recurring event series centered on books, outdoors in manhattan, east village. Based on 19 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Strand Bookstore is a recurring event series centered on books, outdoors in manhattan, east village. Based on 21 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "other",
         "books",
@@ -1104,18 +1105,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-24",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 10,
         "eventCount90d": 16
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Tuesday"
+          "Thursday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 19
+        "sampleSize": 21
       },
       "upcomingEventIds": [
         "3e9a8d837c04f5bc",
@@ -1125,7 +1126,9 @@
         "8cd2c55176ef7fdb",
         "9a27abf5e8944c3e",
         "03a7a521f18ebcdf",
-        "a6330dd0ebec3ed9"
+        "a6330dd0ebec3ed9",
+        "82624d5947aee25d",
+        "f827facdce2ca207"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1134,7 +1137,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 19,
+        "observedDateCount": 21,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1559,9 +1562,9 @@
         "eventbrite:6140247955"
       ],
       "similarCommunityIds": [
+        "com_5582e2e97f1a",
         "com_9fed174eeff3",
         "com_4c3ca28533f5",
-        "com_5582e2e97f1a",
         "com_eef1ca956dae",
         "com_fe4b6663b721",
         "com_6114a53f79a0"
@@ -1723,20 +1726,20 @@
       "name": "Liz\u2019s Book Bar",
       "kind": "recurring_series",
       "tagline": "Liz\u2019s Book Bar is a recurring event series centered on books, celebrities, exploration in carroll gardens.",
-      "description": "Liz\u2019s Book Bar is a recurring event series centered on books, celebrities, exploration in carroll gardens. Based on 14 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "description": "Liz\u2019s Book Bar is a recurring event series centered on books, celebrities, exploration in carroll gardens. Based on 15 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "books",
+        "other",
         "celebrities",
         "exploration",
-        "music",
-        "games"
+        "music"
       ],
       "tags": [
         "books",
+        "other",
         "celebrities",
         "exploration",
-        "music",
-        "games"
+        "music"
       ],
       "neighborhoods": [
         "carroll gardens"
@@ -1754,7 +1757,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-23",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 7
       },
       "schedule": {
@@ -1765,11 +1768,12 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 14
+        "sampleSize": 15
       },
       "upcomingEventIds": [
         "33981c049bdc79f0",
         "fa2471d5cc61d2be",
+        "55b24cfd266d1872",
         "ac46479f05f083b9",
         "36b53970f9ed7b7b",
         "62a5e6a852dfa5a5",
@@ -1783,7 +1787,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 14,
+        "observedDateCount": 15,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1792,12 +1796,12 @@
         "eventbrite:83466825333"
       ],
       "similarCommunityIds": [
-        "com_eeb4e424a504",
         "com_e9748c1176c1",
+        "com_eeb4e424a504",
         "com_eef1ca956dae",
-        "com_b0e15eaab803",
-        "com_f171cd222ca5",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_b736e77bdf93",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2506,11 +2510,11 @@
       ],
       "similarCommunityIds": [
         "com_ed8d42fb031d",
-        "com_5582e2e97f1a",
         "com_1466f20a9300",
         "com_318c39363fe6",
         "com_9fed174eeff3",
-        "com_eeb4e424a504"
+        "com_eeb4e424a504",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -50637,7 +50641,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-24T17:36:40.830677+00:00",
+  "lastUpdated": "2026-09-24T18:32:21.572895+00:00",
   "version": 1,
   "schemaVersion": 1
 }
