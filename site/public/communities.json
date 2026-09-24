@@ -372,8 +372,8 @@
         "com_218b97d674a6",
         "com_e07415e7f595",
         "com_d8a5203885a9",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_00dde3915a0f",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -382,7 +382,7 @@
       "name": "The Ripped Bodice BK",
       "kind": "recurring_series",
       "tagline": "The Ripped Bodice BK is a recurring event series centered on books, comedy in brooklyn.",
-      "description": "The Ripped Bodice BK is a recurring event series centered on books, comedy in brooklyn. Based on 18 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "description": "The Ripped Bodice BK is a recurring event series centered on books, comedy in brooklyn. Based on 19 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "other",
         "books",
@@ -409,18 +409,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-24",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 8
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Sunday"
+          "Thursday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 18
+        "sampleSize": 19
       },
       "upcomingEventIds": [
         "2173917b8ef81aee",
@@ -433,7 +433,8 @@
         "006d5d2a1402183c",
         "a4485960f749f771",
         "4da2862cf8866ad5",
-        "c2d02ab2a243c5a5"
+        "c2d02ab2a243c5a5",
+        "c2bda5909438a6c7"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -442,7 +443,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 18,
+        "observedDateCount": 19,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -908,11 +909,80 @@
       ],
       "similarCommunityIds": [
         "com_3837f308cd75",
+        "com_3048e331f7b6",
         "com_1466f20a9300",
         "com_4a9490cb3534",
-        "com_3048e331f7b6",
         "com_55ca36db453a",
         "com_d8a5203885a9"
+      ]
+    },
+    {
+      "id": "com_00dde3915a0f",
+      "slug": "moli-re-in-the-park-915a0f",
+      "name": "Moli\u00e8re in the Park",
+      "kind": "recurring_series",
+      "tagline": "Moli\u00e8re in the Park is a recurring event series centered on outdoors in brooklyn.",
+      "description": "Moli\u00e8re in the Park is a recurring event series centered on outdoors in brooklyn. Based on 4 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "categories": [
+        "outdoors"
+      ],
+      "tags": [
+        "outdoors"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "LeFrak Center in Prospect Park",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192728538%2F301990981173%2F1%2Foriginal.20260904-225015?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.902&fp-y=0.94&s=eaa757493c8cdf167542f5e44337c05a",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/19986102204"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-09-24",
+        "upcomingEventCount": 1,
+        "eventCount90d": 4
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Sunday",
+          "Tuesday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.67,
+        "sampleSize": 4
+      },
+      "upcomingEventIds": [
+        "894b674ffa96fb2e"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-09-24",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 4,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:19986102204"
+      ],
+      "similarCommunityIds": [
+        "com_359bbb5a9a91",
+        "com_1466f20a9300",
+        "com_3048e331f7b6",
+        "com_3837f308cd75",
+        "com_4a9490cb3534",
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -1401,8 +1471,8 @@
         "eventbrite:5803675324"
       ],
       "similarCommunityIds": [
-        "com_3048e331f7b6",
         "com_5d96f038b82a",
+        "com_3048e331f7b6",
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_cb019f4e9752",
@@ -1502,16 +1572,18 @@
       "slug": "brooklyn-art-haus-31f7b6",
       "name": "Brooklyn Art Haus",
       "kind": "recurring_series",
-      "tagline": "Brooklyn Art Haus is a recurring event series centered on music, film, special in brooklyn.",
-      "description": "Brooklyn Art Haus is a recurring event series centered on music, film, special in brooklyn. Based on 8 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
+      "tagline": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn.",
+      "description": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn. Based on 9 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
       "categories": [
         "music",
+        "art",
         "film",
         "special",
         "other"
       ],
       "tags": [
         "music",
+        "art",
         "film",
         "special",
         "other"
@@ -1520,7 +1592,7 @@
         "brooklyn"
       ],
       "homeVenue": "Brooklyn Art Haus",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1194057455%2F1528943324833%2F1%2Foriginal.20260921-230903?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=b1823f1cd02165102eade3f50a65b125",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190049892%2F1528943324833%2F1%2Foriginal.20260731-171618?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=c55659ede57b1ae4a2c1b04a372bc4b3",
       "links": [
         {
           "type": "eventbrite",
@@ -1531,9 +1603,9 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-09-23",
-        "upcomingEventCount": 4,
-        "eventCount90d": 6
+        "lastEventDate": "2026-09-24",
+        "upcomingEventCount": 5,
+        "eventCount90d": 7
       },
       "schedule": {
         "cadence": "weekly",
@@ -1543,9 +1615,10 @@
         ],
         "typicalTime": "11:00",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 9
       },
       "upcomingEventIds": [
+        "c0640259c0d87339",
         "cb43cefa86c592fb",
         "f77437fa87812616",
         "7cc83e82cb8823b6",
@@ -1558,7 +1631,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 9,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1567,9 +1640,9 @@
         "eventbrite:65148790433"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
         "com_3837f308cd75",
         "com_b736e77bdf93",
+        "com_1466f20a9300",
         "com_d8a5203885a9",
         "com_5d96f038b82a",
         "com_cb019f4e9752"
@@ -1793,12 +1866,12 @@
         "eventbrite:8387562806"
       ],
       "similarCommunityIds": [
+        "com_00dde3915a0f",
         "com_5d96f038b82a",
         "com_d2d455d2d6c9",
         "com_1466f20a9300",
         "com_cb019f4e9752",
-        "com_116511573b6a",
-        "com_4c3ca28533f5"
+        "com_116511573b6a"
       ]
     },
     {
@@ -1867,7 +1940,7 @@
         "com_6114a53f79a0",
         "com_065dafa96d43",
         "com_1ef101a0cf5a",
-        "com_116511573b6a"
+        "com_00dde3915a0f"
       ]
     },
     {
@@ -1937,7 +2010,7 @@
         "com_6114a53f79a0",
         "com_065dafa96d43",
         "com_1ef101a0cf5a",
-        "com_116511573b6a"
+        "com_00dde3915a0f"
       ]
     },
     {
@@ -2008,10 +2081,10 @@
       "similarCommunityIds": [
         "com_1ef101a0cf5a",
         "com_b766b6de77ba",
+        "com_00dde3915a0f",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
-        "com_02ba15552329",
-        "com_33a530deb7aa"
+        "com_02ba15552329"
       ]
     },
     {
@@ -2514,9 +2587,9 @@
         "com_116511573b6a",
         "com_5d96f038b82a",
         "com_c0bc3f282a97",
+        "com_3048e331f7b6",
         "com_b736e77bdf93",
-        "com_1466f20a9300",
-        "com_359bbb5a9a91"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -3341,7 +3414,7 @@
         "com_feb5ce491629",
         "com_c1410c07c4dd",
         "com_eeb4e424a504",
-        "com_3048e331f7b6"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -50560,7 +50633,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-24T05:33:06.802923+00:00",
+  "lastUpdated": "2026-09-24T09:18:31.830251+00:00",
   "version": 1,
   "schemaVersion": 1
 }
