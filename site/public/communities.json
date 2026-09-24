@@ -608,6 +608,75 @@
       ]
     },
     {
+      "id": "com_116511573b6a",
+      "slug": "alice-lipping-573b6a",
+      "name": "Alice Lipping",
+      "kind": "recurring_series",
+      "tagline": "Alice Lipping is a recurring event series in astoria.",
+      "description": "Alice Lipping is a recurring event series in astoria. Based on 2 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "astoria"
+      ],
+      "homeVenue": "Bohemian Hall & Beer Garden ",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192572447%2F118597675841%2F1%2Foriginal.20260903-132612?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.457&fp-y=0.806&s=da732c50077ecb2784dc5c0842ac5ce3",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/17281797662"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-09-23",
+        "upcomingEventCount": 1,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Sunday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "1eb7dda00dbd2919"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-09-24",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:17281797662"
+      ],
+      "similarCommunityIds": [
+        "com_5d96f038b82a",
+        "com_c0bc3f282a97",
+        "com_1466f20a9300",
+        "com_359bbb5a9a91",
+        "com_6114a53f79a0",
+        "com_a1e1c13a75f0"
+      ]
+    },
+    {
       "id": "com_cb019f4e9752",
       "slug": "union-hall-4e9752",
       "name": "Union Hall",
@@ -1567,12 +1636,12 @@
         "eventbrite:82384975023"
       ],
       "similarCommunityIds": [
+        "com_116511573b6a",
         "com_c0bc3f282a97",
         "com_1466f20a9300",
         "com_cb019f4e9752",
         "com_4a9490cb3534",
-        "com_359bbb5a9a91",
-        "com_3048e331f7b6"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -1728,8 +1797,8 @@
         "com_d2d455d2d6c9",
         "com_1466f20a9300",
         "com_cb019f4e9752",
-        "com_4c3ca28533f5",
-        "com_b766b6de77ba"
+        "com_116511573b6a",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -1798,7 +1867,7 @@
         "com_6114a53f79a0",
         "com_065dafa96d43",
         "com_1ef101a0cf5a",
-        "com_1466f20a9300"
+        "com_116511573b6a"
       ]
     },
     {
@@ -1868,7 +1937,7 @@
         "com_6114a53f79a0",
         "com_065dafa96d43",
         "com_1ef101a0cf5a",
-        "com_1466f20a9300"
+        "com_116511573b6a"
       ]
     },
     {
@@ -2146,12 +2215,12 @@
         "luma:cal-knkjbue9rls9fix"
       ],
       "similarCommunityIds": [
+        "com_116511573b6a",
         "com_5d96f038b82a",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_6114a53f79a0",
-        "com_a1e1c13a75f0",
-        "com_ab8259bb35a4"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -2442,12 +2511,12 @@
         "luma:philosophy"
       ],
       "similarCommunityIds": [
+        "com_116511573b6a",
         "com_5d96f038b82a",
         "com_c0bc3f282a97",
         "com_b736e77bdf93",
         "com_1466f20a9300",
-        "com_359bbb5a9a91",
-        "com_6114a53f79a0"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -50491,7 +50560,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-24T05:14:59.228254+00:00",
+  "lastUpdated": "2026-09-24T05:33:06.802923+00:00",
   "version": 1,
   "schemaVersion": 1
 }
