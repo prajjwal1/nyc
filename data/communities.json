@@ -79,9 +79,9 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_359bbb5a9a91",
-        "com_b736e77bdf93",
         "com_fe4b6663b721",
         "com_c1410c07c4dd",
+        "com_cb019f4e9752",
         "com_3048e331f7b6"
       ]
     },
@@ -149,8 +149,8 @@
         "eventbrite:10662501681"
       ],
       "similarCommunityIds": [
-        "com_3048e331f7b6",
         "com_d2d455d2d6c9",
+        "com_3048e331f7b6",
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_f23f8820878b",
@@ -372,9 +372,9 @@
         "com_218b97d674a6",
         "com_e07415e7f595",
         "com_cb019f4e9752",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -748,8 +748,8 @@
       ],
       "similarCommunityIds": [
         "com_4a9490cb3534",
-        "com_d8a5203885a9",
         "com_b736e77bdf93",
+        "com_d8a5203885a9",
         "com_3837f308cd75",
         "com_eef1ca956dae",
         "com_1466f20a9300"
@@ -833,8 +833,8 @@
       "similarCommunityIds": [
         "com_d2d455d2d6c9",
         "com_4c3ca28533f5",
-        "com_3048e331f7b6",
         "com_e9748c1176c1",
+        "com_3048e331f7b6",
         "com_3837f308cd75",
         "com_359bbb5a9a91"
       ]
@@ -844,17 +844,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on books, music in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on books, music in brooklyn. Based on 31 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on music, books, comedy in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on music, books, comedy in brooklyn. Based on 33 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
+        "music",
         "books",
-        "music"
+        "comedy",
+        "movies"
       ],
       "tags": [
         "other",
+        "music",
         "books",
-        "music"
+        "comedy",
+        "movies"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -872,8 +876,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-25",
-        "upcomingEventCount": 4,
-        "eventCount90d": 56
+        "upcomingEventCount": 8,
+        "eventCount90d": 57
       },
       "schedule": {
         "cadence": "weekly",
@@ -883,13 +887,17 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 31
+        "sampleSize": 33
       },
       "upcomingEventIds": [
         "0fefcdeb83c7a7b2",
+        "1e8bf6121c3e9358",
         "692d79d8f2fecb8c",
         "0a639b513cde7542",
-        "25e1ffc8f7fda8a4"
+        "25e1ffc8f7fda8a4",
+        "11fffcaeb2167fed",
+        "b2b9b2b8737a4c56",
+        "b76ac457f1c0e3ee"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -898,7 +906,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 31,
+        "observedDateCount": 33,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -907,12 +915,12 @@
         "eventbrite:18898315629"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
-        "com_3837f308cd75",
         "com_4a9490cb3534",
-        "com_3048e331f7b6",
         "com_cb019f4e9752",
-        "com_d8a5203885a9"
+        "com_3837f308cd75",
+        "com_d8a5203885a9",
+        "com_eef1ca956dae",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -992,8 +1000,8 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_3048e331f7b6",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_1466f20a9300",
         "com_4a9490cb3534",
@@ -1403,9 +1411,9 @@
         "eventbrite:5803675324"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_3048e331f7b6",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_9fed174eeff3",
         "com_4a9490cb3534",
         "com_b766b6de77ba"
@@ -1496,7 +1504,7 @@
         "com_5582e2e97f1a",
         "com_eef1ca956dae",
         "com_fe4b6663b721",
-        "com_b736e77bdf93"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -1504,16 +1512,18 @@
       "slug": "brooklyn-art-haus-31f7b6",
       "name": "Brooklyn Art Haus",
       "kind": "recurring_series",
-      "tagline": "Brooklyn Art Haus is a recurring event series centered on music, film, special in brooklyn.",
-      "description": "Brooklyn Art Haus is a recurring event series centered on music, film, special in brooklyn. Based on 9 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
+      "tagline": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn.",
+      "description": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn. Based on 9 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
       "categories": [
         "music",
+        "art",
         "film",
         "special",
         "other"
       ],
       "tags": [
         "music",
+        "art",
         "film",
         "special",
         "other"
@@ -1522,7 +1532,7 @@
         "brooklyn"
       ],
       "homeVenue": "Brooklyn Art Haus",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1194057455%2F1528943324833%2F1%2Foriginal.20260921-230903?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=b1823f1cd02165102eade3f50a65b125",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190049892%2F1528943324833%2F1%2Foriginal.20260731-171618?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=c55659ede57b1ae4a2c1b04a372bc4b3",
       "links": [
         {
           "type": "eventbrite",
@@ -1534,8 +1544,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-25",
-        "upcomingEventCount": 4,
-        "eventCount90d": 8
+        "upcomingEventCount": 5,
+        "eventCount90d": 9
       },
       "schedule": {
         "cadence": "weekly",
@@ -1548,6 +1558,7 @@
         "sampleSize": 9
       },
       "upcomingEventIds": [
+        "501aacde8bb21b9d",
         "cb43cefa86c592fb",
         "f77437fa87812616",
         "7cc83e82cb8823b6",
@@ -1569,8 +1580,8 @@
         "eventbrite:65148790433"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
         "com_3837f308cd75",
+        "com_1466f20a9300",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_4a9490cb3534",
@@ -1657,8 +1668,8 @@
         "com_e9748c1176c1",
         "com_eef1ca956dae",
         "com_b0e15eaab803",
-        "com_b736e77bdf93",
-        "com_f171cd222ca5"
+        "com_f171cd222ca5",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -2157,7 +2168,7 @@
         "com_fe4b6663b721",
         "com_1466f20a9300",
         "com_a1e1c13a75f0",
-        "com_b736e77bdf93"
+        "com_1ef101a0cf5a"
       ]
     },
     {
@@ -2299,7 +2310,7 @@
         "com_1466f20a9300",
         "com_318c39363fe6",
         "com_9fed174eeff3",
-        "com_b736e77bdf93"
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -2375,10 +2386,10 @@
       "similarCommunityIds": [
         "com_116511573b6a",
         "com_c0bc3f282a97",
+        "com_3048e331f7b6",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
-        "com_a1e1c13a75f0",
-        "com_ad50d6a81df3"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -2532,7 +2543,7 @@
         "com_33a530deb7aa",
         "com_cdd5daa67222",
         "com_4a9490cb3534",
-        "com_b736e77bdf93"
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -2707,7 +2718,7 @@
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_b766b6de77ba",
-        "com_b736e77bdf93"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2792,9 +2803,9 @@
       "similarCommunityIds": [
         "com_cb019f4e9752",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_eef1ca956dae",
         "com_4a9490cb3534",
-        "com_b736e77bdf93",
         "com_3048e331f7b6"
       ]
     },
@@ -2871,9 +2882,9 @@
         "com_1466f20a9300",
         "com_64ebabd98c5c",
         "com_e07415e7f595",
-        "com_b736e77bdf93",
         "com_3048e331f7b6",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -2949,10 +2960,10 @@
       "similarCommunityIds": [
         "com_5582e2e97f1a",
         "com_c1410c07c4dd",
-        "com_b736e77bdf93",
         "com_f171cd222ca5",
         "com_3837f308cd75",
-        "com_55ca36db453a"
+        "com_55ca36db453a",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -3035,9 +3046,9 @@
         "source:powerhousearena"
       ],
       "similarCommunityIds": [
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_4a9490cb3534",
-        "com_b736e77bdf93",
         "com_cb019f4e9752",
         "com_5582e2e97f1a",
         "com_e9748c1176c1"
@@ -3106,9 +3117,9 @@
         "com_a786c70979d0",
         "com_f171cd222ca5",
         "com_4a9490cb3534",
-        "com_b736e77bdf93",
         "com_218b97d674a6",
-        "com_64ebabd98c5c"
+        "com_64ebabd98c5c",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -3197,7 +3208,7 @@
         "com_eef1ca956dae",
         "com_d2d455d2d6c9",
         "com_feb5ce491629",
-        "com_3048e331f7b6"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -3275,11 +3286,11 @@
       ],
       "similarCommunityIds": [
         "com_f23f8820878b",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_ed8d42fb031d",
         "com_eef1ca956dae",
-        "com_55ca36db453a",
-        "com_1466f20a9300"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -50416,7 +50427,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-25T05:24:03.107711+00:00",
+  "lastUpdated": "2026-09-25T05:36:37.178625+00:00",
   "version": 1,
   "schemaVersion": 1
 }
