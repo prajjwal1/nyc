@@ -9,23 +9,22 @@
       "description": "Elsewhere is a recurring event series centered on music, outdoors, parties in bushwick, midtown. Based on 39 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "music",
-        "outdoors",
         "other",
+        "outdoors",
         "parties"
       ],
       "tags": [
         "music",
-        "outdoors",
         "other",
+        "outdoors",
         "parties"
       ],
       "neighborhoods": [
         "bushwick",
         "midtown",
-        "ridgewood",
         "brooklyn"
       ],
-      "homeVenue": "Elsewhere - The Hall",
+      "homeVenue": "Elsewhere",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193849188%2F2569518370411%2F1%2Foriginal.20260918-161805?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=f1e2226aa82793bae0260eea7cdad1ed",
       "links": [
         {
@@ -79,11 +78,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
-        "com_cb019f4e9752",
         "com_359bbb5a9a91",
+        "com_b736e77bdf93",
         "com_fe4b6663b721",
         "com_c1410c07c4dd",
-        "com_065dafa96d43"
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -151,11 +150,11 @@
       ],
       "similarCommunityIds": [
         "com_3048e331f7b6",
+        "com_d2d455d2d6c9",
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_f23f8820878b",
-        "com_fe4b6663b721",
-        "com_feb5ce491629"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -370,12 +369,12 @@
         "eventbrite:115935157771"
       ],
       "similarCommunityIds": [
-        "com_cb019f4e9752",
         "com_218b97d674a6",
         "com_e07415e7f595",
+        "com_cb019f4e9752",
         "com_d8a5203885a9",
-        "com_00dde3915a0f",
-        "com_1466f20a9300"
+        "com_1466f20a9300",
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -453,9 +452,9 @@
         "eventbrite:121441877858"
       ],
       "similarCommunityIds": [
-        "com_3837f308cd75",
-        "com_5d96f038b82a",
+        "com_cb019f4e9752",
         "com_b736e77bdf93",
+        "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_eef1ca956dae",
         "com_a1e1c13a75f0"
@@ -538,87 +537,16 @@
       ]
     },
     {
-      "id": "com_02ba15552329",
-      "slug": "lululemon-williamsburg-552329",
-      "name": "lululemon Williamsburg",
-      "kind": "recurring_series",
-      "tagline": "lululemon Williamsburg is a recurring event series centered on fitness, wellness in williamsburg.",
-      "description": "lululemon Williamsburg is a recurring event series centered on fitness, wellness in williamsburg. Based on 8 observed event dates, it meets weekly on Thursday and Wednesday mornings.",
-      "categories": [
-        "fitness",
-        "wellness"
-      ],
-      "tags": [
-        "fitness",
-        "wellness"
-      ],
-      "neighborhoods": [
-        "williamsburg"
-      ],
-      "homeVenue": "97 N 6th St",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191471178%2F222507638384%2F1%2Foriginal.20260819-225508?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.036&fp-y=0.897&s=4d4ba881de79ad403c00706c39cd06f2",
-      "links": [
-        {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
-          "url": "https://eventbrite.com/o/14861961557"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-09-24",
-        "upcomingEventCount": 0,
-        "eventCount90d": 10
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Thursday",
-          "Wednesday"
-        ],
-        "typicalTime": "07:45",
-        "confidence": 1.0,
-        "sampleSize": 8
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "eventbrite"
-      ],
-      "lastVerifiedAt": "2026-09-25",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 8,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "eventbrite:14861961557"
-      ],
-      "similarCommunityIds": [
-        "com_1ab246c8dd88",
-        "com_3bc67889299d",
-        "com_6114a53f79a0",
-        "com_065dafa96d43",
-        "com_1ef101a0cf5a",
-        "com_9fed174eeff3"
-      ]
-    },
-    {
       "id": "com_ad50d6a81df3",
       "slug": "new-york-school-of-interior-design-a81df3",
       "name": "New York School of Interior Design",
       "kind": "recurring_series",
-      "tagline": "New York School of Interior Design is a recurring event series centered on art in upper east side.",
-      "description": "New York School of Interior Design is a recurring event series centered on art in upper east side. Based on 2 observed event dates, it meets biweekly on Thursday and Wednesday evenings.",
+      "tagline": "New York School of Interior Design is a recurring event series in upper east side.",
+      "description": "New York School of Interior Design is a recurring event series in upper east side. Based on 2 observed event dates, it meets biweekly on Thursday and Wednesday evenings.",
       "categories": [
-        "art",
         "other"
       ],
       "tags": [
-        "art",
         "other"
       ],
       "neighborhoods": [
@@ -669,12 +597,12 @@
         "eventbrite:15195290641"
       ],
       "similarCommunityIds": [
-        "com_ab8259bb35a4",
         "com_116511573b6a",
-        "com_5d96f038b82a",
         "com_c0bc3f282a97",
-        "com_3048e331f7b6",
-        "com_b736e77bdf93"
+        "com_ab8259bb35a4",
+        "com_1466f20a9300",
+        "com_359bbb5a9a91",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -738,8 +666,8 @@
         "eventbrite:17281797662"
       ],
       "similarCommunityIds": [
-        "com_5d96f038b82a",
         "com_c0bc3f282a97",
+        "com_ad50d6a81df3",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_a1e1c13a75f0",
@@ -751,15 +679,19 @@
       "slug": "union-hall-4e9752",
       "name": "Union Hall",
       "kind": "recurring_series",
-      "tagline": "Union Hall is a recurring event series centered on parties in brooklyn.",
-      "description": "Union Hall is a recurring event series centered on parties in brooklyn. Based on 22 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "tagline": "Union Hall is a recurring event series centered on parties, books, comedy in brooklyn.",
+      "description": "Union Hall is a recurring event series centered on parties, books, comedy in brooklyn. Based on 23 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
         "other",
-        "parties"
+        "parties",
+        "books",
+        "comedy"
       ],
       "tags": [
         "other",
-        "parties"
+        "parties",
+        "books",
+        "comedy"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -777,7 +709,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-25",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 7,
         "eventCount90d": 23
       },
       "schedule": {
@@ -788,14 +720,16 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 22
+        "sampleSize": 23
       },
       "upcomingEventIds": [
         "18635e610586a833",
         "5c43a5fdba2700bf",
         "a7cc51fef934c589",
         "388f88b6eeb69ed8",
-        "613544987d4c82a1"
+        "613544987d4c82a1",
+        "56028868152a3507",
+        "dfb87b8bda363f1e"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -804,7 +738,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 22,
+        "observedDateCount": 23,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -813,12 +747,12 @@
         "eventbrite:17899496497"
       ],
       "similarCommunityIds": [
-        "com_5d96f038b82a",
-        "com_1466f20a9300",
         "com_4a9490cb3534",
-        "com_b766b6de77ba",
-        "com_3048e331f7b6",
-        "com_3837f308cd75"
+        "com_d8a5203885a9",
+        "com_b736e77bdf93",
+        "com_3837f308cd75",
+        "com_eef1ca956dae",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -826,28 +760,28 @@
       "slug": "museum-of-reclaimed-urban-space-491629",
       "name": "Museum of Reclaimed Urban Space",
       "kind": "institutional_program",
-      "tagline": "Museum of Reclaimed Urban Space is a community program centered on outdoors, wellness, film in manhattan, east village.",
-      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, wellness, film in manhattan, east village. Based on 6 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "tagline": "Museum of Reclaimed Urban Space is a community program centered on outdoors, film, special in manhattan, east village.",
+      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, film, special in manhattan, east village. Based on 7 observed event dates, it meets weekly on Wednesday and Sunday mornings.",
       "categories": [
-        "outdoors",
         "other",
-        "wellness",
+        "outdoors",
         "film",
-        "special"
+        "special",
+        "books"
       ],
       "tags": [
-        "outdoors",
         "other",
-        "wellness",
+        "outdoors",
         "film",
-        "special"
+        "special",
+        "books"
       ],
       "neighborhoods": [
         "manhattan",
         "east village"
       ],
       "homeVenue": "La Plaza Cultural",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192192242%2F280848866130%2F1%2Foriginal.20260829-200117?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=a03bf88363803420f5bc71ea32396c3c",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193345487%2F280848866130%2F1%2Foriginal.20260912-193447?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.549&fp-y=0.524&s=300748fea39831ea643372977d0191a9",
       "links": [
         {
           "type": "eventbrite",
@@ -858,9 +792,9 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-09-24",
-        "upcomingEventCount": 4,
-        "eventCount90d": 5
+        "lastEventDate": "2026-09-25",
+        "upcomingEventCount": 7,
+        "eventCount90d": 6
       },
       "schedule": {
         "cadence": "weekly",
@@ -868,12 +802,15 @@
           "Wednesday",
           "Sunday"
         ],
-        "typicalTime": "17:00",
+        "typicalTime": "11:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
+        "3f9b5bfb63241eff",
         "04f478772197c232",
+        "ad1c322d51d047e7",
+        "b1cd8a23ed74b8b7",
         "4cc56fa49d7f565d",
         "b0a881467eb49c56",
         "3aeda0487a4d187b"
@@ -885,7 +822,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -896,10 +833,10 @@
       "similarCommunityIds": [
         "com_d2d455d2d6c9",
         "com_4c3ca28533f5",
-        "com_9fed174eeff3",
         "com_3048e331f7b6",
-        "com_359bbb5a9a91",
-        "com_f23f8820878b"
+        "com_e9748c1176c1",
+        "com_3837f308cd75",
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -907,21 +844,17 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on music, art, food in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on music, art, food in brooklyn. Based on 31 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on books, music in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on books, music in brooklyn. Based on 31 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
-        "music",
-        "art",
-        "food",
-        "comedy"
+        "books",
+        "music"
       ],
       "tags": [
         "other",
-        "music",
-        "art",
-        "food",
-        "comedy"
+        "books",
+        "music"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -940,7 +873,7 @@
         "state": "active",
         "lastEventDate": "2026-09-25",
         "upcomingEventCount": 4,
-        "eventCount90d": 58
+        "eventCount90d": 56
       },
       "schedule": {
         "cadence": "weekly",
@@ -974,79 +907,12 @@
         "eventbrite:18898315629"
       ],
       "similarCommunityIds": [
-        "com_3048e331f7b6",
-        "com_3837f308cd75",
         "com_1466f20a9300",
-        "com_4a9490cb3534",
-        "com_d8a5203885a9",
-        "com_eef1ca956dae"
-      ]
-    },
-    {
-      "id": "com_00dde3915a0f",
-      "slug": "moli-re-in-the-park-915a0f",
-      "name": "Moli\u00e8re in the Park",
-      "kind": "recurring_series",
-      "tagline": "Moli\u00e8re in the Park is a recurring event series centered on outdoors in brooklyn.",
-      "description": "Moli\u00e8re in the Park is a recurring event series centered on outdoors in brooklyn. Based on 4 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
-      "categories": [
-        "outdoors"
-      ],
-      "tags": [
-        "outdoors"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "LeFrak Center in Prospect Park",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192728538%2F301990981173%2F1%2Foriginal.20260904-225015?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.902&fp-y=0.94&s=eaa757493c8cdf167542f5e44337c05a",
-      "links": [
-        {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
-          "url": "https://eventbrite.com/o/19986102204"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-09-24",
-        "upcomingEventCount": 0,
-        "eventCount90d": 4
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Sunday",
-          "Tuesday"
-        ],
-        "typicalTime": "19:00",
-        "confidence": 0.67,
-        "sampleSize": 4
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "eventbrite"
-      ],
-      "lastVerifiedAt": "2026-09-25",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 4,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "eventbrite:19986102204"
-      ],
-      "similarCommunityIds": [
-        "com_359bbb5a9a91",
-        "com_1466f20a9300",
-        "com_3048e331f7b6",
         "com_3837f308cd75",
         "com_4a9490cb3534",
-        "com_5d96f038b82a"
+        "com_3048e331f7b6",
+        "com_cb019f4e9752",
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -1126,12 +992,12 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
-        "com_3048e331f7b6",
         "com_b736e77bdf93",
+        "com_3048e331f7b6",
         "com_d8a5203885a9",
         "com_1466f20a9300",
         "com_4a9490cb3534",
-        "com_eef1ca956dae"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -1139,17 +1005,19 @@
       "slug": "strand-bookstore-d2d6c9",
       "name": "Strand Bookstore",
       "kind": "recurring_series",
-      "tagline": "Strand Bookstore is a recurring event series centered on books, outdoors in manhattan, east village.",
-      "description": "Strand Bookstore is a recurring event series centered on books, outdoors in manhattan, east village. Based on 21 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "tagline": "Strand Bookstore is a recurring event series centered on books, outdoors, special in manhattan, east village.",
+      "description": "Strand Bookstore is a recurring event series centered on books, outdoors, special in manhattan, east village. Based on 22 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "other",
         "books",
-        "outdoors"
+        "outdoors",
+        "special"
       ],
       "tags": [
         "other",
         "books",
-        "outdoors"
+        "outdoors",
+        "special"
       ],
       "neighborhoods": [
         "manhattan",
@@ -1168,7 +1036,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-24",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 16
       },
       "schedule": {
@@ -1179,7 +1047,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 21
+        "sampleSize": 22
       },
       "upcomingEventIds": [
         "c3e30a189a9347e8",
@@ -1190,7 +1058,8 @@
         "03a7a521f18ebcdf",
         "a6330dd0ebec3ed9",
         "82624d5947aee25d",
-        "f827facdce2ca207"
+        "f827facdce2ca207",
+        "f85a8b6e0c22402a"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1199,7 +1068,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 21,
+        "observedDateCount": 22,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1208,12 +1077,12 @@
         "eventbrite:30058841244"
       ],
       "similarCommunityIds": [
-        "com_4c3ca28533f5",
         "com_feb5ce491629",
+        "com_4c3ca28533f5",
         "com_359bbb5a9a91",
+        "com_3837f308cd75",
         "com_e9748c1176c1",
-        "com_f171cd222ca5",
-        "com_4a9490cb3534"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -1299,10 +1168,10 @@
       "similarCommunityIds": [
         "com_c1410c07c4dd",
         "com_3837f308cd75",
-        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_fe4b6663b721",
-        "com_33a530deb7aa"
+        "com_33a530deb7aa",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -1327,7 +1196,7 @@
       "neighborhoods": [
         "manhattan"
       ],
-      "homeVenue": "On the High Line at Gansevoort Street",
+      "homeVenue": "On the High Line at Little West 12th Street",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1023927423%2F1245579447%2F1%2Foriginal.20250506-001745?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=8e223fff3b6deef5950a15a0ae0368b4",
       "links": [
         {
@@ -1378,8 +1247,8 @@
         "eventbrite:46113016283"
       ],
       "similarCommunityIds": [
-        "com_d2d455d2d6c9",
         "com_9fed174eeff3",
+        "com_d2d455d2d6c9",
         "com_feb5ce491629",
         "com_e9748c1176c1",
         "com_a1e1c13a75f0",
@@ -1459,8 +1328,8 @@
         "com_e07415e7f595",
         "com_a786c70979d0",
         "com_cdd5daa67222",
-        "com_d2d455d2d6c9",
         "com_33a530deb7aa",
+        "com_d2d455d2d6c9",
         "com_4a9490cb3534"
       ]
     },
@@ -1534,12 +1403,12 @@
         "eventbrite:5803675324"
       ],
       "similarCommunityIds": [
-        "com_5d96f038b82a",
+        "com_b736e77bdf93",
         "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_b736e77bdf93",
-        "com_cb019f4e9752",
-        "com_9fed174eeff3"
+        "com_9fed174eeff3",
+        "com_4a9490cb3534",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -1627,7 +1496,7 @@
         "com_5582e2e97f1a",
         "com_eef1ca956dae",
         "com_fe4b6663b721",
-        "com_a1e1c13a75f0"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -1635,18 +1504,16 @@
       "slug": "brooklyn-art-haus-31f7b6",
       "name": "Brooklyn Art Haus",
       "kind": "recurring_series",
-      "tagline": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn.",
-      "description": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn. Based on 9 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
+      "tagline": "Brooklyn Art Haus is a recurring event series centered on music, film, special in brooklyn.",
+      "description": "Brooklyn Art Haus is a recurring event series centered on music, film, special in brooklyn. Based on 9 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
       "categories": [
         "music",
-        "art",
         "film",
         "special",
         "other"
       ],
       "tags": [
         "music",
-        "art",
         "film",
         "special",
         "other"
@@ -1702,79 +1569,12 @@
         "eventbrite:65148790433"
       ],
       "similarCommunityIds": [
+        "com_1466f20a9300",
         "com_3837f308cd75",
         "com_b736e77bdf93",
-        "com_1466f20a9300",
         "com_d8a5203885a9",
-        "com_5d96f038b82a",
-        "com_cb019f4e9752"
-      ]
-    },
-    {
-      "id": "com_5d96f038b82a",
-      "slug": "tale-38b82a",
-      "name": "TALE",
-      "kind": "recurring_series",
-      "tagline": "TALE is a recurring event series in brooklyn.",
-      "description": "TALE is a recurring event series in brooklyn. Based on 3 observed event dates, it meets weekly on Thursday and Friday evenings.",
-      "categories": [
-        "other"
-      ],
-      "tags": [
-        "other"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "Pine Box Rock Shop",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193292195%2F2096829283563%2F1%2Foriginal.20260911-201535?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.502&fp-y=0.289&s=594aaa50d9c16cbb4270efdd3ddc5175",
-      "links": [
-        {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
-          "url": "https://eventbrite.com/o/82384975023"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-09-24",
-        "upcomingEventCount": 0,
-        "eventCount90d": 3
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Thursday",
-          "Friday"
-        ],
-        "typicalTime": "19:00",
-        "confidence": 0.5,
-        "sampleSize": 3
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "eventbrite"
-      ],
-      "lastVerifiedAt": "2026-09-25",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 3,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "eventbrite:82384975023"
-      ],
-      "similarCommunityIds": [
-        "com_116511573b6a",
-        "com_c0bc3f282a97",
-        "com_1466f20a9300",
-        "com_cb019f4e9752",
         "com_4a9490cb3534",
-        "com_359bbb5a9a91"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -1857,8 +1657,8 @@
         "com_e9748c1176c1",
         "com_eef1ca956dae",
         "com_b0e15eaab803",
-        "com_f171cd222ca5",
-        "com_3837f308cd75"
+        "com_b736e77bdf93",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -1927,12 +1727,12 @@
         "eventbrite:8387562806"
       ],
       "similarCommunityIds": [
-        "com_00dde3915a0f",
-        "com_5d96f038b82a",
-        "com_d2d455d2d6c9",
         "com_b766b6de77ba",
         "com_1466f20a9300",
-        "com_cb019f4e9752"
+        "com_116511573b6a",
+        "com_4c3ca28533f5",
+        "com_c0bc3f282a97",
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -1997,10 +1797,10 @@
       "similarCommunityIds": [
         "com_3bc67889299d",
         "com_6114a53f79a0",
-        "com_02ba15552329",
         "com_065dafa96d43",
         "com_1ef101a0cf5a",
-        "com_00dde3915a0f"
+        "com_116511573b6a",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2067,10 +1867,10 @@
       "similarCommunityIds": [
         "com_1ab246c8dd88",
         "com_6114a53f79a0",
-        "com_02ba15552329",
         "com_065dafa96d43",
         "com_1ef101a0cf5a",
-        "com_00dde3915a0f"
+        "com_116511573b6a",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2141,10 +1941,10 @@
       "similarCommunityIds": [
         "com_1ef101a0cf5a",
         "com_b766b6de77ba",
-        "com_00dde3915a0f",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
-        "com_6114a53f79a0"
+        "com_6114a53f79a0",
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -2211,9 +2011,9 @@
         "com_1ab246c8dd88",
         "com_3bc67889299d",
         "com_1ef101a0cf5a",
-        "com_02ba15552329",
         "com_4c3ca28533f5",
-        "com_9fed174eeff3"
+        "com_9fed174eeff3",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -2278,7 +2078,7 @@
       ],
       "similarCommunityIds": [
         "com_116511573b6a",
-        "com_5d96f038b82a",
+        "com_ad50d6a81df3",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_a1e1c13a75f0",
@@ -2357,7 +2157,7 @@
         "com_fe4b6663b721",
         "com_1466f20a9300",
         "com_a1e1c13a75f0",
-        "com_feb5ce491629"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -2423,11 +2223,11 @@
       ],
       "similarCommunityIds": [
         "com_cdd5daa67222",
+        "com_cb019f4e9752",
         "com_f171cd222ca5",
         "com_55ca36db453a",
         "com_c1410c07c4dd",
-        "com_d8a5203885a9",
-        "com_cb019f4e9752"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -2499,7 +2299,7 @@
         "com_1466f20a9300",
         "com_318c39363fe6",
         "com_9fed174eeff3",
-        "com_eeb4e424a504"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -2573,12 +2373,12 @@
         "luma:philosophy"
       ],
       "similarCommunityIds": [
-        "com_ad50d6a81df3",
         "com_116511573b6a",
-        "com_5d96f038b82a",
         "com_c0bc3f282a97",
-        "com_3048e331f7b6",
-        "com_b736e77bdf93"
+        "com_1466f20a9300",
+        "com_359bbb5a9a91",
+        "com_a1e1c13a75f0",
+        "com_ad50d6a81df3"
       ]
     },
     {
@@ -2586,8 +2386,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties in queens, manhattan.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in queens, manhattan. Based on 37 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties in astoria, midtown.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in astoria, midtown. Based on 37 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "parties"
@@ -2597,12 +2397,12 @@
         "parties"
       ],
       "neighborhoods": [
-        "queens",
-        "manhattan",
         "astoria",
-        "midtown"
+        "midtown",
+        "queens",
+        "manhattan"
       ],
-      "homeVenue": "The Ditty",
+      "homeVenue": "Astoria Park",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/lh/f41318dc-b58f-469f-80e3-146c7b0431fe.jpg",
       "links": [
         {
@@ -2659,10 +2459,10 @@
       "similarCommunityIds": [
         "com_33a530deb7aa",
         "com_f171cd222ca5",
+        "com_cb019f4e9752",
         "com_55ca36db453a",
         "com_c1410c07c4dd",
-        "com_d8a5203885a9",
-        "com_1ef101a0cf5a"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -2731,7 +2531,7 @@
         "com_33a530deb7aa",
         "com_cdd5daa67222",
         "com_4a9490cb3534",
-        "com_d2d455d2d6c9"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -2906,7 +2706,7 @@
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_b766b6de77ba",
-        "com_fe4b6663b721"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -2989,12 +2789,12 @@
         "source:brooklyncomedy"
       ],
       "similarCommunityIds": [
+        "com_cb019f4e9752",
         "com_3837f308cd75",
         "com_eef1ca956dae",
         "com_4a9490cb3534",
-        "com_3048e331f7b6",
         "com_b736e77bdf93",
-        "com_1466f20a9300"
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -3070,9 +2870,9 @@
         "com_1466f20a9300",
         "com_64ebabd98c5c",
         "com_e07415e7f595",
+        "com_b736e77bdf93",
         "com_3048e331f7b6",
-        "com_3837f308cd75",
-        "com_b736e77bdf93"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -3140,23 +2940,18 @@
         "observedDateCount": 37,
         "hasFirstPartyIdentity": false
       },
-      "newcomerFriendly": true,
-      "newcomerEvidence": [
-        {
-          "eventId": "e1c98268f825480f",
-          "signal": "no experience"
-        }
-      ],
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "source:lizsbookbar"
       ],
       "similarCommunityIds": [
         "com_5582e2e97f1a",
         "com_c1410c07c4dd",
+        "com_b736e77bdf93",
         "com_f171cd222ca5",
         "com_3837f308cd75",
-        "com_55ca36db453a",
-        "com_d8a5203885a9"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -3241,10 +3036,10 @@
       "similarCommunityIds": [
         "com_d8a5203885a9",
         "com_4a9490cb3534",
+        "com_b736e77bdf93",
+        "com_cb019f4e9752",
         "com_5582e2e97f1a",
-        "com_e9748c1176c1",
-        "com_3837f308cd75",
-        "com_b736e77bdf93"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3310,9 +3105,9 @@
         "com_a786c70979d0",
         "com_f171cd222ca5",
         "com_4a9490cb3534",
+        "com_b736e77bdf93",
         "com_218b97d674a6",
-        "com_64ebabd98c5c",
-        "com_3837f308cd75"
+        "com_64ebabd98c5c"
       ]
     },
     {
@@ -3399,9 +3194,9 @@
         "com_318c39363fe6",
         "com_d8a5203885a9",
         "com_eef1ca956dae",
+        "com_d2d455d2d6c9",
         "com_feb5ce491629",
-        "com_b766b6de77ba",
-        "com_d2d455d2d6c9"
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -3479,11 +3274,11 @@
       ],
       "similarCommunityIds": [
         "com_f23f8820878b",
-        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_ed8d42fb031d",
         "com_eef1ca956dae",
-        "com_55ca36db453a"
+        "com_55ca36db453a",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -50620,7 +50415,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-25T01:50:31.119056+00:00",
+  "lastUpdated": "2026-09-25T05:08:30.815053+00:00",
   "version": 1,
   "schemaVersion": 1
 }
