@@ -1221,25 +1221,25 @@
       "slug": "book-club-bar-db453a",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, food, parties in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, food, parties in east village, bushwick. Based on 20 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, food, parties in bushwick, east village.",
+      "description": "Book Club Bar is a community space centered on books, food, parties in bushwick, east village. Based on 20 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "food",
         "parties",
-        "music",
-        "comedy"
+        "art",
+        "music"
       ],
       "tags": [
         "books",
         "food",
         "parties",
-        "music",
-        "comedy"
+        "art",
+        "music"
       ],
       "neighborhoods": [
-        "east village",
-        "bushwick"
+        "bushwick",
+        "east village"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/09_September/Indie_June_Square.png?cb=1787679405",
@@ -1254,7 +1254,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-23",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 12
       },
       "schedule": {
@@ -1276,6 +1276,7 @@
         "61351d70299e941d",
         "75bab11a712ef68f",
         "b6d3cee25e07a78b",
+        "0f27e63506456b5d",
         "95c9fcd22fd82938",
         "8d3e669b69943bc4",
         "15a52252351548d9"
@@ -1297,11 +1298,11 @@
       ],
       "similarCommunityIds": [
         "com_c1410c07c4dd",
-        "com_d8a5203885a9",
-        "com_318c39363fe6",
         "com_3837f308cd75",
         "com_b736e77bdf93",
-        "com_eef1ca956dae"
+        "com_d8a5203885a9",
+        "com_fe4b6663b721",
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -2964,9 +2965,9 @@
         "e1957413274a2cf4",
         "e3d3520c41c3d128",
         "bd13dcb98dadb102",
+        "41f2854401c7ed5b",
         "f22e82c22d503108",
         "b7c1d73592858907",
-        "41f2854401c7ed5b",
         "64940d02291bc0cb",
         "823d2259d73c80ca",
         "aca11da10c9b77da"
@@ -2990,9 +2991,9 @@
         "com_3837f308cd75",
         "com_eef1ca956dae",
         "com_4a9490cb3534",
-        "com_55ca36db453a",
         "com_3048e331f7b6",
-        "com_b736e77bdf93"
+        "com_b736e77bdf93",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -3318,19 +3319,19 @@
       "slug": "new-york-comedy-club-20878b",
       "name": "New York Comedy Club",
       "kind": "club",
-      "tagline": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 54 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "tagline": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side.",
+      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 54 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
-        "music",
         "special",
+        "music",
         "outdoors",
         "celebrities"
       ],
       "tags": [
         "comedy",
-        "music",
         "special",
+        "music",
         "outdoors",
         "celebrities"
       ],
@@ -3351,7 +3352,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-25",
-        "upcomingEventCount": 46,
+        "upcomingEventCount": 40,
         "eventCount90d": 113
       },
       "schedule": {
@@ -3366,17 +3367,17 @@
       },
       "upcomingEventIds": [
         "d8fde6435dec8c91",
-        "25047df15b39d2b5",
         "ce659756d5e40855",
         "63e29fa463150800",
+        "25047df15b39d2b5",
         "de4d13c9b16d9a7e",
-        "0e915f3a356b18fa",
-        "5c56b47ec33810b7",
         "80cf3c798354ac94",
-        "8e310bf35ef87eac",
-        "ef1917f59c557161",
+        "5c56b47ec33810b7",
         "58a1dd05391b4534",
-        "81225b36d6cdfe3f"
+        "81225b36d6cdfe3f",
+        "cd13e3ac16f6a4c4",
+        "550c05e9ea254282",
+        "0198364bfa66b889"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -3397,9 +3398,9 @@
         "com_318c39363fe6",
         "com_d8a5203885a9",
         "com_eef1ca956dae",
-        "com_55ca36db453a",
         "com_feb5ce491629",
-        "com_b766b6de77ba"
+        "com_b766b6de77ba",
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -3407,17 +3408,15 @@
       "slug": "eastville-comedy-club-363fe6",
       "name": "Eastville Comedy Club",
       "kind": "club",
-      "tagline": "Eastville Comedy Club is a community club centered on comedy, music, art in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music, art in east village. Based on 37 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "Eastville Comedy Club is a community club centered on comedy, music in east village.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music in east village. Based on 37 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
-        "music",
-        "art"
+        "music"
       ],
       "tags": [
         "comedy",
-        "music",
-        "art"
+        "music"
       ],
       "neighborhoods": [
         "east village"
@@ -3435,7 +3434,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-25",
-        "upcomingEventCount": 21,
+        "upcomingEventCount": 19,
         "eventCount90d": 44
       },
       "schedule": {
@@ -3456,11 +3455,11 @@
         "1459f9232dc89bab",
         "6ce0c8aa635e4e07",
         "7b8ff5f2a27fffad",
-        "537379272e6c3770",
-        "5c061904687d8266",
         "cf5114de7a381948",
         "2557133a373c9f77",
-        "5f209e2f9df2310f"
+        "5f209e2f9df2310f",
+        "40c31208f9a0f23b",
+        "5016b7559441e003"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -3478,12 +3477,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
-        "com_55ca36db453a",
         "com_f23f8820878b",
+        "com_b736e77bdf93",
+        "com_d8a5203885a9",
         "com_ed8d42fb031d",
-        "com_3048e331f7b6",
-        "com_d8a5203885a9"
+        "com_eef1ca956dae",
+        "com_55ca36db453a"
       ]
     },
     {
@@ -50620,7 +50619,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-25T00:15:18.627862+00:00",
+  "lastUpdated": "2026-09-25T00:15:50.056198+00:00",
   "version": 1,
   "schemaVersion": 1
 }
