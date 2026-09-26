@@ -454,10 +454,10 @@
       "similarCommunityIds": [
         "com_cb019f4e9752",
         "com_3837f308cd75",
+        "com_648449f336c0",
         "com_d8a5203885a9",
         "com_eef1ca956dae",
-        "com_a1e1c13a75f0",
-        "com_1466f20a9300"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -753,8 +753,8 @@
         "com_d8a5203885a9",
         "com_3837f308cd75",
         "com_eef1ca956dae",
-        "com_1466f20a9300",
-        "com_b736e77bdf93"
+        "com_648449f336c0",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1086,6 +1086,74 @@
         "com_3837f308cd75",
         "com_e9748c1176c1",
         "com_f171cd222ca5"
+      ]
+    },
+    {
+      "id": "com_648449f336c0",
+      "slug": "bitches-brew-f336c0",
+      "name": "Bitches' Brew",
+      "kind": "recurring_series",
+      "tagline": "Bitches' Brew is a recurring event series centered on comedy in brooklyn.",
+      "description": "Bitches' Brew is a recurring event series centered on comedy in brooklyn. Based on 2 observed event dates, it meets weekly on Friday evenings.",
+      "categories": [
+        "comedy"
+      ],
+      "tags": [
+        "comedy"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Halyards",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F149318509%2F55951917839%2F1%2Foriginal.20200120-053137?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C800%2C400&s=894e49d38c60a0244926f1715f274056",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/32323184465"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-09-25",
+        "upcomingEventCount": 1,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday"
+        ],
+        "typicalTime": "20:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "4b2dc1a621d402b1"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-09-26",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:32323184465"
+      ],
+      "similarCommunityIds": [
+        "com_4a9490cb3534",
+        "com_cb019f4e9752",
+        "com_d8a5203885a9",
+        "com_eef1ca956dae",
+        "com_318c39363fe6",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -3279,11 +3347,11 @@
       ],
       "similarCommunityIds": [
         "com_f23f8820878b",
+        "com_648449f336c0",
         "com_d8a5203885a9",
         "com_ed8d42fb031d",
         "com_eef1ca956dae",
-        "com_55ca36db453a",
-        "com_1466f20a9300"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -50420,7 +50488,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-26T08:03:37.311467+00:00",
+  "lastUpdated": "2026-09-26T10:21:18.290317+00:00",
   "version": 1,
   "schemaVersion": 1
 }
