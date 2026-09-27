@@ -233,13 +233,15 @@
       "slug": "bad-movie-night-brooklyn-d98c5c",
       "name": "Bad Movie Night Brooklyn",
       "kind": "recurring_series",
-      "tagline": "Bad Movie Night Brooklyn is a recurring event series centered on parties in brooklyn.",
-      "description": "Bad Movie Night Brooklyn is a recurring event series centered on parties in brooklyn. Based on 2 observed event dates, it meets biweekly on Saturday evenings.",
+      "tagline": "Bad Movie Night Brooklyn is a recurring event series centered on parties, movies in brooklyn.",
+      "description": "Bad Movie Night Brooklyn is a recurring event series centered on parties, movies in brooklyn. Based on 3 observed event dates, it meets biweekly on Saturday and Monday evenings.",
       "categories": [
-        "parties"
+        "parties",
+        "movies"
       ],
       "tags": [
-        "parties"
+        "parties",
+        "movies"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -257,20 +259,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-26",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
         "cadence": "biweekly",
         "typicalDays": [
-          "Saturday"
+          "Saturday",
+          "Monday"
         ],
         "typicalTime": "17:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
-        "e583dac68d99e9b7"
+        "e583dac68d99e9b7",
+        "e0cb6bdf9bdb2817"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -279,7 +283,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -289,11 +293,11 @@
       ],
       "similarCommunityIds": [
         "com_1ca4486298de",
-        "com_ebf7599ed103",
         "com_218b97d674a6",
         "com_e07415e7f595",
+        "com_ebf7599ed103",
         "com_cb019f4e9752",
-        "com_d8a5203885a9"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -2587,9 +2591,9 @@
       "similarCommunityIds": [
         "com_d8a5203885a9",
         "com_cb019f4e9752",
-        "com_64ebabd98c5c",
         "com_3048e331f7b6",
         "com_3837f308cd75",
+        "com_64ebabd98c5c",
         "com_1466f20a9300"
       ]
     },
@@ -2656,10 +2660,10 @@
         "partiful:cahd80tpfr5prooeegjy"
       ],
       "similarCommunityIds": [
-        "com_64ebabd98c5c",
         "com_1ef101a0cf5a",
         "com_9fed174eeff3",
         "com_218b97d674a6",
+        "com_64ebabd98c5c",
         "com_fe4b6663b721",
         "com_e9748c1176c1"
       ]
@@ -50592,7 +50596,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-27T19:16:20.336945+00:00",
+  "lastUpdated": "2026-09-27T20:29:51.339669+00:00",
   "version": 1,
   "schemaVersion": 1
 }
