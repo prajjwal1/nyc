@@ -71,8 +71,8 @@
         "url:https://www.eventbrite.com/o/elsewhere-105655500371"
       ],
       "similarCommunityIds": [
-        "com_318c39363fe6",
         "com_a1e1c13a75f0",
+        "com_318c39363fe6",
         "com_4a9490cb3534",
         "com_9fed174eeff3",
         "com_cb019f4e9752",
@@ -730,10 +730,10 @@
       "similarCommunityIds": [
         "com_2a30ebfb0079",
         "com_ab8259bb35a4",
+        "com_318c39363fe6",
         "com_3048e331f7b6",
         "com_55ca36db453a",
-        "com_c1410c07c4dd",
-        "com_02ba15552329"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -1210,9 +1210,9 @@
         "com_4a9490cb3534",
         "com_cb019f4e9752",
         "com_d8a5203885a9",
-        "com_318c39363fe6",
         "com_a1e1c13a75f0",
-        "com_1466f20a9300"
+        "com_1466f20a9300",
+        "com_1ca4486298de"
       ]
     },
     {
@@ -1296,11 +1296,11 @@
       ],
       "similarCommunityIds": [
         "com_c1410c07c4dd",
+        "com_318c39363fe6",
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_33a530deb7aa",
-        "com_f23f8820878b"
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -2002,7 +2002,7 @@
       "name": "VRC",
       "kind": "recurring_series",
       "tagline": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC.",
-      "description": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC. Based on 6 observed event dates, it meets weekly on Monday evenings.",
+      "description": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC. Based on 7 observed event dates, it meets weekly on Monday evenings.",
       "categories": [
         "fitness",
         "outdoors",
@@ -2027,7 +2027,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-28",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 3
       },
       "schedule": {
@@ -2037,13 +2037,14 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
         "fdaaf9c6182dfd9f",
         "c737164195408427",
         "a8ef76f83f71af57",
-        "ab9339b66d5bb7a9"
+        "ab9339b66d5bb7a9",
+        "014cf3d422efc908"
       ],
       "sourceAttributions": [
         "instagram"
@@ -2052,7 +2053,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3049,8 +3050,8 @@
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_cb019f4e9752",
-        "com_eef1ca956dae"
+        "com_318c39363fe6",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -3454,7 +3455,7 @@
       "name": "New York Comedy Club",
       "kind": "club",
       "tagline": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 56 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 57 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -3486,7 +3487,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-28",
-        "upcomingEventCount": 37,
+        "upcomingEventCount": 40,
         "eventCount90d": 131
       },
       "schedule": {
@@ -3497,21 +3498,21 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 56
+        "sampleSize": 57
       },
       "upcomingEventIds": [
         "9afeeb5ee31a429f",
         "621fe575c1bfd390",
         "cc19587a42b57c49",
+        "e81836e518f74961",
+        "0e2da7942b8c55ee",
+        "0d7b11fe593f6552",
         "9d3e2d306a7ddf71",
         "47fa0de80e803d84",
         "0198364bfa66b889",
         "2e0b91bd7c1454d7",
         "34ba1949abe3fa0f",
-        "1f7b9c9172b81ba0",
-        "a8434c36e6bde285",
-        "ca5028a732d202f6",
-        "f6e29bf1d395e531"
+        "1f7b9c9172b81ba0"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -3520,7 +3521,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 56,
+        "observedDateCount": 57,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3542,15 +3543,17 @@
       "slug": "eastville-comedy-club-363fe6",
       "name": "Eastville Comedy Club",
       "kind": "club",
-      "tagline": "Eastville Comedy Club is a community club centered on comedy, music in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music in east village. Based on 38 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "Eastville Comedy Club is a community club centered on comedy, music, art in east village.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, art in east village. Based on 38 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
-        "music"
+        "music",
+        "art"
       ],
       "tags": [
         "comedy",
-        "music"
+        "music",
+        "art"
       ],
       "neighborhoods": [
         "east village"
@@ -3568,7 +3571,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-27",
-        "upcomingEventCount": 16,
+        "upcomingEventCount": 18,
         "eventCount90d": 50
       },
       "schedule": {
@@ -3584,6 +3587,8 @@
       "upcomingEventIds": [
         "6ce0c8aa635e4e07",
         "7b8ff5f2a27fffad",
+        "537379272e6c3770",
+        "5c061904687d8266",
         "cf5114de7a381948",
         "2557133a373c9f77",
         "5f209e2f9df2310f",
@@ -3591,9 +3596,7 @@
         "5016b7559441e003",
         "4dbca5545046806d",
         "c720f5d3875b6ec7",
-        "6637ea0f8630a51e",
-        "816db9ce419f9953",
-        "a32a57309ced5ee2"
+        "6637ea0f8630a51e"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -3611,12 +3614,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_b766b6de77ba",
-        "com_f23f8820878b",
-        "com_648449f336c0",
-        "com_d8a5203885a9",
         "com_55ca36db453a",
-        "com_a1e1c13a75f0"
+        "com_f23f8820878b",
+        "com_b766b6de77ba",
+        "com_c1410c07c4dd",
+        "com_116511573b6a",
+        "com_2a30ebfb0079"
       ]
     },
     {
@@ -50799,7 +50802,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-28T22:09:59.208439+00:00",
+  "lastUpdated": "2026-09-28T23:55:02.018546+00:00",
   "version": 1,
   "schemaVersion": 1
 }
