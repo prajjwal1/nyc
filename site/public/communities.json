@@ -1543,21 +1543,21 @@
       "slug": "brooklyn-art-haus-31f7b6",
       "name": "Brooklyn Art Haus",
       "kind": "recurring_series",
-      "tagline": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn.",
-      "description": "Brooklyn Art Haus is a recurring event series centered on music, art, film in brooklyn. Based on 10 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
+      "tagline": "Brooklyn Art Haus is a recurring event series centered on art, music, film in brooklyn.",
+      "description": "Brooklyn Art Haus is a recurring event series centered on art, music, film in brooklyn. Based on 12 observed event dates, it meets weekly on Wednesday and Sunday mornings.",
       "categories": [
-        "music",
+        "other",
         "art",
+        "music",
         "film",
-        "special",
-        "other"
+        "special"
       ],
       "tags": [
-        "music",
+        "other",
         "art",
+        "music",
         "film",
-        "special",
-        "other"
+        "special"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -1575,21 +1575,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-27",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 4,
         "eventCount90d": 12
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Sunday",
-          "Wednesday"
+          "Wednesday",
+          "Sunday"
         ],
         "typicalTime": "11:00",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "7cc83e82cb8823b6",
+        "ff4b8c55b91b30ce",
+        "63f93bd9b3998b66",
         "f88c0f4a4e827b5f"
       ],
       "sourceAttributions": [
@@ -1599,7 +1601,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50575,7 +50577,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-28T01:11:05.115650+00:00",
+  "lastUpdated": "2026-09-28T01:47:19.824367+00:00",
   "version": 1,
   "schemaVersion": 1
 }
