@@ -140,10 +140,22 @@ export default async function EventPage({ params }: Props) {
   const jsonLd = JSON.stringify(eventJsonLd(event)).replace(/</g, "\\u003c");
 
   return (
-    <main className="min-h-screen bg-[#f4f3ef] px-4 py-8 text-[#182923] sm:px-6 sm:py-12">
+    <main className="min-h-screen bg-[#f4f3ef] px-4 py-4 text-[#182923] sm:px-6 sm:py-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+      <div className="sticky top-[60px] z-30 -mx-4 mb-4 border-b border-[#dedbd3] bg-[#f4f3ef]/95 px-4 py-2 backdrop-blur-md sm:hidden">
+        <Link
+          href={`/?date=${encodeURIComponent(event.date)}`}
+          className="mx-auto flex min-h-11 max-w-3xl items-center gap-2 rounded-xl px-2 text-sm font-semibold text-[#173c35] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#173c35]"
+          aria-label="Back to events calendar"
+        >
+          <svg aria-hidden="true" className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          Back to events
+        </Link>
+      </div>
       <article className="mx-auto max-w-3xl">
-        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-[#66716c]">
+        <nav aria-label="Breadcrumb" className="mb-6 hidden text-sm text-[#66716c] sm:block">
           <Link href="/events" className="hover:text-[#173c35] hover:underline">NYC events</Link>
           <span aria-hidden="true"> / </span>
           <span>{event.title}</span>
@@ -159,7 +171,7 @@ export default async function EventPage({ params }: Props) {
 
         <div className="rounded-[24px] border border-[#dedbd3] bg-[#fbfaf7] p-5 shadow-[0_20px_50px_-38px_rgba(20,45,37,0.5)] sm:p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a684e]">NYC event</p>
-          <h1 className="mt-2 font-editorial text-4xl leading-[1.02] tracking-[-0.03em] text-[#173c35] sm:text-6xl">
+          <h1 className="mt-2 break-words font-editorial text-4xl leading-[1.02] tracking-[-0.03em] text-[#173c35] sm:text-6xl">
             {event.title}
           </h1>
           <a
@@ -234,7 +246,7 @@ export default async function EventPage({ params }: Props) {
               View original event ↗
             </a>
             <Link
-              href="/events"
+              href={`/?date=${encodeURIComponent(event.date)}`}
               className="rounded-full border border-[#9bb7ae] px-5 py-2.5 text-sm font-semibold text-[#173c35] hover:bg-[#edf5f1]"
             >
               Browse more NYC events

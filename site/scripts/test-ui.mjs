@@ -116,6 +116,27 @@ try {
     if (new URL(page.url()).searchParams.has("view")) throw new Error("legacy Feed URL state was not removed");
     if (!(await page.getByRole("heading", { name: "What's happening in NYC" }).count())) throw new Error("legacy Feed URL did not resolve to Calendar");
 
+    if (viewport.width < 640) {
+      await page.goto(`http://127.0.0.1:${port}/nyc/events/`, { waitUntil: "networkidle" });
+      const card = page.locator("[data-event-id]").first();
+      const eventId = await card.getAttribute("data-event-id");
+      const eventDate = eventsPayload.events.find((event) => event.id === eventId)?.date;
+      if (!eventDate) throw new Error("could not find the event card in the feed");
+      await card.getByRole("link", { name: /^View details for/ }).click();
+      const back = page.getByRole("link", { name: "Back to events calendar" });
+      await back.waitFor();
+      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+      const backBox = await back.boundingBox();
+      if (!backBox || backBox.height < 44 || backBox.y < 59 || backBox.y > 70) {
+        throw new Error("mobile event back control is not visible and sticky after scrolling");
+      }
+      await back.click();
+      await page.waitForURL((url) => url.pathname === "/nyc/" && url.searchParams.get("date") === eventDate);
+      if (!(await page.locator(`[data-event-id="${eventId}"]`).count())) {
+        throw new Error("back control did not return to the event's calendar date");
+      }
+    }
+
     await page.close();
   }
   console.log("UI checks passed: calendar-first navigation, organizer links, touch-safe actions, no Hide controls, and account views.");
