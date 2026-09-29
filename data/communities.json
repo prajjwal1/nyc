@@ -456,7 +456,7 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy in manhattan. Based on 28 observed event dates, it meets weekly on Sunday and Saturday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy in manhattan. Based on 29 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "other",
         "comedy"
@@ -481,18 +481,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-27",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 10,
         "eventCount90d": 34
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Saturday"
+          "Monday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 28
+        "sampleSize": 29
       },
       "upcomingEventIds": [
         "1e4ed5a9af3df067",
@@ -502,7 +502,9 @@
         "214f93659e1ca475",
         "f81c96287be59443",
         "1d08fb4dad46ae14",
-        "e542f9aec9bd6551"
+        "e542f9aec9bd6551",
+        "fe8f26b6332a0304",
+        "332e4ac6dd026732"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -511,7 +513,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 28,
+        "observedDateCount": 29,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50790,7 +50792,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-29T01:15:55.163197+00:00",
+  "lastUpdated": "2026-09-29T02:05:33.761355+00:00",
   "version": 1,
   "schemaVersion": 1
 }
