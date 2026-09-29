@@ -2373,7 +2373,7 @@
       "name": "NYC Backgammon Club",
       "kind": "club",
       "tagline": "NYC Backgammon Club is a community club centered on games, music in soho.",
-      "description": "NYC Backgammon Club is a community club centered on games, music in soho. Based on 4 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "description": "NYC Backgammon Club is a community club centered on games, music in soho. Based on 5 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
         "games",
         "music"
@@ -2398,21 +2398,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-29",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 3
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Monday",
-          "Tuesday"
+          "Tuesday",
+          "Monday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "00d2a1545347cc90",
+        "f653c93073cdab6a",
         "757a702bea2dbea2"
       ],
       "sourceAttributions": [
@@ -2422,7 +2423,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3193,8 +3194,8 @@
         "78f3e29cf9a81cd4",
         "495bec5a4d165d90",
         "370a5c4c9d9e6805",
-        "29c2419f31e3511b",
         "91ddc399125db9ee",
+        "29c2419f31e3511b",
         "90f4e17a6277b044",
         "15f6c041ea0ed2d4"
       ],
@@ -3646,7 +3647,7 @@
         "east village"
       ],
       "homeVenue": "Eastville Comedy Club",
-      "imageUrl": "/img/events/IMG-9367-7e68079a-large-thumb.jpg",
+      "imageUrl": "/img/comedians/neko-white-a2cb099b-large-thumb.jpg",
       "links": [
         {
           "type": "eastvillecomedy",
@@ -3658,7 +3659,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-27",
-        "upcomingEventCount": 18,
+        "upcomingEventCount": 16,
         "eventCount90d": 50
       },
       "schedule": {
@@ -3672,10 +3673,8 @@
         "sampleSize": 39
       },
       "upcomingEventIds": [
-        "7b8ff5f2a27fffad",
         "6ce0c8aa635e4e07",
-        "537379272e6c3770",
-        "5c061904687d8266",
+        "7b8ff5f2a27fffad",
         "cf5114de7a381948",
         "2557133a373c9f77",
         "5f209e2f9df2310f",
@@ -3683,7 +3682,9 @@
         "5016b7559441e003",
         "4dbca5545046806d",
         "6637ea0f8630a51e",
-        "816db9ce419f9953"
+        "816db9ce419f9953",
+        "a32a57309ced5ee2",
+        "22e2ac0c6a8c2a94"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -50843,7 +50844,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-29T19:02:58.521266+00:00",
+  "lastUpdated": "2026-09-29T19:38:41.087134+00:00",
   "version": 1,
   "schemaVersion": 1
 }
