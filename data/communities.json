@@ -1550,7 +1550,7 @@
       "name": "The National Arts Club",
       "kind": "club",
       "tagline": "The National Arts Club is a community club centered on exploration, music, books in manhattan.",
-      "description": "The National Arts Club is a community club centered on exploration, music, books in manhattan. Based on 18 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "description": "The National Arts Club is a community club centered on exploration, music, books in manhattan. Based on 20 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
         "other",
         "exploration",
@@ -1581,7 +1581,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-29",
-        "upcomingEventCount": 12,
+        "upcomingEventCount": 14,
         "eventCount90d": 11
       },
       "schedule": {
@@ -1592,7 +1592,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 18
+        "sampleSize": 20
       },
       "upcomingEventIds": [
         "3203611ff1e96814",
@@ -1615,7 +1615,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 18,
+        "observedDateCount": 20,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1875,7 +1875,7 @@
       "name": "Alfreda's Cinema",
       "kind": "recurring_series",
       "tagline": "Alfreda's Cinema is a recurring event series in brooklyn, flatbush.",
-      "description": "Alfreda's Cinema is a recurring event series in brooklyn, flatbush. Based on 7 observed event dates, it meets weekly on Thursday and Sunday evenings.",
+      "description": "Alfreda's Cinema is a recurring event series in brooklyn, flatbush. Based on 8 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "other"
       ],
@@ -1899,22 +1899,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-27",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 5
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Sunday"
+          "Friday"
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
         "f7534b3bd47d1000",
-        "fd4f348e5f7db120"
+        "fd4f348e5f7db120",
+        "fdbb05e1c88e2a94"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1923,7 +1924,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -50844,7 +50845,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-29T19:38:41.087134+00:00",
+  "lastUpdated": "2026-09-29T20:03:36.197671+00:00",
   "version": 1,
   "schemaVersion": 1
 }
