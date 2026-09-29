@@ -2227,7 +2227,7 @@
       "name": "Kanso: Phone-Free Experiences",
       "kind": "recurring_series",
       "tagline": "Kanso: Phone-Free Experiences is a recurring event series centered on wellness, music in manhattan.",
-      "description": "Kanso: Phone-Free Experiences is a recurring event series centered on wellness, music in manhattan. Based on 10 observed event dates, it meets weekly on Thursday and Saturday evenings.",
+      "description": "Kanso: Phone-Free Experiences is a recurring event series centered on wellness, music in manhattan. Based on 11 observed event dates, it meets weekly on Thursday and Saturday evenings.",
       "categories": [
         "other",
         "wellness",
@@ -2265,12 +2265,12 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 11
       },
       "upcomingEventIds": [
         "039506308ed9a549",
         "87024492cf311a67",
-        "95e87c19502405c3"
+        "b6bee7a946c91a1e"
       ],
       "sourceAttributions": [
         "luma"
@@ -2279,7 +2279,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3051,14 +3051,14 @@
         "music",
         "parties",
         "food",
-        "art"
+        "celebrities"
       ],
       "tags": [
         "books",
         "music",
         "parties",
         "food",
-        "art"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
@@ -3071,14 +3071,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://bookclubbar.com/events/6441320261118"
+          "url": "https://www.bookclubbar.com/events/6401120261115"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-29",
-        "upcomingEventCount": 28,
+        "upcomingEventCount": 23,
         "eventCount90d": 50
       },
       "schedule": {
@@ -3120,10 +3120,6 @@
         {
           "eventId": "45ca74a60db45547",
           "signal": "beginners"
-        },
-        {
-          "eventId": "f5207a5c726e6330",
-          "signal": "beginners"
         }
       ],
       "aliases": [
@@ -3131,11 +3127,11 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
+        "com_eef1ca956dae",
         "com_3837f308cd75",
         "com_d8a5203885a9",
-        "com_cb019f4e9752",
-        "com_eef1ca956dae",
-        "com_33a530deb7aa"
+        "com_e9748c1176c1",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -3197,8 +3193,8 @@
         "78f3e29cf9a81cd4",
         "495bec5a4d165d90",
         "370a5c4c9d9e6805",
-        "91ddc399125db9ee",
         "29c2419f31e3511b",
+        "91ddc399125db9ee",
         "90f4e17a6277b044",
         "15f6c041ea0ed2d4"
       ],
@@ -3307,7 +3303,7 @@
       "name": "Liz's Book Bar",
       "kind": "community_space",
       "tagline": "Liz's Book Bar is a community space centered on books, music, singles in carroll gardens.",
-      "description": "Liz's Book Bar is a community space centered on books, music, singles in carroll gardens. Based on 37 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "description": "Liz's Book Bar is a community space centered on books, music, singles in carroll gardens. Based on 41 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
@@ -3327,14 +3323,14 @@
         {
           "type": "lizsbookbar",
           "label": "View on Lizsbookbar",
-          "url": "https://lizsbookbar.com/events/6416220261021"
+          "url": "https://lizsbookbar.com/events/6468620261109"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-29",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 10,
         "eventCount90d": 28
       },
       "schedule": {
@@ -3345,7 +3341,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 37
+        "sampleSize": 41
       },
       "upcomingEventIds": [
         "9851932a2a320025",
@@ -3353,7 +3349,11 @@
         "7fa518de8a7dd89c",
         "ae35b567591f258e",
         "91d80448a8a256df",
-        "e0484b240c282db8"
+        "e0484b240c282db8",
+        "bd78978348a2fc7a",
+        "60a3c318996f830e",
+        "dc947e8710879bd7",
+        "8605edb3ee0ee354"
       ],
       "sourceAttributions": [
         "lizsbookbar"
@@ -3362,11 +3362,16 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 37,
+        "observedDateCount": 41,
         "hasFirstPartyIdentity": false
       },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "60a3c318996f830e",
+          "signal": "no experience"
+        }
+      ],
       "aliases": [
         "source:lizsbookbar"
       ],
@@ -3385,7 +3390,7 @@
       "name": "POWERHOUSE Arena",
       "kind": "institutional_program",
       "tagline": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn.",
-      "description": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn. Based on 38 observed event dates, it meets weekly on Friday and Monday evenings.",
+      "description": "POWERHOUSE Arena is a community program centered on books, celebrities, exploration in brooklyn. Based on 39 observed event dates, it meets weekly on Friday and Monday evenings.",
       "categories": [
         "books",
         "celebrities",
@@ -3414,7 +3419,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-29",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 18,
         "eventCount90d": 27
       },
       "schedule": {
@@ -3425,7 +3430,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 38
+        "sampleSize": 39
       },
       "upcomingEventIds": [
         "bbe96e7f4c1aed31",
@@ -3439,7 +3444,7 @@
         "c23c91cdf0b8c504",
         "c05be73271bc8a35",
         "6988e6ae6131d27d",
-        "a400fe90f2d7772c"
+        "e7480e475b7728e3"
       ],
       "sourceAttributions": [
         "powerhousearena"
@@ -3448,7 +3453,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 38,
+        "observedDateCount": 39,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -3460,9 +3465,9 @@
         "com_e9748c1176c1",
         "com_3837f308cd75",
         "com_d8a5203885a9",
+        "com_c1410c07c4dd",
         "com_4a9490cb3534",
-        "com_cb019f4e9752",
-        "com_3048e331f7b6"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -3596,7 +3601,7 @@
         "2e0b91bd7c1454d7",
         "34ba1949abe3fa0f",
         "1f7b9c9172b81ba0",
-        "a8434c36e6bde285"
+        "84c7e8a96e2ad276"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -3641,7 +3646,7 @@
         "east village"
       ],
       "homeVenue": "Eastville Comedy Club",
-      "imageUrl": "/img/comedians/neko-white-a2cb099b-large-thumb.jpg",
+      "imageUrl": "/img/events/IMG-9367-7e68079a-large-thumb.jpg",
       "links": [
         {
           "type": "eastvillecomedy",
@@ -3653,7 +3658,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-27",
-        "upcomingEventCount": 16,
+        "upcomingEventCount": 18,
         "eventCount90d": 50
       },
       "schedule": {
@@ -3667,8 +3672,10 @@
         "sampleSize": 39
       },
       "upcomingEventIds": [
-        "6ce0c8aa635e4e07",
         "7b8ff5f2a27fffad",
+        "6ce0c8aa635e4e07",
+        "537379272e6c3770",
+        "5c061904687d8266",
         "cf5114de7a381948",
         "2557133a373c9f77",
         "5f209e2f9df2310f",
@@ -3676,9 +3683,7 @@
         "5016b7559441e003",
         "4dbca5545046806d",
         "6637ea0f8630a51e",
-        "816db9ce419f9953",
-        "a32a57309ced5ee2",
-        "ce588e276c13e1c5"
+        "816db9ce419f9953"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -50838,7 +50843,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-29T16:04:51.425537+00:00",
+  "lastUpdated": "2026-09-29T19:02:58.521266+00:00",
   "version": 1,
   "schemaVersion": 1
 }
