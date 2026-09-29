@@ -6,7 +6,7 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on comedy, music in bushwick.",
-      "description": "Elsewhere is a recurring event series centered on comedy, music in bushwick. Based on 43 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "Elsewhere is a recurring event series centered on comedy, music in bushwick. Based on 44 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "other",
         "comedy",
@@ -33,7 +33,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-29",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 71
       },
       "schedule": {
@@ -44,7 +44,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 43
+        "sampleSize": 44
       },
       "upcomingEventIds": [
         "fec51fe2b64cba34",
@@ -52,6 +52,7 @@
         "8176b106aa6c3242",
         "bfc1eaea334ef2eb",
         "c374c9b1301799f0",
+        "fce2bd95fe1be3f1",
         "c65ab39ef5533d68"
       ],
       "sourceAttributions": [
@@ -61,7 +62,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 43,
+        "observedDateCount": 44,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -75,8 +76,8 @@
         "com_a1e1c13a75f0",
         "com_4a9490cb3534",
         "com_9fed174eeff3",
-        "com_cb019f4e9752",
-        "com_55ca36db453a"
+        "com_5582e2e97f1a",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -145,7 +146,7 @@
         "com_cdd5daa67222",
         "com_02ba15552329",
         "com_065dafa96d43",
-        "com_116511573b6a"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -154,7 +155,7 @@
       "name": "Ciao Evento",
       "kind": "recurring_series",
       "tagline": "Ciao Evento is a recurring event series centered on food, parties, dance in manhattan.",
-      "description": "Ciao Evento is a recurring event series centered on food, parties, dance in manhattan. Based on 8 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "description": "Ciao Evento is a recurring event series centered on food, parties, dance in manhattan. Based on 10 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "food",
         "parties",
@@ -183,7 +184,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-27",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 5,
         "eventCount90d": 6
       },
       "schedule": {
@@ -194,12 +195,14 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "83639802a6edab94",
         "50afb8d79d036d57",
-        "ce039abe0d7b37c9"
+        "de28b9e88f14dacf",
+        "ce039abe0d7b37c9",
+        "88d0e8f1ca3878e4"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -208,7 +211,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -442,12 +445,12 @@
         "eventbrite:121749151824"
       ],
       "similarCommunityIds": [
-        "com_116511573b6a",
         "com_ab8259bb35a4",
         "com_1ef101a0cf5a",
         "com_4c3ca28533f5",
         "com_6114a53f79a0",
-        "com_9fed174eeff3"
+        "com_9fed174eeff3",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -667,73 +670,6 @@
         "com_a1e1c13a75f0",
         "com_4a9490cb3534",
         "com_9fed174eeff3"
-      ]
-    },
-    {
-      "id": "com_116511573b6a",
-      "slug": "alice-lipping-573b6a",
-      "name": "Alice Lipping",
-      "kind": "recurring_series",
-      "tagline": "Alice Lipping is a recurring event series centered on art in long island city.",
-      "description": "Alice Lipping is a recurring event series centered on art in long island city. Based on 3 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
-      "categories": [
-        "art"
-      ],
-      "tags": [
-        "art"
-      ],
-      "neighborhoods": [
-        "long island city"
-      ],
-      "homeVenue": "Fifth Hammer Brewing Company",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191866206%2F118597675841%2F1%2Foriginal.20260825-163019?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=b57a5081a3d306b9772071da453ee714",
-      "links": [
-        {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
-          "url": "https://eventbrite.com/o/17281797662"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-09-28",
-        "upcomingEventCount": 0,
-        "eventCount90d": 3
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Wednesday",
-          "Sunday"
-        ],
-        "typicalTime": "19:00",
-        "confidence": 0.5,
-        "sampleSize": 3
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "eventbrite"
-      ],
-      "lastVerifiedAt": "2026-09-29",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 3,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "eventbrite:17281797662"
-      ],
-      "similarCommunityIds": [
-        "com_2a30ebfb0079",
-        "com_ab8259bb35a4",
-        "com_3048e331f7b6",
-        "com_55ca36db453a",
-        "com_c1410c07c4dd",
-        "com_02ba15552329"
       ]
     },
     {
@@ -1139,10 +1075,10 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_feb5ce491629",
+        "com_f23f8820878b",
         "com_3837f308cd75",
         "com_e9748c1176c1",
-        "com_cdd5daa67222",
-        "com_f171cd222ca5"
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -1218,27 +1154,25 @@
       "slug": "book-club-bar-db453a",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, food, parties in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, food, parties in east village, bushwick. Based on 20 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, food, parties in bushwick, east village.",
+      "description": "Book Club Bar is a community space centered on books, food, parties in bushwick, east village. Based on 20 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "food",
         "parties",
-        "art",
-        "music"
+        "art"
       ],
       "tags": [
         "books",
         "food",
         "parties",
-        "art",
-        "music"
+        "art"
       ],
       "neighborhoods": [
-        "east village",
-        "bushwick"
+        "bushwick",
+        "east village"
       ],
-      "homeVenue": "East Village, 197 East 3rd Street",
+      "homeVenue": "Bushwick, 380 Troutman Street",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/09_September/929_TAYLOR_CATALANA_SQUARE__1_.png?cb=1789147132",
       "links": [
         {
@@ -1293,11 +1227,11 @@
       ],
       "similarCommunityIds": [
         "com_c1410c07c4dd",
-        "com_3837f308cd75",
-        "com_b736e77bdf93",
-        "com_d8a5203885a9",
         "com_33a530deb7aa",
-        "com_f23f8820878b"
+        "com_cdd5daa67222",
+        "com_cb019f4e9752",
+        "com_fe4b6663b721",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -1565,8 +1499,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-29",
-        "upcomingEventCount": 11,
-        "eventCount90d": 10
+        "upcomingEventCount": 12,
+        "eventCount90d": 11
       },
       "schedule": {
         "cadence": "weekly",
@@ -1580,6 +1514,7 @@
       },
       "upcomingEventIds": [
         "3203611ff1e96814",
+        "25444c7312f47800",
         "99edbf39a419c412",
         "d53ce6ac6c2b6659",
         "d76b617f793b3dd8",
@@ -1610,9 +1545,9 @@
         "com_eef1ca956dae",
         "com_9fed174eeff3",
         "com_4c3ca28533f5",
-        "com_5582e2e97f1a",
         "com_a1e1c13a75f0",
-        "com_fe4b6663b721"
+        "com_fe4b6663b721",
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -1621,7 +1556,7 @@
       "name": "Brooklyn Art Haus",
       "kind": "recurring_series",
       "tagline": "Brooklyn Art Haus is a recurring event series centered on special, art, film in brooklyn.",
-      "description": "Brooklyn Art Haus is a recurring event series centered on special, art, film in brooklyn. Based on 15 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
+      "description": "Brooklyn Art Haus is a recurring event series centered on special, art, film in brooklyn. Based on 16 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
       "categories": [
         "other",
         "special",
@@ -1640,7 +1575,7 @@
         "brooklyn"
       ],
       "homeVenue": "Brooklyn Art Haus",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193200535%2F1528943324833%2F1%2Foriginal.20260910-200514?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.494&fp-y=0.508&s=e173dc7150b2b343d1deff8843890861",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190049892%2F1528943324833%2F1%2Foriginal.20260731-171618?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=c55659ede57b1ae4a2c1b04a372bc4b3",
       "links": [
         {
           "type": "eventbrite",
@@ -1651,9 +1586,9 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-09-28",
-        "upcomingEventCount": 6,
-        "eventCount90d": 13
+        "lastEventDate": "2026-09-29",
+        "upcomingEventCount": 7,
+        "eventCount90d": 14
       },
       "schedule": {
         "cadence": "weekly",
@@ -1663,9 +1598,10 @@
         ],
         "typicalTime": "11:00",
         "confidence": 1.0,
-        "sampleSize": 15
+        "sampleSize": 16
       },
       "upcomingEventIds": [
+        "3ba9f65b4e53b612",
         "7cc83e82cb8823b6",
         "7faf38783a126be0",
         "ff4b8c55b91b30ce",
@@ -1680,7 +1616,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 15,
+        "observedDateCount": 16,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1702,21 +1638,19 @@
       "slug": "liz-s-book-bar-e97f1a",
       "name": "Liz\u2019s Book Bar",
       "kind": "recurring_series",
-      "tagline": "Liz\u2019s Book Bar is a recurring event series centered on books, celebrities, exploration in carroll gardens.",
-      "description": "Liz\u2019s Book Bar is a recurring event series centered on books, celebrities, exploration in carroll gardens. Based on 15 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "tagline": "Liz\u2019s Book Bar is a recurring event series centered on books, music, games in carroll gardens.",
+      "description": "Liz\u2019s Book Bar is a recurring event series centered on books, music, games in carroll gardens. Based on 15 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "books",
-        "celebrities",
-        "exploration",
         "music",
-        "games"
+        "games",
+        "other"
       ],
       "tags": [
         "books",
-        "celebrities",
-        "exploration",
         "music",
-        "games"
+        "games",
+        "other"
       ],
       "neighborhoods": [
         "carroll gardens"
@@ -1772,12 +1706,12 @@
         "eventbrite:83466825333"
       ],
       "similarCommunityIds": [
-        "com_eef1ca956dae",
         "com_eeb4e424a504",
-        "com_e9748c1176c1",
+        "com_3837f308cd75",
         "com_b0e15eaab803",
-        "com_f171cd222ca5",
-        "com_3837f308cd75"
+        "com_b736e77bdf93",
+        "com_e9748c1176c1",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -1916,7 +1850,7 @@
         "com_6114a53f79a0",
         "com_1ef101a0cf5a",
         "com_065dafa96d43",
-        "com_116511573b6a"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1986,7 +1920,7 @@
         "com_6114a53f79a0",
         "com_1ef101a0cf5a",
         "com_065dafa96d43",
-        "com_116511573b6a"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2271,9 +2205,9 @@
       ],
       "similarCommunityIds": [
         "com_cdd5daa67222",
+        "com_55ca36db453a",
         "com_cb019f4e9752",
         "com_f171cd222ca5",
-        "com_55ca36db453a",
         "com_c1410c07c4dd",
         "com_d8a5203885a9"
       ]
@@ -2422,11 +2356,11 @@
       ],
       "similarCommunityIds": [
         "com_2a30ebfb0079",
-        "com_116511573b6a",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_a1e1c13a75f0",
-        "com_3048e331f7b6"
+        "com_3048e331f7b6",
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -2434,8 +2368,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in queens, midtown.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in queens, midtown. Based on 40 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in queens, harlem.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in queens, harlem. Based on 40 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "parties",
@@ -2448,11 +2382,11 @@
       ],
       "neighborhoods": [
         "queens",
-        "midtown",
         "harlem",
-        "manhattan"
+        "manhattan",
+        "upper west side"
       ],
-      "homeVenue": "Hotel Alameda",
+      "homeVenue": "recess grove",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/01/a3e990f4-85d8-4a07-a751-a17685b2574c.png",
       "links": [
         {
@@ -2512,8 +2446,8 @@
         "com_065dafa96d43",
         "com_4c3ca28533f5",
         "com_d2d455d2d6c9",
-        "com_cb019f4e9752",
-        "com_f171cd222ca5"
+        "com_f23f8820878b",
+        "com_55ca36db453a"
       ]
     },
     {
@@ -3283,8 +3217,8 @@
         "com_f171cd222ca5",
         "com_eef1ca956dae",
         "com_3837f308cd75",
-        "com_55ca36db453a",
-        "com_b736e77bdf93"
+        "com_b736e77bdf93",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -3365,12 +3299,12 @@
         "source:powerhousearena"
       ],
       "similarCommunityIds": [
-        "com_5582e2e97f1a",
         "com_e9748c1176c1",
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -3453,20 +3387,20 @@
         "special",
         "music",
         "outdoors",
-        "parties"
+        "books"
       ],
       "tags": [
         "comedy",
         "special",
         "music",
         "outdoors",
-        "parties"
+        "books"
       ],
       "neighborhoods": [
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
+      "homeVenue": "New York Comedy Club",
       "imageUrl": "/img/comedians/Mike-Britt-a05c0970-large-thumb.jpg",
       "links": [
         {
@@ -3523,10 +3457,10 @@
       ],
       "similarCommunityIds": [
         "com_d8a5203885a9",
-        "com_318c39363fe6",
         "com_d2d455d2d6c9",
-        "com_1ca4486298de",
-        "com_55ca36db453a",
+        "com_318c39363fe6",
+        "com_3837f308cd75",
+        "com_cdd5daa67222",
         "com_c1410c07c4dd"
       ]
     },
@@ -3608,8 +3542,8 @@
         "com_f23f8820878b",
         "com_648449f336c0",
         "com_d8a5203885a9",
-        "com_55ca36db453a",
-        "com_a1e1c13a75f0"
+        "com_a1e1c13a75f0",
+        "com_b0e15eaab803"
       ]
     },
     {
@@ -50792,7 +50726,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-09-29T02:05:33.761355+00:00",
+  "lastUpdated": "2026-09-29T05:54:33.453485+00:00",
   "version": 1,
   "schemaVersion": 1
 }
