@@ -5934,7 +5934,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-01T02:38:08.030873+00:00",
-    "last_surviving_yield": 7
+    "last_surviving_yield": 6
   },
   {
     "url": "https://eventbrite.com/o/20002618011",
@@ -5956,7 +5956,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-01T02:38:08.030873+00:00",
-    "last_surviving_yield": 8
+    "last_surviving_yield": 7
   },
   {
     "url": "https://eventbrite.com/o/121441877858",
@@ -6000,7 +6000,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-01T02:38:08.030873+00:00",
-    "last_surviving_yield": 9
+    "last_surviving_yield": 8
   },
   {
     "url": "https://eventbrite.com/o/114605847281",
@@ -6392,7 +6392,7 @@
       "luma_organizer_graph",
       "platform_calendar_fetch"
     ],
-    "last_surviving_yield": 1,
+    "last_surviving_yield": 0,
     "last_attempt_at": "2026-09-30T20:37:34.223424+00:00",
     "last_parsed_yield": 3,
     "last_success_at": "2026-09-30T20:37:34.223424+00:00",
@@ -7402,7 +7402,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-01T02:38:08.030873+00:00",
-    "last_surviving_yield": 7
+    "last_surviving_yield": 6
   },
   {
     "url": "https://eventbrite.com/o/8387562806",
@@ -12517,5 +12517,60 @@
     "url": "https://www.eventbrite.com/e/fuel-up-new-york-a-public-event-with-chelsea-piers-fitness-gainful-tickets-1996299650995",
     "discovered_at": "2026-09-30T20:40:19.423300+00:00",
     "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://bit.ly/events/",
+    "discovered_at": "2026-09-30T23:02:34.463077+00:00",
+    "discovered_via": "path-probe:bit.ly"
+  },
+  {
+    "url": "https://bookclubbar.com/events/",
+    "discovered_at": "2026-09-30T23:02:48.308777+00:00",
+    "discovered_via": "path-probe:bookclubbar.com"
+  },
+  {
+    "url": "https://www.eastvillecomedy.com/events",
+    "discovered_at": "2026-09-30T23:02:57.243858+00:00",
+    "discovered_via": "path-probe:eastvillecomedy.com"
+  },
+  {
+    "url": "https://www.eastvillecomedy.com/events/",
+    "discovered_at": "2026-09-30T23:02:57.255441+00:00",
+    "discovered_via": "path-probe:eastvillecomedy.com"
+  },
+  {
+    "url": "https://www.eastvillecomedy.com/calendar",
+    "discovered_at": "2026-09-30T23:02:57.266807+00:00",
+    "discovered_via": "path-probe:eastvillecomedy.com"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/002233-0826",
+    "discovered_at": "2026-09-30T23:04:54.929970+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/001515-0726",
+    "discovered_at": "2026-09-30T23:04:54.943835+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/001113-0726",
+    "discovered_at": "2026-09-30T23:04:54.955242+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/006820-1025",
+    "discovered_at": "2026-09-30T23:04:54.973507+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://www.queenslibrary.org/event/012497-0226",
+    "discovered_at": "2026-09-30T23:04:54.985084+00:00",
+    "discovered_via": "spa-salvage:queenslibrary.org"
+  },
+  {
+    "url": "https://wnyc.org/events/democracy-dialogues",
+    "discovered_at": "2026-09-30T23:07:05.546221+00:00",
+    "discovered_via": "spa-salvage:wnyc.org"
   }
 ]
