@@ -116,13 +116,34 @@ try {
     if (new URL(page.url()).searchParams.has("view")) throw new Error("legacy Feed URL state was not removed");
     if (!(await page.getByRole("heading", { name: "What's happening in NYC" }).count())) throw new Error("legacy Feed URL did not resolve to Calendar");
 
+    // The full index intentionally opens a quick-view modal. Calendar cards
+    // navigate to the standalone page, where the mobile back link lives.
+    await page.goto(`http://127.0.0.1:${port}/nyc/events/`, { waitUntil: "networkidle" });
+    const card = page.locator("[data-event-id]").first();
+    const eventId = await card.getAttribute("data-event-id");
+    const event = eventsPayload.events.find((candidate) => candidate.id === eventId);
+    if (!event?.date) throw new Error("could not find the event card in the feed");
+    await card.getByRole("link", { name: /^View details for/ }).click();
+    const close = page.getByRole("button", { name: "Close", exact: true });
+    await close.waitFor();
+    await page.getByRole("heading", { level: 2, name: event.title, exact: true }).waitFor();
+    if (new URL(page.url()).pathname !== "/nyc/events/") {
+      throw new Error("index quick view unexpectedly navigated away from the event list");
+    }
+    await close.click();
+    await close.waitFor({ state: "hidden" });
+    await card.waitFor();
+
+    await page.goto(`http://127.0.0.1:${port}/nyc/?date=${encodeURIComponent(event.date)}`, { waitUntil: "networkidle" });
+    const calendarCard = page.locator(`[data-event-id="${eventId}"]`);
+    await calendarCard.getByRole("link", { name: /^View details for/ }).click();
+    await page.waitForURL((url) => url.pathname === `/nyc/events/${eventId}/`);
+    await page.getByRole("heading", { level: 1, name: event.title, exact: true }).waitFor();
+    if (event.description?.trim()) {
+      await page.locator("article").getByText(event.description, { exact: true }).waitFor();
+    }
+
     if (viewport.width < 640) {
-      await page.goto(`http://127.0.0.1:${port}/nyc/events/`, { waitUntil: "networkidle" });
-      const card = page.locator("[data-event-id]").first();
-      const eventId = await card.getAttribute("data-event-id");
-      const eventDate = eventsPayload.events.find((event) => event.id === eventId)?.date;
-      if (!eventDate) throw new Error("could not find the event card in the feed");
-      await card.getByRole("link", { name: /^View details for/ }).click();
       const back = page.getByRole("link", { name: "Back to events calendar" });
       await back.waitFor();
       await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
@@ -131,15 +152,13 @@ try {
         throw new Error("mobile event back control is not visible and sticky after scrolling");
       }
       await back.click();
-      await page.waitForURL((url) => url.pathname === "/nyc/" && url.searchParams.get("date") === eventDate);
-      if (!(await page.locator(`[data-event-id="${eventId}"]`).count())) {
-        throw new Error("back control did not return to the event's calendar date");
-      }
+      await page.waitForURL((url) => url.pathname === "/nyc/" && url.searchParams.get("date") === event.date);
+      await page.locator(`[data-event-id="${eventId}"]`).waitFor();
     }
 
     await page.close();
   }
-  console.log("UI checks passed: calendar-first navigation, organizer links, touch-safe actions, no Hide controls, and account views.");
+  console.log("UI checks passed: calendar-first navigation, index quick views, event descriptions, mobile back links, organizer links, touch-safe actions, no Hide controls, and account views.");
 } finally {
   await browser.close();
   await new Promise((resolve) => server.close(resolve));

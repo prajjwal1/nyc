@@ -23,8 +23,10 @@ The input is the independently verified public 788-event snapshot, copied to a t
 
 Local Chromium cannot launch: macOS denies `MachPortRendezvousServer` registration before a page assertion runs. The retry outside the sandbox has the same OS failure. This is not a product-test failure. The repository's existing `Tests` workflow runs the complete desktop/mobile UI suite on Linux; that result must be recorded before final handoff.
 
+The first Linux run (`36906687066`) passed the scraper job but found a pre-existing test mismatch introduced in `4f46a136`: it clicked an index card, which intentionally opens `EventModal`, then waited for the standalone page's back link. `test-ui.mjs` now explicitly checks the index modal on both viewports, closes it, and follows the same event from the calendar to its static detail page. Full description rendering, the original sticky mobile back geometry, and the return to the selected date remain covered. No production interaction was changed to satisfy the test. The corrected Linux run is pending.
+
 ## Publication
 
 Two actual platform refreshes completed successfully. The final feed has 848 upcoming events and a timestamp of `2026-10-01T18:23:03.843104+00:00`; both public JSON copies match exactly. Default-day descriptions are now 42/58 (72.4%), clearing fb-220's 60% target. The final pass reused 31 cached descriptions, recovered another 13 in 3.31 seconds, and had no timeouts or rate limits. The rebuilt site contains 930 static pages. The image cache grew by two entries with no prior entries removed.
 
-Public metrics and workflow results will be added after publication, not inferred from these local runs.
+The initial implementation was published in `d43428ea83ff973ff5e235520fe30e91b859121f`. Pages run `36906687207` succeeded. Independent HTTPS reads confirm that the public `events.json` and `communities.json` exactly match the committed copies. The public static pages for Junk Journal Night (`117f34350d7318b3`) and East of Eden Screening (`7dd726e1bbc7f297`) contain the newly recovered descriptions and the mobile back control. Final browser results will be recorded after the test correction passes CI.
