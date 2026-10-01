@@ -75,6 +75,18 @@ Build on top of these principles. Don't break them.
 - All **personalization is client-side** (localStorage) — no backend, fully private
 - Multiple **self-improvement loops** persist state in `scrapers/data/*.json` between runs
 
+### Recommendation descriptions
+
+After collecting catalog rows, `run_all` restores missing Luma/Eventbrite
+descriptions from the previous feed, matched by canonical event URL and date.
+It then checks the top 40 normalized recommendations per day for the next week
+and fills at most 24 missing descriptions from the event's own platform page.
+Only platforms refreshed in that run make requests. The pass has a 45-second
+deadline, an 8-second request timeout, no retries, and stops a platform on its
+first HTTP 429. Final normalization reapplies all exclusions to the new text.
+Successful prose persists in the existing event snapshots; request, cache,
+failure, and timing counts appear in `ingestionStats.run.descriptionEnrichment`.
+
 ### Recurring organization discovery
 
 `instagram_bios` turns first-party profile schedules into short-horizon events

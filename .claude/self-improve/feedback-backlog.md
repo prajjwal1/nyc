@@ -93,6 +93,20 @@ These are the durable preferences the user has stated. They're marked `addressed
 
 ## Open items (top of list = highest priority)
 
+### fb-221 — Complete another self-improvement cycle
+- created_at: 2026-10-01
+- source: user-explicit
+- status: in-progress
+- body: “self improve”
+- "addressed" criterion: audit the current live guide and durable feedback, apply a verified improvement, complete the required checks, publish it through the documented workflow, and record measured results.
+
+### fb-222 — Validate Eventbrite recurring-series descriptions against occurrence evidence
+- created_at: 2026-10-01
+- source: agent-proposal (self-review dream D2, run 2026-10-01-1809)
+- status: open
+- body: Some Eventbrite series pages retain the original date in JSON-LD while the feed lists later occurrences: Outdoor Yoga, Structural Collabs, and Brooklyn Book Club. Reuse series descriptions only when explicit schedule or sub-event data validates the requested occurrence for the same stable event ID. Keep the current exact-date guard until that evidence exists; do not manufacture dates or weaken exclusions to fill descriptions.
+- "addressed" criterion: verified source fixtures demonstrate occurrence membership, unrelated/rescheduled events remain unmatched, and a live trial recovers useful descriptions for legitimate literary/fitness occurrences without extra requests or date changes.
+
 
 ### fb-218 — Run another self-improvement cycle
 - created_at: 2026-09-22

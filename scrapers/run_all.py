@@ -35,6 +35,7 @@ from scrapers.sources import (
     brooklyncontra,
 )
 from scrapers.normalize import process, _load_previous_events_index
+from scrapers.utils.descriptions import enrich_descriptions, restore_cached_descriptions
 
 ASYNC_SCRAPERS = [
     # Reddit returns 0 events but harvests event-platform URLs into
@@ -314,7 +315,18 @@ async def main():
     # Save partial result after async scrapers — protects against IG hanging
     # the whole pipeline. We'll overwrite once IG completes (or doesn't).
     if all_events:
-        _write_events(process(all_events, previous_index), OUTPUT_PATH)
+        # Preserve cached prose even when a fast catalog refresh returns only
+        # listing metadata. Normalize first so detail requests target survivors.
+        restored = restore_cached_descriptions(all_events, previous_index.values())
+        preview = process(all_events, previous_index)
+        detail_stats = await enrich_descriptions(
+            [*all_events, *preview],
+            candidates=preview,
+            sources={name for name, _fn in ASYNC_SCRAPERS},
+        )
+        detail_stats["cachedEvents"] = restored
+        _RUN_TELEMETRY["descriptionEnrichment"] = detail_stats
+        _write_events(preview, OUTPUT_PATH)
         print(
             f"[run_all] Partial save after async scrapers: {len(all_events)} raw events"
         )
@@ -324,6 +336,8 @@ async def main():
         all_events.extend(result)
 
     print(f"\nTotal raw events: {len(all_events)}")
+    # Enriched text on the raw rows must pass every exclusion again. The
+    # partial payload above remains runCompleted=False until this finishes.
     processed = process(all_events, previous_index)
     print(f"After processing: {len(processed)} events")
 

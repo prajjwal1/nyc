@@ -104,73 +104,18 @@ async def scrape() -> list[dict]:
         print(f"[luma] promoted {len(promoted)} organizers from current results")
     record_platform_results(target_results)
 
-    # Reuse detail-page content for learned calendar/direct-event results.
-    # The broad NYC cursor API is intentionally kept lightweight: its rows
-    # already have canonical URL, graphic, date, host and location, and
-    # hitting every detail page twice an hour causes avoidable 429s.
-    quick = os.environ.get("IG_SAVED_ONLY", "0") == "1"
-    previous_details = _load_previous_luma_details()
-    canonical = {}
+    # run_all restores cached descriptions and hydrates a bounded shortlist
+    # after normalization. Keep catalog collection independent of detail fetches.
     for event in events:
-        url = event.get("sourceUrl") or ""
-        if not quick and event.get("_lumaNeedsHydration") and re.match(
-            r"https?://(?:lu\.ma|luma\.com)/[a-z0-9-]{6,}/?$", url, re.I
-        ):
-            previous = previous_details.get(url)
-            if previous and previous.get("description"):
-                event["description"] = previous["description"]
-                if not (event.get("location") or {}).get("name"):
-                    event["location"] = previous.get("location") or event.get("location")
-                event["organizer"] = event.get("organizer") or previous.get("organizer")
-                event["organizerUrl"] = event.get("organizerUrl") or previous.get("organizerUrl")
-                event["organizerRefs"] = event.get("organizerRefs") or previous.get("organizerRefs")
-                event.pop("_lumaNeedsHydration", None)
-            else:
-                canonical[url] = event
-    sem = asyncio.Semaphore(4)
-
-    async def hydrate(url: str) -> dict:
-        async with sem:
-            detailed = await _try_luma_url(url)
-        if detailed:
-            return detailed[0]
-        return canonical[url]
-
-    hydrated = await asyncio.gather(*(hydrate(url) for url in canonical)) if canonical else []
-    by_url = {e.get("sourceUrl"): e for e in hydrated}
-    out = [by_url.get(e.get("sourceUrl"), e) for e in events]
-    for event in out:
         event.pop("_lumaNeedsHydration", None)
-    durable = _promoted_calendars(out, set(), limit=40)
+    durable = _promoted_calendars(events, set(), limit=40)
     for lane in {item.lane for item in durable}:
         persist_discovered_urls(
             [item.url for item in durable if item.lane == lane],
             discovered_via="luma_organizer_graph",
             lane=lane,
         )
-    return out
-
-
-def _load_previous_luma_details() -> dict[str, dict]:
-    """Reuse stable detail-page fields so frequent refreshes hydrate only new events."""
-    path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-        "data",
-        "events.json",
-    )
-    try:
-        with open(path) as file:
-            payload = json.load(file)
-    except Exception:
-        return {}
-    events = payload.get("events", []) if isinstance(payload, dict) else payload
-    return {
-        event.get("sourceUrl"): event
-        for event in events
-        if isinstance(event, dict)
-        and event.get("source") == "luma"
-        and event.get("sourceUrl")
-    }
+    return events
 
 
 def _luma_discover_bootstrap(html: str) -> tuple[str, int]:

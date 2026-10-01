@@ -5,16 +5,18 @@
       "slug": "elsewhere-de77ba",
       "name": "Elsewhere",
       "kind": "recurring_series",
-      "tagline": "Elsewhere is a recurring event series centered on music, comedy in bushwick, ridgewood.",
-      "description": "Elsewhere is a recurring event series centered on music, comedy in bushwick, ridgewood. Based on 44 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "tagline": "Elsewhere is a recurring event series centered on music, outdoors, comedy in bushwick, ridgewood.",
+      "description": "Elsewhere is a recurring event series centered on music, outdoors, comedy in bushwick, ridgewood. Based on 44 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
-        "other",
         "music",
+        "other",
+        "outdoors",
         "comedy"
       ],
       "tags": [
-        "other",
         "music",
+        "other",
+        "outdoors",
         "comedy"
       ],
       "neighborhoods": [
@@ -76,10 +78,10 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_318c39363fe6",
+        "com_4c3ca28533f5",
         "com_5d96f038b82a",
-        "com_a1e1c13a75f0",
         "com_b736e77bdf93",
-        "com_4a9490cb3534"
+        "com_f23f8820878b"
       ]
     },
     {
@@ -223,11 +225,11 @@
       ],
       "similarCommunityIds": [
         "com_1ef101a0cf5a",
-        "com_a1e1c13a75f0",
         "com_9fed174eeff3",
-        "com_4c3ca28533f5",
+        "com_a1e1c13a75f0",
         "com_e9748c1176c1",
-        "com_2a30ebfb0079"
+        "com_4c3ca28533f5",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -375,10 +377,10 @@
       "similarCommunityIds": [
         "com_1ca4486298de",
         "com_bad64eea003a",
+        "com_ff2e01957665",
         "com_cb019f4e9752",
         "com_d8a5203885a9",
-        "com_cdd5daa67222",
-        "com_1466f20a9300"
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -537,15 +539,17 @@
       "slug": "caveat-3a75f0",
       "name": "Caveat",
       "kind": "recurring_series",
-      "tagline": "Caveat is a recurring event series centered on comedy in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy in manhattan. Based on 29 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "tagline": "Caveat is a recurring event series centered on comedy, celebrities in manhattan.",
+      "description": "Caveat is a recurring event series centered on comedy, celebrities in manhattan. Based on 29 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "other",
-        "comedy"
+        "comedy",
+        "celebrities"
       ],
       "tags": [
         "other",
-        "comedy"
+        "comedy",
+        "celebrities"
       ],
       "neighborhoods": [
         "manhattan"
@@ -605,11 +609,11 @@
       ],
       "similarCommunityIds": [
         "com_5d96f038b82a",
-        "com_4a9490cb3534",
-        "com_b766b6de77ba",
-        "com_cb019f4e9752",
         "com_9fed174eeff3",
-        "com_4c3ca28533f5"
+        "com_e9748c1176c1",
+        "com_fe4b6663b721",
+        "com_4c3ca28533f5",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -676,8 +680,8 @@
       "similarCommunityIds": [
         "com_1ab246c8dd88",
         "com_3bc67889299d",
-        "com_6114a53f79a0",
         "com_1ef101a0cf5a",
+        "com_6114a53f79a0",
         "com_065dafa96d43",
         "com_ab8259bb35a4"
       ]
@@ -744,11 +748,87 @@
       ],
       "similarCommunityIds": [
         "com_359bbb5a9a91",
+        "com_f8ff3d3257ed",
         "com_eb4226b8b4c5",
         "com_ab8259bb35a4",
         "com_1466f20a9300",
-        "com_5d96f038b82a",
-        "com_a1e1c13a75f0"
+        "com_5d96f038b82a"
+      ]
+    },
+    {
+      "id": "com_ff2e01957665",
+      "slug": "community-bookstore-957665",
+      "name": "Community Bookstore",
+      "kind": "recurring_series",
+      "tagline": "Community Bookstore is a recurring event series centered on parties in brooklyn.",
+      "description": "Community Bookstore is a recurring event series centered on parties in brooklyn. Based on 6 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "categories": [
+        "other",
+        "parties"
+      ],
+      "tags": [
+        "other",
+        "parties"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Community Bookstore",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192707549%2F15926124919%2F1%2Foriginal.20260904-184248?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=71db20733397503fa64bc4f1d0f5f19b",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/17768356901"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 6,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Tuesday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 1.0,
+        "sampleSize": 6
+      },
+      "upcomingEventIds": [
+        "146d27b75d5eab9d",
+        "836274efbd062647",
+        "1bd422b3092fecc2",
+        "31f3769324b06d7b",
+        "b999590fdd5248ad",
+        "3be546bfb40c498e"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-01",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 6,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:17768356901"
+      ],
+      "similarCommunityIds": [
+        "com_cb019f4e9752",
+        "com_1466f20a9300",
+        "com_1ca4486298de",
+        "com_64ebabd98c5c",
+        "com_359bbb5a9a91",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -822,12 +902,12 @@
         "eventbrite:17899496497"
       ],
       "similarCommunityIds": [
+        "com_ff2e01957665",
         "com_4a9490cb3534",
         "com_5d96f038b82a",
         "com_648449f336c0",
         "com_b736e77bdf93",
-        "com_d8a5203885a9",
-        "com_a1e1c13a75f0"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -903,9 +983,9 @@
         "com_4c3ca28533f5",
         "com_d2d455d2d6c9",
         "com_9fed174eeff3",
+        "com_6114a53f79a0",
         "com_a1e1c13a75f0",
-        "com_5d96f038b82a",
-        "com_e9748c1176c1"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -1059,8 +1139,13 @@
         "observedDateCount": 17,
         "hasFirstPartyIdentity": true
       },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "78756c75448719bd",
+          "signal": "open to all"
+        }
+      ],
       "aliases": [
         "eventbrite:20002618011"
       ],
@@ -1149,8 +1234,8 @@
         "eventbrite:30058841244"
       ],
       "similarCommunityIds": [
-        "com_4c3ca28533f5",
         "com_feb5ce491629",
+        "com_4c3ca28533f5",
         "com_3837f308cd75",
         "com_f171cd222ca5",
         "com_f23f8820878b",
@@ -1314,22 +1399,102 @@
       ]
     },
     {
+      "id": "com_f8ff3d3257ed",
+      "slug": "urbanglass-3257ed",
+      "name": "UrbanGlass",
+      "kind": "recurring_series",
+      "tagline": "UrbanGlass is a recurring event series in fidi.",
+      "description": "UrbanGlass is a recurring event series in fidi. Based on 4 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "fidi"
+      ],
+      "homeVenue": "UrbanGlass",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1186682691%2F35896833114%2F1%2Foriginal.20260611-143851?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=5282655dcbef7c9147817dcf11b4101f",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/4279966505"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-01",
+        "upcomingEventCount": 5,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Friday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.67,
+        "sampleSize": 4
+      },
+      "upcomingEventIds": [
+        "f71d2234692e000f",
+        "1605416b236e6d01",
+        "b1fa6e4eed7ffee4",
+        "65d960fbfd7c8490",
+        "ad9ef20b81ed61a0"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-01",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 4,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "f71d2234692e000f",
+          "signal": "beginners"
+        }
+      ],
+      "aliases": [
+        "eventbrite:4279966505"
+      ],
+      "similarCommunityIds": [
+        "com_359bbb5a9a91",
+        "com_ad50d6a81df3",
+        "com_eb4226b8b4c5",
+        "com_1466f20a9300",
+        "com_5d96f038b82a",
+        "com_ab8259bb35a4"
+      ]
+    },
+    {
       "id": "com_4c3ca28533f5",
       "slug": "high-line-programs-8533f5",
       "name": "High Line Programs",
       "kind": "recurring_series",
-      "tagline": "High Line Programs is a recurring event series centered on outdoors, books, wellness in manhattan.",
-      "description": "High Line Programs is a recurring event series centered on outdoors, books, wellness in manhattan. Based on 13 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "tagline": "High Line Programs is a recurring event series centered on outdoors, books, music in manhattan.",
+      "description": "High Line Programs is a recurring event series centered on outdoors, books, music in manhattan. Based on 13 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
       "categories": [
         "outdoors",
         "other",
         "books",
+        "music",
         "wellness"
       ],
       "tags": [
         "outdoors",
         "other",
         "books",
+        "music",
         "wellness"
       ],
       "neighborhoods": [
@@ -1387,12 +1552,12 @@
         "eventbrite:46113016283"
       ],
       "similarCommunityIds": [
-        "com_feb5ce491629",
         "com_9fed174eeff3",
+        "com_feb5ce491629",
         "com_d2d455d2d6c9",
-        "com_a1e1c13a75f0",
         "com_e9748c1176c1",
-        "com_fe4b6663b721"
+        "com_6114a53f79a0",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -1547,9 +1712,9 @@
       "similarCommunityIds": [
         "com_3048e331f7b6",
         "com_b736e77bdf93",
+        "com_ff2e01957665",
         "com_359bbb5a9a91",
         "com_9fed174eeff3",
-        "com_b766b6de77ba",
         "com_4a9490cb3534"
       ]
     },
@@ -1631,8 +1796,8 @@
       ],
       "similarCommunityIds": [
         "com_9fed174eeff3",
-        "com_a1e1c13a75f0",
         "com_4c3ca28533f5",
+        "com_a1e1c13a75f0",
         "com_fe4b6663b721",
         "com_1466f20a9300",
         "com_1ef101a0cf5a"
@@ -1719,7 +1884,7 @@
         "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_1ca4486298de",
-        "com_4a9490cb3534"
+        "com_ff2e01957665"
       ]
     },
     {
@@ -1787,12 +1952,12 @@
         "eventbrite:82384975023"
       ],
       "similarCommunityIds": [
-        "com_a1e1c13a75f0",
         "com_4a9490cb3534",
+        "com_a1e1c13a75f0",
         "com_cb019f4e9752",
         "com_648449f336c0",
-        "com_b766b6de77ba",
-        "com_359bbb5a9a91"
+        "com_359bbb5a9a91",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -1873,8 +2038,8 @@
         "com_4a9490cb3534",
         "com_f171cd222ca5",
         "com_3837f308cd75",
-        "com_4c3ca28533f5",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -1942,11 +2107,11 @@
       ],
       "similarCommunityIds": [
         "com_ad50d6a81df3",
+        "com_f8ff3d3257ed",
         "com_1466f20a9300",
         "com_eb4226b8b4c5",
-        "com_5d96f038b82a",
-        "com_4a9490cb3534",
-        "com_cb019f4e9752"
+        "com_ff2e01957665",
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -2011,8 +2176,8 @@
       "similarCommunityIds": [
         "com_02ba15552329",
         "com_3bc67889299d",
-        "com_6114a53f79a0",
         "com_1ef101a0cf5a",
+        "com_6114a53f79a0",
         "com_065dafa96d43",
         "com_1466f20a9300"
       ]
@@ -2081,8 +2246,8 @@
       "similarCommunityIds": [
         "com_02ba15552329",
         "com_1ab246c8dd88",
-        "com_6114a53f79a0",
         "com_1ef101a0cf5a",
+        "com_6114a53f79a0",
         "com_065dafa96d43",
         "com_1466f20a9300"
       ]
@@ -2154,11 +2319,11 @@
       ],
       "similarCommunityIds": [
         "com_1ef101a0cf5a",
+        "com_6114a53f79a0",
         "com_cdd5daa67222",
         "com_02ba15552329",
         "com_1ab246c8dd88",
-        "com_3bc67889299d",
-        "com_6114a53f79a0"
+        "com_3bc67889299d"
       ]
     },
     {
@@ -2224,10 +2389,10 @@
       "similarCommunityIds": [
         "com_359bbb5a9a91",
         "com_ad50d6a81df3",
-        "com_a1e1c13a75f0",
+        "com_f8ff3d3257ed",
         "com_9fed174eeff3",
-        "com_5d96f038b82a",
-        "com_4c3ca28533f5"
+        "com_a1e1c13a75f0",
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -2235,12 +2400,14 @@
       "slug": "corgi-nyc-3f79a0",
       "name": "Corgi NYC",
       "kind": "recurring_series",
-      "tagline": "Corgi NYC is a recurring event series centered on fitness in manhattan.",
-      "description": "Corgi NYC is a recurring event series centered on fitness in manhattan. Based on 3 observed event dates, it meets weekly on Saturday and Thursday mornings.",
+      "tagline": "Corgi NYC is a recurring event series centered on outdoors, fitness in manhattan.",
+      "description": "Corgi NYC is a recurring event series centered on outdoors, fitness in manhattan. Based on 3 observed event dates, it meets weekly on Saturday and Thursday mornings.",
       "categories": [
+        "outdoors",
         "fitness"
       ],
       "tags": [
+        "outdoors",
         "fitness"
       ],
       "neighborhoods": [
@@ -2291,12 +2458,12 @@
         "luma:cal-h1fy60pnztchaf4"
       ],
       "similarCommunityIds": [
-        "com_02ba15552329",
-        "com_1ab246c8dd88",
-        "com_3bc67889299d",
         "com_1ef101a0cf5a",
-        "com_2a30ebfb0079",
-        "com_4c3ca28533f5"
+        "com_065dafa96d43",
+        "com_92805cd9f03b",
+        "com_4c3ca28533f5",
+        "com_02ba15552329",
+        "com_1ab246c8dd88"
       ]
     },
     {
@@ -2592,7 +2759,7 @@
         "com_2a30ebfb0079",
         "com_ad50d6a81df3",
         "com_359bbb5a9a91",
-        "com_a1e1c13a75f0",
+        "com_f8ff3d3257ed",
         "com_5d96f038b82a",
         "com_3048e331f7b6"
       ]
@@ -2681,9 +2848,9 @@
         "com_33a530deb7aa",
         "com_64ebabd98c5c",
         "com_bad64eea003a",
-        "com_4c3ca28533f5",
         "com_d2d455d2d6c9",
-        "com_065dafa96d43"
+        "com_065dafa96d43",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -2820,10 +2987,10 @@
       "similarCommunityIds": [
         "com_d8a5203885a9",
         "com_64ebabd98c5c",
+        "com_ff2e01957665",
         "com_cb019f4e9752",
         "com_3837f308cd75",
-        "com_3048e331f7b6",
-        "com_1466f20a9300"
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -2961,12 +3128,12 @@
         "partiful:jwslx6cogrhizjfreorlnxdzzpo2"
       ],
       "similarCommunityIds": [
+        "com_6114a53f79a0",
         "com_ebf7599ed103",
         "com_4c3ca28533f5",
         "com_feb5ce491629",
         "com_bad64eea003a",
-        "com_d2d455d2d6c9",
-        "com_1ef101a0cf5a"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -3191,7 +3358,7 @@
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
         "observedDateCount": 55,
-        "hasFirstPartyIdentity": false
+        "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
       "newcomerEvidence": [
@@ -3266,14 +3433,14 @@
         "78f3e29cf9a81cd4",
         "495bec5a4d165d90",
         "370a5c4c9d9e6805",
-        "29c2419f31e3511b",
         "91ddc399125db9ee",
+        "29c2419f31e3511b",
         "90f4e17a6277b044",
         "15f6c041ea0ed2d4",
         "676b19846df70197",
         "60bbf2eae91e5196",
-        "e1915b5e89e30ea3",
         "7a2e4179aee45609",
+        "e1915b5e89e30ea3",
         "80cbbc02ea08abb0"
       ],
       "sourceAttributions": [
@@ -3455,9 +3622,9 @@
         "com_5582e2e97f1a",
         "com_f171cd222ca5",
         "com_eef1ca956dae",
+        "com_4c3ca28533f5",
         "com_b736e77bdf93",
-        "com_c1410c07c4dd",
-        "com_d8a5203885a9"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -3619,28 +3786,28 @@
       "slug": "new-york-comedy-club-20878b",
       "name": "New York Comedy Club",
       "kind": "club",
-      "tagline": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 60 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "tagline": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side.",
+      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 60 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
-        "music",
         "special",
+        "music",
         "outdoors",
-        "celebrities"
+        "parties"
       ],
       "tags": [
         "comedy",
-        "music",
         "special",
+        "music",
         "outdoors",
-        "celebrities"
+        "parties"
       ],
       "neighborhoods": [
         "east village",
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club",
-      "imageUrl": "/img/imagetest/Chuck-Nice-New-JPG-f9df0bb7-large-thumb.jpg",
+      "imageUrl": "/img/comedians/image14-7fe80823-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -3652,7 +3819,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-01",
-        "upcomingEventCount": 50,
+        "upcomingEventCount": 48,
         "eventCount90d": 138
       },
       "schedule": {
@@ -3666,18 +3833,18 @@
         "sampleSize": 60
       },
       "upcomingEventIds": [
-        "34e17f97d01aa1c5",
         "5f0afe8d50c26b05",
+        "34e17f97d01aa1c5",
         "2ac601992493ee3a",
         "d35a66537565856a",
-        "6ca77ff8fc78afa0",
         "9d3e2d306a7ddf71",
-        "5f1efdce7430a063",
         "453a84b30f7f2905",
         "c8d1e8049537f2e8",
         "c9033f0b410b9ebd",
         "f09b4ccc3a5dc124",
-        "47fa0de80e803d84"
+        "47fa0de80e803d84",
+        "0198364bfa66b889",
+        "56c979f8418e5580"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -3695,12 +3862,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_318c39363fe6",
         "com_d8a5203885a9",
-        "com_d2d455d2d6c9",
+        "com_318c39363fe6",
         "com_b766b6de77ba",
-        "com_eef1ca956dae",
-        "com_feb5ce491629"
+        "com_d2d455d2d6c9",
+        "com_1ca4486298de",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -3722,7 +3889,7 @@
         "east village"
       ],
       "homeVenue": "Eastville Comedy Club",
-      "imageUrl": "/img/events/IMG-9367-7e68079a-large-thumb.jpg",
+      "imageUrl": "/img/comedians/neko-white-a2cb099b-large-thumb.jpg",
       "links": [
         {
           "type": "eastvillecomedy",
@@ -3734,7 +3901,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-27",
-        "upcomingEventCount": 18,
+        "upcomingEventCount": 16,
         "eventCount90d": 50
       },
       "schedule": {
@@ -3748,10 +3915,8 @@
         "sampleSize": 40
       },
       "upcomingEventIds": [
-        "7b8ff5f2a27fffad",
         "6ce0c8aa635e4e07",
-        "537379272e6c3770",
-        "5c061904687d8266",
+        "7b8ff5f2a27fffad",
         "cf5114de7a381948",
         "2557133a373c9f77",
         "5f209e2f9df2310f",
@@ -3759,7 +3924,9 @@
         "5016b7559441e003",
         "4dbca5545046806d",
         "22e2ac0c6a8c2a94",
-        "ce588e276c13e1c5"
+        "ce588e276c13e1c5",
+        "d053680a203ccb49",
+        "459ff1e4bb2369ed"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -3777,9 +3944,9 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_b766b6de77ba",
         "com_f23f8820878b",
         "com_648449f336c0",
+        "com_b766b6de77ba",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_1466f20a9300"
@@ -50919,7 +51086,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-01T16:39:11.933298+00:00",
+  "lastUpdated": "2026-10-01T18:23:03.789217+00:00",
   "version": 1,
   "schemaVersion": 1
 }
