@@ -228,8 +228,8 @@
         "com_9fed174eeff3",
         "com_a1e1c13a75f0",
         "com_e9748c1176c1",
-        "com_4c3ca28533f5",
-        "com_f171cd222ca5"
+        "com_36cb2681053d",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -306,8 +306,8 @@
         "com_c1410c07c4dd",
         "com_ebf7599ed103",
         "com_1ef101a0cf5a",
-        "com_f171cd222ca5",
-        "com_1ca4486298de"
+        "com_c274ef0f18ba",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -613,11 +613,11 @@
       ],
       "similarCommunityIds": [
         "com_5d96f038b82a",
+        "com_36cb2681053d",
         "com_9fed174eeff3",
         "com_4a9490cb3534",
         "com_e9748c1176c1",
-        "com_fe4b6663b721",
-        "com_4c3ca28533f5"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -828,11 +828,11 @@
       ],
       "similarCommunityIds": [
         "com_cb019f4e9752",
+        "com_c274ef0f18ba",
         "com_1466f20a9300",
         "com_1ca4486298de",
         "com_64ebabd98c5c",
-        "com_359bbb5a9a91",
-        "com_3837f308cd75"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -987,9 +987,9 @@
         "com_4c3ca28533f5",
         "com_d2d455d2d6c9",
         "com_9fed174eeff3",
+        "com_36cb2681053d",
         "com_6114a53f79a0",
-        "com_a1e1c13a75f0",
-        "com_b766b6de77ba"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -1242,10 +1242,95 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_feb5ce491629",
+        "com_36cb2681053d",
         "com_f23f8820878b",
         "com_9fed174eeff3",
-        "com_3837f308cd75",
-        "com_b766b6de77ba"
+        "com_3837f308cd75"
+      ]
+    },
+    {
+      "id": "com_8b837dfb5421",
+      "slug": "arts-with-lorry-fb5421",
+      "name": "Arts With Lorry",
+      "kind": "recurring_series",
+      "tagline": "Arts With Lorry is a recurring event series centered on dance, art, music in chelsea, manhattan.",
+      "description": "Arts With Lorry is a recurring event series centered on dance, art, music in chelsea, manhattan. Based on 5 observed event dates, it meets monthly on Friday and Sunday evenings.",
+      "categories": [
+        "other",
+        "dance",
+        "art",
+        "music"
+      ],
+      "tags": [
+        "other",
+        "dance",
+        "art",
+        "music"
+      ],
+      "neighborhoods": [
+        "chelsea",
+        "manhattan"
+      ],
+      "homeVenue": "520 8th Ave",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F705842189%2F106881732327%2F1%2Foriginal.jpg?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=a64cdfcc05ee854a480b2c14b95f6ca6",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/31025401131"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 5,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "monthly",
+        "typicalDays": [
+          "Friday",
+          "Sunday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.83,
+        "sampleSize": 5
+      },
+      "upcomingEventIds": [
+        "a8438bc351442bba",
+        "38d52283cc6b3061",
+        "a00aa6f98a66cdc1",
+        "802b23a455b5c2b1",
+        "5ecb9f7ab4381d51"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-01",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 5,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "a00aa6f98a66cdc1",
+          "signal": "beginner"
+        }
+      ],
+      "aliases": [
+        "eventbrite:31025401131"
+      ],
+      "similarCommunityIds": [
+        "com_eb4226b8b4c5",
+        "com_9fed174eeff3",
+        "com_ab8259bb35a4",
+        "com_e9748c1176c1",
+        "com_fe4b6663b721",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1399,9 +1484,9 @@
         "com_c1410c07c4dd",
         "com_f171cd222ca5",
         "com_ed8d42fb031d",
+        "com_36cb2681053d",
         "com_5582e2e97f1a",
-        "com_3837f308cd75",
-        "com_fe4b6663b721"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -1480,6 +1565,92 @@
         "com_1466f20a9300",
         "com_5d96f038b82a",
         "com_ab8259bb35a4"
+      ]
+    },
+    {
+      "id": "com_36cb2681053d",
+      "slug": "barnes-noble-union-square-81053d",
+      "name": "Barnes & Noble - Union Square",
+      "kind": "recurring_series",
+      "tagline": "Barnes & Noble - Union Square is a recurring event series centered on parties, celebrities, books in manhattan, east village.",
+      "description": "Barnes & Noble - Union Square is a recurring event series centered on parties, celebrities, books in manhattan, east village. Based on 11 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "categories": [
+        "other",
+        "parties",
+        "celebrities",
+        "books"
+      ],
+      "tags": [
+        "other",
+        "parties",
+        "celebrities",
+        "books"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "east village"
+      ],
+      "homeVenue": "Barnes & Noble",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193484481%2F825115679133%2F1%2Foriginal.20260914-200038?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=803933efa4793060148c32925603b9af",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/43013127903"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-01",
+        "upcomingEventCount": 11,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday",
+          "Thursday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 1.0,
+        "sampleSize": 11
+      },
+      "upcomingEventIds": [
+        "010c55a43c1ce2c8",
+        "52908bbe19d63a72",
+        "29c62484c40b4759",
+        "ff813d8f4b707cf2",
+        "311ade0ad8595c6c",
+        "43d5f54564e63b53",
+        "749a8ea2527df886",
+        "d930f7c8da93ca22",
+        "dff108e03a9bf272",
+        "192b9603c578bae4",
+        "d6297c0392b5c87a"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-01",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 11,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:43013127903"
+      ],
+      "similarCommunityIds": [
+        "com_d2d455d2d6c9",
+        "com_a1e1c13a75f0",
+        "com_f171cd222ca5",
+        "com_cdd5daa67222",
+        "com_feb5ce491629",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -1641,10 +1812,10 @@
       "similarCommunityIds": [
         "com_c1410c07c4dd",
         "com_55ca36db453a",
+        "com_36cb2681053d",
         "com_3837f308cd75",
         "com_fe4b6663b721",
-        "com_b736e77bdf93",
-        "com_d8a5203885a9"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -1726,6 +1897,77 @@
         "com_359bbb5a9a91",
         "com_9fed174eeff3",
         "com_cb019f4e9752"
+      ]
+    },
+    {
+      "id": "com_c274ef0f18ba",
+      "slug": "third-thursday-0f18ba",
+      "name": "Third Thursday",
+      "kind": "recurring_series",
+      "tagline": "Third Thursday is a recurring event series centered on parties in lower east side.",
+      "description": "Third Thursday is a recurring event series centered on parties in lower east side. Based on 2 observed event dates, it meets weekly on Thursday evenings.",
+      "categories": [
+        "other",
+        "parties"
+      ],
+      "tags": [
+        "other",
+        "parties"
+      ],
+      "neighborhoods": [
+        "lower east side"
+      ],
+      "homeVenue": "6139 Haggerty Rd",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1194280687%2F3011045124268%2F1%2Foriginal.20260924-135710?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=1d2a412a0d7ed5856ad49c1ae3262144",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/60798137563"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "b28a6109a4ffa874",
+        "779fcc5556287187"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-01",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:60798137563"
+      ],
+      "similarCommunityIds": [
+        "com_ff2e01957665",
+        "com_cb019f4e9752",
+        "com_359bbb5a9a91",
+        "com_36cb2681053d",
+        "com_ad50d6a81df3",
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -2045,11 +2287,11 @@
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
+        "com_36cb2681053d",
         "com_3837f308cd75",
         "com_33a530deb7aa",
         "com_359bbb5a9a91",
-        "com_4a9490cb3534",
-        "com_4c3ca28533f5"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -2400,9 +2642,9 @@
         "com_359bbb5a9a91",
         "com_ad50d6a81df3",
         "com_f8ff3d3257ed",
+        "com_8b837dfb5421",
         "com_9fed174eeff3",
-        "com_a1e1c13a75f0",
-        "com_5d96f038b82a"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -2616,7 +2858,7 @@
         "com_5582e2e97f1a",
         "com_eeb4e424a504",
         "com_f171cd222ca5",
-        "com_3837f308cd75"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -2827,7 +3069,7 @@
       },
       "upcomingEventIds": [
         "fa80971c18799401",
-        "4948d876d595e46e",
+        "b52479e7434a00f4",
         "c164f829d55a4d13",
         "618b717b8e109008",
         "413fc62287baf719",
@@ -2855,12 +3097,12 @@
         "luma:readingrhythms-manhattan"
       ],
       "similarCommunityIds": [
+        "com_36cb2681053d",
         "com_64ebabd98c5c",
         "com_bad64eea003a",
         "com_f171cd222ca5",
         "com_4c3ca28533f5",
-        "com_065dafa96d43",
-        "com_d2d455d2d6c9"
+        "com_065dafa96d43"
       ]
     },
     {
@@ -3333,7 +3575,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-01",
-        "upcomingEventCount": 24,
+        "upcomingEventCount": 23,
         "eventCount90d": 52
       },
       "schedule": {
@@ -3368,7 +3610,7 @@
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
         "observedDateCount": 55,
-        "hasFirstPartyIdentity": true
+        "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
       "newcomerEvidence": [
@@ -3395,7 +3637,7 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 56 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 59 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -3426,7 +3668,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-30",
-        "upcomingEventCount": 43,
+        "upcomingEventCount": 49,
         "eventCount90d": 74
       },
       "schedule": {
@@ -3437,20 +3679,20 @@
         ],
         "typicalTime": "20:30",
         "confidence": 1.0,
-        "sampleSize": 56
+        "sampleSize": 59
       },
       "upcomingEventIds": [
         "78f3e29cf9a81cd4",
         "495bec5a4d165d90",
         "370a5c4c9d9e6805",
-        "91ddc399125db9ee",
         "29c2419f31e3511b",
+        "91ddc399125db9ee",
         "90f4e17a6277b044",
         "15f6c041ea0ed2d4",
         "676b19846df70197",
         "60bbf2eae91e5196",
-        "7a2e4179aee45609",
         "e1915b5e89e30ea3",
+        "7a2e4179aee45609",
         "80cbbc02ea08abb0"
       ],
       "sourceAttributions": [
@@ -3460,7 +3702,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 56,
+        "observedDateCount": 59,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -3474,7 +3716,7 @@
         "com_cb019f4e9752",
         "com_3837f308cd75",
         "com_eef1ca956dae",
-        "com_f23f8820878b"
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -3796,28 +4038,28 @@
       "slug": "new-york-comedy-club-20878b",
       "name": "New York Comedy Club",
       "kind": "club",
-      "tagline": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 60 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "tagline": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side.",
+      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 61 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
-        "special",
         "music",
+        "special",
         "outdoors",
-        "parties"
+        "celebrities"
       ],
       "tags": [
         "comedy",
-        "special",
         "music",
+        "special",
         "outdoors",
-        "parties"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club",
-      "imageUrl": "/img/comedians/image14-7fe80823-large-thumb.jpg",
+      "imageUrl": "/img/imagetest/Chuck-Nice-New-JPG-f9df0bb7-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -3829,7 +4071,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-01",
-        "upcomingEventCount": 48,
+        "upcomingEventCount": 51,
         "eventCount90d": 138
       },
       "schedule": {
@@ -3840,21 +4082,21 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 60
+        "sampleSize": 61
       },
       "upcomingEventIds": [
-        "5f0afe8d50c26b05",
         "34e17f97d01aa1c5",
+        "5f0afe8d50c26b05",
         "2ac601992493ee3a",
         "d35a66537565856a",
+        "6ca77ff8fc78afa0",
         "9d3e2d306a7ddf71",
+        "5f1efdce7430a063",
         "453a84b30f7f2905",
         "c8d1e8049537f2e8",
         "c9033f0b410b9ebd",
         "f09b4ccc3a5dc124",
-        "47fa0de80e803d84",
-        "0198364bfa66b889",
-        "56c979f8418e5580"
+        "47fa0de80e803d84"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -3863,7 +4105,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 60,
+        "observedDateCount": 61,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3872,12 +4114,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
         "com_318c39363fe6",
         "com_d2d455d2d6c9",
         "com_b766b6de77ba",
-        "com_1ca4486298de",
-        "com_c1410c07c4dd"
+        "com_d8a5203885a9",
+        "com_a1e1c13a75f0",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -3899,7 +4141,7 @@
         "east village"
       ],
       "homeVenue": "Eastville Comedy Club",
-      "imageUrl": "/img/comedians/neko-white-a2cb099b-large-thumb.jpg",
+      "imageUrl": "/img/events/IMG-9367-7e68079a-large-thumb.jpg",
       "links": [
         {
           "type": "eastvillecomedy",
@@ -3911,7 +4153,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-27",
-        "upcomingEventCount": 16,
+        "upcomingEventCount": 18,
         "eventCount90d": 50
       },
       "schedule": {
@@ -3925,8 +4167,10 @@
         "sampleSize": 40
       },
       "upcomingEventIds": [
-        "6ce0c8aa635e4e07",
         "7b8ff5f2a27fffad",
+        "6ce0c8aa635e4e07",
+        "537379272e6c3770",
+        "5c061904687d8266",
         "cf5114de7a381948",
         "2557133a373c9f77",
         "5f209e2f9df2310f",
@@ -3934,9 +4178,7 @@
         "5016b7559441e003",
         "4dbca5545046806d",
         "22e2ac0c6a8c2a94",
-        "ce588e276c13e1c5",
-        "d053680a203ccb49",
-        "459ff1e4bb2369ed"
+        "ce588e276c13e1c5"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -51096,7 +51338,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-01T19:50:33.894101+00:00",
+  "lastUpdated": "2026-10-01T22:02:58.980210+00:00",
   "version": 1,
   "schemaVersion": 1
 }
