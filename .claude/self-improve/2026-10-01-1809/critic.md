@@ -45,3 +45,7 @@ Three skipped Eventbrite pages describe recurring series whose JSON-LD carries t
 ### Final shortlist modification
 
 The fresh calendar has 59 events today. The initial 30-row window stops just before Junk Journal Night (rank 32), an art opening (36), and Sarah Langan + Victor LaValle (38), all still missing descriptions. Extend the examined window to 40 events per day, preserving the 24-request/45-second limits and all identity guards. This lets the cache progressively cover more of the visible calendar instead of repeatedly spending its remaining requests on only the first 30 rows. Verify a second actual refresh to prove cached descriptions survive and measure the resulting completeness.
+
+### Verification follow-up — MODIFY
+
+The first CI failure revealed a pre-existing test that expected standalone-page navigation from an index card even though the index intentionally opens a modal. Preserve both production behaviors and test them separately; retain the original sticky mobile back-link and return-date assertions. Also verify full descriptions on the standalone page. The corrected suite passed on desktop and mobile in run `36907364504`. Distinguish all-day feed completeness (72.4%) from the time-filtered calendar (74.1% at 14:23 New York time); both exceed the target without claiming every card displays the entire body.

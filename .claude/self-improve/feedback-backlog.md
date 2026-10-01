@@ -96,9 +96,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-221 — Complete another self-improvement cycle
 - created_at: 2026-10-01
 - source: user-explicit
-- status: in-progress
+- status: addressed: 98ecf829
 - body: “self improve”
 - "addressed" criterion: audit the current live guide and durable feedback, apply a verified improvement, complete the required checks, publish it through the documented workflow, and record measured results.
+- resolution: Completed the staged audit and self-review, shipped bounded cached source-native descriptions in `d43428ea`, refreshed and independently verified the live 848-event feed, and fixed a pre-existing browser-test navigation mismatch in `98ecf829`. All 460 scraper tests, six critical sanity checks, lint, production build, and desktop/mobile browser checks pass. Pages run `36907364375` verifies the published snapshot; measured results are recorded in run `2026-10-01-1809`.
 
 ### fb-222 — Validate Eventbrite recurring-series descriptions against occurrence evidence
 - created_at: 2026-10-01
@@ -127,9 +128,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-220 — Bounded source-native description enrichment
 - created_at: 2026-09-22
 - source: agent-proposal
-- status: open
+- status: addressed: d43428ea
 - body: Hydrate only missing-description Luma/Eventbrite events that enter the top recommendation window, cache successful detail payloads, enforce a strict per-run request budget, and measure description fill rate plus rate-limit failures before expanding.
 - "addressed" criterion: raise showcased-event description completeness from the current 36% toward at least 60% without increasing source timeouts, freshness age, or rate-limit circuit trips.
+- resolution: Enrich only missing descriptions in the next seven days' top-40 daily survivors, capped at 24 requests and 45 seconds, with exact platform-ID/date matching and existing exclusion checks reapplied. Successful prose survives later catalog refreshes. Two actual refreshes raised today's feed completeness from 26/55 (47.3%) to 42/58 (72.4%); the browser time-filtered comparison at 14:23 New York time is 51.0% to 74.1%. The final pass reused 31 cached descriptions and recovered 13 more in 3.31 seconds; neither refresh had a timeout or rate-limit trip. Thirty pre-existing listings gained descriptions, independently confirmed in the public feed and sampled detail HTML.
 
 
 ### fb-216 — Expand source coverage along demonstrated taste
@@ -160,17 +162,19 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-211 — Make the website fresh
 - created_at: 2026-09-03
 - source: user-explicit
-- status: open
+- status: addressed: d43428ea
 - body: “make it fresh”
 - interpretation: Refresh both the event inventory and the presentation so the live site feels current, while preserving the user's established curation and exclusion preferences.
 - "addressed" criterion: the final deployment uses a newly generated today-onwards event feed rather than the 2026-08-28 snapshot, exposes an accurate freshness timestamp, and contains no stale/past-event regression; visual changes also avoid stale or repetitive presentation.
+- resolution: Published a newly completed 848-event feed dated `2026-10-01T18:23:03.843104+00:00`, with zero past rows, zero exact title/date duplicates, no timed-out sources, and richer source-written event details. Independent public JSON and HTML checks match the deployed snapshot. The existing responsive calendar-first presentation and removed-clutter preferences are preserved; the separate design directive remains open as fb-212.
 
 ### fb-210 — Update the website
 - created_at: 2026-09-03
 - source: user-explicit
-- status: open
+- status: addressed: 98ecf829
 - body: “update the website”
 - "addressed" criterion: approved content, ingestion, and UI improvements from this run are integrated into the production-facing site; required tests and the production build pass; the deployed site is verified against the final commit.
+- resolution: Deployed the description-enrichment implementation and refreshed public data, then completed the browser-test correction. Tests run `36907364504` passed both scraper and frontend jobs; Pages run `36907364375` passed build, deploy, and snapshot verification for `98ecf829`. Independent reads confirm the public feed and communities match the committed data, and sampled live detail pages render their recovered descriptions.
 
 ### fb-212 — Improve the design
 - created_at: 2026-09-03

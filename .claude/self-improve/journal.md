@@ -351,3 +351,32 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 **Verification:** 452 tests pass (3 expected xfails); all six sanity critical checks pass; ESLint has zero errors; Next.js production build succeeds. Quick Scrape run 35742348048 produced feed commit 04177ad1. Pages run 35742435596 passed build, deploy, and snapshot verification. Independent public JSON check confirms 686 events, `runCompleted=true`, no timed-out sources, and zero matching leaks.
 
 **Hypothesis for next round:** improve Luma/Eventbrite description completeness with bounded, cached hydration targeted only at recommendation candidates; measure fill rate and rate-limit impact before widening it.
+
+## 2026-10-01 1809 — run-id 2026-10-01-1809
+
+**Context:** User requested “self improve”. Fast-forwarded the initially clean checkout to `e6abe4a2` and independently verified the fresh 788-event public snapshot. All meaningful topics and critical checks were already covered, but none of 69 Luma events had useful descriptions. One agent performed the documented staged audit/proposal/critique roles; no independent subagent review is claimed.
+
+**Shipped:**
+- `d43428ea`: shared source-native missing-description enrichment in `scrapers/utils/descriptions.py` and `scrapers/run_all.py`. It examines normalized survivors in the next seven days' top-40 daily windows, with at most 24 requests, a 45-second pass deadline, per-request deadlines, and a platform-specific 429 stop. Successful descriptions are restored from the previous feed by canonical platform identity and exact date; final normalization reapplies all existing exclusions.
+- Removed the superseded unbounded Luma detail loop without removing calendars, source discovery, curated accounts, or learned state. Added eight behavioral regression tests and documented budgets/telemetry.
+- Two real bounded platform refreshes retained cached prose and produced a verified 848-event feed. Thirty pre-existing listings gained descriptions. New text exposed a consumer-industry dinner and a speed-dating event to the unchanged exclusion filters; all 70 personalized events remained.
+- `98ecf829`: corrected a pre-existing browser-test mismatch. Index cards intentionally open quick views; calendar cards navigate to standalone pages. The suite now verifies both paths on mobile/desktop, full descriptions, the original sticky mobile back-link geometry, and return to the event's calendar date. No production UI behavior was changed for the test.
+
+**Rejected/withheld:** no speculative source additions. Existing learned platform discovery provided the net 60 additional events; meaningful-topic coverage did not call for a new hardcoded calendar. No exclusions, source floors, or localStorage versions were weakened.
+
+**Deferred (still in backlog):** fb-212 responsive design work, fb-217 warning-only source-yield cliff detection, and new fb-222 series-aware Eventbrite descriptions. Three recurring pages retain their original JSON-LD dates; descriptions must remain unmatched until explicit schedule/sub-event evidence validates the requested occurrence.
+
+**Feedback gate:** CLOSED (at least three actionable open items). No calibration question. Captured fb-221; closed fb-221/fb-210 against `98ecf829` and fb-220/fb-211 against `d43428ea` after public verification.
+
+**Metric delta:**
+- Follow-graph coverage: 50/50 (100.0%) → 50/50 (100.0%), historical yield. Current-feed follow coverage: 8/50 (16.0%) → 8/50 (16.0%).
+- Topic coverage: 8/8 tracked tokens → 8/8; 4/4 meaningful topics → 4/4.
+- High-conviction event ratio: 70/788 (8.88%) → 70/848 (8.25%). The numerator is unchanged; the percentage falls because permitted inventory grew.
+- Today's all-day feed with useful descriptions: 26/55 (47.3%) → 42/58 (72.4%). Applying the browser's elapsed-time cutoff to both snapshots at 14:23 New York time gives 26/51 (51.0%) → 40/54 (74.1%). Full descriptions appear on detail/quick-view surfaces, not necessarily on compact cards.
+- Luma useful descriptions: 0/69 → 15/70. Eventbrite: 15/157 → 85/220. Feature-ready upcoming events: 467 → 534. Past rows and exact title/date duplicates remain zero.
+
+**Verification:** 460 scraper tests pass (3 expected xfails), all six sanity critical checks pass, lint has zero errors (seven existing image warnings), and the production build emits 930 static pages. The final enrichment pass reused 31 descriptions and recovered another 13 from 24 requests in 3.31 seconds; neither actual refresh had source/request timeouts, rate limits, or deadline hits. The image cache gained two entries and lost none. Existing Brooklyn Museum/Open Book Club warnings remain.
+
+Local Chromium was blocked by macOS Mach-port permissions. Linux Tests run [36907364504](https://github.com/prajjwal1/nyc/actions/runs/36907364504) passed scraper and full desktop/mobile frontend checks after correcting the pre-existing test. Initial Pages run `36906687207` and final [36907364375](https://github.com/prajjwal1/nyc/actions/runs/36907364375) both succeeded. Independent post-deploy HTTPS reads match the committed events/communities exactly: `lastUpdated=2026-10-01T18:23:03.843104+00:00`, `runCompleted=true`, no timed-out sources. Junk Journal Night and East of Eden Screening also expose their recovered descriptions in public static HTML. No rollback was needed.
+
+**Hypothesis for next round:** validate recurring-series occurrence evidence so genuine book/fitness events can reuse source descriptions without weakening identity/date guards. Use persisted enrichment telemetry and warning-only source-yield trends to target remaining gaps before expanding request budgets or source lists.

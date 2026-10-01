@@ -1,6 +1,6 @@
 # Metrics after — 2026-10-01-1809
 
-Validated public snapshot: `2026-10-01T18:23:03.843104+00:00`. Pages run `36906687207` succeeded; independent HTTPS reads of both public JSON files match the committed copies exactly.
+Validated public snapshot: `2026-10-01T18:23:03.843104+00:00`. Initial Pages run `36906687207` and final follow-up run `36907364375` succeeded; independent HTTPS reads after the final deployment match both committed public JSON files exactly. Tests run `36907364504` passed the scraper and desktop/mobile frontend jobs.
 
 | Signal | Before | After |
 |---|---:|---:|
