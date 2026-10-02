@@ -467,7 +467,7 @@
       "name": "The Ripped Bodice BK",
       "kind": "recurring_series",
       "tagline": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn.",
-      "description": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn. Based on 22 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "description": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn. Based on 23 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "other",
         "books",
@@ -498,7 +498,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-30",
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 11,
         "eventCount90d": 12
       },
       "schedule": {
@@ -509,7 +509,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 22
+        "sampleSize": 23
       },
       "upcomingEventIds": [
         "7dfbc5a698b633e2",
@@ -521,7 +521,8 @@
         "c2bda5909438a6c7",
         "593324d9f084e2a5",
         "54e8c3b9ad8b8d45",
-        "c4da7859a4242a3a"
+        "c4da7859a4242a3a",
+        "5f5cc44bfc4756e7"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -530,7 +531,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 22,
+        "observedDateCount": 23,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -840,7 +841,7 @@
       "name": "Community Bookstore",
       "kind": "recurring_series",
       "tagline": "Community Bookstore is a recurring event series centered on parties in brooklyn.",
-      "description": "Community Bookstore is a recurring event series centered on parties in brooklyn. Based on 6 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "description": "Community Bookstore is a recurring event series centered on parties in brooklyn. Based on 7 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "other",
         "parties"
@@ -865,24 +866,25 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Tuesday"
+          "Wednesday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
         "146d27b75d5eab9d",
         "836274efbd062647",
         "1bd422b3092fecc2",
         "31f3769324b06d7b",
+        "202ed4fb5c5ca660",
         "b999590fdd5248ad",
         "3be546bfb40c498e"
       ],
@@ -893,7 +895,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1473,7 +1475,7 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, parties, food in bushwick, east village.",
-      "description": "Book Club Bar is a community space centered on books, parties, food in bushwick, east village. Based on 22 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, parties, food in bushwick, east village. Based on 23 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -1505,7 +1507,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-29",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 15
       },
       "schedule": {
@@ -1516,7 +1518,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 22
+        "sampleSize": 23
       },
       "upcomingEventIds": [
         "81b352afe79e09f5",
@@ -1525,6 +1527,7 @@
         "75bab11a712ef68f",
         "b6d3cee25e07a78b",
         "0f27e63506456b5d",
+        "01ff326abea8a796",
         "95c9fcd22fd82938",
         "e4f74602041facd3",
         "bc572eeb5b5a0565",
@@ -1538,7 +1541,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 22,
+        "observedDateCount": 23,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51246,7 +51249,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-02T18:44:34.769236+00:00",
+  "lastUpdated": "2026-10-02T19:45:36.658153+00:00",
   "version": 1,
   "schemaVersion": 1
 }
