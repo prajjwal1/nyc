@@ -2042,7 +2042,7 @@
       "name": "Barnes & Noble - Union Square",
       "kind": "recurring_series",
       "tagline": "Barnes & Noble - Union Square is a recurring event series centered on parties, celebrities, books in manhattan, east village.",
-      "description": "Barnes & Noble - Union Square is a recurring event series centered on parties, celebrities, books in manhattan, east village. Based on 11 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "description": "Barnes & Noble - Union Square is a recurring event series centered on parties, celebrities, books in manhattan, east village. Based on 10 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "other",
         "parties",
@@ -2072,7 +2072,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 10,
         "eventCount90d": 0
       },
       "schedule": {
@@ -2083,7 +2083,7 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "52908bbe19d63a72",
@@ -2091,7 +2091,6 @@
         "ff813d8f4b707cf2",
         "311ade0ad8595c6c",
         "43d5f54564e63b53",
-        "749a8ea2527df886",
         "d930f7c8da93ca22",
         "dff108e03a9bf272",
         "192b9603c578bae4",
@@ -2105,7 +2104,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2279,10 +2278,10 @@
         "eventbrite:52255937823"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_55ca36db453a",
         "com_36cb2681053d",
         "com_fe4b6663b721",
+        "com_c1410c07c4dd",
         "com_3837f308cd75",
         "com_d8a5203885a9"
       ]
@@ -4023,21 +4022,21 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, parties in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, parties in east village, bushwick. Based on 56 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, games in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, music, games in east village, bushwick. Based on 56 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
-        "parties",
         "games",
-        "food"
+        "art",
+        "parties"
       ],
       "tags": [
         "books",
         "music",
-        "parties",
         "games",
-        "food"
+        "art",
+        "parties"
       ],
       "neighborhoods": [
         "east village",
@@ -4050,14 +4049,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6401120261115"
+          "url": "https://bookclubbar.com/events/6441320261118"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-01",
-        "upcomingEventCount": 21,
+        "upcomingEventCount": 27,
         "eventCount90d": 52
       },
       "schedule": {
@@ -4099,6 +4098,10 @@
         {
           "eventId": "45ca74a60db45547",
           "signal": "beginners"
+        },
+        {
+          "eventId": "f5207a5c726e6330",
+          "signal": "beginners"
         }
       ],
       "aliases": [
@@ -4106,10 +4109,10 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
-        "com_f171cd222ca5",
-        "com_3837f308cd75",
         "com_d8a5203885a9",
+        "com_f171cd222ca5",
         "com_ed8d42fb031d",
+        "com_4c3ca28533f5",
         "com_eef1ca956dae"
       ]
     },
@@ -4167,14 +4170,14 @@
         "78f3e29cf9a81cd4",
         "495bec5a4d165d90",
         "370a5c4c9d9e6805",
-        "29c2419f31e3511b",
         "91ddc399125db9ee",
+        "29c2419f31e3511b",
         "90f4e17a6277b044",
         "15f6c041ea0ed2d4",
         "676b19846df70197",
         "60bbf2eae91e5196",
-        "e1915b5e89e30ea3",
         "7a2e4179aee45609",
+        "e1915b5e89e30ea3",
         "80cbbc02ea08abb0"
       ],
       "sourceAttributions": [
@@ -4635,7 +4638,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-02",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 16,
         "eventCount90d": 54
       },
       "schedule": {
@@ -4651,7 +4654,6 @@
       "upcomingEventIds": [
         "7b8ff5f2a27fffad",
         "6ce0c8aa635e4e07",
-        "5c061904687d8266",
         "cf5114de7a381948",
         "2557133a373c9f77",
         "5f209e2f9df2310f",
@@ -4660,7 +4662,8 @@
         "4dbca5545046806d",
         "22e2ac0c6a8c2a94",
         "ce588e276c13e1c5",
-        "d053680a203ccb49"
+        "d053680a203ccb49",
+        "459ff1e4bb2369ed"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -51820,7 +51823,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-02T21:37:15.380206+00:00",
+  "lastUpdated": "2026-10-02T23:05:30.694258+00:00",
   "version": 1,
   "schemaVersion": 1
 }
