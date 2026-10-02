@@ -224,8 +224,8 @@
       ],
       "similarCommunityIds": [
         "com_28a4ec647815",
-        "com_fe4b6663b721",
         "com_218b97d674a6",
+        "com_fe4b6663b721",
         "com_cdd5daa67222",
         "com_ed8d42fb031d",
         "com_02ba15552329"
@@ -237,18 +237,20 @@
       "name": "Ciao Evento",
       "kind": "recurring_series",
       "tagline": "Ciao Evento is a recurring event series centered on food, parties, dance in manhattan.",
-      "description": "Ciao Evento is a recurring event series centered on food, parties, dance in manhattan. Based on 10 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "description": "Ciao Evento is a recurring event series centered on food, parties, dance in manhattan. Based on 12 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "food",
         "parties",
+        "other",
         "dance",
-        "other"
+        "exploration"
       ],
       "tags": [
         "food",
         "parties",
+        "other",
         "dance",
-        "other"
+        "exploration"
       ],
       "neighborhoods": [
         "manhattan"
@@ -266,7 +268,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-27",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 7,
         "eventCount90d": 6
       },
       "schedule": {
@@ -277,14 +279,16 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "83639802a6edab94",
         "50afb8d79d036d57",
         "de28b9e88f14dacf",
         "ce039abe0d7b37c9",
-        "88d0e8f1ca3878e4"
+        "90a6380f02205bfb",
+        "88d0e8f1ca3878e4",
+        "c4b0e9d8a80a2443"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -293,7 +297,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -302,12 +306,12 @@
         "eventbrite:114605847281"
       ],
       "similarCommunityIds": [
-        "com_1ef101a0cf5a",
         "com_072c9c3e12a8",
-        "com_7fd76dcd92f3",
         "com_e9748c1176c1",
-        "com_36cb2681053d",
-        "com_a1e1c13a75f0"
+        "com_1ef101a0cf5a",
+        "com_7fd76dcd92f3",
+        "com_a1e1c13a75f0",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1077,8 +1081,8 @@
         "com_e9748c1176c1",
         "com_ab8259bb35a4",
         "com_2a30ebfb0079",
-        "com_7fd76dcd92f3",
         "com_fe4b6663b721",
+        "com_7fd76dcd92f3",
         "com_4c3ca28533f5"
       ]
     },
@@ -1087,15 +1091,17 @@
       "slug": "books-are-magic-35692e",
       "name": "Books Are Magic",
       "kind": "recurring_series",
-      "tagline": "Books Are Magic is a recurring event series centered on food in brooklyn, brooklyn heights.",
-      "description": "Books Are Magic is a recurring event series centered on food in brooklyn, brooklyn heights. Based on 8 observed event dates, it meets weekly on Friday and Monday evenings.",
+      "tagline": "Books Are Magic is a recurring event series centered on food, comedy in brooklyn, brooklyn heights.",
+      "description": "Books Are Magic is a recurring event series centered on food, comedy in brooklyn, brooklyn heights. Based on 8 observed event dates, it meets weekly on Friday and Monday evenings.",
       "categories": [
         "other",
-        "food"
+        "food",
+        "comedy"
       ],
       "tags": [
         "other",
-        "food"
+        "food",
+        "comedy"
       ],
       "neighborhoods": [
         "brooklyn",
@@ -1153,12 +1159,12 @@
         "eventbrite:17671794664"
       ],
       "similarCommunityIds": [
-        "com_359bbb5a9a91",
+        "com_5d96f038b82a",
+        "com_cb019f4e9752",
+        "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_1466f20a9300",
-        "com_ff2e01957665",
-        "com_f8ff3d3257ed",
-        "com_fe4b6663b721"
+        "com_4a9490cb3534",
+        "com_648449f336c0"
       ]
     },
     {
@@ -1314,7 +1320,7 @@
         "com_4a9490cb3534",
         "com_648449f336c0",
         "com_b736e77bdf93",
-        "com_1466f20a9300"
+        "com_0e403135692e"
       ]
     },
     {
@@ -1961,7 +1967,7 @@
         "com_ed8d42fb031d",
         "com_36cb2681053d",
         "com_5582e2e97f1a",
-        "com_fe4b6663b721"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -2031,9 +2037,9 @@
         "com_359bbb5a9a91",
         "com_118a558259ea",
         "com_eb4226b8b4c5",
-        "com_0e403135692e",
         "com_1466f20a9300",
-        "com_5d96f038b82a"
+        "com_5d96f038b82a",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -2118,7 +2124,7 @@
         "com_cdd5daa67222",
         "com_feb5ce491629",
         "com_7fd76dcd92f3",
-        "com_fe4b6663b721"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -2280,10 +2286,10 @@
       "similarCommunityIds": [
         "com_55ca36db453a",
         "com_36cb2681053d",
-        "com_fe4b6663b721",
         "com_c1410c07c4dd",
         "com_3837f308cd75",
-        "com_d8a5203885a9"
+        "com_d8a5203885a9",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2514,8 +2520,8 @@
         "com_359bbb5a9a91",
         "com_36cb2681053d",
         "com_f8ff3d3257ed",
-        "com_fe4b6663b721",
-        "com_ed8d42fb031d"
+        "com_ed8d42fb031d",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2754,11 +2760,11 @@
       ],
       "similarCommunityIds": [
         "com_cb019f4e9752",
+        "com_0e403135692e",
         "com_648449f336c0",
         "com_359bbb5a9a91",
         "com_3048e331f7b6",
-        "com_4a9490cb3534",
-        "com_a1e1c13a75f0"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -2911,7 +2917,7 @@
         "com_1466f20a9300",
         "com_eb4226b8b4c5",
         "com_ff2e01957665",
-        "com_0e403135692e"
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -51823,7 +51829,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-02T23:05:30.694258+00:00",
+  "lastUpdated": "2026-10-02T23:33:07.001982+00:00",
   "version": 1,
   "schemaVersion": 1
 }
