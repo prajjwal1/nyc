@@ -302,12 +302,12 @@
         "eventbrite:114605847281"
       ],
       "similarCommunityIds": [
+        "com_36cb2681053d",
         "com_1ef101a0cf5a",
         "com_a1e1c13a75f0",
         "com_e9748c1176c1",
         "com_f171cd222ca5",
-        "com_ff2e01957665",
-        "com_2a30ebfb0079"
+        "com_ff2e01957665"
       ]
     },
     {
@@ -385,7 +385,7 @@
         "com_ebf7599ed103",
         "com_1ef101a0cf5a",
         "com_f171cd222ca5",
-        "com_1ca4486298de"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -611,9 +611,9 @@
         "com_4c3ca28533f5",
         "com_ab8259bb35a4",
         "com_1ef101a0cf5a",
+        "com_36cb2681053d",
         "com_6114a53f79a0",
-        "com_a1e1c13a75f0",
-        "com_e9748c1176c1"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -688,12 +688,12 @@
         "eventbrite:13580085802"
       ],
       "similarCommunityIds": [
+        "com_36cb2681053d",
         "com_5d96f038b82a",
         "com_4a9490cb3534",
         "com_e9748c1176c1",
         "com_fe4b6663b721",
-        "com_cb019f4e9752",
-        "com_feb5ce491629"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -906,8 +906,8 @@
         "com_1ca4486298de",
         "com_64ebabd98c5c",
         "com_359bbb5a9a91",
-        "com_b736e77bdf93",
-        "com_cb019f4e9752"
+        "com_36cb2681053d",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -1061,7 +1061,7 @@
         "com_359bbb5a9a91",
         "com_f8ff3d3257ed",
         "com_5d96f038b82a",
-        "com_a1e1c13a75f0"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1315,6 +1315,91 @@
       ]
     },
     {
+      "id": "com_8b837dfb5421",
+      "slug": "arts-with-lorry-fb5421",
+      "name": "Arts With Lorry",
+      "kind": "recurring_series",
+      "tagline": "Arts With Lorry is a recurring event series centered on dance, art, music in chelsea, manhattan.",
+      "description": "Arts With Lorry is a recurring event series centered on dance, art, music in chelsea, manhattan. Based on 5 observed event dates, it meets monthly on Friday and Sunday evenings.",
+      "categories": [
+        "other",
+        "dance",
+        "art",
+        "music"
+      ],
+      "tags": [
+        "other",
+        "dance",
+        "art",
+        "music"
+      ],
+      "neighborhoods": [
+        "chelsea",
+        "manhattan"
+      ],
+      "homeVenue": "520 8th Ave",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F705842189%2F106881732327%2F1%2Foriginal.jpg?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=a64cdfcc05ee854a480b2c14b95f6ca6",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/31025401131"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-02",
+        "upcomingEventCount": 5,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "monthly",
+        "typicalDays": [
+          "Friday",
+          "Sunday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.83,
+        "sampleSize": 5
+      },
+      "upcomingEventIds": [
+        "a8438bc351442bba",
+        "38d52283cc6b3061",
+        "a00aa6f98a66cdc1",
+        "802b23a455b5c2b1",
+        "5ecb9f7ab4381d51"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-02",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 5,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "a00aa6f98a66cdc1",
+          "signal": "beginner"
+        }
+      ],
+      "aliases": [
+        "eventbrite:31025401131"
+      ],
+      "similarCommunityIds": [
+        "com_eb4226b8b4c5",
+        "com_ab8259bb35a4",
+        "com_e9748c1176c1",
+        "com_fe4b6663b721",
+        "com_1466f20a9300",
+        "com_218b97d674a6"
+      ]
+    },
+    {
       "id": "com_648449f336c0",
       "slug": "bitches-brew-f336c0",
       "name": "Bitches' Brew",
@@ -1540,6 +1625,87 @@
         "com_5d96f038b82a",
         "com_ab8259bb35a4",
         "com_b766b6de77ba"
+      ]
+    },
+    {
+      "id": "com_36cb2681053d",
+      "slug": "barnes-noble-union-square-81053d",
+      "name": "Barnes & Noble - Union Square",
+      "kind": "recurring_series",
+      "tagline": "Barnes & Noble - Union Square is a recurring event series centered on celebrities, parties in manhattan.",
+      "description": "Barnes & Noble - Union Square is a recurring event series centered on celebrities, parties in manhattan. Based on 9 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "categories": [
+        "other",
+        "celebrities",
+        "parties"
+      ],
+      "tags": [
+        "other",
+        "celebrities",
+        "parties"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Barnes & Noble",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191472343%2F825115679133%2F1%2Foriginal.20260819-232051?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=9df1fd93092eeeed09ee2806418557a4",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/43013127903"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 9,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday",
+          "Tuesday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 1.0,
+        "sampleSize": 9
+      },
+      "upcomingEventIds": [
+        "52908bbe19d63a72",
+        "29c62484c40b4759",
+        "ff813d8f4b707cf2",
+        "311ade0ad8595c6c",
+        "43d5f54564e63b53",
+        "d930f7c8da93ca22",
+        "dff108e03a9bf272",
+        "d6297c0392b5c87a",
+        "e66f0bc99c738530"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-02",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 9,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:43013127903"
+      ],
+      "similarCommunityIds": [
+        "com_a1e1c13a75f0",
+        "com_fe4b6663b721",
+        "com_ff2e01957665",
+        "com_1ef101a0cf5a",
+        "com_e9748c1176c1",
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -1865,12 +2031,12 @@
         "eventbrite:6140247955"
       ],
       "similarCommunityIds": [
+        "com_36cb2681053d",
         "com_a1e1c13a75f0",
         "com_fe4b6663b721",
         "com_4c3ca28533f5",
         "com_1466f20a9300",
-        "com_b766b6de77ba",
-        "com_d2d455d2d6c9"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -2456,10 +2622,10 @@
       "similarCommunityIds": [
         "com_359bbb5a9a91",
         "com_f8ff3d3257ed",
+        "com_8b837dfb5421",
+        "com_36cb2681053d",
         "com_a1e1c13a75f0",
-        "com_5d96f038b82a",
-        "com_feb5ce491629",
-        "com_e9748c1176c1"
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -2907,12 +3073,12 @@
         "luma:readingrhythms-manhattan"
       ],
       "similarCommunityIds": [
+        "com_36cb2681053d",
         "com_64ebabd98c5c",
         "com_f171cd222ca5",
         "com_4c3ca28533f5",
         "com_065dafa96d43",
-        "com_d2d455d2d6c9",
-        "com_f23f8820878b"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -3125,8 +3291,8 @@
         "com_92805cd9f03b",
         "com_b0e15eaab803",
         "com_1ef101a0cf5a",
-        "com_c1410c07c4dd",
-        "com_e9748c1176c1"
+        "com_36cb2681053d",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -3269,10 +3435,10 @@
       "similarCommunityIds": [
         "com_6114a53f79a0",
         "com_065dafa96d43",
+        "com_36cb2681053d",
         "com_fe4b6663b721",
         "com_02ba15552329",
-        "com_1ab246c8dd88",
-        "com_3bc67889299d"
+        "com_1ab246c8dd88"
       ]
     },
     {
@@ -51080,7 +51246,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-02T15:56:15.504563+00:00",
+  "lastUpdated": "2026-10-02T17:56:55.528728+00:00",
   "version": 1,
   "schemaVersion": 1
 }
