@@ -2465,6 +2465,18 @@
       "tasteScore": 0.0067,
       "score": 0.35,
       "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
       "communityIds": [
         "com_8b837dfb5421"
       ],
@@ -2620,10 +2632,22 @@
         "Happening this week"
       ],
       "tasteScore": 0.0152,
-      "score": 0.465,
+      "score": 0.35,
       "highlights": [
         "festival"
       ],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
       "communityIds": [
         "com_3048e331f7b6"
       ],
@@ -2784,7 +2808,7 @@
         "Happening this week"
       ],
       "tasteScore": 0.0399,
-      "score": 0.443,
+      "score": 0.35,
       "highlights": [],
       "communityIds": [
         "com_f23f8820878b"
@@ -3924,7 +3948,7 @@
         "Happening this week"
       ],
       "tasteScore": 0.0195,
-      "score": 0.422,
+      "score": 0.442,
       "highlights": [],
       "userSaved": false,
       "userTagged": false,
@@ -3960,7 +3984,7 @@
       "price": "unknown",
       "scrapedAt": "2026-06-01T23:49:06.370405",
       "firstSeenAt": "2026-06-01T23:49:51.256364+00:00",
-      "score": 0.35,
+      "score": 0.353,
       "highlights": [],
       "userSaved": false,
       "userTagged": false,
@@ -4120,7 +4144,7 @@
         "Happening this week"
       ],
       "tasteScore": 0.0349,
-      "score": 0.35,
+      "score": 0.493,
       "highlights": [],
       "communityIds": [
         "com_f23f8820878b"
@@ -4169,7 +4193,7 @@
         "Happening this week"
       ],
       "tasteScore": 0.0197,
-      "score": 0.485,
+      "score": 0.615,
       "highlights": [],
       "communityIds": [
         "com_318c39363fe6"
@@ -4316,6 +4340,66 @@
       "primaryCommunityId": "com_d8a5203885a9"
     },
     {
+      "id": "36c49d3d1df5fec6",
+      "title": "Malev & Friends Comedy @ BK Art Haus",
+      "description": "",
+      "date": "2026-10-03",
+      "startTime": "21:00",
+      "endTime": null,
+      "location": {
+        "name": "Brooklyn Art Haus",
+        "address": "24 Marcy Avenue, Brooklyn, NY 11211",
+        "neighborhood": "brooklyn"
+      },
+      "categories": [
+        "comedy"
+      ],
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/malev-friends-comedy-bk-art-haus-tickets-1141133554179",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1175357752%2F1528943324833%2F1%2Foriginal.20260120-173414?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=6bc414c9e844113fe06c21faffdec8e4",
+      "price": "free",
+      "scrapedAt": "2026-10-02T20:26:39.199733",
+      "organizer": "Brooklyn Art Haus",
+      "organizerUrl": "https://eventbrite.com/o/65148790433",
+      "organizerRefs": [
+        {
+          "url": "https://eventbrite.com/o/65148790433",
+          "role": "host",
+          "externalId": "65148790433",
+          "name": "Brooklyn Art Haus",
+          "platform": "eventbrite"
+        }
+      ],
+      "catalogSource": "eventbrite_organizer",
+      "discoveryLane": "explore",
+      "discoveryVia": "eventbrite_current_results,previous_organizer",
+      "firstSeenAt": "2026-10-02T20:30:12.004026+00:00",
+      "recommendationReasons": [
+        "Happening this week"
+      ],
+      "tasteScore": 0.0188,
+      "score": 0.35,
+      "highlights": [
+        "free"
+      ],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "communityIds": [
+        "com_3048e331f7b6"
+      ],
+      "primaryCommunityId": "com_3048e331f7b6"
+    },
+    {
       "id": "cd7d6a9341f61ec7",
       "title": "Chatroom: Prince Klassen (Free w/ RSVP)",
       "description": "",
@@ -4375,66 +4459,6 @@
         "com_b766b6de77ba"
       ],
       "primaryCommunityId": "com_b766b6de77ba"
-    },
-    {
-      "id": "36c49d3d1df5fec6",
-      "title": "Malev & Friends Comedy @ BK Art Haus",
-      "description": "",
-      "date": "2026-10-03",
-      "startTime": "21:00",
-      "endTime": null,
-      "location": {
-        "name": "Brooklyn Art Haus",
-        "address": "24 Marcy Avenue, Brooklyn, NY 11211",
-        "neighborhood": "brooklyn"
-      },
-      "categories": [
-        "comedy"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/malev-friends-comedy-bk-art-haus-tickets-1141133554179",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1175357752%2F1528943324833%2F1%2Foriginal.20260120-173414?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=6bc414c9e844113fe06c21faffdec8e4",
-      "price": "free",
-      "scrapedAt": "2026-10-02T20:26:39.199733",
-      "organizer": "Brooklyn Art Haus",
-      "organizerUrl": "https://eventbrite.com/o/65148790433",
-      "organizerRefs": [
-        {
-          "url": "https://eventbrite.com/o/65148790433",
-          "role": "host",
-          "externalId": "65148790433",
-          "name": "Brooklyn Art Haus",
-          "platform": "eventbrite"
-        }
-      ],
-      "catalogSource": "eventbrite_organizer",
-      "discoveryLane": "explore",
-      "discoveryVia": "eventbrite_current_results,previous_organizer",
-      "firstSeenAt": "2026-10-02T20:30:12.004026+00:00",
-      "recommendationReasons": [
-        "Happening this week"
-      ],
-      "tasteScore": 0.0188,
-      "score": 0.35,
-      "highlights": [
-        "free"
-      ],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "structuredTitle": false,
-      "contributingSources": [
-        "eventbrite"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "communityIds": [
-        "com_3048e331f7b6"
-      ],
-      "primaryCommunityId": "com_3048e331f7b6"
     },
     {
       "id": "f81c96287be59443",
@@ -21259,7 +21283,7 @@
         "A strong music pick"
       ],
       "tasteScore": 0.0159,
-      "score": 0.536,
+      "score": 0.446,
       "highlights": [],
       "communityIds": [
         "com_f23f8820878b"
@@ -37253,7 +37277,7 @@
         "A strong music pick"
       ],
       "tasteScore": 0.0244,
-      "score": 0.613,
+      "score": 0.553,
       "highlights": [],
       "communityIds": [
         "com_318c39363fe6"
@@ -42514,6 +42538,18 @@
       "tasteScore": 0.0057,
       "score": 0.35,
       "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
       "communityIds": [
         "com_9abdf9db297a"
       ],
@@ -43186,7 +43222,7 @@
       "primaryCommunityId": "com_8b837dfb5421"
     }
   ],
-  "lastUpdated": "2026-10-03T16:33:55.344873+00:00",
+  "lastUpdated": "2026-10-03T17:30:21.462379+00:00",
   "topAccounts": [
     {
       "username": "vitalrunclub",
@@ -43392,24 +43428,24 @@
       "instagram": {},
       "descriptionEnrichment": {
         "windowEvents": 217,
-        "eligibleMissing": 22,
+        "eligibleMissing": 20,
         "requestLimit": 24,
-        "attempted": 22,
-        "enriched": 1,
-        "failed": 21,
+        "attempted": 20,
+        "enriched": 0,
+        "failed": 20,
         "timedOut": 0,
         "cancelled": 0,
         "rateLimitedSources": [],
         "deadlineHit": false,
         "sources": {
           "eventbrite": {
-            "attempted": 22,
-            "enriched": 1,
-            "failed": 21
+            "attempted": 20,
+            "enriched": 0,
+            "failed": 20
           }
         },
-        "elapsedSeconds": 14.11,
-        "cachedEvents": 26
+        "elapsedSeconds": 7.9,
+        "cachedEvents": 27
       }
     }
   },
