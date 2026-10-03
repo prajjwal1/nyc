@@ -6,16 +6,18 @@
       "name": "Czech Center New York",
       "kind": "institutional_program",
       "tagline": "Czech Center New York is a community program centered on special, art, comedy in upper east side.",
-      "description": "Czech Center New York is a community program centered on special, art, comedy in upper east side. Based on 3 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Czech Center New York is a community program centered on special, art, comedy in upper east side. Based on 4 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "special",
         "art",
-        "comedy"
+        "comedy",
+        "music"
       ],
       "tags": [
         "special",
         "art",
-        "comedy"
+        "comedy",
+        "music"
       ],
       "neighborhoods": [
         "upper east side"
@@ -33,7 +35,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-03",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 6
       },
       "schedule": {
@@ -43,8 +45,8 @@
           "Saturday"
         ],
         "typicalTime": "20:30",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
         "722e231af45789aa",
@@ -53,7 +55,8 @@
         "ec3498ab35f410b9",
         "8c10b79b24db2cad",
         "66c74196374cb3cc",
-        "72c0b28aa12ec835"
+        "72c0b28aa12ec835",
+        "dd7f883ba56f529c"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -62,7 +65,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -71,12 +74,12 @@
         "eventbrite:10013510321"
       ],
       "similarCommunityIds": [
-        "com_3048e331f7b6",
         "com_318c39363fe6",
-        "com_a1e1c13a75f0",
+        "com_3048e331f7b6",
+        "com_d8a5203885a9",
+        "com_f23f8820878b",
         "com_ad50d6a81df3",
-        "com_ab8259bb35a4",
-        "com_d8a5203885a9"
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -220,9 +223,9 @@
       ],
       "similarCommunityIds": [
         "com_1ca4486298de",
-        "com_9abdf9db297a",
         "com_28a4ec647815",
         "com_7fd76dcd92f3",
+        "com_9abdf9db297a",
         "com_a1e1c13a75f0",
         "com_3048e331f7b6"
       ]
@@ -1582,23 +1585,26 @@
       "slug": "arts-with-lorry-fb5421",
       "name": "Arts With Lorry",
       "kind": "recurring_series",
-      "tagline": "Arts With Lorry is a recurring event series centered on art, music in chelsea.",
-      "description": "Arts With Lorry is a recurring event series centered on art, music in chelsea. Based on 4 observed event dates, it meets monthly on Sunday and Thursday evenings.",
+      "tagline": "Arts With Lorry is a recurring event series centered on dance, art, music in chelsea, manhattan.",
+      "description": "Arts With Lorry is a recurring event series centered on dance, art, music in chelsea, manhattan. Based on 5 observed event dates, it meets monthly on Sunday and Saturday evenings.",
       "categories": [
         "other",
+        "dance",
         "art",
         "music"
       ],
       "tags": [
         "other",
+        "dance",
         "art",
         "music"
       ],
       "neighborhoods": [
-        "chelsea"
+        "chelsea",
+        "manhattan"
       ],
       "homeVenue": "520 8th Ave",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F705854349%2F106881732327%2F1%2Foriginal.jpg?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=32744962be5e1a8eb2ecb6964018e3e5",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F705842189%2F106881732327%2F1%2Foriginal.jpg?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=a64cdfcc05ee854a480b2c14b95f6ca6",
       "links": [
         {
           "type": "eventbrite",
@@ -1609,21 +1615,22 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 4,
-        "eventCount90d": 0
+        "lastEventDate": "2026-10-03",
+        "upcomingEventCount": 5,
+        "eventCount90d": 1
       },
       "schedule": {
         "cadence": "monthly",
         "typicalDays": [
           "Sunday",
-          "Thursday"
+          "Saturday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
+        "0790adfd5c68a393",
         "38d52283cc6b3061",
         "a00aa6f98a66cdc1",
         "802b23a455b5c2b1",
@@ -1636,7 +1643,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -1650,12 +1657,12 @@
         "eventbrite:31025401131"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
-        "com_ab8259bb35a4",
-        "com_b766b6de77ba",
         "com_eb4226b8b4c5",
-        "com_3048e331f7b6",
-        "com_072c9c3e12a8"
+        "com_072c9c3e12a8",
+        "com_e9748c1176c1",
+        "com_28a4ec647815",
+        "com_ab8259bb35a4",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -2459,27 +2466,27 @@
       "slug": "brooklyn-art-haus-31f7b6",
       "name": "Brooklyn Art Haus",
       "kind": "recurring_series",
-      "tagline": "Brooklyn Art Haus is a recurring event series centered on music, comedy, art in brooklyn.",
-      "description": "Brooklyn Art Haus is a recurring event series centered on music, comedy, art in brooklyn. Based on 20 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
+      "tagline": "Brooklyn Art Haus is a recurring event series centered on music, special, film in brooklyn.",
+      "description": "Brooklyn Art Haus is a recurring event series centered on music, special, film in brooklyn. Based on 20 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
       "categories": [
         "music",
         "other",
-        "comedy",
-        "art",
-        "special"
+        "special",
+        "film",
+        "comedy"
       ],
       "tags": [
         "music",
         "other",
-        "comedy",
-        "art",
-        "special"
+        "special",
+        "film",
+        "comedy"
       ],
       "neighborhoods": [
         "brooklyn"
       ],
       "homeVenue": "Brooklyn Art Haus",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1175357752%2F1528943324833%2F1%2Foriginal.20260120-173414?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=6bc414c9e844113fe06c21faffdec8e4",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193200535%2F1528943324833%2F1%2Foriginal.20260910-200514?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.494&fp-y=0.508&s=e173dc7150b2b343d1deff8843890861",
       "links": [
         {
           "type": "eventbrite",
@@ -2491,8 +2498,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-03",
-        "upcomingEventCount": 8,
-        "eventCount90d": 18
+        "upcomingEventCount": 9,
+        "eventCount90d": 19
       },
       "schedule": {
         "cadence": "weekly",
@@ -2505,6 +2512,7 @@
         "sampleSize": 20
       },
       "upcomingEventIds": [
+        "42547e169b194d93",
         "36c49d3d1df5fec6",
         "ff809d8caf8efaeb",
         "7faf38783a126be0",
@@ -3038,9 +3046,9 @@
         "com_118a558259ea",
         "com_359bbb5a9a91",
         "com_f8ff3d3257ed",
+        "com_8b837dfb5421",
         "com_072c9c3e12a8",
-        "com_e9748c1176c1",
-        "com_5d96f038b82a"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3407,7 +3415,7 @@
         "com_386aac86bb4d",
         "com_f8ff3d3257ed",
         "com_5d96f038b82a",
-        "com_3048e331f7b6"
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -3658,8 +3666,8 @@
         "com_218b97d674a6",
         "com_8d86f6f9340b",
         "com_eef1ca956dae",
-        "com_3048e331f7b6",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -4537,9 +4545,9 @@
         "com_d8a5203885a9",
         "com_d2d455d2d6c9",
         "com_318c39363fe6",
+        "com_9abdf9db297a",
         "com_3048e331f7b6",
-        "com_ed8d42fb031d",
-        "com_1ca4486298de"
+        "com_ed8d42fb031d"
       ]
     },
     {
@@ -4618,12 +4626,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_3048e331f7b6",
-        "com_f23f8820878b",
         "com_9abdf9db297a",
+        "com_f23f8820878b",
         "com_c1410c07c4dd",
         "com_55ca36db453a",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -51760,7 +51768,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-03T14:23:39.644110+00:00",
+  "lastUpdated": "2026-10-03T16:33:55.262328+00:00",
   "version": 1,
   "schemaVersion": 1
 }
