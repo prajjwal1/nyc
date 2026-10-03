@@ -79,7 +79,7 @@
         "com_d8a5203885a9",
         "com_f23f8820878b",
         "com_ad50d6a81df3",
-        "com_7fd76dcd92f3"
+        "com_c58670960684"
       ]
     },
     {
@@ -1006,10 +1006,10 @@
       "similarCommunityIds": [
         "com_ab8259bb35a4",
         "com_fe4b6663b721",
+        "com_c58670960684",
         "com_e9748c1176c1",
         "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0",
-        "com_4c3ca28533f5"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -3054,6 +3054,80 @@
       ]
     },
     {
+      "id": "com_c58670960684",
+      "slug": "the-new-york-philosophy-club-960684",
+      "name": "The New York Philosophy Club",
+      "kind": "club",
+      "tagline": "The New York Philosophy Club is a community club centered on art in williamsburg, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art in williamsburg, upper east side. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "categories": [
+        "other",
+        "art"
+      ],
+      "tags": [
+        "other",
+        "art"
+      ],
+      "neighborhoods": [
+        "williamsburg",
+        "upper east side"
+      ],
+      "homeVenue": "McCarren Parkhouse",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/philosophy"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Saturday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "ae7f016ef4952110",
+        "98b972966ff61d0b"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-03",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:joinphilosophy",
+        "luma:cal-dgp82mvkrg1frmr"
+      ],
+      "similarCommunityIds": [
+        "com_ab8259bb35a4",
+        "com_072c9c3e12a8",
+        "com_359bbb5a9a91",
+        "com_386aac86bb4d",
+        "com_f8ff3d3257ed",
+        "com_9fed174eeff3"
+      ]
+    },
+    {
       "id": "com_6114a53f79a0",
       "slug": "corgi-nyc-3f79a0",
       "name": "Corgi NYC",
@@ -3196,7 +3270,7 @@
         "com_cb019f4e9752",
         "com_e9748c1176c1",
         "com_feb5ce491629",
-        "com_02ba15552329"
+        "com_c58670960684"
       ]
     },
     {
@@ -3412,12 +3486,12 @@
         "luma:philosophy"
       ],
       "similarCommunityIds": [
+        "com_c58670960684",
         "com_072c9c3e12a8",
         "com_359bbb5a9a91",
         "com_386aac86bb4d",
         "com_f8ff3d3257ed",
-        "com_5d96f038b82a",
-        "com_9fed174eeff3"
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -3595,7 +3669,7 @@
         "com_ab8259bb35a4",
         "com_c1410c07c4dd",
         "com_c274ef0f18ba",
-        "com_ff2e01957665"
+        "com_c58670960684"
       ]
     },
     {
@@ -51770,7 +51844,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-03T23:10:47.917297+00:00",
+  "lastUpdated": "2026-10-03T23:46:30.191717+00:00",
   "version": 1,
   "schemaVersion": 1
 }
