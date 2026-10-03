@@ -796,7 +796,7 @@
       "name": "lululemon Williamsburg",
       "kind": "recurring_series",
       "tagline": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg.",
-      "description": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg. Based on 2 observed event dates, it meets weekly on Thursday and Saturday mornings.",
+      "description": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg. Based on 4 observed event dates, it meets weekly on Thursday and Saturday evenings.",
       "categories": [
         "fitness"
       ],
@@ -819,7 +819,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-01",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 3,
         "eventCount90d": 1
       },
       "schedule": {
@@ -828,12 +828,14 @@
           "Thursday",
           "Saturday"
         ],
-        "typicalTime": "07:45",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "typicalTime": "18:00",
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
-        "137191815a86a9dd"
+        "137191815a86a9dd",
+        "0ebcfe2ac4637fea",
+        "5af047392c979b94"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -842,7 +844,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1490,7 +1492,7 @@
       "name": "Strand Bookstore",
       "kind": "recurring_series",
       "tagline": "Strand Bookstore is a recurring event series centered on books, music, outdoors in manhattan, east village.",
-      "description": "Strand Bookstore is a recurring event series centered on books, music, outdoors in manhattan, east village. Based on 25 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "description": "Strand Bookstore is a recurring event series centered on books, music, outdoors in manhattan, east village. Based on 26 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
       "categories": [
         "other",
         "books",
@@ -1522,7 +1524,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-01",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 20
       },
       "schedule": {
@@ -1533,7 +1535,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 25
+        "sampleSize": 26
       },
       "upcomingEventIds": [
         "9a27abf5e8944c3e",
@@ -1544,7 +1546,8 @@
         "f85a8b6e0c22402a",
         "7bba7b8bdb77e0a9",
         "822d4b15fc7d452f",
-        "52f8aec15643a9a1"
+        "52f8aec15643a9a1",
+        "874bd5f5f5551d68"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1553,7 +1556,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 25,
+        "observedDateCount": 26,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1887,7 +1890,7 @@
       "name": "Barnes & Noble - Union Square",
       "kind": "recurring_series",
       "tagline": "Barnes & Noble - Union Square is a recurring event series centered on parties, celebrities, books in manhattan, east village.",
-      "description": "Barnes & Noble - Union Square is a recurring event series centered on parties, celebrities, books in manhattan, east village. Based on 10 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "description": "Barnes & Noble - Union Square is a recurring event series centered on parties, celebrities, books in manhattan, east village. Based on 11 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "other",
         "parties",
@@ -1917,7 +1920,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 11,
         "eventCount90d": 0
       },
       "schedule": {
@@ -1928,7 +1931,7 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 11
       },
       "upcomingEventIds": [
         "52908bbe19d63a72",
@@ -1936,6 +1939,7 @@
         "ff813d8f4b707cf2",
         "311ade0ad8595c6c",
         "43d5f54564e63b53",
+        "749a8ea2527df886",
         "d930f7c8da93ca22",
         "dff108e03a9bf272",
         "192b9603c578bae4",
@@ -1949,7 +1953,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51746,7 +51750,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-03T05:30:36.968036+00:00",
+  "lastUpdated": "2026-10-03T08:08:09.794955+00:00",
   "version": 1,
   "schemaVersion": 1
 }
