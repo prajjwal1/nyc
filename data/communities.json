@@ -160,13 +160,15 @@
       "slug": "the-harlem-swing-dance-society-e8b1e0",
       "name": "The Harlem Swing Dance Society",
       "kind": "club",
-      "tagline": "The Harlem Swing Dance Society is a community club centered on dance in harlem.",
-      "description": "The Harlem Swing Dance Society is a community club centered on dance in harlem. Based on 14 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "tagline": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem.",
+      "description": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem. Based on 15 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
-        "dance"
+        "dance",
+        "special"
       ],
       "tags": [
-        "dance"
+        "dance",
+        "special"
       ],
       "neighborhoods": [
         "harlem"
@@ -184,7 +186,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-09-29",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 14
       },
       "schedule": {
@@ -195,10 +197,11 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 14
+        "sampleSize": 15
       },
       "upcomingEventIds": [
-        "a90ae360907fb178"
+        "a90ae360907fb178",
+        "0f5857f5f3c5fedb"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -207,7 +210,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 14,
+        "observedDateCount": 15,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -216,12 +219,12 @@
         "eventbrite:10662501681"
       ],
       "similarCommunityIds": [
+        "com_1ca4486298de",
+        "com_9abdf9db297a",
         "com_28a4ec647815",
-        "com_218b97d674a6",
-        "com_fe4b6663b721",
-        "com_cdd5daa67222",
-        "com_ed8d42fb031d",
-        "com_02ba15552329"
+        "com_7fd76dcd92f3",
+        "com_a1e1c13a75f0",
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -1169,15 +1172,15 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series centered on comedy, wellness in brooklyn.",
-      "description": "Union Hall is a recurring event series centered on comedy, wellness in brooklyn. Based on 31 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "description": "Union Hall is a recurring event series centered on comedy, wellness in brooklyn. Based on 32 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
-        "other",
         "comedy",
+        "other",
         "wellness"
       ],
       "tags": [
-        "other",
         "comedy",
+        "other",
         "wellness"
       ],
       "neighborhoods": [
@@ -1196,7 +1199,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-03",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 35
       },
       "schedule": {
@@ -1207,7 +1210,7 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 31
+        "sampleSize": 32
       },
       "upcomingEventIds": [
         "666c5f1f788e795c",
@@ -1215,7 +1218,8 @@
         "ea6157bf4c73f48a",
         "646d5ed91bd95adf",
         "28ee574c15f69b1b",
-        "091c2bfbd50ddbc7"
+        "091c2bfbd50ddbc7",
+        "15c35cf015c5438b"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1224,7 +1228,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 31,
+        "observedDateCount": 32,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1819,7 +1823,7 @@
       "name": "UrbanGlass",
       "kind": "recurring_series",
       "tagline": "UrbanGlass is a recurring event series in fidi.",
-      "description": "UrbanGlass is a recurring event series in fidi. Based on 3 observed event dates, it meets weekly on Friday and Sunday evenings.",
+      "description": "UrbanGlass is a recurring event series in fidi. Based on 4 observed event dates, it meets weekly on Friday and Sunday evenings.",
       "categories": [
         "other"
       ],
@@ -1842,7 +1846,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-02",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 1
       },
       "schedule": {
@@ -1852,13 +1856,14 @@
           "Sunday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
         "b1fa6e4eed7ffee4",
         "65d960fbfd7c8490",
-        "ad9ef20b81ed61a0"
+        "ad9ef20b81ed61a0",
+        "2e59f4943a1fa7b4"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1867,7 +1872,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2141,7 +2146,7 @@
       "name": "St Mazie",
       "kind": "recurring_series",
       "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 37 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 38 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "music",
         "other"
@@ -2166,7 +2171,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-03",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 11,
         "eventCount90d": 52
       },
       "schedule": {
@@ -2177,7 +2182,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 37
+        "sampleSize": 38
       },
       "upcomingEventIds": [
         "97e7cf9c22d101e9",
@@ -2187,7 +2192,10 @@
         "ed28903feefa6366",
         "ef9cbe127142202a",
         "b624838b53c968b8",
-        "9e5a5c1bca0d6f4c"
+        "9fdef295d1090b1e",
+        "9e5a5c1bca0d6f4c",
+        "7aac3f6a981ecfbd",
+        "57c373295dca060e"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2196,7 +2204,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 37,
+        "observedDateCount": 38,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51752,7 +51760,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-03T12:41:20.233161+00:00",
+  "lastUpdated": "2026-10-03T13:32:28.491333+00:00",
   "version": 1,
   "schemaVersion": 1
 }
