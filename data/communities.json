@@ -155,19 +155,21 @@
       "slug": "ciao-evento-63b721",
       "name": "Ciao Evento",
       "kind": "recurring_series",
-      "tagline": "Ciao Evento is a recurring event series centered on food, exploration, parties in manhattan.",
-      "description": "Ciao Evento is a recurring event series centered on food, exploration, parties in manhattan. Based on 12 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "tagline": "Ciao Evento is a recurring event series centered on parties, food, music in manhattan.",
+      "description": "Ciao Evento is a recurring event series centered on parties, food, music in manhattan. Based on 14 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
-        "other",
+        "parties",
         "food",
-        "exploration",
-        "parties"
+        "other",
+        "music",
+        "dance"
       ],
       "tags": [
-        "other",
+        "parties",
         "food",
-        "exploration",
-        "parties"
+        "other",
+        "music",
+        "dance"
       ],
       "neighborhoods": [
         "manhattan"
@@ -185,7 +187,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-03",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 8,
         "eventCount90d": 8
       },
       "schedule": {
@@ -196,10 +198,13 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "de28b9e88f14dacf",
+        "94d7a68b24bc11a6",
+        "a2e98f11d89fe4d2",
+        "38706dd62fd9e3b1",
         "ce039abe0d7b37c9",
         "90a6380f02205bfb",
         "88d0e8f1ca3878e4",
@@ -212,7 +217,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -221,12 +226,12 @@
         "eventbrite:114605847281"
       ],
       "similarCommunityIds": [
-        "com_1ef101a0cf5a",
         "com_e9748c1176c1",
         "com_7fd76dcd92f3",
+        "com_1ef101a0cf5a",
         "com_a1e1c13a75f0",
-        "com_36cb2681053d",
-        "com_c274ef0f18ba"
+        "com_4c3ca28533f5",
+        "com_28a4ec647815"
       ]
     },
     {
@@ -382,9 +387,9 @@
         "com_ebf7599ed103",
         "com_b0e15eaab803",
         "com_c1410c07c4dd",
+        "com_fe4b6663b721",
         "com_55ca36db453a",
-        "com_f23f8820878b",
-        "com_36cb2681053d"
+        "com_f23f8820878b"
       ]
     },
     {
@@ -627,7 +632,7 @@
         "com_e9748c1176c1",
         "com_a1e1c13a75f0",
         "com_4c3ca28533f5",
-        "com_28a4ec647815"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -714,13 +719,15 @@
       "slug": "lululemon-williamsburg-552329",
       "name": "lululemon Williamsburg",
       "kind": "recurring_series",
-      "tagline": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg.",
-      "description": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg. Based on 4 observed event dates, it meets weekly on Thursday and Saturday evenings.",
+      "tagline": "lululemon Williamsburg is a recurring event series centered on fitness, wellness in williamsburg.",
+      "description": "lululemon Williamsburg is a recurring event series centered on fitness, wellness in williamsburg. Based on 4 observed event dates, it meets weekly on Thursday and Saturday evenings.",
       "categories": [
-        "fitness"
+        "fitness",
+        "wellness"
       ],
       "tags": [
-        "fitness"
+        "fitness",
+        "wellness"
       ],
       "neighborhoods": [
         "williamsburg"
@@ -772,12 +779,12 @@
         "eventbrite:14861961557"
       ],
       "similarCommunityIds": [
+        "com_9fed174eeff3",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
         "com_1ef101a0cf5a",
-        "com_9fed174eeff3",
         "com_065dafa96d43",
-        "com_c58670960684"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -922,8 +929,8 @@
       ],
       "similarCommunityIds": [
         "com_92805cd9f03b",
-        "com_fe4b6663b721",
         "com_feb5ce491629",
+        "com_359bbb5a9a91",
         "com_a786c70979d0",
         "com_ebf7599ed103",
         "com_4c3ca28533f5"
@@ -1007,8 +1014,8 @@
         "com_cb019f4e9752",
         "com_3837f308cd75",
         "com_4a9490cb3534",
-        "com_359bbb5a9a91",
-        "com_1466f20a9300"
+        "com_1466f20a9300",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -1083,9 +1090,9 @@
         "com_c274ef0f18ba",
         "com_1466f20a9300",
         "com_64ebabd98c5c",
-        "com_359bbb5a9a91",
         "com_8d86f6f9340b",
-        "com_cb019f4e9752"
+        "com_cb019f4e9752",
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -1237,11 +1244,11 @@
       ],
       "similarCommunityIds": [
         "com_d2d455d2d6c9",
+        "com_359bbb5a9a91",
         "com_36cb2681053d",
         "com_4c3ca28533f5",
         "com_9fed174eeff3",
-        "com_cb019f4e9752",
-        "com_e9748c1176c1"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -1642,11 +1649,11 @@
       ],
       "similarCommunityIds": [
         "com_eb4226b8b4c5",
-        "com_359bbb5a9a91",
         "com_f8ff3d3257ed",
         "com_e9748c1176c1",
         "com_5d96f038b82a",
-        "com_7fd76dcd92f3"
+        "com_7fd76dcd92f3",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -1802,10 +1809,10 @@
         "eventbrite:4279966505"
       ],
       "similarCommunityIds": [
-        "com_359bbb5a9a91",
         "com_118a558259ea",
         "com_eb4226b8b4c5",
         "com_1466f20a9300",
+        "com_359bbb5a9a91",
         "com_5d96f038b82a",
         "com_c274ef0f18ba"
       ]
@@ -1976,8 +1983,8 @@
         "com_d2d455d2d6c9",
         "com_e9748c1176c1",
         "com_feb5ce491629",
-        "com_ab8259bb35a4",
-        "com_c1410c07c4dd"
+        "com_fe4b6663b721",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -2056,9 +2063,9 @@
         "com_55ca36db453a",
         "com_36cb2681053d",
         "com_b736e77bdf93",
-        "com_fe4b6663b721",
         "com_c1410c07c4dd",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -2135,9 +2142,9 @@
         "com_3048e331f7b6",
         "com_3837f308cd75",
         "com_ff2e01957665",
-        "com_359bbb5a9a91",
         "com_9fed174eeff3",
-        "com_ab8259bb35a4"
+        "com_ab8259bb35a4",
+        "com_c58670960684"
       ]
     },
     {
@@ -2216,8 +2223,8 @@
         "com_1466f20a9300",
         "com_3837f308cd75",
         "com_d2d455d2d6c9",
-        "com_5582e2e97f1a",
-        "com_8d86f6f9340b"
+        "com_fe4b6663b721",
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -2284,11 +2291,11 @@
       ],
       "similarCommunityIds": [
         "com_ff2e01957665",
-        "com_359bbb5a9a91",
         "com_36cb2681053d",
         "com_386aac86bb4d",
         "com_f8ff3d3257ed",
-        "com_fe4b6663b721"
+        "com_fe4b6663b721",
+        "com_ed8d42fb031d"
       ]
     },
     {
@@ -2366,10 +2373,10 @@
       ],
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
+        "com_fe4b6663b721",
         "com_1466f20a9300",
         "com_ab8259bb35a4",
         "com_a1e1c13a75f0",
-        "com_fe4b6663b721",
         "com_4c3ca28533f5"
       ]
     },
@@ -2522,9 +2529,9 @@
         "com_cb019f4e9752",
         "com_0e403135692e",
         "com_a1e1c13a75f0",
-        "com_359bbb5a9a91",
         "com_4a9490cb3534",
-        "com_1466f20a9300"
+        "com_1466f20a9300",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -2613,20 +2620,22 @@
       "slug": "alfreda-s-cinema-5a9a91",
       "name": "Alfreda's Cinema",
       "kind": "recurring_series",
-      "tagline": "Alfreda's Cinema is a recurring event series in flatbush, brooklyn.",
-      "description": "Alfreda's Cinema is a recurring event series in flatbush, brooklyn. Based on 8 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "tagline": "Alfreda's Cinema is a recurring event series centered on outdoors in brooklyn, flatbush.",
+      "description": "Alfreda's Cinema is a recurring event series centered on outdoors in brooklyn, flatbush. Based on 9 observed event dates, it meets weekly on Friday and Thursday evenings.",
       "categories": [
-        "other"
+        "other",
+        "outdoors"
       ],
       "tags": [
-        "other"
+        "other",
+        "outdoors"
       ],
       "neighborhoods": [
-        "flatbush",
-        "brooklyn"
+        "brooklyn",
+        "flatbush"
       ],
-      "homeVenue": "Lefferts Historic House",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1184813224%2F141404545158%2F1%2Foriginal.20260518-014136?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=1676c191383f380948a62f3cd047c485",
+      "homeVenue": "Brower Park",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1185343073%2F141404545158%2F1%2Foriginal.20260525-035928?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=246a6d636bb92b3213f392a13f8ade86",
       "links": [
         {
           "type": "eventbrite",
@@ -2638,20 +2647,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-02",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 6
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Thursday",
-          "Friday"
+          "Friday",
+          "Thursday"
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 9
       },
       "upcomingEventIds": [
+        "c53dec60759cf356",
         "fd4f348e5f7db120",
         "fdbb05e1c88e2a94"
       ],
@@ -2662,7 +2672,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 9,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2671,12 +2681,12 @@
         "eventbrite:8387562806"
       ],
       "similarCommunityIds": [
-        "com_f8ff3d3257ed",
-        "com_118a558259ea",
+        "com_feb5ce491629",
         "com_1466f20a9300",
-        "com_eb4226b8b4c5",
         "com_ff2e01957665",
-        "com_5d96f038b82a"
+        "com_f8ff3d3257ed",
+        "com_5d96f038b82a",
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -2738,8 +2748,8 @@
         "url:https://www.instagram.com/nbd_rc"
       ],
       "similarCommunityIds": [
-        "com_02ba15552329",
         "com_3bc67889299d",
+        "com_02ba15552329",
         "com_1ef101a0cf5a",
         "com_065dafa96d43",
         "com_0e403135692e",
@@ -2808,8 +2818,8 @@
         "url:https://www.instagram.com/nycsprintcollective"
       ],
       "similarCommunityIds": [
-        "com_02ba15552329",
         "com_1ab246c8dd88",
+        "com_02ba15552329",
         "com_1ef101a0cf5a",
         "com_065dafa96d43",
         "com_0e403135692e",
@@ -2883,11 +2893,11 @@
       ],
       "similarCommunityIds": [
         "com_1ef101a0cf5a",
-        "com_02ba15552329",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
         "com_cdd5daa67222",
-        "com_f23f8820878b"
+        "com_f23f8820878b",
+        "com_02ba15552329"
       ]
     },
     {
@@ -2952,11 +2962,11 @@
       ],
       "similarCommunityIds": [
         "com_118a558259ea",
-        "com_359bbb5a9a91",
         "com_f8ff3d3257ed",
         "com_e9748c1176c1",
         "com_5d96f038b82a",
-        "com_7fd76dcd92f3"
+        "com_7fd76dcd92f3",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -3104,10 +3114,10 @@
       "similarCommunityIds": [
         "com_c58670960684",
         "com_1466f20a9300",
+        "com_02ba15552329",
         "com_ab8259bb35a4",
         "com_cb019f4e9752",
-        "com_e9748c1176c1",
-        "com_feb5ce491629"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3650,11 +3660,11 @@
       ],
       "similarCommunityIds": [
         "com_ed8d42fb031d",
+        "com_fe4b6663b721",
         "com_92805cd9f03b",
         "com_b0e15eaab803",
         "com_1ef101a0cf5a",
-        "com_e9748c1176c1",
-        "com_c1410c07c4dd"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3722,8 +3732,8 @@
         "com_ebf7599ed103",
         "com_4c3ca28533f5",
         "com_feb5ce491629",
-        "com_118a558259ea",
-        "com_1ef101a0cf5a"
+        "com_359bbb5a9a91",
+        "com_118a558259ea"
       ]
     },
     {
@@ -3797,10 +3807,10 @@
       "similarCommunityIds": [
         "com_065dafa96d43",
         "com_fe4b6663b721",
-        "com_02ba15552329",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -51676,7 +51686,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-04T07:14:35.024057+00:00",
+  "lastUpdated": "2026-10-04T08:48:44.644848+00:00",
   "version": 1,
   "schemaVersion": 1
 }
