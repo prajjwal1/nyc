@@ -928,12 +928,12 @@
         "eventbrite:16901317817"
       ],
       "similarCommunityIds": [
+        "com_0306525f2bed",
         "com_92805cd9f03b",
         "com_feb5ce491629",
         "com_359bbb5a9a91",
         "com_a786c70979d0",
-        "com_ebf7599ed103",
-        "com_4c3ca28533f5"
+        "com_ebf7599ed103"
       ]
     },
     {
@@ -1583,9 +1583,9 @@
         "com_ab8259bb35a4",
         "com_c58670960684",
         "com_3048e331f7b6",
+        "com_0306525f2bed",
         "com_1466f20a9300",
-        "com_eb4226b8b4c5",
-        "com_9fed174eeff3"
+        "com_eb4226b8b4c5"
       ]
     },
     {
@@ -1651,11 +1651,11 @@
       ],
       "similarCommunityIds": [
         "com_eb4226b8b4c5",
+        "com_6430552bf491",
         "com_f8ff3d3257ed",
         "com_e9748c1176c1",
         "com_5d96f038b82a",
-        "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0"
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -1811,12 +1811,12 @@
         "eventbrite:4279966505"
       ],
       "similarCommunityIds": [
+        "com_6430552bf491",
         "com_118a558259ea",
         "com_eb4226b8b4c5",
         "com_1466f20a9300",
         "com_359bbb5a9a91",
-        "com_5d96f038b82a",
-        "com_c274ef0f18ba"
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -2295,9 +2295,9 @@
         "com_ff2e01957665",
         "com_36cb2681053d",
         "com_386aac86bb4d",
+        "com_6430552bf491",
         "com_f8ff3d3257ed",
-        "com_fe4b6663b721",
-        "com_ed8d42fb031d"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2686,9 +2686,9 @@
         "com_feb5ce491629",
         "com_1466f20a9300",
         "com_ff2e01957665",
+        "com_6430552bf491",
         "com_f8ff3d3257ed",
-        "com_5d96f038b82a",
-        "com_8d86f6f9340b"
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -2972,11 +2972,84 @@
       ],
       "similarCommunityIds": [
         "com_118a558259ea",
+        "com_6430552bf491",
         "com_f8ff3d3257ed",
         "com_e9748c1176c1",
         "com_5d96f038b82a",
-        "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0"
+        "com_7fd76dcd92f3"
+      ]
+    },
+    {
+      "id": "com_0306525f2bed",
+      "slug": "van-alen-institute-5f2bed",
+      "name": "Van Alen Institute",
+      "kind": "recurring_series",
+      "tagline": "Van Alen Institute is a recurring event series centered on art in brooklyn.",
+      "description": "Van Alen Institute is a recurring event series centered on art in brooklyn. Based on 2 observed event dates, it meets biweekly on Thursday and Monday evenings.",
+      "categories": [
+        "art",
+        "other"
+      ],
+      "tags": [
+        "art",
+        "other"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Van Alen Institute",
+      "imageUrl": "https://images.lumacdn.com/uploads/vr/59d59fb3-a3ad-47f4-9a92-505a9c788a63.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/vanaleninstitute"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Thursday",
+          "Monday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "3550626aba5be6b4",
+        "8cd20ed2f4eef425"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-04",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:van_alen",
+        "luma:cal-8fc7bjodgaig8na"
+      ],
+      "similarCommunityIds": [
+        "com_a786c70979d0",
+        "com_3048e331f7b6",
+        "com_072c9c3e12a8",
+        "com_1466f20a9300",
+        "com_ff2e01957665",
+        "com_218b97d674a6"
       ]
     },
     {
@@ -3053,6 +3126,76 @@
         "com_9fed174eeff3",
         "com_1466f20a9300",
         "com_9abdf9db297a"
+      ]
+    },
+    {
+      "id": "com_6430552bf491",
+      "slug": "unplugged-collective-2bf491",
+      "name": "Unplugged Collective",
+      "kind": "recurring_series",
+      "tagline": "Unplugged Collective is a recurring event series in midtown.",
+      "description": "Unplugged Collective is a recurring event series in midtown. Based on 2 observed event dates, it meets weekly on Monday and Tuesday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "midtown"
+      ],
+      "homeVenue": "Midtown Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/74/98226ba7-8c52-4531-ad49-014c538459b4.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/unpluggedcollective"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday",
+          "Tuesday"
+        ],
+        "typicalTime": "12:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "1841680a4caabf14",
+        "660523a9fee6796b"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-04",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-vy8ocev0pg24mb1"
+      ],
+      "similarCommunityIds": [
+        "com_f8ff3d3257ed",
+        "com_118a558259ea",
+        "com_eb4226b8b4c5",
+        "com_1466f20a9300",
+        "com_359bbb5a9a91",
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -3596,11 +3739,11 @@
       ],
       "similarCommunityIds": [
         "com_e07415e7f595",
+        "com_0306525f2bed",
         "com_218b97d674a6",
         "com_8d86f6f9340b",
         "com_3048e331f7b6",
-        "com_b736e77bdf93",
-        "com_eef1ca956dae"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -4078,11 +4221,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
+        "com_0306525f2bed",
         "com_a786c70979d0",
         "com_e07415e7f595",
         "com_3048e331f7b6",
-        "com_b736e77bdf93",
-        "com_eef1ca956dae"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -4318,8 +4461,8 @@
         "com_33a530deb7aa",
         "com_ad50d6a81df3",
         "com_8d86f6f9340b",
-        "com_218b97d674a6",
-        "com_b736e77bdf93"
+        "com_0306525f2bed",
+        "com_218b97d674a6"
       ]
     },
     {
@@ -51696,7 +51839,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-04T22:25:35.024727+00:00",
+  "lastUpdated": "2026-10-04T23:06:12.932098+00:00",
   "version": 1,
   "schemaVersion": 1
 }
