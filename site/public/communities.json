@@ -296,12 +296,12 @@
         "eventbrite:114605847281"
       ],
       "similarCommunityIds": [
-        "com_072c9c3e12a8",
         "com_1ef101a0cf5a",
         "com_e9748c1176c1",
         "com_7fd76dcd92f3",
         "com_a1e1c13a75f0",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -374,9 +374,9 @@
         "eventbrite:114781508361"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_3837f308cd75",
         "com_4a9490cb3534",
+        "com_b736e77bdf93",
         "com_1466f20a9300",
         "com_64ebabd98c5c",
         "com_ff2e01957665"
@@ -619,7 +619,7 @@
         "com_cb019f4e9752",
         "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_d8a5203885a9"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -778,10 +778,10 @@
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
         "com_5d96f038b82a",
-        "com_072c9c3e12a8",
         "com_e9748c1176c1",
         "com_fe4b6663b721",
-        "com_3048e331f7b6"
+        "com_3048e331f7b6",
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -929,23 +929,26 @@
       "slug": "the-art-students-league-of-new-york-3e12a8",
       "name": "The Art Students League of New York",
       "kind": "recurring_series",
-      "tagline": "The Art Students League of New York is a recurring event series centered on exploration, art in manhattan.",
-      "description": "The Art Students League of New York is a recurring event series centered on exploration, art in manhattan. Based on 4 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "The Art Students League of New York is a recurring event series centered on art, outdoors, exploration in manhattan, long island city.",
+      "description": "The Art Students League of New York is a recurring event series centered on art, outdoors, exploration in manhattan, long island city. Based on 5 observed event dates, it meets biweekly on Wednesday and Monday evenings.",
       "categories": [
+        "art",
         "other",
-        "exploration",
-        "art"
+        "outdoors",
+        "exploration"
       ],
       "tags": [
+        "art",
         "other",
-        "exploration",
-        "art"
+        "outdoors",
+        "exploration"
       ],
       "neighborhoods": [
-        "manhattan"
+        "manhattan",
+        "long island city"
       ],
       "homeVenue": "The Phyllis Harriman Mason Gallery",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1178450060%2F1375585180133%2F1%2Foriginal.20260225-204659?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=cd2471deb382b5acde20d887d632d77b",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192999864%2F1375585180133%2F1%2Foriginal.20260908-192024?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=196cf62e2e99fb01ccb8e0edd365012a",
       "links": [
         {
           "type": "eventbrite",
@@ -957,20 +960,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 0
       },
       "schedule": {
-        "cadence": "weekly",
+        "cadence": "biweekly",
         "typicalDays": [
           "Wednesday",
-          "Tuesday"
+          "Monday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
+        "923ff0c9529b74df",
         "a10de20967b35657",
         "c347da0537877b51",
         "edd88005147f768f",
@@ -983,7 +987,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -992,12 +996,12 @@
         "eventbrite:16901317817"
       ],
       "similarCommunityIds": [
+        "com_92805cd9f03b",
         "com_ab8259bb35a4",
-        "com_fe4b6663b721",
+        "com_feb5ce491629",
+        "com_a786c70979d0",
         "com_c58670960684",
-        "com_e9748c1176c1",
-        "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0"
+        "com_ebf7599ed103"
       ]
     },
     {
@@ -1074,9 +1078,9 @@
         "eventbrite:17671794664"
       ],
       "similarCommunityIds": [
+        "com_b736e77bdf93",
         "com_5d96f038b82a",
         "com_cb019f4e9752",
-        "com_b736e77bdf93",
         "com_3048e331f7b6",
         "com_3837f308cd75",
         "com_4a9490cb3534"
@@ -1232,9 +1236,9 @@
         "com_5d96f038b82a",
         "com_3048e331f7b6",
         "com_4a9490cb3534",
+        "com_b736e77bdf93",
         "com_0e403135692e",
-        "com_1466f20a9300",
-        "com_ff2e01957665"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1320,16 +1324,18 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on music, movies, food in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on music, movies, food in brooklyn. Based on 38 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on comedy, music, movies in brooklyn. Based on 39 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
+        "comedy",
         "music",
         "movies",
         "food"
       ],
       "tags": [
         "other",
+        "comedy",
         "music",
         "movies",
         "food"
@@ -1338,7 +1344,7 @@
         "brooklyn"
       ],
       "homeVenue": "The Tiny Cupboard",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1181622846%2F2995589689275%2F1%2Foriginal.20260407-184430?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=849addc28196778cdf913065ebb83d36",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1188941150%2F293545126158%2F1%2Foriginal.20260715-175543?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=58ee85d6169f11ece90cdbb29f5bfef3",
       "links": [
         {
           "type": "eventbrite",
@@ -1350,8 +1356,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-04",
-        "upcomingEventCount": 3,
-        "eventCount90d": 70
+        "upcomingEventCount": 5,
+        "eventCount90d": 71
       },
       "schedule": {
         "cadence": "weekly",
@@ -1361,12 +1367,14 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 38
+        "sampleSize": 39
       },
       "upcomingEventIds": [
+        "8c8b58d995e0ac34",
         "c18635b5fa1538c8",
         "1cc44593720fde7a",
-        "76c6fb428cab1a3b"
+        "76c6fb428cab1a3b",
+        "6727c979cf517577"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1375,7 +1383,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 38,
+        "observedDateCount": 39,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1384,12 +1392,12 @@
         "eventbrite:18898315629"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
-        "com_3837f308cd75",
-        "com_8d86f6f9340b",
         "com_3048e331f7b6",
+        "com_3837f308cd75",
         "com_0e403135692e",
-        "com_64ebabd98c5c"
+        "com_1466f20a9300",
+        "com_8d86f6f9340b",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -1473,8 +1481,8 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_3048e331f7b6",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_1466f20a9300",
         "com_7fd76dcd92f3",
@@ -1645,11 +1653,11 @@
       ],
       "similarCommunityIds": [
         "com_eb4226b8b4c5",
-        "com_072c9c3e12a8",
         "com_e9748c1176c1",
         "com_28a4ec647815",
         "com_ab8259bb35a4",
-        "com_7fd76dcd92f3"
+        "com_7fd76dcd92f3",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1717,9 +1725,9 @@
         "com_eb4226b8b4c5",
         "com_359bbb5a9a91",
         "com_f8ff3d3257ed",
-        "com_072c9c3e12a8",
         "com_e9748c1176c1",
-        "com_5d96f038b82a"
+        "com_5d96f038b82a",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -2048,9 +2056,9 @@
         "com_7fd76dcd92f3",
         "com_d2d455d2d6c9",
         "com_6114a53f79a0",
-        "com_072c9c3e12a8",
         "com_e9748c1176c1",
-        "com_feb5ce491629"
+        "com_feb5ce491629",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -2206,9 +2214,9 @@
       ],
       "similarCommunityIds": [
         "com_b766b6de77ba",
-        "com_b736e77bdf93",
         "com_3048e331f7b6",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_ff2e01957665",
         "com_359bbb5a9a91"
       ]
@@ -2441,9 +2449,9 @@
         "com_7fd76dcd92f3",
         "com_1466f20a9300",
         "com_b766b6de77ba",
-        "com_072c9c3e12a8",
         "com_a1e1c13a75f0",
-        "com_4c3ca28533f5"
+        "com_4c3ca28533f5",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2522,10 +2530,10 @@
       ],
       "similarCommunityIds": [
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_d8a5203885a9",
         "com_1466f20a9300",
         "com_cb019f4e9752",
-        "com_b736e77bdf93",
         "com_4a9490cb3534"
       ]
     },
@@ -2818,7 +2826,7 @@
         "com_1ef101a0cf5a",
         "com_6114a53f79a0",
         "com_065dafa96d43",
-        "com_072c9c3e12a8"
+        "com_0e403135692e"
       ]
     },
     {
@@ -2888,7 +2896,7 @@
         "com_1ef101a0cf5a",
         "com_6114a53f79a0",
         "com_065dafa96d43",
-        "com_072c9c3e12a8"
+        "com_0e403135692e"
       ]
     },
     {
@@ -3030,8 +3038,8 @@
         "com_359bbb5a9a91",
         "com_f8ff3d3257ed",
         "com_8b837dfb5421",
-        "com_072c9c3e12a8",
-        "com_e9748c1176c1"
+        "com_e9748c1176c1",
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -3101,11 +3109,11 @@
       ],
       "similarCommunityIds": [
         "com_ab8259bb35a4",
-        "com_072c9c3e12a8",
         "com_359bbb5a9a91",
         "com_386aac86bb4d",
         "com_f8ff3d3257ed",
-        "com_9fed174eeff3"
+        "com_9fed174eeff3",
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -3464,11 +3472,11 @@
       ],
       "similarCommunityIds": [
         "com_c58670960684",
-        "com_072c9c3e12a8",
         "com_359bbb5a9a91",
         "com_386aac86bb4d",
         "com_f8ff3d3257ed",
-        "com_5d96f038b82a"
+        "com_5d96f038b82a",
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -3928,10 +3936,10 @@
       ],
       "similarCommunityIds": [
         "com_6114a53f79a0",
+        "com_072c9c3e12a8",
         "com_ebf7599ed103",
         "com_4c3ca28533f5",
         "com_feb5ce491629",
-        "com_072c9c3e12a8",
         "com_118a558259ea"
       ]
     },
@@ -4269,9 +4277,9 @@
         "com_1466f20a9300",
         "com_a786c70979d0",
         "com_e07415e7f595",
-        "com_b736e77bdf93",
         "com_eef1ca956dae",
-        "com_3048e331f7b6"
+        "com_3048e331f7b6",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -4440,7 +4448,7 @@
         "com_d8a5203885a9",
         "com_1466f20a9300",
         "com_8d86f6f9340b",
-        "com_b736e77bdf93"
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -51818,7 +51826,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-04T00:58:08.459537+00:00",
+  "lastUpdated": "2026-10-04T02:38:51.888183+00:00",
   "version": 1,
   "schemaVersion": 1
 }
