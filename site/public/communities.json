@@ -387,9 +387,9 @@
         "com_ebf7599ed103",
         "com_b0e15eaab803",
         "com_c1410c07c4dd",
+        "com_1ab246c8dd88",
         "com_fe4b6663b721",
-        "com_55ca36db453a",
-        "com_f23f8820878b"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -779,8 +779,8 @@
         "eventbrite:14861961557"
       ],
       "similarCommunityIds": [
-        "com_9fed174eeff3",
         "com_1ab246c8dd88",
+        "com_9fed174eeff3",
         "com_3bc67889299d",
         "com_1ef101a0cf5a",
         "com_065dafa96d43",
@@ -2696,15 +2696,21 @@
       "slug": "no-bad-days-run-club-c8dd88",
       "name": "No Bad Days Run Club",
       "kind": "club",
-      "tagline": "No Bad Days Run Club is a community club centered on fitness across NYC.",
-      "description": "No Bad Days Run Club is a community club centered on fitness across NYC. Based on 5 observed event dates, it meets weekly on Thursday evenings.",
+      "tagline": "No Bad Days Run Club is a community club centered on fitness, music, parties in williamsburg.",
+      "description": "No Bad Days Run Club is a community club centered on fitness, music, parties in williamsburg. Based on 6 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
-        "fitness"
+        "fitness",
+        "music",
+        "parties"
       ],
       "tags": [
-        "fitness"
+        "fitness",
+        "music",
+        "parties"
       ],
-      "neighborhoods": [],
+      "neighborhoods": [
+        "williamsburg"
+      ],
       "homeVenue": "ON store, WillyB",
       "imageUrl": null,
       "links": [
@@ -2718,20 +2724,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-01",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 4
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Thursday"
+          "Thursday",
+          "Friday"
         ],
         "typicalTime": "18:45",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
       "upcomingEventIds": [
-        "fecac60a76200e28"
+        "fecac60a76200e28",
+        "b7f0e6b7961ba7ff"
       ],
       "sourceAttributions": [
         "instagram"
@@ -2740,7 +2748,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2750,12 +2758,12 @@
         "url:https://www.instagram.com/nbd_rc"
       ],
       "similarCommunityIds": [
-        "com_3bc67889299d",
-        "com_02ba15552329",
         "com_1ef101a0cf5a",
+        "com_02ba15552329",
+        "com_9fed174eeff3",
         "com_065dafa96d43",
-        "com_0e403135692e",
-        "com_1466f20a9300"
+        "com_ed8d42fb031d",
+        "com_c58670960684"
       ]
     },
     {
@@ -2820,10 +2828,10 @@
         "url:https://www.instagram.com/nycsprintcollective"
       ],
       "similarCommunityIds": [
-        "com_1ab246c8dd88",
         "com_02ba15552329",
         "com_1ef101a0cf5a",
         "com_065dafa96d43",
+        "com_1ab246c8dd88",
         "com_0e403135692e",
         "com_1466f20a9300"
       ]
@@ -3117,9 +3125,9 @@
         "com_c58670960684",
         "com_1466f20a9300",
         "com_02ba15552329",
+        "com_1ab246c8dd88",
         "com_ab8259bb35a4",
-        "com_cb019f4e9752",
-        "com_e9748c1176c1"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -3808,8 +3816,8 @@
       ],
       "similarCommunityIds": [
         "com_065dafa96d43",
-        "com_fe4b6663b721",
         "com_1ab246c8dd88",
+        "com_fe4b6663b721",
         "com_3bc67889299d",
         "com_36cb2681053d",
         "com_4c3ca28533f5"
@@ -4549,9 +4557,9 @@
         "com_1466f20a9300",
         "com_318c39363fe6",
         "com_b0e15eaab803",
+        "com_1ab246c8dd88",
         "com_9fed174eeff3",
-        "com_ab8259bb35a4",
-        "com_c1410c07c4dd"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -51688,7 +51696,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-04T20:10:08.330389+00:00",
+  "lastUpdated": "2026-10-04T21:40:52.423480+00:00",
   "version": 1,
   "schemaVersion": 1
 }
