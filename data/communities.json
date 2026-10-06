@@ -146,8 +146,8 @@
         "com_1466f20a9300",
         "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_c58670960684",
-        "com_d2d455d2d6c9"
+        "com_3b104adba072",
+        "com_c58670960684"
       ]
     },
     {
@@ -217,9 +217,9 @@
         "com_b766b6de77ba",
         "com_d2d455d2d6c9",
         "com_28a4ec647815",
-        "com_3b104adba072",
         "com_7fd76dcd92f3",
-        "com_8b837dfb5421"
+        "com_8b837dfb5421",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -705,7 +705,7 @@
         "com_e9748c1176c1",
         "com_b766b6de77ba",
         "com_a1e1c13a75f0",
-        "com_4c3ca28533f5"
+        "com_3b104adba072"
       ]
     },
     {
@@ -2978,7 +2978,7 @@
       "name": "VRC",
       "kind": "recurring_series",
       "tagline": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC.",
-      "description": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC. Based on 7 observed event dates, it meets weekly on Monday evenings.",
+      "description": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC. Based on 8 observed event dates, it meets weekly on Monday evenings.",
       "categories": [
         "fitness",
         "outdoors",
@@ -3003,7 +3003,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-05",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 4
       },
       "schedule": {
@@ -3013,12 +3013,13 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
         "a8ef76f83f71af57",
         "ab9339b66d5bb7a9",
-        "014cf3d422efc908"
+        "014cf3d422efc908",
+        "4692eb27774f9aed"
       ],
       "sourceAttributions": [
         "instagram"
@@ -3027,7 +3028,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4255,13 +4256,15 @@
         "music",
         "special",
         "film",
-        "exploration"
+        "exploration",
+        "other"
       ],
       "tags": [
         "music",
         "special",
         "film",
-        "exploration"
+        "exploration",
+        "other"
       ],
       "neighborhoods": [
         "manhattan",
@@ -4320,7 +4323,7 @@
         "com_e9748c1176c1",
         "com_a1e1c13a75f0",
         "com_ab8259bb35a4",
-        "com_eef1ca956dae"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -4355,14 +4358,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6401120261115"
+          "url": "https://bookclubbar.com/events/6441320261118"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-06",
-        "upcomingEventCount": 21,
+        "upcomingEventCount": 27,
         "eventCount90d": 55
       },
       "schedule": {
@@ -4403,6 +4406,10 @@
       "newcomerEvidence": [
         {
           "eventId": "45ca74a60db45547",
+          "signal": "beginners"
+        },
+        {
+          "eventId": "f5207a5c726e6330",
           "signal": "beginners"
         }
       ],
@@ -4937,7 +4944,7 @@
         "state": "active",
         "lastEventDate": "2026-10-05",
         "upcomingEventCount": 14,
-        "eventCount90d": 60
+        "eventCount90d": 61
       },
       "schedule": {
         "cadence": "weekly",
@@ -52121,7 +52128,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-06T00:20:03.903242+00:00",
+  "lastUpdated": "2026-10-06T00:56:45.718752+00:00",
   "version": 1,
   "schemaVersion": 1
 }
