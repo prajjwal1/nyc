@@ -220,7 +220,7 @@
         "com_d2d455d2d6c9",
         "com_7fd76dcd92f3",
         "com_8b837dfb5421",
-        "com_a1e1c13a75f0"
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -703,9 +703,9 @@
       ],
       "similarCommunityIds": [
         "com_d2d455d2d6c9",
+        "com_a1e1c13a75f0",
         "com_3837f308cd75",
         "com_b766b6de77ba",
-        "com_a1e1c13a75f0",
         "com_e9748c1176c1",
         "com_3b104adba072"
       ]
@@ -716,18 +716,20 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy, games, special in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, games, special in manhattan. Based on 33 observed event dates, it meets weekly on Sunday and Saturday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy, games, special in manhattan. Based on 34 observed event dates, it meets weekly on Sunday and Saturday evenings.",
       "categories": [
         "comedy",
         "games",
         "special",
-        "other"
+        "other",
+        "books"
       ],
       "tags": [
         "comedy",
         "games",
         "special",
-        "other"
+        "other",
+        "books"
       ],
       "neighborhoods": [
         "manhattan"
@@ -745,7 +747,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-06",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 45
       },
       "schedule": {
@@ -756,13 +758,14 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 33
+        "sampleSize": 34
       },
       "upcomingEventIds": [
         "b0c5bfb0448c165c",
         "762a5d8d2c579656",
         "8315e285a341f0c6",
-        "8556492986f48c70"
+        "8556492986f48c70",
+        "d823e212512c70d5"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -771,7 +774,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 33,
+        "observedDateCount": 34,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -781,11 +784,11 @@
       ],
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
+        "com_d2d455d2d6c9",
         "com_5d96f038b82a",
         "com_790f35f3152b",
         "com_a3c012fb703f",
-        "com_d2d455d2d6c9",
-        "com_e9748c1176c1"
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -1243,7 +1246,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series centered on comedy, wellness in brooklyn.",
-      "description": "Union Hall is a recurring event series centered on comedy, wellness in brooklyn. Based on 35 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "description": "Union Hall is a recurring event series centered on comedy, wellness in brooklyn. Based on 36 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
         "other",
         "comedy",
@@ -1270,7 +1273,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-06",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 38
       },
       "schedule": {
@@ -1281,7 +1284,7 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 35
+        "sampleSize": 36
       },
       "upcomingEventIds": [
         "646d5ed91bd95adf",
@@ -1290,6 +1293,7 @@
         "15c35cf015c5438b",
         "19c18a627a8b3256",
         "b1912e5f80ae020d",
+        "c696c0c2947e00b3",
         "134f4a48cb29877a"
       ],
       "sourceAttributions": [
@@ -1299,7 +1303,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 35,
+        "observedDateCount": 36,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2741,9 +2745,9 @@
         "com_0e403135692e",
         "com_cb019f4e9752",
         "com_790f35f3152b",
-        "com_a1e1c13a75f0",
         "com_a3c012fb703f",
-        "com_3048e331f7b6"
+        "com_3048e331f7b6",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -2821,11 +2825,11 @@
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
+        "com_a1e1c13a75f0",
         "com_d2d455d2d6c9",
         "com_f171cd222ca5",
         "com_36cb2681053d",
-        "com_386aac86bb4d",
-        "com_7fd76dcd92f3"
+        "com_386aac86bb4d"
       ]
     },
     {
@@ -4390,10 +4394,10 @@
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
         "com_b766b6de77ba",
-        "com_a1e1c13a75f0",
         "com_ab8259bb35a4",
         "com_e9748c1176c1",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -52198,7 +52202,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-06T14:18:21.104734+00:00",
+  "lastUpdated": "2026-10-06T15:11:31.377579+00:00",
   "version": 1,
   "schemaVersion": 1
 }
