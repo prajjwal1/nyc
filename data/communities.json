@@ -2676,9 +2676,9 @@
       "id": "com_5582e2e97f1a",
       "slug": "liz-s-book-bar-e97f1a",
       "name": "Liz\u2019s Book Bar",
-      "kind": "community_space",
-      "tagline": "Liz\u2019s Book Bar is a community space centered on books, games in carroll gardens.",
-      "description": "Liz\u2019s Book Bar is a community space centered on books, games in carroll gardens. Based on 19 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
+      "kind": "recurring_series",
+      "tagline": "Liz\u2019s Book Bar is a recurring event series centered on books, games in carroll gardens.",
+      "description": "Liz\u2019s Book Bar is a recurring event series centered on books, games in carroll gardens. Based on 20 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "books",
         "other",
@@ -2696,8 +2696,8 @@
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/65a2eba6c0fe5b4af96a3cc7/d2eb6b48-7c5a-4ed0-b3a8-37e7c69e6b95/IMG_5283.jpeg",
       "links": [
         {
-          "type": "lizsbookbar",
-          "label": "View on Lizsbookbar",
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
           "url": "https://eventbrite.com/o/83466825333"
         }
       ],
@@ -2705,7 +2705,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-06",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 11
       },
       "schedule": {
@@ -2716,7 +2716,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 19
+        "sampleSize": 20
       },
       "upcomingEventIds": [
         "ac46479f05f083b9",
@@ -2727,16 +2727,17 @@
         "bd78978348a2fc7a",
         "701adef859db0c7a",
         "8e9c448a16e784e4",
-        "8605edb3ee0ee354"
+        "8605edb3ee0ee354",
+        "1f1db3aa76d06ebf"
       ],
       "sourceAttributions": [
-        "lizsbookbar"
+        "eventbrite"
       ],
       "lastVerifiedAt": "2026-10-06",
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 19,
+        "observedDateCount": 20,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -52128,7 +52129,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-06T00:56:45.718752+00:00",
+  "lastUpdated": "2026-10-06T01:35:16.584920+00:00",
   "version": 1,
   "schemaVersion": 1
 }
