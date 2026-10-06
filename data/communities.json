@@ -4440,14 +4440,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6401120261115"
+          "url": "https://bookclubbar.com/events/6441320261118"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-06",
-        "upcomingEventCount": 21,
+        "upcomingEventCount": 27,
         "eventCount90d": 55
       },
       "schedule": {
@@ -4488,6 +4488,10 @@
       "newcomerEvidence": [
         {
           "eventId": "45ca74a60db45547",
+          "signal": "beginners"
+        },
+        {
+          "eventId": "f5207a5c726e6330",
           "signal": "beginners"
         }
       ],
@@ -4587,8 +4591,8 @@
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_eef1ca956dae",
-        "com_f23f8820878b",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -4907,20 +4911,20 @@
       "name": "New York Comedy Club",
       "kind": "club",
       "tagline": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 62 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 63 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
         "special",
         "music",
         "outdoors",
-        "books"
+        "celebrities"
       ],
       "tags": [
         "comedy",
         "special",
         "music",
         "outdoors",
-        "books"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
@@ -4939,7 +4943,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-06",
-        "upcomingEventCount": 42,
+        "upcomingEventCount": 44,
         "eventCount90d": 158
       },
       "schedule": {
@@ -4950,7 +4954,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 62
+        "sampleSize": 63
       },
       "upcomingEventIds": [
         "9bc7bb18f240cb80",
@@ -4961,10 +4965,10 @@
         "86c6ad75d02f0ee7",
         "e9b48b0913f26aeb",
         "9a48bac4afe1c9bc",
+        "547070dc059aad93",
+        "96507c869dd2818d",
         "501cbc885fbe7da6",
-        "b0ba1bd3133dadf4",
-        "1f7b9c9172b81ba0",
-        "84c7e8a96e2ad276"
+        "b0ba1bd3133dadf4"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4973,7 +4977,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 62,
+        "observedDateCount": 63,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4982,12 +4986,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
         "com_318c39363fe6",
-        "com_7fd76dcd92f3",
-        "com_d2d455d2d6c9",
         "com_3048e331f7b6",
-        "com_3837f308cd75"
+        "com_d8a5203885a9",
+        "com_b766b6de77ba",
+        "com_28a4ec647815",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -52206,7 +52210,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-06T21:56:17.596582+00:00",
+  "lastUpdated": "2026-10-06T23:10:07.080223+00:00",
   "version": 1,
   "schemaVersion": 1
 }
