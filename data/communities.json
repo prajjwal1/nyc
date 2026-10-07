@@ -537,8 +537,8 @@
         "com_8d86f6f9340b",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_6114a53f79a0",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2967,8 +2967,8 @@
         "com_9fed174eeff3",
         "com_065dafa96d43",
         "com_ed8d42fb031d",
-        "com_b0e15eaab803",
-        "com_c58670960684"
+        "com_6114a53f79a0",
+        "com_b0e15eaab803"
       ]
     },
     {
@@ -3036,9 +3036,9 @@
         "com_02ba15552329",
         "com_065dafa96d43",
         "com_1ab246c8dd88",
+        "com_6114a53f79a0",
         "com_9fed174eeff3",
-        "com_0e403135692e",
-        "com_1466f20a9300"
+        "com_0e403135692e"
       ]
     },
     {
@@ -3107,12 +3107,12 @@
         "url:https://www.instagram.com/vitalrunclub"
       ],
       "similarCommunityIds": [
+        "com_6114a53f79a0",
         "com_1ab246c8dd88",
         "com_cdd5daa67222",
         "com_3bc67889299d",
         "com_02ba15552329",
-        "com_33a530deb7aa",
-        "com_359bbb5a9a91"
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -3178,9 +3178,9 @@
         "com_fe4b6663b721",
         "com_33a530deb7aa",
         "com_4c3ca28533f5",
+        "com_6114a53f79a0",
         "com_790f35f3152b",
-        "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0"
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -3399,6 +3399,82 @@
         "com_e9748c1176c1",
         "com_1466f20a9300",
         "com_36c800013ba6"
+      ]
+    },
+    {
+      "id": "com_6114a53f79a0",
+      "slug": "corgi-nyc-3f79a0",
+      "name": "Corgi NYC",
+      "kind": "recurring_series",
+      "tagline": "Corgi NYC is a recurring event series centered on movies, parties, outdoors in manhattan.",
+      "description": "Corgi NYC is a recurring event series centered on movies, parties, outdoors in manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "categories": [
+        "movies",
+        "parties",
+        "outdoors",
+        "fitness"
+      ],
+      "tags": [
+        "movies",
+        "parties",
+        "outdoors",
+        "fitness"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "121 E 27th St",
+      "imageUrl": "https://images.lumacdn.com/uploads/5o/1f410ae9-7e4a-4760-a014-4627a8e9890d.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/usecorginyc"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-07",
+        "upcomingEventCount": 2,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Saturday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "666b721706775dea",
+        "e68c82c290df77ba"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-07",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-h1fy60pnztchaf4"
+      ],
+      "similarCommunityIds": [
+        "com_065dafa96d43",
+        "com_33a530deb7aa",
+        "com_4c3ca28533f5",
+        "com_fe4b6663b721",
+        "com_64ebabd98c5c",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -3621,9 +3697,9 @@
         "com_36cb2681053d",
         "com_cdd5daa67222",
         "com_a1e1c13a75f0",
+        "com_6114a53f79a0",
         "com_7fd76dcd92f3",
-        "com_f171cd222ca5",
-        "com_fe4b6663b721"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -3870,8 +3946,8 @@
         "com_36cb2681053d",
         "com_065dafa96d43",
         "com_386aac86bb4d",
-        "com_55ca36db453a",
-        "com_f171cd222ca5"
+        "com_6114a53f79a0",
+        "com_55ca36db453a"
       ]
     },
     {
@@ -4243,10 +4319,10 @@
       "similarCommunityIds": [
         "com_072c9c3e12a8",
         "com_ebf7599ed103",
+        "com_6114a53f79a0",
         "com_4c3ca28533f5",
         "com_feb5ce491629",
-        "com_118a558259ea",
-        "com_261ef499df4e"
+        "com_118a558259ea"
       ]
     },
     {
@@ -52064,7 +52140,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-07T18:25:22.526647+00:00",
+  "lastUpdated": "2026-10-07T21:34:22.851344+00:00",
   "version": 1,
   "schemaVersion": 1
 }
