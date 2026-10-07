@@ -6,18 +6,20 @@
       "name": "Czech Center New York",
       "kind": "institutional_program",
       "tagline": "Czech Center New York is a community program centered on music in upper east side.",
-      "description": "Czech Center New York is a community program centered on music in upper east side. Based on 5 observed event dates, it meets biweekly on Thursday and Friday evenings.",
+      "description": "Czech Center New York is a community program centered on music in upper east side. Based on 7 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
-        "music"
+        "music",
+        "other"
       ],
       "tags": [
-        "music"
+        "music",
+        "other"
       ],
       "neighborhoods": [
         "upper east side"
       ],
-      "homeVenue": "Czech Center New York",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192062619%2F169569148912%2F1%2Foriginal.20260827-190412?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=7951dca9dfc3aed246d5a3e74b275e66",
+      "homeVenue": "Bohemian National Hall",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1195238137%2F169569148912%2F1%2Foriginal.20261007-003951?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=a9ed53fdc5098a6ccb1616e7c4af844a",
       "links": [
         {
           "type": "eventbrite",
@@ -29,21 +31,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-04",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 4,
         "eventCount90d": 9
       },
       "schedule": {
-        "cadence": "biweekly",
+        "cadence": "weekly",
         "typicalDays": [
           "Thursday",
           "Friday"
         ],
-        "typicalTime": "20:30",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "typicalTime": "19:00",
+        "confidence": 1.0,
+        "sampleSize": 7
       },
       "upcomingEventIds": [
+        "0973b1d575238392",
         "8f2f764ed5847b2e",
+        "d0b9946b5e450a6a",
         "dd7f883ba56f529c"
       ],
       "sourceAttributions": [
@@ -53,7 +57,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -62,12 +66,12 @@
         "eventbrite:10013510321"
       ],
       "similarCommunityIds": [
-        "com_218b97d674a6",
-        "com_ebf7599ed103",
-        "com_c58670960684",
         "com_1466f20a9300",
-        "com_318c39363fe6",
-        "com_ad50d6a81df3"
+        "com_c58670960684",
+        "com_28a4ec647815",
+        "com_b766b6de77ba",
+        "com_ab8259bb35a4",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -146,9 +150,9 @@
         "com_3837f308cd75",
         "com_7fd76dcd92f3",
         "com_1466f20a9300",
+        "com_9abdf9db297a",
         "com_3048e331f7b6",
-        "com_3b104adba072",
-        "com_28a4ec647815"
+        "com_3b104adba072"
       ]
     },
     {
@@ -920,11 +924,11 @@
       ],
       "similarCommunityIds": [
         "com_f171cd222ca5",
+        "com_9abdf9db297a",
         "com_36cb2681053d",
         "com_5582e2e97f1a",
         "com_8d86f6f9340b",
-        "com_a1e1c13a75f0",
-        "com_cdd5daa67222"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -2265,12 +2269,12 @@
         "eventbrite:5803675324"
       ],
       "similarCommunityIds": [
+        "com_9abdf9db297a",
         "com_3837f308cd75",
         "com_3048e331f7b6",
         "com_36c800013ba6",
         "com_ff2e01957665",
-        "com_28a4ec647815",
-        "com_b766b6de77ba"
+        "com_28a4ec647815"
       ]
     },
     {
@@ -2345,10 +2349,10 @@
       "similarCommunityIds": [
         "com_e9748c1176c1",
         "com_1466f20a9300",
+        "com_9abdf9db297a",
         "com_b766b6de77ba",
         "com_c58670960684",
-        "com_3837f308cd75",
-        "com_7fd76dcd92f3"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -3390,11 +3394,11 @@
       ],
       "similarCommunityIds": [
         "com_ab8259bb35a4",
+        "com_9abdf9db297a",
         "com_8b837dfb5421",
         "com_e9748c1176c1",
         "com_1466f20a9300",
-        "com_36c800013ba6",
-        "com_3048e331f7b6"
+        "com_36c800013ba6"
       ]
     },
     {
@@ -3703,7 +3707,7 @@
         "com_9fed174eeff3",
         "com_e9748c1176c1",
         "com_8b837dfb5421",
-        "com_1466f20a9300"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -4094,7 +4098,7 @@
         "com_fe4b6663b721",
         "com_072c9c3e12a8",
         "com_92805cd9f03b",
-        "com_9abdf9db297a"
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -4502,12 +4506,12 @@
         "source:brooklyncontra"
       ],
       "similarCommunityIds": [
-        "com_9abdf9db297a",
         "com_1466f20a9300",
         "com_0306525f2bed",
         "com_a786c70979d0",
         "com_3837f308cd75",
-        "com_eef1ca956dae"
+        "com_eef1ca956dae",
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -51983,7 +51987,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-07T09:24:54.787146+00:00",
+  "lastUpdated": "2026-10-07T11:50:38.432510+00:00",
   "version": 1,
   "schemaVersion": 1
 }
