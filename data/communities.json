@@ -853,8 +853,8 @@
         "com_9fed174eeff3",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
-        "com_ab8259bb35a4",
         "com_feb5ce491629",
+        "com_ab8259bb35a4",
         "com_065dafa96d43"
       ]
     },
@@ -1702,12 +1702,12 @@
         "eventbrite:31025401131"
       ],
       "similarCommunityIds": [
+        "com_c58670960684",
         "com_e9748c1176c1",
+        "com_ab8259bb35a4",
         "com_2371cd3a803e",
         "com_4c3ca28533f5",
-        "com_fe4b6663b721",
-        "com_ab8259bb35a4",
-        "com_1466f20a9300"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2093,8 +2093,8 @@
         "eventbrite:46113016283"
       ],
       "similarCommunityIds": [
-        "com_e9748c1176c1",
         "com_ab8259bb35a4",
+        "com_e9748c1176c1",
         "com_9fed174eeff3",
         "com_7fd76dcd92f3",
         "com_fe4b6663b721",
@@ -2326,8 +2326,8 @@
         "com_1466f20a9300",
         "com_9abdf9db297a",
         "com_b766b6de77ba",
-        "com_3837f308cd75",
-        "com_7fd76dcd92f3"
+        "com_c58670960684",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -2480,10 +2480,10 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_28a4ec647815",
+        "com_c58670960684",
         "com_7fd76dcd92f3",
         "com_8b837dfb5421",
-        "com_fe4b6663b721",
-        "com_790f35f3152b"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -2942,7 +2942,7 @@
         "com_065dafa96d43",
         "com_ed8d42fb031d",
         "com_b0e15eaab803",
-        "com_3bc67889299d"
+        "com_c58670960684"
       ]
     },
     {
@@ -3304,18 +3304,21 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, music in upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art, music in upper east side. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, music in upper east side, williamsburg.",
+      "description": "The New York Philosophy Club is a community club centered on art, music in upper east side, williamsburg. Based on 3 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "art",
-        "music"
+        "music",
+        "other"
       ],
       "tags": [
         "art",
-        "music"
+        "music",
+        "other"
       ],
       "neighborhoods": [
-        "upper east side"
+        "upper east side",
+        "williamsburg"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/uploads/57/40e4b891-dc28-4c7e-a3f9-c5789f519b8b.jpg",
@@ -3330,7 +3333,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-07",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
@@ -3340,11 +3343,12 @@
           "Saturday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
-        "98b972966ff61d0b"
+        "98b972966ff61d0b",
+        "20e9d16de5ced1fc"
       ],
       "sourceAttributions": [
         "luma"
@@ -3353,7 +3357,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3363,12 +3367,12 @@
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
-        "com_9abdf9db297a",
         "com_ab8259bb35a4",
+        "com_9abdf9db297a",
         "com_8b837dfb5421",
         "com_e9748c1176c1",
-        "com_3048e331f7b6",
-        "com_4c3ca28533f5"
+        "com_1466f20a9300",
+        "com_36c800013ba6"
       ]
     },
     {
@@ -3377,7 +3381,7 @@
       "name": "Tech@NYU",
       "kind": "recurring_series",
       "tagline": "Tech@NYU is a recurring event series in manhattan.",
-      "description": "Tech@NYU is a recurring event series in manhattan. Based on 2 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "description": "Tech@NYU is a recurring event series in manhattan. Based on 3 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
       "categories": [
         "other"
       ],
@@ -3400,21 +3404,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-08",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Tuesday",
-          "Thursday"
+          "Thursday",
+          "Tuesday"
         ],
         "typicalTime": "17:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
-        "aa79ad5c29bd2364"
+        "aa79ad5c29bd2364",
+        "a47dae025cbc0660"
       ],
       "sourceAttributions": [
         "luma"
@@ -3423,7 +3428,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3511,12 +3516,12 @@
         "luma:kanso"
       ],
       "similarCommunityIds": [
+        "com_ab8259bb35a4",
         "com_02ba15552329",
         "com_4c3ca28533f5",
-        "com_ab8259bb35a4",
         "com_1ab246c8dd88",
         "com_7fd76dcd92f3",
-        "com_e9748c1176c1"
+        "com_c58670960684"
       ]
     },
     {
@@ -3679,7 +3684,7 @@
       "name": "The New York Philosophy Club",
       "kind": "club",
       "tagline": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side, williamsburg. Based on 13 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "description": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side, williamsburg. Based on 14 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
         "art",
@@ -3695,7 +3700,8 @@
       "neighborhoods": [
         "upper east side",
         "williamsburg",
-        "midtown"
+        "midtown",
+        "manhattan"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/uploads/57/40e4b891-dc28-4c7e-a3f9-c5789f519b8b.jpg",
@@ -3710,7 +3716,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-07",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 8,
         "eventCount90d": 19
       },
       "schedule": {
@@ -3721,7 +3727,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 13
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "98b972966ff61d0b",
@@ -3729,7 +3735,9 @@
         "1f9b05c982abe833",
         "0f7a0f3882f5e7de",
         "6f58c68ffdb0b786",
-        "9e387ee49a7bbb2e"
+        "9e387ee49a7bbb2e",
+        "1fc4cc858194cf24",
+        "40ae468fb0bd7978"
       ],
       "sourceAttributions": [
         "luma"
@@ -3738,7 +3746,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 13,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3747,12 +3755,12 @@
         "luma:philosophy"
       ],
       "similarCommunityIds": [
+        "com_c58670960684",
         "com_4c3ca28533f5",
         "com_9fed174eeff3",
-        "com_9abdf9db297a",
-        "com_c58670960684",
+        "com_e9748c1176c1",
         "com_8b837dfb5421",
-        "com_e9748c1176c1"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -4293,9 +4301,9 @@
         "com_7fd76dcd92f3",
         "com_b766b6de77ba",
         "com_3837f308cd75",
+        "com_ab8259bb35a4",
         "com_e9748c1176c1",
-        "com_d2d455d2d6c9",
-        "com_4c3ca28533f5"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -52032,7 +52040,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-08T14:59:17.063729+00:00",
+  "lastUpdated": "2026-10-08T15:34:06.836556+00:00",
   "version": 1,
   "schemaVersion": 1
 }
