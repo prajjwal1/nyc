@@ -67,10 +67,10 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
-        "com_ab8259bb35a4",
         "com_c58670960684",
         "com_28a4ec647815",
         "com_b766b6de77ba",
+        "com_ab8259bb35a4",
         "com_0e403135692e"
       ]
     },
@@ -853,9 +853,9 @@
         "com_9fed174eeff3",
         "com_1ab246c8dd88",
         "com_3bc67889299d",
+        "com_ab8259bb35a4",
         "com_feb5ce491629",
-        "com_065dafa96d43",
-        "com_ab8259bb35a4"
+        "com_065dafa96d43"
       ]
     },
     {
@@ -3363,8 +3363,8 @@
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
-        "com_ab8259bb35a4",
         "com_9abdf9db297a",
+        "com_ab8259bb35a4",
         "com_8b837dfb5421",
         "com_e9748c1176c1",
         "com_3048e331f7b6",
@@ -3513,8 +3513,8 @@
       "similarCommunityIds": [
         "com_02ba15552329",
         "com_4c3ca28533f5",
-        "com_1ab246c8dd88",
         "com_ab8259bb35a4",
+        "com_1ab246c8dd88",
         "com_7fd76dcd92f3",
         "com_e9748c1176c1"
       ]
@@ -3678,22 +3678,24 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side. Based on 12 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side, midtown.",
+      "description": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side, midtown. Based on 13 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
+        "other",
         "art",
         "music",
-        "other",
         "wellness"
       ],
       "tags": [
+        "other",
         "art",
         "music",
-        "other",
         "wellness"
       ],
       "neighborhoods": [
-        "upper east side"
+        "upper east side",
+        "midtown",
+        "williamsburg"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/uploads/57/40e4b891-dc28-4c7e-a3f9-c5789f519b8b.jpg",
@@ -3708,7 +3710,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-07",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 6,
         "eventCount90d": 19
       },
       "schedule": {
@@ -3719,10 +3721,12 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 13
       },
       "upcomingEventIds": [
         "98b972966ff61d0b",
+        "1f9b05c982abe833",
+        "20e9d16de5ced1fc",
         "0f7a0f3882f5e7de",
         "6f58c68ffdb0b786",
         "9e387ee49a7bbb2e"
@@ -3734,7 +3738,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 13,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3743,11 +3747,11 @@
         "luma:philosophy"
       ],
       "similarCommunityIds": [
+        "com_4c3ca28533f5",
+        "com_9fed174eeff3",
         "com_9abdf9db297a",
         "com_c58670960684",
-        "com_4c3ca28533f5",
         "com_8b837dfb5421",
-        "com_9fed174eeff3",
         "com_e9748c1176c1"
       ]
     },
@@ -52028,7 +52032,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-08T07:34:34.408683+00:00",
+  "lastUpdated": "2026-10-08T07:59:08.814269+00:00",
   "version": 1,
   "schemaVersion": 1
 }
