@@ -1704,10 +1704,10 @@
       "similarCommunityIds": [
         "com_c58670960684",
         "com_e9748c1176c1",
-        "com_ab8259bb35a4",
         "com_2371cd3a803e",
         "com_4c3ca28533f5",
-        "com_fe4b6663b721"
+        "com_fe4b6663b721",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -2014,8 +2014,8 @@
         "com_33a530deb7aa",
         "com_386aac86bb4d",
         "com_c274ef0f18ba",
-        "com_ff2e01957665",
-        "com_7fd76dcd92f3"
+        "com_c4469caf0091",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -2093,8 +2093,8 @@
         "eventbrite:46113016283"
       ],
       "similarCommunityIds": [
-        "com_ab8259bb35a4",
         "com_e9748c1176c1",
+        "com_ab8259bb35a4",
         "com_9fed174eeff3",
         "com_7fd76dcd92f3",
         "com_fe4b6663b721",
@@ -2172,7 +2172,7 @@
         "com_b736e77bdf93",
         "com_36cb2681053d",
         "com_d2d455d2d6c9",
-        "com_8d86f6f9340b"
+        "com_c4469caf0091"
       ]
     },
     {
@@ -2483,7 +2483,7 @@
         "com_c58670960684",
         "com_7fd76dcd92f3",
         "com_8b837dfb5421",
-        "com_ab8259bb35a4"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -3376,6 +3376,77 @@
       ]
     },
     {
+      "id": "com_c4469caf0091",
+      "slug": "lit-club-nyc-calendar-af0091",
+      "name": "Lit Club NYC Calendar",
+      "kind": "club",
+      "tagline": "Lit Club NYC Calendar is a community club centered on books, parties across NYC.",
+      "description": "Lit Club NYC Calendar is a community club centered on books, parties across NYC. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "categories": [
+        "books",
+        "parties"
+      ],
+      "tags": [
+        "books",
+        "parties"
+      ],
+      "neighborhoods": [],
+      "homeVenue": "Von",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/am/6c2f0bd4-ee08-4fe9-a67a-3242c18c93cd.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/litclub.nyc"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Saturday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "bf95b1da3f9c6840",
+        "d49eb89d2823758f"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-08",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:litclub.nyc",
+        "luma:cal-ittr6nq7r4wivff"
+      ],
+      "similarCommunityIds": [
+        "com_33a530deb7aa",
+        "com_36cb2681053d",
+        "com_cdd5daa67222",
+        "com_386aac86bb4d",
+        "com_f171cd222ca5",
+        "com_55ca36db453a"
+      ]
+    },
+    {
       "id": "com_a3c012fb703f",
       "slug": "tech-nyu-fb703f",
       "name": "Tech@NYU",
@@ -3516,9 +3587,9 @@
         "luma:kanso"
       ],
       "similarCommunityIds": [
-        "com_ab8259bb35a4",
         "com_02ba15552329",
         "com_4c3ca28533f5",
+        "com_ab8259bb35a4",
         "com_1ab246c8dd88",
         "com_7fd76dcd92f3",
         "com_c58670960684"
@@ -3593,12 +3664,12 @@
         "luma:litclub.nyc"
       ],
       "similarCommunityIds": [
+        "com_c4469caf0091",
         "com_36cb2681053d",
         "com_cdd5daa67222",
         "com_a1e1c13a75f0",
         "com_f171cd222ca5",
-        "com_7fd76dcd92f3",
-        "com_fe4b6663b721"
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -3701,9 +3772,9 @@
         "upper east side",
         "williamsburg",
         "midtown",
-        "manhattan"
+        "lower east side"
       ],
-      "homeVenue": "The Metropolitan Museum of Art",
+      "homeVenue": "167 E Broadway",
       "imageUrl": "https://images.lumacdn.com/uploads/57/40e4b891-dc28-4c7e-a3f9-c5789f519b8b.jpg",
       "links": [
         {
@@ -3716,7 +3787,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-07",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 19
       },
       "schedule": {
@@ -3733,6 +3804,7 @@
         "98b972966ff61d0b",
         "20e9d16de5ced1fc",
         "1f9b05c982abe833",
+        "3a1f90f484630779",
         "0f7a0f3882f5e7de",
         "6f58c68ffdb0b786",
         "9e387ee49a7bbb2e",
@@ -3758,9 +3830,9 @@
         "com_c58670960684",
         "com_4c3ca28533f5",
         "com_9fed174eeff3",
-        "com_e9748c1176c1",
         "com_8b837dfb5421",
-        "com_9abdf9db297a"
+        "com_9abdf9db297a",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3843,11 +3915,11 @@
       ],
       "similarCommunityIds": [
         "com_33a530deb7aa",
+        "com_c4469caf0091",
         "com_36cb2681053d",
         "com_065dafa96d43",
         "com_386aac86bb4d",
-        "com_55ca36db453a",
-        "com_f171cd222ca5"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -4003,7 +4075,7 @@
         "com_36c800013ba6",
         "com_55ca36db453a",
         "com_c274ef0f18ba",
-        "com_cdd5daa67222"
+        "com_c4469caf0091"
       ]
     },
     {
@@ -4301,9 +4373,9 @@
         "com_7fd76dcd92f3",
         "com_b766b6de77ba",
         "com_3837f308cd75",
-        "com_ab8259bb35a4",
         "com_e9748c1176c1",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -52040,7 +52112,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-08T20:28:45.036574+00:00",
+  "lastUpdated": "2026-10-08T20:49:31.799509+00:00",
   "version": 1,
   "schemaVersion": 1
 }
