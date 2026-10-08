@@ -926,12 +926,12 @@
         "eventbrite:16901317817"
       ],
       "similarCommunityIds": [
+        "com_3481b6750d6f",
         "com_0306525f2bed",
         "com_e9748c1176c1",
         "com_118a558259ea",
         "com_4c3ca28533f5",
-        "com_790f35f3152b",
-        "com_a3c012fb703f"
+        "com_790f35f3152b"
       ]
     },
     {
@@ -1080,7 +1080,7 @@
         "com_f8ff3d3257ed",
         "com_118a558259ea",
         "com_1466f20a9300",
-        "com_36c800013ba6"
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -1309,6 +1309,76 @@
         "com_02ba15552329",
         "com_359bbb5a9a91",
         "com_9fed174eeff3"
+      ]
+    },
+    {
+      "id": "com_3481b6750d6f",
+      "slug": "battery-park-city-authority-750d6f",
+      "name": "Battery Park City Authority",
+      "kind": "recurring_series",
+      "tagline": "Battery Park City Authority is a recurring event series in manhattan.",
+      "description": "Battery Park City Authority is a recurring event series in manhattan. Based on 2 observed event dates, it meets biweekly on Friday and Thursday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "The Community Center at Stuyvesant High School",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1195099975%2F115136999501%2F1%2Foriginal.20261005-174549?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.508&fp-y=0.305&s=0592123f01402d952faa7d941f59d235",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/18249326283"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Friday",
+          "Thursday"
+        ],
+        "typicalTime": "19:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "696c01f27df71530",
+        "322939368f8f82df"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-08",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:18249326283"
+      ],
+      "similarCommunityIds": [
+        "com_118a558259ea",
+        "com_790f35f3152b",
+        "com_a3c012fb703f",
+        "com_eb4226b8b4c5",
+        "com_072c9c3e12a8",
+        "com_0e403135692e"
       ]
     },
     {
@@ -1701,12 +1771,12 @@
         "eventbrite:39289382883"
       ],
       "similarCommunityIds": [
+        "com_3481b6750d6f",
         "com_790f35f3152b",
         "com_a3c012fb703f",
         "com_eb4226b8b4c5",
         "com_0e403135692e",
-        "com_f8ff3d3257ed",
-        "com_072c9c3e12a8"
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -1714,8 +1784,8 @@
       "slug": "book-club-bar-db453a",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, parties, food in bushwick, east village.",
-      "description": "Book Club Bar is a community space centered on books, parties, food in bushwick, east village. Based on 23 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, parties, food in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, parties, food in east village, bushwick. Based on 24 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -1731,8 +1801,8 @@
         "games"
       ],
       "neighborhoods": [
-        "bushwick",
-        "east village"
+        "east village",
+        "bushwick"
       ],
       "homeVenue": "Book Club Bar - Bushwick",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/1015_SQUARE.png?cb=1790108525",
@@ -1747,7 +1817,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-07",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 18
       },
       "schedule": {
@@ -1758,7 +1828,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 23
+        "sampleSize": 24
       },
       "upcomingEventIds": [
         "75bab11a712ef68f",
@@ -1768,6 +1838,7 @@
         "95c9fcd22fd82938",
         "e4f74602041facd3",
         "bc572eeb5b5a0565",
+        "96f60dcfa6b49441",
         "8d3e669b69943bc4",
         "15a52252351548d9"
       ],
@@ -1778,7 +1849,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 23,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1861,8 +1932,8 @@
         "com_790f35f3152b",
         "com_a3c012fb703f",
         "com_118a558259ea",
-        "com_eb4226b8b4c5",
-        "com_1466f20a9300"
+        "com_3481b6750d6f",
+        "com_eb4226b8b4c5"
       ]
     },
     {
@@ -3148,11 +3219,11 @@
       ],
       "similarCommunityIds": [
         "com_118a558259ea",
+        "com_3481b6750d6f",
         "com_790f35f3152b",
         "com_a3c012fb703f",
         "com_0e403135692e",
-        "com_f8ff3d3257ed",
-        "com_072c9c3e12a8"
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -3224,8 +3295,8 @@
         "com_a786c70979d0",
         "com_072c9c3e12a8",
         "com_3048e331f7b6",
-        "com_1466f20a9300",
-        "com_cb019f4e9752"
+        "com_3481b6750d6f",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -3364,10 +3435,10 @@
       "similarCommunityIds": [
         "com_790f35f3152b",
         "com_118a558259ea",
+        "com_3481b6750d6f",
         "com_eb4226b8b4c5",
         "com_0e403135692e",
-        "com_f8ff3d3257ed",
-        "com_5d96f038b82a"
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -3830,10 +3901,10 @@
       "similarCommunityIds": [
         "com_a3c012fb703f",
         "com_118a558259ea",
+        "com_3481b6750d6f",
         "com_eb4226b8b4c5",
         "com_0e403135692e",
-        "com_f8ff3d3257ed",
-        "com_5d96f038b82a"
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -4067,8 +4138,8 @@
         "com_b0e15eaab803",
         "com_fe4b6663b721",
         "com_072c9c3e12a8",
-        "com_92805cd9f03b",
-        "com_33a530deb7aa"
+        "com_3481b6750d6f",
+        "com_92805cd9f03b"
       ]
     },
     {
@@ -4135,11 +4206,11 @@
       ],
       "similarCommunityIds": [
         "com_072c9c3e12a8",
+        "com_3481b6750d6f",
         "com_ebf7599ed103",
         "com_4c3ca28533f5",
         "com_feb5ce491629",
-        "com_118a558259ea",
-        "com_261ef499df4e"
+        "com_118a558259ea"
       ]
     },
     {
@@ -4228,25 +4299,25 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, food in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, food in east village, bushwick. Based on 59 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, food in bushwick, east village.",
+      "description": "Book Club Bar is a community space centered on books, music, food in bushwick, east village. Based on 59 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
         "food",
         "games",
-        "art"
+        "singles"
       ],
       "tags": [
         "books",
         "music",
         "food",
         "games",
-        "art"
+        "singles"
       ],
       "neighborhoods": [
-        "east village",
         "bushwick",
+        "east village",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -4262,7 +4333,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-07",
-        "upcomingEventCount": 27,
+        "upcomingEventCount": 26,
         "eventCount90d": 56
       },
       "schedule": {
@@ -4315,11 +4386,11 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
+        "com_eeb4e424a504",
         "com_b736e77bdf93",
         "com_b0e15eaab803",
         "com_3837f308cd75",
-        "com_eef1ca956dae",
-        "com_c58670960684"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -4559,10 +4630,10 @@
       ],
       "similarCommunityIds": [
         "com_5582e2e97f1a",
+        "com_c1410c07c4dd",
         "com_3837f308cd75",
         "com_7fd76dcd92f3",
         "com_eef1ca956dae",
-        "com_c1410c07c4dd",
         "com_d8a5203885a9"
       ]
     },
@@ -51957,7 +52028,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-08T06:21:16.599074+00:00",
+  "lastUpdated": "2026-10-08T07:34:34.408683+00:00",
   "version": 1,
   "schemaVersion": 1
 }
