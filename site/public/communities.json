@@ -396,8 +396,8 @@
         "com_d8a5203885a9",
         "com_64ebabd98c5c",
         "com_3837f308cd75",
-        "com_c1410c07c4dd",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -479,10 +479,10 @@
       "similarCommunityIds": [
         "com_f23f8820878b",
         "com_b0e15eaab803",
-        "com_c1410c07c4dd",
         "com_d8a5203885a9",
         "com_ebf7599ed103",
-        "com_7fd76dcd92f3"
+        "com_7fd76dcd92f3",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -3702,8 +3702,8 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_55ca36db453a",
+        "com_c1410c07c4dd",
         "com_ed8d42fb031d",
         "com_fe4b6663b721",
         "com_ebf7599ed103",
@@ -4268,25 +4268,25 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, food in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, food in east village, bushwick. Based on 59 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, food in bushwick, east village.",
+      "description": "Book Club Bar is a community space centered on books, music, food in bushwick, east village. Based on 60 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
         "food",
         "games",
-        "parties"
+        "art"
       ],
       "tags": [
         "books",
         "music",
         "food",
         "games",
-        "parties"
+        "art"
       ],
       "neighborhoods": [
-        "east village",
         "bushwick",
+        "east village",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -4295,14 +4295,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6401120261115"
+          "url": "https://bookclubbar.com/events/6248120261124"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-07",
-        "upcomingEventCount": 21,
+        "upcomingEventCount": 27,
         "eventCount90d": 56
       },
       "schedule": {
@@ -4313,7 +4313,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 59
+        "sampleSize": 60
       },
       "upcomingEventIds": [
         "b6d2baea5a0ddd88",
@@ -4327,7 +4327,7 @@
         "f983dd59de6b47f7",
         "420031d0d397d602",
         "c2103db85091ba2e",
-        "7b4f9f13068943a6"
+        "ebc4eda6a0c4f96c"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -4336,13 +4336,17 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 59,
+        "observedDateCount": 60,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
       "newcomerEvidence": [
         {
           "eventId": "45ca74a60db45547",
+          "signal": "beginners"
+        },
+        {
+          "eventId": "f5207a5c726e6330",
           "signal": "beginners"
         }
       ],
@@ -4352,10 +4356,10 @@
       "similarCommunityIds": [
         "com_55ca36db453a",
         "com_b0e15eaab803",
-        "com_d8a5203885a9",
-        "com_8d86f6f9340b",
-        "com_ed8d42fb031d",
-        "com_cdd5daa67222"
+        "com_b736e77bdf93",
+        "com_eef1ca956dae",
+        "com_eeb4e424a504",
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -4716,7 +4720,7 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
+      "homeVenue": "New York Comedy Club on 4th Street",
       "imageUrl": "/img/comedians/KRYSTYNA-HUTCHINSON-Press-Photo-adb60fdd-large-thumb.jpg",
       "links": [
         {
@@ -4729,7 +4733,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-09",
-        "upcomingEventCount": 45,
+        "upcomingEventCount": 48,
         "eventCount90d": 168
       },
       "schedule": {
@@ -4745,16 +4749,16 @@
       "upcomingEventIds": [
         "d467eb717dd37ab5",
         "501cbc885fbe7da6",
+        "5c4f963628bc67d9",
+        "04682c1396270feb",
+        "8f70021a01249d0d",
         "e6a4d3369a2747de",
         "b0ba1bd3133dadf4",
         "89f58414356252aa",
         "84c7e8a96e2ad276",
         "9120e7372851327b",
         "b82ded58f0f2410a",
-        "e64e7bbcc92b7857",
-        "b0f70f3658ed49ae",
-        "9951f89f55d57f85",
-        "664e4569d633810f"
+        "e64e7bbcc92b7857"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4777,7 +4781,7 @@
         "com_3048e331f7b6",
         "com_d8a5203885a9",
         "com_8b837dfb5421",
-        "com_9abdf9db297a"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -51996,7 +52000,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-09T13:53:56.583471+00:00",
+  "lastUpdated": "2026-10-09T14:29:08.934915+00:00",
   "version": 1,
   "schemaVersion": 1
 }
