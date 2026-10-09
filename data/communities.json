@@ -2433,7 +2433,7 @@
       "name": "The National Arts Club",
       "kind": "club",
       "tagline": "The National Arts Club is a community club centered on music, theater, art in manhattan.",
-      "description": "The National Arts Club is a community club centered on music, theater, art in manhattan. Based on 23 observed event dates, it meets weekly on Tuesday and Monday evenings.",
+      "description": "The National Arts Club is a community club centered on music, theater, art in manhattan. Based on 24 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
         "other",
         "music",
@@ -2462,18 +2462,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-08",
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 11,
         "eventCount90d": 15
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Tuesday",
-          "Monday"
+          "Thursday"
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 23
+        "sampleSize": 24
       },
       "upcomingEventIds": [
         "15b7570a3fd31534",
@@ -2485,7 +2485,8 @@
         "be5703843d2a36e3",
         "42367e2ab98d6896",
         "6dd2f726c7ab5a28",
-        "eb77ff27a2e7caa1"
+        "eb77ff27a2e7caa1",
+        "f6f2a00fbf646591"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2494,7 +2495,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 23,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51995,7 +51996,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-09T09:28:16.789782+00:00",
+  "lastUpdated": "2026-10-09T13:53:56.583471+00:00",
   "version": 1,
   "schemaVersion": 1
 }
