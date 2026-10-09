@@ -925,10 +925,10 @@
       "similarCommunityIds": [
         "com_3481b6750d6f",
         "com_0306525f2bed",
+        "com_6114a53f79a0",
         "com_e9748c1176c1",
         "com_118a558259ea",
-        "com_4c3ca28533f5",
-        "com_790f35f3152b"
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -3059,10 +3059,10 @@
       "similarCommunityIds": [
         "com_1ab246c8dd88",
         "com_cdd5daa67222",
+        "com_6114a53f79a0",
         "com_3bc67889299d",
         "com_02ba15552329",
-        "com_33a530deb7aa",
-        "com_359bbb5a9a91"
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -3348,6 +3348,82 @@
         "com_e9748c1176c1",
         "com_1466f20a9300",
         "com_36c800013ba6"
+      ]
+    },
+    {
+      "id": "com_6114a53f79a0",
+      "slug": "corgi-nyc-3f79a0",
+      "name": "Corgi NYC",
+      "kind": "recurring_series",
+      "tagline": "Corgi NYC is a recurring event series centered on parties, outdoors, fitness in manhattan.",
+      "description": "Corgi NYC is a recurring event series centered on parties, outdoors, fitness in manhattan. Based on 2 observed event dates, it meets biweekly on Saturday and Wednesday mornings.",
+      "categories": [
+        "parties",
+        "outdoors",
+        "fitness",
+        "other"
+      ],
+      "tags": [
+        "parties",
+        "outdoors",
+        "fitness",
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Pier 34 at Hudson River Park",
+      "imageUrl": "https://images.lumacdn.com/uploads/qd/21e57ab1-9657-45be-9c66-ae6f30a59556.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/usecorginyc"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Saturday",
+          "Wednesday"
+        ],
+        "typicalTime": "09:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "e68c82c290df77ba",
+        "5c68812f24d66c33"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-09",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-h1fy60pnztchaf4"
+      ],
+      "similarCommunityIds": [
+        "com_3481b6750d6f",
+        "com_92805cd9f03b",
+        "com_072c9c3e12a8",
+        "com_ebf7599ed103",
+        "com_065dafa96d43",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -3814,8 +3890,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in queens, astoria.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in queens, astoria. Based on 42 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in queens, manhattan.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, outdoors, parties in queens, manhattan. Based on 43 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "outdoors",
@@ -3828,11 +3904,11 @@
       ],
       "neighborhoods": [
         "queens",
-        "astoria",
         "manhattan",
+        "astoria",
         "bushwick"
       ],
-      "homeVenue": "Hotel Alameda",
+      "homeVenue": "21 E 1st St",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/ob/8ad0c09c-f5c4-49b6-93f6-dc6a0df72740.jpg",
       "links": [
         {
@@ -3845,7 +3921,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-08",
-        "upcomingEventCount": 12,
+        "upcomingEventCount": 13,
         "eventCount90d": 48
       },
       "schedule": {
@@ -3856,7 +3932,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 42
+        "sampleSize": 43
       },
       "upcomingEventIds": [
         "c36b7567df4bc39a",
@@ -3879,7 +3955,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 42,
+        "observedDateCount": 43,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4190,11 +4266,11 @@
       ],
       "similarCommunityIds": [
         "com_ed8d42fb031d",
+        "com_6114a53f79a0",
         "com_b0e15eaab803",
         "com_fe4b6663b721",
         "com_072c9c3e12a8",
-        "com_3481b6750d6f",
-        "com_92805cd9f03b"
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -4260,12 +4336,12 @@
         "partiful:jwslx6cogrhizjfreorlnxdzzpo2"
       ],
       "similarCommunityIds": [
+        "com_6114a53f79a0",
         "com_072c9c3e12a8",
         "com_3481b6750d6f",
         "com_ebf7599ed103",
         "com_4c3ca28533f5",
-        "com_feb5ce491629",
-        "com_118a558259ea"
+        "com_feb5ce491629"
       ]
     },
     {
@@ -52082,7 +52158,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-09T00:31:58.035932+00:00",
+  "lastUpdated": "2026-10-09T01:12:34.966512+00:00",
   "version": 1,
   "schemaVersion": 1
 }
