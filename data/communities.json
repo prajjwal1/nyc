@@ -310,10 +310,10 @@
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
         "com_e9748c1176c1",
+        "com_6114a53f79a0",
         "com_8b837dfb5421",
         "com_790f35f3152b",
-        "com_a3c012fb703f",
-        "com_4c3ca28533f5"
+        "com_a3c012fb703f"
       ]
     },
     {
@@ -477,11 +477,11 @@
       ],
       "similarCommunityIds": [
         "com_feb5ce491629",
+        "com_6114a53f79a0",
         "com_b0e15eaab803",
         "com_c1410c07c4dd",
         "com_4c3ca28533f5",
-        "com_ebf7599ed103",
-        "com_9fed174eeff3"
+        "com_ebf7599ed103"
       ]
     },
     {
@@ -942,11 +942,11 @@
       ],
       "similarCommunityIds": [
         "com_3481b6750d6f",
-        "com_6114a53f79a0",
         "com_e9748c1176c1",
         "com_118a558259ea",
         "com_790f35f3152b",
-        "com_a3c012fb703f"
+        "com_a3c012fb703f",
+        "com_eb4226b8b4c5"
       ]
     },
     {
@@ -1324,8 +1324,8 @@
         "com_359bbb5a9a91",
         "com_d2d455d2d6c9",
         "com_36cb2681053d",
-        "com_790f35f3152b",
-        "com_9fed174eeff3"
+        "com_6114a53f79a0",
+        "com_790f35f3152b"
       ]
     },
     {
@@ -2109,11 +2109,11 @@
       ],
       "similarCommunityIds": [
         "com_feb5ce491629",
+        "com_6114a53f79a0",
         "com_790f35f3152b",
         "com_a3c012fb703f",
         "com_359bbb5a9a91",
-        "com_9fed174eeff3",
-        "com_7fd76dcd92f3"
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -2952,9 +2952,9 @@
         "com_02ba15552329",
         "com_065dafa96d43",
         "com_9fed174eeff3",
+        "com_6114a53f79a0",
         "com_0e403135692e",
-        "com_1466f20a9300",
-        "com_2371cd3a803e"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -3252,23 +3252,25 @@
       "name": "Corgi NYC",
       "kind": "recurring_series",
       "tagline": "Corgi NYC is a recurring event series centered on parties, outdoors, fitness in manhattan.",
-      "description": "Corgi NYC is a recurring event series centered on parties, outdoors, fitness in manhattan. Based on 2 observed event dates, it meets biweekly on Saturday and Wednesday mornings.",
+      "description": "Corgi NYC is a recurring event series centered on parties, outdoors, fitness in manhattan. Based on 3 observed event dates, it meets weekly on Saturday and Monday mornings.",
       "categories": [
         "parties",
         "outdoors",
         "fitness",
+        "games",
         "other"
       ],
       "tags": [
         "parties",
         "outdoors",
         "fitness",
+        "games",
         "other"
       ],
       "neighborhoods": [
         "manhattan"
       ],
-      "homeVenue": "Pier 34 at Hudson River Park",
+      "homeVenue": "Corgi Cafe",
       "imageUrl": "https://images.lumacdn.com/uploads/qd/21e57ab1-9657-45be-9c66-ae6f30a59556.png",
       "links": [
         {
@@ -3281,21 +3283,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-10",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 1
       },
       "schedule": {
-        "cadence": "biweekly",
+        "cadence": "weekly",
         "typicalDays": [
           "Saturday",
-          "Wednesday"
+          "Monday"
         ],
         "typicalTime": "09:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "e68c82c290df77ba",
+        "8754a0f4f014d7aa",
         "5c68812f24d66c33"
       ],
       "sourceAttributions": [
@@ -3305,21 +3308,22 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
       "newcomerEvidence": [],
       "aliases": [
+        "instagram:j.ai.son",
         "luma:cal-h1fy60pnztchaf4"
       ],
       "similarCommunityIds": [
-        "com_3481b6750d6f",
-        "com_92805cd9f03b",
-        "com_072c9c3e12a8",
-        "com_ebf7599ed103",
         "com_4c3ca28533f5",
-        "com_065dafa96d43"
+        "com_fe4b6663b721",
+        "com_790f35f3152b",
+        "com_a3c012fb703f",
+        "com_065dafa96d43",
+        "com_feb5ce491629"
       ]
     },
     {
@@ -3696,7 +3700,7 @@
         "com_ed8d42fb031d",
         "com_fe4b6663b721",
         "com_ebf7599ed103",
-        "com_d8a5203885a9"
+        "com_6114a53f79a0"
       ]
     },
     {
@@ -4161,8 +4165,8 @@
         "partiful:cahd80tpfr5prooeegjy"
       ],
       "similarCommunityIds": [
-        "com_6114a53f79a0",
         "com_b0e15eaab803",
+        "com_6114a53f79a0",
         "com_fe4b6663b721",
         "com_072c9c3e12a8",
         "com_3481b6750d6f",
@@ -4232,11 +4236,11 @@
         "partiful:jwslx6cogrhizjfreorlnxdzzpo2"
       ],
       "similarCommunityIds": [
-        "com_6114a53f79a0",
         "com_072c9c3e12a8",
         "com_3481b6750d6f",
         "com_ebf7599ed103",
         "com_4c3ca28533f5",
+        "com_6114a53f79a0",
         "com_feb5ce491629"
       ]
     },
@@ -52053,7 +52057,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-10T02:27:21.817166+00:00",
+  "lastUpdated": "2026-10-10T02:45:52.066856+00:00",
   "version": 1,
   "schemaVersion": 1
 }
