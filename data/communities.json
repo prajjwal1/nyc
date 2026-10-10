@@ -397,7 +397,7 @@
         "com_64ebabd98c5c",
         "com_3837f308cd75",
         "com_ff2e01957665",
-        "com_c1410c07c4dd"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -3691,8 +3691,8 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_55ca36db453a",
+        "com_c1410c07c4dd",
         "com_fe4b6663b721",
         "com_ebf7599ed103",
         "com_6114a53f79a0",
@@ -4323,25 +4323,25 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, food in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, food in east village, bushwick. Based on 59 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, food in bushwick, east village.",
+      "description": "Book Club Bar is a community space centered on books, music, food in bushwick, east village. Based on 60 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
         "food",
         "games",
-        "parties"
+        "art"
       ],
       "tags": [
         "books",
         "music",
         "food",
         "games",
-        "parties"
+        "art"
       ],
       "neighborhoods": [
-        "east village",
         "bushwick",
+        "east village",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -4350,14 +4350,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6401120261115"
+          "url": "https://bookclubbar.com/events/6248120261124"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-07",
-        "upcomingEventCount": 21,
+        "upcomingEventCount": 27,
         "eventCount90d": 56
       },
       "schedule": {
@@ -4368,7 +4368,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 59
+        "sampleSize": 60
       },
       "upcomingEventIds": [
         "b6d2baea5a0ddd88",
@@ -4382,7 +4382,7 @@
         "f983dd59de6b47f7",
         "420031d0d397d602",
         "c2103db85091ba2e",
-        "7b4f9f13068943a6"
+        "ebc4eda6a0c4f96c"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -4391,13 +4391,17 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 59,
+        "observedDateCount": 60,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
       "newcomerEvidence": [
         {
           "eventId": "45ca74a60db45547",
+          "signal": "beginners"
+        },
+        {
+          "eventId": "f5207a5c726e6330",
           "signal": "beginners"
         }
       ],
@@ -4407,10 +4411,10 @@
       "similarCommunityIds": [
         "com_55ca36db453a",
         "com_b0e15eaab803",
-        "com_8d86f6f9340b",
-        "com_cdd5daa67222",
-        "com_ff2e01957665",
-        "com_fe4b6663b721"
+        "com_8b837dfb5421",
+        "com_eef1ca956dae",
+        "com_eeb4e424a504",
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -4756,14 +4760,14 @@
         "music",
         "special",
         "outdoors",
-        "art"
+        "celebrities"
       ],
       "tags": [
         "comedy",
         "music",
         "special",
         "outdoors",
-        "art"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
@@ -4782,8 +4786,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-10",
-        "upcomingEventCount": 47,
-        "eventCount90d": 175
+        "upcomingEventCount": 50,
+        "eventCount90d": 176
       },
       "schedule": {
         "cadence": "weekly",
@@ -4797,6 +4801,7 @@
       },
       "upcomingEventIds": [
         "501cbc885fbe7da6",
+        "42d15cabb6b358cb",
         "5c4f963628bc67d9",
         "04682c1396270feb",
         "8f70021a01249d0d",
@@ -4806,8 +4811,7 @@
         "84c7e8a96e2ad276",
         "9120e7372851327b",
         "b82ded58f0f2410a",
-        "e64e7bbcc92b7857",
-        "b0f70f3658ed49ae"
+        "e64e7bbcc92b7857"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4826,11 +4830,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
-        "com_8b837dfb5421",
+        "com_8d86f6f9340b",
         "com_3048e331f7b6",
         "com_4c3ca28533f5",
-        "com_9abdf9db297a",
-        "com_b766b6de77ba"
+        "com_b766b6de77ba",
+        "com_ed8d42fb031d"
       ]
     },
     {
@@ -52049,7 +52053,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-10T11:54:16.138462+00:00",
+  "lastUpdated": "2026-10-10T13:51:20.119502+00:00",
   "version": 1,
   "schemaVersion": 1
 }
