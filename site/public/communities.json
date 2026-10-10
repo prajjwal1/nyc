@@ -649,6 +649,75 @@
       ]
     },
     {
+      "id": "com_2a30ebfb0079",
+      "slug": "organizer-fb0079",
+      "name": "Organizer",
+      "kind": "recurring_series",
+      "tagline": "Organizer is a recurring event series centered on art in manhattan.",
+      "description": "Organizer is a recurring event series centered on art in manhattan. Based on 2 observed event dates, it meets weekly on Friday and Saturday afternoons.",
+      "categories": [
+        "art"
+      ],
+      "tags": [
+        "art"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "260 Madison Ave",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193579552%2F3014231318590%2F1%2Foriginal.20260915-174755?crop=focalpoint&fit=crop&h=123&w=247&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=8ba32673716bf201dd1e379e6a89ffd8",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/121749151824"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-10",
+        "upcomingEventCount": 1,
+        "eventCount90d": 2
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Saturday"
+        ],
+        "typicalTime": "12:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "53b5ebe05c380ce2"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-10",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:121749151824"
+      ],
+      "similarCommunityIds": [
+        "com_e9748c1176c1",
+        "com_36c800013ba6",
+        "com_072c9c3e12a8",
+        "com_4c3ca28533f5",
+        "com_6114a53f79a0",
+        "com_790f35f3152b"
+      ]
+    },
+    {
       "id": "com_7fd76dcd92f3",
       "slug": "city-lore-bowery-poetry-poets-house-cd92f3",
       "name": "City Lore, Bowery Poetry, Poets House",
@@ -949,9 +1018,9 @@
         "com_3481b6750d6f",
         "com_e9748c1176c1",
         "com_118a558259ea",
+        "com_2a30ebfb0079",
         "com_790f35f3152b",
-        "com_a3c012fb703f",
-        "com_eb4226b8b4c5"
+        "com_a3c012fb703f"
       ]
     },
     {
@@ -4786,7 +4855,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-10",
-        "upcomingEventCount": 50,
+        "upcomingEventCount": 49,
         "eventCount90d": 176
       },
       "schedule": {
@@ -52053,7 +52122,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-10T13:51:20.119502+00:00",
+  "lastUpdated": "2026-10-10T14:51:10.457801+00:00",
   "version": 1,
   "schemaVersion": 1
 }
