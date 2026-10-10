@@ -85,15 +85,15 @@
       "tagline": "Elsewhere is a recurring event series centered on music, parties, outdoors in bushwick.",
       "description": "Elsewhere is a recurring event series centered on music, parties, outdoors in bushwick. Based on 49 observed event dates, it meets weekly on Saturday and Thursday evenings.",
       "categories": [
-        "other",
         "music",
+        "other",
         "parties",
         "outdoors",
         "special"
       ],
       "tags": [
-        "other",
         "music",
+        "other",
         "parties",
         "outdoors",
         "special"
@@ -649,7 +649,7 @@
         "com_3837f308cd75",
         "com_ff2e01957665",
         "com_d8a5203885a9",
-        "com_0e403135692e"
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -1104,15 +1104,17 @@
       "slug": "books-are-magic-35692e",
       "name": "Books Are Magic",
       "kind": "recurring_series",
-      "tagline": "Books Are Magic is a recurring event series centered on books in brooklyn, carroll gardens.",
-      "description": "Books Are Magic is a recurring event series centered on books in brooklyn, carroll gardens. Based on 12 observed event dates, it meets weekly on Monday and Wednesday evenings.",
+      "tagline": "Books Are Magic is a recurring event series centered on books, outdoors in brooklyn, carroll gardens.",
+      "description": "Books Are Magic is a recurring event series centered on books, outdoors in brooklyn, carroll gardens. Based on 12 observed event dates, it meets weekly on Monday and Wednesday evenings.",
       "categories": [
         "other",
-        "books"
+        "books",
+        "outdoors"
       ],
       "tags": [
         "other",
-        "books"
+        "books",
+        "outdoors"
       ],
       "neighborhoods": [
         "brooklyn",
@@ -1173,9 +1175,9 @@
         "com_3837f308cd75",
         "com_ff2e01957665",
         "com_5582e2e97f1a",
+        "com_4a9490cb3534",
         "com_cb019f4e9752",
-        "com_f171cd222ca5",
-        "com_d2d455d2d6c9"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -1250,11 +1252,11 @@
       ],
       "similarCommunityIds": [
         "com_3837f308cd75",
-        "com_0e403135692e",
         "com_d8a5203885a9",
         "com_36cb2681053d",
         "com_386aac86bb4d",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -1630,10 +1632,10 @@
       "similarCommunityIds": [
         "com_d2d455d2d6c9",
         "com_ff2e01957665",
-        "com_0e403135692e",
         "com_d8a5203885a9",
         "com_7fd76dcd92f3",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -1712,9 +1714,9 @@
         "com_3837f308cd75",
         "com_7fd76dcd92f3",
         "com_36cb2681053d",
-        "com_0e403135692e",
         "com_feb5ce491629",
-        "com_3b104adba072"
+        "com_3b104adba072",
+        "com_790f35f3152b"
       ]
     },
     {
@@ -2258,12 +2260,12 @@
         "eventbrite:52255937823"
       ],
       "similarCommunityIds": [
-        "com_0e403135692e",
         "com_a786c70979d0",
         "com_a1e1c13a75f0",
         "com_eeb4e424a504",
         "com_33a530deb7aa",
-        "com_c4469caf0091"
+        "com_c4469caf0091",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -4094,9 +4096,9 @@
         "com_ff2e01957665",
         "com_36cb2681053d",
         "com_cdd5daa67222",
-        "com_0e403135692e",
         "com_33a530deb7aa",
-        "com_36c800013ba6"
+        "com_36c800013ba6",
+        "com_55ca36db453a"
       ]
     },
     {
@@ -4161,11 +4163,11 @@
       ],
       "similarCommunityIds": [
         "com_f171cd222ca5",
-        "com_0e403135692e",
         "com_33a530deb7aa",
         "com_a1e1c13a75f0",
         "com_c4469caf0091",
-        "com_cdd5daa67222"
+        "com_cdd5daa67222",
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -4729,9 +4731,9 @@
       "similarCommunityIds": [
         "com_5582e2e97f1a",
         "com_f171cd222ca5",
-        "com_0e403135692e",
         "com_7fd76dcd92f3",
         "com_eef1ca956dae",
+        "com_0e403135692e",
         "com_c1410c07c4dd"
       ]
     },
@@ -52126,7 +52128,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-10T19:30:59.969953+00:00",
+  "lastUpdated": "2026-10-10T20:30:32.729933+00:00",
   "version": 1,
   "schemaVersion": 1
 }
