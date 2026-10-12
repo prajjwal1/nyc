@@ -1662,7 +1662,7 @@
       "name": "Arts With Lorry",
       "kind": "recurring_series",
       "tagline": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan.",
-      "description": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan. Based on 9 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "description": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan. Based on 10 observed event dates, it meets weekly on Sunday and Friday evenings.",
       "categories": [
         "other",
         "music",
@@ -1693,21 +1693,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-11",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 7
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Thursday"
+          "Friday"
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "ef74140e2ed72880",
+        "a843281eb47a8bca",
         "785a74f22856424f",
         "802b23a455b5c2b1",
         "5ecb9f7ab4381d51"
@@ -1719,7 +1720,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -2209,7 +2210,7 @@
       "name": "St Mazie",
       "kind": "recurring_series",
       "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 43 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 45 observed event dates, it meets weekly on Sunday and Monday evenings.",
       "categories": [
         "music",
         "other"
@@ -2234,7 +2235,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-12",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 7,
         "eventCount90d": 65
       },
       "schedule": {
@@ -2245,13 +2246,16 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 43
+        "sampleSize": 45
       },
       "upcomingEventIds": [
         "95a5babfe52ebe83",
         "a4abe0d28f5e5b25",
         "0c1d68680d6159a4",
-        "f92533ffde698068"
+        "f92533ffde698068",
+        "f73d90077a79d37d",
+        "6e7e64c64a120242",
+        "554be79d93f626f2"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2260,7 +2264,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 43,
+        "observedDateCount": 45,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4484,8 +4488,8 @@
         "4a6cec14b8567994",
         "226811db36200e24",
         "32890084524d405d",
-        "d164ee3e445ccdda",
         "0bf1b648c4663fdc",
+        "d164ee3e445ccdda",
         "7413344c05143740",
         "105e3bac6d57dbe6"
       ],
@@ -4782,7 +4786,7 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
+      "homeVenue": "New York Comedy Club",
       "imageUrl": "/img/events/New-Jokes-Newbie-1072-x-680-px-Blue-1-1d1b1125-large-thumb.jpg",
       "links": [
         {
@@ -4795,7 +4799,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-12",
-        "upcomingEventCount": 41,
+        "upcomingEventCount": 40,
         "eventCount90d": 187
       },
       "schedule": {
@@ -4816,11 +4820,11 @@
         "664e4569d633810f",
         "d53580f9d88d84e9",
         "ca5028a732d202f6",
-        "4b72e3d1ce347232",
         "6d1b059164578911",
         "af5e7f3fa54d9360",
         "71fd0e516d3600a7",
-        "0065474daa41ed44"
+        "0065474daa41ed44",
+        "f6e29bf1d395e531"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -52062,7 +52066,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-12T00:47:44.594533+00:00",
+  "lastUpdated": "2026-10-12T02:03:22.849198+00:00",
   "version": 1,
   "schemaVersion": 1
 }
