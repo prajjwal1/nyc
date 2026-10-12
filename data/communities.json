@@ -1954,8 +1954,13 @@
         "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "f257becfb16f3048",
+          "signal": "beginner"
+        }
+      ],
       "aliases": [
         "eventbrite:4279966505"
       ],
@@ -2530,13 +2535,13 @@
       "tagline": "Brooklyn Art Haus is a recurring event series centered on comedy, music in brooklyn.",
       "description": "Brooklyn Art Haus is a recurring event series centered on comedy, music in brooklyn. Based on 25 observed event dates, it meets weekly on Sunday and Wednesday mornings.",
       "categories": [
-        "comedy",
         "other",
+        "comedy",
         "music"
       ],
       "tags": [
-        "comedy",
         "other",
+        "comedy",
         "music"
       ],
       "neighborhoods": [
@@ -2555,7 +2560,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-11",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 28
       },
       "schedule": {
@@ -2573,6 +2578,7 @@
         "76dd3f78268336f6",
         "f88c0f4a4e827b5f",
         "29a04cbb6a88fcda",
+        "d7e6117791aefbf0",
         "5684a2736841ce19",
         "56055ef6f4c82ba9",
         "7d619a13560d5960"
@@ -4817,8 +4823,8 @@
         "9951f89f55d57f85",
         "7613c9263e0d1d99",
         "664e4569d633810f",
-        "d53580f9d88d84e9",
         "ca5028a732d202f6",
+        "d53580f9d88d84e9",
         "4b72e3d1ce347232",
         "6d1b059164578911",
         "af5e7f3fa54d9360",
@@ -52065,7 +52071,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-12T07:42:00.398698+00:00",
+  "lastUpdated": "2026-10-12T09:27:32.709563+00:00",
   "version": 1,
   "schemaVersion": 1
 }
