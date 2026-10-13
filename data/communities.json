@@ -156,9 +156,9 @@
         "url:https://www.eventbrite.com/o/elsewhere-105655500371"
       ],
       "similarCommunityIds": [
-        "com_f23f8820878b",
         "com_d8a5203885a9",
         "com_ed8d42fb031d",
+        "com_f23f8820878b",
         "com_065dafa96d43",
         "com_33a530deb7aa",
         "com_4c3ca28533f5"
@@ -486,11 +486,11 @@
       ],
       "similarCommunityIds": [
         "com_feb5ce491629",
-        "com_f23f8820878b",
         "com_4c3ca28533f5",
         "com_b766b6de77ba",
         "com_33a530deb7aa",
-        "com_8d86f6f9340b"
+        "com_8d86f6f9340b",
+        "com_065dafa96d43"
       ]
     },
     {
@@ -4788,26 +4788,26 @@
       "name": "New York Comedy Club",
       "kind": "club",
       "tagline": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 67 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 70 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
         "music",
         "special",
         "outdoors",
-        "parties"
+        "celebrities"
       ],
       "tags": [
         "comedy",
         "music",
         "special",
         "outdoors",
-        "parties"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
+      "homeVenue": "New York Comedy Club",
       "imageUrl": "/img/events/11th-Annual-New-York-Comedy-Competition-SEMIS-1072X680-uws-16d1190b-large-thumb.jpg",
       "links": [
         {
@@ -4820,7 +4820,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-13",
-        "upcomingEventCount": 43,
+        "upcomingEventCount": 55,
         "eventCount90d": 188
       },
       "schedule": {
@@ -4831,7 +4831,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 67
+        "sampleSize": 70
       },
       "upcomingEventIds": [
         "b0f70f3658ed49ae",
@@ -4843,9 +4843,9 @@
         "be874a2f2d6c667d",
         "7ff6b9a670ac6733",
         "c9ede5afe0bb53a3",
-        "af5e7f3fa54d9360",
-        "71fd0e516d3600a7",
-        "0065474daa41ed44"
+        "3207554c886ac402",
+        "2ea0affdb836c36e",
+        "025b986ea1835a1b"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4854,7 +4854,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 67,
+        "observedDateCount": 70,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4863,12 +4863,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
+        "com_318c39363fe6",
         "com_b766b6de77ba",
         "com_d8a5203885a9",
-        "com_ed8d42fb031d",
-        "com_318c39363fe6",
-        "com_8d86f6f9340b",
-        "com_065dafa96d43"
+        "com_3048e331f7b6",
+        "com_4c3ca28533f5",
+        "com_ed8d42fb031d"
       ]
     },
     {
@@ -4877,7 +4877,7 @@
       "name": "Eastville Comedy Club",
       "kind": "club",
       "tagline": "Eastville Comedy Club is a community club centered on comedy, music, books in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music, books in east village. Based on 48 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, books in east village. Based on 50 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -4906,7 +4906,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-13",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 19,
         "eventCount90d": 72
       },
       "schedule": {
@@ -4917,7 +4917,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 48
+        "sampleSize": 50
       },
       "upcomingEventIds": [
         "d8083b0b4633a0f4",
@@ -4931,7 +4931,7 @@
         "890ec17e7c4e64a2",
         "3e585ac8f6d809c1",
         "d053680a203ccb49",
-        "459ff1e4bb2369ed"
+        "26084e8c55e14b76"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -4940,7 +4940,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 48,
+        "observedDateCount": 50,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -52091,7 +52091,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-13T21:33:06.101357+00:00",
+  "lastUpdated": "2026-10-13T23:22:14.303268+00:00",
   "version": 1,
   "schemaVersion": 1
 }
