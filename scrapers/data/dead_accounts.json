@@ -355,9 +355,11 @@
       "last_transient_at": "2026-07-23T03:06:25.299320+00:00"
     },
     "reading_rhythms": {
-      "failure_count": 2,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
-      "last_transient_at": "2026-07-24T06:45:59.673697+00:00"
+      "failure_count": 3,
+      "last_reason": "302 Found when accessing https://www.instagram.com/reading_rhythms/",
+      "last_transient_at": "2026-07-24T06:45:59.673697+00:00",
+      "since": "2026-10-13T00:49:02.271364+00:00",
+      "reason": "repeated_failure"
     },
     "mercurylounge": {
       "failure_count": 1,
@@ -370,9 +372,11 @@
       "last_transient_at": "2026-07-23T03:04:25.235396+00:00"
     },
     "nyucreativewriting": {
-      "failure_count": 2,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
-      "last_transient_at": "2026-07-24T06:46:03.782901+00:00"
+      "failure_count": 3,
+      "last_reason": "302 Found when accessing https://www.instagram.com/nyucreativewriting/",
+      "last_transient_at": "2026-07-24T06:46:03.782901+00:00",
+      "since": "2026-10-13T00:49:08.956902+00:00",
+      "reason": "repeated_failure"
     },
     "open.bookclub": {
       "failure_count": 2,
@@ -410,8 +414,8 @@
       "failure_count": 1
     },
     "yeswilliamsburg": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/yeswilliamsburg/",
       "last_transient_at": "2026-07-24T06:46:11.009696+00:00"
     },
     "yogaspace.nyc": {
@@ -430,15 +434,15 @@
       "failure_count": 1
     },
     "brooklynbotanic": {
-      "failure_count": 3,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 4,
+      "last_reason": "302 Found when accessing https://www.instagram.com/brooklynbotanic/",
       "last_transient_at": "2026-07-24T06:46:05.641709+00:00",
-      "since": "2026-06-23T21:48:46.690637+00:00",
+      "since": "2026-10-13T00:49:48.194829+00:00",
       "reason": "repeated_failure"
     },
     "brooklynheightsassociation": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/brooklynheightsassociation/",
       "last_transient_at": "2026-07-24T06:46:02.803713+00:00"
     },
     "crownheightscraftclub": {
@@ -447,8 +451,8 @@
       "last_transient_at": "2026-07-24T06:46:45.479635+00:00"
     },
     "fortheplotnyc": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/fortheplotnyc/",
       "last_transient_at": "2026-07-24T06:47:23.647186+00:00"
     },
     "franklinparkbk": {
@@ -457,13 +461,13 @@
       "last_transient_at": "2026-07-24T06:46:25.294611+00:00"
     },
     "greenpointtrashclub": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/greenpointtrashclub/",
       "last_transient_at": "2026-07-24T06:46:16.517863+00:00"
     },
     "midnightrunnersnewyork": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/midnightrunnersnewyork/",
       "last_transient_at": "2026-07-24T06:46:00.475618+00:00"
     },
     "nook_bklyn": {
@@ -472,13 +476,15 @@
       "last_transient_at": "2026-07-24T06:46:31.541327+00:00"
     },
     "northbrooklynrunners": {
-      "failure_count": 2,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
-      "last_transient_at": "2026-07-24T06:47:10.863274+00:00"
+      "failure_count": 3,
+      "last_reason": "302 Found when accessing https://www.instagram.com/northbrooklynrunners/",
+      "last_transient_at": "2026-07-24T06:47:10.863274+00:00",
+      "since": "2026-10-13T00:49:22.321968+00:00",
+      "reason": "repeated_failure"
     },
     "nyc_forfree": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/nyc_forfree/",
       "last_transient_at": "2026-07-24T06:45:53.427496+00:00"
     },
     "nycbackgammonclub": {
@@ -492,23 +498,23 @@
       "last_transient_at": "2026-07-24T06:47:01.537035+00:00"
     },
     "nyplyounglions": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/nyplyounglions/",
       "last_transient_at": "2026-07-24T06:46:07.777285+00:00"
     },
     "omgreenpoint": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/omgreenpoint/",
       "last_transient_at": "2026-07-24T06:45:49.558415+00:00"
     },
     "onefinedaynyc": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/onefinedaynyc/",
       "last_transient_at": "2026-07-24T06:47:13.870331+00:00"
     },
     "philosophy.nyc": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/philosophy.nyc/",
       "last_transient_at": "2026-07-24T06:47:07.357047+00:00"
     },
     "queerfeetnyc": {
@@ -517,38 +523,38 @@
       "last_transient_at": "2026-07-24T06:47:06.021696+00:00"
     },
     "quietreading.club": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/quietreading.club/",
       "last_transient_at": "2026-07-24T06:47:18.145542+00:00"
     },
     "richardsgamesnyc": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/richardsgamesnyc/",
       "last_transient_at": "2026-07-24T06:47:26.219216+00:00"
     },
     "rummikubers": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/rummikubers/",
       "last_transient_at": "2026-07-24T06:47:28.891787+00:00"
     },
     "secondsrunclub": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/secondsrunclub/",
       "last_transient_at": "2026-07-24T06:47:14.720255+00:00"
     },
     "silentbookclub.nyc": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/silentbookclub.nyc/",
       "last_transient_at": "2026-07-24T06:47:27.357976+00:00"
     },
     "strangersorfriendsbk": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/strangersorfriendsbk/",
       "last_transient_at": "2026-07-24T06:47:16.867529+00:00"
     },
     "thenewyorkgames": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/thenewyorkgames/",
       "last_transient_at": "2026-07-24T06:47:20.886131+00:00"
     },
     "timeoutnewyork": {
@@ -1264,8 +1270,8 @@
       "last_transient_at": "2026-06-27T14:00:50.604281+00:00"
     },
     "buzzkillnyc": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/buzzkillnyc/",
       "last_transient_at": "2026-07-24T06:46:13.995673+00:00"
     },
     "litclub.nyc": {
@@ -1279,8 +1285,8 @@
       "last_transient_at": "2026-07-24T06:46:56.856218+00:00"
     },
     "asianfoundersclub": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/asianfoundersclub/",
       "last_transient_at": "2026-07-24T06:47:09.007287+00:00"
     },
     "brightlightorg": {
@@ -1294,8 +1300,8 @@
       "last_transient_at": "2026-06-28T21:22:23.123181+00:00"
     },
     "brightnightssocial": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/brightnightssocial/",
       "last_transient_at": "2026-07-24T06:45:47.192099+00:00"
     },
     "greenpointcomedyclub": {
@@ -1304,13 +1310,13 @@
       "last_transient_at": "2026-07-24T06:46:29.621182+00:00"
     },
     "fomofeed": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/fomofeed/",
       "last_transient_at": "2026-07-24T06:46:07.015693+00:00"
     },
     "greenpointers": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/greenpointers/",
       "last_transient_at": "2026-07-24T06:45:56.995267+00:00"
     },
     "center4fiction": {
@@ -1329,23 +1335,23 @@
       "last_transient_at": "2026-07-24T06:46:21.830171+00:00"
     },
     "explorenycfree": {
-      "failure_count": 0,
-      "last_reason": "JSON Query to api/v1/users/web_profile_info/: 429 Too Many Requests when accessing https://www.instagram.com/api/v1/users/web_profile_info/?username=explorenycfree",
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/explorenycfree/",
       "last_transient_at": "2026-10-12T18:19:53.746260+00:00"
     },
     "sipsandstoriesnyc": {
-      "failure_count": 0,
-      "last_reason": "JSON Query to api/v1/users/web_profile_info/: 429 Too Many Requests when accessing https://www.instagram.com/api/v1/users/web_profile_info/?username=sipsandstoriesnyc",
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/sipsandstoriesnyc/",
       "last_transient_at": "2026-10-12T18:31:00.108967+00:00"
     },
     "secret_nyc": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/secret_nyc/",
       "last_transient_at": "2026-07-24T06:45:41.391186+00:00"
     },
     "likeafriendsaid.nyc": {
-      "failure_count": 1,
-      "last_reason": "400 Bad Request - \"fail\" status, message \"feedback_required\" when accessing https://www.instagram.com/graphql/query",
+      "failure_count": 2,
+      "last_reason": "302 Found when accessing https://www.instagram.com/likeafriendsaid.nyc/",
       "last_transient_at": "2026-07-24T06:45:45.685865+00:00"
     },
     "audible": {
