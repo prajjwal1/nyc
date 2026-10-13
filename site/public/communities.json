@@ -883,9 +883,9 @@
         "com_3bc67889299d",
         "com_037d36e98c05",
         "com_9fed174eeff3",
-        "com_c58670960684",
         "com_065dafa96d43",
-        "com_6114a53f79a0"
+        "com_6114a53f79a0",
+        "com_c58670960684"
       ]
     },
     {
@@ -1415,9 +1415,9 @@
         "com_118a558259ea",
         "com_a3c012fb703f",
         "com_eb4226b8b4c5",
+        "com_c58670960684",
         "com_072c9c3e12a8",
-        "com_359bbb5a9a91",
-        "com_c58670960684"
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -1811,8 +1811,8 @@
         "com_3481b6750d6f",
         "com_a3c012fb703f",
         "com_eb4226b8b4c5",
-        "com_359bbb5a9a91",
         "com_c58670960684",
+        "com_359bbb5a9a91",
         "com_cb019f4e9752"
       ]
     },
@@ -2757,8 +2757,8 @@
         "com_a3c012fb703f",
         "com_cb019f4e9752",
         "com_359bbb5a9a91",
-        "com_a1e1c13a75f0",
-        "com_36c800013ba6"
+        "com_c58670960684",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -3123,8 +3123,8 @@
         "com_118a558259ea",
         "com_3481b6750d6f",
         "com_a3c012fb703f",
-        "com_359bbb5a9a91",
         "com_c58670960684",
+        "com_359bbb5a9a91",
         "com_cb019f4e9752"
       ]
     },
@@ -3205,8 +3205,8 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club in williamsburg.",
-      "description": "The New York Philosophy Club is a community club in williamsburg. Based on 3 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club in williamsburg, manhattan.",
+      "description": "The New York Philosophy Club is a community club in williamsburg, manhattan. Based on 4 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other"
       ],
@@ -3214,7 +3214,8 @@
         "other"
       ],
       "neighborhoods": [
-        "williamsburg"
+        "williamsburg",
+        "manhattan"
       ],
       "homeVenue": "McCarren Parkhouse",
       "imageUrl": "https://images.lumacdn.com/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
@@ -3229,7 +3230,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-10",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
@@ -3239,11 +3240,12 @@
           "Saturday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
-        "20e9d16de5ced1fc"
+        "20e9d16de5ced1fc",
+        "75f31a27457e4bbd"
       ],
       "sourceAttributions": [
         "luma"
@@ -3252,7 +3254,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3262,8 +3264,8 @@
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
-        "com_359bbb5a9a91",
         "com_a3c012fb703f",
+        "com_359bbb5a9a91",
         "com_cb019f4e9752",
         "com_f8ff3d3257ed",
         "com_118a558259ea",
@@ -3479,11 +3481,11 @@
         "luma:cal-vtoejdcddrhajom"
       ],
       "similarCommunityIds": [
+        "com_c58670960684",
         "com_118a558259ea",
         "com_3481b6750d6f",
         "com_eb4226b8b4c5",
         "com_359bbb5a9a91",
-        "com_c58670960684",
         "com_cb019f4e9752"
       ]
     },
@@ -3557,12 +3559,12 @@
         "luma:kanso"
       ],
       "similarCommunityIds": [
+        "com_c58670960684",
         "com_4c3ca28533f5",
         "com_6114a53f79a0",
         "com_ab8259bb35a4",
         "com_7fd76dcd92f3",
-        "com_e9748c1176c1",
-        "com_feb5ce491629"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3651,7 +3653,7 @@
       "name": "NYC Backgammon Club",
       "kind": "club",
       "tagline": "NYC Backgammon Club is a community club centered on games, parties, food in soho.",
-      "description": "NYC Backgammon Club is a community club centered on games, parties, food in soho. Based on 7 observed event dates, it meets weekly on Tuesday and Monday evenings.",
+      "description": "NYC Backgammon Club is a community club centered on games, parties, food in soho. Based on 8 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
         "games",
         "parties",
@@ -3682,7 +3684,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-13",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 4
       },
       "schedule": {
@@ -3693,12 +3695,13 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
         "f653c93073cdab6a",
         "757a702bea2dbea2",
         "aed70d6c77936c66",
+        "42ea657f0c61b407",
         "521bac3bd7b049f4"
       ],
       "sourceAttributions": [
@@ -3708,7 +3711,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3805,9 +3808,9 @@
         "com_36c800013ba6",
         "com_9fed174eeff3",
         "com_feb5ce491629",
+        "com_c58670960684",
         "com_386aac86bb4d",
-        "com_9abdf9db297a",
-        "com_e9748c1176c1"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -52088,7 +52091,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-13T21:20:50.948593+00:00",
+  "lastUpdated": "2026-10-13T21:33:06.101357+00:00",
   "version": 1,
   "schemaVersion": 1
 }
