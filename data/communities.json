@@ -1888,10 +1888,10 @@
       "similarCommunityIds": [
         "com_c1410c07c4dd",
         "com_b0e15eaab803",
+        "com_318c39363fe6",
         "com_cdd5daa67222",
         "com_36cb2681053d",
-        "com_8d86f6f9340b",
-        "com_33a530deb7aa"
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -2974,7 +2974,7 @@
       "name": "VRC",
       "kind": "recurring_series",
       "tagline": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC.",
-      "description": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC. Based on 8 observed event dates, it meets weekly on Monday evenings.",
+      "description": "VRC is a recurring event series centered on fitness, outdoors, parties across NYC. Based on 9 observed event dates, it meets weekly on Monday evenings.",
       "categories": [
         "fitness",
         "outdoors",
@@ -2999,7 +2999,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-12",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 5
       },
       "schedule": {
@@ -3009,12 +3009,13 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 9
       },
       "upcomingEventIds": [
         "ab9339b66d5bb7a9",
         "014cf3d422efc908",
-        "4692eb27774f9aed"
+        "4692eb27774f9aed",
+        "4e683288054eb917"
       ],
       "sourceAttributions": [
         "instagram"
@@ -3023,7 +3024,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 9,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4337,7 +4338,7 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, music, food in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, food in east village, bushwick. Based on 60 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, music, food in east village, bushwick. Based on 61 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
@@ -4370,7 +4371,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-13",
-        "upcomingEventCount": 24,
+        "upcomingEventCount": 25,
         "eventCount90d": 60
       },
       "schedule": {
@@ -4381,7 +4382,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 60
+        "sampleSize": 61
       },
       "upcomingEventIds": [
         "3f5a05994d9c0524",
@@ -4404,7 +4405,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 60,
+        "observedDateCount": 61,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4423,11 +4424,11 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
+        "com_318c39363fe6",
         "com_b0e15eaab803",
         "com_a786c70979d0",
         "com_3837f308cd75",
-        "com_b736e77bdf93",
-        "com_eef1ca956dae"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -4670,10 +4671,10 @@
       "similarCommunityIds": [
         "com_5582e2e97f1a",
         "com_f171cd222ca5",
+        "com_318c39363fe6",
         "com_3837f308cd75",
         "com_7fd76dcd92f3",
-        "com_eef1ca956dae",
-        "com_0e403135692e"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -4845,8 +4846,8 @@
       "similarCommunityIds": [
         "com_b766b6de77ba",
         "com_d8a5203885a9",
-        "com_318c39363fe6",
         "com_ed8d42fb031d",
+        "com_318c39363fe6",
         "com_8d86f6f9340b",
         "com_065dafa96d43"
       ]
@@ -4856,15 +4857,19 @@
       "slug": "eastville-comedy-club-363fe6",
       "name": "Eastville Comedy Club",
       "kind": "club",
-      "tagline": "Eastville Comedy Club is a community club centered on comedy, music in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music in east village. Based on 46 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "Eastville Comedy Club is a community club centered on comedy, music, books in east village.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, books in east village. Based on 46 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
-        "music"
+        "music",
+        "books",
+        "art"
       ],
       "tags": [
         "comedy",
-        "music"
+        "music",
+        "books",
+        "art"
       ],
       "neighborhoods": [
         "east village"
@@ -4882,7 +4887,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-12",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 15,
         "eventCount90d": 71
       },
       "schedule": {
@@ -4900,14 +4905,14 @@
         "40c31208f9a0f23b",
         "5016b7559441e003",
         "47e5fedd574ea72c",
+        "37edbd725fc7ea7d",
         "22e2ac0c6a8c2a94",
         "890ec17e7c4e64a2",
         "3e585ac8f6d809c1",
         "d053680a203ccb49",
         "459ff1e4bb2369ed",
         "ef25e1fad1bf9fbd",
-        "b2b6d1190a0bf8a3",
-        "6a0ea4f05e5a7009"
+        "b2b6d1190a0bf8a3"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -4925,12 +4930,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_3048e331f7b6",
-        "com_f23f8820878b",
-        "com_a1e1c13a75f0",
-        "com_2371cd3a803e",
+        "com_c1410c07c4dd",
         "com_d8a5203885a9",
-        "com_1466f20a9300"
+        "com_eeb4e424a504",
+        "com_55ca36db453a",
+        "com_f23f8820878b",
+        "com_8b837dfb5421"
       ]
     },
     {
@@ -52067,7 +52072,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-13T00:51:01.529122+00:00",
+  "lastUpdated": "2026-10-13T01:27:36.357355+00:00",
   "version": 1,
   "schemaVersion": 1
 }
