@@ -159,9 +159,9 @@
         "com_f23f8820878b",
         "com_d8a5203885a9",
         "com_ed8d42fb031d",
-        "com_c1410c07c4dd",
         "com_065dafa96d43",
-        "com_33a530deb7aa"
+        "com_33a530deb7aa",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -4347,20 +4347,20 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, music, food in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, food in east village, bushwick. Based on 61 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, music, food in east village, bushwick. Based on 62 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
         "food",
         "games",
-        "parties"
+        "art"
       ],
       "tags": [
         "books",
         "music",
         "food",
         "games",
-        "parties"
+        "art"
       ],
       "neighborhoods": [
         "east village",
@@ -4373,14 +4373,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6401120261115"
+          "url": "https://bookclubbar.com/events/6248120261124"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-13",
-        "upcomingEventCount": 20,
+        "upcomingEventCount": 26,
         "eventCount90d": 60
       },
       "schedule": {
@@ -4391,7 +4391,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 61
+        "sampleSize": 62
       },
       "upcomingEventIds": [
         "3f5a05994d9c0524",
@@ -4414,13 +4414,17 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 61,
+        "observedDateCount": 62,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
       "newcomerEvidence": [
         {
           "eventId": "45ca74a60db45547",
+          "signal": "beginners"
+        },
+        {
+          "eventId": "f5207a5c726e6330",
           "signal": "beginners"
         }
       ],
@@ -4430,10 +4434,10 @@
       "similarCommunityIds": [
         "com_55ca36db453a",
         "com_b0e15eaab803",
-        "com_d8a5203885a9",
-        "com_8d86f6f9340b",
-        "com_cdd5daa67222",
-        "com_ff2e01957665"
+        "com_318c39363fe6",
+        "com_eeb4e424a504",
+        "com_a786c70979d0",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -4495,8 +4499,8 @@
         "4a6cec14b8567994",
         "226811db36200e24",
         "32890084524d405d",
-        "d164ee3e445ccdda",
         "0bf1b648c4663fdc",
+        "d164ee3e445ccdda",
         "7413344c05143740",
         "105e3bac6d57dbe6"
       ],
@@ -4679,11 +4683,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
+        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
         "com_9abdf9db297a",
         "com_a786c70979d0",
-        "com_f171cd222ca5",
-        "com_0e403135692e"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -4858,7 +4862,7 @@
         "com_ed8d42fb031d",
         "com_318c39363fe6",
         "com_8d86f6f9340b",
-        "com_c1410c07c4dd"
+        "com_065dafa96d43"
       ]
     },
     {
@@ -4940,11 +4944,11 @@
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
+        "com_c1410c07c4dd",
         "com_d8a5203885a9",
         "com_55ca36db453a",
         "com_f23f8820878b",
-        "com_8b837dfb5421",
-        "com_c1410c07c4dd"
+        "com_8b837dfb5421"
       ]
     },
     {
@@ -52081,7 +52085,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-13T12:08:05.821957+00:00",
+  "lastUpdated": "2026-10-13T15:12:23.738383+00:00",
   "version": 1,
   "schemaVersion": 1
 }
