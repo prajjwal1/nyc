@@ -620,7 +620,7 @@
     "timeoutnewyork": {
       "failure_count": 1,
       "last_reason": "302 Found when accessing https://www.instagram.com/timeoutnewyork/",
-      "last_transient_at": "2026-10-13T16:05:32.202556+00:00"
+      "last_transient_at": "2026-10-13T19:04:35.285088+00:00"
     },
     "vitalrunclub": {
       "failure_count": 3,
@@ -693,59 +693,81 @@
       "reason": "repeated_failure"
     },
     "littlefieldnyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/littlefieldnyc/",
-      "last_transient_at": "2026-07-23T03:02:07.721060+00:00"
+      "last_transient_at": "2026-07-23T03:02:07.721060+00:00",
+      "since": "2026-10-13T19:04:41.817418+00:00",
+      "reason": "repeated_failure"
     },
     "bigreuse": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/bigreuse/",
-      "last_transient_at": "2026-07-23T03:02:11.733820+00:00"
+      "last_transient_at": "2026-07-23T03:02:11.733820+00:00",
+      "since": "2026-10-13T19:04:47.984919+00:00",
+      "reason": "repeated_failure"
     },
     "dashwood_books": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/dashwood_books/",
-      "last_transient_at": "2026-07-23T03:02:12.882479+00:00"
+      "last_transient_at": "2026-07-23T03:02:12.882479+00:00",
+      "since": "2026-10-13T19:04:50.180945+00:00",
+      "reason": "repeated_failure"
     },
     "downtownnyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/downtownnyc/",
-      "last_transient_at": "2026-07-23T03:02:14.946849+00:00"
+      "last_transient_at": "2026-07-23T03:02:14.946849+00:00",
+      "since": "2026-10-13T19:04:54.824693+00:00",
+      "reason": "repeated_failure"
     },
     "itsinqueens": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/itsinqueens/",
-      "last_transient_at": "2026-07-23T03:02:16.257851+00:00"
+      "last_transient_at": "2026-07-23T03:02:16.257851+00:00",
+      "since": "2026-10-13T19:04:56.031815+00:00",
+      "reason": "repeated_failure"
     },
     "barnun.life": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/barnun.life/",
-      "last_transient_at": "2026-07-23T03:02:17.561536+00:00"
+      "last_transient_at": "2026-07-23T03:02:17.561536+00:00",
+      "since": "2026-10-13T19:04:58.852109+00:00",
+      "reason": "repeated_failure"
     },
     "bigvisionnyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/bigvisionnyc/",
-      "last_transient_at": "2026-07-23T03:02:18.704874+00:00"
+      "last_transient_at": "2026-07-23T03:02:18.704874+00:00",
+      "since": "2026-10-13T19:04:59.993585+00:00",
+      "reason": "repeated_failure"
     },
     "eliescobarnyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/eliescobarnyc/",
-      "last_transient_at": "2026-07-23T03:02:24.780289+00:00"
+      "last_transient_at": "2026-07-23T03:02:24.780289+00:00",
+      "since": "2026-10-13T19:05:01.039515+00:00",
+      "reason": "repeated_failure"
     },
     "franklinparkreadingseries": {
-      "failure_count": 2,
-      "last_reason": "302 Found when accessing https://www.instagram.com/franklinparkreadingseries/",
-      "last_transient_at": "2026-07-23T03:02:30.654990+00:00"
+      "failure_count": 3,
+      "last_reason": "profile_not_exists_transient",
+      "last_transient_at": "2026-07-23T03:02:30.654990+00:00",
+      "since": "2026-10-13T19:05:04.583173+00:00",
+      "reason": "repeated_failure"
     },
     "hithouse": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/hithouse/",
-      "last_transient_at": "2026-07-23T03:02:35.386490+00:00"
+      "last_transient_at": "2026-07-23T03:02:35.386490+00:00",
+      "since": "2026-10-13T19:05:12.037311+00:00",
+      "reason": "repeated_failure"
     },
     "mamachaempanacha": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/mamachaempanacha/",
-      "last_transient_at": "2026-07-23T03:02:34.171206+00:00"
+      "last_transient_at": "2026-07-23T03:02:34.171206+00:00",
+      "since": "2026-10-13T19:05:06.708430+00:00",
+      "reason": "repeated_failure"
     },
     "chelseapiersfitness": {
       "failure_count": 3,
@@ -755,14 +777,18 @@
       "reason": "repeated_failure"
     },
     "ateazorganic": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/ateazorganic/",
-      "last_transient_at": "2026-07-23T03:02:38.582296+00:00"
+      "last_transient_at": "2026-07-23T03:02:38.582296+00:00",
+      "since": "2026-10-13T19:05:19.225307+00:00",
+      "reason": "repeated_failure"
     },
     "bowerypresents": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/bowerypresents/",
-      "last_transient_at": "2026-07-23T03:02:44.492141+00:00"
+      "last_transient_at": "2026-07-23T03:02:44.492141+00:00",
+      "since": "2026-10-13T19:05:23.381087+00:00",
+      "reason": "repeated_failure"
     },
     "brooklynmuseum": {
       "failure_count": 3,
@@ -772,99 +798,137 @@
       "reason": "repeated_failure"
     },
     "brooklyntrackclub": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/brooklyntrackclub/",
-      "last_transient_at": "2026-07-23T03:02:47.773995+00:00"
+      "last_transient_at": "2026-07-23T03:02:47.773995+00:00",
+      "since": "2026-10-13T19:05:26.121218+00:00",
+      "reason": "repeated_failure"
     },
     "cysknyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/cysknyc/",
-      "last_transient_at": "2026-07-23T03:02:48.947901+00:00"
+      "last_transient_at": "2026-07-23T03:02:48.947901+00:00",
+      "since": "2026-10-13T19:05:29.324479+00:00",
+      "reason": "repeated_failure"
     },
     "brooklynmagazine": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/brooklynmagazine/",
-      "last_transient_at": "2026-07-23T03:02:56.723066+00:00"
+      "last_transient_at": "2026-07-23T03:02:56.723066+00:00",
+      "since": "2026-10-13T19:05:30.300242+00:00",
+      "reason": "repeated_failure"
     },
     "doppelganger_bar_nyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/doppelganger_bar_nyc/",
-      "last_transient_at": "2026-07-23T03:03:00.925859+00:00"
+      "last_transient_at": "2026-07-23T03:03:00.925859+00:00",
+      "since": "2026-10-13T19:05:31.363131+00:00",
+      "reason": "repeated_failure"
     },
     "greenlightbklyn": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/greenlightbklyn/",
-      "last_transient_at": "2026-07-23T03:03:01.876236+00:00"
+      "last_transient_at": "2026-07-23T03:03:01.876236+00:00",
+      "since": "2026-10-13T19:05:43.470269+00:00",
+      "reason": "repeated_failure"
     },
     "metmuseum": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/metmuseum/",
-      "last_transient_at": "2026-07-23T03:03:04.741750+00:00"
+      "last_transient_at": "2026-07-23T03:03:04.741750+00:00",
+      "since": "2026-10-13T19:05:44.172130+00:00",
+      "reason": "repeated_failure"
     },
     "brooklynbridgepark": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/brooklynbridgepark/",
-      "last_transient_at": "2026-07-23T03:03:13.804887+00:00"
+      "last_transient_at": "2026-07-23T03:03:13.804887+00:00",
+      "since": "2026-10-13T19:05:44.810472+00:00",
+      "reason": "repeated_failure"
     },
     "cooperhewitt": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/cooperhewitt/",
-      "last_transient_at": "2026-07-23T03:03:16.926118+00:00"
+      "last_transient_at": "2026-07-23T03:03:16.926118+00:00",
+      "since": "2026-10-13T19:05:45.824471+00:00",
+      "reason": "repeated_failure"
     },
     "booksaremagicbk": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/booksaremagicbk/",
-      "last_transient_at": "2026-07-23T03:03:21.135208+00:00"
+      "last_transient_at": "2026-07-23T03:03:21.135208+00:00",
+      "since": "2026-10-13T19:05:47.704121+00:00",
+      "reason": "repeated_failure"
     },
     "bryantparknyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/bryantparknyc/",
-      "last_transient_at": "2026-07-23T03:03:22.916875+00:00"
+      "last_transient_at": "2026-07-23T03:03:22.916875+00:00",
+      "since": "2026-10-13T19:05:48.455967+00:00",
+      "reason": "repeated_failure"
     },
     "infatuation": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/infatuation/",
-      "last_transient_at": "2026-07-23T03:03:48.355466+00:00"
+      "last_transient_at": "2026-07-23T03:03:48.355466+00:00",
+      "since": "2026-10-13T19:06:00.523573+00:00",
+      "reason": "repeated_failure"
     },
     "joyflowerpotnyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/joyflowerpotnyc/",
-      "last_transient_at": "2026-07-23T03:03:38.389440+00:00"
+      "last_transient_at": "2026-07-23T03:03:38.389440+00:00",
+      "since": "2026-10-13T19:05:55.474261+00:00",
+      "reason": "repeated_failure"
     },
     "humming.puppy": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/humming.puppy/",
-      "last_transient_at": "2026-07-23T03:03:53.914526+00:00"
+      "last_transient_at": "2026-07-23T03:03:53.914526+00:00",
+      "since": "2026-10-13T19:06:03.192699+00:00",
+      "reason": "repeated_failure"
     },
     "lizsbookbar": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/lizsbookbar/",
-      "last_transient_at": "2026-07-23T03:03:40.402301+00:00"
+      "last_transient_at": "2026-07-23T03:03:40.402301+00:00",
+      "since": "2026-10-13T19:05:58.306543+00:00",
+      "reason": "repeated_failure"
     },
     "centralparknyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/centralparknyc/",
-      "last_transient_at": "2026-07-23T03:03:27.662950+00:00"
+      "last_transient_at": "2026-07-23T03:03:27.662950+00:00",
+      "since": "2026-10-13T19:05:49.895556+00:00",
+      "reason": "repeated_failure"
     },
     "comedycellarnyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/comedycellarnyc/",
-      "last_transient_at": "2026-07-23T03:04:18.541000+00:00"
+      "last_transient_at": "2026-07-23T03:04:18.541000+00:00",
+      "since": "2026-10-13T19:06:08.929952+00:00",
+      "reason": "repeated_failure"
     },
     "dashing.whippets": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/dashing.whippets/",
-      "last_transient_at": "2026-07-23T03:04:22.744821+00:00"
+      "last_transient_at": "2026-07-23T03:04:22.744821+00:00",
+      "since": "2026-10-13T19:06:12.028267+00:00",
+      "reason": "repeated_failure"
     },
     "eaterny": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/eaterny/",
-      "last_transient_at": "2026-07-23T03:04:27.426558+00:00"
+      "last_transient_at": "2026-07-23T03:04:27.426558+00:00",
+      "since": "2026-10-13T19:06:15.078189+00:00",
+      "reason": "repeated_failure"
     },
     "elsewherebrooklyn": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/elsewherebrooklyn/",
-      "last_transient_at": "2026-07-23T03:04:28.256942+00:00"
+      "last_transient_at": "2026-07-23T03:04:28.256942+00:00",
+      "since": "2026-10-13T19:06:16.014430+00:00",
+      "reason": "repeated_failure"
     },
     "explorenyc": {
       "failure_count": 3,
@@ -881,14 +945,18 @@
       "reason": "repeated_failure"
     },
     "greenlightbookstore": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/greenlightbookstore/",
-      "last_transient_at": "2026-07-23T03:04:42.870185+00:00"
+      "last_transient_at": "2026-07-23T03:04:42.870185+00:00",
+      "since": "2026-10-13T19:06:18.568514+00:00",
+      "reason": "repeated_failure"
     },
     "midnightrunners": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/midnightrunners/",
-      "last_transient_at": "2026-07-23T03:03:31.837575+00:00"
+      "last_transient_at": "2026-07-23T03:03:31.837575+00:00",
+      "since": "2026-10-13T19:05:50.909752+00:00",
+      "reason": "repeated_failure"
     },
     "modoyoga": {
       "failure_count": 3,
@@ -898,14 +966,18 @@
       "reason": "repeated_failure"
     },
     "namaste_nyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/namaste_nyc/",
-      "last_transient_at": "2026-07-23T03:04:44.471018+00:00"
+      "last_transient_at": "2026-07-23T03:04:44.471018+00:00",
+      "since": "2026-10-13T19:06:21.542503+00:00",
+      "reason": "repeated_failure"
     },
     "newmuseum": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/newmuseum/",
-      "last_transient_at": "2026-07-23T03:03:33.959479+00:00"
+      "last_transient_at": "2026-07-23T03:03:33.959479+00:00",
+      "since": "2026-10-13T19:05:54.439041+00:00",
+      "reason": "repeated_failure"
     },
     "newyorkcity": {
       "failure_count": 3,
@@ -922,19 +994,25 @@
       "reason": "repeated_failure"
     },
     "newyorker.eats": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/newyorker.eats/",
-      "last_transient_at": "2026-07-23T03:04:49.278247+00:00"
+      "last_transient_at": "2026-07-23T03:04:49.278247+00:00",
+      "since": "2026-10-13T19:06:25.673523+00:00",
+      "reason": "repeated_failure"
     },
     "newyorkguide": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/newyorkguide/",
-      "last_transient_at": "2026-07-23T03:04:52.152743+00:00"
+      "last_transient_at": "2026-07-23T03:04:52.152743+00:00",
+      "since": "2026-10-13T19:06:26.861146+00:00",
+      "reason": "repeated_failure"
     },
     "nitehawkcinema": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/nitehawkcinema/",
-      "last_transient_at": "2026-07-23T03:02:10.187527+00:00"
+      "last_transient_at": "2026-07-23T03:02:10.187527+00:00",
+      "since": "2026-10-13T19:04:46.721303+00:00",
+      "reason": "repeated_failure"
     },
     "nobaddaysrunclub": {
       "failure_count": 0,
@@ -942,104 +1020,144 @@
       "last_transient_at": "2026-07-23T03:04:53.252885+00:00"
     },
     "nonsensenyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/nonsensenyc/",
-      "last_transient_at": "2026-07-23T03:04:54.921166+00:00"
+      "last_transient_at": "2026-07-23T03:04:54.921166+00:00",
+      "since": "2026-10-13T19:06:28.968402+00:00",
+      "reason": "repeated_failure"
     },
     "nycparks": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/nycparks/",
-      "last_transient_at": "2026-07-23T03:03:52.671450+00:00"
+      "last_transient_at": "2026-07-23T03:03:52.671450+00:00",
+      "since": "2026-10-13T19:06:01.656797+00:00",
+      "reason": "repeated_failure"
     },
     "nyculture": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/nyculture/",
-      "last_transient_at": "2026-07-23T03:01:46.458905+00:00"
+      "last_transient_at": "2026-07-23T03:01:46.458905+00:00",
+      "since": "2026-10-13T19:04:39.632567+00:00",
+      "reason": "repeated_failure"
     },
     "oldmanrunclub": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/oldmanrunclub/",
-      "last_transient_at": "2026-07-23T03:04:03.062239+00:00"
+      "last_transient_at": "2026-07-23T03:04:03.062239+00:00",
+      "since": "2026-10-13T19:06:07.884002+00:00",
+      "reason": "repeated_failure"
     },
     "pier17nyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/pier17nyc/",
-      "last_transient_at": "2026-07-23T03:04:56.973976+00:00"
+      "last_transient_at": "2026-07-23T03:04:56.973976+00:00",
+      "since": "2026-10-13T19:06:32.897822+00:00",
+      "reason": "repeated_failure"
     },
     "powerhousearena": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/powerhousearena/",
-      "last_transient_at": "2026-07-23T03:04:58.287485+00:00"
+      "last_transient_at": "2026-07-23T03:04:58.287485+00:00",
+      "since": "2026-10-13T19:06:33.785439+00:00",
+      "reason": "repeated_failure"
     },
     "publicrecords": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/publicrecords/",
-      "last_transient_at": "2026-07-23T03:05:04.343877+00:00"
+      "last_transient_at": "2026-07-23T03:05:04.343877+00:00",
+      "since": "2026-10-13T19:06:37.599682+00:00",
+      "reason": "repeated_failure"
     },
     "qedastoria": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/qedastoria/",
-      "last_transient_at": "2026-07-23T03:05:05.989857+00:00"
+      "last_transient_at": "2026-07-23T03:05:05.989857+00:00",
+      "since": "2026-10-13T19:06:43.694488+00:00",
+      "reason": "repeated_failure"
     },
     "recess.nyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/recess.nyc/",
-      "last_transient_at": "2026-07-23T03:05:07.594472+00:00"
+      "last_transient_at": "2026-07-23T03:05:07.594472+00:00",
+      "since": "2026-10-13T19:06:46.890536+00:00",
+      "reason": "repeated_failure"
     },
     "rockwoodmusichall": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/rockwoodmusichall/",
-      "last_transient_at": "2026-07-23T03:05:17.961249+00:00"
+      "last_transient_at": "2026-07-23T03:05:17.961249+00:00",
+      "since": "2026-10-13T19:06:48.270901+00:00",
+      "reason": "repeated_failure"
     },
     "secretnyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/secretnyc/",
-      "last_transient_at": "2026-07-23T03:05:28.407452+00:00"
+      "last_transient_at": "2026-07-23T03:05:28.407452+00:00",
+      "since": "2026-10-13T19:06:51.241416+00:00",
+      "reason": "repeated_failure"
     },
     "sky_ting": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/sky_ting/",
-      "last_transient_at": "2026-07-23T03:05:30.135466+00:00"
+      "last_transient_at": "2026-07-23T03:05:30.135466+00:00",
+      "since": "2026-10-13T19:06:52.069986+00:00",
+      "reason": "repeated_failure"
     },
     "smokejazzclub": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/smokejazzclub/",
-      "last_transient_at": "2026-07-23T03:05:35.812231+00:00"
+      "last_transient_at": "2026-07-23T03:05:35.812231+00:00",
+      "since": "2026-10-13T19:06:52.790604+00:00",
+      "reason": "repeated_failure"
     },
     "sofarsounds": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/sofarsounds/",
-      "last_transient_at": "2026-07-23T03:05:38.757587+00:00"
+      "last_transient_at": "2026-07-23T03:05:38.757587+00:00",
+      "since": "2026-10-13T19:06:55.838422+00:00",
+      "reason": "repeated_failure"
     },
     "strandbookstore": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/strandbookstore/",
-      "last_transient_at": "2026-07-23T03:05:42.836641+00:00"
+      "last_transient_at": "2026-07-23T03:05:42.836641+00:00",
+      "since": "2026-10-13T19:07:00.346499+00:00",
+      "reason": "repeated_failure"
     },
     "tastingny": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/tastingny/",
-      "last_transient_at": "2026-07-23T03:05:49.427708+00:00"
+      "last_transient_at": "2026-07-23T03:05:49.427708+00:00",
+      "since": "2026-10-13T19:07:01.483425+00:00",
+      "reason": "repeated_failure"
     },
     "thecomedycellar": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/thecomedycellar/",
-      "last_transient_at": "2026-07-23T03:05:52.916422+00:00"
+      "last_transient_at": "2026-07-23T03:05:52.916422+00:00",
+      "since": "2026-10-13T19:07:05.171968+00:00",
+      "reason": "repeated_failure"
     },
     "thecuriousbar": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/thecuriousbar/",
-      "last_transient_at": "2026-07-23T03:05:54.021749+00:00"
+      "last_transient_at": "2026-07-23T03:05:54.021749+00:00",
+      "since": "2026-10-13T19:07:06.111445+00:00",
+      "reason": "repeated_failure"
     },
     "themorganlibrary": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/themorganlibrary/",
-      "last_transient_at": "2026-07-23T03:06:02.744424+00:00"
+      "last_transient_at": "2026-07-23T03:06:02.744424+00:00",
+      "since": "2026-10-13T19:07:07.217820+00:00",
+      "reason": "repeated_failure"
     },
     "themuseumofmodernart": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/themuseumofmodernart/",
-      "last_transient_at": "2026-07-23T03:06:03.870373+00:00"
+      "last_transient_at": "2026-07-23T03:06:03.870373+00:00",
+      "since": "2026-10-13T19:07:09.412207+00:00",
+      "reason": "repeated_failure"
     },
     "theskint": {
       "failure_count": 3,
@@ -1049,54 +1167,74 @@
       "reason": "repeated_failure"
     },
     "thingstodoinnyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/thingstodoinnyc/",
-      "last_transient_at": "2026-07-23T03:06:11.411873+00:00"
+      "last_transient_at": "2026-07-23T03:06:11.411873+00:00",
+      "since": "2026-10-13T19:07:16.899134+00:00",
+      "reason": "repeated_failure"
     },
     "wherethefuckdowego": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/wherethefuckdowego/",
-      "last_transient_at": "2026-07-23T03:06:22.200526+00:00"
+      "last_transient_at": "2026-07-23T03:06:22.200526+00:00",
+      "since": "2026-10-13T19:07:20.251241+00:00",
+      "reason": "repeated_failure"
     },
     "whitneymuseum": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/whitneymuseum/",
-      "last_transient_at": "2026-07-23T03:06:23.364196+00:00"
+      "last_transient_at": "2026-07-23T03:06:23.364196+00:00",
+      "since": "2026-10-13T19:07:21.019801+00:00",
+      "reason": "repeated_failure"
     },
     "1of3mj": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/1of3mj/",
-      "last_transient_at": "2026-07-23T03:06:30.644244+00:00"
+      "last_transient_at": "2026-07-23T03:06:30.644244+00:00",
+      "since": "2026-10-13T19:07:25.956430+00:00",
+      "reason": "repeated_failure"
     },
     "20thcenturystudios": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/20thcenturystudios/",
-      "last_transient_at": "2026-07-23T03:06:33.379772+00:00"
+      "last_transient_at": "2026-07-23T03:06:33.379772+00:00",
+      "since": "2026-10-13T19:15:38.370686+00:00",
+      "reason": "repeated_failure"
     },
     "7thstreetburgernyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/7thstreetburgernyc/",
-      "last_transient_at": "2026-07-23T03:06:34.342670+00:00"
+      "last_transient_at": "2026-07-23T03:06:34.342670+00:00",
+      "since": "2026-10-13T19:15:40.002426+00:00",
+      "reason": "repeated_failure"
     },
     "9cloudsinmycoffee": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/9cloudsinmycoffee/",
-      "last_transient_at": "2026-07-23T03:06:38.864017+00:00"
+      "last_transient_at": "2026-07-23T03:06:38.864017+00:00",
+      "since": "2026-10-13T19:15:43.696545+00:00",
+      "reason": "repeated_failure"
     },
     "__aysegulsavas__": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/__aysegulsavas__/",
-      "last_transient_at": "2026-07-23T03:06:41.699466+00:00"
+      "last_transient_at": "2026-07-23T03:06:41.699466+00:00",
+      "since": "2026-10-13T19:15:45.203146+00:00",
+      "reason": "repeated_failure"
     },
     "__iamsu": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/__iamsu/",
-      "last_transient_at": "2026-07-23T03:06:43.137893+00:00"
+      "last_transient_at": "2026-07-23T03:06:43.137893+00:00",
+      "since": "2026-10-13T19:15:46.924382+00:00",
+      "reason": "repeated_failure"
     },
     "__sookim": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/__sookim/",
-      "last_transient_at": "2026-07-23T03:06:45.823821+00:00"
+      "last_transient_at": "2026-07-23T03:06:45.823821+00:00",
+      "since": "2026-10-13T19:15:49.485147+00:00",
+      "reason": "repeated_failure"
     },
     "_alex_strada": {
       "reason": "not_exists",
@@ -1114,74 +1252,102 @@
       "failure_count": 1
     },
     "_gabrielle_sher": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/_gabrielle_sher/",
-      "last_transient_at": "2026-07-23T03:06:46.843298+00:00"
+      "last_transient_at": "2026-07-23T03:06:46.843298+00:00",
+      "since": "2026-10-13T19:15:52.667420+00:00",
+      "reason": "repeated_failure"
     },
     "_gbengaadesina": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/_gbengaadesina/",
-      "last_transient_at": "2026-07-23T03:06:48.578564+00:00"
+      "last_transient_at": "2026-07-23T03:06:48.578564+00:00",
+      "since": "2026-10-13T19:15:54.029118+00:00",
+      "reason": "repeated_failure"
     },
     "_irenehwang": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/_irenehwang/",
-      "last_transient_at": "2026-07-23T03:06:52.417539+00:00"
+      "last_transient_at": "2026-07-23T03:06:52.417539+00:00",
+      "since": "2026-10-13T19:15:58.643898+00:00",
+      "reason": "repeated_failure"
     },
     "_katiekitamura": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/_katiekitamura/",
-      "last_transient_at": "2026-07-23T03:06:54.473604+00:00"
+      "last_transient_at": "2026-07-23T03:06:54.473604+00:00",
+      "since": "2026-10-13T19:15:59.681962+00:00",
+      "reason": "repeated_failure"
     },
     "_littlenights": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/_littlenights/",
-      "last_transient_at": "2026-07-23T03:06:57.719815+00:00"
+      "last_transient_at": "2026-07-23T03:06:57.719815+00:00",
+      "since": "2026-10-13T19:16:00.355374+00:00",
+      "reason": "repeated_failure"
     },
     "_mamannyc_": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/_mamannyc_/",
-      "last_transient_at": "2026-07-23T03:06:59.286347+00:00"
+      "last_transient_at": "2026-07-23T03:06:59.286347+00:00",
+      "since": "2026-10-13T19:16:03.881466+00:00",
+      "reason": "repeated_failure"
     },
     "_monicaalam": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/_monicaalam/",
-      "last_transient_at": "2026-07-23T03:07:01.259038+00:00"
+      "last_transient_at": "2026-07-23T03:07:01.259038+00:00",
+      "since": "2026-10-13T19:16:04.808347+00:00",
+      "reason": "repeated_failure"
     },
     "_nashaad": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/_nashaad/",
-      "last_transient_at": "2026-07-23T03:07:02.051039+00:00"
+      "last_transient_at": "2026-07-23T03:07:02.051039+00:00",
+      "since": "2026-10-13T19:16:07.035762+00:00",
+      "reason": "repeated_failure"
     },
     "_traun": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/_traun/",
-      "last_transient_at": "2026-07-23T03:07:03.448332+00:00"
+      "last_transient_at": "2026-07-23T03:07:03.448332+00:00",
+      "since": "2026-10-13T19:16:08.655639+00:00",
+      "reason": "repeated_failure"
     },
     "aaknopf": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/aaknopf/",
-      "last_transient_at": "2026-07-23T03:07:05.024268+00:00"
+      "last_transient_at": "2026-07-23T03:07:05.024268+00:00",
+      "since": "2026-10-13T19:16:09.693542+00:00",
+      "reason": "repeated_failure"
     },
     "abbymcarney": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/abbymcarney/",
-      "last_transient_at": "2026-07-23T03:07:08.963081+00:00"
+      "last_transient_at": "2026-07-23T03:07:08.963081+00:00",
+      "since": "2026-10-13T19:16:17.994232+00:00",
+      "reason": "repeated_failure"
     },
     "actioncitycomicsnyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/actioncitycomicsnyc/",
-      "last_transient_at": "2026-07-23T03:07:11.000657+00:00"
+      "last_transient_at": "2026-07-23T03:07:11.000657+00:00",
+      "since": "2026-10-13T19:16:18.797514+00:00",
+      "reason": "repeated_failure"
     },
     "adamgilbert__": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/adamgilbert__/",
-      "last_transient_at": "2026-07-23T03:07:12.537418+00:00"
+      "last_transient_at": "2026-07-23T03:07:12.537418+00:00",
+      "since": "2026-10-13T19:16:21.657057+00:00",
+      "reason": "repeated_failure"
     },
     "adampopescu": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/adampopescu/",
-      "last_transient_at": "2026-07-23T03:07:14.191350+00:00"
+      "last_transient_at": "2026-07-23T03:07:14.191350+00:00",
+      "since": "2026-10-13T19:16:29.343492+00:00",
+      "reason": "repeated_failure"
     },
     "adrian.matejka": {
       "reason": "not_exists",
@@ -1189,34 +1355,46 @@
       "failure_count": 1
     },
     "adrianastimola": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/adrianastimola/",
-      "last_transient_at": "2026-07-23T03:07:15.343000+00:00"
+      "last_transient_at": "2026-07-23T03:07:15.343000+00:00",
+      "since": "2026-10-13T19:16:33.105018+00:00",
+      "reason": "repeated_failure"
     },
     "aerapymethod": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/aerapymethod/",
-      "last_transient_at": "2026-07-23T03:07:16.471096+00:00"
+      "last_transient_at": "2026-07-23T03:07:16.471096+00:00",
+      "since": "2026-10-13T19:16:34.512546+00:00",
+      "reason": "repeated_failure"
     },
     "akcakcakcakc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/akcakcakcakc/",
-      "last_transient_at": "2026-07-23T03:07:23.075478+00:00"
+      "last_transient_at": "2026-07-23T03:07:23.075478+00:00",
+      "since": "2026-10-13T19:16:36.050614+00:00",
+      "reason": "repeated_failure"
     },
     "alan_lecheng_chao": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/alan_lecheng_chao/",
-      "last_transient_at": "2026-07-23T03:07:24.267914+00:00"
+      "last_transient_at": "2026-07-23T03:07:24.267914+00:00",
+      "since": "2026-10-13T19:16:38.970116+00:00",
+      "reason": "repeated_failure"
     },
     "alicia_kort": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/alicia_kort/",
-      "last_transient_at": "2026-07-23T03:07:25.891726+00:00"
+      "last_transient_at": "2026-07-23T03:07:25.891726+00:00",
+      "since": "2026-10-13T19:16:49.451812+00:00",
+      "reason": "repeated_failure"
     },
     "alisonleiby": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/alisonleiby/",
-      "last_transient_at": "2026-07-23T03:07:28.437465+00:00"
+      "last_transient_at": "2026-07-23T03:07:28.437465+00:00",
+      "since": "2026-10-13T19:16:51.523697+00:00",
+      "reason": "repeated_failure"
     },
     "allgoodles": {
       "reason": "not_exists",
@@ -1224,47 +1402,53 @@
       "failure_count": 1
     },
     "alliechuuu": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/alliechuuu/",
-      "last_transient_at": "2026-07-23T03:07:33.265970+00:00"
+      "last_transient_at": "2026-07-23T03:07:33.265970+00:00",
+      "since": "2026-10-13T19:16:53.776963+00:00",
+      "reason": "repeated_failure"
     },
     "allthatandmoore": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/allthatandmoore/",
-      "last_transient_at": "2026-07-23T03:07:37.983703+00:00"
+      "last_transient_at": "2026-07-23T03:07:37.983703+00:00",
+      "since": "2026-10-13T19:16:55.497402+00:00",
+      "reason": "repeated_failure"
     },
     "alterbrooklyn": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/alterbrooklyn/",
-      "last_transient_at": "2026-07-23T03:07:39.799361+00:00"
+      "last_transient_at": "2026-07-23T03:07:39.799361+00:00",
+      "since": "2026-10-13T19:16:56.743537+00:00",
+      "reason": "repeated_failure"
     },
     "altocanna": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/altocanna/",
       "last_transient_at": "2026-07-23T03:07:44.080693+00:00"
     },
     "amyyapgar": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/amyyapgar/",
       "last_transient_at": "2026-07-23T03:07:46.462911+00:00"
     },
     "amyyboland": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/amyyboland/",
       "last_transient_at": "2026-07-23T03:07:47.657660+00:00"
     },
     "anania00": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/anania00/",
       "last_transient_at": "2026-07-23T03:07:48.574543+00:00"
     },
     "andi80s": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/andi80s/",
       "last_transient_at": "2026-07-23T03:07:49.379540+00:00"
     },
     "andipappas": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/andipappas/",
       "last_transient_at": "2026-07-23T03:07:53.323963+00:00"
     },
@@ -1274,92 +1458,92 @@
       "failure_count": 1
     },
     "angelalanaris": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/angelalanaris/",
       "last_transient_at": "2026-07-23T03:10:58.339313+00:00"
     },
     "angelatrimbur": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/angelatrimbur/",
       "last_transient_at": "2026-07-23T03:10:59.569418+00:00"
     },
     "anjellycaheaney": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/anjellycaheaney/",
       "last_transient_at": "2026-06-28T21:21:02.360481+00:00"
     },
     "annebenven": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/annebenven/",
       "last_transient_at": "2026-06-28T21:21:03.906404+00:00"
     },
     "aopeninvite": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/aopeninvite/",
       "last_transient_at": "2026-06-28T21:21:05.944732+00:00"
     },
     "apartmentrael.nyc": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/apartmentrael.nyc/",
       "last_transient_at": "2026-06-28T21:21:10.165717+00:00"
     },
     "apt5ny": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/apt5ny/",
       "last_transient_at": "2026-06-28T21:21:12.459130+00:00"
     },
     "aracelisxgirmay": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/aracelisxgirmay/",
       "last_transient_at": "2026-06-28T21:21:16.144435+00:00"
     },
     "arandallm": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/arandallm/",
       "last_transient_at": "2026-06-27T14:00:30.523629+00:00"
     },
     "archi.element": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/archi.element/",
       "last_transient_at": "2026-06-27T14:00:31.947566+00:00"
     },
     "arena_embroidery": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/arena_embroidery/",
       "last_transient_at": "2026-06-27T14:00:32.839865+00:00"
     },
     "arlohotels": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/arlohotels/",
       "last_transient_at": "2026-06-27T14:00:33.604090+00:00"
     },
     "arnoldfriend6": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/arnoldfriend6/",
       "last_transient_at": "2026-06-27T14:00:34.763904+00:00"
     },
     "artudiony": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/artudiony/",
       "last_transient_at": "2026-06-27T14:00:35.970482+00:00"
     },
     "asha_bacon": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/asha_bacon/",
       "last_transient_at": "2026-06-27T14:00:37.406523+00:00"
     },
     "ashleymacha": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/ashleymacha/",
       "last_transient_at": "2026-06-27T14:00:39.503504+00:00"
     },
     "astorialive": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/astorialive/",
       "last_transient_at": "2026-06-27T14:00:44.389046+00:00"
     },
     "astrahousebooks": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/astrahousebooks/",
       "last_transient_at": "2026-06-27T14:00:50.604281+00:00"
     },
@@ -1399,7 +1583,7 @@
       "reason": "repeated_failure"
     },
     "atlanticaveartwalk": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/atlanticaveartwalk/",
       "last_transient_at": "2026-06-28T21:22:23.123181+00:00"
     },
@@ -1481,37 +1665,37 @@
       "reason": "repeated_failure"
     },
     "audible": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/audible/",
       "last_transient_at": "2026-06-28T21:22:32.011187+00:00"
     },
     "auntieannespretzels": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/auntieannespretzels/",
       "last_transient_at": "2026-06-28T21:22:33.874462+00:00"
     },
     "avocadosfrommexico": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/avocadosfrommexico/",
       "last_transient_at": "2026-06-28T21:22:35.661625+00:00"
     },
     "away": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/away/",
       "last_transient_at": "2026-06-28T21:22:37.310805+00:00"
     },
     "ayahrestaurant": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/ayahrestaurant/",
       "last_transient_at": "2026-06-28T21:22:39.633946+00:00"
     },
     "aytentartici": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/aytentartici/",
       "last_transient_at": "2026-06-28T21:22:40.982690+00:00"
     },
     "b_went16": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/b_went16/",
       "last_transient_at": "2026-06-28T21:22:47.002862+00:00"
     },
@@ -1530,212 +1714,330 @@
       "reason": "repeated_failure"
     },
     "harlemrun": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/harlemrun/",
-      "last_transient_at": "2026-07-23T03:02:29.006868+00:00"
+      "last_transient_at": "2026-07-23T03:02:29.006868+00:00",
+      "since": "2026-10-13T19:05:03.734586+00:00",
+      "reason": "repeated_failure"
     },
     "openbookclub": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/openbookclub/",
-      "last_transient_at": "2026-07-23T03:04:55.748404+00:00"
+      "last_transient_at": "2026-07-23T03:04:55.748404+00:00",
+      "since": "2026-10-13T19:06:29.670099+00:00",
+      "reason": "repeated_failure"
     },
     "orchardstreetrunners": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/orchardstreetrunners/",
-      "last_transient_at": "2026-07-23T03:02:37.769555+00:00"
+      "last_transient_at": "2026-07-23T03:02:37.769555+00:00",
+      "since": "2026-10-13T19:05:14.730573+00:00",
+      "reason": "repeated_failure"
     },
     "prospectparktrackclub": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/prospectparktrackclub/",
-      "last_transient_at": "2026-07-23T03:04:59.603417+00:00"
+      "last_transient_at": "2026-07-23T03:04:59.603417+00:00",
+      "since": "2026-10-13T19:06:34.738313+00:00",
+      "reason": "repeated_failure"
     },
     "runclubnyc": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/runclubnyc/",
-      "last_transient_at": "2026-07-23T03:05:20.203161+00:00"
+      "last_transient_at": "2026-07-23T03:05:20.203161+00:00",
+      "since": "2026-10-13T19:06:49.979632+00:00",
+      "reason": "repeated_failure"
     },
     "thebridgerunners": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/thebridgerunners/",
-      "last_transient_at": "2026-07-23T03:05:50.884111+00:00"
+      "last_transient_at": "2026-07-23T03:05:50.884111+00:00",
+      "since": "2026-10-13T19:07:04.375676+00:00",
+      "reason": "repeated_failure"
     },
     "thenovemberproject": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/thenovemberproject/",
-      "last_transient_at": "2026-07-23T03:06:05.226706+00:00"
+      "last_transient_at": "2026-07-23T03:06:05.226706+00:00",
+      "since": "2026-10-13T19:07:15.611735+00:00",
+      "reason": "repeated_failure"
     },
     "we_run_uptown": {
-      "failure_count": 2,
+      "failure_count": 3,
       "last_reason": "302 Found when accessing https://www.instagram.com/we_run_uptown/",
-      "last_transient_at": "2026-07-23T03:06:20.615114+00:00"
+      "last_transient_at": "2026-07-23T03:06:20.615114+00:00",
+      "since": "2026-10-13T19:07:18.375662+00:00",
+      "reason": "repeated_failure"
     },
     "nbd_rc": {
-      "failure_count": 2,
-      "last_reason": "302 Found when accessing https://www.instagram.com/nbd_rc/"
+      "failure_count": 3,
+      "last_reason": "302 Found when accessing https://www.instagram.com/nbd_rc/",
+      "since": "2026-10-13T19:06:23.732728+00:00",
+      "reason": "repeated_failure"
     },
     "badhabit.us": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/badhabit.us/"
     },
     "bageljointny": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bageljointny/"
     },
     "bamfilmbrooklyn": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bamfilmbrooklyn/"
     },
     "bankofamerica": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bankofamerica/"
     },
     "baramericanonyc": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/baramericanonyc/"
     },
     "barcontranyc": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/barcontranyc/"
     },
     "baritaliaa": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/baritaliaa/"
     },
     "barmethodwilliamsburg": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/barmethodwilliamsburg/"
     },
     "barmilagrobk": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/barmilagrobk/"
     },
     "barniconyc": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/barniconyc/"
     },
     "bashir.photo": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bashir.photo/"
     },
     "bashivelli": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bashivelli/"
     },
     "beautyofjoseon_official": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/beautyofjoseon_official/"
     },
     "bechdelproject": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bechdelproject/"
     },
     "beeheezyprints": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/beeheezyprints/"
     },
     "beirutiguy": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/beirutiguy/"
     },
     "bhphoto": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bhphoto/"
     },
     "biancajayde": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/biancajayde/"
     },
     "bigmanmike": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bigmanmike/"
     },
     "bjornqorn": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bjornqorn/"
     },
     "bkbookfest": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bkbookfest/"
     },
     "bkbpreynoso": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bkbpreynoso/"
     },
     "bkekombucha": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bkekombucha/"
     },
     "bklyncommons": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bklyncommons/"
     },
     "bksteppers": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bksteppers/"
     },
     "blake20455": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/blake20455/"
     },
     "blndcoffee.nyc": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/blndcoffee.nyc/"
     },
     "bluenomadworld": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bluenomadworld/"
     },
     "bookalley": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bookalley/"
     },
     "bookculture": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bookculture/"
     },
     "bookstcg": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bookstcg/"
     },
     "boris.transmit": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/boris.transmit/"
     },
     "breadsbakery": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/breadsbakery/"
     },
     "bricbrooklyn": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bricbrooklyn/"
     },
     "briccelebratebk": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/briccelebratebk/"
     },
     "bronxzoo": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/bronxzoo/"
     },
     "brooklynbrewery": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/brooklynbrewery/"
     },
     "brooklyncandlestudio": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/brooklyncandlestudio/"
     },
     "brooklynchamber": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/brooklynchamber/"
     },
     "brooklyncraftcompany": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/brooklyncraftcompany/"
     },
     "brooklynkickballclub": {
-      "failure_count": 1,
+      "failure_count": 2,
       "last_reason": "302 Found when accessing https://www.instagram.com/brooklynkickballclub/"
+    },
+    "brooklynpaper": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/brooklynpaper/"
+    },
+    "brooklynrootscollective": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/brooklynrootscollective/"
+    },
+    "buffalofirefly.nyc": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/buffalofirefly.nyc/"
+    },
+    "bulletproofcomics": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/bulletproofcomics/"
+    },
+    "bumble": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/bumble/"
+    },
+    "buntmusic": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/buntmusic/"
+    },
+    "bushwickinletpark": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/bushwickinletpark/"
+    },
+    "bustarhymes": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/bustarhymes/"
+    },
+    "cafe.bureau": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/cafe.bureau/"
+    },
+    "cafe.erzulie": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/cafe.erzulie/"
+    },
+    "caitlinpeluffo": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/caitlinpeluffo/"
+    },
+    "cameryncrise": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/cameryncrise/"
+    },
+    "caraswalks": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/caraswalks/"
+    },
+    "careorg": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/careorg/"
+    },
+    "careylinnae": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/careylinnae/"
+    },
+    "carlradke": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/carlradke/"
+    },
+    "carnegiehall": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/carnegiehall/"
+    },
+    "carolinadonoso": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/carolinadonoso/"
+    },
+    "carolinamontesquieu": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/carolinamontesquieu/"
+    },
+    "casapublicabk": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/casapublicabk/"
+    },
+    "cassandraneyenesch": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/cassandraneyenesch/"
+    },
+    "cassieedu": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/cassieedu/"
+    },
+    "catosarmynavy": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/catosarmynavy/"
+    },
+    "catranslation": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/catranslation/"
+    },
+    "cawkward_rich": {
+      "failure_count": 1,
+      "last_reason": "302 Found when accessing https://www.instagram.com/cawkward_rich/"
     }
   }
 }
