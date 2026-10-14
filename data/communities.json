@@ -3344,7 +3344,7 @@
       "name": "Lit Club NYC Calendar",
       "kind": "club",
       "tagline": "Lit Club NYC Calendar is a community club centered on books, outdoors in west village, manhattan.",
-      "description": "Lit Club NYC Calendar is a community club centered on books, outdoors in west village, manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "description": "Lit Club NYC Calendar is a community club centered on books, outdoors in west village, manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday afternoons.",
       "categories": [
         "books",
         "outdoors"
@@ -3370,7 +3370,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-14",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 1
       },
       "schedule": {
@@ -3379,13 +3379,14 @@
           "Wednesday",
           "Saturday"
         ],
-        "typicalTime": "18:30",
+        "typicalTime": "12:00",
         "confidence": 0.33,
         "sampleSize": 2
       },
       "upcomingEventIds": [
         "bf95b1da3f9c6840",
-        "d49eb89d2823758f"
+        "d49eb89d2823758f",
+        "894ebb372ab4a6f2"
       ],
       "sourceAttributions": [
         "luma"
@@ -3894,8 +3895,8 @@
       "neighborhoods": [
         "manhattan",
         "bushwick",
-        "bronx",
-        "midtown"
+        "midtown",
+        "bronx"
       ],
       "homeVenue": "Hotel Alameda",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/ef/98cb4984-2232-40ed-9dc9-99433a045102.jpg",
@@ -3929,8 +3930,8 @@
         "3b7238dae9e741b7",
         "34aa169259504b47",
         "dfdd5c3e8a7e9e69",
-        "8711715715313470",
         "1d08cb1c310cb5a0",
+        "8711715715313470",
         "8d528620d62d0683",
         "48e55aafe53728a2",
         "ad57f77b72c2a9c6",
@@ -4896,8 +4897,8 @@
         "9951f89f55d57f85",
         "d94e094170041408",
         "664e4569d633810f",
-        "d53580f9d88d84e9",
         "ca5028a732d202f6",
+        "d53580f9d88d84e9",
         "be874a2f2d6c667d",
         "3b2f5c66ec272455",
         "7ff6b9a670ac6733",
@@ -52150,7 +52151,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-14T15:29:11.878747+00:00",
+  "lastUpdated": "2026-10-14T17:20:06.238266+00:00",
   "version": 1,
   "schemaVersion": 1
 }
