@@ -3416,6 +3416,83 @@
       ]
     },
     {
+      "id": "com_8ff2a593caac",
+      "slug": "another-tomorrow-93caac",
+      "name": "Another Tomorrow",
+      "kind": "recurring_series",
+      "tagline": "Another Tomorrow is a recurring event series centered on books, celebrities, exploration in soho.",
+      "description": "Another Tomorrow is a recurring event series centered on books, celebrities, exploration in soho. Based on 2 observed event dates, it meets monthly on Thursday and Tuesday evenings.",
+      "categories": [
+        "books",
+        "celebrities",
+        "exploration",
+        "other"
+      ],
+      "tags": [
+        "books",
+        "celebrities",
+        "exploration",
+        "other"
+      ],
+      "neighborhoods": [
+        "soho"
+      ],
+      "homeVenue": "Another Tomorrow",
+      "imageUrl": "https://images.lumacdn.com/uploads/g8/91b91dcd-0831-49be-9e77-4c2b39b0b911.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/anothertomorrow"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "monthly",
+        "typicalDays": [
+          "Thursday",
+          "Tuesday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "8e0627d12bce00d8",
+        "bd19b1bc22f5de72"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-14",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:anothertomorrow",
+        "luma:cal-jx1b0zaforl7uew"
+      ],
+      "similarCommunityIds": [
+        "com_4a9490cb3534",
+        "com_eef1ca956dae",
+        "com_eb4226b8b4c5",
+        "com_d2d455d2d6c9",
+        "com_072c9c3e12a8",
+        "com_0e403135692e"
+      ]
+    },
+    {
       "id": "com_69fc76ef0222",
       "slug": "figma-for-education-ef0222",
       "name": "Figma for Education",
@@ -4882,7 +4959,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-14",
-        "upcomingEventCount": 58,
+        "upcomingEventCount": 55,
         "eventCount90d": 192
       },
       "schedule": {
@@ -52153,7 +52230,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-14T22:23:34.358688+00:00",
+  "lastUpdated": "2026-10-14T22:37:40.988737+00:00",
   "version": 1,
   "schemaVersion": 1
 }
