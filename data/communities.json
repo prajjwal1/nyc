@@ -401,10 +401,10 @@
       "similarCommunityIds": [
         "com_36cb2681053d",
         "com_d2d455d2d6c9",
+        "com_c1410c07c4dd",
         "com_3837f308cd75",
         "com_4a9490cb3534",
-        "com_d8a5203885a9",
-        "com_36c800013ba6"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -3856,9 +3856,9 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
+        "com_c1410c07c4dd",
         "com_ed8d42fb031d",
         "com_b736e77bdf93",
-        "com_c1410c07c4dd",
         "com_fe4b6663b721",
         "com_9abdf9db297a"
       ]
@@ -4483,25 +4483,25 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, food in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, food in east village, bushwick. Based on 63 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, food in bushwick, east village.",
+      "description": "Book Club Bar is a community space centered on books, music, food in bushwick, east village. Based on 64 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
         "food",
-        "parties",
-        "singles"
+        "art",
+        "parties"
       ],
       "tags": [
         "books",
         "music",
         "food",
-        "parties",
-        "singles"
+        "art",
+        "parties"
       ],
       "neighborhoods": [
-        "east village",
         "bushwick",
+        "east village",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -4510,14 +4510,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6441320261118"
+          "url": "https://bookclubbar.com/events/6441420261209"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-14",
-        "upcomingEventCount": 22,
+        "upcomingEventCount": 28,
         "eventCount90d": 61
       },
       "schedule": {
@@ -4528,7 +4528,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 63
+        "sampleSize": 64
       },
       "upcomingEventIds": [
         "53c30dd3f6ea902b",
@@ -4551,13 +4551,17 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 63,
+        "observedDateCount": 64,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
       "newcomerEvidence": [
         {
           "eventId": "45ca74a60db45547",
+          "signal": "beginners"
+        },
+        {
+          "eventId": "f5207a5c726e6330",
           "signal": "beginners"
         }
       ],
@@ -4566,11 +4570,11 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
-        "com_3837f308cd75",
-        "com_d8a5203885a9",
         "com_8d86f6f9340b",
-        "com_cdd5daa67222",
-        "com_36cb2681053d"
+        "com_b0e15eaab803",
+        "com_318c39363fe6",
+        "com_eeb4e424a504",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -4816,11 +4820,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
+        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
         "com_9abdf9db297a",
         "com_a786c70979d0",
-        "com_d2d455d2d6c9",
-        "com_f171cd222ca5"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -4934,7 +4938,7 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club",
+      "homeVenue": "New York Comedy Club Upper West Side",
       "imageUrl": "/img/events/Pannu-Yaar-Oct-10-2026-Graphics-Website2-5a4112e3-large-thumb.jpg",
       "links": [
         {
@@ -4947,7 +4951,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 52,
+        "upcomingEventCount": 55,
         "eventCount90d": 201
       },
       "schedule": {
@@ -5077,11 +5081,11 @@
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
+        "com_c1410c07c4dd",
         "com_d2d455d2d6c9",
         "com_a1e1c13a75f0",
         "com_d8a5203885a9",
-        "com_55ca36db453a",
-        "com_8d86f6f9340b"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -52218,7 +52222,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-15T11:22:34.791127+00:00",
+  "lastUpdated": "2026-10-15T12:46:28.917023+00:00",
   "version": 1,
   "schemaVersion": 1
 }
