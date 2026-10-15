@@ -3207,7 +3207,7 @@
       "name": "The New York Philosophy Club",
       "kind": "club",
       "tagline": "The New York Philosophy Club is a community club in brooklyn.",
-      "description": "The New York Philosophy Club is a community club in brooklyn. Based on 4 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "description": "The New York Philosophy Club is a community club in brooklyn. Based on 5 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other"
       ],
@@ -3230,7 +3230,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-14",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 3
       },
       "schedule": {
@@ -3240,11 +3240,12 @@
           "Saturday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
-        "75f31a27457e4bbd"
+        "75f31a27457e4bbd",
+        "d79837b2da33e13e"
       ],
       "sourceAttributions": [
         "luma"
@@ -3253,7 +3254,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -52235,7 +52236,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-15T19:14:31.943097+00:00",
+  "lastUpdated": "2026-10-15T19:24:00.780541+00:00",
   "version": 1,
   "schemaVersion": 1
 }
