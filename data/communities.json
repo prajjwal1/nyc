@@ -406,8 +406,8 @@
         "com_d2d455d2d6c9",
         "com_3837f308cd75",
         "com_4a9490cb3534",
-        "com_d8a5203885a9",
-        "com_36c800013ba6"
+        "com_36c800013ba6",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -641,7 +641,7 @@
         "com_a786c70979d0",
         "com_3837f308cd75",
         "com_b736e77bdf93",
-        "com_d8a5203885a9"
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -888,17 +888,17 @@
       "slug": "the-art-students-league-of-new-york-3e12a8",
       "name": "The Art Students League of New York",
       "kind": "recurring_series",
-      "tagline": "The Art Students League of New York is a recurring event series centered on exploration, art in manhattan.",
-      "description": "The Art Students League of New York is a recurring event series centered on exploration, art in manhattan. Based on 5 observed event dates, it meets biweekly on Wednesday and Monday evenings.",
+      "tagline": "The Art Students League of New York is a recurring event series centered on art, exploration in manhattan.",
+      "description": "The Art Students League of New York is a recurring event series centered on art, exploration in manhattan. Based on 6 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "other",
-        "exploration",
-        "art"
+        "art",
+        "exploration"
       ],
       "tags": [
         "other",
-        "exploration",
-        "art"
+        "art",
+        "exploration"
       ],
       "neighborhoods": [
         "manhattan"
@@ -916,22 +916,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-05",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 1
       },
       "schedule": {
-        "cadence": "biweekly",
+        "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Monday"
+          "Tuesday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
       "upcomingEventIds": [
         "a10de20967b35657",
         "c347da0537877b51",
+        "9366b5ccd88c7943",
         "edd88005147f768f",
         "e632556d14698acd"
       ],
@@ -942,7 +943,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -951,12 +952,12 @@
         "eventbrite:16901317817"
       ],
       "similarCommunityIds": [
-        "com_3481b6750d6f",
         "com_e9748c1176c1",
-        "com_118a558259ea",
         "com_a3c012fb703f",
-        "com_eb4226b8b4c5",
-        "com_92805cd9f03b"
+        "com_d2d455d2d6c9",
+        "com_0306525f2bed",
+        "com_36c800013ba6",
+        "com_3b104adba072"
       ]
     },
     {
@@ -1411,9 +1412,9 @@
         "com_118a558259ea",
         "com_a3c012fb703f",
         "com_eb4226b8b4c5",
-        "com_072c9c3e12a8",
         "com_359bbb5a9a91",
-        "com_386aac86bb4d"
+        "com_386aac86bb4d",
+        "com_c58670960684"
       ]
     },
     {
@@ -1577,12 +1578,12 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
         "com_7fd76dcd92f3",
         "com_1466f20a9300",
         "com_3048e331f7b6",
         "com_eef1ca956dae",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -1659,10 +1660,10 @@
       "similarCommunityIds": [
         "com_36cb2681053d",
         "com_8d86f6f9340b",
+        "com_072c9c3e12a8",
         "com_8b837dfb5421",
         "com_36c800013ba6",
-        "com_318c39363fe6",
-        "com_7fd76dcd92f3"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -2252,7 +2253,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 68
       },
       "schedule": {
@@ -2269,6 +2270,7 @@
         "0c1d68680d6159a4",
         "f92533ffde698068",
         "f73d90077a79d37d",
+        "ae94dc7bfb3ea7eb",
         "6e7e64c64a120242",
         "554be79d93f626f2",
         "df5089de92fcec5c",
@@ -2379,7 +2381,7 @@
         "com_8b837dfb5421",
         "com_36c800013ba6",
         "com_69fc76ef0222",
-        "com_1466f20a9300"
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -2530,11 +2532,11 @@
       ],
       "similarCommunityIds": [
         "com_28a4ec647815",
+        "com_072c9c3e12a8",
         "com_9abdf9db297a",
         "com_7fd76dcd92f3",
         "com_8b837dfb5421",
-        "com_69fc76ef0222",
-        "com_a1e1c13a75f0"
+        "com_69fc76ef0222"
       ]
     },
     {
@@ -2983,7 +2985,7 @@
         "com_065dafa96d43",
         "com_6114a53f79a0",
         "com_0306525f2bed",
-        "com_0e403135692e"
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -3195,10 +3197,10 @@
       "similarCommunityIds": [
         "com_a786c70979d0",
         "com_36c800013ba6",
+        "com_072c9c3e12a8",
         "com_eef1ca956dae",
         "com_4a9490cb3534",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -3342,8 +3344,8 @@
         "com_4c3ca28533f5",
         "com_c4469caf0091",
         "com_065dafa96d43",
-        "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0"
+        "com_072c9c3e12a8",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -3887,8 +3889,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, brooklyn.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, brooklyn. Based on 16 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in brooklyn, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in brooklyn, upper east side. Based on 16 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
         "art",
@@ -3900,8 +3902,8 @@
         "wellness"
       ],
       "neighborhoods": [
-        "upper east side",
         "brooklyn",
+        "upper east side",
         "williamsburg",
         "midtown"
       ],
@@ -3936,9 +3938,9 @@
         "0f7a0f3882f5e7de",
         "6f58c68ffdb0b786",
         "9e387ee49a7bbb2e",
+        "d79837b2da33e13e",
         "2ddfd0b878aaaff8",
         "054ede4acf3e4df0",
-        "d79837b2da33e13e",
         "6d405e68cabbf5b8",
         "1fc4cc858194cf24",
         "40ae468fb0bd7978"
@@ -3961,10 +3963,10 @@
       "similarCommunityIds": [
         "com_36c800013ba6",
         "com_9abdf9db297a",
+        "com_072c9c3e12a8",
         "com_d2d455d2d6c9",
         "com_feb5ce491629",
-        "com_c58670960684",
-        "com_359bbb5a9a91"
+        "com_c58670960684"
       ]
     },
     {
@@ -3985,8 +3987,8 @@
       "neighborhoods": [
         "manhattan",
         "bushwick",
-        "midtown",
-        "bronx"
+        "bronx",
+        "midtown"
       ],
       "homeVenue": "Hotel Alameda",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/ef/98cb4984-2232-40ed-9dc9-99433a045102.jpg",
@@ -4020,8 +4022,8 @@
         "3b7238dae9e741b7",
         "34aa169259504b47",
         "dfdd5c3e8a7e9e69",
-        "1d08cb1c310cb5a0",
         "8711715715313470",
+        "1d08cb1c310cb5a0",
         "8d528620d62d0683",
         "48e55aafe53728a2",
         "ad57f77b72c2a9c6",
@@ -4197,8 +4199,8 @@
         "com_4c3ca28533f5",
         "com_c4469caf0091",
         "com_065dafa96d43",
-        "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0"
+        "com_072c9c3e12a8",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -4274,7 +4276,7 @@
         "com_4a9490cb3534",
         "com_36c800013ba6",
         "com_3837f308cd75",
-        "com_d8a5203885a9"
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -4346,9 +4348,9 @@
         "com_ed8d42fb031d",
         "com_a1e1c13a75f0",
         "com_fe4b6663b721",
-        "com_072c9c3e12a8",
         "com_3481b6750d6f",
-        "com_92805cd9f03b"
+        "com_92805cd9f03b",
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -4416,10 +4418,10 @@
       "similarCommunityIds": [
         "com_4c3ca28533f5",
         "com_c4469caf0091",
-        "com_072c9c3e12a8",
         "com_3481b6750d6f",
         "com_ebf7599ed103",
-        "com_037d36e98c05"
+        "com_037d36e98c05",
+        "com_6114a53f79a0"
       ]
     },
     {
@@ -4494,10 +4496,10 @@
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
         "com_69fc76ef0222",
+        "com_072c9c3e12a8",
         "com_e9748c1176c1",
         "com_3837f308cd75",
-        "com_a1e1c13a75f0",
-        "com_fe4b6663b721"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -4505,8 +4507,8 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, food in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, food in east village, bushwick. Based on 64 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, food in bushwick, east village.",
+      "description": "Book Club Bar is a community space centered on books, music, food in bushwick, east village. Based on 66 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
@@ -4522,8 +4524,8 @@
         "singles"
       ],
       "neighborhoods": [
-        "east village",
         "bushwick",
+        "east village",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -4532,14 +4534,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6441320261118"
+          "url": "https://www.bookclubbar.com/events/6584820261130"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-14",
-        "upcomingEventCount": 22,
+        "upcomingEventCount": 25,
         "eventCount90d": 61
       },
       "schedule": {
@@ -4550,12 +4552,12 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 64
+        "sampleSize": 66
       },
       "upcomingEventIds": [
         "53c30dd3f6ea902b",
-        "68d512fccf287a1c",
         "45ca74a60db45547",
+        "68d512fccf287a1c",
         "f983dd59de6b47f7",
         "420031d0d397d602",
         "c2103db85091ba2e",
@@ -4573,7 +4575,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 64,
+        "observedDateCount": 66,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4589,10 +4591,10 @@
       "similarCommunityIds": [
         "com_55ca36db453a",
         "com_3837f308cd75",
-        "com_d8a5203885a9",
         "com_8d86f6f9340b",
         "com_33a530deb7aa",
-        "com_cdd5daa67222"
+        "com_cdd5daa67222",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -4601,20 +4603,20 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn. Based on 64 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn. Based on 65 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
         "special",
         "parties",
-        "books",
-        "music"
+        "outdoors",
+        "theater"
       ],
       "tags": [
         "comedy",
         "special",
         "parties",
-        "books",
-        "music"
+        "outdoors",
+        "theater"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -4632,7 +4634,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 47,
+        "upcomingEventCount": 50,
         "eventCount90d": 97
       },
       "schedule": {
@@ -4643,7 +4645,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 64
+        "sampleSize": 65
       },
       "upcomingEventIds": [
         "e8a7e307f731f673",
@@ -4652,12 +4654,12 @@
         "4a6cec14b8567994",
         "676e09c0c0ada808",
         "32890084524d405d",
-        "0bf1b648c4663fdc",
         "d164ee3e445ccdda",
+        "0bf1b648c4663fdc",
         "7413344c05143740",
         "105e3bac6d57dbe6",
         "f8af90c071f8e3ab",
-        "1e2ca4970f129498"
+        "b92bf4457a4380ee"
       ],
       "sourceAttributions": [
         "brooklyncomedy"
@@ -4666,7 +4668,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 64,
+        "observedDateCount": 65,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -4675,12 +4677,12 @@
         "source:brooklyncomedy"
       ],
       "similarCommunityIds": [
-        "com_3837f308cd75",
-        "com_3048e331f7b6",
-        "com_eef1ca956dae",
-        "com_4a9490cb3534",
         "com_b736e77bdf93",
-        "com_8d86f6f9340b"
+        "com_cb019f4e9752",
+        "com_ff2e01957665",
+        "com_3048e331f7b6",
+        "com_3837f308cd75",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -4759,8 +4761,8 @@
         "com_3048e331f7b6",
         "com_eef1ca956dae",
         "com_3837f308cd75",
-        "com_d8a5203885a9",
-        "com_ebf7599ed103"
+        "com_ebf7599ed103",
+        "com_8b837dfb5421"
       ]
     },
     {
@@ -4926,9 +4928,9 @@
         "com_4a9490cb3534",
         "com_a786c70979d0",
         "com_3837f308cd75",
-        "com_d8a5203885a9",
         "com_0306525f2bed",
-        "com_1466f20a9300"
+        "com_1466f20a9300",
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -4957,7 +4959,7 @@
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club",
-      "imageUrl": "/img/events/Pannu-Yaar-Oct-10-2026-Graphics-Website2-5a4112e3-large-thumb.jpg",
+      "imageUrl": "/img/events/Thursday-Mic-NYCC-Comedy-Mob-973c0f7e-large-thumb.png",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -4969,7 +4971,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 52,
+        "upcomingEventCount": 55,
         "eventCount90d": 201
       },
       "schedule": {
@@ -4983,18 +4985,18 @@
         "sampleSize": 71
       },
       "upcomingEventIds": [
-        "34211009b6d691b3",
         "d53580f9d88d84e9",
+        "34211009b6d691b3",
         "3b2f5c66ec272455",
         "7ff6b9a670ac6733",
         "c9ede5afe0bb53a3",
         "3207554c886ac402",
-        "2ea0affdb836c36e",
         "025b986ea1835a1b",
         "af5e7f3fa54d9360",
         "ecbd5f5fdeb12d93",
         "354f4a941d6d834f",
-        "0065474daa41ed44"
+        "62b9ee1a9508d805",
+        "00c0fab972b94bb1"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -5026,7 +5028,7 @@
       "name": "Eastville Comedy Club",
       "kind": "club",
       "tagline": "Eastville Comedy Club is a community club centered on comedy, music, books in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music, books in east village. Based on 52 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, books in east village. Based on 53 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -5066,7 +5068,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 52
+        "sampleSize": 53
       },
       "upcomingEventIds": [
         "40c31208f9a0f23b",
@@ -5089,7 +5091,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 52,
+        "observedDateCount": 53,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -5101,9 +5103,9 @@
         "com_eeb4e424a504",
         "com_d2d455d2d6c9",
         "com_a1e1c13a75f0",
-        "com_d8a5203885a9",
         "com_55ca36db453a",
-        "com_8d86f6f9340b"
+        "com_8d86f6f9340b",
+        "com_f23f8820878b"
       ]
     },
     {
@@ -52240,7 +52242,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-15T22:40:33.945222+00:00",
+  "lastUpdated": "2026-10-15T23:34:37.938195+00:00",
   "version": 1,
   "schemaVersion": 1
 }
