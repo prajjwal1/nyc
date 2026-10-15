@@ -242,7 +242,7 @@
       "name": "Ciao Evento",
       "kind": "recurring_series",
       "tagline": "Ciao Evento is a recurring event series centered on parties, food, music in manhattan.",
-      "description": "Ciao Evento is a recurring event series centered on parties, food, music in manhattan. Based on 17 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "description": "Ciao Evento is a recurring event series centered on parties, food, music in manhattan. Based on 18 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "parties",
         "other",
@@ -273,7 +273,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-14",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 11
       },
       "schedule": {
@@ -284,12 +284,13 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 17
+        "sampleSize": 18
       },
       "upcomingEventIds": [
         "94d7a68b24bc11a6",
         "a2e98f11d89fe4d2",
         "d61c655e1d3d99a4",
+        "c1a216dba9403b3f",
         "38706dd62fd9e3b1",
         "ce039abe0d7b37c9",
         "90a6380f02205bfb",
@@ -304,7 +305,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 17,
+        "observedDateCount": 18,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -327,7 +328,7 @@
       "name": "The Twisted Spine",
       "kind": "recurring_series",
       "tagline": "The Twisted Spine is a recurring event series centered on books, parties, special in brooklyn, east village.",
-      "description": "The Twisted Spine is a recurring event series centered on books, parties, special in brooklyn, east village. Based on 15 observed event dates, it meets weekly on Monday and Wednesday evenings.",
+      "description": "The Twisted Spine is a recurring event series centered on books, parties, special in brooklyn, east village. Based on 16 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -359,18 +360,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 8
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Monday",
-          "Wednesday"
+          "Tuesday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 15
+        "sampleSize": 16
       },
       "upcomingEventIds": [
         "a163b192b28e78a5",
@@ -381,7 +382,8 @@
         "4379aa1a4572380c",
         "556ea76b06962599",
         "600dc4c86301cb28",
-        "383d75129033cd93"
+        "383d75129033cd93",
+        "6b41e2df559fef35"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -390,7 +392,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 15,
+        "observedDateCount": 16,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4938,7 +4940,7 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
+      "homeVenue": "New York Comedy Club",
       "imageUrl": "/img/events/Pannu-Yaar-Oct-10-2026-Graphics-Website2-5a4112e3-large-thumb.jpg",
       "links": [
         {
@@ -4951,7 +4953,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 55,
+        "upcomingEventCount": 52,
         "eventCount90d": 201
       },
       "schedule": {
@@ -52222,7 +52224,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-15T12:46:28.917023+00:00",
+  "lastUpdated": "2026-10-15T14:17:31.665370+00:00",
   "version": 1,
   "schemaVersion": 1
 }
