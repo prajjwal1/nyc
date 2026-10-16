@@ -404,10 +404,10 @@
       "similarCommunityIds": [
         "com_36cb2681053d",
         "com_d2d455d2d6c9",
+        "com_c1410c07c4dd",
         "com_4a9490cb3534",
         "com_36c800013ba6",
-        "com_ff2e01957665",
-        "com_55ca36db453a"
+        "com_ff2e01957665"
       ]
     },
     {
@@ -3789,10 +3789,10 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
+        "com_c1410c07c4dd",
         "com_ed8d42fb031d",
         "com_55ca36db453a",
         "com_b736e77bdf93",
-        "com_c1410c07c4dd",
         "com_e9748c1176c1",
         "com_fe4b6663b721"
       ]
@@ -4425,15 +4425,15 @@
         "books",
         "music",
         "food",
-        "parties",
-        "singles"
+        "art",
+        "parties"
       ],
       "tags": [
         "books",
         "music",
         "food",
-        "parties",
-        "singles"
+        "art",
+        "parties"
       ],
       "neighborhoods": [
         "bushwick",
@@ -4446,14 +4446,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6584820261130"
+          "url": "https://bookclubbar.com/events/6441420261209"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-14",
-        "upcomingEventCount": 24,
+        "upcomingEventCount": 30,
         "eventCount90d": 61
       },
       "schedule": {
@@ -4495,6 +4495,10 @@
         {
           "eventId": "45ca74a60db45547",
           "signal": "beginners"
+        },
+        {
+          "eventId": "f5207a5c726e6330",
+          "signal": "beginners"
         }
       ],
       "aliases": [
@@ -4502,11 +4506,11 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
-        "com_b736e77bdf93",
         "com_8d86f6f9340b",
-        "com_33a530deb7aa",
-        "com_cdd5daa67222",
-        "com_36cb2681053d"
+        "com_b0e15eaab803",
+        "com_318c39363fe6",
+        "com_eeb4e424a504",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -4752,11 +4756,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
+        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
         "com_9abdf9db297a",
         "com_a786c70979d0",
-        "com_d2d455d2d6c9",
-        "com_f171cd222ca5"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -4857,14 +4861,14 @@
         "music",
         "special",
         "outdoors",
-        "celebrities"
+        "singles"
       ],
       "tags": [
         "comedy",
         "music",
         "special",
         "outdoors",
-        "celebrities"
+        "singles"
       ],
       "neighborhoods": [
         "east village",
@@ -4883,7 +4887,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-16",
-        "upcomingEventCount": 49,
+        "upcomingEventCount": 52,
         "eventCount90d": 204
       },
       "schedule": {
@@ -4902,13 +4906,13 @@
         "af5e7f3fa54d9360",
         "ecbd5f5fdeb12d93",
         "354f4a941d6d834f",
+        "62b9ee1a9508d805",
         "00c0fab972b94bb1",
         "0065474daa41ed44",
         "f6e29bf1d395e531",
         "71fd0e516d3600a7",
         "21ae10257f6bb4a3",
-        "003ca5eaaa53c197",
-        "376f344433bcc369"
+        "003ca5eaaa53c197"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4929,9 +4933,9 @@
         "com_318c39363fe6",
         "com_d8a5203885a9",
         "com_4c3ca28533f5",
-        "com_037d36e98c05",
         "com_3048e331f7b6",
-        "com_6114a53f79a0"
+        "com_33a530deb7aa",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -5013,11 +5017,11 @@
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
+        "com_c1410c07c4dd",
         "com_d2d455d2d6c9",
         "com_a1e1c13a75f0",
         "com_55ca36db453a",
-        "com_8d86f6f9340b",
-        "com_f23f8820878b"
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -52154,7 +52158,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-16T10:41:18.382784+00:00",
+  "lastUpdated": "2026-10-16T12:33:14.631880+00:00",
   "version": 1,
   "schemaVersion": 1
 }
