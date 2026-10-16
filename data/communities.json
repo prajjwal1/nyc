@@ -162,8 +162,8 @@
         "com_33a530deb7aa",
         "com_7fd76dcd92f3",
         "com_9fed174eeff3",
-        "com_b736e77bdf93",
-        "com_fe4b6663b721"
+        "com_fe4b6663b721",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -330,7 +330,7 @@
       "name": "The Twisted Spine",
       "kind": "recurring_series",
       "tagline": "The Twisted Spine is a recurring event series centered on books, parties, special in brooklyn, east village.",
-      "description": "The Twisted Spine is a recurring event series centered on books, parties, special in brooklyn, east village. Based on 16 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "description": "The Twisted Spine is a recurring event series centered on books, parties, special in brooklyn, east village. Based on 17 observed event dates, it meets weekly on Monday and Wednesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -362,18 +362,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-16",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 9
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Monday",
-          "Tuesday"
+          "Wednesday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 16
+        "sampleSize": 17
       },
       "upcomingEventIds": [
         "0d7bf5982446065a",
@@ -384,7 +384,8 @@
         "556ea76b06962599",
         "600dc4c86301cb28",
         "383d75129033cd93",
-        "6b41e2df559fef35"
+        "6b41e2df559fef35",
+        "da0cb9e02722d10b"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -393,7 +394,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 16,
+        "observedDateCount": 17,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -404,10 +405,10 @@
       "similarCommunityIds": [
         "com_36cb2681053d",
         "com_d2d455d2d6c9",
-        "com_c1410c07c4dd",
         "com_7fd76dcd92f3",
         "com_318c39363fe6",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -810,10 +811,10 @@
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
         "com_5582e2e97f1a",
+        "com_b736e77bdf93",
         "com_e9748c1176c1",
         "com_fe4b6663b721",
-        "com_5d96f038b82a",
-        "com_69fc76ef0222"
+        "com_5d96f038b82a"
       ]
     },
     {
@@ -1041,7 +1042,7 @@
       "name": "Books Are Magic",
       "kind": "recurring_series",
       "tagline": "Books Are Magic is a recurring event series centered on books, outdoors in brooklyn, carroll gardens.",
-      "description": "Books Are Magic is a recurring event series centered on books, outdoors in brooklyn, carroll gardens. Based on 14 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "description": "Books Are Magic is a recurring event series centered on books, outdoors in brooklyn, carroll gardens. Based on 15 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "other",
         "books",
@@ -1069,7 +1070,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-16",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 10
       },
       "schedule": {
@@ -1080,7 +1081,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 14
+        "sampleSize": 15
       },
       "upcomingEventIds": [
         "8e3ea84869ac3af2",
@@ -1088,7 +1089,8 @@
         "0b88c3e01b1b2e35",
         "1d13ed9f25d2174f",
         "0db88bd83bc4f3d2",
-        "9cb2b9e68acb8a17"
+        "9cb2b9e68acb8a17",
+        "fe9866df5720e3a6"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1097,7 +1099,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 14,
+        "observedDateCount": 15,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1107,8 +1109,8 @@
       ],
       "similarCommunityIds": [
         "com_c4469caf0091",
-        "com_5582e2e97f1a",
         "com_4a9490cb3534",
+        "com_5582e2e97f1a",
         "com_c58670960684",
         "com_f171cd222ca5",
         "com_36cb2681053d"
@@ -1429,14 +1431,14 @@
         "parties",
         "books",
         "music",
-        "viewings"
+        "comedy"
       ],
       "tags": [
         "games",
         "parties",
         "books",
         "music",
-        "viewings"
+        "comedy"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -1454,8 +1456,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-16",
-        "upcomingEventCount": 6,
-        "eventCount90d": 86
+        "upcomingEventCount": 8,
+        "eventCount90d": 87
       },
       "schedule": {
         "cadence": "weekly",
@@ -1470,9 +1472,11 @@
       "upcomingEventIds": [
         "b73c82d4fd689f58",
         "ea5b3fda2383d2f5",
+        "3791f93404e899f5",
         "911217a6798903f1",
         "7215153096dd359f",
         "a41f81237f99ffbb",
+        "ada894c31412bf0e",
         "b71a1679afc1c12d"
       ],
       "sourceAttributions": [
@@ -1493,10 +1497,10 @@
       "similarCommunityIds": [
         "com_3048e331f7b6",
         "com_eef1ca956dae",
+        "com_5582e2e97f1a",
+        "com_a1e1c13a75f0",
         "com_4a9490cb3534",
-        "com_ed8d42fb031d",
-        "com_ff2e01957665",
-        "com_c1410c07c4dd"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -2224,7 +2228,7 @@
       "name": "St Mazie",
       "kind": "recurring_series",
       "tagline": "St Mazie is a recurring event series centered on music, dance in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music, dance in brooklyn. Based on 46 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "St Mazie is a recurring event series centered on music, dance in brooklyn. Based on 47 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "music",
         "other",
@@ -2251,28 +2255,30 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-16",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 10,
         "eventCount90d": 71
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Monday"
+          "Tuesday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 46
+        "sampleSize": 47
       },
       "upcomingEventIds": [
         "f73d90077a79d37d",
         "ae94dc7bfb3ea7eb",
         "6e7e64c64a120242",
+        "c4b9681250ff612e",
         "554be79d93f626f2",
         "df5089de92fcec5c",
         "b7b08fa47e3e8cc1",
         "d17647bc87ec51ea",
-        "bb8fb834bbda70d5"
+        "bb8fb834bbda70d5",
+        "0a900287eb7cc691"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2281,7 +2287,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 46,
+        "observedDateCount": 47,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2387,14 +2393,14 @@
       "tagline": "Third Thursday is a recurring event series centered on parties, exploration in lower east side.",
       "description": "Third Thursday is a recurring event series centered on parties, exploration in lower east side. Based on 3 observed event dates, it meets monthly on Thursday evenings.",
       "categories": [
+        "other",
         "parties",
-        "exploration",
-        "other"
+        "exploration"
       ],
       "tags": [
+        "other",
         "parties",
-        "exploration",
-        "other"
+        "exploration"
       ],
       "neighborhoods": [
         "lower east side"
@@ -2412,7 +2418,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 1
       },
       "schedule": {
@@ -2426,7 +2432,8 @@
       },
       "upcomingEventIds": [
         "779fcc5556287187",
-        "506049ce8ca50dc7"
+        "506049ce8ca50dc7",
+        "75fbd549879cbeab"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2613,12 +2620,12 @@
         "eventbrite:65148790433"
       ],
       "similarCommunityIds": [
+        "com_b736e77bdf93",
         "com_cb019f4e9752",
         "com_ff2e01957665",
         "com_1466f20a9300",
         "com_3837f308cd75",
-        "com_4a9490cb3534",
-        "com_b736e77bdf93"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -2766,20 +2773,22 @@
       "id": "com_5582e2e97f1a",
       "slug": "liz-s-book-bar-e97f1a",
       "name": "Liz\u2019s Book Bar",
-      "kind": "recurring_series",
-      "tagline": "Liz\u2019s Book Bar is a recurring event series centered on books, games, comedy in carroll gardens.",
-      "description": "Liz\u2019s Book Bar is a recurring event series centered on books, games, comedy in carroll gardens. Based on 21 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
+      "kind": "community_space",
+      "tagline": "Liz\u2019s Book Bar is a community space centered on books, games, comedy in carroll gardens.",
+      "description": "Liz\u2019s Book Bar is a community space centered on books, games, comedy in carroll gardens. Based on 23 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "books",
         "other",
         "games",
-        "comedy"
+        "comedy",
+        "parties"
       ],
       "tags": [
         "books",
         "other",
         "games",
-        "comedy"
+        "comedy",
+        "parties"
       ],
       "neighborhoods": [
         "carroll gardens"
@@ -2788,8 +2797,8 @@
       "imageUrl": "https://images.squarespace-cdn.com/content/v1/65a2eba6c0fe5b4af96a3cc7/d2eb6b48-7c5a-4ed0-b3a8-37e7c69e6b95/IMG_5283.jpeg",
       "links": [
         {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
+          "type": "lizsbookbar",
+          "label": "View on Lizsbookbar",
           "url": "https://eventbrite.com/o/83466825333"
         }
       ],
@@ -2797,7 +2806,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 10,
         "eventCount90d": 14
       },
       "schedule": {
@@ -2808,7 +2817,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 21
+        "sampleSize": 23
       },
       "upcomingEventIds": [
         "378d619d072eb870",
@@ -2817,31 +2826,38 @@
         "701adef859db0c7a",
         "8e9c448a16e784e4",
         "36603a54e3841536",
+        "1bb7b2220eb10f47",
         "8605edb3ee0ee354",
-        "1f1db3aa76d06ebf"
+        "1f1db3aa76d06ebf",
+        "18a5ad363d1b5c05"
       ],
       "sourceAttributions": [
-        "eventbrite"
+        "lizsbookbar"
       ],
       "lastVerifiedAt": "2026-10-16",
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 21,
+        "observedDateCount": 23,
         "hasFirstPartyIdentity": true
       },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "1bb7b2220eb10f47",
+          "signal": "no experience"
+        }
+      ],
       "aliases": [
         "eventbrite:83466825333"
       ],
       "similarCommunityIds": [
         "com_a1e1c13a75f0",
-        "com_0e403135692e",
-        "com_eeb4e424a504",
-        "com_cb019f4e9752",
+        "com_b736e77bdf93",
         "com_36cb2681053d",
-        "com_d2d455d2d6c9"
+        "com_eeb4e424a504",
+        "com_0e403135692e",
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -3796,11 +3812,11 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_ed8d42fb031d",
         "com_3837f308cd75",
         "com_55ca36db453a",
         "com_b736e77bdf93",
+        "com_c1410c07c4dd",
         "com_e9748c1176c1"
       ]
     },
@@ -3858,8 +3874,8 @@
         "0f7a0f3882f5e7de",
         "6f58c68ffdb0b786",
         "9e387ee49a7bbb2e",
-        "2ddfd0b878aaaff8",
         "d79837b2da33e13e",
+        "2ddfd0b878aaaff8",
         "054ede4acf3e4df0",
         "6d405e68cabbf5b8",
         "1fc4cc858194cf24",
@@ -3907,8 +3923,8 @@
       "neighborhoods": [
         "manhattan",
         "bushwick",
-        "midtown",
-        "bronx"
+        "bronx",
+        "midtown"
       ],
       "homeVenue": "Hotel Alameda",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/gq/333e747a-017b-4542-92fc-d8cd5feb9d2d.jpg",
@@ -3941,8 +3957,8 @@
         "3b7238dae9e741b7",
         "34aa169259504b47",
         "dfdd5c3e8a7e9e69",
-        "1d08cb1c310cb5a0",
         "8711715715313470",
+        "1d08cb1c310cb5a0",
         "8d528620d62d0683",
         "48e55aafe53728a2",
         "ad57f77b72c2a9c6",
@@ -4432,15 +4448,15 @@
         "books",
         "music",
         "food",
-        "art",
-        "parties"
+        "parties",
+        "singles"
       ],
       "tags": [
         "books",
         "music",
         "food",
-        "art",
-        "parties"
+        "parties",
+        "singles"
       ],
       "neighborhoods": [
         "bushwick",
@@ -4453,14 +4469,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://bookclubbar.com/events/6441420261209"
+          "url": "https://www.bookclubbar.com/events/6584820261130"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-14",
-        "upcomingEventCount": 30,
+        "upcomingEventCount": 24,
         "eventCount90d": 61
       },
       "schedule": {
@@ -4475,8 +4491,8 @@
       },
       "upcomingEventIds": [
         "53c30dd3f6ea902b",
-        "68d512fccf287a1c",
         "45ca74a60db45547",
+        "68d512fccf287a1c",
         "f983dd59de6b47f7",
         "420031d0d397d602",
         "c2103db85091ba2e",
@@ -4502,10 +4518,6 @@
         {
           "eventId": "45ca74a60db45547",
           "signal": "beginners"
-        },
-        {
-          "eventId": "f5207a5c726e6330",
-          "signal": "beginners"
         }
       ],
       "aliases": [
@@ -4513,11 +4525,11 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
+        "com_b736e77bdf93",
         "com_8d86f6f9340b",
-        "com_b0e15eaab803",
-        "com_eeb4e424a504",
-        "com_318c39363fe6",
-        "com_3837f308cd75"
+        "com_33a530deb7aa",
+        "com_cdd5daa67222",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -4576,8 +4588,8 @@
         "4a6cec14b8567994",
         "3a34b23c17d1196f",
         "32890084524d405d",
-        "0bf1b648c4663fdc",
         "d164ee3e445ccdda",
+        "0bf1b648c4663fdc",
         "7413344c05143740",
         "813c4be40f05a243",
         "f8af90c071f8e3ab",
@@ -4601,11 +4613,11 @@
       ],
       "similarCommunityIds": [
         "com_3048e331f7b6",
+        "com_b736e77bdf93",
         "com_cb019f4e9752",
         "com_ff2e01957665",
         "com_3837f308cd75",
-        "com_4a9490cb3534",
-        "com_b736e77bdf93"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -4694,7 +4706,7 @@
       "name": "Liz's Book Bar",
       "kind": "community_space",
       "tagline": "Liz's Book Bar is a community space centered on books, music, art in carroll gardens.",
-      "description": "Liz's Book Bar is a community space centered on books, music, art in carroll gardens. Based on 41 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "description": "Liz's Book Bar is a community space centered on books, music, art in carroll gardens. Based on 42 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
         "books",
         "music",
@@ -4732,13 +4744,13 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 41
+        "sampleSize": 42
       },
       "upcomingEventIds": [
         "91d80448a8a256df",
-        "e0484b240c282db8",
         "156dc08d30a91a43",
         "60a3c318996f830e",
+        "961911562f5d58e8",
         "e5ca635ac677c537"
       ],
       "sourceAttributions": [
@@ -4748,7 +4760,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 41,
+        "observedDateCount": 42,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4763,11 +4775,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
-        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
         "com_9abdf9db297a",
         "com_a786c70979d0",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -4882,7 +4894,7 @@
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club",
-      "imageUrl": "/img/comedians/ryan-dacalos-a5e40a06-large-thumb.jpg",
+      "imageUrl": "/img/comedians/CFinnegan-paint-Large-2cf60d6b-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -4894,7 +4906,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-16",
-        "upcomingEventCount": 48,
+        "upcomingEventCount": 49,
         "eventCount90d": 204
       },
       "schedule": {
@@ -4903,12 +4915,11 @@
           "Sunday",
           "Thursday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
         "sampleSize": 72
       },
       "upcomingEventIds": [
-        "af5e7f3fa54d9360",
         "ecbd5f5fdeb12d93",
         "354f4a941d6d834f",
         "62b9ee1a9508d805",
@@ -4918,7 +4929,8 @@
         "71fd0e516d3600a7",
         "003ca5eaaa53c197",
         "376f344433bcc369",
-        "1d82027a1a34005d",
+        "bc8ee13f06ec676c",
+        "8055d7d6e8f067c3",
         "26b1dd16ae915f33"
       ],
       "sourceAttributions": [
@@ -5028,9 +5040,9 @@
         "com_8d86f6f9340b",
         "com_f23f8820878b",
         "com_eeb4e424a504",
-        "com_c1410c07c4dd",
         "com_d2d455d2d6c9",
-        "com_55ca36db453a"
+        "com_55ca36db453a",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -52167,7 +52179,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-16T22:32:53.682993+00:00",
+  "lastUpdated": "2026-10-16T23:06:37.780175+00:00",
   "version": 1,
   "schemaVersion": 1
 }
