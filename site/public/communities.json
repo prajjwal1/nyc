@@ -83,7 +83,7 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music, parties, viewings in bushwick, brooklyn.",
-      "description": "Elsewhere is a recurring event series centered on music, parties, viewings in bushwick, brooklyn. Based on 52 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music, parties, viewings in bushwick, brooklyn. Based on 53 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "music",
         "other",
@@ -102,7 +102,7 @@
         "bushwick",
         "brooklyn"
       ],
-      "homeVenue": "Elsewhere",
+      "homeVenue": "Elsewhere - The Hall",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192037352%2F2569518370411%2F1%2Foriginal.20260827-142900?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=a864153242cbf23d70407d496f8899cd",
       "links": [
         {
@@ -115,18 +115,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-17",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 83
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Friday",
-          "Saturday"
+          "Thursday",
+          "Friday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 52
+        "sampleSize": 53
       },
       "upcomingEventIds": [
         "c13666212a82f058",
@@ -139,6 +139,7 @@
         "2e8ddbf24bc9b71f",
         "5b047748264ad234",
         "536229ed73e0c4b5",
+        "74e262ebe799ec81",
         "c65ab39ef5533d68"
       ],
       "sourceAttributions": [
@@ -148,7 +149,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 52,
+        "observedDateCount": 53,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -52161,7 +52162,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-17T16:23:20.846672+00:00",
+  "lastUpdated": "2026-10-17T16:31:52.583332+00:00",
   "version": 1,
   "schemaVersion": 1
 }
