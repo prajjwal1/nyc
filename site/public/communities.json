@@ -737,7 +737,7 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy, books, music in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, books, music in manhattan. Based on 41 observed event dates, it meets weekly on Sunday and Saturday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy, books, music in manhattan. Based on 42 observed event dates, it meets weekly on Sunday and Saturday evenings.",
       "categories": [
         "other",
         "comedy",
@@ -768,7 +768,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-17",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 59
       },
       "schedule": {
@@ -779,7 +779,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 41
+        "sampleSize": 42
       },
       "upcomingEventIds": [
         "ff57d08c38834b65",
@@ -789,7 +789,8 @@
         "c70255510dabda2a",
         "43812a37fd745386",
         "f44f72d8a88c6e74",
-        "1f1a38818b0b0add"
+        "1f1a38818b0b0add",
+        "cbaa9356031406f8"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -798,7 +799,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 41,
+        "observedDateCount": 42,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -882,7 +883,7 @@
         "com_9fed174eeff3",
         "com_ab8259bb35a4",
         "com_0306525f2bed",
-        "com_037d36e98c05"
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -958,8 +959,8 @@
         "com_d2d455d2d6c9",
         "com_0306525f2bed",
         "com_36c800013ba6",
-        "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0"
+        "com_ab8259bb35a4",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -1027,12 +1028,12 @@
         "eventbrite:17460675100"
       ],
       "similarCommunityIds": [
-        "com_c58670960684",
         "com_3837f308cd75",
         "com_ab8259bb35a4",
         "com_0306525f2bed",
         "com_cb019f4e9752",
-        "com_ff2e01957665"
+        "com_ff2e01957665",
+        "com_c58670960684"
       ]
     },
     {
@@ -1104,12 +1105,12 @@
         "eventbrite:17671794664"
       ],
       "similarCommunityIds": [
-        "com_c58670960684",
         "com_f171cd222ca5",
         "com_36cb2681053d",
         "com_d2d455d2d6c9",
-        "com_359bbb5a9a91",
-        "com_4a9490cb3534"
+        "com_c58670960684",
+        "com_4a9490cb3534",
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -1183,11 +1184,11 @@
       ],
       "similarCommunityIds": [
         "com_3048e331f7b6",
-        "com_c58670960684",
         "com_4a9490cb3534",
         "com_36c800013ba6",
         "com_cb019f4e9752",
-        "com_359bbb5a9a91"
+        "com_c58670960684",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1261,11 +1262,11 @@
       ],
       "similarCommunityIds": [
         "com_3048e331f7b6",
-        "com_c58670960684",
         "com_36c800013ba6",
         "com_ff2e01957665",
-        "com_359bbb5a9a91",
-        "com_1466f20a9300"
+        "com_c58670960684",
+        "com_1466f20a9300",
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -1342,8 +1343,8 @@
         "com_36cb2681053d",
         "com_d2d455d2d6c9",
         "com_ab8259bb35a4",
-        "com_2371cd3a803e",
-        "com_4c3ca28533f5"
+        "com_c58670960684",
+        "com_2371cd3a803e"
       ]
     },
     {
@@ -1410,10 +1411,10 @@
       "similarCommunityIds": [
         "com_118a558259ea",
         "com_eb4226b8b4c5",
+        "com_c58670960684",
         "com_359bbb5a9a91",
         "com_386aac86bb4d",
-        "com_3b104adba072",
-        "com_8ff2a593caac"
+        "com_3b104adba072"
       ]
     },
     {
@@ -1812,10 +1813,10 @@
       "similarCommunityIds": [
         "com_3481b6750d6f",
         "com_eb4226b8b4c5",
+        "com_c58670960684",
         "com_359bbb5a9a91",
         "com_386aac86bb4d",
-        "com_3b104adba072",
-        "com_8ff2a593caac"
+        "com_3b104adba072"
       ]
     },
     {
@@ -2295,8 +2296,8 @@
         "com_218b97d674a6",
         "com_8b837dfb5421",
         "com_3837f308cd75",
-        "com_c58670960684",
-        "com_2371cd3a803e"
+        "com_2371cd3a803e",
+        "com_69fc76ef0222"
       ]
     },
     {
@@ -2790,8 +2791,8 @@
       "slug": "alfreda-s-cinema-5a9a91",
       "name": "Alfreda's Cinema",
       "kind": "recurring_series",
-      "tagline": "Alfreda's Cinema is a recurring event series in flatbush, brooklyn.",
-      "description": "Alfreda's Cinema is a recurring event series in flatbush, brooklyn. Based on 9 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "tagline": "Alfreda's Cinema is a recurring event series in flatbush, crown heights.",
+      "description": "Alfreda's Cinema is a recurring event series in flatbush, crown heights. Based on 10 observed event dates, it meets weekly on Friday and Thursday evenings.",
       "categories": [
         "other"
       ],
@@ -2800,6 +2801,7 @@
       ],
       "neighborhoods": [
         "flatbush",
+        "crown heights",
         "brooklyn"
       ],
       "homeVenue": "Lefferts Historic House",
@@ -2815,7 +2817,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-09",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 7
       },
       "schedule": {
@@ -2826,10 +2828,11 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "fd4f348e5f7db120",
+        "39531e0fc742572e",
         "fdbb05e1c88e2a94"
       ],
       "sourceAttributions": [
@@ -2839,7 +2842,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2921,9 +2924,9 @@
         "com_02ba15552329",
         "com_065dafa96d43",
         "com_0306525f2bed",
-        "com_037d36e98c05",
         "com_072c9c3e12a8",
-        "com_0e403135692e"
+        "com_0e403135692e",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -3064,9 +3067,9 @@
         "com_118a558259ea",
         "com_3481b6750d6f",
         "com_8ff2a593caac",
+        "com_c58670960684",
         "com_359bbb5a9a91",
-        "com_386aac86bb4d",
-        "com_3b104adba072"
+        "com_386aac86bb4d"
       ]
     },
     {
@@ -3146,8 +3149,8 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club in brooklyn.",
-      "description": "The New York Philosophy Club is a community club in brooklyn. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club in brooklyn, manhattan.",
+      "description": "The New York Philosophy Club is a community club in brooklyn, manhattan. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other"
       ],
@@ -3155,7 +3158,8 @@
         "other"
       ],
       "neighborhoods": [
-        "brooklyn"
+        "brooklyn",
+        "manhattan"
       ],
       "homeVenue": "Plaza Street West & Grand Army Plaza",
       "imageUrl": "https://images.lumacdn.com/uploads/pp/df144898-ea67-4959-91fc-06b48c568477.jpg",
@@ -3209,8 +3213,8 @@
         "com_386aac86bb4d",
         "com_3b104adba072",
         "com_f8ff3d3257ed",
-        "com_36c800013ba6",
-        "com_cb019f4e9752"
+        "com_118a558259ea",
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -3274,12 +3278,12 @@
         "luma:cal-h1fy60pnztchaf4"
       ],
       "similarCommunityIds": [
-        "com_037d36e98c05",
         "com_072c9c3e12a8",
         "com_4c3ca28533f5",
         "com_7fd76dcd92f3",
         "com_a1e1c13a75f0",
-        "com_c4469caf0091"
+        "com_c4469caf0091",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3495,8 +3499,8 @@
         "com_8b837dfb5421",
         "com_1466f20a9300",
         "com_9abdf9db297a",
-        "com_a1e1c13a75f0",
-        "com_e9748c1176c1"
+        "com_c58670960684",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -3568,8 +3572,8 @@
         "com_8b837dfb5421",
         "com_1466f20a9300",
         "com_9abdf9db297a",
-        "com_a1e1c13a75f0",
-        "com_e9748c1176c1"
+        "com_c58670960684",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -3649,7 +3653,7 @@
         "com_fe4b6663b721",
         "com_4c3ca28533f5",
         "com_69fc76ef0222",
-        "com_c2868164fffc"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -3819,8 +3823,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in brooklyn, upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in brooklyn, upper east side. Based on 16 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in brooklyn, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in brooklyn, manhattan. Based on 16 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
         "art",
@@ -3833,9 +3837,9 @@
       ],
       "neighborhoods": [
         "brooklyn",
+        "manhattan",
         "upper east side",
-        "williamsburg",
-        "midtown"
+        "williamsburg"
       ],
       "homeVenue": "Plaza Street West & Grand Army Plaza",
       "imageUrl": "https://images.lumacdn.com/uploads/pp/df144898-ea67-4959-91fc-06b48c568477.jpg",
@@ -3892,11 +3896,11 @@
       ],
       "similarCommunityIds": [
         "com_36c800013ba6",
-        "com_9abdf9db297a",
         "com_072c9c3e12a8",
+        "com_9abdf9db297a",
         "com_d2d455d2d6c9",
         "com_feb5ce491629",
-        "com_3837f308cd75"
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -4056,75 +4060,6 @@
         "com_f8ff3d3257ed",
         "com_118a558259ea",
         "com_3481b6750d6f"
-      ]
-    },
-    {
-      "id": "com_037d36e98c05",
-      "slug": "corgi-nyc-e98c05",
-      "name": "Corgi NYC",
-      "kind": "recurring_series",
-      "tagline": "Corgi NYC is a recurring event series centered on celebrities in manhattan.",
-      "description": "Corgi NYC is a recurring event series centered on celebrities in manhattan. Based on 4 observed event dates, it meets weekly on Saturday and Monday mornings.",
-      "categories": [
-        "celebrities"
-      ],
-      "tags": [
-        "celebrities"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "Corgi Cafe",
-      "imageUrl": "https://images.lumacdn.com/uploads/85/3c4c2b8d-6e91-477a-bb92-89bb034b3d67.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/usecorginyc"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-10-17",
-        "upcomingEventCount": 1,
-        "eventCount90d": 3
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Saturday",
-          "Monday"
-        ],
-        "typicalTime": "09:00",
-        "confidence": 0.67,
-        "sampleSize": 4
-      },
-      "upcomingEventIds": [
-        "5c68812f24d66c33"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-10-17",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 4,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "luma:usecorginyc"
-      ],
-      "similarCommunityIds": [
-        "com_6114a53f79a0",
-        "com_072c9c3e12a8",
-        "com_4c3ca28533f5",
-        "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0",
-        "com_c4469caf0091"
       ]
     },
     {
@@ -4345,7 +4280,7 @@
         "com_3481b6750d6f",
         "com_ebf7599ed103",
         "com_feb5ce491629",
-        "com_037d36e98c05"
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -4565,8 +4500,8 @@
       },
       "upcomingEventIds": [
         "32890084524d405d",
-        "0bf1b648c4663fdc",
         "d164ee3e445ccdda",
+        "0bf1b648c4663fdc",
         "7413344c05143740",
         "813c4be40f05a243",
         "f8af90c071f8e3ab",
@@ -4877,7 +4812,7 @@
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club",
-      "imageUrl": "/img/comedians/CFinnegan-paint-Large-2cf60d6b-large-thumb.jpg",
+      "imageUrl": "/img/comedians/JF-You-Can-Leave-Still-2d6c0d32-large-thumb.png",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -4898,12 +4833,11 @@
           "Sunday",
           "Thursday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
         "sampleSize": 72
       },
       "upcomingEventIds": [
-        "ecbd5f5fdeb12d93",
         "354f4a941d6d834f",
         "62b9ee1a9508d805",
         "e96eac7b6aedcd40",
@@ -4914,6 +4848,7 @@
         "003ca5eaaa53c197",
         "376f344433bcc369",
         "bc8ee13f06ec676c",
+        "8055d7d6e8f067c3",
         "26b1dd16ae915f33"
       ],
       "sourceAttributions": [
@@ -52162,7 +52097,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-17T18:08:41.007719+00:00",
+  "lastUpdated": "2026-10-17T18:26:12.255395+00:00",
   "version": 1,
   "schemaVersion": 1
 }
