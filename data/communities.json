@@ -402,10 +402,10 @@
       "similarCommunityIds": [
         "com_36cb2681053d",
         "com_d2d455d2d6c9",
+        "com_c1410c07c4dd",
         "com_7fd76dcd92f3",
         "com_318c39363fe6",
-        "com_3837f308cd75",
-        "com_4a9490cb3534"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -3806,10 +3806,10 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
+        "com_c1410c07c4dd",
         "com_ed8d42fb031d",
         "com_3837f308cd75",
         "com_55ca36db453a",
-        "com_c1410c07c4dd",
         "com_e9748c1176c1",
         "com_fe4b6663b721"
       ]
@@ -4434,15 +4434,15 @@
         "books",
         "music",
         "food",
-        "parties",
-        "singles"
+        "art",
+        "parties"
       ],
       "tags": [
         "books",
         "music",
         "food",
-        "parties",
-        "singles"
+        "art",
+        "parties"
       ],
       "neighborhoods": [
         "bushwick",
@@ -4455,14 +4455,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6584820261130"
+          "url": "https://bookclubbar.com/events/6441420261209"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-14",
-        "upcomingEventCount": 24,
+        "upcomingEventCount": 30,
         "eventCount90d": 61
       },
       "schedule": {
@@ -4504,6 +4504,10 @@
         {
           "eventId": "45ca74a60db45547",
           "signal": "beginners"
+        },
+        {
+          "eventId": "f5207a5c726e6330",
+          "signal": "beginners"
         }
       ],
       "aliases": [
@@ -4511,11 +4515,11 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
-        "com_eef1ca956dae",
         "com_8d86f6f9340b",
-        "com_33a530deb7aa",
-        "com_cdd5daa67222",
-        "com_36cb2681053d"
+        "com_b0e15eaab803",
+        "com_eeb4e424a504",
+        "com_318c39363fe6",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -4761,11 +4765,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
+        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
         "com_9abdf9db297a",
         "com_a786c70979d0",
-        "com_d2d455d2d6c9",
-        "com_0e403135692e"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -4894,7 +4898,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-17",
-        "upcomingEventCount": 48,
+        "upcomingEventCount": 49,
         "eventCount90d": 208
       },
       "schedule": {
@@ -4903,7 +4907,7 @@
           "Sunday",
           "Thursday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
         "sampleSize": 72
       },
@@ -4918,8 +4922,8 @@
         "003ca5eaaa53c197",
         "376f344433bcc369",
         "bc8ee13f06ec676c",
-        "26b1dd16ae915f33",
-        "b8c946ee0aad0340"
+        "8055d7d6e8f067c3",
+        "26b1dd16ae915f33"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -5028,9 +5032,9 @@
         "com_8d86f6f9340b",
         "com_f23f8820878b",
         "com_eeb4e424a504",
+        "com_c1410c07c4dd",
         "com_d2d455d2d6c9",
-        "com_55ca36db453a",
-        "com_3837f308cd75"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -52167,7 +52171,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-17T09:30:35.971428+00:00",
+  "lastUpdated": "2026-10-17T11:43:51.320649+00:00",
   "version": 1,
   "schemaVersion": 1
 }
