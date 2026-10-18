@@ -72,9 +72,9 @@
         "com_28a4ec647815",
         "com_3837f308cd75",
         "com_8b837dfb5421",
-        "com_1466f20a9300",
         "com_36c800013ba6",
-        "com_69fc76ef0222"
+        "com_69fc76ef0222",
+        "com_c2868164fffc"
       ]
     },
     {
@@ -161,9 +161,9 @@
       "similarCommunityIds": [
         "com_3048e331f7b6",
         "com_b736e77bdf93",
-        "com_1466f20a9300",
         "com_ff2e01957665",
         "com_8d86f6f9340b",
+        "com_1466f20a9300",
         "com_cb019f4e9752"
       ]
     },
@@ -231,12 +231,12 @@
         "eventbrite:10662501681"
       ],
       "similarCommunityIds": [
+        "com_1466f20a9300",
         "com_8b837dfb5421",
         "com_318c39363fe6",
         "com_7fd76dcd92f3",
         "com_8d86f6f9340b",
-        "com_b736e77bdf93",
-        "com_b766b6de77ba"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -407,10 +407,10 @@
       "similarCommunityIds": [
         "com_36cb2681053d",
         "com_d2d455d2d6c9",
-        "com_c1410c07c4dd",
         "com_7fd76dcd92f3",
         "com_318c39363fe6",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_36c800013ba6"
       ]
     },
     {
@@ -878,11 +878,11 @@
       ],
       "similarCommunityIds": [
         "com_3bc67889299d",
+        "com_feb5ce491629",
         "com_065dafa96d43",
         "com_9fed174eeff3",
         "com_c58670960684",
-        "com_ab8259bb35a4",
-        "com_072c9c3e12a8"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -1029,10 +1029,10 @@
       "similarCommunityIds": [
         "com_3837f308cd75",
         "com_ab8259bb35a4",
-        "com_1466f20a9300",
         "com_ff2e01957665",
         "com_c58670960684",
-        "com_072c9c3e12a8"
+        "com_072c9c3e12a8",
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -1186,9 +1186,9 @@
         "com_cb019f4e9752",
         "com_3048e331f7b6",
         "com_4a9490cb3534",
-        "com_1466f20a9300",
         "com_36c800013ba6",
-        "com_c58670960684"
+        "com_c58670960684",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1268,7 +1268,7 @@
         "com_4a9490cb3534",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_1466f20a9300"
+        "com_36c800013ba6"
       ]
     },
     {
@@ -1276,21 +1276,24 @@
       "slug": "museum-of-reclaimed-urban-space-491629",
       "name": "Museum of Reclaimed Urban Space",
       "kind": "institutional_program",
-      "tagline": "Museum of Reclaimed Urban Space is a community program centered on outdoors, wellness in east village, manhattan.",
-      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, wellness in east village, manhattan. Based on 18 observed event dates, it meets weekly on Wednesday and Sunday mornings.",
+      "tagline": "Museum of Reclaimed Urban Space is a community program centered on outdoors, wellness, fitness in east village, manhattan.",
+      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, wellness, fitness in east village, manhattan. Based on 19 observed event dates, it meets weekly on Wednesday and Thursday mornings.",
       "categories": [
         "outdoors",
         "other",
-        "wellness"
+        "wellness",
+        "fitness"
       ],
       "tags": [
         "outdoors",
         "other",
-        "wellness"
+        "wellness",
+        "fitness"
       ],
       "neighborhoods": [
         "east village",
-        "manhattan"
+        "manhattan",
+        "williamsburg"
       ],
       "homeVenue": "La Plaza Cultural",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1180944734%2F280848866130%2F1%2Foriginal.20260329-184013?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=54d35d98e08002fd952c880c02f579f6",
@@ -1305,24 +1308,25 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 29
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Sunday"
+          "Thursday"
         ],
         "typicalTime": "11:00",
         "confidence": 1.0,
-        "sampleSize": 18
+        "sampleSize": 19
       },
       "upcomingEventIds": [
         "74ab19bd4363cb9f",
         "e8a7d295788b0925",
         "99a9911cafb0750f",
-        "2015b20c57990e3e"
+        "2015b20c57990e3e",
+        "efca931195531e91"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1331,7 +1335,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 18,
+        "observedDateCount": 19,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1341,11 +1345,11 @@
       ],
       "similarCommunityIds": [
         "com_9fed174eeff3",
+        "com_ab8259bb35a4",
         "com_36cb2681053d",
         "com_d2d455d2d6c9",
-        "com_2371cd3a803e",
-        "com_ab8259bb35a4",
-        "com_4c3ca28533f5"
+        "com_065dafa96d43",
+        "com_02ba15552329"
       ]
     },
     {
@@ -1575,8 +1579,8 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
         "com_36c800013ba6",
+        "com_1466f20a9300",
         "com_e9748c1176c1",
         "com_9abdf9db297a",
         "com_3048e331f7b6",
@@ -1667,7 +1671,7 @@
       "name": "Arts With Lorry",
       "kind": "recurring_series",
       "tagline": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan.",
-      "description": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan. Based on 13 observed event dates, it meets weekly on Sunday and Thursday afternoons.",
+      "description": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan. Based on 13 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "other",
         "music",
@@ -1707,7 +1711,7 @@
           "Sunday",
           "Thursday"
         ],
-        "typicalTime": "16:00",
+        "typicalTime": "18:00",
         "confidence": 1.0,
         "sampleSize": 13
       },
@@ -1742,10 +1746,10 @@
       "similarCommunityIds": [
         "com_69fc76ef0222",
         "com_c2868164fffc",
+        "com_1466f20a9300",
         "com_9abdf9db297a",
         "com_d2d455d2d6c9",
-        "com_e9748c1176c1",
-        "com_28a4ec647815"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -2221,21 +2225,23 @@
       "slug": "st-mazie-0a9300",
       "name": "St Mazie",
       "kind": "recurring_series",
-      "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 50 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "tagline": "St Mazie is a recurring event series centered on music, dance in brooklyn.",
+      "description": "St Mazie is a recurring event series centered on music, dance in brooklyn. Based on 51 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "music",
-        "other"
+        "other",
+        "dance"
       ],
       "tags": [
         "music",
-        "other"
+        "other",
+        "dance"
       ],
       "neighborhoods": [
         "brooklyn"
       ],
       "homeVenue": "St Mazie Bar and Supper Club",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193247782%2F80084541929%2F1%2Foriginal.20260911-111449?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.492&fp-y=0.373&s=0349c9e541b71dab61279550533821bb",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1183906975%2F80084541929%2F1%2Foriginal.20260506-120854?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.509&fp-y=0.597&s=2baa1193003ebffe3505de26d8cb939d",
       "links": [
         {
           "type": "eventbrite",
@@ -2247,8 +2253,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 8,
-        "eventCount90d": 77
+        "upcomingEventCount": 11,
+        "eventCount90d": 78
       },
       "schedule": {
         "cadence": "weekly",
@@ -2258,9 +2264,10 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 50
+        "sampleSize": 51
       },
       "upcomingEventIds": [
+        "961e44ef10e2305c",
         "d17647bc87ec51ea",
         "bb8fb834bbda70d5",
         "0a900287eb7cc691",
@@ -2268,7 +2275,9 @@
         "d95b0f39f01cc57b",
         "1f4415c2799d6ea4",
         "d9c900ce3adfc356",
-        "71af2296ce3aadd6"
+        "71af2296ce3aadd6",
+        "7dab20675f2c1aa1",
+        "d6e6a27d1cb1086a"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2277,7 +2286,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 50,
+        "observedDateCount": 51,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2286,12 +2295,12 @@
         "eventbrite:5803675324"
       ],
       "similarCommunityIds": [
-        "com_69fc76ef0222",
-        "com_c2868164fffc",
         "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_36c800013ba6",
-        "com_ff2e01957665"
+        "com_218b97d674a6",
+        "com_8b837dfb5421",
+        "com_69fc76ef0222",
+        "com_c2868164fffc"
       ]
     },
     {
@@ -2370,8 +2379,8 @@
         "com_9abdf9db297a",
         "com_3837f308cd75",
         "com_8b837dfb5421",
-        "com_1466f20a9300",
-        "com_36c800013ba6"
+        "com_36c800013ba6",
+        "com_69fc76ef0222"
       ]
     },
     {
@@ -2609,8 +2618,8 @@
       ],
       "similarCommunityIds": [
         "com_cb019f4e9752",
-        "com_1466f20a9300",
         "com_ff2e01957665",
+        "com_1466f20a9300",
         "com_3837f308cd75",
         "com_b766b6de77ba",
         "com_4a9490cb3534"
@@ -2691,7 +2700,7 @@
       "name": "Liz\u2019s Book Bar",
       "kind": "community_space",
       "tagline": "Liz\u2019s Book Bar is a community space centered on books, games, comedy in carroll gardens.",
-      "description": "Liz\u2019s Book Bar is a community space centered on books, games, comedy in carroll gardens. Based on 23 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
+      "description": "Liz\u2019s Book Bar is a community space centered on books, games, comedy in carroll gardens. Based on 24 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "books",
         "other",
@@ -2722,7 +2731,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 11,
         "eventCount90d": 14
       },
       "schedule": {
@@ -2733,7 +2742,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 23
+        "sampleSize": 24
       },
       "upcomingEventIds": [
         "378d619d072eb870",
@@ -2745,6 +2754,7 @@
         "1bb7b2220eb10f47",
         "8605edb3ee0ee354",
         "1f1db3aa76d06ebf",
+        "52eee63a6a0a2df9",
         "18a5ad363d1b5c05"
       ],
       "sourceAttributions": [
@@ -2754,7 +2764,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 23,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -2792,6 +2802,7 @@
       "neighborhoods": [
         "flatbush",
         "crown heights",
+        "east village",
         "brooklyn"
       ],
       "homeVenue": "Lefferts Historic House",
@@ -2807,7 +2818,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-09",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 7
       },
       "schedule": {
@@ -2823,6 +2834,7 @@
       "upcomingEventIds": [
         "fd4f348e5f7db120",
         "39531e0fc742572e",
+        "65b13f9b685f50bc",
         "fdbb05e1c88e2a94"
       ],
       "sourceAttributions": [
@@ -2841,8 +2853,8 @@
         "eventbrite:8387562806"
       ],
       "similarCommunityIds": [
-        "com_c58670960684",
         "com_2371cd3a803e",
+        "com_c58670960684",
         "com_386aac86bb4d",
         "com_3b104adba072",
         "com_f8ff3d3257ed",
@@ -2913,10 +2925,10 @@
       "similarCommunityIds": [
         "com_02ba15552329",
         "com_065dafa96d43",
+        "com_feb5ce491629",
         "com_072c9c3e12a8",
         "com_0e403135692e",
-        "com_1466f20a9300",
-        "com_2371cd3a803e"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2985,10 +2997,10 @@
         "url:https://www.instagram.com/vitalrunclub"
       ],
       "similarCommunityIds": [
+        "com_feb5ce491629",
         "com_02ba15552329",
         "com_3bc67889299d",
         "com_d8a5203885a9",
-        "com_f23f8820878b",
         "com_4c3ca28533f5",
         "com_cdd5daa67222"
       ]
@@ -3067,8 +3079,8 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club in williamsburg, brooklyn.",
-      "description": "The New York Philosophy Club is a community club in williamsburg, brooklyn. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club in brooklyn, williamsburg.",
+      "description": "The New York Philosophy Club is a community club in brooklyn, williamsburg. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other"
       ],
@@ -3076,11 +3088,11 @@
         "other"
       ],
       "neighborhoods": [
-        "williamsburg",
-        "brooklyn"
+        "brooklyn",
+        "williamsburg"
       ],
-      "homeVenue": "McCarren Parkhouse",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
+      "homeVenue": "Dead Letter No. 9",
+      "imageUrl": "https://images.lumacdn.com/event-covers/0s/44d0f824-b741-421b-b863-e1e7efc31897.jpg",
       "links": [
         {
           "type": "luma",
@@ -3106,8 +3118,8 @@
         "sampleSize": 6
       },
       "upcomingEventIds": [
-        "2ddfd0b878aaaff8",
-        "d79837b2da33e13e"
+        "d79837b2da33e13e",
+        "2ddfd0b878aaaff8"
       ],
       "sourceAttributions": [
         "luma"
@@ -3340,8 +3352,8 @@
       ],
       "similarCommunityIds": [
         "com_c2868164fffc",
-        "com_1466f20a9300",
         "com_8b837dfb5421",
+        "com_1466f20a9300",
         "com_9abdf9db297a",
         "com_a1e1c13a75f0",
         "com_e9748c1176c1"
@@ -3413,8 +3425,8 @@
       ],
       "similarCommunityIds": [
         "com_69fc76ef0222",
-        "com_1466f20a9300",
         "com_8b837dfb5421",
+        "com_1466f20a9300",
         "com_9abdf9db297a",
         "com_a1e1c13a75f0",
         "com_e9748c1176c1"
@@ -3650,10 +3662,10 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_ed8d42fb031d",
         "com_3837f308cd75",
         "com_55ca36db453a",
+        "com_c1410c07c4dd",
         "com_e9748c1176c1",
         "com_33a530deb7aa"
       ]
@@ -3663,26 +3675,26 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, williamsburg. Based on 16 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on wellness, art in brooklyn, williamsburg.",
+      "description": "The New York Philosophy Club is a community club centered on wellness, art in brooklyn, williamsburg. Based on 16 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
-        "art",
-        "wellness"
+        "wellness",
+        "art"
       ],
       "tags": [
         "other",
-        "art",
-        "wellness"
+        "wellness",
+        "art"
       ],
       "neighborhoods": [
-        "upper east side",
-        "williamsburg",
         "brooklyn",
-        "midtown"
+        "williamsburg",
+        "midtown",
+        "upper east side"
       ],
-      "homeVenue": "The Met Cloisters",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/6m/aac82800-9e91-46b7-970b-139e3ef73cd8.jpg",
+      "homeVenue": "309 Elizabeth St",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/zu/c7ccca70-23f6-488c-a78c-297fd672cd7a.png",
       "links": [
         {
           "type": "luma",
@@ -3694,7 +3706,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 7,
         "eventCount90d": 27
       },
       "schedule": {
@@ -3708,10 +3720,9 @@
         "sampleSize": 16
       },
       "upcomingEventIds": [
-        "6f58c68ffdb0b786",
         "9e387ee49a7bbb2e",
-        "2ddfd0b878aaaff8",
         "d79837b2da33e13e",
+        "2ddfd0b878aaaff8",
         "054ede4acf3e4df0",
         "6d405e68cabbf5b8",
         "1fc4cc858194cf24",
@@ -3793,8 +3804,8 @@
         "3b7238dae9e741b7",
         "34aa169259504b47",
         "dfdd5c3e8a7e9e69",
-        "1d08cb1c310cb5a0",
         "8711715715313470",
+        "1d08cb1c310cb5a0",
         "8d528620d62d0683",
         "48e55aafe53728a2",
         "ad57f77b72c2a9c6",
@@ -4109,9 +4120,9 @@
         "com_4c3ca28533f5",
         "com_3481b6750d6f",
         "com_ebf7599ed103",
-        "com_feb5ce491629",
         "com_072c9c3e12a8",
-        "com_118a558259ea"
+        "com_118a558259ea",
+        "com_6114a53f79a0"
       ]
     },
     {
@@ -4195,15 +4206,15 @@
         "books",
         "music",
         "food",
-        "art",
-        "parties"
+        "parties",
+        "singles"
       ],
       "tags": [
         "books",
         "music",
         "food",
-        "art",
-        "parties"
+        "parties",
+        "singles"
       ],
       "neighborhoods": [
         "bushwick",
@@ -4216,14 +4227,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://bookclubbar.com/events/6441420261209"
+          "url": "https://www.bookclubbar.com/events/6584820261130"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 30,
+        "upcomingEventCount": 24,
         "eventCount90d": 62
       },
       "schedule": {
@@ -4265,10 +4276,6 @@
         {
           "eventId": "45ca74a60db45547",
           "signal": "beginners"
-        },
-        {
-          "eventId": "f5207a5c726e6330",
-          "signal": "beginners"
         }
       ],
       "aliases": [
@@ -4276,11 +4283,11 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
-        "com_8d86f6f9340b",
-        "com_b0e15eaab803",
-        "com_3837f308cd75",
         "com_33a530deb7aa",
-        "com_eeb4e424a504"
+        "com_eef1ca956dae",
+        "com_8d86f6f9340b",
+        "com_b766b6de77ba",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -4366,9 +4373,9 @@
         "com_b736e77bdf93",
         "com_cb019f4e9752",
         "com_3048e331f7b6",
-        "com_f23f8820878b",
         "com_ff2e01957665",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -4484,7 +4491,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-11",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 6,
         "eventCount90d": 37
       },
       "schedule": {
@@ -4503,7 +4510,6 @@
         "60a3c318996f830e",
         "961911562f5d58e8",
         "d33f32734f16a98d",
-        "52eee63a6a0a2df9",
         "e5ca635ac677c537"
       ],
       "sourceAttributions": [
@@ -4528,11 +4534,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
-        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
         "com_33a530deb7aa",
         "com_9abdf9db297a",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_0e403135692e"
       ]
     },
     {
@@ -4617,8 +4623,8 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_3837f308cd75",
-        "com_1466f20a9300",
         "com_c1410c07c4dd",
+        "com_1466f20a9300",
         "com_3048e331f7b6",
         "com_55ca36db453a"
       ]
@@ -4635,14 +4641,14 @@
         "special",
         "music",
         "outdoors",
-        "parties"
+        "singles"
       ],
       "tags": [
         "comedy",
         "special",
         "music",
         "outdoors",
-        "parties"
+        "singles"
       ],
       "neighborhoods": [
         "east village",
@@ -4661,7 +4667,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 44,
+        "upcomingEventCount": 45,
         "eventCount90d": 215
       },
       "schedule": {
@@ -4670,7 +4676,7 @@
           "Sunday",
           "Thursday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
         "sampleSize": 72
       },
@@ -4681,12 +4687,12 @@
         "71fd0e516d3600a7",
         "376f344433bcc369",
         "bc8ee13f06ec676c",
+        "8055d7d6e8f067c3",
         "26b1dd16ae915f33",
         "b8c946ee0aad0340",
-        "8055d7d6e8f067c3",
         "b47c8b3e180d172c",
-        "1bceac6d94408d56",
-        "9f67554d46141438"
+        "f44fcb74617b0401",
+        "1bceac6d94408d56"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4704,12 +4710,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
         "com_318c39363fe6",
+        "com_d8a5203885a9",
+        "com_4c3ca28533f5",
+        "com_c1410c07c4dd",
         "com_3048e331f7b6",
-        "com_7fd76dcd92f3",
-        "com_b736e77bdf93",
-        "com_b766b6de77ba"
+        "com_28a4ec647815"
       ]
     },
     {
@@ -4718,7 +4724,7 @@
       "name": "Eastville Comedy Club",
       "kind": "club",
       "tagline": "Eastville Comedy Club is a community club centered on comedy, music, special in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music, special in east village. Based on 56 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, special in east village. Based on 57 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -4749,7 +4755,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 18,
+        "upcomingEventCount": 19,
         "eventCount90d": 77
       },
       "schedule": {
@@ -4760,7 +4766,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 56
+        "sampleSize": 57
       },
       "upcomingEventIds": [
         "47e5fedd574ea72c",
@@ -4769,12 +4775,12 @@
         "e4b9045561bf4a17",
         "37edbd725fc7ea7d",
         "5ffb265c3cd6a693",
+        "e0dd7fec46bb07e7",
         "d053680a203ccb49",
         "26084e8c55e14b76",
         "459ff1e4bb2369ed",
         "ef25e1fad1bf9fbd",
-        "b2b6d1190a0bf8a3",
-        "18972bc8241d69f7"
+        "b2b6d1190a0bf8a3"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -4783,7 +4789,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 56,
+        "observedDateCount": 57,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4795,9 +4801,9 @@
         "com_8d86f6f9340b",
         "com_f23f8820878b",
         "com_eeb4e424a504",
-        "com_c1410c07c4dd",
         "com_d2d455d2d6c9",
-        "com_55ca36db453a"
+        "com_55ca36db453a",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -51934,7 +51940,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-18T21:57:47.495140+00:00",
+  "lastUpdated": "2026-10-18T22:25:06.446446+00:00",
   "version": 1,
   "schemaVersion": 1
 }
