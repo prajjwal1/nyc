@@ -3731,8 +3731,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, bushwick.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, bushwick. Based on 44 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, midtown.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, midtown. Based on 45 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "parties"
@@ -3743,9 +3743,9 @@
       ],
       "neighborhoods": [
         "manhattan",
+        "midtown",
         "bushwick",
-        "bronx",
-        "midtown"
+        "bronx"
       ],
       "homeVenue": "Hotel Alameda",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/gq/333e747a-017b-4542-92fc-d8cd5feb9d2d.jpg",
@@ -3760,7 +3760,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 12,
+        "upcomingEventCount": 13,
         "eventCount90d": 53
       },
       "schedule": {
@@ -3771,7 +3771,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 44
+        "sampleSize": 45
       },
       "upcomingEventIds": [
         "a052c4f86a01bbd8",
@@ -3785,7 +3785,7 @@
         "ad57f77b72c2a9c6",
         "9e9258321dad5744",
         "1ae6da44866f747d",
-        "7cf5d4927f9c2676"
+        "7a6915ee94c9637b"
       ],
       "sourceAttributions": [
         "luma"
@@ -3794,7 +3794,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 44,
+        "observedDateCount": 45,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51913,7 +51913,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-18T01:14:47.455116+00:00",
+  "lastUpdated": "2026-10-18T01:31:43.138794+00:00",
   "version": 1,
   "schemaVersion": 1
 }
