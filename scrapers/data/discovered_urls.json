@@ -166,18 +166,18 @@
     "kind": "event",
     "last_surviving_yield": 0,
     "first_seen_at": "2026-05-15T17:11:33.734371+00:00",
-    "last_seen_at": "2026-10-18T01:14:40.420903+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.105700+00:00",
     "lane": "explore",
     "discovery_vias": [
       "platform_event_fetch"
     ],
-    "last_attempt_at": "2026-10-18T01:14:40.483559+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 1,
-    "last_success_at": "2026-10-18T01:14:40.483559+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T07:14:40.483559+00:00"
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00"
   },
   {
     "url": "https://eventbrite.com/e/we-have-fun-a-weekly-stand-up-show-tickets-208767317667",
@@ -187,18 +187,18 @@
     "kind": "event",
     "last_surviving_yield": 0,
     "first_seen_at": "2026-05-15T17:11:33.734371+00:00",
-    "last_seen_at": "2026-10-18T01:14:40.420903+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.105700+00:00",
     "lane": "explore",
     "discovery_vias": [
       "platform_event_fetch"
     ],
-    "last_attempt_at": "2026-10-18T01:14:40.483559+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 1,
-    "last_success_at": "2026-10-18T01:14:40.483559+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T07:14:40.483559+00:00"
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00"
   },
   {
     "url": "https://eventbrite.com/e/landline-comedy-at-wild-east-brewing-tickets-1985964207405",
@@ -1021,7 +1021,7 @@
     "discovered_via": "luma_organizer_jsonld",
     "platform": "luma",
     "kind": "calendar",
-    "last_surviving_yield": 1,
+    "last_surviving_yield": 0,
     "first_seen_at": "2026-06-01T22:23:57.243646+00:00",
     "last_seen_at": "2026-10-18T03:33:10.209168+00:00",
     "lane": "explore",
@@ -1335,18 +1335,18 @@
     "platform": "eventbrite",
     "kind": "collection",
     "first_seen_at": "2026-06-10T03:59:02.934704+00:00",
-    "last_seen_at": "2026-10-18T03:33:49.097276+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.185135+00:00",
     "lane": "explore",
     "discovery_vias": [
       "platform_collection_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 18,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 0
   },
   {
@@ -2723,18 +2723,18 @@
     "platform": "eventbrite",
     "kind": "collection",
     "first_seen_at": "2026-07-14T03:32:22.246400+00:00",
-    "last_seen_at": "2026-10-18T03:33:49.097276+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.185135+00:00",
     "lane": "explore",
     "discovery_vias": [
       "platform_collection_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 14,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 0
   },
   {
@@ -4272,7 +4272,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 10
+    "last_surviving_yield": 6
   },
   {
     "url": "https://posh.vip/e/222-years-of-brooklyn-bound",
@@ -5953,7 +5953,7 @@
     "discovered_at": "2026-09-11T15:18:21.720607+00:00",
     "first_seen_at": "2026-09-11T15:18:21.720607+00:00",
     "discovered_via": "eventbrite_organizer_graph",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "personal",
@@ -5962,14 +5962,14 @@
       "platform_organizer_fetch",
       "eventbrite_current_results"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 12,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 11
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
+    "last_surviving_yield": 10
   },
   {
     "url": "https://eventbrite.com/o/20002618011",
@@ -5992,14 +5992,14 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 8
+    "last_surviving_yield": 7
   },
   {
     "url": "https://eventbrite.com/o/121441877858",
     "discovered_at": "2026-09-11T15:18:21.720607+00:00",
     "first_seen_at": "2026-09-11T15:18:21.720607+00:00",
     "discovered_via": "eventbrite_organizer_graph",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "personal",
@@ -6007,13 +6007,13 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 12,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 10
   },
   {
@@ -6060,7 +6060,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 10
+    "last_surviving_yield": 8
   },
   {
     "url": "https://eventbrite.com/o/121310963830",
@@ -6810,7 +6810,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:45.628006+00:00",
-    "last_surviving_yield": 8
+    "last_surviving_yield": 4
   },
   {
     "url": "https://partiful.com/u/4MvheXow7Ws0wJy2Hufm",
@@ -7059,7 +7059,7 @@
     "discovered_at": "2026-09-11T18:09:30.701041+00:00",
     "first_seen_at": "2026-09-11T18:09:30.701041+00:00",
     "discovered_via": "eventbrite_organizer_graph",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "personal",
@@ -7067,13 +7067,13 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 12,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 6
   },
   {
@@ -7232,7 +7232,7 @@
     "discovered_at": "2026-09-11T20:57:33.126802+00:00",
     "first_seen_at": "2026-09-11T20:57:33.126802+00:00",
     "discovered_via": "eventbrite_organizer_graph",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "personal",
@@ -7240,13 +7240,13 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 12,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 10
   },
   {
@@ -7358,7 +7358,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 9
+    "last_surviving_yield": 5
   },
   {
     "url": "https://eventbrite.com/o/17899496497",
@@ -7381,7 +7381,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 8
+    "last_surviving_yield": 5
   },
   {
     "url": "https://eventbrite.com/o/10662501681",
@@ -7432,7 +7432,7 @@
     "discovered_at": "2026-09-12T01:16:04.794691+00:00",
     "first_seen_at": "2026-09-12T01:16:04.794691+00:00",
     "discovered_via": "eventbrite_organizer_graph",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "explore",
@@ -7440,13 +7440,13 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 9,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 7
   },
   {
@@ -8270,7 +8270,7 @@
     "discovered_at": "2026-09-14T23:00:21.443068+00:00",
     "first_seen_at": "2026-09-14T23:00:21.443068+00:00",
     "discovered_via": "eventbrite_current_results",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "explore",
@@ -8279,13 +8279,13 @@
       "platform_organizer_fetch",
       "eventbrite_organizer_graph"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 0,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
-    "consecutive_empty_runs": 90,
+    "consecutive_empty_runs": 91,
     "status": "empty",
-    "next_retry_at": "2026-10-19T03:33:49.121717+00:00",
+    "next_retry_at": "2026-10-19T04:54:54.477406+00:00",
     "last_surviving_yield": 0
   },
   {
@@ -8966,7 +8966,7 @@
     "consecutive_empty_runs": 291,
     "status": "empty",
     "next_retry_at": "2026-10-19T03:33:45.628006+00:00",
-    "last_surviving_yield": 1
+    "last_surviving_yield": 0
   },
   {
     "url": "https://wnyc.org/events/broadway-on-the-radio-operation-mincemeat",
@@ -8999,7 +8999,7 @@
     "discovered_at": "2026-09-15T22:20:59.521814+00:00",
     "first_seen_at": "2026-09-15T22:20:59.521814+00:00",
     "discovered_via": "eventbrite_current_results",
-    "last_seen_at": "2026-10-18T01:14:40.389480+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "explore",
@@ -9008,13 +9008,13 @@
       "platform_organizer_fetch",
       "eventbrite_organizer_graph"
     ],
-    "last_attempt_at": "2026-10-18T01:14:40.483559+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 1,
-    "last_success_at": "2026-10-18T01:14:40.483559+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T07:14:40.483559+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 1
   },
   {
@@ -10645,7 +10645,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 9
+    "last_surviving_yield": 6
   },
   {
     "url": "https://queenslibrary.org/event/002566-0826",
@@ -10817,7 +10817,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 1
+    "last_surviving_yield": 0
   },
   {
     "url": "https://eventbrite.com/e/14th-annual-morus-film-festival-spyborg-tickets-1998438711984",
@@ -11022,7 +11022,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 1
+    "last_surviving_yield": 0
   },
   {
     "url": "https://eventbrite.com/o/15195290641",
@@ -11091,7 +11091,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 5
+    "last_surviving_yield": 3
   },
   {
     "url": "https://eventbrite.com/o/51487304793",
@@ -12032,7 +12032,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:45.628006+00:00",
-    "last_surviving_yield": 3
+    "last_surviving_yield": 2
   },
   {
     "url": "https://partiful.com/u/cAHD80tpFR5pRooEEgjY",
@@ -12076,7 +12076,7 @@
     "consecutive_empty_runs": 172,
     "status": "empty",
     "next_retry_at": "2026-10-19T03:33:45.628006+00:00",
-    "last_surviving_yield": 2
+    "last_surviving_yield": 1
   },
   {
     "url": "https://lu.ma/brexevents",
@@ -12527,7 +12527,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:45.628006+00:00",
-    "last_surviving_yield": 1
+    "last_surviving_yield": 0
   },
   {
     "url": "https://wnyc.org/events/democracy-dialogues",
@@ -12670,7 +12670,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
-    "last_surviving_yield": 5
+    "last_surviving_yield": 4
   },
   {
     "url": "https://eventbrite.com/o/17768356901",
@@ -12709,7 +12709,7 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_surviving_yield": 6,
+    "last_surviving_yield": 4,
     "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
     "last_parsed_yield": 10,
     "last_success_at": "2026-10-18T03:33:49.121717+00:00",
@@ -12827,7 +12827,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T04:01:14.870763+00:00",
-    "last_surviving_yield": 2
+    "last_surviving_yield": 0
   },
   {
     "url": "https://eventbrite.com/o/75703691143",
@@ -12871,7 +12871,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T04:01:14.870763+00:00",
-    "last_surviving_yield": 2
+    "last_surviving_yield": 1
   },
   {
     "url": "https://eventbrite.com/o/82796394943",
@@ -12963,7 +12963,7 @@
     "discovered_at": "2026-10-02T05:54:39.423065+00:00",
     "first_seen_at": "2026-10-02T05:54:39.423065+00:00",
     "discovered_via": "eventbrite_organizer_graph",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "explore",
@@ -12971,13 +12971,13 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 9,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 6
   },
   {
@@ -13318,7 +13318,7 @@
     "discovered_at": "2026-10-02T20:25:52.249890+00:00",
     "first_seen_at": "2026-10-02T20:25:52.249890+00:00",
     "discovered_via": "eventbrite_organizer_graph",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "explore",
@@ -13326,13 +13326,13 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 7,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 6
   },
   {
@@ -13355,14 +13355,14 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-10-18T04:01:14.870763+00:00",
-    "last_surviving_yield": 2
+    "last_surviving_yield": 1
   },
   {
     "url": "https://eventbrite.com/o/17671794664",
     "discovered_at": "2026-10-02T20:25:52.249890+00:00",
     "first_seen_at": "2026-10-02T20:25:52.249890+00:00",
     "discovered_via": "eventbrite_organizer_graph",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "explore",
@@ -13370,13 +13370,13 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 12,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 8
   },
   {
@@ -13920,18 +13920,18 @@
     "kind": "event",
     "last_surviving_yield": 0,
     "first_seen_at": "2026-10-06T06:35:03.170281+00:00",
-    "last_seen_at": "2026-10-18T03:33:49.042361+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.105700+00:00",
     "lane": "explore",
     "discovery_vias": [
       "platform_event_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 1,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00"
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00"
   },
   {
     "url": "https://lu.ma/fintechrunningclub-events",
@@ -14171,7 +14171,7 @@
     "consecutive_empty_runs": 95,
     "status": "empty",
     "next_retry_at": "2026-10-19T03:33:45.628006+00:00",
-    "last_surviving_yield": 1
+    "last_surviving_yield": 0
   },
   {
     "url": "https://partiful.com/u/Q6RlpKScjUMDGVhkiOwG3pSXS3x2",
@@ -14193,7 +14193,7 @@
     "consecutive_empty_runs": 95,
     "status": "empty",
     "next_retry_at": "2026-10-19T03:33:45.628006+00:00",
-    "last_surviving_yield": 1
+    "last_surviving_yield": 0
   },
   {
     "url": "https://lu.ma/koomweek2026",
@@ -14449,18 +14449,18 @@
     "platform": "eventbrite",
     "kind": "event",
     "first_seen_at": "2026-10-09T05:06:05.649851+00:00",
-    "last_seen_at": "2026-10-18T03:33:49.042361+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.105700+00:00",
     "lane": "explore",
     "discovery_vias": [
       "platform_event_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 1,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 0
   },
   {
@@ -14491,18 +14491,18 @@
     "platform": "eventbrite",
     "kind": "event",
     "first_seen_at": "2026-10-09T05:06:05.649851+00:00",
-    "last_seen_at": "2026-10-18T03:33:49.042361+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.105700+00:00",
     "lane": "explore",
     "discovery_vias": [
       "platform_event_fetch"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 1,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 0
   },
   {
@@ -14541,7 +14541,7 @@
     "discovered_at": "2026-10-09T05:07:23.887059+00:00",
     "first_seen_at": "2026-10-09T05:07:23.887059+00:00",
     "discovered_via": "eventbrite_current_results",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "explore",
@@ -14550,13 +14550,13 @@
       "platform_organizer_fetch",
       "eventbrite_organizer_graph"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 0,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
-    "consecutive_empty_runs": 41,
+    "consecutive_empty_runs": 42,
     "status": "empty",
-    "next_retry_at": "2026-10-19T03:33:49.121717+00:00",
+    "next_retry_at": "2026-10-19T04:54:54.477406+00:00",
     "last_surviving_yield": 0
   },
   {
@@ -14564,7 +14564,7 @@
     "discovered_at": "2026-10-09T05:07:23.887059+00:00",
     "first_seen_at": "2026-10-09T05:07:23.887059+00:00",
     "discovered_via": "eventbrite_current_results",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:53.489244+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "explore",
@@ -14975,7 +14975,7 @@
     "discovered_via": "reddit",
     "platform": "luma",
     "kind": "event",
-    "last_surviving_yield": 1,
+    "last_surviving_yield": 0,
     "first_seen_at": "2026-10-13T01:52:45.966955+00:00",
     "last_seen_at": "2026-10-18T03:33:10.126357+00:00",
     "lane": "explore",
@@ -15346,7 +15346,7 @@
     "discovered_via": "substack_body",
     "platform": "partiful",
     "kind": "event",
-    "last_surviving_yield": 1,
+    "last_surviving_yield": 0,
     "first_seen_at": "2026-10-16T03:36:36.438852+00:00",
     "last_seen_at": "2026-10-18T03:33:28.640713+00:00",
     "lane": "explore",
@@ -15501,7 +15501,7 @@
     "discovered_via": "substack_body",
     "platform": "partiful",
     "kind": "event",
-    "last_surviving_yield": 1,
+    "last_surviving_yield": 0,
     "first_seen_at": "2026-10-16T03:36:36.438852+00:00",
     "last_seen_at": "2026-10-18T03:33:28.640713+00:00",
     "lane": "explore",
@@ -15591,7 +15591,7 @@
     "discovered_at": "2026-10-16T07:21:23.308725+00:00",
     "first_seen_at": "2026-10-16T07:21:23.308725+00:00",
     "discovered_via": "eventbrite_current_results",
-    "last_seen_at": "2026-10-18T03:33:49.068375+00:00",
+    "last_seen_at": "2026-10-18T04:54:54.390872+00:00",
     "platform": "eventbrite",
     "kind": "organizer",
     "lane": "explore",
@@ -15600,13 +15600,13 @@
       "platform_organizer_fetch",
       "eventbrite_organizer_graph"
     ],
-    "last_attempt_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_attempt_at": "2026-10-18T04:54:54.477406+00:00",
     "last_parsed_yield": 1,
-    "last_success_at": "2026-10-18T03:33:49.121717+00:00",
+    "last_success_at": "2026-10-18T04:54:54.477406+00:00",
     "consecutive_failures": 0,
     "consecutive_empty_runs": 0,
     "status": "active",
-    "next_retry_at": "2026-10-18T09:33:49.121717+00:00",
+    "next_retry_at": "2026-10-18T10:54:54.477406+00:00",
     "last_surviving_yield": 0
   },
   {
@@ -15615,7 +15615,7 @@
     "discovered_via": "reddit",
     "platform": "luma",
     "kind": "calendar",
-    "last_surviving_yield": 1,
+    "last_surviving_yield": 0,
     "first_seen_at": "2026-10-16T08:49:14.184905+00:00",
     "last_seen_at": "2026-10-18T03:33:10.126357+00:00",
     "lane": "explore",
@@ -15854,65 +15854,5 @@
       "luma_organizer_graph"
     ],
     "last_surviving_yield": 0
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/003656-0826",
-    "discovered_at": "2026-10-18T03:35:02.766854+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/003016-0826",
-    "discovered_at": "2026-10-18T03:35:02.774992+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/002905-0826",
-    "discovered_at": "2026-10-18T03:35:02.782986+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/001515-0726",
-    "discovered_at": "2026-10-18T03:35:02.791017+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/003383-0826",
-    "discovered_at": "2026-10-18T03:35:02.799186+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/003535-0826",
-    "discovered_at": "2026-10-18T03:35:02.807270+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/002312-0826",
-    "discovered_at": "2026-10-18T03:35:02.815309+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/001137-0726",
-    "discovered_at": "2026-10-18T03:35:02.823196+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/004688-0926",
-    "discovered_at": "2026-10-18T03:35:02.831051+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/005613-0926",
-    "discovered_at": "2026-10-18T03:35:02.838931+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/005551-0926",
-    "discovered_at": "2026-10-18T03:35:02.846656+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
-  },
-  {
-    "url": "https://www.queenslibrary.org/event/002128-0826",
-    "discovered_at": "2026-10-18T03:35:02.854312+00:00",
-    "discovered_via": "spa-salvage:queenslibrary.org"
   }
 ]
