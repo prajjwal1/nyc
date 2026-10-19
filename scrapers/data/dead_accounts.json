@@ -620,7 +620,7 @@
     "timeoutnewyork": {
       "failure_count": 1,
       "last_reason": "302 Found when accessing https://www.instagram.com/timeoutnewyork/",
-      "last_transient_at": "2026-10-19T04:51:51.906049+00:00"
+      "last_transient_at": "2026-10-19T09:46:15.107555+00:00"
     },
     "vitalrunclub": {
       "failure_count": 3,
@@ -6263,7 +6263,7 @@
     "timeoutamerica": {
       "failure_count": 0,
       "last_reason": "302 Found when accessing https://www.instagram.com/timeoutamerica/",
-      "last_transient_at": "2026-10-19T03:48:38.449855+00:00"
+      "last_transient_at": "2026-10-19T09:46:20.013787+00:00"
     },
     "tin_house": {
       "failure_count": 3,
@@ -6674,8 +6674,10 @@
       "reason": "repeated_failure"
     },
     "the.engagements": {
-      "failure_count": 2,
-      "last_reason": "302 Found when accessing https://www.instagram.com/the.engagements/"
+      "failure_count": 3,
+      "last_reason": "302 Found when accessing https://www.instagram.com/the.engagements/",
+      "since": "2026-10-19T09:46:18.505791+00:00",
+      "reason": "repeated_failure"
     }
   }
 }
