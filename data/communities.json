@@ -69,12 +69,12 @@
         "eventbrite:10013510321"
       ],
       "similarCommunityIds": [
+        "com_ab8259bb35a4",
         "com_28a4ec647815",
         "com_3837f308cd75",
         "com_8b837dfb5421",
         "com_36c800013ba6",
-        "com_69fc76ef0222",
-        "com_c2868164fffc"
+        "com_69fc76ef0222"
       ]
     },
     {
@@ -951,8 +951,8 @@
         "com_fe4b6663b721",
         "com_d2d455d2d6c9",
         "com_36c800013ba6",
-        "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0"
+        "com_ab8259bb35a4",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -1019,8 +1019,8 @@
         "eventbrite:17460675100"
       ],
       "similarCommunityIds": [
-        "com_3837f308cd75",
         "com_ab8259bb35a4",
+        "com_3837f308cd75",
         "com_ff2e01957665",
         "com_c58670960684",
         "com_072c9c3e12a8",
@@ -1334,11 +1334,11 @@
       ],
       "similarCommunityIds": [
         "com_9fed174eeff3",
-        "com_ab8259bb35a4",
         "com_36cb2681053d",
         "com_d2d455d2d6c9",
         "com_065dafa96d43",
-        "com_02ba15552329"
+        "com_02ba15552329",
+        "com_c58670960684"
       ]
     },
     {
@@ -1659,7 +1659,7 @@
       "name": "Arts With Lorry",
       "kind": "recurring_series",
       "tagline": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan.",
-      "description": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan. Based on 13 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "description": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan. Based on 14 observed event dates, it meets weekly on Sunday and Friday evenings.",
       "categories": [
         "other",
         "music",
@@ -1690,21 +1690,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 14
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Thursday"
+          "Friday"
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 13
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "e47efced4dd79ac6",
+        "a4adfc64f46ade14",
         "ec243eee8f4efd55",
         "802b23a455b5c2b1",
         "5ecb9f7ab4381d51"
@@ -1716,7 +1717,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 13,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -1900,7 +1901,7 @@
       "name": "UrbanGlass",
       "kind": "recurring_series",
       "tagline": "UrbanGlass is a recurring event series in fidi.",
-      "description": "UrbanGlass is a recurring event series in fidi. Based on 8 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "UrbanGlass is a recurring event series in fidi. Based on 9 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "other"
       ],
@@ -1923,7 +1924,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 4,
         "eventCount90d": 8
       },
       "schedule": {
@@ -1934,11 +1935,13 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 9
       },
       "upcomingEventIds": [
         "7061c1e78bab3a9f",
-        "962685b4c202381b"
+        "962685b4c202381b",
+        "73fc6ba0466c11ff",
+        "4ea18805d5e89564"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1947,7 +1950,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 9,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -2909,8 +2912,8 @@
         "com_02ba15552329",
         "com_3bc67889299d",
         "com_d8a5203885a9",
-        "com_f23f8820878b",
-        "com_4c3ca28533f5"
+        "com_4c3ca28533f5",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -3583,16 +3586,14 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on wellness, art in brooklyn, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on wellness, art in brooklyn, williamsburg. Based on 16 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in brooklyn, williamsburg.",
+      "description": "The New York Philosophy Club is a community club centered on art in brooklyn, williamsburg. Based on 16 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
-        "wellness",
         "art"
       ],
       "tags": [
         "other",
-        "wellness",
         "art"
       ],
       "neighborhoods": [
@@ -3601,7 +3602,7 @@
         "midtown",
         "upper east side"
       ],
-      "homeVenue": "309 Elizabeth St",
+      "homeVenue": "Dead Letter No. 9",
       "imageUrl": "https://images.lumacdn.com/event-covers/0s/44d0f824-b741-421b-b863-e1e7efc31897.jpg",
       "links": [
         {
@@ -3655,8 +3656,8 @@
         "com_9abdf9db297a",
         "com_c58670960684",
         "com_072c9c3e12a8",
-        "com_3837f308cd75",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -4233,7 +4234,7 @@
         "state": "active",
         "lastEventDate": "2026-10-19",
         "upcomingEventCount": 43,
-        "eventCount90d": 112
+        "eventCount90d": 113
       },
       "schedule": {
         "cadence": "weekly",
@@ -4278,9 +4279,9 @@
         "com_b736e77bdf93",
         "com_cb019f4e9752",
         "com_3048e331f7b6",
-        "com_f23f8820878b",
         "com_ff2e01957665",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -4545,14 +4546,14 @@
         "special",
         "music",
         "outdoors",
-        "parties"
+        "singles"
       ],
       "tags": [
         "comedy",
         "special",
         "music",
         "outdoors",
-        "parties"
+        "singles"
       ],
       "neighborhoods": [
         "east village",
@@ -4571,7 +4572,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-19",
-        "upcomingEventCount": 39,
+        "upcomingEventCount": 40,
         "eventCount90d": 220
       },
       "schedule": {
@@ -4580,23 +4581,23 @@
           "Sunday",
           "Thursday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
         "sampleSize": 72
       },
       "upcomingEventIds": [
         "bc8ee13f06ec676c",
+        "8055d7d6e8f067c3",
         "26b1dd16ae915f33",
         "b8c946ee0aad0340",
-        "8055d7d6e8f067c3",
         "b47c8b3e180d172c",
+        "f44fcb74617b0401",
         "1bceac6d94408d56",
         "9f67554d46141438",
         "e05226f02804c8e7",
         "1511b634e5c3c9f8",
         "d44312eea9bb573b",
-        "d33efb1fe545adc4",
-        "5800ffcea0e913d9"
+        "d33efb1fe545adc4"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4614,12 +4615,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
         "com_318c39363fe6",
+        "com_d8a5203885a9",
+        "com_4c3ca28533f5",
+        "com_c1410c07c4dd",
         "com_3048e331f7b6",
-        "com_7fd76dcd92f3",
-        "com_b736e77bdf93",
-        "com_b766b6de77ba"
+        "com_28a4ec647815"
       ]
     },
     {
@@ -4628,7 +4629,7 @@
       "name": "Eastville Comedy Club",
       "kind": "club",
       "tagline": "Eastville Comedy Club is a community club centered on comedy, music, special in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, music, special in east village. Based on 56 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, special in east village. Based on 57 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -4659,7 +4660,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-19",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 18,
         "eventCount90d": 79
       },
       "schedule": {
@@ -4670,7 +4671,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 56
+        "sampleSize": 57
       },
       "upcomingEventIds": [
         "c24f764731045a39",
@@ -4678,13 +4679,13 @@
         "e4b9045561bf4a17",
         "37edbd725fc7ea7d",
         "5ffb265c3cd6a693",
+        "e0dd7fec46bb07e7",
         "d053680a203ccb49",
         "26084e8c55e14b76",
         "459ff1e4bb2369ed",
         "ef25e1fad1bf9fbd",
         "b2b6d1190a0bf8a3",
-        "18972bc8241d69f7",
-        "6a0ea4f05e5a7009"
+        "18972bc8241d69f7"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -4693,7 +4694,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 56,
+        "observedDateCount": 57,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51844,7 +51845,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-19T01:56:51.037748+00:00",
+  "lastUpdated": "2026-10-19T03:52:11.768293+00:00",
   "version": 1,
   "schemaVersion": 1
 }
