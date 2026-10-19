@@ -564,7 +564,7 @@
       "name": "The Ripped Bodice BK",
       "kind": "recurring_series",
       "tagline": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn.",
-      "description": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn. Based on 29 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn. Based on 30 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
         "other",
         "books",
@@ -593,24 +593,25 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 20
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Tuesday"
+          "Sunday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 29
+        "sampleSize": 30
       },
       "upcomingEventIds": [
         "593324d9f084e2a5",
         "54e8c3b9ad8b8d45",
         "c4da7859a4242a3a",
         "5f5cc44bfc4756e7",
+        "e792b2eadca7164d",
         "cd76783fe061a1b9",
         "26aaf244c8ce69dc",
         "26f3f67f81b85c08",
@@ -624,7 +625,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 29,
+        "observedDateCount": 30,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51761,7 +51762,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-19T05:19:24.352611+00:00",
+  "lastUpdated": "2026-10-19T06:51:07.922153+00:00",
   "version": 1,
   "schemaVersion": 1
 }
