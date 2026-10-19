@@ -881,9 +881,9 @@
         "com_3bc67889299d",
         "com_feb5ce491629",
         "com_065dafa96d43",
+        "com_4459cf756c02",
         "com_9fed174eeff3",
-        "com_c58670960684",
-        "com_ab8259bb35a4"
+        "com_c58670960684"
       ]
     },
     {
@@ -2850,9 +2850,9 @@
         "com_02ba15552329",
         "com_065dafa96d43",
         "com_feb5ce491629",
+        "com_4459cf756c02",
         "com_072c9c3e12a8",
-        "com_0e403135692e",
-        "com_1466f20a9300"
+        "com_0e403135692e"
       ]
     },
     {
@@ -2999,12 +2999,85 @@
       ]
     },
     {
+      "id": "com_4459cf756c02",
+      "slug": "personal-756c02",
+      "name": "Personal",
+      "kind": "recurring_series",
+      "tagline": "Personal is a recurring event series centered on fitness in brooklyn.",
+      "description": "Personal is a recurring event series centered on fitness in brooklyn. Based on 2 observed event dates, it meets biweekly on Wednesday and Monday evenings.",
+      "categories": [
+        "fitness",
+        "other"
+      ],
+      "tags": [
+        "fitness",
+        "other"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Brooklyn Running Company",
+      "imageUrl": "https://images.lumacdn.com/uploads/t8/5775ebe0-242a-471f-8011-ef364f538331.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://brooklynrunningco.com"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Wednesday",
+          "Monday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "7426b4eb62eca3ca",
+        "fe43240443954b99"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-19",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:brooklynrunningco",
+        "luma:cal-co9pklujbzvtzt4"
+      ],
+      "similarCommunityIds": [
+        "com_3481b6750d6f",
+        "com_36c800013ba6",
+        "com_ff2e01957665",
+        "com_218b97d674a6",
+        "com_c58670960684",
+        "com_1466f20a9300"
+      ]
+    },
+    {
       "id": "com_c58670960684",
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club in brooklyn, williamsburg.",
-      "description": "The New York Philosophy Club is a community club in brooklyn, williamsburg. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club in williamsburg, brooklyn.",
+      "description": "The New York Philosophy Club is a community club in williamsburg, brooklyn. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other"
       ],
@@ -3012,11 +3085,11 @@
         "other"
       ],
       "neighborhoods": [
-        "brooklyn",
-        "williamsburg"
+        "williamsburg",
+        "brooklyn"
       ],
-      "homeVenue": "Dead Letter No. 9",
-      "imageUrl": "https://images.lumacdn.com/event-covers/0s/44d0f824-b741-421b-b863-e1e7efc31897.jpg",
+      "homeVenue": "McCarren Parkhouse",
+      "imageUrl": "https://images.lumacdn.com/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
       "links": [
         {
           "type": "luma",
@@ -3042,8 +3115,8 @@
         "sampleSize": 6
       },
       "upcomingEventIds": [
-        "d79837b2da33e13e",
-        "2ddfd0b878aaaff8"
+        "2ddfd0b878aaaff8",
+        "d79837b2da33e13e"
       ],
       "sourceAttributions": [
         "luma"
@@ -3601,8 +3674,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in brooklyn, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art in brooklyn, williamsburg. Based on 17 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in williamsburg, brooklyn.",
+      "description": "The New York Philosophy Club is a community club centered on art in williamsburg, brooklyn. Based on 17 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
         "art"
@@ -3612,13 +3685,13 @@
         "art"
       ],
       "neighborhoods": [
-        "brooklyn",
         "williamsburg",
+        "brooklyn",
         "midtown",
         "upper east side"
       ],
-      "homeVenue": "Dead Letter No. 9",
-      "imageUrl": "https://images.lumacdn.com/event-covers/0s/44d0f824-b741-421b-b863-e1e7efc31897.jpg",
+      "homeVenue": "McCarren Parkhouse",
+      "imageUrl": "https://images.lumacdn.com/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
       "links": [
         {
           "type": "luma",
@@ -3644,8 +3717,8 @@
         "sampleSize": 17
       },
       "upcomingEventIds": [
-        "d79837b2da33e13e",
         "2ddfd0b878aaaff8",
+        "d79837b2da33e13e",
         "054ede4acf3e4df0",
         "6d405e68cabbf5b8",
         "e1041e1c2682d4b1",
@@ -3728,8 +3801,8 @@
         "3b7238dae9e741b7",
         "34aa169259504b47",
         "dfdd5c3e8a7e9e69",
-        "8711715715313470",
         "1d08cb1c310cb5a0",
+        "8711715715313470",
         "8d528620d62d0683",
         "48e55aafe53728a2",
         "ad57f77b72c2a9c6",
@@ -4053,8 +4126,8 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, food in bushwick, east village.",
-      "description": "Book Club Bar is a community space centered on books, music, food in bushwick, east village. Based on 66 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, food in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, music, food in east village, bushwick. Based on 66 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
@@ -4070,12 +4143,12 @@
         "singles"
       ],
       "neighborhoods": [
-        "bushwick",
         "east village",
+        "bushwick",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
-      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/sipnscript.png?cb=1781983849",
+      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/Recurring/Screenshot_2025_01_08_180657.png?cb=1736377646",
       "links": [
         {
           "type": "bookclubbar",
@@ -4101,8 +4174,8 @@
         "sampleSize": 66
       },
       "upcomingEventIds": [
-        "45ca74a60db45547",
         "68d512fccf287a1c",
+        "45ca74a60db45547",
         "f983dd59de6b47f7",
         "420031d0d397d602",
         "c2103db85091ba2e",
@@ -4303,11 +4376,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
+        "com_4459cf756c02",
         "com_3048e331f7b6",
         "com_3837f308cd75",
         "com_eef1ca956dae",
-        "com_ebf7599ed103",
-        "com_8b837dfb5421"
+        "com_ebf7599ed103"
       ]
     },
     {
@@ -51792,7 +51865,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-19T20:15:49.451313+00:00",
+  "lastUpdated": "2026-10-19T21:45:06.370966+00:00",
   "version": 1,
   "schemaVersion": 1
 }
