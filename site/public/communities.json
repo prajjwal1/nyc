@@ -320,9 +320,9 @@
         "com_072c9c3e12a8",
         "com_7fd76dcd92f3",
         "com_e9748c1176c1",
-        "com_d2d455d2d6c9",
         "com_36cb2681053d",
-        "com_a1e1c13a75f0"
+        "com_a1e1c13a75f0",
+        "com_8b837dfb5421"
       ]
     },
     {
@@ -561,7 +561,7 @@
       "name": "The Ripped Bodice BK",
       "kind": "recurring_series",
       "tagline": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn.",
-      "description": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn. Based on 31 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "description": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn. Based on 32 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
         "other",
         "books",
@@ -590,7 +590,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-20",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 21
       },
       "schedule": {
@@ -601,7 +601,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 31
+        "sampleSize": 32
       },
       "upcomingEventIds": [
         "593324d9f084e2a5",
@@ -610,6 +610,7 @@
         "5f5cc44bfc4756e7",
         "e792b2eadca7164d",
         "cd76783fe061a1b9",
+        "81bdd78fb8087a62",
         "26aaf244c8ce69dc",
         "26f3f67f81b85c08",
         "8aea32cf95f770d8",
@@ -623,7 +624,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 31,
+        "observedDateCount": 32,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -731,17 +732,17 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy, games, theater in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, games, theater in manhattan. Based on 44 observed event dates, it meets weekly on Sunday and Saturday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy, games, theater in manhattan. Based on 45 observed event dates, it meets weekly on Sunday and Saturday evenings.",
       "categories": [
-        "comedy",
         "other",
+        "comedy",
         "games",
         "theater",
         "movies"
       ],
       "tags": [
-        "comedy",
         "other",
+        "comedy",
         "games",
         "theater",
         "movies"
@@ -762,7 +763,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-20",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 64
       },
       "schedule": {
@@ -773,7 +774,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 44
+        "sampleSize": 45
       },
       "upcomingEventIds": [
         "1f1a38818b0b0add",
@@ -781,7 +782,8 @@
         "b59fcbeac0adde5c",
         "1d0125fa49be0a2d",
         "aa6af8582d6caa98",
-        "636778b2050674f2"
+        "636778b2050674f2",
+        "f1c140cf742a32d9"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -790,7 +792,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 44,
+        "observedDateCount": 45,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -801,10 +803,10 @@
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
         "com_e9748c1176c1",
-        "com_d2d455d2d6c9",
         "com_072c9c3e12a8",
         "com_fe4b6663b721",
-        "com_5582e2e97f1a"
+        "com_5582e2e97f1a",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -1336,11 +1338,11 @@
       ],
       "similarCommunityIds": [
         "com_9fed174eeff3",
+        "com_d2d455d2d6c9",
         "com_36cb2681053d",
         "com_065dafa96d43",
         "com_02ba15552329",
-        "com_c58670960684",
-        "com_8b837dfb5421"
+        "com_c58670960684"
       ]
     },
     {
@@ -1583,8 +1585,8 @@
       "slug": "strand-bookstore-d2d6c9",
       "name": "Strand Bookstore",
       "kind": "recurring_series",
-      "tagline": "Strand Bookstore is a recurring event series centered on art in manhattan.",
-      "description": "Strand Bookstore is a recurring event series centered on art in manhattan. Based on 29 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "tagline": "Strand Bookstore is a recurring event series centered on art in manhattan, east village.",
+      "description": "Strand Bookstore is a recurring event series centered on art in manhattan, east village. Based on 30 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "other",
         "art"
@@ -1594,7 +1596,8 @@
         "art"
       ],
       "neighborhoods": [
-        "manhattan"
+        "manhattan",
+        "east village"
       ],
       "homeVenue": "Strand Bookstore",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190833002%2F1098711819093%2F1%2Foriginal.20260811-200214?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=6ab355aa098cd79c5b5ab718e22093fd",
@@ -1609,23 +1612,24 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-19",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 31
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Thursday"
+          "Tuesday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 29
+        "sampleSize": 30
       },
       "upcomingEventIds": [
         "d0f0ca67d30ca8da",
         "644bd6d6bd9bb8f6",
-        "0dc35c5951064bb6"
+        "0dc35c5951064bb6",
+        "7ac24372cbc3e20d"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1634,7 +1638,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 29,
+        "observedDateCount": 30,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1643,12 +1647,12 @@
         "eventbrite:30058841244"
       ],
       "similarCommunityIds": [
-        "com_072c9c3e12a8",
         "com_36c800013ba6",
         "com_ab8259bb35a4",
-        "com_e9748c1176c1",
+        "com_072c9c3e12a8",
+        "com_8b837dfb5421",
         "com_9abdf9db297a",
-        "com_8b837dfb5421"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1733,9 +1737,9 @@
       "similarCommunityIds": [
         "com_69fc76ef0222",
         "com_c2868164fffc",
+        "com_d2d455d2d6c9",
         "com_1466f20a9300",
         "com_9abdf9db297a",
-        "com_d2d455d2d6c9",
         "com_e9748c1176c1"
       ]
     },
@@ -2049,7 +2053,7 @@
         "com_cdd5daa67222",
         "com_0e403135692e",
         "com_ff2e01957665",
-        "com_5582e2e97f1a"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -2517,10 +2521,10 @@
       "similarCommunityIds": [
         "com_28a4ec647815",
         "com_3837f308cd75",
-        "com_d2d455d2d6c9",
         "com_072c9c3e12a8",
         "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0"
+        "com_a1e1c13a75f0",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -3194,8 +3198,8 @@
         "com_4c3ca28533f5",
         "com_7fd76dcd92f3",
         "com_a1e1c13a75f0",
-        "com_d2d455d2d6c9",
-        "com_e9748c1176c1"
+        "com_e9748c1176c1",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -51840,7 +51844,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-20T05:18:10.700181+00:00",
+  "lastUpdated": "2026-10-20T07:32:00.829156+00:00",
   "version": 1,
   "schemaVersion": 1
 }
