@@ -1486,7 +1486,7 @@
         "com_359bbb5a9a91",
         "com_386aac86bb4d",
         "com_3b104adba072",
-        "com_8ff2a593caac"
+        "com_c58670960684"
       ]
     },
     {
@@ -1884,7 +1884,7 @@
         "com_359bbb5a9a91",
         "com_386aac86bb4d",
         "com_3b104adba072",
-        "com_8ff2a593caac"
+        "com_c58670960684"
       ]
     },
     {
@@ -2511,10 +2511,10 @@
       "similarCommunityIds": [
         "com_ad50d6a81df3",
         "com_ff2e01957665",
-        "com_8ff2a593caac",
         "com_eb4226b8b4c5",
         "com_fe4b6663b721",
-        "com_072c9c3e12a8"
+        "com_072c9c3e12a8",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -3052,10 +3052,10 @@
       "similarCommunityIds": [
         "com_118a558259ea",
         "com_3481b6750d6f",
-        "com_8ff2a593caac",
         "com_359bbb5a9a91",
         "com_386aac86bb4d",
-        "com_3b104adba072"
+        "com_3b104adba072",
+        "com_c58670960684"
       ]
     },
     {
@@ -3270,76 +3270,6 @@
         "com_a1e1c13a75f0",
         "com_e9748c1176c1",
         "com_fe4b6663b721"
-      ]
-    },
-    {
-      "id": "com_8ff2a593caac",
-      "slug": "another-tomorrow-93caac",
-      "name": "Another Tomorrow",
-      "kind": "recurring_series",
-      "tagline": "Another Tomorrow is a recurring event series in soho.",
-      "description": "Another Tomorrow is a recurring event series in soho. Based on 2 observed event dates, it meets monthly on Thursday and Tuesday evenings.",
-      "categories": [
-        "other"
-      ],
-      "tags": [
-        "other"
-      ],
-      "neighborhoods": [
-        "soho"
-      ],
-      "homeVenue": "Another Tomorrow",
-      "imageUrl": "https://images.lumacdn.com/uploads/xc/75fb5795-3139-4700-8fde-a885a26c9e83.jpg",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/anothertomorrow"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-10-15",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": {
-        "cadence": "monthly",
-        "typicalDays": [
-          "Thursday",
-          "Tuesday"
-        ],
-        "typicalTime": "18:00",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [
-        "bd19b1bc22f5de72"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-10-21",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 2,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "instagram:anothertomorrow",
-        "luma:cal-jx1b0zaforl7uew"
-      ],
-      "similarCommunityIds": [
-        "com_eb4226b8b4c5",
-        "com_118a558259ea",
-        "com_3481b6750d6f",
-        "com_359bbb5a9a91",
-        "com_386aac86bb4d",
-        "com_3b104adba072"
       ]
     },
     {
@@ -4207,14 +4137,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://bookclubbar.com/events/6115420261214"
+          "url": "https://www.bookclubbar.com/events/6584820261130"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-21",
-        "upcomingEventCount": 28,
+        "upcomingEventCount": 23,
         "eventCount90d": 65
       },
       "schedule": {
@@ -4239,7 +4169,7 @@
         "c6f50540514ebf0c",
         "f83ce96a9d00bdfb",
         "a199088a564e06f4",
-        "ef8d0466bff96fbc"
+        "6a021eeceabda99c"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -4332,7 +4262,7 @@
         "2a6c886d147e120f",
         "b904de46b9ab813a",
         "4b2287f0cc456d25",
-        "cfebd33e3217e703"
+        "6dac39d99f33709a"
       ],
       "sourceAttributions": [
         "brooklyncomedy"
@@ -4610,7 +4540,7 @@
       "name": "New York Comedy Club",
       "kind": "club",
       "tagline": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 76 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 77 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -4642,7 +4572,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-21",
-        "upcomingEventCount": 46,
+        "upcomingEventCount": 52,
         "eventCount90d": 226
       },
       "schedule": {
@@ -4653,21 +4583,21 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 76
+        "sampleSize": 77
       },
       "upcomingEventIds": [
         "9f67554d46141438",
-        "cbd13c0134fe6888",
         "e05226f02804c8e7",
-        "8c096bfd6a59d821",
         "652455706ec92e70",
+        "8c096bfd6a59d821",
         "28d80576f76b4c34",
+        "d727b349f69f856a",
+        "b0c7dc5aeb04683f",
         "35515c4528f1cf67",
         "1511b634e5c3c9f8",
         "d44312eea9bb573b",
         "d6abd6ace1e7f9d1",
-        "31cf08a206777523",
-        "d33efb1fe545adc4"
+        "31cf08a206777523"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4676,7 +4606,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 76,
+        "observedDateCount": 77,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51915,7 +51845,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-21T16:07:40.986608+00:00",
+  "lastUpdated": "2026-10-21T16:56:48.558131+00:00",
   "version": 1,
   "schemaVersion": 1
 }
