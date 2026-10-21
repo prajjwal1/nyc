@@ -83,7 +83,7 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music, parties, viewings in bushwick, brooklyn.",
-      "description": "Elsewhere is a recurring event series centered on music, parties, viewings in bushwick, brooklyn. Based on 53 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music, parties, viewings in bushwick, brooklyn. Based on 54 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "music",
         "other",
@@ -108,14 +108,14 @@
         {
           "type": "eventbrite",
           "label": "View on Eventbrite",
-          "url": "https://www.eventbrite.com/o/elsewhere-105655500371"
+          "url": "https://eventbrite.com/o/105655500371"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 84
       },
       "schedule": {
@@ -126,7 +126,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 53
+        "sampleSize": 54
       },
       "upcomingEventIds": [
         "ef1067229f9ec56f",
@@ -139,7 +139,8 @@
         "536229ed73e0c4b5",
         "fecf9acf2d0579f8",
         "74e262ebe799ec81",
-        "c65ab39ef5533d68"
+        "c65ab39ef5533d68",
+        "2084ed75ab807fdd"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -148,7 +149,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 53,
+        "observedDateCount": 54,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51914,7 +51915,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-21T14:35:14.760903+00:00",
+  "lastUpdated": "2026-10-21T15:25:01.942658+00:00",
   "version": 1,
   "schemaVersion": 1
 }
