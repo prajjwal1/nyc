@@ -6,7 +6,7 @@
       "name": "Czech Center New York",
       "kind": "institutional_program",
       "tagline": "Czech Center New York is a community program centered on music, art in upper east side.",
-      "description": "Czech Center New York is a community program centered on music, art in upper east side. Based on 9 observed event dates, it meets weekly on Friday and Monday evenings.",
+      "description": "Czech Center New York is a community program centered on music, art in upper east side. Based on 10 observed event dates, it meets weekly on Friday and Monday evenings.",
       "categories": [
         "music",
         "art",
@@ -33,7 +33,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-19",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 10
       },
       "schedule": {
@@ -44,14 +44,15 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "1344ba5c98af4364",
         "2aedf21c36f591cf",
         "8f2f764ed5847b2e",
         "d0b9946b5e450a6a",
-        "dd7f883ba56f529c"
+        "dd7f883ba56f529c",
+        "15e703543eb6a264"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -60,7 +61,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1108,7 +1109,7 @@
       "name": "Books Are Magic",
       "kind": "recurring_series",
       "tagline": "Books Are Magic is a recurring event series centered on books in brooklyn.",
-      "description": "Books Are Magic is a recurring event series centered on books in brooklyn. Based on 17 observed event dates, it meets weekly on Monday and Wednesday evenings.",
+      "description": "Books Are Magic is a recurring event series centered on books in brooklyn. Based on 18 observed event dates, it meets weekly on Monday and Wednesday evenings.",
       "categories": [
         "other",
         "books"
@@ -1133,7 +1134,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-21",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 13
       },
       "schedule": {
@@ -1144,14 +1145,15 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 17
+        "sampleSize": 18
       },
       "upcomingEventIds": [
         "0db88bd83bc4f3d2",
         "9cb2b9e68acb8a17",
         "fe9866df5720e3a6",
         "202584e1f9ea58f8",
-        "1fb6a4c6341fcc3a"
+        "1fb6a4c6341fcc3a",
+        "a54358405e983564"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1160,7 +1162,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 17,
+        "observedDateCount": 18,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1249,10 +1251,10 @@
       "similarCommunityIds": [
         "com_cb019f4e9752",
         "com_14e2dae511e1",
-        "com_f8ff3d3257ed",
         "com_8d86f6f9340b",
         "com_0e403135692e",
-        "com_36c800013ba6"
+        "com_36c800013ba6",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1325,10 +1327,10 @@
       "similarCommunityIds": [
         "com_ff2e01957665",
         "com_14e2dae511e1",
-        "com_f8ff3d3257ed",
         "com_8d86f6f9340b",
         "com_0e403135692e",
-        "com_36c800013ba6"
+        "com_36c800013ba6",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1958,10 +1960,10 @@
       "similarCommunityIds": [
         "com_c1410c07c4dd",
         "com_33a530deb7aa",
+        "com_f8ff3d3257ed",
         "com_36cb2681053d",
         "com_318c39363fe6",
-        "com_b736e77bdf93",
-        "com_eef1ca956dae"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -1969,15 +1971,19 @@
       "slug": "urbanglass-3257ed",
       "name": "UrbanGlass",
       "kind": "recurring_series",
-      "tagline": "UrbanGlass is a recurring event series centered on parties in fidi.",
-      "description": "UrbanGlass is a recurring event series centered on parties in fidi. Based on 10 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "tagline": "UrbanGlass is a recurring event series centered on parties, books, art in fidi.",
+      "description": "UrbanGlass is a recurring event series centered on parties, books, art in fidi. Based on 12 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "other",
-        "parties"
+        "parties",
+        "books",
+        "art"
       ],
       "tags": [
         "other",
-        "parties"
+        "parties",
+        "books",
+        "art"
       ],
       "neighborhoods": [
         "fidi"
@@ -1995,7 +2001,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-21",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 4,
         "eventCount90d": 11
       },
       "schedule": {
@@ -2006,11 +2012,13 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "4ea18805d5e89564",
-        "509e601be21096c0"
+        "509e601be21096c0",
+        "f6e5e46d67b8a224",
+        "8714f0894e974ed7"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2019,7 +2027,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2028,12 +2036,12 @@
         "eventbrite:4279966505"
       ],
       "similarCommunityIds": [
-        "com_14e2dae511e1",
-        "com_cb019f4e9752",
-        "com_ff2e01957665",
         "com_36cb2681053d",
-        "com_359bbb5a9a91",
-        "com_386aac86bb4d"
+        "com_33a530deb7aa",
+        "com_8d86f6f9340b",
+        "com_0e403135692e",
+        "com_14e2dae511e1",
+        "com_36c800013ba6"
       ]
     },
     {
@@ -2114,10 +2122,10 @@
       "similarCommunityIds": [
         "com_14e2dae511e1",
         "com_8d86f6f9340b",
+        "com_f8ff3d3257ed",
         "com_cdd5daa67222",
         "com_d2d455d2d6c9",
-        "com_0e403135692e",
-        "com_cb019f4e9752"
+        "com_0e403135692e"
       ]
     },
     {
@@ -2502,9 +2510,9 @@
         "com_14e2dae511e1",
         "com_ad50d6a81df3",
         "com_cb019f4e9752",
-        "com_f8ff3d3257ed",
         "com_ff2e01957665",
-        "com_eb4226b8b4c5"
+        "com_eb4226b8b4c5",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2755,9 +2763,9 @@
         "com_8d86f6f9340b",
         "com_36cb2681053d",
         "com_eeb4e424a504",
+        "com_f8ff3d3257ed",
         "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0",
-        "com_b736e77bdf93"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -3188,11 +3196,11 @@
       ],
       "similarCommunityIds": [
         "com_cb019f4e9752",
-        "com_f8ff3d3257ed",
         "com_ff2e01957665",
         "com_36cb2681053d",
         "com_3b104adba072",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -3574,9 +3582,9 @@
         "com_7fd76dcd92f3",
         "com_9abdf9db297a",
         "com_ab8259bb35a4",
+        "com_f8ff3d3257ed",
         "com_cdd5daa67222",
-        "com_36cb2681053d",
-        "com_318c39363fe6"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -3707,8 +3715,8 @@
       "upcomingEventIds": [
         "6d405e68cabbf5b8",
         "e1041e1c2682d4b1",
-        "1fc4cc858194cf24",
         "40ae468fb0bd7978",
+        "1fc4cc858194cf24",
         "f5bf268774eee7ee",
         "56a73cc77e6547d7",
         "f58b6a84f214ebb3"
@@ -3787,8 +3795,8 @@
       "upcomingEventIds": [
         "34aa169259504b47",
         "b24b5e2a8fb89224",
-        "23f2fa3114160bc7",
         "dfdd5c3e8a7e9e69",
+        "23f2fa3114160bc7",
         "8711715715313470",
         "1d08cb1c310cb5a0",
         "2c0197fa95df3467",
@@ -4207,7 +4215,7 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn. Based on 68 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn. Based on 69 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -4226,7 +4234,7 @@
         "brooklyn"
       ],
       "homeVenue": "Brooklyn Comedy Collective (Eris Mainstage)",
-      "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1756082612328-395N9SY4JOFPUQY27FHL/bcc+placeholder+class.jpeg",
+      "imageUrl": "https://images.squarespace-cdn.com/content/v1/5a789921cd39c389ed01baa0/1792708809149-0XDSKZRXK76D8DEU8GCE/BCC+Class+Show+Image+Large.jpeg",
       "links": [
         {
           "type": "brooklyncomedy",
@@ -4238,7 +4246,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-22",
-        "upcomingEventCount": 42,
+        "upcomingEventCount": 44,
         "eventCount90d": 119
       },
       "schedule": {
@@ -4249,7 +4257,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 68
+        "sampleSize": 69
       },
       "upcomingEventIds": [
         "02a18711e97dc5ea",
@@ -4260,9 +4268,9 @@
         "2a6c886d147e120f",
         "b904de46b9ab813a",
         "4b2287f0cc456d25",
+        "6dac39d99f33709a",
         "cfebd33e3217e703",
         "63d614f9f2f0c1ab",
-        "6dac39d99f33709a",
         "2a21172fe68f6ce7"
       ],
       "sourceAttributions": [
@@ -4272,7 +4280,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 68,
+        "observedDateCount": 69,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -4444,8 +4452,8 @@
         "com_5582e2e97f1a",
         "com_33a530deb7aa",
         "com_a786c70979d0",
-        "com_318c39363fe6",
-        "com_55ca36db453a"
+        "com_f8ff3d3257ed",
+        "com_318c39363fe6"
       ]
     },
     {
@@ -4541,7 +4549,7 @@
       "name": "New York Comedy Club",
       "kind": "club",
       "tagline": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 78 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "description": "New York Comedy Club is a community club centered on comedy, music, special in east village, upper west side. Based on 79 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -4560,7 +4568,7 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
+      "homeVenue": "New York Comedy Club",
       "imageUrl": "/img/events/Thursday-Mic-NYCC-Comedy-Mob-973c0f7e-large-thumb.png",
       "links": [
         {
@@ -4573,8 +4581,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-22",
-        "upcomingEventCount": 48,
-        "eventCount90d": 237
+        "upcomingEventCount": 56,
+        "eventCount90d": 238
       },
       "schedule": {
         "cadence": "weekly",
@@ -4582,23 +4590,23 @@
           "Sunday",
           "Thursday"
         ],
-        "typicalTime": "20:00",
+        "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 78
+        "sampleSize": 79
       },
       "upcomingEventIds": [
         "e05226f02804c8e7",
-        "a6c85e71407697ad",
+        "d72356ee9261bcb6",
         "1cf7c6a47f143dd0",
-        "28d80576f76b4c34",
-        "614fc338b7ffc32f",
+        "a6c85e71407697ad",
         "d77447389c5a1d48",
+        "30360c9aa9cc097d",
+        "8366356ee177c4bf",
+        "614fc338b7ffc32f",
         "35515c4528f1cf67",
         "1511b634e5c3c9f8",
         "d44312eea9bb573b",
-        "d6abd6ace1e7f9d1",
-        "d33efb1fe545adc4",
-        "5800ffcea0e913d9"
+        "31cf08a206777523"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4607,11 +4615,16 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 78,
+        "observedDateCount": 79,
         "hasFirstPartyIdentity": true
       },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "53ad2c5e425a5d61",
+          "signal": "first time"
+        }
+      ],
       "aliases": [
         "url:https://newyorkcomedyclub.com"
       ],
@@ -51846,7 +51859,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-22T22:26:35.342547+00:00",
+  "lastUpdated": "2026-10-22T23:09:19.758101+00:00",
   "version": 1,
   "schemaVersion": 1
 }
