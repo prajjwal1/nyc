@@ -404,10 +404,10 @@
       "similarCommunityIds": [
         "com_b736e77bdf93",
         "com_0e403135692e",
-        "com_4a9490cb3534",
         "com_cb019f4e9752",
         "com_ff2e01957665",
-        "com_5582e2e97f1a"
+        "com_5582e2e97f1a",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -558,15 +558,19 @@
       "slug": "the-ripped-bodice-bk-cb3534",
       "name": "The Ripped Bodice BK",
       "kind": "recurring_series",
-      "tagline": "The Ripped Bodice BK is a recurring event series centered on books in brooklyn.",
-      "description": "The Ripped Bodice BK is a recurring event series centered on books in brooklyn. Based on 34 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "tagline": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn.",
+      "description": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn. Based on 34 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
         "other",
-        "books"
+        "books",
+        "celebrities",
+        "exploration"
       ],
       "tags": [
         "other",
-        "books"
+        "books",
+        "celebrities",
+        "exploration"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -627,11 +631,11 @@
       ],
       "similarCommunityIds": [
         "com_0e403135692e",
+        "com_eef1ca956dae",
         "com_8d86f6f9340b",
         "com_36c800013ba6",
         "com_cb019f4e9752",
-        "com_ff2e01957665",
-        "com_36cb2681053d"
+        "com_ff2e01957665"
       ]
     },
     {
@@ -868,7 +872,7 @@
         "com_359bbb5a9a91",
         "com_386aac86bb4d",
         "com_3b104adba072",
-        "com_d2d455d2d6c9"
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -1014,10 +1018,10 @@
       "similarCommunityIds": [
         "com_3837f308cd75",
         "com_0e403135692e",
-        "com_4a9490cb3534",
         "com_cb019f4e9752",
         "com_ff2e01957665",
-        "com_072c9c3e12a8"
+        "com_072c9c3e12a8",
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -1171,7 +1175,7 @@
         "com_8d86f6f9340b",
         "com_0e403135692e",
         "com_36c800013ba6",
-        "com_4a9490cb3534"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1180,7 +1184,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series centered on parties in brooklyn.",
-      "description": "Union Hall is a recurring event series centered on parties in brooklyn. Based on 47 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "description": "Union Hall is a recurring event series centered on parties in brooklyn. Based on 48 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
         "other",
         "parties"
@@ -1205,7 +1209,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-23",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 59
       },
       "schedule": {
@@ -1216,14 +1220,15 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 47
+        "sampleSize": 48
       },
       "upcomingEventIds": [
         "3b67482bc51c058e",
         "6933b221f1abded4",
         "4e4e25f2f6b92673",
         "9c4279aa813f32de",
-        "f240feb0138d5df8"
+        "f240feb0138d5df8",
+        "02894eafec523b16"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1232,7 +1237,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 47,
+        "observedDateCount": 48,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1246,7 +1251,7 @@
         "com_8d86f6f9340b",
         "com_0e403135692e",
         "com_36c800013ba6",
-        "com_4a9490cb3534"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1467,8 +1472,8 @@
         "com_cdd5daa67222",
         "com_ed8d42fb031d",
         "com_0e403135692e",
-        "com_4a9490cb3534",
-        "com_cb019f4e9752"
+        "com_cb019f4e9752",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -2247,10 +2252,10 @@
       "similarCommunityIds": [
         "com_a786c70979d0",
         "com_0e403135692e",
-        "com_4a9490cb3534",
         "com_eeb4e424a504",
         "com_cdd5daa67222",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -2336,21 +2341,21 @@
       "slug": "new-york-public-library-for-the-performing-arts-647815",
       "name": "New York Public Library for the Performing Arts",
       "kind": "institutional_program",
-      "tagline": "New York Public Library for the Performing Arts is a community program centered on theater, music, books in long island city, upper west side.",
-      "description": "New York Public Library for the Performing Arts is a community program centered on theater, music, books in long island city, upper west side. Based on 8 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "tagline": "New York Public Library for the Performing Arts is a community program centered on music, theater, books in long island city, upper west side.",
+      "description": "New York Public Library for the Performing Arts is a community program centered on music, theater, books in long island city, upper west side. Based on 8 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
-        "theater",
         "music",
-        "other",
+        "theater",
         "books",
-        "special"
+        "special",
+        "art"
       ],
       "tags": [
-        "theater",
         "music",
-        "other",
+        "theater",
         "books",
-        "special"
+        "special",
+        "art"
       ],
       "neighborhoods": [
         "long island city",
@@ -2406,12 +2411,12 @@
         "eventbrite:5993389089"
       ],
       "similarCommunityIds": [
-        "com_e9748c1176c1",
-        "com_7fd76dcd92f3",
         "com_318c39363fe6",
-        "com_b766b6de77ba",
-        "com_0e403135692e",
-        "com_4a9490cb3534"
+        "com_e9748c1176c1",
+        "com_33a530deb7aa",
+        "com_7fd76dcd92f3",
+        "com_eeb4e424a504",
+        "com_f23f8820878b"
       ]
     },
     {
@@ -2643,7 +2648,7 @@
         "com_d8a5203885a9",
         "com_0e403135692e",
         "com_36c800013ba6",
-        "com_4a9490cb3534"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -3996,10 +4001,10 @@
       "similarCommunityIds": [
         "com_f171cd222ca5",
         "com_0e403135692e",
-        "com_4a9490cb3534",
         "com_cdd5daa67222",
         "com_eeb4e424a504",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -4484,7 +4489,7 @@
         "com_33a530deb7aa",
         "com_a786c70979d0",
         "com_f8ff3d3257ed",
-        "com_318c39363fe6"
+        "com_28a4ec647815"
       ]
     },
     {
@@ -4565,10 +4570,10 @@
         "source:powerhousearena"
       ],
       "similarCommunityIds": [
+        "com_4a9490cb3534",
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_0e403135692e",
-        "com_4a9490cb3534",
         "com_c1410c07c4dd",
         "com_1466f20a9300"
       ]
@@ -4748,11 +4753,11 @@
       ],
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
+        "com_28a4ec647815",
         "com_f23f8820878b",
         "com_33a530deb7aa",
         "com_b8a3508a14a4",
-        "com_55ca36db453a",
-        "com_28a4ec647815"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -51889,7 +51894,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-23T07:40:54.498519+00:00",
+  "lastUpdated": "2026-10-23T07:44:14.128819+00:00",
   "version": 1,
   "schemaVersion": 1
 }
