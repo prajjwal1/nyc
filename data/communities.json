@@ -74,8 +74,8 @@
         "com_3837f308cd75",
         "com_8b837dfb5421",
         "com_36c800013ba6",
-        "com_69fc76ef0222",
-        "com_c2868164fffc"
+        "com_ad50d6a81df3",
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -233,11 +233,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
+        "com_b8a3508a14a4",
         "com_8b837dfb5421",
         "com_02b1cd673b69",
         "com_28a4ec647815",
-        "com_318c39363fe6",
-        "com_7fd76dcd92f3"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -547,10 +547,10 @@
       "similarCommunityIds": [
         "com_218b97d674a6",
         "com_4459cf756c02",
+        "com_7498ae3fdc38",
         "com_0e403135692e",
         "com_1466f20a9300",
-        "com_3048e331f7b6",
-        "com_36c800013ba6"
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -718,8 +718,8 @@
         "com_318c39363fe6",
         "com_d8a5203885a9",
         "com_a1e1c13a75f0",
-        "com_e9748c1176c1",
-        "com_4c3ca28533f5"
+        "com_69fc76ef0222",
+        "com_c2868164fffc"
       ]
     },
     {
@@ -798,10 +798,10 @@
       ],
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
-        "com_e9748c1176c1",
         "com_072c9c3e12a8",
         "com_36cb2681053d",
         "com_9fed174eeff3",
+        "com_e9748c1176c1",
         "com_fe4b6663b721"
       ]
     },
@@ -1013,12 +1013,12 @@
         "eventbrite:16901317817"
       ],
       "similarCommunityIds": [
+        "com_e9748c1176c1",
         "com_fe4b6663b721",
         "com_36c800013ba6",
         "com_ad50d6a81df3",
         "com_ab8259bb35a4",
-        "com_9fed174eeff3",
-        "com_a1e1c13a75f0"
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -1634,6 +1634,86 @@
       ]
     },
     {
+      "id": "com_b8a3508a14a4",
+      "slug": "the-hidden-jewel-box-theater-the-love-show-nyc-8a14a4",
+      "name": "The Hidden Jewel Box Theater \u2013 The Love Show NYC",
+      "kind": "recurring_series",
+      "tagline": "The Hidden Jewel Box Theater \u2013 The Love Show NYC is a recurring event series centered on comedy, special in chelsea, manhattan.",
+      "description": "The Hidden Jewel Box Theater \u2013 The Love Show NYC is a recurring event series centered on comedy, special in chelsea, manhattan. Based on 6 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "categories": [
+        "other",
+        "comedy",
+        "special"
+      ],
+      "tags": [
+        "other",
+        "comedy",
+        "special"
+      ],
+      "neighborhoods": [
+        "chelsea",
+        "manhattan",
+        "east village"
+      ],
+      "homeVenue": "625 8th Ave",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193978564%2F144673932785%2F1%2Foriginal.20260921-021549?crop=focalpoint&fit=crop&w=940&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.524&fp-y=0.494&s=1168ea780f12559d0842c03464d2fb04",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/2617805256"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-23",
+        "upcomingEventCount": 6,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Thursday"
+        ],
+        "typicalTime": "20:00",
+        "confidence": 1.0,
+        "sampleSize": 6
+      },
+      "upcomingEventIds": [
+        "c38b3660227e10be",
+        "8f4ca79e331fb623",
+        "ae270a6785b0f0c1",
+        "39fe1632fb2ee049",
+        "554b6ded77ae5037",
+        "ade1f8bd4fa52114"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-23",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 6,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:2617805256"
+      ],
+      "similarCommunityIds": [
+        "com_d2d455d2d6c9",
+        "com_8b837dfb5421",
+        "com_3048e331f7b6",
+        "com_318c39363fe6",
+        "com_36cb2681053d",
+        "com_7fd76dcd92f3"
+      ]
+    },
+    {
       "id": "com_d2d455d2d6c9",
       "slug": "strand-bookstore-d2d6c9",
       "name": "Strand Bookstore",
@@ -1781,11 +1861,11 @@
       ],
       "similarCommunityIds": [
         "com_ab8259bb35a4",
-        "com_69fc76ef0222",
-        "com_c2868164fffc",
         "com_1466f20a9300",
         "com_9abdf9db297a",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_b8a3508a14a4",
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -2169,10 +2249,10 @@
         "eventbrite:46113016283"
       ],
       "similarCommunityIds": [
-        "com_9fed174eeff3",
-        "com_7fd76dcd92f3",
         "com_69fc76ef0222",
         "com_c2868164fffc",
+        "com_9fed174eeff3",
+        "com_7fd76dcd92f3",
         "com_072c9c3e12a8",
         "com_33a530deb7aa"
       ]
@@ -2328,8 +2408,8 @@
         "com_3837f308cd75",
         "com_218b97d674a6",
         "com_8b837dfb5421",
-        "com_69fc76ef0222",
-        "com_c2868164fffc"
+        "com_0e403135692e",
+        "com_36c800013ba6"
       ]
     },
     {
@@ -2407,12 +2487,12 @@
         "eventbrite:5993389089"
       ],
       "similarCommunityIds": [
-        "com_e9748c1176c1",
         "com_318c39363fe6",
         "com_7fd76dcd92f3",
         "com_b766b6de77ba",
         "com_0e403135692e",
-        "com_69fc76ef0222"
+        "com_f23f8820878b",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2493,21 +2573,19 @@
       "slug": "the-national-arts-club-1176c1",
       "name": "The National Arts Club",
       "kind": "club",
-      "tagline": "The National Arts Club is a community club centered on food, theater, books in manhattan.",
-      "description": "The National Arts Club is a community club centered on food, theater, books in manhattan. Based on 26 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "tagline": "The National Arts Club is a community club centered on food, theater, art in manhattan.",
+      "description": "The National Arts Club is a community club centered on food, theater, art in manhattan. Based on 27 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
         "other",
         "food",
         "theater",
-        "books",
-        "special"
+        "art"
       ],
       "tags": [
         "other",
         "food",
         "theater",
-        "books",
-        "special"
+        "art"
       ],
       "neighborhoods": [
         "manhattan"
@@ -2525,7 +2603,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-23",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 20
       },
       "schedule": {
@@ -2536,7 +2614,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 26
+        "sampleSize": 27
       },
       "upcomingEventIds": [
         "247dfe5f63767c94",
@@ -2547,7 +2625,8 @@
         "eb77ff27a2e7caa1",
         "f6f2a00fbf646591",
         "517f173466053a6f",
-        "d87dfef7c8cbe614"
+        "d87dfef7c8cbe614",
+        "648340fc5d9696a1"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2556,7 +2635,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 26,
+        "observedDateCount": 27,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2565,12 +2644,12 @@
         "eventbrite:6140247955"
       ],
       "similarCommunityIds": [
-        "com_28a4ec647815",
-        "com_7fd76dcd92f3",
-        "com_a1e1c13a75f0",
-        "com_fe4b6663b721",
         "com_072c9c3e12a8",
-        "com_36cb2681053d"
+        "com_fe4b6663b721",
+        "com_3837f308cd75",
+        "com_9fed174eeff3",
+        "com_a1e1c13a75f0",
+        "com_36c800013ba6"
       ]
     },
     {
@@ -2646,8 +2725,8 @@
         "com_3837f308cd75",
         "com_b736e77bdf93",
         "com_d8a5203885a9",
-        "com_69fc76ef0222",
-        "com_c2868164fffc"
+        "com_0e403135692e",
+        "com_36c800013ba6"
       ]
     },
     {
@@ -3257,25 +3336,93 @@
       ]
     },
     {
+      "id": "com_7498ae3fdc38",
+      "slug": "personal-3fdc38",
+      "name": "Personal",
+      "kind": "recurring_series",
+      "tagline": "Personal is a recurring event series centered on art, parties, music in brooklyn, soho.",
+      "description": "Personal is a recurring event series centered on art, parties, music in brooklyn, soho. Based on 2 observed event dates, it meets biweekly on Saturday afternoons.",
+      "categories": [
+        "art",
+        "parties",
+        "music",
+        "special"
+      ],
+      "tags": [
+        "art",
+        "parties",
+        "music",
+        "special"
+      ],
+      "neighborhoods": [
+        "brooklyn",
+        "soho"
+      ],
+      "homeVenue": "56 Bogart St",
+      "imageUrl": "https://images.lumacdn.com/uploads/hb/1158d894-f369-4359-9bdd-5a4587271d1f.jpg",
+      "links": [],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Saturday"
+        ],
+        "typicalTime": "16:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "0e80aec7b812ce5d",
+        "acb57a2bf0f8784f"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-23",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:thehereandthereco",
+        "luma:cal-syuazjknttmkaol"
+      ],
+      "similarCommunityIds": [
+        "com_218b97d674a6",
+        "com_d8a5203885a9",
+        "com_ebf7599ed103",
+        "com_b766b6de77ba",
+        "com_b0e15eaab803",
+        "com_33a530deb7aa"
+      ]
+    },
+    {
       "id": "com_69fc76ef0222",
       "slug": "figma-for-education-ef0222",
       "name": "Figma for Education",
       "kind": "recurring_series",
-      "tagline": "Figma for Education is a recurring event series centered on music in chelsea, manhattan.",
-      "description": "Figma for Education is a recurring event series centered on music in chelsea, manhattan. Based on 2 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "tagline": "Figma for Education is a recurring event series centered on music in manhattan.",
+      "description": "Figma for Education is a recurring event series centered on music in manhattan. Based on 2 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
-        "other",
         "music"
       ],
       "tags": [
-        "other",
         "music"
       ],
       "neighborhoods": [
-        "chelsea",
         "manhattan"
       ],
-      "homeVenue": "Figma NYC",
+      "homeVenue": "ARTECHOUSE NYC",
       "imageUrl": "https://images.lumacdn.com/uploads/gl/4fb8dc04-3a6d-49e6-b0e8-9a3328c8e9f8.png",
       "links": [
         {
@@ -3322,11 +3469,11 @@
       ],
       "similarCommunityIds": [
         "com_c2868164fffc",
-        "com_8b837dfb5421",
-        "com_ab8259bb35a4",
+        "com_4c3ca28533f5",
         "com_9fed174eeff3",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_7fd76dcd92f3",
+        "com_33a530deb7aa",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -3334,21 +3481,18 @@
       "slug": "figma-for-education-64fffc",
       "name": "Figma for Education",
       "kind": "recurring_series",
-      "tagline": "Figma for Education is a recurring event series centered on music in chelsea, manhattan.",
-      "description": "Figma for Education is a recurring event series centered on music in chelsea, manhattan. Based on 2 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "tagline": "Figma for Education is a recurring event series centered on music in manhattan.",
+      "description": "Figma for Education is a recurring event series centered on music in manhattan. Based on 2 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
-        "other",
         "music"
       ],
       "tags": [
-        "other",
         "music"
       ],
       "neighborhoods": [
-        "chelsea",
         "manhattan"
       ],
-      "homeVenue": "Figma NYC",
+      "homeVenue": "ARTECHOUSE NYC",
       "imageUrl": "https://images.lumacdn.com/uploads/gl/4fb8dc04-3a6d-49e6-b0e8-9a3328c8e9f8.png",
       "links": [
         {
@@ -3394,11 +3538,11 @@
       ],
       "similarCommunityIds": [
         "com_69fc76ef0222",
-        "com_8b837dfb5421",
-        "com_ab8259bb35a4",
+        "com_4c3ca28533f5",
         "com_9fed174eeff3",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_7fd76dcd92f3",
+        "com_33a530deb7aa",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -3475,7 +3619,7 @@
         "com_c2868164fffc",
         "com_4c3ca28533f5",
         "com_072c9c3e12a8",
-        "com_7fd76dcd92f3"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3631,7 +3775,7 @@
         "com_33a530deb7aa",
         "com_8d86f6f9340b",
         "com_5582e2e97f1a",
-        "com_7fd76dcd92f3"
+        "com_69fc76ef0222"
       ]
     },
     {
@@ -3711,9 +3855,9 @@
         "com_9abdf9db297a",
         "com_8b837dfb5421",
         "com_3837f308cd75",
-        "com_69fc76ef0222",
-        "com_c2868164fffc",
-        "com_36c800013ba6"
+        "com_36c800013ba6",
+        "com_33a530deb7aa",
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -3765,8 +3909,8 @@
       },
       "upcomingEventIds": [
         "b24b5e2a8fb89224",
-        "23f2fa3114160bc7",
         "dfdd5c3e8a7e9e69",
+        "23f2fa3114160bc7",
         "8711715715313470",
         "1d08cb1c310cb5a0",
         "2c0197fa95df3467",
@@ -4009,10 +4153,10 @@
       "similarCommunityIds": [
         "com_b0e15eaab803",
         "com_ed8d42fb031d",
+        "com_69fc76ef0222",
         "com_7fd76dcd92f3",
-        "com_3481b6750d6f",
-        "com_4c3ca28533f5",
-        "com_33a530deb7aa"
+        "com_c2868164fffc",
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -4237,9 +4381,9 @@
         "2a6c886d147e120f",
         "b904de46b9ab813a",
         "4b2287f0cc456d25",
+        "6dac39d99f33709a",
         "cfebd33e3217e703",
         "63d614f9f2f0c1ab",
-        "6dac39d99f33709a",
         "2a21172fe68f6ce7",
         "57dda464f05cac8a",
         "f0a6d64229ed899e"
@@ -4342,9 +4486,9 @@
         "com_1466f20a9300",
         "com_4459cf756c02",
         "com_64ebabd98c5c",
+        "com_7498ae3fdc38",
         "com_3048e331f7b6",
-        "com_3837f308cd75",
-        "com_d8a5203885a9"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -4353,7 +4497,7 @@
       "name": "Liz's Book Bar",
       "kind": "community_space",
       "tagline": "Liz's Book Bar is a community space centered on books, art in carroll gardens.",
-      "description": "Liz's Book Bar is a community space centered on books, art in carroll gardens. Based on 44 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "description": "Liz's Book Bar is a community space centered on books, art in carroll gardens. Based on 45 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
         "books",
         "art"
@@ -4377,9 +4521,9 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-10-21",
+        "lastEventDate": "2026-10-22",
         "upcomingEventCount": 5,
-        "eventCount90d": 39
+        "eventCount90d": 40
       },
       "schedule": {
         "cadence": "weekly",
@@ -4389,7 +4533,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 44
+        "sampleSize": 45
       },
       "upcomingEventIds": [
         "156dc08d30a91a43",
@@ -4405,7 +4549,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 44,
+        "observedDateCount": 45,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4538,8 +4682,8 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
-      "imageUrl": "/img/comedians/images-7-8c390898-large-thumb.jpg",
+      "homeVenue": "New York Comedy Club",
+      "imageUrl": "/img/comedians/ian2-64800705-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -4551,7 +4695,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-23",
-        "upcomingEventCount": 48,
+        "upcomingEventCount": 52,
         "eventCount90d": 244
       },
       "schedule": {
@@ -4565,18 +4709,18 @@
         "sampleSize": 79
       },
       "upcomingEventIds": [
+        "d77447389c5a1d48",
         "30360c9aa9cc097d",
         "8366356ee177c4bf",
         "614fc338b7ffc32f",
-        "d77447389c5a1d48",
         "35515c4528f1cf67",
         "1511b634e5c3c9f8",
         "d44312eea9bb573b",
+        "31cf08a206777523",
         "d6abd6ace1e7f9d1",
-        "d33efb1fe545adc4",
-        "5800ffcea0e913d9",
-        "f5218de9c7257141",
-        "2ccad31166504517"
+        "9f5fd7ea9cf12ecf",
+        "04501e476a55da62",
+        "d33efb1fe545adc4"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4601,10 +4745,10 @@
       "similarCommunityIds": [
         "com_d8a5203885a9",
         "com_318c39363fe6",
+        "com_b8a3508a14a4",
         "com_7fd76dcd92f3",
         "com_4c3ca28533f5",
-        "com_28a4ec647815",
-        "com_3048e331f7b6"
+        "com_28a4ec647815"
       ]
     },
     {
@@ -4690,9 +4834,9 @@
         "com_7fd76dcd92f3",
         "com_f23f8820878b",
         "com_33a530deb7aa",
+        "com_b8a3508a14a4",
         "com_55ca36db453a",
-        "com_28a4ec647815",
-        "com_b736e77bdf93"
+        "com_28a4ec647815"
       ]
     },
     {
@@ -51829,7 +51973,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-23T02:06:36.565983+00:00",
+  "lastUpdated": "2026-10-23T03:56:28.446043+00:00",
   "version": 1,
   "schemaVersion": 1
 }
