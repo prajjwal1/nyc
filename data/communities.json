@@ -547,10 +547,10 @@
       "similarCommunityIds": [
         "com_218b97d674a6",
         "com_4459cf756c02",
-        "com_065dafa96d43",
         "com_0e403135692e",
         "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_3048e331f7b6",
+        "com_36c800013ba6"
       ]
     },
     {
@@ -718,8 +718,8 @@
         "com_318c39363fe6",
         "com_d8a5203885a9",
         "com_a1e1c13a75f0",
-        "com_4c3ca28533f5",
-        "com_36cb2681053d"
+        "com_e9748c1176c1",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -798,10 +798,10 @@
       ],
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
+        "com_e9748c1176c1",
         "com_072c9c3e12a8",
         "com_36cb2681053d",
         "com_9fed174eeff3",
-        "com_e9748c1176c1",
         "com_fe4b6663b721"
       ]
     },
@@ -1013,12 +1013,12 @@
         "eventbrite:16901317817"
       ],
       "similarCommunityIds": [
-        "com_e9748c1176c1",
         "com_fe4b6663b721",
         "com_36c800013ba6",
         "com_ad50d6a81df3",
         "com_ab8259bb35a4",
-        "com_9fed174eeff3"
+        "com_9fed174eeff3",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -2407,12 +2407,12 @@
         "eventbrite:5993389089"
       ],
       "similarCommunityIds": [
+        "com_e9748c1176c1",
         "com_318c39363fe6",
         "com_7fd76dcd92f3",
         "com_b766b6de77ba",
         "com_0e403135692e",
-        "com_69fc76ef0222",
-        "com_c2868164fffc"
+        "com_69fc76ef0222"
       ]
     },
     {
@@ -2493,19 +2493,21 @@
       "slug": "the-national-arts-club-1176c1",
       "name": "The National Arts Club",
       "kind": "club",
-      "tagline": "The National Arts Club is a community club centered on food, theater, art in manhattan.",
-      "description": "The National Arts Club is a community club centered on food, theater, art in manhattan. Based on 26 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "tagline": "The National Arts Club is a community club centered on food, theater, books in manhattan.",
+      "description": "The National Arts Club is a community club centered on food, theater, books in manhattan. Based on 26 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
       "categories": [
         "other",
         "food",
         "theater",
-        "art"
+        "books",
+        "special"
       ],
       "tags": [
         "other",
         "food",
         "theater",
-        "art"
+        "books",
+        "special"
       ],
       "neighborhoods": [
         "manhattan"
@@ -2563,12 +2565,12 @@
         "eventbrite:6140247955"
       ],
       "similarCommunityIds": [
-        "com_072c9c3e12a8",
-        "com_fe4b6663b721",
-        "com_3837f308cd75",
-        "com_9fed174eeff3",
+        "com_28a4ec647815",
+        "com_7fd76dcd92f3",
         "com_a1e1c13a75f0",
-        "com_36c800013ba6"
+        "com_fe4b6663b721",
+        "com_072c9c3e12a8",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -2887,20 +2889,21 @@
       "slug": "vrc-a96d43",
       "name": "VRC",
       "kind": "recurring_series",
-      "tagline": "VRC is a recurring event series centered on outdoors, fitness, parties in brooklyn.",
-      "description": "VRC is a recurring event series centered on outdoors, fitness, parties in brooklyn. Based on 11 observed event dates, it meets weekly on Monday and Saturday evenings.",
+      "tagline": "VRC is a recurring event series centered on fitness, outdoors, parties in brooklyn, lower east side.",
+      "description": "VRC is a recurring event series centered on fitness, outdoors, parties in brooklyn, lower east side. Based on 12 observed event dates, it meets weekly on Monday and Saturday evenings.",
       "categories": [
-        "outdoors",
         "fitness",
+        "outdoors",
         "parties"
       ],
       "tags": [
-        "outdoors",
         "fitness",
+        "outdoors",
         "parties"
       ],
       "neighborhoods": [
-        "brooklyn"
+        "brooklyn",
+        "lower east side"
       ],
       "homeVenue": "vital bk climbing gym",
       "imageUrl": null,
@@ -2915,7 +2918,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-19",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 6
       },
       "schedule": {
@@ -2926,11 +2929,12 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "be9a71b2a1c5bb68",
         "014cf3d422efc908",
+        "14fdc02f2a26e7a0",
         "4692eb27774f9aed",
         "4e683288054eb917",
         "00e728e7e868e359"
@@ -2942,7 +2946,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2952,12 +2956,12 @@
         "url:https://www.instagram.com/vitalrunclub"
       ],
       "similarCommunityIds": [
+        "com_02b1cd673b69",
         "com_cb019f4e9752",
         "com_ff2e01957665",
-        "com_02b1cd673b69",
-        "com_8d86f6f9340b",
-        "com_d8a5203885a9",
-        "com_0e403135692e"
+        "com_feb5ce491629",
+        "com_ed8d42fb031d",
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -3471,7 +3475,7 @@
         "com_c2868164fffc",
         "com_4c3ca28533f5",
         "com_072c9c3e12a8",
-        "com_e9748c1176c1"
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -3761,8 +3765,8 @@
       },
       "upcomingEventIds": [
         "b24b5e2a8fb89224",
-        "dfdd5c3e8a7e9e69",
         "23f2fa3114160bc7",
+        "dfdd5c3e8a7e9e69",
         "8711715715313470",
         "1d08cb1c310cb5a0",
         "2c0197fa95df3467",
@@ -51825,7 +51829,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-23T01:39:43.295161+00:00",
+  "lastUpdated": "2026-10-23T02:06:36.565983+00:00",
   "version": 1,
   "schemaVersion": 1
 }
