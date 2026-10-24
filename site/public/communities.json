@@ -547,8 +547,8 @@
         "com_ebf7599ed103",
         "com_33a530deb7aa",
         "com_02b1cd673b69",
-        "com_4c3ca28533f5",
-        "com_7fd76dcd92f3"
+        "com_c48aeb7c61ce",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -703,6 +703,75 @@
         "com_36c800013ba6",
         "com_cb019f4e9752",
         "com_1466f20a9300"
+      ]
+    },
+    {
+      "id": "com_2a30ebfb0079",
+      "slug": "organizer-fb0079",
+      "name": "Organizer",
+      "kind": "recurring_series",
+      "tagline": "Organizer is a recurring event series centered on art in manhattan.",
+      "description": "Organizer is a recurring event series centered on art in manhattan. Based on 2 observed event dates, it meets weekly on Friday and Saturday afternoons.",
+      "categories": [
+        "art"
+      ],
+      "tags": [
+        "art"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "260 Madison Ave",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193579552%2F3014231318590%2F1%2Foriginal.20260915-174755?crop=focalpoint&fit=crop&h=123&w=247&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=8ba32673716bf201dd1e379e6a89ffd8",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/121749151824"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-24",
+        "upcomingEventCount": 1,
+        "eventCount90d": 2
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Saturday"
+        ],
+        "typicalTime": "12:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "e3fce907ceb61893"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-24",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:121749151824"
+      ],
+      "similarCommunityIds": [
+        "com_072c9c3e12a8",
+        "com_e9748c1176c1",
+        "com_36c800013ba6",
+        "com_eeb4e424a504",
+        "com_33a530deb7aa",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -1010,12 +1079,12 @@
         "eventbrite:16901317817"
       ],
       "similarCommunityIds": [
+        "com_2a30ebfb0079",
         "com_e9748c1176c1",
         "com_fe4b6663b721",
         "com_36c800013ba6",
         "com_ad50d6a81df3",
-        "com_ab8259bb35a4",
-        "com_9fed174eeff3"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -1399,7 +1468,7 @@
         "com_36cb2681053d",
         "com_065dafa96d43",
         "com_02b1cd673b69",
-        "com_4c3ca28533f5"
+        "com_c48aeb7c61ce"
       ]
     },
     {
@@ -1870,6 +1939,74 @@
       ]
     },
     {
+      "id": "com_648449f336c0",
+      "slug": "bitches-brew-f336c0",
+      "name": "Bitches' Brew",
+      "kind": "recurring_series",
+      "tagline": "Bitches' Brew is a recurring event series centered on comedy in brooklyn.",
+      "description": "Bitches' Brew is a recurring event series centered on comedy in brooklyn. Based on 2 observed event dates, it meets weekly on Friday evenings.",
+      "categories": [
+        "comedy"
+      ],
+      "tags": [
+        "comedy"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Halyards",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F149318509%2F55951917839%2F1%2Foriginal.20200120-053137?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C800%2C400&s=894e49d38c60a0244926f1715f274056",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/32323184465"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-23",
+        "upcomingEventCount": 1,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday"
+        ],
+        "typicalTime": "20:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "fc8a5532708d6bcb"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-24",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:32323184465"
+      ],
+      "similarCommunityIds": [
+        "com_3048e331f7b6",
+        "com_d8a5203885a9",
+        "com_0e403135692e",
+        "com_1466f20a9300",
+        "com_36c800013ba6",
+        "com_3837f308cd75"
+      ]
+    },
+    {
       "id": "com_118a558259ea",
       "slug": "national-academy-of-design-8259ea",
       "name": "National Academy of Design",
@@ -2255,9 +2392,9 @@
         "com_7fd76dcd92f3",
         "com_02b1cd673b69",
         "com_9fed174eeff3",
+        "com_c48aeb7c61ce",
         "com_ed8d42fb031d",
-        "com_ebf7599ed103",
-        "com_072c9c3e12a8"
+        "com_ebf7599ed103"
       ]
     },
     {
@@ -2647,8 +2784,8 @@
         "com_7fd76dcd92f3",
         "com_28a4ec647815",
         "com_a1e1c13a75f0",
-        "com_36cb2681053d",
-        "com_9fed174eeff3"
+        "com_2a30ebfb0079",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -2723,10 +2860,10 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_3837f308cd75",
+        "com_648449f336c0",
         "com_d8a5203885a9",
         "com_9abdf9db297a",
-        "com_0e403135692e",
-        "com_36c800013ba6"
+        "com_0e403135692e"
       ]
     },
     {
@@ -3102,8 +3239,8 @@
         "com_9fed174eeff3",
         "com_feb5ce491629",
         "com_02b1cd673b69",
-        "com_072c9c3e12a8",
-        "com_0e403135692e"
+        "com_c48aeb7c61ce",
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -3179,11 +3316,11 @@
       ],
       "similarCommunityIds": [
         "com_02b1cd673b69",
+        "com_c48aeb7c61ce",
         "com_cb019f4e9752",
         "com_feb5ce491629",
         "com_ff2e01957665",
-        "com_43850d49f9e6",
-        "com_b736e77bdf93"
+        "com_43850d49f9e6"
       ]
     },
     {
@@ -3470,12 +3607,12 @@
         "luma:cal-rqreors1qvhftwc"
       ],
       "similarCommunityIds": [
+        "com_c48aeb7c61ce",
         "com_4c3ca28533f5",
         "com_065dafa96d43",
         "com_9fed174eeff3",
         "com_ed8d42fb031d",
-        "com_fe4b6663b721",
-        "com_33a530deb7aa"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -3704,6 +3841,85 @@
         "com_f8ff3d3257ed",
         "com_cdd5daa67222",
         "com_36cb2681053d"
+      ]
+    },
+    {
+      "id": "com_c48aeb7c61ce",
+      "slug": "miler-running-7c61ce",
+      "name": "MILER RUNNING",
+      "kind": "recurring_series",
+      "tagline": "MILER RUNNING is a recurring event series centered on fitness, exploration, outdoors in flatbush, manhattan.",
+      "description": "MILER RUNNING is a recurring event series centered on fitness, exploration, outdoors in flatbush, manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Friday mornings.",
+      "categories": [
+        "fitness",
+        "exploration",
+        "outdoors",
+        "music",
+        "parties"
+      ],
+      "tags": [
+        "fitness",
+        "exploration",
+        "outdoors",
+        "music",
+        "parties"
+      ],
+      "neighborhoods": [
+        "flatbush",
+        "manhattan"
+      ],
+      "homeVenue": "Grand Army Plaza",
+      "imageUrl": "https://images.lumacdn.com/uploads/6l/576fb00f-09e5-4897-a28f-b39571866817.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/milerrunning"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Friday"
+        ],
+        "typicalTime": "07:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "b4399015a5535089",
+        "f5fd9c2ba96174ed"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-24",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:milerrunning"
+      ],
+      "similarCommunityIds": [
+        "com_02b1cd673b69",
+        "com_4c3ca28533f5",
+        "com_065dafa96d43",
+        "com_9fed174eeff3",
+        "com_ed8d42fb031d",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -4332,7 +4548,7 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn. Based on 69 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn. Based on 70 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -4363,7 +4579,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-24",
-        "upcomingEventCount": 39,
+        "upcomingEventCount": 41,
         "eventCount90d": 129
       },
       "schedule": {
@@ -4374,14 +4590,14 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 69
+        "sampleSize": 70
       },
       "upcomingEventIds": [
         "b904de46b9ab813a",
         "4b2287f0cc456d25",
+        "6dac39d99f33709a",
         "cfebd33e3217e703",
         "63d614f9f2f0c1ab",
-        "6dac39d99f33709a",
         "2a21172fe68f6ce7",
         "57dda464f05cac8a",
         "f0a6d64229ed899e",
@@ -4397,7 +4613,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 69,
+        "observedDateCount": 70,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -4408,10 +4624,10 @@
       "similarCommunityIds": [
         "com_3048e331f7b6",
         "com_eef1ca956dae",
+        "com_648449f336c0",
         "com_cb019f4e9752",
         "com_1466f20a9300",
-        "com_ff2e01957665",
-        "com_3837f308cd75"
+        "com_ff2e01957665"
       ]
     },
     {
@@ -4567,10 +4783,10 @@
       "similarCommunityIds": [
         "com_f171cd222ca5",
         "com_5582e2e97f1a",
+        "com_2a30ebfb0079",
         "com_33a530deb7aa",
         "com_a786c70979d0",
-        "com_f8ff3d3257ed",
-        "com_28a4ec647815"
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -4696,7 +4912,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-24",
-        "upcomingEventCount": 47,
+        "upcomingEventCount": 48,
         "eventCount90d": 248
       },
       "schedule": {
@@ -51974,7 +52190,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-24T07:26:17.227492+00:00",
+  "lastUpdated": "2026-10-24T08:51:08.926991+00:00",
   "version": 1,
   "schemaVersion": 1
 }
