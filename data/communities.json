@@ -72,9 +72,9 @@
         "com_ab8259bb35a4",
         "com_3837f308cd75",
         "com_8b837dfb5421",
+        "com_36c800013ba6",
         "com_ad50d6a81df3",
-        "com_33a530deb7aa",
-        "com_072c9c3e12a8"
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -225,12 +225,12 @@
         "eventbrite:105704078051"
       ],
       "similarCommunityIds": [
-        "com_69fc76ef0222",
-        "com_c2868164fffc",
         "com_218b97d674a6",
         "com_1466f20a9300",
         "com_3048e331f7b6",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_d8a5203885a9",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -702,9 +702,9 @@
         "com_0e403135692e",
         "com_eef1ca956dae",
         "com_ff2e01957665",
+        "com_36c800013ba6",
         "com_cb019f4e9752",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -783,9 +783,9 @@
         "com_318c39363fe6",
         "com_a1e1c13a75f0",
         "com_e9748c1176c1",
-        "com_69fc76ef0222",
-        "com_c2868164fffc",
-        "com_4c3ca28533f5"
+        "com_4c3ca28533f5",
+        "com_9fed174eeff3",
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -794,17 +794,17 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy, movies, film in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, movies, film in manhattan. Based on 47 observed event dates, it meets weekly on Sunday and Saturday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy, movies, film in manhattan. Based on 48 observed event dates, it meets weekly on Sunday and Saturday evenings.",
       "categories": [
-        "comedy",
         "other",
+        "comedy",
         "movies",
         "film",
         "books"
       ],
       "tags": [
-        "comedy",
         "other",
+        "comedy",
         "movies",
         "film",
         "books"
@@ -825,7 +825,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-24",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 69
       },
       "schedule": {
@@ -836,7 +836,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 47
+        "sampleSize": 48
       },
       "upcomingEventIds": [
         "1d0125fa49be0a2d",
@@ -846,7 +846,8 @@
         "42de0315f82011e0",
         "b61afcb21a4d13e0",
         "946f4a63298d52b6",
-        "065bbd0c8eb68047"
+        "065bbd0c8eb68047",
+        "24c608c72a1f9ecb"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -855,7 +856,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 47,
+        "observedDateCount": 48,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -936,12 +937,12 @@
         "eventbrite:15195290641"
       ],
       "similarCommunityIds": [
+        "com_9a5c4d074e3a",
         "com_072c9c3e12a8",
         "com_9abdf9db297a",
         "com_359bbb5a9a91",
         "com_386aac86bb4d",
-        "com_3b104adba072",
-        "com_4a9490cb3534"
+        "com_3b104adba072"
       ]
     },
     {
@@ -1015,10 +1016,10 @@
       "similarCommunityIds": [
         "com_e9748c1176c1",
         "com_fe4b6663b721",
+        "com_36c800013ba6",
         "com_ad50d6a81df3",
         "com_ab8259bb35a4",
-        "com_9fed174eeff3",
-        "com_a1e1c13a75f0"
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -1029,16 +1030,18 @@
       "tagline": "gnA Studios is a recurring event series centered on art in brooklyn.",
       "description": "gnA Studios is a recurring event series centered on art in brooklyn. Based on 10 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
+        "other",
         "art"
       ],
       "tags": [
+        "other",
         "art"
       ],
       "neighborhoods": [
         "brooklyn"
       ],
       "homeVenue": "255 McKibbin",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191728251%2F58809086995%2F1%2Foriginal.20260824-030616?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=d5a93a8d2b452933c1da785f3b1bc63b",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192800055%2F58809086995%2F1%2Foriginal.20260906-022039?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=78604a15ddee6809de8e1dfdfed0224f",
       "links": [
         {
           "type": "eventbrite",
@@ -1050,8 +1053,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-24",
-        "upcomingEventCount": 1,
-        "eventCount90d": 11
+        "upcomingEventCount": 2,
+        "eventCount90d": 12
       },
       "schedule": {
         "cadence": "weekly",
@@ -1064,6 +1067,7 @@
         "sampleSize": 10
       },
       "upcomingEventIds": [
+        "64f2da849406b2c5",
         "bcb371e639e8a992"
       ],
       "sourceAttributions": [
@@ -1083,11 +1087,11 @@
       ],
       "similarCommunityIds": [
         "com_3837f308cd75",
-        "com_eeb4e424a504",
         "com_0e403135692e",
-        "com_1466f20a9300",
-        "com_3048e331f7b6",
-        "com_4a9490cb3534"
+        "com_cb019f4e9752",
+        "com_072c9c3e12a8",
+        "com_9abdf9db297a",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -1160,10 +1164,10 @@
       "similarCommunityIds": [
         "com_ff2e01957665",
         "com_4a9490cb3534",
+        "com_36c800013ba6",
         "com_cb019f4e9752",
         "com_36cb2681053d",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1315,9 +1319,9 @@
         "com_ff2e01957665",
         "com_14e2dae511e1",
         "com_0e403135692e",
+        "com_36c800013ba6",
         "com_36cb2681053d",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1626,12 +1630,12 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
+        "com_36c800013ba6",
         "com_1466f20a9300",
         "com_3048e331f7b6",
         "com_9abdf9db297a",
         "com_ab8259bb35a4",
-        "com_eef1ca956dae",
-        "com_36c800013ba6"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -1719,7 +1723,7 @@
       "name": "Strand Bookstore",
       "kind": "recurring_series",
       "tagline": "Strand Bookstore is a recurring event series in manhattan, east village.",
-      "description": "Strand Bookstore is a recurring event series in manhattan, east village. Based on 31 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Strand Bookstore is a recurring event series in manhattan, east village. Based on 32 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "other"
       ],
@@ -1743,7 +1747,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-23",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 33
       },
       "schedule": {
@@ -1754,12 +1758,13 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 31
+        "sampleSize": 32
       },
       "upcomingEventIds": [
         "0dc35c5951064bb6",
         "7ac24372cbc3e20d",
-        "2e4e35104d18b899"
+        "2e4e35104d18b899",
+        "c072570a5742a727"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1768,7 +1773,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 31,
+        "observedDateCount": 32,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2103,7 +2108,7 @@
         "com_33a530deb7aa",
         "com_0e403135692e",
         "com_14e2dae511e1",
-        "com_5582e2e97f1a"
+        "com_36c800013ba6"
       ]
     },
     {
@@ -2254,12 +2259,12 @@
         "eventbrite:46113016283"
       ],
       "similarCommunityIds": [
-        "com_69fc76ef0222",
-        "com_c2868164fffc",
         "com_7fd76dcd92f3",
         "com_9fed174eeff3",
         "com_ebf7599ed103",
-        "com_072c9c3e12a8"
+        "com_072c9c3e12a8",
+        "com_33a530deb7aa",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -2412,7 +2417,7 @@
         "com_218b97d674a6",
         "com_8b837dfb5421",
         "com_0e403135692e",
-        "com_cb019f4e9752"
+        "com_36c800013ba6"
       ]
     },
     {
@@ -2726,8 +2731,8 @@
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_0e403135692e",
-        "com_cb019f4e9752",
-        "com_ff2e01957665"
+        "com_36c800013ba6",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -2800,6 +2805,78 @@
         "com_ed8d42fb031d",
         "com_1466f20a9300",
         "com_ff2e01957665"
+      ]
+    },
+    {
+      "id": "com_9a5c4d074e3a",
+      "slug": "moma-ps1-074e3a",
+      "name": "MoMA PS1",
+      "kind": "recurring_series",
+      "tagline": "MoMA PS1 is a recurring event series centered on exploration in long island city.",
+      "description": "MoMA PS1 is a recurring event series centered on exploration in long island city. Based on 2 observed event dates, it meets biweekly on Saturday and Thursday afternoons.",
+      "categories": [
+        "exploration",
+        "other"
+      ],
+      "tags": [
+        "exploration",
+        "other"
+      ],
+      "neighborhoods": [
+        "long island city"
+      ],
+      "homeVenue": "MoMA PS1",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1196133317%2F2992765352347%2F1%2Foriginal.20261019-204020?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.558&fp-y=0.381&s=bbac402c4c16b4ee1d699d7935a73351",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/8184194121"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Saturday",
+          "Thursday"
+        ],
+        "typicalTime": "12:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "d6984cdcee2bdbd2",
+        "b48fe9f92f64361e"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-24",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:8184194121"
+      ],
+      "similarCommunityIds": [
+        "com_ad50d6a81df3",
+        "com_3481b6750d6f",
+        "com_4459cf756c02",
+        "com_072c9c3e12a8",
+        "com_118a558259ea",
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -3479,141 +3556,6 @@
       ]
     },
     {
-      "id": "com_69fc76ef0222",
-      "slug": "figma-for-education-ef0222",
-      "name": "Figma for Education",
-      "kind": "recurring_series",
-      "tagline": "Figma for Education is a recurring event series centered on music in manhattan.",
-      "description": "Figma for Education is a recurring event series centered on music in manhattan. Based on 2 observed event dates, it meets weekly on Thursday and Friday evenings.",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "ARTECHOUSE NYC",
-      "imageUrl": "https://images.lumacdn.com/uploads/gl/4fb8dc04-3a6d-49e6-b0e8-9a3328c8e9f8.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/figmaforedu"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-10-23",
-        "upcomingEventCount": 0,
-        "eventCount90d": 2
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Thursday",
-          "Friday"
-        ],
-        "typicalTime": "18:00",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-10-24",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 2,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "instagram:figma",
-        "luma:cal-thnwgyvnbo7qmbm"
-      ],
-      "similarCommunityIds": [
-        "com_c2868164fffc",
-        "com_4c3ca28533f5",
-        "com_83f64eec47de",
-        "com_7fd76dcd92f3",
-        "com_9fed174eeff3",
-        "com_ebf7599ed103"
-      ]
-    },
-    {
-      "id": "com_c2868164fffc",
-      "slug": "figma-for-education-64fffc",
-      "name": "Figma for Education",
-      "kind": "recurring_series",
-      "tagline": "Figma for Education is a recurring event series centered on music in manhattan.",
-      "description": "Figma for Education is a recurring event series centered on music in manhattan. Based on 2 observed event dates, it meets weekly on Thursday and Friday evenings.",
-      "categories": [
-        "music"
-      ],
-      "tags": [
-        "music"
-      ],
-      "neighborhoods": [
-        "manhattan"
-      ],
-      "homeVenue": "ARTECHOUSE NYC",
-      "imageUrl": "https://images.lumacdn.com/uploads/gl/4fb8dc04-3a6d-49e6-b0e8-9a3328c8e9f8.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/figmaforedu"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-10-23",
-        "upcomingEventCount": 0,
-        "eventCount90d": 2
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Thursday",
-          "Friday"
-        ],
-        "typicalTime": "18:00",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-10-24",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 2,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "luma:figmaforedu"
-      ],
-      "similarCommunityIds": [
-        "com_69fc76ef0222",
-        "com_4c3ca28533f5",
-        "com_83f64eec47de",
-        "com_7fd76dcd92f3",
-        "com_9fed174eeff3",
-        "com_ebf7599ed103"
-      ]
-    },
-    {
       "id": "com_9fed174eeff3",
       "slug": "kanso-phone-free-experiences-4eeff3",
       "name": "Kanso: Phone-Free Experiences",
@@ -3683,11 +3625,11 @@
       ],
       "similarCommunityIds": [
         "com_feb5ce491629",
-        "com_69fc76ef0222",
-        "com_c2868164fffc",
         "com_4c3ca28533f5",
         "com_072c9c3e12a8",
-        "com_7fd76dcd92f3"
+        "com_7fd76dcd92f3",
+        "com_a1e1c13a75f0",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3842,8 +3784,8 @@
         "com_33a530deb7aa",
         "com_ebf7599ed103",
         "com_5582e2e97f1a",
-        "com_69fc76ef0222",
-        "com_8d86f6f9340b"
+        "com_8d86f6f9340b",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -3923,9 +3865,9 @@
         "com_9abdf9db297a",
         "com_8b837dfb5421",
         "com_3837f308cd75",
+        "com_36c800013ba6",
         "com_33a530deb7aa",
-        "com_072c9c3e12a8",
-        "com_1466f20a9300"
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -4217,12 +4159,12 @@
         "partiful:cahd80tpfr5prooeegjy"
       ],
       "similarCommunityIds": [
-        "com_69fc76ef0222",
-        "com_c2868164fffc",
         "com_4c3ca28533f5",
         "com_3481b6750d6f",
         "com_b0e15eaab803",
-        "com_218b97d674a6"
+        "com_218b97d674a6",
+        "com_7fd76dcd92f3",
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -4443,9 +4385,9 @@
       "upcomingEventIds": [
         "b904de46b9ab813a",
         "4b2287f0cc456d25",
+        "6dac39d99f33709a",
         "cfebd33e3217e703",
         "63d614f9f2f0c1ab",
-        "6dac39d99f33709a",
         "2a21172fe68f6ce7",
         "57dda464f05cac8a",
         "f0a6d64229ed899e",
@@ -4632,9 +4574,9 @@
         "com_f171cd222ca5",
         "com_5582e2e97f1a",
         "com_33a530deb7aa",
-        "com_36c800013ba6",
         "com_a786c70979d0",
-        "com_f8ff3d3257ed"
+        "com_f8ff3d3257ed",
+        "com_28a4ec647815"
       ]
     },
     {
@@ -4760,8 +4702,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-24",
-        "upcomingEventCount": 45,
-        "eventCount90d": 246
+        "upcomingEventCount": 48,
+        "eventCount90d": 248
       },
       "schedule": {
         "cadence": "weekly",
@@ -4777,15 +4719,15 @@
         "1511b634e5c3c9f8",
         "31cf08a206777523",
         "d6abd6ace1e7f9d1",
+        "9f5fd7ea9cf12ecf",
+        "04501e476a55da62",
         "d33efb1fe545adc4",
         "5800ffcea0e913d9",
         "f5218de9c7257141",
         "2ccad31166504517",
+        "152d8f13671b72de",
         "aaac8762f6be1189",
-        "e55005ae1e16ac2d",
-        "aee70e635ad736be",
-        "186ab168f051bbe1",
-        "28dbf26319b8923c"
+        "e55005ae1e16ac2d"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -52038,7 +51980,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-24T02:06:09.530016+00:00",
+  "lastUpdated": "2026-10-24T03:52:44.600246+00:00",
   "version": 1,
   "schemaVersion": 1
 }
