@@ -84,7 +84,7 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music, food in bushwick, brooklyn.",
-      "description": "Elsewhere is a recurring event series centered on music, food in bushwick, brooklyn. Based on 55 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music, food in bushwick, brooklyn. Based on 56 observed event dates, it meets weekly on Thursday and Friday evenings.",
       "categories": [
         "music",
         "other",
@@ -112,7 +112,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 90
       },
       "schedule": {
@@ -123,7 +123,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 55
+        "sampleSize": 56
       },
       "upcomingEventIds": [
         "2e8ddbf24bc9b71f",
@@ -133,6 +133,7 @@
         "74e262ebe799ec81",
         "465381b7a64b6352",
         "4f120fa7fb694e5a",
+        "48ffca0556bac444",
         "c65ab39ef5533d68",
         "2084ed75ab807fdd"
       ],
@@ -143,7 +144,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 55,
+        "observedDateCount": 56,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1179,7 +1180,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series in brooklyn.",
-      "description": "Union Hall is a recurring event series in brooklyn. Based on 50 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "description": "Union Hall is a recurring event series in brooklyn. Based on 51 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
         "other"
       ],
@@ -1202,7 +1203,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 7,
         "eventCount90d": 62
       },
       "schedule": {
@@ -1213,14 +1214,16 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 50
+        "sampleSize": 51
       },
       "upcomingEventIds": [
         "f240feb0138d5df8",
         "02894eafec523b16",
         "6e05c18dbf98c6a4",
         "6fc734d170663ad3",
-        "8308a303a770ef1a"
+        "8308a303a770ef1a",
+        "a4f3dd755ad5c72b",
+        "04c893750a1b4d30"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1229,7 +1232,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 50,
+        "observedDateCount": 51,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51753,7 +51756,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-25T10:08:25.200644+00:00",
+  "lastUpdated": "2026-10-25T11:49:06.259741+00:00",
   "version": 1,
   "schemaVersion": 1
 }
