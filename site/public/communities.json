@@ -615,9 +615,9 @@
         "com_218b97d674a6",
         "com_4459cf756c02",
         "com_b736e77bdf93",
-        "com_7498ae3fdc38",
         "com_0e403135692e",
-        "com_1466f20a9300"
+        "com_1466f20a9300",
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -766,9 +766,9 @@
         "com_36c800013ba6",
         "com_072c9c3e12a8",
         "com_e9748c1176c1",
+        "com_ab8259bb35a4",
         "com_eeb4e424a504",
-        "com_33a530deb7aa",
-        "com_ab8259bb35a4"
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -857,17 +857,17 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy, movies, film in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, movies, film in manhattan. Based on 48 observed event dates, it meets weekly on Sunday and Saturday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy, movies, film in manhattan. Based on 49 observed event dates, it meets weekly on Sunday and Saturday evenings.",
       "categories": [
-        "other",
         "comedy",
+        "other",
         "movies",
         "film",
         "books"
       ],
       "tags": [
-        "other",
         "comedy",
+        "other",
         "movies",
         "film",
         "books"
@@ -888,7 +888,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 72
       },
       "schedule": {
@@ -899,7 +899,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 48
+        "sampleSize": 49
       },
       "upcomingEventIds": [
         "f1c140cf742a32d9",
@@ -907,7 +907,8 @@
         "b61afcb21a4d13e0",
         "946f4a63298d52b6",
         "065bbd0c8eb68047",
-        "24c608c72a1f9ecb"
+        "24c608c72a1f9ecb",
+        "178f6ed9d0158385"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -916,7 +917,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 48,
+        "observedDateCount": 49,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1074,11 +1075,11 @@
         "eventbrite:16901317817"
       ],
       "similarCommunityIds": [
+        "com_ab8259bb35a4",
         "com_2a30ebfb0079",
         "com_e9748c1176c1",
         "com_fe4b6663b721",
         "com_ad50d6a81df3",
-        "com_ab8259bb35a4",
         "com_7fd76dcd92f3"
       ]
     },
@@ -1144,9 +1145,9 @@
         "com_2a30ebfb0079",
         "com_3837f308cd75",
         "com_b736e77bdf93",
+        "com_ab8259bb35a4",
         "com_eeb4e424a504",
-        "com_0e403135692e",
-        "com_1466f20a9300"
+        "com_0e403135692e"
       ]
     },
     {
@@ -1692,8 +1693,8 @@
         "com_3048e331f7b6",
         "com_b766b6de77ba",
         "com_9abdf9db297a",
-        "com_ab8259bb35a4",
-        "com_eef1ca956dae"
+        "com_eef1ca956dae",
+        "com_36c800013ba6"
       ]
     },
     {
@@ -1925,10 +1926,10 @@
         "eventbrite:31025401131"
       ],
       "similarCommunityIds": [
-        "com_ab8259bb35a4",
         "com_1466f20a9300",
         "com_9abdf9db297a",
         "com_3837f308cd75",
+        "com_ab8259bb35a4",
         "com_b8a3508a14a4",
         "com_072c9c3e12a8"
       ]
@@ -3606,76 +3607,6 @@
       ]
     },
     {
-      "id": "com_7498ae3fdc38",
-      "slug": "personal-3fdc38",
-      "name": "Personal",
-      "kind": "recurring_series",
-      "tagline": "Personal is a recurring event series centered on art, parties, music in brooklyn, soho.",
-      "description": "Personal is a recurring event series centered on art, parties, music in brooklyn, soho. Based on 2 observed event dates, it meets biweekly on Saturday afternoons.",
-      "categories": [
-        "art",
-        "parties",
-        "music",
-        "special"
-      ],
-      "tags": [
-        "art",
-        "parties",
-        "music",
-        "special"
-      ],
-      "neighborhoods": [
-        "brooklyn",
-        "soho"
-      ],
-      "homeVenue": "56 Bogart St",
-      "imageUrl": "https://images.lumacdn.com/uploads/hb/1158d894-f369-4359-9bdd-5a4587271d1f.jpg",
-      "links": [],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-10-24",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": {
-        "cadence": "biweekly",
-        "typicalDays": [
-          "Saturday"
-        ],
-        "typicalTime": "16:00",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [
-        "acb57a2bf0f8784f"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-10-25",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 2,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "instagram:thehereandthereco",
-        "luma:cal-syuazjknttmkaol"
-      ],
-      "similarCommunityIds": [
-        "com_218b97d674a6",
-        "com_d8a5203885a9",
-        "com_b0e15eaab803",
-        "com_33a530deb7aa",
-        "com_3837f308cd75",
-        "com_28a4ec647815"
-      ]
-    },
-    {
       "id": "com_9fed174eeff3",
       "slug": "kanso-phone-free-experiences-4eeff3",
       "name": "Kanso: Phone-Free Experiences",
@@ -3827,10 +3758,10 @@
       "similarCommunityIds": [
         "com_55ca36db453a",
         "com_9abdf9db297a",
-        "com_ab8259bb35a4",
         "com_f8ff3d3257ed",
         "com_cdd5daa67222",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -3917,22 +3848,20 @@
       "slug": "nyc-backgammon-club-aab803",
       "name": "NYC Backgammon Club",
       "kind": "club",
-      "tagline": "NYC Backgammon Club is a community club centered on games, parties, music in soho.",
-      "description": "NYC Backgammon Club is a community club centered on games, parties, music in soho. Based on 10 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "NYC Backgammon Club is a community club centered on games, music in soho.",
+      "description": "NYC Backgammon Club is a community club centered on games, music in soho. Based on 10 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "games",
-        "parties",
         "music"
       ],
       "tags": [
         "games",
-        "parties",
         "music"
       ],
       "neighborhoods": [
         "soho"
       ],
-      "homeVenue": "TwoFortyThirty",
+      "homeVenue": "Cafe Landwer",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/s1/8105901b-bfd3-4966-a8a0-0ffac59a43ce.jpg",
       "links": [
         {
@@ -3979,12 +3908,12 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
-        "com_ed8d42fb031d",
-        "com_33a530deb7aa",
         "com_ebf7599ed103",
-        "com_02b1cd673b69",
-        "com_5582e2e97f1a",
-        "com_55ca36db453a"
+        "com_ed8d42fb031d",
+        "com_4c3ca28533f5",
+        "com_1466f20a9300",
+        "com_3048e331f7b6",
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -3992,25 +3921,23 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, music in upper east side, manhattan.",
-      "description": "The New York Philosophy Club is a community club centered on art, music in upper east side, manhattan. Based on 19 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side. Based on 19 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
-        "art",
-        "music"
+        "art"
       ],
       "tags": [
         "other",
-        "art",
-        "music"
+        "art"
       ],
       "neighborhoods": [
-        "upper east side",
         "manhattan",
+        "upper east side",
         "williamsburg",
         "midtown"
       ],
-      "homeVenue": "The Metropolitan Museum of Art",
+      "homeVenue": "167 E Broadway",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/j6/ec965354-a26e-4e0a-aa3e-efc764458e09.png",
       "links": [
         {
@@ -4060,12 +3987,12 @@
         "luma:philosophy"
       ],
       "similarCommunityIds": [
-        "com_9abdf9db297a",
-        "com_8b837dfb5421",
-        "com_3837f308cd75",
-        "com_33a530deb7aa",
         "com_072c9c3e12a8",
-        "com_1466f20a9300"
+        "com_9abdf9db297a",
+        "com_2a30ebfb0079",
+        "com_3b104adba072",
+        "com_d2d455d2d6c9",
+        "com_8b837dfb5421"
       ]
     },
     {
@@ -4283,10 +4210,10 @@
         "partiful:cahd80tpfr5prooeegjy"
       ],
       "similarCommunityIds": [
+        "com_b0e15eaab803",
         "com_ed8d42fb031d",
         "com_4c3ca28533f5",
         "com_3481b6750d6f",
-        "com_b0e15eaab803",
         "com_218b97d674a6",
         "com_7fd76dcd92f3"
       ]
@@ -4617,8 +4544,8 @@
         "com_83f64eec47de",
         "com_4459cf756c02",
         "com_64ebabd98c5c",
-        "com_7498ae3fdc38",
-        "com_3048e331f7b6"
+        "com_3048e331f7b6",
+        "com_ebf7599ed103"
       ]
     },
     {
@@ -4823,7 +4750,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 42,
+        "upcomingEventCount": 43,
         "eventCount90d": 257
       },
       "schedule": {
@@ -4846,9 +4773,9 @@
         "e55005ae1e16ac2d",
         "aee70e635ad736be",
         "186ab168f051bbe1",
+        "28dbf26319b8923c",
         "79edf11224d842ff",
-        "e22799e6d03c2de8",
-        "243ca7772c948fc8"
+        "e22799e6d03c2de8"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -52101,7 +52028,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-25T01:21:21.562368+00:00",
+  "lastUpdated": "2026-10-25T03:49:53.125897+00:00",
   "version": 1,
   "schemaVersion": 1
 }
