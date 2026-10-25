@@ -70,9 +70,9 @@
         "eventbrite:10013510321"
       ],
       "similarCommunityIds": [
-        "com_8b837dfb5421",
         "com_ab8259bb35a4",
         "com_3837f308cd75",
+        "com_8b837dfb5421",
         "com_1466f20a9300",
         "com_ad50d6a81df3",
         "com_33a530deb7aa"
@@ -296,9 +296,9 @@
         "com_43850d49f9e6",
         "com_b8a3508a14a4",
         "com_7fd76dcd92f3",
+        "com_8b837dfb5421",
         "com_318c39363fe6",
-        "com_d8a5203885a9",
-        "com_e9748c1176c1"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -306,20 +306,20 @@
       "slug": "ciao-evento-63b721",
       "name": "Ciao Evento",
       "kind": "recurring_series",
-      "tagline": "Ciao Evento is a recurring event series centered on parties, dance, food in manhattan.",
-      "description": "Ciao Evento is a recurring event series centered on parties, dance, food in manhattan. Based on 22 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "tagline": "Ciao Evento is a recurring event series centered on parties, food, dance in manhattan.",
+      "description": "Ciao Evento is a recurring event series centered on parties, food, dance in manhattan. Based on 23 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "parties",
         "other",
-        "dance",
         "food",
+        "dance",
         "exploration"
       ],
       "tags": [
         "parties",
         "other",
-        "dance",
         "food",
+        "dance",
         "exploration"
       ],
       "neighborhoods": [
@@ -338,7 +338,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 10,
         "eventCount90d": 19
       },
       "schedule": {
@@ -349,17 +349,19 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 22
+        "sampleSize": 23
       },
       "upcomingEventIds": [
         "7c77b3ab9aa8da2a",
         "e75b64f363381805",
         "90a6380f02205bfb",
         "88d0e8f1ca3878e4",
+        "51a22660bab2a9f7",
         "c4b0e9d8a80a2443",
         "43caa9986bf5bbea",
         "533787f64b4b462d",
-        "4ef4882e5cdfda64"
+        "4ef4882e5cdfda64",
+        "feb558a46507ca5b"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -368,7 +370,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 22,
+        "observedDateCount": 23,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -862,7 +864,7 @@
         "com_33a530deb7aa",
         "com_9fed174eeff3",
         "com_5582e2e97f1a",
-        "com_e9748c1176c1"
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -1167,8 +1169,8 @@
         "com_36cb2681053d",
         "com_4a9490cb3534",
         "com_8d86f6f9340b",
-        "com_f8ff3d3257ed",
-        "com_359bbb5a9a91"
+        "com_359bbb5a9a91",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -1554,9 +1556,9 @@
         "com_b766b6de77ba",
         "com_1466f20a9300",
         "com_3048e331f7b6",
-        "com_8b837dfb5421",
         "com_9abdf9db297a",
-        "com_b736e77bdf93"
+        "com_b736e77bdf93",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -1633,8 +1635,8 @@
         "com_3048e331f7b6",
         "com_d2d455d2d6c9",
         "com_f23f8820878b",
-        "com_7fd76dcd92f3",
-        "com_8b837dfb5421"
+        "com_8b837dfb5421",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -1715,23 +1717,27 @@
       "slug": "arts-with-lorry-fb5421",
       "name": "Arts With Lorry",
       "kind": "recurring_series",
-      "tagline": "Arts With Lorry is a recurring event series centered on art, music in chelsea.",
-      "description": "Arts With Lorry is a recurring event series centered on art, music in chelsea. Based on 16 observed event dates, it meets weekly on Sunday and Thursday afternoons.",
+      "tagline": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan.",
+      "description": "Arts With Lorry is a recurring event series centered on music, dance, art in chelsea, manhattan. Based on 17 observed event dates, it meets weekly on Sunday and Thursday afternoons.",
       "categories": [
         "other",
-        "art",
-        "music"
+        "music",
+        "dance",
+        "art"
       ],
       "tags": [
         "other",
-        "art",
-        "music"
+        "music",
+        "dance",
+        "art"
       ],
       "neighborhoods": [
-        "chelsea"
+        "chelsea",
+        "manhattan",
+        "east village"
       ],
       "homeVenue": "520 8th Ave",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F705854349%2F106881732327%2F1%2Foriginal.jpg?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=32744962be5e1a8eb2ecb6964018e3e5",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F705842189%2F106881732327%2F1%2Foriginal.jpg?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=a64cdfcc05ee854a480b2c14b95f6ca6",
       "links": [
         {
           "type": "eventbrite",
@@ -1743,8 +1749,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 4,
-        "eventCount90d": 19
+        "upcomingEventCount": 6,
+        "eventCount90d": 20
       },
       "schedule": {
         "cadence": "weekly",
@@ -1754,11 +1760,13 @@
         ],
         "typicalTime": "16:00",
         "confidence": 1.0,
-        "sampleSize": 16
+        "sampleSize": 17
       },
       "upcomingEventIds": [
+        "7f0483cf8d0023b4",
         "9b115d0504c210f9",
         "aecb581ff8a93aa9",
+        "d57fdaae248dbf8b",
         "802b23a455b5c2b1",
         "5ecb9f7ab4381d51"
       ],
@@ -1769,7 +1777,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 16,
+        "observedDateCount": 17,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -1785,10 +1793,10 @@
       "similarCommunityIds": [
         "com_9abdf9db297a",
         "com_3837f308cd75",
-        "com_1466f20a9300",
         "com_ab8259bb35a4",
         "com_072c9c3e12a8",
-        "com_3048e331f7b6"
+        "com_d2d455d2d6c9",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2009,11 +2017,11 @@
       ],
       "similarCommunityIds": [
         "com_33a530deb7aa",
+        "com_f8ff3d3257ed",
         "com_318c39363fe6",
         "com_c1410c07c4dd",
         "com_28a4ec647815",
-        "com_3837f308cd75",
-        "com_f8ff3d3257ed"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -2022,18 +2030,20 @@
       "name": "UrbanGlass",
       "kind": "recurring_series",
       "tagline": "UrbanGlass is a recurring event series centered on parties, books, art in fidi.",
-      "description": "UrbanGlass is a recurring event series centered on parties, books, art in fidi. Based on 12 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "UrbanGlass is a recurring event series centered on parties, books, art in fidi. Based on 13 observed event dates, it meets weekly on Sunday and Friday evenings.",
       "categories": [
         "parties",
         "other",
         "books",
-        "art"
+        "art",
+        "music"
       ],
       "tags": [
         "parties",
         "other",
         "books",
-        "art"
+        "art",
+        "music"
       ],
       "neighborhoods": [
         "fidi"
@@ -2051,23 +2061,24 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 13
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Tuesday"
+          "Friday"
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 13
       },
       "upcomingEventIds": [
         "509e601be21096c0",
         "f6e5e46d67b8a224",
-        "8714f0894e974ed7"
+        "8714f0894e974ed7",
+        "eede0ffb35cdd6cf"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2076,7 +2087,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 13,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2085,12 +2096,12 @@
         "eventbrite:4279966505"
       ],
       "similarCommunityIds": [
-        "com_36cb2681053d",
-        "com_ff2e01957665",
         "com_33a530deb7aa",
-        "com_0e403135692e",
-        "com_14e2dae511e1",
-        "com_5582e2e97f1a"
+        "com_55ca36db453a",
+        "com_a1e1c13a75f0",
+        "com_36cb2681053d",
+        "com_9abdf9db297a",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -2172,9 +2183,9 @@
         "com_ff2e01957665",
         "com_a1e1c13a75f0",
         "com_14e2dae511e1",
-        "com_f8ff3d3257ed",
         "com_cdd5daa67222",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_0e403135692e"
       ]
     },
     {
@@ -2267,8 +2278,8 @@
         "east village",
         "carroll gardens"
       ],
-      "homeVenue": "Spritzenhaus33",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192359509%2F1075722119863%2F1%2Foriginal.20260901-124929?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=19a75b9edadc08f5b225d71a5251a243",
+      "homeVenue": "Cherry on Top",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192359926%2F1075722119863%2F1%2Foriginal.20260901-125429?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=5d1e982251efbf17768072ab1e3060a3",
       "links": [
         {
           "type": "eventbrite",
@@ -2294,8 +2305,8 @@
         "sampleSize": 17
       },
       "upcomingEventIds": [
-        "309caf45f972f012",
         "dd0f1aeeb7680ccd",
+        "309caf45f972f012",
         "923376ba3ef94869",
         "d7adf92d53ec2b64",
         "c8589844c81f375b",
@@ -2356,7 +2367,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 87
       },
       "schedule": {
@@ -2375,7 +2386,8 @@
         "841234314d789475",
         "e5ec810caf95f604",
         "6a93fd1198d46bc7",
-        "320902d56fcd9cd4"
+        "320902d56fcd9cd4",
+        "33d5f56087d1d19d"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2478,7 +2490,7 @@
         "com_55ca36db453a",
         "com_e9748c1176c1",
         "com_eeb4e424a504",
-        "com_8b837dfb5421"
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -2944,7 +2956,7 @@
         "com_36cb2681053d",
         "com_ff2e01957665",
         "com_eeb4e424a504",
-        "com_f8ff3d3257ed"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -3607,10 +3619,10 @@
       ],
       "similarCommunityIds": [
         "com_55ca36db453a",
+        "com_f8ff3d3257ed",
         "com_a1e1c13a75f0",
         "com_9abdf9db297a",
         "com_28a4ec647815",
-        "com_f8ff3d3257ed",
         "com_cdd5daa67222"
       ]
     },
@@ -3763,7 +3775,7 @@
         "com_1466f20a9300",
         "com_4c3ca28533f5",
         "com_3048e331f7b6",
-        "com_8b837dfb5421"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -3839,8 +3851,8 @@
       "similarCommunityIds": [
         "com_072c9c3e12a8",
         "com_9abdf9db297a",
-        "com_8b837dfb5421",
         "com_d2d455d2d6c9",
+        "com_8b837dfb5421",
         "com_14e2dae511e1",
         "com_359bbb5a9a91"
       ]
@@ -4131,7 +4143,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 36,
+        "upcomingEventCount": 37,
         "eventCount90d": 133
       },
       "schedule": {
@@ -4338,7 +4350,7 @@
         "com_28a4ec647815",
         "com_33a530deb7aa",
         "com_a786c70979d0",
-        "com_f8ff3d3257ed"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -51741,7 +51753,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-25T06:19:46.395450+00:00",
+  "lastUpdated": "2026-10-25T09:08:12.292944+00:00",
   "version": 1,
   "schemaVersion": 1
 }
