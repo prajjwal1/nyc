@@ -3102,7 +3102,7 @@
       "name": "VRC",
       "kind": "recurring_series",
       "tagline": "VRC is a recurring event series centered on fitness, outdoors, parties in lower east side.",
-      "description": "VRC is a recurring event series centered on fitness, outdoors, parties in lower east side. Based on 12 observed event dates, it meets weekly on Monday and Saturday evenings.",
+      "description": "VRC is a recurring event series centered on fitness, outdoors, parties in lower east side. Based on 13 observed event dates, it meets weekly on Monday and Saturday evenings.",
       "categories": [
         "fitness",
         "outdoors",
@@ -3129,7 +3129,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 8
       },
       "schedule": {
@@ -3140,14 +3140,15 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 13
       },
       "upcomingEventIds": [
         "014cf3d422efc908",
         "14fdc02f2a26e7a0",
         "4692eb27774f9aed",
         "4e683288054eb917",
-        "00e728e7e868e359"
+        "00e728e7e868e359",
+        "0d2743ec73c39312"
       ],
       "sourceAttributions": [
         "instagram"
@@ -3156,7 +3157,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 13,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51975,7 +51976,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-26T23:09:11.359345+00:00",
+  "lastUpdated": "2026-10-26T23:11:37.276901+00:00",
   "version": 1,
   "schemaVersion": 1
 }
