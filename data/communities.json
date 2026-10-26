@@ -6,7 +6,7 @@
       "name": "Czech Center New York",
       "kind": "institutional_program",
       "tagline": "Czech Center New York is a community program centered on music in upper east side.",
-      "description": "Czech Center New York is a community program centered on music in upper east side. Based on 11 observed event dates, it meets weekly on Friday and Sunday evenings.",
+      "description": "Czech Center New York is a community program centered on music in upper east side. Based on 12 observed event dates, it meets weekly on Monday and Friday evenings.",
       "categories": [
         "music",
         "other"
@@ -31,22 +31,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 12
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Friday",
-          "Sunday"
+          "Monday",
+          "Friday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "2aedf21c36f591cf",
         "8f2f764ed5847b2e",
+        "d7d52d79c9ef4989",
         "d0b9946b5e450a6a",
         "dd7f883ba56f529c",
         "15e703543eb6a264"
@@ -58,7 +59,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -68,8 +69,8 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
-        "com_8b837dfb5421",
         "com_ad50d6a81df3",
+        "com_8b837dfb5421",
         "com_a1e1c13a75f0",
         "com_b766b6de77ba",
         "com_c58670960684"
@@ -153,10 +154,10 @@
       "similarCommunityIds": [
         "com_3837f308cd75",
         "com_1466f20a9300",
-        "com_8b837dfb5421",
         "com_9abdf9db297a",
         "com_359bbb5a9a91",
-        "com_cb019f4e9752"
+        "com_cb019f4e9752",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -292,11 +293,11 @@
       ],
       "similarCommunityIds": [
         "com_43850d49f9e6",
+        "com_8b837dfb5421",
         "com_b8a3508a14a4",
         "com_7fd76dcd92f3",
         "com_318c39363fe6",
-        "com_d8a5203885a9",
-        "com_e9748c1176c1"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -305,18 +306,18 @@
       "name": "Ciao Evento",
       "kind": "recurring_series",
       "tagline": "Ciao Evento is a recurring event series centered on parties, food, dance in manhattan.",
-      "description": "Ciao Evento is a recurring event series centered on parties, food, dance in manhattan. Based on 23 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "description": "Ciao Evento is a recurring event series centered on parties, food, dance in manhattan. Based on 24 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "parties",
-        "food",
         "other",
+        "food",
         "dance",
         "exploration"
       ],
       "tags": [
         "parties",
-        "food",
         "other",
+        "food",
         "dance",
         "exploration"
       ],
@@ -336,7 +337,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 20
       },
       "schedule": {
@@ -347,7 +348,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 23
+        "sampleSize": 24
       },
       "upcomingEventIds": [
         "e75b64f363381805",
@@ -356,6 +357,7 @@
         "51a22660bab2a9f7",
         "c4b0e9d8a80a2443",
         "43caa9986bf5bbea",
+        "9c8249e1c49660c6",
         "533787f64b4b462d",
         "4ef4882e5cdfda64",
         "feb558a46507ca5b"
@@ -367,7 +369,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 23,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -390,17 +392,17 @@
       "name": "The Twisted Spine",
       "kind": "recurring_series",
       "tagline": "The Twisted Spine is a recurring event series centered on books, games, parties in brooklyn, midtown.",
-      "description": "The Twisted Spine is a recurring event series centered on books, games, parties in brooklyn, midtown. Based on 25 observed event dates, it meets weekly on Monday and Wednesday evenings.",
+      "description": "The Twisted Spine is a recurring event series centered on books, games, parties in brooklyn, midtown. Based on 26 observed event dates, it meets weekly on Monday and Wednesday evenings.",
       "categories": [
-        "books",
         "other",
+        "books",
         "games",
         "parties",
         "movies"
       ],
       "tags": [
-        "books",
         "other",
+        "books",
         "games",
         "parties",
         "movies"
@@ -422,7 +424,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 16
       },
       "schedule": {
@@ -433,7 +435,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 25
+        "sampleSize": 26
       },
       "upcomingEventIds": [
         "383d75129033cd93",
@@ -446,7 +448,8 @@
         "b7a05828f9b9d8ed",
         "b1a707a1d57c222f",
         "4eba90a3796641c9",
-        "536aea25ff954bbf"
+        "536aea25ff954bbf",
+        "01fb1bc90609e927"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -455,7 +458,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 25,
+        "observedDateCount": 26,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -811,7 +814,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 73
       },
       "schedule": {
@@ -830,6 +833,7 @@
         "24c608c72a1f9ecb",
         "178f6ed9d0158385",
         "aedf7977abbb0519",
+        "7767799c159539c2",
         "017a32f112684171"
       ],
       "sourceAttributions": [
@@ -852,8 +856,8 @@
         "com_9fed174eeff3",
         "com_1466f20a9300",
         "com_3048e331f7b6",
-        "com_8b837dfb5421",
-        "com_9abdf9db297a"
+        "com_9abdf9db297a",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -1242,16 +1246,18 @@
       "slug": "museum-of-reclaimed-urban-space-491629",
       "name": "Museum of Reclaimed Urban Space",
       "kind": "institutional_program",
-      "tagline": "Museum of Reclaimed Urban Space is a community program centered on outdoors, fitness in manhattan, east village.",
-      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, fitness in manhattan, east village. Based on 22 observed event dates, it meets weekly on Wednesday and Thursday mornings.",
+      "tagline": "Museum of Reclaimed Urban Space is a community program centered on outdoors, wellness, fitness in manhattan, east village.",
+      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, wellness, fitness in manhattan, east village. Based on 23 observed event dates, it meets weekly on Thursday and Wednesday mornings.",
       "categories": [
         "other",
         "outdoors",
+        "wellness",
         "fitness"
       ],
       "tags": [
         "other",
         "outdoors",
+        "wellness",
         "fitness"
       ],
       "neighborhoods": [
@@ -1259,8 +1265,8 @@
         "east village",
         "williamsburg"
       ],
-      "homeVenue": "Union Square Park",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190621854%2F280848866130%2F1%2Foriginal.20260808-202452?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=1dc6dada32e8d2f6e08a89532e23e8b0",
+      "homeVenue": "Time's Up! Bike Cooperative",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190389972%2F280848866130%2F1%2Foriginal.20260805-171408?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.277&fp-y=0.505&s=a21c8a88fe579021c62d321b6857499f",
       "links": [
         {
           "type": "eventbrite",
@@ -1272,21 +1278,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 5,
         "eventCount90d": 34
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Thursday"
+          "Thursday",
+          "Wednesday"
         ],
         "typicalTime": "11:00",
         "confidence": 1.0,
-        "sampleSize": 22
+        "sampleSize": 23
       },
       "upcomingEventIds": [
+        "3299d2c626d57ac9",
         "6960e8bc6646166d",
+        "658e8169311b01df",
         "2015b20c57990e3e",
         "efca931195531e91"
       ],
@@ -1297,7 +1305,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 22,
+        "observedDateCount": 23,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1306,10 +1314,10 @@
         "eventbrite:18102992064"
       ],
       "similarCommunityIds": [
-        "com_d2d455d2d6c9",
         "com_9fed174eeff3",
-        "com_065dafa96d43",
+        "com_d2d455d2d6c9",
         "com_36cb2681053d",
+        "com_065dafa96d43",
         "com_02b1cd673b69",
         "com_c48aeb7c61ce"
       ]
@@ -1619,9 +1627,9 @@
       ],
       "similarCommunityIds": [
         "com_3048e331f7b6",
-        "com_8b837dfb5421",
         "com_318c39363fe6",
         "com_a1e1c13a75f0",
+        "com_8b837dfb5421",
         "com_d2d455d2d6c9",
         "com_f23f8820878b"
       ]
@@ -1704,18 +1712,21 @@
       "slug": "arts-with-lorry-fb5421",
       "name": "Arts With Lorry",
       "kind": "recurring_series",
-      "tagline": "Arts With Lorry is a recurring event series centered on music in chelsea, east village.",
-      "description": "Arts With Lorry is a recurring event series centered on music in chelsea, east village. Based on 17 observed event dates, it meets weekly on Sunday and Thursday afternoons.",
+      "tagline": "Arts With Lorry is a recurring event series centered on music, dance in chelsea, manhattan.",
+      "description": "Arts With Lorry is a recurring event series centered on music, dance in chelsea, manhattan. Based on 18 observed event dates, it meets weekly on Sunday and Friday afternoons.",
       "categories": [
         "other",
-        "music"
+        "music",
+        "dance"
       ],
       "tags": [
         "other",
-        "music"
+        "music",
+        "dance"
       ],
       "neighborhoods": [
         "chelsea",
+        "manhattan",
         "east village"
       ],
       "homeVenue": "520 8th Ave",
@@ -1731,21 +1742,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 20
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Thursday"
+          "Friday"
         ],
         "typicalTime": "16:00",
         "confidence": 1.0,
-        "sampleSize": 17
+        "sampleSize": 18
       },
       "upcomingEventIds": [
         "aecb581ff8a93aa9",
+        "9d080601cd7219b5",
         "d57fdaae248dbf8b",
         "802b23a455b5c2b1",
         "5ecb9f7ab4381d51"
@@ -1757,7 +1769,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 17,
+        "observedDateCount": 18,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -1774,9 +1786,9 @@
         "com_1466f20a9300",
         "com_9abdf9db297a",
         "com_a1e1c13a75f0",
-        "com_b766b6de77ba",
-        "com_b8a3508a14a4",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_7fd76dcd92f3",
+        "com_9fed174eeff3"
       ]
     },
     {
@@ -2010,7 +2022,7 @@
       "name": "UrbanGlass",
       "kind": "recurring_series",
       "tagline": "UrbanGlass is a recurring event series centered on books, art, music in fidi.",
-      "description": "UrbanGlass is a recurring event series centered on books, art, music in fidi. Based on 13 observed event dates, it meets weekly on Sunday and Friday evenings.",
+      "description": "UrbanGlass is a recurring event series centered on books, art, music in fidi. Based on 14 observed event dates, it meets weekly on Sunday and Saturday evenings.",
       "categories": [
         "other",
         "books",
@@ -2039,23 +2051,25 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 5,
         "eventCount90d": 13
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Friday"
+          "Saturday"
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 13
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "f6e5e46d67b8a224",
         "8714f0894e974ed7",
-        "eede0ffb35cdd6cf"
+        "eede0ffb35cdd6cf",
+        "26114f14ce29047b",
+        "2aa919155e431271"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2064,7 +2078,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 13,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2241,8 +2255,8 @@
       "slug": "book-club-for-the-book-hoes-222ca5",
       "name": "Book Club for the Book Hoes",
       "kind": "club",
-      "tagline": "Book Club for the Book Hoes is a community club centered on books in manhattan, east village.",
-      "description": "Book Club for the Book Hoes is a community club centered on books in manhattan, east village. Based on 17 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "tagline": "Book Club for the Book Hoes is a community club centered on books in brooklyn, manhattan.",
+      "description": "Book Club for the Book Hoes is a community club centered on books in brooklyn, manhattan. Based on 17 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "books"
       ],
@@ -2250,13 +2264,13 @@
         "books"
       ],
       "neighborhoods": [
+        "brooklyn",
         "manhattan",
         "east village",
-        "brooklyn",
         "carroll gardens"
       ],
-      "homeVenue": "Everything's Jake NYC Bar & Lounge",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1194683443%2F1075722119863%2F1%2Foriginal.20260930-002433?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=179f519f2064363a6b09f6cc5d263c52",
+      "homeVenue": "Spritzenhaus33",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1194548566%2F1075722119863%2F1%2Foriginal.20260928-182512?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=bf0b150da25ec155c4189622ec44c1c2",
       "links": [
         {
           "type": "eventbrite",
@@ -2268,7 +2282,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 16
       },
       "schedule": {
@@ -2282,6 +2296,7 @@
         "sampleSize": 17
       },
       "upcomingEventIds": [
+        "f59ed8978e36d95d",
         "923376ba3ef94869",
         "d7adf92d53ec2b64",
         "c8589844c81f375b",
@@ -2342,7 +2357,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 9,
         "eventCount90d": 88
       },
       "schedule": {
@@ -2362,7 +2377,9 @@
         "6a93fd1198d46bc7",
         "320902d56fcd9cd4",
         "33d5f56087d1d19d",
-        "541cf591c54d60c8"
+        "541cf591c54d60c8",
+        "28c85b8c98592091",
+        "6b46125e2b24f504"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2380,12 +2397,12 @@
         "eventbrite:5803675324"
       ],
       "similarCommunityIds": [
-        "com_8b837dfb5421",
         "com_9abdf9db297a",
         "com_359bbb5a9a91",
         "com_3837f308cd75",
         "com_cb019f4e9752",
-        "com_b766b6de77ba"
+        "com_b766b6de77ba",
+        "com_0e403135692e"
       ]
     },
     {
@@ -3064,8 +3081,8 @@
       ],
       "similarCommunityIds": [
         "com_065dafa96d43",
-        "com_feb5ce491629",
         "com_9fed174eeff3",
+        "com_feb5ce491629",
         "com_02b1cd673b69",
         "com_c48aeb7c61ce",
         "com_072c9c3e12a8"
@@ -3143,8 +3160,8 @@
       "similarCommunityIds": [
         "com_02b1cd673b69",
         "com_c48aeb7c61ce",
-        "com_feb5ce491629",
         "com_ed8d42fb031d",
+        "com_feb5ce491629",
         "com_3bc67889299d",
         "com_14e2dae511e1"
       ]
@@ -3587,10 +3604,10 @@
       "similarCommunityIds": [
         "com_a1e1c13a75f0",
         "com_7fd76dcd92f3",
+        "com_feb5ce491629",
         "com_4c3ca28533f5",
         "com_072c9c3e12a8",
-        "com_feb5ce491629",
-        "com_e9748c1176c1"
+        "com_8b837dfb5421"
       ]
     },
     {
@@ -3813,8 +3830,8 @@
         "com_c1410c07c4dd",
         "com_1466f20a9300",
         "com_4c3ca28533f5",
-        "com_8b837dfb5421",
-        "com_9abdf9db297a"
+        "com_9abdf9db297a",
+        "com_8b837dfb5421"
       ]
     },
     {
@@ -4204,8 +4221,8 @@
         "7e4afd0ea4855daf",
         "8d6252c56f63768c",
         "db9430151724f389",
-        "58db1b5d5f7cf861",
         "19e7c5a4f8883e76",
+        "58db1b5d5f7cf861",
         "4b096d5c80d385b7",
         "5a391140a544211a"
       ],
@@ -4308,8 +4325,8 @@
         "com_1466f20a9300",
         "com_4459cf756c02",
         "com_64ebabd98c5c",
-        "com_3837f308cd75",
-        "com_d8a5203885a9"
+        "com_8b837dfb5421",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -4481,27 +4498,27 @@
       "name": "New York Comedy Club",
       "kind": "club",
       "tagline": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side.",
-      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 81 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "description": "New York Comedy Club is a community club centered on comedy, special, music in east village, upper west side. Based on 82 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
         "special",
         "music",
-        "singles",
-        "outdoors"
+        "outdoors",
+        "singles"
       ],
       "tags": [
         "comedy",
         "special",
         "music",
-        "singles",
-        "outdoors"
+        "outdoors",
+        "singles"
       ],
       "neighborhoods": [
         "east village",
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club",
-      "imageUrl": "/img/comedians/Mike-Cannon-5-17-25-Headshot-COLOR-dfe21053-large-thumb.jpg",
+      "imageUrl": "/img/events/New-Jokes-Newbie-1072-x-680-px-Blue-1-1d1b1125-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -4513,8 +4530,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 37,
-        "eventCount90d": 257
+        "upcomingEventCount": 41,
+        "eventCount90d": 258
       },
       "schedule": {
         "cadence": "weekly",
@@ -4524,9 +4541,10 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 81
+        "sampleSize": 82
       },
       "upcomingEventIds": [
+        "2c6aa46957e388ed",
         "e55005ae1e16ac2d",
         "aee70e635ad736be",
         "186ab168f051bbe1",
@@ -4534,11 +4552,10 @@
         "79edf11224d842ff",
         "e22799e6d03c2de8",
         "243ca7772c948fc8",
+        "014db9bb493c0d69",
         "c9ca1a4570330fa2",
-        "265e4b5a891bc8da",
-        "8a82c4494c923cd5",
-        "edb1c158b5a81727",
-        "76c5add94a66836d"
+        "20e634ecba1757ba",
+        "265e4b5a891bc8da"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4547,7 +4564,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 81,
+        "observedDateCount": 82,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -4606,7 +4623,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 15,
         "eventCount90d": 95
       },
       "schedule": {
@@ -4629,9 +4646,9 @@
         "6a0ea4f05e5a7009",
         "bf219082377559e1",
         "198d0971ba9080d7",
+        "927b10357213ba23",
         "f8731fb16a2080b5",
-        "37a95f2f31e05fba",
-        "fb820f3fcf59bed4"
+        "37a95f2f31e05fba"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -51791,7 +51808,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-26T06:28:34.544518+00:00",
+  "lastUpdated": "2026-10-26T10:00:49.896496+00:00",
   "version": 1,
   "schemaVersion": 1
 }
