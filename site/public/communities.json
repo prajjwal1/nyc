@@ -3821,8 +3821,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side. Based on 19 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan. Based on 20 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art"
@@ -3832,8 +3832,8 @@
         "art"
       ],
       "neighborhoods": [
-        "manhattan",
         "upper east side",
+        "manhattan",
         "williamsburg",
         "midtown"
       ],
@@ -3850,25 +3850,26 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-25",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 32
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Saturday"
+          "Saturday",
+          "Wednesday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 19
+        "sampleSize": 20
       },
       "upcomingEventIds": [
         "40ae468fb0bd7978",
         "1fc4cc858194cf24",
         "f5bf268774eee7ee",
         "56a73cc77e6547d7",
-        "f58b6a84f214ebb3"
+        "f58b6a84f214ebb3",
+        "afb9e03bb5e502c7"
       ],
       "sourceAttributions": [
         "luma"
@@ -3877,7 +3878,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 19,
+        "observedDateCount": 20,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -51789,7 +51790,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-26T05:18:59.131137+00:00",
+  "lastUpdated": "2026-10-26T06:08:32.981367+00:00",
   "version": 1,
   "schemaVersion": 1
 }
