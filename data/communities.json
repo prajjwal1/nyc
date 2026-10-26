@@ -379,8 +379,8 @@
       ],
       "similarCommunityIds": [
         "com_072c9c3e12a8",
-        "com_14e2dae511e1",
         "com_43850d49f9e6",
+        "com_14e2dae511e1",
         "com_36cb2681053d",
         "com_7fd76dcd92f3",
         "com_9fed174eeff3"
@@ -468,11 +468,11 @@
       ],
       "similarCommunityIds": [
         "com_ff2e01957665",
+        "com_14e2dae511e1",
         "com_5582e2e97f1a",
         "com_b736e77bdf93",
         "com_0e403135692e",
-        "com_36cb2681053d",
-        "com_14e2dae511e1"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -547,7 +547,7 @@
         "com_c48aeb7c61ce",
         "com_4c3ca28533f5",
         "com_065dafa96d43",
-        "com_14e2dae511e1"
+        "com_43850d49f9e6"
       ]
     },
     {
@@ -1163,8 +1163,8 @@
         "com_36cb2681053d",
         "com_4a9490cb3534",
         "com_8d86f6f9340b",
-        "com_359bbb5a9a91",
-        "com_a786c70979d0"
+        "com_14e2dae511e1",
+        "com_359bbb5a9a91"
       ]
     },
     {
@@ -3465,18 +3465,19 @@
       "name": "Andrew's Yeung's Tech Events",
       "kind": "recurring_series",
       "tagline": "Andrew's Yeung's Tech Events is a recurring event series centered on parties in manhattan, midtown.",
-      "description": "Andrew's Yeung's Tech Events is a recurring event series centered on parties in manhattan, midtown. Based on 2 observed event dates, it meets weekly on Tuesday evenings.",
+      "description": "Andrew's Yeung's Tech Events is a recurring event series centered on parties in manhattan, midtown. Based on 3 observed event dates, it meets weekly on Tuesday and Friday evenings.",
       "categories": [
-        "other",
-        "parties"
+        "parties",
+        "other"
       ],
       "tags": [
-        "other",
-        "parties"
+        "parties",
+        "other"
       ],
       "neighborhoods": [
         "manhattan",
-        "midtown"
+        "midtown",
+        "brooklyn"
       ],
       "homeVenue": "NoMad",
       "imageUrl": "https://images.lumacdn.com/uploads/pg/4ffc7d43-1e53-45e9-8a79-4d9cfd71117c.png",
@@ -3491,21 +3492,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Tuesday"
+          "Tuesday",
+          "Friday"
         ],
         "typicalTime": "18:30",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "11ee03721a8bd6da",
-        "7f9b85e096749b8a"
+        "7f9b85e096749b8a",
+        "6712922cd3e1bf88"
       ],
       "sourceAttributions": [
         "luma"
@@ -3514,7 +3517,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3524,12 +3527,12 @@
         "luma:cal-kcwhmbis2x0y2xb"
       ],
       "similarCommunityIds": [
-        "com_36cb2681053d",
         "com_ff2e01957665",
-        "com_d2d455d2d6c9",
-        "com_fe4b6663b721",
+        "com_36cb2681053d",
         "com_8d86f6f9340b",
-        "com_ab8259bb35a4"
+        "com_359bbb5a9a91",
+        "com_cb019f4e9752",
+        "com_43850d49f9e6"
       ]
     },
     {
@@ -3992,9 +3995,9 @@
         "com_c58670960684",
         "com_072c9c3e12a8",
         "com_d2d455d2d6c9",
-        "com_14e2dae511e1",
         "com_359bbb5a9a91",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -4079,7 +4082,7 @@
         "com_33a530deb7aa",
         "com_c4469caf0091",
         "com_f171cd222ca5",
-        "com_14e2dae511e1"
+        "com_a786c70979d0"
       ]
     },
     {
@@ -4307,8 +4310,8 @@
         "7e4afd0ea4855daf",
         "8d6252c56f63768c",
         "db9430151724f389",
-        "19e7c5a4f8883e76",
         "58db1b5d5f7cf861",
+        "19e7c5a4f8883e76",
         "4b096d5c80d385b7",
         "5a391140a544211a"
       ],
@@ -4694,7 +4697,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 47,
+        "upcomingEventCount": 46,
         "eventCount90d": 260
       },
       "schedule": {
@@ -4709,17 +4712,17 @@
       },
       "upcomingEventIds": [
         "7585598162427b58",
-        "2c6aa46957e388ed",
         "7e223895272fbe5c",
+        "2c6aa46957e388ed",
         "aee70e635ad736be",
         "161cde3f1ae40ed5",
         "28dbf26319b8923c",
         "79edf11224d842ff",
         "e22799e6d03c2de8",
         "1dceaaa4d995a99e",
-        "7404df8b4fb26aa2",
         "0e7838801330613c",
-        "988c8a0ed9cb582d"
+        "988c8a0ed9cb582d",
+        "ecf48d449532193d"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -51972,7 +51975,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-26T18:36:49.595814+00:00",
+  "lastUpdated": "2026-10-26T19:15:29.543596+00:00",
   "version": 1,
   "schemaVersion": 1
 }
