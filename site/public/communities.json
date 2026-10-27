@@ -221,11 +221,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
+        "com_da2f66394228",
         "com_218b97d674a6",
         "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_d8a5203885a9",
-        "com_eef1ca956dae"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -611,10 +611,10 @@
       "similarCommunityIds": [
         "com_218b97d674a6",
         "com_4459cf756c02",
+        "com_da2f66394228",
         "com_b736e77bdf93",
         "com_0e403135692e",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2383,11 +2383,11 @@
       ],
       "similarCommunityIds": [
         "com_83f64eec47de",
+        "com_da2f66394228",
         "com_3048e331f7b6",
         "com_3837f308cd75",
         "com_d8a5203885a9",
-        "com_eef1ca956dae",
-        "com_218b97d674a6"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -2697,6 +2697,74 @@
         "com_359bbb5a9a91",
         "com_648449f336c0",
         "com_cb019f4e9752"
+      ]
+    },
+    {
+      "id": "com_da2f66394228",
+      "slug": "art-vs-life-394228",
+      "name": "Art VS Life",
+      "kind": "recurring_series",
+      "tagline": "Art VS Life is a recurring event series centered on music in brooklyn.",
+      "description": "Art VS Life is a recurring event series centered on music in brooklyn. Based on 2 observed event dates, it meets biweekly on Monday evenings.",
+      "categories": [
+        "music"
+      ],
+      "tags": [
+        "music"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Starr Bar",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1180395305%2F557057992851%2F1%2Foriginal.20260322-004900?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=8af3ade61d4f27d0eea7fe38fe861fee",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/75703691143"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-26",
+        "upcomingEventCount": 1,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Monday"
+        ],
+        "typicalTime": "19:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "9aa52849df2fc311"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-27",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:75703691143"
+      ],
+      "similarCommunityIds": [
+        "com_1466f20a9300",
+        "com_83f64eec47de",
+        "com_218b97d674a6",
+        "com_3048e331f7b6",
+        "com_4459cf756c02",
+        "com_64ebabd98c5c"
       ]
     },
     {
@@ -3283,9 +3351,9 @@
         "com_3bc67889299d",
         "com_218b97d674a6",
         "com_64ebabd98c5c",
+        "com_da2f66394228",
         "com_0e403135692e",
-        "com_1466f20a9300",
-        "com_3048e331f7b6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -4385,12 +4453,12 @@
         "source:brooklyncontra"
       ],
       "similarCommunityIds": [
+        "com_da2f66394228",
         "com_1466f20a9300",
         "com_83f64eec47de",
         "com_4459cf756c02",
         "com_64ebabd98c5c",
-        "com_8b837dfb5421",
-        "com_3048e331f7b6"
+        "com_8b837dfb5421"
       ]
     },
     {
@@ -52043,7 +52111,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-27T07:46:46.025274+00:00",
+  "lastUpdated": "2026-10-27T08:03:13.377597+00:00",
   "version": 1,
   "schemaVersion": 1
 }
