@@ -2,15 +2,20 @@ import asyncio
 import copy
 import json
 from datetime import date, datetime, timedelta
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import httpx
+import pytest
 
 from scrapers.utils import descriptions
 
 
 TODAY = date(2026, 10, 1)
 TEXT = "Bring a book and meet other readers for a relaxed evening of conversation."
+SERIES_CASES = json.loads(
+    (Path(__file__).parent / "fixtures" / "eventbrite_series_descriptions.json").read_text()
+)["cases"]
 
 
 def event(slug="reading1", *, source="luma", day=TODAY, score=0.8, description=""):
@@ -123,6 +128,82 @@ def test_detail_parser_rejects_siblings_dates_and_non_platform_urls():
     ) == TEXT
     for url in ("https://luma.com.evil.example/reading1", "file:///reading1", "https://user@luma.com/reading1"):
         assert descriptions._event_key({**row, "sourceUrl": url}) is None
+
+
+def series_html(case):
+    return (
+        f'<script type="application/ld+json">{json.dumps(case["jsonLd"])}</script>'
+        f'<script id="__NEXT_DATA__" type="application/json">{json.dumps(case["nextData"])}</script>'
+    )
+
+
+@pytest.mark.parametrize("case", SERIES_CASES, ids=["outdoor-yoga", "brooklyn-book-club"])
+def test_series_description_matches_a_live_verified_occurrence(case):
+    row = case["candidate"]
+    assert case["jsonLd"]["startDate"][:10] != row["date"]
+    assert descriptions._matching_description(series_html(case), row, row["sourceUrl"]) == case["jsonLd"]["description"]
+
+
+@pytest.mark.parametrize("field,value", [
+    ("id", "999999"),
+    ("seriesId", "999999"),
+    ("url", "https://www.eventbrite.com/e/unrelated-tickets-999999"),
+    ("isSeries", False),
+    ("isParentEvent", False),
+    ("isListed", False),
+    ("isProtected", True),
+    ("status", "canceled"),
+])
+def test_series_description_rejects_unrelated_or_unavailable_context(field, value):
+    case = copy.deepcopy(SERIES_CASES[0])
+    case["nextData"]["props"]["pageProps"]["context"]["basicInfo"][field] = value
+    row = case["candidate"]
+    assert descriptions._matching_description(series_html(case), row, row["sourceUrl"]) == ""
+
+
+@pytest.mark.parametrize("session", [
+    "2026-10-22T11:00:00-04",  # another occurrence inside the same series span
+    "2026-10-29T12:00:00-04",  # rescheduled within the same day
+    "2026-10-29T11:00:00",  # no authoritative timezone
+    "not-a-date", None, {},
+])
+def test_series_description_requires_exact_timezone_aware_session(session):
+    case = copy.deepcopy(SERIES_CASES[0])
+    case["nextData"]["props"]["pageProps"]["context"]["goodToKnow"]["highlights"]["nextAvailableSession"] = session
+    row = case["candidate"]
+    assert descriptions._matching_description(series_html(case), row, row["sourceUrl"]) == ""
+
+
+def test_series_description_requires_same_parsed_event_and_handles_bad_payloads():
+    case = copy.deepcopy(SERIES_CASES[0])
+    row = case["candidate"]
+    case["jsonLd"]["url"] = "https://www.eventbrite.com/e/unrelated-tickets-999999"
+    assert descriptions._matching_description(series_html(case), row, row["sourceUrl"]) == ""
+    for payload in (None, [], {"props": None}, {"props": {"pageProps": {"context": []}}}):
+        case = copy.deepcopy(SERIES_CASES[0])
+        case["nextData"] = payload
+        assert descriptions._matching_description(series_html(case), row, row["sourceUrl"]) == ""
+
+
+def test_verified_series_recovery_preserves_metadata_and_request_budget(monkeypatch):
+    rows = [copy.deepcopy(case["candidate"]) for case in SERIES_CASES]
+    before = copy.deepcopy(rows)
+    calls = []
+
+    async def fetch(url, **_kwargs):
+        calls.append(url)
+        return series_html(next(case for case in SERIES_CASES if case["candidate"]["sourceUrl"] == url))
+
+    monkeypatch.setattr(descriptions, "fetch_text", fetch)
+    stats = asyncio.run(descriptions.enrich_descriptions(
+        rows, candidates=rows, today=date(2026, 10, 26), limit=2,
+    ))
+    assert stats["attempted"] == stats["enriched"] == len(calls) == 2
+    for original, row, case in zip(before, rows, SERIES_CASES):
+        assert row == {**original, "description": case["jsonLd"]["description"]}
+
+    next_week = [{**row, "date": "2026-11-05", "description": ""} for row in rows]
+    assert descriptions.restore_cached_descriptions(next_week, rows) == 0
 
 
 def test_rate_limit_stops_only_the_affected_platform(monkeypatch):

@@ -231,10 +231,9 @@ def main(events_path: str = "data/events.json", *, write_stats: bool = False, ha
     for s, c in sorted(sources.items(), key=lambda x: -x[1]):
         print(f"  {s}: {c}")
 
-    # Source regression check: any source that produced >= 5 events on the
-    # previous run but produced 0 this run is likely silently broken.
-    # Uses stats_history.jsonl to find the most recent prior snapshot.
-    _print_source_regressions(sources)
+    # Compare distinct successful snapshots, excluding repeated checks of
+    # this same feed. A warning must not change the critical-check outcome.
+    _print_source_regressions(sources, snapshot_updated=data.get("lastUpdated"))
 
     # Category breakdown
     cats = {}
@@ -346,6 +345,8 @@ def main(events_path: str = "data/events.json", *, write_stats: bool = False, ha
             warnings=warnings,
             age_hours=age_hours,
             north_star=north_star,
+            snapshot_updated=data.get("lastUpdated"),
+            run=(data.get("ingestionStats") or {}).get("run"),
         )
 
     return 1 if (hard_fail and failures) else 0
@@ -489,9 +490,38 @@ def _print_ig_diagnostics(events: list) -> None:
         pass
 
 
-def _source_yield_cliffs(sources: dict, records: list[dict]) -> list[dict]:
-    """Return sources whose current zero is abnormal versus five recent runs."""
-    history = [record for record in records if isinstance(record.get("sources"), dict)][-5:]
+def _source_yield_cliffs(
+    sources: dict, records: list[dict], *, snapshot_updated: str | None = None
+) -> list[dict]:
+    """Compare with five distinct successful snapshots, newest first.
+
+    Legacy records lack feed/run metadata; retain valid failure-free rows
+    using their check timestamp rather than guessing which runs they share.
+    """
+    successful = []
+    seen = set()
+    for record in reversed(records):
+        if not isinstance(record, dict) or not isinstance(record.get("sources"), dict):
+            continue
+        if (
+            record.get("critical_failures")
+            or record.get("run_completed") is False
+            or record.get("partial_run")
+            or record.get("timed_out_sources")
+        ):
+            continue
+        if any(type(count) is not int or count < 0 for count in record["sources"].values()):
+            continue
+        stamp = record.get("snapshot_updated") or record.get("timestamp")
+        if not isinstance(stamp, str) or not stamp or stamp in seen:
+            continue
+        if snapshot_updated and stamp == snapshot_updated:
+            continue
+        seen.add(stamp)
+        successful.append(record)
+    history = successful[:5]
+    if len(history) < 5:
+        return []
     names = {name for record in history for name in record.get("sources", {})}
     cliffs = []
     for source in names:
@@ -501,8 +531,8 @@ def _source_yield_cliffs(sources: dict, records: list[dict]) -> list[dict]:
             continue
         last_nonzero = next(
             (
-                record.get("timestamp")
-                for record in reversed(records)
+                record.get("snapshot_updated") or record.get("timestamp")
+                for record in successful
                 if int(record.get("sources", {}).get(source, 0) or 0) > 0
             ),
             None,
@@ -515,7 +545,7 @@ def _source_yield_cliffs(sources: dict, records: list[dict]) -> list[dict]:
     return sorted(cliffs, key=lambda item: (-item["median"], item["source"]))
 
 
-def _print_source_regressions(sources: dict) -> None:
+def _print_source_regressions(sources: dict, *, snapshot_updated: str | None = None) -> None:
     """Flag sources whose rolling five-run median was >=5 but are now zero.
 
     Print-only; a warning protects seasonal sources from creating deployment
@@ -539,9 +569,8 @@ def _print_source_regressions(sources: dict) -> None:
             rec = json.loads(line)
         except Exception:
             continue
-        if any((count or 0) >= 5 for count in (rec.get("sources") or {}).values()):
-            records.append(rec)
-    regressions = _source_yield_cliffs(sources, records)
+        records.append(rec)
+    regressions = _source_yield_cliffs(sources, records, snapshot_updated=snapshot_updated)
     if not regressions:
         return
     print(f"\n⚠ Source regressions ({len(regressions)} sources dropped to 0):")
@@ -652,7 +681,10 @@ def _print_north_star_metrics(events: list) -> dict:
     return metrics
 
 
-def _append_stats(*, total, sources, cats, failures, warnings, age_hours, north_star=None):
+def _append_stats(
+    *, total, sources, cats, failures, warnings, age_hours, north_star=None,
+    snapshot_updated=None, run=None,
+):
     """Append a one-line snapshot to scrapers/data/stats_history.jsonl.
 
     Useful for debugging regressions over time.
@@ -675,6 +707,14 @@ def _append_stats(*, total, sources, cats, failures, warnings, age_hours, north_
     }
     if north_star:
         record["north_star"] = north_star
+    if snapshot_updated:
+        record["snapshot_updated"] = snapshot_updated
+    if isinstance(run, dict):
+        record.update({
+            "run_completed": run.get("runCompleted"),
+            "partial_run": run.get("partialRun"),
+            "timed_out_sources": run.get("timedOutSources", []),
+        })
     with open(path, "a") as f:
         f.write(json.dumps(record) + "\n")
 

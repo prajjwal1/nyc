@@ -1,0 +1,90 @@
+{
+  "capturedAt": "2026-10-26",
+  "note": "Reduced public Eventbrite page fields; no analytics, cookies, authentication, or unrelated recommendations. Source URLs are on each candidate.",
+  "cases": [
+    {
+      "candidate": {
+        "title": "Outdoor Yoga",
+        "source": "eventbrite",
+        "sourceUrl": "https://www.eventbrite.com/e/outdoor-yoga-tickets-1986163951846",
+        "date": "2026-10-29",
+        "startTime": "11:00",
+        "description": ""
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "EducationEvent",
+        "name": "Outdoor Yoga",
+        "url": "https://www.eventbrite.com/e/outdoor-yoga-tickets-1986163951846",
+        "startDate": "2026-04-02T11:00:00-04:00",
+        "endDate": "2026-10-29T12:00:00-04:00",
+        "description": "A welcome multi-level yoga class in the park open to everyone. Bring your own mat."
+      },
+      "nextData": {
+        "props": {
+          "pageProps": {
+            "context": {
+              "basicInfo": {
+                "id": "1986163951846",
+                "url": "https://www.eventbrite.com/e/outdoor-yoga-tickets-1986163951846",
+                "isSeries": true,
+                "seriesId": "1986163951846",
+                "isParentEvent": true,
+                "status": "started",
+                "isListed": true,
+                "isProtected": false
+              },
+              "goodToKnow": {
+                "highlights": {
+                  "nextAvailableSession": "2026-10-29T11:00:00-04"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "candidate": {
+        "title": "Brooklyn Book Club: Read your book and then meet some people! BYO Book!",
+        "source": "eventbrite",
+        "sourceUrl": "https://www.eventbrite.com/e/brooklyn-book-club-read-your-book-and-then-meet-some-people-byo-book-tickets-1996345114979",
+        "date": "2026-10-30",
+        "startTime": "18:00",
+        "description": ""
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "SocialEvent",
+        "name": "Brooklyn Book Club: Read your book and then meet some people! BYO Book!",
+        "url": "https://www.eventbrite.com/e/brooklyn-book-club-read-your-book-and-then-meet-some-people-byo-book-tickets-1996345114979",
+        "startDate": "2026-08-07T18:00:00-04:00",
+        "endDate": "2026-12-25T20:00:00-05:00",
+        "description": "Grab your favorite book and come hang out with fellow readers for some chill vibes and great conversations!"
+      },
+      "nextData": {
+        "props": {
+          "pageProps": {
+            "context": {
+              "basicInfo": {
+                "id": "1996345114979",
+                "url": "https://www.eventbrite.com/e/brooklyn-book-club-read-your-book-and-then-meet-some-people-byo-book-tickets-1996345114979",
+                "isSeries": true,
+                "seriesId": "1996345114979",
+                "isParentEvent": true,
+                "status": "started",
+                "isListed": true,
+                "isProtected": false
+              },
+              "goodToKnow": {
+                "highlights": {
+                  "nextAvailableSession": "2026-10-30T18:00:00-04"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

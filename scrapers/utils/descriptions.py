@@ -9,6 +9,7 @@ so newly discovered text still goes through the usual exclusion rules.
 from __future__ import annotations
 
 import asyncio
+import json
 import re
 import time
 from collections import defaultdict
@@ -17,6 +18,7 @@ from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
 import httpx
+from bs4 import BeautifulSoup
 
 from .http import fetch_text
 
@@ -83,20 +85,67 @@ def _shortlist(candidates: list[dict], today: date) -> list[dict]:
     ]
 
 
+def _matches_eventbrite_series_session(html: str, candidate: dict) -> bool:
+    """Accept only an explicitly listed occurrence of this same public series.
+
+    A series' JSON-LD dates describe its overall span, not every occurrence.
+    The page's nextAvailableSession is positive evidence for exactly one slot.
+    """
+    key = _event_key(candidate)
+    if not key or key[0] != "eventbrite":
+        return False
+    try:
+        script = BeautifulSoup(html, "lxml").find("script", id="__NEXT_DATA__")
+        data = json.loads(script.string if script else "")
+        context = data["props"]["pageProps"]["context"]
+        basic = context["basicInfo"]
+        if (
+            basic.get("isSeries") is not True
+            or basic.get("isParentEvent") is not True
+            or basic.get("isListed") is not True
+            or basic.get("isProtected") is not False
+            or basic.get("status") not in {"live", "started"}
+            or str(basic.get("id")) != key[1]
+            or str(basic.get("seriesId")) != key[1]
+            or _event_key({**candidate, "sourceUrl": basic.get("url")}) != key
+        ):
+            return False
+        session = datetime.fromisoformat(
+            context["goodToKnow"]["highlights"]["nextAvailableSession"]
+        )
+        if session.tzinfo is None:
+            return False
+        local = session.astimezone(ZoneInfo("America/New_York"))
+        return local.date().isoformat() == key[2] and (
+            not candidate.get("startTime")
+            or candidate["startTime"] == local.strftime("%H:%M")
+        )
+    except (AttributeError, KeyError, TypeError, ValueError):
+        return False
+
+
 def _matching_description(html: str, candidate: dict, url: str) -> str:
     # Reuse the platforms' structured parsers, never unrelated page/OG copy.
     from ..sources import eventbrite, luma
 
+    key = _event_key(candidate)
+    if not key:
+        return ""
     parsed = (
         luma._parse_luma_page(html, url)
         if candidate["source"] == "luma"
         else eventbrite._parse_search_page(html, url)
     )
-    key = _event_key(candidate)
     for detail in parsed:
         text = _description(detail)
         if _event_key(detail) == key and len(text) >= MIN_DESCRIPTION_LENGTH:
             return text
+    if _matches_eventbrite_series_session(html, candidate):
+        for detail in parsed:
+            detail_key = _event_key(detail)
+            text = _description(detail)
+            if detail_key and detail_key[:2] == key[:2] and len(text) >= MIN_DESCRIPTION_LENGTH:
+                return text
     return ""
 
 

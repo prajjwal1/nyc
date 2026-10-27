@@ -101,6 +101,20 @@ These are the durable preferences the user has stated. They're marked `addressed
 - "addressed" criterion: audit the current live guide and durable feedback, apply a verified improvement, complete the required checks, publish it through the documented workflow, and record measured results.
 - resolution: Completed the staged audit and self-review, shipped bounded cached source-native descriptions in `d43428ea`, refreshed and independently verified the live 848-event feed, and fixed a pre-existing browser-test navigation mismatch in `98ecf829`. All 460 scraper tests, six critical sanity checks, lint, production build, and desktop/mobile browser checks pass. Pages run `36907364375` verifies the published snapshot; measured results are recorded in run `2026-10-01-1809`.
 
+### fb-223 — Run the self-improvement cycle after pulling the latest code
+- created_at: 2026-10-26
+- source: user-explicit
+- status: in-progress
+- body: User: "self improve", followed by "pull the code first".
+- "addressed" criterion: pull first, complete the staged audit and critique, implement verified improvements, pass checks, push, and verify the published result.
+
+### fb-224 — Explain why description enrichment did not match a page
+- created_at: 2026-10-26
+- source: agent-proposal (self-review dream D1, run 2026-10-26-2306)
+- status: open
+- body: The enrichment counter currently combines HTTP/network failures, valid pages with no matching event, mismatched occurrences, and insufficient description text into "failed". Record bounded aggregate reason counters in the existing telemetry, without extra requests or retaining private content, so future audits can distinguish extraction gaps from transport and occurrence-validation failures.
+- "addressed" criterion: telemetry distinguishes the failure classes, preserves request/time budgets and per-platform rate-limit behavior, and regression tests verify the counters.
+
 ### fb-222 — Validate Eventbrite recurring-series descriptions against occurrence evidence
 - created_at: 2026-10-01
 - source: agent-proposal (self-review dream D2, run 2026-10-01-1809)
