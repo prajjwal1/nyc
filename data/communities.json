@@ -1256,19 +1256,19 @@
       "slug": "museum-of-reclaimed-urban-space-491629",
       "name": "Museum of Reclaimed Urban Space",
       "kind": "institutional_program",
-      "tagline": "Museum of Reclaimed Urban Space is a community program centered on outdoors, wellness, fitness in manhattan, east village.",
-      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, wellness, fitness in manhattan, east village. Based on 23 observed event dates, it meets weekly on Thursday and Wednesday mornings.",
+      "tagline": "Museum of Reclaimed Urban Space is a community program centered on outdoors, fitness, wellness in manhattan, east village.",
+      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, fitness, wellness in manhattan, east village. Based on 23 observed event dates, it meets weekly on Thursday and Wednesday mornings.",
       "categories": [
         "other",
         "outdoors",
-        "wellness",
-        "fitness"
+        "fitness",
+        "wellness"
       ],
       "tags": [
         "other",
         "outdoors",
-        "wellness",
-        "fitness"
+        "fitness",
+        "wellness"
       ],
       "neighborhoods": [
         "manhattan",
@@ -1318,8 +1318,13 @@
         "observedDateCount": 23,
         "hasFirstPartyIdentity": true
       },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "658e8169311b01df",
+          "signal": "open to everyone"
+        }
+      ],
       "aliases": [
         "eventbrite:18102992064"
       ],
@@ -2068,8 +2073,8 @@
         "bc572eeb5b5a0565",
         "0f33e238414b2ad2",
         "3c22f7705d08ee07",
-        "580411bfad112cdf",
         "95fe7cf1fb2ae52e",
+        "580411bfad112cdf",
         "6ffe32c06a510a8a",
         "96f60dcfa6b49441",
         "8d3e669b69943bc4",
@@ -4063,8 +4068,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan.",
-      "description": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art"
@@ -4075,12 +4080,12 @@
       ],
       "neighborhoods": [
         "upper east side",
-        "manhattan",
         "williamsburg",
+        "manhattan",
         "midtown"
       ],
       "homeVenue": "167 E Broadway",
-      "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/ta/4b2e6b52-4016-4404-bd31-f83c5a7a91fb.jpg",
       "links": [
         {
           "type": "luma",
@@ -4106,8 +4111,8 @@
         "sampleSize": 22
       },
       "upcomingEventIds": [
-        "40ae468fb0bd7978",
         "59745b6c2d13583f",
+        "40ae468fb0bd7978",
         "f5bf268774eee7ee",
         "02f1f4c5a1fa388b",
         "f58b6a84f214ebb3",
@@ -4448,8 +4453,8 @@
         "7e4afd0ea4855daf",
         "8d6252c56f63768c",
         "db9430151724f389",
-        "19e7c5a4f8883e76",
         "58db1b5d5f7cf861",
+        "19e7c5a4f8883e76",
         "4b096d5c80d385b7",
         "5a391140a544211a"
       ],
@@ -4930,7 +4935,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-27",
-        "upcomingEventCount": 53,
+        "upcomingEventCount": 51,
         "eventCount90d": 260
       },
       "schedule": {
@@ -4949,13 +4954,13 @@
         "28dbf26319b8923c",
         "79edf11224d842ff",
         "e22799e6d03c2de8",
-        "a831f74fee2f24f8",
         "e1794fb2cfe8f651",
+        "a831f74fee2f24f8",
         "14be2847769b5f8f",
         "7aca67aa3afb627a",
         "e8eb8fbd078afce4",
         "3d2a633f0e6cfb02",
-        "f0a80773caf589ae"
+        "acf8f803e5eaa6e2"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -52208,7 +52213,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-27T20:38:22.534541+00:00",
+  "lastUpdated": "2026-10-27T21:39:40.587806+00:00",
   "version": 1,
   "schemaVersion": 1
 }
