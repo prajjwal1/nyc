@@ -2543,7 +2543,7 @@
       "name": "The National Arts Club",
       "kind": "club",
       "tagline": "The National Arts Club is a community club centered on books, special, art in manhattan.",
-      "description": "The National Arts Club is a community club centered on books, special, art in manhattan. Based on 28 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "description": "The National Arts Club is a community club centered on books, special, art in manhattan. Based on 29 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
         "other",
         "books",
@@ -2572,18 +2572,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 21
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Tuesday",
-          "Thursday"
+          "Monday"
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 28
+        "sampleSize": 29
       },
       "upcomingEventIds": [
         "be5703843d2a36e3",
@@ -2594,7 +2594,8 @@
         "517f173466053a6f",
         "d87dfef7c8cbe614",
         "648340fc5d9696a1",
-        "1066deb9c04a1cf0"
+        "1066deb9c04a1cf0",
+        "88fd0e364cc32efb"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2603,7 +2604,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 28,
+        "observedDateCount": 29,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3968,8 +3969,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan.",
-      "description": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art"
@@ -3980,12 +3981,12 @@
       ],
       "neighborhoods": [
         "upper east side",
-        "manhattan",
         "williamsburg",
+        "manhattan",
         "midtown"
       ],
       "homeVenue": "167 E Broadway",
-      "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/ta/4b2e6b52-4016-4404-bd31-f83c5a7a91fb.jpg",
       "links": [
         {
           "type": "luma",
@@ -4011,8 +4012,8 @@
         "sampleSize": 22
       },
       "upcomingEventIds": [
-        "40ae468fb0bd7978",
         "59745b6c2d13583f",
+        "40ae468fb0bd7978",
         "f5bf268774eee7ee",
         "02f1f4c5a1fa388b",
         "f58b6a84f214ebb3",
@@ -4677,14 +4678,14 @@
         "92298d4de03561f1",
         "642fa1550933e024",
         "50feda9798384e2a",
-        "dae573f139850bf5",
         "1f5ae25166698cbf",
+        "dae573f139850bf5",
         "ec83fa494cca0604",
         "232da0c2fc13ea6d",
         "d725afb8d90473f3",
         "fefd42e63ecdfec0",
-        "abbd6b34c8897acd",
         "e73e799c2dcdaca5",
+        "abbd6b34c8897acd",
         "1e81737cc862356e"
       ],
       "sourceAttributions": [
@@ -52111,7 +52112,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-27T08:03:13.377597+00:00",
+  "lastUpdated": "2026-10-27T12:32:07.177326+00:00",
   "version": 1,
   "schemaVersion": 1
 }
