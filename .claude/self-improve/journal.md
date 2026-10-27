@@ -380,3 +380,31 @@ After the next CI scrape, follow-graph coverage should tick up from the 3 newly-
 Local Chromium was blocked by macOS Mach-port permissions. Linux Tests run [36907364504](https://github.com/prajjwal1/nyc/actions/runs/36907364504) passed scraper and full desktop/mobile frontend checks after correcting the pre-existing test. Initial Pages run `36906687207` and final [36907364375](https://github.com/prajjwal1/nyc/actions/runs/36907364375) both succeeded. Independent post-deploy HTTPS reads match the committed events/communities exactly: `lastUpdated=2026-10-01T18:23:03.843104+00:00`, `runCompleted=true`, no timed-out sources. Junk Journal Night and East of Eden Screening also expose their recovered descriptions in public static HTML. No rollback was needed.
 
 **Hypothesis for next round:** validate recurring-series occurrence evidence so genuine book/fitness events can reuse source descriptions without weakening identity/date guards. Use persisted enrichment telemetry and warning-only source-yield trends to target remaining gaps before expanding request budgets or source lists.
+
+## 2026-10-26 2306 — run-id 2026-10-26-2306 (completed 2026-10-27)
+
+**Context:** User requested “self improve”, then “pull the code first”; on resume explicitly requested pushing after fetching latest main. Initial pull reached 809aa33b. Resumed fetch reached 66a6b7d3, followed by a clean rebase over 31 automated data commits. One agent performed the staged audit/proposal/critique; no independent agent review is claimed.
+
+**Shipped (code 5e8b926b, published feed a4719653):**
+- fb-222: exact Eventbrite series/session description matching in `scrapers/utils/descriptions.py`. Public series identity, publication/privacy status, explicit timezone, date, and existing start time must agree. No series-range inference, metadata overwrite, cache-key relaxation, or budget increase. The controlled October 26 trial recovered 13/24 descriptions vs 0/24 on identical pages, retaining all 764 events and 87 personalized rows. The fresh October 27 production pass recovered eight; all eight survived and the yoga/book-club prose is present in public static HTML.
+- fb-217: source-drop warnings in `scrapers/sanity_check.py` now use five distinct successful snapshots and exclude the current snapshot, failed/partial/timed-out runs, and malformed input. Future history persists feed identity/run health. Legacy check timestamps are retained honestly; historical near-duplicates cannot be reconstructed. Warnings stay nonfatal.
+- Public feed refreshed and deployed through Quick Scrape 40588561872 and Pages 40588630671. New history metadata is verified in both appended rows.
+
+**Rejected/withheld:** no speculative source additions. Open Book Club is publishing new posts, but the production parser found four past-dated posts and one platform link, not a qualifying >=5-event calendar. Current meaningful-topic coverage remains complete.
+
+**Deferred (still open):**
+- fb-212: responsive visual redesign; local Chromium could not initialize. The Linux functional browser suite passed, but no new visual layout or screenshot QA was delivered.
+- Dream D1 -> fb-224: distinguish description-matching failures from HTTP/network errors and insufficient text in bounded aggregate telemetry, with no extra requests.
+
+**Feedback gate:** CLOSED (18 open/partial directives). No calibration question. The explicit pull/resume/push request was persisted as fb-223 and addressed with the verified publication.
+
+**Metric delta:**
+- Follow-graph coverage: 50/50 (100.00%) -> 50/50 (100.00%).
+- Topic coverage: 8/8 tracked tokens -> 8/8; 4/4 meaningful topics -> 4/4.
+- High-conviction ratio: 87/764 (11.39%) -> 94/807 (11.65%).
+- Active-feed follow coverage: 17/50 (34.00%) -> 17/50 (34.00%).
+Public deltas span the intervening automated refreshes; the isolated code trial's improvement is 13 additional descriptions with unchanged inventory/conviction counts. Past rows and exact title/date duplicate groups remain zero.
+
+**Verification:** 487 scraper tests pass (3 expected xfails), all critical checks pass, production build succeeds, lint has zero errors (seven existing image warnings). Tests 40588496686 passed the full Linux desktop/mobile browser suite. Pages succeeded; independent public event/community JSON exactly matches a4719653, lastUpdated=2026-10-27T21:39:40.636347+00:00, runCompleted=true, no timed-out sources. No code rollback. Replay-only profile timestamp/order changes were semantically verified and restored before commit.
+
+**Hypothesis for next round:** classify the remaining 16 unmatched production detail requests with fb-224 before expanding request budgets or accepting any weaker occurrence proof. Verify source medians once five newly instrumented successful snapshots have accumulated.

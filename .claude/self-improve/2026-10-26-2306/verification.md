@@ -27,3 +27,15 @@
 - 2026-10-30: Brooklyn Book Club: Read your book and then meet some people! BYO Book! — verified series occurrence
 - 2026-10-30: Bitches Brew - Free Comedy Stand Up and Variety Show! — verified series occurrence
 - 2026-10-31: Comic Book Art Class for Adults — verified series occurrence
+
+## Resume, push, and public verification — 2026-10-27
+
+- Fetched latest main first as requested: 66a6b7d3, 31 newer automated data commits. Rebased cleanly and pushed code 5e8b926b. No code changes arrived from upstream.
+- Refreshed pre-push 810-event snapshot passed all six critical checks.
+- [Tests 40588496686](https://github.com/prajjwal1/nyc/actions/runs/40588496686) passed: scraper tests plus production lint/build and all desktop/mobile browser checks on Linux. This resolves the functional browser-verification limitation; no visual redesign or screenshot QA is claimed.
+- [Quick Scrape 40588561872](https://github.com/prajjwal1/nyc/actions/runs/40588561872) succeeded and committed a4719653. Eight descriptions recovered, 26 restored, no source/request timeout, rate limit, or deadline hit.
+- [Pages 40588630671](https://github.com/prajjwal1/nyc/actions/runs/40588630671) passed build, deploy, and timestamp verification.
+- Independent HTTPS verification at 2026-10-27T21:42:37.090388+00:00: events and communities are byte-identical to the repository. 807 events, 94 personalized, zero past rows/duplicate groups, all critical source counts above their floors.
+- Public static HTML for Outdoor Yoga and Brooklyn Book Club contains the verified source descriptions.
+- New persisted history fields were inspected in both appended snapshots; they share snapshot_updated=2026-10-27T21:39:40.636347+00:00 and have complete, nonpartial, timeout-free run metadata.
+- fb-222, fb-217, and fb-223 addressed against 5e8b926b. fb-212 remains open; fb-224 is the next diagnostic proposal.

@@ -104,9 +104,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-223 — Run the self-improvement cycle after pulling the latest code
 - created_at: 2026-10-26
 - source: user-explicit
-- status: in-progress
+- status: addressed: 5e8b926b
 - body: User: "self improve", followed by "pull the code first".
 - "addressed" criterion: pull first, complete the staged audit and critique, implement verified improvements, pass checks, push, and verify the published result.
+- resolution: Pulled before the October 26 audit; on the October 27 resume fetched main at 66a6b7d3, rebased over 31 automated data commits, and pushed 5e8b926b. Tests 40588496686, Quick Scrape 40588561872, and Pages 40588630671 passed. Public event/community JSON matches a4719653; recovered descriptions also appear in static HTML.
 
 ### fb-224 — Explain why description enrichment did not match a page
 - created_at: 2026-10-26
@@ -118,10 +119,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-222 — Validate Eventbrite recurring-series descriptions against occurrence evidence
 - created_at: 2026-10-01
 - source: agent-proposal (self-review dream D2, run 2026-10-01-1809)
-- status: open
+- status: addressed: 5e8b926b
 - body: Some Eventbrite series pages retain the original date in JSON-LD while the feed lists later occurrences: Outdoor Yoga, Structural Collabs, and Brooklyn Book Club. Reuse series descriptions only when explicit schedule or sub-event data validates the requested occurrence for the same stable event ID. Keep the current exact-date guard until that evidence exists; do not manufacture dates or weaken exclusions to fill descriptions.
 - "addressed" criterion: verified source fixtures demonstrate occurrence membership, unrelated/rescheduled events remain unmatched, and a live trial recovers useful descriptions for legitimate literary/fitness occurrences without extra requests or date changes.
-
+- resolution: 5e8b926b adds exact next-session proof for the same public Eventbrite series. Live controlled trial recovered 13/24 descriptions (prior matching recovered 0/24); the October 27 production refresh recovered eight, including Outdoor Yoga and Brooklyn Book Club. Identity, date, time, status, metadata, request-budget, and cache regressions pass.
 
 ### fb-218 — Run another self-improvement cycle
 - created_at: 2026-09-22
@@ -243,10 +244,10 @@ These are the durable preferences the user has stated. They're marked `addressed
 ### fb-217 — Detect source-yield cliffs as warnings
 - created_at: 2026-09-08
 - source: agent-proposal (dreamer-critic D2, DREAM-DEFER, run 2026-09-08-2135)
-- status: open
+- status: addressed: 5e8b926b
 - body: Add a warning-only source-survival check comparing each current source count with the rolling median of the last five successful snapshots. Warn when the median is at least 5 and the current count is 0, and print the source plus its last non-zero timestamp. This should surface failures such as `nycforfree` falling 53 -> 0 without making seasonal 1 -> 0 sources noisy.
 - "addressed" criterion: `scrapers/sanity_check.py` reports a non-fatal warning for a 53 -> 0 source cliff, stays quiet for a historically low/seasonal 1 -> 0 source, includes the last non-zero timestamp, and has regression tests for both cases.
-
+- resolution: 5e8b926b completes the warning history: persist snapshot identity and completion/partial/timeout metadata, select five distinct successful snapshots, exclude the current snapshot, and keep seasonal/insufficient-history cases quiet. Failed, duplicate, malformed, and nonfatal-output regressions pass. Legacy rows retain check timestamps because original scrape identity cannot be reconstructed. New metadata is verified in feed commit a4719653.
 
 ### fb-202 — Top-of-feed saturated by one followed venue (Book Club Bar wall); other named tastes buried
 - created_at: 2026-07-20
