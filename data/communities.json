@@ -77,8 +77,8 @@
         "com_ab8259bb35a4",
         "com_072c9c3e12a8",
         "com_3837f308cd75",
-        "com_ad50d6a81df3",
-        "com_f8ff3d3257ed"
+        "com_1466f20a9300",
+        "com_ad50d6a81df3"
       ]
     },
     {
@@ -166,9 +166,9 @@
         "com_3048e331f7b6",
         "com_3837f308cd75",
         "com_d8a5203885a9",
+        "com_1466f20a9300",
         "com_55ca36db453a",
-        "com_ff2e01957665",
-        "com_5582e2e97f1a"
+        "com_ff2e01957665"
       ]
     },
     {
@@ -231,8 +231,8 @@
         "eventbrite:105704078051"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
         "com_da2f66394228",
+        "com_1466f20a9300",
         "com_218b97d674a6",
         "com_3837f308cd75",
         "com_eef1ca956dae",
@@ -308,7 +308,7 @@
         "com_8b837dfb5421",
         "com_b8a3508a14a4",
         "com_e9748c1176c1",
-        "com_0cc8630779d7"
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -390,11 +390,11 @@
       ],
       "similarCommunityIds": [
         "com_36cb2681053d",
+        "com_33a530deb7aa",
+        "com_c4469caf0091",
         "com_072c9c3e12a8",
-        "com_43850d49f9e6",
-        "com_7fd76dcd92f3",
-        "com_9fed174eeff3",
-        "com_e9748c1176c1"
+        "com_02b1cd673b69",
+        "com_c48aeb7c61ce"
       ]
     },
     {
@@ -708,7 +708,7 @@
         "com_ff2e01957665",
         "com_359bbb5a9a91",
         "com_cb019f4e9752",
-        "com_a1e1c13a75f0"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -781,9 +781,9 @@
         "com_072c9c3e12a8",
         "com_9fed174eeff3",
         "com_e9748c1176c1",
-        "com_33a530deb7aa",
-        "com_c4469caf0091",
-        "com_a1e1c13a75f0"
+        "com_a1e1c13a75f0",
+        "com_0e403135692e",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1015,7 +1015,7 @@
         "com_9fed174eeff3",
         "com_e9748c1176c1",
         "com_c58670960684",
-        "com_fe4b6663b721"
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -1092,7 +1092,7 @@
         "com_4a9490cb3534",
         "com_cb019f4e9752",
         "com_a1e1c13a75f0",
-        "com_7fd76dcd92f3"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1245,9 +1245,9 @@
         "com_359bbb5a9a91",
         "com_d2d455d2d6c9",
         "com_0e403135692e",
+        "com_1466f20a9300",
         "com_ff2e01957665",
-        "com_118a558259ea",
-        "com_3481b6750d6f"
+        "com_118a558259ea"
       ]
     },
     {
@@ -1331,9 +1331,9 @@
         "com_9fed174eeff3",
         "com_d2d455d2d6c9",
         "com_065dafa96d43",
-        "com_02b1cd673b69",
-        "com_c48aeb7c61ce",
-        "com_8b837dfb5421"
+        "com_8b837dfb5421",
+        "com_ab8259bb35a4",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1483,8 +1483,8 @@
         "com_3048e331f7b6",
         "com_648449f336c0",
         "com_0e403135692e",
-        "com_ff2e01957665",
-        "com_a1e1c13a75f0"
+        "com_c1410c07c4dd",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -1493,7 +1493,7 @@
       "name": "Pioneer Works",
       "kind": "recurring_series",
       "tagline": "Pioneer Works is a recurring event series centered on music, food, art in brooklyn.",
-      "description": "Pioneer Works is a recurring event series centered on music, food, art in brooklyn. Based on 25 observed event dates, it meets weekly on Tuesday and Sunday evenings.",
+      "description": "Pioneer Works is a recurring event series centered on music, food, art in brooklyn. Based on 27 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "other",
         "music",
@@ -1522,18 +1522,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 11,
         "eventCount90d": 16
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Tuesday",
-          "Sunday"
+          "Sunday",
+          "Tuesday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 25
+        "sampleSize": 27
       },
       "upcomingEventIds": [
         "649cfed373d8bc79",
@@ -1542,6 +1542,8 @@
         "8e38939042eea465",
         "6d1a9669e2f8d01c",
         "72a850248272dbf5",
+        "6260868211067259",
+        "f75134804b55cd2f",
         "bc90d3917ed1d664",
         "a1fb2caecfef173e",
         "5c94268707dd47dc"
@@ -1553,7 +1555,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 25,
+        "observedDateCount": 27,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1562,10 +1564,10 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
+        "com_1466f20a9300",
         "com_3048e331f7b6",
         "com_9abdf9db297a",
         "com_b736e77bdf93",
-        "com_1466f20a9300",
         "com_359bbb5a9a91",
         "com_cb019f4e9752"
       ]
@@ -1788,11 +1790,11 @@
       ],
       "similarCommunityIds": [
         "com_4c3ca28533f5",
-        "com_1466f20a9300",
-        "com_02b1cd673b69",
-        "com_c48aeb7c61ce",
         "com_f23f8820878b",
-        "com_b0e15eaab803"
+        "com_1466f20a9300",
+        "com_b0e15eaab803",
+        "com_065dafa96d43",
+        "com_28a4ec647815"
       ]
     },
     {
@@ -1871,12 +1873,12 @@
         "eventbrite:31025401131"
       ],
       "similarCommunityIds": [
+        "com_1466f20a9300",
         "com_7fd76dcd92f3",
         "com_d2d455d2d6c9",
         "com_072c9c3e12a8",
         "com_9fed174eeff3",
-        "com_9abdf9db297a",
-        "com_b8a3508a14a4"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -2097,12 +2099,12 @@
         "eventbrite:40513431663"
       ],
       "similarCommunityIds": [
+        "com_c1410c07c4dd",
         "com_f8ff3d3257ed",
         "com_318c39363fe6",
         "com_28a4ec647815",
-        "com_eeb4e424a504",
-        "com_b766b6de77ba",
-        "com_c1410c07c4dd"
+        "com_33a530deb7aa",
+        "com_c4469caf0091"
       ]
     },
     {
@@ -2265,9 +2267,9 @@
         "com_fe4b6663b721",
         "com_d2d455d2d6c9",
         "com_ff2e01957665",
+        "com_33a530deb7aa",
         "com_7fd76dcd92f3",
-        "com_072c9c3e12a8",
-        "com_9fed174eeff3"
+        "com_c4469caf0091"
       ]
     },
     {
@@ -2335,9 +2337,9 @@
       "similarCommunityIds": [
         "com_5eb8bafab897",
         "com_7fd76dcd92f3",
-        "com_02b1cd673b69",
         "com_072c9c3e12a8",
         "com_9fed174eeff3",
+        "com_02b1cd673b69",
         "com_c48aeb7c61ce"
       ]
     },
@@ -2409,12 +2411,12 @@
         "eventbrite:52255937823"
       ],
       "similarCommunityIds": [
-        "com_33a530deb7aa",
-        "com_c4469caf0091",
         "com_a786c70979d0",
         "com_a4d969c3c6eb",
         "com_0e403135692e",
-        "com_a1e1c13a75f0"
+        "com_a1e1c13a75f0",
+        "com_33a530deb7aa",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -2423,12 +2425,14 @@
       "name": "St Mazie",
       "kind": "recurring_series",
       "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 57 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 58 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
-        "music"
+        "music",
+        "other"
       ],
       "tags": [
-        "music"
+        "music",
+        "other"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -2446,7 +2450,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-27",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 89
       },
       "schedule": {
@@ -2457,7 +2461,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 57
+        "sampleSize": 58
       },
       "upcomingEventIds": [
         "e5ec810caf95f604",
@@ -2466,7 +2470,8 @@
         "33d5f56087d1d19d",
         "28c85b8c98592091",
         "541cf591c54d60c8",
-        "6b46125e2b24f504"
+        "6b46125e2b24f504",
+        "3ca27dac77501230"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2475,7 +2480,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 57,
+        "observedDateCount": 58,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2484,12 +2489,12 @@
         "eventbrite:5803675324"
       ],
       "similarCommunityIds": [
-        "com_83f64eec47de",
-        "com_da2f66394228",
+        "com_359bbb5a9a91",
         "com_3837f308cd75",
-        "com_eef1ca956dae",
+        "com_cb019f4e9752",
         "com_3048e331f7b6",
-        "com_d8a5203885a9"
+        "com_0e403135692e",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -2719,9 +2724,9 @@
         "com_7fd76dcd92f3",
         "com_072c9c3e12a8",
         "com_c58670960684",
-        "com_33a530deb7aa",
-        "com_c4469caf0091",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_a1e1c13a75f0",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -2801,10 +2806,10 @@
       "similarCommunityIds": [
         "com_3837f308cd75",
         "com_d8a5203885a9",
+        "com_1466f20a9300",
         "com_b766b6de77ba",
         "com_ff2e01957665",
-        "com_5582e2e97f1a",
-        "com_b736e77bdf93"
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -2867,9 +2872,9 @@
         "eventbrite:75703691143"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
         "com_83f64eec47de",
         "com_218b97d674a6",
+        "com_1466f20a9300",
         "com_4459cf756c02",
         "com_64ebabd98c5c",
         "com_3837f308cd75"
@@ -2942,9 +2947,9 @@
         "com_14e2dae511e1",
         "com_fe4b6663b721",
         "com_36cb2681053d",
-        "com_ff2e01957665",
-        "com_a1e1c13a75f0",
-        "com_ed8d42fb031d"
+        "com_ed9d2e2bb33a",
+        "com_33a530deb7aa",
+        "com_c4469caf0091"
       ]
     },
     {
@@ -3101,11 +3106,11 @@
       ],
       "similarCommunityIds": [
         "com_3048e331f7b6",
+        "com_33a530deb7aa",
         "com_a1e1c13a75f0",
+        "com_c4469caf0091",
         "com_ff2e01957665",
-        "com_eeb4e424a504",
-        "com_55ca36db453a",
-        "com_8d86f6f9340b"
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -3172,9 +3177,9 @@
         "com_cb019f4e9752",
         "com_d2d455d2d6c9",
         "com_0e403135692e",
+        "com_1466f20a9300",
         "com_ff2e01957665",
-        "com_118a558259ea",
-        "com_3481b6750d6f"
+        "com_118a558259ea"
       ]
     },
     {
@@ -3317,12 +3322,80 @@
         "url:https://www.instagram.com/vitalrunclub"
       ],
       "similarCommunityIds": [
-        "com_02b1cd673b69",
-        "com_c48aeb7c61ce",
         "com_cdd5daa67222",
         "com_ed8d42fb031d",
         "com_feb5ce491629",
-        "com_14e2dae511e1"
+        "com_02b1cd673b69",
+        "com_14e2dae511e1",
+        "com_3bc67889299d"
+      ]
+    },
+    {
+      "id": "com_ed9d2e2bb33a",
+      "slug": "andrew-s-yeung-s-tech-events-2bb33a",
+      "name": "Andrew's Yeung's Tech Events",
+      "kind": "recurring_series",
+      "tagline": "Andrew's Yeung's Tech Events is a recurring event series centered on parties in midtown.",
+      "description": "Andrew's Yeung's Tech Events is a recurring event series centered on parties in midtown. Based on 2 observed event dates, it meets weekly on Tuesday evenings.",
+      "categories": [
+        "parties"
+      ],
+      "tags": [
+        "parties"
+      ],
+      "neighborhoods": [
+        "midtown"
+      ],
+      "homeVenue": "Midtown South",
+      "imageUrl": "https://images.lumacdn.com/uploads/sj/4e52516a-aaab-4610-bb4b-6820a402fd43.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/andrewsmixers"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-27",
+        "upcomingEventCount": 1,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "7f9b85e096749b8a"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-28",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:andrewsmixers"
+      ],
+      "similarCommunityIds": [
+        "com_14e2dae511e1",
+        "com_36cb2681053d",
+        "com_43850d49f9e6",
+        "com_cdd5daa67222",
+        "com_8d86f6f9340b",
+        "com_065dafa96d43"
       ]
     },
     {
@@ -3543,13 +3616,17 @@
       "slug": "lit-club-nyc-calendar-af0091",
       "name": "Lit Club NYC Calendar",
       "kind": "club",
-      "tagline": "Lit Club NYC Calendar is a community club centered on books in manhattan.",
-      "description": "Lit Club NYC Calendar is a community club centered on books in manhattan. Based on 2 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "tagline": "Lit Club NYC Calendar is a community club centered on books, parties, food in manhattan.",
+      "description": "Lit Club NYC Calendar is a community club centered on books, parties, food in manhattan. Based on 2 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
-        "books"
+        "books",
+        "parties",
+        "food"
       ],
       "tags": [
-        "books"
+        "books",
+        "parties",
+        "food"
       ],
       "neighborhoods": [
         "manhattan"
@@ -3601,11 +3678,11 @@
       ],
       "similarCommunityIds": [
         "com_33a530deb7aa",
-        "com_f171cd222ca5",
-        "com_a786c70979d0",
+        "com_fe4b6663b721",
+        "com_36cb2681053d",
         "com_7fd76dcd92f3",
-        "com_e9748c1176c1",
-        "com_a1e1c13a75f0"
+        "com_5582e2e97f1a",
+        "com_55ca36db453a"
       ]
     },
     {
@@ -3672,12 +3749,12 @@
         "luma:cal-kcwhmbis2x0y2xb"
       ],
       "similarCommunityIds": [
+        "com_ed9d2e2bb33a",
         "com_43850d49f9e6",
         "com_8d86f6f9340b",
         "com_ff2e01957665",
         "com_36cb2681053d",
-        "com_cdd5daa67222",
-        "com_3048e331f7b6"
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -3685,28 +3762,27 @@
       "slug": "miler-running-673b69",
       "name": "MILER RUNNING",
       "kind": "recurring_series",
-      "tagline": "MILER RUNNING is a recurring event series centered on fitness, exploration, outdoors in flatbush, manhattan.",
-      "description": "MILER RUNNING is a recurring event series centered on fitness, exploration, outdoors in flatbush, manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Friday mornings.",
+      "tagline": "MILER RUNNING is a recurring event series centered on music, parties, fitness in manhattan.",
+      "description": "MILER RUNNING is a recurring event series centered on music, parties, fitness in manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Friday mornings.",
       "categories": [
+        "music",
+        "parties",
         "fitness",
         "exploration",
-        "outdoors",
-        "music",
-        "parties"
+        "special"
       ],
       "tags": [
+        "music",
+        "parties",
         "fitness",
         "exploration",
-        "outdoors",
-        "music",
-        "parties"
+        "special"
       ],
       "neighborhoods": [
-        "flatbush",
         "manhattan"
       ],
-      "homeVenue": "Grand Army Plaza",
-      "imageUrl": "https://images.lumacdn.com/uploads/6l/576fb00f-09e5-4897-a28f-b39571866817.jpg",
+      "homeVenue": "345 Broome St",
+      "imageUrl": "https://images.lumacdn.com/uploads/uo/4f8d6d61-e550-4050-af43-4264ea95e0d1.jpg",
       "links": [
         {
           "type": "luma",
@@ -3718,7 +3794,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 1,
         "eventCount90d": 1
       },
       "schedule": {
@@ -3732,7 +3808,6 @@
         "sampleSize": 2
       },
       "upcomingEventIds": [
-        "b4399015a5535089",
         "f5fd9c2ba96174ed"
       ],
       "sourceAttributions": [
@@ -3753,11 +3828,11 @@
       ],
       "similarCommunityIds": [
         "com_c48aeb7c61ce",
-        "com_4c3ca28533f5",
-        "com_065dafa96d43",
         "com_072c9c3e12a8",
         "com_9fed174eeff3",
-        "com_ed8d42fb031d"
+        "com_fe4b6663b721",
+        "com_36cb2681053d",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -3833,9 +3908,9 @@
         "com_7fd76dcd92f3",
         "com_072c9c3e12a8",
         "com_feb5ce491629",
-        "com_36cb2681053d",
-        "com_4c3ca28533f5",
-        "com_e9748c1176c1"
+        "com_02b1cd673b69",
+        "com_c48aeb7c61ce",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -3843,13 +3918,17 @@
       "slug": "lit-club-nyc-calendar-deb7aa",
       "name": "Lit Club NYC Calendar",
       "kind": "club",
-      "tagline": "Lit Club NYC Calendar is a community club centered on books in manhattan.",
-      "description": "Lit Club NYC Calendar is a community club centered on books in manhattan. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "Lit Club NYC Calendar is a community club centered on books, parties, food in manhattan.",
+      "description": "Lit Club NYC Calendar is a community club centered on books, parties, food in manhattan. Based on 6 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
-        "books"
+        "books",
+        "parties",
+        "food"
       ],
       "tags": [
-        "books"
+        "books",
+        "parties",
+        "food"
       ],
       "neighborhoods": [
         "manhattan"
@@ -3902,11 +3981,11 @@
       ],
       "similarCommunityIds": [
         "com_c4469caf0091",
-        "com_f171cd222ca5",
-        "com_a786c70979d0",
+        "com_fe4b6663b721",
+        "com_36cb2681053d",
         "com_7fd76dcd92f3",
-        "com_e9748c1176c1",
-        "com_a1e1c13a75f0"
+        "com_5582e2e97f1a",
+        "com_55ca36db453a"
       ]
     },
     {
@@ -3914,28 +3993,27 @@
       "slug": "miler-running-7c61ce",
       "name": "MILER RUNNING",
       "kind": "recurring_series",
-      "tagline": "MILER RUNNING is a recurring event series centered on fitness, exploration, outdoors in flatbush, manhattan.",
-      "description": "MILER RUNNING is a recurring event series centered on fitness, exploration, outdoors in flatbush, manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Friday mornings.",
+      "tagline": "MILER RUNNING is a recurring event series centered on music, parties, fitness in manhattan.",
+      "description": "MILER RUNNING is a recurring event series centered on music, parties, fitness in manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Friday mornings.",
       "categories": [
+        "music",
+        "parties",
         "fitness",
         "exploration",
-        "outdoors",
-        "music",
-        "parties"
+        "special"
       ],
       "tags": [
+        "music",
+        "parties",
         "fitness",
         "exploration",
-        "outdoors",
-        "music",
-        "parties"
+        "special"
       ],
       "neighborhoods": [
-        "flatbush",
         "manhattan"
       ],
-      "homeVenue": "Grand Army Plaza",
-      "imageUrl": "https://images.lumacdn.com/uploads/6l/576fb00f-09e5-4897-a28f-b39571866817.jpg",
+      "homeVenue": "345 Broome St",
+      "imageUrl": "https://images.lumacdn.com/uploads/uo/4f8d6d61-e550-4050-af43-4264ea95e0d1.jpg",
       "links": [
         {
           "type": "luma",
@@ -3947,7 +4025,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 1,
         "eventCount90d": 1
       },
       "schedule": {
@@ -3961,7 +4039,6 @@
         "sampleSize": 2
       },
       "upcomingEventIds": [
-        "b4399015a5535089",
         "f5fd9c2ba96174ed"
       ],
       "sourceAttributions": [
@@ -3981,11 +4058,11 @@
       ],
       "similarCommunityIds": [
         "com_02b1cd673b69",
-        "com_4c3ca28533f5",
-        "com_065dafa96d43",
         "com_072c9c3e12a8",
         "com_9fed174eeff3",
-        "com_ed8d42fb031d"
+        "com_fe4b6663b721",
+        "com_36cb2681053d",
+        "com_4c3ca28533f5"
       ]
     },
     {
@@ -4055,10 +4132,10 @@
       ],
       "similarCommunityIds": [
         "com_ed8d42fb031d",
-        "com_1466f20a9300",
         "com_c1410c07c4dd",
         "com_318c39363fe6",
         "com_8b837dfb5421",
+        "com_1466f20a9300",
         "com_4c3ca28533f5"
       ]
     },
@@ -4067,8 +4144,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art"
@@ -4079,12 +4156,12 @@
       ],
       "neighborhoods": [
         "upper east side",
-        "williamsburg",
         "manhattan",
+        "williamsburg",
         "midtown"
       ],
       "homeVenue": "167 E Broadway",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/ta/4b2e6b52-4016-4404-bd31-f83c5a7a91fb.jpg",
+      "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
       "links": [
         {
           "type": "luma",
@@ -4110,8 +4187,8 @@
         "sampleSize": 22
       },
       "upcomingEventIds": [
-        "59745b6c2d13583f",
         "40ae468fb0bd7978",
+        "59745b6c2d13583f",
         "f5bf268774eee7ee",
         "02f1f4c5a1fa388b",
         "f58b6a84f214ebb3",
@@ -4221,11 +4298,11 @@
         "luma:readingrhythms-manhattan"
       ],
       "similarCommunityIds": [
-        "com_065dafa96d43",
-        "com_ff2e01957665",
         "com_33a530deb7aa",
         "com_c4469caf0091",
-        "com_02b1cd673b69",
+        "com_065dafa96d43",
+        "com_ff2e01957665",
+        "com_ed9d2e2bb33a",
         "com_0cc8630779d7"
       ]
     },
@@ -4289,12 +4366,12 @@
         "luma:vanaleninstitute"
       ],
       "similarCommunityIds": [
-        "com_33a530deb7aa",
-        "com_c4469caf0091",
         "com_f171cd222ca5",
         "com_0e403135692e",
         "com_a4d969c3c6eb",
-        "com_28a4ec647815"
+        "com_28a4ec647815",
+        "com_33a530deb7aa",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -4302,21 +4379,21 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, games in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, games in east village, bushwick. Based on 70 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, comedy in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, music, comedy in east village, bushwick. Based on 69 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
-        "games",
         "comedy",
-        "singles"
+        "games",
+        "food"
       ],
       "tags": [
         "books",
         "music",
-        "games",
         "comedy",
-        "singles"
+        "games",
+        "food"
       ],
       "neighborhoods": [
         "east village",
@@ -4329,14 +4406,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://bookclubbar.com/events/6650120261214"
+          "url": "https://www.bookclubbar.com/events/6638320261212"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 26,
+        "upcomingEventCount": 20,
         "eventCount90d": 72
       },
       "schedule": {
@@ -4347,7 +4424,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 70
+        "sampleSize": 69
       },
       "upcomingEventIds": [
         "7b4f9f13068943a6",
@@ -4370,7 +4447,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 70,
+        "observedDateCount": 69,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4378,22 +4455,18 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
-        },
-        {
-          "eventId": "39ae2e33322cd181",
-          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_318c39363fe6",
-        "com_f23f8820878b",
         "com_55ca36db453a",
+        "com_3048e331f7b6",
+        "com_318c39363fe6",
+        "com_b736e77bdf93",
         "com_b0e15eaab803",
-        "com_a1e1c13a75f0",
-        "com_a4d969c3c6eb"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -4453,8 +4526,8 @@
         "7e4afd0ea4855daf",
         "8d6252c56f63768c",
         "db9430151724f389",
-        "58db1b5d5f7cf861",
         "19e7c5a4f8883e76",
+        "58db1b5d5f7cf861",
         "4b096d5c80d385b7",
         "5a391140a544211a",
         "73a6d89529e0735e",
@@ -4478,10 +4551,10 @@
       "similarCommunityIds": [
         "com_3048e331f7b6",
         "com_eef1ca956dae",
-        "com_1466f20a9300",
+        "com_f23f8820878b",
         "com_648449f336c0",
-        "com_b766b6de77ba",
-        "com_ff2e01957665"
+        "com_1466f20a9300",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -4556,8 +4629,8 @@
       ],
       "similarCommunityIds": [
         "com_da2f66394228",
-        "com_1466f20a9300",
         "com_83f64eec47de",
+        "com_1466f20a9300",
         "com_4459cf756c02",
         "com_64ebabd98c5c",
         "com_8b837dfb5421"
@@ -4636,9 +4709,9 @@
         "com_f171cd222ca5",
         "com_318c39363fe6",
         "com_0e403135692e",
-        "com_33a530deb7aa",
         "com_a786c70979d0",
-        "com_c4469caf0091"
+        "com_e9748c1176c1",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -4731,7 +4804,7 @@
       "name": "McNally Jackson",
       "kind": "institutional_program",
       "tagline": "McNally Jackson is a community program centered on books, parties, special in soho, williamsburg.",
-      "description": "McNally Jackson is a community program centered on books, parties, special in soho, williamsburg. Based on 16 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "McNally Jackson is a community program centered on books, parties, special in soho, williamsburg. Based on 21 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -4756,14 +4829,14 @@
         {
           "type": "mcnallyjackson",
           "label": "View on Mcnallyjackson",
-          "url": "https://www.mcnallyjackson.com/event/2026-11-20/broken-dishes-book-club-swati"
+          "url": "https://www.mcnallyjackson.com/event/2026-12-11/enzo-morgans-batshit-book-club"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 26,
+        "upcomingEventCount": 31,
         "eventCount90d": 2
       },
       "schedule": {
@@ -4774,7 +4847,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 16
+        "sampleSize": 21
       },
       "upcomingEventIds": [
         "642fa1550933e024",
@@ -4797,7 +4870,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 16,
+        "observedDateCount": 21,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -4808,10 +4881,10 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_eef1ca956dae",
+        "com_02b1cd673b69",
+        "com_c48aeb7c61ce",
         "com_d8a5203885a9",
-        "com_cdd5daa67222",
-        "com_a4d969c3c6eb",
-        "com_ff2e01957665"
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -4891,8 +4964,8 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_d8a5203885a9",
-        "com_1466f20a9300",
         "com_0e403135692e",
+        "com_1466f20a9300",
         "com_ff2e01957665",
         "com_3837f308cd75"
       ]
@@ -4903,20 +4976,20 @@
       "name": "New York Comedy Club Upper West Side",
       "kind": "club",
       "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, special in east village, upper west side. Based on 85 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, special in east village, upper west side. Based on 86 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "comedy",
         "music",
         "special",
         "outdoors",
-        "singles"
+        "celebrities"
       ],
       "tags": [
         "comedy",
         "music",
         "special",
         "outdoors",
-        "singles"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
@@ -4946,11 +5019,10 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 85
+        "sampleSize": 86
       },
       "upcomingEventIds": [
         "161cde3f1ae40ed5",
-        "28dbf26319b8923c",
         "79edf11224d842ff",
         "e22799e6d03c2de8",
         "a831f74fee2f24f8",
@@ -4960,7 +5032,8 @@
         "e8eb8fbd078afce4",
         "3d2a633f0e6cfb02",
         "f0a80773caf589ae",
-        "d74adf7ff4d2709c"
+        "d74adf7ff4d2709c",
+        "acf8f803e5eaa6e2"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4969,7 +5042,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 85,
+        "observedDateCount": 86,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -4983,12 +5056,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_318c39363fe6",
-        "com_c1410c07c4dd",
-        "com_b8a3508a14a4",
         "com_d8a5203885a9",
+        "com_318c39363fe6",
+        "com_b8a3508a14a4",
         "com_4c3ca28533f5",
-        "com_5eb8bafab897"
+        "com_5eb8bafab897",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -52213,7 +52286,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-28T14:09:00.065083+00:00",
+  "lastUpdated": "2026-10-28T15:06:01.056895+00:00",
   "version": 1,
   "schemaVersion": 1
 }
