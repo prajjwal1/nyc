@@ -868,6 +868,76 @@
       ]
     },
     {
+      "id": "com_02ba15552329",
+      "slug": "lululemon-williamsburg-552329",
+      "name": "lululemon Williamsburg",
+      "kind": "recurring_series",
+      "tagline": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg.",
+      "description": "lululemon Williamsburg is a recurring event series centered on fitness in williamsburg. Based on 2 observed event dates, it meets weekly on Thursday and Monday mornings.",
+      "categories": [
+        "fitness"
+      ],
+      "tags": [
+        "fitness"
+      ],
+      "neighborhoods": [
+        "williamsburg"
+      ],
+      "homeVenue": "97 N 6th St",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1194951911%2F222507638384%2F1%2Foriginal.20261003-000459?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.021&fp-y=0.711&s=0597ff9cb307fc6a24474b2538c9db6e",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/14861961557"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Monday"
+        ],
+        "typicalTime": "08:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "1d7d0a236d749577",
+        "d19a2a598110cb3c"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-28",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:14861961557"
+      ],
+      "similarCommunityIds": [
+        "com_3bc67889299d",
+        "com_4459cf756c02",
+        "com_065dafa96d43",
+        "com_feb5ce491629",
+        "com_9fed174eeff3",
+        "com_02b1cd673b69"
+      ]
+    },
+    {
       "id": "com_ad50d6a81df3",
       "slug": "new-york-school-of-interior-design-a81df3",
       "name": "New York School of Interior Design",
@@ -1256,18 +1326,20 @@
       "name": "Museum of Reclaimed Urban Space",
       "kind": "institutional_program",
       "tagline": "Museum of Reclaimed Urban Space is a community program centered on outdoors, fitness, wellness in manhattan, east village.",
-      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, fitness, wellness in manhattan, east village. Based on 23 observed event dates, it meets weekly on Thursday and Wednesday mornings.",
+      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, fitness, wellness in manhattan, east village. Based on 23 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "other",
         "outdoors",
         "fitness",
-        "wellness"
+        "wellness",
+        "exploration"
       ],
       "tags": [
         "other",
         "outdoors",
         "fitness",
-        "wellness"
+        "wellness",
+        "exploration"
       ],
       "neighborhoods": [
         "manhattan",
@@ -1287,7 +1359,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 36
       },
       "schedule": {
@@ -1296,7 +1368,7 @@
           "Thursday",
           "Wednesday"
         ],
-        "typicalTime": "11:00",
+        "typicalTime": "17:00",
         "confidence": 1.0,
         "sampleSize": 23
       },
@@ -1304,6 +1376,7 @@
         "3299d2c626d57ac9",
         "6960e8bc6646166d",
         "658e8169311b01df",
+        "16d7d26f958d60ec",
         "2015b20c57990e3e",
         "efca931195531e91"
       ],
@@ -1330,10 +1403,10 @@
       "similarCommunityIds": [
         "com_9fed174eeff3",
         "com_d2d455d2d6c9",
-        "com_065dafa96d43",
-        "com_8b837dfb5421",
-        "com_ab8259bb35a4",
-        "com_36cb2681053d"
+        "com_072c9c3e12a8",
+        "com_ad50d6a81df3",
+        "com_02b1cd673b69",
+        "com_c48aeb7c61ce"
       ]
     },
     {
@@ -1493,7 +1566,7 @@
       "name": "Pioneer Works",
       "kind": "recurring_series",
       "tagline": "Pioneer Works is a recurring event series centered on music, food, art in brooklyn.",
-      "description": "Pioneer Works is a recurring event series centered on music, food, art in brooklyn. Based on 27 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "Pioneer Works is a recurring event series centered on music, food, art in brooklyn. Based on 28 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "other",
         "music",
@@ -1522,7 +1595,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-26",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 16
       },
       "schedule": {
@@ -1533,7 +1606,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 27
+        "sampleSize": 28
       },
       "upcomingEventIds": [
         "649cfed373d8bc79",
@@ -1542,6 +1615,7 @@
         "8e38939042eea465",
         "6d1a9669e2f8d01c",
         "72a850248272dbf5",
+        "f1687670ed2cbe05",
         "6260868211067259",
         "f75134804b55cd2f",
         "bc90d3917ed1d664",
@@ -1555,7 +1629,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 27,
+        "observedDateCount": 28,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2503,7 +2577,7 @@
       "name": "New York Public Library for the Performing Arts",
       "kind": "institutional_program",
       "tagline": "New York Public Library for the Performing Arts is a community program centered on music, books, art in long island city, upper west side.",
-      "description": "New York Public Library for the Performing Arts is a community program centered on music, books, art in long island city, upper west side. Based on 11 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "description": "New York Public Library for the Performing Arts is a community program centered on music, books, art in long island city, upper west side. Based on 12 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "music",
         "books",
@@ -2531,7 +2605,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 9
       },
       "schedule": {
@@ -2542,7 +2616,7 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "af69bd1897b93511",
@@ -2550,7 +2624,8 @@
         "c22f3d75f673365f",
         "356cc12eb6522eb0",
         "e229b2a5b996b9a2",
-        "4511b6603efb0b98"
+        "4511b6603efb0b98",
+        "d8a72e4b436b4b62"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2559,7 +2634,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3314,10 +3389,10 @@
         "url:https://www.instagram.com/nycsprintcollective"
       ],
       "similarCommunityIds": [
+        "com_02ba15552329",
         "com_4459cf756c02",
         "com_065dafa96d43",
         "com_9fed174eeff3",
-        "com_feb5ce491629",
         "com_02b1cd673b69",
         "com_c48aeb7c61ce"
       ]
@@ -3394,8 +3469,8 @@
       "similarCommunityIds": [
         "com_cdd5daa67222",
         "com_ed8d42fb031d",
-        "com_feb5ce491629",
         "com_02b1cd673b69",
+        "com_02ba15552329",
         "com_14e2dae511e1",
         "com_3bc67889299d"
       ]
@@ -3599,12 +3674,12 @@
         "luma:cal-co9pklujbzvtzt4"
       ],
       "similarCommunityIds": [
+        "com_02ba15552329",
         "com_3bc67889299d",
         "com_218b97d674a6",
         "com_64ebabd98c5c",
         "com_da2f66394228",
-        "com_0e403135692e",
-        "com_1466f20a9300"
+        "com_0e403135692e"
       ]
     },
     {
@@ -3977,9 +4052,9 @@
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
         "com_072c9c3e12a8",
-        "com_feb5ce491629",
         "com_02b1cd673b69",
         "com_c48aeb7c61ce",
+        "com_feb5ce491629",
         "com_36cb2681053d"
       ]
     },
@@ -4214,8 +4289,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art"
@@ -4226,12 +4301,12 @@
       ],
       "neighborhoods": [
         "upper east side",
-        "williamsburg",
         "manhattan",
+        "williamsburg",
         "midtown"
       ],
       "homeVenue": "167 E Broadway",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/ta/4b2e6b52-4016-4404-bd31-f83c5a7a91fb.jpg",
+      "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
       "links": [
         {
           "type": "luma",
@@ -4257,8 +4332,8 @@
         "sampleSize": 22
       },
       "upcomingEventIds": [
-        "59745b6c2d13583f",
         "40ae468fb0bd7978",
+        "59745b6c2d13583f",
         "f5bf268774eee7ee",
         "02f1f4c5a1fa388b",
         "f58b6a84f214ebb3",
@@ -4545,7 +4620,7 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn. Based on 70 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn. Based on 72 observed event dates, it meets weekly on Friday and Tuesday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -4569,25 +4644,25 @@
         {
           "type": "brooklyncomedy",
           "label": "View on Brooklyncomedy",
-          "url": "https://www.brooklyncomedycollective.com/show-schedule/the-britney-spears-variety-show-12-1"
+          "url": "https://www.brooklyncomedycollective.com/show-schedule/new-day-new-york-12-6"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 32,
+        "upcomingEventCount": 35,
         "eventCount90d": 137
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Saturday"
+          "Tuesday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 70
+        "sampleSize": 72
       },
       "upcomingEventIds": [
         "a9d01fce0f9b1600",
@@ -4596,8 +4671,8 @@
         "7e4afd0ea4855daf",
         "8d6252c56f63768c",
         "db9430151724f389",
-        "58db1b5d5f7cf861",
         "19e7c5a4f8883e76",
+        "58db1b5d5f7cf861",
         "4b096d5c80d385b7",
         "5a391140a544211a",
         "73a6d89529e0735e",
@@ -4610,7 +4685,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 70,
+        "observedDateCount": 72,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -4621,10 +4696,10 @@
       "similarCommunityIds": [
         "com_3048e331f7b6",
         "com_eef1ca956dae",
+        "com_f23f8820878b",
         "com_648449f336c0",
         "com_1466f20a9300",
-        "com_b766b6de77ba",
-        "com_ff2e01957665"
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -5052,20 +5127,20 @@
         "music",
         "special",
         "outdoors",
-        "singles"
+        "celebrities"
       ],
       "tags": [
         "comedy",
         "music",
         "special",
         "outdoors",
-        "singles"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club",
+      "homeVenue": "New York Comedy Club Upper West Side",
       "imageUrl": "/img/events/3030-October-POST-1-f4100b34-large-thumb.png",
       "links": [
         {
@@ -5078,7 +5153,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 51,
+        "upcomingEventCount": 54,
         "eventCount90d": 263
       },
       "schedule": {
@@ -5095,15 +5170,15 @@
         "161cde3f1ae40ed5",
         "79edf11224d842ff",
         "e22799e6d03c2de8",
-        "e1794fb2cfe8f651",
         "a831f74fee2f24f8",
+        "e1794fb2cfe8f651",
         "14be2847769b5f8f",
         "7aca67aa3afb627a",
         "e8eb8fbd078afce4",
         "3d2a633f0e6cfb02",
-        "acf8f803e5eaa6e2",
-        "243ca7772c948fc8",
-        "014db9bb493c0d69"
+        "f0a80773caf589ae",
+        "d74adf7ff4d2709c",
+        "a44d074a034e1cff"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -5126,9 +5201,9 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
+        "com_d8a5203885a9",
         "com_318c39363fe6",
         "com_b8a3508a14a4",
-        "com_d8a5203885a9",
         "com_4c3ca28533f5",
         "com_5eb8bafab897",
         "com_c1410c07c4dd"
@@ -5171,7 +5246,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 16,
+        "upcomingEventCount": 17,
         "eventCount90d": 100
       },
       "schedule": {
@@ -5194,9 +5269,9 @@
         "6a0ea4f05e5a7009",
         "bf219082377559e1",
         "198d0971ba9080d7",
+        "10e3afa47afef780",
         "927b10357213ba23",
-        "f8731fb16a2080b5",
-        "37a95f2f31e05fba"
+        "f8731fb16a2080b5"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -52356,7 +52431,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-28T20:36:59.843817+00:00",
+  "lastUpdated": "2026-10-28T20:59:31.008951+00:00",
   "version": 1,
   "schemaVersion": 1
 }
