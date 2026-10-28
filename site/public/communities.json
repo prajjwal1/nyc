@@ -4136,8 +4136,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in midtown, williamsburg.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in midtown, williamsburg. Based on 48 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in bronx, midtown.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, outdoors in bronx, midtown. Based on 49 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "books",
         "parties",
@@ -4149,12 +4149,12 @@
         "outdoors"
       ],
       "neighborhoods": [
+        "bronx",
         "midtown",
         "williamsburg",
-        "bronx",
         "harlem"
       ],
-      "homeVenue": "10-15 43rd Ave",
+      "homeVenue": "BX Eatery",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/api-uploads/ta/0b5884da-c4e0-4c29-9bdf-e01a64e4f334.png",
       "links": [
         {
@@ -4167,7 +4167,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 67
       },
       "schedule": {
@@ -4178,7 +4178,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 48
+        "sampleSize": 49
       },
       "upcomingEventIds": [
         "f183edbd75c386e4",
@@ -4191,7 +4191,8 @@
         "1c56ee1670954b00",
         "72df5d612f43c186",
         "e8ff3a0ea56a494f",
-        "6f731918d4322cf7"
+        "6f731918d4322cf7",
+        "14a45f2ac9abcc9e"
       ],
       "sourceAttributions": [
         "luma"
@@ -4200,7 +4201,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 48,
+        "observedDateCount": 49,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -52198,7 +52199,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-28T01:34:30.854446+00:00",
+  "lastUpdated": "2026-10-28T02:11:34.064669+00:00",
   "version": 1,
   "schemaVersion": 1
 }
