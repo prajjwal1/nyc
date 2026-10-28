@@ -3025,6 +3025,76 @@
       ]
     },
     {
+      "id": "com_c2d0cec20a9a",
+      "slug": "whatsthemotiveus-c20a9a",
+      "name": "WhatsTheMotiveUS",
+      "kind": "recurring_series",
+      "tagline": "WhatsTheMotiveUS is a recurring event series centered on parties in bronx.",
+      "description": "WhatsTheMotiveUS is a recurring event series centered on parties in bronx. Based on 2 observed event dates, it meets biweekly on Saturday evenings.",
+      "categories": [
+        "parties"
+      ],
+      "tags": [
+        "parties"
+      ],
+      "neighborhoods": [
+        "bronx"
+      ],
+      "homeVenue": "Bronx Brewery Back Yard Entrance",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193822854%2F232855692231%2F1%2Foriginal.20260918-092633?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.449&fp-y=0.042&s=0cdb3a88e653e61f1cafa81c1f82d402",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/82796394943"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Saturday"
+        ],
+        "typicalTime": "22:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "3bc2bbdf27df7176",
+        "f843262b476851af",
+        "04051869a2160971"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-28",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:82796394943"
+      ],
+      "similarCommunityIds": [
+        "com_14e2dae511e1",
+        "com_ed9d2e2bb33a",
+        "com_36cb2681053d",
+        "com_43850d49f9e6",
+        "com_065dafa96d43",
+        "com_33a530deb7aa"
+      ]
+    },
+    {
       "id": "com_5582e2e97f1a",
       "slug": "liz-s-book-bar-e97f1a",
       "name": "Liz\u2019s Book Bar",
@@ -3391,11 +3461,11 @@
       ],
       "similarCommunityIds": [
         "com_14e2dae511e1",
+        "com_c2d0cec20a9a",
         "com_36cb2681053d",
         "com_43850d49f9e6",
         "com_cdd5daa67222",
-        "com_8d86f6f9340b",
-        "com_065dafa96d43"
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -3750,11 +3820,11 @@
       ],
       "similarCommunityIds": [
         "com_ed9d2e2bb33a",
+        "com_c2d0cec20a9a",
         "com_43850d49f9e6",
         "com_8d86f6f9340b",
         "com_ff2e01957665",
-        "com_36cb2681053d",
-        "com_cdd5daa67222"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -52286,7 +52356,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-28T15:26:31.214268+00:00",
+  "lastUpdated": "2026-10-28T15:32:14.663686+00:00",
   "version": 1,
   "schemaVersion": 1
 }
