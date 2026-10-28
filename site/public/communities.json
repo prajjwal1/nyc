@@ -1181,7 +1181,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series in brooklyn.",
-      "description": "Union Hall is a recurring event series in brooklyn. Based on 51 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "description": "Union Hall is a recurring event series in brooklyn. Based on 52 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
         "other"
       ],
@@ -1204,7 +1204,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 64
       },
       "schedule": {
@@ -1215,7 +1215,7 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 51
+        "sampleSize": 52
       },
       "upcomingEventIds": [
         "6e05c18dbf98c6a4",
@@ -1223,7 +1223,8 @@
         "8308a303a770ef1a",
         "a4f3dd755ad5c72b",
         "04c893750a1b4d30",
-        "589b84b6406c68f0"
+        "589b84b6406c68f0",
+        "eb865c0df28a8f54"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1232,7 +1233,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 51,
+        "observedDateCount": 52,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -52211,7 +52212,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-28T08:24:53.169509+00:00",
+  "lastUpdated": "2026-10-28T08:45:02.759058+00:00",
   "version": 1,
   "schemaVersion": 1
 }
