@@ -2634,9 +2634,9 @@
         "com_eeb4e424a504",
         "com_318c39363fe6",
         "com_55ca36db453a",
+        "com_c1410c07c4dd",
         "com_f8ff3d3257ed",
-        "com_9abdf9db297a",
-        "com_072c9c3e12a8"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -4355,20 +4355,20 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, music, comedy in bushwick, east village.",
-      "description": "Book Club Bar is a community space centered on books, music, comedy in bushwick, east village. Based on 69 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, music, comedy in bushwick, east village. Based on 70 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
         "comedy",
-        "food",
-        "singles"
+        "singles",
+        "art"
       ],
       "tags": [
         "books",
         "music",
         "comedy",
-        "food",
-        "singles"
+        "singles",
+        "art"
       ],
       "neighborhoods": [
         "bushwick",
@@ -4381,14 +4381,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6638320261212"
+          "url": "https://bookclubbar.com/events/6650120261214"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-29",
-        "upcomingEventCount": 18,
+        "upcomingEventCount": 24,
         "eventCount90d": 73
       },
       "schedule": {
@@ -4399,7 +4399,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 69
+        "sampleSize": 70
       },
       "upcomingEventIds": [
         "4e2d526efd289001",
@@ -4422,7 +4422,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 69,
+        "observedDateCount": 70,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4430,18 +4430,22 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
+        },
+        {
+          "eventId": "39ae2e33322cd181",
+          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_55ca36db453a",
-        "com_a1e1c13a75f0",
-        "com_3048e331f7b6",
         "com_318c39363fe6",
-        "com_b736e77bdf93",
-        "com_f23f8820878b"
+        "com_55ca36db453a",
+        "com_28a4ec647815",
+        "com_a1e1c13a75f0",
+        "com_eeb4e424a504",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -4768,9 +4772,9 @@
         "com_28a4ec647815",
         "com_318c39363fe6",
         "com_55ca36db453a",
+        "com_c1410c07c4dd",
         "com_f8ff3d3257ed",
-        "com_5582e2e97f1a",
-        "com_9abdf9db297a"
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -4969,7 +4973,7 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
+      "homeVenue": "New York Comedy Club",
       "imageUrl": "/img/events/Pannu-Yaar-Oct-10-2026-Graphics-Website2-5a4112e3-large-thumb.jpg",
       "links": [
         {
@@ -4982,7 +4986,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-29",
-        "upcomingEventCount": 51,
+        "upcomingEventCount": 54,
         "eventCount90d": 274
       },
       "schedule": {
@@ -4991,7 +4995,7 @@
           "Sunday",
           "Tuesday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
         "sampleSize": 86
       },
@@ -4999,15 +5003,15 @@
         "79edf11224d842ff",
         "e22799e6d03c2de8",
         "a831f74fee2f24f8",
-        "14be2847769b5f8f",
         "e1794fb2cfe8f651",
+        "14be2847769b5f8f",
         "7aca67aa3afb627a",
         "e8eb8fbd078afce4",
         "3d2a633f0e6cfb02",
-        "acf8f803e5eaa6e2",
-        "243ca7772c948fc8",
-        "014db9bb493c0d69",
-        "20e634ecba1757ba"
+        "f0a80773caf589ae",
+        "d74adf7ff4d2709c",
+        "a44d074a034e1cff",
+        "acf8f803e5eaa6e2"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -5118,12 +5122,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
+        "com_c1410c07c4dd",
         "com_55ca36db453a",
         "com_f23f8820878b",
         "com_a4d969c3c6eb",
         "com_28a4ec647815",
-        "com_eeb4e424a504",
-        "com_c1410c07c4dd"
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -52260,7 +52264,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-29T13:43:27.335746+00:00",
+  "lastUpdated": "2026-10-29T14:30:57.864536+00:00",
   "version": 1,
   "schemaVersion": 1
 }
