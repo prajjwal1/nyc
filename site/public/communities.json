@@ -226,11 +226,11 @@
       ],
       "similarCommunityIds": [
         "com_da2f66394228",
+        "com_ffc1304a5cb6",
         "com_1466f20a9300",
         "com_218b97d674a6",
         "com_3837f308cd75",
-        "com_eef1ca956dae",
-        "com_3048e331f7b6"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -550,6 +550,79 @@
         "com_36cb2681053d",
         "com_4c3ca28533f5",
         "com_7fd76dcd92f3"
+      ]
+    },
+    {
+      "id": "com_ffc1304a5cb6",
+      "slug": "lucky-13-saloon-4a5cb6",
+      "name": "Lucky 13 Saloon",
+      "kind": "recurring_series",
+      "tagline": "Lucky 13 Saloon is a recurring event series centered on music in brooklyn.",
+      "description": "Lucky 13 Saloon is a recurring event series centered on music in brooklyn. Based on 3 observed event dates, it meets monthly on Friday and Monday evenings.",
+      "categories": [
+        "other",
+        "music"
+      ],
+      "tags": [
+        "other",
+        "music"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Lucky 13 Saloon",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193798901%2F401759016771%2F1%2Foriginal.20260917-235406?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.548&fp-y=0.069&s=0aa426640990f22d499b5bbbfb208360",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/115805969741"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "monthly",
+        "typicalDays": [
+          "Friday",
+          "Monday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.5,
+        "sampleSize": 3
+      },
+      "upcomingEventIds": [
+        "d540a219941e0f1b",
+        "8e65a34a8a35692a",
+        "b5ebb85e865d1cf3"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-29",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:115805969741"
+      ],
+      "similarCommunityIds": [
+        "com_1466f20a9300",
+        "com_83f64eec47de",
+        "com_7fd76dcd92f3",
+        "com_359bbb5a9a91",
+        "com_3837f308cd75",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -2556,12 +2629,12 @@
         "eventbrite:5803675324"
       ],
       "similarCommunityIds": [
+        "com_ffc1304a5cb6",
         "com_7fd76dcd92f3",
         "com_359bbb5a9a91",
         "com_3837f308cd75",
         "com_cb019f4e9752",
-        "com_3048e331f7b6",
-        "com_4a9490cb3534"
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -2708,8 +2781,8 @@
         "com_3481b6750d6f",
         "com_359bbb5a9a91",
         "com_cb019f4e9752",
-        "com_1466f20a9300",
-        "com_36cb2681053d"
+        "com_ffc1304a5cb6",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -2938,9 +3011,9 @@
         "com_83f64eec47de",
         "com_218b97d674a6",
         "com_1466f20a9300",
+        "com_ffc1304a5cb6",
         "com_4459cf756c02",
-        "com_64ebabd98c5c",
-        "com_3837f308cd75"
+        "com_64ebabd98c5c"
       ]
     },
     {
@@ -4312,7 +4385,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-27",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 1,
         "eventCount90d": 4
       },
       "schedule": {
@@ -4326,8 +4399,7 @@
         "sampleSize": 5
       },
       "upcomingEventIds": [
-        "c29a64270ca9d905",
-        "05d6140f5d3323cd"
+        "c29a64270ca9d905"
       ],
       "sourceAttributions": [
         "luma"
@@ -4358,8 +4430,8 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, comedy in bushwick, east village.",
-      "description": "Book Club Bar is a community space centered on books, music, comedy in bushwick, east village. Based on 69 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, comedy in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, music, comedy in east village, bushwick. Based on 70 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
@@ -4375,8 +4447,8 @@
         "singles"
       ],
       "neighborhoods": [
-        "bushwick",
         "east village",
+        "bushwick",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -4392,7 +4464,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-29",
-        "upcomingEventCount": 18,
+        "upcomingEventCount": 19,
         "eventCount90d": 73
       },
       "schedule": {
@@ -4403,7 +4475,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 69
+        "sampleSize": 70
       },
       "upcomingEventIds": [
         "4e2d526efd289001",
@@ -4426,7 +4498,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 69,
+        "observedDateCount": 70,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4454,7 +4526,7 @@
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
       "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn. Based on 72 observed event dates, it meets weekly on Friday and Tuesday evenings.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, parties in brooklyn. Based on 73 observed event dates, it meets weekly on Friday and Sunday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -4485,26 +4557,26 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-29",
-        "upcomingEventCount": 33,
+        "upcomingEventCount": 36,
         "eventCount90d": 139
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Tuesday"
+          "Sunday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 72
+        "sampleSize": 73
       },
       "upcomingEventIds": [
         "d6ac02a0cf59df0a",
         "7e4afd0ea4855daf",
         "8d6252c56f63768c",
         "db9430151724f389",
-        "58db1b5d5f7cf861",
         "19e7c5a4f8883e76",
+        "58db1b5d5f7cf861",
         "4b096d5c80d385b7",
         "5a391140a544211a",
         "73a6d89529e0735e",
@@ -4519,7 +4591,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 72,
+        "observedDateCount": 73,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -4610,9 +4682,9 @@
         "com_da2f66394228",
         "com_83f64eec47de",
         "com_1466f20a9300",
+        "com_ffc1304a5cb6",
         "com_4459cf756c02",
-        "com_64ebabd98c5c",
-        "com_8b837dfb5421"
+        "com_64ebabd98c5c"
       ]
     },
     {
@@ -4986,7 +5058,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-29",
-        "upcomingEventCount": 48,
+        "upcomingEventCount": 50,
         "eventCount90d": 275
       },
       "schedule": {
@@ -5002,16 +5074,16 @@
       "upcomingEventIds": [
         "79edf11224d842ff",
         "e22799e6d03c2de8",
-        "c91aac060ba04bba",
-        "e8eb8fbd078afce4",
+        "be4bccc16efb8a7f",
         "3d2a633f0e6cfb02",
+        "f0a80773caf589ae",
+        "d74adf7ff4d2709c",
+        "a44d074a034e1cff",
         "acf8f803e5eaa6e2",
         "243ca7772c948fc8",
         "014db9bb493c0d69",
         "20e634ecba1757ba",
-        "20751ad37888a11a",
-        "265e4b5a891bc8da",
-        "2b11a0f55d81384e"
+        "20751ad37888a11a"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -52264,7 +52336,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-29T19:14:07.755802+00:00",
+  "lastUpdated": "2026-10-29T21:05:02.981474+00:00",
   "version": 1,
   "schemaVersion": 1
 }
