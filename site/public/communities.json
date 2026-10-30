@@ -73,11 +73,11 @@
         "eventbrite:10013510321"
       ],
       "similarCommunityIds": [
+        "com_c58670960684",
         "com_ab8259bb35a4",
         "com_072c9c3e12a8",
         "com_28a4ec647815",
         "com_3837f308cd75",
-        "com_c58670960684",
         "com_1466f20a9300"
       ]
     },
@@ -1065,8 +1065,8 @@
         "com_eef1ca956dae",
         "com_0cc8630779d7",
         "com_9abdf9db297a",
-        "com_c58670960684",
-        "com_f171cd222ca5"
+        "com_f171cd222ca5",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -1143,8 +1143,8 @@
         "com_e9748c1176c1",
         "com_9abdf9db297a",
         "com_9fed174eeff3",
-        "com_02b1cd673b69",
-        "com_c48aeb7c61ce"
+        "com_c58670960684",
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -2775,12 +2775,12 @@
         "eventbrite:6140247955"
       ],
       "similarCommunityIds": [
+        "com_c58670960684",
         "com_ab8259bb35a4",
         "com_072c9c3e12a8",
         "com_36cb2681053d",
         "com_7fd76dcd92f3",
-        "com_9abdf9db297a",
-        "com_9fed174eeff3"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -3597,16 +3597,19 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art in upper east side. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan. Based on 3 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
-        "art"
+        "art",
+        "other"
       ],
       "tags": [
-        "art"
+        "art",
+        "other"
       ],
       "neighborhoods": [
-        "upper east side"
+        "upper east side",
+        "manhattan"
       ],
       "homeVenue": "The Met Cloisters",
       "imageUrl": "https://images.lumacdn.com/uploads/dk/6950f2e7-dd53-4b5f-afee-74c11c63e81d.jpg",
@@ -3621,7 +3624,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
@@ -3631,11 +3634,12 @@
           "Saturday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
-        "f5bf268774eee7ee"
+        "f5bf268774eee7ee",
+        "11dbe4c4ba6f66c6"
       ],
       "sourceAttributions": [
         "luma"
@@ -3644,7 +3648,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3654,12 +3658,12 @@
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
-        "com_9abdf9db297a",
         "com_ab8259bb35a4",
         "com_e9748c1176c1",
-        "com_ad50d6a81df3",
-        "com_eeb4e424a504",
-        "com_072c9c3e12a8"
+        "com_9abdf9db297a",
+        "com_072c9c3e12a8",
+        "com_36cb2681053d",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -4114,10 +4118,10 @@
         "luma:philosophy"
       ],
       "similarCommunityIds": [
+        "com_c58670960684",
         "com_e9748c1176c1",
         "com_9abdf9db297a",
         "com_072c9c3e12a8",
-        "com_c58670960684",
         "com_28a4ec647815",
         "com_359bbb5a9a91"
       ]
@@ -4269,8 +4273,8 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "89f6f1a3d24762fb",
-        "f5207a5c726e6330"
+        "f5207a5c726e6330",
+        "89f6f1a3d24762fb"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -52117,7 +52121,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-30T16:10:02.835664+00:00",
+  "lastUpdated": "2026-10-30T16:42:04.843441+00:00",
   "version": 1,
   "schemaVersion": 1
 }
