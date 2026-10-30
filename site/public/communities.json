@@ -301,8 +301,8 @@
         "com_a4d969c3c6eb",
         "com_8b837dfb5421",
         "com_b8a3508a14a4",
-        "com_b766b6de77ba",
-        "com_02b1cd673b69"
+        "com_f54698ed682f",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -1141,10 +1141,10 @@
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
         "com_e9748c1176c1",
+        "com_f54698ed682f",
         "com_9abdf9db297a",
         "com_9fed174eeff3",
-        "com_c58670960684",
-        "com_02b1cd673b69"
+        "com_c58670960684"
       ]
     },
     {
@@ -1766,11 +1766,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
+        "com_f54698ed682f",
         "com_8b837dfb5421",
         "com_f23f8820878b",
         "com_a1e1c13a75f0",
-        "com_a4d969c3c6eb",
-        "com_d2d455d2d6c9"
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -2393,8 +2393,8 @@
         "com_7fd76dcd92f3",
         "com_e9748c1176c1",
         "com_ff2e01957665",
-        "com_072c9c3e12a8",
-        "com_9fed174eeff3"
+        "com_f54698ed682f",
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -2777,10 +2777,10 @@
       "similarCommunityIds": [
         "com_c58670960684",
         "com_ab8259bb35a4",
+        "com_f54698ed682f",
         "com_072c9c3e12a8",
         "com_36cb2681053d",
-        "com_7fd76dcd92f3",
-        "com_9abdf9db297a"
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -3523,6 +3523,76 @@
       ]
     },
     {
+      "id": "com_f54698ed682f",
+      "slug": "personal-ed682f",
+      "name": "Personal",
+      "kind": "recurring_series",
+      "tagline": "Personal is a recurring event series centered on art, special in manhattan.",
+      "description": "Personal is a recurring event series centered on art, special in manhattan. Based on 2 observed event dates, it meets weekly on Sunday and Wednesday evenings.",
+      "categories": [
+        "other",
+        "art",
+        "special"
+      ],
+      "tags": [
+        "other",
+        "art",
+        "special"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/u1/a7eb4ba5-6a9b-4139-9aee-4665023998cf.png",
+      "links": [],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Sunday",
+          "Wednesday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "158fded5893f350c",
+        "e17559437a2ba63c"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-10-30",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:ryancheah__",
+        "luma:cal-6tv1prdhkjkaoe7",
+        "luma:cal-fcr5y33awocpndc"
+      ],
+      "similarCommunityIds": [
+        "com_e9748c1176c1",
+        "com_c58670960684",
+        "com_072c9c3e12a8",
+        "com_ab8259bb35a4",
+        "com_36cb2681053d",
+        "com_7fd76dcd92f3"
+      ]
+    },
+    {
       "id": "com_4459cf756c02",
       "slug": "personal-756c02",
       "name": "Personal",
@@ -3661,9 +3731,9 @@
         "com_ab8259bb35a4",
         "com_e9748c1176c1",
         "com_9abdf9db297a",
+        "com_f54698ed682f",
         "com_072c9c3e12a8",
-        "com_36cb2681053d",
-        "com_7fd76dcd92f3"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -4121,9 +4191,9 @@
         "com_c58670960684",
         "com_e9748c1176c1",
         "com_9abdf9db297a",
+        "com_f54698ed682f",
         "com_072c9c3e12a8",
-        "com_28a4ec647815",
-        "com_359bbb5a9a91"
+        "com_28a4ec647815"
       ]
     },
     {
@@ -52121,7 +52191,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-30T20:55:07.799120+00:00",
+  "lastUpdated": "2026-10-30T21:03:24.581842+00:00",
   "version": 1,
   "schemaVersion": 1
 }
