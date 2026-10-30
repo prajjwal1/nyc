@@ -87,16 +87,18 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music, parties, special in bushwick, ridgewood.",
-      "description": "Elsewhere is a recurring event series centered on music, parties, special in bushwick, ridgewood. Based on 56 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music, parties, special in bushwick, ridgewood. Based on 57 observed event dates, it meets weekly on Friday and Thursday evenings.",
       "categories": [
         "music",
         "parties",
-        "special"
+        "special",
+        "outdoors"
       ],
       "tags": [
         "music",
         "parties",
-        "special"
+        "special",
+        "outdoors"
       ],
       "neighborhoods": [
         "bushwick",
@@ -115,18 +117,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-30",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 9,
         "eventCount90d": 97
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Thursday",
-          "Friday"
+          "Friday",
+          "Thursday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 56
+        "sampleSize": 57
       },
       "upcomingEventIds": [
         "465381b7a64b6352",
@@ -135,6 +137,8 @@
         "48ffca0556bac444",
         "c9d7ebb367e1d161",
         "c65ab39ef5533d68",
+        "245f4c77d24ab926",
+        "080035a83d8755d3",
         "2084ed75ab807fdd"
       ],
       "sourceAttributions": [
@@ -144,7 +148,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 56,
+        "observedDateCount": 57,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -153,12 +157,12 @@
         "eventbrite:105655500371"
       ],
       "similarCommunityIds": [
+        "com_065dafa96d43",
         "com_02b1cd673b69",
+        "com_5eb8bafab897",
         "com_c48aeb7c61ce",
         "com_d8a5203885a9",
-        "com_ed8d42fb031d",
-        "com_55ca36db453a",
-        "com_065dafa96d43"
+        "com_f23f8820878b"
       ]
     },
     {
@@ -296,8 +300,8 @@
         "com_43850d49f9e6",
         "com_a4d969c3c6eb",
         "com_8b837dfb5421",
-        "com_b766b6de77ba",
         "com_b8a3508a14a4",
+        "com_b766b6de77ba",
         "com_02b1cd673b69"
       ]
     },
@@ -543,8 +547,8 @@
         "com_02b1cd673b69",
         "com_c48aeb7c61ce",
         "com_fe4b6663b721",
-        "com_b766b6de77ba",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -1062,7 +1066,7 @@
         "com_0cc8630779d7",
         "com_9abdf9db297a",
         "com_c58670960684",
-        "com_a786c70979d0"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -1912,11 +1916,11 @@
       ],
       "similarCommunityIds": [
         "com_065dafa96d43",
+        "com_b766b6de77ba",
         "com_f23f8820878b",
         "com_1466f20a9300",
         "com_7fd76dcd92f3",
-        "com_b0e15eaab803",
-        "com_8b837dfb5421"
+        "com_b0e15eaab803"
       ]
     },
     {
@@ -2229,7 +2233,7 @@
       "name": "UrbanGlass",
       "kind": "recurring_series",
       "tagline": "UrbanGlass is a recurring event series centered on music, books, parties in fidi.",
-      "description": "UrbanGlass is a recurring event series centered on music, books, parties in fidi. Based on 16 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "UrbanGlass is a recurring event series centered on music, books, parties in fidi. Based on 17 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "other",
         "music",
@@ -2258,7 +2262,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-30",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 9,
         "eventCount90d": 16
       },
       "schedule": {
@@ -2269,7 +2273,7 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 16
+        "sampleSize": 17
       },
       "upcomingEventIds": [
         "eede0ffb35cdd6cf",
@@ -2278,7 +2282,9 @@
         "53b76c653418a843",
         "661f733127140dd8",
         "765ebc11a1862843",
-        "ddc6b7d27a2c6da1"
+        "ddc6b7d27a2c6da1",
+        "01bbae7ad85bf2ab",
+        "3ecaf0aac72f1df8"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2287,7 +2293,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 16,
+        "observedDateCount": 17,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -2459,12 +2465,12 @@
         "eventbrite:52255937823"
       ],
       "similarCommunityIds": [
-        "com_a786c70979d0",
         "com_a4d969c3c6eb",
         "com_d2d455d2d6c9",
         "com_4a9490cb3534",
         "com_cdd5daa67222",
-        "com_a1e1c13a75f0"
+        "com_a1e1c13a75f0",
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -2473,7 +2479,7 @@
       "name": "St Mazie",
       "kind": "recurring_series",
       "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 59 observed event dates, it meets weekly on Sunday and Monday evenings.",
+      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 61 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "music",
         "other"
@@ -2498,18 +2504,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-30",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 9,
         "eventCount90d": 93
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Monday"
+          "Tuesday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 59
+        "sampleSize": 61
       },
       "upcomingEventIds": [
         "320902d56fcd9cd4",
@@ -2518,7 +2524,9 @@
         "541cf591c54d60c8",
         "6b46125e2b24f504",
         "3ca27dac77501230",
-        "5ca3d4f4758e79e5"
+        "5ca3d4f4758e79e5",
+        "09f09bdf8a92f25b",
+        "0303333ce3a34778"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2527,7 +2535,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 59,
+        "observedDateCount": 61,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2550,18 +2558,18 @@
       "name": "New York Public Library for the Performing Arts",
       "kind": "institutional_program",
       "tagline": "New York Public Library for the Performing Arts is a community program centered on music, books, art in long island city, upper west side.",
-      "description": "New York Public Library for the Performing Arts is a community program centered on music, books, art in long island city, upper west side. Based on 13 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "description": "New York Public Library for the Performing Arts is a community program centered on music, books, art in long island city, upper west side. Based on 14 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "music",
+        "other",
         "books",
-        "art",
-        "other"
+        "art"
       ],
       "tags": [
         "music",
+        "other",
         "books",
-        "art",
-        "other"
+        "art"
       ],
       "neighborhoods": [
         "long island city",
@@ -2580,7 +2588,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-29",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 10
       },
       "schedule": {
@@ -2591,7 +2599,7 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 13
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "356cc12eb6522eb0",
@@ -2599,7 +2607,8 @@
         "e229b2a5b996b9a2",
         "4511b6603efb0b98",
         "d8a72e4b436b4b62",
-        "08a0be30df840876"
+        "08a0be30df840876",
+        "2af12a755eaab778"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2608,7 +2617,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 13,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3135,7 +3144,7 @@
         "com_36cb2681053d",
         "com_43850d49f9e6",
         "com_cdd5daa67222",
-        "com_b766b6de77ba"
+        "com_ed8d42fb031d"
       ]
     },
     {
@@ -3438,11 +3447,11 @@
       ],
       "similarCommunityIds": [
         "com_02ba15552329",
+        "com_b766b6de77ba",
         "com_feb5ce491629",
         "com_02b1cd673b69",
         "com_5eb8bafab897",
-        "com_c48aeb7c61ce",
-        "com_b766b6de77ba"
+        "com_c48aeb7c61ce"
       ]
     },
     {
@@ -3799,8 +3808,8 @@
         "com_072c9c3e12a8",
         "com_9fed174eeff3",
         "com_fe4b6663b721",
-        "com_b766b6de77ba",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -3954,8 +3963,8 @@
         "com_072c9c3e12a8",
         "com_9fed174eeff3",
         "com_fe4b6663b721",
-        "com_b766b6de77ba",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_7fd76dcd92f3"
       ]
     },
     {
@@ -4193,75 +4202,8 @@
         "com_ed9d2e2bb33a",
         "com_14e2dae511e1",
         "com_f171cd222ca5",
-        "com_a786c70979d0",
-        "com_f8ff3d3257ed"
-      ]
-    },
-    {
-      "id": "com_a786c70979d0",
-      "slug": "van-alen-institute-0979d0",
-      "name": "Van Alen Institute",
-      "kind": "recurring_series",
-      "tagline": "Van Alen Institute is a recurring event series centered on books across NYC.",
-      "description": "Van Alen Institute is a recurring event series centered on books across NYC. Based on 5 observed event dates, it meets weekly on Thursday and Saturday evenings.",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [],
-      "homeVenue": "Van Alen Institute",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/dh/ad14c2cf-24c0-4c32-b4d1-319d4af07468.jpg",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/vanaleninstitute"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-10-27",
-        "upcomingEventCount": 1,
-        "eventCount90d": 4
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Thursday",
-          "Saturday"
-        ],
-        "typicalTime": "18:00",
-        "confidence": 0.83,
-        "sampleSize": 5
-      },
-      "upcomingEventIds": [
-        "c29a64270ca9d905"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-10-30",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 5,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "luma:vanaleninstitute"
-      ],
-      "similarCommunityIds": [
-        "com_f171cd222ca5",
-        "com_4a9490cb3534",
-        "com_a4d969c3c6eb",
-        "com_cdd5daa67222",
-        "com_d2d455d2d6c9",
-        "com_ad50d6a81df3"
+        "com_f8ff3d3257ed",
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -4412,8 +4354,8 @@
       "upcomingEventIds": [
         "8d6252c56f63768c",
         "db9430151724f389",
-        "58db1b5d5f7cf861",
         "19e7c5a4f8883e76",
+        "58db1b5d5f7cf861",
         "4b096d5c80d385b7",
         "5a391140a544211a",
         "73a6d89529e0735e",
@@ -4600,8 +4542,8 @@
         "com_318c39363fe6",
         "com_d8a5203885a9",
         "com_4a9490cb3534",
-        "com_a786c70979d0",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -4885,7 +4827,7 @@
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club Upper West Side",
-      "imageUrl": "/img/comedians/Untitled-design-45-05d70c3c-large-thumb.png",
+      "imageUrl": "/img/comedians/Gina-Brillon-jpg-e6070ba5-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -4898,7 +4840,7 @@
         "state": "active",
         "lastEventDate": "2026-10-30",
         "upcomingEventCount": 48,
-        "eventCount90d": 282
+        "eventCount90d": 283
       },
       "schedule": {
         "cadence": "weekly",
@@ -4911,12 +4853,12 @@
         "sampleSize": 86
       },
       "upcomingEventIds": [
-        "be4bccc16efb8a7f",
+        "7f094ca61d8741f5",
         "3d2a633f0e6cfb02",
         "f0a80773caf589ae",
         "d74adf7ff4d2709c",
         "a44d074a034e1cff",
-        "acf8f803e5eaa6e2",
+        "9231f8068498a69c",
         "243ca7772c948fc8",
         "014db9bb493c0d69",
         "20e634ecba1757ba",
@@ -4946,11 +4888,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
+        "com_b766b6de77ba",
         "com_b8a3508a14a4",
         "com_d8a5203885a9",
         "com_5eb8bafab897",
-        "com_c1410c07c4dd",
-        "com_b766b6de77ba"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -52175,7 +52117,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-30T14:18:42.130804+00:00",
+  "lastUpdated": "2026-10-30T15:06:02.144018+00:00",
   "version": 1,
   "schemaVersion": 1
 }
