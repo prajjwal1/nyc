@@ -4050,8 +4050,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art"
@@ -4062,9 +4062,9 @@
       ],
       "neighborhoods": [
         "upper east side",
+        "manhattan",
         "williamsburg",
-        "midtown",
-        "manhattan"
+        "midtown"
       ],
       "homeVenue": "167 E Broadway",
       "imageUrl": "https://images.lumacdn.com/uploads/dk/6950f2e7-dd53-4b5f-afee-74c11c63e81d.jpg",
@@ -4095,9 +4095,9 @@
       "upcomingEventIds": [
         "f5bf268774eee7ee",
         "02f1f4c5a1fa388b",
+        "11dbe4c4ba6f66c6",
         "56a73cc77e6547d7",
         "f58b6a84f214ebb3",
-        "11dbe4c4ba6f66c6",
         "afb9e03bb5e502c7",
         "01d7e073efd3dc12",
         "d8bc0ebae6aa02e3"
@@ -4273,8 +4273,8 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "f5207a5c726e6330",
-        "89f6f1a3d24762fb"
+        "89f6f1a3d24762fb",
+        "f5207a5c726e6330"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -4358,8 +4358,8 @@
       "upcomingEventIds": [
         "8d6252c56f63768c",
         "db9430151724f389",
-        "58db1b5d5f7cf861",
         "19e7c5a4f8883e76",
+        "58db1b5d5f7cf861",
         "4b096d5c80d385b7",
         "5a391140a544211a",
         "73a6d89529e0735e",
@@ -4811,7 +4811,7 @@
       "name": "New York Comedy Club Upper West Side",
       "kind": "club",
       "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, music, special in east village, upper west side.",
-      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, special in east village, upper west side. Based on 86 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, special in east village, upper west side. Based on 87 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -4850,11 +4850,11 @@
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Tuesday"
+          "Thursday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 86
+        "sampleSize": 87
       },
       "upcomingEventIds": [
         "7f094ca61d8741f5",
@@ -4877,7 +4877,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 86,
+        "observedDateCount": 87,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -52121,7 +52121,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-30T19:30:04.879908+00:00",
+  "lastUpdated": "2026-10-30T20:38:29.899266+00:00",
   "version": 1,
   "schemaVersion": 1
 }
