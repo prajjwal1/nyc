@@ -1582,27 +1582,27 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on outdoors, movies, film in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on outdoors, movies, film in brooklyn. Based on 59 observed event dates, it meets weekly on Friday and Wednesday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on comedy, outdoors, movies in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on comedy, outdoors, movies in brooklyn. Based on 61 observed event dates, it meets weekly on Friday and Wednesday evenings.",
       "categories": [
+        "comedy",
         "outdoors",
         "movies",
         "film",
-        "art",
-        "food"
+        "art"
       ],
       "tags": [
+        "comedy",
         "outdoors",
         "movies",
         "film",
-        "art",
-        "food"
+        "art"
       ],
       "neighborhoods": [
         "brooklyn"
       ],
       "homeVenue": "The Tiny Cupboard",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1189027679%2F293545126158%2F1%2Foriginal.20260716-195226?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=4c4eeeea4727b1c135bc57a14d809be6",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1188941150%2F293545126158%2F1%2Foriginal.20260715-175543?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=58ee85d6169f11ece90cdbb29f5bfef3",
       "links": [
         {
           "type": "eventbrite",
@@ -1613,9 +1613,9 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-10-30",
-        "upcomingEventCount": 3,
-        "eventCount90d": 109
+        "lastEventDate": "2026-10-31",
+        "upcomingEventCount": 5,
+        "eventCount90d": 110
       },
       "schedule": {
         "cadence": "weekly",
@@ -1625,12 +1625,14 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 59
+        "sampleSize": 61
       },
       "upcomingEventIds": [
+        "7759a6a81f6618c6",
         "7ee9e80a0ab8c0e1",
         "1a02a64ee14177b9",
-        "3f52b66a81c6c793"
+        "3f52b66a81c6c793",
+        "732a05e3baf8586f"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1639,7 +1641,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 59,
+        "observedDateCount": 61,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1650,10 +1652,10 @@
       "similarCommunityIds": [
         "com_3837f308cd75",
         "com_3048e331f7b6",
+        "com_d8a5203885a9",
         "com_8d86f6f9340b",
         "com_0e403135692e",
-        "com_1466f20a9300",
-        "com_4a9490cb3534"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1736,9 +1738,9 @@
         "com_1466f20a9300",
         "com_3048e331f7b6",
         "com_9abdf9db297a",
-        "com_b736e77bdf93",
         "com_cb019f4e9752",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_ffc1304a5cb6"
       ]
     },
     {
@@ -52092,7 +52094,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-31T06:20:21.483048+00:00",
+  "lastUpdated": "2026-10-31T08:39:13.866306+00:00",
   "version": 1,
   "schemaVersion": 1
 }
