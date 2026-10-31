@@ -155,11 +155,11 @@
       ],
       "similarCommunityIds": [
         "com_065dafa96d43",
-        "com_02b1cd673b69",
         "com_5eb8bafab897",
         "com_c48aeb7c61ce",
         "com_d8a5203885a9",
-        "com_f23f8820878b"
+        "com_f23f8820878b",
+        "com_55ca36db453a"
       ]
     },
     {
@@ -539,11 +539,11 @@
       ],
       "similarCommunityIds": [
         "com_b0e15eaab803",
-        "com_02b1cd673b69",
         "com_c48aeb7c61ce",
         "com_fe4b6663b721",
         "com_36cb2681053d",
-        "com_7fd76dcd92f3"
+        "com_7fd76dcd92f3",
+        "com_065dafa96d43"
       ]
     },
     {
@@ -984,7 +984,7 @@
         "com_065dafa96d43",
         "com_feb5ce491629",
         "com_9fed174eeff3",
-        "com_02b1cd673b69"
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -3120,10 +3120,10 @@
       "similarCommunityIds": [
         "com_14e2dae511e1",
         "com_ed9d2e2bb33a",
+        "com_02b1cd673b69",
         "com_36cb2681053d",
         "com_43850d49f9e6",
-        "com_cdd5daa67222",
-        "com_ed8d42fb031d"
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -3346,7 +3346,7 @@
         "com_feb5ce491629",
         "com_065dafa96d43",
         "com_9fed174eeff3",
-        "com_02b1cd673b69"
+        "com_c48aeb7c61ce"
       ]
     },
     {
@@ -3424,9 +3424,9 @@
         "com_02ba15552329",
         "com_b766b6de77ba",
         "com_feb5ce491629",
-        "com_02b1cd673b69",
         "com_5eb8bafab897",
-        "com_c48aeb7c61ce"
+        "com_c48aeb7c61ce",
+        "com_ed8d42fb031d"
       ]
     },
     {
@@ -3634,7 +3634,7 @@
         "com_218b97d674a6",
         "com_64ebabd98c5c",
         "com_da2f66394228",
-        "com_0e403135692e"
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -3788,8 +3788,8 @@
       "slug": "miler-running-673b69",
       "name": "MILER RUNNING",
       "kind": "recurring_series",
-      "tagline": "MILER RUNNING is a recurring event series centered on music, parties, fitness in manhattan.",
-      "description": "MILER RUNNING is a recurring event series centered on music, parties, fitness in manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Friday mornings.",
+      "tagline": "MILER RUNNING is a recurring event series centered on music, parties, fitness in manhattan, tribeca.",
+      "description": "MILER RUNNING is a recurring event series centered on music, parties, fitness in manhattan, tribeca. Based on 3 observed event dates, it meets biweekly on Wednesday and Friday mornings.",
       "categories": [
         "music",
         "parties",
@@ -3805,10 +3805,11 @@
         "special"
       ],
       "neighborhoods": [
-        "manhattan"
+        "manhattan",
+        "tribeca"
       ],
       "homeVenue": "345 Broome St",
-      "imageUrl": "https://images.lumacdn.com/uploads/uo/4f8d6d61-e550-4050-af43-4264ea95e0d1.jpg",
+      "imageUrl": "https://images.lumacdn.com/uploads/f6/736cefa2-9f32-4f5d-8f47-c654a0726507.jpg",
       "links": [
         {
           "type": "luma",
@@ -3820,20 +3821,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-30",
-        "upcomingEventCount": 0,
+        "upcomingEventCount": 1,
         "eventCount90d": 2
       },
       "schedule": {
-        "cadence": "weekly",
+        "cadence": "biweekly",
         "typicalDays": [
           "Wednesday",
           "Friday"
         ],
         "typicalTime": "07:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
-      "upcomingEventIds": [],
+      "upcomingEventIds": [
+        "746159ff6d11fa81"
+      ],
       "sourceAttributions": [
         "luma"
       ],
@@ -3841,7 +3844,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3852,11 +3855,11 @@
       ],
       "similarCommunityIds": [
         "com_c48aeb7c61ce",
-        "com_072c9c3e12a8",
-        "com_9fed174eeff3",
-        "com_fe4b6663b721",
-        "com_36cb2681053d",
-        "com_7fd76dcd92f3"
+        "com_065dafa96d43",
+        "com_3481b6750d6f",
+        "com_4459cf756c02",
+        "com_b766b6de77ba",
+        "com_c2d0cec20a9a"
       ]
     },
     {
@@ -3931,10 +3934,10 @@
       "similarCommunityIds": [
         "com_7fd76dcd92f3",
         "com_072c9c3e12a8",
-        "com_02b1cd673b69",
         "com_c48aeb7c61ce",
         "com_fe4b6663b721",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -4760,8 +4763,8 @@
         "com_0e403135692e",
         "com_eef1ca956dae",
         "com_cdd5daa67222",
-        "com_02b1cd673b69",
-        "com_c48aeb7c61ce"
+        "com_c48aeb7c61ce",
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -52162,7 +52165,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-31T00:11:20.110965+00:00",
+  "lastUpdated": "2026-10-31T00:45:12.366402+00:00",
   "version": 1,
   "schemaVersion": 1
 }
