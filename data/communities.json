@@ -3206,10 +3206,10 @@
       "similarCommunityIds": [
         "com_eeb4e424a504",
         "com_3048e331f7b6",
-        "com_c1410c07c4dd",
         "com_cdd5daa67222",
         "com_d8a5203885a9",
-        "com_f8ff3d3257ed"
+        "com_f8ff3d3257ed",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -4190,25 +4190,25 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, comedy in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, comedy in east village, bushwick. Based on 70 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, singles in bushwick, east village.",
+      "description": "Book Club Bar is a community space centered on books, music, singles in bushwick, east village. Based on 71 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
-        "comedy",
         "singles",
-        "parties"
+        "art",
+        "comedy"
       ],
       "tags": [
         "books",
         "music",
-        "comedy",
         "singles",
-        "parties"
+        "art",
+        "comedy"
       ],
       "neighborhoods": [
-        "east village",
         "bushwick",
+        "east village",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -4217,14 +4217,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6638320261212"
+          "url": "https://bookclubbar.com/events/6650120261214"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-30",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 20,
         "eventCount90d": 75
       },
       "schedule": {
@@ -4235,7 +4235,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 70
+        "sampleSize": 71
       },
       "upcomingEventIds": [
         "c6f50540514ebf0c",
@@ -4258,7 +4258,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 70,
+        "observedDateCount": 71,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4266,18 +4266,22 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
+        },
+        {
+          "eventId": "39ae2e33322cd181",
+          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
-        "com_55ca36db453a",
-        "com_3048e331f7b6",
         "com_318c39363fe6",
+        "com_55ca36db453a",
+        "com_eeb4e424a504",
+        "com_d8a5203885a9",
         "com_f23f8820878b",
-        "com_5582e2e97f1a"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -4361,11 +4365,11 @@
       ],
       "similarCommunityIds": [
         "com_3048e331f7b6",
-        "com_c1410c07c4dd",
         "com_c567b4e02ff2",
         "com_ff2e01957665",
         "com_eef1ca956dae",
-        "com_318c39363fe6"
+        "com_318c39363fe6",
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -4604,9 +4608,9 @@
         "com_28a4ec647815",
         "com_318c39363fe6",
         "com_55ca36db453a",
+        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
-        "com_9abdf9db297a",
-        "com_f171cd222ca5"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -4954,12 +4958,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
+        "com_c1410c07c4dd",
         "com_d8a5203885a9",
         "com_55ca36db453a",
         "com_f23f8820878b",
         "com_a4d969c3c6eb",
-        "com_eeb4e424a504",
-        "com_c1410c07c4dd"
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -52096,7 +52100,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-31T13:03:52.328620+00:00",
+  "lastUpdated": "2026-10-31T13:45:44.491175+00:00",
   "version": 1,
   "schemaVersion": 1
 }
