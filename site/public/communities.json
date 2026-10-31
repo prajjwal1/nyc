@@ -112,7 +112,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-31",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 99
       },
       "schedule": {
@@ -131,6 +131,7 @@
         "c65ab39ef5533d68",
         "245f4c77d24ab926",
         "080035a83d8755d3",
+        "3ad70c459e6fc39e",
         "2084ed75ab807fdd"
       ],
       "sourceAttributions": [
@@ -461,10 +462,10 @@
       "similarCommunityIds": [
         "com_14e2dae511e1",
         "com_ed9d2e2bb33a",
+        "com_cb019f4e9752",
         "com_ff2e01957665",
         "com_3048e331f7b6",
-        "com_b736e77bdf93",
-        "com_d8a5203885a9"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -603,8 +604,8 @@
         "com_1466f20a9300",
         "com_83f64eec47de",
         "com_7fd76dcd92f3",
+        "com_36c800013ba6",
         "com_3837f308cd75",
-        "com_cb019f4e9752",
         "com_da2f66394228"
       ]
     },
@@ -750,7 +751,7 @@
         "com_ff2e01957665",
         "com_d2d455d2d6c9",
         "com_0e403135692e",
-        "com_cb019f4e9752",
+        "com_36c800013ba6",
         "com_1466f20a9300",
         "com_f8ff3d3257ed"
       ]
@@ -1199,6 +1200,75 @@
       ]
     },
     {
+      "id": "com_36c800013ba6",
+      "slug": "gna-studios-013ba6",
+      "name": "gnA Studios",
+      "kind": "recurring_series",
+      "tagline": "gnA Studios is a recurring event series in brooklyn.",
+      "description": "gnA Studios is a recurring event series in brooklyn. Based on 2 observed event dates, it meets weekly on Friday and Sunday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "255 McKibbin",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192800055%2F58809086995%2F1%2Foriginal.20260906-022039?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=78604a15ddee6809de8e1dfdfed0224f",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/17460675100"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-10-30",
+        "upcomingEventCount": 1,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Sunday"
+        ],
+        "typicalTime": "16:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "80a46ac71354fcc1"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-10-31",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:17460675100"
+      ],
+      "similarCommunityIds": [
+        "com_1466f20a9300",
+        "com_4a9490cb3534",
+        "com_cb019f4e9752",
+        "com_ff2e01957665",
+        "com_02b1cd673b69",
+        "com_118a558259ea"
+      ]
+    },
+    {
       "id": "com_0e403135692e",
       "slug": "books-are-magic-35692e",
       "name": "Books Are Magic",
@@ -1275,7 +1345,7 @@
         "com_4a9490cb3534",
         "com_ff2e01957665",
         "com_ad50d6a81df3",
-        "com_cb019f4e9752",
+        "com_36c800013ba6",
         "com_1466f20a9300"
       ]
     },
@@ -1352,10 +1422,10 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_f8ff3d3257ed",
+        "com_cb019f4e9752",
         "com_0e403135692e",
         "com_3048e331f7b6",
-        "com_cb019f4e9752",
-        "com_d8a5203885a9"
+        "com_36c800013ba6"
       ]
     },
     {
@@ -1363,13 +1433,17 @@
       "slug": "union-hall-4e9752",
       "name": "Union Hall",
       "kind": "recurring_series",
-      "tagline": "Union Hall is a recurring event series in brooklyn.",
-      "description": "Union Hall is a recurring event series in brooklyn. Based on 52 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "tagline": "Union Hall is a recurring event series centered on parties, viewings in brooklyn.",
+      "description": "Union Hall is a recurring event series centered on parties, viewings in brooklyn. Based on 53 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
-        "other"
+        "other",
+        "parties",
+        "viewings"
       ],
       "tags": [
-        "other"
+        "other",
+        "parties",
+        "viewings"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -1387,7 +1461,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-31",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 69
       },
       "schedule": {
@@ -1398,14 +1472,15 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 52
+        "sampleSize": 53
       },
       "upcomingEventIds": [
         "a4f3dd755ad5c72b",
         "04c893750a1b4d30",
         "589b84b6406c68f0",
         "eb865c0df28a8f54",
-        "78fdb54f0bfcddab"
+        "78fdb54f0bfcddab",
+        "6c8a313c6fc25e55"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1414,7 +1489,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 52,
+        "observedDateCount": 53,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1423,12 +1498,12 @@
         "eventbrite:17899496497"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
-        "com_4a9490cb3534",
         "com_ff2e01957665",
-        "com_02b1cd673b69",
-        "com_118a558259ea",
-        "com_3481b6750d6f"
+        "com_3048e331f7b6",
+        "com_36c800013ba6",
+        "com_36cb2681053d",
+        "com_1466f20a9300",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -1571,8 +1646,8 @@
       "similarCommunityIds": [
         "com_118a558259ea",
         "com_02b1cd673b69",
+        "com_36c800013ba6",
         "com_c274ef0f18ba",
-        "com_cb019f4e9752",
         "com_36cb2681053d",
         "com_7fd76dcd92f3"
       ]
@@ -1738,7 +1813,7 @@
         "com_1466f20a9300",
         "com_3048e331f7b6",
         "com_9abdf9db297a",
-        "com_cb019f4e9752",
+        "com_36c800013ba6",
         "com_4a9490cb3534",
         "com_ffc1304a5cb6"
       ]
@@ -2114,7 +2189,7 @@
         "com_3481b6750d6f",
         "com_c274ef0f18ba",
         "com_02b1cd673b69",
-        "com_cb019f4e9752",
+        "com_36c800013ba6",
         "com_36cb2681053d",
         "com_7fd76dcd92f3"
       ]
@@ -2241,7 +2316,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-31",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 10,
         "eventCount90d": 19
       },
       "schedule": {
@@ -2262,7 +2337,9 @@
         "765ebc11a1862843",
         "ddc6b7d27a2c6da1",
         "01bbae7ad85bf2ab",
-        "3ecaf0aac72f1df8"
+        "3ecaf0aac72f1df8",
+        "43a62cc296524605",
+        "ef8e68d4df4398c2"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2290,7 +2367,7 @@
         "com_4a9490cb3534",
         "com_cdd5daa67222",
         "com_d2d455d2d6c9",
-        "com_0e403135692e"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -2370,9 +2447,9 @@
         "com_fe4b6663b721",
         "com_7fd76dcd92f3",
         "com_e9748c1176c1",
+        "com_cb019f4e9752",
         "com_f8ff3d3257ed",
-        "com_ff2e01957665",
-        "com_f54698ed682f"
+        "com_ff2e01957665"
       ]
     },
     {
@@ -2522,8 +2599,8 @@
       "similarCommunityIds": [
         "com_ffc1304a5cb6",
         "com_7fd76dcd92f3",
+        "com_36c800013ba6",
         "com_3837f308cd75",
-        "com_cb019f4e9752",
         "com_3048e331f7b6",
         "com_4a9490cb3534"
       ]
@@ -2677,7 +2754,7 @@
         "com_118a558259ea",
         "com_02b1cd673b69",
         "com_3481b6750d6f",
-        "com_cb019f4e9752",
+        "com_36c800013ba6",
         "com_ffc1304a5cb6",
         "com_1466f20a9300"
       ]
@@ -2839,9 +2916,9 @@
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_1466f20a9300",
+        "com_cb019f4e9752",
         "com_ff2e01957665",
-        "com_fe4b6663b721",
-        "com_cb019f4e9752"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -3055,7 +3132,7 @@
         "com_072c9c3e12a8",
         "com_0e403135692e",
         "com_118a558259ea",
-        "com_c274ef0f18ba"
+        "com_36c800013ba6"
       ]
     },
     {
@@ -3125,7 +3202,7 @@
         "com_36cb2681053d",
         "com_cdd5daa67222",
         "com_43850d49f9e6",
-        "com_f8ff3d3257ed"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -3206,10 +3283,10 @@
       "similarCommunityIds": [
         "com_eeb4e424a504",
         "com_3048e331f7b6",
+        "com_c1410c07c4dd",
         "com_cdd5daa67222",
         "com_d8a5203885a9",
-        "com_f8ff3d3257ed",
-        "com_ff2e01957665"
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -3429,8 +3506,8 @@
         "com_c2d0cec20a9a",
         "com_8d86f6f9340b",
         "com_cdd5daa67222",
-        "com_ff2e01957665",
-        "com_36cb2681053d"
+        "com_cb019f4e9752",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -3715,8 +3792,8 @@
         "com_c2d0cec20a9a",
         "com_8d86f6f9340b",
         "com_cdd5daa67222",
-        "com_ff2e01957665",
-        "com_36cb2681053d"
+        "com_cb019f4e9752",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -3783,8 +3860,8 @@
       "similarCommunityIds": [
         "com_3481b6750d6f",
         "com_118a558259ea",
+        "com_36c800013ba6",
         "com_c274ef0f18ba",
-        "com_cb019f4e9752",
         "com_9a5c4d074e3a",
         "com_1466f20a9300"
       ]
@@ -3946,8 +4023,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art in upper east side, williamsburg. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art in upper east side, manhattan. Based on 22 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art"
@@ -3958,9 +4035,9 @@
       ],
       "neighborhoods": [
         "upper east side",
+        "manhattan",
         "williamsburg",
-        "midtown",
-        "manhattan"
+        "midtown"
       ],
       "homeVenue": "167 E Broadway",
       "imageUrl": "https://images.lumacdn.com/uploads/dk/6950f2e7-dd53-4b5f-afee-74c11c63e81d.jpg",
@@ -3991,9 +4068,9 @@
       "upcomingEventIds": [
         "f5bf268774eee7ee",
         "02f1f4c5a1fa388b",
+        "11dbe4c4ba6f66c6",
         "56a73cc77e6547d7",
         "f58b6a84f214ebb3",
-        "11dbe4c4ba6f66c6",
         "afb9e03bb5e502c7",
         "01d7e073efd3dc12",
         "d8bc0ebae6aa02e3"
@@ -4190,25 +4267,25 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, singles in bushwick, east village.",
-      "description": "Book Club Bar is a community space centered on books, music, singles in bushwick, east village. Based on 71 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, comedy in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, music, comedy in east village, bushwick. Based on 70 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
+        "comedy",
         "singles",
-        "art",
-        "comedy"
+        "parties"
       ],
       "tags": [
         "books",
         "music",
+        "comedy",
         "singles",
-        "art",
-        "comedy"
+        "parties"
       ],
       "neighborhoods": [
-        "bushwick",
         "east village",
+        "bushwick",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -4217,14 +4294,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://bookclubbar.com/events/6650120261214"
+          "url": "https://www.bookclubbar.com/events/6638320261212"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-30",
-        "upcomingEventCount": 20,
+        "upcomingEventCount": 14,
         "eventCount90d": 75
       },
       "schedule": {
@@ -4235,7 +4312,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 71
+        "sampleSize": 70
       },
       "upcomingEventIds": [
         "c6f50540514ebf0c",
@@ -4246,8 +4323,8 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "f5207a5c726e6330",
         "89f6f1a3d24762fb",
+        "f5207a5c726e6330",
         "b1c9760deaf5e73e",
         "11895fd591100f1b"
       ],
@@ -4258,7 +4335,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 71,
+        "observedDateCount": 70,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4266,22 +4343,18 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
-        },
-        {
-          "eventId": "39ae2e33322cd181",
-          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_318c39363fe6",
-        "com_55ca36db453a",
-        "com_eeb4e424a504",
         "com_d8a5203885a9",
+        "com_55ca36db453a",
+        "com_3048e331f7b6",
+        "com_318c39363fe6",
         "com_f23f8820878b",
-        "com_a1e1c13a75f0"
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -4365,11 +4438,11 @@
       ],
       "similarCommunityIds": [
         "com_3048e331f7b6",
+        "com_c1410c07c4dd",
         "com_c567b4e02ff2",
         "com_ff2e01957665",
         "com_eef1ca956dae",
-        "com_318c39363fe6",
-        "com_a4d969c3c6eb"
+        "com_318c39363fe6"
       ]
     },
     {
@@ -4608,9 +4681,9 @@
         "com_28a4ec647815",
         "com_318c39363fe6",
         "com_55ca36db453a",
-        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
-        "com_9abdf9db297a"
+        "com_9abdf9db297a",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -4958,12 +5031,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_d8a5203885a9",
         "com_55ca36db453a",
         "com_f23f8820878b",
         "com_a4d969c3c6eb",
-        "com_eeb4e424a504"
+        "com_eeb4e424a504",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -52100,7 +52173,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-31T13:45:44.491175+00:00",
+  "lastUpdated": "2026-10-31T14:31:10.042631+00:00",
   "version": 1,
   "schemaVersion": 1
 }
