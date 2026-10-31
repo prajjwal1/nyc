@@ -87,14 +87,16 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music, outdoors in bushwick.",
-      "description": "Elsewhere is a recurring event series centered on music, outdoors in bushwick. Based on 57 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music, outdoors in bushwick. Based on 58 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "music",
-        "outdoors"
+        "outdoors",
+        "other"
       ],
       "tags": [
         "music",
-        "outdoors"
+        "outdoors",
+        "other"
       ],
       "neighborhoods": [
         "bushwick"
@@ -112,18 +114,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-31",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 99
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Thursday"
+          "Saturday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 57
+        "sampleSize": 58
       },
       "upcomingEventIds": [
         "48ffca0556bac444",
@@ -132,6 +134,7 @@
         "245f4c77d24ab926",
         "080035a83d8755d3",
         "3ad70c459e6fc39e",
+        "1ad58023cd14f169",
         "2084ed75ab807fdd"
       ],
       "sourceAttributions": [
@@ -141,7 +144,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 57,
+        "observedDateCount": 58,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -150,12 +153,12 @@
         "eventbrite:105655500371"
       ],
       "similarCommunityIds": [
-        "com_5eb8bafab897",
-        "com_065dafa96d43",
-        "com_f23f8820878b",
-        "com_55ca36db453a",
         "com_1466f20a9300",
-        "com_7fd76dcd92f3"
+        "com_5eb8bafab897",
+        "com_7fd76dcd92f3",
+        "com_8b837dfb5421",
+        "com_9abdf9db297a",
+        "com_feb5ce491629"
       ]
     },
     {
@@ -1355,7 +1358,7 @@
       "name": "Community Bookstore",
       "kind": "recurring_series",
       "tagline": "Community Bookstore is a recurring event series centered on books, parties in brooklyn.",
-      "description": "Community Bookstore is a recurring event series centered on books, parties in brooklyn. Based on 11 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "description": "Community Bookstore is a recurring event series centered on books, parties in brooklyn. Based on 12 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
       "categories": [
         "other",
         "books",
@@ -1382,7 +1385,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-29",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 4
       },
       "schedule": {
@@ -1393,7 +1396,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "202ed4fb5c5ca660",
@@ -1402,7 +1405,8 @@
         "557da8806a921096",
         "8cfb1748e19f7ee1",
         "3be546bfb40c498e",
-        "880b56a75fbd2558"
+        "880b56a75fbd2558",
+        "732a09c129c68b05"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1411,7 +1415,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1578,9 +1582,9 @@
         "com_065dafa96d43",
         "com_9fed174eeff3",
         "com_d2d455d2d6c9",
+        "com_b766b6de77ba",
         "com_02ba15552329",
-        "com_ab8259bb35a4",
-        "com_8b837dfb5421"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -1902,7 +1906,7 @@
       "name": "Strand Bookstore",
       "kind": "recurring_series",
       "tagline": "Strand Bookstore is a recurring event series centered on books in manhattan, east village.",
-      "description": "Strand Bookstore is a recurring event series centered on books in manhattan, east village. Based on 34 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Strand Bookstore is a recurring event series centered on books in manhattan, east village. Based on 35 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "other",
         "books"
@@ -1915,7 +1919,7 @@
         "manhattan",
         "east village"
       ],
-      "homeVenue": "The Strand Building",
+      "homeVenue": "Strand Book Store",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1186711856%2F1871930968773%2F1%2Foriginal.20260611-203014?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=93fcd9f2b0f8252766d47b5a99f9af69",
       "links": [
         {
@@ -1928,7 +1932,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-28",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 34
       },
       "schedule": {
@@ -1939,7 +1943,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 34
+        "sampleSize": 35
       },
       "upcomingEventIds": [
         "7ac24372cbc3e20d",
@@ -1948,7 +1952,8 @@
         "6b0eb993c4ca1599",
         "361114e3832eccfa",
         "50a899061091e687",
-        "c8a65dac70491a2c"
+        "c8a65dac70491a2c",
+        "12ea5cb054f17c12"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1957,7 +1962,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 34,
+        "observedDateCount": 35,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2534,7 +2539,7 @@
       "name": "St Mazie",
       "kind": "recurring_series",
       "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 61 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 62 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "music",
         "other"
@@ -2559,7 +2564,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-31",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 96
       },
       "schedule": {
@@ -2570,7 +2575,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 61
+        "sampleSize": 62
       },
       "upcomingEventIds": [
         "28c85b8c98592091",
@@ -2579,7 +2584,8 @@
         "3ca27dac77501230",
         "5ca3d4f4758e79e5",
         "09f09bdf8a92f25b",
-        "0303333ce3a34778"
+        "0303333ce3a34778",
+        "577ee5b146b4c014"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2588,7 +2594,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 61,
+        "observedDateCount": 62,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3434,8 +3440,8 @@
         "com_02ba15552329",
         "com_feb5ce491629",
         "com_5eb8bafab897",
-        "com_b766b6de77ba",
         "com_43850d49f9e6",
+        "com_b766b6de77ba",
         "com_9fed174eeff3"
       ]
     },
@@ -4353,8 +4359,8 @@
         "com_55ca36db453a",
         "com_3048e331f7b6",
         "com_318c39363fe6",
-        "com_f23f8820878b",
-        "com_5582e2e97f1a"
+        "com_5582e2e97f1a",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -4394,7 +4400,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-31",
-        "upcomingEventCount": 32,
+        "upcomingEventCount": 33,
         "eventCount90d": 147
       },
       "schedule": {
@@ -4869,14 +4875,14 @@
         "special",
         "music",
         "outdoors",
-        "singles"
+        "celebrities"
       ],
       "tags": [
         "comedy",
         "special",
         "music",
         "outdoors",
-        "singles"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
@@ -4895,7 +4901,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-30",
-        "upcomingEventCount": 42,
+        "upcomingEventCount": 43,
         "eventCount90d": 283
       },
       "schedule": {
@@ -4912,15 +4918,15 @@
         "243ca7772c948fc8",
         "014db9bb493c0d69",
         "20e634ecba1757ba",
+        "013adc6aeff233c0",
         "20751ad37888a11a",
         "265e4b5a891bc8da",
-        "2b11a0f55d81384e",
+        "3e962b55f672ff55",
         "aeb524fe6e4bccfe",
-        "96e8d07f7e352366",
+        "2496577139336d5f",
         "38c2dc471391cc47",
         "095121df3852b067",
-        "edb1c158b5a81727",
-        "76c5add94a66836d"
+        "edb1c158b5a81727"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -4944,11 +4950,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
-        "com_c1410c07c4dd",
         "com_b8a3508a14a4",
         "com_d8a5203885a9",
         "com_5eb8bafab897",
-        "com_b766b6de77ba"
+        "com_55ca36db453a",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -52173,7 +52179,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-10-31T18:49:27.962058+00:00",
+  "lastUpdated": "2026-10-31T19:55:11.434669+00:00",
   "version": 1,
   "schemaVersion": 1
 }
