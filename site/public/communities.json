@@ -910,7 +910,7 @@
         "com_072c9c3e12a8",
         "com_9fed174eeff3",
         "com_3048e331f7b6",
-        "com_c1410c07c4dd"
+        "com_c58670960684"
       ]
     },
     {
@@ -2186,8 +2186,8 @@
       "upcomingEventIds": [
         "0f33e238414b2ad2",
         "3c22f7705d08ee07",
-        "95fe7cf1fb2ae52e",
         "580411bfad112cdf",
+        "95fe7cf1fb2ae52e",
         "6ffe32c06a510a8a",
         "96cf27159685012f",
         "96f60dcfa6b49441",
@@ -2842,8 +2842,8 @@
         "com_2a30ebfb0079",
         "com_318c39363fe6",
         "com_b736e77bdf93",
-        "com_28a4ec647815",
-        "com_ab8259bb35a4"
+        "com_c1410c07c4dd",
+        "com_28a4ec647815"
       ]
     },
     {
@@ -3290,9 +3290,9 @@
         "com_eeb4e424a504",
         "com_3048e331f7b6",
         "com_a1e1c13a75f0",
-        "com_c1410c07c4dd",
         "com_cdd5daa67222",
-        "com_ff2e01957665"
+        "com_ff2e01957665",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -4275,25 +4275,25 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, comedy in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, comedy in east village, bushwick. Based on 70 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, music, singles in bushwick, east village.",
+      "description": "Book Club Bar is a community space centered on books, music, singles in bushwick, east village. Based on 71 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
-        "comedy",
         "singles",
-        "parties"
+        "art",
+        "comedy"
       ],
       "tags": [
         "books",
         "music",
-        "comedy",
         "singles",
-        "parties"
+        "art",
+        "comedy"
       ],
       "neighborhoods": [
-        "east village",
         "bushwick",
+        "east village",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -4302,14 +4302,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6638320261212"
+          "url": "https://bookclubbar.com/events/6650120261214"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-01",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 20,
         "eventCount90d": 76
       },
       "schedule": {
@@ -4320,7 +4320,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 70
+        "sampleSize": 71
       },
       "upcomingEventIds": [
         "c6f50540514ebf0c",
@@ -4343,7 +4343,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 70,
+        "observedDateCount": 71,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4351,18 +4351,22 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
+        },
+        {
+          "eventId": "39ae2e33322cd181",
+          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_55ca36db453a",
-        "com_a1e1c13a75f0",
-        "com_3048e331f7b6",
         "com_318c39363fe6",
-        "com_d8a5203885a9",
-        "com_f23f8820878b"
+        "com_55ca36db453a",
+        "com_eeb4e424a504",
+        "com_a4d969c3c6eb",
+        "com_28a4ec647815",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -4689,9 +4693,9 @@
         "com_28a4ec647815",
         "com_318c39363fe6",
         "com_55ca36db453a",
+        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
-        "com_9abdf9db297a",
-        "com_f171cd222ca5"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -4953,10 +4957,10 @@
       "similarCommunityIds": [
         "com_d8a5203885a9",
         "com_318c39363fe6",
-        "com_c1410c07c4dd",
         "com_065dafa96d43",
         "com_b8a3508a14a4",
-        "com_3048e331f7b6"
+        "com_3048e331f7b6",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -5039,11 +5043,11 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
+        "com_c1410c07c4dd",
         "com_55ca36db453a",
         "com_f23f8820878b",
         "com_a4d969c3c6eb",
         "com_eeb4e424a504",
-        "com_c1410c07c4dd",
         "com_b8a3508a14a4"
       ]
     },
@@ -52181,7 +52185,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-01T22:51:00.683890+00:00",
+  "lastUpdated": "2026-11-01T22:57:02.059043+00:00",
   "version": 1,
   "schemaVersion": 1
 }
