@@ -3231,7 +3231,7 @@
       "name": "The People's Forum",
       "kind": "recurring_series",
       "tagline": "The People's Forum is a recurring event series centered on music, art, books in midtown, manhattan.",
-      "description": "The People's Forum is a recurring event series centered on music, art, books in midtown, manhattan. Based on 6 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "description": "The People's Forum is a recurring event series centered on music, art, books in midtown, manhattan. Based on 5 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "music",
         "other",
@@ -3261,23 +3261,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 5,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Thursday"
+          "Thursday",
+          "Wednesday"
         ],
         "typicalTime": "17:30",
-        "confidence": 1.0,
-        "sampleSize": 6
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "f1ba58bedbaf82de",
         "83b895d3eaf6ad73",
-        "0edc639996f1cccd",
         "fae69ebd3687f2e5",
         "dba5cc9485dd8df0",
         "ba4466b73051addf"
@@ -3289,7 +3288,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -52626,7 +52625,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-02T05:04:42.397042+00:00",
+  "lastUpdated": "2026-11-02T06:23:15.417340+00:00",
   "version": 1,
   "schemaVersion": 1
 }
