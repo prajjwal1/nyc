@@ -296,9 +296,9 @@
         "com_64ebabd98c5c",
         "com_a4d969c3c6eb",
         "com_43850d49f9e6",
+        "com_68b36e93076a",
         "com_8b837dfb5421",
-        "com_b8a3508a14a4",
-        "com_f54698ed682f"
+        "com_b8a3508a14a4"
       ]
     },
     {
@@ -465,8 +465,8 @@
         "com_ed9d2e2bb33a",
         "com_d8a5203885a9",
         "com_64ebabd98c5c",
-        "com_ff2e01957665",
-        "com_a4d969c3c6eb"
+        "com_68b36e93076a",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -675,11 +675,11 @@
       ],
       "similarCommunityIds": [
         "com_d8a5203885a9",
+        "com_68b36e93076a",
         "com_b736e77bdf93",
         "com_8d86f6f9340b",
         "com_a4d969c3c6eb",
-        "com_0e403135692e",
-        "com_1466f20a9300"
+        "com_0e403135692e"
       ]
     },
     {
@@ -687,15 +687,19 @@
       "slug": "the-ripped-bodice-bk-cb3534",
       "name": "The Ripped Bodice BK",
       "kind": "recurring_series",
-      "tagline": "The Ripped Bodice BK is a recurring event series centered on books in brooklyn.",
-      "description": "The Ripped Bodice BK is a recurring event series centered on books in brooklyn. Based on 34 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "tagline": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn.",
+      "description": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn. Based on 34 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
         "other",
-        "books"
+        "books",
+        "celebrities",
+        "exploration"
       ],
       "tags": [
         "other",
-        "books"
+        "books",
+        "celebrities",
+        "exploration"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -751,12 +755,12 @@
         "eventbrite:121441877858"
       ],
       "similarCommunityIds": [
-        "com_ff2e01957665",
-        "com_d2d455d2d6c9",
         "com_0e403135692e",
+        "com_eef1ca956dae",
+        "com_ff2e01957665",
+        "com_ad50d6a81df3",
         "com_36c800013ba6",
-        "com_1466f20a9300",
-        "com_3837f308cd75"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -1043,11 +1047,11 @@
       ],
       "similarCommunityIds": [
         "com_0e403135692e",
+        "com_4a9490cb3534",
         "com_eef1ca956dae",
         "com_0cc8630779d7",
         "com_9abdf9db297a",
-        "com_55ca36db453a",
-        "com_f171cd222ca5"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -1188,7 +1192,7 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
-        "com_4a9490cb3534",
+        "com_68b36e93076a",
         "com_ff2e01957665",
         "com_02b1cd673b69",
         "com_118a558259ea",
@@ -1203,14 +1207,14 @@
       "tagline": "Books Are Magic is a recurring event series centered on books, exploration, celebrities in brooklyn.",
       "description": "Books Are Magic is a recurring event series centered on books, exploration, celebrities in brooklyn. Based on 22 observed event dates, it meets weekly on Monday and Wednesday evenings.",
       "categories": [
-        "other",
         "books",
+        "other",
         "exploration",
         "celebrities"
       ],
       "tags": [
-        "other",
         "books",
+        "other",
         "exploration",
         "celebrities"
       ],
@@ -1268,8 +1272,8 @@
         "eventbrite:17671794664"
       ],
       "similarCommunityIds": [
-        "com_eef1ca956dae",
         "com_4a9490cb3534",
+        "com_eef1ca956dae",
         "com_ff2e01957665",
         "com_ad50d6a81df3",
         "com_36c800013ba6",
@@ -1348,8 +1352,8 @@
         "eventbrite:17768356901"
       ],
       "similarCommunityIds": [
-        "com_4a9490cb3534",
         "com_0e403135692e",
+        "com_4a9490cb3534",
         "com_cb019f4e9752",
         "com_14e2dae511e1",
         "com_ed9d2e2bb33a",
@@ -1431,6 +1435,85 @@
         "com_14e2dae511e1",
         "com_ed9d2e2bb33a",
         "com_1466f20a9300"
+      ]
+    },
+    {
+      "id": "com_68b36e93076a",
+      "slug": "littlefield-93076a",
+      "name": "littlefield",
+      "kind": "recurring_series",
+      "tagline": "littlefield is a recurring event series centered on special, comedy in brooklyn.",
+      "description": "littlefield is a recurring event series centered on special, comedy in brooklyn. Based on 7 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "categories": [
+        "other",
+        "special",
+        "comedy"
+      ],
+      "tags": [
+        "other",
+        "special",
+        "comedy"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "littlefield",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190568747%2F400863417153%2F1%2Foriginal.20260807-192024?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.01&fp-y=0.397&s=58af80c4caeb9d5d5c53a7b1f884c93c",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/18046024060"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-01",
+        "upcomingEventCount": 7,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Sunday",
+          "Tuesday"
+        ],
+        "typicalTime": "20:00",
+        "confidence": 1.0,
+        "sampleSize": 7
+      },
+      "upcomingEventIds": [
+        "3d0b808081c15bee",
+        "4f1ca6e7ada3fd76",
+        "6667cd59942fac7e",
+        "1effeadf08519c3c",
+        "b4b2e5fa77333282",
+        "c569c42bab81f5c3",
+        "a82cd683e726aa8d"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-11-02",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 7,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:18046024060"
+      ],
+      "similarCommunityIds": [
+        "com_b8a3508a14a4",
+        "com_3048e331f7b6",
+        "com_36c800013ba6",
+        "com_d8a5203885a9",
+        "com_1466f20a9300",
+        "com_64ebabd98c5c"
       ]
     },
     {
@@ -1651,10 +1734,10 @@
       "similarCommunityIds": [
         "com_d8a5203885a9",
         "com_64ebabd98c5c",
+        "com_68b36e93076a",
         "com_3837f308cd75",
         "com_3048e331f7b6",
-        "com_0e403135692e",
-        "com_1466f20a9300"
+        "com_0e403135692e"
       ]
     },
     {
@@ -1738,8 +1821,8 @@
         "com_3048e331f7b6",
         "com_9abdf9db297a",
         "com_36c800013ba6",
-        "com_4a9490cb3534",
-        "com_ffc1304a5cb6"
+        "com_ffc1304a5cb6",
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -1812,12 +1895,12 @@
         "eventbrite:2617805256"
       ],
       "similarCommunityIds": [
+        "com_68b36e93076a",
         "com_318c39363fe6",
         "com_f54698ed682f",
         "com_8b837dfb5421",
         "com_f23f8820878b",
-        "com_8d86f6f9340b",
-        "com_a4d969c3c6eb"
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -1891,12 +1974,12 @@
         "eventbrite:30058841244"
       ],
       "similarCommunityIds": [
-        "com_4a9490cb3534",
         "com_f171cd222ca5",
         "com_ff2e01957665",
         "com_a1e1c13a75f0",
         "com_36cb2681053d",
-        "com_e9748c1176c1"
+        "com_e9748c1176c1",
+        "com_8b837dfb5421"
       ]
     },
     {
@@ -2443,10 +2526,10 @@
       "similarCommunityIds": [
         "com_a4d969c3c6eb",
         "com_d2d455d2d6c9",
-        "com_4a9490cb3534",
         "com_cdd5daa67222",
         "com_eeb4e424a504",
-        "com_ff2e01957665"
+        "com_ff2e01957665",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -2519,8 +2602,8 @@
         "com_36c800013ba6",
         "com_3837f308cd75",
         "com_3048e331f7b6",
-        "com_4a9490cb3534",
-        "com_8b837dfb5421"
+        "com_8b837dfb5421",
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -2576,8 +2659,8 @@
       },
       "upcomingEventIds": [
         "356cc12eb6522eb0",
-        "ea145b27a4cc5d42",
         "e229b2a5b996b9a2",
+        "ea145b27a4cc5d42",
         "4511b6603efb0b98",
         "d8a72e4b436b4b62",
         "08a0be30df840876",
@@ -2902,9 +2985,9 @@
         "com_3837f308cd75",
         "com_d8a5203885a9",
         "com_1466f20a9300",
+        "com_68b36e93076a",
         "com_ff2e01957665",
-        "com_cb019f4e9752",
-        "com_a1e1c13a75f0"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -4432,10 +4515,10 @@
       "similarCommunityIds": [
         "com_3048e331f7b6",
         "com_64ebabd98c5c",
+        "com_68b36e93076a",
         "com_f23f8820878b",
         "com_b736e77bdf93",
-        "com_1466f20a9300",
-        "com_8d86f6f9340b"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -4589,9 +4672,9 @@
       "similarCommunityIds": [
         "com_f171cd222ca5",
         "com_318c39363fe6",
-        "com_4a9490cb3534",
         "com_64ebabd98c5c",
         "com_d2d455d2d6c9",
+        "com_68b36e93076a",
         "com_ff2e01957665"
       ]
     },
@@ -4762,10 +4845,10 @@
       "similarCommunityIds": [
         "com_ad50d6a81df3",
         "com_0e403135692e",
+        "com_4a9490cb3534",
         "com_eef1ca956dae",
         "com_cdd5daa67222",
-        "com_55ca36db453a",
-        "com_a4d969c3c6eb"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -4843,9 +4926,9 @@
       ],
       "similarCommunityIds": [
         "com_0e403135692e",
+        "com_4a9490cb3534",
         "com_ad50d6a81df3",
         "com_1466f20a9300",
-        "com_4a9490cb3534",
         "com_ff2e01957665",
         "com_3837f308cd75"
       ]
@@ -52166,7 +52249,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-02T00:39:40.131389+00:00",
+  "lastUpdated": "2026-11-02T02:05:37.329842+00:00",
   "version": 1,
   "schemaVersion": 1
 }
