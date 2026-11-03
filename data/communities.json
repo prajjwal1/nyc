@@ -2943,7 +2943,7 @@
       "name": "The National Arts Club",
       "kind": "club",
       "tagline": "The National Arts Club is a community club centered on art in manhattan.",
-      "description": "The National Arts Club is a community club centered on art in manhattan. Based on 29 observed event dates, it meets weekly on Tuesday and Monday evenings.",
+      "description": "The National Arts Club is a community club centered on art in manhattan. Based on 30 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
         "other",
         "art"
@@ -2968,7 +2968,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-03",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 24
       },
       "schedule": {
@@ -2979,7 +2979,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 29
+        "sampleSize": 30
       },
       "upcomingEventIds": [
         "6dd2f726c7ab5a28",
@@ -2990,7 +2990,8 @@
         "648340fc5d9696a1",
         "1066deb9c04a1cf0",
         "88fd0e364cc32efb",
-        "74d46682692bd3f9"
+        "74d46682692bd3f9",
+        "0e117615adfab259"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2999,7 +3000,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 29,
+        "observedDateCount": 30,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4442,8 +4443,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, williamsburg. Based on 23 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in williamsburg, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in williamsburg, manhattan. Based on 23 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art",
@@ -4455,13 +4456,13 @@
         "wellness"
       ],
       "neighborhoods": [
-        "manhattan",
         "williamsburg",
+        "manhattan",
         "midtown",
         "upper east side"
       ],
-      "homeVenue": "New York Society for Ethical Culture",
-      "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
+      "homeVenue": "McCarren Parkhouse",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
       "links": [
         {
           "type": "luma",
@@ -4487,8 +4488,8 @@
         "sampleSize": 23
       },
       "upcomingEventIds": [
-        "11dbe4c4ba6f66c6",
         "56a73cc77e6547d7",
+        "11dbe4c4ba6f66c6",
         "f58b6a84f214ebb3",
         "afb9e03bb5e502c7",
         "01d7e073efd3dc12",
@@ -4742,8 +4743,8 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "89f6f1a3d24762fb",
         "f5207a5c726e6330",
+        "89f6f1a3d24762fb",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
         "75154eebbdbd66ab",
@@ -5133,7 +5134,7 @@
         "williamsburg"
       ],
       "homeVenue": "McNally Jackson Seaport",
-      "imageUrl": "https://www.mcnallyjackson.com/sites/default/files/styles/large/public/image/2026/09/02/newdirections11web.png?itok=zocfnIhv",
+      "imageUrl": "https://www.mcnallyjackson.com/sites/default/files/styles/large/public/image/2026/09/02/literaryblack11web.png?itok=dvFKaJRj",
       "links": [
         {
           "type": "mcnallyjackson",
@@ -5159,8 +5160,8 @@
         "sampleSize": 21
       },
       "upcomingEventIds": [
-        "dae573f139850bf5",
         "1f5ae25166698cbf",
+        "dae573f139850bf5",
         "ec83fa494cca0604",
         "232da0c2fc13ea6d",
         "d725afb8d90473f3",
@@ -52594,7 +52595,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-03T06:58:26.716669+00:00",
+  "lastUpdated": "2026-11-03T11:05:35.870638+00:00",
   "version": 1,
   "schemaVersion": 1
 }
