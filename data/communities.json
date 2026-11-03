@@ -89,11 +89,13 @@
       "description": "Elsewhere is a recurring event series centered on music, outdoors in bushwick. Based on 59 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "music",
-        "outdoors"
+        "outdoors",
+        "other"
       ],
       "tags": [
         "music",
-        "outdoors"
+        "outdoors",
+        "other"
       ],
       "neighborhoods": [
         "bushwick"
@@ -111,7 +113,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-31",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 99
       },
       "schedule": {
@@ -129,6 +131,7 @@
         "245f4c77d24ab926",
         "080035a83d8755d3",
         "3ad70c459e6fc39e",
+        "6de12dc19f3f50b5",
         "1ad58023cd14f169",
         "977e872e6c044013",
         "9c25c23f51021157",
@@ -150,12 +153,12 @@
         "eventbrite:105655500371"
       ],
       "similarCommunityIds": [
+        "com_5dd8d7d6e995",
         "com_0ccd71f4bb21",
         "com_5eb8bafab897",
-        "com_1466f20a9300",
-        "com_f54698ed682f",
-        "com_f23f8820878b",
-        "com_91772bf8b6fc"
+        "com_91772bf8b6fc",
+        "com_072c9c3e12a8",
+        "com_3d91bda94131"
       ]
     },
     {
@@ -290,9 +293,9 @@
         "eventbrite:10662501681"
       ],
       "similarCommunityIds": [
-        "com_3d91bda94131",
         "com_64ebabd98c5c",
         "com_a4d969c3c6eb",
+        "com_3d91bda94131",
         "com_43850d49f9e6",
         "com_68b36e93076a",
         "com_8b837dfb5421"
@@ -373,10 +376,10 @@
       "similarCommunityIds": [
         "com_43850d49f9e6",
         "com_072c9c3e12a8",
+        "com_3d91bda94131",
         "com_8b837dfb5421",
         "com_9fed174eeff3",
-        "com_a1e1c13a75f0",
-        "com_36cb2681053d"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -757,9 +760,9 @@
         "com_d2d455d2d6c9",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_3d91bda94131",
         "com_e9748c1176c1",
-        "com_c0492b95ac8d"
+        "com_c0492b95ac8d",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -1008,7 +1011,7 @@
         "com_3481b6750d6f",
         "com_85e78e91c982",
         "com_f8ff3d3257ed",
-        "com_3d91bda94131"
+        "com_96a0049afb0f"
       ]
     },
     {
@@ -1086,12 +1089,12 @@
         "eventbrite:13580085802"
       ],
       "similarCommunityIds": [
+        "com_3d91bda94131",
         "com_f54698ed682f",
         "com_3048e331f7b6",
         "com_f23f8820878b",
         "com_fe4b6663b721",
-        "com_0ccd71f4bb21",
-        "com_3d91bda94131"
+        "com_0ccd71f4bb21"
       ]
     },
     {
@@ -1238,9 +1241,9 @@
         "com_e9748c1176c1",
         "com_9abdf9db297a",
         "com_c0492b95ac8d",
+        "com_3d91bda94131",
         "com_9fed174eeff3",
-        "com_f54698ed682f",
-        "com_c58670960684"
+        "com_f54698ed682f"
       ]
     },
     {
@@ -1310,11 +1313,11 @@
       ],
       "similarCommunityIds": [
         "com_feb5ce491629",
+        "com_5dd8d7d6e995",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_0ccd71f4bb21",
-        "com_3d91bda94131",
-        "com_96a0049afb0f"
+        "com_b766b6de77ba",
+        "com_0ccd71f4bb21"
       ]
     },
     {
@@ -1514,7 +1517,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-03",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 6,
         "eventCount90d": 72
       },
       "schedule": {
@@ -1531,7 +1534,9 @@
         "6c8a313c6fc25e55",
         "8306e79d0bda1cd7",
         "5fd1ba5f6073ffe3",
-        "392af3235b297785"
+        "392af3235b297785",
+        "844d4fed2c074f1d",
+        "3d2bb921102f52d7"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1631,9 +1636,9 @@
         "com_3048e331f7b6",
         "com_b8a3508a14a4",
         "com_d8a5203885a9",
-        "com_3d91bda94131",
         "com_64ebabd98c5c",
-        "com_ff2e01957665"
+        "com_ff2e01957665",
+        "com_0e403135692e"
       ]
     },
     {
@@ -1709,7 +1714,7 @@
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_065dafa96d43",
-        "com_0ccd71f4bb21"
+        "com_5dd8d7d6e995"
       ]
     },
     {
@@ -1947,6 +1952,86 @@
       ]
     },
     {
+      "id": "com_5dd8d7d6e995",
+      "slug": "big-reuse-d6e995",
+      "name": "Big Reuse",
+      "kind": "recurring_series",
+      "tagline": "Big Reuse is a recurring event series centered on outdoors, music in brooklyn, crown heights.",
+      "description": "Big Reuse is a recurring event series centered on outdoors, music in brooklyn, crown heights. Based on 5 observed event dates, it meets weekly on Thursday and Sunday mornings.",
+      "categories": [
+        "outdoors",
+        "music",
+        "other"
+      ],
+      "tags": [
+        "outdoors",
+        "music",
+        "other"
+      ],
+      "neighborhoods": [
+        "brooklyn",
+        "crown heights",
+        "east village"
+      ],
+      "homeVenue": "22 2nd Ave",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193279032%2F3009447131073%2F1%2Foriginal.20260911-174630?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=39b06873e1b7b1227b64094b3dd72683",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/20004425576"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 6,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Sunday"
+        ],
+        "typicalTime": "10:00",
+        "confidence": 0.83,
+        "sampleSize": 5
+      },
+      "upcomingEventIds": [
+        "ee04579f00ce7528",
+        "bfb7cb7338bb8a31",
+        "4bb1094a23e1f75b",
+        "b4d9ff23d04dc6fe",
+        "53d9cc340063fe56",
+        "b36545733462f7ea"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-11-03",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 5,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:20004425576"
+      ],
+      "similarCommunityIds": [
+        "com_b766b6de77ba",
+        "com_91772bf8b6fc",
+        "com_0ccd71f4bb21",
+        "com_5eb8bafab897",
+        "com_8b837dfb5421",
+        "com_3837f308cd75"
+      ]
+    },
+    {
       "id": "com_b8a3508a14a4",
       "slug": "the-hidden-jewel-box-theater-the-love-show-nyc-8a14a4",
       "name": "The Hidden Jewel Box Theater \u2013 The Love Show NYC",
@@ -2017,9 +2102,9 @@
       ],
       "similarCommunityIds": [
         "com_68b36e93076a",
-        "com_3d91bda94131",
         "com_3048e331f7b6",
         "com_318c39363fe6",
+        "com_3d91bda94131",
         "com_8b837dfb5421",
         "com_f23f8820878b"
       ]
@@ -2168,11 +2253,11 @@
       ],
       "similarCommunityIds": [
         "com_0ccd71f4bb21",
+        "com_5dd8d7d6e995",
         "com_b766b6de77ba",
         "com_1466f20a9300",
         "com_f54698ed682f",
-        "com_f23f8820878b",
-        "com_91772bf8b6fc"
+        "com_f23f8820878b"
       ]
     },
     {
@@ -2248,9 +2333,9 @@
         "com_28a4ec647815",
         "com_fe4b6663b721",
         "com_072c9c3e12a8",
+        "com_3d91bda94131",
         "com_43850d49f9e6",
-        "com_9fed174eeff3",
-        "com_d2d455d2d6c9"
+        "com_5dd8d7d6e995"
       ]
     },
     {
@@ -2574,7 +2659,7 @@
         "com_3481b6750d6f",
         "com_85e78e91c982",
         "com_f8ff3d3257ed",
-        "com_3d91bda94131"
+        "com_96a0049afb0f"
       ]
     },
     {
@@ -3028,7 +3113,7 @@
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_ab8259bb35a4",
-        "com_3d91bda94131"
+        "com_96a0049afb0f"
       ]
     },
     {
@@ -3263,7 +3348,7 @@
         "com_96a0049afb0f",
         "com_e9748c1176c1",
         "com_d2d455d2d6c9",
-        "com_ab8259bb35a4"
+        "com_3d91bda94131"
       ]
     },
     {
@@ -3642,15 +3727,17 @@
       "slug": "michael-fram-principal-a94131",
       "name": "Michael Fram, Principal",
       "kind": "recurring_series",
-      "tagline": "Michael Fram, Principal is a recurring event series centered on special in manhattan.",
-      "description": "Michael Fram, Principal is a recurring event series centered on special in manhattan. Based on 3 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "Michael Fram, Principal is a recurring event series centered on special, music in manhattan.",
+      "description": "Michael Fram, Principal is a recurring event series centered on special, music in manhattan. Based on 4 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
-        "special"
+        "special",
+        "music"
       ],
       "tags": [
         "other",
-        "special"
+        "special",
+        "music"
       ],
       "neighborhoods": [
         "manhattan"
@@ -3668,7 +3755,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 0
       },
       "schedule": {
@@ -3678,13 +3765,14 @@
           "Saturday"
         ],
         "typicalTime": "17:30",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
         "5d34c0543572214f",
         "4b28d519292aad63",
-        "b0abf86cc8395d61"
+        "b0abf86cc8395d61",
+        "df9ced18d68972a3"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -3693,7 +3781,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3702,12 +3790,12 @@
         "eventbrite:8465378731"
       ],
       "similarCommunityIds": [
+        "com_072c9c3e12a8",
+        "com_9fed174eeff3",
+        "com_f54698ed682f",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_96a0049afb0f",
-        "com_e9748c1176c1",
-        "com_68b36e93076a",
-        "com_b8a3508a14a4"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -3918,11 +4006,11 @@
       ],
       "similarCommunityIds": [
         "com_5eb8bafab897",
-        "com_b766b6de77ba",
         "com_f54698ed682f",
+        "com_5dd8d7d6e995",
+        "com_b766b6de77ba",
         "com_072c9c3e12a8",
-        "com_9fed174eeff3",
-        "com_a1e1c13a75f0"
+        "com_3d91bda94131"
       ]
     },
     {
@@ -4072,8 +4160,8 @@
       "similarCommunityIds": [
         "com_0ccd71f4bb21",
         "com_072c9c3e12a8",
-        "com_a1e1c13a75f0",
         "com_3d91bda94131",
+        "com_a1e1c13a75f0",
         "com_e9748c1176c1",
         "com_9fed174eeff3"
       ]
@@ -4083,8 +4171,8 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side. Based on 4 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in manhattan, chelsea.",
+      "description": "The New York Philosophy Club is a community club centered on art in manhattan, chelsea. Based on 4 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
         "art"
@@ -4095,8 +4183,8 @@
       ],
       "neighborhoods": [
         "manhattan",
-        "upper east side",
-        "chelsea"
+        "chelsea",
+        "upper east side"
       ],
       "homeVenue": "New York Society for Ethical Culture",
       "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
@@ -4126,8 +4214,8 @@
       },
       "upcomingEventIds": [
         "11dbe4c4ba6f66c6",
-        "afb9e03bb5e502c7",
-        "01d7e073efd3dc12"
+        "01d7e073efd3dc12",
+        "afb9e03bb5e502c7"
       ],
       "sourceAttributions": [
         "luma"
@@ -4371,11 +4459,11 @@
       ],
       "similarCommunityIds": [
         "com_072c9c3e12a8",
+        "com_3d91bda94131",
         "com_fe4b6663b721",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_0ccd71f4bb21",
-        "com_3d91bda94131"
+        "com_0ccd71f4bb21"
       ]
     },
     {
@@ -4474,7 +4562,7 @@
         "manhattan",
         "williamsburg",
         "midtown",
-        "upper east side"
+        "chelsea"
       ],
       "homeVenue": "New York Society for Ethical Culture",
       "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
@@ -4506,8 +4594,8 @@
         "11dbe4c4ba6f66c6",
         "56a73cc77e6547d7",
         "f58b6a84f214ebb3",
-        "afb9e03bb5e502c7",
         "01d7e073efd3dc12",
+        "afb9e03bb5e502c7",
         "d8bc0ebae6aa02e3",
         "5c7f219795bbfa24"
       ],
@@ -4967,7 +5055,7 @@
       "name": "The Center for Fiction",
       "kind": "institutional_program",
       "tagline": "The Center for Fiction is a community program centered on books, special in brooklyn, east village.",
-      "description": "The Center for Fiction is a community program centered on books, special in brooklyn, east village. Based on 7 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "description": "The Center for Fiction is a community program centered on books, special in brooklyn, east village. Based on 8 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
         "books",
         "special"
@@ -4986,14 +5074,14 @@
         {
           "type": "centerforfiction",
           "label": "View on Centerforfiction",
-          "url": "https://centerforfiction.org/event/the-center-for-fiction-presents-nicole-dennis-benn-on-black-gold-with-marlon-james/"
+          "url": "https://centerforfiction.org/event/the-center-for-fiction-presents-elif-shafak-on-in-one-brief-moment-all-eternity/"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 0
       },
       "schedule": {
@@ -5004,7 +5092,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
         "4a067b050150f8dc",
@@ -5013,7 +5101,8 @@
         "be02a3d72e399cbd",
         "8c11986f4b71d868",
         "273c14f3ae067a58",
-        "a91c27a6066fd4a9"
+        "a91c27a6066fd4a9",
+        "a24c2f4c472777a9"
       ],
       "sourceAttributions": [
         "centerforfiction"
@@ -5022,7 +5111,7 @@
       "verified": true,
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": false,
@@ -5319,7 +5408,7 @@
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club",
+      "homeVenue": "New York Comedy Club Upper West Side",
       "imageUrl": "/img/comedians/Untitled-design-68-03d90c28-large-thumb.png",
       "links": [
         {
@@ -5332,7 +5421,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-02",
-        "upcomingEventCount": 44,
+        "upcomingEventCount": 45,
         "eventCount90d": 298
       },
       "schedule": {
@@ -52610,7 +52699,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-03T18:29:51.314046+00:00",
+  "lastUpdated": "2026-11-03T19:31:04.702295+00:00",
   "version": 1,
   "schemaVersion": 1
 }
