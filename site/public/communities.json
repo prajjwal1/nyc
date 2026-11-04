@@ -764,7 +764,7 @@
         "com_5f3066e419a7",
         "com_e9748c1176c1",
         "com_072c9c3e12a8",
-        "com_c0492b95ac8d"
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -1010,10 +1010,10 @@
       "similarCommunityIds": [
         "com_36cb2681053d",
         "com_e9748c1176c1",
+        "com_02b1cd673b69",
         "com_118a558259ea",
         "com_3481b6750d6f",
-        "com_85e78e91c982",
-        "com_f8ff3d3257ed"
+        "com_85e78e91c982"
       ]
     },
     {
@@ -1401,7 +1401,7 @@
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_e9748c1176c1",
-        "com_072c9c3e12a8"
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -2661,11 +2661,11 @@
         "eventbrite:4279966505"
       ],
       "similarCommunityIds": [
+        "com_02b1cd673b69",
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_85e78e91c982",
         "com_e9748c1176c1",
-        "com_02b1cd673b69",
         "com_118a558259ea"
       ]
     },
@@ -2741,10 +2741,10 @@
       "similarCommunityIds": [
         "com_5f3066e419a7",
         "com_e9748c1176c1",
+        "com_02b1cd673b69",
         "com_118a558259ea",
         "com_3481b6750d6f",
-        "com_85e78e91c982",
-        "com_f8ff3d3257ed"
+        "com_85e78e91c982"
       ]
     },
     {
@@ -2809,11 +2809,11 @@
         "eventbrite:48099857493"
       ],
       "similarCommunityIds": [
+        "com_02b1cd673b69",
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_e9748c1176c1",
         "com_f8ff3d3257ed",
-        "com_02b1cd673b69",
         "com_118a558259ea"
       ]
     },
@@ -3193,10 +3193,10 @@
       "similarCommunityIds": [
         "com_36cb2681053d",
         "com_5f3066e419a7",
+        "com_02b1cd673b69",
         "com_118a558259ea",
         "com_3481b6750d6f",
-        "com_85e78e91c982",
-        "com_f8ff3d3257ed"
+        "com_85e78e91c982"
       ]
     },
     {
@@ -3646,9 +3646,9 @@
         "com_1051b67b7913",
         "com_072c9c3e12a8",
         "com_c58670960684",
-        "com_02b1cd673b69",
         "com_3481b6750d6f",
-        "com_28a4ec647815"
+        "com_28a4ec647815",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -3947,9 +3947,9 @@
         "com_065dafa96d43",
         "com_feb5ce491629",
         "com_9fed174eeff3",
+        "com_02b1cd673b69",
         "com_072c9c3e12a8",
-        "com_0cc8630779d7",
-        "com_0ccd71f4bb21"
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -4167,7 +4167,7 @@
         "com_2c239df2a554",
         "com_3048e331f7b6",
         "com_f28d3ae740a6",
-        "com_36cb2681053d"
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -4321,7 +4321,7 @@
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_e9748c1176c1",
-        "com_c0492b95ac8d"
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -4395,7 +4395,7 @@
         "com_2c239df2a554",
         "com_3048e331f7b6",
         "com_f28d3ae740a6",
-        "com_36cb2681053d"
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -4403,8 +4403,8 @@
       "slug": "miler-running-673b69",
       "name": "MILER RUNNING",
       "kind": "recurring_series",
-      "tagline": "MILER RUNNING is a recurring event series in tribeca.",
-      "description": "MILER RUNNING is a recurring event series in tribeca. Based on 3 observed event dates, it meets biweekly on Wednesday and Friday mornings.",
+      "tagline": "MILER RUNNING is a recurring event series in manhattan, tribeca.",
+      "description": "MILER RUNNING is a recurring event series in manhattan, tribeca. Based on 4 observed event dates, it meets weekly on Wednesday and Friday mornings.",
       "categories": [
         "other"
       ],
@@ -4412,10 +4412,11 @@
         "other"
       ],
       "neighborhoods": [
+        "manhattan",
         "tribeca"
       ],
-      "homeVenue": "Tom Dixon New York Shop",
-      "imageUrl": "https://images.lumacdn.com/uploads/f6/736cefa2-9f32-4f5d-8f47-c654a0726507.jpg",
+      "homeVenue": "180 Maiden Ln",
+      "imageUrl": "https://images.lumacdn.com/uploads/ny/13f8304b-7fe2-4d03-b262-d99ec2b12baf.jpg",
       "links": [
         {
           "type": "luma",
@@ -4427,20 +4428,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-30",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
-        "cadence": "biweekly",
+        "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
           "Friday"
         ],
         "typicalTime": "07:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
+        "b20d5161342510f3",
         "746159ff6d11fa81"
       ],
       "sourceAttributions": [
@@ -4450,7 +4452,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4460,12 +4462,12 @@
         "luma:cal-rqreors1qvhftwc"
       ],
       "similarCommunityIds": [
-        "com_3481b6750d6f",
-        "com_118a558259ea",
         "com_36cb2681053d",
         "com_5f3066e419a7",
+        "com_e9748c1176c1",
         "com_85e78e91c982",
-        "com_c274ef0f18ba"
+        "com_f8ff3d3257ed",
+        "com_118a558259ea"
       ]
     },
     {
@@ -4697,8 +4699,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, manhattan.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, manhattan. Based on 24 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, williamsburg.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, williamsburg. Based on 24 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art",
@@ -4711,12 +4713,12 @@
       ],
       "neighborhoods": [
         "upper east side",
-        "manhattan",
         "williamsburg",
+        "manhattan",
         "midtown"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
-      "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
       "links": [
         {
           "type": "luma",
@@ -4742,8 +4744,8 @@
         "sampleSize": 24
       },
       "upcomingEventIds": [
-        "11dbe4c4ba6f66c6",
         "56a73cc77e6547d7",
+        "11dbe4c4ba6f66c6",
         "f58b6a84f214ebb3",
         "afb9e03bb5e502c7",
         "01d7e073efd3dc12",
@@ -4999,8 +5001,8 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "89f6f1a3d24762fb",
         "f5207a5c726e6330",
+        "89f6f1a3d24762fb",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
         "1194e70d5bf2f095",
@@ -5569,7 +5571,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-04",
-        "upcomingEventCount": 57,
+        "upcomingEventCount": 49,
         "eventCount90d": 301
       },
       "schedule": {
@@ -5585,16 +5587,16 @@
       "upcomingEventIds": [
         "5da40e589503d16f",
         "edb1c158b5a81727",
-        "a4d8f7c34aa3d661",
         "1caf6bc90d2be492",
         "e80513e5499b8b90",
+        "a4d8f7c34aa3d661",
         "76c5add94a66836d",
-        "42587673084f054a",
         "a360888d038b0b80",
-        "e9b236603ad861b3",
-        "88117db6c99a1e6d",
-        "cf9a14df952ba42d",
-        "734456925e86041b"
+        "fcdc53d7f7619c0f",
+        "fa48ad0b75442974",
+        "26fdf1adcf971480",
+        "aa1551ae7e635212",
+        "1f57e53de382e5db"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -52847,7 +52849,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-04T19:37:21.244659+00:00",
+  "lastUpdated": "2026-11-04T21:51:43.613717+00:00",
   "version": 1,
   "schemaVersion": 1
 }
