@@ -538,10 +538,10 @@
       "similarCommunityIds": [
         "com_b0e15eaab803",
         "com_a1e1c13a75f0",
-        "com_c1410c07c4dd",
         "com_c0492b95ac8d",
         "com_8d86f6f9340b",
-        "com_ab8259bb35a4"
+        "com_ab8259bb35a4",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -2885,12 +2885,12 @@
         "eventbrite:52255937823"
       ],
       "similarCommunityIds": [
+        "com_33a530deb7aa",
         "com_a4d969c3c6eb",
         "com_d2d455d2d6c9",
         "com_96a0049afb0f",
         "com_cdd5daa67222",
-        "com_eeb4e424a504",
-        "com_eef1ca956dae"
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -3799,11 +3799,11 @@
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
+        "com_c1410c07c4dd",
         "com_cdd5daa67222",
         "com_d8a5203885a9",
         "com_2c239df2a554",
-        "com_ff2e01957665",
-        "com_f171cd222ca5"
+        "com_ff2e01957665"
       ]
     },
     {
@@ -4547,6 +4547,77 @@
       ]
     },
     {
+      "id": "com_33a530deb7aa",
+      "slug": "lit-club-nyc-calendar-deb7aa",
+      "name": "Lit Club NYC Calendar",
+      "kind": "club",
+      "tagline": "Lit Club NYC Calendar is a community club centered on books in soho.",
+      "description": "Lit Club NYC Calendar is a community club centered on books in soho. Based on 3 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "categories": [
+        "books"
+      ],
+      "tags": [
+        "books"
+      ],
+      "neighborhoods": [
+        "soho"
+      ],
+      "homeVenue": "Sullaluna",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/zh/772313cf-8c80-4bf8-9c7e-52a37b262a82.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/litclub.nyc"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday",
+          "Thursday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.5,
+        "sampleSize": 3
+      },
+      "upcomingEventIds": [
+        "ca9b3c21d99df49c",
+        "188bbfe58942a134",
+        "eda8156c4f1d0552"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-04",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:litclub.nyc"
+      ],
+      "similarCommunityIds": [
+        "com_f171cd222ca5",
+        "com_96a0049afb0f",
+        "com_a4d969c3c6eb",
+        "com_cdd5daa67222",
+        "com_d2d455d2d6c9",
+        "com_0cc8630779d7"
+      ]
+    },
+    {
       "id": "com_b0e15eaab803",
       "slug": "nyc-backgammon-club-aab803",
       "name": "NYC Backgammon Club",
@@ -4613,12 +4684,12 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_318c39363fe6",
         "com_28a4ec647815",
         "com_3837f308cd75",
         "com_c0492b95ac8d",
-        "com_f54698ed682f"
+        "com_f54698ed682f",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -4626,8 +4697,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, williamsburg. Based on 24 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, manhattan. Based on 24 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art",
@@ -4640,12 +4711,12 @@
       ],
       "neighborhoods": [
         "upper east side",
-        "williamsburg",
         "manhattan",
+        "williamsburg",
         "midtown"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
+      "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
       "links": [
         {
           "type": "luma",
@@ -4671,12 +4742,12 @@
         "sampleSize": 24
       },
       "upcomingEventIds": [
-        "56a73cc77e6547d7",
         "11dbe4c4ba6f66c6",
+        "56a73cc77e6547d7",
         "f58b6a84f214ebb3",
         "afb9e03bb5e502c7",
         "01d7e073efd3dc12",
-        "d8bc0ebae6aa02e3",
+        "7d6642b0df8c12a6",
         "1ac59efea9fd3f15",
         "c3fa5089b5ee06d7",
         "5c7f219795bbfa24"
@@ -4785,9 +4856,9 @@
         "com_2c239df2a554",
         "com_ff2e01957665",
         "com_f171cd222ca5",
+        "com_33a530deb7aa",
         "com_5582e2e97f1a",
-        "com_0cc8630779d7",
-        "com_8d86f6f9340b"
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -4880,15 +4951,15 @@
         "books",
         "music",
         "singles",
-        "art",
-        "games"
+        "comedy",
+        "parties"
       ],
       "tags": [
         "books",
         "music",
         "singles",
-        "art",
-        "games"
+        "comedy",
+        "parties"
       ],
       "neighborhoods": [
         "east village",
@@ -4901,14 +4972,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://bookclubbar.com/events/6115420261214"
+          "url": "https://www.bookclubbar.com/events/6638320261212"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-04",
-        "upcomingEventCount": 19,
+        "upcomingEventCount": 13,
         "eventCount90d": 76
       },
       "schedule": {
@@ -4928,12 +4999,12 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "f5207a5c726e6330",
         "89f6f1a3d24762fb",
+        "f5207a5c726e6330",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
-        "652b577813c05bee",
-        "1194e70d5bf2f095"
+        "1194e70d5bf2f095",
+        "75154eebbdbd66ab"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -4950,22 +5021,18 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
-        },
-        {
-          "eventId": "39ae2e33322cd181",
-          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_b0e15eaab803",
-        "com_eeb4e424a504",
+        "com_3048e331f7b6",
         "com_318c39363fe6",
+        "com_d8a5203885a9",
         "com_55ca36db453a",
-        "com_c0492b95ac8d",
-        "com_a4d969c3c6eb"
+        "com_f28d3ae740a6",
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -5289,11 +5356,11 @@
         "source:lizsbookbar"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
         "com_f171cd222ca5",
         "com_c0492b95ac8d",
         "com_318c39363fe6",
+        "com_33a530deb7aa",
         "com_55ca36db453a"
       ]
     },
@@ -5490,7 +5557,7 @@
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club",
-      "imageUrl": "/img/comedians/calise-hawkins-d3db0b45-large-thumb.jpg",
+      "imageUrl": "/img/comedians/Max-5e7706f0-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -5502,8 +5569,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-04",
-        "upcomingEventCount": 51,
-        "eventCount90d": 300
+        "upcomingEventCount": 57,
+        "eventCount90d": 301
       },
       "schedule": {
         "cadence": "weekly",
@@ -5516,18 +5583,18 @@
         "sampleSize": 91
       },
       "upcomingEventIds": [
-        "095121df3852b067",
+        "5da40e589503d16f",
         "edb1c158b5a81727",
+        "a4d8f7c34aa3d661",
         "1caf6bc90d2be492",
         "e80513e5499b8b90",
-        "a4d8f7c34aa3d661",
         "76c5add94a66836d",
+        "42587673084f054a",
         "a360888d038b0b80",
-        "fcdc53d7f7619c0f",
-        "fa48ad0b75442974",
-        "26fdf1adcf971480",
-        "aa1551ae7e635212",
-        "1f57e53de382e5db"
+        "e9b236603ad861b3",
+        "88117db6c99a1e6d",
+        "cf9a14df952ba42d",
+        "734456925e86041b"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -52780,7 +52847,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-04T18:43:28.342423+00:00",
+  "lastUpdated": "2026-11-04T19:37:21.244659+00:00",
   "version": 1,
   "schemaVersion": 1
 }
