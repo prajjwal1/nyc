@@ -538,10 +538,10 @@
       "similarCommunityIds": [
         "com_b0e15eaab803",
         "com_a1e1c13a75f0",
+        "com_c1410c07c4dd",
         "com_c0492b95ac8d",
         "com_8d86f6f9340b",
-        "com_ab8259bb35a4",
-        "com_cdd5daa67222"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -3799,11 +3799,11 @@
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
-        "com_c1410c07c4dd",
         "com_cdd5daa67222",
         "com_d8a5203885a9",
         "com_2c239df2a554",
-        "com_ff2e01957665"
+        "com_ff2e01957665",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -4613,12 +4613,12 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
+        "com_c1410c07c4dd",
         "com_318c39363fe6",
         "com_28a4ec647815",
         "com_3837f308cd75",
         "com_c0492b95ac8d",
-        "com_f54698ed682f",
-        "com_1466f20a9300"
+        "com_f54698ed682f"
       ]
     },
     {
@@ -4875,20 +4875,20 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, music, singles in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, singles in east village, bushwick. Based on 70 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, music, singles in east village, bushwick. Based on 71 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
         "singles",
-        "comedy",
-        "parties"
+        "art",
+        "games"
       ],
       "tags": [
         "books",
         "music",
         "singles",
-        "comedy",
-        "parties"
+        "art",
+        "games"
       ],
       "neighborhoods": [
         "east village",
@@ -4901,14 +4901,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6638320261212"
+          "url": "https://bookclubbar.com/events/6650120261214"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-04",
-        "upcomingEventCount": 13,
+        "upcomingEventCount": 19,
         "eventCount90d": 76
       },
       "schedule": {
@@ -4919,7 +4919,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 70
+        "sampleSize": 71
       },
       "upcomingEventIds": [
         "a199088a564e06f4",
@@ -4932,8 +4932,8 @@
         "f5207a5c726e6330",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
-        "1194e70d5bf2f095",
-        "75154eebbdbd66ab"
+        "652b577813c05bee",
+        "1194e70d5bf2f095"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -4942,7 +4942,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 70,
+        "observedDateCount": 71,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4950,18 +4950,22 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
+        },
+        {
+          "eventId": "39ae2e33322cd181",
+          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_3048e331f7b6",
+        "com_b0e15eaab803",
+        "com_eeb4e424a504",
         "com_318c39363fe6",
-        "com_d8a5203885a9",
         "com_55ca36db453a",
-        "com_f28d3ae740a6",
-        "com_5582e2e97f1a"
+        "com_c0492b95ac8d",
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -5285,12 +5289,12 @@
         "source:lizsbookbar"
       ],
       "similarCommunityIds": [
+        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
         "com_f171cd222ca5",
         "com_c0492b95ac8d",
         "com_318c39363fe6",
-        "com_55ca36db453a",
-        "com_9abdf9db297a"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -5498,7 +5502,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-04",
-        "upcomingEventCount": 59,
+        "upcomingEventCount": 51,
         "eventCount90d": 300
       },
       "schedule": {
@@ -5514,16 +5518,16 @@
       "upcomingEventIds": [
         "095121df3852b067",
         "edb1c158b5a81727",
-        "a4d8f7c34aa3d661",
         "1caf6bc90d2be492",
         "e80513e5499b8b90",
+        "a4d8f7c34aa3d661",
         "76c5add94a66836d",
-        "42587673084f054a",
         "a360888d038b0b80",
-        "e9b236603ad861b3",
-        "88117db6c99a1e6d",
-        "cf9a14df952ba42d",
-        "734456925e86041b"
+        "fcdc53d7f7619c0f",
+        "fa48ad0b75442974",
+        "26fdf1adcf971480",
+        "aa1551ae7e635212",
+        "1f57e53de382e5db"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -52776,7 +52780,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-04T12:05:24.180291+00:00",
+  "lastUpdated": "2026-11-04T15:32:49.020232+00:00",
   "version": 1,
   "schemaVersion": 1
 }
