@@ -4527,8 +4527,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, williamsburg.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, williamsburg. Based on 23 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, manhattan. Based on 24 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art",
@@ -4540,12 +4540,12 @@
         "wellness"
       ],
       "neighborhoods": [
+        "upper east side",
         "manhattan",
         "williamsburg",
-        "midtown",
-        "upper east side"
+        "midtown"
       ],
-      "homeVenue": "New York Society for Ethical Culture",
+      "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
       "links": [
         {
@@ -4558,7 +4558,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-04",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 9,
         "eventCount90d": 40
       },
       "schedule": {
@@ -4569,7 +4569,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 23
+        "sampleSize": 24
       },
       "upcomingEventIds": [
         "11dbe4c4ba6f66c6",
@@ -4578,6 +4578,8 @@
         "afb9e03bb5e502c7",
         "01d7e073efd3dc12",
         "d8bc0ebae6aa02e3",
+        "1ac59efea9fd3f15",
+        "c3fa5089b5ee06d7",
         "5c7f219795bbfa24"
       ],
       "sourceAttributions": [
@@ -4587,7 +4589,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 23,
+        "observedDateCount": 24,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -52675,7 +52677,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-04T06:44:38.164735+00:00",
+  "lastUpdated": "2026-11-04T07:28:43.796649+00:00",
   "version": 1,
   "schemaVersion": 1
 }
