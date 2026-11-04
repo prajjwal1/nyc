@@ -534,10 +534,10 @@
       "similarCommunityIds": [
         "com_b0e15eaab803",
         "com_a1e1c13a75f0",
-        "com_c1410c07c4dd",
         "com_c0492b95ac8d",
         "com_14e2dae511e1",
-        "com_8d86f6f9340b"
+        "com_8d86f6f9340b",
+        "com_ed9d2e2bb33a"
       ]
     },
     {
@@ -1953,21 +1953,22 @@
       "description": "Big Reuse is a recurring event series centered on outdoors, music in brooklyn, crown heights. Based on 5 observed event dates, it meets weekly on Thursday and Sunday mornings.",
       "categories": [
         "outdoors",
-        "music",
-        "other"
+        "other",
+        "music"
       ],
       "tags": [
         "outdoors",
-        "music",
-        "other"
+        "other",
+        "music"
       ],
       "neighborhoods": [
         "brooklyn",
         "crown heights",
+        "gowanus",
         "east village"
       ],
-      "homeVenue": "22 2nd Ave",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193279032%2F3009447131073%2F1%2Foriginal.20260911-174630?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=39b06873e1b7b1227b64094b3dd72683",
+      "homeVenue": "Big Reuse",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190802885%2F3005526142949%2F1%2Foriginal.20260811-144613?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=691954bc7f7f40847659c7cff9542554",
       "links": [
         {
           "type": "eventbrite",
@@ -1979,7 +1980,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 0
       },
       "schedule": {
@@ -1993,6 +1994,7 @@
         "sampleSize": 5
       },
       "upcomingEventIds": [
+        "b370104ca186c9c6",
         "ee04579f00ce7528",
         "bfb7cb7338bb8a31",
         "4bb1094a23e1f75b",
@@ -2021,7 +2023,7 @@
         "com_0ccd71f4bb21",
         "com_5eb8bafab897",
         "com_8b837dfb5421",
-        "com_3837f308cd75"
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -2030,7 +2032,7 @@
       "name": "The Hidden Jewel Box Theater \u2013 The Love Show NYC",
       "kind": "recurring_series",
       "tagline": "The Hidden Jewel Box Theater \u2013 The Love Show NYC is a recurring event series centered on comedy, special in chelsea, east village.",
-      "description": "The Hidden Jewel Box Theater \u2013 The Love Show NYC is a recurring event series centered on comedy, special in chelsea, east village. Based on 6 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "description": "The Hidden Jewel Box Theater \u2013 The Love Show NYC is a recurring event series centered on comedy, special in chelsea, east village. Based on 7 observed event dates, it meets weekly on Friday and Thursday evenings.",
       "categories": [
         "other",
         "comedy",
@@ -2043,7 +2045,8 @@
       ],
       "neighborhoods": [
         "chelsea",
-        "east village"
+        "east village",
+        "manhattan"
       ],
       "homeVenue": "625 8th Ave",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1192794223%2F26055366729%2F1%2Foriginal.20260905-230150?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=e0fe1de8c8063c366eb109054bc20c8d",
@@ -2058,7 +2061,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-23",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 1
       },
       "schedule": {
@@ -2069,14 +2072,15 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
         "8f4ca79e331fb623",
         "ae270a6785b0f0c1",
         "39fe1632fb2ee049",
         "554b6ded77ae5037",
-        "ade1f8bd4fa52114"
+        "ade1f8bd4fa52114",
+        "706eee409a9d1c28"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2085,7 +2089,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2095,11 +2099,11 @@
       ],
       "similarCommunityIds": [
         "com_68b36e93076a",
-        "com_3048e331f7b6",
-        "com_318c39363fe6",
         "com_3d91bda94131",
         "com_8b837dfb5421",
-        "com_f23f8820878b"
+        "com_3048e331f7b6",
+        "com_d2d455d2d6c9",
+        "com_318c39363fe6"
       ]
     },
     {
@@ -2326,8 +2330,8 @@
         "com_fe4b6663b721",
         "com_072c9c3e12a8",
         "com_3d91bda94131",
-        "com_43850d49f9e6",
-        "com_5dd8d7d6e995"
+        "com_b8a3508a14a4",
+        "com_43850d49f9e6"
       ]
     },
     {
@@ -3293,7 +3297,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-04",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 1
       },
       "schedule": {
@@ -3309,6 +3313,7 @@
       "upcomingEventIds": [
         "f1ba58bedbaf82de",
         "83b895d3eaf6ad73",
+        "0edc639996f1cccd",
         "fae69ebd3687f2e5",
         "dba5cc9485dd8df0",
         "ba4466b73051addf"
@@ -3701,11 +3706,11 @@
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
+        "com_c1410c07c4dd",
         "com_cdd5daa67222",
         "com_d8a5203885a9",
         "com_ff2e01957665",
-        "com_f171cd222ca5",
-        "com_0cc8630779d7"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -4156,8 +4161,8 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art in manhattan, chelsea.",
-      "description": "The New York Philosophy Club is a community club centered on art in manhattan, chelsea. Based on 4 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art in manhattan, upper east side. Based on 4 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
         "art"
@@ -4168,8 +4173,8 @@
       ],
       "neighborhoods": [
         "manhattan",
-        "chelsea",
-        "upper east side"
+        "upper east side",
+        "chelsea"
       ],
       "homeVenue": "New York Society for Ethical Culture",
       "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
@@ -4199,8 +4204,8 @@
       },
       "upcomingEventIds": [
         "11dbe4c4ba6f66c6",
-        "01d7e073efd3dc12",
-        "afb9e03bb5e502c7"
+        "afb9e03bb5e502c7",
+        "01d7e073efd3dc12"
       ],
       "sourceAttributions": [
         "luma"
@@ -4517,12 +4522,12 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_318c39363fe6",
         "com_072c9c3e12a8",
         "com_9abdf9db297a",
         "com_28a4ec647815",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_c0492b95ac8d"
       ]
     },
     {
@@ -4530,8 +4535,8 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in williamsburg, manhattan.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in williamsburg, manhattan. Based on 23 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, williamsburg.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, williamsburg. Based on 23 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art",
@@ -4543,13 +4548,13 @@
         "wellness"
       ],
       "neighborhoods": [
-        "williamsburg",
         "manhattan",
+        "williamsburg",
         "midtown",
-        "chelsea"
+        "upper east side"
       ],
-      "homeVenue": "McCarren Parkhouse",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
+      "homeVenue": "New York Society for Ethical Culture",
+      "imageUrl": "https://images.lumacdn.com/event-covers/ef/3467ced7-5182-436c-8bdf-44c685f1fdc8.jpg",
       "links": [
         {
           "type": "luma",
@@ -4575,11 +4580,11 @@
         "sampleSize": 23
       },
       "upcomingEventIds": [
-        "56a73cc77e6547d7",
         "11dbe4c4ba6f66c6",
+        "56a73cc77e6547d7",
         "f58b6a84f214ebb3",
-        "01d7e073efd3dc12",
         "afb9e03bb5e502c7",
+        "01d7e073efd3dc12",
         "d8bc0ebae6aa02e3",
         "5c7f219795bbfa24"
       ],
@@ -4777,20 +4782,20 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, music, singles in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, singles in east village, bushwick. Based on 71 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, music, singles in east village, bushwick. Based on 70 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "music",
         "singles",
-        "art",
-        "games"
+        "comedy",
+        "parties"
       ],
       "tags": [
         "books",
         "music",
         "singles",
-        "art",
-        "games"
+        "comedy",
+        "parties"
       ],
       "neighborhoods": [
         "east village",
@@ -4803,14 +4808,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://bookclubbar.com/events/6650120261214"
+          "url": "https://www.bookclubbar.com/events/6638320261212"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-04",
-        "upcomingEventCount": 19,
+        "upcomingEventCount": 13,
         "eventCount90d": 76
       },
       "schedule": {
@@ -4821,7 +4826,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 71
+        "sampleSize": 70
       },
       "upcomingEventIds": [
         "a199088a564e06f4",
@@ -4830,12 +4835,12 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "f5207a5c726e6330",
         "89f6f1a3d24762fb",
+        "f5207a5c726e6330",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
-        "652b577813c05bee",
-        "1194e70d5bf2f095"
+        "1194e70d5bf2f095",
+        "75154eebbdbd66ab"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -4844,7 +4849,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 71,
+        "observedDateCount": 70,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -4852,22 +4857,18 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
-        },
-        {
-          "eventId": "39ae2e33322cd181",
-          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_b0e15eaab803",
-        "com_eeb4e424a504",
+        "com_3048e331f7b6",
         "com_318c39363fe6",
+        "com_d8a5203885a9",
         "com_55ca36db453a",
-        "com_c0492b95ac8d",
-        "com_a4d969c3c6eb"
+        "com_f28d3ae740a6",
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -5191,12 +5192,12 @@
         "source:lizsbookbar"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
         "com_f171cd222ca5",
         "com_c0492b95ac8d",
         "com_318c39363fe6",
-        "com_55ca36db453a"
+        "com_55ca36db453a",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -5394,7 +5395,7 @@
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club",
-      "imageUrl": "/img/comedians/Untitled-design-68-03d90c28-large-thumb.png",
+      "imageUrl": "/img/comedians/calise-hawkins-d3db0b45-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -5406,7 +5407,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-04",
-        "upcomingEventCount": 60,
+        "upcomingEventCount": 59,
         "eventCount90d": 300
       },
       "schedule": {
@@ -5420,7 +5421,6 @@
         "sampleSize": 91
       },
       "upcomingEventIds": [
-        "3d8688456d7925c9",
         "095121df3852b067",
         "edb1c158b5a81727",
         "a4d8f7c34aa3d661",
@@ -5431,7 +5431,8 @@
         "a360888d038b0b80",
         "e9b236603ad861b3",
         "88117db6c99a1e6d",
-        "cf9a14df952ba42d"
+        "cf9a14df952ba42d",
+        "734456925e86041b"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -5457,9 +5458,9 @@
         "com_318c39363fe6",
         "com_f54698ed682f",
         "com_b8a3508a14a4",
-        "com_5dd8d7d6e995",
         "com_3048e331f7b6",
-        "com_a1e1c13a75f0"
+        "com_a1e1c13a75f0",
+        "com_5dd8d7d6e995"
       ]
     },
     {
@@ -5546,8 +5547,8 @@
         "com_a4d969c3c6eb",
         "com_c1410c07c4dd",
         "com_b0e15eaab803",
-        "com_b8a3508a14a4",
-        "com_c0492b95ac8d"
+        "com_c0492b95ac8d",
+        "com_f54698ed682f"
       ]
     },
     {
@@ -52684,7 +52685,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-04T00:06:05.730529+00:00",
+  "lastUpdated": "2026-11-04T00:36:19.203664+00:00",
   "version": 1,
   "schemaVersion": 1
 }
