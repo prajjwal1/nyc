@@ -538,8 +538,8 @@
         "com_a1e1c13a75f0",
         "com_c0492b95ac8d",
         "com_8d86f6f9340b",
-        "com_cdd5daa67222",
-        "com_02b1cd673b69"
+        "com_ab8259bb35a4",
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -1241,7 +1241,7 @@
         "com_0e403135692e",
         "com_4a9490cb3534",
         "com_0cc8630779d7",
-        "com_ab8259bb35a4"
+        "com_c58670960684"
       ]
     },
     {
@@ -1312,8 +1312,8 @@
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_e9748c1176c1",
-        "com_96a0049afb0f",
-        "com_02b1cd673b69"
+        "com_ab8259bb35a4",
+        "com_96a0049afb0f"
       ]
     },
     {
@@ -3401,7 +3401,7 @@
         "com_96a0049afb0f",
         "com_d2d455d2d6c9",
         "com_3d91bda94131",
-        "com_0e403135692e"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -4277,8 +4277,8 @@
         "luma:cal-dgp82mvkrg1frmr"
       ],
       "similarCommunityIds": [
-        "com_ab8259bb35a4",
         "com_072c9c3e12a8",
+        "com_ab8259bb35a4",
         "com_9abdf9db297a",
         "com_02b1cd673b69",
         "com_28a4ec647815",
@@ -4661,20 +4661,22 @@
       "name": "The New York Philosophy Club",
       "kind": "club",
       "tagline": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, chelsea.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, chelsea. Based on 24 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, chelsea. Based on 26 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
-        "art",
         "other",
+        "art",
         "wellness"
       ],
       "tags": [
-        "art",
         "other",
+        "art",
         "wellness"
       ],
       "neighborhoods": [
         "upper east side",
-        "chelsea"
+        "chelsea",
+        "midtown",
+        "manhattan"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/uploads/di/05db10f0-c672-4908-801f-09fce8d98f78.jpg",
@@ -4689,26 +4691,29 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-04",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 9,
         "eventCount90d": 40
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Saturday",
-          "Wednesday"
+          "Wednesday",
+          "Saturday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 24
+        "sampleSize": 26
       },
       "upcomingEventIds": [
         "afb9e03bb5e502c7",
         "01d7e073efd3dc12",
         "caa0e2f4433d6dac",
-        "1ac59efea9fd3f15",
+        "b6d678c22c3b07b0",
+        "673a3bb1ec070fc1",
         "c3fa5089b5ee06d7",
-        "5c7f219795bbfa24"
+        "1ac59efea9fd3f15",
+        "5c7f219795bbfa24",
+        "f68ef1dbb841092f"
       ],
       "sourceAttributions": [
         "luma"
@@ -4717,7 +4722,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 24,
+        "observedDateCount": 26,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4728,10 +4733,10 @@
       "similarCommunityIds": [
         "com_c58670960684",
         "com_072c9c3e12a8",
-        "com_9abdf9db297a",
-        "com_28a4ec647815",
-        "com_3837f308cd75",
-        "com_9fed174eeff3"
+        "com_c0492b95ac8d",
+        "com_9fed174eeff3",
+        "com_36cb2681053d",
+        "com_5f3066e419a7"
       ]
     },
     {
@@ -4957,8 +4962,8 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "89f6f1a3d24762fb",
         "f5207a5c726e6330",
+        "89f6f1a3d24762fb",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
         "75154eebbdbd66ab",
@@ -52804,7 +52809,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-05T07:03:05.226905+00:00",
+  "lastUpdated": "2026-11-05T09:50:54.474910+00:00",
   "version": 1,
   "schemaVersion": 1
 }
