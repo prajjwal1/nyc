@@ -151,12 +151,12 @@
         "eventbrite:105655500371"
       ],
       "similarCommunityIds": [
+        "com_5dd8d7d6e995",
         "com_5eb8bafab897",
+        "com_759f151a6d08",
         "com_f23f8820878b",
         "com_55ca36db453a",
-        "com_1466f20a9300",
-        "com_5dd8d7d6e995",
-        "com_91772bf8b6fc"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -690,7 +690,7 @@
       "name": "Rizzoli Bookstore",
       "kind": "recurring_series",
       "tagline": "Rizzoli Bookstore is a recurring event series centered on books in manhattan.",
-      "description": "Rizzoli Bookstore is a recurring event series centered on books in manhattan. Based on 10 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "description": "Rizzoli Bookstore is a recurring event series centered on books in manhattan. Based on 11 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "other",
         "books"
@@ -715,7 +715,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-06",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 3
       },
       "schedule": {
@@ -726,7 +726,7 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 11
       },
       "upcomingEventIds": [
         "582e2229bfe91215",
@@ -736,7 +736,8 @@
         "24ef0dbfaea10139",
         "f3271df126c5e98a",
         "7d675f3f5757e0b8",
-        "d7fd154ee657c17d"
+        "d7fd154ee657c17d",
+        "62e345d866cc7af6"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -745,7 +746,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1088,6 +1089,76 @@
         "com_96a0049afb0f",
         "com_d2d455d2d6c9",
         "com_cb019f4e9752"
+      ]
+    },
+    {
+      "id": "com_759f151a6d08",
+      "slug": "les-ecology-center-1a6d08",
+      "name": "LES Ecology Center",
+      "kind": "institutional_program",
+      "tagline": "LES Ecology Center is a community program centered on outdoors in manhattan.",
+      "description": "LES Ecology Center is a community program centered on outdoors in manhattan. Based on 2 observed event dates, it meets weekly on Friday and Saturday mornings.",
+      "categories": [
+        "outdoors"
+      ],
+      "tags": [
+        "outdoors"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "East River Park",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193785510%2F196599321851%2F1%2Foriginal.20260917-203441?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.479&fp-y=0.397&s=7314599687ec293e68c3ce7105613bb8",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/13297911311"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-06",
+        "upcomingEventCount": 2,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Saturday"
+        ],
+        "typicalTime": "09:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "43a364ac4e82c8a1",
+        "4c2914f2c187a5e9"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-11-06",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:13297911311"
+      ],
+      "similarCommunityIds": [
+        "com_5eb8bafab897",
+        "com_91772bf8b6fc",
+        "com_feb5ce491629",
+        "com_b766b6de77ba",
+        "com_072c9c3e12a8",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1450,12 +1521,12 @@
         "eventbrite:17093567208"
       ],
       "similarCommunityIds": [
-        "com_5dd8d7d6e995",
         "com_feb5ce491629",
+        "com_5dd8d7d6e995",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_02b1cd673b69",
-        "com_072c9c3e12a8"
+        "com_759f151a6d08",
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -1638,7 +1709,7 @@
         "brooklyn"
       ],
       "homeVenue": "Union Hall",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191030275%2F282041210522%2F1%2Foriginal.20260814-013245?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=b16f016cdfd3de8b16730fb958b50d51",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191029238%2F282041210522%2F1%2Foriginal.20260814-011131?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=95c7cf14bcc52204f1ed274559eb4e3c",
       "links": [
         {
           "type": "eventbrite",
@@ -1664,8 +1735,8 @@
         "sampleSize": 59
       },
       "upcomingEventIds": [
-        "392af3235b297785",
         "844d4fed2c074f1d",
+        "392af3235b297785",
         "3d2bb921102f52d7",
         "bfd190895572d432",
         "3c82d8a4178f9ef7",
@@ -1847,11 +1918,11 @@
       ],
       "similarCommunityIds": [
         "com_91772bf8b6fc",
-        "com_5dd8d7d6e995",
         "com_9fed174eeff3",
         "com_02ba15552329",
         "com_36cb2681053d",
-        "com_5f3066e419a7"
+        "com_5f3066e419a7",
+        "com_759f151a6d08"
       ]
     },
     {
@@ -2081,19 +2152,22 @@
       "slug": "big-reuse-d6e995",
       "name": "Big Reuse",
       "kind": "recurring_series",
-      "tagline": "Big Reuse is a recurring event series centered on outdoors in brooklyn, crown heights.",
-      "description": "Big Reuse is a recurring event series centered on outdoors in brooklyn, crown heights. Based on 5 observed event dates, it meets weekly on Thursday and Sunday mornings.",
+      "tagline": "Big Reuse is a recurring event series centered on outdoors, music in brooklyn, crown heights.",
+      "description": "Big Reuse is a recurring event series centered on outdoors, music in brooklyn, crown heights. Based on 6 observed event dates, it meets weekly on Thursday and Saturday mornings.",
       "categories": [
         "outdoors",
-        "other"
+        "other",
+        "music"
       ],
       "tags": [
         "outdoors",
-        "other"
+        "other",
+        "music"
       ],
       "neighborhoods": [
         "brooklyn",
-        "crown heights"
+        "crown heights",
+        "east village"
       ],
       "homeVenue": "1415 Cortelyou Rd",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1195797870%2F3005446753083%2F1%2Foriginal.20261014-171145?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=485dfcbc99fe78ad3490a230e3d0a4ee",
@@ -2108,25 +2182,26 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-05",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 2
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Thursday",
-          "Sunday"
+          "Saturday"
         ],
         "typicalTime": "10:00",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
       "upcomingEventIds": [
         "bfb7cb7338bb8a31",
         "4bb1094a23e1f75b",
         "b4d9ff23d04dc6fe",
         "53d9cc340063fe56",
-        "b36545733462f7ea"
+        "b36545733462f7ea",
+        "f7672910606520dc"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2135,7 +2210,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2144,12 +2219,12 @@
         "eventbrite:20004425576"
       ],
       "similarCommunityIds": [
-        "com_91772bf8b6fc",
-        "com_feb5ce491629",
         "com_1466f20a9300",
-        "com_02b1cd673b69",
-        "com_36cb2681053d",
-        "com_5eb8bafab897"
+        "com_91772bf8b6fc",
+        "com_b766b6de77ba",
+        "com_8b837dfb5421",
+        "com_0e403135692e",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -2370,12 +2445,12 @@
         "eventbrite:30724917366"
       ],
       "similarCommunityIds": [
-        "com_5dd8d7d6e995",
+        "com_759f151a6d08",
         "com_91772bf8b6fc",
         "com_b766b6de77ba",
         "com_065dafa96d43",
-        "com_feb5ce491629",
-        "com_c2d0cec20a9a"
+        "com_5dd8d7d6e995",
+        "com_feb5ce491629"
       ]
     },
     {
@@ -2989,7 +3064,7 @@
         "com_3837f308cd75",
         "com_3048e331f7b6",
         "com_68b36e93076a",
-        "com_3d91bda94131"
+        "com_5dd8d7d6e995"
       ]
     },
     {
@@ -3290,10 +3365,10 @@
       "similarCommunityIds": [
         "com_9a5c4d074e3a",
         "com_28a4ec647815",
+        "com_318c39363fe6",
         "com_072c9c3e12a8",
         "com_c58670960684",
-        "com_218b97d674a6",
-        "com_3481b6750d6f"
+        "com_218b97d674a6"
       ]
     },
     {
@@ -3750,8 +3825,8 @@
         "com_065dafa96d43",
         "com_14e2dae511e1",
         "com_5eb8bafab897",
-        "com_ed9d2e2bb33a",
-        "com_c567b4e02ff2"
+        "com_759f151a6d08",
+        "com_ed9d2e2bb33a"
       ]
     },
     {
@@ -4620,8 +4695,8 @@
         "1ac59efea9fd3f15",
         "c3fa5089b5ee06d7",
         "5c7f219795bbfa24",
-        "f68ef1dbb841092f",
-        "698ec8453e5f4344"
+        "698ec8453e5f4344",
+        "f68ef1dbb841092f"
       ],
       "sourceAttributions": [
         "luma"
@@ -4705,8 +4780,8 @@
         "78d0ee3d99154b93",
         "72df5d612f43c186",
         "e8ff3a0ea56a494f",
-        "ca8881addf01aee7",
         "6f731918d4322cf7",
+        "ca8881addf01aee7",
         "f7d0fd779fa9a5a7",
         "14a45f2ac9abcc9e"
       ],
@@ -4872,8 +4947,8 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "f5207a5c726e6330",
         "89f6f1a3d24762fb",
+        "f5207a5c726e6330",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
         "75154eebbdbd66ab",
@@ -5151,7 +5226,7 @@
         "com_f171cd222ca5",
         "com_8d86f6f9340b",
         "com_33a530deb7aa",
-        "com_318c39363fe6"
+        "com_68b36e93076a"
       ]
     },
     {
@@ -5408,19 +5483,19 @@
       "slug": "new-york-comedy-club-upper-west-side-20878b",
       "name": "New York Comedy Club Upper West Side",
       "kind": "club",
-      "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, special, music in east village, upper west side.",
-      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, special, music in east village, upper west side. Based on 91 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, music, special in east village, upper west side.",
+      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, special in east village, upper west side. Based on 91 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "comedy",
-        "special",
         "music",
+        "special",
         "outdoors",
         "celebrities"
       ],
       "tags": [
         "comedy",
-        "special",
         "music",
+        "special",
         "outdoors",
         "celebrities"
       ],
@@ -5441,8 +5516,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-06",
-        "upcomingEventCount": 47,
-        "eventCount90d": 309
+        "upcomingEventCount": 55,
+        "eventCount90d": 311
       },
       "schedule": {
         "cadence": "weekly",
@@ -5456,17 +5531,17 @@
       },
       "upcomingEventIds": [
         "76c5add94a66836d",
+        "42587673084f054a",
         "a360888d038b0b80",
-        "cf9a14df952ba42d",
+        "e9b236603ad861b3",
         "88117db6c99a1e6d",
+        "cf9a14df952ba42d",
         "734456925e86041b",
         "fcdc53d7f7619c0f",
         "fa48ad0b75442974",
         "26fdf1adcf971480",
         "aa1551ae7e635212",
-        "41a1e9676dcb975e",
-        "2bc551b451bd4155",
-        "f710391f2be6d554"
+        "d3004545174a5f0b"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -5490,11 +5565,11 @@
       ],
       "similarCommunityIds": [
         "com_318c39363fe6",
+        "com_5dd8d7d6e995",
         "com_b8a3508a14a4",
         "com_3048e331f7b6",
         "com_68b36e93076a",
-        "com_a1e1c13a75f0",
-        "com_b766b6de77ba"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -5502,21 +5577,21 @@
       "slug": "eastville-comedy-club-363fe6",
       "name": "Eastville Comedy Club",
       "kind": "club",
-      "tagline": "Eastville Comedy Club is a community club centered on comedy, special, music in east village.",
-      "description": "Eastville Comedy Club is a community club centered on comedy, special, music in east village. Based on 68 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "Eastville Comedy Club is a community club centered on comedy, music, special in east village.",
+      "description": "Eastville Comedy Club is a community club centered on comedy, music, special in east village. Based on 69 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "comedy",
-        "special",
         "music",
-        "games",
-        "books"
+        "special",
+        "art",
+        "games"
       ],
       "tags": [
         "comedy",
-        "special",
         "music",
-        "games",
-        "books"
+        "special",
+        "art",
+        "games"
       ],
       "neighborhoods": [
         "east village"
@@ -5534,7 +5609,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-06",
-        "upcomingEventCount": 16,
+        "upcomingEventCount": 17,
         "eventCount90d": 109
       },
       "schedule": {
@@ -5545,7 +5620,7 @@
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 68
+        "sampleSize": 69
       },
       "upcomingEventIds": [
         "ec842a9e70aa8d96",
@@ -5554,12 +5629,12 @@
         "927b10357213ba23",
         "ede0f815ea03ff15",
         "b6f28be3313d6af1",
+        "2b389b5f921c5a93",
         "f8731fb16a2080b5",
         "37a95f2f31e05fba",
         "fb820f3fcf59bed4",
         "dddeb46eb4b6947a",
-        "b0c2502861fa0acc",
-        "182c6aaa148a95cc"
+        "b0c2502861fa0acc"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -5568,7 +5643,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 68,
+        "observedDateCount": 69,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -5577,12 +5652,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
-        "com_68b36e93076a",
+        "com_b0e15eaab803",
         "com_a1e1c13a75f0",
         "com_f23f8820878b",
-        "com_a4d969c3c6eb",
-        "com_b0e15eaab803",
-        "com_b8a3508a14a4"
+        "com_b8a3508a14a4",
+        "com_55ca36db453a",
+        "com_f28d3ae740a6"
       ]
     },
     {
@@ -52719,7 +52794,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-06T11:29:52.162763+00:00",
+  "lastUpdated": "2026-11-06T12:02:55.544259+00:00",
   "version": 1,
   "schemaVersion": 1
 }
