@@ -1005,8 +1005,8 @@
         "com_02b1cd673b69",
         "com_118a558259ea",
         "com_3481b6750d6f",
-        "com_85e78e91c982",
-        "com_f8ff3d3257ed"
+        "com_0851fd5f24ee",
+        "com_85e78e91c982"
       ]
     },
     {
@@ -1167,7 +1167,7 @@
       "name": "Caveat",
       "kind": "recurring_series",
       "tagline": "Caveat is a recurring event series centered on comedy, special, music in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, special, music in manhattan. Based on 58 observed event dates, it meets weekly on Sunday and Saturday evenings.",
+      "description": "Caveat is a recurring event series centered on comedy, special, music in manhattan. Based on 59 observed event dates, it meets weekly on Sunday and Saturday evenings.",
       "categories": [
         "comedy",
         "special",
@@ -1198,7 +1198,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-06",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 89
       },
       "schedule": {
@@ -1209,7 +1209,7 @@
         ],
         "typicalTime": "21:30",
         "confidence": 1.0,
-        "sampleSize": 58
+        "sampleSize": 59
       },
       "upcomingEventIds": [
         "703a73aa460e498f",
@@ -1219,7 +1219,8 @@
         "e771a9a664febf76",
         "1112b948edf3aaa4",
         "2421ba1c29bcda05",
-        "a46affcd1239f2a6"
+        "a46affcd1239f2a6",
+        "a559965b70fa3bb5"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1228,7 +1229,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 58,
+        "observedDateCount": 59,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1454,6 +1455,75 @@
         "com_ab8259bb35a4",
         "com_96a0049afb0f",
         "com_02b1cd673b69"
+      ]
+    },
+    {
+      "id": "com_0851fd5f24ee",
+      "slug": "nylon-fusion-theatre-company-5f24ee",
+      "name": "Nylon Fusion Theatre Company",
+      "kind": "recurring_series",
+      "tagline": "Nylon Fusion Theatre Company is a recurring event series in west village.",
+      "description": "Nylon Fusion Theatre Company is a recurring event series in west village. Based on 2 observed event dates, it meets weekly on Thursday and Friday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "west village"
+      ],
+      "homeVenue": "154 Christopher St",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1196022600%2F133520448114%2F1%2Foriginal.20261018-002612?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.923&fp-y=0.206&s=fa72cbc28b94378f30a64a538f12f83c",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/17078488390"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-06",
+        "upcomingEventCount": 1,
+        "eventCount90d": 2
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Friday"
+        ],
+        "typicalTime": "19:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "f4dd4e00fe090499"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-11-06",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:17078488390"
+      ],
+      "similarCommunityIds": [
+        "com_02b1cd673b69",
+        "com_36cb2681053d",
+        "com_5f3066e419a7",
+        "com_85e78e91c982",
+        "com_f8ff3d3257ed",
+        "com_118a558259ea"
       ]
     },
     {
@@ -1709,7 +1779,7 @@
         "brooklyn"
       ],
       "homeVenue": "Union Hall",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191029238%2F282041210522%2F1%2Foriginal.20260814-011131?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=95c7cf14bcc52204f1ed274559eb4e3c",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191030275%2F282041210522%2F1%2Foriginal.20260814-013245?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=b16f016cdfd3de8b16730fb958b50d51",
       "links": [
         {
           "type": "eventbrite",
@@ -1735,8 +1805,8 @@
         "sampleSize": 59
       },
       "upcomingEventIds": [
-        "844d4fed2c074f1d",
         "392af3235b297785",
+        "844d4fed2c074f1d",
         "3d2bb921102f52d7",
         "bfd190895572d432",
         "3c82d8a4178f9ef7",
@@ -1990,8 +2060,8 @@
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_02b1cd673b69",
-        "com_85e78e91c982",
-        "com_c274ef0f18ba"
+        "com_0851fd5f24ee",
+        "com_85e78e91c982"
       ]
     },
     {
@@ -2598,7 +2668,7 @@
         "com_5f3066e419a7",
         "com_c274ef0f18ba",
         "com_02b1cd673b69",
-        "com_85e78e91c982"
+        "com_0851fd5f24ee"
       ]
     },
     {
@@ -2759,11 +2829,11 @@
       ],
       "similarCommunityIds": [
         "com_02b1cd673b69",
+        "com_0851fd5f24ee",
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_85e78e91c982",
-        "com_118a558259ea",
-        "com_3481b6750d6f"
+        "com_118a558259ea"
       ]
     },
     {
@@ -2841,8 +2911,8 @@
         "com_02b1cd673b69",
         "com_118a558259ea",
         "com_3481b6750d6f",
-        "com_85e78e91c982",
-        "com_f8ff3d3257ed"
+        "com_0851fd5f24ee",
+        "com_85e78e91c982"
       ]
     },
     {
@@ -2907,11 +2977,11 @@
       ],
       "similarCommunityIds": [
         "com_02b1cd673b69",
+        "com_0851fd5f24ee",
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_f8ff3d3257ed",
-        "com_118a558259ea",
-        "com_3481b6750d6f"
+        "com_118a558259ea"
       ]
     },
     {
@@ -3212,10 +3282,10 @@
       "similarCommunityIds": [
         "com_118a558259ea",
         "com_02b1cd673b69",
+        "com_0851fd5f24ee",
         "com_3481b6750d6f",
         "com_36cb2681053d",
-        "com_5f3066e419a7",
-        "com_85e78e91c982"
+        "com_5f3066e419a7"
       ]
     },
     {
@@ -3224,7 +3294,7 @@
       "name": "The National Arts Club",
       "kind": "club",
       "tagline": "The National Arts Club is a community club centered on books, celebrities, exploration in manhattan.",
-      "description": "The National Arts Club is a community club centered on books, celebrities, exploration in manhattan. Based on 32 observed event dates, it meets weekly on Tuesday and Monday evenings.",
+      "description": "The National Arts Club is a community club centered on books, celebrities, exploration in manhattan. Based on 33 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
         "other",
         "books",
@@ -3253,7 +3323,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-05",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 26
       },
       "schedule": {
@@ -3264,7 +3334,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 32
+        "sampleSize": 33
       },
       "upcomingEventIds": [
         "517f173466053a6f",
@@ -3275,7 +3345,8 @@
         "74d46682692bd3f9",
         "0e117615adfab259",
         "c7bfa832c0e9c20c",
-        "cc19c95781d61202"
+        "cc19c95781d61202",
+        "6d0c0e4cc93fcba6"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -3284,7 +3355,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 32,
+        "observedDateCount": 33,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4266,8 +4337,8 @@
         "com_ab8259bb35a4",
         "com_9abdf9db297a",
         "com_02b1cd673b69",
-        "com_28a4ec647815",
-        "com_36cb2681053d"
+        "com_0851fd5f24ee",
+        "com_28a4ec647815"
       ]
     },
     {
@@ -4406,10 +4477,10 @@
       "similarCommunityIds": [
         "com_36cb2681053d",
         "com_5f3066e419a7",
+        "com_0851fd5f24ee",
         "com_85e78e91c982",
         "com_f8ff3d3257ed",
-        "com_118a558259ea",
-        "com_3481b6750d6f"
+        "com_118a558259ea"
       ]
     },
     {
@@ -5516,7 +5587,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-06",
-        "upcomingEventCount": 55,
+        "upcomingEventCount": 49,
         "eventCount90d": 311
       },
       "schedule": {
@@ -5535,13 +5606,13 @@
         "a360888d038b0b80",
         "e9b236603ad861b3",
         "88117db6c99a1e6d",
-        "cf9a14df952ba42d",
         "734456925e86041b",
+        "cf9a14df952ba42d",
         "fcdc53d7f7619c0f",
         "fa48ad0b75442974",
         "26fdf1adcf971480",
-        "aa1551ae7e635212",
-        "d3004545174a5f0b"
+        "41a1e9676dcb975e",
+        "2bc551b451bd4155"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -52794,7 +52865,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-06T12:02:55.544259+00:00",
+  "lastUpdated": "2026-11-06T12:56:41.958684+00:00",
   "version": 1,
   "schemaVersion": 1
 }
