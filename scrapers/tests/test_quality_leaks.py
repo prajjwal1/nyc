@@ -51,6 +51,7 @@ BLOCKED = [
     "Windsor Terrace Elementary School Tour",
     "Founders & Funders: NYC VC Reverse Pitch",
     "Crypto Curious: NYC Crypto & Fintech Kickoff Mixer",
+    "CryptoMondays Institutional - Featuring A Fireside Chat",
     "Capital + Connection: A Private Dinner for Female Founders + Investors",
 ]
 

@@ -988,7 +988,7 @@ _BLOCKED_TITLE_RES = [
     # city listing): "Agentic Economy Summit", "GenAI Night", "LLM Builders".
     _re.compile(r"\bagentic\b|\bLLMs?\b|\bgen\s?ai\b|\bvibe[\s-]?cod", _re.IGNORECASE),
     # fb-003 investor/finance networking, phrased without "networking".
-    _re.compile(r"\b(?:VCs?|venture\s+capital|investors?|funders|fintech|crypto|GTM)\b", _re.IGNORECASE),
+    _re.compile(r"\b(?:VCs?|venture\s+capital|investors?|funders|fintech|crypto\w*|GTM)\b", _re.IGNORECASE),
 ]
 
 
