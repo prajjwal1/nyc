@@ -16,7 +16,11 @@ from ..utils.platform_discovery import (
 
 LUMA_DISCOVER_URL = "https://lu.ma/nyc"
 LUMA_DISCOVER_API = "https://api.lu.ma/discover/get-paginated-events"
-LUMA_NYC_PLACE_ID = "discplace-Izx1rQVSh8njYpP"
+# The coordinate listing returns every public in-person event near NYC,
+# including personal-calendar hosts. The lu.ma/nyc place id only returns the
+# ~80 events Luma features, which missed most of the city.
+LUMA_NYC_CENTER = {"latitude": 40.7128, "longitude": -74.006}
+LUMA_MAX_PAGES = 60
 _LAST_CATALOG_HEALTH: dict = {}
 # Compatibility for maintenance/tests. Runtime coverage comes from
 # _calendar_plan(), not from appending URLs to this constant.
@@ -118,20 +122,6 @@ async def scrape() -> list[dict]:
     return events
 
 
-def _luma_discover_bootstrap(html: str) -> tuple[str, int]:
-    """Read the public city catalog id and advertised event count."""
-    soup = BeautifulSoup(html, "html.parser")
-    script = soup.find("script", id="__NEXT_DATA__")
-    if not script or not script.string:
-        return "", 0
-    try:
-        payload = json.loads(script.string)
-        place = payload["props"]["pageProps"]["initialData"]["data"]["place"]
-        return str(place.get("api_id") or ""), int(place.get("event_count") or 0)
-    except (KeyError, TypeError, ValueError, json.JSONDecodeError):
-        return "", 0
-
-
 def _parse_luma_discover_entry(entry: dict) -> dict | str | None:
     """Convert one public NYC discovery API row into the shared event schema."""
     raw = entry.get("event") or {}
@@ -151,6 +141,9 @@ def _parse_luma_discover_entry(entry: dict) -> dict | str | None:
     _, end_time = parse_iso_to_local(raw.get("end_at") or "")
 
     calendar = entry.get("calendar") or {}
+    if calendar.get("is_personal"):
+        # Personal calendars are all named "Personal"; the host is the organizer.
+        calendar = {}
     hosts = entry.get("hosts") or []
     primary_host = hosts[0] if hosts and isinstance(hosts[0], dict) else {}
     organizer = (calendar.get("name") or primary_host.get("name") or "").strip()
@@ -200,20 +193,14 @@ def _parse_luma_discover_entry(entry: dict) -> dict | str | None:
 
 
 async def _scrape_luma_discover_api() -> list[dict]:
-    """Fetch every page in Luma's public NYC catalog, not only the first 20."""
-    try:
-        html = await fetch_text(LUMA_DISCOVER_URL)
-        place_id, advertised_count = _luma_discover_bootstrap(html)
-    except Exception as exc:
-        print(f"[luma] city bootstrap failed: {exc}")
-        place_id, advertised_count = LUMA_NYC_PLACE_ID, 0
-    place_id = place_id or LUMA_NYC_PLACE_ID
-
+    """Fetch every page of Luma's NYC coordinate listing."""
     rows: dict[str, dict] = {}
     cursor = ""
     seen_cursors: set[str] = set()
-    for _page in range(6):
-        params = {"discover_place_api_id": place_id, "pagination_limit": 50}
+    pages = 0
+    complete = False
+    while pages < LUMA_MAX_PAGES:
+        params = {**LUMA_NYC_CENTER, "pagination_limit": 50}
         if cursor:
             params["pagination_cursor"] = cursor
         try:
@@ -224,11 +211,13 @@ async def _scrape_luma_discover_api() -> list[dict]:
         except Exception as exc:
             print(f"[luma] city catalog page failed: {exc}")
             break
+        pages += 1
         for row in payload.get("entries") or []:
             if isinstance(row, dict) and row.get("api_id"):
                 rows.setdefault(row["api_id"], row)
         next_cursor = payload.get("next_cursor") or ""
         if not payload.get("has_more") or not next_cursor or next_cursor in seen_cursors:
+            complete = True
             break
         seen_cursors.add(next_cursor)
         cursor = next_cursor
@@ -241,21 +230,19 @@ async def _scrape_luma_discover_api() -> list[dict]:
             non_nyc += 1
         elif isinstance(parsed, dict):
             events.append(parsed)
-    advertised_count = advertised_count or len(rows)
-    coverage = len(events) / advertised_count if advertised_count else 1.0
     global _LAST_CATALOG_HEALTH
     _LAST_CATALOG_HEALTH = {
-        "advertised": advertised_count,
         "fetched": len(events),
-        "coverage": round(coverage, 3),
+        "pages": pages,
+        "complete": complete,
         "missingImages": sum(not event.get("imageUrl") for event in events),
     }
     print(
-        f"[luma] city catalog: {len(events)}/{advertised_count or '?'} events "
-        f"({coverage:.0%} coverage, {non_nyc} explicit non-NYC skipped)"
+        f"[luma] city catalog: {len(events)} events from {pages} pages "
+        f"({'complete' if complete else 'INCOMPLETE'}, {non_nyc} explicit non-NYC skipped)"
     )
-    if advertised_count and coverage < 0.8:
-        print("[luma] WARNING: city catalog coverage below 80%")
+    if not complete:
+        print("[luma] WARNING: city catalog pagination stopped before the last page")
     return events
 
 

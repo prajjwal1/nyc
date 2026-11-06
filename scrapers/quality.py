@@ -38,6 +38,8 @@ HARD_BLOCK_KEYWORDS = [
     "wiggle worms",
     "little movers",
     "toddler time",
+    "elementary school",
+    "school tour",
     # iter 92: NYPL audit found "Playdate at the Library" leaking — the word
     # `playdate` and `caregivers` are almost exclusively parent/kid terms.
     "playdate",
@@ -982,6 +984,11 @@ _BLOCKED_TITLE_RES = [
     _re.compile(r"\bclosed\s+(?:for|to)\b", _re.IGNORECASE),
     _re.compile(r"\bAI\b"),
     _re.compile(r"\bartificial\s+intelligence\b", _re.IGNORECASE),
+    # AI events whose titles avoid the bare token (common in the full Luma
+    # city listing): "Agentic Economy Summit", "GenAI Night", "LLM Builders".
+    _re.compile(r"\bagentic\b|\bLLMs?\b|\bgen\s?ai\b|\bvibe[\s-]?cod", _re.IGNORECASE),
+    # fb-003 investor/finance networking, phrased without "networking".
+    _re.compile(r"\b(?:VCs?|venture\s+capital|investors?|funders|fintech|crypto|GTM)\b", _re.IGNORECASE),
 ]
 
 

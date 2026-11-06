@@ -70,7 +70,7 @@ jobs:
           platform_bad = (
               int(luma.get("fetched") or 0) == 0
               or int(partiful.get("fetched") or 0) == 0
-              or (luma.get("advertised") and float(luma.get("coverage") or 0) < 0.8)
+              or luma.get("complete") is False
           )
           scrape_needed = repo_age is None or repo_age > 45
           deploy_needed = live_age is None or live_age > 60 or (

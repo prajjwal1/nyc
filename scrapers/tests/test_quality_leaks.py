@@ -45,6 +45,13 @@ BLOCKED = [
     "Ivy League Singles Mixer at St. Regis Hotel in NYC!",
     "NYC Singles Recruitment for High-Net-Worth Matchmaking Clients",
     "Elite Social: An Exclusive Singles & Networking Mixer",
+    "Alpha Agentic Economy Summit @ Nasdaq",
+    "GenAI Builders Night",
+    "Vibe Coding Happy Hour",
+    "Windsor Terrace Elementary School Tour",
+    "Founders & Funders: NYC VC Reverse Pitch",
+    "Crypto Curious: NYC Crypto & Fintech Kickoff Mixer",
+    "Capital + Connection: A Private Dinner for Female Founders + Investors",
 ]
 
 
@@ -98,6 +105,9 @@ LEGIT = [
     "Donna The Buffalo & Assembly of Dust",
     "Global Wellness Day pop-up",
     "Ai Weiwei: What You See Is What You See",
+    "First Light · A FoundersBrief Run Club",
+    "Gen Z Book Club: Stop Bowling Alone",
+    "Vibe Check Run Club",
 ]
 
 

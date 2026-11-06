@@ -49,8 +49,8 @@ jobs:
               if fetched and missing / fetched > 0.05:
                   failures.append(f"{source} has more than 5% missing graphics")
           luma = catalogs.get("luma") or {}
-          if luma.get("advertised") and float(luma.get("coverage") or 0) < 0.8:
-              failures.append("Luma pagination captured less than 80% of its advertised NYC catalog")
+          if luma.get("complete") is False:
+              failures.append("Luma pagination stopped before the end of the NYC catalog")
           if failures:
               raise SystemExit("; ".join(failures))
           PY

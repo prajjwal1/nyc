@@ -1,3 +1,4 @@
+import asyncio
 import json
 
 from scrapers.sources import eventbrite, generic, instagram, luma
@@ -74,13 +75,64 @@ def test_luma_city_api_row_keeps_graphic_canonical_url_and_host():
     assert event["catalogSource"] == "luma_nyc"
 
 
-def test_luma_city_bootstrap_reads_advertised_inventory():
-    html = """
-    <script id="__NEXT_DATA__" type="application/json">
-      {"props":{"pageProps":{"initialData":{"data":{"place":{"api_id":"disc-nyc","event_count":84}}}}}}
-    </script>
-    """
-    assert luma._luma_discover_bootstrap(html) == ("disc-nyc", 84)
+def test_luma_personal_calendar_credits_host_not_personal_label():
+    row = {
+        "api_id": "evt-2",
+        "event": {
+            "name": "Diwali with Aayka",
+            "url": "m6cjlqdd",
+            "start_at": "2026-11-06T01:00:00.000Z",
+            "cover_url": "https://images.lumacdn.com/diwali.jpg",
+            "geo_address_info": {
+                "city": "Brooklyn",
+                "address": "MAD RADIO NYC",
+                "full_address": "395 Wythe Ave, Brooklyn, NY 11249, USA",
+            },
+        },
+        "calendar": {"api_id": "cal-p", "name": "Personal", "slug": None, "is_personal": True},
+        "hosts": [{"api_id": "usr-a", "name": "Aayka fashion"}],
+        "ticket_info": {"is_free": False, "is_sold_out": True},
+    }
+
+    event = luma._parse_luma_discover_entry(row)
+
+    assert event["organizer"] == "Aayka fashion"
+    assert not event.get("organizerUrl")
+    assert event["organizerRefs"][0]["externalId"] == "usr-a"
+
+
+def test_luma_city_catalog_pages_coordinate_listing_to_the_end(monkeypatch):
+    def row(i):
+        return {
+            "api_id": f"evt-{i}",
+            "event": {
+                "name": f"Event {i}", "url": f"slug-{i}",
+                "start_at": "2026-12-01T23:00:00.000Z",
+                "cover_url": "https://images.lumacdn.com/x.jpg",
+                "geo_address_info": {"city": "Brooklyn", "full_address": "Brooklyn, NY 11211"},
+            },
+            "calendar": {"api_id": "cal-1", "name": "Arts NYC", "slug": "artsnyc"},
+            "hosts": [],
+        }
+
+    pages = {
+        "": {"entries": [row(i) for i in range(50)], "has_more": True, "next_cursor": "c1"},
+        "c1": {"entries": [row(i) for i in range(50, 70)], "has_more": False, "next_cursor": None},
+    }
+    requested = []
+
+    async def fake_fetch_json(url, **_kwargs):
+        requested.append(url)
+        cursor = url.split("pagination_cursor=")[1] if "pagination_cursor=" in url else ""
+        return pages[cursor]
+
+    monkeypatch.setattr(luma, "fetch_json", fake_fetch_json)
+    events = asyncio.run(luma._scrape_luma_discover_api())
+
+    assert len(events) == 70
+    assert all("latitude=40.7128" in url and "discover_place_api_id" not in url for url in requested)
+    assert luma.catalog_health()["complete"] is True
+    assert luma.catalog_health()["pages"] == 2
 
 
 def test_generic_crawler_never_fetches_meetup(tmp_path, monkeypatch):
