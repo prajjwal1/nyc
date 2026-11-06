@@ -74,12 +74,12 @@
         "eventbrite:10013510321"
       ],
       "similarCommunityIds": [
+        "com_c0492b95ac8d",
         "com_68b36e93076a",
         "com_f28d3ae740a6",
         "com_c58670960684",
         "com_3d91bda94131",
-        "com_0e403135692e",
-        "com_28a4ec647815"
+        "com_0e403135692e"
       ]
     },
     {
@@ -689,13 +689,15 @@
       "slug": "rizzoli-bookstore-9afb0f",
       "name": "Rizzoli Bookstore",
       "kind": "recurring_series",
-      "tagline": "Rizzoli Bookstore is a recurring event series in manhattan.",
-      "description": "Rizzoli Bookstore is a recurring event series in manhattan. Based on 10 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "tagline": "Rizzoli Bookstore is a recurring event series centered on books in manhattan.",
+      "description": "Rizzoli Bookstore is a recurring event series centered on books in manhattan. Based on 10 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
-        "other"
+        "other",
+        "books"
       ],
       "tags": [
-        "other"
+        "other",
+        "books"
       ],
       "neighborhoods": [
         "manhattan"
@@ -752,12 +754,12 @@
         "eventbrite:11785715523"
       ],
       "similarCommunityIds": [
+        "com_d2d455d2d6c9",
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_e9748c1176c1",
-        "com_02b1cd673b69",
-        "com_118a558259ea",
-        "com_3481b6750d6f"
+        "com_072c9c3e12a8",
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -926,10 +928,10 @@
       "similarCommunityIds": [
         "com_eef1ca956dae",
         "com_0e403135692e",
+        "com_e9748c1176c1",
         "com_ff2e01957665",
         "com_68b36e93076a",
-        "com_b736e77bdf93",
-        "com_1466f20a9300"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -999,11 +1001,11 @@
       ],
       "similarCommunityIds": [
         "com_36cb2681053d",
-        "com_96a0049afb0f",
-        "com_e9748c1176c1",
         "com_02b1cd673b69",
         "com_118a558259ea",
-        "com_3481b6750d6f"
+        "com_3481b6750d6f",
+        "com_85e78e91c982",
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -1083,9 +1085,9 @@
         "com_ff2e01957665",
         "com_f28d3ae740a6",
         "com_8d86f6f9340b",
+        "com_96a0049afb0f",
         "com_d2d455d2d6c9",
-        "com_cb019f4e9752",
-        "com_0e403135692e"
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -1307,8 +1309,8 @@
         "com_eef1ca956dae",
         "com_0e403135692e",
         "com_4a9490cb3534",
-        "com_0cc8630779d7",
-        "com_c58670960684"
+        "com_e9748c1176c1",
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -1378,9 +1380,9 @@
         "com_c58670960684",
         "com_36cb2681053d",
         "com_5f3066e419a7",
+        "com_ab8259bb35a4",
         "com_96a0049afb0f",
-        "com_e9748c1176c1",
-        "com_ab8259bb35a4"
+        "com_02b1cd673b69"
       ]
     },
     {
@@ -1452,8 +1454,8 @@
         "com_feb5ce491629",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_96a0049afb0f",
-        "com_e9748c1176c1"
+        "com_02b1cd673b69",
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -1621,7 +1623,7 @@
       "name": "Union Hall",
       "kind": "recurring_series",
       "tagline": "Union Hall is a recurring event series centered on comedy, parties in brooklyn.",
-      "description": "Union Hall is a recurring event series centered on comedy, parties in brooklyn. Based on 58 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "description": "Union Hall is a recurring event series centered on comedy, parties in brooklyn. Based on 59 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "other",
         "comedy",
@@ -1636,7 +1638,7 @@
         "brooklyn"
       ],
       "homeVenue": "Union Hall",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191029238%2F282041210522%2F1%2Foriginal.20260814-011131?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=95c7cf14bcc52204f1ed274559eb4e3c",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191030275%2F282041210522%2F1%2Foriginal.20260814-013245?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=b16f016cdfd3de8b16730fb958b50d51",
       "links": [
         {
           "type": "eventbrite",
@@ -1648,26 +1650,27 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-05",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 75
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Sunday"
+          "Tuesday"
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 58
+        "sampleSize": 59
       },
       "upcomingEventIds": [
-        "844d4fed2c074f1d",
         "392af3235b297785",
+        "844d4fed2c074f1d",
         "3d2bb921102f52d7",
         "bfd190895572d432",
         "3c82d8a4178f9ef7",
-        "37320e1333363d20"
+        "37320e1333363d20",
+        "58e969b98fb014fb"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1676,7 +1679,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 58,
+        "observedDateCount": 59,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1915,9 +1918,9 @@
         "com_118a558259ea",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_96a0049afb0f",
-        "com_e9748c1176c1",
-        "com_02b1cd673b69"
+        "com_02b1cd673b69",
+        "com_85e78e91c982",
+        "com_c274ef0f18ba"
       ]
     },
     {
@@ -2298,9 +2301,9 @@
         "eventbrite:30058841244"
       ],
       "similarCommunityIds": [
+        "com_96a0049afb0f",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_96a0049afb0f",
         "com_e9748c1176c1",
         "com_f171cd222ca5",
         "com_2c239df2a554"
@@ -2518,9 +2521,9 @@
         "com_3481b6750d6f",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_96a0049afb0f",
-        "com_e9748c1176c1",
-        "com_c274ef0f18ba"
+        "com_c274ef0f18ba",
+        "com_02b1cd673b69",
+        "com_85e78e91c982"
       ]
     },
     {
@@ -2608,8 +2611,8 @@
         "com_f28d3ae740a6",
         "com_3837f308cd75",
         "com_5582e2e97f1a",
-        "com_b0e15eaab803",
-        "com_318c39363fe6"
+        "com_c0492b95ac8d",
+        "com_b0e15eaab803"
       ]
     },
     {
@@ -2684,8 +2687,8 @@
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_85e78e91c982",
-        "com_96a0049afb0f",
-        "com_e9748c1176c1"
+        "com_118a558259ea",
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -2760,11 +2763,11 @@
       ],
       "similarCommunityIds": [
         "com_5f3066e419a7",
-        "com_96a0049afb0f",
-        "com_e9748c1176c1",
         "com_02b1cd673b69",
         "com_118a558259ea",
-        "com_3481b6750d6f"
+        "com_3481b6750d6f",
+        "com_85e78e91c982",
+        "com_f8ff3d3257ed"
       ]
     },
     {
@@ -2831,9 +2834,9 @@
         "com_02b1cd673b69",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_96a0049afb0f",
-        "com_e9748c1176c1",
-        "com_f8ff3d3257ed"
+        "com_f8ff3d3257ed",
+        "com_118a558259ea",
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -2908,8 +2911,8 @@
         "com_33a530deb7aa",
         "com_a4d969c3c6eb",
         "com_d2d455d2d6c9",
-        "com_eeb4e424a504",
-        "com_eef1ca956dae"
+        "com_96a0049afb0f",
+        "com_eeb4e424a504"
       ]
     },
     {
@@ -3065,10 +3068,10 @@
       "similarCommunityIds": [
         "com_8b837dfb5421",
         "com_3837f308cd75",
+        "com_c0492b95ac8d",
         "com_072c9c3e12a8",
         "com_1466f20a9300",
-        "com_9abdf9db297a",
-        "com_c0492b95ac8d"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -3145,13 +3148,19 @@
       "slug": "the-national-arts-club-1176c1",
       "name": "The National Arts Club",
       "kind": "club",
-      "tagline": "The National Arts Club is a community club in manhattan.",
-      "description": "The National Arts Club is a community club in manhattan. Based on 32 observed event dates, it meets weekly on Tuesday and Monday evenings.",
+      "tagline": "The National Arts Club is a community club centered on books, celebrities, exploration in manhattan.",
+      "description": "The National Arts Club is a community club centered on books, celebrities, exploration in manhattan. Based on 32 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
-        "other"
+        "other",
+        "books",
+        "celebrities",
+        "exploration"
       ],
       "tags": [
-        "other"
+        "other",
+        "books",
+        "celebrities",
+        "exploration"
       ],
       "neighborhoods": [
         "manhattan"
@@ -3209,12 +3218,12 @@
         "eventbrite:6140247955"
       ],
       "similarCommunityIds": [
-        "com_36cb2681053d",
-        "com_5f3066e419a7",
+        "com_4a9490cb3534",
         "com_96a0049afb0f",
-        "com_02b1cd673b69",
-        "com_118a558259ea",
-        "com_3481b6750d6f"
+        "com_eef1ca956dae",
+        "com_d2d455d2d6c9",
+        "com_36cb2681053d",
+        "com_5f3066e419a7"
       ]
     },
     {
@@ -3376,21 +3385,19 @@
       "slug": "the-people-s-forum-95ac8d",
       "name": "The People's Forum",
       "kind": "recurring_series",
-      "tagline": "The People's Forum is a recurring event series centered on art, music, movies in midtown, manhattan.",
-      "description": "The People's Forum is a recurring event series centered on art, music, movies in midtown, manhattan. Based on 8 observed event dates, it meets weekly on Friday and Wednesday evenings.",
+      "tagline": "The People's Forum is a recurring event series centered on music, art, books in midtown, manhattan.",
+      "description": "The People's Forum is a recurring event series centered on music, art, books in midtown, manhattan. Based on 8 observed event dates, it meets weekly on Friday and Wednesday evenings.",
       "categories": [
         "other",
-        "art",
         "music",
-        "movies",
-        "film"
+        "art",
+        "books"
       ],
       "tags": [
         "other",
-        "art",
         "music",
-        "movies",
-        "film"
+        "art",
+        "books"
       ],
       "neighborhoods": [
         "midtown",
@@ -3409,7 +3416,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-06",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 7,
         "eventCount90d": 2
       },
       "schedule": {
@@ -3426,7 +3433,6 @@
         "83b895d3eaf6ad73",
         "0edc639996f1cccd",
         "fae69ebd3687f2e5",
-        "fc1bde81716224d0",
         "2594bc402e13c994",
         "dba5cc9485dd8df0",
         "0ea5209b995e2136",
@@ -3453,12 +3459,12 @@
         "eventbrite:67306368493"
       ],
       "similarCommunityIds": [
+        "com_9abdf9db297a",
         "com_072c9c3e12a8",
+        "com_96a0049afb0f",
+        "com_d2d455d2d6c9",
         "com_3d91bda94131",
-        "com_ab8259bb35a4",
-        "com_28a4ec647815",
-        "com_3837f308cd75",
-        "com_9fed174eeff3"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -3831,17 +3837,17 @@
       "slug": "michael-fram-principal-a94131",
       "name": "Michael Fram, Principal",
       "kind": "recurring_series",
-      "tagline": "Michael Fram, Principal is a recurring event series centered on special, music in manhattan.",
-      "description": "Michael Fram, Principal is a recurring event series centered on special, music in manhattan. Based on 4 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "Michael Fram, Principal is a recurring event series centered on music, special in manhattan.",
+      "description": "Michael Fram, Principal is a recurring event series centered on music, special in manhattan. Based on 4 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
-        "special",
-        "music"
+        "music",
+        "special"
       ],
       "tags": [
         "other",
-        "special",
-        "music"
+        "music",
+        "special"
       ],
       "neighborhoods": [
         "manhattan"
@@ -3897,9 +3903,9 @@
         "com_9fed174eeff3",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_96a0049afb0f",
         "com_a1e1c13a75f0",
-        "com_e9748c1176c1"
+        "com_fe4b6663b721",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -4325,10 +4331,10 @@
       "similarCommunityIds": [
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_96a0049afb0f",
-        "com_e9748c1176c1",
         "com_85e78e91c982",
-        "com_f8ff3d3257ed"
+        "com_f8ff3d3257ed",
+        "com_118a558259ea",
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -4405,8 +4411,8 @@
         "com_fe4b6663b721",
         "com_36cb2681053d",
         "com_5f3066e419a7",
-        "com_96a0049afb0f",
-        "com_e9748c1176c1"
+        "com_072c9c3e12a8",
+        "com_96a0049afb0f"
       ]
     },
     {
@@ -4478,7 +4484,7 @@
         "com_a4d969c3c6eb",
         "com_eef1ca956dae",
         "com_ff2e01957665",
-        "com_d2d455d2d6c9"
+        "com_96a0049afb0f"
       ]
     },
     {
@@ -4552,8 +4558,8 @@
         "com_55ca36db453a",
         "com_28a4ec647815",
         "com_3837f308cd75",
-        "com_9abdf9db297a",
-        "com_a1e1c13a75f0"
+        "com_c0492b95ac8d",
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -5225,10 +5231,10 @@
       "similarCommunityIds": [
         "com_5582e2e97f1a",
         "com_f171cd222ca5",
+        "com_c0492b95ac8d",
         "com_33a530deb7aa",
         "com_55ca36db453a",
-        "com_9abdf9db297a",
-        "com_b736e77bdf93"
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -5314,10 +5320,10 @@
       "similarCommunityIds": [
         "com_eef1ca956dae",
         "com_4a9490cb3534",
+        "com_e9748c1176c1",
         "com_8d86f6f9340b",
         "com_c1410c07c4dd",
-        "com_d8a5203885a9",
-        "com_f28d3ae740a6"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -5391,10 +5397,10 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_0e403135692e",
+        "com_e9748c1176c1",
         "com_b736e77bdf93",
         "com_ff2e01957665",
-        "com_0cc8630779d7",
-        "com_68b36e93076a"
+        "com_0cc8630779d7"
       ]
     },
     {
@@ -52713,7 +52719,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-06T05:02:09.585077+00:00",
+  "lastUpdated": "2026-11-06T07:38:33.328739+00:00",
   "version": 1,
   "schemaVersion": 1
 }
