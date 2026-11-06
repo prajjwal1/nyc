@@ -126,3 +126,11 @@ class TestFieldExtraction:
         e.pop("image", None)
         e.update(image_field)
         assert _parse_event_obj(e)["imageUrl"] == expected
+
+
+def test_host_entered_titles_survive_caption_fragment_rule():
+    from scrapers.ranking import compute_score
+
+    ev = _parse_event_obj(_event(title="FALL ART SHOW", startDate="2099-06-06T00:00:00.000Z"))
+    assert ev["structuredTitle"] is True
+    assert compute_score(ev) > 0

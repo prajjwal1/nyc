@@ -362,3 +362,37 @@ def test_browser_snapshot_rejects_retail_giveaways():
         "image": "https://cdn/x.jpg",
     }]
     assert _sanitize_posts(posts) == []
+
+
+def test_luma_titles_are_structured_so_caption_rule_cannot_zero_them(monkeypatch):
+    from scrapers.ranking import compute_score
+
+    row = {
+        "api_id": "evt-3",
+        "event": {
+            "name": "Diwali with Aayka",
+            "url": "m6cjlqdd",
+            "start_at": "2099-11-06T01:00:00.000Z",
+            "cover_url": "https://images.lumacdn.com/diwali.jpg",
+            "geo_address_info": {"city": "Brooklyn", "full_address": "395 Wythe Ave, Brooklyn, NY 11249"},
+        },
+        "calendar": {"api_id": "cal-p", "name": "Personal", "is_personal": True},
+        "hosts": [{"api_id": "usr-a", "name": "Aayka fashion"}],
+    }
+
+    async def fake_catalog():
+        return [luma._parse_luma_discover_entry(row)]
+
+    monkeypatch.setenv("PLATFORM_LINK_FOLLOWTHROUGH", "0")
+    monkeypatch.setattr(luma, "_calendar_plan", lambda: [luma.FrontierItem(
+        url=luma.LUMA_DISCOVER_URL, kind="discover", lane="explore", score=1.0, via="city_discover",
+    )])
+    monkeypatch.setattr(luma, "_scrape_luma_discover_api", fake_catalog)
+    monkeypatch.setattr(luma, "_promoted_calendars", lambda *_a, **_k: [])
+    monkeypatch.setattr(luma, "record_platform_results", lambda *_a, **_k: None)
+    monkeypatch.setattr(luma, "persist_discovered_urls", lambda *_a, **_k: None)
+
+    [event] = asyncio.run(luma.scrape())
+
+    assert event["structuredTitle"] is True
+    assert compute_score(event) > 0

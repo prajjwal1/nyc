@@ -646,7 +646,7 @@ def _parse_event_obj(event: dict, hosts: list[dict] | None = None):
             "role": "host" if index == 0 else "cohost",
         })
 
-    return build_event(
+    built = build_event(
         title=title,
         description=full_desc,
         event_date=event_date,
@@ -662,3 +662,7 @@ def _parse_event_obj(event: dict, hosts: list[dict] | None = None):
         organizer_url=organizer_url,
         organizer_refs=organizer_refs,
     )
+    if built is not None:
+        # Host-entered names, not IG captions: skip the caption-fragment rule.
+        built["structuredTitle"] = True
+    return built

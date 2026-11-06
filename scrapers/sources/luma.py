@@ -85,6 +85,9 @@ async def scrape() -> list[dict]:
             )
         for event in page_events:
             event["discoveryLane"] = item.lane
+            # Organizer-entered names; the IG caption-fragment heuristic
+            # zeroed ~23% of them ("PILATES BRUNCH", "Diwali with Aayka").
+            event["structuredTitle"] = True
         return item, page_events
 
     results = await asyncio.gather(*(calendar(item) for item in plan))
