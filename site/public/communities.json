@@ -79,7 +79,7 @@
         "com_0d385c45c819",
         "com_0e403135692e",
         "com_3d91bda94131",
-        "com_96a0049afb0f"
+        "com_7d3e76b46ffc"
       ]
     },
     {
@@ -1084,7 +1084,7 @@
         "com_3dd56f332431",
         "com_69662323a419",
         "com_6da89066dbb5",
-        "com_02b1cd673b69"
+        "com_6f8b5e94a420"
       ]
     },
     {
@@ -1926,7 +1926,7 @@
         "brooklyn"
       ],
       "homeVenue": "Union Hall",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191030275%2F282041210522%2F1%2Foriginal.20260814-013245?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=b16f016cdfd3de8b16730fb958b50d51",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191029238%2F282041210522%2F1%2Foriginal.20260814-011131?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=95c7cf14bcc52204f1ed274559eb4e3c",
       "links": [
         {
           "type": "eventbrite",
@@ -1952,8 +1952,8 @@
         "sampleSize": 59
       },
       "upcomingEventIds": [
-        "392af3235b297785",
         "844d4fed2c074f1d",
+        "392af3235b297785",
         "3d2bb921102f52d7",
         "bfd190895572d432",
         "3c82d8a4178f9ef7",
@@ -2207,12 +2207,12 @@
         "eventbrite:18249326283"
       ],
       "similarCommunityIds": [
+        "com_f54698ed682f",
         "com_c305531d38d0",
         "com_118a558259ea",
         "com_2598d21a6937",
         "com_2a1498596ec3",
-        "com_36cb2681053d",
-        "com_3dd56f332431"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -3219,7 +3219,7 @@
         "com_5f3066e419a7",
         "com_69662323a419",
         "com_6da89066dbb5",
-        "com_02b1cd673b69"
+        "com_6f8b5e94a420"
       ]
     },
     {
@@ -3589,10 +3589,10 @@
       "similarCommunityIds": [
         "com_118a558259ea",
         "com_2a1498596ec3",
+        "com_794c8e5dea38",
         "com_9f872a574dc0",
         "com_c212478907d5",
-        "com_f783b3a7385a",
-        "com_fa3a83ebc0fe"
+        "com_f783b3a7385a"
       ]
     },
     {
@@ -3743,10 +3743,10 @@
       "similarCommunityIds": [
         "com_9a5c4d074e3a",
         "com_d0a5add7d8b9",
+        "com_9fe1e0196792",
         "com_f9551f264561",
         "com_12939182c936",
-        "com_2a30ebfb0079",
-        "com_648449f336c0"
+        "com_2a30ebfb0079"
       ]
     },
     {
@@ -4800,11 +4800,11 @@
       ],
       "similarCommunityIds": [
         "com_3481b6750d6f",
+        "com_f54698ed682f",
         "com_44f59baa3830",
         "com_c305531d38d0",
         "com_118a558259ea",
-        "com_2598d21a6937",
-        "com_2a1498596ec3"
+        "com_2598d21a6937"
       ]
     },
     {
@@ -5024,7 +5024,7 @@
         "com_4f018dc64830",
         "com_745df80f0981",
         "com_3481b6750d6f",
-        "com_3942d7a4c6e3"
+        "com_f54698ed682f"
       ]
     },
     {
@@ -5325,6 +5325,78 @@
       ]
     },
     {
+      "id": "com_f54698ed682f",
+      "slug": "21st-ed682f",
+      "name": "21st",
+      "kind": "recurring_series",
+      "tagline": "21st is a recurring event series in manhattan.",
+      "description": "21st is a recurring event series in manhattan. Based on 2 observed event dates, it meets biweekly on Sunday and Friday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/li/979868fb-0d9c-4696-bb3c-5d0b7a9b27ab.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/21st"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Sunday",
+          "Friday"
+        ],
+        "typicalTime": "15:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "46c0ebdb40d36260",
+        "9448e4dd2a58c919"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-07",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:danazhang_",
+        "instagram:ryancheah__",
+        "luma:cal-6tv1prdhkjkaoe7"
+      ],
+      "similarCommunityIds": [
+        "com_3481b6750d6f",
+        "com_c305531d38d0",
+        "com_118a558259ea",
+        "com_2598d21a6937",
+        "com_2a1498596ec3",
+        "com_36cb2681053d"
+      ]
+    },
+    {
       "id": "com_6bbe66998143",
       "slug": "the-canvas-nyc-998143",
       "name": "The Canvas NYC",
@@ -5549,7 +5621,7 @@
         "com_f783b3a7385a",
         "com_fa3a83ebc0fe",
         "com_c305531d38d0",
-        "com_c212478907d5"
+        "com_794c8e5dea38"
       ]
     },
     {
@@ -5848,8 +5920,8 @@
         "com_387990e42591",
         "com_9c715da909bc",
         "com_c305531d38d0",
-        "com_30bd6ca662e0",
-        "com_02b1cd673b69"
+        "com_f54698ed682f",
+        "com_30bd6ca662e0"
       ]
     },
     {
@@ -5919,7 +5991,7 @@
         "com_3dd56f332431",
         "com_5f3066e419a7",
         "com_69662323a419",
-        "com_02b1cd673b69"
+        "com_6f8b5e94a420"
       ]
     },
     {
@@ -6101,7 +6173,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-07",
-        "upcomingEventCount": 13,
+        "upcomingEventCount": 14,
         "eventCount90d": 2
       },
       "schedule": {
@@ -6126,7 +6198,7 @@
         "f27b92cac2cc52cc",
         "6223cdc7d9e4c8ac",
         "475820f1352a7369",
-        "0c8dbfa86a19b90c"
+        "755c29bd51a8c7c5"
       ],
       "sourceAttributions": [
         "luma"
@@ -7038,16 +7110,16 @@
       "name": "car part time",
       "kind": "recurring_series",
       "tagline": "car part time is a recurring event series centered on music, food in brooklyn.",
-      "description": "car part time is a recurring event series centered on music, food in brooklyn. Based on 2 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "description": "car part time is a recurring event series centered on music, food in brooklyn. Based on 3 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
+        "other",
         "music",
-        "food",
-        "other"
+        "food"
       ],
       "tags": [
+        "other",
         "music",
-        "food",
-        "other"
+        "food"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -7065,7 +7137,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
@@ -7075,12 +7147,13 @@
           "Wednesday"
         ],
         "typicalTime": "18:30",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "97dece6b27942d67",
-        "c3bdd6fd1022fff6"
+        "c3bdd6fd1022fff6",
+        "50b0d3378372ca4c"
       ],
       "sourceAttributions": [
         "luma"
@@ -7089,7 +7162,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -7175,7 +7248,7 @@
         "com_5f3066e419a7",
         "com_69662323a419",
         "com_6da89066dbb5",
-        "com_02b1cd673b69"
+        "com_6f8b5e94a420"
       ]
     },
     {
@@ -7630,6 +7703,76 @@
       ]
     },
     {
+      "id": "com_6f8b5e94a420",
+      "slug": "senga-kento-virgin-nyc-94a420",
+      "name": "Senga Kento & Virgin NYC",
+      "kind": "recurring_series",
+      "tagline": "Senga Kento & Virgin NYC is a recurring event series in manhattan.",
+      "description": "Senga Kento & Virgin NYC is a recurring event series in manhattan. Based on 2 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Virgin Hotels New York City",
+      "imageUrl": "https://images.lumacdn.com/uploads/s3/a0ee7608-1ac4-4406-87cf-ea1f6779dd75.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://www.focusartfair.net"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 1,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday",
+          "Wednesday"
+        ],
+        "typicalTime": "17:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "27cd1627d28aa21c"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-07",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:karimbenz",
+        "luma:cal-lxlitd7wy8pbngi"
+      ],
+      "similarCommunityIds": [
+        "com_2598d21a6937",
+        "com_36cb2681053d",
+        "com_3dd56f332431",
+        "com_5f3066e419a7",
+        "com_69662323a419",
+        "com_6da89066dbb5"
+      ]
+    },
+    {
       "id": "com_606719862cd1",
       "slug": "leopard-fyi-for-women-genderqueer-software-engineers-862cd1",
       "name": "Leopard.FYI For Women & Genderqueer Software Engineers",
@@ -7861,8 +8004,8 @@
       "slug": "girls-who-meet-b46ffc",
       "name": "Girls Who Meet",
       "kind": "recurring_series",
-      "tagline": "Girls Who Meet is a recurring event series centered on fitness, art, books in manhattan, brooklyn.",
-      "description": "Girls Who Meet is a recurring event series centered on fitness, art, books in manhattan, brooklyn. Based on 7 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "tagline": "Girls Who Meet is a recurring event series centered on fitness, art, books in manhattan, midtown.",
+      "description": "Girls Who Meet is a recurring event series centered on fitness, art, books in manhattan, midtown. Based on 7 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "other",
         "fitness",
@@ -7877,12 +8020,12 @@
       ],
       "neighborhoods": [
         "manhattan",
-        "brooklyn",
         "midtown",
-        "chelsea"
+        "chelsea",
+        "upper east side"
       ],
-      "homeVenue": "TheMudBklyn",
-      "imageUrl": "https://images.lumacdn.com/event-covers/1h/9037dc50-9a89-4aeb-a50a-b9f4369fc86b.jpg",
+      "homeVenue": "CityPickle Times Square",
+      "imageUrl": "https://images.lumacdn.com/event-covers/k4/49226ad7-718c-434d-89dd-f5623f048608.png",
       "links": [
         {
           "type": "luma",
@@ -7894,7 +8037,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-07",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 7,
         "eventCount90d": 1
       },
       "schedule": {
@@ -7908,7 +8051,6 @@
         "sampleSize": 7
       },
       "upcomingEventIds": [
-        "479d7c786b4c468c",
         "74b867497b67a1bf",
         "6a87af4eb383bc51",
         "9e8cba7583441754",
@@ -7933,12 +8075,12 @@
         "luma:cal-oqdnb4l9pugezuw"
       ],
       "similarCommunityIds": [
-        "com_c0492b95ac8d",
-        "com_489a14652e20",
-        "com_c58670960684",
-        "com_f990c90c32d5",
         "com_ab8259bb35a4",
-        "com_d73abf992ef2"
+        "com_c58670960684",
+        "com_c0492b95ac8d",
+        "com_f990c90c32d5",
+        "com_d73abf992ef2",
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -8005,10 +8147,10 @@
       "similarCommunityIds": [
         "com_3481b6750d6f",
         "com_387990e42591",
+        "com_f54698ed682f",
         "com_9f872a574dc0",
         "com_40bf372e58c5",
-        "com_9c715da909bc",
-        "com_d74826b4ebc7"
+        "com_9c715da909bc"
       ]
     },
     {
@@ -8227,7 +8369,7 @@
         "com_5f3066e419a7",
         "com_69662323a419",
         "com_6da89066dbb5",
-        "com_02b1cd673b69"
+        "com_6f8b5e94a420"
       ]
     },
     {
@@ -8491,7 +8633,7 @@
         "east village"
       ],
       "homeVenue": "20 Grand Ave",
-      "imageUrl": "https://images.lumacdn.com/uploads/tx/e9f7ef59-1a9a-4aa5-9143-aea38a4eb624.png",
+      "imageUrl": "https://images.lumacdn.com/uploads/si/1995b4e9-249f-4345-9ad5-fef2f4675135.png",
       "links": [
         {
           "type": "luma",
@@ -8503,7 +8645,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-07",
-        "upcomingEventCount": 13,
+        "upcomingEventCount": 12,
         "eventCount90d": 1
       },
       "schedule": {
@@ -8517,7 +8659,6 @@
         "sampleSize": 13
       },
       "upcomingEventIds": [
-        "df8138e37e519120",
         "1904914929014da0",
         "15c719627356b256",
         "f84b06432d782db4",
@@ -8528,7 +8669,8 @@
         "4e35c1c4139deec6",
         "b6e7c954aa1f17ee",
         "5c47f42ece081f1c",
-        "0f6250f05ef807e7"
+        "0f6250f05ef807e7",
+        "536a2f20ca7f6c25"
       ],
       "sourceAttributions": [
         "luma"
@@ -8622,7 +8764,7 @@
         "com_3dd56f332431",
         "com_5f3066e419a7",
         "com_6da89066dbb5",
-        "com_02b1cd673b69"
+        "com_6f8b5e94a420"
       ]
     },
     {
@@ -8994,9 +9136,9 @@
         "com_9d8d9bd86a8c",
         "com_91772bf8b6fc",
         "com_8c30193b027f",
-        "com_9fe1e0196792",
         "com_feb5ce491629",
-        "com_5dd8d7d6e995"
+        "com_5dd8d7d6e995",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -9007,12 +9149,12 @@
       "tagline": "Mimi Circle is a recurring event series centered on art in queens.",
       "description": "Mimi Circle is a recurring event series centered on art in queens. Based on 2 observed event dates, it meets weekly on Saturday and Sunday mornings.",
       "categories": [
-        "other",
-        "art"
+        "art",
+        "other"
       ],
       "tags": [
-        "other",
-        "art"
+        "art",
+        "other"
       ],
       "neighborhoods": [
         "queens"
@@ -9030,7 +9172,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-07",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
@@ -9044,7 +9186,6 @@
         "sampleSize": 2
       },
       "upcomingEventIds": [
-        "82138ff6726d2e55",
         "94a9f650c776c051",
         "8ce92d517619ff95"
       ],
@@ -9954,13 +10095,15 @@
       "slug": "harlem-art-house-collective-196792",
       "name": "Harlem Art House Collective",
       "kind": "recurring_series",
-      "tagline": "Harlem Art House Collective is a recurring event series in harlem, manhattan.",
-      "description": "Harlem Art House Collective is a recurring event series in harlem, manhattan. Based on 2 observed event dates, it meets weekly on Saturday and Friday evenings.",
+      "tagline": "Harlem Art House Collective is a recurring event series centered on comedy in harlem, manhattan.",
+      "description": "Harlem Art House Collective is a recurring event series centered on comedy in harlem, manhattan. Based on 3 observed event dates, it meets biweekly on Saturday and Friday evenings.",
       "categories": [
-        "other"
+        "other",
+        "comedy"
       ],
       "tags": [
-        "other"
+        "other",
+        "comedy"
       ],
       "neighborhoods": [
         "harlem",
@@ -9979,22 +10122,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
-        "cadence": "weekly",
+        "cadence": "biweekly",
         "typicalDays": [
           "Saturday",
           "Friday"
         ],
-        "typicalTime": "19:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "typicalTime": "19:30",
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "c4501c812daa3c21",
-        "5f91cd4f75ce11c9"
+        "5f91cd4f75ce11c9",
+        "dc74070c03064426"
       ],
       "sourceAttributions": [
         "luma"
@@ -10003,22 +10147,23 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
       "newcomerEvidence": [],
       "aliases": [
         "instagram:harlemarthousecollective",
+        "instagram:kungfujoe83",
         "luma:cal-yxjan3bhjhzdoo3"
       ],
       "similarCommunityIds": [
-        "com_2598d21a6937",
-        "com_36cb2681053d",
-        "com_3dd56f332431",
-        "com_5f3066e419a7",
-        "com_69662323a419",
-        "com_6da89066dbb5"
+        "com_3481b6750d6f",
+        "com_d0a5add7d8b9",
+        "com_f54698ed682f",
+        "com_c305531d38d0",
+        "com_3942d7a4c6e3",
+        "com_44f59baa3830"
       ]
     },
     {
@@ -10087,8 +10232,8 @@
         "com_387990e42591",
         "com_40bf372e58c5",
         "com_c305531d38d0",
-        "com_606719862cd1",
-        "com_02b1cd673b69"
+        "com_f54698ed682f",
+        "com_606719862cd1"
       ]
     },
     {
@@ -10230,6 +10375,76 @@
         "com_072c9c3e12a8",
         "com_118a558259ea",
         "com_2a1498596ec3"
+      ]
+    },
+    {
+      "id": "com_794c8e5dea38",
+      "slug": "glow-cultural-center-5dea38",
+      "name": "Glow Cultural Center",
+      "kind": "institutional_program",
+      "tagline": "Glow Cultural Center is a community program in flushing.",
+      "description": "Glow Cultural Center is a community program in flushing. Based on 2 observed event dates, it meets monthly on Saturday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "flushing"
+      ],
+      "homeVenue": "Glow Cultural Center, Inc.",
+      "imageUrl": "https://images.unsplash.com/photo-1758526213729-50208a451702?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjQyMjF8MHwxfHNlYXJjaHw2fHxmaW5hbmNpYWwlMjBhaWR8ZW58MHx8fHwxNzkzMDQ0Nzg4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/glownyc"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-07",
+        "upcomingEventCount": 2,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "monthly",
+        "typicalDays": [
+          "Saturday"
+        ],
+        "typicalTime": "17:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "24284a58045a9783",
+        "3c770f9464973a2f"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-07",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:glownyc_org",
+        "luma:cal-zpcagfraqfgknel"
+      ],
+      "similarCommunityIds": [
+        "com_118a558259ea",
+        "com_2a1498596ec3",
+        "com_9f872a574dc0",
+        "com_c212478907d5",
+        "com_c274ef0f18ba",
+        "com_f783b3a7385a"
       ]
     },
     {
@@ -10610,11 +10825,11 @@
       ],
       "similarCommunityIds": [
         "com_c58670960684",
+        "com_7d3e76b46ffc",
         "com_072c9c3e12a8",
         "com_359977ec663e",
         "com_d73abf992ef2",
-        "com_0ae542c496b3",
-        "com_4881e8598611"
+        "com_0ae542c496b3"
       ]
     },
     {
@@ -10930,9 +11145,9 @@
         "com_61de7e5f2248",
         "com_91772bf8b6fc",
         "com_8c30193b027f",
-        "com_9fe1e0196792",
         "com_feb5ce491629",
-        "com_5dd8d7d6e995"
+        "com_5dd8d7d6e995",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -11067,11 +11282,11 @@
       ],
       "similarCommunityIds": [
         "com_f8c88ef9a8ca",
+        "com_9fe1e0196792",
         "com_3942d7a4c6e3",
         "com_b8a3508a14a4",
         "com_02b1cd673b69",
-        "com_0851fd5f24ee",
-        "com_14e2dae511e1"
+        "com_0851fd5f24ee"
       ]
     },
     {
@@ -11208,8 +11423,8 @@
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
         "com_f8c88ef9a8ca",
-        "com_9fe1e0196792",
-        "com_a20864ed56ec"
+        "com_a20864ed56ec",
+        "com_f084ce2ea8b1"
       ]
     },
     {
@@ -12668,7 +12883,7 @@
         "state": "active",
         "lastEventDate": "2026-11-07",
         "upcomingEventCount": 47,
-        "eventCount90d": 320
+        "eventCount90d": 321
       },
       "schedule": {
         "cadence": "weekly",
@@ -12686,7 +12901,7 @@
         "ddcf8c36b5e06421",
         "c53ed6bcb86ca9a3",
         "e192166056cbf405",
-        "4ae4267e286b9b62",
+        "97bc7ab066697cbf",
         "1f57e53de382e5db",
         "2bc551b451bd4155",
         "be59344549f08041",
@@ -59945,7 +60160,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-07T18:22:10.127233+00:00",
+  "lastUpdated": "2026-11-07T20:06:52.544216+00:00",
   "version": 1,
   "schemaVersion": 1
 }
