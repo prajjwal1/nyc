@@ -1313,9 +1313,9 @@
         "com_318c39363fe6",
         "com_3942d7a4c6e3",
         "com_3d91bda94131",
-        "com_d1117f619e53",
         "com_05774b0951d0",
-        "com_3eed1a2effb4"
+        "com_3eed1a2effb4",
+        "com_4f018dc64830"
       ]
     },
     {
@@ -2452,9 +2452,9 @@
         "com_fe4b6663b721",
         "com_218b97d674a6",
         "com_44f59baa3830",
+        "com_d1117f619e53",
         "com_3481b6750d6f",
-        "com_665eaac4154e",
-        "com_bb6928bc760c"
+        "com_665eaac4154e"
       ]
     },
     {
@@ -2532,8 +2532,8 @@
         "com_30bd6ca662e0",
         "com_3942d7a4c6e3",
         "com_3d91bda94131",
-        "com_d1117f619e53",
-        "com_8b837dfb5421"
+        "com_8b837dfb5421",
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -4650,9 +4650,9 @@
         "com_3481b6750d6f",
         "com_44f59baa3830",
         "com_c305531d38d0",
+        "com_d1117f619e53",
         "com_118a558259ea",
-        "com_2598d21a6937",
-        "com_2a1498596ec3"
+        "com_2598d21a6937"
       ]
     },
     {
@@ -4733,22 +4733,22 @@
       "name": "KiDS NEED MoRE Community",
       "kind": "recurring_series",
       "tagline": "KiDS NEED MoRE Community is a recurring event series centered on music, special in manhattan.",
-      "description": "KiDS NEED MoRE Community is a recurring event series centered on music, special in manhattan. Based on 2 observed event dates, it meets weekly on Saturday and Monday evenings.",
+      "description": "KiDS NEED MoRE Community is a recurring event series centered on music, special in manhattan. Based on 3 observed event dates, it meets biweekly on Sunday and Saturday mornings.",
       "categories": [
+        "other",
         "music",
-        "special",
-        "other"
+        "special"
       ],
       "tags": [
+        "other",
         "music",
-        "special",
-        "other"
+        "special"
       ],
       "neighborhoods": [
         "manhattan"
       ],
-      "homeVenue": "J J's Tavern",
-      "imageUrl": "https://images.lumacdn.com/uploads/10/cd8207a1-e957-48ad-ac1f-d5a7f1ea79b8.png",
+      "homeVenue": "80 Herbert Ave",
+      "imageUrl": "https://images.lumacdn.com/uploads/5v/f5fdaf95-f32d-4181-b234-11689c8b5d2a.png",
       "links": [
         {
           "type": "luma",
@@ -4760,20 +4760,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
-        "cadence": "weekly",
+        "cadence": "biweekly",
         "typicalDays": [
-          "Saturday",
-          "Monday"
+          "Sunday",
+          "Saturday"
         ],
-        "typicalTime": "20:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "typicalTime": "10:00",
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
+        "8e8cfc183a22f43b",
         "1e66b8797f1e0cb7",
         "c62f0303fd05801c"
       ],
@@ -4784,7 +4785,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4794,11 +4795,11 @@
       ],
       "similarCommunityIds": [
         "com_3d91bda94131",
+        "com_44f59baa3830",
         "com_05774b0951d0",
         "com_3eed1a2effb4",
         "com_4f018dc64830",
-        "com_745df80f0981",
-        "com_3942d7a4c6e3"
+        "com_745df80f0981"
       ]
     },
     {
@@ -4871,8 +4872,8 @@
         "com_3eed1a2effb4",
         "com_4f018dc64830",
         "com_745df80f0981",
-        "com_3481b6750d6f",
-        "com_3942d7a4c6e3"
+        "com_d1117f619e53",
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -10289,8 +10290,8 @@
         "1ac59efea9fd3f15",
         "a4aff3677148f26a",
         "5c7f219795bbfa24",
-        "698ec8453e5f4344",
         "f68ef1dbb841092f",
+        "698ec8453e5f4344",
         "cc29776d909b57dc"
       ],
       "sourceAttributions": [
@@ -10459,7 +10460,7 @@
         "78d0ee3d99154b93",
         "72df5d612f43c186",
         "e8ff3a0ea56a494f",
-        "6f731918d4322cf7"
+        "ca8881addf01aee7"
       ],
       "sourceAttributions": [
         "luma"
@@ -11795,8 +11796,8 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "89f6f1a3d24762fb",
         "f5207a5c726e6330",
+        "89f6f1a3d24762fb",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
         "75154eebbdbd66ab",
@@ -59642,7 +59643,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-07T06:40:14.198384+00:00",
+  "lastUpdated": "2026-11-07T10:02:50.343549+00:00",
   "version": 1,
   "schemaVersion": 1
 }
