@@ -2894,8 +2894,8 @@
       },
       "upcomingEventIds": [
         "3c22f7705d08ee07",
-        "95fe7cf1fb2ae52e",
         "580411bfad112cdf",
+        "95fe7cf1fb2ae52e",
         "6ffe32c06a510a8a",
         "96cf27159685012f",
         "96f60dcfa6b49441",
@@ -5011,10 +5011,10 @@
       "similarCommunityIds": [
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
         "com_f8c88ef9a8ca",
-        "com_7a79190109e4",
-        "com_14e2dae511e1"
+        "com_7a79190109e4"
       ]
     },
     {
@@ -5023,7 +5023,7 @@
       "name": "Make Fun Studio",
       "kind": "recurring_series",
       "tagline": "Make Fun Studio is a recurring event series in brooklyn.",
-      "description": "Make Fun Studio is a recurring event series in brooklyn. Based on 2 observed event dates, it meets weekly on Sunday and Friday afternoons.",
+      "description": "Make Fun Studio is a recurring event series in brooklyn. Based on 3 observed event dates, it meets weekly on Monday and Sunday evenings.",
       "categories": [
         "other"
       ],
@@ -5034,7 +5034,7 @@
         "brooklyn"
       ],
       "homeVenue": "347 Maujer St 2nd floor",
-      "imageUrl": "https://images.lumacdn.com/uploads/w1/89d7f528-ec88-421e-8b78-5da62f58cedb.jpg",
+      "imageUrl": "https://images.lumacdn.com/gallery-images/b2/785045b0-8c3f-40fa-a66a-6316a5c489d0.png",
       "links": [
         {
           "type": "luma",
@@ -5046,20 +5046,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Sunday",
-          "Friday"
+          "Monday",
+          "Sunday"
         ],
-        "typicalTime": "15:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "typicalTime": "19:00",
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
+        "34dd9e8345e364ff",
         "168c818374faad96",
         "9a5395b92148134d"
       ],
@@ -5070,7 +5071,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -5230,12 +5231,12 @@
         "luma:cal-6kefzktxphcxcqd"
       ],
       "similarCommunityIds": [
+        "com_3fe3cbcef607",
         "com_f084ce2ea8b1",
         "com_ed952ca81836",
         "com_032059b33438",
         "com_0606c7e50fa8",
-        "com_dc810e090c07",
-        "com_f8c88ef9a8ca"
+        "com_dc810e090c07"
       ]
     },
     {
@@ -5757,12 +5758,88 @@
       ]
     },
     {
+      "id": "com_3fe3cbcef607",
+      "slug": "arturo-camargo-cef607",
+      "name": "Arturo Camargo",
+      "kind": "recurring_series",
+      "tagline": "Arturo Camargo is a recurring event series centered on parties in manhattan, long island city.",
+      "description": "Arturo Camargo is a recurring event series centered on parties in manhattan, long island city. Based on 2 observed event dates, it meets weekly on Tuesday and Wednesday afternoons.",
+      "categories": [
+        "other",
+        "parties"
+      ],
+      "tags": [
+        "other",
+        "parties"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "long island city"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/kj/476d8f14-3ad3-4ce8-abb0-ecf6c9edeb6e.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://elevenlabs.io/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday",
+          "Wednesday"
+        ],
+        "typicalTime": "16:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "7dadcb349ba4a8ef",
+        "b524306424e2eae8",
+        "a6d879988d1fd635"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-08",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:elevenlabs",
+        "luma:cal-bwxxhcsvdvfftmw",
+        "luma:usr-34odeclsf7vuzft"
+      ],
+      "similarCommunityIds": [
+        "com_2bdbc5148183",
+        "com_f8c88ef9a8ca",
+        "com_032059b33438",
+        "com_0606c7e50fa8",
+        "com_dc810e090c07",
+        "com_f084ce2ea8b1"
+      ]
+    },
+    {
       "id": "com_40bf372e58c5",
       "slug": "dusty-co-calendar-2e58c5",
       "name": "Dusty & Co Calendar",
       "kind": "recurring_series",
       "tagline": "Dusty & Co Calendar is a recurring event series in chelsea.",
-      "description": "Dusty & Co Calendar is a recurring event series in chelsea. Based on 2 observed event dates, it meets biweekly on Saturday and Sunday afternoons.",
+      "description": "Dusty & Co Calendar is a recurring event series in chelsea. Based on 3 observed event dates, it meets biweekly on Sunday and Saturday afternoons.",
       "categories": [
         "other"
       ],
@@ -5785,21 +5862,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-07",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
         "cadence": "biweekly",
         "typicalDays": [
-          "Saturday",
-          "Sunday"
+          "Sunday",
+          "Saturday"
         ],
         "typicalTime": "14:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
-        "c00d4d0404e9b0b4"
+        "c00d4d0404e9b0b4",
+        "8a980517b9d01094"
       ],
       "sourceAttributions": [
         "luma"
@@ -5808,7 +5886,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -6262,11 +6340,11 @@
       ],
       "similarCommunityIds": [
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_f084ce2ea8b1",
         "com_2598d21a6937",
         "com_36cb2681053d",
-        "com_37da349b5b66",
-        "com_3dd56f332431"
+        "com_37da349b5b66"
       ]
     },
     {
@@ -6409,9 +6487,9 @@
         "com_ff2e01957665",
         "com_032059b33438",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
-        "com_f8c88ef9a8ca",
-        "com_32f0be19b796"
+        "com_f8c88ef9a8ca"
       ]
     },
     {
@@ -7062,8 +7140,8 @@
         "com_2bdbc5148183",
         "com_d73abf992ef2",
         "com_ed952ca81836",
-        "com_fe4b6663b721",
-        "com_f084ce2ea8b1"
+        "com_3fe3cbcef607",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -8171,7 +8249,7 @@
       "name": "Girls Who Meet",
       "kind": "recurring_series",
       "tagline": "Girls Who Meet is a recurring event series centered on art, books in manhattan, chelsea.",
-      "description": "Girls Who Meet is a recurring event series centered on art, books in manhattan, chelsea. Based on 7 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "description": "Girls Who Meet is a recurring event series centered on art, books in manhattan, chelsea. Based on 8 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "other",
         "art",
@@ -8201,7 +8279,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 2
       },
       "schedule": {
@@ -8212,7 +8290,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
         "6a87af4eb383bc51",
@@ -8220,6 +8298,7 @@
         "27fe291327a67a2b",
         "9b2fbe5a38831cac",
         "8659f9fba3e96d02",
+        "c740a282c793458a",
         "f0fd94e9562c2dae"
       ],
       "sourceAttributions": [
@@ -8229,7 +8308,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -8454,8 +8533,8 @@
         "com_118a558259ea",
         "com_2a1498596ec3",
         "com_394b0acee032",
-        "com_f783b3a7385a",
-        "com_fa3a83ebc0fe"
+        "com_3fe3cbcef607",
+        "com_f783b3a7385a"
       ]
     },
     {
@@ -9797,12 +9876,12 @@
         "luma:cal-u7kgmwcaa2v4w5g"
       ],
       "similarCommunityIds": [
+        "com_3fe3cbcef607",
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
         "com_dc810e090c07",
-        "com_d0a5add7d8b9",
-        "com_a20864ed56ec"
+        "com_d0a5add7d8b9"
       ]
     },
     {
@@ -12008,7 +12087,7 @@
         "com_3942d7a4c6e3",
         "com_b8a3508a14a4",
         "com_9a5c4d074e3a",
-        "com_0a3b21db526b"
+        "com_3fe3cbcef607"
       ]
     },
     {
@@ -12076,9 +12155,9 @@
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
-        "com_f8c88ef9a8ca",
-        "com_3048e331f7b6"
+        "com_f8c88ef9a8ca"
       ]
     },
     {
@@ -12271,9 +12350,9 @@
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_f8c88ef9a8ca",
-        "com_a20864ed56ec",
-        "com_f084ce2ea8b1"
+        "com_a20864ed56ec"
       ]
     },
     {
@@ -12815,9 +12894,9 @@
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
-        "com_f084ce2ea8b1",
-        "com_f8c88ef9a8ca"
+        "com_f084ce2ea8b1"
       ]
     },
     {
@@ -61201,7 +61280,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-08T22:19:53.983742+00:00",
+  "lastUpdated": "2026-11-08T22:29:36.347934+00:00",
   "version": 1,
   "schemaVersion": 1
 }
