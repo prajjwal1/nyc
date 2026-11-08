@@ -4329,13 +4329,15 @@
       "name": "New York Yoga Club",
       "kind": "club",
       "tagline": "New York Yoga Club is a community club centered on outdoors, wellness in park slope, west village.",
-      "description": "New York Yoga Club is a community club centered on outdoors, wellness in park slope, west village. Based on 3 observed event dates, it meets weekly on Wednesday and Friday evenings.",
+      "description": "New York Yoga Club is a community club centered on outdoors, wellness in park slope, west village. Based on 4 observed event dates, it meets weekly on Wednesday and Friday evenings.",
       "categories": [
         "outdoors",
+        "other",
         "wellness"
       ],
       "tags": [
         "outdoors",
+        "other",
         "wellness"
       ],
       "neighborhoods": [
@@ -4355,7 +4357,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 0
       },
       "schedule": {
@@ -4365,11 +4367,12 @@
           "Friday"
         ],
         "typicalTime": "18:30",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
         "ea7ddc0241adf577",
+        "cf2b00a3990a4bb8",
         "797a19432052f6b0",
         "533c757b584a4270"
       ],
@@ -4380,7 +4383,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4390,12 +4393,12 @@
         "luma:cal-07csi5jnv6xb0zz"
       ],
       "similarCommunityIds": [
-        "com_759f151a6d08",
         "com_1b90851c14cf",
         "com_61de7e5f2248",
-        "com_68f8f24f0095",
         "com_8c30193b027f",
-        "com_91772bf8b6fc"
+        "com_91772bf8b6fc",
+        "com_99b760c65d72",
+        "com_9d8d9bd86a8c"
       ]
     },
     {
@@ -4979,10 +4982,10 @@
       "similarCommunityIds": [
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
         "com_f8c88ef9a8ca",
-        "com_7a79190109e4",
-        "com_14e2dae511e1"
+        "com_7a79190109e4"
       ]
     },
     {
@@ -5198,12 +5201,12 @@
         "luma:cal-6kefzktxphcxcqd"
       ],
       "similarCommunityIds": [
+        "com_3fe3cbcef607",
         "com_f084ce2ea8b1",
         "com_ed952ca81836",
         "com_032059b33438",
         "com_0606c7e50fa8",
-        "com_dc810e090c07",
-        "com_f8c88ef9a8ca"
+        "com_dc810e090c07"
       ]
     },
     {
@@ -5725,6 +5728,82 @@
       ]
     },
     {
+      "id": "com_3fe3cbcef607",
+      "slug": "arturo-camargo-cef607",
+      "name": "Arturo Camargo",
+      "kind": "recurring_series",
+      "tagline": "Arturo Camargo is a recurring event series centered on parties in manhattan, long island city.",
+      "description": "Arturo Camargo is a recurring event series centered on parties in manhattan, long island city. Based on 2 observed event dates, it meets weekly on Tuesday and Wednesday afternoons.",
+      "categories": [
+        "other",
+        "parties"
+      ],
+      "tags": [
+        "other",
+        "parties"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "long island city"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/kj/476d8f14-3ad3-4ce8-abb0-ecf6c9edeb6e.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://elevenlabs.io/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday",
+          "Wednesday"
+        ],
+        "typicalTime": "16:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "7dadcb349ba4a8ef",
+        "b524306424e2eae8",
+        "a6d879988d1fd635"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-08",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:elevenlabs",
+        "luma:cal-bwxxhcsvdvfftmw",
+        "luma:usr-34odeclsf7vuzft"
+      ],
+      "similarCommunityIds": [
+        "com_2bdbc5148183",
+        "com_f8c88ef9a8ca",
+        "com_032059b33438",
+        "com_0606c7e50fa8",
+        "com_dc810e090c07",
+        "com_f084ce2ea8b1"
+      ]
+    },
+    {
       "id": "com_40bf372e58c5",
       "slug": "dusty-co-calendar-2e58c5",
       "name": "Dusty & Co Calendar",
@@ -6160,11 +6239,11 @@
       ],
       "similarCommunityIds": [
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_fe4b6663b721",
         "com_f084ce2ea8b1",
         "com_2598d21a6937",
-        "com_36cb2681053d",
-        "com_37da349b5b66"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -6311,9 +6390,9 @@
         "com_ff2e01957665",
         "com_032059b33438",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
-        "com_f8c88ef9a8ca",
-        "com_32f0be19b796"
+        "com_f8c88ef9a8ca"
       ]
     },
     {
@@ -6967,8 +7046,8 @@
         "com_2bdbc5148183",
         "com_d73abf992ef2",
         "com_ed952ca81836",
-        "com_fe4b6663b721",
-        "com_f084ce2ea8b1"
+        "com_3fe3cbcef607",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -8293,8 +8372,8 @@
         "com_118a558259ea",
         "com_2a1498596ec3",
         "com_394b0acee032",
-        "com_d0c3af4a939f",
-        "com_f783b3a7385a"
+        "com_3fe3cbcef607",
+        "com_d0c3af4a939f"
       ]
     },
     {
@@ -9570,12 +9649,12 @@
         "luma:cal-u7kgmwcaa2v4w5g"
       ],
       "similarCommunityIds": [
+        "com_3fe3cbcef607",
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
         "com_dc810e090c07",
-        "com_d0a5add7d8b9",
-        "com_a20864ed56ec"
+        "com_d0a5add7d8b9"
       ]
     },
     {
@@ -9999,8 +10078,8 @@
       ],
       "similarCommunityIds": [
         "com_8f2a69f866f2",
-        "com_ebf2f0d4ce77",
         "com_ad50d6a81df3",
+        "com_ebf2f0d4ce77",
         "com_4881e8598611",
         "com_68f8f24f0095",
         "com_b088368d86fa"
@@ -11784,7 +11863,7 @@
         "com_3942d7a4c6e3",
         "com_b8a3508a14a4",
         "com_9a5c4d074e3a",
-        "com_0a3b21db526b"
+        "com_3fe3cbcef607"
       ]
     },
     {
@@ -11852,9 +11931,9 @@
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
-        "com_f8c88ef9a8ca",
-        "com_b8a3508a14a4"
+        "com_f8c88ef9a8ca"
       ]
     },
     {
@@ -11984,9 +12063,9 @@
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_f8c88ef9a8ca",
-        "com_a20864ed56ec",
-        "com_f084ce2ea8b1"
+        "com_a20864ed56ec"
       ]
     },
     {
@@ -12528,9 +12607,9 @@
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
-        "com_f084ce2ea8b1",
-        "com_f8c88ef9a8ca"
+        "com_f084ce2ea8b1"
       ]
     },
     {
@@ -60989,7 +61068,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-08T18:01:37.623862+00:00",
+  "lastUpdated": "2026-11-08T18:30:38.676862+00:00",
   "version": 1,
   "schemaVersion": 1
 }
