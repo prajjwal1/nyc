@@ -1016,7 +1016,7 @@
       "name": "The Holes",
       "kind": "recurring_series",
       "tagline": "The Holes is a recurring event series in manhattan.",
-      "description": "The Holes is a recurring event series in manhattan. Based on 13 observed event dates, it meets weekly on Wednesday and Monday evenings.",
+      "description": "The Holes is a recurring event series in manhattan. Based on 15 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "other"
       ],
@@ -1039,18 +1039,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 9,
         "eventCount90d": 6
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Monday"
+          "Thursday"
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 13
+        "sampleSize": 15
       },
       "upcomingEventIds": [
         "f50522552046a28d",
@@ -1059,7 +1059,9 @@
         "366b4713d4ecca8d",
         "3426317440ebc045",
         "1c6de0c32eea6795",
-        "921e4338f8a77a30"
+        "921e4338f8a77a30",
+        "b966cb8d1ede4b10",
+        "33204159a1007ed7"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1068,7 +1070,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 13,
+        "observedDateCount": 15,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -61492,7 +61494,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-09T08:06:43.292950+00:00",
+  "lastUpdated": "2026-11-09T09:04:40.854103+00:00",
   "version": 1,
   "schemaVersion": 1
 }
