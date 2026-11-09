@@ -2808,8 +2808,8 @@
       },
       "upcomingEventIds": [
         "3c22f7705d08ee07",
-        "580411bfad112cdf",
         "95fe7cf1fb2ae52e",
+        "580411bfad112cdf",
         "6ffe32c06a510a8a",
         "96cf27159685012f",
         "96f60dcfa6b49441",
@@ -3128,11 +3128,11 @@
       ],
       "similarCommunityIds": [
         "com_1e68b580d0be",
+        "com_5c8ac62f26b3",
         "com_a4d969c3c6eb",
         "com_d2d455d2d6c9",
         "com_f990c90c32d5",
-        "com_33a530deb7aa",
-        "com_c4469caf0091"
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -4494,13 +4494,15 @@
       "slug": "boris-and-horton-c4154e",
       "name": "Boris and Horton",
       "kind": "recurring_series",
-      "tagline": "Boris and Horton is a recurring event series centered on games in manhattan.",
-      "description": "Boris and Horton is a recurring event series centered on games in manhattan. Based on 2 observed event dates, it meets biweekly on Sunday and Thursday mornings.",
+      "tagline": "Boris and Horton is a recurring event series centered on exploration, games in manhattan.",
+      "description": "Boris and Horton is a recurring event series centered on exploration, games in manhattan. Based on 2 observed event dates, it meets biweekly on Sunday and Thursday mornings.",
       "categories": [
+        "exploration",
         "other",
         "games"
       ],
       "tags": [
+        "exploration",
         "other",
         "games"
       ],
@@ -4558,9 +4560,9 @@
         "com_3481b6750d6f",
         "com_f54698ed682f",
         "com_44f59baa3830",
-        "com_c305531d38d0",
         "com_d1117f619e53",
-        "com_118a558259ea"
+        "com_c305531d38d0",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -4919,10 +4921,10 @@
       "similarCommunityIds": [
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
         "com_f8c88ef9a8ca",
-        "com_7a79190109e4",
-        "com_14e2dae511e1"
+        "com_7a79190109e4"
       ]
     },
     {
@@ -5142,12 +5144,12 @@
         "luma:cal-6kefzktxphcxcqd"
       ],
       "similarCommunityIds": [
+        "com_3fe3cbcef607",
         "com_f084ce2ea8b1",
         "com_ed952ca81836",
         "com_032059b33438",
         "com_0606c7e50fa8",
-        "com_dc810e090c07",
-        "com_f8c88ef9a8ca"
+        "com_dc810e090c07"
       ]
     },
     {
@@ -5735,6 +5737,82 @@
       ]
     },
     {
+      "id": "com_3fe3cbcef607",
+      "slug": "arturo-camargo-cef607",
+      "name": "Arturo Camargo",
+      "kind": "recurring_series",
+      "tagline": "Arturo Camargo is a recurring event series centered on parties in manhattan, long island city.",
+      "description": "Arturo Camargo is a recurring event series centered on parties in manhattan, long island city. Based on 2 observed event dates, it meets weekly on Tuesday and Wednesday afternoons.",
+      "categories": [
+        "other",
+        "parties"
+      ],
+      "tags": [
+        "other",
+        "parties"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "long island city"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/kj/476d8f14-3ad3-4ce8-abb0-ecf6c9edeb6e.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://elevenlabs.io/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday",
+          "Wednesday"
+        ],
+        "typicalTime": "16:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "7dadcb349ba4a8ef",
+        "b524306424e2eae8",
+        "a6d879988d1fd635"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-09",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:elevenlabs",
+        "luma:cal-bwxxhcsvdvfftmw",
+        "luma:usr-34odeclsf7vuzft"
+      ],
+      "similarCommunityIds": [
+        "com_2bdbc5148183",
+        "com_f8c88ef9a8ca",
+        "com_032059b33438",
+        "com_0606c7e50fa8",
+        "com_dc810e090c07",
+        "com_f084ce2ea8b1"
+      ]
+    },
+    {
       "id": "com_40bf372e58c5",
       "slug": "dusty-co-calendar-2e58c5",
       "name": "Dusty & Co Calendar",
@@ -6242,11 +6320,11 @@
       ],
       "similarCommunityIds": [
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_f084ce2ea8b1",
         "com_2598d21a6937",
         "com_36cb2681053d",
-        "com_37da349b5b66",
-        "com_3dd56f332431"
+        "com_37da349b5b66"
       ]
     },
     {
@@ -6393,9 +6471,9 @@
         "com_ff2e01957665",
         "com_032059b33438",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
-        "com_f8c88ef9a8ca",
-        "com_32f0be19b796"
+        "com_f8c88ef9a8ca"
       ]
     },
     {
@@ -6843,17 +6921,17 @@
       "slug": "kanso-phone-free-experiences-0c4390",
       "name": "Kanso: Phone-Free Experiences",
       "kind": "recurring_series",
-      "tagline": "Kanso: Phone-Free Experiences is a recurring event series centered on fitness, music in manhattan, williamsburg.",
-      "description": "Kanso: Phone-Free Experiences is a recurring event series centered on fitness, music in manhattan, williamsburg. Based on 3 observed event dates, it meets weekly on Thursday and Sunday evenings.",
+      "tagline": "Kanso: Phone-Free Experiences is a recurring event series centered on music, fitness in manhattan, williamsburg.",
+      "description": "Kanso: Phone-Free Experiences is a recurring event series centered on music, fitness in manhattan, williamsburg. Based on 3 observed event dates, it meets weekly on Thursday and Sunday evenings.",
       "categories": [
+        "music",
         "other",
-        "fitness",
-        "music"
+        "fitness"
       ],
       "tags": [
+        "music",
         "other",
-        "fitness",
-        "music"
+        "fitness"
       ],
       "neighborhoods": [
         "manhattan",
@@ -6984,7 +7062,7 @@
       "name": "The Collaboratory",
       "kind": "recurring_series",
       "tagline": "The Collaboratory is a recurring event series centered on parties in long island city.",
-      "description": "The Collaboratory is a recurring event series centered on parties in long island city. Based on 4 observed event dates, it meets weekly on Sunday and Tuesday afternoons.",
+      "description": "The Collaboratory is a recurring event series centered on parties in long island city. Based on 5 observed event dates, it meets weekly on Tuesday and Sunday evenings.",
       "categories": [
         "other",
         "parties"
@@ -7009,23 +7087,24 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 1
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Sunday",
-          "Tuesday"
+          "Tuesday",
+          "Sunday"
         ],
-        "typicalTime": "13:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "typicalTime": "18:30",
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "56ce13348d210773",
         "daf805b4c2d42cc2",
-        "22ceb1ef4107c254"
+        "22ceb1ef4107c254",
+        "6a763c5beb7de229"
       ],
       "sourceAttributions": [
         "luma"
@@ -7034,7 +7113,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -7045,12 +7124,12 @@
         "luma:cal-u7kgmwcaa2v4w5g"
       ],
       "similarCommunityIds": [
+        "com_3fe3cbcef607",
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
         "com_dc810e090c07",
-        "com_d0a5add7d8b9",
-        "com_a20864ed56ec"
+        "com_d0a5add7d8b9"
       ]
     },
     {
@@ -7193,8 +7272,8 @@
         "com_2bdbc5148183",
         "com_d73abf992ef2",
         "com_ed952ca81836",
-        "com_fe4b6663b721",
-        "com_f084ce2ea8b1"
+        "com_3fe3cbcef607",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -7260,11 +7339,11 @@
       ],
       "similarCommunityIds": [
         "com_14e2dae511e1",
-        "com_5c8ac62f26b3",
         "com_d74826b4ebc7",
         "com_387990e42591",
         "com_0a3b21db526b",
-        "com_2598d21a6937"
+        "com_2598d21a6937",
+        "com_30bd6ca662e0"
       ]
     },
     {
@@ -7718,7 +7797,7 @@
         "com_4a9490cb3534",
         "com_eef1ca956dae",
         "com_0cc8630779d7",
-        "com_f5605b691048"
+        "com_665eaac4154e"
       ]
     },
     {
@@ -7784,11 +7863,11 @@
       ],
       "similarCommunityIds": [
         "com_1e08b1e2de75",
-        "com_5c8ac62f26b3",
         "com_d74826b4ebc7",
         "com_387990e42591",
         "com_0a3b21db526b",
-        "com_2598d21a6937"
+        "com_2598d21a6937",
+        "com_30bd6ca662e0"
       ]
     },
     {
@@ -7928,9 +8007,9 @@
         "com_c305531d38d0",
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
-        "com_5c8ac62f26b3",
         "com_3481b6750d6f",
-        "com_40bf372e58c5"
+        "com_40bf372e58c5",
+        "com_9a5c4d074e3a"
       ]
     },
     {
@@ -8587,8 +8666,8 @@
         "com_118a558259ea",
         "com_2a1498596ec3",
         "com_394b0acee032",
-        "com_d0c3af4a939f",
-        "com_f783b3a7385a"
+        "com_3fe3cbcef607",
+        "com_d0c3af4a939f"
       ]
     },
     {
@@ -8812,13 +8891,13 @@
       "slug": "olive-tree-writing-club-2f26b3",
       "name": "Olive Tree Writing Club",
       "kind": "club",
-      "tagline": "Olive Tree Writing Club is a community club in midtown.",
-      "description": "Olive Tree Writing Club is a community club in midtown. Based on 2 observed event dates, it meets weekly on Sunday mornings.",
+      "tagline": "Olive Tree Writing Club is a community club centered on books in midtown.",
+      "description": "Olive Tree Writing Club is a community club centered on books in midtown. Based on 2 observed event dates, it meets weekly on Sunday mornings.",
       "categories": [
-        "other"
+        "books"
       ],
       "tags": [
-        "other"
+        "books"
       ],
       "neighborhoods": [
         "midtown"
@@ -8868,12 +8947,12 @@
         "luma:cal-q37zsegpns4eio2"
       ],
       "similarCommunityIds": [
-        "com_14e2dae511e1",
-        "com_1e08b1e2de75",
-        "com_d74826b4ebc7",
-        "com_387990e42591",
-        "com_0a3b21db526b",
-        "com_2598d21a6937"
+        "com_1e68b580d0be",
+        "com_f171cd222ca5",
+        "com_4e69412cb0a5",
+        "com_0d385c45c819",
+        "com_33a530deb7aa",
+        "com_4b79eca5454b"
       ]
     },
     {
@@ -8958,8 +9037,8 @@
         "com_2c239df2a554",
         "com_ff2e01957665",
         "com_1e68b580d0be",
-        "com_6114a53f79a0",
-        "com_f171cd222ca5"
+        "com_5c8ac62f26b3",
+        "com_6114a53f79a0"
       ]
     },
     {
@@ -11681,11 +11760,11 @@
       ],
       "similarCommunityIds": [
         "com_f171cd222ca5",
+        "com_5c8ac62f26b3",
         "com_4b79eca5454b",
         "com_96a0049afb0f",
         "com_d2d455d2d6c9",
-        "com_e9748c1176c1",
-        "com_f990c90c32d5"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -11694,7 +11773,7 @@
       "name": "The New York Philosophy Club",
       "kind": "club",
       "tagline": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, upper east side. Based on 27 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, upper east side. Based on 28 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
         "other",
         "art",
@@ -11724,18 +11803,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 44
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Saturday"
+          "Saturday",
+          "Wednesday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 27
+        "sampleSize": 28
       },
       "upcomingEventIds": [
         "b6d678c22c3b07b0",
@@ -11744,8 +11823,9 @@
         "1ac59efea9fd3f15",
         "a4aff3677148f26a",
         "5c7f219795bbfa24",
-        "698ec8453e5f4344",
         "f68ef1dbb841092f",
+        "698ec8453e5f4344",
+        "3d40b893b6e7d1e0",
         "cc29776d909b57dc"
       ],
       "sourceAttributions": [
@@ -11755,7 +11835,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 27,
+        "observedDateCount": 28,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -11913,8 +11993,8 @@
         "78d0ee3d99154b93",
         "72df5d612f43c186",
         "e8ff3a0ea56a494f",
-        "6f731918d4322cf7",
-        "f7d0fd779fa9a5a7"
+        "ca8881addf01aee7",
+        "6f731918d4322cf7"
       ],
       "sourceAttributions": [
         "luma"
@@ -11936,8 +12016,8 @@
         "com_2c239df2a554",
         "com_ff2e01957665",
         "com_1e68b580d0be",
-        "com_6114a53f79a0",
-        "com_ed8d42fb031d"
+        "com_5c8ac62f26b3",
+        "com_6114a53f79a0"
       ]
     },
     {
@@ -12292,9 +12372,9 @@
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
-        "com_f8c88ef9a8ca",
-        "com_b8a3508a14a4"
+        "com_f8c88ef9a8ca"
       ]
     },
     {
@@ -12487,9 +12567,9 @@
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_f8c88ef9a8ca",
-        "com_a20864ed56ec",
-        "com_f084ce2ea8b1"
+        "com_a20864ed56ec"
       ]
     },
     {
@@ -12904,9 +12984,9 @@
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_2bdbc5148183",
+        "com_3fe3cbcef607",
         "com_dc810e090c07",
-        "com_f084ce2ea8b1",
-        "com_f8c88ef9a8ca"
+        "com_f084ce2ea8b1"
       ]
     },
     {
@@ -13647,8 +13727,8 @@
         "6b657b1820ee6d12",
         "706c9c4fdfb9e6a6",
         "b4b882749cb20887",
-        "89f6f1a3d24762fb",
         "f5207a5c726e6330",
+        "89f6f1a3d24762fb",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
         "75154eebbdbd66ab",
@@ -13738,8 +13818,8 @@
         "1d64ca037bbd1459",
         "2d711019bce0ad90",
         "d7e2f1bf9d88248d",
-        "96aef416334118e2",
         "8ac149aba47cbafe",
+        "96aef416334118e2",
         "d6b8a714bbe600f9",
         "cbaf4a9c4b15e11d",
         "ff1a61f9e3651801",
@@ -61494,7 +61574,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-09T09:04:40.854103+00:00",
+  "lastUpdated": "2026-11-09T09:43:54.508928+00:00",
   "version": 1,
   "schemaVersion": 1
 }
