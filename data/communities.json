@@ -2752,10 +2752,10 @@
       "similarCommunityIds": [
         "com_2a1498596ec3",
         "com_394b0acee032",
+        "com_7c6c5c3e08c8",
         "com_f783b3a7385a",
         "com_fa3a83ebc0fe",
-        "com_6872604569d3",
-        "com_9f872a574dc0"
+        "com_6872604569d3"
       ]
     },
     {
@@ -2839,12 +2839,12 @@
         "eventbrite:40513431663"
       ],
       "similarCommunityIds": [
+        "com_318c39363fe6",
         "com_489a14652e20",
         "com_f28d3ae740a6",
         "com_c1410c07c4dd",
         "com_3837f308cd75",
-        "com_f9551f264561",
-        "com_318c39363fe6"
+        "com_f9551f264561"
       ]
     },
     {
@@ -3370,7 +3370,7 @@
         "com_394b0acee032",
         "com_6872604569d3",
         "com_794c8e5dea38",
-        "com_9f872a574dc0"
+        "com_7c6c5c3e08c8"
       ]
     },
     {
@@ -3526,8 +3526,8 @@
         "com_9a5c4d074e3a",
         "com_9fe1e0196792",
         "com_12939182c936",
-        "com_4881e8598611",
-        "com_648449f336c0"
+        "com_318c39363fe6",
+        "com_4881e8598611"
       ]
     },
     {
@@ -3983,8 +3983,8 @@
         "com_b736e77bdf93",
         "com_f171cd222ca5",
         "com_0e403135692e",
-        "com_1e68b580d0be",
-        "com_55ca36db453a"
+        "com_318c39363fe6",
+        "com_1e68b580d0be"
       ]
     },
     {
@@ -5688,9 +5688,9 @@
         "com_118a558259ea",
         "com_2a1498596ec3",
         "com_394b0acee032",
+        "com_7c6c5c3e08c8",
         "com_f783b3a7385a",
-        "com_fa3a83ebc0fe",
-        "com_6872604569d3"
+        "com_fa3a83ebc0fe"
       ]
     },
     {
@@ -6451,7 +6451,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 15,
         "eventCount90d": 4
       },
       "schedule": {
@@ -6471,12 +6471,12 @@
         "90c7175bdf3e3e26",
         "5a78c21950b9ecf9",
         "933053e32dea3c91",
+        "e74eece5087ab39b",
         "f27b92cac2cc52cc",
         "6223cdc7d9e4c8ac",
         "475820f1352a7369",
         "0e1a6c01ff412b1a",
-        "64f1022f44d3f614",
-        "755c29bd51a8c7c5"
+        "64f1022f44d3f614"
       ],
       "sourceAttributions": [
         "luma"
@@ -7452,12 +7452,12 @@
         "luma:cal-g6jcxpa85xmdhlm"
       ],
       "similarCommunityIds": [
-        "com_d74826b4ebc7",
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
         "com_2598d21a6937",
         "com_36cb2681053d",
-        "com_37da349b5b66"
+        "com_37da349b5b66",
+        "com_3dd56f332431"
       ]
     },
     {
@@ -9147,7 +9147,7 @@
         "com_2a1498596ec3",
         "com_394b0acee032",
         "com_3fe3cbcef607",
-        "com_f783b3a7385a"
+        "com_7c6c5c3e08c8"
       ]
     },
     {
@@ -9442,7 +9442,7 @@
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
       "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, williamsburg.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, williamsburg. Based on 12 observed event dates, it meets weekly on Tuesday and Monday evenings.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, williamsburg. Based on 13 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties"
@@ -9470,18 +9470,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-10",
-        "upcomingEventCount": 15,
+        "upcomingEventCount": 16,
         "eventCount90d": 3
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Tuesday",
-          "Monday"
+          "Monday",
+          "Tuesday"
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 13
       },
       "upcomingEventIds": [
         "9af8dca26b8a2d05",
@@ -9504,7 +9504,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 13,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -10056,6 +10056,76 @@
         "com_36cb2681053d",
         "com_37da349b5b66",
         "com_3dd56f332431"
+      ]
+    },
+    {
+      "id": "com_7c6c5c3e08c8",
+      "slug": "listen-labs-3e08c8",
+      "name": "Listen Labs",
+      "kind": "recurring_series",
+      "tagline": "Listen Labs is a recurring event series in manhattan.",
+      "description": "Listen Labs is a recurring event series in manhattan. Based on 2 observed event dates, it meets monthly on Thursday and Tuesday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Estela",
+      "imageUrl": "https://images.lumacdn.com/uploads/mm/f42c82cb-1afb-4fdc-b404-5bd6f03d1dfc.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/listenlabs"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "monthly",
+        "typicalDays": [
+          "Thursday",
+          "Tuesday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "0f6a2e933b047bd0",
+        "239295f346049415"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-10",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-rzr2gung6kh3tcu"
+      ],
+      "similarCommunityIds": [
+        "com_118a558259ea",
+        "com_2a1498596ec3",
+        "com_394b0acee032",
+        "com_f783b3a7385a",
+        "com_fa3a83ebc0fe",
+        "com_6872604569d3"
       ]
     },
     {
@@ -10860,12 +10930,12 @@
         "luma:cal-ujkx9akchikyu7r"
       ],
       "similarCommunityIds": [
+        "com_d74826b4ebc7",
         "com_2598d21a6937",
         "com_36cb2681053d",
         "com_37da349b5b66",
         "com_3dd56f332431",
-        "com_428275493172",
-        "com_530ce570649a"
+        "com_428275493172"
       ]
     },
     {
@@ -11212,10 +11282,10 @@
       "similarCommunityIds": [
         "com_b0e15eaab803",
         "com_ed8d42fb031d",
-        "com_318c39363fe6",
         "com_a1e1c13a75f0",
+        "com_318c39363fe6",
         "com_428275493172",
-        "com_c1410c07c4dd"
+        "com_9a2dacbc7195"
       ]
     },
     {
@@ -11505,10 +11575,10 @@
       "similarCommunityIds": [
         "com_118a558259ea",
         "com_2a1498596ec3",
+        "com_7c6c5c3e08c8",
         "com_f783b3a7385a",
         "com_fa3a83ebc0fe",
-        "com_6872604569d3",
-        "com_9f872a574dc0"
+        "com_6872604569d3"
       ]
     },
     {
@@ -11656,7 +11726,7 @@
       "name": "Bereisheet Tech (Asaf Wolff)",
       "kind": "recurring_series",
       "tagline": "Bereisheet Tech (Asaf Wolff) is a recurring event series in manhattan, financial district.",
-      "description": "Bereisheet Tech (Asaf Wolff) is a recurring event series in manhattan, financial district. Based on 4 observed event dates, it meets weekly on Thursday and Monday evenings.",
+      "description": "Bereisheet Tech (Asaf Wolff) is a recurring event series in manhattan, financial district. Based on 5 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "other"
       ],
@@ -11666,7 +11736,8 @@
       "neighborhoods": [
         "manhattan",
         "financial district",
-        "midtown"
+        "midtown",
+        "chelsea"
       ],
       "homeVenue": "Piermont, NY",
       "imageUrl": "https://images.lumacdn.com/uploads/mt/01c6c105-c25a-42a8-82bf-1c3018bae93d.png",
@@ -11681,18 +11752,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Thursday",
-          "Monday"
+          "Monday",
+          "Thursday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "a7cea3132f0dbcd7",
@@ -11700,6 +11771,7 @@
         "cba477552b9dca32",
         "3b936c722cf2cfab",
         "2bde678b7375a1cd",
+        "8b5ec5a5b030c10e",
         "f695121a3a3258bf"
       ],
       "sourceAttributions": [
@@ -11709,7 +11781,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -11718,12 +11790,12 @@
         "luma:cal-yppeooiilrhumaw"
       ],
       "similarCommunityIds": [
+        "com_30bd6ca662e0",
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
         "com_2598d21a6937",
         "com_36cb2681053d",
-        "com_37da349b5b66",
-        "com_3dd56f332431"
+        "com_37da349b5b66"
       ]
     },
     {
@@ -12013,10 +12085,10 @@
       "similarCommunityIds": [
         "com_118a558259ea",
         "com_394b0acee032",
+        "com_7c6c5c3e08c8",
         "com_f783b3a7385a",
         "com_fa3a83ebc0fe",
-        "com_6872604569d3",
-        "com_9f872a574dc0"
+        "com_6872604569d3"
       ]
     },
     {
@@ -12155,8 +12227,8 @@
         "com_2a1498596ec3",
         "com_394b0acee032",
         "com_6872604569d3",
-        "com_9f872a574dc0",
-        "com_c212478907d5"
+        "com_7c6c5c3e08c8",
+        "com_9f872a574dc0"
       ]
     },
     {
@@ -12226,9 +12298,9 @@
         "com_118a558259ea",
         "com_2a1498596ec3",
         "com_394b0acee032",
+        "com_7c6c5c3e08c8",
         "com_f783b3a7385a",
-        "com_fa3a83ebc0fe",
-        "com_5dfb5e7631bc"
+        "com_fa3a83ebc0fe"
       ]
     },
     {
@@ -12519,10 +12591,10 @@
       "similarCommunityIds": [
         "com_733b8a7ddfff",
         "com_ed8d42fb031d",
-        "com_318c39363fe6",
         "com_a1e1c13a75f0",
+        "com_318c39363fe6",
         "com_428275493172",
-        "com_c1410c07c4dd"
+        "com_9a2dacbc7195"
       ]
     },
     {
@@ -13605,9 +13677,9 @@
         "com_118a558259ea",
         "com_2a1498596ec3",
         "com_394b0acee032",
+        "com_7c6c5c3e08c8",
         "com_f783b3a7385a",
-        "com_fa3a83ebc0fe",
-        "com_9f872a574dc0"
+        "com_fa3a83ebc0fe"
       ]
     },
     {
@@ -14085,9 +14157,9 @@
         "com_118a558259ea",
         "com_2a1498596ec3",
         "com_394b0acee032",
+        "com_7c6c5c3e08c8",
         "com_f783b3a7385a",
-        "com_6872604569d3",
-        "com_9f872a574dc0"
+        "com_6872604569d3"
       ]
     },
     {
@@ -14155,9 +14227,9 @@
         "com_118a558259ea",
         "com_2a1498596ec3",
         "com_394b0acee032",
+        "com_7c6c5c3e08c8",
         "com_fa3a83ebc0fe",
-        "com_6872604569d3",
-        "com_9f872a574dc0"
+        "com_6872604569d3"
       ]
     },
     {
@@ -14281,12 +14353,12 @@
         "luma:usr-sfzyu1sdchclkql"
       ],
       "similarCommunityIds": [
+        "com_9a2dacbc7195",
         "com_30bd6ca662e0",
         "com_0a3b21db526b",
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
-        "com_2598d21a6937",
-        "com_32f0be19b796"
+        "com_2598d21a6937"
       ]
     },
     {
@@ -14358,12 +14430,83 @@
       ]
     },
     {
+      "id": "com_9a2dacbc7195",
+      "slug": "keller-williams-nyc-bc7195",
+      "name": "Keller Williams NYC",
+      "kind": "recurring_series",
+      "tagline": "Keller Williams NYC is a recurring event series in east village.",
+      "description": "Keller Williams NYC is a recurring event series in east village. Based on 2 observed event dates, it meets weekly on Tuesday and Monday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "east village"
+      ],
+      "homeVenue": "360 Madison Ave 9th floor",
+      "imageUrl": "https://images.lumacdn.com/uploads/qx/4920c7fa-252e-42d0-bd67-952c1bf89c9c.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://kwnyc.com"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-10",
+        "upcomingEventCount": 2,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday",
+          "Monday"
+        ],
+        "typicalTime": "13:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "a921ef7205d31450",
+        "229d63a4ea22bd41"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-10",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:kwnewyorkcity",
+        "luma:usr-uqalmxi10kirfjq"
+      ],
+      "similarCommunityIds": [
+        "com_428275493172",
+        "com_30bd6ca662e0",
+        "com_0a3b21db526b",
+        "com_14e2dae511e1",
+        "com_1e08b1e2de75",
+        "com_2598d21a6937"
+      ]
+    },
+    {
       "id": "com_77ec11668bd8",
       "slug": "north-brooklyn-women-s-collective-668bd8",
       "name": "North Brooklyn Women\u2019s Collective",
       "kind": "recurring_series",
       "tagline": "North Brooklyn Women\u2019s Collective is a recurring event series centered on books in brooklyn.",
-      "description": "North Brooklyn Women\u2019s Collective is a recurring event series centered on books in brooklyn. Based on 2 observed event dates, it meets weekly on Wednesday and Monday afternoons.",
+      "description": "North Brooklyn Women\u2019s Collective is a recurring event series centered on books in brooklyn. Based on 2 observed event dates, it meets weekly on Wednesday and Monday evenings.",
       "categories": [
         "other",
         "books"
@@ -14391,7 +14534,7 @@
           "Wednesday",
           "Monday"
         ],
-        "typicalTime": "15:00",
+        "typicalTime": "17:00",
         "confidence": 0.33,
         "sampleSize": 2
       },
@@ -15258,15 +15401,13 @@
         "comedy",
         "music",
         "art",
-        "games",
-        "special"
+        "books"
       ],
       "tags": [
         "comedy",
         "music",
         "art",
-        "games",
-        "special"
+        "books"
       ],
       "neighborhoods": [
         "east village"
@@ -15284,7 +15425,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-10",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 13,
         "eventCount90d": 116
       },
       "schedule": {
@@ -15301,7 +15442,6 @@
         "fd25339d0a64fead",
         "2b389b5f921c5a93",
         "f8731fb16a2080b5",
-        "37a95f2f31e05fba",
         "bd673832eda3fe72",
         "fb820f3fcf59bed4",
         "d2e1d942d3557260",
@@ -15309,7 +15449,8 @@
         "b0c2502861fa0acc",
         "182c6aaa148a95cc",
         "62cbf8ac65bb9556",
-        "a9434c4b4cabe198"
+        "a9434c4b4cabe198",
+        "4a3050762954da61"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -15327,12 +15468,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
+        "com_55ca36db453a",
         "com_f23f8820878b",
-        "com_733b8a7ddfff",
-        "com_b0e15eaab803",
-        "com_3048e331f7b6",
-        "com_b8a3508a14a4",
-        "com_55ca36db453a"
+        "com_489a14652e20",
+        "com_0d385c45c819",
+        "com_33a530deb7aa",
+        "com_664ab77e1bba"
       ]
     },
     {
@@ -62469,7 +62610,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-10T17:57:56.041745+00:00",
+  "lastUpdated": "2026-11-10T18:15:23.775397+00:00",
   "version": 1,
   "schemaVersion": 1
 }
