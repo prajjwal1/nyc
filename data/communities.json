@@ -7668,10 +7668,10 @@
       "similarCommunityIds": [
         "com_14e2dae511e1",
         "com_2c11a729728d",
+        "com_5a3b32df6329",
         "com_d74826b4ebc7",
         "com_387990e42591",
-        "com_05774b0951d0",
-        "com_0a3b21db526b"
+        "com_05774b0951d0"
       ]
     },
     {
@@ -8340,10 +8340,80 @@
       "similarCommunityIds": [
         "com_1e08b1e2de75",
         "com_2c11a729728d",
+        "com_5a3b32df6329",
         "com_d74826b4ebc7",
         "com_387990e42591",
-        "com_05774b0951d0",
-        "com_0a3b21db526b"
+        "com_05774b0951d0"
+      ]
+    },
+    {
+      "id": "com_5a3b32df6329",
+      "slug": "verci-events-df6329",
+      "name": "Verci Events",
+      "kind": "recurring_series",
+      "tagline": "Verci Events is a recurring event series in midtown.",
+      "description": "Verci Events is a recurring event series in midtown. Based on 2 observed event dates, it meets weekly on Thursday and Tuesday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "midtown"
+      ],
+      "homeVenue": "Midtown Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/22/595075b2-5632-497b-bceb-8ec4b316b47e.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/verci"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Tuesday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "1c96c6215f67a8bd",
+        "a8ea6650aad0ad48"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-10",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-l7gcelewimcklbv"
+      ],
+      "similarCommunityIds": [
+        "com_14e2dae511e1",
+        "com_1e08b1e2de75",
+        "com_2c11a729728d",
+        "com_d74826b4ebc7",
+        "com_387990e42591",
+        "com_05774b0951d0"
       ]
     },
     {
@@ -8484,8 +8554,8 @@
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
         "com_2c11a729728d",
-        "com_1c4e0060fa58",
-        "com_3481b6750d6f"
+        "com_5a3b32df6329",
+        "com_1c4e0060fa58"
       ]
     },
     {
@@ -14409,10 +14479,10 @@
       "similarCommunityIds": [
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
+        "com_5a3b32df6329",
         "com_d74826b4ebc7",
         "com_387990e42591",
-        "com_05774b0951d0",
-        "com_0a3b21db526b"
+        "com_05774b0951d0"
       ]
     },
     {
@@ -62865,7 +62935,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-10T23:18:55.453336+00:00",
+  "lastUpdated": "2026-11-10T23:24:12.682253+00:00",
   "version": 1,
   "schemaVersion": 1
 }
