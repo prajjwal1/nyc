@@ -2897,12 +2897,12 @@
         "eventbrite:40513431663"
       ],
       "similarCommunityIds": [
-        "com_318c39363fe6",
         "com_489a14652e20",
         "com_f28d3ae740a6",
         "com_c1410c07c4dd",
         "com_3837f308cd75",
-        "com_b736e77bdf93"
+        "com_b736e77bdf93",
+        "com_f9551f264561"
       ]
     },
     {
@@ -3581,7 +3581,7 @@
         "com_9fe1e0196792",
         "com_9f333da89132",
         "com_12939182c936",
-        "com_318c39363fe6"
+        "com_648449f336c0"
       ]
     },
     {
@@ -4034,9 +4034,9 @@
         "com_eeb4e424a504",
         "com_f171cd222ca5",
         "com_0e403135692e",
-        "com_318c39363fe6",
         "com_b736e77bdf93",
-        "com_1e68b580d0be"
+        "com_1e68b580d0be",
+        "com_55ca36db453a"
       ]
     },
     {
@@ -15061,8 +15061,8 @@
         "com_ed8d42fb031d",
         "com_cdd5daa67222",
         "com_0cc8630779d7",
-        "com_606719862cd1",
-        "com_6bbe66998143"
+        "com_318c39363fe6",
+        "com_606719862cd1"
       ]
     },
     {
@@ -15350,25 +15350,25 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, movies, celebrities in bushwick, east village.",
-      "description": "Book Club Bar is a community space centered on books, movies, celebrities in bushwick, east village. Based on 74 observed event dates, it meets weekly on Wednesday and Monday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, art, games in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, art, games in east village, bushwick. Based on 75 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
+        "art",
+        "games",
         "movies",
-        "celebrities",
-        "exploration",
-        "music"
+        "singles"
       ],
       "tags": [
         "books",
+        "art",
+        "games",
         "movies",
-        "celebrities",
-        "exploration",
-        "music"
+        "singles"
       ],
       "neighborhoods": [
-        "bushwick",
         "east village",
+        "bushwick",
         "brooklyn"
       ],
       "homeVenue": "Bushwick, 380 Troutman Street",
@@ -15377,25 +15377,25 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6755320261213"
+          "url": "https://bookclubbar.com/events/5730920270112"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-11",
-        "upcomingEventCount": 12,
+        "upcomingEventCount": 19,
         "eventCount90d": 79
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Wednesday",
-          "Monday"
+          "Tuesday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 74
+        "sampleSize": 75
       },
       "upcomingEventIds": [
         "706c9c4fdfb9e6a6",
@@ -15406,10 +15406,10 @@
         "11895fd591100f1b",
         "652b577813c05bee",
         "75154eebbdbd66ab",
+        "bdd1ca7932c28d3f",
         "8c9af583f973dd9d",
-        "fc2619757c970c2c",
-        "e722ce271b52df36",
-        "ee7b9b1c72a9fda6"
+        "54e81c1502303bdf",
+        "f663eb4c1f31cda1"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -15418,7 +15418,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 74,
+        "observedDateCount": 75,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -15426,18 +15426,22 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
+        },
+        {
+          "eventId": "39ae2e33322cd181",
+          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_eef1ca956dae",
-        "com_e9748c1176c1",
-        "com_4a9490cb3534",
+        "com_489a14652e20",
         "com_55ca36db453a",
-        "com_33a530deb7aa",
-        "com_4af3a0d8df95"
+        "com_f28d3ae740a6",
+        "com_a4d969c3c6eb",
+        "com_c0492b95ac8d",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -15919,11 +15923,11 @@
       ],
       "similarCommunityIds": [
         "com_4a9490cb3534",
-        "com_c1410c07c4dd",
         "com_8ff2a593caac",
         "com_72c625ae7237",
         "com_77ec11668bd8",
-        "com_b1c3376ecc52"
+        "com_b1c3376ecc52",
+        "com_4af3a0d8df95"
       ]
     },
     {
@@ -15938,14 +15942,14 @@
         "music",
         "special",
         "outdoors",
-        "food"
+        "celebrities"
       ],
       "tags": [
         "comedy",
         "music",
         "special",
         "outdoors",
-        "food"
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
@@ -15964,7 +15968,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-11",
-        "upcomingEventCount": 32,
+        "upcomingEventCount": 37,
         "eventCount90d": 340
       },
       "schedule": {
@@ -15986,10 +15990,10 @@
         "9364c3bbc72e9e59",
         "d50f6db96c1cb9cd",
         "ba1fb86f4fcfaca8",
-        "53c2b3ef8dcbb2d6",
-        "837d0641df978b16",
-        "22d9f5f8dda9a92a",
-        "487e5da6767651ef"
+        "cf6cc7e07b0723f1",
+        "54b507e82c36f9b5",
+        "e425709fa9581c3e",
+        "cd22012a9179a438"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -16007,8 +16011,8 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_3048e331f7b6",
         "com_318c39363fe6",
+        "com_3048e331f7b6",
         "com_b8a3508a14a4",
         "com_d8a5203885a9",
         "com_5dd8d7d6e995",
@@ -16026,13 +16030,15 @@
         "comedy",
         "music",
         "art",
-        "books"
+        "games",
+        "special"
       ],
       "tags": [
         "comedy",
         "music",
         "art",
-        "books"
+        "games",
+        "special"
       ],
       "neighborhoods": [
         "east village"
@@ -16050,7 +16056,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-11",
-        "upcomingEventCount": 15,
+        "upcomingEventCount": 16,
         "eventCount90d": 117
       },
       "schedule": {
@@ -16067,6 +16073,7 @@
         "baa4124eb6fd0286",
         "2b389b5f921c5a93",
         "b229bb6a2ddb55eb",
+        "37a95f2f31e05fba",
         "bd673832eda3fe72",
         "fb820f3fcf59bed4",
         "d2e1d942d3557260",
@@ -16074,8 +16081,7 @@
         "dddeb46eb4b6947a",
         "b0c2502861fa0acc",
         "811d2693f145da36",
-        "182c6aaa148a95cc",
-        "62cbf8ac65bb9556"
+        "182c6aaa148a95cc"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -16093,12 +16099,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
+        "com_f23f8820878b",
+        "com_3048e331f7b6",
+        "com_b8a3508a14a4",
         "com_55ca36db453a",
-        "com_489a14652e20",
-        "com_0d385c45c819",
-        "com_33a530deb7aa",
-        "com_664ab77e1bba",
-        "com_c4469caf0091"
+        "com_f28d3ae740a6",
+        "com_28a4ec647815"
       ]
     },
     {
@@ -63281,7 +63287,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-11T11:15:21.132242+00:00",
+  "lastUpdated": "2026-11-11T15:22:09.396286+00:00",
   "version": 1,
   "schemaVersion": 1
 }
