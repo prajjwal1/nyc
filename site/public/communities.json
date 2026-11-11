@@ -2819,12 +2819,12 @@
         "eventbrite:40513431663"
       ],
       "similarCommunityIds": [
+        "com_318c39363fe6",
         "com_489a14652e20",
         "com_f28d3ae740a6",
         "com_c1410c07c4dd",
         "com_3837f308cd75",
-        "com_f9551f264561",
-        "com_318c39363fe6"
+        "com_f9551f264561"
       ]
     },
     {
@@ -3503,8 +3503,8 @@
         "com_9a5c4d074e3a",
         "com_9fe1e0196792",
         "com_12939182c936",
-        "com_4881e8598611",
-        "com_648449f336c0"
+        "com_318c39363fe6",
+        "com_4881e8598611"
       ]
     },
     {
@@ -3957,9 +3957,9 @@
         "com_eeb4e424a504",
         "com_f171cd222ca5",
         "com_0e403135692e",
+        "com_318c39363fe6",
         "com_1e68b580d0be",
-        "com_55ca36db453a",
-        "com_5c8ac62f26b3"
+        "com_55ca36db453a"
       ]
     },
     {
@@ -5006,23 +5006,24 @@
       "name": "Texpats",
       "kind": "recurring_series",
       "tagline": "Texpats is a recurring event series centered on parties, food, music in west village, manhattan.",
-      "description": "Texpats is a recurring event series centered on parties, food, music in west village, manhattan. Based on 3 observed event dates, it meets monthly on Tuesday and Thursday evenings.",
+      "description": "Texpats is a recurring event series centered on parties, food, music in west village, manhattan. Based on 4 observed event dates, it meets monthly on Tuesday and Thursday evenings.",
       "categories": [
+        "other",
         "parties",
         "food",
-        "music",
-        "other"
+        "music"
       ],
       "tags": [
+        "other",
         "parties",
         "food",
-        "music",
-        "other"
+        "music"
       ],
       "neighborhoods": [
         "west village",
         "manhattan",
-        "east village"
+        "east village",
+        "brooklyn"
       ],
       "homeVenue": "Cowgirl",
       "imageUrl": "https://images.lumacdn.com/uploads/fy/3b0c12b8-be7b-480f-851f-20b8d61e9de3.png",
@@ -5037,7 +5038,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-10",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 1
       },
       "schedule": {
@@ -5047,12 +5048,13 @@
           "Thursday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
         "cb29160bd07b8fce",
-        "ff0806e469d84a51"
+        "ff0806e469d84a51",
+        "41589598316527b3"
       ],
       "sourceAttributions": [
         "luma"
@@ -5061,7 +5063,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -5073,11 +5075,11 @@
       ],
       "similarCommunityIds": [
         "com_d6cec2ac3e5a",
-        "com_f084ce2ea8b1",
-        "com_fe4b6663b721",
         "com_5a1a72bded1f",
+        "com_fe4b6663b721",
+        "com_f084ce2ea8b1",
         "com_78b8aba2a8f3",
-        "com_6872604569d3"
+        "com_2f6971c34a91"
       ]
     },
     {
@@ -5436,8 +5438,8 @@
       "similarCommunityIds": [
         "com_6114a53f79a0",
         "com_0cc8630779d7",
-        "com_57359d725dc0",
         "com_fbbdf45a2a0e",
+        "com_57359d725dc0",
         "com_14a9b81bfe8f",
         "com_2bdbc5148183"
       ]
@@ -5962,18 +5964,21 @@
       "name": "Long Angle Events",
       "kind": "recurring_series",
       "tagline": "Long Angle Events is a recurring event series centered on food, parties in chelsea, lower east side.",
-      "description": "Long Angle Events is a recurring event series centered on food, parties in chelsea, lower east side. Based on 2 observed event dates, it meets biweekly on Monday and Wednesday evenings.",
+      "description": "Long Angle Events is a recurring event series centered on food, parties in chelsea, lower east side. Based on 3 observed event dates, it meets biweekly on Wednesday and Monday evenings.",
       "categories": [
         "food",
-        "parties"
+        "parties",
+        "other"
       ],
       "tags": [
         "food",
-        "parties"
+        "parties",
+        "other"
       ],
       "neighborhoods": [
         "chelsea",
-        "lower east side"
+        "lower east side",
+        "manhattan"
       ],
       "homeVenue": "Il Fiorista",
       "imageUrl": "https://images.lumacdn.com/api-uploads/dz/04dca55d-8dcc-438a-8fbc-379dd6a5338b",
@@ -5988,22 +5993,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "biweekly",
         "typicalDays": [
-          "Monday",
-          "Wednesday"
+          "Wednesday",
+          "Monday"
         ],
         "typicalTime": "18:30",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "825ea861e1e3f275",
-        "87160a5446bbb46c"
+        "87160a5446bbb46c",
+        "a707a1770e378635"
       ],
       "sourceAttributions": [
         "luma"
@@ -6012,7 +6018,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -6021,12 +6027,12 @@
         "luma:cal-bzdnz5hksbuqc44"
       ],
       "similarCommunityIds": [
-        "com_78b8aba2a8f3",
-        "com_14a9b81bfe8f",
-        "com_47de8f45d349",
-        "com_8f3049b2c187",
         "com_2b6913d1e51a",
-        "com_d6cec2ac3e5a"
+        "com_d6cec2ac3e5a",
+        "com_1a46b1930293",
+        "com_78b8aba2a8f3",
+        "com_bb6928bc760c",
+        "com_14a9b81bfe8f"
       ]
     },
     {
@@ -6307,8 +6313,8 @@
       "similarCommunityIds": [
         "com_14a9b81bfe8f",
         "com_47de8f45d349",
-        "com_d36daf8ea112",
         "com_d6cec2ac3e5a",
+        "com_d36daf8ea112",
         "com_bb6928bc760c",
         "com_f084ce2ea8b1"
       ]
@@ -6988,7 +6994,7 @@
       "name": "Pitch and Run",
       "kind": "recurring_series",
       "tagline": "Pitch and Run is a recurring event series centered on outdoors, parties, theater in manhattan, chelsea.",
-      "description": "Pitch and Run is a recurring event series centered on outdoors, parties, theater in manhattan, chelsea. Based on 6 observed event dates, it meets weekly on Monday and Tuesday mornings.",
+      "description": "Pitch and Run is a recurring event series centered on outdoors, parties, theater in manhattan, chelsea. Based on 7 observed event dates, it meets weekly on Monday and Tuesday mornings.",
       "categories": [
         "outdoors",
         "parties",
@@ -7002,7 +7008,8 @@
       "neighborhoods": [
         "manhattan",
         "chelsea",
-        "williamsburg"
+        "williamsburg",
+        "flatbush"
       ],
       "homeVenue": "Bluestone Lane Chelsea Piers Caf\u00e9",
       "imageUrl": "https://images.lumacdn.com/event-covers/qq/04f11577-bbb5-43d4-b2a1-0d01cf20f39b",
@@ -7017,7 +7024,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-11",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 4
       },
       "schedule": {
@@ -7026,16 +7033,17 @@
           "Monday",
           "Tuesday"
         ],
-        "typicalTime": "09:00",
+        "typicalTime": "07:30",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
         "bc7ac22c1a5448d0",
         "e1ccf52972355760",
         "f24bee642fee43f4",
         "ec6eafe226b887c8",
-        "649f5211939998a8"
+        "649f5211939998a8",
+        "e7565e749584db80"
       ],
       "sourceAttributions": [
         "luma"
@@ -7044,7 +7052,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -7055,10 +7063,10 @@
       ],
       "similarCommunityIds": [
         "com_fbbdf45a2a0e",
-        "com_6114a53f79a0",
         "com_065dafa96d43",
-        "com_feb5ce491629",
+        "com_6114a53f79a0",
         "com_6bbe66998143",
+        "com_feb5ce491629",
         "com_4e69412cb0a5"
       ]
     },
@@ -8155,11 +8163,11 @@
       ],
       "similarCommunityIds": [
         "com_8ff2a593caac",
+        "com_bff06d9b0e6f",
         "com_eef1ca956dae",
+        "com_d36daf8ea112",
         "com_a1c312a97abe",
-        "com_c305531d38d0",
-        "com_8963cc48d824",
-        "com_d36daf8ea112"
+        "com_c305531d38d0"
       ]
     },
     {
@@ -8232,11 +8240,11 @@
       ],
       "similarCommunityIds": [
         "com_8963cc48d824",
+        "com_bff06d9b0e6f",
         "com_9c715da909bc",
         "com_4a9490cb3534",
         "com_e9748c1176c1",
-        "com_eef1ca956dae",
-        "com_f5605b691048"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -8884,7 +8892,7 @@
       "name": "Design Lab Calendar",
       "kind": "recurring_series",
       "tagline": "Design Lab Calendar is a recurring event series centered on photography in brooklyn.",
-      "description": "Design Lab Calendar is a recurring event series centered on photography in brooklyn. Based on 4 observed event dates, it meets weekly on Tuesday and Friday afternoons.",
+      "description": "Design Lab Calendar is a recurring event series centered on photography in brooklyn. Based on 5 observed event dates, it meets weekly on Tuesday and Thursday afternoons.",
       "categories": [
         "other",
         "photography"
@@ -8897,7 +8905,7 @@
         "brooklyn"
       ],
       "homeVenue": "NYU MakerSpace",
-      "imageUrl": "https://images.lumacdn.com/uploads/1m/e28b063b-edc1-4d28-a22e-983b6c2379fd.png",
+      "imageUrl": "https://images.lumacdn.com/uploads/d5/f36c2cf0-d44b-4883-981c-4a2a37485c24.png",
       "links": [
         {
           "type": "luma",
@@ -8909,20 +8917,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-10",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 1
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Tuesday",
-          "Friday"
+          "Thursday"
         ],
         "typicalTime": "15:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
+        "d4b88af7aa836ca7",
         "3a7f8bfed715a194",
         "7c81129b15887c1a",
         "c45446e8045ac55c"
@@ -8934,7 +8943,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -9532,8 +9541,8 @@
         "com_ddcfc606c1ae",
         "com_f171cd222ca5",
         "com_359977ec663e",
-        "com_4e69412cb0a5",
-        "com_0d385c45c819"
+        "com_0d385c45c819",
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -9541,8 +9550,8 @@
       "slug": "reading-rhythms-nyc-2cb0a5",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, williamsburg.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, williamsburg. Based on 13 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, upper west side.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties in manhattan, upper west side. Based on 14 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties"
@@ -9553,9 +9562,9 @@
       ],
       "neighborhoods": [
         "manhattan",
-        "williamsburg",
         "upper west side",
-        "midtown"
+        "long island city",
+        "williamsburg"
       ],
       "homeVenue": "Winnie Said",
       "imageUrl": "https://images.lumacdn.com/api-uploads/et/32a6f189-5bc0-4a7c-9865-3002b11c7757.jpg",
@@ -9570,7 +9579,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-10",
-        "upcomingEventCount": 15,
+        "upcomingEventCount": 17,
         "eventCount90d": 3
       },
       "schedule": {
@@ -9581,7 +9590,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 13
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "f481184d746e51b1",
@@ -9604,7 +9613,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 13,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -9618,8 +9627,8 @@
         "com_2c239df2a554",
         "com_d103029f0156",
         "com_1e68b580d0be",
-        "com_5c8ac62f26b3",
-        "com_ddcfc606c1ae"
+        "com_ddcfc606c1ae",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -9690,11 +9699,11 @@
       ],
       "similarCommunityIds": [
         "com_2b6913d1e51a",
-        "com_5a1a72bded1f",
         "com_bb6928bc760c",
+        "com_5a1a72bded1f",
+        "com_d36daf8ea112",
         "com_78b8aba2a8f3",
-        "com_f084ce2ea8b1",
-        "com_0606c7e50fa8"
+        "com_f084ce2ea8b1"
       ]
     },
     {
@@ -10438,8 +10447,8 @@
         "com_ff2e01957665",
         "com_d6cec2ac3e5a",
         "com_2f6971c34a91",
-        "com_032059b33438",
-        "com_14a9b81bfe8f"
+        "com_d36daf8ea112",
+        "com_032059b33438"
       ]
     },
     {
@@ -10946,9 +10955,9 @@
         "luma:cal-txva70ueld3eeaa"
       ],
       "similarCommunityIds": [
-        "com_d36daf8ea112",
         "com_c2d0cec20a9a",
         "com_1a46b1930293",
+        "com_d36daf8ea112",
         "com_e1cfa8bd1fad",
         "com_032059b33438",
         "com_0606c7e50fa8"
@@ -11444,8 +11453,8 @@
       "similarCommunityIds": [
         "com_b0e15eaab803",
         "com_ed8d42fb031d",
-        "com_318c39363fe6",
         "com_a1e1c13a75f0",
+        "com_318c39363fe6",
         "com_428275493172",
         "com_c1410c07c4dd"
       ]
@@ -11455,21 +11464,27 @@
       "slug": "anew-9b0e6f",
       "name": "Anew",
       "kind": "recurring_series",
-      "tagline": "Anew is a recurring event series centered on exploration, wellness in west village.",
-      "description": "Anew is a recurring event series centered on exploration, wellness in west village. Based on 2 observed event dates, it meets monthly on Tuesday and Wednesday evenings.",
+      "tagline": "Anew is a recurring event series centered on books, celebrities, exploration in west village.",
+      "description": "Anew is a recurring event series centered on books, celebrities, exploration in west village. Based on 3 observed event dates, it meets biweekly on Wednesday and Tuesday evenings.",
       "categories": [
+        "books",
+        "celebrities",
         "exploration",
+        "other",
         "wellness"
       ],
       "tags": [
+        "books",
+        "celebrities",
         "exploration",
+        "other",
         "wellness"
       ],
       "neighborhoods": [
         "west village"
       ],
       "homeVenue": "526 Hudson St",
-      "imageUrl": "https://images.lumacdn.com/uploads/16/26b961dc-88e5-4655-a758-7813aa2b7e32.png",
+      "imageUrl": "https://images.lumacdn.com/uploads/5o/2ea1466f-79f9-44cd-9d4e-f1f2dc06129d.png",
       "links": [
         {
           "type": "luma",
@@ -11481,20 +11496,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-10",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
-        "cadence": "monthly",
+        "cadence": "biweekly",
         "typicalDays": [
-          "Tuesday",
-          "Wednesday"
+          "Wednesday",
+          "Tuesday"
         ],
         "typicalTime": "17:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
+        "f7e64939b2992ef6",
         "d21a39ccd3e2eff3"
       ],
       "sourceAttributions": [
@@ -11504,7 +11520,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -11513,12 +11529,12 @@
         "luma:cal-wtqpsnfufcqpcdw"
       ],
       "similarCommunityIds": [
-        "com_3289a091c74f",
+        "com_8ff2a593caac",
         "com_665eaac4154e",
-        "com_ad50d6a81df3",
-        "com_ebf2f0d4ce77",
-        "com_bb6928bc760c",
-        "com_4881e8598611"
+        "com_8963cc48d824",
+        "com_4a9490cb3534",
+        "com_e9748c1176c1",
+        "com_f5605b691048"
       ]
     },
     {
@@ -12814,8 +12830,8 @@
       "similarCommunityIds": [
         "com_733b8a7ddfff",
         "com_ed8d42fb031d",
-        "com_318c39363fe6",
         "com_a1e1c13a75f0",
+        "com_318c39363fe6",
         "com_428275493172",
         "com_c1410c07c4dd"
       ]
@@ -13138,8 +13154,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, games in manhattan, williamsburg.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, games in manhattan, williamsburg. Based on 54 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, games in manhattan, long island city.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, games in manhattan, long island city. Based on 55 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -13152,11 +13168,11 @@
       ],
       "neighborhoods": [
         "manhattan",
+        "long island city",
         "williamsburg",
-        "brooklyn",
-        "upper west side"
+        "brooklyn"
       ],
-      "homeVenue": "Winnie Said",
+      "homeVenue": "10-15 43rd Ave",
       "imageUrl": "https://images.lumacdn.com/api-uploads/et/32a6f189-5bc0-4a7c-9865-3002b11c7757.jpg",
       "links": [
         {
@@ -13169,7 +13185,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-11",
-        "upcomingEventCount": 15,
+        "upcomingEventCount": 16,
         "eventCount90d": 63
       },
       "schedule": {
@@ -13180,7 +13196,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 54
+        "sampleSize": 55
       },
       "upcomingEventIds": [
         "f481184d746e51b1",
@@ -13203,7 +13219,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 54,
+        "observedDateCount": 55,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -15677,15 +15693,13 @@
         "comedy",
         "music",
         "art",
-        "games",
-        "special"
+        "books"
       ],
       "tags": [
         "comedy",
         "music",
         "art",
-        "games",
-        "special"
+        "books"
       ],
       "neighborhoods": [
         "east village"
@@ -15703,7 +15717,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-10",
-        "upcomingEventCount": 15,
+        "upcomingEventCount": 14,
         "eventCount90d": 116
       },
       "schedule": {
@@ -15720,7 +15734,6 @@
         "2b389b5f921c5a93",
         "f8731fb16a2080b5",
         "b229bb6a2ddb55eb",
-        "37a95f2f31e05fba",
         "bd673832eda3fe72",
         "fb820f3fcf59bed4",
         "d2e1d942d3557260",
@@ -15728,7 +15741,8 @@
         "dddeb46eb4b6947a",
         "b0c2502861fa0acc",
         "182c6aaa148a95cc",
-        "62cbf8ac65bb9556"
+        "62cbf8ac65bb9556",
+        "a9434c4b4cabe198"
       ],
       "sourceAttributions": [
         "eastvillecomedy"
@@ -15746,12 +15760,12 @@
         "url:https://www.eastvillecomedy.com"
       ],
       "similarCommunityIds": [
+        "com_55ca36db453a",
         "com_f23f8820878b",
-        "com_733b8a7ddfff",
-        "com_b0e15eaab803",
-        "com_3048e331f7b6",
-        "com_b8a3508a14a4",
-        "com_55ca36db453a"
+        "com_489a14652e20",
+        "com_0d385c45c819",
+        "com_33a530deb7aa",
+        "com_664ab77e1bba"
       ]
     },
     {
@@ -62888,7 +62902,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-11T02:54:38.947403+00:00",
+  "lastUpdated": "2026-11-11T03:01:15.859257+00:00",
   "version": 1,
   "schemaVersion": 1
 }
