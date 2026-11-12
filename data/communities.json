@@ -2532,7 +2532,7 @@
       "name": "Strand Bookstore",
       "kind": "recurring_series",
       "tagline": "Strand Bookstore is a recurring event series in manhattan, east village.",
-      "description": "Strand Bookstore is a recurring event series in manhattan, east village. Based on 39 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "description": "Strand Bookstore is a recurring event series in manhattan, east village. Based on 40 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "other"
       ],
@@ -2556,7 +2556,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 39
       },
       "schedule": {
@@ -2567,7 +2567,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 39
+        "sampleSize": 40
       },
       "upcomingEventIds": [
         "361114e3832eccfa",
@@ -2577,7 +2577,8 @@
         "944c4abc3ae31acb",
         "84ba0d6b2911ae7b",
         "f714286d62d006de",
-        "b9c163b70fae1edd"
+        "b9c163b70fae1edd",
+        "0f6cd37f834bf648"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2586,7 +2587,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 39,
+        "observedDateCount": 40,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -2906,9 +2907,9 @@
       "id": "com_55ca36db453a",
       "slug": "book-club-bar-db453a",
       "name": "Book Club Bar",
-      "kind": "club",
-      "tagline": "Book Club Bar is a community club centered on books, parties, music in east village, bushwick.",
-      "description": "Book Club Bar is a community club centered on books, parties, music in east village, bushwick. Based on 34 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "kind": "community_space",
+      "tagline": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, parties, music in east village, bushwick. Based on 35 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -2931,8 +2932,8 @@
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/11_November_/Indie_June_Square.png?cb=1791414452",
       "links": [
         {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
+          "type": "bookclubbar",
+          "label": "View on Bookclubbar",
           "url": "https://eventbrite.com/o/40513431663"
         }
       ],
@@ -2940,7 +2941,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 11,
         "eventCount90d": 31
       },
       "schedule": {
@@ -2951,7 +2952,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 34
+        "sampleSize": 35
       },
       "upcomingEventIds": [
         "6ffe32c06a510a8a",
@@ -2963,16 +2964,17 @@
         "e08fc62dec2db8d7",
         "1194e70d5bf2f095",
         "15a52252351548d9",
-        "c75c34c4a102f792"
+        "c75c34c4a102f792",
+        "6e8ac45a5d99b810"
       ],
       "sourceAttributions": [
-        "eventbrite"
+        "bookclubbar"
       ],
       "lastVerifiedAt": "2026-11-12",
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 34,
+        "observedDateCount": 35,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -15978,7 +15980,7 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, movies, music in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, movies, music in east village, bushwick. Based on 76 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, movies, music in east village, bushwick. Based on 75 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "movies",
@@ -16004,14 +16006,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6772820270113"
+          "url": "https://www.bookclubbar.com/events/6755320261213"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 12,
+        "upcomingEventCount": 11,
         "eventCount90d": 79
       },
       "schedule": {
@@ -16022,7 +16024,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 76
+        "sampleSize": 75
       },
       "upcomingEventIds": [
         "b4b882749cb20887",
@@ -16035,8 +16037,7 @@
         "8c9af583f973dd9d",
         "fc2619757c970c2c",
         "e722ce271b52df36",
-        "ee7b9b1c72a9fda6",
-        "6e8ac45a5d99b810"
+        "ee7b9b1c72a9fda6"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -16045,7 +16046,7 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 76,
+        "observedDateCount": 75,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
@@ -16564,14 +16565,14 @@
         "music",
         "outdoors",
         "special",
-        "celebrities"
+        "singles"
       ],
       "tags": [
         "comedy",
         "music",
         "outdoors",
         "special",
-        "celebrities"
+        "singles"
       ],
       "neighborhoods": [
         "east village",
@@ -16590,7 +16591,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 47,
+        "upcomingEventCount": 45,
         "eventCount90d": 346
       },
       "schedule": {
@@ -16605,9 +16606,9 @@
       },
       "upcomingEventIds": [
         "1caedd28906362d0",
+        "35e1d62c88bdce7c",
         "166a98ec622d1946",
         "9364c3bbc72e9e59",
-        "35e1d62c88bdce7c",
         "ba1fb86f4fcfaca8",
         "ab0b3edf363c1e0e",
         "54b507e82c36f9b5",
@@ -63821,7 +63822,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-12T06:24:01.113593+00:00",
+  "lastUpdated": "2026-11-12T07:30:45.807249+00:00",
   "version": 1,
   "schemaVersion": 1
 }
