@@ -74,8 +74,8 @@
         "com_3837f308cd75",
         "com_c58670960684",
         "com_0ae542c496b3",
-        "com_3eed1a2effb4",
-        "com_525bddfaee91"
+        "com_32f0be19b796",
+        "com_3eed1a2effb4"
       ]
     },
     {
@@ -142,10 +142,10 @@
         "eventbrite:104303955321"
       ],
       "similarCommunityIds": [
+        "com_32f0be19b796",
         "com_525bddfaee91",
         "com_85dcc6145f3c",
         "com_2f6971c34a91",
-        "com_32f0be19b796",
         "com_36080a5c47cd",
         "com_3837f308cd75"
       ]
@@ -1896,10 +1896,10 @@
       "similarCommunityIds": [
         "com_f28d3ae740a6",
         "com_0ae542c496b3",
+        "com_32f0be19b796",
         "com_72c625ae7237",
         "com_77ec11668bd8",
-        "com_489a14652e20",
-        "com_3048e331f7b6"
+        "com_489a14652e20"
       ]
     },
     {
@@ -2204,10 +2204,10 @@
       "similarCommunityIds": [
         "com_f9551f264561",
         "com_0ae542c496b3",
+        "com_32f0be19b796",
         "com_e341908692df",
         "com_4af3a0d8df95",
-        "com_8f2a69f866f2",
-        "com_cb019f4e9752"
+        "com_8f2a69f866f2"
       ]
     },
     {
@@ -4719,13 +4719,15 @@
       "slug": "yituo-lab-19b796",
       "name": "YITUO Lab",
       "kind": "recurring_series",
-      "tagline": "YITUO Lab is a recurring event series in brooklyn.",
-      "description": "YITUO Lab is a recurring event series in brooklyn. Based on 3 observed event dates, it meets weekly on Saturday and Sunday afternoons.",
+      "tagline": "YITUO Lab is a recurring event series centered on art in brooklyn.",
+      "description": "YITUO Lab is a recurring event series centered on art in brooklyn. Based on 4 observed event dates, it meets weekly on Saturday and Sunday afternoons.",
       "categories": [
-        "other"
+        "other",
+        "art"
       ],
       "tags": [
-        "other"
+        "other",
+        "art"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -4743,7 +4745,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
@@ -4753,11 +4755,12 @@
           "Sunday"
         ],
         "typicalTime": "13:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
-        "1b84c43d12433d99"
+        "1b84c43d12433d99",
+        "3f7d7eadbcee250c"
       ],
       "sourceAttributions": [
         "luma"
@@ -4766,7 +4769,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4775,12 +4778,12 @@
         "luma:cal-1asjingyzenpqaz"
       ],
       "similarCommunityIds": [
+        "com_0ae542c496b3",
+        "com_525bddfaee91",
+        "com_85dcc6145f3c",
         "com_2f6971c34a91",
         "com_36080a5c47cd",
-        "com_904b280a7245",
-        "com_bf8843235af2",
-        "com_fb44e10deb2f",
-        "com_ad2672f76c94"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -5140,11 +5143,11 @@
       ],
       "similarCommunityIds": [
         "com_2f6971c34a91",
-        "com_32f0be19b796",
         "com_36080a5c47cd",
         "com_904b280a7245",
         "com_fb44e10deb2f",
-        "com_ad2672f76c94"
+        "com_ad2672f76c94",
+        "com_b83591efbbe7"
       ]
     },
     {
@@ -5521,6 +5524,77 @@
         "com_12939182c936",
         "com_1c4e0060fa58",
         "com_3481b6750d6f"
+      ]
+    },
+    {
+      "id": "com_ecbd2783c835",
+      "slug": "claude-workshops-83c835",
+      "name": "Claude Workshops",
+      "kind": "recurring_series",
+      "tagline": "Claude Workshops is a recurring event series in manhattan, financial district.",
+      "description": "Claude Workshops is a recurring event series in manhattan, financial district. Based on 2 observed event dates, it meets weekly on Wednesday and Thursday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "financial district"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/dv/29073328-6cfd-4455-8c68-cd57dcafd7f2.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/claudeworkshops"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Thursday"
+        ],
+        "typicalTime": "14:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "fba7bf26812a789a",
+        "b1397f808e8cbf3a"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-12",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-8ack0vjqofkphxl"
+      ],
+      "similarCommunityIds": [
+        "com_05774b0951d0",
+        "com_1c65032c5bbc",
+        "com_1e60766a7318",
+        "com_2598d21a6937",
+        "com_36cb2681053d",
+        "com_37da349b5b66"
       ]
     },
     {
@@ -6032,7 +6106,7 @@
         "com_1e60766a7318",
         "com_2598d21a6937",
         "com_2f6971c34a91",
-        "com_32f0be19b796"
+        "com_36080a5c47cd"
       ]
     },
     {
@@ -6101,11 +6175,11 @@
       ],
       "similarCommunityIds": [
         "com_0ae542c496b3",
+        "com_32f0be19b796",
         "com_525bddfaee91",
         "com_118a558259ea",
         "com_5dfb5e7631bc",
-        "com_072c9c3e12a8",
-        "com_359977ec663e"
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -6250,8 +6324,8 @@
         "com_8f2a69f866f2",
         "com_273757444236",
         "com_2f6971c34a91",
-        "com_32f0be19b796",
-        "com_36080a5c47cd"
+        "com_36080a5c47cd",
+        "com_904b280a7245"
       ]
     },
     {
@@ -7270,11 +7344,11 @@
       ],
       "similarCommunityIds": [
         "com_2f6971c34a91",
-        "com_32f0be19b796",
         "com_36080a5c47cd",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_fb44e10deb2f"
+        "com_fb44e10deb2f",
+        "com_b83591efbbe7"
       ]
     },
     {
@@ -7352,21 +7426,21 @@
       "slug": "pitch-and-run-725dc0",
       "name": "Pitch and Run",
       "kind": "recurring_series",
-      "tagline": "Pitch and Run is a recurring event series centered on parties, outdoors in chelsea, manhattan.",
-      "description": "Pitch and Run is a recurring event series centered on parties, outdoors in chelsea, manhattan. Based on 8 observed event dates, it meets weekly on Monday and Tuesday mornings.",
+      "tagline": "Pitch and Run is a recurring event series centered on outdoors, parties in manhattan, chelsea.",
+      "description": "Pitch and Run is a recurring event series centered on outdoors, parties in manhattan, chelsea. Based on 8 observed event dates, it meets weekly on Monday and Tuesday mornings.",
       "categories": [
-        "parties",
         "outdoors",
+        "parties",
         "other"
       ],
       "tags": [
-        "parties",
         "outdoors",
+        "parties",
         "other"
       ],
       "neighborhoods": [
-        "chelsea",
         "manhattan",
+        "chelsea",
         "flatbush",
         "williamsburg"
       ],
@@ -7383,7 +7457,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 5
       },
       "schedule": {
@@ -7401,7 +7475,8 @@
         "ec6eafe226b887c8",
         "649f5211939998a8",
         "e7565e749584db80",
-        "f4db381ef6f13cbe"
+        "f4db381ef6f13cbe",
+        "15d301c7c82b52d4"
       ],
       "sourceAttributions": [
         "luma"
@@ -7632,11 +7707,11 @@
       ],
       "similarCommunityIds": [
         "com_2f6971c34a91",
-        "com_32f0be19b796",
         "com_36080a5c47cd",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_c212478907d5"
+        "com_c212478907d5",
+        "com_fb44e10deb2f"
       ]
     },
     {
@@ -7870,7 +7945,7 @@
       "name": "Keller Williams Points North Classes & Events",
       "kind": "recurring_series",
       "tagline": "Keller Williams Points North Classes & Events is a recurring event series in manhattan.",
-      "description": "Keller Williams Points North Classes & Events is a recurring event series in manhattan. Based on 2 observed event dates, it meets weekly on Friday and Tuesday afternoons.",
+      "description": "Keller Williams Points North Classes & Events is a recurring event series in manhattan. Based on 3 observed event dates, it meets weekly on Friday and Monday afternoons.",
       "categories": [
         "other"
       ],
@@ -7893,21 +7968,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Tuesday"
+          "Monday"
         ],
         "typicalTime": "12:30",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "b3d0d8edb01838f4",
+        "06417ee6f78d639c",
         "9ba853220b6b76c6"
       ],
       "sourceAttributions": [
@@ -7917,7 +7993,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -8139,12 +8215,12 @@
         "luma:cal-hesimy29s0r6fkn"
       ],
       "similarCommunityIds": [
-        "com_32f0be19b796",
         "com_36080a5c47cd",
         "com_904b280a7245",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_ad2672f76c94"
+        "com_ad2672f76c94",
+        "com_b83591efbbe7"
       ]
     },
     {
@@ -9080,12 +9156,12 @@
         "luma:cal-m4q2gvimdmvslnd"
       ],
       "similarCommunityIds": [
+        "com_ecbd2783c835",
         "com_f739c03ef66c",
         "com_d74826b4ebc7",
         "com_05774b0951d0",
         "com_0a3b21db526b",
-        "com_14e2dae511e1",
-        "com_1b71901c7841"
+        "com_14e2dae511e1"
       ]
     },
     {
@@ -9440,10 +9516,10 @@
       "similarCommunityIds": [
         "com_dbabd46f4ec6",
         "com_2f6971c34a91",
-        "com_32f0be19b796",
         "com_36080a5c47cd",
         "com_904b280a7245",
-        "com_bf8843235af2"
+        "com_bf8843235af2",
+        "com_fb44e10deb2f"
       ]
     },
     {
@@ -10619,8 +10695,13 @@
         "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "d5b6ce8699896774",
+          "signal": "first time"
+        }
+      ],
       "aliases": [
         "instagram:ddmcnyc",
         "luma:cal-rnedhwl6jgmdhv8"
@@ -11211,11 +11292,11 @@
       ],
       "similarCommunityIds": [
         "com_2f6971c34a91",
-        "com_32f0be19b796",
         "com_36080a5c47cd",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_ad2672f76c94"
+        "com_ad2672f76c94",
+        "com_b83591efbbe7"
       ]
     },
     {
@@ -11361,11 +11442,11 @@
       ],
       "similarCommunityIds": [
         "com_2f6971c34a91",
-        "com_32f0be19b796",
         "com_904b280a7245",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_ad2672f76c94"
+        "com_ad2672f76c94",
+        "com_b83591efbbe7"
       ]
     },
     {
@@ -11783,10 +11864,10 @@
       "similarCommunityIds": [
         "com_c40f2343dd99",
         "com_606719862cd1",
+        "com_ecbd2783c835",
         "com_d74826b4ebc7",
         "com_05774b0951d0",
-        "com_0a3b21db526b",
-        "com_14e2dae511e1"
+        "com_0a3b21db526b"
       ]
     },
     {
@@ -11997,7 +12078,7 @@
         "com_2c239df2a554",
         "com_4b79eca5454b",
         "com_2f6971c34a91",
-        "com_32f0be19b796"
+        "com_36080a5c47cd"
       ]
     },
     {
@@ -12216,11 +12297,11 @@
       ],
       "similarCommunityIds": [
         "com_2f6971c34a91",
-        "com_32f0be19b796",
         "com_36080a5c47cd",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_ad2672f76c94"
+        "com_ad2672f76c94",
+        "com_b83591efbbe7"
       ]
     },
     {
@@ -12502,11 +12583,11 @@
       ],
       "similarCommunityIds": [
         "com_5251e78f4060",
+        "com_ecbd2783c835",
         "com_30bd6ca662e0",
         "com_05774b0951d0",
         "com_14e2dae511e1",
-        "com_1c65032c5bbc",
-        "com_1e08b1e2de75"
+        "com_1c65032c5bbc"
       ]
     },
     {
@@ -13445,10 +13526,10 @@
       "similarCommunityIds": [
         "com_ebc8f9af24a5",
         "com_2f6971c34a91",
-        "com_32f0be19b796",
         "com_36080a5c47cd",
         "com_904b280a7245",
-        "com_bf8843235af2"
+        "com_bf8843235af2",
+        "com_fb44e10deb2f"
       ]
     },
     {
@@ -13604,9 +13685,9 @@
         "com_c58670960684",
         "com_525bddfaee91",
         "com_0ae542c496b3",
+        "com_32f0be19b796",
         "com_85dcc6145f3c",
-        "com_7d3e76b46ffc",
-        "com_072c9c3e12a8"
+        "com_7d3e76b46ffc"
       ]
     },
     {
@@ -14567,11 +14648,11 @@
       ],
       "similarCommunityIds": [
         "com_0ae542c496b3",
+        "com_32f0be19b796",
         "com_12939182c936",
         "com_525bddfaee91",
         "com_3837f308cd75",
-        "com_68b36e93076a",
-        "com_b736e77bdf93"
+        "com_68b36e93076a"
       ]
     },
     {
@@ -14716,7 +14797,7 @@
       "name": "Gladys Books and Wine",
       "kind": "recurring_series",
       "tagline": "Gladys Books and Wine is a recurring event series centered on books, celebrities, exploration in harlem.",
-      "description": "Gladys Books and Wine is a recurring event series centered on books, celebrities, exploration in harlem. Based on 2 observed event dates, it meets monthly on Wednesday and Friday evenings.",
+      "description": "Gladys Books and Wine is a recurring event series centered on books, celebrities, exploration in harlem. Based on 3 observed event dates, it meets monthly on Wednesday and Thursday evenings.",
       "categories": [
         "books",
         "celebrities",
@@ -14733,26 +14814,27 @@
         "harlem"
       ],
       "homeVenue": "Gladys Books & Wine",
-      "imageUrl": "https://images.lumacdn.com/uploads/7q/a09a95d3-f98d-48a4-8459-48d3cd8b8e27.png",
+      "imageUrl": "https://images.lumacdn.com/uploads/te/48593843-66e1-45fe-a089-3b26dd46797f.png",
       "links": [],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-11-11",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
+        "lastEventDate": "2026-11-12",
+        "upcomingEventCount": 2,
+        "eventCount90d": 2
       },
       "schedule": {
         "cadence": "monthly",
         "typicalDays": [
           "Wednesday",
-          "Friday"
+          "Thursday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
+        "deb965ff7deba4d6",
         "db8835ac070d2271"
       ],
       "sourceAttributions": [
@@ -14762,7 +14844,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -15182,10 +15264,10 @@
       "similarCommunityIds": [
         "com_3f478631e906",
         "com_2f6971c34a91",
-        "com_32f0be19b796",
         "com_36080a5c47cd",
         "com_904b280a7245",
-        "com_bb4df3056be7"
+        "com_bb4df3056be7",
+        "com_bf8843235af2"
       ]
     },
     {
@@ -15249,11 +15331,11 @@
       ],
       "similarCommunityIds": [
         "com_0ae542c496b3",
+        "com_32f0be19b796",
         "com_85dcc6145f3c",
         "com_118a558259ea",
         "com_5dfb5e7631bc",
-        "com_b83591efbbe7",
-        "com_072c9c3e12a8"
+        "com_b83591efbbe7"
       ]
     },
     {
@@ -15457,7 +15539,7 @@
         "com_2c239df2a554",
         "com_4b79eca5454b",
         "com_2f6971c34a91",
-        "com_32f0be19b796"
+        "com_36080a5c47cd"
       ]
     },
     {
@@ -63522,7 +63604,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-12T00:20:33.648543+00:00",
+  "lastUpdated": "2026-11-12T00:59:56.737601+00:00",
   "version": 1,
   "schemaVersion": 1
 }
