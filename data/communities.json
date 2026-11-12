@@ -12596,7 +12596,7 @@
       "name": "Nooks and Socials",
       "kind": "recurring_series",
       "tagline": "Nooks and Socials is a recurring event series centered on parties, music, comedy in manhattan.",
-      "description": "Nooks and Socials is a recurring event series centered on parties, music, comedy in manhattan. Based on 6 observed event dates, it meets weekly on Wednesday and Thursday afternoons.",
+      "description": "Nooks and Socials is a recurring event series centered on parties, music, comedy in manhattan. Based on 5 observed event dates, it meets weekly on Wednesday and Thursday afternoons.",
       "categories": [
         "other",
         "parties",
@@ -12625,7 +12625,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 6,
         "eventCount90d": 2
       },
       "schedule": {
@@ -12635,8 +12635,8 @@
           "Thursday"
         ],
         "typicalTime": "14:00",
-        "confidence": 1.0,
-        "sampleSize": 6
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "5cfa24d5ba182cab",
@@ -12644,7 +12644,6 @@
         "7e0ff9e15e5ab04e",
         "b9b92b9bf73e0407",
         "4b5517b8c246e4e8",
-        "192807f7df79b692",
         "eba57ac694f47084"
       ],
       "sourceAttributions": [
@@ -12654,7 +12653,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -15760,21 +15759,21 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, movies, celebrities in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, movies, celebrities in east village, bushwick. Based on 76 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, art, games in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, art, games in east village, bushwick. Based on 76 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
+        "art",
+        "games",
         "movies",
-        "celebrities",
-        "exploration",
-        "music"
+        "singles"
       ],
       "tags": [
         "books",
+        "art",
+        "games",
         "movies",
-        "celebrities",
-        "exploration",
-        "music"
+        "singles"
       ],
       "neighborhoods": [
         "east village",
@@ -15794,7 +15793,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 12,
+        "upcomingEventCount": 19,
         "eventCount90d": 79
       },
       "schedule": {
@@ -15815,11 +15814,11 @@
         "11895fd591100f1b",
         "652b577813c05bee",
         "75154eebbdbd66ab",
+        "bdd1ca7932c28d3f",
         "8c9af583f973dd9d",
-        "fc2619757c970c2c",
-        "e722ce271b52df36",
-        "ee7b9b1c72a9fda6",
-        "6e8ac45a5d99b810"
+        "54e81c1502303bdf",
+        "f663eb4c1f31cda1",
+        "fc2619757c970c2c"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -15836,18 +15835,22 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
+        },
+        {
+          "eventId": "39ae2e33322cd181",
+          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_eef1ca956dae",
-        "com_e9748c1176c1",
-        "com_4a9490cb3534",
+        "com_b736e77bdf93",
+        "com_489a14652e20",
         "com_55ca36db453a",
-        "com_33a530deb7aa",
-        "com_4af3a0d8df95"
+        "com_f28d3ae740a6",
+        "com_a4d969c3c6eb",
+        "com_c0492b95ac8d"
       ]
     },
     {
@@ -16328,11 +16331,11 @@
       ],
       "similarCommunityIds": [
         "com_4a9490cb3534",
-        "com_c1410c07c4dd",
         "com_8ff2a593caac",
         "com_72c625ae7237",
         "com_77ec11668bd8",
-        "com_b1c3376ecc52"
+        "com_b1c3376ecc52",
+        "com_4af3a0d8df95"
       ]
     },
     {
@@ -16373,7 +16376,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 44,
+        "upcomingEventCount": 46,
         "eventCount90d": 345
       },
       "schedule": {
@@ -16388,9 +16391,9 @@
       },
       "upcomingEventIds": [
         "1caedd28906362d0",
-        "d50f6db96c1cb9cd",
         "166a98ec622d1946",
         "9364c3bbc72e9e59",
+        "d50f6db96c1cb9cd",
         "ba1fb86f4fcfaca8",
         "ab0b3edf363c1e0e",
         "54b507e82c36f9b5",
@@ -63604,7 +63607,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-12T01:05:48.611040+00:00",
+  "lastUpdated": "2026-11-12T01:39:48.759234+00:00",
   "version": 1,
   "schemaVersion": 1
 }
