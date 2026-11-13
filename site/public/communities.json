@@ -7575,39 +7575,40 @@
       "name": "BK Greenery",
       "kind": "recurring_series",
       "tagline": "BK Greenery is a recurring event series centered on food in flatbush.",
-      "description": "BK Greenery is a recurring event series centered on food in flatbush. Based on 2 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "description": "BK Greenery is a recurring event series centered on food in flatbush. Based on 3 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
-        "food",
-        "other"
+        "other",
+        "food"
       ],
       "tags": [
-        "food",
-        "other"
+        "other",
+        "food"
       ],
       "neighborhoods": [
         "flatbush"
       ],
       "homeVenue": "367 Flatbush Ave",
-      "imageUrl": "https://images.lumacdn.com/gallery-images/image-gen/thanksgiving/mono-color-type-led-declaration-a-plate-of-mini-pecan-tarts-dusted-with-powdered-sugar-beside-a-coffee-cup.png",
+      "imageUrl": "https://images.lumacdn.com/gallery-images/im/f79ff510-ba2d-4b59-b106-79457b556523.png",
       "links": [],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Monday",
-          "Tuesday"
+          "Tuesday",
+          "Monday"
         ],
-        "typicalTime": "18:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "typicalTime": "20:00",
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
+        "f47417e3f8b0ea23",
         "63d311b16aad113e",
         "2f3f1ef3bc825c57"
       ],
@@ -7618,7 +7619,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -16359,6 +16360,68 @@
         "com_feb5ce491629",
         "com_30bd6ca662e0",
         "com_02b1cd673b69"
+      ]
+    },
+    {
+      "id": "com_ba4cc76c8198",
+      "slug": "alexa-fogarty-6c8198",
+      "name": "Alexa Fogarty",
+      "kind": "recurring_series",
+      "tagline": "Alexa Fogarty is a recurring event series in manhattan.",
+      "description": "Alexa Fogarty is a recurring event series in manhattan. Based on 2 observed event dates, it meets weekly on Thursday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Russian Samovar Restaurant and Piano Bar",
+      "imageUrl": "https://images.lumacdn.com/uploads/y0/ef4dab26-0151-4513-a54c-9766bb25ffbe.png",
+      "links": [],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 1,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "1025d3da3c36e4c3"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-13",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:usr-x8la1ybnnunafay"
+      ],
+      "similarCommunityIds": [
+        "com_05774b0951d0",
+        "com_19609e7f4286",
+        "com_1c65032c5bbc",
+        "com_2598d21a6937",
+        "com_2bdbc5148183",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -64484,7 +64547,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-13T02:46:29.960144+00:00",
+  "lastUpdated": "2026-11-13T02:55:44.019100+00:00",
   "version": 1,
   "schemaVersion": 1
 }
