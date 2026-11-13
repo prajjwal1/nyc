@@ -763,7 +763,7 @@
       "name": "Rizzoli Bookstore",
       "kind": "recurring_series",
       "tagline": "Rizzoli Bookstore is a recurring event series centered on books, music in manhattan.",
-      "description": "Rizzoli Bookstore is a recurring event series centered on books, music in manhattan. Based on 15 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "description": "Rizzoli Bookstore is a recurring event series centered on books, music in manhattan. Based on 16 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "other",
         "books",
@@ -790,18 +790,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 6
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Thursday"
+          "Thursday",
+          "Wednesday"
         ],
         "typicalTime": "18:00",
         "confidence": 1.0,
-        "sampleSize": 15
+        "sampleSize": 16
       },
       "upcomingEventIds": [
         "24ef0dbfaea10139",
@@ -812,7 +812,8 @@
         "62e345d866cc7af6",
         "f2bcf763bba799f4",
         "0379eab2925a8567",
-        "9b0be0304540c5a0"
+        "9b0be0304540c5a0",
+        "a3c4d17fbab9de23"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -821,7 +822,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 15,
+        "observedDateCount": 16,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -64797,7 +64798,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-13T22:53:24.009469+00:00",
+  "lastUpdated": "2026-11-13T22:56:48.427920+00:00",
   "version": 1,
   "schemaVersion": 1
 }
