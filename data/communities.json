@@ -2072,10 +2072,10 @@
       "similarCommunityIds": [
         "com_8d86f6f9340b",
         "com_d8a5203885a9",
-        "com_c1410c07c4dd",
         "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_489a14652e20"
+        "com_489a14652e20",
+        "com_c0492b95ac8d"
       ]
     },
     {
@@ -2774,10 +2774,10 @@
         "eventbrite:40513431663"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_bb6928bc760c",
         "com_f9551f264561",
         "com_f28d3ae740a6",
+        "com_c1410c07c4dd",
         "com_3837f308cd75",
         "com_489a14652e20"
       ]
@@ -3682,8 +3682,8 @@
         "com_8d86f6f9340b",
         "com_96a0049afb0f",
         "com_b736e77bdf93",
-        "com_c1410c07c4dd",
-        "com_14e2dae511e1"
+        "com_14e2dae511e1",
+        "com_1e08b1e2de75"
       ]
     },
     {
@@ -16620,21 +16620,21 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, movies, music in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, movies, music in east village, bushwick. Based on 75 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, art, games in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, art, games in east village, bushwick. Based on 75 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
-        "movies",
-        "music",
         "art",
-        "games"
+        "games",
+        "movies",
+        "singles"
       ],
       "tags": [
         "books",
-        "movies",
-        "music",
         "art",
-        "games"
+        "games",
+        "movies",
+        "singles"
       ],
       "neighborhoods": [
         "east village",
@@ -16647,14 +16647,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6755320261213"
+          "url": "https://bookclubbar.com/events/5730920270112"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 18,
         "eventCount90d": 79
       },
       "schedule": {
@@ -16675,10 +16675,11 @@
         "11895fd591100f1b",
         "652b577813c05bee",
         "75154eebbdbd66ab",
+        "bdd1ca7932c28d3f",
         "8c9af583f973dd9d",
-        "fc2619757c970c2c",
-        "e722ce271b52df36",
-        "ee7b9b1c72a9fda6"
+        "54e81c1502303bdf",
+        "f663eb4c1f31cda1",
+        "fc2619757c970c2c"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -16695,18 +16696,22 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
+        },
+        {
+          "eventId": "39ae2e33322cd181",
+          "signal": "beginners"
         }
       ],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
+        "com_8d86f6f9340b",
         "com_b736e77bdf93",
         "com_55ca36db453a",
-        "com_8d86f6f9340b",
-        "com_c0492b95ac8d",
         "com_f28d3ae740a6",
-        "com_a4d969c3c6eb"
+        "com_a4d969c3c6eb",
+        "com_c0492b95ac8d"
       ]
     },
     {
@@ -64458,7 +64463,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-14T13:29:34.924598+00:00",
+  "lastUpdated": "2026-11-14T14:16:55.983323+00:00",
   "version": 1,
   "schemaVersion": 1
 }
