@@ -758,16 +758,20 @@
       "slug": "rizzoli-bookstore-9afb0f",
       "name": "Rizzoli Bookstore",
       "kind": "recurring_series",
-      "tagline": "Rizzoli Bookstore is a recurring event series centered on books, music in manhattan.",
-      "description": "Rizzoli Bookstore is a recurring event series centered on books, music in manhattan. Based on 16 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
+      "tagline": "Rizzoli Bookstore is a recurring event series centered on books, art, exploration in manhattan.",
+      "description": "Rizzoli Bookstore is a recurring event series centered on books, art, exploration in manhattan. Based on 16 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "other",
         "books",
+        "art",
+        "exploration",
         "music"
       ],
       "tags": [
         "other",
         "books",
+        "art",
+        "exploration",
         "music"
       ],
       "neighborhoods": [
@@ -831,8 +835,8 @@
         "com_61de7e5f2248",
         "com_1e60766a7318",
         "com_e9748c1176c1",
-        "com_3942d7a4c6e3",
-        "com_7d3e76b46ffc"
+        "com_072c9c3e12a8",
+        "com_3942d7a4c6e3"
       ]
     },
     {
@@ -1171,21 +1175,21 @@
       "slug": "les-ecology-center-1a6d08",
       "name": "LES Ecology Center",
       "kind": "institutional_program",
-      "tagline": "LES Ecology Center is a community program centered on music, outdoors in manhattan.",
-      "description": "LES Ecology Center is a community program centered on music, outdoors in manhattan. Based on 5 observed event dates, it meets weekly on Friday and Saturday mornings.",
+      "tagline": "LES Ecology Center is a community program centered on outdoors, music in manhattan.",
+      "description": "LES Ecology Center is a community program centered on outdoors, music in manhattan. Based on 6 observed event dates, it meets weekly on Friday and Monday mornings.",
       "categories": [
-        "music",
-        "outdoors"
+        "outdoors",
+        "music"
       ],
       "tags": [
-        "music",
-        "outdoors"
+        "outdoors",
+        "music"
       ],
       "neighborhoods": [
         "manhattan"
       ],
-      "homeVenue": "LMMC's Art Center",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197616338%2F196599321851%2F1%2Foriginal.20261109-184409?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=450a7b2147a61c06d69dfecb4827fa08",
+      "homeVenue": "East River Park",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193785510%2F196599321851%2F1%2Foriginal.20260917-203441?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.479&fp-y=0.397&s=7314599687ec293e68c3ce7105613bb8",
       "links": [
         {
           "type": "eventbrite",
@@ -1197,20 +1201,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-13",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 4
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Saturday"
+          "Monday"
         ],
         "typicalTime": "09:30",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
       "upcomingEventIds": [
+        "e78727972b4cacb0",
         "741e7abd52af1ede"
       ],
       "sourceAttributions": [
@@ -1220,7 +1225,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3278,8 +3283,8 @@
         "com_9abdf9db297a",
         "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_c0492b95ac8d",
-        "com_f28d3ae740a6"
+        "com_96a0049afb0f",
+        "com_c0492b95ac8d"
       ]
     },
     {
@@ -3428,10 +3433,10 @@
       "similarCommunityIds": [
         "com_61de7e5f2248",
         "com_1e60766a7318",
-        "com_96a0049afb0f",
         "com_3942d7a4c6e3",
         "com_05774b0951d0",
-        "com_19609e7f4286"
+        "com_19609e7f4286",
+        "com_1c65032c5bbc"
       ]
     },
     {
@@ -3659,10 +3664,10 @@
       "similarCommunityIds": [
         "com_359977ec663e",
         "com_8d86f6f9340b",
+        "com_96a0049afb0f",
         "com_b736e77bdf93",
         "com_c1410c07c4dd",
-        "com_14e2dae511e1",
-        "com_1e08b1e2de75"
+        "com_14e2dae511e1"
       ]
     },
     {
@@ -5192,10 +5197,10 @@
       "similarCommunityIds": [
         "com_61de7e5f2248",
         "com_cb9f3f0f5f71",
-        "com_96a0049afb0f",
         "com_e9748c1176c1",
         "com_3942d7a4c6e3",
-        "com_05774b0951d0"
+        "com_05774b0951d0",
+        "com_19609e7f4286"
       ]
     },
     {
@@ -5852,8 +5857,8 @@
         "com_4b79eca5454b",
         "com_77ec11668bd8",
         "com_359977ec663e",
-        "com_96a0049afb0f",
-        "com_20bc48fa0fec"
+        "com_20bc48fa0fec",
+        "com_a4ff599bdcd6"
       ]
     },
     {
@@ -7724,10 +7729,10 @@
       "similarCommunityIds": [
         "com_7d3e76b46ffc",
         "com_f990c90c32d5",
-        "com_96a0049afb0f",
         "com_359977ec663e",
         "com_77ec11668bd8",
-        "com_05774b0951d0"
+        "com_05774b0951d0",
+        "com_19609e7f4286"
       ]
     },
     {
@@ -8656,10 +8661,10 @@
       "similarCommunityIds": [
         "com_33a530deb7aa",
         "com_664ab77e1bba",
-        "com_96a0049afb0f",
         "com_1e68b580d0be",
         "com_3d91bda94131",
-        "com_6da89066dbb5"
+        "com_6da89066dbb5",
+        "com_ddcfc606c1ae"
       ]
     },
     {
@@ -9731,8 +9736,8 @@
         "com_4b79eca5454b",
         "com_359977ec663e",
         "com_77ec11668bd8",
-        "com_96a0049afb0f",
-        "com_2c239df2a554"
+        "com_2c239df2a554",
+        "com_05774b0951d0"
       ]
     },
     {
@@ -11573,11 +11578,11 @@
       ],
       "similarCommunityIds": [
         "com_1e60766a7318",
-        "com_96a0049afb0f",
         "com_e9748c1176c1",
         "com_8b837dfb5421",
         "com_b766b6de77ba",
-        "com_05774b0951d0"
+        "com_05774b0951d0",
+        "com_19609e7f4286"
       ]
     },
     {
@@ -13073,7 +13078,7 @@
         "com_a4f86eccdc8e",
         "com_fe4b6663b721",
         "com_1e60766a7318",
-        "com_96a0049afb0f"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -13785,10 +13790,10 @@
       "similarCommunityIds": [
         "com_c4469caf0091",
         "com_664ab77e1bba",
-        "com_96a0049afb0f",
         "com_1e68b580d0be",
         "com_3d91bda94131",
-        "com_6da89066dbb5"
+        "com_6da89066dbb5",
+        "com_ddcfc606c1ae"
       ]
     },
     {
@@ -14100,8 +14105,8 @@
       "neighborhoods": [
         "manhattan",
         "upper east side",
-        "midtown",
-        "williamsburg"
+        "williamsburg",
+        "midtown"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/uploads/kk/e42c9b1c-6522-44da-a84f-e7e6177dae89.jpg",
@@ -14134,9 +14139,9 @@
         "1ac59efea9fd3f15",
         "9aeffa1e8f97b597",
         "5c7f219795bbfa24",
+        "f68ef1dbb841092f",
         "a7280058ca9d3b4a",
         "698ec8453e5f4344",
-        "f68ef1dbb841092f",
         "3d40b893b6e7d1e0",
         "cc29776d909b57dc",
         "e5f2ddfd2a7d3b99"
@@ -14527,10 +14532,10 @@
       "similarCommunityIds": [
         "com_33a530deb7aa",
         "com_c4469caf0091",
-        "com_96a0049afb0f",
         "com_1dc58bbe47db",
         "com_1e68b580d0be",
-        "com_3d91bda94131"
+        "com_3d91bda94131",
+        "com_5c8ac62f26b3"
       ]
     },
     {
@@ -16557,8 +16562,8 @@
       },
       "upcomingEventIds": [
         "b4b882749cb20887",
-        "89f6f1a3d24762fb",
         "f5207a5c726e6330",
+        "89f6f1a3d24762fb",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
         "652b577813c05bee",
@@ -64346,7 +64351,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-14T06:41:28.312816+00:00",
+  "lastUpdated": "2026-11-14T09:32:55.178348+00:00",
   "version": 1,
   "schemaVersion": 1
 }
