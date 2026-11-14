@@ -71,12 +71,12 @@
         "eventbrite:10013510321"
       ],
       "similarCommunityIds": [
-        "com_3837f308cd75",
         "com_c58670960684",
+        "com_ab8259bb35a4",
+        "com_3837f308cd75",
         "com_f9551f264561",
         "com_0ae542c496b3",
-        "com_525bddfaee91",
-        "com_61de7e5f2248"
+        "com_525bddfaee91"
       ]
     },
     {
@@ -612,8 +612,8 @@
         "com_c1a3e8241648",
         "com_4e69412cb0a5",
         "com_cdd5daa67222",
-        "com_1b90851c14cf",
-        "com_43e82b8f4e34"
+        "com_30e8efd15421",
+        "com_1b90851c14cf"
       ]
     },
     {
@@ -3299,7 +3299,7 @@
         "com_9abdf9db297a",
         "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_96a0049afb0f"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -4406,8 +4406,8 @@
         "com_9abdf9db297a",
         "com_85dcc6145f3c",
         "com_55ca36db453a",
-        "com_68f8f24f0095",
-        "com_b088368d86fa"
+        "com_c58670960684",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -4627,12 +4627,12 @@
         "luma:cal-0tczpuya1mvuvbn"
       ],
       "similarCommunityIds": [
+        "com_30e8efd15421",
         "com_072c9c3e12a8",
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
         "com_483b995f5504",
-        "com_f54698ed682f",
-        "com_139883e18f84"
+        "com_f54698ed682f"
       ]
     },
     {
@@ -6737,11 +6737,11 @@
       ],
       "similarCommunityIds": [
         "com_70cbea4f18e4",
-        "com_c58670960684",
         "com_68f8f24f0095",
         "com_b088368d86fa",
         "com_bff06d9b0e6f",
-        "com_ebf2f0d4ce77"
+        "com_ebf2f0d4ce77",
+        "com_c58670960684"
       ]
     },
     {
@@ -6820,16 +6820,18 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, manhattan.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in upper east side, manhattan. Based on 9 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side, manhattan.",
+      "description": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side, manhattan. Based on 9 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "art",
         "other",
+        "music",
         "wellness"
       ],
       "tags": [
         "art",
         "other",
+        "music",
         "wellness"
       ],
       "neighborhoods": [
@@ -6889,10 +6891,10 @@
       "similarCommunityIds": [
         "com_ab8259bb35a4",
         "com_9abdf9db297a",
-        "com_0ae542c496b3",
-        "com_525bddfaee91",
-        "com_bff06d9b0e6f",
-        "com_118a558259ea"
+        "com_9caab69e0812",
+        "com_61de7e5f2248",
+        "com_96a0049afb0f",
+        "com_1e60766a7318"
       ]
     },
     {
@@ -9983,12 +9985,12 @@
         "luma:cal-p6wrliz7nxddcxz"
       ],
       "similarCommunityIds": [
+        "com_ab8259bb35a4",
+        "com_c58670960684",
         "com_36080a5c47cd",
         "com_1466f20a9300",
         "com_8f2a69f866f2",
-        "com_61de7e5f2248",
-        "com_68f8f24f0095",
-        "com_b088368d86fa"
+        "com_61de7e5f2248"
       ]
     },
     {
@@ -12588,7 +12590,7 @@
         "com_c5fb2290140a",
         "com_4b9d7692e567",
         "com_9caab69e0812",
-        "com_ab8259bb35a4"
+        "com_273757444236"
       ]
     },
     {
@@ -12879,6 +12881,78 @@
         "com_1b71901c7841",
         "com_1c65032c5bbc",
         "com_1e08b1e2de75"
+      ]
+    },
+    {
+      "id": "com_30e8efd15421",
+      "slug": "founders-club-ny-d15421",
+      "name": "Founders Club NY",
+      "kind": "club",
+      "tagline": "Founders Club NY is a community club centered on games in manhattan.",
+      "description": "Founders Club NY is a community club centered on games in manhattan. Based on 2 observed event dates, it meets biweekly on Wednesday and Friday evenings.",
+      "categories": [
+        "games",
+        "other"
+      ],
+      "tags": [
+        "games",
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/g2/421596ac-0cc5-4ea6-80e2-47bc4ca0d996.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/foundersclubny"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Wednesday",
+          "Friday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "fc4297f2a9d49e8b",
+        "954707e2000725fc"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-14",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-xwjyv9tlqe6wx5w"
+      ],
+      "similarCommunityIds": [
+        "com_1c4e0060fa58",
+        "com_3481b6750d6f",
+        "com_483b995f5504",
+        "com_665eaac4154e",
+        "com_f54698ed682f",
+        "com_139883e18f84"
       ]
     },
     {
@@ -14120,16 +14194,18 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, upper east side. Based on 29 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, music, wellness in manhattan, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art, music, wellness in manhattan, upper east side. Based on 29 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
         "art",
+        "music",
         "wellness"
       ],
       "tags": [
         "other",
         "art",
+        "music",
         "wellness"
       ],
       "neighborhoods": [
@@ -14193,11 +14269,11 @@
       ],
       "similarCommunityIds": [
         "com_c58670960684",
-        "com_0ae542c496b3",
-        "com_525bddfaee91",
-        "com_bff06d9b0e6f",
         "com_9abdf9db297a",
-        "com_9caab69e0812"
+        "com_9caab69e0812",
+        "com_3837f308cd75",
+        "com_61de7e5f2248",
+        "com_96a0049afb0f"
       ]
     },
     {
@@ -64382,7 +64458,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-14T11:22:58.679504+00:00",
+  "lastUpdated": "2026-11-14T13:29:34.924598+00:00",
   "version": 1,
   "schemaVersion": 1
 }
