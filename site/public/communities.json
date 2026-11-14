@@ -201,8 +201,8 @@
         "2594afdbf89589e8",
         "cd4ee89fa257f521",
         "16f87c2451187ad7",
-        "bafd3797888fa845",
         "f2a0009a085baec5",
+        "bafd3797888fa845",
         "e7d78300aa518300",
         "877458294c2e74a5",
         "2084ed75ab807fdd"
@@ -7312,12 +7312,12 @@
         "luma:cal-e6bxxkre5ntw0nh"
       ],
       "similarCommunityIds": [
+        "com_c56c9c25c7a1",
         "com_d0a5add7d8b9",
         "com_fa67d543a8b1",
         "com_2b6913d1e51a",
         "com_05774b0951d0",
-        "com_0a3b21db526b",
-        "com_14e2dae511e1"
+        "com_0a3b21db526b"
       ]
     },
     {
@@ -8100,12 +8100,12 @@
         "luma:cal-g6jcxpa85xmdhlm"
       ],
       "similarCommunityIds": [
-        "com_c56c9c25c7a1",
         "com_43e82b8f4e34",
         "com_14a9b81bfe8f",
         "com_47de8f45d349",
         "com_6ea25c7e117a",
-        "com_b422062b04b3"
+        "com_b422062b04b3",
+        "com_c56c9c25c7a1"
       ]
     },
     {
@@ -8181,6 +8181,77 @@
         "com_5dd8d7d6e995",
         "com_a45e35db829c",
         "com_feb5ce491629"
+      ]
+    },
+    {
+      "id": "com_e48010c867b8",
+      "slug": "the-collective-c867b8",
+      "name": "The Collective",
+      "kind": "recurring_series",
+      "tagline": "The Collective is a recurring event series in manhattan.",
+      "description": "The Collective is a recurring event series in manhattan. Based on 2 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Alphabet City",
+      "imageUrl": "https://images.lumacdn.com/uploads/ij/2ba4a0fc-f3c3-41d8-bb90-87412bc5160a.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/jointhecollective"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Saturday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "f75263a4defc394d",
+        "d083121a833131a7"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-14",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:jonasxw1",
+        "luma:cal-gud01kojsmg5vwd"
+      ],
+      "similarCommunityIds": [
+        "com_05774b0951d0",
+        "com_19609e7f4286",
+        "com_1c65032c5bbc",
+        "com_2598d21a6937",
+        "com_36cb2681053d",
+        "com_37da349b5b66"
       ]
     },
     {
@@ -11608,16 +11679,19 @@
       "slug": "mimi-circle-25c7a1",
       "name": "Mimi Circle",
       "kind": "recurring_series",
-      "tagline": "Mimi Circle is a recurring event series centered on food in queens.",
-      "description": "Mimi Circle is a recurring event series centered on food in queens. Based on 2 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "Mimi Circle is a recurring event series centered on food in queens, long island city.",
+      "description": "Mimi Circle is a recurring event series centered on food in queens, long island city. Based on 3 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
-        "food"
+        "food",
+        "other"
       ],
       "tags": [
-        "food"
+        "food",
+        "other"
       ],
       "neighborhoods": [
-        "queens"
+        "queens",
+        "long island city"
       ],
       "homeVenue": "Hunters Point",
       "imageUrl": "https://images.lumacdn.com/uploads/19/02d53cda-c183-4f74-abf3-ab63e8bebd34.jpg",
@@ -11632,7 +11706,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
@@ -11642,11 +11716,12 @@
           "Saturday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
-        "5f8c05903663606b"
+        "5f8c05903663606b",
+        "f888021041861e66"
       ],
       "sourceAttributions": [
         "luma"
@@ -11655,7 +11730,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -11665,12 +11740,12 @@
         "luma:cal-tfg5r5qdo8uzrqt"
       ],
       "similarCommunityIds": [
-        "com_939280716ae9",
-        "com_14a9b81bfe8f",
-        "com_43e82b8f4e34",
-        "com_47de8f45d349",
+        "com_d0a5add7d8b9",
         "com_6ea25c7e117a",
-        "com_b422062b04b3"
+        "com_1b71901c7841",
+        "com_f8c88ef9a8ca",
+        "com_fa67d543a8b1",
+        "com_2b6913d1e51a"
       ]
     },
     {
@@ -14277,8 +14352,8 @@
       "neighborhoods": [
         "manhattan",
         "upper east side",
-        "midtown",
-        "williamsburg"
+        "williamsburg",
+        "midtown"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/uploads/kk/e42c9b1c-6522-44da-a84f-e7e6177dae89.jpg",
@@ -14311,9 +14386,9 @@
         "1ac59efea9fd3f15",
         "9aeffa1e8f97b597",
         "5c7f219795bbfa24",
+        "f68ef1dbb841092f",
         "a7280058ca9d3b4a",
         "698ec8453e5f4344",
-        "f68ef1dbb841092f",
         "3d40b893b6e7d1e0",
         "cc29776d909b57dc",
         "e5f2ddfd2a7d3b99"
@@ -14776,12 +14851,12 @@
         "luma:usr-4x7ga9yffjhsoae"
       ],
       "similarCommunityIds": [
+        "com_c56c9c25c7a1",
         "com_6ea25c7e117a",
         "com_1b71901c7841",
         "com_f8c88ef9a8ca",
         "com_fa67d543a8b1",
-        "com_2b6913d1e51a",
-        "com_9a5c4d074e3a"
+        "com_2b6913d1e51a"
       ]
     },
     {
@@ -15933,8 +16008,8 @@
         "com_14a9b81bfe8f",
         "com_47de8f45d349",
         "com_5582e2e97f1a",
-        "com_c56c9c25c7a1",
-        "com_5251e78f4060"
+        "com_5251e78f4060",
+        "com_cbe08adf6898"
       ]
     },
     {
@@ -16735,8 +16810,8 @@
       },
       "upcomingEventIds": [
         "b4b882749cb20887",
-        "89f6f1a3d24762fb",
         "f5207a5c726e6330",
+        "89f6f1a3d24762fb",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
         "652b577813c05bee",
@@ -64533,7 +64608,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-14T20:48:55.622666+00:00",
+  "lastUpdated": "2026-11-14T22:57:43.147652+00:00",
   "version": 1,
   "schemaVersion": 1
 }
