@@ -71,12 +71,12 @@
         "eventbrite:10013510321"
       ],
       "similarCommunityIds": [
-        "com_c58670960684",
-        "com_ab8259bb35a4",
         "com_3837f308cd75",
+        "com_c58670960684",
         "com_0ae542c496b3",
-        "com_61de7e5f2248",
-        "com_b766b6de77ba"
+        "com_1466f20a9300",
+        "com_525bddfaee91",
+        "com_61de7e5f2248"
       ]
     },
     {
@@ -143,12 +143,12 @@
         "eventbrite:104303955321"
       ],
       "similarCommunityIds": [
+        "com_525bddfaee91",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
         "com_32f0be19b796",
         "com_3837f308cd75",
-        "com_489a14652e20",
-        "com_525bddfaee91"
+        "com_489a14652e20"
       ]
     },
     {
@@ -220,12 +220,12 @@
         "eventbrite:105655500371"
       ],
       "similarCommunityIds": [
-        "com_61de7e5f2248",
-        "com_de070b382a28",
-        "com_c305531d38d0",
         "com_1466f20a9300",
-        "com_1e60766a7318",
-        "com_5dd8d7d6e995"
+        "com_61de7e5f2248",
+        "com_8b837dfb5421",
+        "com_ffc1304a5cb6",
+        "com_c305531d38d0",
+        "com_1e60766a7318"
       ]
     },
     {
@@ -288,12 +288,12 @@
         "eventbrite:105704078051"
       ],
       "similarCommunityIds": [
-        "com_ffc1304a5cb6",
         "com_949217ac4f1f",
         "com_99e08820d1c1",
         "com_1dc58bbe47db",
         "com_3d91bda94131",
-        "com_6da89066dbb5"
+        "com_6da89066dbb5",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -301,20 +301,20 @@
       "slug": "the-harlem-swing-dance-society-e8b1e0",
       "name": "The Harlem Swing Dance Society",
       "kind": "club",
-      "tagline": "The Harlem Swing Dance Society is a community club centered on special, dance in harlem.",
-      "description": "The Harlem Swing Dance Society is a community club centered on special, dance in harlem. Based on 21 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "tagline": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem.",
+      "description": "The Harlem Swing Dance Society is a community club centered on dance, special in harlem. Based on 22 observed event dates, it meets weekly on Tuesday and Friday evenings.",
       "categories": [
-        "special",
-        "dance"
+        "dance",
+        "special"
       ],
       "tags": [
-        "special",
-        "dance"
+        "dance",
+        "special"
       ],
       "neighborhoods": [
         "harlem"
       ],
-      "homeVenue": "Multiple venues",
+      "homeVenue": "Lt Joseph P. Kennedy, Jr Community Center",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191478266%2F105999570117%2F1%2Foriginal.20260820-011606?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.054&fp-y=0.128&s=7b8b7919b9e23e8c97685a92de1ad63c",
       "links": [
         {
@@ -327,21 +327,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 15
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Tuesday",
-          "Thursday"
+          "Friday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 21
+        "sampleSize": 22
       },
       "upcomingEventIds": [
-        "c5645547de5a21c1"
+        "c5645547de5a21c1",
+        "5521b7788e034319"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -350,7 +351,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 21,
+        "observedDateCount": 22,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -362,9 +363,9 @@
         "com_28a4ec647815",
         "com_43e82b8f4e34",
         "com_a4d969c3c6eb",
-        "com_1466f20a9300",
-        "com_8b837dfb5421",
-        "com_3048e331f7b6"
+        "com_3048e331f7b6",
+        "com_5582e2e97f1a",
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -372,20 +373,18 @@
       "slug": "ciao-evento-63b721",
       "name": "Ciao Evento",
       "kind": "recurring_series",
-      "tagline": "Ciao Evento is a recurring event series centered on parties, dance, food in manhattan.",
-      "description": "Ciao Evento is a recurring event series centered on parties, dance, food in manhattan. Based on 30 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "tagline": "Ciao Evento is a recurring event series centered on parties, dance, music in manhattan.",
+      "description": "Ciao Evento is a recurring event series centered on parties, dance, music in manhattan. Based on 31 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
-        "parties",
         "other",
+        "parties",
         "dance",
-        "food",
         "music"
       ],
       "tags": [
-        "parties",
         "other",
+        "parties",
         "dance",
-        "food",
         "music"
       ],
       "neighborhoods": [
@@ -404,7 +403,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 33
       },
       "schedule": {
@@ -415,12 +414,13 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 30
+        "sampleSize": 31
       },
       "upcomingEventIds": [
         "337e4d1bc59b2da2",
         "dfbcbe8ec8677118",
         "feb558a46507ca5b",
+        "2925de84e7b98dec",
         "db0477f0a7610fd3",
         "196cd404865ccbb9"
       ],
@@ -431,7 +431,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 30,
+        "observedDateCount": 31,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -441,11 +441,11 @@
       ],
       "similarCommunityIds": [
         "com_a4f86eccdc8e",
-        "com_bb6928bc760c",
         "com_3942d7a4c6e3",
-        "com_c1558b0c4390",
-        "com_14a9b81bfe8f",
-        "com_47de8f45d349"
+        "com_61de7e5f2248",
+        "com_1e60766a7318",
+        "com_e9748c1176c1",
+        "com_bb6928bc760c"
       ]
     },
     {
@@ -527,12 +527,12 @@
         "eventbrite:114781508361"
       ],
       "similarCommunityIds": [
-        "com_b736e77bdf93",
         "com_f28d3ae740a6",
         "com_489a14652e20",
         "com_c1410c07c4dd",
         "com_c0492b95ac8d",
-        "com_68b36e93076a"
+        "com_68b36e93076a",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -619,18 +619,20 @@
       "name": "Lucky 13 Saloon",
       "kind": "recurring_series",
       "tagline": "Lucky 13 Saloon is a recurring event series centered on music in brooklyn.",
-      "description": "Lucky 13 Saloon is a recurring event series centered on music in brooklyn. Based on 3 observed event dates, it meets monthly on Friday and Monday evenings.",
+      "description": "Lucky 13 Saloon is a recurring event series centered on music in brooklyn. Based on 4 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
+        "other",
         "music"
       ],
       "tags": [
+        "other",
         "music"
       ],
       "neighborhoods": [
         "brooklyn"
       ],
       "homeVenue": "Lucky 13 Saloon",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1195494954%2F401759016771%2F1%2Foriginal.20261010-015329?crop=focalpoint&fit=crop&h=226&w=453&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.502&fp-y=0.906&s=27d68709accfc345967a95368b737247",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197561295%2F401759016771%2F1%2Foriginal.20261109-015557?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.556&fp-y=0.054&s=1a7f42debf85e5bf49e8d7fc37c48b38",
       "links": [
         {
           "type": "eventbrite",
@@ -642,20 +644,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-06",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
-        "cadence": "monthly",
+        "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Monday"
+          "Saturday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
+        "26546a7027948f1e",
         "b5ebb85e865d1cf3"
       ],
       "sourceAttributions": [
@@ -665,7 +668,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -674,12 +677,12 @@
         "eventbrite:115805969741"
       ],
       "similarCommunityIds": [
-        "com_83f64eec47de",
-        "com_949217ac4f1f",
-        "com_99e08820d1c1",
-        "com_1dc58bbe47db",
-        "com_3d91bda94131",
-        "com_6da89066dbb5"
+        "com_1466f20a9300",
+        "com_8f2a69f866f2",
+        "com_9caab69e0812",
+        "com_61de7e5f2248",
+        "com_8b837dfb5421",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -746,8 +749,8 @@
         "eventbrite:115935157771"
       ],
       "similarCommunityIds": [
-        "com_a38043df522b",
         "com_d8a5203885a9",
+        "com_a38043df522b",
         "com_218b97d674a6",
         "com_43850d49f9e6",
         "com_949217ac4f1f",
@@ -1017,7 +1020,7 @@
       "name": "The Holes",
       "kind": "recurring_series",
       "tagline": "The Holes is a recurring event series in manhattan.",
-      "description": "The Holes is a recurring event series in manhattan. Based on 15 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "description": "The Holes is a recurring event series in manhattan. Based on 16 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
         "other"
       ],
@@ -1040,7 +1043,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 11
       },
       "schedule": {
@@ -1051,14 +1054,15 @@
         ],
         "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 15
+        "sampleSize": 16
       },
       "upcomingEventIds": [
         "3426317440ebc045",
         "1c6de0c32eea6795",
         "921e4338f8a77a30",
         "b966cb8d1ede4b10",
-        "33204159a1007ed7"
+        "33204159a1007ed7",
+        "d3c39522d9c28acf"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1067,7 +1071,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 15,
+        "observedDateCount": 16,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1237,9 +1241,9 @@
         "com_3d91bda94131",
         "com_6da89066dbb5",
         "com_44f59baa3830",
-        "com_5dd8d7d6e995",
         "com_61de7e5f2248",
-        "com_16548f6c9429"
+        "com_16548f6c9429",
+        "com_e341908692df"
       ]
     },
     {
@@ -1458,10 +1462,10 @@
       "similarCommunityIds": [
         "com_139883e18f84",
         "com_9f333da89132",
+        "com_273757444236",
         "com_665eaac4154e",
         "com_118a558259ea",
-        "com_1c4e0060fa58",
-        "com_3481b6750d6f"
+        "com_1c4e0060fa58"
       ]
     },
     {
@@ -1696,12 +1700,12 @@
       "tagline": "Union Hall is a recurring event series centered on comedy in brooklyn.",
       "description": "Union Hall is a recurring event series centered on comedy in brooklyn. Based on 65 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
-        "comedy",
-        "other"
+        "other",
+        "comedy"
       ],
       "tags": [
-        "comedy",
-        "other"
+        "other",
+        "comedy"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -1835,11 +1839,11 @@
       ],
       "similarCommunityIds": [
         "com_0ae542c496b3",
+        "com_525bddfaee91",
         "com_cb019f4e9752",
         "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_489a14652e20",
-        "com_4a9490cb3534"
+        "com_489a14652e20"
       ]
     },
     {
@@ -1848,22 +1852,22 @@
       "name": "Museum of Reclaimed Urban Space",
       "kind": "institutional_program",
       "tagline": "Museum of Reclaimed Urban Space is a community program centered on outdoors, fitness in manhattan, williamsburg.",
-      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, fitness in manhattan, williamsburg. Based on 28 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "description": "Museum of Reclaimed Urban Space is a community program centered on outdoors, fitness in manhattan, williamsburg. Based on 29 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
-        "outdoors",
         "other",
+        "outdoors",
         "fitness"
       ],
       "tags": [
-        "outdoors",
         "other",
+        "outdoors",
         "fitness"
       ],
       "neighborhoods": [
         "manhattan",
         "williamsburg"
       ],
-      "homeVenue": "La Plaza Community Garden",
+      "homeVenue": "Time's Up! Bike Cooperative",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1190389972%2F280848866130%2F1%2Foriginal.20260805-171408?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.277&fp-y=0.505&s=a21c8a88fe579021c62d321b6857499f",
       "links": [
         {
@@ -1876,7 +1880,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 45
       },
       "schedule": {
@@ -1887,10 +1891,11 @@
         ],
         "typicalTime": "17:00",
         "confidence": 1.0,
-        "sampleSize": 28
+        "sampleSize": 29
       },
       "upcomingEventIds": [
         "8c0094bd27749444",
+        "2e7a620499100c02",
         "efca931195531e91"
       ],
       "sourceAttributions": [
@@ -1900,7 +1905,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 28,
+        "observedDateCount": 29,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1911,10 +1916,10 @@
       "similarCommunityIds": [
         "com_cb9f3f0f5f71",
         "com_6e9d22f6b768",
+        "com_5dd8d7d6e995",
         "com_805e2fa93ad2",
         "com_1e60766a7318",
-        "com_137e7edb1623",
-        "com_8c30193b027f"
+        "com_137e7edb1623"
       ]
     },
     {
@@ -1980,10 +1985,10 @@
       "similarCommunityIds": [
         "com_1c4e0060fa58",
         "com_483b995f5504",
+        "com_d1117f619e53",
         "com_a1c312a97abe",
         "com_05774b0951d0",
-        "com_19609e7f4286",
-        "com_1c65032c5bbc"
+        "com_19609e7f4286"
       ]
     },
     {
@@ -1991,21 +1996,21 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on books, comedy, movies in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on books, comedy, movies in brooklyn. Based on 74 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on books, movies, music in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on books, movies, music in brooklyn. Based on 74 observed event dates, it meets weekly on Friday and Thursday evenings.",
       "categories": [
         "books",
-        "comedy",
         "movies",
         "music",
-        "art"
+        "art",
+        "food"
       ],
       "tags": [
         "books",
-        "comedy",
         "movies",
         "music",
-        "art"
+        "art",
+        "food"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -2060,12 +2065,12 @@
         "eventbrite:18898315629"
       ],
       "similarCommunityIds": [
-        "com_8d86f6f9340b",
-        "com_d8a5203885a9",
-        "com_c1410c07c4dd",
-        "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_489a14652e20"
+        "com_c1410c07c4dd",
+        "com_489a14652e20",
+        "com_d8a5203885a9",
+        "com_55ca36db453a",
+        "com_c0492b95ac8d"
       ]
     },
     {
@@ -2145,10 +2150,10 @@
       "similarCommunityIds": [
         "com_0ae542c496b3",
         "com_1466f20a9300",
-        "com_8f2a69f866f2",
-        "com_9caab69e0812",
-        "com_9abdf9db297a",
-        "com_3048e331f7b6"
+        "com_525bddfaee91",
+        "com_b736e77bdf93",
+        "com_ffc1304a5cb6",
+        "com_8f2a69f866f2"
       ]
     },
     {
@@ -2156,38 +2161,36 @@
       "slug": "big-reuse-d6e995",
       "name": "Big Reuse",
       "kind": "recurring_series",
-      "tagline": "Big Reuse is a recurring event series centered on outdoors, music in east village, park slope.",
-      "description": "Big Reuse is a recurring event series centered on outdoors, music in east village, park slope. Based on 10 observed event dates, it meets weekly on Sunday and Thursday mornings.",
+      "tagline": "Big Reuse is a recurring event series centered on outdoors in brooklyn, bronx.",
+      "description": "Big Reuse is a recurring event series centered on outdoors in brooklyn, bronx. Based on 10 observed event dates, it meets weekly on Sunday and Thursday mornings.",
       "categories": [
-        "outdoors",
         "other",
-        "music"
+        "outdoors"
       ],
       "tags": [
-        "outdoors",
         "other",
-        "music"
+        "outdoors"
       ],
       "neighborhoods": [
-        "east village",
-        "park slope",
+        "brooklyn",
         "bronx",
-        "manhattan"
+        "manhattan",
+        "midtown"
       ],
-      "homeVenue": "22 2nd Ave",
+      "homeVenue": "2653 Decatur Ave",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191383968%2F3005446753083%2F1%2Foriginal.20260818-233441?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&s=c6c163305b8f39f90a9797d508012c2e",
       "links": [
         {
           "type": "eventbrite",
           "label": "View on Eventbrite",
-          "url": "https://eventbrite.com/o/20004425576"
+          "url": "https://www.eventbrite.com/o/big-reuse-20004425576"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 16
       },
       "schedule": {
@@ -2205,7 +2208,8 @@
         "72c89783e88e061b",
         "a4b4c2cc0011f74e",
         "bc2c1ace94094533",
-        "0ae8592804a02481"
+        "0ae8592804a02481",
+        "23ee7c56b2450656"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -2224,11 +2228,11 @@
       ],
       "similarCommunityIds": [
         "com_6e9d22f6b768",
-        "com_44f59baa3830",
-        "com_61de7e5f2248",
-        "com_759f151a6d08",
         "com_8c30193b027f",
-        "com_b766b6de77ba"
+        "com_a45e35db829c",
+        "com_feb5ce491629",
+        "com_d74826b4ebc7",
+        "com_05774b0951d0"
       ]
     },
     {
@@ -2298,7 +2302,7 @@
         "com_6d05b1def86f",
         "com_71693d246d8f",
         "com_78b8aba2a8f3",
-        "com_8f3049b2c187"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -2537,21 +2541,18 @@
       "slug": "arts-with-lorry-fb5421",
       "name": "Arts With Lorry",
       "kind": "recurring_series",
-      "tagline": "Arts With Lorry is a recurring event series centered on music, dance in chelsea, manhattan.",
-      "description": "Arts With Lorry is a recurring event series centered on music, dance in chelsea, manhattan. Based on 24 observed event dates, it meets weekly on Friday and Sunday afternoons.",
+      "tagline": "Arts With Lorry is a recurring event series centered on music in chelsea, east village.",
+      "description": "Arts With Lorry is a recurring event series centered on music in chelsea, east village. Based on 24 observed event dates, it meets weekly on Friday and Sunday afternoons.",
       "categories": [
         "music",
-        "dance",
         "other"
       ],
       "tags": [
         "music",
-        "dance",
         "other"
       ],
       "neighborhoods": [
         "chelsea",
-        "manhattan",
         "east village"
       ],
       "homeVenue": "520 8th Ave",
@@ -2603,9 +2604,9 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_61de7e5f2248",
-        "com_fe4b6663b721",
         "com_b766b6de77ba",
-        "com_5dd8d7d6e995",
+        "com_ffc1304a5cb6",
+        "com_c305531d38d0",
         "com_1e60766a7318"
       ]
     },
@@ -2762,11 +2763,11 @@
       ],
       "similarCommunityIds": [
         "com_c1410c07c4dd",
+        "com_b736e77bdf93",
         "com_bb6928bc760c",
         "com_f28d3ae740a6",
         "com_3837f308cd75",
-        "com_489a14652e20",
-        "com_5582e2e97f1a"
+        "com_489a14652e20"
       ]
     },
     {
@@ -3043,8 +3044,8 @@
         "com_cb019f4e9752",
         "com_83f64eec47de",
         "com_c212478907d5",
-        "com_ffc1304a5cb6",
         "com_3048e331f7b6",
+        "com_d8a5203885a9",
         "com_68b36e93076a"
       ]
     },
@@ -3129,17 +3130,15 @@
       "slug": "st-mazie-0a9300",
       "name": "St Mazie",
       "kind": "recurring_series",
-      "tagline": "St Mazie is a recurring event series centered on music, dance in brooklyn.",
-      "description": "St Mazie is a recurring event series centered on music, dance in brooklyn. Based on 74 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "tagline": "St Mazie is a recurring event series centered on music in brooklyn.",
+      "description": "St Mazie is a recurring event series centered on music in brooklyn. Based on 74 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "music",
-        "other",
-        "dance"
+        "other"
       ],
       "tags": [
         "music",
-        "other",
-        "dance"
+        "other"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -3157,7 +3156,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 116
       },
       "schedule": {
@@ -3174,6 +3173,7 @@
         "e15b25ddcbd837f3",
         "010651cc2c1bf9b2",
         "517502529f1ff396",
+        "430a525f4f8b2b6a",
         "807a259d60694089"
       ],
       "sourceAttributions": [
@@ -3192,12 +3192,12 @@
         "eventbrite:5803675324"
       ],
       "similarCommunityIds": [
-        "com_8b837dfb5421",
+        "com_ffc1304a5cb6",
         "com_8f2a69f866f2",
         "com_9caab69e0812",
-        "com_3048e331f7b6",
-        "com_3837f308cd75",
-        "com_218b97d674a6"
+        "com_61de7e5f2248",
+        "com_8b837dfb5421",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -3276,12 +3276,12 @@
         "eventbrite:5993389089"
       ],
       "similarCommunityIds": [
-        "com_1466f20a9300",
-        "com_8b837dfb5421",
         "com_9abdf9db297a",
         "com_3048e331f7b6",
         "com_3837f308cd75",
-        "com_ab8259bb35a4"
+        "com_fe4b6663b721",
+        "com_96a0049afb0f",
+        "com_c0492b95ac8d"
       ]
     },
     {
@@ -3432,76 +3432,8 @@
         "com_1e60766a7318",
         "com_a4f86eccdc8e",
         "com_3942d7a4c6e3",
-        "com_05774b0951d0",
-        "com_19609e7f4286"
-      ]
-    },
-    {
-      "id": "com_1051b67b7913",
-      "slug": "raymond-salvador-7b7913",
-      "name": "Raymond Salvador",
-      "kind": "recurring_series",
-      "tagline": "Raymond Salvador is a recurring event series centered on art, comedy in long island city.",
-      "description": "Raymond Salvador is a recurring event series centered on art, comedy in long island city. Based on 2 observed event dates, it meets biweekly on Saturday mornings.",
-      "categories": [
-        "art",
-        "comedy"
-      ],
-      "tags": [
-        "art",
-        "comedy"
-      ],
-      "neighborhoods": [
-        "long island city"
-      ],
-      "homeVenue": "Everyone Comics & Collectibles",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1176351421%2F1426742159723%2F1%2Foriginal.20260131-231111?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.546&fp-y=0.533&s=331a526671fc506867fba6b1968f67e0",
-      "links": [
-        {
-          "type": "eventbrite",
-          "label": "View on Eventbrite",
-          "url": "https://eventbrite.com/o/61845085253"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 0,
-        "eventCount90d": 2
-      },
-      "schedule": {
-        "cadence": "biweekly",
-        "typicalDays": [
-          "Saturday"
-        ],
-        "typicalTime": "11:00",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "eventbrite"
-      ],
-      "lastVerifiedAt": "2026-11-15",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 2,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "eventbrite:61845085253"
-      ],
-      "similarCommunityIds": [
-        "com_9a5c4d074e3a",
-        "com_139883e18f84",
-        "com_9fe1e0196792",
-        "com_072c9c3e12a8",
-        "com_9f333da89132",
-        "com_12939182c936"
+        "com_fe4b6663b721",
+        "com_05774b0951d0"
       ]
     },
     {
@@ -3513,14 +3445,14 @@
       "description": "Brooklyn Art Haus is a recurring event series centered on music, comedy, special in brooklyn. Based on 49 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "music",
-        "comedy",
         "other",
+        "comedy",
         "special"
       ],
       "tags": [
         "music",
-        "comedy",
         "other",
+        "comedy",
         "special"
       ],
       "neighborhoods": [
@@ -3576,12 +3508,12 @@
         "eventbrite:65148790433"
       ],
       "similarCommunityIds": [
-        "com_cb019f4e9752",
         "com_d8a5203885a9",
         "com_1466f20a9300",
+        "com_cb019f4e9752",
+        "com_ffc1304a5cb6",
         "com_8f2a69f866f2",
-        "com_9caab69e0812",
-        "com_3837f308cd75"
+        "com_9caab69e0812"
       ]
     },
     {
@@ -3592,15 +3524,15 @@
       "tagline": "The People's Forum is a recurring event series centered on art, books, music in midtown.",
       "description": "The People's Forum is a recurring event series centered on art, books, music in midtown. Based on 10 observed event dates, it meets weekly on Friday and Wednesday evenings.",
       "categories": [
-        "other",
         "art",
+        "other",
         "books",
         "music",
         "movies"
       ],
       "tags": [
-        "other",
         "art",
+        "other",
         "books",
         "music",
         "movies"
@@ -3796,11 +3728,11 @@
       ],
       "similarCommunityIds": [
         "com_1b71901c7841",
+        "com_c56c9c25c7a1",
         "com_f8c88ef9a8ca",
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
-        "com_387990e42591",
-        "com_40bf372e58c5"
+        "com_387990e42591"
       ]
     },
     {
@@ -3821,7 +3753,7 @@
       "neighborhoods": [
         "lower east side"
       ],
-      "homeVenue": "Klassic Lounge",
+      "homeVenue": "The DL",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1196846754%2F232855692231%2F1%2Foriginal.20261029-120947?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=bdeca908c1733f064f4eeb49534868be",
       "links": [
         {
@@ -4170,8 +4102,8 @@
       "slug": "bereisheet-tech-asaf-wolff-8f4060",
       "name": "Bereisheet Tech (Asaf Wolff)",
       "kind": "recurring_series",
-      "tagline": "Bereisheet Tech (Asaf Wolff) is a recurring event series in manhattan, midtown.",
-      "description": "Bereisheet Tech (Asaf Wolff) is a recurring event series in manhattan, midtown. Based on 2 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Bereisheet Tech (Asaf Wolff) is a recurring event series in midtown.",
+      "description": "Bereisheet Tech (Asaf Wolff) is a recurring event series in midtown. Based on 2 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "other"
       ],
@@ -4179,10 +4111,9 @@
         "other"
       ],
       "neighborhoods": [
-        "manhattan",
         "midtown"
       ],
-      "homeVenue": "New York, New York",
+      "homeVenue": "Midtown Manhattan",
       "imageUrl": "https://images.lumacdn.com/uploads/we/f10a466b-9dbb-4a7f-b78c-8fee19c72785.png",
       "links": [
         {
@@ -4228,12 +4159,12 @@
         "luma:bereisheetech"
       ],
       "similarCommunityIds": [
-        "com_d74826b4ebc7",
-        "com_05774b0951d0",
         "com_14e2dae511e1",
-        "com_19609e7f4286",
-        "com_1c65032c5bbc",
-        "com_1e08b1e2de75"
+        "com_1e08b1e2de75",
+        "com_53a894e82b51",
+        "com_7a79190109e4",
+        "com_d74826b4ebc7",
+        "com_387990e42591"
       ]
     },
     {
@@ -4305,9 +4236,9 @@
         "com_bff06d9b0e6f",
         "com_3289a091c74f",
         "com_68f8f24f0095",
-        "com_70cbea4f18e4",
-        "com_b088368d86fa",
-        "com_137e7edb1623"
+        "com_137e7edb1623",
+        "com_5dd8d7d6e995",
+        "com_6e9d22f6b768"
       ]
     },
     {
@@ -4378,10 +4309,10 @@
       "similarCommunityIds": [
         "com_32f0be19b796",
         "com_3837f308cd75",
-        "com_525bddfaee91",
         "com_85dcc6145f3c",
         "com_939280716ae9",
-        "com_ac68c397969d"
+        "com_9abdf9db297a",
+        "com_55ca36db453a"
       ]
     },
     {
@@ -4604,9 +4535,9 @@
         "com_30e8efd15421",
         "com_f54698ed682f",
         "com_072c9c3e12a8",
+        "com_273757444236",
         "com_1c4e0060fa58",
-        "com_3481b6750d6f",
-        "com_483b995f5504"
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -4670,12 +4601,12 @@
         "luma:cal-1asjingyzenpqaz"
       ],
       "similarCommunityIds": [
-        "com_525bddfaee91",
-        "com_ac68c397969d",
         "com_85dcc6145f3c",
         "com_0ae542c496b3",
+        "com_525bddfaee91",
         "com_12939182c936",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_489a14652e20"
       ]
     },
     {
@@ -4683,23 +4614,19 @@
       "slug": "kids-need-more-community-619e53",
       "name": "KiDS NEED MoRE Community",
       "kind": "recurring_series",
-      "tagline": "KiDS NEED MoRE Community is a recurring event series centered on music, special in manhattan.",
-      "description": "KiDS NEED MoRE Community is a recurring event series centered on music, special in manhattan. Based on 4 observed event dates, it meets biweekly on Sunday and Saturday mornings.",
+      "tagline": "KiDS NEED MoRE Community is a recurring event series in manhattan.",
+      "description": "KiDS NEED MoRE Community is a recurring event series in manhattan. Based on 4 observed event dates, it meets biweekly on Sunday and Saturday mornings.",
       "categories": [
-        "other",
-        "music",
-        "special"
+        "other"
       ],
       "tags": [
-        "other",
-        "music",
-        "special"
+        "other"
       ],
       "neighborhoods": [
         "manhattan"
       ],
-      "homeVenue": "J J's Tavern",
-      "imageUrl": "https://images.lumacdn.com/uploads/10/cd8207a1-e957-48ad-ac1f-d5a7f1ea79b8.png",
+      "homeVenue": "80 Herbert Ave",
+      "imageUrl": "https://images.lumacdn.com/uploads/pi/d1bf8cc0-0c01-4970-8d6b-b63b4126c8fa.png",
       "links": [
         {
           "type": "luma",
@@ -4711,7 +4638,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
@@ -4725,7 +4652,6 @@
         "sampleSize": 4
       },
       "upcomingEventIds": [
-        "1e66b8797f1e0cb7",
         "c62f0303fd05801c",
         "5336bc7b6ccf809b"
       ],
@@ -4745,12 +4671,12 @@
         "luma:cal-1axubukabcdxlch"
       ],
       "similarCommunityIds": [
-        "com_44f59baa3830",
-        "com_c305531d38d0",
-        "com_61de7e5f2248",
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
-        "com_483b995f5504"
+        "com_483b995f5504",
+        "com_a1c312a97abe",
+        "com_05774b0951d0",
+        "com_19609e7f4286"
       ]
     },
     {
@@ -4891,12 +4817,12 @@
         "luma:cal-1o9fv45toflyskm"
       ],
       "similarCommunityIds": [
-        "com_d1117f619e53",
         "com_a45e35db829c",
         "com_c305531d38d0",
-        "com_5dd8d7d6e995",
         "com_61de7e5f2248",
-        "com_759f151a6d08"
+        "com_759f151a6d08",
+        "com_14ba17c2cfae",
+        "com_1c4e0060fa58"
       ]
     },
     {
@@ -5051,21 +4977,21 @@
       "slug": "food-joy-club-b33438",
       "name": "Food Joy Club",
       "kind": "club",
-      "tagline": "Food Joy Club is a community club centered on parties in astoria, midtown.",
-      "description": "Food Joy Club is a community club centered on parties in astoria, midtown. Based on 4 observed event dates, it meets weekly on Saturday and Tuesday mornings.",
+      "tagline": "Food Joy Club is a community club centered on parties in midtown, astoria.",
+      "description": "Food Joy Club is a community club centered on parties in midtown, astoria. Based on 4 observed event dates, it meets weekly on Saturday and Tuesday mornings.",
       "categories": [
-        "parties",
-        "other"
+        "other",
+        "parties"
       ],
       "tags": [
-        "parties",
-        "other"
+        "other",
+        "parties"
       ],
       "neighborhoods": [
-        "astoria",
-        "midtown"
+        "midtown",
+        "astoria"
       ],
-      "homeVenue": "Astoria",
+      "homeVenue": "Stout NYC",
       "imageUrl": "https://images.lumacdn.com/uploads/so/109857ed-c536-4ac6-a63d-f2c101d7c904.png",
       "links": [
         {
@@ -5196,7 +5122,7 @@
         "com_a4f86eccdc8e",
         "com_e9748c1176c1",
         "com_3942d7a4c6e3",
-        "com_05774b0951d0"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -5266,8 +5192,8 @@
         "com_211f1f0f1811",
         "com_904b280a7245",
         "com_fb44e10deb2f",
-        "com_36080a5c47cd",
-        "com_4b9d7692e567"
+        "com_4b9d7692e567",
+        "com_bb4df3056be7"
       ]
     },
     {
@@ -5345,12 +5271,12 @@
         "luma:cal-ualicb7j5qcclrn"
       ],
       "similarCommunityIds": [
-        "com_fe4b6663b721",
         "com_a4f86eccdc8e",
         "com_2b6913d1e51a",
         "com_3005e46e50b2",
         "com_3837f308cd75",
-        "com_3942d7a4c6e3"
+        "com_3942d7a4c6e3",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -5422,8 +5348,8 @@
         "com_3481b6750d6f",
         "com_483b995f5504",
         "com_665eaac4154e",
-        "com_139883e18f84",
-        "com_30e8efd15421"
+        "com_d1117f619e53",
+        "com_139883e18f84"
       ]
     },
     {
@@ -5502,7 +5428,7 @@
         "com_139883e18f84",
         "com_44f59baa3830",
         "com_665eaac4154e",
-        "com_a45e35db829c"
+        "com_273757444236"
       ]
     },
     {
@@ -5605,7 +5531,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 0,
+        "upcomingEventCount": 1,
         "eventCount90d": 1
       },
       "schedule": {
@@ -5618,7 +5544,9 @@
         "confidence": 0.33,
         "sampleSize": 2
       },
-      "upcomingEventIds": [],
+      "upcomingEventIds": [
+        "21753e596f3d400e"
+      ],
       "sourceAttributions": [
         "luma"
       ],
@@ -5997,8 +5925,8 @@
         "com_1e08b1e2de75",
         "com_387990e42591",
         "com_4187c60b9599",
-        "com_53a894e82b51",
-        "com_7a79190109e4"
+        "com_5251e78f4060",
+        "com_53a894e82b51"
       ]
     },
     {
@@ -6134,11 +6062,11 @@
       ],
       "similarCommunityIds": [
         "com_32f0be19b796",
-        "com_525bddfaee91",
-        "com_ac68c397969d",
         "com_12939182c936",
         "com_0ae542c496b3",
-        "com_f9551f264561"
+        "com_525bddfaee91",
+        "com_f9551f264561",
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -6208,9 +6136,9 @@
         "com_47de8f45d349",
         "com_b422062b04b3",
         "com_c1558b0c4390",
-        "com_fe4b6663b721",
         "com_6d05b1def86f",
-        "com_2b6913d1e51a"
+        "com_2b6913d1e51a",
+        "com_a4f86eccdc8e"
       ]
     },
     {
@@ -6279,11 +6207,11 @@
       ],
       "similarCommunityIds": [
         "com_8f2a69f866f2",
-        "com_273757444236",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
         "com_904b280a7245",
-        "com_bf8843235af2"
+        "com_bf8843235af2",
+        "com_fb44e10deb2f"
       ]
     },
     {
@@ -6504,74 +6432,6 @@
       ]
     },
     {
-      "id": "com_de070b382a28",
-      "slug": "dear-crisis-382a28",
-      "name": "Dear Crisis",
-      "kind": "recurring_series",
-      "tagline": "Dear Crisis is a recurring event series in bushwick.",
-      "description": "Dear Crisis is a recurring event series in bushwick. Based on 3 observed event dates, it meets weekly on Saturday and Tuesday evenings.",
-      "categories": [
-        "other"
-      ],
-      "tags": [
-        "other"
-      ],
-      "neighborhoods": [
-        "bushwick"
-      ],
-      "homeVenue": "Bushwick",
-      "imageUrl": "https://images.lumacdn.com/api-uploads/g4/ac0069ec-964d-4e83-b406-05f27a7b0ccc.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/dearcrisis"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 0,
-        "eventCount90d": 3
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Saturday",
-          "Tuesday"
-        ],
-        "typicalTime": "17:00",
-        "confidence": 0.5,
-        "sampleSize": 3
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-11-15",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 3,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "instagram:vonwong",
-        "luma:cal-cv4sfxulynrsjtm"
-      ],
-      "similarCommunityIds": [
-        "com_05774b0951d0",
-        "com_0a3b21db526b",
-        "com_14e2dae511e1",
-        "com_19609e7f4286",
-        "com_1b71901c7841",
-        "com_1b90851c14cf"
-      ]
-    },
-    {
       "id": "com_78b8aba2a8f3",
       "slug": "sim-ny-metro-a2a8f3",
       "name": "SIM NY Metro",
@@ -6703,9 +6563,9 @@
       ],
       "similarCommunityIds": [
         "com_68f8f24f0095",
-        "com_70cbea4f18e4",
-        "com_b088368d86fa",
         "com_f54698ed682f",
+        "com_c58670960684",
+        "com_70cbea4f18e4",
         "com_bff06d9b0e6f",
         "com_ebf2f0d4ce77"
       ]
@@ -6715,25 +6575,23 @@
       "slug": "the-new-york-philosophy-club-960684",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side, manhattan.",
-      "description": "The New York Philosophy Club is a community club centered on art, music, wellness in upper east side, manhattan. Based on 9 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, upper east side. Based on 9 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
-        "art",
         "other",
-        "music",
+        "art",
         "wellness"
       ],
       "tags": [
-        "art",
         "other",
-        "music",
+        "art",
         "wellness"
       ],
       "neighborhoods": [
-        "upper east side",
-        "manhattan"
+        "manhattan",
+        "upper east side"
       ],
-      "homeVenue": "The Metropolitan Museum of Art",
+      "homeVenue": "167 E Broadway",
       "imageUrl": "https://images.lumacdn.com/uploads/wv/38014e22-6215-42e4-8618-ea79907e2a5d.png",
       "links": [
         {
@@ -6746,7 +6604,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 12
       },
       "schedule": {
@@ -6763,6 +6621,7 @@
         "9aeffa1e8f97b597",
         "5c7f219795bbfa24",
         "3d40b893b6e7d1e0",
+        "8eb509eff15bc46a",
         "cc29776d909b57dc"
       ],
       "sourceAttributions": [
@@ -6784,10 +6643,10 @@
       "similarCommunityIds": [
         "com_ab8259bb35a4",
         "com_9abdf9db297a",
-        "com_9caab69e0812",
-        "com_61de7e5f2248",
-        "com_96a0049afb0f",
-        "com_1e60766a7318"
+        "com_0ae542c496b3",
+        "com_525bddfaee91",
+        "com_bff06d9b0e6f",
+        "com_118a558259ea"
       ]
     },
     {
@@ -7205,12 +7064,12 @@
         "luma:cal-e6bxxkre5ntw0nh"
       ],
       "similarCommunityIds": [
-        "com_c56c9c25c7a1",
         "com_d0a5add7d8b9",
         "com_fa67d543a8b1",
         "com_2b6913d1e51a",
         "com_05774b0951d0",
-        "com_0a3b21db526b"
+        "com_0a3b21db526b",
+        "com_14e2dae511e1"
       ]
     },
     {
@@ -7277,10 +7136,10 @@
       "similarCommunityIds": [
         "com_83f64eec47de",
         "com_949217ac4f1f",
-        "com_ffc1304a5cb6",
         "com_1dc58bbe47db",
         "com_3d91bda94131",
-        "com_6da89066dbb5"
+        "com_6da89066dbb5",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -7417,8 +7276,8 @@
         "com_4187c60b9599",
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
-        "com_53a894e82b51",
-        "com_7a79190109e4"
+        "com_5251e78f4060",
+        "com_53a894e82b51"
       ]
     },
     {
@@ -7712,8 +7571,8 @@
         "com_904b280a7245",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_36080a5c47cd",
-        "com_4b9d7692e567"
+        "com_4b9d7692e567",
+        "com_bb4df3056be7"
       ]
     },
     {
@@ -7786,12 +7645,12 @@
         "luma:cal-fhhfs2rchiz1iwx"
       ],
       "similarCommunityIds": [
-        "com_fe4b6663b721",
         "com_14a9b81bfe8f",
         "com_47de8f45d349",
         "com_1e60766a7318",
         "com_a4f86eccdc8e",
-        "com_3942d7a4c6e3"
+        "com_3942d7a4c6e3",
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -7924,11 +7783,11 @@
       ],
       "similarCommunityIds": [
         "com_1b71901c7841",
+        "com_c56c9c25c7a1",
         "com_9a5c4d074e3a",
         "com_05774b0951d0",
         "com_0a3b21db526b",
-        "com_14e2dae511e1",
-        "com_19609e7f4286"
+        "com_14e2dae511e1"
       ]
     },
     {
@@ -7998,7 +7857,7 @@
         "com_47de8f45d349",
         "com_6ea25c7e117a",
         "com_b422062b04b3",
-        "com_c56c9c25c7a1"
+        "com_d0a5add7d8b9"
       ]
     },
     {
@@ -8068,8 +7927,8 @@
         "luma:cal-golnhdxbi8hgkua"
       ],
       "similarCommunityIds": [
-        "com_8c30193b027f",
         "com_5dd8d7d6e995",
+        "com_8c30193b027f",
         "com_a45e35db829c",
         "com_feb5ce491629",
         "com_05774b0951d0",
@@ -8280,9 +8139,9 @@
       ],
       "similarCommunityIds": [
         "com_14e2dae511e1",
+        "com_5251e78f4060",
         "com_53a894e82b51",
         "com_7a79190109e4",
-        "com_5251e78f4060",
         "com_d74826b4ebc7",
         "com_387990e42591"
       ]
@@ -8355,9 +8214,9 @@
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
         "com_483b995f5504",
+        "com_d1117f619e53",
         "com_387990e42591",
-        "com_40bf372e58c5",
-        "com_4187c60b9599"
+        "com_40bf372e58c5"
       ]
     },
     {
@@ -8799,7 +8658,7 @@
         "com_9c715da909bc",
         "com_f5605b691048",
         "com_4a9490cb3534",
-        "com_072c9c3e12a8"
+        "com_273757444236"
       ]
     },
     {
@@ -8865,9 +8724,9 @@
       ],
       "similarCommunityIds": [
         "com_1e08b1e2de75",
+        "com_5251e78f4060",
         "com_53a894e82b51",
         "com_7a79190109e4",
-        "com_5251e78f4060",
         "com_d74826b4ebc7",
         "com_387990e42591"
       ]
@@ -8878,7 +8737,7 @@
       "name": "Maayan's Hospitality Group",
       "kind": "club",
       "tagline": "Maayan's Hospitality Group is a community club in manhattan.",
-      "description": "Maayan's Hospitality Group is a community club in manhattan. Based on 5 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "description": "Maayan's Hospitality Group is a community club in manhattan. Based on 6 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "other"
       ],
@@ -8900,9 +8759,9 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 0,
-        "eventCount90d": 13
+        "lastEventDate": "2026-11-15",
+        "upcomingEventCount": 2,
+        "eventCount90d": 14
       },
       "schedule": {
         "cadence": "weekly",
@@ -8911,10 +8770,13 @@
           "Sunday"
         ],
         "typicalTime": "18:30",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
-      "upcomingEventIds": [],
+      "upcomingEventIds": [
+        "0dc951190cb7e4c9",
+        "6561c15b2c4b576e"
+      ],
       "sourceAttributions": [
         "luma"
       ],
@@ -8922,7 +8784,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -9006,8 +8868,8 @@
         "com_c0cfe9590e66",
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
-        "com_53a894e82b51",
-        "com_7a79190109e4"
+        "com_5251e78f4060",
+        "com_53a894e82b51"
       ]
     },
     {
@@ -9283,10 +9145,10 @@
       "similarCommunityIds": [
         "com_83f64eec47de",
         "com_99e08820d1c1",
-        "com_ffc1304a5cb6",
         "com_218b97d674a6",
         "com_1dc58bbe47db",
-        "com_3d91bda94131"
+        "com_3d91bda94131",
+        "com_6da89066dbb5"
       ]
     },
     {
@@ -9563,8 +9425,8 @@
       "similarCommunityIds": [
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
-        "com_7a79190109e4",
         "com_5251e78f4060",
+        "com_7a79190109e4",
         "com_d74826b4ebc7",
         "com_387990e42591"
       ]
@@ -9779,7 +9641,7 @@
       "similarCommunityIds": [
         "com_61de7e5f2248",
         "com_44f59baa3830",
-        "com_d1117f619e53",
+        "com_1466f20a9300",
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
         "com_387990e42591"
@@ -9794,13 +9656,13 @@
       "description": "Reforesters Wellness Classes & Ambient/ Electronic Events is a recurring event series centered on wellness, music in brooklyn. Based on 12 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "wellness",
-        "music",
-        "other"
+        "other",
+        "music"
       ],
       "tags": [
         "wellness",
-        "music",
-        "other"
+        "other",
+        "music"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -9861,11 +9723,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
+        "com_70cbea4f18e4",
+        "com_ffc1304a5cb6",
         "com_8f2a69f866f2",
         "com_3048e331f7b6",
-        "com_3837f308cd75",
-        "com_ab8259bb35a4",
-        "com_c58670960684"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -10014,8 +9876,8 @@
         "com_8f2a69f866f2",
         "com_759f151a6d08",
         "com_99e08820d1c1",
-        "com_5dd8d7d6e995",
-        "com_8c30193b027f"
+        "com_1466f20a9300",
+        "com_70cbea4f18e4"
       ]
     },
     {
@@ -10458,9 +10320,9 @@
         "luma:cal-qdftd4isoh7xj4m"
       ],
       "similarCommunityIds": [
+        "com_5dd8d7d6e995",
         "com_6e9d22f6b768",
         "com_a45e35db829c",
-        "com_5dd8d7d6e995",
         "com_feb5ce491629",
         "com_05774b0951d0",
         "com_0a3b21db526b"
@@ -10501,7 +10363,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 10,
         "eventCount90d": 5
       },
       "schedule": {
@@ -10523,7 +10385,6 @@
         "b6e7c954aa1f17ee",
         "5c47f42ece081f1c",
         "0f6250f05ef807e7",
-        "536a2f20ca7f6c25",
         "dfe5e2dae56467b7",
         "b83b553ce5570db3"
       ],
@@ -10548,8 +10409,8 @@
         "com_0606c7e50fa8",
         "com_0ae542c496b3",
         "com_4a9490cb3534",
-        "com_77ec11668bd8",
-        "com_ff2e01957665"
+        "com_525bddfaee91",
+        "com_77ec11668bd8"
       ]
     },
     {
@@ -10756,12 +10617,12 @@
         "luma:cal-rnedhwl6jgmdhv8"
       ],
       "similarCommunityIds": [
-        "com_b088368d86fa",
         "com_3289a091c74f",
         "com_70cbea4f18e4",
         "com_bff06d9b0e6f",
         "com_ebf2f0d4ce77",
-        "com_9caab69e0812"
+        "com_9caab69e0812",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -10826,10 +10687,10 @@
       "similarCommunityIds": [
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
+        "com_d1117f619e53",
         "com_a1c312a97abe",
         "com_05774b0951d0",
-        "com_19609e7f4286",
-        "com_1c65032c5bbc"
+        "com_19609e7f4286"
       ]
     },
     {
@@ -10966,9 +10827,9 @@
         "com_14a9b81bfe8f",
         "com_b422062b04b3",
         "com_c1558b0c4390",
-        "com_fe4b6663b721",
         "com_6d05b1def86f",
-        "com_2b6913d1e51a"
+        "com_2b6913d1e51a",
+        "com_a4f86eccdc8e"
       ]
     },
     {
@@ -11332,8 +11193,8 @@
         "com_211f1f0f1811",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_36080a5c47cd",
-        "com_4b9d7692e567"
+        "com_4b9d7692e567",
+        "com_bb4df3056be7"
       ]
     },
     {
@@ -11404,9 +11265,9 @@
         "com_1e60766a7318",
         "com_a4f86eccdc8e",
         "com_e9748c1176c1",
-        "com_b766b6de77ba",
-        "com_05774b0951d0",
-        "com_19609e7f4286"
+        "com_1466f20a9300",
+        "com_8b837dfb5421",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -11414,21 +11275,18 @@
       "slug": "mimi-circle-25c7a1",
       "name": "Mimi Circle",
       "kind": "recurring_series",
-      "tagline": "Mimi Circle is a recurring event series centered on food in queens, long island city.",
-      "description": "Mimi Circle is a recurring event series centered on food in queens, long island city. Based on 3 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "tagline": "Mimi Circle is a recurring event series in long island city.",
+      "description": "Mimi Circle is a recurring event series in long island city. Based on 3 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
-        "food",
         "other"
       ],
       "tags": [
-        "food",
         "other"
       ],
       "neighborhoods": [
-        "queens",
         "long island city"
       ],
-      "homeVenue": "Hunters Point",
+      "homeVenue": "43-32 22nd St",
       "imageUrl": "https://images.lumacdn.com/uploads/b9/9e08000a-56c9-49bc-8337-2a5c97c2128a.jpg",
       "links": [
         {
@@ -11474,12 +11332,12 @@
         "luma:cal-tfg5r5qdo8uzrqt"
       ],
       "similarCommunityIds": [
-        "com_d0a5add7d8b9",
-        "com_6ea25c7e117a",
         "com_1b71901c7841",
         "com_f8c88ef9a8ca",
-        "com_fa67d543a8b1",
-        "com_2b6913d1e51a"
+        "com_9a5c4d074e3a",
+        "com_05774b0951d0",
+        "com_0a3b21db526b",
+        "com_14e2dae511e1"
       ]
     },
     {
@@ -11487,8 +11345,8 @@
       "slug": "brooklyn-community-pride-center-5c47cd",
       "name": "Brooklyn Community Pride Center",
       "kind": "institutional_program",
-      "tagline": "Brooklyn Community Pride Center is a community program in brooklyn, williamsburg.",
-      "description": "Brooklyn Community Pride Center is a community program in brooklyn, williamsburg. Based on 3 observed event dates, it meets weekly on Monday and Saturday evenings.",
+      "tagline": "Brooklyn Community Pride Center is a community program in williamsburg.",
+      "description": "Brooklyn Community Pride Center is a community program in williamsburg. Based on 3 observed event dates, it meets weekly on Monday and Saturday evenings.",
       "categories": [
         "other"
       ],
@@ -11496,10 +11354,9 @@
         "other"
       ],
       "neighborhoods": [
-        "brooklyn",
         "williamsburg"
       ],
-      "homeVenue": "Prospect Park Tennis Center",
+      "homeVenue": "Major R. Owens Health & Wellness Community Center",
       "imageUrl": "https://images.lumacdn.com/event-covers/qf/f2b72156-e7cd-4ce8-b566-0bb52652f8b1.jpg",
       "links": [
         {
@@ -11538,24 +11395,18 @@
         "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
-      "newcomerFriendly": true,
-      "newcomerEvidence": [
-        {
-          "eventId": "7a1f5bec6720653c",
-          "signal": "beginner"
-        }
-      ],
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
-        "instagram:lgbtbrooklyn",
         "luma:cal-tjnsvd8ytytyxgj"
       ],
       "similarCommunityIds": [
-        "com_20bc48fa0fec",
-        "com_211f1f0f1811",
-        "com_904b280a7245",
-        "com_bf8843235af2",
         "com_c40f2343dd99",
-        "com_fb44e10deb2f"
+        "com_f739c03ef66c",
+        "com_05774b0951d0",
+        "com_0a3b21db526b",
+        "com_14e2dae511e1",
+        "com_19609e7f4286"
       ]
     },
     {
@@ -12103,8 +11954,8 @@
         "luma:cal-vnpgs6dwv4f2m8x"
       ],
       "similarCommunityIds": [
-        "com_c40f2343dd99",
         "com_36080a5c47cd",
+        "com_c40f2343dd99",
         "com_606719862cd1",
         "com_ecbd2783c835",
         "com_05774b0951d0",
@@ -12541,8 +12392,8 @@
         "com_211f1f0f1811",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_36080a5c47cd",
-        "com_4b9d7692e567"
+        "com_4b9d7692e567",
+        "com_bb4df3056be7"
       ]
     },
     {
@@ -12751,8 +12602,8 @@
         "com_3481b6750d6f",
         "com_483b995f5504",
         "com_665eaac4154e",
-        "com_139883e18f84",
-        "com_f084ce2ea8b1"
+        "com_d1117f619e53",
+        "com_139883e18f84"
       ]
     },
     {
@@ -12816,12 +12667,12 @@
         "luma:cal-ymyhslmheh5cq3m"
       ],
       "similarCommunityIds": [
-        "com_b1c3376ecc52",
         "com_1466f20a9300",
+        "com_b1c3376ecc52",
+        "com_ffc1304a5cb6",
         "com_9caab69e0812",
         "com_3048e331f7b6",
-        "com_3837f308cd75",
-        "com_20bc48fa0fec"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -12892,12 +12743,12 @@
         "luma:cal-yppeooiilrhumaw"
       ],
       "similarCommunityIds": [
-        "com_5251e78f4060",
         "com_05774b0951d0",
         "com_14e2dae511e1",
         "com_19609e7f4286",
         "com_1c65032c5bbc",
-        "com_1e08b1e2de75"
+        "com_1e08b1e2de75",
+        "com_2598d21a6937"
       ]
     },
     {
@@ -12973,9 +12824,9 @@
       ],
       "similarCommunityIds": [
         "com_a4f86eccdc8e",
+        "com_fe4b6663b721",
         "com_61de7e5f2248",
         "com_a1e1c13a75f0",
-        "com_fe4b6663b721",
         "com_1e60766a7318",
         "com_e9748c1176c1"
       ]
@@ -12985,8 +12836,8 @@
       "slug": "harlem-art-house-collective-196792",
       "name": "Harlem Art House Collective",
       "kind": "recurring_series",
-      "tagline": "Harlem Art House Collective is a recurring event series centered on comedy in harlem, manhattan.",
-      "description": "Harlem Art House Collective is a recurring event series centered on comedy in harlem, manhattan. Based on 3 observed event dates, it meets biweekly on Saturday and Friday evenings.",
+      "tagline": "Harlem Art House Collective is a recurring event series centered on comedy in manhattan, harlem.",
+      "description": "Harlem Art House Collective is a recurring event series centered on comedy in manhattan, harlem. Based on 3 observed event dates, it meets biweekly on Saturday and Friday evenings.",
       "categories": [
         "other",
         "comedy"
@@ -12996,8 +12847,8 @@
         "comedy"
       ],
       "neighborhoods": [
-        "harlem",
-        "manhattan"
+        "manhattan",
+        "harlem"
       ],
       "homeVenue": "74 W 120th St",
       "imageUrl": "https://images.lumacdn.com/uploads/h7/9d739470-da7c-44b4-9531-3ff6a25f5f06.jpg",
@@ -13121,12 +12972,12 @@
         "luma:cal-yyaiq5orklhzpf8"
       ],
       "similarCommunityIds": [
+        "com_5dd8d7d6e995",
         "com_a1c312a97abe",
         "com_44f59baa3830",
         "com_6e9d22f6b768",
         "com_14ba17c2cfae",
-        "com_1c4e0060fa58",
-        "com_3481b6750d6f"
+        "com_1c4e0060fa58"
       ]
     },
     {
@@ -13193,8 +13044,8 @@
         "com_c0cfe9590e66",
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
-        "com_53a894e82b51",
-        "com_7a79190109e4"
+        "com_5251e78f4060",
+        "com_53a894e82b51"
       ]
     },
     {
@@ -13401,10 +13252,10 @@
       "similarCommunityIds": [
         "com_118a558259ea",
         "com_32f0be19b796",
-        "com_525bddfaee91",
         "com_85dcc6145f3c",
-        "com_ac68c397969d",
-        "com_139883e18f84"
+        "com_139883e18f84",
+        "com_160d3b550b59",
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -13543,75 +13394,6 @@
         "com_5dfb5e7631bc",
         "com_7c6c5c3e08c8",
         "com_cedcc75d84f5"
-      ]
-    },
-    {
-      "id": "com_b088368d86fa",
-      "slug": "dharma-drum-meditation-center-8d86fa",
-      "name": "Dharma Drum Meditation Center",
-      "kind": "institutional_program",
-      "tagline": "Dharma Drum Meditation Center is a community program centered on wellness in chelsea.",
-      "description": "Dharma Drum Meditation Center is a community program centered on wellness in chelsea. Based on 4 observed event dates, it meets weekly on Tuesday and Friday mornings.",
-      "categories": [
-        "wellness"
-      ],
-      "tags": [
-        "wellness"
-      ],
-      "neighborhoods": [
-        "chelsea"
-      ],
-      "homeVenue": "Dharma Drum Meditation Center",
-      "imageUrl": "https://images.lumacdn.com/uploads/ir/13524d72-8057-411b-855d-f10acf30aeaa.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/ddmcnyc"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 1,
-        "eventCount90d": 5
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Tuesday",
-          "Friday"
-        ],
-        "typicalTime": "10:30",
-        "confidence": 0.67,
-        "sampleSize": 4
-      },
-      "upcomingEventIds": [
-        "38bf651e49b2741e"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-11-15",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 4,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "luma:ddmcnyc"
-      ],
-      "similarCommunityIds": [
-        "com_68f8f24f0095",
-        "com_3289a091c74f",
-        "com_70cbea4f18e4",
-        "com_bff06d9b0e6f",
-        "com_ebf2f0d4ce77",
-        "com_9caab69e0812"
       ]
     },
     {
@@ -13758,8 +13540,8 @@
       ],
       "similarCommunityIds": [
         "com_3942d7a4c6e3",
-        "com_61de7e5f2248",
         "com_fe4b6663b721",
+        "com_61de7e5f2248",
         "com_1e60766a7318",
         "com_e9748c1176c1",
         "com_bb6928bc760c"
@@ -13837,8 +13619,8 @@
         "com_8f2a69f866f2",
         "com_759f151a6d08",
         "com_99e08820d1c1",
-        "com_5dd8d7d6e995",
-        "com_8c30193b027f"
+        "com_1466f20a9300",
+        "com_70cbea4f18e4"
       ]
     },
     {
@@ -13990,18 +13772,16 @@
       "slug": "the-new-york-philosophy-club-bb35a4",
       "name": "The New York Philosophy Club",
       "kind": "club",
-      "tagline": "The New York Philosophy Club is a community club centered on art, music, wellness in manhattan, upper east side.",
-      "description": "The New York Philosophy Club is a community club centered on art, music, wellness in manhattan, upper east side. Based on 29 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "tagline": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, upper east side.",
+      "description": "The New York Philosophy Club is a community club centered on art, wellness in manhattan, upper east side. Based on 29 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
         "art",
-        "music",
         "wellness"
       ],
       "tags": [
         "other",
         "art",
-        "music",
         "wellness"
       ],
       "neighborhoods": [
@@ -14010,7 +13790,7 @@
         "midtown",
         "williamsburg"
       ],
-      "homeVenue": "The Metropolitan Museum of Art",
+      "homeVenue": "167 E Broadway",
       "imageUrl": "https://images.lumacdn.com/uploads/wv/38014e22-6215-42e4-8618-ea79907e2a5d.png",
       "links": [
         {
@@ -14023,7 +13803,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 9,
         "eventCount90d": 52
       },
       "schedule": {
@@ -14043,6 +13823,7 @@
         "698ec8453e5f4344",
         "f68ef1dbb841092f",
         "3d40b893b6e7d1e0",
+        "8eb509eff15bc46a",
         "cc29776d909b57dc",
         "e5f2ddfd2a7d3b99"
       ],
@@ -14063,11 +13844,11 @@
       ],
       "similarCommunityIds": [
         "com_c58670960684",
+        "com_0ae542c496b3",
+        "com_525bddfaee91",
+        "com_bff06d9b0e6f",
         "com_9abdf9db297a",
-        "com_9caab69e0812",
-        "com_3837f308cd75",
-        "com_61de7e5f2248",
-        "com_96a0049afb0f"
+        "com_9caab69e0812"
       ]
     },
     {
@@ -14243,13 +14024,15 @@
       "slug": "reforesters-wellness-classes-ambient-electronic-events-4f18e4",
       "name": "Reforesters Wellness Classes & Ambient/ Electronic Events",
       "kind": "recurring_series",
-      "tagline": "Reforesters Wellness Classes & Ambient/ Electronic Events is a recurring event series centered on wellness in brooklyn.",
-      "description": "Reforesters Wellness Classes & Ambient/ Electronic Events is a recurring event series centered on wellness in brooklyn. Based on 3 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "tagline": "Reforesters Wellness Classes & Ambient/ Electronic Events is a recurring event series centered on wellness, music in brooklyn.",
+      "description": "Reforesters Wellness Classes & Ambient/ Electronic Events is a recurring event series centered on wellness, music in brooklyn. Based on 4 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
       "categories": [
-        "wellness"
+        "wellness",
+        "music"
       ],
       "tags": [
-        "wellness"
+        "wellness",
+        "music"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -14267,7 +14050,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 5
       },
       "schedule": {
@@ -14277,11 +14060,12 @@
           "Wednesday"
         ],
         "typicalTime": "18:15",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
-        "933053e32dea3c91"
+        "933053e32dea3c91",
+        "0e1a6c01ff412b1a"
       ],
       "sourceAttributions": [
         "luma"
@@ -14290,7 +14074,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -14299,12 +14083,12 @@
         "luma:reforesters-laboratory"
       ],
       "similarCommunityIds": [
-        "com_3289a091c74f",
-        "com_68f8f24f0095",
-        "com_b088368d86fa",
         "com_9caab69e0812",
-        "com_bff06d9b0e6f",
-        "com_ebf2f0d4ce77"
+        "com_99e08820d1c1",
+        "com_1466f20a9300",
+        "com_ffc1304a5cb6",
+        "com_8f2a69f866f2",
+        "com_3048e331f7b6"
       ]
     },
     {
@@ -14369,8 +14153,8 @@
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
         "com_483b995f5504",
-        "com_d36daf8ea112",
-        "com_139883e18f84"
+        "com_d1117f619e53",
+        "com_d36daf8ea112"
       ]
     },
     {
@@ -14504,9 +14288,9 @@
         "luma:usr-4x7ga9yffjhsoae"
       ],
       "similarCommunityIds": [
-        "com_c56c9c25c7a1",
         "com_6ea25c7e117a",
         "com_1b71901c7841",
+        "com_c56c9c25c7a1",
         "com_f8c88ef9a8ca",
         "com_fa67d543a8b1",
         "com_2b6913d1e51a"
@@ -14703,8 +14487,8 @@
       "similarCommunityIds": [
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
-        "com_53a894e82b51",
         "com_5251e78f4060",
+        "com_53a894e82b51",
         "com_d74826b4ebc7",
         "com_387990e42591"
       ]
@@ -14769,7 +14553,7 @@
         "com_99e08820d1c1",
         "com_83f64eec47de",
         "com_949217ac4f1f",
-        "com_ffc1304a5cb6"
+        "com_1466f20a9300"
       ]
     },
     {
@@ -14834,12 +14618,12 @@
         "luma:usr-ds5cpafjqk5ygoa"
       ],
       "similarCommunityIds": [
+        "com_c56c9c25c7a1",
         "com_f8c88ef9a8ca",
         "com_9a5c4d074e3a",
         "com_05774b0951d0",
         "com_0a3b21db526b",
-        "com_14e2dae511e1",
-        "com_19609e7f4286"
+        "com_14e2dae511e1"
       ]
     },
     {
@@ -14901,8 +14685,8 @@
         "com_904b280a7245",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_36080a5c47cd",
-        "com_4b9d7692e567"
+        "com_4b9d7692e567",
+        "com_bb4df3056be7"
       ]
     },
     {
@@ -15041,7 +14825,7 @@
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
         "com_483b995f5504",
-        "com_30e8efd15421"
+        "com_d1117f619e53"
       ]
     },
     {
@@ -15107,78 +14891,10 @@
       "similarCommunityIds": [
         "com_3481b6750d6f",
         "com_483b995f5504",
+        "com_d1117f619e53",
         "com_a1c312a97abe",
         "com_05774b0951d0",
-        "com_19609e7f4286",
-        "com_1c65032c5bbc"
-      ]
-    },
-    {
-      "id": "com_ac68c397969d",
-      "slug": "chores-97969d",
-      "name": "Chores",
-      "kind": "recurring_series",
-      "tagline": "Chores is a recurring event series centered on art in brooklyn.",
-      "description": "Chores is a recurring event series centered on art in brooklyn. Based on 2 observed event dates, it meets weekly on Friday and Saturday evenings.",
-      "categories": [
-        "art"
-      ],
-      "tags": [
-        "art"
-      ],
-      "neighborhoods": [
-        "brooklyn"
-      ],
-      "homeVenue": "119 8th St",
-      "imageUrl": "https://images.lumacdn.com/uploads/wn/9a2f8416-2f5c-41d8-b431-a44279a22f15.jpg",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://chores.world"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 0,
-        "eventCount90d": 2
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Friday",
-          "Saturday"
-        ],
-        "typicalTime": "18:00",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-11-15",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 2,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "instagram:choresworld",
-        "luma:usr-jbbhizjq3kvsb6x"
-      ],
-      "similarCommunityIds": [
-        "com_32f0be19b796",
-        "com_525bddfaee91",
-        "com_85dcc6145f3c",
-        "com_0ae542c496b3",
-        "com_12939182c936",
-        "com_3837f308cd75"
+        "com_19609e7f4286"
       ]
     },
     {
@@ -15386,21 +15102,21 @@
       "slug": "dia-gauthier-444236",
       "name": "Dia Gauthier",
       "kind": "recurring_series",
-      "tagline": "Dia Gauthier is a recurring event series centered on exploration in west village, manhattan.",
-      "description": "Dia Gauthier is a recurring event series centered on exploration in west village, manhattan. Based on 2 observed event dates, it meets weekly on Saturday and Thursday mornings.",
+      "tagline": "Dia Gauthier is a recurring event series centered on exploration in manhattan, west village.",
+      "description": "Dia Gauthier is a recurring event series centered on exploration in manhattan, west village. Based on 3 observed event dates, it meets biweekly on Saturday and Thursday mornings.",
       "categories": [
-        "exploration",
-        "other"
+        "other",
+        "exploration"
       ],
       "tags": [
-        "exploration",
-        "other"
+        "other",
+        "exploration"
       ],
       "neighborhoods": [
-        "west village",
-        "manhattan"
+        "manhattan",
+        "west village"
       ],
-      "homeVenue": "178 Bleecker St",
+      "homeVenue": "Alphabet City",
       "imageUrl": "https://images.lumacdn.com/uploads/ys/4ecff81c-168d-491a-9d37-937f499604c9.png",
       "links": [
         {
@@ -15413,21 +15129,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
-        "cadence": "weekly",
+        "cadence": "biweekly",
         "typicalDays": [
           "Saturday",
           "Thursday"
         ],
         "typicalTime": "11:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
-        "20bb8b2b8a067a03"
+        "20bb8b2b8a067a03",
+        "35bf8a0bfcb258e4"
       ],
       "sourceAttributions": [
         "luma"
@@ -15436,7 +15153,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -15446,12 +15163,12 @@
         "luma:usr-lg1g0ksyucczp9p"
       ],
       "similarCommunityIds": [
-        "com_b1c3376ecc52",
-        "com_05774b0951d0",
-        "com_19609e7f4286",
-        "com_1c65032c5bbc",
-        "com_2598d21a6937",
-        "com_36cb2681053d"
+        "com_072c9c3e12a8",
+        "com_1c4e0060fa58",
+        "com_3481b6750d6f",
+        "com_483b995f5504",
+        "com_665eaac4154e",
+        "com_b1c3376ecc52"
       ]
     },
     {
@@ -15723,8 +15440,8 @@
         "com_14a9b81bfe8f",
         "com_47de8f45d349",
         "com_5582e2e97f1a",
-        "com_5251e78f4060",
-        "com_cbe08adf6898"
+        "com_cbe08adf6898",
+        "com_c1558b0c4390"
       ]
     },
     {
@@ -15934,12 +15651,14 @@
       "name": "ORAYA BK",
       "kind": "recurring_series",
       "tagline": "ORAYA BK is a recurring event series centered on art in brooklyn.",
-      "description": "ORAYA BK is a recurring event series centered on art in brooklyn. Based on 6 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "description": "ORAYA BK is a recurring event series centered on art in brooklyn. Based on 7 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
-        "art"
+        "art",
+        "other"
       ],
       "tags": [
-        "art"
+        "art",
+        "other"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -15951,7 +15670,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 7
       },
       "schedule": {
@@ -15962,10 +15681,11 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
-        "7eb3346b245d192b"
+        "7eb3346b245d192b",
+        "d26df071446f1b1c"
       ],
       "sourceAttributions": [
         "luma"
@@ -15974,7 +15694,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -15984,12 +15704,12 @@
         "luma:usr-skf6z2llqdbaabl"
       ],
       "similarCommunityIds": [
-        "com_32f0be19b796",
-        "com_ac68c397969d",
-        "com_85dcc6145f3c",
         "com_0ae542c496b3",
-        "com_12939182c936",
-        "com_3837f308cd75"
+        "com_20bc48fa0fec",
+        "com_211f1f0f1811",
+        "com_32f0be19b796",
+        "com_3837f308cd75",
+        "com_489a14652e20"
       ]
     },
     {
@@ -16194,7 +15914,7 @@
         "com_428275493172",
         "com_1e60766a7318",
         "com_feb5ce491629",
-        "com_02ba15552329"
+        "com_8b837dfb5421"
       ]
     },
     {
@@ -16455,9 +16175,9 @@
         "com_64ebabd98c5c",
         "com_1dc58bbe47db",
         "com_072c9c3e12a8",
-        "com_1051b67b7913",
         "com_139883e18f84",
-        "com_14ba17c2cfae"
+        "com_14ba17c2cfae",
+        "com_1a46b1930293"
       ]
     },
     {
@@ -16633,20 +16353,18 @@
       "slug": "brooklyn-comedy-collective-3885a9",
       "name": "Brooklyn Comedy Collective",
       "kind": "community_space",
-      "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn.",
-      "description": "Brooklyn Comedy Collective is a community space centered on comedy, special, music in brooklyn. Based on 76 observed event dates, it meets weekly on Friday and Sunday evenings.",
+      "tagline": "Brooklyn Comedy Collective is a community space centered on comedy, music, special in brooklyn.",
+      "description": "Brooklyn Comedy Collective is a community space centered on comedy, music, special in brooklyn. Based on 76 observed event dates, it meets weekly on Friday and Sunday evenings.",
       "categories": [
         "comedy",
-        "special",
         "music",
-        "parties",
+        "special",
         "movies"
       ],
       "tags": [
         "comedy",
-        "special",
         "music",
-        "parties",
+        "special",
         "movies"
       ],
       "neighborhoods": [
@@ -16665,7 +16383,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 21,
+        "upcomingEventCount": 23,
         "eventCount90d": 175
       },
       "schedule": {
@@ -16710,9 +16428,9 @@
       "similarCommunityIds": [
         "com_3048e331f7b6",
         "com_b736e77bdf93",
-        "com_f23f8820878b",
         "com_99e08820d1c1",
-        "com_0606c7e50fa8",
+        "com_1466f20a9300",
+        "com_70cbea4f18e4",
         "com_cb019f4e9752"
       ]
     },
@@ -16788,11 +16506,11 @@
       ],
       "similarCommunityIds": [
         "com_949217ac4f1f",
-        "com_1466f20a9300",
         "com_43850d49f9e6",
         "com_83f64eec47de",
         "com_99e08820d1c1",
-        "com_ffc1304a5cb6"
+        "com_1466f20a9300",
+        "com_70cbea4f18e4"
       ]
     },
     {
@@ -17113,8 +16831,8 @@
       "slug": "new-york-comedy-club-upper-west-side-20878b",
       "name": "New York Comedy Club Upper West Side",
       "kind": "club",
-      "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in east village, upper west side.",
-      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in east village, upper west side. Based on 94 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in upper west side, east village.",
+      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in upper west side, east village. Based on 94 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -17130,8 +16848,8 @@
         "parties"
       ],
       "neighborhoods": [
-        "east village",
-        "upper west side"
+        "upper west side",
+        "east village"
       ],
       "homeVenue": "New York Comedy Club Upper West Side",
       "imageUrl": "/img/shows/NYCC-1-702a0728-large-thumb.png",
@@ -17147,7 +16865,7 @@
         "state": "active",
         "lastEventDate": "2026-11-15",
         "upcomingEventCount": 29,
-        "eventCount90d": 370
+        "eventCount90d": 369
       },
       "schedule": {
         "cadence": "weekly",
@@ -17155,7 +16873,7 @@
           "Sunday",
           "Tuesday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
         "sampleSize": 94
       },
@@ -17189,12 +16907,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_d8a5203885a9",
         "com_3048e331f7b6",
         "com_3942d7a4c6e3",
-        "com_5dd8d7d6e995",
+        "com_d8a5203885a9",
         "com_759f151a6d08",
-        "com_bb6928bc760c"
+        "com_bb6928bc760c",
+        "com_28a4ec647815"
       ]
     },
     {
@@ -64377,7 +64095,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-15T02:48:27.790482+00:00",
+  "lastUpdated": "2026-11-15T05:30:42.549461+00:00",
   "version": 1,
   "schemaVersion": 1
 }
