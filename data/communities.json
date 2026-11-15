@@ -1916,10 +1916,10 @@
       "similarCommunityIds": [
         "com_cb9f3f0f5f71",
         "com_6e9d22f6b768",
-        "com_5dd8d7d6e995",
         "com_805e2fa93ad2",
         "com_1e60766a7318",
-        "com_137e7edb1623"
+        "com_137e7edb1623",
+        "com_5dd8d7d6e995"
       ]
     },
     {
@@ -2161,24 +2161,23 @@
       "slug": "big-reuse-d6e995",
       "name": "Big Reuse",
       "kind": "recurring_series",
-      "tagline": "Big Reuse is a recurring event series centered on outdoors in brooklyn, bronx.",
-      "description": "Big Reuse is a recurring event series centered on outdoors in brooklyn, bronx. Based on 10 observed event dates, it meets weekly on Sunday and Thursday mornings.",
+      "tagline": "Big Reuse is a recurring event series centered on outdoors in brooklyn, midtown.",
+      "description": "Big Reuse is a recurring event series centered on outdoors in brooklyn, midtown. Based on 10 observed event dates, it meets weekly on Sunday and Thursday mornings.",
       "categories": [
-        "other",
-        "outdoors"
+        "outdoors",
+        "other"
       ],
       "tags": [
-        "other",
-        "outdoors"
+        "outdoors",
+        "other"
       ],
       "neighborhoods": [
         "brooklyn",
-        "bronx",
-        "manhattan",
-        "midtown"
+        "midtown",
+        "east village"
       ],
-      "homeVenue": "2653 Decatur Ave",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1191383968%2F3005446753083%2F1%2Foriginal.20260818-233441?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&s=c6c163305b8f39f90a9797d508012c2e",
+      "homeVenue": "1087 E 43rd St",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197088672%2F2887041099051%2F1%2Foriginal.20261102-155615?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.51&fp-y=0.224&s=403563b9cb54947a53c44bf1d02507de",
       "links": [
         {
           "type": "eventbrite",
@@ -2190,7 +2189,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 4,
         "eventCount90d": 16
       },
       "schedule": {
@@ -2204,8 +2203,6 @@
         "sampleSize": 10
       },
       "upcomingEventIds": [
-        "2197e3a4c565444e",
-        "72c89783e88e061b",
         "a4b4c2cc0011f74e",
         "bc2c1ace94094533",
         "0ae8592804a02481",
@@ -2231,8 +2228,8 @@
         "com_8c30193b027f",
         "com_a45e35db829c",
         "com_feb5ce491629",
-        "com_d74826b4ebc7",
-        "com_05774b0951d0"
+        "com_14e2dae511e1",
+        "com_1e08b1e2de75"
       ]
     },
     {
@@ -12972,9 +12969,9 @@
         "luma:cal-yyaiq5orklhzpf8"
       ],
       "similarCommunityIds": [
-        "com_5dd8d7d6e995",
         "com_a1c312a97abe",
         "com_44f59baa3830",
+        "com_5dd8d7d6e995",
         "com_6e9d22f6b768",
         "com_14ba17c2cfae",
         "com_1c4e0060fa58"
@@ -64095,7 +64092,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-15T09:54:36.011201+00:00",
+  "lastUpdated": "2026-11-15T11:11:21.632072+00:00",
   "version": 1,
   "schemaVersion": 1
 }
