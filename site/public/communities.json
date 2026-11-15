@@ -4176,7 +4176,7 @@
         "com_d103029f0156",
         "com_fbbdf45a2a0e",
         "com_feb5ce491629",
-        "com_c2d0cec20a9a"
+        "com_f54698ed682f"
       ]
     },
     {
@@ -4217,7 +4217,7 @@
           "Monday",
           "Tuesday"
         ],
-        "typicalTime": "18:00",
+        "typicalTime": "18:30",
         "confidence": 0.33,
         "sampleSize": 2
       },
@@ -5355,21 +5355,27 @@
       "slug": "21st-ed682f",
       "name": "21st",
       "kind": "recurring_series",
-      "tagline": "21st is a recurring event series centered on wellness in manhattan.",
-      "description": "21st is a recurring event series centered on wellness in manhattan. Based on 3 observed event dates, it meets biweekly on Sunday and Thursday afternoons.",
+      "tagline": "21st is a recurring event series centered on parties, fitness, wellness in manhattan, brooklyn.",
+      "description": "21st is a recurring event series centered on parties, fitness, wellness in manhattan, brooklyn. Based on 7 observed event dates, it meets weekly on Sunday and Monday afternoons.",
       "categories": [
-        "wellness",
-        "other"
+        "other",
+        "parties",
+        "fitness",
+        "wellness"
       ],
       "tags": [
-        "wellness",
-        "other"
+        "other",
+        "parties",
+        "fitness",
+        "wellness"
       ],
       "neighborhoods": [
-        "manhattan"
+        "manhattan",
+        "brooklyn",
+        "soho"
       ],
       "homeVenue": "Manhattan",
-      "imageUrl": "https://images.lumacdn.com/uploads/7i/a9fe7045-9216-4534-aa4e-edf0fc31dca2.png",
+      "imageUrl": "https://images.lumacdn.com/uploads/ol/cf1396d0-bd13-43f4-aa06-da9de8be4845.png",
       "links": [
         {
           "type": "luma",
@@ -5381,22 +5387,26 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 6,
         "eventCount90d": 1
       },
       "schedule": {
-        "cadence": "biweekly",
+        "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Thursday"
+          "Monday"
         ],
         "typicalTime": "15:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 1.0,
+        "sampleSize": 7
       },
       "upcomingEventIds": [
+        "45fd6c07279b44fc",
+        "a7a3f7d1c79d05fb",
+        "f92894743df29fdc",
         "f93a3635e77888fc",
-        "9448e4dd2a58c919"
+        "9448e4dd2a58c919",
+        "63617c650b3d58b5"
       ],
       "sourceAttributions": [
         "luma"
@@ -5405,22 +5415,24 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
       "newcomerEvidence": [],
       "aliases": [
         "instagram:danazhang_",
-        "luma:cal-6tv1prdhkjkaoe7"
+        "instagram:ryancheah__",
+        "luma:cal-6tv1prdhkjkaoe7",
+        "luma:usr-l42aetasuzr0puv"
       ],
       "similarCommunityIds": [
-        "com_1c4e0060fa58",
-        "com_3481b6750d6f",
-        "com_483b995f5504",
-        "com_d1117f619e53",
-        "com_30e8efd15421",
-        "com_665eaac4154e"
+        "com_3005e46e50b2",
+        "com_0606c7e50fa8",
+        "com_cb9f3f0f5f71",
+        "com_ff2e01957665",
+        "com_0e403135692e",
+        "com_1e60766a7318"
       ]
     },
     {
@@ -5770,7 +5782,7 @@
         "com_fbbdf45a2a0e",
         "com_0cc8630779d7",
         "com_606719862cd1",
-        "com_33a530deb7aa"
+        "com_f54698ed682f"
       ]
     },
     {
@@ -9662,7 +9674,7 @@
         "brooklyn"
       ],
       "homeVenue": "Reforesters Laboratory",
-      "imageUrl": "https://images.lumacdn.com/uploads/sn/0c0fcd25-6309-4d80-8fac-06e3bbe98224.jpg",
+      "imageUrl": "https://images.lumacdn.com/uploads/m3/edd7c996-adb8-4077-a85b-e2763fc82b51.png",
       "links": [
         {
           "type": "luma",
@@ -9674,8 +9686,8 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 7,
-        "eventCount90d": 15
+        "upcomingEventCount": 8,
+        "eventCount90d": 16
       },
       "schedule": {
         "cadence": "weekly",
@@ -9688,6 +9700,7 @@
         "sampleSize": 12
       },
       "upcomingEventIds": [
+        "0b08923461f9d0e1",
         "6223cdc7d9e4c8ac",
         "475820f1352a7369",
         "0e1a6c01ff412b1a",
@@ -12230,10 +12243,10 @@
       "similarCommunityIds": [
         "com_c5fb2290140a",
         "com_4b9d7692e567",
-        "com_f54698ed682f",
         "com_9caab69e0812",
         "com_ab8259bb35a4",
-        "com_c58670960684"
+        "com_c58670960684",
+        "com_ebf2f0d4ce77"
       ]
     },
     {
@@ -13708,8 +13721,8 @@
       "neighborhoods": [
         "manhattan",
         "upper east side",
-        "midtown",
-        "williamsburg"
+        "williamsburg",
+        "midtown"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/uploads/zu/c7ccca70-23f6-488c-a78c-297fd672cd7a.png",
@@ -13739,9 +13752,9 @@
       },
       "upcomingEventIds": [
         "5c7f219795bbfa24",
+        "f68ef1dbb841092f",
         "a7280058ca9d3b4a",
         "698ec8453e5f4344",
-        "f68ef1dbb841092f",
         "3d40b893b6e7d1e0",
         "8eb509eff15bc46a",
         "cc29776d909b57dc",
@@ -16161,8 +16174,8 @@
       "upcomingEventIds": [
         "96cf27159685012f",
         "b4b882749cb20887",
-        "89f6f1a3d24762fb",
         "f5207a5c726e6330",
+        "89f6f1a3d24762fb",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
         "652b577813c05bee",
@@ -63957,7 +63970,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-15T21:00:35.993375+00:00",
+  "lastUpdated": "2026-11-15T21:45:30.814450+00:00",
   "version": 1,
   "schemaVersion": 1
 }
