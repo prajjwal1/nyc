@@ -927,9 +927,9 @@
         "com_489a14652e20",
         "com_8d86f6f9340b",
         "com_a4d969c3c6eb",
-        "com_c1410c07c4dd",
         "com_2c239df2a554",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_0606c7e50fa8"
       ]
     },
     {
@@ -16124,21 +16124,21 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, music, movies in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, movies in east village, bushwick. Based on 75 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, art, music in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, art, music in east village, bushwick. Based on 75 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
+        "art",
         "music",
-        "movies",
-        "parties",
-        "art"
+        "games",
+        "movies"
       ],
       "tags": [
         "books",
+        "art",
         "music",
-        "movies",
-        "parties",
-        "art"
+        "games",
+        "movies"
       ],
       "neighborhoods": [
         "east village",
@@ -16151,14 +16151,14 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6755320261213"
+          "url": "https://bookclubbar.com/events/5730920270112"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 12,
+        "upcomingEventCount": 19,
         "eventCount90d": 80
       },
       "schedule": {
@@ -16180,10 +16180,10 @@
         "11895fd591100f1b",
         "652b577813c05bee",
         "75154eebbdbd66ab",
+        "bdd1ca7932c28d3f",
         "8c9af583f973dd9d",
-        "fc2619757c970c2c",
-        "e722ce271b52df36",
-        "ee7b9b1c72a9fda6"
+        "54e81c1502303bdf",
+        "f663eb4c1f31cda1"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -16200,6 +16200,10 @@
         {
           "eventId": "f5207a5c726e6330",
           "signal": "beginners"
+        },
+        {
+          "eventId": "39ae2e33322cd181",
+          "signal": "beginners"
         }
       ],
       "aliases": [
@@ -16209,9 +16213,9 @@
         "com_b736e77bdf93",
         "com_55ca36db453a",
         "com_8d86f6f9340b",
-        "com_f28d3ae740a6",
         "com_c0492b95ac8d",
-        "com_489a14652e20"
+        "com_f28d3ae740a6",
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -63970,7 +63974,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-15T22:57:41.982817+00:00",
+  "lastUpdated": "2026-11-15T23:27:49.705909+00:00",
   "version": 1,
   "schemaVersion": 1
 }
