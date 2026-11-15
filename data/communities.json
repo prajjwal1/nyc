@@ -146,9 +146,9 @@
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
         "com_32f0be19b796",
-        "com_36080a5c47cd",
         "com_3837f308cd75",
-        "com_489a14652e20"
+        "com_489a14652e20",
+        "com_525bddfaee91"
       ]
     },
     {
@@ -1166,8 +1166,8 @@
         "com_0606c7e50fa8",
         "com_77ec11668bd8",
         "com_ff2e01957665",
-        "com_7d3e76b46ffc",
-        "com_f990c90c32d5"
+        "com_3005e46e50b2",
+        "com_7d3e76b46ffc"
       ]
     },
     {
@@ -1609,10 +1609,10 @@
       "similarCommunityIds": [
         "com_0606c7e50fa8",
         "com_ff2e01957665",
+        "com_3005e46e50b2",
         "com_032059b33438",
         "com_1a46b1930293",
-        "com_5a1a72bded1f",
-        "com_2b6913d1e51a"
+        "com_5a1a72bded1f"
       ]
     },
     {
@@ -1681,11 +1681,11 @@
       ],
       "similarCommunityIds": [
         "com_0606c7e50fa8",
+        "com_3005e46e50b2",
         "com_0e403135692e",
         "com_032059b33438",
         "com_1a46b1930293",
-        "com_20bc48fa0fec",
-        "com_211f1f0f1811"
+        "com_20bc48fa0fec"
       ]
     },
     {
@@ -1757,7 +1757,7 @@
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
         "com_3048e331f7b6",
-        "com_36080a5c47cd"
+        "com_904b280a7245"
       ]
     },
     {
@@ -1980,10 +1980,10 @@
       "similarCommunityIds": [
         "com_1c4e0060fa58",
         "com_483b995f5504",
-        "com_f54698ed682f",
         "com_a1c312a97abe",
         "com_05774b0951d0",
-        "com_19609e7f4286"
+        "com_19609e7f4286",
+        "com_1c65032c5bbc"
       ]
     },
     {
@@ -2294,11 +2294,11 @@
       ],
       "similarCommunityIds": [
         "com_43850d49f9e6",
-        "com_3005e46e50b2",
         "com_f084ce2ea8b1",
         "com_6d05b1def86f",
         "com_71693d246d8f",
-        "com_78b8aba2a8f3"
+        "com_78b8aba2a8f3",
+        "com_8f3049b2c187"
       ]
     },
     {
@@ -4602,11 +4602,11 @@
       ],
       "similarCommunityIds": [
         "com_30e8efd15421",
+        "com_f54698ed682f",
         "com_072c9c3e12a8",
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
-        "com_483b995f5504",
-        "com_f54698ed682f"
+        "com_483b995f5504"
       ]
     },
     {
@@ -4904,8 +4904,8 @@
       "slug": "salam-social-club-events-6e50b2",
       "name": "Salam Social Club Events",
       "kind": "club",
-      "tagline": "Salam Social Club Events is a community club centered on parties in manhattan.",
-      "description": "Salam Social Club Events is a community club centered on parties in manhattan. Based on 3 observed event dates, it meets biweekly on Saturday and Friday evenings.",
+      "tagline": "Salam Social Club Events is a community club centered on parties in manhattan, brooklyn.",
+      "description": "Salam Social Club Events is a community club centered on parties in manhattan, brooklyn. Based on 4 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
         "parties"
@@ -4915,10 +4915,11 @@
         "parties"
       ],
       "neighborhoods": [
-        "manhattan"
+        "manhattan",
+        "brooklyn"
       ],
       "homeVenue": "Manhattan",
-      "imageUrl": "https://images.lumacdn.com/uploads/y5/853bf5fd-420d-497b-9147-9aaedd5d9a68.jpg",
+      "imageUrl": "https://images.lumacdn.com/uploads/j6/0c7e4960-5c18-416f-b87b-6b2ea54e515c.jpg",
       "links": [
         {
           "type": "luma",
@@ -4930,20 +4931,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 0
       },
       "schedule": {
-        "cadence": "biweekly",
+        "cadence": "weekly",
         "typicalDays": [
-          "Saturday",
-          "Friday"
+          "Friday",
+          "Saturday"
         ],
-        "typicalTime": "18:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "typicalTime": "17:30",
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
+        "f5013dab613a5923",
         "85bd4b2670d6bce8",
         "2a47b0a72e10f87f",
         "35a4e988587b9921"
@@ -4955,22 +4957,23 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
       "newcomerEvidence": [],
       "aliases": [
         "instagram:salamsocialclub",
-        "luma:cal-2m2xlketibwmmbc"
+        "luma:cal-2m2xlketibwmmbc",
+        "luma:usr-qfrjvld3garczpc"
       ],
       "similarCommunityIds": [
-        "com_f084ce2ea8b1",
-        "com_6d05b1def86f",
-        "com_1a46b1930293",
-        "com_1c4e0060fa58",
-        "com_3481b6750d6f",
-        "com_483b995f5504"
+        "com_0606c7e50fa8",
+        "com_ff2e01957665",
+        "com_0e403135692e",
+        "com_5a1a72bded1f",
+        "com_032059b33438",
+        "com_f084ce2ea8b1"
       ]
     },
     {
@@ -5035,12 +5038,12 @@
         "luma:cal-2xiiqaatpu6nwws"
       ],
       "similarCommunityIds": [
+        "com_36080a5c47cd",
         "com_f739c03ef66c",
         "com_05774b0951d0",
         "com_0a3b21db526b",
         "com_14e2dae511e1",
-        "com_19609e7f4286",
-        "com_1b71901c7841"
+        "com_19609e7f4286"
       ]
     },
     {
@@ -5111,10 +5114,10 @@
       "similarCommunityIds": [
         "com_0606c7e50fa8",
         "com_0e403135692e",
+        "com_3005e46e50b2",
         "com_ff2e01957665",
         "com_1a46b1930293",
-        "com_14e2dae511e1",
-        "com_1e08b1e2de75"
+        "com_a20864ed56ec"
       ]
     },
     {
@@ -5261,9 +5264,9 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_36080a5c47cd",
         "com_904b280a7245",
         "com_fb44e10deb2f",
+        "com_36080a5c47cd",
         "com_4b9d7692e567"
       ]
     },
@@ -5345,9 +5348,9 @@
         "com_fe4b6663b721",
         "com_a4f86eccdc8e",
         "com_2b6913d1e51a",
+        "com_3005e46e50b2",
         "com_3837f308cd75",
-        "com_3942d7a4c6e3",
-        "com_0606c7e50fa8"
+        "com_3942d7a4c6e3"
       ]
     },
     {
@@ -5355,19 +5358,21 @@
       "slug": "21st-ed682f",
       "name": "21st",
       "kind": "recurring_series",
-      "tagline": "21st is a recurring event series in manhattan.",
-      "description": "21st is a recurring event series in manhattan. Based on 2 observed event dates, it meets biweekly on Sunday and Friday afternoons.",
+      "tagline": "21st is a recurring event series centered on wellness in manhattan.",
+      "description": "21st is a recurring event series centered on wellness in manhattan. Based on 3 observed event dates, it meets biweekly on Sunday and Thursday afternoons.",
       "categories": [
+        "wellness",
         "other"
       ],
       "tags": [
+        "wellness",
         "other"
       ],
       "neighborhoods": [
         "manhattan"
       ],
       "homeVenue": "Manhattan",
-      "imageUrl": "https://images.lumacdn.com/uploads/7k/134c61e4-0724-44d2-baf0-82fcdb91f050.png",
+      "imageUrl": "https://images.lumacdn.com/uploads/7i/a9fe7045-9216-4534-aa4e-edf0fc31dca2.png",
       "links": [
         {
           "type": "luma",
@@ -5379,20 +5384,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
         "cadence": "biweekly",
         "typicalDays": [
           "Sunday",
-          "Friday"
+          "Thursday"
         ],
         "typicalTime": "15:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
+        "f93a3635e77888fc",
         "9448e4dd2a58c919"
       ],
       "sourceAttributions": [
@@ -5402,7 +5408,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -5415,9 +5421,9 @@
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
         "com_483b995f5504",
-        "com_a1c312a97abe",
-        "com_05774b0951d0",
-        "com_19609e7f4286"
+        "com_665eaac4154e",
+        "com_139883e18f84",
+        "com_30e8efd15421"
       ]
     },
     {
@@ -5847,7 +5853,7 @@
         "com_7d3e76b46ffc",
         "com_359977ec663e",
         "com_2c239df2a554",
-        "com_05774b0951d0"
+        "com_3005e46e50b2"
       ]
     },
     {
@@ -6276,8 +6282,8 @@
         "com_273757444236",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_36080a5c47cd",
-        "com_904b280a7245"
+        "com_904b280a7245",
+        "com_bf8843235af2"
       ]
     },
     {
@@ -6350,11 +6356,11 @@
       ],
       "similarCommunityIds": [
         "com_6d05b1def86f",
-        "com_3005e46e50b2",
         "com_f084ce2ea8b1",
         "com_fa67d543a8b1",
         "com_2b6913d1e51a",
-        "com_d6cec2ac3e5a"
+        "com_d6cec2ac3e5a",
+        "com_1a46b1930293"
       ]
     },
     {
@@ -6631,7 +6637,7 @@
         "com_8f3049b2c187",
         "com_cbe08adf6898",
         "com_14a9b81bfe8f",
-        "com_3005e46e50b2"
+        "com_47de8f45d349"
       ]
     },
     {
@@ -6699,9 +6705,9 @@
         "com_68f8f24f0095",
         "com_70cbea4f18e4",
         "com_b088368d86fa",
+        "com_f54698ed682f",
         "com_bff06d9b0e6f",
-        "com_ebf2f0d4ce77",
-        "com_c58670960684"
+        "com_ebf2f0d4ce77"
       ]
     },
     {
@@ -6850,11 +6856,11 @@
       ],
       "similarCommunityIds": [
         "com_ff2e01957665",
+        "com_3005e46e50b2",
         "com_0e403135692e",
         "com_032059b33438",
         "com_1a46b1930293",
-        "com_20bc48fa0fec",
-        "com_211f1f0f1811"
+        "com_20bc48fa0fec"
       ]
     },
     {
@@ -6922,11 +6928,11 @@
       ],
       "similarCommunityIds": [
         "com_a4f86eccdc8e",
-        "com_a20864ed56ec",
         "com_1dc58bbe47db",
         "com_3942d7a4c6e3",
         "com_3d91bda94131",
-        "com_6da89066dbb5"
+        "com_6da89066dbb5",
+        "com_71693d246d8f"
       ]
     },
     {
@@ -7562,10 +7568,10 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_36080a5c47cd",
         "com_904b280a7245",
         "com_9e04598579ba",
-        "com_b7b3a327c281"
+        "com_b7b3a327c281",
+        "com_bf8843235af2"
       ]
     },
     {
@@ -7703,10 +7709,10 @@
       ],
       "similarCommunityIds": [
         "com_20bc48fa0fec",
-        "com_36080a5c47cd",
         "com_904b280a7245",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
+        "com_36080a5c47cd",
         "com_4b9d7692e567"
       ]
     },
@@ -7845,10 +7851,10 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_36080a5c47cd",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_c212478907d5"
+        "com_c212478907d5",
+        "com_fb44e10deb2f"
       ]
     },
     {
@@ -8349,9 +8355,9 @@
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
         "com_483b995f5504",
-        "com_f54698ed682f",
         "com_387990e42591",
-        "com_40bf372e58c5"
+        "com_40bf372e58c5",
+        "com_4187c60b9599"
       ]
     },
     {
@@ -8648,7 +8654,7 @@
         "com_1a46b1930293",
         "com_8ff2a593caac",
         "com_14a9b81bfe8f",
-        "com_3005e46e50b2"
+        "com_43850d49f9e6"
       ]
     },
     {
@@ -9070,7 +9076,7 @@
         "com_8f3049b2c187",
         "com_cbe08adf6898",
         "com_14a9b81bfe8f",
-        "com_3005e46e50b2"
+        "com_47de8f45d349"
       ]
     },
     {
@@ -9487,10 +9493,10 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_36080a5c47cd",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_dbabd46f4ec6"
+        "com_dbabd46f4ec6",
+        "com_fb44e10deb2f"
       ]
     },
     {
@@ -9927,12 +9933,12 @@
         "luma:cal-pjhumufiicmogsp"
       ],
       "similarCommunityIds": [
-        "com_3005e46e50b2",
         "com_6d05b1def86f",
         "com_1a46b1930293",
+        "com_a20864ed56ec",
         "com_1c4e0060fa58",
-        "com_3481b6750d6f",
-        "com_483b995f5504"
+        "com_3005e46e50b2",
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -10307,7 +10313,7 @@
         "com_2c239df2a554",
         "com_489a14652e20",
         "com_f171cd222ca5",
-        "com_f990c90c32d5"
+        "com_3005e46e50b2"
       ]
     },
     {
@@ -10820,10 +10826,10 @@
       "similarCommunityIds": [
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
-        "com_f54698ed682f",
         "com_a1c312a97abe",
         "com_05774b0951d0",
-        "com_19609e7f4286"
+        "com_19609e7f4286",
+        "com_1c65032c5bbc"
       ]
     },
     {
@@ -11110,8 +11116,8 @@
         "com_ff2e01957665",
         "com_bb6928bc760c",
         "com_d6cec2ac3e5a",
-        "com_0e403135692e",
-        "com_6d05b1def86f"
+        "com_3005e46e50b2",
+        "com_0e403135692e"
       ]
     },
     {
@@ -11324,9 +11330,9 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_36080a5c47cd",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
+        "com_36080a5c47cd",
         "com_4b9d7692e567"
       ]
     },
@@ -11481,8 +11487,8 @@
       "slug": "brooklyn-community-pride-center-5c47cd",
       "name": "Brooklyn Community Pride Center",
       "kind": "institutional_program",
-      "tagline": "Brooklyn Community Pride Center is a community program in brooklyn.",
-      "description": "Brooklyn Community Pride Center is a community program in brooklyn. Based on 2 observed event dates, it meets weekly on Monday and Saturday evenings.",
+      "tagline": "Brooklyn Community Pride Center is a community program in brooklyn, williamsburg.",
+      "description": "Brooklyn Community Pride Center is a community program in brooklyn, williamsburg. Based on 3 observed event dates, it meets weekly on Monday and Saturday evenings.",
       "categories": [
         "other"
       ],
@@ -11490,10 +11496,11 @@
         "other"
       ],
       "neighborhoods": [
-        "brooklyn"
+        "brooklyn",
+        "williamsburg"
       ],
       "homeVenue": "Prospect Park Tennis Center",
-      "imageUrl": "https://images.lumacdn.com/uploads/bm/33f5e25c-1b96-42c6-a534-ff3ad4064384.png",
+      "imageUrl": "https://images.lumacdn.com/event-covers/qf/f2b72156-e7cd-4ce8-b566-0bb52652f8b1.jpg",
       "links": [
         {
           "type": "luma",
@@ -11505,7 +11512,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 0,
+        "upcomingEventCount": 1,
         "eventCount90d": 3
       },
       "schedule": {
@@ -11515,10 +11522,12 @@
           "Saturday"
         ],
         "typicalTime": "20:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
-      "upcomingEventIds": [],
+      "upcomingEventIds": [
+        "719af0ab7ba443d6"
+      ],
       "sourceAttributions": [
         "luma"
       ],
@@ -11526,7 +11535,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -11545,8 +11554,8 @@
         "com_211f1f0f1811",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_fb44e10deb2f",
-        "com_4b9d7692e567"
+        "com_c40f2343dd99",
+        "com_fb44e10deb2f"
       ]
     },
     {
@@ -11677,8 +11686,8 @@
         "com_78b8aba2a8f3",
         "com_c2d0cec20a9a",
         "com_1a46b1930293",
-        "com_3005e46e50b2",
-        "com_43850d49f9e6"
+        "com_43850d49f9e6",
+        "com_a20864ed56ec"
       ]
     },
     {
@@ -12095,11 +12104,11 @@
       ],
       "similarCommunityIds": [
         "com_c40f2343dd99",
+        "com_36080a5c47cd",
         "com_606719862cd1",
         "com_ecbd2783c835",
         "com_05774b0951d0",
-        "com_0a3b21db526b",
-        "com_14e2dae511e1"
+        "com_0a3b21db526b"
       ]
     },
     {
@@ -12167,8 +12176,8 @@
         "luma:cal-vr9kder3a9iefud"
       ],
       "similarCommunityIds": [
-        "com_0606c7e50fa8",
         "com_3005e46e50b2",
+        "com_0606c7e50fa8",
         "com_f084ce2ea8b1",
         "com_ff2e01957665",
         "com_1a46b1930293",
@@ -12241,12 +12250,12 @@
         "luma:cal-w5oathppwscaxk3"
       ],
       "similarCommunityIds": [
-        "com_3005e46e50b2",
+        "com_a20864ed56ec",
         "com_f084ce2ea8b1",
         "com_0606c7e50fa8",
         "com_ff2e01957665",
         "com_032059b33438",
-        "com_5a1a72bded1f"
+        "com_3005e46e50b2"
       ]
     },
     {
@@ -12381,8 +12390,8 @@
         "com_b7b3a327c281",
         "com_c5fb2290140a",
         "com_4b9d7692e567",
-        "com_9caab69e0812",
-        "com_273757444236"
+        "com_f54698ed682f",
+        "com_9caab69e0812"
       ]
     },
     {
@@ -12530,9 +12539,9 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_36080a5c47cd",
         "com_904b280a7245",
         "com_bf8843235af2",
+        "com_36080a5c47cd",
         "com_4b9d7692e567"
       ]
     },
@@ -12742,8 +12751,8 @@
         "com_3481b6750d6f",
         "com_483b995f5504",
         "com_665eaac4154e",
-        "com_f54698ed682f",
-        "com_139883e18f84"
+        "com_139883e18f84",
+        "com_f084ce2ea8b1"
       ]
     },
     {
@@ -14226,7 +14235,7 @@
         "com_2c239df2a554",
         "com_489a14652e20",
         "com_f171cd222ca5",
-        "com_f990c90c32d5"
+        "com_3005e46e50b2"
       ]
     },
     {
@@ -14360,8 +14369,8 @@
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
         "com_483b995f5504",
-        "com_f54698ed682f",
-        "com_d36daf8ea112"
+        "com_d36daf8ea112",
+        "com_139883e18f84"
       ]
     },
     {
@@ -14564,11 +14573,11 @@
       ],
       "similarCommunityIds": [
         "com_d36daf8ea112",
-        "com_3005e46e50b2",
         "com_f084ce2ea8b1",
         "com_fa67d543a8b1",
         "com_cbe08adf6898",
-        "com_14a9b81bfe8f"
+        "com_14a9b81bfe8f",
+        "com_47de8f45d349"
       ]
     },
     {
@@ -14889,10 +14898,10 @@
       ],
       "similarCommunityIds": [
         "com_211f1f0f1811",
-        "com_36080a5c47cd",
         "com_904b280a7245",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
+        "com_36080a5c47cd",
         "com_4b9d7692e567"
       ]
     },
@@ -15032,7 +15041,7 @@
         "com_1c4e0060fa58",
         "com_3481b6750d6f",
         "com_483b995f5504",
-        "com_f54698ed682f"
+        "com_30e8efd15421"
       ]
     },
     {
@@ -15098,10 +15107,10 @@
       "similarCommunityIds": [
         "com_3481b6750d6f",
         "com_483b995f5504",
-        "com_f54698ed682f",
         "com_a1c312a97abe",
         "com_05774b0951d0",
-        "com_19609e7f4286"
+        "com_19609e7f4286",
+        "com_1c65032c5bbc"
       ]
     },
     {
@@ -15515,18 +15524,19 @@
       "slug": "anu-chhabra-ed56ec",
       "name": "Anu Chhabra",
       "kind": "recurring_series",
-      "tagline": "Anu Chhabra is a recurring event series centered on parties in east village, west village.",
-      "description": "Anu Chhabra is a recurring event series centered on parties in east village, west village. Based on 3 observed event dates, it meets occasionally on Thursday and Tuesday evenings.",
+      "tagline": "Anu Chhabra is a recurring event series centered on parties in east village, midtown.",
+      "description": "Anu Chhabra is a recurring event series centered on parties in east village, midtown. Based on 4 observed event dates, it meets biweekly on Thursday and Tuesday evenings.",
       "categories": [
-        "other",
-        "parties"
+        "parties",
+        "other"
       ],
       "tags": [
-        "other",
-        "parties"
+        "parties",
+        "other"
       ],
       "neighborhoods": [
         "east village",
+        "midtown",
         "west village"
       ],
       "homeVenue": "Grant Thornton",
@@ -15542,21 +15552,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 0
       },
       "schedule": {
-        "cadence": "occasional",
+        "cadence": "biweekly",
         "typicalDays": [
           "Thursday",
           "Tuesday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
         "007f4115ecb0db66",
+        "74fe00254f22e06c",
         "a8bb264a715ce9c8",
         "65c8705e46254409"
       ],
@@ -15567,7 +15578,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -15577,12 +15588,12 @@
         "luma:usr-mahycyk0dwhs6ew"
       ],
       "similarCommunityIds": [
+        "com_1a46b1930293",
+        "com_f084ce2ea8b1",
         "com_032059b33438",
         "com_0606c7e50fa8",
         "com_0e403135692e",
-        "com_1a46b1930293",
-        "com_3005e46e50b2",
-        "com_5a1a72bded1f"
+        "com_3005e46e50b2"
       ]
     },
     {
@@ -15846,9 +15857,9 @@
         "com_1f87b327b20e",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_36080a5c47cd",
         "com_904b280a7245",
-        "com_bb4df3056be7"
+        "com_bb4df3056be7",
+        "com_bf8843235af2"
       ]
     },
     {
@@ -64366,7 +64377,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-15T00:27:28.864972+00:00",
+  "lastUpdated": "2026-11-15T02:37:52.491563+00:00",
   "version": 1,
   "schemaVersion": 1
 }
