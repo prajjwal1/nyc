@@ -3397,12 +3397,12 @@
         "eventbrite:60798137563"
       ],
       "similarCommunityIds": [
-        "com_1b90851c14cf",
         "com_09f04dc6fc36",
         "com_160d3b550b59",
         "com_1f87b327b20e",
         "com_2a1498596ec3",
-        "com_394b0acee032"
+        "com_394b0acee032",
+        "com_3f478631e906"
       ]
     },
     {
@@ -11031,8 +11031,8 @@
       "slug": "cohort-nyc-1c14cf",
       "name": "Cohort NYC",
       "kind": "recurring_series",
-      "tagline": "Cohort NYC is a recurring event series in lower east side.",
-      "description": "Cohort NYC is a recurring event series in lower east side. Based on 4 observed event dates, it meets weekly on Wednesday and Monday mornings.",
+      "tagline": "Cohort NYC is a recurring event series in chelsea, lower east side.",
+      "description": "Cohort NYC is a recurring event series in chelsea, lower east side. Based on 5 observed event dates, it meets weekly on Monday and Wednesday mornings.",
       "categories": [
         "other"
       ],
@@ -11040,10 +11040,11 @@
         "other"
       ],
       "neighborhoods": [
+        "chelsea",
         "lower east side"
       ],
-      "homeVenue": "Moxy NYC Lower East Side",
-      "imageUrl": "https://images.lumacdn.com/uploads/m2/d4d3e0eb-b1c1-43d5-9dd2-f5e9e1ba3e8b.jpg",
+      "homeVenue": "Moxy NYC Chelsea",
+      "imageUrl": "https://images.lumacdn.com/uploads/j0/4ed89884-e180-4f2f-8762-a6ea9f953f0c.jpg",
       "links": [
         {
           "type": "luma",
@@ -11054,21 +11055,22 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 1,
-        "eventCount90d": 3
+        "lastEventDate": "2026-11-16",
+        "upcomingEventCount": 2,
+        "eventCount90d": 4
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Monday"
+          "Monday",
+          "Wednesday"
         ],
         "typicalTime": "10:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
+        "65cdc9075026c66a",
         "2f58de9589a0861f"
       ],
       "sourceAttributions": [
@@ -11078,17 +11080,18 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
       "newcomerEvidence": [],
       "aliases": [
+        "instagram:emi.pharmd",
         "luma:cal-srs51va5d4qtxem"
       ],
       "similarCommunityIds": [
         "com_30bd6ca662e0",
-        "com_c274ef0f18ba",
+        "com_d74826b4ebc7",
         "com_05774b0951d0",
         "com_14e2dae511e1",
         "com_19609e7f4286",
@@ -12808,18 +12811,18 @@
       "name": "Nooks and Socials",
       "kind": "recurring_series",
       "tagline": "Nooks and Socials is a recurring event series centered on parties, music, comedy in manhattan.",
-      "description": "Nooks and Socials is a recurring event series centered on parties, music, comedy in manhattan. Based on 5 observed event dates, it meets weekly on Wednesday and Thursday afternoons.",
+      "description": "Nooks and Socials is a recurring event series centered on parties, music, comedy in manhattan. Based on 7 observed event dates, it meets weekly on Tuesday and Wednesday afternoons.",
       "categories": [
+        "other",
         "parties",
         "music",
-        "comedy",
-        "other"
+        "comedy"
       ],
       "tags": [
+        "other",
         "parties",
         "music",
-        "comedy",
-        "other"
+        "comedy"
       ],
       "neighborhoods": [
         "manhattan"
@@ -12837,24 +12840,26 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 6,
         "eventCount90d": 2
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Thursday"
+          "Tuesday",
+          "Wednesday"
         ],
         "typicalTime": "14:00",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 7
       },
       "upcomingEventIds": [
         "7e0ff9e15e5ab04e",
         "b9b92b9bf73e0407",
         "4b5517b8c246e4e8",
-        "eba57ac694f47084"
+        "192807f7df79b692",
+        "eba57ac694f47084",
+        "e6596f2f6e7b77bc"
       ],
       "sourceAttributions": [
         "luma"
@@ -12863,7 +12868,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -64208,7 +64213,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-16T11:48:42.501062+00:00",
+  "lastUpdated": "2026-11-16T14:01:09.119584+00:00",
   "version": 1,
   "schemaVersion": 1
 }
