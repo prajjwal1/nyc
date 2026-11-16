@@ -367,9 +367,9 @@
         "com_28a4ec647815",
         "com_43e82b8f4e34",
         "com_a4d969c3c6eb",
+        "com_68b36e93076a",
         "com_729cfb31f58d",
-        "com_5582e2e97f1a",
-        "com_fe4b6663b721"
+        "com_5582e2e97f1a"
       ]
     },
     {
@@ -462,15 +462,15 @@
         "books",
         "comedy",
         "movies",
-        "other",
-        "art"
+        "art",
+        "outdoors"
       ],
       "tags": [
         "books",
         "comedy",
         "movies",
-        "other",
-        "art"
+        "art",
+        "outdoors"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -529,12 +529,12 @@
         "eventbrite:114781508361"
       ],
       "similarCommunityIds": [
+        "com_d8a5203885a9",
         "com_489a14652e20",
         "com_b736e77bdf93",
-        "com_0ae542c496b3",
-        "com_525bddfaee91",
-        "com_77ec11668bd8",
-        "com_cb019f4e9752"
+        "com_72c625ae7237",
+        "com_eef1ca956dae",
+        "com_0ae542c496b3"
       ]
     },
     {
@@ -757,7 +757,7 @@
         "com_43850d49f9e6",
         "com_949217ac4f1f",
         "com_bfb16ef27b62",
-        "com_d8a5203885a9"
+        "com_68b36e93076a"
       ]
     },
     {
@@ -837,12 +837,12 @@
         "eventbrite:11785715523"
       ],
       "similarCommunityIds": [
+        "com_e9748c1176c1",
         "com_3d91bda94131",
         "com_61de7e5f2248",
         "com_d2d455d2d6c9",
         "com_1e60766a7318",
-        "com_a4f86eccdc8e",
-        "com_e9748c1176c1"
+        "com_a4f86eccdc8e"
       ]
     },
     {
@@ -926,7 +926,7 @@
         "com_ff2e01957665",
         "com_2c239df2a554",
         "com_4a9490cb3534",
-        "com_8d86f6f9340b"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -995,8 +995,8 @@
         "com_1f87b327b20e",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_68b36e93076a",
-        "com_904b280a7245"
+        "com_904b280a7245",
+        "com_bb4df3056be7"
       ]
     },
     {
@@ -1155,12 +1155,12 @@
         "eventbrite:121550157547"
       ],
       "similarCommunityIds": [
-        "com_e9748c1176c1",
         "com_05774b0951d0",
         "com_19609e7f4286",
         "com_1c65032c5bbc",
         "com_2598d21a6937",
-        "com_36cb2681053d"
+        "com_36cb2681053d",
+        "com_3dd56f332431"
       ]
     },
     {
@@ -1908,11 +1908,11 @@
       ],
       "similarCommunityIds": [
         "com_3048e331f7b6",
+        "com_68b36e93076a",
         "com_b8a3508a14a4",
         "com_f8c88ef9a8ca",
         "com_20bc48fa0fec",
-        "com_211f1f0f1811",
-        "com_68b36e93076a"
+        "com_211f1f0f1811"
       ]
     },
     {
@@ -1920,13 +1920,17 @@
       "slug": "littlefield-93076a",
       "name": "littlefield",
       "kind": "recurring_series",
-      "tagline": "littlefield is a recurring event series in brooklyn.",
-      "description": "littlefield is a recurring event series in brooklyn. Based on 12 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "littlefield is a recurring event series centered on comedy, special in brooklyn.",
+      "description": "littlefield is a recurring event series centered on comedy, special in brooklyn. Based on 14 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
-        "other"
+        "other",
+        "comedy",
+        "special"
       ],
       "tags": [
-        "other"
+        "other",
+        "comedy",
+        "special"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -1944,23 +1948,25 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-16",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 5,
         "eventCount90d": 14
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Tuesday"
+          "Tuesday",
+          "Wednesday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 14
       },
       "upcomingEventIds": [
         "4f5db324ef9c8c85",
         "e31832bdf116b3f0",
-        "29ec816719855417"
+        "29ec816719855417",
+        "72921798f542fbdd",
+        "783239dd94652a9a"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1969,7 +1975,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 14,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1978,12 +1984,12 @@
         "eventbrite:18046024060"
       ],
       "similarCommunityIds": [
+        "com_cb019f4e9752",
+        "com_3048e331f7b6",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
         "com_904b280a7245",
-        "com_bf8843235af2",
-        "com_fb44e10deb2f",
-        "com_4b9d7692e567"
+        "com_bf8843235af2"
       ]
     },
     {
@@ -2203,10 +2209,10 @@
       "similarCommunityIds": [
         "com_3837f308cd75",
         "com_489a14652e20",
-        "com_8d86f6f9340b",
         "com_0ae542c496b3",
         "com_1466f20a9300",
-        "com_525bddfaee91"
+        "com_525bddfaee91",
+        "com_77ec11668bd8"
       ]
     },
     {
@@ -2364,8 +2370,8 @@
         "com_a45e35db829c",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_68b36e93076a",
-        "com_904b280a7245"
+        "com_904b280a7245",
+        "com_bf8843235af2"
       ]
     },
     {
@@ -3171,10 +3177,10 @@
       "similarCommunityIds": [
         "com_cb019f4e9752",
         "com_3048e331f7b6",
+        "com_68b36e93076a",
         "com_d8a5203885a9",
         "com_0df03478a9fc",
-        "com_83f64eec47de",
-        "com_c212478907d5"
+        "com_83f64eec47de"
       ]
     },
     {
@@ -3339,15 +3345,15 @@
       "description": "New York Public Library for the Performing Arts is a community program centered on music, art, dance in long island city, upper west side. Based on 17 observed event dates, it meets weekly on Monday and Thursday evenings.",
       "categories": [
         "music",
-        "other",
         "art",
+        "other",
         "dance",
         "special"
       ],
       "tags": [
         "music",
-        "other",
         "art",
+        "other",
         "dance",
         "special"
       ],
@@ -3488,15 +3494,17 @@
       "slug": "the-national-arts-club-1176c1",
       "name": "The National Arts Club",
       "kind": "club",
-      "tagline": "The National Arts Club is a community club centered on music, theater in manhattan.",
-      "description": "The National Arts Club is a community club centered on music, theater in manhattan. Based on 36 observed event dates, it meets weekly on Tuesday and Monday evenings.",
+      "tagline": "The National Arts Club is a community club centered on books, music, theater in manhattan.",
+      "description": "The National Arts Club is a community club centered on books, music, theater in manhattan. Based on 36 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
         "other",
+        "books",
         "music",
         "theater"
       ],
       "tags": [
         "other",
+        "books",
         "music",
         "theater"
       ],
@@ -3561,9 +3569,9 @@
         "com_3d91bda94131",
         "com_5f3066e419a7",
         "com_61de7e5f2248",
-        "com_1e60766a7318",
-        "com_a4f86eccdc8e",
-        "com_3942d7a4c6e3"
+        "com_96a0049afb0f",
+        "com_d2d455d2d6c9",
+        "com_1e60766a7318"
       ]
     },
     {
@@ -3705,10 +3713,10 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_cb019f4e9752",
+        "com_68b36e93076a",
         "com_8f2a69f866f2",
         "com_9caab69e0812",
-        "com_d8a5203885a9",
-        "com_3837f308cd75"
+        "com_d8a5203885a9"
       ]
     },
     {
@@ -3783,12 +3791,12 @@
         "eventbrite:67306368493"
       ],
       "similarCommunityIds": [
-        "com_8d86f6f9340b",
         "com_96a0049afb0f",
         "com_b736e77bdf93",
         "com_14e2dae511e1",
         "com_1e08b1e2de75",
-        "com_5251e78f4060"
+        "com_5251e78f4060",
+        "com_53a894e82b51"
       ]
     },
     {
@@ -4144,9 +4152,9 @@
         "com_61de7e5f2248",
         "com_1e60766a7318",
         "com_a4f86eccdc8e",
-        "com_e9748c1176c1",
         "com_1466f20a9300",
-        "com_8b837dfb5421"
+        "com_8b837dfb5421",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -5164,8 +5172,8 @@
         "com_61de7e5f2248",
         "com_cb9f3f0f5f71",
         "com_a4f86eccdc8e",
-        "com_e9748c1176c1",
-        "com_3942d7a4c6e3"
+        "com_3942d7a4c6e3",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -5232,10 +5240,10 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_68b36e93076a",
         "com_904b280a7245",
         "com_fb44e10deb2f",
-        "com_4b9d7692e567"
+        "com_4b9d7692e567",
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -5822,8 +5830,8 @@
       "similarCommunityIds": [
         "com_5f3066e419a7",
         "com_57359d725dc0",
-        "com_e9748c1176c1",
         "com_fbbdf45a2a0e",
+        "com_e9748c1176c1",
         "com_0cc8630779d7",
         "com_606719862cd1"
       ]
@@ -6398,9 +6406,9 @@
         "com_8f2a69f866f2",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_68b36e93076a",
         "com_904b280a7245",
-        "com_bf8843235af2"
+        "com_bf8843235af2",
+        "com_fb44e10deb2f"
       ]
     },
     {
@@ -7474,10 +7482,10 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_68b36e93076a",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_c5fb2290140a"
+        "com_c5fb2290140a",
+        "com_fb44e10deb2f"
       ]
     },
     {
@@ -7612,11 +7620,11 @@
       ],
       "similarCommunityIds": [
         "com_20bc48fa0fec",
-        "com_68b36e93076a",
         "com_904b280a7245",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_4b9d7692e567"
+        "com_4b9d7692e567",
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -7752,9 +7760,9 @@
         "com_0df03478a9fc",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_68b36e93076a",
         "com_904b280a7245",
-        "com_bf8843235af2"
+        "com_bf8843235af2",
+        "com_c212478907d5"
       ]
     },
     {
@@ -9333,12 +9341,12 @@
         "luma:cal-o48y72zoxeam027"
       ],
       "similarCommunityIds": [
+        "com_8d86f6f9340b",
         "com_f28d3ae740a6",
         "com_0ae542c496b3",
         "com_137e7edb1623",
         "com_525bddfaee91",
-        "com_43e82b8f4e34",
-        "com_a4d969c3c6eb"
+        "com_68b36e93076a"
       ]
     },
     {
@@ -9409,10 +9417,10 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_68b36e93076a",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_dbabd46f4ec6"
+        "com_dbabd46f4ec6",
+        "com_fb44e10deb2f"
       ]
     },
     {
@@ -11316,10 +11324,10 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_68b36e93076a",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_4b9d7692e567"
+        "com_4b9d7692e567",
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -11390,9 +11398,9 @@
         "com_3d91bda94131",
         "com_1e60766a7318",
         "com_a4f86eccdc8e",
-        "com_e9748c1176c1",
         "com_1466f20a9300",
-        "com_8b837dfb5421"
+        "com_8b837dfb5421",
+        "com_b766b6de77ba"
       ]
     },
     {
@@ -12519,10 +12527,10 @@
       "similarCommunityIds": [
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_68b36e93076a",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_4b9d7692e567"
+        "com_4b9d7692e567",
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -14742,11 +14750,11 @@
       ],
       "similarCommunityIds": [
         "com_211f1f0f1811",
-        "com_68b36e93076a",
         "com_904b280a7245",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_4b9d7692e567"
+        "com_4b9d7692e567",
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -15699,8 +15707,8 @@
         "com_1f87b327b20e",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_68b36e93076a",
-        "com_904b280a7245"
+        "com_904b280a7245",
+        "com_bb4df3056be7"
       ]
     },
     {
@@ -64292,7 +64300,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-16T22:17:41.689053+00:00",
+  "lastUpdated": "2026-11-16T23:19:17.004333+00:00",
   "version": 1,
   "schemaVersion": 1
 }
