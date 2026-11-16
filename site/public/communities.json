@@ -16372,20 +16372,20 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, movies, art in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, movies, art in east village, bushwick. Based on 75 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, art, games in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, art, games in east village, bushwick. Based on 75 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
-        "movies",
         "art",
         "games",
+        "movies",
         "singles"
       ],
       "tags": [
         "books",
-        "movies",
         "art",
         "games",
+        "movies",
         "singles"
       ],
       "neighborhoods": [
@@ -16393,20 +16393,20 @@
         "bushwick",
         "brooklyn"
       ],
-      "homeVenue": "Bushwick, 380 Troutman Street",
+      "homeVenue": "East Village, 197 East 3rd Street",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/sipnscript.png?cb=1781983849",
       "links": [
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6755320261213"
+          "url": "https://bookclubbar.com/events/5730920270112"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-16",
-        "upcomingEventCount": 10,
+        "upcomingEventCount": 17,
         "eventCount90d": 81
       },
       "schedule": {
@@ -16426,10 +16426,12 @@
         "11895fd591100f1b",
         "652b577813c05bee",
         "75154eebbdbd66ab",
+        "bdd1ca7932c28d3f",
         "8c9af583f973dd9d",
+        "54e81c1502303bdf",
+        "f663eb4c1f31cda1",
         "fc2619757c970c2c",
-        "e722ce271b52df36",
-        "ee7b9b1c72a9fda6"
+        "88b7c9bb2e845c88"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -16445,6 +16447,10 @@
       "newcomerEvidence": [
         {
           "eventId": "f5207a5c726e6330",
+          "signal": "beginners"
+        },
+        {
+          "eventId": "39ae2e33322cd181",
           "signal": "beginners"
         }
       ],
@@ -16950,7 +16956,7 @@
       "name": "New York Comedy Club Upper West Side",
       "kind": "club",
       "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in upper west side, east village.",
-      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in upper west side, east village. Based on 94 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
+      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in upper west side, east village. Based on 95 observed event dates, it meets weekly on Sunday and Tuesday evenings.",
       "categories": [
         "comedy",
         "music",
@@ -16982,7 +16988,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-16",
-        "upcomingEventCount": 26,
+        "upcomingEventCount": 31,
         "eventCount90d": 373
       },
       "schedule": {
@@ -16993,7 +16999,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 94
+        "sampleSize": 95
       },
       "upcomingEventIds": [
         "ff9b12a8bd7b5113",
@@ -17004,10 +17010,10 @@
         "1992b1e0543ef81b",
         "1ed2c8186fc5132f",
         "b733cfe85160f392",
+        "6380b737f2b32332",
+        "766bb6f43c66e30f",
         "3d72d086cea3fe99",
-        "c14f0440320cb801",
-        "f7c35cd322507b7c",
-        "32a71ed6cbfc62c4"
+        "6842c62f5eac46fe"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -17016,7 +17022,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 94,
+        "observedDateCount": 95,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -64213,7 +64219,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-16T14:01:09.119584+00:00",
+  "lastUpdated": "2026-11-16T17:09:39.877686+00:00",
   "version": 1,
   "schemaVersion": 1
 }
