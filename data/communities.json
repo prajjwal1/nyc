@@ -681,11 +681,11 @@
       ],
       "similarCommunityIds": [
         "com_1466f20a9300",
+        "com_0df03478a9fc",
         "com_83f64eec47de",
         "com_c212478907d5",
         "com_3048e331f7b6",
-        "com_8f2a69f866f2",
-        "com_9caab69e0812"
+        "com_8f2a69f866f2"
       ]
     },
     {
@@ -839,10 +839,10 @@
       "similarCommunityIds": [
         "com_3d91bda94131",
         "com_61de7e5f2248",
+        "com_d2d455d2d6c9",
         "com_1e60766a7318",
         "com_a4f86eccdc8e",
-        "com_e9748c1176c1",
-        "com_33a530deb7aa"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -925,8 +925,78 @@
         "com_a4d969c3c6eb",
         "com_ff2e01957665",
         "com_2c239df2a554",
-        "com_8d86f6f9340b",
-        "com_b736e77bdf93"
+        "com_4a9490cb3534",
+        "com_8d86f6f9340b"
+      ]
+    },
+    {
+      "id": "com_0df03478a9fc",
+      "slug": "brooklyn-public-library-community-health-78a9fc",
+      "name": "Brooklyn Public Library - Community Health",
+      "kind": "institutional_program",
+      "tagline": "Brooklyn Public Library - Community Health is a community program in brooklyn.",
+      "description": "Brooklyn Public Library - Community Health is a community program in brooklyn. Based on 2 observed event dates, it meets monthly on Wednesday and Thursday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Central Library, Information Commons Training Lab",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1196477744%2F2987010715909%2F1%2Foriginal.20261023-223756?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.466&fp-y=0.244&s=8ec04fd4728416ebe4b61277aa4b5582",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/120777580098"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "monthly",
+        "typicalDays": [
+          "Wednesday",
+          "Thursday"
+        ],
+        "typicalTime": "16:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "7f2587f08ebbc690",
+        "a44fb450e046eb91"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-11-16",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:120777580098"
+      ],
+      "similarCommunityIds": [
+        "com_c212478907d5",
+        "com_1f87b327b20e",
+        "com_20bc48fa0fec",
+        "com_211f1f0f1811",
+        "com_68b36e93076a",
+        "com_904b280a7245"
       ]
     },
     {
@@ -935,18 +1005,20 @@
       "name": "The Ripped Bodice BK",
       "kind": "recurring_series",
       "tagline": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn.",
-      "description": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn. Based on 43 observed event dates, it meets weekly on Sunday and Wednesday evenings.",
+      "description": "The Ripped Bodice BK is a recurring event series centered on books, celebrities, exploration in brooklyn. Based on 45 observed event dates, it meets weekly on Sunday and Wednesday evenings.",
       "categories": [
         "other",
         "books",
         "celebrities",
-        "exploration"
+        "exploration",
+        "parties"
       ],
       "tags": [
         "other",
         "books",
         "celebrities",
-        "exploration"
+        "exploration",
+        "parties"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -964,7 +1036,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-16",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 13,
         "eventCount90d": 33
       },
       "schedule": {
@@ -975,7 +1047,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 43
+        "sampleSize": 45
       },
       "upcomingEventIds": [
         "8aea32cf95f770d8",
@@ -983,12 +1055,13 @@
         "6cbca150bae95ba2",
         "463c961e3d081a6c",
         "6b4d3c57d87c1786",
+        "7e4f47bd42158c17",
         "5f9d2be1e1f0ccaa",
         "8110d41a186f39c5",
+        "1b839661a57d4c8a",
         "a38780078192517d",
         "6a49187eccdb52de",
-        "c3e742e35ee78702",
-        "b3ce54123d796b36"
+        "c3e742e35ee78702"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -997,7 +1070,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 43,
+        "observedDateCount": 45,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1006,12 +1079,12 @@
         "eventbrite:121441877858"
       ],
       "similarCommunityIds": [
-        "com_77ec11668bd8",
-        "com_b1c3376ecc52",
-        "com_8f2a69f866f2",
         "com_ff2e01957665",
         "com_489a14652e20",
-        "com_f990c90c32d5"
+        "com_0606c7e50fa8",
+        "com_77ec11668bd8",
+        "com_b1c3376ecc52",
+        "com_8f2a69f866f2"
       ]
     },
     {
@@ -1019,13 +1092,15 @@
       "slug": "the-holes-e419a7",
       "name": "The Holes",
       "kind": "recurring_series",
-      "tagline": "The Holes is a recurring event series in manhattan.",
-      "description": "The Holes is a recurring event series in manhattan. Based on 17 observed event dates, it meets weekly on Monday and Wednesday evenings.",
+      "tagline": "The Holes is a recurring event series centered on theater in manhattan.",
+      "description": "The Holes is a recurring event series centered on theater in manhattan. Based on 17 observed event dates, it meets weekly on Monday and Wednesday evenings.",
       "categories": [
-        "other"
+        "other",
+        "theater"
       ],
       "tags": [
-        "other"
+        "other",
+        "theater"
       ],
       "neighborhoods": [
         "manhattan"
@@ -1080,12 +1155,12 @@
         "eventbrite:121550157547"
       ],
       "similarCommunityIds": [
+        "com_e9748c1176c1",
         "com_05774b0951d0",
         "com_19609e7f4286",
         "com_1c65032c5bbc",
         "com_2598d21a6937",
-        "com_36cb2681053d",
-        "com_3dd56f332431"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -1320,17 +1395,17 @@
       "slug": "caveat-3a75f0",
       "name": "Caveat",
       "kind": "recurring_series",
-      "tagline": "Caveat is a recurring event series centered on games, comedy in manhattan.",
-      "description": "Caveat is a recurring event series centered on games, comedy in manhattan. Based on 68 observed event dates, it meets weekly on Sunday and Saturday evenings.",
+      "tagline": "Caveat is a recurring event series centered on comedy, games in manhattan.",
+      "description": "Caveat is a recurring event series centered on comedy, games in manhattan. Based on 68 observed event dates, it meets weekly on Sunday and Saturday evenings.",
       "categories": [
         "other",
-        "games",
-        "comedy"
+        "comedy",
+        "games"
       ],
       "tags": [
         "other",
-        "games",
-        "comedy"
+        "comedy",
+        "games"
       ],
       "neighborhoods": [
         "manhattan"
@@ -1764,8 +1839,8 @@
         "com_2c239df2a554",
         "com_0606c7e50fa8",
         "com_77ec11668bd8",
-        "com_f990c90c32d5",
-        "com_4a9490cb3534"
+        "com_4a9490cb3534",
+        "com_f990c90c32d5"
       ]
     },
     {
@@ -2442,13 +2517,15 @@
       "slug": "strand-bookstore-d2d6c9",
       "name": "Strand Bookstore",
       "kind": "recurring_series",
-      "tagline": "Strand Bookstore is a recurring event series in manhattan.",
-      "description": "Strand Bookstore is a recurring event series in manhattan. Based on 42 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "tagline": "Strand Bookstore is a recurring event series centered on books in manhattan.",
+      "description": "Strand Bookstore is a recurring event series centered on books in manhattan. Based on 42 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
-        "other"
+        "other",
+        "books"
       ],
       "tags": [
-        "other"
+        "other",
+        "books"
       ],
       "neighborhoods": [
         "manhattan"
@@ -2505,12 +2582,12 @@
         "eventbrite:30058841244"
       ],
       "similarCommunityIds": [
+        "com_7d3e76b46ffc",
+        "com_f990c90c32d5",
+        "com_77ec11668bd8",
         "com_05774b0951d0",
         "com_19609e7f4286",
-        "com_1c65032c5bbc",
-        "com_2598d21a6937",
-        "com_36cb2681053d",
-        "com_3dd56f332431"
+        "com_1c65032c5bbc"
       ]
     },
     {
@@ -3095,9 +3172,9 @@
         "com_cb019f4e9752",
         "com_3048e331f7b6",
         "com_d8a5203885a9",
+        "com_0df03478a9fc",
         "com_83f64eec47de",
-        "com_c212478907d5",
-        "com_eefccbbf1a7a"
+        "com_c212478907d5"
       ]
     },
     {
@@ -3399,11 +3476,11 @@
       ],
       "similarCommunityIds": [
         "com_09f04dc6fc36",
+        "com_0df03478a9fc",
         "com_160d3b550b59",
         "com_1f87b327b20e",
         "com_2a1498596ec3",
-        "com_394b0acee032",
-        "com_3f478631e906"
+        "com_394b0acee032"
       ]
     },
     {
@@ -3482,11 +3559,11 @@
       ],
       "similarCommunityIds": [
         "com_3d91bda94131",
+        "com_5f3066e419a7",
         "com_61de7e5f2248",
         "com_1e60766a7318",
         "com_a4f86eccdc8e",
-        "com_3942d7a4c6e3",
-        "com_fe4b6663b721"
+        "com_3942d7a4c6e3"
       ]
     },
     {
@@ -4678,7 +4755,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 1,
         "eventCount90d": 1
       },
       "schedule": {
@@ -4692,8 +4769,7 @@
         "sampleSize": 4
       },
       "upcomingEventIds": [
-        "c62f0303fd05801c",
-        "5336bc7b6ccf809b"
+        "c62f0303fd05801c"
       ],
       "sourceAttributions": [
         "luma"
@@ -5744,12 +5820,12 @@
         "luma:cal-8pbzubxu1rqfgsw"
       ],
       "similarCommunityIds": [
+        "com_5f3066e419a7",
         "com_57359d725dc0",
         "com_e9748c1176c1",
         "com_fbbdf45a2a0e",
         "com_0cc8630779d7",
-        "com_606719862cd1",
-        "com_f54698ed682f"
+        "com_606719862cd1"
       ]
     },
     {
@@ -5890,11 +5966,11 @@
       ],
       "similarCommunityIds": [
         "com_77ec11668bd8",
+        "com_d2d455d2d6c9",
         "com_7d3e76b46ffc",
         "com_ff2e01957665",
         "com_2c239df2a554",
-        "com_05774b0951d0",
-        "com_19609e7f4286"
+        "com_05774b0951d0"
       ]
     },
     {
@@ -5970,7 +6046,7 @@
         "com_5c8ac62f26b3",
         "com_72c625ae7237",
         "com_eef1ca956dae",
-        "com_7d3e76b46ffc"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -6322,9 +6398,9 @@
         "com_8f2a69f866f2",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
-        "com_4a9490cb3534",
         "com_68b36e93076a",
-        "com_904b280a7245"
+        "com_904b280a7245",
+        "com_bf8843235af2"
       ]
     },
     {
@@ -7673,12 +7749,12 @@
         "luma:cal-fn6efeadrwjzrf8"
       ],
       "similarCommunityIds": [
+        "com_0df03478a9fc",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
         "com_68b36e93076a",
         "com_904b280a7245",
-        "com_bf8843235af2",
-        "com_c212478907d5"
+        "com_bf8843235af2"
       ]
     },
     {
@@ -7826,7 +7902,7 @@
         "com_0ae542c496b3",
         "com_525bddfaee91",
         "com_b1c3376ecc52",
-        "com_83f64eec47de"
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -8694,8 +8770,8 @@
         "com_8963cc48d824",
         "com_0cc8630779d7",
         "com_f5605b691048",
-        "com_4a9490cb3534",
         "com_9c715da909bc",
+        "com_4a9490cb3534",
         "com_273757444236"
       ]
     },
@@ -9475,12 +9551,12 @@
         "luma:cal-oqdnb4l9pugezuw"
       ],
       "similarCommunityIds": [
+        "com_d2d455d2d6c9",
         "com_f990c90c32d5",
         "com_77ec11668bd8",
         "com_2c239df2a554",
         "com_05774b0951d0",
-        "com_19609e7f4286",
-        "com_1c65032c5bbc"
+        "com_19609e7f4286"
       ]
     },
     {
@@ -10385,8 +10461,8 @@
         "com_f28d3ae740a6",
         "com_0606c7e50fa8",
         "com_0ae542c496b3",
-        "com_525bddfaee91",
-        "com_77ec11668bd8"
+        "com_4a9490cb3534",
+        "com_525bddfaee91"
       ]
     },
     {
@@ -11390,75 +11466,6 @@
       ]
     },
     {
-      "id": "com_36080a5c47cd",
-      "slug": "brooklyn-community-pride-center-5c47cd",
-      "name": "Brooklyn Community Pride Center",
-      "kind": "institutional_program",
-      "tagline": "Brooklyn Community Pride Center is a community program in williamsburg.",
-      "description": "Brooklyn Community Pride Center is a community program in williamsburg. Based on 3 observed event dates, it meets weekly on Monday and Saturday evenings.",
-      "categories": [
-        "other"
-      ],
-      "tags": [
-        "other"
-      ],
-      "neighborhoods": [
-        "williamsburg"
-      ],
-      "homeVenue": "Major R. Owens Health & Wellness Community Center",
-      "imageUrl": "https://images.lumacdn.com/event-covers/qf/f2b72156-e7cd-4ce8-b566-0bb52652f8b1.jpg",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/lgbtbrooklyn"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-11-16",
-        "upcomingEventCount": 1,
-        "eventCount90d": 4
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Monday",
-          "Saturday"
-        ],
-        "typicalTime": "20:00",
-        "confidence": 0.5,
-        "sampleSize": 3
-      },
-      "upcomingEventIds": [
-        "719af0ab7ba443d6"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-11-16",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 3,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "luma:cal-tjnsvd8ytytyxgj"
-      ],
-      "similarCommunityIds": [
-        "com_f739c03ef66c",
-        "com_05774b0951d0",
-        "com_14e2dae511e1",
-        "com_19609e7f4286",
-        "com_1b71901c7841",
-        "com_1b90851c14cf"
-      ]
-    },
-    {
       "id": "com_b582eebc3384",
       "slug": "neo-club-bc3384",
       "name": "Neo Club",
@@ -12076,12 +12083,12 @@
         "luma:cal-vnpgs6dwv4f2m8x"
       ],
       "similarCommunityIds": [
-        "com_36080a5c47cd",
         "com_606719862cd1",
         "com_ecbd2783c835",
         "com_05774b0951d0",
         "com_14e2dae511e1",
-        "com_19609e7f4286"
+        "com_19609e7f4286",
+        "com_1b71901c7841"
       ]
     },
     {
@@ -13378,11 +13385,11 @@
       ],
       "similarCommunityIds": [
         "com_09f04dc6fc36",
+        "com_0df03478a9fc",
         "com_160d3b550b59",
         "com_1f87b327b20e",
         "com_2a1498596ec3",
-        "com_394b0acee032",
-        "com_3f478631e906"
+        "com_394b0acee032"
       ]
     },
     {
@@ -13822,7 +13829,7 @@
         "com_5c8ac62f26b3",
         "com_72c625ae7237",
         "com_eef1ca956dae",
-        "com_7d3e76b46ffc"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -13843,11 +13850,11 @@
       "neighborhoods": [
         "manhattan",
         "upper east side",
-        "midtown",
-        "williamsburg"
+        "williamsburg",
+        "midtown"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
-      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/tx/1bfa1df4-31fa-44e7-8670-c648c650bdf2.jpg",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
       "links": [
         {
           "type": "luma",
@@ -13873,9 +13880,9 @@
         "sampleSize": 29
       },
       "upcomingEventIds": [
+        "f68ef1dbb841092f",
         "a7280058ca9d3b4a",
         "698ec8453e5f4344",
-        "f68ef1dbb841092f",
         "3d40b893b6e7d1e0",
         "8eb509eff15bc46a",
         "cc29776d909b57dc",
@@ -14474,12 +14481,12 @@
         "luma:usr-6zsbvttj2agqhby"
       ],
       "similarCommunityIds": [
+        "com_0df03478a9fc",
         "com_c212478907d5",
         "com_09f04dc6fc36",
         "com_160d3b550b59",
         "com_2a1498596ec3",
-        "com_394b0acee032",
-        "com_3f478631e906"
+        "com_394b0acee032"
       ]
     },
     {
@@ -15139,12 +15146,12 @@
         "luma:usr-lauatymvx4cjlbl"
       ],
       "similarCommunityIds": [
+        "com_0df03478a9fc",
         "com_160d3b550b59",
         "com_1f87b327b20e",
         "com_2a1498596ec3",
         "com_394b0acee032",
-        "com_3f478631e906",
-        "com_5dfb5e7631bc"
+        "com_3f478631e906"
       ]
     },
     {
@@ -15688,12 +15695,12 @@
         "luma:usr-rsrxuqksjk1jcr7"
       ],
       "similarCommunityIds": [
+        "com_0df03478a9fc",
         "com_1f87b327b20e",
         "com_20bc48fa0fec",
         "com_211f1f0f1811",
         "com_68b36e93076a",
-        "com_904b280a7245",
-        "com_bb4df3056be7"
+        "com_904b280a7245"
       ]
     },
     {
@@ -16226,9 +16233,9 @@
         "com_f990c90c32d5",
         "com_ff2e01957665",
         "com_7d3e76b46ffc",
+        "com_d2d455d2d6c9",
         "com_20bc48fa0fec",
-        "com_211f1f0f1811",
-        "com_489a14652e20"
+        "com_211f1f0f1811"
       ]
     },
     {
@@ -16465,8 +16472,8 @@
         "bushwick",
         "brooklyn"
       ],
-      "homeVenue": "East Village, 197 East 3rd Street",
-      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/Recurring/Screenshot_2025_01_08_180657.png?cb=1736377646",
+      "homeVenue": "Bushwick, 380 Troutman Street",
+      "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/07_July/sipnscript.png?cb=1781983849",
       "links": [
         {
           "type": "bookclubbar",
@@ -16492,8 +16499,8 @@
         "sampleSize": 75
       },
       "upcomingEventIds": [
-        "89f6f1a3d24762fb",
         "f5207a5c726e6330",
+        "89f6f1a3d24762fb",
         "b1c9760deaf5e73e",
         "11895fd591100f1b",
         "652b577813c05bee",
@@ -16930,7 +16937,7 @@
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
         "observedDateCount": 26,
-        "hasFirstPartyIdentity": false
+        "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
       "newcomerEvidence": [],
@@ -64285,7 +64292,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-16T19:46:27.952878+00:00",
+  "lastUpdated": "2026-11-16T21:18:20.702639+00:00",
   "version": 1,
   "schemaVersion": 1
 }
