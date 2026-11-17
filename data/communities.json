@@ -156,7 +156,7 @@
       "name": "Elsewhere",
       "kind": "recurring_series",
       "tagline": "Elsewhere is a recurring event series centered on music in bushwick.",
-      "description": "Elsewhere is a recurring event series centered on music in bushwick. Based on 70 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "Elsewhere is a recurring event series centered on music in bushwick. Based on 71 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "other",
         "music"
@@ -181,7 +181,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 11,
+        "upcomingEventCount": 12,
         "eventCount90d": 106
       },
       "schedule": {
@@ -192,7 +192,7 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 70
+        "sampleSize": 71
       },
       "upcomingEventIds": [
         "cd4ee89fa257f521",
@@ -205,6 +205,7 @@
         "0f6524f79999185a",
         "84831a4b73d3a3d9",
         "fbf928d2ab722f2c",
+        "3a2e6f655204c71b",
         "2084ed75ab807fdd"
       ],
       "sourceAttributions": [
@@ -214,7 +215,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 70,
+        "observedDateCount": 71,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -606,8 +607,8 @@
       ],
       "similarCommunityIds": [
         "com_ae9a9d1063c7",
-        "com_a1e1c13a75f0",
         "com_cdd5daa67222",
+        "com_a1e1c13a75f0",
         "com_30e8efd15421",
         "com_4e69412cb0a5",
         "com_665eaac4154e"
@@ -1074,6 +1075,91 @@
       ]
     },
     {
+      "id": "com_bfb6c843f2d0",
+      "slug": "the-wisdom-bar-43f2d0",
+      "name": "The Wisdom Bar",
+      "kind": "recurring_series",
+      "tagline": "The Wisdom Bar is a recurring event series centered on books, music, wellness in manhattan, soho.",
+      "description": "The Wisdom Bar is a recurring event series centered on books, music, wellness in manhattan, soho. Based on 8 observed event dates, it meets weekly on Monday and Thursday evenings.",
+      "categories": [
+        "other",
+        "books",
+        "music",
+        "wellness"
+      ],
+      "tags": [
+        "other",
+        "books",
+        "music",
+        "wellness"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "soho",
+        "brooklyn",
+        "long island city"
+      ],
+      "homeVenue": "The Gin Mill",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1196140447%2F3000575575871%2F1%2Foriginal.20261019-221022?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.506&fp-y=0.555&s=8398c6c377dc03d469242cf021c876cf",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/121303839305"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 8,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday",
+          "Thursday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 1.0,
+        "sampleSize": 8
+      },
+      "upcomingEventIds": [
+        "6c540fb9ad0fe126",
+        "628aff52d53c7068",
+        "9613b6c3e0f8c8a0",
+        "9a1430ffc671ab24",
+        "fcd7d27f6fdab951",
+        "9d82b02ca6a0ce7a",
+        "55377a93447322ad",
+        "2b17e2fc5c8da125"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-11-17",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 8,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:121303839305"
+      ],
+      "similarCommunityIds": [
+        "com_9caab69e0812",
+        "com_1740a8cfc76c",
+        "com_e9748c1176c1",
+        "com_f990c90c32d5",
+        "com_f54698ed682f",
+        "com_1466f20a9300"
+      ]
+    },
+    {
       "id": "com_4a9490cb3534",
       "slug": "the-ripped-bodice-bk-cb3534",
       "name": "The Ripped Bodice BK",
@@ -1110,7 +1196,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-17",
-        "upcomingEventCount": 12,
+        "upcomingEventCount": 13,
         "eventCount90d": 34
       },
       "schedule": {
@@ -1132,10 +1218,10 @@
         "5f9d2be1e1f0ccaa",
         "8110d41a186f39c5",
         "1b839661a57d4c8a",
+        "cf53fefd8888152f",
         "a38780078192517d",
         "6a49187eccdb52de",
-        "c3e742e35ee78702",
-        "b3ce54123d796b36"
+        "c3e742e35ee78702"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1466,17 +1552,19 @@
       "slug": "caveat-3a75f0",
       "name": "Caveat",
       "kind": "recurring_series",
-      "tagline": "Caveat is a recurring event series centered on comedy, games in manhattan.",
-      "description": "Caveat is a recurring event series centered on comedy, games in manhattan. Based on 68 observed event dates, it meets weekly on Sunday and Saturday evenings.",
+      "tagline": "Caveat is a recurring event series centered on comedy, games, music in manhattan.",
+      "description": "Caveat is a recurring event series centered on comedy, games, music in manhattan. Based on 68 observed event dates, it meets weekly on Sunday and Saturday evenings.",
       "categories": [
-        "other",
         "comedy",
-        "games"
+        "games",
+        "other",
+        "music"
       ],
       "tags": [
-        "other",
         "comedy",
-        "games"
+        "games",
+        "other",
+        "music"
       ],
       "neighborhoods": [
         "manhattan"
@@ -1532,12 +1620,12 @@
         "eventbrite:13580085802"
       ],
       "similarCommunityIds": [
-        "com_b8a3508a14a4",
         "com_3942d7a4c6e3",
-        "com_30e8efd15421",
-        "com_665eaac4154e",
-        "com_05774b0951d0",
-        "com_19609e7f4286"
+        "com_3d91bda94131",
+        "com_58d773e27208",
+        "com_61de7e5f2248",
+        "com_1e60766a7318",
+        "com_a4f86eccdc8e"
       ]
     },
     {
@@ -2662,8 +2750,8 @@
       ],
       "similarCommunityIds": [
         "com_5f3066e419a7",
-        "com_a1e1c13a75f0",
         "com_3942d7a4c6e3",
+        "com_a1e1c13a75f0",
         "com_e9748c1176c1",
         "com_58d773e27208",
         "com_b8a3508a14a4"
@@ -2807,10 +2895,10 @@
       "similarCommunityIds": [
         "com_cb019f4e9752",
         "com_f8c88ef9a8ca",
-        "com_a1e1c13a75f0",
         "com_9fe1e0196792",
         "com_d74826b4ebc7",
-        "com_05774b0951d0"
+        "com_05774b0951d0",
+        "com_19609e7f4286"
       ]
     },
     {
@@ -3197,10 +3285,10 @@
       "similarCommunityIds": [
         "com_3942d7a4c6e3",
         "com_a4f86eccdc8e",
+        "com_a1e1c13a75f0",
         "com_edf7e9714aa8",
         "com_fe4b6663b721",
-        "com_3d91bda94131",
-        "com_61de7e5f2248"
+        "com_3d91bda94131"
       ]
     },
     {
@@ -6020,8 +6108,8 @@
         "com_61de7e5f2248",
         "com_a4f86eccdc8e",
         "com_3942d7a4c6e3",
-        "com_e9748c1176c1",
-        "com_edf7e9714aa8"
+        "com_a1e1c13a75f0",
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -6327,10 +6415,10 @@
       "similarCommunityIds": [
         "com_3005e46e50b2",
         "com_0606c7e50fa8",
+        "com_bfb6c843f2d0",
         "com_f8ff3d3257ed",
         "com_0e403135692e",
-        "com_1e60766a7318",
-        "com_489a14652e20"
+        "com_1e60766a7318"
       ]
     },
     {
@@ -10638,7 +10726,7 @@
         "com_76160be8487b",
         "com_3048e331f7b6",
         "com_8f2a69f866f2",
-        "com_1740a8cfc76c"
+        "com_bfb6c843f2d0"
       ]
     },
     {
@@ -13884,10 +13972,10 @@
       "similarCommunityIds": [
         "com_58d773e27208",
         "com_a4f86eccdc8e",
+        "com_a1e1c13a75f0",
         "com_edf7e9714aa8",
         "com_fe4b6663b721",
-        "com_3d91bda94131",
-        "com_61de7e5f2248"
+        "com_3d91bda94131"
       ]
     },
     {
@@ -17093,7 +17181,7 @@
         "com_bff06d9b0e6f",
         "com_ebf2f0d4ce77",
         "com_9caab69e0812",
-        "com_f54698ed682f"
+        "com_bfb6c843f2d0"
       ]
     },
     {
@@ -17522,7 +17610,7 @@
         "cee413efc8b60f02",
         "be905d270eb6deb7",
         "d788fe72f44e1791",
-        "fa2521d3b23228c2"
+        "2390c537d014b93c"
       ],
       "sourceAttributions": [
         "brooklyncomedy"
@@ -65218,7 +65306,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-17T02:56:14.506614+00:00",
+  "lastUpdated": "2026-11-17T04:01:24.822566+00:00",
   "version": 1,
   "schemaVersion": 1
 }
