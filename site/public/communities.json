@@ -534,10 +534,10 @@
       "similarCommunityIds": [
         "com_a4f86eccdc8e",
         "com_3942d7a4c6e3",
+        "com_759f151a6d08",
         "com_edf7e9714aa8",
         "com_58d773e27208",
-        "com_61de7e5f2248",
-        "com_ed952ca81836"
+        "com_61de7e5f2248"
       ]
     },
     {
@@ -1003,12 +1003,12 @@
         "eventbrite:11795946643"
       ],
       "similarCommunityIds": [
+        "com_759f151a6d08",
         "com_a4f86eccdc8e",
         "com_3942d7a4c6e3",
         "com_fe4b6663b721",
         "com_58d773e27208",
-        "com_61de7e5f2248",
-        "com_759f151a6d08"
+        "com_61de7e5f2248"
       ]
     },
     {
@@ -1572,20 +1572,24 @@
       "slug": "les-ecology-center-1a6d08",
       "name": "LES Ecology Center",
       "kind": "institutional_program",
-      "tagline": "LES Ecology Center is a community program centered on outdoors, music in manhattan.",
-      "description": "LES Ecology Center is a community program centered on outdoors, music in manhattan. Based on 7 observed event dates, it meets weekly on Friday and Monday mornings.",
+      "tagline": "LES Ecology Center is a community program centered on outdoors, music, parties in manhattan.",
+      "description": "LES Ecology Center is a community program centered on outdoors, music, parties in manhattan. Based on 10 observed event dates, it meets weekly on Friday and Tuesday mornings.",
       "categories": [
         "outdoors",
-        "music"
+        "other",
+        "music",
+        "parties"
       ],
       "tags": [
         "outdoors",
-        "music"
+        "other",
+        "music",
+        "parties"
       ],
       "neighborhoods": [
         "manhattan"
       ],
-      "homeVenue": "East River Park",
+      "homeVenue": "Center for Wellbeing and Happiness",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193785510%2F196599321851%2F1%2Foriginal.20260917-203441?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.479&fp-y=0.397&s=7314599687ec293e68c3ce7105613bb8",
       "links": [
         {
@@ -1598,22 +1602,25 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-16",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 5,
         "eventCount90d": 5
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Monday"
+          "Tuesday"
         ],
         "typicalTime": "09:30",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 10
       },
       "upcomingEventIds": [
         "8b2dbc2f3a85b136",
-        "741e7abd52af1ede"
+        "741e7abd52af1ede",
+        "f9be9d7997943c3f",
+        "5717f4c79477b912",
+        "ce6937fd5a70ddc1"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -1622,7 +1629,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1631,12 +1638,12 @@
         "eventbrite:13297911311"
       ],
       "similarCommunityIds": [
-        "com_3d91bda94131",
-        "com_6da89066dbb5",
         "com_edf7e9714aa8",
-        "com_44f59baa3830",
-        "com_61de7e5f2248",
-        "com_ed952ca81836"
+        "com_a4f86eccdc8e",
+        "com_3942d7a4c6e3",
+        "com_fe4b6663b721",
+        "com_58d773e27208",
+        "com_61de7e5f2248"
       ]
     },
     {
@@ -3447,10 +3454,10 @@
       "similarCommunityIds": [
         "com_3942d7a4c6e3",
         "com_a4f86eccdc8e",
+        "com_759f151a6d08",
         "com_a1e1c13a75f0",
         "com_edf7e9714aa8",
-        "com_fe4b6663b721",
-        "com_e9748c1176c1"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -3523,12 +3530,12 @@
         "eventbrite:34430736779"
       ],
       "similarCommunityIds": [
+        "com_759f151a6d08",
         "com_edf7e9714aa8",
         "com_fe4b6663b721",
         "com_8484b3e5cfee",
         "com_14a9b81bfe8f",
-        "com_47de8f45d349",
-        "com_759f151a6d08"
+        "com_47de8f45d349"
       ]
     },
     {
@@ -3837,8 +3844,8 @@
         "com_a4f86eccdc8e",
         "com_1740a8cfc76c",
         "com_3942d7a4c6e3",
-        "com_bb6928bc760c",
-        "com_edf7e9714aa8"
+        "com_759f151a6d08",
+        "com_bb6928bc760c"
       ]
     },
     {
@@ -4825,7 +4832,7 @@
         "com_137e7edb1623",
         "com_68f8f24f0095",
         "com_ebf2f0d4ce77",
-        "com_759f151a6d08"
+        "com_1e60766a7318"
       ]
     },
     {
@@ -5259,8 +5266,8 @@
         "com_1dc58bbe47db",
         "com_99e08820d1c1",
         "com_61de7e5f2248",
-        "com_759f151a6d08",
-        "com_ed952ca81836"
+        "com_ed952ca81836",
+        "com_1e60766a7318"
       ]
     },
     {
@@ -5405,7 +5412,7 @@
         "com_57359d725dc0",
         "com_f166e5cd69fa",
         "com_fbbdf45a2a0e",
-        "com_9c336784d52c"
+        "com_759f151a6d08"
       ]
     },
     {
@@ -5941,7 +5948,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 1,
         "eventCount90d": 1
       },
       "schedule": {
@@ -5955,8 +5962,7 @@
         "sampleSize": 4
       },
       "upcomingEventIds": [
-        "c62f0303fd05801c",
-        "5336bc7b6ccf809b"
+        "c62f0303fd05801c"
       ],
       "sourceAttributions": [
         "luma"
@@ -6122,9 +6128,9 @@
       "similarCommunityIds": [
         "com_a45e35db829c",
         "com_c305531d38d0",
+        "com_759f151a6d08",
         "com_edf7e9714aa8",
         "com_61de7e5f2248",
-        "com_759f151a6d08",
         "com_ed952ca81836"
       ]
     },
@@ -6354,8 +6360,8 @@
         "com_ed952ca81836",
         "com_a4f86eccdc8e",
         "com_3942d7a4c6e3",
-        "com_a1e1c13a75f0",
-        "com_edf7e9714aa8"
+        "com_759f151a6d08",
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -7879,8 +7885,8 @@
         "com_1dc58bbe47db",
         "com_99e08820d1c1",
         "com_61de7e5f2248",
-        "com_759f151a6d08",
-        "com_ed952ca81836"
+        "com_ed952ca81836",
+        "com_1e60766a7318"
       ]
     },
     {
@@ -8666,10 +8672,10 @@
       "similarCommunityIds": [
         "com_fbbdf45a2a0e",
         "com_065dafa96d43",
+        "com_759f151a6d08",
         "com_9c336784d52c",
         "com_edf7e9714aa8",
-        "com_feb5ce491629",
-        "com_8484b3e5cfee"
+        "com_feb5ce491629"
       ]
     },
     {
@@ -8951,8 +8957,8 @@
         "com_47de8f45d349",
         "com_a4f86eccdc8e",
         "com_3942d7a4c6e3",
-        "com_edf7e9714aa8",
-        "com_fe4b6663b721"
+        "com_759f151a6d08",
+        "com_edf7e9714aa8"
       ]
     },
     {
@@ -9817,8 +9823,8 @@
         "com_96a0049afb0f",
         "com_664ab77e1bba",
         "com_c0492b95ac8d",
-        "com_9abdf9db297a",
-        "com_eeb4e424a504"
+        "com_ab8259bb35a4",
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -10965,10 +10971,10 @@
       "similarCommunityIds": [
         "com_44f59baa3830",
         "com_a45e35db829c",
-        "com_759f151a6d08",
         "com_f166e5cd69fa",
         "com_072c9c3e12a8",
-        "com_12939182c936"
+        "com_12939182c936",
+        "com_139883e18f84"
       ]
     },
     {
@@ -14522,10 +14528,10 @@
       "similarCommunityIds": [
         "com_58d773e27208",
         "com_a4f86eccdc8e",
+        "com_759f151a6d08",
         "com_a1e1c13a75f0",
         "com_edf7e9714aa8",
-        "com_fe4b6663b721",
-        "com_61de7e5f2248"
+        "com_fe4b6663b721"
       ]
     },
     {
@@ -15168,8 +15174,8 @@
         "com_96a0049afb0f",
         "com_664ab77e1bba",
         "com_c0492b95ac8d",
-        "com_9abdf9db297a",
-        "com_eeb4e424a504"
+        "com_ab8259bb35a4",
+        "com_9abdf9db297a"
       ]
     },
     {
@@ -15239,11 +15245,11 @@
       ],
       "similarCommunityIds": [
         "com_3942d7a4c6e3",
+        "com_759f151a6d08",
         "com_edf7e9714aa8",
         "com_fe4b6663b721",
         "com_61de7e5f2248",
-        "com_ed952ca81836",
-        "com_58d773e27208"
+        "com_ed952ca81836"
       ]
     },
     {
@@ -15410,11 +15416,11 @@
       "neighborhoods": [
         "upper east side",
         "manhattan",
-        "east village",
-        "midtown"
+        "williamsburg",
+        "east village"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
-      "imageUrl": "https://images.lumacdn.com/uploads/j0/5d142c47-ab88-42f4-a9c7-aafd42a8e2e9.png",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/event-covers/7k/fe4d63bc-b15a-4d1d-8cc3-cd8a13071eae.jpg",
       "links": [
         {
           "type": "luma",
@@ -15440,9 +15446,9 @@
         "sampleSize": 29
       },
       "upcomingEventIds": [
+        "f68ef1dbb841092f",
         "698ec8453e5f4344",
         "a7280058ca9d3b4a",
-        "f68ef1dbb841092f",
         "3d40b893b6e7d1e0",
         "8eb509eff15bc46a",
         "cc29776d909b57dc",
@@ -15547,10 +15553,10 @@
       "similarCommunityIds": [
         "com_57359d725dc0",
         "com_065dafa96d43",
+        "com_759f151a6d08",
         "com_9c336784d52c",
         "com_edf7e9714aa8",
-        "com_feb5ce491629",
-        "com_8484b3e5cfee"
+        "com_feb5ce491629"
       ]
     },
     {
@@ -18141,8 +18147,8 @@
         "75154eebbdbd66ab",
         "bdd1ca7932c28d3f",
         "8c9af583f973dd9d",
-        "54e81c1502303bdf",
         "f663eb4c1f31cda1",
+        "54e81c1502303bdf",
         "fc2619757c970c2c",
         "88b7c9bb2e845c88",
         "e722ce271b52df36",
@@ -18745,10 +18751,10 @@
       ],
       "similarCommunityIds": [
         "com_3942d7a4c6e3",
+        "com_759f151a6d08",
         "com_edf7e9714aa8",
         "com_58d773e27208",
         "com_4eae7de1bfbd",
-        "com_759f151a6d08",
         "com_bb6928bc760c"
       ]
     },
@@ -65932,7 +65938,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-17T19:49:34.187856+00:00",
+  "lastUpdated": "2026-11-17T21:56:29.274811+00:00",
   "version": 1,
   "schemaVersion": 1
 }
