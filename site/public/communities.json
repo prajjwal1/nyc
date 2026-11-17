@@ -5,17 +5,19 @@
       "slug": "czech-center-new-york-db297a",
       "name": "Czech Center New York",
       "kind": "institutional_program",
-      "tagline": "Czech Center New York is a community program centered on art, music in upper east side.",
-      "description": "Czech Center New York is a community program centered on art, music in upper east side. Based on 17 observed event dates, it meets weekly on Monday and Sunday evenings.",
+      "tagline": "Czech Center New York is a community program centered on music, art, exploration in upper east side.",
+      "description": "Czech Center New York is a community program centered on music, art, exploration in upper east side. Based on 17 observed event dates, it meets weekly on Monday and Sunday evenings.",
       "categories": [
-        "art",
         "music",
-        "other"
+        "art",
+        "other",
+        "exploration"
       ],
       "tags": [
-        "art",
         "music",
-        "other"
+        "art",
+        "other",
+        "exploration"
       ],
       "neighborhoods": [
         "upper east side"
@@ -70,12 +72,12 @@
         "eventbrite:10013510321"
       ],
       "similarCommunityIds": [
+        "com_96a0049afb0f",
+        "com_8f2a69f866f2",
         "com_c58670960684",
-        "com_ab8259bb35a4",
         "com_3837f308cd75",
-        "com_0ae542c496b3",
-        "com_1466f20a9300",
-        "com_3d91bda94131"
+        "com_ab8259bb35a4",
+        "com_e341908692df"
       ]
     },
     {
@@ -529,8 +531,8 @@
       ],
       "similarCommunityIds": [
         "com_525bddfaee91",
-        "com_d8a5203885a9",
         "com_b736e77bdf93",
+        "com_d8a5203885a9",
         "com_72c625ae7237",
         "com_d103029f0156",
         "com_eef1ca956dae"
@@ -753,10 +755,10 @@
       "similarCommunityIds": [
         "com_d8a5203885a9",
         "com_a38043df522b",
+        "com_a4d969c3c6eb",
         "com_218b97d674a6",
         "com_43850d49f9e6",
-        "com_949217ac4f1f",
-        "com_bfb16ef27b62"
+        "com_949217ac4f1f"
       ]
     },
     {
@@ -764,21 +766,21 @@
       "slug": "rizzoli-bookstore-9afb0f",
       "name": "Rizzoli Bookstore",
       "kind": "recurring_series",
-      "tagline": "Rizzoli Bookstore is a recurring event series centered on books, art, exploration in manhattan.",
-      "description": "Rizzoli Bookstore is a recurring event series centered on books, art, exploration in manhattan. Based on 16 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
+      "tagline": "Rizzoli Bookstore is a recurring event series centered on art, exploration, music in manhattan.",
+      "description": "Rizzoli Bookstore is a recurring event series centered on art, exploration, music in manhattan. Based on 16 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "other",
-        "books",
         "art",
         "exploration",
-        "music"
+        "music",
+        "books"
       ],
       "tags": [
         "other",
-        "books",
         "art",
         "exploration",
-        "music"
+        "music",
+        "books"
       ],
       "neighborhoods": [
         "manhattan"
@@ -838,9 +840,9 @@
         "com_e9748c1176c1",
         "com_3d91bda94131",
         "com_61de7e5f2248",
+        "com_9abdf9db297a",
         "com_d2d455d2d6c9",
-        "com_1e60766a7318",
-        "com_a4f86eccdc8e"
+        "com_1e60766a7318"
       ]
     },
     {
@@ -848,24 +850,24 @@
       "slug": "attractions4us-714aa8",
       "name": "Attractions4us",
       "kind": "recurring_series",
-      "tagline": "Attractions4us is a recurring event series centered on outdoors, music, parties in manhattan.",
-      "description": "Attractions4us is a recurring event series centered on outdoors, music, parties in manhattan. Based on 4 observed event dates, it meets weekly on Monday and Friday evenings.",
+      "tagline": "Attractions4us is a recurring event series centered on music, parties, outdoors in manhattan.",
+      "description": "Attractions4us is a recurring event series centered on music, parties, outdoors in manhattan. Based on 3 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
-        "outdoors",
         "music",
         "parties",
+        "outdoors",
         "other"
       ],
       "tags": [
-        "outdoors",
         "music",
         "parties",
+        "outdoors",
         "other"
       ],
       "neighborhoods": [
         "manhattan"
       ],
-      "homeVenue": "Pier 36 NYC",
+      "homeVenue": "Pier 36",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193853770%2F170820984850%2F1%2Foriginal.20260918-171453?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=4f2c89dd3597a7ae33bbbd1528d8aff7",
       "links": [
         {
@@ -877,19 +879,19 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-11-16",
+        "lastEventDate": null,
         "upcomingEventCount": 3,
-        "eventCount90d": 1
+        "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Monday",
-          "Friday"
+          "Friday",
+          "Saturday"
         ],
-        "typicalTime": "17:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "typicalTime": "18:30",
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "245956837b384735",
@@ -903,7 +905,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -997,9 +999,9 @@
       ],
       "similarCommunityIds": [
         "com_489a14652e20",
-        "com_a4d969c3c6eb",
         "com_ff2e01957665",
         "com_1740a8cfc76c",
+        "com_b736e77bdf93",
         "com_2c239df2a554",
         "com_4a9490cb3534"
       ]
@@ -1153,10 +1155,10 @@
       "similarCommunityIds": [
         "com_9caab69e0812",
         "com_1740a8cfc76c",
-        "com_e9748c1176c1",
         "com_f990c90c32d5",
         "com_f54698ed682f",
-        "com_1466f20a9300"
+        "com_1466f20a9300",
+        "com_3d91bda94131"
       ]
     },
     {
@@ -1396,8 +1398,8 @@
       "slug": "greenlight-bookstore-f2a554",
       "name": "Greenlight Bookstore",
       "kind": "recurring_series",
-      "tagline": "Greenlight Bookstore is a recurring event series centered on books, parties in brooklyn, fort greene.",
-      "description": "Greenlight Bookstore is a recurring event series centered on books, parties in brooklyn, fort greene. Based on 12 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Greenlight Bookstore is a recurring event series centered on books, parties in brooklyn, boerum hill.",
+      "description": "Greenlight Bookstore is a recurring event series centered on books, parties in brooklyn, boerum hill. Based on 12 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "other",
         "books",
@@ -1410,11 +1412,11 @@
       ],
       "neighborhoods": [
         "brooklyn",
-        "fort greene",
         "boerum hill",
-        "fidi"
+        "fidi",
+        "soho"
       ],
-      "homeVenue": "Greenlight Bookstore in Fort Greene",
+      "homeVenue": "Hops Hill At Atlantic",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193873961%2F202203143927%2F1%2Foriginal.20260918-213459?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.991&fp-y=0.532&s=677169d5b6a24413dcb82a5e5d161a19",
       "links": [
         {
@@ -1482,7 +1484,7 @@
       "name": "LES Ecology Center",
       "kind": "institutional_program",
       "tagline": "LES Ecology Center is a community program centered on outdoors, music in manhattan.",
-      "description": "LES Ecology Center is a community program centered on outdoors, music in manhattan. Based on 6 observed event dates, it meets weekly on Friday and Monday mornings.",
+      "description": "LES Ecology Center is a community program centered on outdoors, music in manhattan. Based on 7 observed event dates, it meets weekly on Friday and Monday mornings.",
       "categories": [
         "outdoors",
         "music"
@@ -1495,7 +1497,7 @@
         "manhattan"
       ],
       "homeVenue": "East River Park",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197616338%2F196599321851%2F1%2Foriginal.20261109-184409?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=450a7b2147a61c06d69dfecb4827fa08",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193785510%2F196599321851%2F1%2Foriginal.20260917-203441?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.479&fp-y=0.397&s=7314599687ec293e68c3ce7105613bb8",
       "links": [
         {
           "type": "eventbrite",
@@ -1507,7 +1509,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-16",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 5
       },
       "schedule": {
@@ -1518,9 +1520,10 @@
         ],
         "typicalTime": "09:30",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
+        "8b2dbc2f3a85b136",
         "741e7abd52af1ede"
       ],
       "sourceAttributions": [
@@ -1530,7 +1533,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -1624,8 +1627,8 @@
         "com_3d91bda94131",
         "com_58d773e27208",
         "com_61de7e5f2248",
-        "com_1e60766a7318",
-        "com_a4f86eccdc8e"
+        "com_e9748c1176c1",
+        "com_1e60766a7318"
       ]
     },
     {
@@ -1925,14 +1928,16 @@
       "slug": "books-are-magic-35692e",
       "name": "Books Are Magic",
       "kind": "recurring_series",
-      "tagline": "Books Are Magic is a recurring event series centered on parties in brooklyn, carroll gardens.",
-      "description": "Books Are Magic is a recurring event series centered on parties in brooklyn, carroll gardens. Based on 35 observed event dates, it meets weekly on Thursday and Monday evenings.",
+      "tagline": "Books Are Magic is a recurring event series centered on food, parties in brooklyn, carroll gardens.",
+      "description": "Books Are Magic is a recurring event series centered on food, parties in brooklyn, carroll gardens. Based on 35 observed event dates, it meets weekly on Thursday and Monday evenings.",
       "categories": [
         "other",
+        "food",
         "parties"
       ],
       "tags": [
         "other",
+        "food",
         "parties"
       ],
       "neighborhoods": [
@@ -1996,12 +2001,12 @@
         "eventbrite:17671794664"
       ],
       "similarCommunityIds": [
+        "com_2b6913d1e51a",
+        "com_bb6928bc760c",
+        "com_d6cec2ac3e5a",
         "com_0606c7e50fa8",
-        "com_3005e46e50b2",
-        "com_032059b33438",
-        "com_1a46b1930293",
-        "com_5a1a72bded1f",
-        "com_489a14652e20"
+        "com_d0a5add7d8b9",
+        "com_3005e46e50b2"
       ]
     },
     {
@@ -2374,21 +2379,19 @@
       "slug": "the-tiny-cupboard-7bdf93",
       "name": "The Tiny Cupboard",
       "kind": "recurring_series",
-      "tagline": "The Tiny Cupboard is a recurring event series centered on books, music, art in brooklyn.",
-      "description": "The Tiny Cupboard is a recurring event series centered on books, music, art in brooklyn. Based on 74 observed event dates, it meets weekly on Friday and Thursday evenings.",
+      "tagline": "The Tiny Cupboard is a recurring event series centered on art, food, books in brooklyn.",
+      "description": "The Tiny Cupboard is a recurring event series centered on art, food, books in brooklyn. Based on 74 observed event dates, it meets weekly on Friday and Thursday evenings.",
       "categories": [
-        "books",
-        "music",
         "art",
         "food",
-        "other"
+        "other",
+        "books"
       ],
       "tags": [
-        "books",
-        "music",
         "art",
         "food",
-        "other"
+        "other",
+        "books"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -2442,11 +2445,11 @@
       ],
       "similarCommunityIds": [
         "com_3837f308cd75",
-        "com_1740a8cfc76c",
         "com_0ae542c496b3",
-        "com_1466f20a9300",
-        "com_76160be8487b",
-        "com_77ec11668bd8"
+        "com_77ec11668bd8",
+        "com_489a14652e20",
+        "com_525bddfaee91",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -2749,10 +2752,10 @@
         "eventbrite:20163541646"
       ],
       "similarCommunityIds": [
+        "com_e9748c1176c1",
         "com_5f3066e419a7",
         "com_3942d7a4c6e3",
         "com_a1e1c13a75f0",
-        "com_e9748c1176c1",
         "com_58d773e27208",
         "com_b8a3508a14a4"
       ]
@@ -3288,7 +3291,7 @@
         "com_a1e1c13a75f0",
         "com_edf7e9714aa8",
         "com_fe4b6663b721",
-        "com_3d91bda94131"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -3593,10 +3596,10 @@
         "eventbrite:40513431663"
       ],
       "similarCommunityIds": [
-        "com_c1410c07c4dd",
         "com_4e69412cb0a5",
         "com_cdd5daa67222",
         "com_f28d3ae740a6",
+        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
         "com_b736e77bdf93"
       ]
@@ -4199,8 +4202,8 @@
       ],
       "similarCommunityIds": [
         "com_8b837dfb5421",
-        "com_9abdf9db297a",
         "com_3837f308cd75",
+        "com_9abdf9db297a",
         "com_fe4b6663b721",
         "com_58d773e27208",
         "com_96a0049afb0f"
@@ -4280,16 +4283,18 @@
       "slug": "the-national-arts-club-1176c1",
       "name": "The National Arts Club",
       "kind": "club",
-      "tagline": "The National Arts Club is a community club centered on books, music, theater in manhattan.",
-      "description": "The National Arts Club is a community club centered on books, music, theater in manhattan. Based on 36 observed event dates, it meets weekly on Tuesday and Monday evenings.",
+      "tagline": "The National Arts Club is a community club centered on comedy, books, music in manhattan.",
+      "description": "The National Arts Club is a community club centered on comedy, books, music in manhattan. Based on 36 observed event dates, it meets weekly on Tuesday and Monday evenings.",
       "categories": [
         "other",
+        "comedy",
         "books",
         "music",
         "theater"
       ],
       "tags": [
         "other",
+        "comedy",
         "books",
         "music",
         "theater"
@@ -4351,12 +4356,12 @@
         "eventbrite:6140247955"
       ],
       "similarCommunityIds": [
-        "com_3d91bda94131",
-        "com_5f3066e419a7",
-        "com_61de7e5f2248",
+        "com_3942d7a4c6e3",
+        "com_a1e1c13a75f0",
+        "com_58d773e27208",
         "com_96a0049afb0f",
-        "com_d2d455d2d6c9",
-        "com_1e60766a7318"
+        "com_3d91bda94131",
+        "com_5f3066e419a7"
       ]
     },
     {
@@ -4577,11 +4582,11 @@
       ],
       "similarCommunityIds": [
         "com_96a0049afb0f",
-        "com_b736e77bdf93",
         "com_14e2dae511e1",
         "com_1e1161084349",
         "com_5251e78f4060",
-        "com_53a894e82b51"
+        "com_53a894e82b51",
+        "com_5c8ac62f26b3"
       ]
     },
     {
@@ -4941,11 +4946,11 @@
       ],
       "similarCommunityIds": [
         "com_eeb4e424a504",
+        "com_0e403135692e",
         "com_14a9b81bfe8f",
         "com_359977ec663e",
         "com_43e82b8f4e34",
-        "com_47de8f45d349",
-        "com_55ca36db453a"
+        "com_47de8f45d349"
       ]
     },
     {
@@ -5446,7 +5451,7 @@
       "similarCommunityIds": [
         "com_2a30ebfb0079",
         "com_3837f308cd75",
-        "com_9abdf9db297a",
+        "com_b736e77bdf93",
         "com_c58670960684",
         "com_ab8259bb35a4",
         "com_55ca36db453a"
@@ -5952,11 +5957,11 @@
       ],
       "similarCommunityIds": [
         "com_0606c7e50fa8",
-        "com_0e403135692e",
         "com_5a1a72bded1f",
         "com_032059b33438",
         "com_f084ce2ea8b1",
-        "com_489a14652e20"
+        "com_489a14652e20",
+        "com_a4f86eccdc8e"
       ]
     },
     {
@@ -6026,11 +6031,11 @@
       ],
       "similarCommunityIds": [
         "com_0606c7e50fa8",
-        "com_0e403135692e",
         "com_3005e46e50b2",
         "com_1a46b1930293",
         "com_a20864ed56ec",
-        "com_14e2dae511e1"
+        "com_14e2dae511e1",
+        "com_1e1161084349"
       ]
     },
     {
@@ -6109,7 +6114,7 @@
         "com_a4f86eccdc8e",
         "com_3942d7a4c6e3",
         "com_a1e1c13a75f0",
-        "com_e9748c1176c1"
+        "com_edf7e9714aa8"
       ]
     },
     {
@@ -6259,10 +6264,10 @@
       "similarCommunityIds": [
         "com_a4f86eccdc8e",
         "com_2b6913d1e51a",
+        "com_0e403135692e",
         "com_3005e46e50b2",
         "com_1740a8cfc76c",
-        "com_3837f308cd75",
-        "com_3942d7a4c6e3"
+        "com_3837f308cd75"
       ]
     },
     {
@@ -6417,7 +6422,7 @@
         "com_0606c7e50fa8",
         "com_bfb6c843f2d0",
         "com_f8ff3d3257ed",
-        "com_0e403135692e",
+        "com_2c239df2a554",
         "com_1e60766a7318"
       ]
     },
@@ -6837,8 +6842,8 @@
         "com_7e654f58296b",
         "com_fbbdf45a2a0e",
         "com_57359d725dc0",
-        "com_e9748c1176c1",
-        "com_0cc8630779d7"
+        "com_0cc8630779d7",
+        "com_606719862cd1"
       ]
     },
     {
@@ -6909,7 +6914,7 @@
         "com_eef1ca956dae",
         "com_70cbea4f18e4",
         "com_77ec11668bd8",
-        "com_218b97d674a6"
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -7268,8 +7273,8 @@
         "com_8484b3e5cfee",
         "com_c1558b0c4390",
         "com_6d05b1def86f",
-        "com_2b6913d1e51a",
-        "com_a4f86eccdc8e"
+        "com_0e403135692e",
+        "com_2b6913d1e51a"
       ]
     },
     {
@@ -7701,9 +7706,9 @@
         "com_ab8259bb35a4",
         "com_0ae542c496b3",
         "com_118a558259ea",
-        "com_9abdf9db297a",
         "com_428275493172",
-        "com_40bf372e58c5"
+        "com_40bf372e58c5",
+        "com_489a14652e20"
       ]
     },
     {
@@ -7772,11 +7777,11 @@
       ],
       "similarCommunityIds": [
         "com_3005e46e50b2",
-        "com_0e403135692e",
         "com_489a14652e20",
         "com_ff2e01957665",
         "com_032059b33438",
-        "com_1740a8cfc76c"
+        "com_1740a8cfc76c",
+        "com_1a46b1930293"
       ]
     },
     {
@@ -8054,9 +8059,9 @@
         "com_d0a5add7d8b9",
         "com_939280716ae9",
         "com_fa67d543a8b1",
+        "com_0e403135692e",
         "com_2b6913d1e51a",
-        "com_05774b0951d0",
-        "com_14e2dae511e1"
+        "com_05774b0951d0"
       ]
     },
     {
@@ -9494,9 +9499,9 @@
         "com_33a530deb7aa",
         "com_96a0049afb0f",
         "com_664ab77e1bba",
+        "com_c0492b95ac8d",
         "com_9abdf9db297a",
-        "com_b736e77bdf93",
-        "com_c0492b95ac8d"
+        "com_1e68b580d0be"
       ]
     },
     {
@@ -11247,11 +11252,11 @@
       ],
       "similarCommunityIds": [
         "com_2b6913d1e51a",
+        "com_0e403135692e",
         "com_5a1a72bded1f",
         "com_cbe08adf6898",
         "com_1e08b1e2de75",
-        "com_6d05b1def86f",
-        "com_939280716ae9"
+        "com_6d05b1def86f"
       ]
     },
     {
@@ -11897,8 +11902,8 @@
         "com_8484b3e5cfee",
         "com_c1558b0c4390",
         "com_6d05b1def86f",
-        "com_2b6913d1e51a",
-        "com_a4f86eccdc8e"
+        "com_0e403135692e",
+        "com_2b6913d1e51a"
       ]
     },
     {
@@ -12113,11 +12118,11 @@
         "luma:cal-shwmt96ahayzcyd"
       ],
       "similarCommunityIds": [
+        "com_0e403135692e",
         "com_0606c7e50fa8",
         "com_bb6928bc760c",
         "com_d6cec2ac3e5a",
         "com_3005e46e50b2",
-        "com_0e403135692e",
         "com_1e08b1e2de75"
       ]
     },
@@ -12136,8 +12141,7 @@
       ],
       "neighborhoods": [
         "lower east side",
-        "tribeca",
-        "chelsea"
+        "tribeca"
       ],
       "homeVenue": "Moxy NYC Lower East Side",
       "imageUrl": "https://images.lumacdn.com/uploads/m2/d4d3e0eb-b1c1-43d5-9dd2-f5e9e1ba3e8b.jpg",
@@ -12152,7 +12156,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-14",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 2,
         "eventCount90d": 3
       },
       "schedule": {
@@ -12167,8 +12171,7 @@
       },
       "upcomingEventIds": [
         "2f58de9589a0861f",
-        "30b36cee2144cd2b",
-        "f0c69c12b0fe876e"
+        "30b36cee2144cd2b"
       ],
       "sourceAttributions": [
         "luma"
@@ -12188,11 +12191,11 @@
       ],
       "similarCommunityIds": [
         "com_30bd6ca662e0",
-        "com_d74826b4ebc7",
         "com_05774b0951d0",
         "com_14e2dae511e1",
         "com_19609e7f4286",
-        "com_1b71901c7841"
+        "com_1b71901c7841",
+        "com_1c65032c5bbc"
       ]
     },
     {
@@ -12892,8 +12895,8 @@
         "luma:cal-ujkx9akchikyu7r"
       ],
       "similarCommunityIds": [
-        "com_428275493172",
         "com_1b90851c14cf",
+        "com_428275493172",
         "com_05774b0951d0",
         "com_14e2dae511e1",
         "com_19609e7f4286",
@@ -13244,7 +13247,7 @@
         "com_f084ce2ea8b1",
         "com_1a46b1930293",
         "com_d36daf8ea112",
-        "com_0e403135692e"
+        "com_d6cec2ac3e5a"
       ]
     },
     {
@@ -14616,9 +14619,9 @@
         "com_c4469caf0091",
         "com_96a0049afb0f",
         "com_664ab77e1bba",
+        "com_c0492b95ac8d",
         "com_9abdf9db297a",
-        "com_b736e77bdf93",
-        "com_c0492b95ac8d"
+        "com_1e68b580d0be"
       ]
     },
     {
@@ -14919,9 +14922,9 @@
         "com_c58670960684",
         "com_0ae542c496b3",
         "com_118a558259ea",
-        "com_9abdf9db297a",
         "com_40bf372e58c5",
-        "com_428275493172"
+        "com_428275493172",
+        "com_489a14652e20"
       ]
     },
     {
@@ -15363,9 +15366,9 @@
         "com_6ea25c7e117a",
         "com_1b71901c7841",
         "com_c56c9c25c7a1",
+        "com_0e403135692e",
         "com_f8c88ef9a8ca",
-        "com_939280716ae9",
-        "com_fa67d543a8b1"
+        "com_939280716ae9"
       ]
     },
     {
@@ -16847,9 +16850,9 @@
         "com_0ae542c496b3",
         "com_489a14652e20",
         "com_3837f308cd75",
+        "com_b736e77bdf93",
         "com_211f1f0f1811",
-        "com_4b9d7692e567",
-        "com_8d86f6f9340b"
+        "com_4b9d7692e567"
       ]
     },
     {
@@ -17464,28 +17467,28 @@
       "slug": "book-club-bar-07c4dd",
       "name": "Book Club Bar",
       "kind": "community_space",
-      "tagline": "Book Club Bar is a community space centered on books, movies, art in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, movies, art in east village, bushwick. Based on 75 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "tagline": "Book Club Bar is a community space centered on books, movies, games in east village, bushwick.",
+      "description": "Book Club Bar is a community space centered on books, movies, games in east village, bushwick. Based on 75 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "movies",
-        "art",
         "games",
-        "singles"
+        "singles",
+        "comedy"
       ],
       "tags": [
         "books",
         "movies",
-        "art",
         "games",
-        "singles"
+        "singles",
+        "comedy"
       ],
       "neighborhoods": [
         "east village",
         "bushwick",
         "brooklyn"
       ],
-      "homeVenue": "East Village, 197 East 3rd Street",
+      "homeVenue": "Bushwick, 380 Troutman Street",
       "imageUrl": "https://cdn1.bookmanager.com/i/9911545/2026_Events/11_November_/General_Literary___BCB_111826.jpg?cb=1790363083",
       "links": [
         {
@@ -17531,23 +17534,18 @@
         "observedDateCount": 75,
         "hasFirstPartyIdentity": false
       },
-      "newcomerFriendly": true,
-      "newcomerEvidence": [
-        {
-          "eventId": "f5207a5c726e6330",
-          "signal": "beginners"
-        }
-      ],
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
       "aliases": [
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_55ca36db453a",
         "com_8d86f6f9340b",
-        "com_f28d3ae740a6",
-        "com_eeb4e424a504",
-        "com_525bddfaee91",
-        "com_a4d969c3c6eb"
+        "com_55ca36db453a",
+        "com_d8a5203885a9",
+        "com_4e69412cb0a5",
+        "com_cdd5daa67222",
+        "com_f28d3ae740a6"
       ]
     },
     {
@@ -17720,8 +17718,8 @@
       "slug": "the-center-for-fiction-c3c6eb",
       "name": "The Center for Fiction",
       "kind": "institutional_program",
-      "tagline": "The Center for Fiction is a community program centered on books, special in brooklyn, east village.",
-      "description": "The Center for Fiction is a community program centered on books, special in brooklyn, east village. Based on 10 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "tagline": "The Center for Fiction is a community program centered on books, special in brooklyn.",
+      "description": "The Center for Fiction is a community program centered on books, special in brooklyn. Based on 10 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
         "books",
         "special"
@@ -17731,8 +17729,7 @@
         "special"
       ],
       "neighborhoods": [
-        "brooklyn",
-        "east village"
+        "brooklyn"
       ],
       "homeVenue": "Center for Fiction",
       "imageUrl": "https://centerforfiction.org/uploads/Cover_This-Impossible-Life-678x1024.jpg",
@@ -17786,12 +17783,12 @@
         "source:centerforfiction"
       ],
       "similarCommunityIds": [
-        "com_f28d3ae740a6",
         "com_72c625ae7237",
         "com_d103029f0156",
         "com_eef1ca956dae",
-        "com_f171cd222ca5",
-        "com_77ec11668bd8"
+        "com_77ec11668bd8",
+        "com_68b36e93076a",
+        "com_ff2e01957665"
       ]
     },
     {
@@ -17874,9 +17871,9 @@
         "com_5582e2e97f1a",
         "com_07cac7652707",
         "com_a4d969c3c6eb",
-        "com_c1410c07c4dd",
         "com_f28d3ae740a6",
-        "com_33a530deb7aa"
+        "com_33a530deb7aa",
+        "com_729cfb31f58d"
       ]
     },
     {
@@ -17962,10 +17959,10 @@
       "similarCommunityIds": [
         "com_4a9490cb3534",
         "com_8ff2a593caac",
+        "com_2c239df2a554",
         "com_4e69412cb0a5",
         "com_cdd5daa67222",
-        "com_359977ec663e",
-        "com_2c239df2a554"
+        "com_359977ec663e"
       ]
     },
     {
@@ -18048,15 +18045,15 @@
         "comedy",
         "music",
         "outdoors",
-        "parties",
-        "singles"
+        "singles",
+        "special"
       ],
       "tags": [
         "comedy",
         "music",
         "outdoors",
-        "parties",
-        "singles"
+        "singles",
+        "special"
       ],
       "neighborhoods": [
         "east village",
@@ -18118,12 +18115,12 @@
         "url:https://newyorkcomedyclub.com"
       ],
       "similarCommunityIds": [
-        "com_3942d7a4c6e3",
-        "com_edf7e9714aa8",
+        "com_d8a5203885a9",
         "com_58d773e27208",
         "com_4eae7de1bfbd",
         "com_759f151a6d08",
-        "com_bb6928bc760c"
+        "com_28a4ec647815",
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -65306,7 +65303,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-17T04:36:43.816069+00:00",
+  "lastUpdated": "2026-11-17T08:11:31.856381+00:00",
   "version": 1,
   "schemaVersion": 1
 }
