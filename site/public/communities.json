@@ -698,11 +698,11 @@
       ],
       "similarCommunityIds": [
         "com_ae9a9d1063c7",
+        "com_764fd74924de",
         "com_a1e1c13a75f0",
         "com_30e8efd15421",
         "com_665eaac4154e",
-        "com_cdd5daa67222",
-        "com_43e82b8f4e34"
+        "com_cdd5daa67222"
       ]
     },
     {
@@ -1938,9 +1938,9 @@
         "com_9f333da89132",
         "com_273757444236",
         "com_118a558259ea",
+        "com_12939182c936",
         "com_139883e18f84",
-        "com_1c4e0060fa58",
-        "com_3481b6750d6f"
+        "com_1c4e0060fa58"
       ]
     },
     {
@@ -3668,12 +3668,12 @@
         "eventbrite:39289382883"
       ],
       "similarCommunityIds": [
-        "com_12939182c936",
         "com_160d3b550b59",
         "com_2a1498596ec3",
         "com_3f478631e906",
         "com_5dfb5e7631bc",
-        "com_cedcc75d84f5"
+        "com_cedcc75d84f5",
+        "com_e70d9143d86a"
       ]
     },
     {
@@ -4203,9 +4203,9 @@
         "com_1e68b580d0be",
         "com_72c625ae7237",
         "com_d103029f0156",
-        "com_ddcfc606c1ae",
         "com_eef1ca956dae",
-        "com_5c8ac62f26b3"
+        "com_5c8ac62f26b3",
+        "com_ddcfc606c1ae"
       ]
     },
     {
@@ -4585,12 +4585,12 @@
         "eventbrite:61845085253"
       ],
       "similarCommunityIds": [
+        "com_12939182c936",
         "com_139883e18f84",
         "com_f8c88ef9a8ca",
         "com_9a5c4d074e3a",
         "com_40bf372e58c5",
-        "com_9f333da89132",
-        "com_9fe1e0196792"
+        "com_9f333da89132"
       ]
     },
     {
@@ -5941,7 +5941,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-08",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
@@ -5955,7 +5955,8 @@
         "sampleSize": 4
       },
       "upcomingEventIds": [
-        "c62f0303fd05801c"
+        "c62f0303fd05801c",
+        "5336bc7b6ccf809b"
       ],
       "sourceAttributions": [
         "luma"
@@ -6199,9 +6200,9 @@
         "com_0606c7e50fa8",
         "com_5a1a72bded1f",
         "com_032059b33438",
-        "com_f084ce2ea8b1",
-        "com_489a14652e20",
-        "com_a4f86eccdc8e"
+        "com_79ec7e06a045",
+        "com_530ce570649a",
+        "com_f084ce2ea8b1"
       ]
     },
     {
@@ -6272,10 +6273,10 @@
       "similarCommunityIds": [
         "com_0606c7e50fa8",
         "com_3005e46e50b2",
+        "com_79ec7e06a045",
         "com_359977ec663e",
         "com_1a46b1930293",
-        "com_a20864ed56ec",
-        "com_14e2dae511e1"
+        "com_a20864ed56ec"
       ]
     },
     {
@@ -6423,8 +6424,8 @@
         "com_4b9d7692e567",
         "com_904b280a7245",
         "com_fb44e10deb2f",
-        "com_0df03478a9fc",
-        "com_bb4df3056be7"
+        "com_530ce570649a",
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -6737,6 +6738,79 @@
       ]
     },
     {
+      "id": "com_58a6ebb59b6b",
+      "slug": "bushwick-maker-s-market-b59b6b",
+      "name": "Bushwick Maker's Market",
+      "kind": "recurring_series",
+      "tagline": "Bushwick Maker's Market is a recurring event series in boerum hill, bushwick.",
+      "description": "Bushwick Maker's Market is a recurring event series in boerum hill, bushwick. Based on 2 observed event dates, it meets monthly on Saturday and Sunday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "boerum hill",
+        "bushwick"
+      ],
+      "homeVenue": "Boerum Hill",
+      "imageUrl": "https://images.lumacdn.com/uploads/dg/80c91c83-ef96-44e0-9f50-0ba8eca325e0.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/bushwickmakersmarket"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "monthly",
+        "typicalDays": [
+          "Saturday",
+          "Sunday"
+        ],
+        "typicalTime": "12:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "fa4e8e6bb2fbb021",
+        "aa1c6bbdcf943a19"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-17",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:lxluo",
+        "luma:cal-7fxyl9ecgk1ws0b",
+        "luma:cal-kfgpp27v2zdv6ye"
+      ],
+      "similarCommunityIds": [
+        "com_09f04dc6fc36",
+        "com_0df03478a9fc",
+        "com_160d3b550b59",
+        "com_1f87b327b20e",
+        "com_2a1498596ec3",
+        "com_394b0acee032"
+      ]
+    },
+    {
       "id": "com_9f333da89132",
       "slug": "steph-that-quirky-bird-girl-a89132",
       "name": "steph, that quirky bird girl",
@@ -6800,9 +6874,9 @@
       ],
       "similarCommunityIds": [
         "com_072c9c3e12a8",
+        "com_12939182c936",
         "com_139883e18f84",
         "com_eefccbbf1a7a",
-        "com_12939182c936",
         "com_2a30ebfb0079",
         "com_273757444236"
       ]
@@ -6953,8 +7027,8 @@
       "slug": "techwalk-70649a",
       "name": "TechWalk",
       "kind": "recurring_series",
-      "tagline": "TechWalk is a recurring event series in manhattan.",
-      "description": "TechWalk is a recurring event series in manhattan. Based on 2 observed event dates, it meets weekly on Friday mornings.",
+      "tagline": "TechWalk is a recurring event series in manhattan, brooklyn.",
+      "description": "TechWalk is a recurring event series in manhattan, brooklyn. Based on 3 observed event dates, it meets weekly on Friday and Saturday mornings.",
       "categories": [
         "other"
       ],
@@ -6962,7 +7036,8 @@
         "other"
       ],
       "neighborhoods": [
-        "manhattan"
+        "manhattan",
+        "brooklyn"
       ],
       "homeVenue": "Central Park",
       "imageUrl": "https://images.lumacdn.com/uploads/co/377604c9-4c3a-44d0-b6a4-b27824cf7147.png",
@@ -6977,20 +7052,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-13",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Friday"
+          "Friday",
+          "Saturday"
         ],
         "typicalTime": "09:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
-        "4669a409fad3735b"
+        "4669a409fad3735b",
+        "e01a31a0188d2c25"
       ],
       "sourceAttributions": [
         "luma"
@@ -6999,7 +7076,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -7011,9 +7088,9 @@
         "com_05774b0951d0",
         "com_19609e7f4286",
         "com_1c65032c5bbc",
+        "com_211f1f0f1811",
         "com_2598d21a6937",
-        "com_36cb2681053d",
-        "com_3dd56f332431"
+        "com_36cb2681053d"
       ]
     },
     {
@@ -7152,9 +7229,9 @@
         "com_72c625ae7237",
         "com_d103029f0156",
         "com_eef1ca956dae",
+        "com_ddcfc606c1ae",
         "com_70cbea4f18e4",
-        "com_77ec11668bd8",
-        "com_a4d969c3c6eb"
+        "com_77ec11668bd8"
       ]
     },
     {
@@ -7226,9 +7303,9 @@
         "com_77ec11668bd8",
         "com_d2d455d2d6c9",
         "com_7d3e76b46ffc",
+        "com_530ce570649a",
         "com_ff2e01957665",
-        "com_8664a7e5723e",
-        "com_2c239df2a554"
+        "com_8664a7e5723e"
       ]
     },
     {
@@ -7237,7 +7314,7 @@
       "name": "Open Book Club",
       "kind": "club",
       "tagline": "Open Book Club is a community club centered on books in manhattan.",
-      "description": "Open Book Club is a community club centered on books in manhattan. Based on 2 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "description": "Open Book Club is a community club centered on books in manhattan. Based on 3 observed event dates, it meets biweekly on Monday and Tuesday evenings.",
       "categories": [
         "books"
       ],
@@ -7260,21 +7337,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-17",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
-        "cadence": "weekly",
+        "cadence": "biweekly",
         "typicalDays": [
           "Monday",
           "Tuesday"
         ],
         "typicalTime": "19:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
-        "574833c7167a0722"
+        "574833c7167a0722",
+        "a76b9ba4971bef98"
       ],
       "sourceAttributions": [
         "luma"
@@ -7283,7 +7361,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": true,
@@ -7733,7 +7811,7 @@
         "com_ab8259bb35a4",
         "com_c58670960684",
         "com_072c9c3e12a8",
-        "com_139883e18f84"
+        "com_12939182c936"
       ]
     },
     {
@@ -8020,8 +8098,8 @@
         "com_489a14652e20",
         "com_ff2e01957665",
         "com_032059b33438",
-        "com_1740a8cfc76c",
-        "com_1a46b1930293"
+        "com_79ec7e06a045",
+        "com_1740a8cfc76c"
       ]
     },
     {
@@ -8506,10 +8584,10 @@
       "similarCommunityIds": [
         "com_387990e42591",
         "com_4187c60b9599",
+        "com_6e67b3becc29",
         "com_c2900dc31273",
         "com_14e2dae511e1",
-        "com_1e1161084349",
-        "com_53a894e82b51"
+        "com_1e1161084349"
       ]
     },
     {
@@ -8659,8 +8737,8 @@
         "com_904b280a7245",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_0df03478a9fc",
-        "com_bb4df3056be7"
+        "com_530ce570649a",
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -8798,8 +8876,8 @@
         "com_904b280a7245",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_0df03478a9fc",
-        "com_bb4df3056be7"
+        "com_530ce570649a",
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -9080,11 +9158,11 @@
       ],
       "similarCommunityIds": [
         "com_9f333da89132",
-        "com_12939182c936",
         "com_0ae542c496b3",
         "com_b1c3376ecc52",
         "com_0df03478a9fc",
-        "com_83f64eec47de"
+        "com_83f64eec47de",
+        "com_c212478907d5"
       ]
     },
     {
@@ -9313,7 +9391,7 @@
       "name": "Keller Williams Points North Classes & Events",
       "kind": "recurring_series",
       "tagline": "Keller Williams Points North Classes & Events is a recurring event series in manhattan.",
-      "description": "Keller Williams Points North Classes & Events is a recurring event series in manhattan. Based on 3 observed event dates, it meets weekly on Friday and Monday afternoons.",
+      "description": "Keller Williams Points North Classes & Events is a recurring event series in manhattan. Based on 4 observed event dates, it meets weekly on Friday and Monday afternoons.",
       "categories": [
         "other"
       ],
@@ -9336,7 +9414,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-17",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 3
       },
       "schedule": {
@@ -9346,11 +9424,12 @@
           "Monday"
         ],
         "typicalTime": "12:30",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
-        "9ba853220b6b76c6"
+        "9ba853220b6b76c6",
+        "13c1c8f6a4add886"
       ],
       "sourceAttributions": [
         "luma"
@@ -9359,7 +9438,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -9811,11 +9890,84 @@
       ],
       "similarCommunityIds": [
         "com_1e08b1e2de75",
+        "com_ddcfc606c1ae",
         "com_8ff2a593caac",
         "com_e1cfa8bd1fad",
         "com_f084ce2ea8b1",
-        "com_359977ec663e",
-        "com_6d05b1def86f"
+        "com_359977ec663e"
+      ]
+    },
+    {
+      "id": "com_79ec7e06a045",
+      "slug": "slovak-pro-06a045",
+      "name": "Slovak PRO",
+      "kind": "recurring_series",
+      "tagline": "Slovak PRO is a recurring event series centered on parties in upper east side, east village.",
+      "description": "Slovak PRO is a recurring event series centered on parties in upper east side, east village. Based on 2 observed event dates, it meets weekly on Tuesday and Thursday evenings.",
+      "categories": [
+        "other",
+        "parties"
+      ],
+      "tags": [
+        "other",
+        "parties"
+      ],
+      "neighborhoods": [
+        "upper east side",
+        "east village"
+      ],
+      "homeVenue": "Bohemian National Hall",
+      "imageUrl": "https://images.lumacdn.com/uploads/nc/57cd8988-1254-4019-af99-10e1812f1772.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/SlovakPRO"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday",
+          "Thursday"
+        ],
+        "typicalTime": "17:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "b255759ddaf6517c",
+        "ce8c582c522934fc"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-17",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-jnkuu33jf9ey3ro"
+      ],
+      "similarCommunityIds": [
+        "com_032059b33438",
+        "com_0606c7e50fa8",
+        "com_3005e46e50b2",
+        "com_a20864ed56ec",
+        "com_1a46b1930293",
+        "com_5a1a72bded1f"
       ]
     },
     {
@@ -9889,7 +10041,7 @@
         "com_f5605b691048",
         "com_8c92a460b4fd",
         "com_9c715da909bc",
-        "com_4a9490cb3534"
+        "com_ddcfc606c1ae"
       ]
     },
     {
@@ -10097,10 +10249,10 @@
       "similarCommunityIds": [
         "com_4187c60b9599",
         "com_c0cfe9590e66",
+        "com_6e67b3becc29",
         "com_c2900dc31273",
         "com_14e2dae511e1",
-        "com_1e1161084349",
-        "com_53a894e82b51"
+        "com_1e1161084349"
       ]
     },
     {
@@ -10171,9 +10323,9 @@
         "com_387990e42591",
         "com_4187c60b9599",
         "com_c0cfe9590e66",
+        "com_6e67b3becc29",
         "com_1c4e0060fa58",
-        "com_3481b6750d6f",
-        "com_483b995f5504"
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -10816,7 +10968,7 @@
         "com_759f151a6d08",
         "com_f166e5cd69fa",
         "com_072c9c3e12a8",
-        "com_139883e18f84"
+        "com_12939182c936"
       ]
     },
     {
@@ -10884,11 +11036,11 @@
       ],
       "similarCommunityIds": [
         "com_61de7e5f2248",
+        "com_6e67b3becc29",
         "com_ed952ca81836",
         "com_44f59baa3830",
         "com_1466f20a9300",
-        "com_1c4e0060fa58",
-        "com_3481b6750d6f"
+        "com_1c4e0060fa58"
       ]
     },
     {
@@ -11051,7 +11203,7 @@
       "name": "Center for Urban Science + Progress \u2022 Events",
       "kind": "institutional_program",
       "tagline": "Center for Urban Science + Progress \u2022 Events is a community program centered on music, outdoors, exploration in brooklyn, greenpoint.",
-      "description": "Center for Urban Science + Progress \u2022 Events is a community program centered on music, outdoors, exploration in brooklyn, greenpoint. Based on 5 observed event dates, it meets weekly on Monday and Thursday afternoons.",
+      "description": "Center for Urban Science + Progress \u2022 Events is a community program centered on music, outdoors, exploration in brooklyn, greenpoint. Based on 6 observed event dates, it meets weekly on Monday and Thursday afternoons.",
       "categories": [
         "music",
         "outdoors",
@@ -11068,7 +11220,7 @@
         "brooklyn",
         "greenpoint"
       ],
-      "homeVenue": "Brooklyn Navy Yard",
+      "homeVenue": "370 Jay St",
       "imageUrl": "https://images.lumacdn.com/uploads/zd/8a42eba6-1c79-44de-aa1c-81e906a2a1c9.jpg",
       "links": [
         {
@@ -11081,7 +11233,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-16",
-        "upcomingEventCount": 3,
+        "upcomingEventCount": 4,
         "eventCount90d": 2
       },
       "schedule": {
@@ -11091,13 +11243,14 @@
           "Thursday"
         ],
         "typicalTime": "13:00",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
       "upcomingEventIds": [
         "b9165c93a78ef134",
         "ff42853439390293",
-        "0cdbbc785136db86"
+        "0cdbbc785136db86",
+        "14650687d30bdf36"
       ],
       "sourceAttributions": [
         "luma"
@@ -11106,7 +11259,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -11260,9 +11413,9 @@
         "com_1e68b580d0be",
         "com_72c625ae7237",
         "com_d103029f0156",
-        "com_ddcfc606c1ae",
         "com_eef1ca956dae",
-        "com_f171cd222ca5"
+        "com_f171cd222ca5",
+        "com_359977ec663e"
       ]
     },
     {
@@ -11870,7 +12023,7 @@
       "name": "Dharma Drum Meditation Center",
       "kind": "institutional_program",
       "tagline": "Dharma Drum Meditation Center is a community program centered on wellness, outdoors in chelsea.",
-      "description": "Dharma Drum Meditation Center is a community program centered on wellness, outdoors in chelsea. Based on 9 observed event dates, it meets weekly on Sunday and Friday mornings.",
+      "description": "Dharma Drum Meditation Center is a community program centered on wellness, outdoors in chelsea. Based on 10 observed event dates, it meets weekly on Sunday and Tuesday mornings.",
       "categories": [
         "wellness",
         "outdoors"
@@ -11883,7 +12036,7 @@
         "chelsea"
       ],
       "homeVenue": "Dharma Drum Meditation Center",
-      "imageUrl": "https://images.lumacdn.com/uploads/fk/0b387385-b06e-4d75-9988-63fb5e78157d.png",
+      "imageUrl": "https://images.lumacdn.com/event-covers/ut/54bdba51-004a-4334-800f-2c2286eaacf0.jpg",
       "links": [
         {
           "type": "luma",
@@ -11894,21 +12047,22 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-11-15",
-        "upcomingEventCount": 3,
-        "eventCount90d": 7
+        "lastEventDate": "2026-11-17",
+        "upcomingEventCount": 4,
+        "eventCount90d": 8
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Sunday",
-          "Friday"
+          "Tuesday"
         ],
         "typicalTime": "10:30",
         "confidence": 1.0,
-        "sampleSize": 9
+        "sampleSize": 10
       },
       "upcomingEventIds": [
+        "0d5c03e2f1537bf7",
         "fbbbef9e8088ba75",
         "51fea23fc18d8444",
         "5aa3b12874eaa6e3"
@@ -11920,7 +12074,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 9,
+        "observedDateCount": 10,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -12585,8 +12739,8 @@
         "com_4b9d7692e567",
         "com_bf8843235af2",
         "com_fb44e10deb2f",
-        "com_0df03478a9fc",
-        "com_bb4df3056be7"
+        "com_530ce570649a",
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -13214,7 +13368,7 @@
         "com_f171cd222ca5",
         "com_1e68b580d0be",
         "com_5c8ac62f26b3",
-        "com_ddcfc606c1ae"
+        "com_77ec11668bd8"
       ]
     },
     {
@@ -13569,6 +13723,83 @@
       ]
     },
     {
+      "id": "com_764fd74924de",
+      "slug": "asian-tech-week-2026-4924de",
+      "name": "Asian Tech Week - 2026",
+      "kind": "recurring_series",
+      "tagline": "Asian Tech Week - 2026 is a recurring event series centered on parties, games in manhattan, bushwick.",
+      "description": "Asian Tech Week - 2026 is a recurring event series centered on parties, games in manhattan, bushwick. Based on 2 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "categories": [
+        "other",
+        "parties",
+        "games"
+      ],
+      "tags": [
+        "other",
+        "parties",
+        "games"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "bushwick"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/2k/534a304d-369d-47a5-8966-5b488f57d4b5.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/ATW2026"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Thursday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "03889631883ac91e",
+        "c73de819cd91d30f"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-17",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:chaitablegames",
+        "instagram:the_asian_co",
+        "luma:cal-wbtnwevjeuo1fg1"
+      ],
+      "similarCommunityIds": [
+        "com_3005e46e50b2",
+        "com_a4f86eccdc8e",
+        "com_032059b33438",
+        "com_0606c7e50fa8",
+        "com_79ec7e06a045",
+        "com_3942d7a4c6e3"
+      ]
+    },
+    {
       "id": "com_72c625ae7237",
       "slug": "open-note-labs-ae7237",
       "name": "Open Note Labs",
@@ -13628,7 +13859,78 @@
         "com_f171cd222ca5",
         "com_1e68b580d0be",
         "com_5c8ac62f26b3",
-        "com_ddcfc606c1ae"
+        "com_77ec11668bd8"
+      ]
+    },
+    {
+      "id": "com_6e67b3becc29",
+      "slug": "coworking-leaders-roundtables-becc29",
+      "name": "Coworking Leaders' Roundtables",
+      "kind": "recurring_series",
+      "tagline": "Coworking Leaders' Roundtables is a recurring event series in manhattan, midtown.",
+      "description": "Coworking Leaders' Roundtables is a recurring event series in manhattan, midtown. Based on 2 observed event dates, it meets biweekly on Friday and Thursday mornings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "midtown"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/hv/06c4b5c5-a3e9-49a1-aec7-4bdfb0a21b3f.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/twiccoffee"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Friday",
+          "Thursday"
+        ],
+        "typicalTime": "10:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "9a9e13cf9d3b9111",
+        "5e0eb85dccd5a8ed"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-17",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-wfp76c0kjfseko1"
+      ],
+      "similarCommunityIds": [
+        "com_1c4e0060fa58",
+        "com_3481b6750d6f",
+        "com_387990e42591",
+        "com_4187c60b9599",
+        "com_483b995f5504",
+        "com_7c6c5c3e08c8"
       ]
     },
     {
@@ -13853,8 +14155,8 @@
         "com_4b9d7692e567",
         "com_904b280a7245",
         "com_bf8843235af2",
-        "com_0df03478a9fc",
-        "com_bb4df3056be7"
+        "com_530ce570649a",
+        "com_0df03478a9fc"
       ]
     },
     {
@@ -14438,10 +14740,10 @@
       "similarCommunityIds": [
         "com_387990e42591",
         "com_c0cfe9590e66",
+        "com_6e67b3becc29",
         "com_c2900dc31273",
         "com_14e2dae511e1",
-        "com_1e1161084349",
-        "com_53a894e82b51"
+        "com_1e1161084349"
       ]
     },
     {
@@ -14590,7 +14892,7 @@
       "name": "Collective Z Gallery Calendar",
       "kind": "recurring_series",
       "tagline": "Collective Z Gallery Calendar is a recurring event series centered on art in manhattan.",
-      "description": "Collective Z Gallery Calendar is a recurring event series centered on art in manhattan. Based on 2 observed event dates, it meets monthly on Thursday and Friday evenings.",
+      "description": "Collective Z Gallery Calendar is a recurring event series centered on art in manhattan. Based on 3 observed event dates, it meets biweekly on Thursday and Saturday evenings.",
       "categories": [
         "art"
       ],
@@ -14601,7 +14903,7 @@
         "manhattan"
       ],
       "homeVenue": "Collective Z Gallery",
-      "imageUrl": "https://images.lumacdn.com/uploads/ql/0804e5f1-090a-4c43-8867-5abb4f1844e1.png",
+      "imageUrl": "https://images.lumacdn.com/uploads/rh/4c4c28f4-e429-4e4b-a24a-d072b9dc3132.jpg",
       "links": [
         {
           "type": "luma",
@@ -14613,20 +14915,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 1
       },
       "schedule": {
-        "cadence": "monthly",
+        "cadence": "biweekly",
         "typicalDays": [
           "Thursday",
-          "Friday"
+          "Saturday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
+        "d894c5b91a92645f",
         "f2732f815930f9a8"
       ],
       "sourceAttributions": [
@@ -14636,7 +14939,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -14648,10 +14951,10 @@
       "similarCommunityIds": [
         "com_139883e18f84",
         "com_2a30ebfb0079",
-        "com_118a558259ea",
-        "com_07cac7652707",
         "com_9f333da89132",
-        "com_eefccbbf1a7a"
+        "com_072c9c3e12a8",
+        "com_07cac7652707",
+        "com_118a558259ea"
       ]
     },
     {
@@ -15081,8 +15384,8 @@
         "luma:openbookclub"
       ],
       "similarCommunityIds": [
-        "com_ddcfc606c1ae",
         "com_f171cd222ca5",
+        "com_ddcfc606c1ae",
         "com_5c8ac62f26b3",
         "com_72c625ae7237",
         "com_d103029f0156",
@@ -16699,8 +17002,8 @@
         "com_d36daf8ea112",
         "com_f084ce2ea8b1",
         "com_032059b33438",
-        "com_1e08b1e2de75",
-        "com_c2900dc31273"
+        "com_79ec7e06a045",
+        "com_1e08b1e2de75"
       ]
     },
     {
@@ -17305,9 +17608,9 @@
         "com_30bd6ca662e0",
         "com_428275493172",
         "com_1e60766a7318",
+        "com_79ec7e06a045",
         "com_02ba15552329",
-        "com_05774b0951d0",
-        "com_0851fd5f24ee"
+        "com_05774b0951d0"
       ]
     },
     {
@@ -17702,7 +18005,7 @@
         "com_525bddfaee91",
         "com_072c9c3e12a8",
         "com_1051b67b7913",
-        "com_139883e18f84"
+        "com_12939182c936"
       ]
     },
     {
@@ -17774,9 +18077,9 @@
         "com_f28d3ae740a6",
         "com_cbe08adf6898",
         "com_5582e2e97f1a",
-        "com_12939182c936",
         "com_71693d246d8f",
-        "com_78b8aba2a8f3"
+        "com_78b8aba2a8f3",
+        "com_07cac7652707"
       ]
     },
     {
@@ -18357,7 +18660,7 @@
         "com_f171cd222ca5",
         "com_1e68b580d0be",
         "com_5c8ac62f26b3",
-        "com_ddcfc606c1ae"
+        "com_77ec11668bd8"
       ]
     },
     {
@@ -65629,7 +65932,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-17T18:43:06.062306+00:00",
+  "lastUpdated": "2026-11-17T19:49:34.187856+00:00",
   "version": 1,
   "schemaVersion": 1
 }
