@@ -699,11 +699,11 @@
       ],
       "similarCommunityIds": [
         "com_ae9a9d1063c7",
+        "com_733b8a7ddfff",
         "com_b0e15eaab803",
         "com_764fd74924de",
         "com_a1e1c13a75f0",
-        "com_30e8efd15421",
-        "com_665eaac4154e"
+        "com_30e8efd15421"
       ]
     },
     {
@@ -6736,8 +6736,8 @@
         "com_764fd74924de",
         "com_0606c7e50fa8",
         "com_bfb6c843f2d0",
-        "com_805e2fa93ad2",
-        "com_f8ff3d3257ed"
+        "com_733b8a7ddfff",
+        "com_805e2fa93ad2"
       ]
     },
     {
@@ -8583,10 +8583,10 @@
       "similarCommunityIds": [
         "com_ed8d42fb031d",
         "com_b0e15eaab803",
+        "com_733b8a7ddfff",
         "com_764fd74924de",
         "com_0606c7e50fa8",
-        "com_0ae542c496b3",
-        "com_1466f20a9300"
+        "com_0ae542c496b3"
       ]
     },
     {
@@ -8663,7 +8663,7 @@
       "name": "Pitch and Run",
       "kind": "recurring_series",
       "tagline": "Pitch and Run is a recurring event series centered on outdoors, parties, theater in manhattan, chelsea.",
-      "description": "Pitch and Run is a recurring event series centered on outdoors, parties, theater in manhattan, chelsea. Based on 11 observed event dates, it meets weekly on Monday and Tuesday mornings.",
+      "description": "Pitch and Run is a recurring event series centered on outdoors, parties, theater in manhattan, chelsea. Based on 12 observed event dates, it meets weekly on Monday and Tuesday mornings.",
       "categories": [
         "outdoors",
         "parties",
@@ -8677,7 +8677,8 @@
       "neighborhoods": [
         "manhattan",
         "chelsea",
-        "williamsburg"
+        "williamsburg",
+        "flatbush"
       ],
       "homeVenue": "Bluestone Lane Chelsea Piers Caf\u00e9",
       "imageUrl": "https://images.lumacdn.com/event-covers/qq/04f11577-bbb5-43d4-b2a1-0d01cf20f39b",
@@ -8692,7 +8693,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-18",
-        "upcomingEventCount": 5,
+        "upcomingEventCount": 6,
         "eventCount90d": 10
       },
       "schedule": {
@@ -8703,14 +8704,15 @@
         ],
         "typicalTime": "07:30",
         "confidence": 1.0,
-        "sampleSize": 11
+        "sampleSize": 12
       },
       "upcomingEventIds": [
         "f4db381ef6f13cbe",
         "15d301c7c82b52d4",
         "9d81d9a1b964208a",
         "aef59d29651168c7",
-        "36d681b714af3640"
+        "36d681b714af3640",
+        "c18ac72c26432dac"
       ],
       "sourceAttributions": [
         "luma"
@@ -8719,7 +8721,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 11,
+        "observedDateCount": 12,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -8730,10 +8732,10 @@
       ],
       "similarCommunityIds": [
         "com_fbbdf45a2a0e",
+        "com_065dafa96d43",
         "com_759f151a6d08",
         "com_edf7e9714aa8",
         "com_feb5ce491629",
-        "com_065dafa96d43",
         "com_8484b3e5cfee"
       ]
     },
@@ -11630,8 +11632,8 @@
         "com_55ca36db453a",
         "com_5582e2e97f1a",
         "com_b0e15eaab803",
-        "com_0e403135692e",
-        "com_14a9b81bfe8f"
+        "com_733b8a7ddfff",
+        "com_0e403135692e"
       ]
     },
     {
@@ -12074,8 +12076,8 @@
         "com_ebf2f0d4ce77",
         "com_f166e5cd69fa",
         "com_247da987ec16",
-        "com_57359d725dc0",
-        "com_fbbdf45a2a0e"
+        "com_fbbdf45a2a0e",
+        "com_57359d725dc0"
       ]
     },
     {
@@ -13772,11 +13774,11 @@
       ],
       "similarCommunityIds": [
         "com_3005e46e50b2",
+        "com_733b8a7ddfff",
         "com_0606c7e50fa8",
         "com_b0e15eaab803",
         "com_5a1a72bded1f",
-        "com_530ce570649a",
-        "com_3942d7a4c6e3"
+        "com_530ce570649a"
       ]
     },
     {
@@ -13980,6 +13982,81 @@
         "com_4187c60b9599",
         "com_483b995f5504",
         "com_7c6c5c3e08c8"
+      ]
+    },
+    {
+      "id": "com_733b8a7ddfff",
+      "slug": "nyc-backgammon-club-7ddfff",
+      "name": "NYC Backgammon Club",
+      "kind": "club",
+      "tagline": "NYC Backgammon Club is a community club centered on games, parties in manhattan, soho.",
+      "description": "NYC Backgammon Club is a community club centered on games, parties in manhattan, soho. Based on 3 observed event dates, it meets weekly on Monday evenings.",
+      "categories": [
+        "games",
+        "parties"
+      ],
+      "tags": [
+        "games",
+        "parties"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "soho",
+        "brooklyn"
+      ],
+      "homeVenue": "Bathtub Gin",
+      "imageUrl": "https://images.lumacdn.com/uploads/jx/e4f9f0e1-7e4a-4916-8905-eb57ec8344e7.png",
+      "links": [
+        {
+          "type": "instagram",
+          "label": "View on Instagram",
+          "url": "https://luma.com/nycbackgammonclub"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.5,
+        "sampleSize": 3
+      },
+      "upcomingEventIds": [
+        "a66383f99f694de8",
+        "c644cfc87c644ae2",
+        "86b41bf178fc3d22"
+      ],
+      "sourceAttributions": [
+        "instagram"
+      ],
+      "lastVerifiedAt": "2026-11-18",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:remingtonwells",
+        "luma:cal-wglwnmmsvzqq8tr"
+      ],
+      "similarCommunityIds": [
+        "com_b0e15eaab803",
+        "com_764fd74924de",
+        "com_cdd5daa67222",
+        "com_8484b3e5cfee",
+        "com_ae9a9d1063c7",
+        "com_f54698ed682f"
       ]
     },
     {
@@ -15210,8 +15287,8 @@
         "com_ebf2f0d4ce77",
         "com_f166e5cd69fa",
         "com_247da987ec16",
-        "com_57359d725dc0",
-        "com_fbbdf45a2a0e"
+        "com_fbbdf45a2a0e",
+        "com_57359d725dc0"
       ]
     },
     {
@@ -15424,12 +15501,12 @@
         "luma:nycbackgammonclub"
       ],
       "similarCommunityIds": [
+        "com_733b8a7ddfff",
         "com_764fd74924de",
         "com_ae9a9d1063c7",
         "com_4e69412cb0a5",
         "com_cdd5daa67222",
-        "com_0606c7e50fa8",
-        "com_8484b3e5cfee"
+        "com_0606c7e50fa8"
       ]
     },
     {
@@ -15765,7 +15842,7 @@
         "brooklyn",
         "manhattan"
       ],
-      "homeVenue": "10-15 43rd Ave",
+      "homeVenue": "Hotel Alameda",
       "imageUrl": "https://images.lumacdn.com/api-uploads/zi/d448b38b-e1b9-43ee-b68d-85820a06e14e.jpg",
       "links": [
         {
@@ -15778,7 +15855,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-18",
-        "upcomingEventCount": 14,
+        "upcomingEventCount": 15,
         "eventCount90d": 70
       },
       "schedule": {
@@ -15823,10 +15900,10 @@
       "similarCommunityIds": [
         "com_4e69412cb0a5",
         "com_55ca36db453a",
+        "com_733b8a7ddfff",
         "com_764fd74924de",
         "com_14a9b81bfe8f",
-        "com_47de8f45d349",
-        "com_5582e2e97f1a"
+        "com_47de8f45d349"
       ]
     },
     {
@@ -66002,7 +66079,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-18T01:42:30.501026+00:00",
+  "lastUpdated": "2026-11-18T02:24:48.742020+00:00",
   "version": 1,
   "schemaVersion": 1
 }
