@@ -18913,7 +18913,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-11-18T05:24:05.431663+00:00",
-    "last_surviving_yield": 1
+    "last_surviving_yield": 0
   },
   {
     "url": "https://eventbrite.com/o/20004425576",
@@ -18929,7 +18929,7 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_surviving_yield": 5,
+    "last_surviving_yield": 4,
     "last_attempt_at": "2026-11-17T23:24:05.431663+00:00",
     "last_parsed_yield": 12,
     "last_success_at": "2026-11-17T23:24:05.431663+00:00",
@@ -22270,5 +22270,40 @@
     "url": "https://wnyc.org/events/wqxrs-holiday-show",
     "discovered_at": "2026-11-17T23:28:21.845999+00:00",
     "discovered_via": "spa-salvage:wnyc.org"
+  },
+  {
+    "url": "https://bit.ly/events/",
+    "discovered_at": "2026-11-18T01:37:54.238981+00:00",
+    "discovered_via": "path-probe:bit.ly"
+  },
+  {
+    "url": "https://bookclubbar.com/events/",
+    "discovered_at": "2026-11-18T01:38:15.472859+00:00",
+    "discovered_via": "path-probe:bookclubbar.com"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events",
+    "discovered_at": "2026-11-18T01:39:13.904898+00:00",
+    "discovered_via": "path-probe:yogaspace.nyc"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/",
+    "discovered_at": "2026-11-18T01:39:13.924267+00:00",
+    "discovered_via": "path-probe:yogaspace.nyc"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/calendar",
+    "discovered_at": "2026-11-18T01:39:13.943724+00:00",
+    "discovered_via": "path-probe:yogaspace.nyc"
+  },
+  {
+    "url": "https://luma.com/ffg7zolr",
+    "discovered_at": "2026-11-18T01:40:12.529100+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://luma.com/zqvz1iiq",
+    "discovered_at": "2026-11-18T01:40:12.550606+00:00",
+    "discovered_via": "link_aggregator:linktr"
   }
 ]
