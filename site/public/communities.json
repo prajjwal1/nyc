@@ -3050,7 +3050,7 @@
       "name": "Strand Bookstore",
       "kind": "recurring_series",
       "tagline": "Strand Bookstore is a recurring event series centered on books in manhattan.",
-      "description": "Strand Bookstore is a recurring event series centered on books in manhattan. Based on 42 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "description": "Strand Bookstore is a recurring event series centered on books in manhattan. Based on 44 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
         "other",
         "books"
@@ -3075,27 +3075,29 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-16",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 9,
         "eventCount90d": 42
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Thursday"
+          "Tuesday",
+          "Wednesday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 42
+        "sampleSize": 44
       },
       "upcomingEventIds": [
         "944c4abc3ae31acb",
         "84ba0d6b2911ae7b",
+        "2d3eac68b3542d56",
         "bc8608435404b9ff",
         "f714286d62d006de",
         "b9c163b70fae1edd",
         "0f6cd37f834bf648",
-        "b618c5c0028b83b6"
+        "b618c5c0028b83b6",
+        "9b6ac090af194c8e"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -3104,7 +3106,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 42,
+        "observedDateCount": 44,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -3652,7 +3654,7 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, parties, food in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, parties, food in east village, bushwick. Based on 37 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, parties, food in east village, bushwick. Based on 38 observed event dates, it meets weekly on Wednesday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -3671,7 +3673,7 @@
         "east village",
         "bushwick"
       ],
-      "homeVenue": "Book Club Bar",
+      "homeVenue": "Book Club Bar East Village, 197 East 3rd Street",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197108322%2F586705367853%2F1%2Foriginal.20261102-192226?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=cdca0657db536d206ec1c7eaad02d8d2",
       "links": [
         {
@@ -3684,7 +3686,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-18",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 34
       },
       "schedule": {
@@ -3695,7 +3697,7 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 37
+        "sampleSize": 38
       },
       "upcomingEventIds": [
         "35da2d3117bc0d0b",
@@ -3706,6 +3708,7 @@
         "54e81c1502303bdf",
         "cd0b9e2003e45506",
         "c75c34c4a102f792",
+        "2356cf7e293443e4",
         "6e8ac45a5d99b810"
       ],
       "sourceAttributions": [
@@ -3715,7 +3718,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 37,
+        "observedDateCount": 38,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -18349,7 +18352,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-19",
-        "upcomingEventCount": 16,
+        "upcomingEventCount": 15,
         "eventCount90d": 83
       },
       "schedule": {
@@ -18912,7 +18915,7 @@
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club Upper West Side",
-      "imageUrl": "/img/events/Thursday-Mic-NYCC-Comedy-Mob-973c0f7e-large-thumb.png",
+      "imageUrl": "/img/comedians/image3-2-872c0842-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -18924,7 +18927,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-19",
-        "upcomingEventCount": 40,
+        "upcomingEventCount": 36,
         "eventCount90d": 385
       },
       "schedule": {
@@ -18938,14 +18941,14 @@
         "sampleSize": 97
       },
       "upcomingEventIds": [
-        "b733cfe85160f392",
         "6380b737f2b32332",
-        "766bb6f43c66e30f",
+        "b733cfe85160f392",
         "3d72d086cea3fe99",
+        "766bb6f43c66e30f",
         "6842c62f5eac46fe",
         "04921975c933d4b5",
-        "33a34501c41988e1",
         "805ca2c95af666da",
+        "33a34501c41988e1",
         "1907c8c1539d973a",
         "e5827843d3c39ffe",
         "ba2ad9471aa8be24",
@@ -66180,7 +66183,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-19T01:21:03.349864+00:00",
+  "lastUpdated": "2026-11-19T01:32:10.927160+00:00",
   "version": 1,
   "schemaVersion": 1
 }
