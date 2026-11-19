@@ -173,7 +173,7 @@
         "bushwick"
       ],
       "homeVenue": "Elsewhere",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1185988579%2F2569518370411%2F1%2Foriginal.20260602-182337?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=7b764d3b76545e50474ce799de7a5150",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193580990%2F2569518370411%2F1%2Foriginal.20260915-180247?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=1ecc067b7d3be283fe62e92ec3d9a8a5",
       "links": [
         {
           "type": "eventbrite",
@@ -199,8 +199,8 @@
         "sampleSize": 71
       },
       "upcomingEventIds": [
-        "cd4ee89fa257f521",
         "16f87c2451187ad7",
+        "cd4ee89fa257f521",
         "f2a0009a085baec5",
         "bafd3797888fa845",
         "e7d78300aa518300",
@@ -367,10 +367,10 @@
       "similarCommunityIds": [
         "com_07cac7652707",
         "com_43e82b8f4e34",
+        "com_64ebabd98c5c",
         "com_a4d969c3c6eb",
         "com_b338a390f4e0",
-        "com_dca352748139",
-        "com_68b36e93076a"
+        "com_dca352748139"
       ]
     },
     {
@@ -531,9 +531,9 @@
         "com_1740a8cfc76c",
         "com_4a9490cb3534",
         "com_96a0049afb0f",
-        "com_bff06d9b0e6f",
         "com_2c239df2a554",
-        "com_359977ec663e"
+        "com_359977ec663e",
+        "com_8f2a69f866f2"
       ]
     },
     {
@@ -928,15 +928,15 @@
       "slug": "bad-movie-night-brooklyn-d98c5c",
       "name": "Bad Movie Night Brooklyn",
       "kind": "recurring_series",
-      "tagline": "Bad Movie Night Brooklyn is a recurring event series centered on special, movies in brooklyn.",
-      "description": "Bad Movie Night Brooklyn is a recurring event series centered on special, movies in brooklyn. Based on 7 observed event dates, it meets biweekly on Saturday and Monday evenings.",
+      "tagline": "Bad Movie Night Brooklyn is a recurring event series centered on movies, special in brooklyn.",
+      "description": "Bad Movie Night Brooklyn is a recurring event series centered on movies, special in brooklyn. Based on 8 observed event dates, it meets weekly on Saturday and Monday evenings.",
       "categories": [
-        "special",
-        "movies"
+        "movies",
+        "special"
       ],
       "tags": [
-        "special",
-        "movies"
+        "movies",
+        "special"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -954,22 +954,23 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-12",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 5
       },
       "schedule": {
-        "cadence": "biweekly",
+        "cadence": "weekly",
         "typicalDays": [
           "Saturday",
           "Monday"
         ],
-        "typicalTime": "17:00",
+        "typicalTime": "19:30",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
         "e8cc42c21faeace5",
-        "69645cba1ad50c9c"
+        "69645cba1ad50c9c",
+        "221c0f11a7bae091"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -978,7 +979,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -987,12 +988,12 @@
         "eventbrite:115935157771"
       ],
       "similarCommunityIds": [
-        "com_bfb16ef27b62",
-        "com_a38043df522b",
         "com_d8a5203885a9",
         "com_a4d969c3c6eb",
         "com_b338a390f4e0",
-        "com_1a46b1930293"
+        "com_68b36e93076a",
+        "com_8d86f6f9340b",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -1385,11 +1386,11 @@
       ],
       "similarCommunityIds": [
         "com_9caab69e0812",
-        "com_bff06d9b0e6f",
         "com_1740a8cfc76c",
         "com_f990c90c32d5",
         "com_1466f20a9300",
-        "com_1e60766a7318"
+        "com_1e60766a7318",
+        "com_61de7e5f2248"
       ]
     },
     {
@@ -4241,7 +4242,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-19",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 3,
         "eventCount90d": 2
       },
       "schedule": {
@@ -4257,8 +4258,7 @@
       "upcomingEventIds": [
         "4c3f150a2b3046cc",
         "5da14b58f2dba251",
-        "42a2dc02bc0a974b",
-        "79dc3f18b2c810c8"
+        "42a2dc02bc0a974b"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -4538,7 +4538,8 @@
       ],
       "neighborhoods": [
         "east village",
-        "bushwick"
+        "bushwick",
+        "manhattan"
       ],
       "homeVenue": "Book Club Bar",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197108322%2F586705367853%2F1%2Foriginal.20261102-192226?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=cdca0657db536d206ec1c7eaad02d8d2",
@@ -4553,7 +4554,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-18",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 34
       },
       "schedule": {
@@ -4574,6 +4575,7 @@
         "15a52252351548d9",
         "54e81c1502303bdf",
         "cd0b9e2003e45506",
+        "b9c163b70fae1edd",
         "c75c34c4a102f792",
         "6e8ac45a5d99b810"
       ],
@@ -4594,11 +4596,11 @@
       ],
       "similarCommunityIds": [
         "com_cdd5daa67222",
-        "com_c1410c07c4dd",
         "com_4e69412cb0a5",
+        "com_c1410c07c4dd",
         "com_5582e2e97f1a",
-        "com_f28d3ae740a6",
-        "com_14a9b81bfe8f"
+        "com_14a9b81bfe8f",
+        "com_ed8d42fb031d"
       ]
     },
     {
@@ -6396,8 +6398,8 @@
       "upcomingEventIds": [
         "965cc1e7580501d5",
         "c4d11cec272014e6",
-        "92ac388b045e5289",
         "98e6a9e031cdeaa9",
+        "92ac388b045e5289",
         "e273d5644f8933dc",
         "e1f11541c907ad28",
         "cf24c1f7d96e9474",
@@ -6703,11 +6705,11 @@
       ],
       "similarCommunityIds": [
         "com_247da987ec16",
-        "com_bff06d9b0e6f",
         "com_68f8f24f0095",
         "com_70cbea4f18e4",
         "com_b088368d86fa",
-        "com_f54698ed682f"
+        "com_f54698ed682f",
+        "com_99e08820d1c1"
       ]
     },
     {
@@ -7067,10 +7069,10 @@
       "similarCommunityIds": [
         "com_16548f6c9429",
         "com_8f2a69f866f2",
-        "com_bff06d9b0e6f",
         "com_1dc58bbe47db",
         "com_3d91bda94131",
-        "com_664ab77e1bba"
+        "com_664ab77e1bba",
+        "com_6da89066dbb5"
       ]
     },
     {
@@ -8161,11 +8163,11 @@
       ],
       "similarCommunityIds": [
         "com_a4d969c3c6eb",
-        "com_64ebabd98c5c",
         "com_77ec11668bd8",
         "com_4a20115f4862",
         "com_72c625ae7237",
-        "com_d103029f0156"
+        "com_d103029f0156",
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -9448,8 +9450,8 @@
         "com_1a46b1930293",
         "com_218b97d674a6",
         "com_43850d49f9e6",
-        "com_64ebabd98c5c",
-        "com_77ec11668bd8"
+        "com_77ec11668bd8",
+        "com_949217ac4f1f"
       ]
     },
     {
@@ -10092,11 +10094,11 @@
       ],
       "similarCommunityIds": [
         "com_729cfb31f58d",
+        "com_64ebabd98c5c",
         "com_a4d969c3c6eb",
         "com_68b36e93076a",
         "com_8d86f6f9340b",
-        "com_b736e77bdf93",
-        "com_d8a5203885a9"
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -12641,9 +12643,9 @@
       ],
       "similarCommunityIds": [
         "com_cdd5daa67222",
+        "com_55ca36db453a",
         "com_c1410c07c4dd",
         "com_5582e2e97f1a",
-        "com_55ca36db453a",
         "com_733b8a7ddfff",
         "com_b0e15eaab803"
       ]
@@ -14854,17 +14856,15 @@
       "slug": "anew-9b0e6f",
       "name": "Anew",
       "kind": "recurring_series",
-      "tagline": "Anew is a recurring event series centered on books, wellness, music in west village.",
-      "description": "Anew is a recurring event series centered on books, wellness, music in west village. Based on 6 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "tagline": "Anew is a recurring event series centered on wellness, music, parties in west village.",
+      "description": "Anew is a recurring event series centered on wellness, music, parties in west village. Based on 5 observed event dates, it meets biweekly on Tuesday and Wednesday evenings.",
       "categories": [
-        "books",
         "wellness",
         "other",
         "music",
         "parties"
       ],
       "tags": [
-        "books",
         "wellness",
         "other",
         "music",
@@ -14874,7 +14874,7 @@
         "west village"
       ],
       "homeVenue": "526 Hudson St",
-      "imageUrl": "https://images.lumacdn.com/uploads/st/53185cf6-e929-4f1a-8469-b29dea274ccc.png",
+      "imageUrl": "https://images.lumacdn.com/uploads/16/26b961dc-88e5-4655-a758-7813aa2b7e32.png",
       "links": [
         {
           "type": "luma",
@@ -14885,22 +14885,21 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-11-19",
-        "upcomingEventCount": 4,
-        "eventCount90d": 3
+        "lastEventDate": "2026-11-18",
+        "upcomingEventCount": 3,
+        "eventCount90d": 2
       },
       "schedule": {
-        "cadence": "weekly",
+        "cadence": "biweekly",
         "typicalDays": [
           "Tuesday",
           "Wednesday"
         ],
         "typicalTime": "17:00",
-        "confidence": 1.0,
-        "sampleSize": 6
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
-        "45b23b2bc76eadff",
         "d21a39ccd3e2eff3",
         "751965e82bfa95bc",
         "40819342afeb97f4"
@@ -14912,7 +14911,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -14921,12 +14920,12 @@
         "luma:cal-wtqpsnfufcqpcdw"
       ],
       "similarCommunityIds": [
-        "com_1740a8cfc76c",
-        "com_bfb6c843f2d0",
-        "com_144b302fd731",
-        "com_ebf2f0d4ce77",
-        "com_2c239df2a554",
-        "com_359977ec663e"
+        "com_4b9d7692e567",
+        "com_a20864ed56ec",
+        "com_c305531d38d0",
+        "com_d36daf8ea112",
+        "com_9caab69e0812",
+        "com_b66f9b932a79"
       ]
     },
     {
@@ -16632,8 +16631,8 @@
         "3d40b893b6e7d1e0",
         "8eb509eff15bc46a",
         "5a73cf613ffd0294",
-        "e5f2ddfd2a7d3b99",
         "96a651a134b40288",
+        "e5f2ddfd2a7d3b99",
         "6cdc693fccade154"
       ],
       "sourceAttributions": [
@@ -16964,10 +16963,10 @@
       "similarCommunityIds": [
         "com_99e08820d1c1",
         "com_4b9d7692e567",
+        "com_bff06d9b0e6f",
         "com_1e08b1e2de75",
         "com_af97eec4cf97",
-        "com_fa67d543a8b1",
-        "com_6d05b1def86f"
+        "com_fa67d543a8b1"
       ]
     },
     {
@@ -19187,8 +19186,8 @@
         "partiful:itytgqs5vrmgmpckwvzsawg2hmf3"
       ],
       "similarCommunityIds": [
-        "com_64ebabd98c5c",
         "com_02f781be3c26",
+        "com_64ebabd98c5c",
         "com_1dc58bbe47db",
         "com_525bddfaee91",
         "com_072c9c3e12a8",
@@ -19301,7 +19300,7 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6650120261214"
+          "url": "https://www.bookclubbar.com/events/6115420261214"
         }
       ],
       "joinMethod": "View an upcoming event",
@@ -19329,8 +19328,8 @@
         "fc2619757c970c2c",
         "e722ce271b52df36",
         "ee7b9b1c72a9fda6",
-        "5e3667879b0a4faa",
-        "39ae2e33322cd181"
+        "39ae2e33322cd181",
+        "5e3667879b0a4faa"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -19353,8 +19352,8 @@
         "source:bookclubbar"
       ],
       "similarCommunityIds": [
-        "com_55ca36db453a",
         "com_4e69412cb0a5",
+        "com_55ca36db453a",
         "com_cdd5daa67222",
         "com_5582e2e97f1a",
         "com_f28d3ae740a6",
@@ -19441,12 +19440,12 @@
         "source:brooklyncomedy"
       ],
       "similarCommunityIds": [
+        "com_64ebabd98c5c",
         "com_68b36e93076a",
         "com_cb019f4e9752",
         "com_3048e331f7b6",
         "com_8d86f6f9340b",
-        "com_8436aa2d3f48",
-        "com_99e08820d1c1"
+        "com_8436aa2d3f48"
       ]
     },
     {
@@ -19480,7 +19479,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-10-18",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 3,
         "eventCount90d": 9
       },
       "schedule": {
@@ -19494,7 +19493,6 @@
         "sampleSize": 12
       },
       "upcomingEventIds": [
-        "dba37e1aab1ea860",
         "56fad17f36dfade1",
         "687cce7a8c81b7f8",
         "70d0614deb9261da"
@@ -19601,8 +19599,8 @@
         "com_d103029f0156",
         "com_eef1ca956dae",
         "com_bfb16ef27b62",
-        "com_b338a390f4e0",
-        "com_68b36e93076a"
+        "com_64ebabd98c5c",
+        "com_b338a390f4e0"
       ]
     },
     {
@@ -67127,7 +67125,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-19T08:45:29.002324+00:00",
+  "lastUpdated": "2026-11-19T09:33:59.868509+00:00",
   "version": 1,
   "schemaVersion": 1
 }
