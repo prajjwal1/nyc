@@ -612,11 +612,11 @@
       ],
       "similarCommunityIds": [
         "com_bb6928bc760c",
+        "com_d2d455d2d6c9",
         "com_edf7e9714aa8",
         "com_58d773e27208",
         "com_14a9b81bfe8f",
-        "com_1e60766a7318",
-        "com_3942d7a4c6e3"
+        "com_1e60766a7318"
       ]
     },
     {
@@ -1850,8 +1850,8 @@
         "com_359977ec663e",
         "com_1740a8cfc76c",
         "com_0606c7e50fa8",
-        "com_f8c88ef9a8ca",
-        "com_3005e46e50b2"
+        "com_d2d455d2d6c9",
+        "com_f8c88ef9a8ca"
       ]
     },
     {
@@ -2304,9 +2304,9 @@
         "com_3942d7a4c6e3",
         "com_f54698ed682f",
         "com_3005e46e50b2",
+        "com_d2d455d2d6c9",
         "com_edf7e9714aa8",
-        "com_510224f31954",
-        "com_19609e7f4286"
+        "com_510224f31954"
       ]
     },
     {
@@ -2469,7 +2469,7 @@
         "com_d6cec2ac3e5a",
         "com_0606c7e50fa8",
         "com_3005e46e50b2",
-        "com_6d05b1def86f"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -3217,8 +3217,8 @@
       "similarCommunityIds": [
         "com_7d3e76b46ffc",
         "com_96a0049afb0f",
-        "com_d2d455d2d6c9",
         "com_e9748c1176c1",
+        "com_d2d455d2d6c9",
         "com_edf7e9714aa8",
         "com_5c8ac62f26b3"
       ]
@@ -3361,9 +3361,9 @@
         "eventbrite:2045320721"
       ],
       "similarCommunityIds": [
-        "com_43850d49f9e6",
         "com_1e08b1e2de75",
         "com_f084ce2ea8b1",
+        "com_43850d49f9e6",
         "com_6d05b1def86f",
         "com_9c336784d52c",
         "com_c61ff277dc92"
@@ -3741,15 +3741,19 @@
       "slug": "strand-bookstore-d2d6c9",
       "name": "Strand Bookstore",
       "kind": "recurring_series",
-      "tagline": "Strand Bookstore is a recurring event series centered on books in manhattan.",
-      "description": "Strand Bookstore is a recurring event series centered on books in manhattan. Based on 44 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "tagline": "Strand Bookstore is a recurring event series centered on books, food, parties in manhattan.",
+      "description": "Strand Bookstore is a recurring event series centered on books, food, parties in manhattan. Based on 44 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
         "other",
-        "books"
+        "books",
+        "food",
+        "parties"
       ],
       "tags": [
         "other",
-        "books"
+        "books",
+        "food",
+        "parties"
       ],
       "neighborhoods": [
         "manhattan"
@@ -3807,12 +3811,12 @@
         "eventbrite:30058841244"
       ],
       "similarCommunityIds": [
+        "com_14a9b81bfe8f",
+        "com_3942d7a4c6e3",
         "com_7d3e76b46ffc",
-        "com_5c8ac62f26b3",
-        "com_f990c90c32d5",
-        "com_d1da9ddb5fe6",
-        "com_160d3b550b59",
-        "com_19609e7f4286"
+        "com_bb21b768e777",
+        "com_fe4b6663b721",
+        "com_6d05b1def86f"
       ]
     },
     {
@@ -3888,9 +3892,9 @@
         "com_21008b2f6401",
         "com_7d3e76b46ffc",
         "com_d1da9ddb5fe6",
-        "com_d2d455d2d6c9",
         "com_5c8ac62f26b3",
-        "com_f990c90c32d5"
+        "com_f990c90c32d5",
+        "com_118a558259ea"
       ]
     },
     {
@@ -4599,8 +4603,8 @@
         "com_4e69412cb0a5",
         "com_c1410c07c4dd",
         "com_5582e2e97f1a",
-        "com_14a9b81bfe8f",
-        "com_ed8d42fb031d"
+        "com_d2d455d2d6c9",
+        "com_14a9b81bfe8f"
       ]
     },
     {
@@ -5269,11 +5273,11 @@
       ],
       "similarCommunityIds": [
         "com_7d3e76b46ffc",
-        "com_d2d455d2d6c9",
         "com_77ec11668bd8",
         "com_160d3b550b59",
         "com_1c4e0060fa58",
-        "com_30e8efd15421"
+        "com_30e8efd15421",
+        "com_3481b6750d6f"
       ]
     },
     {
@@ -5912,7 +5916,7 @@
       "name": "ELECTRIC '77",
       "kind": "recurring_series",
       "tagline": "ELECTRIC '77 is a recurring event series centered on parties, dance in brooklyn.",
-      "description": "ELECTRIC '77 is a recurring event series centered on parties, dance in brooklyn. Based on 3 observed event dates, it meets biweekly on Friday evenings.",
+      "description": "ELECTRIC '77 is a recurring event series centered on parties, dance in brooklyn. Based on 4 observed event dates, it meets weekly on Friday evenings.",
       "categories": [
         "parties",
         "dance"
@@ -5937,20 +5941,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-13",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
-        "cadence": "biweekly",
+        "cadence": "weekly",
         "typicalDays": [
           "Friday"
         ],
         "typicalTime": "22:30",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
-        "22ce3ce2086557b1"
+        "22ce3ce2086557b1",
+        "8b6d3a0408ceb34b"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -5959,7 +5964,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -5968,12 +5973,12 @@
         "eventbrite:78749765443"
       ],
       "similarCommunityIds": [
+        "com_0606c7e50fa8",
+        "com_764fd74924de",
         "com_e1cfa8bd1fad",
-        "com_1a46b1930293",
-        "com_218b97d674a6",
-        "com_8f3049b2c187",
-        "com_fe94a7496581",
-        "com_0606c7e50fa8"
+        "com_489a14652e20",
+        "com_1740a8cfc76c",
+        "com_1a46b1930293"
       ]
     },
     {
@@ -6274,7 +6279,7 @@
         "com_c1410c07c4dd",
         "com_cdd5daa67222",
         "com_eeb4e424a504",
-        "com_0e403135692e"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -8237,11 +8242,11 @@
       ],
       "similarCommunityIds": [
         "com_7d3e76b46ffc",
-        "com_d2d455d2d6c9",
         "com_5c8ac62f26b3",
         "com_530ce570649a",
         "com_77ec11668bd8",
-        "com_d1da9ddb5fe6"
+        "com_d1da9ddb5fe6",
+        "com_160d3b550b59"
       ]
     },
     {
@@ -8528,9 +8533,9 @@
         "com_1e08b1e2de75",
         "com_8484b3e5cfee",
         "com_b23683f6f558",
+        "com_d2d455d2d6c9",
         "com_fe4b6663b721",
-        "com_6d05b1def86f",
-        "com_c61ff277dc92"
+        "com_6d05b1def86f"
       ]
     },
     {
@@ -9449,9 +9454,9 @@
         "com_764fd74924de",
         "com_1a46b1930293",
         "com_218b97d674a6",
-        "com_43850d49f9e6",
         "com_77ec11668bd8",
-        "com_949217ac4f1f"
+        "com_949217ac4f1f",
+        "com_a45e35db829c"
       ]
     },
     {
@@ -10607,7 +10612,7 @@
         "com_fa67d543a8b1",
         "com_af97eec4cf97",
         "com_d36daf8ea112",
-        "com_14a9b81bfe8f"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -11888,12 +11893,12 @@
         "luma:cal-oqdnb4l9pugezuw"
       ],
       "similarCommunityIds": [
-        "com_d2d455d2d6c9",
         "com_5c8ac62f26b3",
         "com_f990c90c32d5",
         "com_d1da9ddb5fe6",
         "com_160d3b550b59",
-        "com_19609e7f4286"
+        "com_19609e7f4286",
+        "com_1c65032c5bbc"
       ]
     },
     {
@@ -12484,11 +12489,11 @@
       ],
       "similarCommunityIds": [
         "com_7d3e76b46ffc",
-        "com_d2d455d2d6c9",
         "com_f990c90c32d5",
         "com_d1da9ddb5fe6",
         "com_359977ec663e",
-        "com_160d3b550b59"
+        "com_160d3b550b59",
+        "com_14e2dae511e1"
       ]
     },
     {
@@ -12646,8 +12651,8 @@
         "com_55ca36db453a",
         "com_c1410c07c4dd",
         "com_5582e2e97f1a",
-        "com_733b8a7ddfff",
-        "com_b0e15eaab803"
+        "com_d2d455d2d6c9",
+        "com_733b8a7ddfff"
       ]
     },
     {
@@ -13305,8 +13310,8 @@
         "com_f28d3ae740a6",
         "com_5c8ac62f26b3",
         "com_1740a8cfc76c",
-        "com_f8c88ef9a8ca",
-        "com_14e2dae511e1"
+        "com_d2d455d2d6c9",
+        "com_f8c88ef9a8ca"
       ]
     },
     {
@@ -13382,7 +13387,7 @@
         "com_bb6928bc760c",
         "com_d6cec2ac3e5a",
         "com_3005e46e50b2",
-        "com_489a14652e20"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -14427,10 +14432,10 @@
       "similarCommunityIds": [
         "com_8f3049b2c187",
         "com_fe94a7496581",
-        "com_43850d49f9e6",
         "com_032059b33438",
         "com_71693d246d8f",
-        "com_78b8aba2a8f3"
+        "com_78b8aba2a8f3",
+        "com_8484b3e5cfee"
       ]
     },
     {
@@ -14501,8 +14506,8 @@
         "com_b0e15eaab803",
         "com_ed8d42fb031d",
         "com_0606c7e50fa8",
-        "com_489a14652e20",
-        "com_1740a8cfc76c"
+        "com_43850d49f9e6",
+        "com_489a14652e20"
       ]
     },
     {
@@ -16822,8 +16827,8 @@
         "com_55ca36db453a",
         "com_c1410c07c4dd",
         "com_5582e2e97f1a",
-        "com_733b8a7ddfff",
-        "com_b0e15eaab803"
+        "com_d2d455d2d6c9",
+        "com_733b8a7ddfff"
       ]
     },
     {
@@ -17233,7 +17238,7 @@
         "com_fa67d543a8b1",
         "com_af97eec4cf97",
         "com_d36daf8ea112",
-        "com_14a9b81bfe8f"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -19519,11 +19524,11 @@
       ],
       "similarCommunityIds": [
         "com_949217ac4f1f",
-        "com_43850d49f9e6",
         "com_83f64eec47de",
         "com_99e08820d1c1",
         "com_1f4c6080dc68",
-        "com_1466f20a9300"
+        "com_1466f20a9300",
+        "com_43850d49f9e6"
       ]
     },
     {
@@ -67125,7 +67130,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-19T09:33:59.868509+00:00",
+  "lastUpdated": "2026-11-19T10:27:17.819606+00:00",
   "version": 1,
   "schemaVersion": 1
 }
