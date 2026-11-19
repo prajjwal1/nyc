@@ -18694,7 +18694,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-11-19T07:50:46.507095+00:00",
-    "last_surviving_yield": 8
+    "last_surviving_yield": 7
   },
   {
     "url": "https://eventbrite.com/o/8465378731",
@@ -18929,7 +18929,7 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_surviving_yield": 3,
+    "last_surviving_yield": 2,
     "last_attempt_at": "2026-11-19T12:36:21.902692+00:00",
     "last_parsed_yield": 12,
     "last_success_at": "2026-11-19T12:36:21.902692+00:00",
@@ -19763,7 +19763,7 @@
       "luma_organizer_graph",
       "platform_calendar_fetch"
     ],
-    "last_surviving_yield": 3,
+    "last_surviving_yield": 2,
     "last_attempt_at": "2026-11-19T12:35:15.114627+00:00",
     "last_parsed_yield": 13,
     "last_success_at": "2026-11-19T12:35:15.114627+00:00",
@@ -23338,5 +23338,35 @@
     "url": "https://linktr.ee/",
     "discovered_at": "2026-11-19T12:38:07.294081+00:00",
     "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://bit.ly/events/",
+    "discovered_at": "2026-11-19T16:36:32.423432+00:00",
+    "discovered_via": "path-probe:bit.ly"
+  },
+  {
+    "url": "https://bookclubbar.com/events/",
+    "discovered_at": "2026-11-19T16:36:54.931114+00:00",
+    "discovered_via": "path-probe:bookclubbar.com"
+  },
+  {
+    "url": "https://readingrhythms.co/events/",
+    "discovered_at": "2026-11-19T16:37:00.780625+00:00",
+    "discovered_via": "path-probe:readingrhythms.co"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events",
+    "discovered_at": "2026-11-19T16:38:07.429957+00:00",
+    "discovered_via": "path-probe:yogaspace.nyc"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/",
+    "discovered_at": "2026-11-19T16:38:07.444481+00:00",
+    "discovered_via": "path-probe:yogaspace.nyc"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/calendar",
+    "discovered_at": "2026-11-19T16:38:07.458633+00:00",
+    "discovered_via": "path-probe:yogaspace.nyc"
   }
 ]
