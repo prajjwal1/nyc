@@ -14132,6 +14132,71 @@
       ]
     },
     {
+      "id": "com_af4bea7d5316",
+      "slug": "higgsfield-ai-7d5316",
+      "name": "Higgsfield AI",
+      "kind": "recurring_series",
+      "tagline": "Higgsfield AI is a recurring event series in manhattan.",
+      "description": "Higgsfield AI is a recurring event series in manhattan. Based on 2 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "45 Grand St",
+      "imageUrl": "https://images.lumacdn.com/uploads/gl/428f079d-4879-405f-8cb1-eed32a8884b0.png",
+      "links": [],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday",
+          "Tuesday"
+        ],
+        "typicalTime": "17:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "271fa7c8087b2a9f",
+        "7ff080d60a6ef903"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-20",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:masmar26",
+        "luma:cal-v16gxkbcbt7btxk"
+      ],
+      "similarCommunityIds": [
+        "com_1c65032c5bbc",
+        "com_2598d21a6937",
+        "com_36cb2681053d",
+        "com_61de7e5f2248",
+        "com_69662323a419",
+        "com_72ef3d04cd66"
+      ]
+    },
+    {
       "id": "com_f739c03ef66c",
       "slug": "ea-nyc-3ef66c",
       "name": "EA NYC",
@@ -19178,8 +19243,8 @@
         "cee413efc8b60f02",
         "be905d270eb6deb7",
         "d788fe72f44e1791",
-        "fa2521d3b23228c2",
         "2390c537d014b93c",
+        "fa2521d3b23228c2",
         "87c251333a6458ab",
         "b85695c327238c0e"
       ],
@@ -19608,22 +19673,22 @@
         "comedy",
         "music",
         "outdoors",
-        "celebrities",
-        "parties"
+        "parties",
+        "celebrities"
       ],
       "tags": [
         "comedy",
         "music",
         "outdoors",
-        "celebrities",
-        "parties"
+        "parties",
+        "celebrities"
       ],
       "neighborhoods": [
         "east village",
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club Upper West Side",
-      "imageUrl": "/img/imagetest/todd-barry-420x260-jpg-2f380cda-large-thumb.jpg",
+      "imageUrl": "/img/comedians/Untitled-design-22-06220c44-large-thumb.png",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -19635,7 +19700,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-20",
-        "upcomingEventCount": 35,
+        "upcomingEventCount": 33,
         "eventCount90d": 391
       },
       "schedule": {
@@ -19644,23 +19709,23 @@
           "Sunday",
           "Thursday"
         ],
-        "typicalTime": "20:00",
+        "typicalTime": "19:00",
         "confidence": 1.0,
         "sampleSize": 98
       },
       "upcomingEventIds": [
-        "33a34501c41988e1",
         "805ca2c95af666da",
+        "33a34501c41988e1",
         "1907c8c1539d973a",
         "e5827843d3c39ffe",
         "ba2ad9471aa8be24",
         "dca823d8482ace9e",
-        "446d94ea5ebf9eb0",
         "057a8b6375eb3bf7",
         "790cc567d96fcab6",
         "9558dea57ed4d8b8",
         "4f61b8fd10e37a12",
-        "6ed9b746f38fedc3"
+        "6ed9b746f38fedc3",
+        "f7c35cd322507b7c"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -66889,7 +66954,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-20T06:20:05.882368+00:00",
+  "lastUpdated": "2026-11-20T07:07:17.974616+00:00",
   "version": 1,
   "schemaVersion": 1
 }
