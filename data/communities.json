@@ -5056,9 +5056,9 @@
         "com_72c625ae7237",
         "com_d103029f0156",
         "com_eef1ca956dae",
+        "com_4c7fef32815c",
         "com_d1da9ddb5fe6",
-        "com_4a20115f4862",
-        "com_f5605b691048"
+        "com_4a20115f4862"
       ]
     },
     {
@@ -5126,9 +5126,9 @@
         "com_4a20115f4862",
         "com_f5605b691048",
         "com_1e68b580d0be",
+        "com_4c7fef32815c",
         "com_ddcfc606c1ae",
-        "com_f171cd222ca5",
-        "com_72c625ae7237"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -10898,7 +10898,7 @@
         "com_b736e77bdf93",
         "com_eeb4e424a504",
         "com_96a0049afb0f",
-        "com_9abdf9db297a"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -10965,10 +10965,10 @@
       "similarCommunityIds": [
         "com_4a20115f4862",
         "com_d1da9ddb5fe6",
+        "com_4c7fef32815c",
         "com_72c625ae7237",
         "com_d103029f0156",
-        "com_eef1ca956dae",
-        "com_f171cd222ca5"
+        "com_eef1ca956dae"
       ]
     },
     {
@@ -14353,9 +14353,9 @@
         "com_72c625ae7237",
         "com_eef1ca956dae",
         "com_f171cd222ca5",
+        "com_4c7fef32815c",
         "com_4a20115f4862",
-        "com_a4d969c3c6eb",
-        "com_b736e77bdf93"
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -14751,9 +14751,9 @@
         "com_d103029f0156",
         "com_eef1ca956dae",
         "com_f171cd222ca5",
+        "com_4c7fef32815c",
         "com_4a20115f4862",
-        "com_a4d969c3c6eb",
-        "com_b736e77bdf93"
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -16472,7 +16472,7 @@
         "com_b736e77bdf93",
         "com_eeb4e424a504",
         "com_96a0049afb0f",
-        "com_9abdf9db297a"
+        "com_c1410c07c4dd"
       ]
     },
     {
@@ -19390,20 +19390,20 @@
       "name": "Book Club Bar",
       "kind": "community_space",
       "tagline": "Book Club Bar is a community space centered on books, music, games in east village, bushwick.",
-      "description": "Book Club Bar is a community space centered on books, music, games in east village, bushwick. Based on 85 observed event dates, it meets weekly on Sunday and Wednesday evenings.",
+      "description": "Book Club Bar is a community space centered on books, music, games in east village, bushwick. Based on 87 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
       "categories": [
         "books",
         "music",
         "games",
-        "food",
-        "parties"
+        "art",
+        "food"
       ],
       "tags": [
         "books",
         "music",
         "games",
-        "food",
-        "parties"
+        "art",
+        "food"
       ],
       "neighborhoods": [
         "east village",
@@ -19416,25 +19416,25 @@
         {
           "type": "bookclubbar",
           "label": "View on Bookclubbar",
-          "url": "https://www.bookclubbar.com/events/6819820270110"
+          "url": "https://bookclubbar.com/events/6650220270125"
         }
       ],
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-19",
-        "upcomingEventCount": 19,
+        "upcomingEventCount": 26,
         "eventCount90d": 83
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Sunday",
-          "Wednesday"
+          "Wednesday",
+          "Sunday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 85
+        "sampleSize": 87
       },
       "upcomingEventIds": [
         "207db375985dd5ed",
@@ -19444,11 +19444,11 @@
         "237e1ba7f5b5760b",
         "75154eebbdbd66ab",
         "90c632a1f8c99da5",
+        "bdd1ca7932c28d3f",
         "b473a0db7c268299",
         "8c9af583f973dd9d",
         "f663eb4c1f31cda1",
-        "fc2619757c970c2c",
-        "e722ce271b52df36"
+        "fc2619757c970c2c"
       ],
       "sourceAttributions": [
         "bookclubbar"
@@ -19457,13 +19457,17 @@
       "verified": true,
       "verificationStatus": "manually_verified",
       "qualificationEvidence": {
-        "observedDateCount": 85,
+        "observedDateCount": 87,
         "hasFirstPartyIdentity": false
       },
       "newcomerFriendly": true,
       "newcomerEvidence": [
         {
           "eventId": "39ae2e33322cd181",
+          "signal": "beginners"
+        },
+        {
+          "eventId": "3d8ea77660c7cd23",
           "signal": "beginners"
         }
       ],
@@ -19475,8 +19479,8 @@
         "com_4e69412cb0a5",
         "com_cdd5daa67222",
         "com_b5c978844e87",
-        "com_9a5da9b3c52e",
-        "com_f28d3ae740a6"
+        "com_3837f308cd75",
+        "com_33a530deb7aa"
       ]
     },
     {
@@ -19952,9 +19956,9 @@
         "com_72c625ae7237",
         "com_d103029f0156",
         "com_f171cd222ca5",
+        "com_4c7fef32815c",
         "com_4a20115f4862",
-        "com_a4d969c3c6eb",
-        "com_b736e77bdf93"
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -19968,22 +19972,22 @@
         "comedy",
         "music",
         "outdoors",
-        "parties",
-        "celebrities"
+        "celebrities",
+        "parties"
       ],
       "tags": [
         "comedy",
         "music",
         "outdoors",
-        "parties",
-        "celebrities"
+        "celebrities",
+        "parties"
       ],
       "neighborhoods": [
         "east village",
         "upper west side"
       ],
       "homeVenue": "New York Comedy Club Upper West Side",
-      "imageUrl": "/img/comedians/Untitled-design-22-06220c44-large-thumb.png",
+      "imageUrl": "/img/imagetest/todd-barry-420x260-jpg-2f380cda-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -19995,7 +19999,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-20",
-        "upcomingEventCount": 33,
+        "upcomingEventCount": 35,
         "eventCount90d": 391
       },
       "schedule": {
@@ -20004,23 +20008,23 @@
           "Sunday",
           "Thursday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "20:00",
         "confidence": 1.0,
         "sampleSize": 98
       },
       "upcomingEventIds": [
-        "805ca2c95af666da",
         "33a34501c41988e1",
+        "805ca2c95af666da",
         "1907c8c1539d973a",
         "e5827843d3c39ffe",
         "ba2ad9471aa8be24",
         "dca823d8482ace9e",
+        "446d94ea5ebf9eb0",
         "057a8b6375eb3bf7",
         "790cc567d96fcab6",
         "9558dea57ed4d8b8",
         "4f61b8fd10e37a12",
-        "6ed9b746f38fedc3",
-        "f7c35cd322507b7c"
+        "6ed9b746f38fedc3"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -20044,6 +20048,78 @@
         "com_58d773e27208",
         "com_e9748c1176c1",
         "com_4eae7de1bfbd"
+      ]
+    },
+    {
+      "id": "com_4c7fef32815c",
+      "slug": "reading-rhythms-32815c",
+      "name": "Reading Rhythms",
+      "kind": "recurring_series",
+      "tagline": "Reading Rhythms is a recurring event series centered on books in manhattan, upper west side.",
+      "description": "Reading Rhythms is a recurring event series centered on books in manhattan, upper west side. Based on 6 observed event dates, it meets weekly on Monday and Wednesday evenings.",
+      "categories": [
+        "books"
+      ],
+      "tags": [
+        "books"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "upper west side"
+      ],
+      "homeVenue": "Upper West Side",
+      "imageUrl": "https://images.lumacdn.com/api-uploads/ru/5da8a3c2-3d0a-49f8-a206-8ef50d6d6ed5.jpg",
+      "links": [
+        {
+          "type": "readingrhythms",
+          "label": "View on Readingrhythms",
+          "url": "https://readingrhythms.co/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Monday",
+          "Wednesday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 1.0,
+        "sampleSize": 6
+      },
+      "upcomingEventIds": [
+        "88c309f0d28a70dd",
+        "f035aaca8a11436d",
+        "e8de25ae9396c2a5"
+      ],
+      "sourceAttributions": [
+        "readingrhythms"
+      ],
+      "lastVerifiedAt": "2026-11-20",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 6,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "url:https://readingrhythms.co"
+      ],
+      "similarCommunityIds": [
+        "com_f171cd222ca5",
+        "com_72c625ae7237",
+        "com_d103029f0156",
+        "com_eef1ca956dae",
+        "com_d1da9ddb5fe6",
+        "com_4a20115f4862"
       ]
     },
     {
@@ -67180,7 +67256,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-20T16:06:29.368135+00:00",
+  "lastUpdated": "2026-11-20T16:17:15.813194+00:00",
   "version": 1,
   "schemaVersion": 1
 }
