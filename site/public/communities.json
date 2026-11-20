@@ -1870,14 +1870,14 @@
       "tagline": "Caveat is a recurring event series centered on comedy, games, special in manhattan.",
       "description": "Caveat is a recurring event series centered on comedy, games, special in manhattan. Based on 72 observed event dates, it meets weekly on Sunday and Saturday evenings.",
       "categories": [
-        "other",
         "comedy",
+        "other",
         "games",
         "special"
       ],
       "tags": [
-        "other",
         "comedy",
+        "other",
         "games",
         "special"
       ],
@@ -2015,6 +2015,74 @@
         "com_8f2a69f866f2",
         "com_9caab69e0812",
         "com_cb019f4e9752"
+      ]
+    },
+    {
+      "id": "com_592d5ae965a5",
+      "slug": "andre-medrano-and-maggie-maxwell-e965a5",
+      "name": "Andre Medrano and Maggie Maxwell",
+      "kind": "recurring_series",
+      "tagline": "Andre Medrano and Maggie Maxwell is a recurring event series centered on comedy in brooklyn.",
+      "description": "Andre Medrano and Maggie Maxwell is a recurring event series centered on comedy in brooklyn. Based on 2 observed event dates, it meets biweekly on Thursday evenings.",
+      "categories": [
+        "comedy"
+      ],
+      "tags": [
+        "comedy"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Wild East Brewing Co.",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1196182918%2F20123076358%2F1%2Foriginal.20261020-130245?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.585&fp-y=0.121&s=0fcc93fb222ed4281c6d13b7d257263b",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/15154967340"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-19",
+        "upcomingEventCount": 1,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Thursday"
+        ],
+        "typicalTime": "20:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "3638713ea3cc81ed"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-11-20",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:15154967340"
+      ],
+      "similarCommunityIds": [
+        "com_de05944f85c9",
+        "com_4eae7de1bfbd",
+        "com_1051b67b7913",
+        "com_9fe1e0196792",
+        "com_cb019f4e9752",
+        "com_1a46b1930293"
       ]
     },
     {
@@ -2852,11 +2920,11 @@
       ],
       "similarCommunityIds": [
         "com_086ae090b29d",
+        "com_592d5ae965a5",
         "com_de05944f85c9",
         "com_76ac3298109f",
         "com_7e654f58296b",
-        "com_09b775d35c11",
-        "com_30bd6ca662e0"
+        "com_09b775d35c11"
       ]
     },
     {
@@ -4828,12 +4896,12 @@
         "eventbrite:48667865913"
       ],
       "similarCommunityIds": [
+        "com_592d5ae965a5",
         "com_4eae7de1bfbd",
         "com_cb019f4e9752",
         "com_0df03478a9fc",
         "com_1f87b327b20e",
-        "com_5a1a72bded1f",
-        "com_b669d78373b1"
+        "com_5a1a72bded1f"
       ]
     },
     {
@@ -5440,11 +5508,11 @@
       ],
       "similarCommunityIds": [
         "com_12939182c936",
+        "com_592d5ae965a5",
         "com_086ae090b29d",
         "com_072c9c3e12a8",
         "com_139883e18f84",
-        "com_40bf372e58c5",
-        "com_9f333da89132"
+        "com_40bf372e58c5"
       ]
     },
     {
@@ -9386,10 +9454,10 @@
       "similarCommunityIds": [
         "com_1a46b1930293",
         "com_218b97d674a6",
+        "com_592d5ae965a5",
         "com_77ec11668bd8",
         "com_949217ac4f1f",
-        "com_a45e35db829c",
-        "com_bb4df3056be7"
+        "com_a45e35db829c"
       ]
     },
     {
@@ -66954,7 +67022,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-20T07:07:17.974616+00:00",
+  "lastUpdated": "2026-11-20T07:55:19.313970+00:00",
   "version": 1,
   "schemaVersion": 1
 }
