@@ -5346,9 +5346,9 @@
         "com_72c625ae7237",
         "com_d103029f0156",
         "com_eef1ca956dae",
-        "com_4c7fef32815c",
         "com_d1da9ddb5fe6",
-        "com_4a20115f4862"
+        "com_4a20115f4862",
+        "com_f5605b691048"
       ]
     },
     {
@@ -5416,9 +5416,9 @@
         "com_4a20115f4862",
         "com_f5605b691048",
         "com_1e68b580d0be",
-        "com_4c7fef32815c",
         "com_ddcfc606c1ae",
-        "com_f171cd222ca5"
+        "com_f171cd222ca5",
+        "com_72c625ae7237"
       ]
     },
     {
@@ -11242,10 +11242,10 @@
       "similarCommunityIds": [
         "com_4a20115f4862",
         "com_d1da9ddb5fe6",
-        "com_4c7fef32815c",
         "com_72c625ae7237",
         "com_d103029f0156",
-        "com_eef1ca956dae"
+        "com_eef1ca956dae",
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -12780,8 +12780,8 @@
       "imageUrl": "https://images.lumacdn.com/api-uploads/su/58535ea1-a20c-4084-a48f-524262792363.jpg",
       "links": [
         {
-          "type": "luma",
-          "label": "View on Luma",
+          "type": "readingrhythms",
+          "label": "View on Readingrhythms",
           "url": "https://luma.com/readingrhythms-manhattan"
         }
       ],
@@ -12789,7 +12789,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-18",
-        "upcomingEventCount": 18,
+        "upcomingEventCount": 21,
         "eventCount90d": 11
       },
       "schedule": {
@@ -12817,7 +12817,7 @@
         "8198c72a91655640"
       ],
       "sourceAttributions": [
-        "luma"
+        "readingrhythms"
       ],
       "lastVerifiedAt": "2026-11-21",
       "verified": false,
@@ -14626,9 +14626,9 @@
         "com_72c625ae7237",
         "com_eef1ca956dae",
         "com_f171cd222ca5",
-        "com_4c7fef32815c",
         "com_4a20115f4862",
-        "com_a4d969c3c6eb"
+        "com_a4d969c3c6eb",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -15024,9 +15024,9 @@
         "com_d103029f0156",
         "com_eef1ca956dae",
         "com_f171cd222ca5",
-        "com_4c7fef32815c",
         "com_4a20115f4862",
-        "com_a4d969c3c6eb"
+        "com_a4d969c3c6eb",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -17123,8 +17123,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, food in manhattan, williamsburg.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, food in manhattan, williamsburg. Based on 60 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, food in manhattan, upper west side.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, food in manhattan, upper west side. Based on 60 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -17141,9 +17141,9 @@
       ],
       "neighborhoods": [
         "manhattan",
+        "upper west side",
         "williamsburg",
-        "brooklyn",
-        "upper west side"
+        "brooklyn"
       ],
       "homeVenue": "BX Eatery",
       "imageUrl": "https://images.lumacdn.com/api-uploads/su/58535ea1-a20c-4084-a48f-524262792363.jpg",
@@ -17158,7 +17158,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-18",
-        "upcomingEventCount": 18,
+        "upcomingEventCount": 19,
         "eventCount90d": 69
       },
       "schedule": {
@@ -20204,9 +20204,9 @@
         "com_72c625ae7237",
         "com_d103029f0156",
         "com_f171cd222ca5",
-        "com_4c7fef32815c",
         "com_4a20115f4862",
-        "com_a4d969c3c6eb"
+        "com_a4d969c3c6eb",
+        "com_b736e77bdf93"
       ]
     },
     {
@@ -20296,78 +20296,6 @@
         "com_086ae090b29d",
         "com_cb019f4e9752",
         "com_7c6e7432bd13"
-      ]
-    },
-    {
-      "id": "com_4c7fef32815c",
-      "slug": "reading-rhythms-32815c",
-      "name": "Reading Rhythms",
-      "kind": "recurring_series",
-      "tagline": "Reading Rhythms is a recurring event series centered on books in manhattan, upper west side.",
-      "description": "Reading Rhythms is a recurring event series centered on books in manhattan, upper west side. Based on 3 observed event dates, it meets weekly on Monday and Thursday evenings.",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [
-        "manhattan",
-        "upper west side"
-      ],
-      "homeVenue": "Upper West Side",
-      "imageUrl": "https://images.lumacdn.com/api-uploads/ru/5da8a3c2-3d0a-49f8-a206-8ef50d6d6ed5.jpg",
-      "links": [
-        {
-          "type": "readingrhythms",
-          "label": "View on Readingrhythms",
-          "url": "https://readingrhythms.co/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 3,
-        "eventCount90d": 0
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Monday",
-          "Thursday"
-        ],
-        "typicalTime": "18:30",
-        "confidence": 0.5,
-        "sampleSize": 3
-      },
-      "upcomingEventIds": [
-        "88c309f0d28a70dd",
-        "f035aaca8a11436d",
-        "e8de25ae9396c2a5"
-      ],
-      "sourceAttributions": [
-        "readingrhythms"
-      ],
-      "lastVerifiedAt": "2026-11-21",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 3,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "url:https://readingrhythms.co"
-      ],
-      "similarCommunityIds": [
-        "com_f171cd222ca5",
-        "com_72c625ae7237",
-        "com_d103029f0156",
-        "com_eef1ca956dae",
-        "com_d1da9ddb5fe6",
-        "com_4a20115f4862"
       ]
     },
     {
@@ -67504,7 +67432,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-21T18:19:32.565077+00:00",
+  "lastUpdated": "2026-11-21T19:09:54.114711+00:00",
   "version": 1,
   "schemaVersion": 1
 }
