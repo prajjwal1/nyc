@@ -623,9 +623,9 @@
         "com_3048e331f7b6",
         "com_1740a8cfc76c",
         "com_489a14652e20",
-        "com_8436aa2d3f48",
         "com_cb019f4e9752",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_68b36e93076a"
       ]
     },
     {
@@ -1589,8 +1589,8 @@
       },
       "upcomingEventIds": [
         "f4925c7d4711c822",
-        "4f2e4c6e24e5a9b5",
         "3f69447ef694f23a",
+        "4f2e4c6e24e5a9b5",
         "52824151f39141e7"
       ],
       "sourceAttributions": [
@@ -2072,8 +2072,8 @@
         "com_9fe1e0196792",
         "com_4eae7de1bfbd",
         "com_5ae97332f848",
-        "com_1051b67b7913",
-        "com_8436aa2d3f48"
+        "com_8436aa2d3f48",
+        "com_1051b67b7913"
       ]
     },
     {
@@ -2672,8 +2672,8 @@
         "com_76160be8487b",
         "com_e341908692df",
         "com_3048e331f7b6",
-        "com_8436aa2d3f48",
-        "com_8f2a69f866f2"
+        "com_8f2a69f866f2",
+        "com_9caab69e0812"
       ]
     },
     {
@@ -2750,10 +2750,10 @@
       "similarCommunityIds": [
         "com_d8a5203885a9",
         "com_8664a7e5723e",
-        "com_8436aa2d3f48",
         "com_cb019f4e9752",
         "com_dca352748139",
-        "com_3048e331f7b6"
+        "com_3048e331f7b6",
+        "com_8d86f6f9340b"
       ]
     },
     {
@@ -3480,7 +3480,7 @@
           "Saturday",
           "Wednesday"
         ],
-        "typicalTime": "22:00",
+        "typicalTime": "21:00",
         "confidence": 0.83,
         "sampleSize": 5
       },
@@ -3667,13 +3667,11 @@
       "description": "Brooklyn Comedy Collective is a recurring event series centered on comedy, movies in brooklyn. Based on 3 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "comedy",
-        "movies",
-        "other"
+        "movies"
       ],
       "tags": [
         "comedy",
-        "movies",
-        "other"
+        "movies"
       ],
       "neighborhoods": [
         "brooklyn"
@@ -3728,12 +3726,12 @@
         "eventbrite:27620063469"
       ],
       "similarCommunityIds": [
+        "com_64ebabd98c5c",
         "com_cb019f4e9752",
         "com_68b36e93076a",
-        "com_037b24ee6417",
-        "com_0ae542c496b3",
-        "com_3048e331f7b6",
-        "com_530ce570649a"
+        "com_d8a5203885a9",
+        "com_592d5ae965a5",
+        "com_de05944f85c9"
       ]
     },
     {
@@ -5391,7 +5389,7 @@
           "Tuesday",
           "Thursday"
         ],
-        "typicalTime": "18:30",
+        "typicalTime": "19:00",
         "confidence": 0.5,
         "sampleSize": 3
       },
@@ -9409,7 +9407,7 @@
       "name": "The Builder Series NYC",
       "kind": "recurring_series",
       "tagline": "The Builder Series NYC is a recurring event series centered on fitness in west village.",
-      "description": "The Builder Series NYC is a recurring event series centered on fitness in west village. Based on 3 observed event dates, it meets weekly on Saturday and Friday mornings.",
+      "description": "The Builder Series NYC is a recurring event series centered on fitness in west village. Based on 4 observed event dates, it meets weekly on Saturday and Friday mornings.",
       "categories": [
         "fitness"
       ],
@@ -9442,8 +9440,8 @@
           "Friday"
         ],
         "typicalTime": "09:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
         "565e5a1b6255f211"
@@ -9455,7 +9453,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -18880,8 +18878,8 @@
         "com_c58670960684",
         "com_ab8259bb35a4",
         "com_489a14652e20",
-        "com_8436aa2d3f48",
-        "com_f990c90c32d5"
+        "com_f990c90c32d5",
+        "com_d73abf992ef2"
       ]
     },
     {
@@ -19564,9 +19562,9 @@
         "com_64ebabd98c5c",
         "com_ad1db2097484",
         "com_02f781be3c26",
+        "com_8436aa2d3f48",
         "com_1dc58bbe47db",
-        "com_525bddfaee91",
-        "com_840c764d1803"
+        "com_525bddfaee91"
       ]
     },
     {
@@ -19799,8 +19797,8 @@
         "e75a5773278bf35c",
         "81f5cfb0e0c26289",
         "6e8ef5099143bbba",
-        "639fd3084dbd2a4e",
         "e0c16e7207390b27",
+        "639fd3084dbd2a4e",
         "5d5f2dbd1a98c74d",
         "981a3bde1f37d289"
       ],
@@ -19812,7 +19810,7 @@
       "verificationStatus": "first_party_source",
       "qualificationEvidence": {
         "observedDateCount": 83,
-        "hasFirstPartyIdentity": false
+        "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
       "newcomerEvidence": [],
@@ -20249,7 +20247,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-21",
-        "upcomingEventCount": 31,
+        "upcomingEventCount": 30,
         "eventCount90d": 400
       },
       "schedule": {
@@ -20265,16 +20263,16 @@
       "upcomingEventIds": [
         "ba2ad9471aa8be24",
         "dca823d8482ace9e",
-        "9558dea57ed4d8b8",
         "446d94ea5ebf9eb0",
         "057a8b6375eb3bf7",
         "790cc567d96fcab6",
+        "9558dea57ed4d8b8",
         "4f61b8fd10e37a12",
         "6ed9b746f38fedc3",
         "f7c35cd322507b7c",
         "32a71ed6cbfc62c4",
         "0b0dd45bad5d8ada",
-        "89ca12aa291b9986"
+        "7abe1df2eeefd168"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -67506,7 +67504,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-21T16:54:36.306228+00:00",
+  "lastUpdated": "2026-11-21T18:19:32.565077+00:00",
   "version": 1,
   "schemaVersion": 1
 }
