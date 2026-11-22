@@ -369,11 +369,11 @@
       ],
       "similarCommunityIds": [
         "com_5dd8d7d6e995",
+        "com_25ac0e23e246",
         "com_68f8f24f0095",
         "com_b088368d86fa",
         "com_7d3e76b46ffc",
-        "com_57359d725dc0",
-        "com_fbbdf45a2a0e"
+        "com_57359d725dc0"
       ]
     },
     {
@@ -1828,7 +1828,7 @@
         "com_8172de11cbdf",
         "com_9a5da9b3c52e",
         "com_1e60766a7318",
-        "com_3942d7a4c6e3"
+        "com_25ac0e23e246"
       ]
     },
     {
@@ -2647,7 +2647,7 @@
         "com_8664a7e5723e",
         "com_07cac7652707",
         "com_14a9b81bfe8f",
-        "com_5c8ac62f26b3"
+        "com_25ac0e23e246"
       ]
     },
     {
@@ -2882,12 +2882,12 @@
         "eventbrite:18102992064"
       ],
       "similarCommunityIds": [
+        "com_25ac0e23e246",
         "com_f8ff3d3257ed",
         "com_428275493172",
         "com_805e2fa93ad2",
         "com_7d3e76b46ffc",
-        "com_ab8259bb35a4",
-        "com_f8e07f99b39d"
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -3409,12 +3409,12 @@
         "eventbrite:20092078884"
       ],
       "similarCommunityIds": [
+        "com_25ac0e23e246",
         "com_e9748c1176c1",
         "com_7d3e76b46ffc",
         "com_96a0049afb0f",
         "com_8c30193b027f",
-        "com_d2d455d2d6c9",
-        "com_5c8ac62f26b3"
+        "com_d2d455d2d6c9"
       ]
     },
     {
@@ -4627,11 +4627,11 @@
       ],
       "similarCommunityIds": [
         "com_5251e78f4060",
+        "com_8406f1267c2e",
+        "com_99343fce4c7a",
         "com_99e08820d1c1",
         "com_d74826b4ebc7",
-        "com_037b24ee6417",
-        "com_0606c7e50fa8",
-        "com_09b775d35c11"
+        "com_037b24ee6417"
       ]
     },
     {
@@ -5917,8 +5917,8 @@
         "com_f8e07f99b39d",
         "com_58d773e27208",
         "com_1e60766a7318",
-        "com_cb019f4e9752",
-        "com_7d3e76b46ffc"
+        "com_25ac0e23e246",
+        "com_cb019f4e9752"
       ]
     },
     {
@@ -7166,11 +7166,11 @@
       ],
       "similarCommunityIds": [
         "com_3be718149a43",
+        "com_8406f1267c2e",
+        "com_99343fce4c7a",
         "com_99e08820d1c1",
         "com_d74826b4ebc7",
-        "com_037b24ee6417",
-        "com_0606c7e50fa8",
-        "com_09b775d35c11"
+        "com_037b24ee6417"
       ]
     },
     {
@@ -8838,8 +8838,8 @@
         "com_6577316c8d76",
         "com_3be718149a43",
         "com_5251e78f4060",
-        "com_99e08820d1c1",
-        "com_12939182c936"
+        "com_8406f1267c2e",
+        "com_99343fce4c7a"
       ]
     },
     {
@@ -8917,7 +8917,7 @@
       "name": "The New York Philosophy Club",
       "kind": "club",
       "tagline": "The New York Philosophy Club is a community club in manhattan.",
-      "description": "The New York Philosophy Club is a community club in manhattan. Based on 10 observed event dates, it meets weekly on Saturday and Wednesday evenings.",
+      "description": "The New York Philosophy Club is a community club in manhattan. Based on 11 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "other"
       ],
@@ -8940,21 +8940,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-22",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 17
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Saturday",
-          "Wednesday"
+          "Sunday"
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 10
+        "sampleSize": 11
       },
       "upcomingEventIds": [
-        "5a73cf613ffd0294"
+        "5a73cf613ffd0294",
+        "ec782f3276658039"
       ],
       "sourceAttributions": [
         "luma"
@@ -8963,7 +8964,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 10,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -9392,10 +9393,10 @@
       "similarCommunityIds": [
         "com_3be718149a43",
         "com_5251e78f4060",
+        "com_8406f1267c2e",
+        "com_99343fce4c7a",
         "com_d74826b4ebc7",
-        "com_037b24ee6417",
-        "com_0606c7e50fa8",
-        "com_09b775d35c11"
+        "com_037b24ee6417"
       ]
     },
     {
@@ -9976,8 +9977,8 @@
       "slug": "the-marketing-groupe-716ae9",
       "name": "The Marketing Groupe",
       "kind": "club",
-      "tagline": "The Marketing Groupe is a community club in manhattan.",
-      "description": "The Marketing Groupe is a community club in manhattan. Based on 3 observed event dates, it meets monthly on Friday and Wednesday mornings.",
+      "tagline": "The Marketing Groupe is a community club in midtown, manhattan.",
+      "description": "The Marketing Groupe is a community club in midtown, manhattan. Based on 4 observed event dates, it meets weekly on Friday and Wednesday mornings.",
       "categories": [
         "other"
       ],
@@ -9985,10 +9986,11 @@
         "other"
       ],
       "neighborhoods": [
+        "midtown",
         "manhattan"
       ],
-      "homeVenue": "Manhattan",
-      "imageUrl": "https://images.lumacdn.com/uploads/v9/42c5f6b9-69e8-4439-bd5f-34f45a57134a.png",
+      "homeVenue": "156 5th Ave",
+      "imageUrl": "https://images.lumacdn.com/uploads/11/0a72667b-4683-44c8-a059-bd69155931ee.png",
       "links": [
         {
           "type": "luma",
@@ -10000,20 +10002,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-18",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 2
       },
       "schedule": {
-        "cadence": "monthly",
+        "cadence": "weekly",
         "typicalDays": [
           "Friday",
           "Wednesday"
         ],
         "typicalTime": "09:00",
-        "confidence": 0.5,
-        "sampleSize": 3
+        "confidence": 0.67,
+        "sampleSize": 4
       },
       "upcomingEventIds": [
+        "093a826774167bc5",
         "8ce7f52b922f4a4b"
       ],
       "sourceAttributions": [
@@ -10023,7 +10026,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 3,
+        "observedDateCount": 4,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -10033,12 +10036,12 @@
         "luma:cal-g6jcxpa85xmdhlm"
       ],
       "similarCommunityIds": [
-        "com_118a558259ea",
-        "com_160d3b550b59",
-        "com_2a1498596ec3",
-        "com_3f478631e906",
-        "com_58d8401f7cb1",
-        "com_5dfb5e7631bc"
+        "com_ab8259bb35a4",
+        "com_1c65032c5bbc",
+        "com_36cb2681053d",
+        "com_61de7e5f2248",
+        "com_69662323a419",
+        "com_72ef3d04cd66"
       ]
     },
     {
@@ -11112,6 +11115,77 @@
       ]
     },
     {
+      "id": "com_99343fce4c7a",
+      "slug": "obliquetablenyc-ce4c7a",
+      "name": "ObliqueTableNYC",
+      "kind": "recurring_series",
+      "tagline": "ObliqueTableNYC is a recurring event series in chelsea.",
+      "description": "ObliqueTableNYC is a recurring event series in chelsea. Based on 2 observed event dates, it meets weekly on Saturday and Sunday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "chelsea"
+      ],
+      "homeVenue": "242 W 27th St #2a",
+      "imageUrl": "https://images.lumacdn.com/uploads/ll/9b0a2e62-cbfe-4648-9dd3-fd1b76aac486.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/obliquetable.nyc"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Saturday",
+          "Sunday"
+        ],
+        "typicalTime": "14:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "6e9abac9e37ccc22",
+        "ee4b4bf9f13a9d36"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-22",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:obliquetable.nyc",
+        "luma:cal-krxxlcjykkduk3v"
+      ],
+      "similarCommunityIds": [
+        "com_3be718149a43",
+        "com_5251e78f4060",
+        "com_8406f1267c2e",
+        "com_99e08820d1c1",
+        "com_d74826b4ebc7",
+        "com_037b24ee6417"
+      ]
+    },
+    {
       "id": "com_a4ff599bdcd6",
       "slug": "maayan-s-hospitality-group-9bdcd6",
       "name": "Maayan's Hospitality Group",
@@ -11740,10 +11814,10 @@
       "similarCommunityIds": [
         "com_8c30193b027f",
         "com_f8e07f99b39d",
+        "com_25ac0e23e246",
         "com_5c8ac62f26b3",
         "com_f990c90c32d5",
-        "com_e9748c1176c1",
-        "com_21008b2f6401"
+        "com_e9748c1176c1"
       ]
     },
     {
@@ -11809,11 +11883,11 @@
       ],
       "similarCommunityIds": [
         "com_5dd8d7d6e995",
+        "com_25ac0e23e246",
         "com_a45e35db829c",
         "com_cf4f17cc5b67",
         "com_072c9c3e12a8",
-        "com_12939182c936",
-        "com_139883e18f84"
+        "com_12939182c936"
       ]
     },
     {
@@ -12316,10 +12390,10 @@
       "similarCommunityIds": [
         "com_f990c90c32d5",
         "com_21008b2f6401",
+        "com_939280716ae9",
         "com_359977ec663e",
         "com_96a0049afb0f",
-        "com_7d3e76b46ffc",
-        "com_ab8259bb35a4"
+        "com_7d3e76b46ffc"
       ]
     },
     {
@@ -12416,7 +12490,7 @@
         "manhattan",
         "upper west side",
         "williamsburg",
-        "astoria"
+        "brooklyn"
       ],
       "homeVenue": "Hotel Alameda",
       "imageUrl": "https://images.lumacdn.com/api-uploads/su/58535ea1-a20c-4084-a48f-524262792363.jpg",
@@ -12446,9 +12520,9 @@
       },
       "upcomingEventIds": [
         "e8ff3a0ea56a494f",
-        "6f731918d4322cf7",
-        "ca8881addf01aee7",
         "f7d0fd779fa9a5a7",
+        "ca8881addf01aee7",
+        "6f731918d4322cf7",
         "5b32845113e15ece",
         "215bfc21974842e0",
         "14a45f2ac9abcc9e",
@@ -12478,9 +12552,9 @@
         "com_cdd5daa67222",
         "com_55ca36db453a",
         "com_d2d455d2d6c9",
-        "com_14a9b81bfe8f",
-        "com_5582e2e97f1a",
-        "com_ed8d42fb031d"
+        "com_733b8a7ddfff",
+        "com_b0e15eaab803",
+        "com_14a9b81bfe8f"
       ]
     },
     {
@@ -12629,9 +12703,9 @@
         "com_7d3e76b46ffc",
         "com_f8e07f99b39d",
         "com_21008b2f6401",
+        "com_25ac0e23e246",
         "com_5c8ac62f26b3",
-        "com_f990c90c32d5",
-        "com_8d86f6f9340b"
+        "com_f990c90c32d5"
       ]
     },
     {
@@ -14667,6 +14741,76 @@
       ]
     },
     {
+      "id": "com_8406f1267c2e",
+      "slug": "sunday-studio-267c2e",
+      "name": "Sunday Studio",
+      "kind": "recurring_series",
+      "tagline": "Sunday Studio is a recurring event series in chelsea.",
+      "description": "Sunday Studio is a recurring event series in chelsea. Based on 2 observed event dates, it meets weekly on Sunday afternoons.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "chelsea"
+      ],
+      "homeVenue": "Chelsea",
+      "imageUrl": "https://images.lumacdn.com/uploads/np/6065b61e-d59c-4198-95ab-c5c138062a12.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/SundayStudio"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-22",
+        "upcomingEventCount": 2,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Sunday"
+        ],
+        "typicalTime": "14:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "a1ad6ba509fcfb93",
+        "12442e13c869751f"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-22",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:utopiacollab.inc",
+        "luma:cal-wdqxiq2sodgbpey"
+      ],
+      "similarCommunityIds": [
+        "com_3be718149a43",
+        "com_5251e78f4060",
+        "com_99343fce4c7a",
+        "com_99e08820d1c1",
+        "com_d74826b4ebc7",
+        "com_037b24ee6417"
+      ]
+    },
+    {
       "id": "com_96976b8bca30",
       "slug": "jpafhc-community-events-calendar-8bca30",
       "name": "JPAFHC - Community Events Calendar",
@@ -14877,7 +15021,7 @@
         "com_665eaac4154e",
         "com_8484b3e5cfee",
         "com_b23683f6f558",
-        "com_cdd5daa67222"
+        "com_4e69412cb0a5"
       ]
     },
     {
@@ -15740,8 +15884,8 @@
         "com_8664a7e5723e",
         "com_77ec11668bd8",
         "com_a2114f75658a",
-        "com_a1c312a97abe",
-        "com_037b24ee6417"
+        "com_25ac0e23e246",
+        "com_a1c312a97abe"
       ]
     },
     {
@@ -16445,7 +16589,7 @@
         "com_665eaac4154e",
         "com_8484b3e5cfee",
         "com_b23683f6f558",
-        "com_cdd5daa67222"
+        "com_4e69412cb0a5"
       ]
     },
     {
@@ -16531,7 +16675,7 @@
       "name": "The New York Philosophy Club",
       "kind": "club",
       "tagline": "The New York Philosophy Club is a community club in manhattan, williamsburg.",
-      "description": "The New York Philosophy Club is a community club in manhattan, williamsburg. Based on 30 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "description": "The New York Philosophy Club is a community club in manhattan, williamsburg. Based on 31 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other"
       ],
@@ -16556,7 +16700,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-22",
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 59
       },
       "schedule": {
@@ -16567,13 +16711,14 @@
         ],
         "typicalTime": "19:00",
         "confidence": 1.0,
-        "sampleSize": 30
+        "sampleSize": 31
       },
       "upcomingEventIds": [
         "5a73cf613ffd0294",
         "e3e50a294acd711b",
+        "6cdc693fccade154",
         "e5f2ddfd2a7d3b99",
-        "6cdc693fccade154"
+        "ec782f3276658039"
       ],
       "sourceAttributions": [
         "luma"
@@ -16582,7 +16727,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 30,
+        "observedDateCount": 31,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -16591,12 +16736,12 @@
         "luma:philosophy"
       ],
       "similarCommunityIds": [
+        "com_939280716ae9",
         "com_1c65032c5bbc",
         "com_36cb2681053d",
         "com_61de7e5f2248",
         "com_69662323a419",
-        "com_72ef3d04cd66",
-        "com_783d20e163ac"
+        "com_72ef3d04cd66"
       ]
     },
     {
@@ -16735,9 +16880,9 @@
       },
       "upcomingEventIds": [
         "e8ff3a0ea56a494f",
-        "6f731918d4322cf7",
-        "ca8881addf01aee7",
         "f7d0fd779fa9a5a7",
+        "ca8881addf01aee7",
+        "6f731918d4322cf7",
         "5b32845113e15ece",
         "215bfc21974842e0",
         "14a45f2ac9abcc9e",
@@ -17232,6 +17377,79 @@
         "com_c212478907d5",
         "com_037b24ee6417",
         "com_0606c7e50fa8"
+      ]
+    },
+    {
+      "id": "com_25ac0e23e246",
+      "slug": "studiolo-23e246",
+      "name": "studiolo",
+      "kind": "recurring_series",
+      "tagline": "studiolo is a recurring event series centered on outdoors in manhattan.",
+      "description": "studiolo is a recurring event series centered on outdoors in manhattan. Based on 2 observed event dates, it meets weekly on Sunday and Tuesday mornings.",
+      "categories": [
+        "outdoors",
+        "other"
+      ],
+      "tags": [
+        "outdoors",
+        "other"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/dn/7a7eec12-2e26-4422-9efa-df74bb403235.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://www.studiolonyc.com/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-22",
+        "upcomingEventCount": 2,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Sunday",
+          "Tuesday"
+        ],
+        "typicalTime": "11:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "fc2b463ac051cf32",
+        "fe0034e3ab5a0faf"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-22",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:studiolo.nolita",
+        "luma:usr-airthekxgwskhqf"
+      ],
+      "similarCommunityIds": [
+        "com_1c65032c5bbc",
+        "com_36cb2681053d",
+        "com_61de7e5f2248",
+        "com_69662323a419",
+        "com_72ef3d04cd66",
+        "com_783d20e163ac"
       ]
     },
     {
@@ -66800,7 +67018,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-22T20:26:45.301772+00:00",
+  "lastUpdated": "2026-11-22T21:02:18.590571+00:00",
   "version": 1,
   "schemaVersion": 1
 }
