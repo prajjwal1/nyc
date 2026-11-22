@@ -3035,7 +3035,7 @@
       "name": "EastVille Comedy Club",
       "kind": "club",
       "tagline": "EastVille Comedy Club is a community club centered on comedy in east village.",
-      "description": "EastVille Comedy Club is a community club centered on comedy in east village. Based on 12 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "description": "EastVille Comedy Club is a community club centered on comedy in east village. Based on 11 observed event dates, it meets weekly on Friday and Tuesday evenings.",
       "categories": [
         "comedy",
         "other"
@@ -3060,18 +3060,18 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-21",
-        "upcomingEventCount": 8,
+        "upcomingEventCount": 7,
         "eventCount90d": 7
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Friday",
-          "Saturday"
+          "Tuesday"
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 12
+        "sampleSize": 11
       },
       "upcomingEventIds": [
         "59fa99188ee25e90",
@@ -3080,8 +3080,7 @@
         "c00b4f9add1029ab",
         "c6264fde86d82afc",
         "6e5824d7295e5abe",
-        "021ba0a063fc7b5e",
-        "b5f756df62ab322e"
+        "021ba0a063fc7b5e"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -3090,7 +3089,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 12,
+        "observedDateCount": 11,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -4859,7 +4858,7 @@
         "com_8b837dfb5421",
         "com_4eae7de1bfbd",
         "com_086ae090b29d",
-        "com_28a4ec647815"
+        "com_f23f8820878b"
       ]
     },
     {
@@ -7245,11 +7244,11 @@
       "description": "the soft(spaces) events calendar is a recurring event series centered on dance in bronx, crown heights. Based on 6 observed event dates, it meets weekly on Saturday and Tuesday evenings.",
       "categories": [
         "dance",
-        "other"
+        "free"
       ],
       "tags": [
         "dance",
-        "other"
+        "free"
       ],
       "neighborhoods": [
         "bronx",
@@ -7302,12 +7301,12 @@
         "luma:cal-0qndhnkdwxsjdlh"
       ],
       "similarCommunityIds": [
+        "com_1ef49d36748a",
+        "com_43850d49f9e6",
+        "com_a393a0e8b1e0",
         "com_6e9d22f6b768",
         "com_7c02f9a79726",
-        "com_36080a5c47cd",
-        "com_037b24ee6417",
-        "com_0606c7e50fa8",
-        "com_09b775d35c11"
+        "com_8172de11cbdf"
       ]
     },
     {
@@ -7600,13 +7599,13 @@
       "description": "Salam Social Club Events is a community club centered on parties, singles in manhattan, brooklyn. Based on 4 observed event dates, it meets weekly on Friday and Saturday evenings.",
       "categories": [
         "parties",
-        "other",
-        "singles"
+        "singles",
+        "other"
       ],
       "tags": [
         "parties",
-        "other",
-        "singles"
+        "singles",
+        "other"
       ],
       "neighborhoods": [
         "manhattan",
@@ -19429,25 +19428,25 @@
       "slug": "new-york-comedy-club-upper-west-side-20878b",
       "name": "New York Comedy Club Upper West Side",
       "kind": "club",
-      "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in east village, upper west side.",
-      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in east village, upper west side. Based on 98 observed event dates, it meets weekly on Sunday and Thursday evenings.",
+      "tagline": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in upper west side, east village.",
+      "description": "New York Comedy Club Upper West Side is a community club centered on comedy, music, outdoors in upper west side, east village. Based on 98 observed event dates, it meets weekly on Sunday and Thursday evenings.",
       "categories": [
         "comedy",
         "music",
         "outdoors",
-        "celebrities",
-        "singles"
+        "singles",
+        "special"
       ],
       "tags": [
         "comedy",
         "music",
         "outdoors",
-        "celebrities",
-        "singles"
+        "singles",
+        "special"
       ],
       "neighborhoods": [
-        "east village",
-        "upper west side"
+        "upper west side",
+        "east village"
       ],
       "homeVenue": "New York Comedy Club Upper West Side",
       "imageUrl": "/img/comedians/Daniella-Mora-Headshot-3baf0dd1-large-thumb.jpg",
@@ -19462,7 +19461,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-22",
-        "upcomingEventCount": 25,
+        "upcomingEventCount": 24,
         "eventCount90d": 408
       },
       "schedule": {
@@ -19479,15 +19478,15 @@
         "6ed9b746f38fedc3",
         "f7c35cd322507b7c",
         "32a71ed6cbfc62c4",
-        "885d63decdbae95f",
         "0b0dd45bad5d8ada",
-        "89ca12aa291b9986",
+        "885d63decdbae95f",
         "7abe1df2eeefd168",
         "04a5040fc72e4dd2",
         "46b6cee1b746d5e7",
         "d467d2301d4a00de",
         "40223a821ecf4dca",
-        "71856b6f3df343fb"
+        "71856b6f3df343fb",
+        "f25adf76bb2b81a1"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -19506,11 +19505,11 @@
       ],
       "similarCommunityIds": [
         "com_c1410c07c4dd",
-        "com_e9748c1176c1",
-        "com_4eae7de1bfbd",
-        "com_086ae090b29d",
+        "com_d8a5203885a9",
         "com_7c6e7432bd13",
-        "com_8b837dfb5421"
+        "com_58d773e27208",
+        "com_e9748c1176c1",
+        "com_28a4ec647815"
       ]
     },
     {
@@ -66647,7 +66646,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-22T05:46:23.363906+00:00",
+  "lastUpdated": "2026-11-22T06:39:57.685078+00:00",
   "version": 1,
   "schemaVersion": 1
 }
