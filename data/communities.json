@@ -224,8 +224,8 @@
         "com_1e60766a7318",
         "com_76160be8487b",
         "com_e341908692df",
-        "com_ffc1304a5cb6",
-        "com_8b837dfb5421"
+        "com_a2114f75658a",
+        "com_ffc1304a5cb6"
       ]
     },
     {
@@ -832,10 +832,10 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_76160be8487b",
+        "com_a2114f75658a",
         "com_e341908692df",
         "com_0df03478a9fc",
-        "com_1f87b327b20e",
-        "com_904b280a7245"
+        "com_1f87b327b20e"
       ]
     },
     {
@@ -1980,10 +1980,10 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_e341908692df",
+        "com_a2114f75658a",
         "com_ffc1304a5cb6",
         "com_8f2a69f866f2",
-        "com_9caab69e0812",
-        "com_cb019f4e9752"
+        "com_9caab69e0812"
       ]
     },
     {
@@ -2574,6 +2574,81 @@
       ]
     },
     {
+      "id": "com_f39b4df5d3d7",
+      "slug": "uplyft-f5d3d7",
+      "name": "Uplyft",
+      "kind": "recurring_series",
+      "tagline": "Uplyft is a recurring event series centered on outdoors, food, special in manhattan, midtown.",
+      "description": "Uplyft is a recurring event series centered on outdoors, food, special in manhattan, midtown. Based on 2 observed event dates, it meets weekly on Thursday and Wednesday mornings.",
+      "categories": [
+        "outdoors",
+        "food",
+        "special"
+      ],
+      "tags": [
+        "outdoors",
+        "food",
+        "special"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "midtown"
+      ],
+      "homeVenue": "Gabriel's Bar & Restaurant  |  DIRECT VIEWS OF THE THANKSGIVING PARADE",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F913923573%2F49229921956%2F1%2Foriginal.20241209-050315?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=75c6d407cab6ff1b4e0651ca44ff78a7",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/17771194627"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Wednesday"
+        ],
+        "typicalTime": "08:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "b4e798936225bd21",
+        "e89775811faf6148"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-11-22",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:17771194627"
+      ],
+      "similarCommunityIds": [
+        "com_43e82b8f4e34",
+        "com_729cfb31f58d",
+        "com_9c336784d52c",
+        "com_07cac7652707",
+        "com_14a9b81bfe8f",
+        "com_5c8ac62f26b3"
+      ]
+    },
+    {
       "id": "com_cb019f4e9752",
       "slug": "union-hall-4e9752",
       "name": "Union Hall",
@@ -2883,6 +2958,79 @@
         "com_759f151a6d08",
         "com_d36daf8ea112",
         "com_8172de11cbdf"
+      ]
+    },
+    {
+      "id": "com_a2114f75658a",
+      "slug": "makerspace-nyc-75658a",
+      "name": "MakerSpace NYC",
+      "kind": "recurring_series",
+      "tagline": "MakerSpace NYC is a recurring event series centered on music in brooklyn.",
+      "description": "MakerSpace NYC is a recurring event series centered on music in brooklyn. Based on 3 observed event dates, it meets biweekly on Saturday and Sunday evenings.",
+      "categories": [
+        "other",
+        "music"
+      ],
+      "tags": [
+        "other",
+        "music"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Makerspace NYC- Brooklyn Army Terminal",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1177296908%2F2184978851233%2F1%2Foriginal.20260211-174001?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=c0d05b371f0ebb0a4f5ffd11a8349f72",
+      "links": [
+        {
+          "type": "eventbrite",
+          "label": "View on Eventbrite",
+          "url": "https://eventbrite.com/o/18615337552"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-21",
+        "upcomingEventCount": 3,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Saturday",
+          "Sunday"
+        ],
+        "typicalTime": "17:30",
+        "confidence": 0.5,
+        "sampleSize": 3
+      },
+      "upcomingEventIds": [
+        "7b4a3becb82f8029",
+        "3100ce16884ecd5f",
+        "ff210501ae0c6071"
+      ],
+      "sourceAttributions": [
+        "eventbrite"
+      ],
+      "lastVerifiedAt": "2026-11-22",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "eventbrite:18615337552"
+      ],
+      "similarCommunityIds": [
+        "com_1466f20a9300",
+        "com_76160be8487b",
+        "com_e341908692df",
+        "com_ffc1304a5cb6",
+        "com_949217ac4f1f",
+        "com_bb4df3056be7"
       ]
     },
     {
@@ -5430,10 +5578,10 @@
       "similarCommunityIds": [
         "com_76160be8487b",
         "com_e341908692df",
+        "com_a2114f75658a",
         "com_ffc1304a5cb6",
         "com_8f2a69f866f2",
-        "com_9caab69e0812",
-        "com_cb019f4e9752"
+        "com_9caab69e0812"
       ]
     },
     {
@@ -9516,7 +9664,7 @@
         "com_592d5ae965a5",
         "com_77ec11668bd8",
         "com_949217ac4f1f",
-        "com_a45e35db829c"
+        "com_a2114f75658a"
       ]
     },
     {
@@ -11569,11 +11717,11 @@
       ],
       "similarCommunityIds": [
         "com_218b97d674a6",
+        "com_a2114f75658a",
         "com_1dc58bbe47db",
         "com_3d91bda94131",
         "com_664ab77e1bba",
-        "com_ed952ca81836",
-        "com_1466f20a9300"
+        "com_ed952ca81836"
       ]
     },
     {
@@ -11779,10 +11927,10 @@
       "similarCommunityIds": [
         "com_07cac7652707",
         "com_dca352748139",
+        "com_f39b4df5d3d7",
         "com_8d86f6f9340b",
         "com_6b073d4b0f23",
-        "com_8664a7e5723e",
-        "com_a4d969c3c6eb"
+        "com_8664a7e5723e"
       ]
     },
     {
@@ -12286,10 +12434,10 @@
       "similarCommunityIds": [
         "com_1466f20a9300",
         "com_76160be8487b",
+        "com_a2114f75658a",
         "com_ffc1304a5cb6",
         "com_8f2a69f866f2",
-        "com_9caab69e0812",
-        "com_cb019f4e9752"
+        "com_9caab69e0812"
       ]
     },
     {
@@ -15145,9 +15293,9 @@
         "com_cbf59944fb61",
         "com_1f4c6080dc68",
         "com_510224f31954",
+        "com_a2114f75658a",
         "com_d36daf8ea112",
-        "com_9caab69e0812",
-        "com_a20864ed56ec"
+        "com_9caab69e0812"
       ]
     },
     {
@@ -15932,9 +16080,9 @@
         "com_5dd8d7d6e995",
         "com_bb4df3056be7",
         "com_77ec11668bd8",
+        "com_a2114f75658a",
         "com_a1c312a97abe",
-        "com_037b24ee6417",
-        "com_0ae542c496b3"
+        "com_037b24ee6417"
       ]
     },
     {
@@ -18357,12 +18505,12 @@
         "luma:usr-pboepvrkldsrviw"
       ],
       "similarCommunityIds": [
+        "com_f39b4df5d3d7",
         "com_cbe08adf6898",
         "com_07cac7652707",
         "com_14a9b81bfe8f",
         "com_79c45b85e55a",
-        "com_a1e1c13a75f0",
-        "com_d2d455d2d6c9"
+        "com_a1e1c13a75f0"
       ]
     },
     {
@@ -19178,8 +19326,8 @@
         "com_bb4df3056be7",
         "com_f990c90c32d5",
         "com_1740a8cfc76c",
-        "com_a45e35db829c",
-        "com_4a20115f4862"
+        "com_a2114f75658a",
+        "com_a45e35db829c"
       ]
     },
     {
@@ -19649,11 +19797,11 @@
       ],
       "similarCommunityIds": [
         "com_949217ac4f1f",
+        "com_a2114f75658a",
         "com_1466f20a9300",
         "com_43850d49f9e6",
         "com_70cbea4f18e4",
-        "com_76160be8487b",
-        "com_b736e77bdf93"
+        "com_76160be8487b"
       ]
     },
     {
@@ -67262,7 +67410,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-22T00:26:17.741646+00:00",
+  "lastUpdated": "2026-11-22T03:20:56.930137+00:00",
   "version": 1,
   "schemaVersion": 1
 }
