@@ -4610,9 +4610,9 @@
         "com_5251e78f4060",
         "com_8406f1267c2e",
         "com_99343fce4c7a",
+        "com_1b90851c14cf",
         "com_d74826b4ebc7",
-        "com_40bf372e58c5",
-        "com_037b24ee6417"
+        "com_40bf372e58c5"
       ]
     },
     {
@@ -4840,8 +4840,8 @@
         "com_cdd5daa67222",
         "com_d2d455d2d6c9",
         "com_c1410c07c4dd",
-        "com_14a9b81bfe8f",
-        "com_5582e2e97f1a"
+        "com_09b775d35c11",
+        "com_14a9b81bfe8f"
       ]
     },
     {
@@ -5659,9 +5659,9 @@
         "com_1e08b1e2de75",
         "com_6d05b1def86f",
         "com_fe94a7496581",
+        "com_09b775d35c11",
         "com_14a9b81bfe8f",
-        "com_1e68b580d0be",
-        "com_9f333da89132"
+        "com_1e68b580d0be"
       ]
     },
     {
@@ -6423,8 +6423,8 @@
         "com_d36daf8ea112",
         "com_85cecaa99bb1",
         "com_b66f9b932a79",
-        "com_1b90851c14cf",
-        "com_8f3049b2c187"
+        "com_8f3049b2c187",
+        "com_3942d7a4c6e3"
       ]
     },
     {
@@ -6500,10 +6500,10 @@
       "similarCommunityIds": [
         "com_eeb4e424a504",
         "com_0cc8630779d7",
-        "com_4c7fef32815c",
         "com_4e69412cb0a5",
         "com_55ca36db453a",
-        "com_733b8a7ddfff"
+        "com_733b8a7ddfff",
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -6713,10 +6713,10 @@
       "similarCommunityIds": [
         "com_feb5ce491629",
         "com_086ae090b29d",
+        "com_09b775d35c11",
         "com_30bd6ca662e0",
         "com_4eae7de1bfbd",
-        "com_7c6e7432bd13",
-        "com_3bc67889299d"
+        "com_7c6e7432bd13"
       ]
     },
     {
@@ -7071,9 +7071,9 @@
         "com_3be718149a43",
         "com_8406f1267c2e",
         "com_99343fce4c7a",
+        "com_1b90851c14cf",
         "com_d74826b4ebc7",
-        "com_40bf372e58c5",
-        "com_037b24ee6417"
+        "com_40bf372e58c5"
       ]
     },
     {
@@ -7808,9 +7808,9 @@
         "com_0e403135692e",
         "com_9a5da9b3c52e",
         "com_d2d455d2d6c9",
+        "com_09b775d35c11",
         "com_14a9b81bfe8f",
-        "com_2b6913d1e51a",
-        "com_3942d7a4c6e3"
+        "com_2b6913d1e51a"
       ]
     },
     {
@@ -8595,10 +8595,10 @@
       "similarCommunityIds": [
         "com_1e08b1e2de75",
         "com_6d05b1def86f",
+        "com_09b775d35c11",
         "com_2b6913d1e51a",
         "com_79c45b85e55a",
-        "com_8484b3e5cfee",
-        "com_b23683f6f558"
+        "com_8484b3e5cfee"
       ]
     },
     {
@@ -10924,9 +10924,9 @@
         "com_3be718149a43",
         "com_5251e78f4060",
         "com_8406f1267c2e",
+        "com_1b90851c14cf",
         "com_d74826b4ebc7",
-        "com_40bf372e58c5",
-        "com_037b24ee6417"
+        "com_40bf372e58c5"
       ]
     },
     {
@@ -11420,7 +11420,7 @@
       "name": "Design Lab Calendar",
       "kind": "recurring_series",
       "tagline": "Design Lab Calendar is a recurring event series in brooklyn.",
-      "description": "Design Lab Calendar is a recurring event series in brooklyn. Based on 6 observed event dates, it meets weekly on Tuesday and Thursday afternoons.",
+      "description": "Design Lab Calendar is a recurring event series in brooklyn. Based on 7 observed event dates, it meets weekly on Tuesday and Monday afternoons.",
       "categories": [
         "other"
       ],
@@ -11443,21 +11443,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-23",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 6
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
           "Tuesday",
-          "Thursday"
+          "Monday"
         ],
         "typicalTime": "15:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
-        "ed2cf5589c105a78"
+        "ed2cf5589c105a78",
+        "1516c3f49abdb475"
       ],
       "sourceAttributions": [
         "luma"
@@ -11466,7 +11467,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -12205,29 +12206,29 @@
       "slug": "reading-rhythms-nyc-2cb0a5",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, food in manhattan, upper west side.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, food in manhattan, upper west side. Based on 20 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, games in manhattan, upper west side.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, games in manhattan, upper west side. Based on 22 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
-        "food",
         "games",
+        "food",
         "art"
       ],
       "tags": [
         "books",
         "parties",
-        "food",
         "games",
+        "food",
         "art"
       ],
       "neighborhoods": [
         "manhattan",
         "upper west side",
-        "williamsburg",
-        "brooklyn"
+        "brooklyn",
+        "williamsburg"
       ],
-      "homeVenue": "Hotel Alameda",
+      "homeVenue": "625 Bergen St",
       "imageUrl": "https://images.lumacdn.com/api-uploads/06/cb892f27-81b5-47cd-8a35-5febc380d129.jpg",
       "links": [
         {
@@ -12240,7 +12241,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-23",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 22,
         "eventCount90d": 15
       },
       "schedule": {
@@ -12251,7 +12252,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 20
+        "sampleSize": 22
       },
       "upcomingEventIds": [
         "ca8881addf01aee7",
@@ -12274,7 +12275,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 20,
+        "observedDateCount": 22,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -12289,7 +12290,7 @@
         "com_d2d455d2d6c9",
         "com_733b8a7ddfff",
         "com_b0e15eaab803",
-        "com_4c7fef32815c"
+        "com_14a9b81bfe8f"
       ]
     },
     {
@@ -12355,12 +12356,12 @@
         "luma:cal-qdfcaeq9hk873jy"
       ],
       "similarCommunityIds": [
+        "com_09b775d35c11",
         "com_14a9b81bfe8f",
         "com_1e08b1e2de75",
         "com_2b6913d1e51a",
         "com_6d05b1def86f",
-        "com_cbe08adf6898",
-        "com_5a1a72bded1f"
+        "com_cbe08adf6898"
       ]
     },
     {
@@ -12518,6 +12519,78 @@
         "com_037b24ee6417",
         "com_0606c7e50fa8",
         "com_0ae542c496b3"
+      ]
+    },
+    {
+      "id": "com_09b775d35c11",
+      "slug": "lg-collective-studio-d35c11",
+      "name": "LG Collective Studio",
+      "kind": "recurring_series",
+      "tagline": "LG Collective Studio is a recurring event series centered on parties, food in east village.",
+      "description": "LG Collective Studio is a recurring event series centered on parties, food in east village. Based on 3 observed event dates, it meets weekly on Friday and Sunday mornings.",
+      "categories": [
+        "parties",
+        "food"
+      ],
+      "tags": [
+        "parties",
+        "food"
+      ],
+      "neighborhoods": [
+        "east village"
+      ],
+      "homeVenue": "138 2nd Ave suite 1",
+      "imageUrl": "https://images.lumacdn.com/uploads/p7/2ae21f31-c72c-470e-83a8-bf0059b581b3.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://www.liebergal.com/collectivestudio"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-22",
+        "upcomingEventCount": 1,
+        "eventCount90d": 2
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Sunday"
+        ],
+        "typicalTime": "10:00",
+        "confidence": 0.5,
+        "sampleSize": 3
+      },
+      "upcomingEventIds": [
+        "c7c3facf7f37b977"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-23",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:lg_collective_studio",
+        "luma:cal-r9ltkkudckhqkea"
+      ],
+      "similarCommunityIds": [
+        "com_14a9b81bfe8f",
+        "com_2b6913d1e51a",
+        "com_bb6928bc760c",
+        "com_1e08b1e2de75",
+        "com_6d05b1def86f",
+        "com_d6cec2ac3e5a"
       ]
     },
     {
@@ -13005,12 +13078,12 @@
         "luma:cal-shwmt96ahayzcyd"
       ],
       "similarCommunityIds": [
+        "com_09b775d35c11",
         "com_14a9b81bfe8f",
         "com_0e403135692e",
         "com_bb6928bc760c",
         "com_43850d49f9e6",
-        "com_489a14652e20",
-        "com_1e08b1e2de75"
+        "com_489a14652e20"
       ]
     },
     {
@@ -13088,8 +13161,8 @@
       "slug": "cohort-nyc-1c14cf",
       "name": "Cohort NYC",
       "kind": "recurring_series",
-      "tagline": "Cohort NYC is a recurring event series in lower east side.",
-      "description": "Cohort NYC is a recurring event series in lower east side. Based on 7 observed event dates, it meets weekly on Wednesday and Monday mornings.",
+      "tagline": "Cohort NYC is a recurring event series in lower east side, chelsea.",
+      "description": "Cohort NYC is a recurring event series in lower east side, chelsea. Based on 8 observed event dates, it meets weekly on Monday and Wednesday mornings.",
       "categories": [
         "other"
       ],
@@ -13097,7 +13170,8 @@
         "other"
       ],
       "neighborhoods": [
-        "lower east side"
+        "lower east side",
+        "chelsea"
       ],
       "homeVenue": "Moxy NYC Lower East Side",
       "imageUrl": "https://images.lumacdn.com/uploads/m2/d4d3e0eb-b1c1-43d5-9dd2-f5e9e1ba3e8b.jpg",
@@ -13112,21 +13186,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-23",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 7
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Monday"
+          "Monday",
+          "Wednesday"
         ],
         "typicalTime": "10:00",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
-        "4cffc818973b35a1"
+        "4cffc818973b35a1",
+        "05a38258e56f1b76"
       ],
       "sourceAttributions": [
         "luma"
@@ -13135,7 +13210,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -13145,12 +13220,12 @@
         "luma:cal-srs51va5d4qtxem"
       ],
       "similarCommunityIds": [
-        "com_037b24ee6417",
-        "com_0606c7e50fa8",
-        "com_0ae542c496b3",
-        "com_1c65032c5bbc",
-        "com_25ac0e23e246",
-        "com_29bf3dd9f892"
+        "com_3be718149a43",
+        "com_5251e78f4060",
+        "com_8406f1267c2e",
+        "com_99343fce4c7a",
+        "com_d74826b4ebc7",
+        "com_037b24ee6417"
       ]
     },
     {
@@ -13719,8 +13794,8 @@
         "com_2c239df2a554",
         "com_359977ec663e",
         "com_f28d3ae740a6",
-        "com_4c7fef32815c",
-        "com_d2d455d2d6c9"
+        "com_d2d455d2d6c9",
+        "com_29bf3dd9f892"
       ]
     },
     {
@@ -14396,9 +14471,9 @@
         "com_3be718149a43",
         "com_5251e78f4060",
         "com_99343fce4c7a",
+        "com_1b90851c14cf",
         "com_d74826b4ebc7",
-        "com_40bf372e58c5",
-        "com_037b24ee6417"
+        "com_40bf372e58c5"
       ]
     },
     {
@@ -14768,7 +14843,7 @@
         "com_1740a8cfc76c",
         "com_3ba809e126cd",
         "com_c567b4e02ff2",
-        "com_4c7fef32815c"
+        "com_71693d246d8f"
       ]
     },
     {
@@ -15271,18 +15346,18 @@
       "tagline": "Nooks and Socials is a recurring event series centered on parties in manhattan.",
       "description": "Nooks and Socials is a recurring event series centered on parties in manhattan. Based on 8 observed event dates, it meets weekly on Thursday and Tuesday afternoons.",
       "categories": [
-        "parties",
-        "other"
+        "other",
+        "parties"
       ],
       "tags": [
-        "parties",
-        "other"
+        "other",
+        "parties"
       ],
       "neighborhoods": [
         "manhattan"
       ],
       "homeVenue": "Melville, NY",
-      "imageUrl": "https://images.lumacdn.com/uploads/h0/2d1cdb2c-f827-434d-94f0-6d12db912c98.jpg",
+      "imageUrl": "https://images.lumacdn.com/uploads/p2/8ce54c3d-d2b8-439c-8b16-e9c6a60107f0.png",
       "links": [
         {
           "type": "luma",
@@ -15294,7 +15369,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-20",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 5
       },
       "schedule": {
@@ -15308,6 +15383,7 @@
         "sampleSize": 8
       },
       "upcomingEventIds": [
+        "192807f7df79b692",
         "eba57ac694f47084",
         "0a42db9219a85f2b"
       ],
@@ -16341,8 +16417,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, food in manhattan, williamsburg.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, food in manhattan, williamsburg. Based on 60 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, food in upper west side, manhattan.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, food in upper west side, manhattan. Based on 61 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -16358,10 +16434,10 @@
         "art"
       ],
       "neighborhoods": [
+        "upper west side",
         "manhattan",
         "williamsburg",
-        "brooklyn",
-        "upper west side"
+        "brooklyn"
       ],
       "homeVenue": "BX Eatery",
       "imageUrl": "https://images.lumacdn.com/api-uploads/06/cb892f27-81b5-47cd-8a35-5febc380d129.jpg",
@@ -16376,7 +16452,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-23",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 20,
         "eventCount90d": 71
       },
       "schedule": {
@@ -16387,7 +16463,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 60
+        "sampleSize": 61
       },
       "upcomingEventIds": [
         "ca8881addf01aee7",
@@ -16410,7 +16486,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 60,
+        "observedDateCount": 61,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -16424,7 +16500,7 @@
         "com_d2d455d2d6c9",
         "com_733b8a7ddfff",
         "com_b0e15eaab803",
-        "com_4c7fef32815c"
+        "com_14a9b81bfe8f"
       ]
     },
     {
@@ -19034,7 +19110,7 @@
         "com_8ff2a593caac",
         "com_2c239df2a554",
         "com_33a530deb7aa",
-        "com_4c7fef32815c"
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -19191,84 +19267,6 @@
         "com_c1410c07c4dd",
         "com_086ae090b29d",
         "com_7c6e7432bd13"
-      ]
-    },
-    {
-      "id": "com_4c7fef32815c",
-      "slug": "reading-rhythms-32815c",
-      "name": "Reading Rhythms",
-      "kind": "recurring_series",
-      "tagline": "Reading Rhythms is a recurring event series centered on books, parties in manhattan, upper west side.",
-      "description": "Reading Rhythms is a recurring event series centered on books, parties in manhattan, upper west side. Based on 5 observed event dates, it meets weekly on Monday and Thursday evenings.",
-      "categories": [
-        "books",
-        "parties"
-      ],
-      "tags": [
-        "books",
-        "parties"
-      ],
-      "neighborhoods": [
-        "manhattan",
-        "upper west side",
-        "harlem",
-        "long island city"
-      ],
-      "homeVenue": "Upper West Side",
-      "imageUrl": "https://images.lumacdn.com/api-uploads/ru/5da8a3c2-3d0a-49f8-a206-8ef50d6d6ed5.jpg",
-      "links": [
-        {
-          "type": "readingrhythms",
-          "label": "View on Readingrhythms",
-          "url": "https://readingrhythms.co/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 5,
-        "eventCount90d": 0
-      },
-      "schedule": {
-        "cadence": "weekly",
-        "typicalDays": [
-          "Monday",
-          "Thursday"
-        ],
-        "typicalTime": "18:30",
-        "confidence": 0.83,
-        "sampleSize": 5
-      },
-      "upcomingEventIds": [
-        "88c309f0d28a70dd",
-        "f035aaca8a11436d",
-        "e8de25ae9396c2a5",
-        "0fe8034bf61da8f6",
-        "d340e85d1829584a"
-      ],
-      "sourceAttributions": [
-        "readingrhythms"
-      ],
-      "lastVerifiedAt": "2026-11-23",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 5,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "url:https://readingrhythms.co"
-      ],
-      "similarCommunityIds": [
-        "com_f8c88ef9a8ca",
-        "com_1740a8cfc76c",
-        "com_2c239df2a554",
-        "com_359977ec663e",
-        "com_f28d3ae740a6",
-        "com_5ba4450f0467"
       ]
     },
     {
@@ -66405,7 +66403,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-23T00:25:02.621224+00:00",
+  "lastUpdated": "2026-11-23T01:38:56.241555+00:00",
   "version": 1,
   "schemaVersion": 1
 }
