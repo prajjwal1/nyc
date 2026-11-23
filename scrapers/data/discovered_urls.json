@@ -11113,7 +11113,7 @@
     "consecutive_empty_runs": 0,
     "status": "active",
     "next_retry_at": "2026-11-22T22:01:31.890952+00:00",
-    "last_surviving_yield": 3
+    "last_surviving_yield": 2
   },
   {
     "url": "https://eventbrite.com/o/51487304793",
@@ -17286,7 +17286,7 @@
       "luma_organizer_graph",
       "platform_calendar_fetch"
     ],
-    "last_surviving_yield": 1,
+    "last_surviving_yield": 0,
     "last_attempt_at": "2026-11-06T11:53:59.751091+00:00",
     "last_parsed_yield": 9,
     "last_success_at": "2026-11-06T11:53:59.751091+00:00",
@@ -23190,7 +23190,7 @@
       "eventbrite_organizer_graph",
       "platform_organizer_fetch"
     ],
-    "last_surviving_yield": 1,
+    "last_surviving_yield": 0,
     "last_attempt_at": "2026-11-21T01:09:42.458065+00:00",
     "last_parsed_yield": 12,
     "last_success_at": "2026-11-21T01:09:42.458065+00:00",
@@ -24715,5 +24715,95 @@
       "luma_organizer_graph"
     ],
     "last_surviving_yield": 2
+  },
+  {
+    "url": "https://bit.ly/events/",
+    "discovered_at": "2026-11-23T00:19:44.428089+00:00",
+    "discovered_via": "path-probe:bit.ly"
+  },
+  {
+    "url": "https://bookclubbar.com/events/",
+    "discovered_at": "2026-11-23T00:20:11.911760+00:00",
+    "discovered_via": "path-probe:bookclubbar.com"
+  },
+  {
+    "url": "https://readingrhythms.co/events/",
+    "discovered_at": "2026-11-23T00:20:18.230122+00:00",
+    "discovered_via": "path-probe:readingrhythms.co"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/a-gentle-new-year-move-breathe-receive",
+    "discovered_at": "2026-11-23T00:21:29.520749+00:00",
+    "discovered_via": "sitemap:yogaspace"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/yin-x-sound-meditation-with-sam-w",
+    "discovered_at": "2026-11-23T00:21:29.537849+00:00",
+    "discovered_via": "sitemap:yogaspace"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/reclaiming-the-voice-a-breathwork-journey-with-ani",
+    "discovered_at": "2026-11-23T00:21:29.556687+00:00",
+    "discovered_via": "sitemap:yogaspace"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/ekxgoi3ptm91tv7qh42znsrs0ishwn",
+    "discovered_at": "2026-11-23T00:21:29.573698+00:00",
+    "discovered_via": "sitemap:yogaspace"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/roll-and-restore-with-christine",
+    "discovered_at": "2026-11-23T00:21:29.590485+00:00",
+    "discovered_via": "sitemap:yogaspace"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/fall-equinox-sound-ceremony-with-patrick",
+    "discovered_at": "2026-11-23T00:21:29.607392+00:00",
+    "discovered_via": "sitemap:yogaspace"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/yoga-nidra-an-evening-of-deep-rest-with-leah",
+    "discovered_at": "2026-11-23T00:21:29.624434+00:00",
+    "discovered_via": "sitemap:yogaspace"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/arm-balances-the-art-of-flight-workshop",
+    "discovered_at": "2026-11-23T00:21:29.641279+00:00",
+    "discovered_via": "sitemap:yogaspace"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/solstice-sound-ceremony-with-patrick",
+    "discovered_at": "2026-11-23T00:21:29.727670+00:00",
+    "discovered_via": "sitemap:yogaspace"
+  },
+  {
+    "url": "https://www.yogaspace.nyc/events/full-moon-release-ritual-with-anna",
+    "discovered_at": "2026-11-23T00:21:29.744698+00:00",
+    "discovered_via": "sitemap:yogaspace"
+  },
+  {
+    "url": "https://yogaspace.nyc/events/",
+    "discovered_at": "2026-11-23T00:21:29.766685+00:00",
+    "discovered_via": "path-probe:yogaspace.nyc"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/books-through-bars-fundraiser-tickets-2004913412989",
+    "discovered_at": "2026-11-23T00:22:47.922470+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/singles-writing-night-tickets-1999065709350",
+    "discovered_at": "2026-11-23T00:22:47.939636+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/another-brooklyn-10th-anniversary-party-with-jacqueline-woodson-tickets-2004649974036",
+    "discovered_at": "2026-11-23T00:22:47.956776+00:00",
+    "discovered_via": "link_aggregator:linktr"
+  },
+  {
+    "url": "https://www.eventbrite.com/e/wine-tasting-101-where-it-started-tickets-2003518351322",
+    "discovered_at": "2026-11-23T00:22:47.973704+00:00",
+    "discovered_via": "link_aggregator:linktr"
   }
 ]
