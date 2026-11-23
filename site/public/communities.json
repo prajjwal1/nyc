@@ -4242,9 +4242,9 @@
         "com_dca352748139",
         "com_8d86f6f9340b",
         "com_cb019f4e9752",
-        "com_a45e35db829c",
         "com_037b24ee6417",
-        "com_0ae542c496b3"
+        "com_0ae542c496b3",
+        "com_68b36e93076a"
       ]
     },
     {
@@ -14603,8 +14603,13 @@
         "observedDateCount": 2,
         "hasFirstPartyIdentity": true
       },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "12442e13c869751f",
+          "signal": "all levels"
+        }
+      ],
       "aliases": [
         "instagram:utopiacollab.inc",
         "luma:cal-wdqxiq2sodgbpey"
@@ -15631,11 +15636,9 @@
       "tagline": "NYC Disc Golf is a recurring event series centered on outdoors in brooklyn.",
       "description": "NYC Disc Golf is a recurring event series centered on outdoors in brooklyn. Based on 3 observed event dates, it meets biweekly on Sunday and Tuesday evenings.",
       "categories": [
-        "other",
         "outdoors"
       ],
       "tags": [
-        "other",
         "outdoors"
       ],
       "neighborhoods": [
@@ -15688,12 +15691,12 @@
         "luma:cal-yyaiq5orklhzpf8"
       ],
       "similarCommunityIds": [
-        "com_bb4df3056be7",
+        "com_14ba17c2cfae",
         "com_8664a7e5723e",
-        "com_77ec11668bd8",
-        "com_a2114f75658a",
-        "com_a1c312a97abe",
-        "com_037b24ee6417"
+        "com_1a46b1930293",
+        "com_218b97d674a6",
+        "com_592d5ae965a5",
+        "com_77ec11668bd8"
       ]
     },
     {
@@ -18608,9 +18611,9 @@
         "com_bb4df3056be7",
         "com_f990c90c32d5",
         "com_a2114f75658a",
-        "com_a45e35db829c",
         "com_4a20115f4862",
-        "com_96a0049afb0f"
+        "com_96a0049afb0f",
+        "com_a1c312a97abe"
       ]
     },
     {
@@ -66550,7 +66553,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-23T09:02:10.228467+00:00",
+  "lastUpdated": "2026-11-23T09:46:34.575122+00:00",
   "version": 1,
   "schemaVersion": 1
 }
