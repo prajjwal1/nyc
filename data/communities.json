@@ -4094,10 +4094,10 @@
       "similarCommunityIds": [
         "com_9fe1e0196792",
         "com_4eae7de1bfbd",
+        "com_95380618d262",
         "com_d74826b4ebc7",
         "com_a1e1c13a75f0",
-        "com_1c65032c5bbc",
-        "com_25ac0e23e246"
+        "com_1c65032c5bbc"
       ]
     },
     {
@@ -5036,7 +5036,7 @@
         "com_5251e78f4060",
         "com_8406f1267c2e",
         "com_99343fce4c7a",
-        "com_1b90851c14cf",
+        "com_95380618d262",
         "com_d74826b4ebc7",
         "com_40bf372e58c5"
       ]
@@ -5564,7 +5564,7 @@
         "com_3d91bda94131",
         "com_76ac3298109f",
         "com_7e654f58296b",
-        "com_8436aa2d3f48"
+        "com_7fb75b16db27"
       ]
     },
     {
@@ -6900,8 +6900,8 @@
         "com_d36daf8ea112",
         "com_85cecaa99bb1",
         "com_edf7e9714aa8",
-        "com_3cfda965b912",
-        "com_8f3049b2c187"
+        "com_1b90851c14cf",
+        "com_3cfda965b912"
       ]
     },
     {
@@ -7045,11 +7045,11 @@
       ],
       "similarCommunityIds": [
         "com_0ddda41d080d",
+        "com_7fb75b16db27",
         "com_1e60766a7318",
         "com_79c45b85e55a",
         "com_9c336784d52c",
-        "com_edf7e9714aa8",
-        "com_fe4b6663b721"
+        "com_edf7e9714aa8"
       ]
     },
     {
@@ -7491,7 +7491,7 @@
         "com_3be718149a43",
         "com_8406f1267c2e",
         "com_99343fce4c7a",
-        "com_1b90851c14cf",
+        "com_95380618d262",
         "com_d74826b4ebc7",
         "com_40bf372e58c5"
       ]
@@ -7862,7 +7862,7 @@
         "com_0ddda41d080d",
         "com_3d91bda94131",
         "com_76160be8487b",
-        "com_4b9d7692e567"
+        "com_7fb75b16db27"
       ]
     },
     {
@@ -8451,6 +8451,80 @@
       ]
     },
     {
+      "id": "com_6bbe66998143",
+      "slug": "the-canvas-nyc-998143",
+      "name": "The Canvas NYC",
+      "kind": "recurring_series",
+      "tagline": "The Canvas NYC is a recurring event series centered on exploration, theater in soho, manhattan.",
+      "description": "The Canvas NYC is a recurring event series centered on exploration, theater in soho, manhattan. Based on 2 observed event dates, it meets weekly on Friday and Saturday evenings.",
+      "categories": [
+        "exploration",
+        "theater"
+      ],
+      "tags": [
+        "exploration",
+        "theater"
+      ],
+      "neighborhoods": [
+        "soho",
+        "manhattan"
+      ],
+      "homeVenue": "456 W Broadway",
+      "imageUrl": "https://images.lumacdn.com/uploads/nd/e1555ef2-c9aa-4f6c-9f8d-6ee2fcc83a7a.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/thecanvasnyc"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Friday",
+          "Saturday"
+        ],
+        "typicalTime": "17:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "f2f7fc2076c0296c",
+        "213a8b0b9daed746"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-24",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:thecanvasnyc",
+        "luma:cal-8pbzubxu1rqfgsw"
+      ],
+      "similarCommunityIds": [
+        "com_394b0acee032",
+        "com_f8e07f99b39d",
+        "com_e9748c1176c1",
+        "com_9e04598579ba",
+        "com_57359d725dc0",
+        "com_fbbdf45a2a0e"
+      ]
+    },
+    {
       "id": "com_c92366a939d5",
       "slug": "the-knowledge-shop-a939d5",
       "name": "The Knowledge Shop",
@@ -9022,11 +9096,83 @@
       ],
       "similarCommunityIds": [
         "com_6577316c8d76",
+        "com_bd68e20ac6b2",
         "com_3be718149a43",
         "com_5251e78f4060",
         "com_8406f1267c2e",
-        "com_99343fce4c7a",
-        "com_30e8efd15421"
+        "com_99343fce4c7a"
+      ]
+    },
+    {
+      "id": "com_95380618d262",
+      "slug": "ugly-talk-18d262",
+      "name": "Ugly Talk",
+      "kind": "recurring_series",
+      "tagline": "Ugly Talk is a recurring event series in chelsea, manhattan.",
+      "description": "Ugly Talk is a recurring event series in chelsea, manhattan. Based on 2 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "chelsea",
+        "manhattan"
+      ],
+      "homeVenue": "Resident Company Club - Chelsea",
+      "imageUrl": "https://images.lumacdn.com/api-uploads/yw/73a93964-7076-495d-9e62-0dfffc2316cc.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/uglytalk"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Thursday",
+          "Wednesday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "753505f838a93ef0",
+        "0152e7a7a6ff3bcc"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-24",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:ugly.talk",
+        "luma:cal-cte8fsi0hac39gn"
+      ],
+      "similarCommunityIds": [
+        "com_d74826b4ebc7",
+        "com_1c65032c5bbc",
+        "com_25ac0e23e246",
+        "com_36cb2681053d",
+        "com_3be718149a43",
+        "com_5251e78f4060"
       ]
     },
     {
@@ -9806,6 +9952,69 @@
       ]
     },
     {
+      "id": "com_7fb75b16db27",
+      "slug": "introw-16db27",
+      "name": "Introw",
+      "kind": "recurring_series",
+      "tagline": "Introw is a recurring event series centered on music in manhattan.",
+      "description": "Introw is a recurring event series centered on music in manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "categories": [
+        "music"
+      ],
+      "tags": [
+        "music"
+      ],
+      "neighborhoods": [
+        "manhattan"
+      ],
+      "homeVenue": "Hav & Mar by Marcus Samuelsson",
+      "imageUrl": "https://images.lumacdn.com/uploads/ta/8b9c1daa-59b6-44ef-81a4-a0b45173aa67.png",
+      "links": [],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 1,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Thursday"
+        ],
+        "typicalTime": "18:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "2eb69ef71cebadfe"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-24",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-f9nrd3b4s2f1vyj"
+      ],
+      "similarCommunityIds": [
+        "com_0ddda41d080d",
+        "com_3d91bda94131",
+        "com_1e60766a7318",
+        "com_79c45b85e55a",
+        "com_9c336784d52c",
+        "com_edf7e9714aa8"
+      ]
+    },
+    {
       "id": "com_bb4df3056be7",
       "slug": "movie-nights-056be7",
       "name": "Movie Nights",
@@ -10434,9 +10643,9 @@
         "com_40bf372e58c5",
         "com_8c92a460b4fd",
         "com_9c715da909bc",
+        "com_bd68e20ac6b2",
         "com_30e8efd15421",
-        "com_387990e42591",
-        "com_4187c60b9599"
+        "com_387990e42591"
       ]
     },
     {
@@ -11202,9 +11411,9 @@
         "luma:cal-k0oppywkexduqng"
       ],
       "similarCommunityIds": [
+        "com_1b90851c14cf",
         "com_351328ae040c",
         "com_e7902ef31e5c",
-        "com_1b90851c14cf",
         "com_037b24ee6417",
         "com_09f04dc6fc36",
         "com_0ae542c496b3"
@@ -11420,7 +11629,7 @@
         "com_3be718149a43",
         "com_5251e78f4060",
         "com_8406f1267c2e",
-        "com_1b90851c14cf",
+        "com_95380618d262",
         "com_d74826b4ebc7",
         "com_40bf372e58c5"
       ]
@@ -13665,8 +13874,8 @@
       "slug": "cohort-nyc-1c14cf",
       "name": "Cohort NYC",
       "kind": "recurring_series",
-      "tagline": "Cohort NYC is a recurring event series in lower east side, chelsea.",
-      "description": "Cohort NYC is a recurring event series in lower east side, chelsea. Based on 8 observed event dates, it meets weekly on Monday and Wednesday mornings.",
+      "tagline": "Cohort NYC is a recurring event series in lower east side.",
+      "description": "Cohort NYC is a recurring event series in lower east side. Based on 8 observed event dates, it meets weekly on Monday and Wednesday mornings.",
       "categories": [
         "other"
       ],
@@ -13674,8 +13883,7 @@
         "other"
       ],
       "neighborhoods": [
-        "lower east side",
-        "chelsea"
+        "lower east side"
       ],
       "homeVenue": "Moxy NYC Lower East Side",
       "imageUrl": "https://images.lumacdn.com/uploads/m2/d4d3e0eb-b1c1-43d5-9dd2-f5e9e1ba3e8b.jpg",
@@ -13690,7 +13898,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-23",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 1,
         "eventCount90d": 7
       },
       "schedule": {
@@ -13704,8 +13912,7 @@
         "sampleSize": 8
       },
       "upcomingEventIds": [
-        "4cffc818973b35a1",
-        "05a38258e56f1b76"
+        "4cffc818973b35a1"
       ],
       "sourceAttributions": [
         "luma"
@@ -13724,12 +13931,12 @@
         "luma:cal-srs51va5d4qtxem"
       ],
       "similarCommunityIds": [
-        "com_3be718149a43",
-        "com_5251e78f4060",
-        "com_8406f1267c2e",
-        "com_99343fce4c7a",
-        "com_d74826b4ebc7",
-        "com_037b24ee6417"
+        "com_3cfda965b912",
+        "com_037b24ee6417",
+        "com_0ae542c496b3",
+        "com_1c65032c5bbc",
+        "com_25ac0e23e246",
+        "com_29bf3dd9f892"
       ]
     },
     {
@@ -13885,7 +14092,7 @@
       "name": "Brooklyn Community Pride Center",
       "kind": "institutional_program",
       "tagline": "Brooklyn Community Pride Center is a community program in crown heights, williamsburg.",
-      "description": "Brooklyn Community Pride Center is a community program in crown heights, williamsburg. Based on 7 observed event dates, it meets weekly on Monday and Saturday evenings.",
+      "description": "Brooklyn Community Pride Center is a community program in crown heights, williamsburg. Based on 8 observed event dates, it meets weekly on Monday and Saturday evenings.",
       "categories": [
         "other"
       ],
@@ -13897,7 +14104,7 @@
         "williamsburg"
       ],
       "homeVenue": "Brooklyn Community Pride Center Crown Heights",
-      "imageUrl": "https://images.lumacdn.com/uploads/gx/8619bfae-fbc0-40fe-8706-40ce9732c486.png",
+      "imageUrl": "https://images.lumacdn.com/uploads/bg/1d75fab3-a3bc-4fb7-a6eb-1c51524c7772.png",
       "links": [
         {
           "type": "luma",
@@ -13908,9 +14115,9 @@
       "joinMethod": "View an upcoming event",
       "activity": {
         "state": "active",
-        "lastEventDate": "2026-11-23",
-        "upcomingEventCount": 2,
-        "eventCount90d": 7
+        "lastEventDate": "2026-11-24",
+        "upcomingEventCount": 3,
+        "eventCount90d": 8
       },
       "schedule": {
         "cadence": "weekly",
@@ -13920,9 +14127,10 @@
         ],
         "typicalTime": "20:00",
         "confidence": 1.0,
-        "sampleSize": 7
+        "sampleSize": 8
       },
       "upcomingEventIds": [
+        "9910f6f47baaa2fe",
         "e66650e23f292c62",
         "e07ee01cabe1f80e"
       ],
@@ -13933,7 +14141,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 7,
+        "observedDateCount": 8,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -14850,7 +15058,7 @@
         "com_3be718149a43",
         "com_5251e78f4060",
         "com_99343fce4c7a",
-        "com_1b90851c14cf",
+        "com_95380618d262",
         "com_d74826b4ebc7",
         "com_40bf372e58c5"
       ]
@@ -15780,12 +15988,12 @@
         "luma:cal-yppeooiilrhumaw"
       ],
       "similarCommunityIds": [
+        "com_95380618d262",
         "com_1c65032c5bbc",
         "com_25ac0e23e246",
         "com_36cb2681053d",
         "com_3be718149a43",
-        "com_5251e78f4060",
-        "com_5f3066e419a7"
+        "com_5251e78f4060"
       ]
     },
     {
@@ -17069,7 +17277,7 @@
         "typicalDays": [
           "Tuesday"
         ],
-        "typicalTime": "10:00",
+        "typicalTime": "11:00",
         "confidence": 0.33,
         "sampleSize": 2
       },
@@ -18297,6 +18505,78 @@
       ]
     },
     {
+      "id": "com_bd68e20ac6b2",
+      "slug": "cndlnyc-fragrance-studio-0ac6b2",
+      "name": "CNDLNYC Fragrance Studio",
+      "kind": "recurring_series",
+      "tagline": "CNDLNYC Fragrance Studio is a recurring event series in chelsea, manhattan.",
+      "description": "CNDLNYC Fragrance Studio is a recurring event series in chelsea, manhattan. Based on 2 observed event dates, it meets biweekly on Thursday and Sunday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "chelsea",
+        "manhattan"
+      ],
+      "homeVenue": "77 W 24th St",
+      "imageUrl": "https://images.lumacdn.com/uploads/hz/01739194-179c-42fd-8a78-fb5f7bdb19a4.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://www.cndlnyc.com"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Thursday",
+          "Sunday"
+        ],
+        "typicalTime": "17:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "f5a01fc23d6f36d9",
+        "310184bc57e91903"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-24",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:cndlnyc",
+        "luma:usr-qpuby0dtierygsm"
+      ],
+      "similarCommunityIds": [
+        "com_30e8efd15421",
+        "com_40bf372e58c5",
+        "com_483b995f5504",
+        "com_7c6c5c3e08c8",
+        "com_94fe2e2a7db6",
+        "com_ac46c363d4c9"
+      ]
+    },
+    {
       "id": "com_f783b3a7385a",
       "slug": "tr-s-bons-documentaires-en-fran-ais-a7385a",
       "name": "Tr\u00e8s Bons Documentaires en Fran\u00e7ais",
@@ -18435,7 +18715,7 @@
       "name": "Craft Club NYC",
       "kind": "club",
       "tagline": "Craft Club NYC is a community club in manhattan, east village.",
-      "description": "Craft Club NYC is a community club in manhattan, east village. Based on 4 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "description": "Craft Club NYC is a community club in manhattan, east village. Based on 5 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
       "categories": [
         "other"
       ],
@@ -18453,7 +18733,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 4,
+        "upcomingEventCount": 5,
         "eventCount90d": 0
       },
       "schedule": {
@@ -18463,14 +18743,15 @@
           "Wednesday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.67,
-        "sampleSize": 4
+        "confidence": 0.83,
+        "sampleSize": 5
       },
       "upcomingEventIds": [
         "1cab334d80e6a252",
         "f24da0cd8792c4d8",
         "f81841003b20ea63",
-        "20e4395f3ac948e0"
+        "20e4395f3ac948e0",
+        "b658156951bec1ee"
       ],
       "sourceAttributions": [
         "luma"
@@ -18479,7 +18760,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 4,
+        "observedDateCount": 5,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -18975,11 +19256,11 @@
       ],
       "similarCommunityIds": [
         "com_3d91bda94131",
+        "com_7fb75b16db27",
         "com_1e60766a7318",
         "com_79c45b85e55a",
         "com_9c336784d52c",
-        "com_edf7e9714aa8",
-        "com_fe4b6663b721"
+        "com_edf7e9714aa8"
       ]
     },
     {
@@ -19465,7 +19746,7 @@
         "com_0ddda41d080d",
         "com_33a530deb7aa",
         "com_3d91bda94131",
-        "com_c4469caf0091"
+        "com_7fb75b16db27"
       ]
     },
     {
@@ -66780,7 +67061,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-24T16:08:04.230265+00:00",
+  "lastUpdated": "2026-11-24T17:36:37.292253+00:00",
   "version": 1,
   "schemaVersion": 1
 }
