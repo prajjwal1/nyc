@@ -1025,7 +1025,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0099,
+      "tasteScore": 0.0098,
       "score": 0.35,
       "highlights": [
         "free"
@@ -1690,7 +1690,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0513,
+      "tasteScore": 0.0511,
       "score": 0.35,
       "highlights": [
         "free"
@@ -1853,7 +1853,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0519,
+      "tasteScore": 0.0518,
       "score": 0.464,
       "highlights": [
         "free"
@@ -1910,7 +1910,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0469,
+      "tasteScore": 0.0468,
       "score": 0.411,
       "highlights": [
         "free"
@@ -2029,7 +2029,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0131,
+      "tasteScore": 0.013,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -2344,7 +2344,7 @@
         "From an account you follow",
         "From a source you like"
       ],
-      "tasteScore": 0.1,
+      "tasteScore": 0.1002,
       "score": 0.25,
       "highlights": [
         "following",
@@ -2733,8 +2733,10 @@
         "From a source you like"
       ],
       "tasteScore": 0.0219,
-      "score": 0.416,
-      "highlights": [],
+      "score": 0.544,
+      "highlights": [
+        "verified"
+      ],
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -2743,7 +2745,8 @@
       "ocrEnriched": false,
       "structuredTitle": false,
       "contributingSources": [
-        "eventbrite"
+        "eventbrite",
+        "substack"
       ],
       "likes": 0,
       "comments": 0,
@@ -3086,6 +3089,60 @@
       "primaryCommunityId": "com_3ba809e126cd"
     },
     {
+      "id": "5e95929d991768f1",
+      "title": "DINNER 18\uff5c\u4e0b\u73ed\u5c0f\u805a \u00b7 \u534e\u5c14\u8857\u4e4b\u201c\u7f8a\u201d \ud83d\udcf0",
+      "description": "",
+      "date": "2026-11-24",
+      "startTime": "19:00",
+      "endTime": "21:00",
+      "location": {
+        "name": "Manhattan",
+        "address": "New York, NY",
+        "neighborhood": "manhattan"
+      },
+      "categories": [
+        "other"
+      ],
+      "source": "luma",
+      "sourceUrl": "https://luma.com/gv6z6nbq",
+      "imageUrl": "https://images.lumacdn.com/uploads/c9/b2845e86-ed02-4a98-96f4-085f2612d144.png",
+      "price": "unknown",
+      "scrapedAt": "2026-11-24T04:40:14.450328",
+      "organizer": "Table Unknown Chapter NYC",
+      "organizerUrl": "https://luma.com/tableunknown",
+      "organizerRefs": [
+        {
+          "externalId": "cal-sycgGqlqC6jvMIp",
+          "name": "Table Unknown Chapter NYC",
+          "url": "https://luma.com/tableunknown",
+          "platform": "luma",
+          "role": "host"
+        }
+      ],
+      "attendingCount": 0,
+      "catalogSource": "luma_nyc",
+      "discoveryLane": "explore",
+      "structuredTitle": true,
+      "firstSeenAt": "2026-11-23T22:02:22.598501+00:00",
+      "recommendationReasons": [
+        "Happening this week"
+      ],
+      "tasteScore": 0.0117,
+      "score": 0.35,
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "luma"
+      ],
+      "likes": 0,
+      "comments": 0
+    },
+    {
       "id": "c9205fc2f41573bc",
       "title": "Give & Gab: A Happy Hour by MHOB",
       "description": "Join us for a moment to give thanks for all that we have, and the friends that we've made along the way. Super casual, no fuss, no agenda, just gab, and an opportunity to give back. Our one ask is that you bring one box of tampons or pads. Why?",
@@ -3129,60 +3186,6 @@
       "highlights": [
         "free"
       ],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "luma"
-      ],
-      "likes": 0,
-      "comments": 0
-    },
-    {
-      "id": "5e95929d991768f1",
-      "title": "DINNER 18\uff5c\u4e0b\u73ed\u5c0f\u805a \u00b7 \u534e\u5c14\u8857\u4e4b\u201c\u7f8a\u201d \ud83d\udcf0",
-      "description": "",
-      "date": "2026-11-24",
-      "startTime": "19:00",
-      "endTime": "21:00",
-      "location": {
-        "name": "Manhattan",
-        "address": "New York, NY",
-        "neighborhood": "manhattan"
-      },
-      "categories": [
-        "other"
-      ],
-      "source": "luma",
-      "sourceUrl": "https://luma.com/gv6z6nbq",
-      "imageUrl": "https://images.lumacdn.com/uploads/c9/b2845e86-ed02-4a98-96f4-085f2612d144.png",
-      "price": "unknown",
-      "scrapedAt": "2026-11-24T04:40:14.450328",
-      "organizer": "Table Unknown Chapter NYC",
-      "organizerUrl": "https://luma.com/tableunknown",
-      "organizerRefs": [
-        {
-          "externalId": "cal-sycgGqlqC6jvMIp",
-          "name": "Table Unknown Chapter NYC",
-          "url": "https://luma.com/tableunknown",
-          "platform": "luma",
-          "role": "host"
-        }
-      ],
-      "attendingCount": 0,
-      "catalogSource": "luma_nyc",
-      "discoveryLane": "explore",
-      "structuredTitle": true,
-      "firstSeenAt": "2026-11-23T22:02:22.598501+00:00",
-      "recommendationReasons": [
-        "Happening this week"
-      ],
-      "tasteScore": 0.0117,
-      "score": 0.35,
-      "highlights": [],
       "userSaved": false,
       "userTagged": false,
       "userAffinity": false,
@@ -3339,7 +3342,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0652,
+      "tasteScore": 0.0651,
       "score": 0.591,
       "highlights": [
         "meet-people"
@@ -3533,7 +3536,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0355,
+      "tasteScore": 0.0356,
       "discoveryLane": "personal",
       "recommendationReasons": [
         "From an account you follow",
@@ -4172,7 +4175,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0253,
+      "tasteScore": 0.0254,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Happening this week"
@@ -4445,7 +4448,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0414,
+      "tasteScore": 0.0415,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -4631,7 +4634,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.031,
+      "tasteScore": 0.0311,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -4969,7 +4972,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.022,
+      "tasteScore": 0.0221,
       "score": 0.35,
       "highlights": [
         "free"
@@ -5017,7 +5020,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.017,
+      "tasteScore": 0.0171,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -5186,7 +5189,7 @@
       "recommendationReasons": [
         "Nearby in Williamsburg"
       ],
-      "tasteScore": 0.0118,
+      "tasteScore": 0.0119,
       "score": 0.35,
       "highlights": [
         "free",
@@ -5656,7 +5659,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.022,
+      "tasteScore": 0.0219,
       "score": 0.35,
       "highlights": [
         "free"
@@ -5918,7 +5921,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0362,
+      "tasteScore": 0.0363,
       "score": 0.35,
       "highlights": []
     },
@@ -5960,7 +5963,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0365,
+      "tasteScore": 0.0364,
       "score": 0.35,
       "highlights": [
         "free"
@@ -6031,7 +6034,7 @@
       "recommendationReasons": [
         "From an account you follow"
       ],
-      "tasteScore": 0.0425,
+      "tasteScore": 0.0426,
       "score": 0.529,
       "highlights": [
         "following",
@@ -6149,7 +6152,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0175,
+      "tasteScore": 0.0176,
       "score": 0.35,
       "highlights": [
         "free"
@@ -6492,6 +6495,68 @@
       "comments": 0
     },
     {
+      "id": "c320441742a3604e",
+      "title": "Pizzazz with Gary Gulman",
+      "description": "Pizzazz with Gary Gulman - Wednesday, October 28 - 7:00pm Doors / 7:30pm ShowAbout this EventComedian Gary Gulman (HBO, Comedy Central) performs an extended set of new material and invite",
+      "date": "2026-11-25",
+      "startTime": "19:30",
+      "endTime": null,
+      "location": {
+        "name": "Union Hall",
+        "address": "702 Union St., Brooklyn, NY 11215",
+        "neighborhood": "brooklyn"
+      },
+      "categories": [
+        "music",
+        "comedy"
+      ],
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/pizzazz-with-gary-gulman-tickets-2004047837028",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1196817263%2F282041210522%2F1%2Foriginal.20230226-185050?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=ef902aa676dd2af96f98973871e3eec6",
+      "price": "unknown",
+      "scrapedAt": "2026-11-21T12:14:27.026204",
+      "organizer": "Union Hall",
+      "organizerUrl": "https://eventbrite.com/o/17899496497",
+      "organizerRefs": [
+        {
+          "url": "https://eventbrite.com/o/17899496497",
+          "role": "host",
+          "externalId": "17899496497",
+          "name": "Union Hall",
+          "platform": "eventbrite"
+        }
+      ],
+      "catalogSource": "eventbrite_organizer",
+      "discoveryLane": "personal",
+      "discoveryVia": "curated:agent_recommended_vetted,eventbrite_organizer_graph,previous_organizer",
+      "firstSeenAt": "2026-11-21T12:19:55.185082+00:00",
+      "recommendationReasons": [
+        "From a source you like"
+      ],
+      "tasteScore": 0.0176,
+      "score": 0.634,
+      "highlights": [
+        "verified"
+      ],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "allevents",
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "communityIds": [
+        "com_cb019f4e9752"
+      ],
+      "primaryCommunityId": "com_cb019f4e9752"
+    },
+    {
       "id": "7a0a7d986a875cbe",
       "title": "New York Philharmonic @ David Geffen Hall, Lincoln Center",
       "description": "New York Philharmonic at David Geffen Hall, Lincoln Center at",
@@ -6577,7 +6642,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0451,
+      "tasteScore": 0.045,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -6689,7 +6754,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0295,
+      "tasteScore": 0.0296,
       "score": 0.679,
       "highlights": [
         "free",
@@ -6708,66 +6773,45 @@
       "comments": 0
     },
     {
-      "id": "c320441742a3604e",
-      "title": "Pizzazz with Gary Gulman",
-      "description": "Pizzazz with Gary Gulman - Wednesday, October 28 - 7:00pm Doors / 7:30pm ShowAbout this EventComedian Gary Gulman (HBO, Comedy Central) performs an extended set of new material and invite",
+      "id": "282bbde620835f5c",
+      "title": "FLAGFESTNYC at Champagne Problems",
+      "description": "Pull up to flag fest n at Champagne Problems, presented by RTC, for a night of smooth caribean vibes, to hip hop energy. Enjoy great music",
       "date": "2026-11-25",
       "startTime": "20:00",
       "endTime": null,
       "location": {
-        "name": "Union Hall",
-        "address": "702 Union St., Brooklyn, NY 11215",
-        "neighborhood": "brooklyn"
+        "name": "207 Bowery",
+        "address": "207 Bowery",
+        "neighborhood": null,
+        "lat": 40.7212755,
+        "lng": -73.99341439999999
       },
       "categories": [
-        "music",
-        "comedy"
+        "music"
       ],
       "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/pizzazz-with-gary-gulman-tickets-2004047837028",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1196817263%2F282041210522%2F1%2Foriginal.20230226-185050?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=ef902aa676dd2af96f98973871e3eec6",
+      "sourceUrl": "https://www.eventbrite.com/e/flagfestnyc-at-champagne-problems-tickets-2003621783691",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1196737044%2F165609966285%2F1%2Foriginal.20261028-012334?crop=focalpoint&fit=crop&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.488&fp-y=0.529&s=ca2c1d76b8091adaeac2c04828802dd8",
       "price": "unknown",
-      "scrapedAt": "2026-11-21T12:14:27.026204",
-      "organizer": "Union Hall",
-      "organizerUrl": "https://eventbrite.com/o/17899496497",
+      "scrapedAt": "2026-11-19T01:49:30.597163",
+      "organizerUrl": "https://eventbrite.com/o/9789186973",
       "organizerRefs": [
         {
-          "url": "https://eventbrite.com/o/17899496497",
+          "url": "https://eventbrite.com/o/9789186973",
+          "platform": "eventbrite",
           "role": "host",
-          "externalId": "17899496497",
-          "name": "Union Hall",
-          "platform": "eventbrite"
+          "externalId": "9789186973"
         }
       ],
-      "catalogSource": "eventbrite_organizer",
       "discoveryLane": "personal",
-      "discoveryVia": "curated:agent_recommended_vetted,eventbrite_organizer_graph,previous_organizer",
-      "firstSeenAt": "2026-11-21T12:19:55.185082+00:00",
+      "discoveryVia": "eventbrite_search",
+      "firstSeenAt": "2026-11-19T01:51:57.467707+00:00",
       "recommendationReasons": [
-        "From a source you like"
+        "Happening this week"
       ],
-      "tasteScore": 0.0176,
-      "score": 0.634,
-      "highlights": [
-        "verified"
-      ],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "structuredTitle": false,
-      "contributingSources": [
-        "allevents",
-        "eventbrite"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "communityIds": [
-        "com_cb019f4e9752"
-      ],
-      "primaryCommunityId": "com_cb019f4e9752"
+      "tasteScore": 0.0074,
+      "score": 0.35,
+      "highlights": []
     },
     {
       "id": "265e54270070c9c6",
@@ -6820,7 +6864,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0264,
+      "tasteScore": 0.0265,
       "score": 0.551,
       "highlights": [
         "vibes"
@@ -6880,54 +6924,13 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0456,
+      "tasteScore": 0.0457,
       "score": 0.404,
       "highlights": [],
       "communityIds": [
         "com_4eae7de1bfbd"
       ],
       "primaryCommunityId": "com_4eae7de1bfbd"
-    },
-    {
-      "id": "282bbde620835f5c",
-      "title": "FLAGFESTNYC at Champagne Problems",
-      "description": "Pull up to flag fest n at Champagne Problems, presented by RTC, for a night of smooth caribean vibes, to hip hop energy. Enjoy great music",
-      "date": "2026-11-25",
-      "startTime": "20:00",
-      "endTime": null,
-      "location": {
-        "name": "207 Bowery",
-        "address": "207 Bowery",
-        "neighborhood": null,
-        "lat": 40.7212755,
-        "lng": -73.99341439999999
-      },
-      "categories": [
-        "music"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/flagfestnyc-at-champagne-problems-tickets-2003621783691",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1196737044%2F165609966285%2F1%2Foriginal.20261028-012334?crop=focalpoint&fit=crop&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.488&fp-y=0.529&s=ca2c1d76b8091adaeac2c04828802dd8",
-      "price": "unknown",
-      "scrapedAt": "2026-11-19T01:49:30.597163",
-      "organizerUrl": "https://eventbrite.com/o/9789186973",
-      "organizerRefs": [
-        {
-          "url": "https://eventbrite.com/o/9789186973",
-          "platform": "eventbrite",
-          "role": "host",
-          "externalId": "9789186973"
-        }
-      ],
-      "discoveryLane": "personal",
-      "discoveryVia": "eventbrite_search",
-      "firstSeenAt": "2026-11-19T01:51:57.467707+00:00",
-      "recommendationReasons": [
-        "Happening this week"
-      ],
-      "tasteScore": 0.0074,
-      "score": 0.35,
-      "highlights": []
     },
     {
       "id": "769a496694ef5d2c",
@@ -7025,7 +7028,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0193,
+      "tasteScore": 0.0194,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -7113,7 +7116,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0145,
+      "tasteScore": 0.0146,
       "score": 0.354,
       "highlights": []
     },
@@ -7243,7 +7246,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0489,
+      "tasteScore": 0.0488,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -7396,7 +7399,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0535,
+      "tasteScore": 0.0536,
       "score": 0.35,
       "highlights": [
         "free"
@@ -7653,7 +7656,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0252,
+      "tasteScore": 0.0253,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -8019,7 +8022,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0231,
+      "tasteScore": 0.0232,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -8688,7 +8691,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.01,
+      "tasteScore": 0.0101,
       "score": 0.35,
       "highlights": [
         "free"
@@ -8908,7 +8911,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0191,
+      "tasteScore": 0.019,
       "score": 0.35,
       "highlights": [
         "vibes"
@@ -9473,7 +9476,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0634,
+      "tasteScore": 0.0635,
       "score": 0.35,
       "highlights": [
         "free"
@@ -9651,7 +9654,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0439,
+      "tasteScore": 0.044,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -10081,7 +10084,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0362,
+      "tasteScore": 0.0363,
       "score": 0.48,
       "highlights": [
         "free"
@@ -10329,7 +10332,7 @@
       "recommendationReasons": [
         "Confirmed by 2 sources"
       ],
-      "tasteScore": 0.0075,
+      "tasteScore": 0.0074,
       "score": 0.394,
       "highlights": [
         "verified"
@@ -10866,7 +10869,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.025,
+      "tasteScore": 0.0249,
       "score": 0.351,
       "highlights": [],
       "userSaved": false,
@@ -10938,7 +10941,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0198,
+      "tasteScore": 0.0197,
       "score": 0.431,
       "highlights": [
         "vibes"
@@ -11449,6 +11452,48 @@
       "primaryCommunityId": "com_cb019f4e9752"
     },
     {
+      "id": "ffe606ef1b1b77bc",
+      "title": "The Blackout Friday Nov.27th at Mama Taco FREE Entry w/RSVP",
+      "description": "Sagittarius get ready to party all night with free entry when you RSVP for this epic blackout bash!",
+      "date": "2026-11-27",
+      "startTime": "20:00",
+      "endTime": null,
+      "location": {
+        "name": "MAMATACO",
+        "address": "880 Flushing Avenue",
+        "neighborhood": "flushing"
+      },
+      "categories": [
+        "parties"
+      ],
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/the-blackout-friday-nov27th-at-mama-taco-free-entry-wrsvp-tickets-2002362950487",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197028553%2F48251508672%2F1%2Foriginal.20261101-174300?crop=focalpoint&fit=crop&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=e5e0647205eead518c6842b089a1c0d2",
+      "price": "unknown",
+      "scrapedAt": "2026-11-21T18:19:07.907233",
+      "discoveryLane": "personal",
+      "discoveryVia": "eventbrite_search",
+      "firstSeenAt": "2026-11-21T18:19:23.050527+00:00",
+      "recommendationReasons": [
+        "Happening this week"
+      ],
+      "tasteScore": 0.0177,
+      "score": 0.35,
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0
+    },
+    {
       "id": "fc4317f48e904814",
       "title": "Friday Night Comedy - 8PM in Brooklyn!",
       "description": "Stand-up comedy featuring some of the best comics in New York City!!! FEATURING SPECIAL GUEST COMEDIANS...",
@@ -11497,51 +11542,9 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0472,
+      "tasteScore": 0.0473,
       "score": 0.385,
       "highlights": []
-    },
-    {
-      "id": "ffe606ef1b1b77bc",
-      "title": "The Blackout Friday Nov.27th at Mama Taco FREE Entry w/RSVP",
-      "description": "Sagittarius get ready to party all night with free entry when you RSVP for this epic blackout bash!",
-      "date": "2026-11-27",
-      "startTime": "20:00",
-      "endTime": null,
-      "location": {
-        "name": "MAMATACO",
-        "address": "880 Flushing Avenue",
-        "neighborhood": "flushing"
-      },
-      "categories": [
-        "parties"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/the-blackout-friday-nov27th-at-mama-taco-free-entry-wrsvp-tickets-2002362950487",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197028553%2F48251508672%2F1%2Foriginal.20261101-174300?crop=focalpoint&fit=crop&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=e5e0647205eead518c6842b089a1c0d2",
-      "price": "unknown",
-      "scrapedAt": "2026-11-21T18:19:07.907233",
-      "discoveryLane": "personal",
-      "discoveryVia": "eventbrite_search",
-      "firstSeenAt": "2026-11-21T18:19:23.050527+00:00",
-      "recommendationReasons": [
-        "Happening this week"
-      ],
-      "tasteScore": 0.0177,
-      "score": 0.35,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "structuredTitle": false,
-      "contributingSources": [
-        "eventbrite"
-      ],
-      "likes": 0,
-      "comments": 0
     },
     {
       "id": "8a72f261b0fcede9",
@@ -11837,7 +11840,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0785,
+      "tasteScore": 0.0786,
       "discoveryLane": "personal",
       "recommendationReasons": [
         "From an account you follow",
@@ -12212,64 +12215,6 @@
       ]
     },
     {
-      "id": "c6264fde86d82afc",
-      "title": "LIVE COMEDY - 10PM in Brooklyn!",
-      "description": "Stand-up comedy featuring some of the best comics in New York City!!! FEATURING SPECIAL GUEST COMEDIANS...",
-      "date": "2026-11-27",
-      "startTime": "22:00",
-      "endTime": null,
-      "location": {
-        "name": "EastVille Comedy Club",
-        "address": "487 Atlantic Avenue, Brooklyn, NY 11217",
-        "neighborhood": "east village"
-      },
-      "categories": [
-        "comedy"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/live-comedy-10pm-in-brooklyn-tickets-1990108557267",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1185139615%2F299927553585%2F1%2Foriginal.20260521-151553?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.538&fp-y=0.061&s=fd7f6b5d366078298e89afce9cca3530",
-      "price": "unknown",
-      "scrapedAt": "2026-11-22T05:39:10.901698",
-      "organizer": "EastVille Comedy Club",
-      "organizerUrl": "https://eventbrite.com/o/19886909683",
-      "organizerRefs": [
-        {
-          "url": "https://eventbrite.com/o/19886909683",
-          "platform": "eventbrite",
-          "role": "host",
-          "name": "EastVille Comedy Club",
-          "externalId": "19886909683"
-        }
-      ],
-      "catalogSource": "eventbrite_organizer",
-      "discoveryLane": "personal",
-      "discoveryVia": "eventbrite_current_results,previous_organizer",
-      "firstSeenAt": "2026-11-22T05:42:47.435979+00:00",
-      "recommendationReasons": [
-        "Similar to events you liked"
-      ],
-      "tasteScore": 0.0483,
-      "score": 0.35,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "structuredTitle": false,
-      "contributingSources": [
-        "eventbrite"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "communityIds": [
-        "com_4eae7de1bfbd"
-      ],
-      "primaryCommunityId": "com_4eae7de1bfbd"
-    },
-    {
       "id": "effb4e88379c5d59",
       "title": "Jazz, Blues, Latin & more with Mariella Price",
       "description": "",
@@ -12328,66 +12273,6 @@
       "primaryCommunityId": "com_1466f20a9300"
     },
     {
-      "id": "fbf928d2ab722f2c",
-      "title": "STAMPED: AYA x Friends - BROOKLYN, NY - BLACK FRIDAY",
-      "description": "an unapologetically AFRICAN experience dedicated to celebrating AFRICAN music & culture.",
-      "date": "2026-11-27",
-      "startTime": "22:00",
-      "endTime": null,
-      "location": {
-        "name": "Elsewhere",
-        "address": "599 Johnson Avenue, Brooklyn, NY 11237",
-        "neighborhood": "bushwick"
-      },
-      "categories": [
-        "music"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/stamped-aya-x-friends-brooklyn-ny-black-friday-tickets-2002830085701",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197196562%2F2569518370411%2F1%2Foriginal.20261103-185700?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=59a4fc3c19bbcef6c9223ce96a9b90bc",
-      "price": "unknown",
-      "scrapedAt": "2026-11-16T05:20:58.022619",
-      "organizer": "Elsewhere",
-      "organizerUrl": "https://eventbrite.com/o/105655500371",
-      "organizerRefs": [
-        {
-          "url": "https://eventbrite.com/o/105655500371",
-          "name": "Elsewhere",
-          "externalId": "105655500371",
-          "role": "host",
-          "platform": "eventbrite"
-        }
-      ],
-      "catalogSource": "eventbrite_organizer",
-      "discoveryLane": "personal",
-      "discoveryVia": "curated:agent_recommended_vetted,eventbrite_organizer_graph,previous_organizer",
-      "firstSeenAt": "2026-11-16T05:25:59.053538+00:00",
-      "recommendationReasons": [
-        "From a source you like"
-      ],
-      "tasteScore": 0.0141,
-      "score": 0.359,
-      "highlights": [
-        "nearby"
-      ],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "structuredTitle": false,
-      "contributingSources": [
-        "eventbrite"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "communityIds": [
-        "com_b766b6de77ba"
-      ],
-      "primaryCommunityId": "com_b766b6de77ba"
-    },
-    {
       "id": "cb1453954a130345",
       "title": "Girl Church hosted by Amelia Ritthaler",
       "description": "Girl Church hosted by Amelia Ritthaler - Friday, November 27 - 9:30pm Doors / 10:00pm Show",
@@ -12444,6 +12329,124 @@
         "com_cb019f4e9752"
       ],
       "primaryCommunityId": "com_cb019f4e9752"
+    },
+    {
+      "id": "c6264fde86d82afc",
+      "title": "LIVE COMEDY - 10PM in Brooklyn!",
+      "description": "Stand-up comedy featuring some of the best comics in New York City!!! FEATURING SPECIAL GUEST COMEDIANS...",
+      "date": "2026-11-27",
+      "startTime": "22:00",
+      "endTime": null,
+      "location": {
+        "name": "EastVille Comedy Club",
+        "address": "487 Atlantic Avenue, Brooklyn, NY 11217",
+        "neighborhood": "east village"
+      },
+      "categories": [
+        "comedy"
+      ],
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/live-comedy-10pm-in-brooklyn-tickets-1990108557267",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1185139615%2F299927553585%2F1%2Foriginal.20260521-151553?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.538&fp-y=0.061&s=fd7f6b5d366078298e89afce9cca3530",
+      "price": "unknown",
+      "scrapedAt": "2026-11-22T05:39:10.901698",
+      "organizer": "EastVille Comedy Club",
+      "organizerUrl": "https://eventbrite.com/o/19886909683",
+      "organizerRefs": [
+        {
+          "url": "https://eventbrite.com/o/19886909683",
+          "platform": "eventbrite",
+          "role": "host",
+          "name": "EastVille Comedy Club",
+          "externalId": "19886909683"
+        }
+      ],
+      "catalogSource": "eventbrite_organizer",
+      "discoveryLane": "personal",
+      "discoveryVia": "eventbrite_current_results,previous_organizer",
+      "firstSeenAt": "2026-11-22T05:42:47.435979+00:00",
+      "recommendationReasons": [
+        "Similar to events you liked"
+      ],
+      "tasteScore": 0.0483,
+      "score": 0.35,
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "communityIds": [
+        "com_4eae7de1bfbd"
+      ],
+      "primaryCommunityId": "com_4eae7de1bfbd"
+    },
+    {
+      "id": "fbf928d2ab722f2c",
+      "title": "STAMPED: AYA x Friends - BROOKLYN, NY - BLACK FRIDAY",
+      "description": "an unapologetically AFRICAN experience dedicated to celebrating AFRICAN music & culture.",
+      "date": "2026-11-27",
+      "startTime": "22:00",
+      "endTime": null,
+      "location": {
+        "name": "Elsewhere",
+        "address": "599 Johnson Avenue, Brooklyn, NY 11237",
+        "neighborhood": "bushwick"
+      },
+      "categories": [
+        "music"
+      ],
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/stamped-aya-x-friends-brooklyn-ny-black-friday-tickets-2002830085701",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197196562%2F2569518370411%2F1%2Foriginal.20261103-185700?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=59a4fc3c19bbcef6c9223ce96a9b90bc",
+      "price": "unknown",
+      "scrapedAt": "2026-11-16T05:20:58.022619",
+      "organizer": "Elsewhere",
+      "organizerUrl": "https://eventbrite.com/o/105655500371",
+      "organizerRefs": [
+        {
+          "url": "https://eventbrite.com/o/105655500371",
+          "name": "Elsewhere",
+          "externalId": "105655500371",
+          "role": "host",
+          "platform": "eventbrite"
+        }
+      ],
+      "catalogSource": "eventbrite_organizer",
+      "discoveryLane": "personal",
+      "discoveryVia": "curated:agent_recommended_vetted,eventbrite_organizer_graph,previous_organizer",
+      "firstSeenAt": "2026-11-16T05:25:59.053538+00:00",
+      "recommendationReasons": [
+        "From a source you like"
+      ],
+      "tasteScore": 0.0143,
+      "score": 0.359,
+      "highlights": [
+        "nearby"
+      ],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "communityIds": [
+        "com_b766b6de77ba"
+      ],
+      "primaryCommunityId": "com_b766b6de77ba"
     },
     {
       "id": "3024ab61acc12030",
@@ -13153,7 +13156,7 @@
       "recommendationReasons": [
         "Nearby in Williamsburg"
       ],
-      "tasteScore": 0.037,
+      "tasteScore": 0.0371,
       "score": 0.817,
       "highlights": [
         "free",
@@ -13245,7 +13248,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0269,
+      "tasteScore": 0.0268,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -13411,7 +13414,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0298,
+      "tasteScore": 0.0299,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -13540,64 +13543,6 @@
         "com_d2efc860070a"
       ],
       "primaryCommunityId": "com_d2efc860070a"
-    },
-    {
-      "id": "030a263c34006c03",
-      "title": "Last Saturdays: Open Classroom",
-      "description": "",
-      "date": "2026-11-28",
-      "startTime": "12:00",
-      "endTime": null,
-      "location": {
-        "name": "The Green-House at Green-Wood",
-        "address": "750 5th Avenue, Brooklyn, NY 11232",
-        "neighborhood": "brooklyn"
-      },
-      "categories": [
-        "other"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/last-saturdays-open-classroom-tickets-1984898276176",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1179495359%2F2633840636391%2F1%2Foriginal.20260310-160103?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.445&fp-y=0.685&s=edf48e09846581329115a95c4e9a968a",
-      "price": "unknown",
-      "scrapedAt": "2026-11-24T04:41:19.364756",
-      "organizer": "The Green-Wood Cemetery",
-      "organizerUrl": "https://eventbrite.com/o/1373401985",
-      "organizerRefs": [
-        {
-          "externalId": "1373401985",
-          "name": "The Green-Wood Cemetery",
-          "url": "https://eventbrite.com/o/1373401985",
-          "platform": "eventbrite",
-          "role": "host"
-        }
-      ],
-      "catalogSource": "eventbrite_organizer",
-      "discoveryLane": "personal",
-      "discoveryVia": "eventbrite_current_results,previous_organizer",
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": true,
-      "ocrEnriched": false,
-      "structuredTitle": false,
-      "contributingSources": [
-        "eventbrite"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "firstSeenAt": "2026-11-24T04:49:31.196996+00:00",
-      "recommendationReasons": [
-        "Happening this week"
-      ],
-      "tasteScore": 0.0124,
-      "score": 0.35,
-      "highlights": [],
-      "communityIds": [
-        "com_76160be8487b"
-      ],
-      "primaryCommunityId": "com_76160be8487b"
     },
     {
       "id": "29c59c9eef0c59a5",
@@ -13861,7 +13806,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0181,
+      "tasteScore": 0.018,
       "score": 0.447,
       "highlights": [],
       "userSaved": false,
@@ -14387,7 +14332,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0238,
+      "tasteScore": 0.0239,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -14453,7 +14398,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0128,
+      "tasteScore": 0.0127,
       "score": 0.35,
       "highlights": []
     },
@@ -14969,64 +14914,6 @@
       "primaryCommunityId": "com_dd8dd0f432cf"
     },
     {
-      "id": "f6a3c0c069608259",
-      "title": "Garbage Day - Worst Things On The Internet 2026",
-      "description": "Katie Notopoulos and The Garbage Day Media team rank the 10 worst things on the internet in 2026 with the help of our live audience.",
-      "date": "2026-11-28",
-      "startTime": "19:00",
-      "endTime": null,
-      "location": {
-        "name": "Caveat",
-        "address": "21 A Clinton Street, New York, NY 10002",
-        "neighborhood": "manhattan"
-      },
-      "categories": [
-        "other"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/garbage-day-worst-things-on-the-internet-2026-tickets-2004130249526",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197344328%2F207096185123%2F1%2Foriginal.20261105-140739?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2250%2C1125&s=bc0069ce76826afbff0ca553b2032fe0",
-      "price": "unknown",
-      "scrapedAt": "2026-11-20T06:12:02.419809",
-      "organizer": "Caveat",
-      "organizerUrl": "https://eventbrite.com/o/13580085802",
-      "organizerRefs": [
-        {
-          "name": "Caveat",
-          "platform": "eventbrite",
-          "role": "host",
-          "url": "https://eventbrite.com/o/13580085802",
-          "externalId": "13580085802"
-        }
-      ],
-      "catalogSource": "eventbrite_organizer",
-      "discoveryLane": "personal",
-      "discoveryVia": "curated:agent_recommended_vetted,eventbrite_organizer_graph,previous_organizer",
-      "firstSeenAt": "2026-11-20T06:17:21.019360+00:00",
-      "recommendationReasons": [
-        "From a source you like"
-      ],
-      "tasteScore": 0.0048,
-      "score": 0.35,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "structuredTitle": false,
-      "contributingSources": [
-        "eventbrite"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "communityIds": [
-        "com_a1e1c13a75f0"
-      ],
-      "primaryCommunityId": "com_a1e1c13a75f0"
-    },
-    {
       "id": "05411dda2dfeb478",
       "title": "Failed Film Festival 5",
       "description": "Audiences around the world voted on their favorites for this Best of FFF screening.",
@@ -15086,6 +14973,64 @@
         "com_3048e331f7b6"
       ],
       "primaryCommunityId": "com_3048e331f7b6"
+    },
+    {
+      "id": "f6a3c0c069608259",
+      "title": "Garbage Day - Worst Things On The Internet 2026",
+      "description": "Katie Notopoulos and The Garbage Day Media team rank the 10 worst things on the internet in 2026 with the help of our live audience.",
+      "date": "2026-11-28",
+      "startTime": "19:00",
+      "endTime": null,
+      "location": {
+        "name": "Caveat",
+        "address": "21 A Clinton Street, New York, NY 10002",
+        "neighborhood": "manhattan"
+      },
+      "categories": [
+        "other"
+      ],
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/garbage-day-worst-things-on-the-internet-2026-tickets-2004130249526",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197344328%2F207096185123%2F1%2Foriginal.20261105-140739?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2250%2C1125&s=bc0069ce76826afbff0ca553b2032fe0",
+      "price": "unknown",
+      "scrapedAt": "2026-11-20T06:12:02.419809",
+      "organizer": "Caveat",
+      "organizerUrl": "https://eventbrite.com/o/13580085802",
+      "organizerRefs": [
+        {
+          "name": "Caveat",
+          "platform": "eventbrite",
+          "role": "host",
+          "url": "https://eventbrite.com/o/13580085802",
+          "externalId": "13580085802"
+        }
+      ],
+      "catalogSource": "eventbrite_organizer",
+      "discoveryLane": "personal",
+      "discoveryVia": "curated:agent_recommended_vetted,eventbrite_organizer_graph,previous_organizer",
+      "firstSeenAt": "2026-11-20T06:17:21.019360+00:00",
+      "recommendationReasons": [
+        "From a source you like"
+      ],
+      "tasteScore": 0.0048,
+      "score": 0.35,
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "communityIds": [
+        "com_a1e1c13a75f0"
+      ],
+      "primaryCommunityId": "com_a1e1c13a75f0"
     },
     {
       "id": "f66bfcbe2b75416f",
@@ -15611,7 +15556,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0253,
+      "tasteScore": 0.0254,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Good for meeting people"
@@ -16403,7 +16348,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0078,
+      "tasteScore": 0.0079,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -16844,7 +16789,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0148,
+      "tasteScore": 0.0147,
       "score": 0.762,
       "highlights": [],
       "communityIds": [
@@ -16893,8 +16838,8 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0298,
-      "score": 0.621,
+      "tasteScore": 0.0299,
+      "score": 0.622,
       "highlights": [
         "free"
       ]
@@ -17917,7 +17862,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0314,
+      "tasteScore": 0.0315,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -18028,7 +17973,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0169,
+      "tasteScore": 0.017,
       "score": 0.374,
       "highlights": [
         "special"
@@ -18397,7 +18342,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0594,
+      "tasteScore": 0.0593,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -18556,7 +18501,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0019,
+      "tasteScore": 0.0018,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -18766,7 +18711,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0458,
+      "tasteScore": 0.0459,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -18828,7 +18773,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0222,
+      "tasteScore": 0.0223,
       "score": 0.453,
       "highlights": [],
       "userSaved": false,
@@ -18874,7 +18819,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0064,
+      "tasteScore": 0.0063,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -19362,7 +19307,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0233,
+      "tasteScore": 0.0234,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -19490,7 +19435,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0474,
+      "tasteScore": 0.0475,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -19956,7 +19901,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0036,
+      "tasteScore": 0.0035,
       "score": 0.35,
       "highlights": [
         "free"
@@ -19980,7 +19925,7 @@
     {
       "id": "3f9603853126343d",
       "title": "Diasporic Community Building: Creating a Poetry Organization",
-      "description": "",
+      "description": "Join Cave Canem, African Poetry Book Fund, and Cheche Books for an information session on creating lasting writing communities.",
       "date": "2026-11-30",
       "startTime": "11:00",
       "endTime": null,
@@ -20015,7 +19960,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0253,
+      "tasteScore": 0.0381,
       "score": 0.35,
       "highlights": [
         "free"
@@ -20036,7 +19981,7 @@
     {
       "id": "c7bfa832c0e9c20c",
       "title": "Sixth Annual NAC Wreath-Making Workshop",
-      "description": "",
+      "description": "Back by popular demand our annual wreath-making workshop with Elise Bernhardt.",
       "date": "2026-11-30",
       "startTime": "12:00",
       "endTime": null,
@@ -20071,7 +20016,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0186,
+      "tasteScore": 0.0131,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -20331,7 +20276,7 @@
     {
       "id": "b9b2a9261ee1c38c",
       "title": "Blue Hands, Brown Skin: 2026 Cave Canem Prize Reading - Nairobi",
-      "description": "",
+      "description": "Join Cave Canem in celebrating the 2026 Cave Canem Prize Winner, Awuor Ouma, with a reading in Nairobi, Kenya!",
       "date": "2026-11-30",
       "startTime": "17:00",
       "endTime": null,
@@ -20366,7 +20311,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0176,
+      "tasteScore": 0.0199,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -20420,7 +20365,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0147,
+      "tasteScore": 0.0148,
       "score": 0.35,
       "highlights": [
         "free"
@@ -20498,7 +20443,7 @@
     {
       "id": "df9ced18d68972a3",
       "title": "As You Like It UNDERSTUDY performance!",
-      "description": "",
+      "description": "Join us for our fall semester all school play understudy production of As You Like It!",
       "date": "2026-11-30",
       "startTime": "17:30",
       "endTime": null,
@@ -20533,7 +20478,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0113,
+      "tasteScore": 0.0109,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -20613,7 +20558,7 @@
     {
       "id": "86f0b968236ef2a9",
       "title": "SVA presents: Tiny Table Talk \u2014 Aram Kim & Pat Cummings",
-      "description": "",
+      "description": "Conversations with The MFA Illustration as Visual Essay Program at the School of Visual Arts, in partnership with Rizzoli Bookstore in NYC.",
       "date": "2026-11-30",
       "startTime": "18:00",
       "endTime": null,
@@ -20623,7 +20568,7 @@
         "neighborhood": "manhattan"
       },
       "categories": [
-        "other"
+        "books"
       ],
       "source": "eventbrite",
       "sourceUrl": "https://www.eventbrite.com/e/sva-presents-tiny-table-talk-aram-kim-pat-cummings-tickets-1993476832870",
@@ -20648,7 +20593,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0059,
+      "tasteScore": 0.0173,
       "score": 0.35,
       "highlights": [
         "free"
@@ -20708,7 +20653,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.018,
+      "tasteScore": 0.0179,
       "score": 0.35,
       "highlights": [
         "free"
@@ -21104,7 +21049,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0157,
+      "tasteScore": 0.0156,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -21495,7 +21440,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0098,
+      "tasteScore": 0.0097,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -21776,7 +21721,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0159,
+      "tasteScore": 0.016,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -21992,7 +21937,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0643,
+      "tasteScore": 0.0642,
       "score": 0.35,
       "highlights": [
         "free"
@@ -23414,7 +23359,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0087,
+      "tasteScore": 0.0086,
       "score": 0.35,
       "highlights": [
         "free"
@@ -23759,7 +23704,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.048,
+      "tasteScore": 0.0481,
       "discoveryLane": "personal",
       "recommendationReasons": [
         "From an account you follow",
@@ -23856,7 +23801,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0362,
+      "tasteScore": 0.0361,
       "score": 0.688,
       "highlights": [
         "free"
@@ -23986,7 +23931,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0415,
+      "tasteScore": 0.0413,
       "score": 0.35,
       "highlights": [
         "nearby"
@@ -24158,7 +24103,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0129,
+      "tasteScore": 0.0128,
       "score": 0.35,
       "highlights": [
         "free"
@@ -24324,7 +24269,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0084,
+      "tasteScore": 0.0083,
       "score": 0.35,
       "highlights": [
         "free"
@@ -24767,7 +24712,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0054,
+      "tasteScore": 0.0055,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -24947,7 +24892,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0197,
+      "tasteScore": 0.0196,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -25052,7 +24997,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.023,
+      "tasteScore": 0.0231,
       "score": 0.432,
       "highlights": [
         "free"
@@ -25322,7 +25267,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0696,
+      "tasteScore": 0.0695,
       "score": 0.479,
       "highlights": [],
       "userSaved": false,
@@ -25491,7 +25436,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0257,
+      "tasteScore": 0.0256,
       "score": 0.35,
       "highlights": [
         "free"
@@ -25676,6 +25621,61 @@
       "primaryCommunityId": "com_3048e331f7b6"
     },
     {
+      "id": "9c3de0c466b71ab8",
+      "title": "The world after Trump with Andrew Sullivan",
+      "description": "",
+      "date": "2026-12-01",
+      "startTime": "19:00",
+      "endTime": "20:30",
+      "location": {
+        "name": "Manhattan",
+        "address": "New York, NY",
+        "neighborhood": "manhattan"
+      },
+      "categories": [
+        "other"
+      ],
+      "source": "luma",
+      "sourceUrl": "https://luma.com/aftertrump",
+      "imageUrl": "https://images.lumacdn.com/uploads/wk/0983ad12-da03-48fb-a35b-dcf3699a63d6.png",
+      "price": "unknown",
+      "scrapedAt": "2026-11-24T04:40:14.673408",
+      "organizer": "UnHerd",
+      "organizerUrl": "https://luma.com/unherd",
+      "organizerRefs": [
+        {
+          "externalId": "cal-4BmpF2n63Zr5MKg",
+          "name": "UnHerd",
+          "url": "https://luma.com/unherd",
+          "handle": "unherd",
+          "platform": "luma",
+          "role": "host"
+        }
+      ],
+      "attendingCount": 0,
+      "catalogSource": "luma_nyc",
+      "discoveryLane": "explore",
+      "structuredTitle": true,
+      "firstSeenAt": "2026-11-21T19:09:41.809820+00:00",
+      "recommendationReasons": [
+        "Happening this week"
+      ],
+      "tasteScore": 0.0064,
+      "score": 0.35,
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "luma"
+      ],
+      "likes": 0,
+      "comments": 0
+    },
+    {
       "id": "4d817c72ab65de5a",
       "title": "Hybrid Boys 9th Station Supper Club #2 - by LJ",
       "description": "",
@@ -25807,61 +25807,6 @@
         "com_cdd5daa67222"
       ],
       "primaryCommunityId": "com_4e69412cb0a5"
-    },
-    {
-      "id": "9c3de0c466b71ab8",
-      "title": "The world after Trump with Andrew Sullivan",
-      "description": "",
-      "date": "2026-12-01",
-      "startTime": "19:00",
-      "endTime": "20:30",
-      "location": {
-        "name": "Manhattan",
-        "address": "New York, NY",
-        "neighborhood": "manhattan"
-      },
-      "categories": [
-        "other"
-      ],
-      "source": "luma",
-      "sourceUrl": "https://luma.com/aftertrump",
-      "imageUrl": "https://images.lumacdn.com/uploads/wk/0983ad12-da03-48fb-a35b-dcf3699a63d6.png",
-      "price": "unknown",
-      "scrapedAt": "2026-11-24T04:40:14.673408",
-      "organizer": "UnHerd",
-      "organizerUrl": "https://luma.com/unherd",
-      "organizerRefs": [
-        {
-          "externalId": "cal-4BmpF2n63Zr5MKg",
-          "name": "UnHerd",
-          "url": "https://luma.com/unherd",
-          "handle": "unherd",
-          "platform": "luma",
-          "role": "host"
-        }
-      ],
-      "attendingCount": 0,
-      "catalogSource": "luma_nyc",
-      "discoveryLane": "explore",
-      "structuredTitle": true,
-      "firstSeenAt": "2026-11-21T19:09:41.809820+00:00",
-      "recommendationReasons": [
-        "Happening this week"
-      ],
-      "tasteScore": 0.0064,
-      "score": 0.35,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "luma"
-      ],
-      "likes": 0,
-      "comments": 0
     },
     {
       "id": "b9837c763378d57b",
@@ -26016,7 +25961,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.098,
+      "tasteScore": 0.0979,
       "score": 0.35,
       "highlights": [
         "free"
@@ -26077,7 +26022,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0403,
+      "tasteScore": 0.0402,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -26132,7 +26077,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.013,
+      "tasteScore": 0.0129,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -26245,7 +26190,7 @@
       "recommendationReasons": [
         "Nearby in Ridgewood"
       ],
-      "tasteScore": 0.0127,
+      "tasteScore": 0.0128,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -26482,7 +26427,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0062,
+      "tasteScore": 0.0061,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -26776,6 +26721,18 @@
       "tasteScore": 0.0016,
       "score": 0.35,
       "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0,
       "communityIds": [
         "com_cb019f4e9752"
       ],
@@ -27190,7 +27147,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.047,
+      "tasteScore": 0.0471,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -27237,7 +27194,7 @@
       "recommendationReasons": [
         "Happening this week"
       ],
-      "tasteScore": 0.0228,
+      "tasteScore": 0.0229,
       "score": 0.35,
       "highlights": [
         "free"
@@ -27672,7 +27629,7 @@
       "recommendationReasons": [
         "A strong exploration pick"
       ],
-      "tasteScore": 0.0158,
+      "tasteScore": 0.0159,
       "score": 0.35,
       "highlights": [
         "free"
@@ -27945,7 +27902,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0401,
+      "tasteScore": 0.0402,
       "score": 0.35,
       "highlights": [
         "free"
@@ -28279,7 +28236,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0094,
+      "tasteScore": 0.0095,
       "score": 0.35,
       "highlights": [
         "free"
@@ -28569,7 +28526,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0215,
+      "tasteScore": 0.0214,
       "score": 0.35,
       "highlights": [
         "free"
@@ -29310,7 +29267,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0126,
+      "tasteScore": 0.0127,
       "score": 0.35,
       "highlights": [
         "free"
@@ -29582,7 +29539,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0354,
+      "tasteScore": 0.0353,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Nearby in Bushwick"
@@ -29926,89 +29883,6 @@
       "primaryCommunityId": "com_f39b4df5d3d7"
     },
     {
-      "id": "e379d4219d53ae77",
-      "title": "Holiday Romance Book Swap",
-      "description": "",
-      "date": "2026-12-02",
-      "startTime": "18:30",
-      "endTime": "20:30",
-      "location": {
-        "name": "Cafe Balearica",
-        "address": "Cafe Balearica, 44 Berry St, Brooklyn, NY 11249, USA",
-        "neighborhood": "williamsburg"
-      },
-      "categories": [
-        "books"
-      ],
-      "source": "luma",
-      "sourceUrl": "https://luma.com/c9r1e9bm",
-      "imageUrl": "https://images.lumacdn.com/uploads/ya/d6d2c0b0-cf69-43c8-bd67-afc7c2bf9d29.png",
-      "price": "free",
-      "scrapedAt": "2026-11-24T04:40:14.748911",
-      "organizer": "831 Stories",
-      "organizerUrl": "https://luma.com/831stories",
-      "organizerRefs": [
-        {
-          "externalId": "cal-6cetfrzqEENHdBJ",
-          "name": "831 Stories",
-          "url": "https://luma.com/831stories",
-          "handle": "831storieshq",
-          "platform": "luma",
-          "role": "host"
-        },
-        {
-          "externalId": "cal-ItTR6nQ7r4wIvFf",
-          "name": "Lit Club NYC Calendar",
-          "url": "https://luma.com/litclub.nyc",
-          "handle": "litclub.nyc",
-          "platform": "luma",
-          "role": "host"
-        },
-        {
-          "externalId": "litclub.nyc",
-          "name": "Lit Club NYC Calendar",
-          "url": "https://luma.com/litclub.nyc",
-          "platform": "luma",
-          "role": "host"
-        }
-      ],
-      "attendingCount": 0,
-      "catalogSource": "luma_nyc",
-      "discoveryLane": "personal",
-      "structuredTitle": true,
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": true,
-      "recurring": true,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "luma"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "firstSeenAt": "2026-11-04T19:33:45.601907+00:00",
-      "recommendationReasons": [
-        "From an account you follow",
-        "From 831 Stories"
-      ],
-      "tasteScore": 0.0733,
-      "score": 0.473,
-      "highlights": [
-        "following",
-        "free",
-        "nearby"
-      ],
-      "account": "litclub.nyc",
-      "accountEventYield": 0.5,
-      "accountPostsSeen": 36,
-      "communityIds": [
-        "com_c4469caf0091",
-        "com_33a530deb7aa"
-      ],
-      "primaryCommunityId": "com_c4469caf0091"
-    },
-    {
       "id": "8ab438f9cc6ee6ec",
       "title": "A Chief of Staff Mixer on Wellness (Wed Dec 2)",
       "description": "",
@@ -30122,6 +29996,89 @@
       "comments": 0
     },
     {
+      "id": "e379d4219d53ae77",
+      "title": "Holiday Romance Book Swap",
+      "description": "",
+      "date": "2026-12-02",
+      "startTime": "18:30",
+      "endTime": "20:30",
+      "location": {
+        "name": "Cafe Balearica",
+        "address": "Cafe Balearica, 44 Berry St, Brooklyn, NY 11249, USA",
+        "neighborhood": "williamsburg"
+      },
+      "categories": [
+        "books"
+      ],
+      "source": "luma",
+      "sourceUrl": "https://luma.com/c9r1e9bm",
+      "imageUrl": "https://images.lumacdn.com/uploads/ya/d6d2c0b0-cf69-43c8-bd67-afc7c2bf9d29.png",
+      "price": "free",
+      "scrapedAt": "2026-11-24T04:40:14.748911",
+      "organizer": "831 Stories",
+      "organizerUrl": "https://luma.com/831stories",
+      "organizerRefs": [
+        {
+          "externalId": "cal-6cetfrzqEENHdBJ",
+          "name": "831 Stories",
+          "url": "https://luma.com/831stories",
+          "handle": "831storieshq",
+          "platform": "luma",
+          "role": "host"
+        },
+        {
+          "externalId": "cal-ItTR6nQ7r4wIvFf",
+          "name": "Lit Club NYC Calendar",
+          "url": "https://luma.com/litclub.nyc",
+          "handle": "litclub.nyc",
+          "platform": "luma",
+          "role": "host"
+        },
+        {
+          "externalId": "litclub.nyc",
+          "name": "Lit Club NYC Calendar",
+          "url": "https://luma.com/litclub.nyc",
+          "platform": "luma",
+          "role": "host"
+        }
+      ],
+      "attendingCount": 0,
+      "catalogSource": "luma_nyc",
+      "discoveryLane": "personal",
+      "structuredTitle": true,
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": true,
+      "recurring": true,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "luma"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "firstSeenAt": "2026-11-04T19:33:45.601907+00:00",
+      "recommendationReasons": [
+        "From an account you follow",
+        "From 831 Stories"
+      ],
+      "tasteScore": 0.0732,
+      "score": 0.473,
+      "highlights": [
+        "following",
+        "free",
+        "nearby"
+      ],
+      "account": "litclub.nyc",
+      "accountEventYield": 0.5,
+      "accountPostsSeen": 36,
+      "communityIds": [
+        "com_c4469caf0091",
+        "com_33a530deb7aa"
+      ],
+      "primaryCommunityId": "com_c4469caf0091"
+    },
+    {
       "id": "f24da0cd8792c4d8",
       "title": "Bag Charms \ud83d\udc5b",
       "description": "",
@@ -30218,7 +30175,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0246,
+      "tasteScore": 0.0247,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -30496,7 +30453,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0534,
+      "tasteScore": 0.0533,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -30615,7 +30572,7 @@
       "recommendationReasons": [
         "Good for meeting people"
       ],
-      "tasteScore": 0.0171,
+      "tasteScore": 0.0172,
       "score": 0.402,
       "highlights": [
         "meet-people"
@@ -31532,7 +31489,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0084,
+      "tasteScore": 0.0083,
       "score": 0.35,
       "highlights": [
         "free"
@@ -31814,7 +31771,7 @@
       "recommendationReasons": [
         "From an account you follow"
       ],
-      "tasteScore": 0.0528,
+      "tasteScore": 0.0529,
       "score": 0.25,
       "highlights": [
         "following",
@@ -31874,7 +31831,7 @@
       "recommendationReasons": [
         "From an account you follow"
       ],
-      "tasteScore": 0.0839,
+      "tasteScore": 0.084,
       "score": 0.25,
       "highlights": [
         "following",
@@ -32347,7 +32304,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.041,
+      "tasteScore": 0.0411,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -32559,7 +32516,7 @@
         "From bookclubbar",
         "From a source you like"
       ],
-      "tasteScore": 0.0658,
+      "tasteScore": 0.0657,
       "score": 0.25,
       "highlights": [
         "following",
@@ -33141,7 +33098,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0276,
+      "tasteScore": 0.0277,
       "score": 0.396,
       "highlights": [
         "free",
@@ -33320,7 +33277,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0372,
+      "tasteScore": 0.0373,
       "score": 0.35,
       "highlights": [
         "free"
@@ -33531,7 +33488,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0046,
+      "tasteScore": 0.0047,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -33703,7 +33660,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0175,
+      "tasteScore": 0.0176,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -34049,7 +34006,7 @@
       "recommendationReasons": [
         "Nearby in Williamsburg"
       ],
-      "tasteScore": 0.0142,
+      "tasteScore": 0.0141,
       "score": 0.35,
       "highlights": [
         "nearby"
@@ -34346,65 +34303,6 @@
       "comments": 0
     },
     {
-      "id": "1a50eea349fd0f01",
-      "title": "Winter Gala and Award Ceremony by IDSA NYC & Women in Design NYC",
-      "description": "",
-      "date": "2026-12-03",
-      "startTime": "18:00",
-      "endTime": "21:00",
-      "location": {
-        "name": "frog",
-        "address": "frog, 79 5th Ave, New York, NY 10003, USA",
-        "neighborhood": "midtown"
-      },
-      "categories": [
-        "special"
-      ],
-      "source": "luma",
-      "sourceUrl": "https://luma.com/wid-komd",
-      "imageUrl": "https://images.lumacdn.com/uploads/ah/766ecfdb-810e-4f3e-b667-518cbbee6033.png",
-      "price": "unknown",
-      "scrapedAt": "2026-11-24T04:40:14.869562",
-      "organizer": "Women in Design - NYC",
-      "organizerUrl": "https://luma.com/wid-nyc",
-      "organizerRefs": [
-        {
-          "externalId": "cal-s3pZpd59XTId3hY",
-          "name": "Women in Design - NYC",
-          "url": "https://luma.com/wid-nyc",
-          "handle": "womenindesignnyc",
-          "platform": "luma",
-          "role": "host"
-        }
-      ],
-      "attendingCount": 86,
-      "catalogSource": "luma_nyc",
-      "discoveryLane": "explore",
-      "structuredTitle": true,
-      "firstSeenAt": "2026-11-11T22:38:02.757397+00:00",
-      "recommendationReasons": [
-        "A strong special pick"
-      ],
-      "tasteScore": 0.0049,
-      "score": 0.481,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "luma"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "communityIds": [
-        "com_dca352748139"
-      ],
-      "primaryCommunityId": "com_dca352748139"
-    },
-    {
       "id": "0b7837bc4a0ffda6",
       "title": "Proxima's Quarterly Convening",
       "description": "",
@@ -34579,6 +34477,65 @@
       ],
       "likes": 0,
       "comments": 0
+    },
+    {
+      "id": "1a50eea349fd0f01",
+      "title": "Winter Gala and Award Ceremony by IDSA NYC & Women in Design NYC",
+      "description": "",
+      "date": "2026-12-03",
+      "startTime": "18:00",
+      "endTime": "21:00",
+      "location": {
+        "name": "frog",
+        "address": "frog, 79 5th Ave, New York, NY 10003, USA",
+        "neighborhood": "midtown"
+      },
+      "categories": [
+        "special"
+      ],
+      "source": "luma",
+      "sourceUrl": "https://luma.com/wid-komd",
+      "imageUrl": "https://images.lumacdn.com/uploads/ah/766ecfdb-810e-4f3e-b667-518cbbee6033.png",
+      "price": "unknown",
+      "scrapedAt": "2026-11-24T04:40:14.869562",
+      "organizer": "Women in Design - NYC",
+      "organizerUrl": "https://luma.com/wid-nyc",
+      "organizerRefs": [
+        {
+          "externalId": "cal-s3pZpd59XTId3hY",
+          "name": "Women in Design - NYC",
+          "url": "https://luma.com/wid-nyc",
+          "handle": "womenindesignnyc",
+          "platform": "luma",
+          "role": "host"
+        }
+      ],
+      "attendingCount": 86,
+      "catalogSource": "luma_nyc",
+      "discoveryLane": "explore",
+      "structuredTitle": true,
+      "firstSeenAt": "2026-11-11T22:38:02.757397+00:00",
+      "recommendationReasons": [
+        "A strong special pick"
+      ],
+      "tasteScore": 0.0049,
+      "score": 0.481,
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "luma"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "communityIds": [
+        "com_dca352748139"
+      ],
+      "primaryCommunityId": "com_dca352748139"
     },
     {
       "id": "dda559465cbb8486",
@@ -34951,7 +34908,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0242,
+      "tasteScore": 0.0243,
       "score": 0.35,
       "highlights": [
         "free"
@@ -35118,7 +35075,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0192,
+      "tasteScore": 0.0191,
       "score": 0.35,
       "highlights": [
         "free"
@@ -35175,7 +35132,7 @@
       "recommendationReasons": [
         "A strong games pick"
       ],
-      "tasteScore": 0.0129,
+      "tasteScore": 0.0128,
       "score": 0.35,
       "highlights": [
         "free"
@@ -35492,7 +35449,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0357,
+      "tasteScore": 0.0358,
       "score": 0.35,
       "highlights": [
         "free"
@@ -35648,7 +35605,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0198,
+      "tasteScore": 0.0199,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "A strong art pick"
@@ -35849,7 +35806,7 @@
       "recommendationReasons": [
         "A strong wellness pick"
       ],
-      "tasteScore": 0.0178,
+      "tasteScore": 0.0179,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -36075,7 +36032,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0755,
+      "tasteScore": 0.0754,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -36353,7 +36310,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0229,
+      "tasteScore": 0.023,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -36623,7 +36580,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.034,
+      "tasteScore": 0.0341,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Nearby in Williamsburg"
@@ -36670,7 +36627,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0303,
+      "tasteScore": 0.0304,
       "score": 0.853,
       "highlights": [
         "free"
@@ -37182,13 +37139,71 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0047,
+      "tasteScore": 0.0046,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
         "com_3be718149a43"
       ],
       "primaryCommunityId": "com_3be718149a43"
+    },
+    {
+      "id": "0e71f5dc9b78bc0b",
+      "title": "Ran",
+      "description": "",
+      "date": "2026-12-03",
+      "startTime": "19:00",
+      "endTime": "22:00",
+      "location": {
+        "name": "Brooklyn",
+        "address": "Brooklyn, NY",
+        "neighborhood": "brooklyn"
+      },
+      "categories": [
+        "other"
+      ],
+      "source": "luma",
+      "sourceUrl": "https://luma.com/s3e1c93c",
+      "imageUrl": "https://images.lumacdn.com/uploads/ei/4dd33fef-1f20-4488-b8c2-a7ad5af5333d.png",
+      "price": "free",
+      "scrapedAt": "2026-11-24T04:40:14.891482",
+      "organizer": "Movie Nights",
+      "organizerRefs": [
+        {
+          "externalId": "cal-FN6EFeaDRwjzrF8",
+          "name": "Movie Nights",
+          "platform": "luma",
+          "role": "host"
+        }
+      ],
+      "attendingCount": 6,
+      "catalogSource": "luma_nyc",
+      "discoveryLane": "explore",
+      "structuredTitle": true,
+      "firstSeenAt": "2026-11-17T23:28:44.608882+00:00",
+      "recommendationReasons": [
+        "From Luma"
+      ],
+      "tasteScore": 0.0109,
+      "score": 0.35,
+      "highlights": [
+        "free"
+      ],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "luma"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "communityIds": [
+        "com_bb4df3056be7"
+      ],
+      "primaryCommunityId": "com_bb4df3056be7"
     },
     {
       "id": "3a73121a56aeee62",
@@ -37248,64 +37263,6 @@
         "com_8963cc48d824"
       ],
       "primaryCommunityId": "com_8963cc48d824"
-    },
-    {
-      "id": "0e71f5dc9b78bc0b",
-      "title": "Ran",
-      "description": "",
-      "date": "2026-12-03",
-      "startTime": "19:00",
-      "endTime": "22:00",
-      "location": {
-        "name": "Brooklyn",
-        "address": "Brooklyn, NY",
-        "neighborhood": "brooklyn"
-      },
-      "categories": [
-        "other"
-      ],
-      "source": "luma",
-      "sourceUrl": "https://luma.com/s3e1c93c",
-      "imageUrl": "https://images.lumacdn.com/uploads/ei/4dd33fef-1f20-4488-b8c2-a7ad5af5333d.png",
-      "price": "free",
-      "scrapedAt": "2026-11-24T04:40:14.891482",
-      "organizer": "Movie Nights",
-      "organizerRefs": [
-        {
-          "externalId": "cal-FN6EFeaDRwjzrF8",
-          "name": "Movie Nights",
-          "platform": "luma",
-          "role": "host"
-        }
-      ],
-      "attendingCount": 6,
-      "catalogSource": "luma_nyc",
-      "discoveryLane": "explore",
-      "structuredTitle": true,
-      "firstSeenAt": "2026-11-17T23:28:44.608882+00:00",
-      "recommendationReasons": [
-        "From Luma"
-      ],
-      "tasteScore": 0.011,
-      "score": 0.35,
-      "highlights": [
-        "free"
-      ],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "luma"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "communityIds": [
-        "com_bb4df3056be7"
-      ],
-      "primaryCommunityId": "com_bb4df3056be7"
     },
     {
       "id": "91c6d584215b18f4",
@@ -37511,7 +37468,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.003,
+      "tasteScore": 0.0029,
       "score": 0.35,
       "highlights": [
         "free"
@@ -37885,7 +37842,7 @@
       "discoveredVia": "ig_scout",
       "isStory": false,
       "firstSeenAt": "2026-11-23T04:15:00-05:00",
-      "score": 0.444,
+      "score": 0.443,
       "highlights": [],
       "userSaved": false,
       "userTagged": false,
@@ -37899,7 +37856,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0351,
+      "tasteScore": 0.035,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "A strong books pick"
@@ -38351,7 +38308,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0013,
+      "tasteScore": 0.0012,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -38722,7 +38679,7 @@
       "discoveredVia": "ig_scout",
       "isStory": false,
       "firstSeenAt": "2026-11-06T16:15:00-05:00",
-      "score": 0.533,
+      "score": 0.503,
       "highlights": [
         "nearby"
       ],
@@ -38738,7 +38695,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0587,
+      "tasteScore": 0.0588,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -39017,7 +38974,7 @@
       "recommendationReasons": [
         "A strong art pick"
       ],
-      "tasteScore": 0.0297,
+      "tasteScore": 0.0298,
       "score": 0.35,
       "highlights": [
         "free"
@@ -39600,7 +39557,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0491,
+      "tasteScore": 0.0492,
       "discoveryLane": "personal",
       "recommendationReasons": [
         "From an account you follow"
@@ -39693,7 +39650,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0436,
+      "tasteScore": 0.0435,
       "score": 0.381,
       "highlights": [],
       "userSaved": false,
@@ -39748,7 +39705,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0194,
+      "tasteScore": 0.0195,
       "score": 0.35,
       "highlights": [
         "free"
@@ -40242,7 +40199,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0111,
+      "tasteScore": 0.011,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -40627,7 +40584,7 @@
       "recommendationReasons": [
         "Good for meeting people"
       ],
-      "tasteScore": 0.0283,
+      "tasteScore": 0.0284,
       "score": 0.35,
       "highlights": [
         "meet-people"
@@ -41197,7 +41154,7 @@
       "recommendationReasons": [
         "A strong art pick"
       ],
-      "tasteScore": 0.0162,
+      "tasteScore": 0.0163,
       "score": 0.45,
       "highlights": [],
       "userSaved": false,
@@ -41504,7 +41461,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0132,
+      "tasteScore": 0.0133,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -41656,7 +41613,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0021,
+      "tasteScore": 0.002,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -41894,7 +41851,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0446,
+      "tasteScore": 0.0445,
       "score": 0.425,
       "highlights": [
         "verified"
@@ -42031,7 +41988,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.063,
+      "tasteScore": 0.0629,
       "discoveryLane": "personal",
       "recommendationReasons": [
         "From an account you follow"
@@ -42307,48 +42264,6 @@
       "comments": 0
     },
     {
-      "id": "50a3acfbaf2fc0c4",
-      "title": "MOONRISE A Dinner Experience at Paradise Club",
-      "description": "MOONRISE is an elevated dining experience, immersed in world-class cirque performances, aerial artistry, acrobatics, dance & storytelling.",
-      "date": "2026-12-04",
-      "startTime": "20:00",
-      "endTime": null,
-      "location": {
-        "name": "The Times Square Edition, Paradise Club",
-        "address": "701 7th Avenue",
-        "neighborhood": "midtown"
-      },
-      "categories": [
-        "music"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/moonrise-a-dinner-experience-at-paradise-club-tickets-1998638735259",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F964612253%2F2122539030773%2F1%2Foriginal.20250219-190310?crop=focalpoint&fit=crop&w=512&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=1a22c27485a1f923390f2c5566f6b7cd",
-      "price": "unknown",
-      "scrapedAt": "2026-11-22T18:43:42.202288",
-      "discoveryLane": "personal",
-      "discoveryVia": "eventbrite_search",
-      "firstSeenAt": "2026-11-22T18:43:53.086303+00:00",
-      "recommendationReasons": [
-        "A strong music pick"
-      ],
-      "tasteScore": 0.0179,
-      "score": 0.403,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "structuredTitle": false,
-      "contributingSources": [
-        "eventbrite"
-      ],
-      "likes": 0,
-      "comments": 0
-    },
-    {
       "id": "7ce3b8199a8892a9",
       "title": "Hot People Read Poetry",
       "description": "",
@@ -42395,6 +42310,48 @@
         "com_b5c978844e87"
       ],
       "primaryCommunityId": "com_b5c978844e87"
+    },
+    {
+      "id": "50a3acfbaf2fc0c4",
+      "title": "MOONRISE A Dinner Experience at Paradise Club",
+      "description": "MOONRISE is an elevated dining experience, immersed in world-class cirque performances, aerial artistry, acrobatics, dance & storytelling.",
+      "date": "2026-12-04",
+      "startTime": "20:00",
+      "endTime": null,
+      "location": {
+        "name": "The Times Square Edition, Paradise Club",
+        "address": "701 7th Avenue",
+        "neighborhood": "midtown"
+      },
+      "categories": [
+        "music"
+      ],
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/moonrise-a-dinner-experience-at-paradise-club-tickets-1998638735259",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F964612253%2F2122539030773%2F1%2Foriginal.20250219-190310?crop=focalpoint&fit=crop&w=512&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=1a22c27485a1f923390f2c5566f6b7cd",
+      "price": "unknown",
+      "scrapedAt": "2026-11-22T18:43:42.202288",
+      "discoveryLane": "personal",
+      "discoveryVia": "eventbrite_search",
+      "firstSeenAt": "2026-11-22T18:43:53.086303+00:00",
+      "recommendationReasons": [
+        "A strong music pick"
+      ],
+      "tasteScore": 0.018,
+      "score": 0.403,
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "eventbrite"
+      ],
+      "likes": 0,
+      "comments": 0
     },
     {
       "id": "39948edbc1f047c4",
@@ -42504,7 +42461,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0476,
+      "tasteScore": 0.0477,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -43477,7 +43434,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0349,
+      "tasteScore": 0.035,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Nearby in Greenpoint"
@@ -43574,7 +43531,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0236,
+      "tasteScore": 0.0237,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -43694,7 +43651,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0371,
+      "tasteScore": 0.0372,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "A strong music pick"
@@ -43908,7 +43865,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0321,
+      "tasteScore": 0.0322,
       "score": 0.35,
       "highlights": [
         "free"
@@ -44021,7 +43978,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.039,
+      "tasteScore": 0.0391,
       "score": 0.35,
       "highlights": []
     },
@@ -44070,7 +44027,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0281,
+      "tasteScore": 0.0282,
       "score": 0.442,
       "highlights": [],
       "userSaved": false,
@@ -44119,7 +44076,7 @@
       "recommendationReasons": [
         "From Partiful"
       ],
-      "tasteScore": 0.0243,
+      "tasteScore": 0.0244,
       "score": 0.35,
       "highlights": [
         "free"
@@ -44581,7 +44538,7 @@
       "recommendationReasons": [
         "A strong exploration pick"
       ],
-      "tasteScore": 0.0139,
+      "tasteScore": 0.014,
       "score": 0.35,
       "highlights": [
         "free"
@@ -45036,7 +44993,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0047,
+      "tasteScore": 0.0046,
       "score": 0.35,
       "highlights": [
         "free"
@@ -45157,7 +45114,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0241,
+      "tasteScore": 0.0242,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Nearby in Bushwick"
@@ -45317,7 +45274,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0503,
+      "tasteScore": 0.0502,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -45526,7 +45483,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0455,
+      "tasteScore": 0.0454,
       "score": 0.354,
       "highlights": [
         "nearby"
@@ -45885,7 +45842,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0146,
+      "tasteScore": 0.0145,
       "score": 0.35,
       "highlights": [
         "free"
@@ -46049,7 +46006,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0586,
+      "tasteScore": 0.0587,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -46373,7 +46330,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0027,
+      "tasteScore": 0.0026,
       "score": 0.35,
       "highlights": [
         "free"
@@ -46702,7 +46659,7 @@
       "recommendationReasons": [
         "A strong art pick"
       ],
-      "tasteScore": 0.0099,
+      "tasteScore": 0.01,
       "score": 0.35,
       "highlights": [
         "free"
@@ -47152,7 +47109,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0477,
+      "tasteScore": 0.0478,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -47457,7 +47414,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0229,
+      "tasteScore": 0.023,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Good for meeting people"
@@ -47592,7 +47549,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0161,
+      "tasteScore": 0.0162,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -47902,7 +47859,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0073,
+      "tasteScore": 0.0072,
       "score": 0.35,
       "highlights": [
         "free"
@@ -48051,7 +48008,7 @@
       "recommendationReasons": [
         "A strong comedy pick"
       ],
-      "tasteScore": 0.0297,
+      "tasteScore": 0.0298,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -48321,7 +48278,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0092,
+      "tasteScore": 0.0091,
       "score": 0.35,
       "highlights": []
     },
@@ -48406,7 +48363,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0306,
+      "tasteScore": 0.0307,
       "score": 0.464,
       "highlights": [
         "free"
@@ -48458,7 +48415,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0262,
+      "tasteScore": 0.0263,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -49010,7 +48967,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0171,
+      "tasteScore": 0.017,
       "score": 0.35,
       "highlights": [
         "free"
@@ -49078,7 +49035,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0366,
+      "tasteScore": 0.0367,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -49186,7 +49143,7 @@
       "recommendationReasons": [
         "A strong art pick"
       ],
-      "tasteScore": 0.0272,
+      "tasteScore": 0.0273,
       "score": 0.508,
       "highlights": []
     },
@@ -49358,7 +49315,7 @@
       "recommendationReasons": [
         "From an account you follow"
       ],
-      "tasteScore": 0.0546,
+      "tasteScore": 0.0547,
       "score": 0.25,
       "highlights": [
         "following"
@@ -50339,7 +50296,7 @@
       "recommendationReasons": [
         "A strong theater pick"
       ],
-      "tasteScore": 0.0196,
+      "tasteScore": 0.0197,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -51179,8 +51136,8 @@
       "recommendationReasons": [
         "From an account you follow"
       ],
-      "tasteScore": 0.0497,
-      "score": 0.305,
+      "tasteScore": 0.0498,
+      "score": 0.306,
       "highlights": [
         "following",
         "free"
@@ -51243,7 +51200,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0561,
+      "tasteScore": 0.056,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -51613,7 +51570,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.013,
+      "tasteScore": 0.0131,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -53046,7 +53003,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.02,
+      "tasteScore": 0.0201,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -53106,7 +53063,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0266,
+      "tasteScore": 0.0267,
       "score": 0.35,
       "highlights": [
         "free"
@@ -53275,7 +53232,7 @@
       "recommendationReasons": [
         "Nearby in Williamsburg"
       ],
-      "tasteScore": 0.0287,
+      "tasteScore": 0.0285,
       "score": 0.35,
       "highlights": [
         "nearby"
@@ -53471,7 +53428,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0958,
+      "tasteScore": 0.0957,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -53583,7 +53540,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0225,
+      "tasteScore": 0.0226,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -53748,7 +53705,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0177,
+      "tasteScore": 0.0176,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -53790,7 +53747,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0553,
+      "tasteScore": 0.0552,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -54054,7 +54011,7 @@
       "recommendationReasons": [
         "A strong books pick"
       ],
-      "tasteScore": 0.0398,
+      "tasteScore": 0.0397,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -54515,6 +54472,60 @@
       "primaryCommunityId": "com_d2efc860070a"
     },
     {
+      "id": "d53d7da6d20d24b4",
+      "title": "The Library Diaries 1-year anniversary book club event!",
+      "description": "",
+      "date": "2026-12-07",
+      "startTime": "19:00",
+      "endTime": "21:00",
+      "location": {
+        "name": "Gowanus",
+        "address": "Brooklyn, NY",
+        "neighborhood": "gowanus"
+      },
+      "categories": [
+        "books",
+        "special"
+      ],
+      "source": "luma",
+      "sourceUrl": "https://luma.com/pcp1iqpt",
+      "imageUrl": "https://images.lumacdn.com/uploads/bm/e2504643-64cc-4582-bfbc-3d8129e0d7c1.png",
+      "price": "unknown",
+      "scrapedAt": "2026-11-24T04:40:15.122589",
+      "organizer": "Komal N",
+      "organizerRefs": [
+        {
+          "externalId": "usr-TwfnLiVKAfQaEV4",
+          "name": "Komal N",
+          "handle": "Komal_nambiar",
+          "platform": "luma",
+          "role": "host"
+        }
+      ],
+      "attendingCount": 16,
+      "catalogSource": "luma_nyc",
+      "discoveryLane": "explore",
+      "structuredTitle": true,
+      "firstSeenAt": "2026-11-20T22:39:38.190015+00:00",
+      "recommendationReasons": [
+        "Similar to events you liked"
+      ],
+      "tasteScore": 0.0568,
+      "score": 0.35,
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "luma"
+      ],
+      "likes": 0,
+      "comments": 0
+    },
+    {
       "id": "c644cfc87c644ae2",
       "title": "Soho Diner Backgammon Night",
       "description": "",
@@ -54685,60 +54696,6 @@
       ],
       "tasteScore": 0.0113,
       "score": 0.369,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "luma"
-      ],
-      "likes": 0,
-      "comments": 0
-    },
-    {
-      "id": "d53d7da6d20d24b4",
-      "title": "The Library Diaries 1-year anniversary book club event!",
-      "description": "",
-      "date": "2026-12-07",
-      "startTime": "19:00",
-      "endTime": "21:00",
-      "location": {
-        "name": "Gowanus",
-        "address": "Brooklyn, NY",
-        "neighborhood": "gowanus"
-      },
-      "categories": [
-        "books",
-        "special"
-      ],
-      "source": "luma",
-      "sourceUrl": "https://luma.com/pcp1iqpt",
-      "imageUrl": "https://images.lumacdn.com/uploads/bm/e2504643-64cc-4582-bfbc-3d8129e0d7c1.png",
-      "price": "unknown",
-      "scrapedAt": "2026-11-24T04:40:15.122589",
-      "organizer": "Komal N",
-      "organizerRefs": [
-        {
-          "externalId": "usr-TwfnLiVKAfQaEV4",
-          "name": "Komal N",
-          "handle": "Komal_nambiar",
-          "platform": "luma",
-          "role": "host"
-        }
-      ],
-      "attendingCount": 16,
-      "catalogSource": "luma_nyc",
-      "discoveryLane": "explore",
-      "structuredTitle": true,
-      "firstSeenAt": "2026-11-20T22:39:38.190015+00:00",
-      "recommendationReasons": [
-        "Similar to events you liked"
-      ],
-      "tasteScore": 0.0569,
-      "score": 0.35,
       "highlights": [],
       "userSaved": false,
       "userTagged": false,
@@ -55041,7 +54998,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.051,
+      "tasteScore": 0.0509,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -55086,7 +55043,7 @@
       "recommendationReasons": [
         "A strong books pick"
       ],
-      "tasteScore": 0.0237,
+      "tasteScore": 0.0236,
       "score": 0.388,
       "highlights": [],
       "userSaved": false,
@@ -55207,6 +55164,47 @@
       ],
       "likes": 0,
       "comments": 0
+    },
+    {
+      "id": "cb21d1d2464267cf",
+      "title": "24th annual music mondays concert series",
+      "description": "",
+      "date": "2026-12-07",
+      "startTime": "20:00",
+      "endTime": null,
+      "location": {
+        "name": "",
+        "address": "",
+        "neighborhood": null
+      },
+      "categories": [
+        "music"
+      ],
+      "source": "substack",
+      "sourceUrl": "https://www.theskint.com/tues-tues-11-24-12-1-thanksgiving-week/",
+      "imageUrl": "https://substack.com/img/substack_logo_dark.svg",
+      "price": "unknown",
+      "scrapedAt": "2026-11-24T12:41:16.512199",
+      "recurring": true,
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "ocrEnriched": false,
+      "structuredTitle": false,
+      "contributingSources": [
+        "substack"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "firstSeenAt": "2026-11-24T12:41:38.005643+00:00",
+      "discoveryLane": "explore",
+      "recommendationReasons": [
+        "A strong music pick"
+      ],
+      "tasteScore": 0.029,
+      "score": 0.35,
+      "highlights": []
     },
     {
       "id": "dd35e95bbaaa2b4d",
@@ -55809,7 +55807,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0369,
+      "tasteScore": 0.037,
       "score": 0.35,
       "highlights": [
         "free"
@@ -55871,7 +55869,7 @@
       "recommendationReasons": [
         "From Partiful"
       ],
-      "tasteScore": 0.024,
+      "tasteScore": 0.0239,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -56333,7 +56331,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0019,
+      "tasteScore": 0.0018,
       "score": 0.35,
       "highlights": [
         "free"
@@ -56501,7 +56499,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0037,
+      "tasteScore": 0.0036,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -56557,7 +56555,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0305,
+      "tasteScore": 0.0306,
       "score": 0.35,
       "highlights": [
         "free"
@@ -56655,7 +56653,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0175,
+      "tasteScore": 0.0176,
       "score": 0.524,
       "highlights": [],
       "userSaved": false,
@@ -56826,7 +56824,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.1078,
+      "tasteScore": 0.1077,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -57208,7 +57206,7 @@
       "recommendationReasons": [
         "A strong food pick"
       ],
-      "tasteScore": 0.0234,
+      "tasteScore": 0.0235,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -57629,7 +57627,7 @@
       "recommendationReasons": [
         "A strong books pick"
       ],
-      "tasteScore": 0.0388,
+      "tasteScore": 0.0387,
       "score": 0.35,
       "highlights": []
     },
@@ -57747,7 +57745,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0298,
+      "tasteScore": 0.0297,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -58515,7 +58513,7 @@
       "recommendationReasons": [
         "A strong food pick"
       ],
-      "tasteScore": 0.0289,
+      "tasteScore": 0.0288,
       "score": 0.679,
       "highlights": [
         "free"
@@ -58799,7 +58797,7 @@
       "recommendationReasons": [
         "A strong comedy pick"
       ],
-      "tasteScore": 0.0276,
+      "tasteScore": 0.0277,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -59003,7 +59001,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0506,
+      "tasteScore": 0.0507,
       "score": 0.35,
       "highlights": [
         "free"
@@ -59059,7 +59057,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.016,
+      "tasteScore": 0.0161,
       "score": 0.35,
       "highlights": [
         "free"
@@ -59169,7 +59167,7 @@
       "recommendationReasons": [
         "A strong exploration pick"
       ],
-      "tasteScore": 0.0137,
+      "tasteScore": 0.0138,
       "score": 0.35,
       "highlights": [
         "free"
@@ -59740,7 +59738,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0153,
+      "tasteScore": 0.0152,
       "score": 0.35,
       "highlights": [
         "free"
@@ -59964,7 +59962,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.017,
+      "tasteScore": 0.0171,
       "score": 0.35,
       "highlights": [
         "free"
@@ -60349,7 +60347,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0185,
+      "tasteScore": 0.0186,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -60566,7 +60564,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0132,
+      "tasteScore": 0.0133,
       "score": 0.35,
       "highlights": [
         "free"
@@ -60845,7 +60843,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0023,
+      "tasteScore": 0.0022,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -61078,7 +61076,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0577,
+      "tasteScore": 0.0576,
       "score": 0.387,
       "highlights": [],
       "userSaved": false,
@@ -61141,7 +61139,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0506,
+      "tasteScore": 0.0505,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -61251,7 +61249,7 @@
       "recommendationReasons": [
         "A strong books pick"
       ],
-      "tasteScore": 0.0343,
+      "tasteScore": 0.0342,
       "score": 0.541,
       "highlights": [],
       "userSaved": false,
@@ -62080,7 +62078,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.017,
+      "tasteScore": 0.0171,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -62272,7 +62270,7 @@
         "From bookclubbar",
         "From a source you like"
       ],
-      "tasteScore": 0.1025,
+      "tasteScore": 0.1024,
       "score": 0.38,
       "highlights": [
         "following",
@@ -62394,7 +62392,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0921,
+      "tasteScore": 0.092,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -62471,7 +62469,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0212,
+      "tasteScore": 0.0213,
       "score": 0.35,
       "highlights": [
         "free"
@@ -62698,7 +62696,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0043,
+      "tasteScore": 0.0044,
       "score": 0.35,
       "highlights": [
         "free"
@@ -63698,7 +63696,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.011,
+      "tasteScore": 0.0111,
       "score": 0.35,
       "highlights": [
         "free"
@@ -63808,7 +63806,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.01,
+      "tasteScore": 0.0099,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -64318,7 +64316,7 @@
       "recommendationReasons": [
         "A strong games pick"
       ],
-      "tasteScore": 0.0251,
+      "tasteScore": 0.025,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -64600,7 +64598,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0023,
+      "tasteScore": 0.0022,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -64769,7 +64767,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0273,
+      "tasteScore": 0.0272,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "From Instagram"
@@ -64950,7 +64948,7 @@
       "recommendationReasons": [
         "From Partiful"
       ],
-      "tasteScore": 0.0307,
+      "tasteScore": 0.0308,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -65119,7 +65117,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0072,
+      "tasteScore": 0.0071,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -65539,7 +65537,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0244,
+      "tasteScore": 0.0245,
       "score": 0.35,
       "highlights": [
         "free"
@@ -65757,7 +65755,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0327,
+      "tasteScore": 0.0328,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -66582,7 +66580,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0381,
+      "tasteScore": 0.0382,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -69245,7 +69243,7 @@
       "recommendationReasons": [
         "From Partiful"
       ],
-      "tasteScore": 0.0254,
+      "tasteScore": 0.0255,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -69354,7 +69352,7 @@
       "recommendationReasons": [
         "A strong exploration pick"
       ],
-      "tasteScore": 0.0175,
+      "tasteScore": 0.0176,
       "score": 0.35,
       "highlights": [
         "free"
@@ -70216,7 +70214,7 @@
       "recommendationReasons": [
         "Nearby in Williamsburg"
       ],
-      "tasteScore": 0.0136,
+      "tasteScore": 0.0137,
       "score": 0.35,
       "highlights": [
         "free",
@@ -70277,7 +70275,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0586,
+      "tasteScore": 0.0587,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -70448,7 +70446,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0218,
+      "tasteScore": 0.0219,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -70733,7 +70731,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0199,
+      "tasteScore": 0.02,
       "score": 0.35,
       "highlights": [
         "free"
@@ -70843,7 +70841,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0171,
+      "tasteScore": 0.0172,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -70954,7 +70952,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.04,
+      "tasteScore": 0.0399,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -71008,7 +71006,7 @@
       "recommendationReasons": [
         "A strong art pick"
       ],
-      "tasteScore": 0.0378,
+      "tasteScore": 0.0379,
       "score": 0.35,
       "highlights": [
         "free"
@@ -71070,7 +71068,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0473,
+      "tasteScore": 0.0472,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "Similar to events you liked"
@@ -71178,7 +71176,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0216,
+      "tasteScore": 0.0217,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -71427,7 +71425,7 @@
       "recommendationReasons": [
         "A strong food pick"
       ],
-      "tasteScore": 0.0192,
+      "tasteScore": 0.0193,
       "score": 0.928,
       "highlights": [],
       "userSaved": false,
@@ -72171,6 +72169,49 @@
       "highlights": []
     },
     {
+      "id": "e58e5c6a241daca6",
+      "title": "Lip Critic & the House of 1,000 Drums",
+      "description": "Venue takeover w/ Lip Critic in The Hall + Zone One @ Elsewhere in Bushwick on 12.12! Tickets start at $25 \u2022 7pm \u2022 16+ | Genre: Electropunk",
+      "date": "2026-12-12",
+      "startTime": "20:00",
+      "endTime": null,
+      "location": {
+        "name": "Elsewhere",
+        "address": "599 Johnson Avenue",
+        "neighborhood": "bushwick",
+        "lat": 40.709411,
+        "lng": -73.923169
+      },
+      "categories": [
+        "music"
+      ],
+      "source": "eventbrite",
+      "sourceUrl": "https://www.eventbrite.com/e/lip-critic-the-house-of-1000-drums-tickets-2003473419931",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197607508%2F2569518370411%2F1%2Foriginal.20261109-170319?crop=focalpoint&fit=crop&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=2f0a6625b9cd0eb7cf060b4cef098d0b",
+      "price": "unknown",
+      "scrapedAt": "2026-11-19T01:49:30.592727",
+      "organizerUrl": "https://eventbrite.com/o/105655500371",
+      "organizerRefs": [
+        {
+          "url": "https://eventbrite.com/o/105655500371",
+          "platform": "eventbrite",
+          "role": "host",
+          "externalId": "105655500371"
+        }
+      ],
+      "discoveryLane": "personal",
+      "discoveryVia": "eventbrite_search",
+      "firstSeenAt": "2026-11-19T01:51:57.467707+00:00",
+      "recommendationReasons": [
+        "From a source you like"
+      ],
+      "tasteScore": 0.0116,
+      "score": 0.35,
+      "highlights": [
+        "nearby"
+      ]
+    },
+    {
       "id": "5519485e39a977eb",
       "title": "Pack You Up for the Holidays- Comedy Show & Afterparty",
       "description": "Join The Edison Boys and Wil Milz for a holiday toy drive, comedy show and afterparty. Bring a toy make a kid smile!",
@@ -72225,49 +72266,6 @@
       "comments": 0
     },
     {
-      "id": "e58e5c6a241daca6",
-      "title": "Lip Critic & the House of 1,000 Drums",
-      "description": "Venue takeover w/ Lip Critic in The Hall + Zone One @ Elsewhere in Bushwick on 12.12! Tickets start at $25 \u2022 7pm \u2022 16+ | Genre: Electropunk",
-      "date": "2026-12-12",
-      "startTime": "20:00",
-      "endTime": null,
-      "location": {
-        "name": "Elsewhere",
-        "address": "599 Johnson Avenue",
-        "neighborhood": "bushwick",
-        "lat": 40.709411,
-        "lng": -73.923169
-      },
-      "categories": [
-        "music"
-      ],
-      "source": "eventbrite",
-      "sourceUrl": "https://www.eventbrite.com/e/lip-critic-the-house-of-1000-drums-tickets-2003473419931",
-      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1197607508%2F2569518370411%2F1%2Foriginal.20261109-170319?crop=focalpoint&fit=crop&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=2f0a6625b9cd0eb7cf060b4cef098d0b",
-      "price": "unknown",
-      "scrapedAt": "2026-11-19T01:49:30.592727",
-      "organizerUrl": "https://eventbrite.com/o/105655500371",
-      "organizerRefs": [
-        {
-          "url": "https://eventbrite.com/o/105655500371",
-          "platform": "eventbrite",
-          "role": "host",
-          "externalId": "105655500371"
-        }
-      ],
-      "discoveryLane": "personal",
-      "discoveryVia": "eventbrite_search",
-      "firstSeenAt": "2026-11-19T01:51:57.467707+00:00",
-      "recommendationReasons": [
-        "From a source you like"
-      ],
-      "tasteScore": 0.0116,
-      "score": 0.35,
-      "highlights": [
-        "nearby"
-      ]
-    },
-    {
       "id": "ce0fa5eba5b833f1",
       "title": "Steps on Broadway Conservatory Winter Student Choreography Showcase 1",
       "description": "Witness the debut of 10 original works! This diverse program will be performed by Conservatory Students.",
@@ -72318,7 +72316,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0143,
+      "tasteScore": 0.0144,
       "score": 0.35,
       "highlights": []
     },
@@ -72650,7 +72648,7 @@
         "From bookclubbar",
         "From a source you like"
       ],
-      "tasteScore": 0.0692,
+      "tasteScore": 0.0693,
       "score": 0.361,
       "highlights": [
         "following"
@@ -72697,7 +72695,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0406,
+      "tasteScore": 0.0407,
       "score": 0.417,
       "highlights": [],
       "userSaved": false,
@@ -73581,7 +73579,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0114,
+      "tasteScore": 0.0113,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -73697,7 +73695,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0123,
+      "tasteScore": 0.0124,
       "score": 0.35,
       "highlights": [
         "free"
@@ -74297,6 +74295,65 @@
       "primaryCommunityId": "com_55ca36db453a"
     },
     {
+      "id": "db2677011a36e5a4",
+      "title": "Gift of Gathering",
+      "description": "",
+      "date": "2026-12-13",
+      "startTime": "19:00",
+      "endTime": "21:00",
+      "location": {
+        "name": "SoHo",
+        "address": "SoHo, New York, NY, USA",
+        "neighborhood": "soho"
+      },
+      "categories": [
+        "other"
+      ],
+      "source": "luma",
+      "sourceUrl": "https://luma.com/qcpcwwt4",
+      "imageUrl": "https://images.lumacdn.com/uploads/fo/57ca0096-3c62-4a31-adc4-47c9067885c5.png",
+      "price": "unknown",
+      "scrapedAt": "2026-11-24T04:40:15.511172",
+      "organizer": "Honorly",
+      "organizerUrl": "https://luma.com/honorly",
+      "organizerRefs": [
+        {
+          "externalId": "cal-HKLq7mE4RVg4CF1",
+          "name": "Honorly",
+          "url": "https://luma.com/honorly",
+          "handle": "emzeigs",
+          "platform": "luma",
+          "role": "host"
+        }
+      ],
+      "attendingCount": 0,
+      "catalogSource": "luma_nyc",
+      "discoveryLane": "explore",
+      "structuredTitle": true,
+      "firstSeenAt": "2026-11-19T17:41:41.744963+00:00",
+      "recommendationReasons": [
+        "From Luma"
+      ],
+      "tasteScore": 0.0108,
+      "score": 0.35,
+      "highlights": [],
+      "userSaved": false,
+      "userTagged": false,
+      "userAffinity": false,
+      "userFollowing": false,
+      "recurring": false,
+      "ocrEnriched": false,
+      "contributingSources": [
+        "luma"
+      ],
+      "likes": 0,
+      "comments": 0,
+      "communityIds": [
+        "com_6577316c8d76"
+      ],
+      "primaryCommunityId": "com_6577316c8d76"
+    },
+    {
       "id": "1e2396a1cb8408cd",
       "title": "Fantasy Craft Night - Cozy Winter Edition! Counterspell pop-up at Love & Legends Books",
       "description": "",
@@ -74355,65 +74412,6 @@
         "com_eefccbbf1a7a"
       ],
       "primaryCommunityId": "com_eefccbbf1a7a"
-    },
-    {
-      "id": "db2677011a36e5a4",
-      "title": "Gift of Gathering",
-      "description": "",
-      "date": "2026-12-13",
-      "startTime": "19:00",
-      "endTime": "21:00",
-      "location": {
-        "name": "SoHo",
-        "address": "SoHo, New York, NY, USA",
-        "neighborhood": "soho"
-      },
-      "categories": [
-        "other"
-      ],
-      "source": "luma",
-      "sourceUrl": "https://luma.com/qcpcwwt4",
-      "imageUrl": "https://images.lumacdn.com/uploads/fo/57ca0096-3c62-4a31-adc4-47c9067885c5.png",
-      "price": "unknown",
-      "scrapedAt": "2026-11-24T04:40:15.511172",
-      "organizer": "Honorly",
-      "organizerUrl": "https://luma.com/honorly",
-      "organizerRefs": [
-        {
-          "externalId": "cal-HKLq7mE4RVg4CF1",
-          "name": "Honorly",
-          "url": "https://luma.com/honorly",
-          "handle": "emzeigs",
-          "platform": "luma",
-          "role": "host"
-        }
-      ],
-      "attendingCount": 0,
-      "catalogSource": "luma_nyc",
-      "discoveryLane": "explore",
-      "structuredTitle": true,
-      "firstSeenAt": "2026-11-19T17:41:41.744963+00:00",
-      "recommendationReasons": [
-        "From Luma"
-      ],
-      "tasteScore": 0.0108,
-      "score": 0.35,
-      "highlights": [],
-      "userSaved": false,
-      "userTagged": false,
-      "userAffinity": false,
-      "userFollowing": false,
-      "recurring": false,
-      "ocrEnriched": false,
-      "contributingSources": [
-        "luma"
-      ],
-      "likes": 0,
-      "comments": 0,
-      "communityIds": [
-        "com_6577316c8d76"
-      ],
-      "primaryCommunityId": "com_6577316c8d76"
     },
     {
       "id": "492a427800055879",
@@ -74991,7 +74989,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0096,
+      "tasteScore": 0.0097,
       "score": 0.35,
       "highlights": [
         "free"
@@ -75224,7 +75222,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0204,
+      "tasteScore": 0.0205,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -75460,7 +75458,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.04,
+      "tasteScore": 0.0401,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -75716,7 +75714,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0252,
+      "tasteScore": 0.0253,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -75932,7 +75930,7 @@
         "From an account you follow",
         "From a source you like"
       ],
-      "tasteScore": 0.0794,
+      "tasteScore": 0.0793,
       "score": 0.25,
       "highlights": [
         "following",
@@ -75969,7 +75967,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0372,
+      "tasteScore": 0.0371,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -76397,7 +76395,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.0158,
+      "tasteScore": 0.0159,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -76827,7 +76825,7 @@
         "From bookclubbar",
         "From a source you like"
       ],
-      "tasteScore": 0.0419,
+      "tasteScore": 0.042,
       "score": 0.553,
       "highlights": [
         "following",
@@ -77153,7 +77151,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0233,
+      "tasteScore": 0.0234,
       "score": 0.35,
       "highlights": [
         "free"
@@ -77734,7 +77732,7 @@
         "From an account you follow",
         "From a source you like"
       ],
-      "tasteScore": 0.1348,
+      "tasteScore": 0.1349,
       "score": 0.25,
       "highlights": [
         "following",
@@ -78100,7 +78098,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0436,
+      "tasteScore": 0.0437,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -78145,7 +78143,7 @@
       "recommendationReasons": [
         "From Luma"
       ],
-      "tasteScore": 0.027,
+      "tasteScore": 0.0271,
       "score": 0.35,
       "highlights": [
         "free"
@@ -78926,7 +78924,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0211,
+      "tasteScore": 0.0212,
       "score": 0.35,
       "highlights": []
     },
@@ -78968,7 +78966,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.018,
+      "tasteScore": 0.0181,
       "score": 0.6,
       "highlights": [],
       "userSaved": false,
@@ -79151,7 +79149,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0145,
+      "tasteScore": 0.0146,
       "score": 0.35,
       "highlights": [
         "free"
@@ -79723,7 +79721,7 @@
       "recommendationReasons": [
         "A strong games pick"
       ],
-      "tasteScore": 0.0184,
+      "tasteScore": 0.0183,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -79808,7 +79806,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0384,
+      "tasteScore": 0.0383,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -80022,7 +80020,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0451,
+      "tasteScore": 0.045,
       "score": 0.35,
       "highlights": [
         "free"
@@ -80483,7 +80481,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0304,
+      "tasteScore": 0.0305,
       "score": 0.35,
       "highlights": [
         "free"
@@ -80585,7 +80583,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.003,
+      "tasteScore": 0.0031,
       "score": 0.35,
       "highlights": []
     },
@@ -81165,7 +81163,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0446,
+      "tasteScore": 0.0445,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -81262,7 +81260,7 @@
       ],
       "likes": 0,
       "comments": 0,
-      "tasteScore": 0.0353,
+      "tasteScore": 0.0352,
       "discoveryLane": "explore",
       "recommendationReasons": [
         "A strong books pick"
@@ -81485,7 +81483,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0176,
+      "tasteScore": 0.0177,
       "score": 0.35,
       "highlights": [
         "free"
@@ -81586,7 +81584,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.027,
+      "tasteScore": 0.0271,
       "score": 0.748,
       "highlights": [
         "free"
@@ -81700,7 +81698,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0055,
+      "tasteScore": 0.0054,
       "score": 0.35,
       "highlights": [
         "free"
@@ -81806,7 +81804,7 @@
       "recommendationReasons": [
         "Nearby in Bushwick"
       ],
-      "tasteScore": 0.0374,
+      "tasteScore": 0.0375,
       "score": 0.35,
       "highlights": [
         "nearby"
@@ -81917,7 +81915,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0214,
+      "tasteScore": 0.0215,
       "score": 0.35,
       "highlights": [
         "free"
@@ -82219,7 +82217,7 @@
       "recommendationReasons": [
         "A strong comedy pick"
       ],
-      "tasteScore": 0.0223,
+      "tasteScore": 0.0224,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -82437,7 +82435,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0187,
+      "tasteScore": 0.0185,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -82833,7 +82831,7 @@
       "recommendationReasons": [
         "A strong art pick"
       ],
-      "tasteScore": 0.0153,
+      "tasteScore": 0.0154,
       "score": 0.35,
       "highlights": [
         "free"
@@ -83239,7 +83237,7 @@
       "recommendationReasons": [
         "A strong outdoors pick"
       ],
-      "tasteScore": 0.0395,
+      "tasteScore": 0.0396,
       "score": 0.35,
       "highlights": [
         "free"
@@ -83732,7 +83730,7 @@
       "recommendationReasons": [
         "A strong comedy pick"
       ],
-      "tasteScore": 0.0155,
+      "tasteScore": 0.0156,
       "score": 0.35,
       "highlights": []
     },
@@ -84325,7 +84323,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0548,
+      "tasteScore": 0.0547,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -84821,7 +84819,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0435,
+      "tasteScore": 0.0434,
       "score": 0.361,
       "highlights": [
         "free"
@@ -86004,7 +86002,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.052,
+      "tasteScore": 0.0519,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -86057,7 +86055,7 @@
       "recommendationReasons": [
         "A strong books pick"
       ],
-      "tasteScore": 0.0163,
+      "tasteScore": 0.0162,
       "score": 0.35,
       "highlights": [
         "free"
@@ -86106,8 +86104,8 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0081,
-      "score": 0.383,
+      "tasteScore": 0.008,
+      "score": 0.382,
       "highlights": [],
       "userSaved": false,
       "userTagged": false,
@@ -86295,7 +86293,7 @@
       "recommendationReasons": [
         "Nearby in Williamsburg"
       ],
-      "tasteScore": 0.0087,
+      "tasteScore": 0.0086,
       "score": 0.35,
       "highlights": [
         "nearby"
@@ -87115,7 +87113,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.011,
+      "tasteScore": 0.0111,
       "score": 0.4,
       "highlights": [
         "vibes"
@@ -87434,7 +87432,7 @@
       "recommendationReasons": [
         "A strong games pick"
       ],
-      "tasteScore": 0.0155,
+      "tasteScore": 0.0154,
       "score": 0.35,
       "highlights": [
         "free"
@@ -87477,7 +87475,7 @@
       "recommendationReasons": [
         "A strong books pick"
       ],
-      "tasteScore": 0.0373,
+      "tasteScore": 0.0372,
       "score": 0.35,
       "highlights": [
         "free"
@@ -87590,7 +87588,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0161,
+      "tasteScore": 0.0162,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -87729,7 +87727,7 @@
       "recommendationReasons": [
         "A strong comedy pick"
       ],
-      "tasteScore": 0.0192,
+      "tasteScore": 0.0193,
       "score": 0.35,
       "highlights": []
     },
@@ -87992,7 +87990,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0046,
+      "tasteScore": 0.0045,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -88349,7 +88347,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0212,
+      "tasteScore": 0.0211,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -88402,7 +88400,7 @@
       "recommendationReasons": [
         "A strong food pick"
       ],
-      "tasteScore": 0.0041,
+      "tasteScore": 0.004,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -88448,7 +88446,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0628,
+      "tasteScore": 0.0627,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -88548,7 +88546,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0085,
+      "tasteScore": 0.0084,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -89306,7 +89304,7 @@
       "recommendationReasons": [
         "A strong outdoors pick"
       ],
-      "tasteScore": 0.0138,
+      "tasteScore": 0.0137,
       "score": 0.35,
       "highlights": [
         "free"
@@ -89351,7 +89349,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0264,
+      "tasteScore": 0.0265,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -89808,7 +89806,7 @@
       "recommendationReasons": [
         "A strong parties pick"
       ],
-      "tasteScore": 0.0132,
+      "tasteScore": 0.0133,
       "score": 0.35,
       "highlights": [
         "free"
@@ -89922,7 +89920,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0063,
+      "tasteScore": 0.0062,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -91162,7 +91160,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0167,
+      "tasteScore": 0.0166,
       "score": 0.35,
       "highlights": []
     },
@@ -91430,7 +91428,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.0429,
+      "tasteScore": 0.043,
       "score": 0.35,
       "highlights": [],
       "communityIds": [
@@ -91603,7 +91601,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0178,
+      "tasteScore": 0.0177,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -91781,7 +91779,7 @@
       "recommendationReasons": [
         "From a source you like"
       ],
-      "tasteScore": 0.0693,
+      "tasteScore": 0.0692,
       "score": 0.625,
       "highlights": [
         "verified"
@@ -92572,7 +92570,7 @@
       "recommendationReasons": [
         "A strong games pick"
       ],
-      "tasteScore": 0.014,
+      "tasteScore": 0.0139,
       "score": 0.35,
       "highlights": [
         "free"
@@ -92627,7 +92625,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0182,
+      "tasteScore": 0.0183,
       "score": 0.35,
       "highlights": [
         "free"
@@ -92740,7 +92738,7 @@
       "recommendationReasons": [
         "From Eventbrite"
       ],
-      "tasteScore": 0.0011,
+      "tasteScore": 0.001,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -94806,7 +94804,7 @@
       "recommendationReasons": [
         "A strong music pick"
       ],
-      "tasteScore": 0.0326,
+      "tasteScore": 0.0327,
       "score": 0.35,
       "highlights": [],
       "userSaved": false,
@@ -94867,7 +94865,7 @@
       "recommendationReasons": [
         "Similar to events you liked"
       ],
-      "tasteScore": 0.043,
+      "tasteScore": 0.0429,
       "score": 0.369,
       "highlights": [
         "free"
@@ -95082,7 +95080,7 @@
       "recommendationReasons": [
         "Nearby in Bushwick"
       ],
-      "tasteScore": 0.0355,
+      "tasteScore": 0.0356,
       "score": 0.35,
       "highlights": [
         "verified",
@@ -95414,7 +95412,7 @@
       "highlights": []
     }
   ],
-  "lastUpdated": "2026-11-24T12:40:32.099520+00:00",
+  "lastUpdated": "2026-11-24T12:41:40.028832+00:00",
   "topAccounts": [
     {
       "username": "gametightentny",
@@ -95515,7 +95513,7 @@
   ],
   "ingestionStats": {
     "sources": {
-      "eventbrite": 567,
+      "eventbrite": 566,
       "instagram": 116,
       "luma": 647,
       "partiful": 119,
@@ -95530,24 +95528,25 @@
       "mcnallyjackson": 20,
       "brooklyncontra": 3,
       "thebellhouseny": 12,
+      "substack": 1,
       "centerforfiction": 5,
       "greenwoodcemetery": 2,
       "readingrhythms": 2,
       "yogaspace": 1
     },
     "discoveryLanes": {
-      "personal": 475,
-      "explore": 1291
+      "personal": 474,
+      "explore": 1292
     },
-    "withDescription": 886,
-    "withOrganizer": 1457,
-    "withLocation": 1728,
+    "withDescription": 891,
+    "withOrganizer": 1456,
+    "withLocation": 1727,
     "browserCapturedInstagram": 0,
     "nextSevenDays": {
-      "events": 418,
+      "events": 417,
       "organizers": 257,
       "sources": {
-        "eventbrite": 176,
+        "eventbrite": 175,
         "instagram": 41,
         "luma": 108,
         "partiful": 21,
@@ -95561,7 +95560,7 @@
         "bookclubbar": 2,
         "mcnallyjackson": 1
       },
-      "topSourceShare": 0.421
+      "topSourceShare": 0.42
     },
     "platformCatalogs": {
       "luma": {
@@ -95584,60 +95583,61 @@
         "scannedProfiles": 86,
         "followerTriggered": 82,
         "activeSchedules": 2,
-        "qualifiedProfiles": 2
+        "qualifiedProfiles": 2,
+        "plannedProfiles": 2,
+        "fetchedProfiles": 0,
+        "qualifiedThisRun": 0,
+        "snapshotProfiles": 0,
+        "generatedEvents": 0
       },
       "eventbrite": {
-        "organizerTargets": 60,
-        "organizerTargetsFetched": 60,
+        "organizerTargets": 8,
+        "organizerTargetsFetched": 8,
         "collectionTargets": 2,
         "collectionTargetsFetched": 2,
         "collectionsAdmitted": 0,
-        "directTargets": 30,
-        "directTargetsFetched": 30,
-        "searchPages": 24,
+        "directTargets": 5,
+        "directTargetsFetched": 5,
+        "searchPages": 8,
         "searchPagesFetched": 0,
-        "promotedOrganizers": 8,
-        "promotedOrganizersFetched": 8,
+        "promotedOrganizers": 3,
+        "promotedOrganizersFetched": 3,
         "rateLimitCircuitOpened": false,
-        "fetched": 441,
-        "rawEvents": 443,
-        "duplicateRows": 2
+        "fetched": 50,
+        "rawEvents": 50,
+        "duplicateRows": 0
       }
     },
     "run": {
       "runCompleted": true,
       "partialRun": false,
       "timedOutSources": [],
-      "instagram": {
-        "attemptedAccounts": 17,
-        "completedAccounts": 17,
-        "productiveAccounts": 0,
-        "selectedAccounts": 17,
-        "deadlineHit": false,
-        "protectedOnly": true,
-        "sessionAvailable": true,
-        "elapsedSeconds": 82.0,
-        "eventsFound": 22
-      },
+      "instagram": {},
       "descriptionEnrichment": {
         "windowEvents": 279,
-        "eligibleMissing": 0,
+        "eligibleMissing": 31,
         "requestLimit": 24,
-        "attempted": 0,
-        "enriched": 0,
-        "failed": 0,
+        "attempted": 24,
+        "enriched": 6,
+        "failed": 18,
         "timedOut": 0,
         "cancelled": 0,
         "rateLimitedSources": [],
         "deadlineHit": false,
-        "sources": {},
-        "elapsedSeconds": 0.01,
-        "cachedEvents": 0
+        "sources": {
+          "eventbrite": {
+            "attempted": 24,
+            "enriched": 6,
+            "failed": 18
+          }
+        },
+        "elapsedSeconds": 4.83,
+        "cachedEvents": 18
       }
     }
   },
   "communityStats": {
     "communities": 1346,
-    "linkedEvents": 781
+    "linkedEvents": 780
   }
 }
