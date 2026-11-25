@@ -3348,7 +3348,7 @@
       "name": "Saba Hocek",
       "kind": "recurring_series",
       "tagline": "Saba Hocek is a recurring event series centered on wellness in manhattan.",
-      "description": "Saba Hocek is a recurring event series centered on wellness in manhattan. Based on 2 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
+      "description": "Saba Hocek is a recurring event series centered on wellness in manhattan. Based on 3 observed event dates, it meets weekly on Wednesday and Saturday evenings.",
       "categories": [
         "other",
         "wellness"
@@ -3360,7 +3360,7 @@
       "neighborhoods": [
         "manhattan"
       ],
-      "homeVenue": "1521 York Ave",
+      "homeVenue": "Active Studios NYC",
       "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1182818568%2F287664153514%2F1%2Foriginal.20260422-203611?crop=focalpoint&fit=crop&h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=ce35d4c7d6a2891da96c96e683e46f10",
       "links": [
         {
@@ -3373,7 +3373,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-25",
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 1
       },
       "schedule": {
@@ -3383,12 +3383,13 @@
           "Saturday"
         ],
         "typicalTime": "19:15",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
         "b5ace47b4de47470",
-        "a16ecafba7dff15b"
+        "a16ecafba7dff15b",
+        "4c1bc395f4e88dba"
       ],
       "sourceAttributions": [
         "eventbrite"
@@ -3397,7 +3398,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -67346,7 +67347,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-25T05:29:45.036721+00:00",
+  "lastUpdated": "2026-11-25T08:54:18.131250+00:00",
   "version": 1,
   "schemaVersion": 1
 }
