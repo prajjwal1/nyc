@@ -74,10 +74,10 @@
       "similarCommunityIds": [
         "com_ab8259bb35a4",
         "com_28a4ec647815",
-        "com_1b71901c7841",
         "com_c58670960684",
         "com_e5e2d63247a1",
-        "com_3837f308cd75"
+        "com_3837f308cd75",
+        "com_f9551f264561"
       ]
     },
     {
@@ -1788,10 +1788,10 @@
       "similarCommunityIds": [
         "com_d36daf8ea112",
         "com_f8c88ef9a8ca",
-        "com_57359d725dc0",
         "com_c2d0cec20a9a",
         "com_0e403135692e",
-        "com_dd8dd0f432cf"
+        "com_dd8dd0f432cf",
+        "com_29bf3dd9f892"
       ]
     },
     {
@@ -5442,12 +5442,12 @@
         "eventbrite:33320628035"
       ],
       "similarCommunityIds": [
-        "com_1b71901c7841",
         "com_3837f308cd75",
         "com_29bf3dd9f892",
         "com_359977ec663e",
         "com_40c80a7a65d7",
-        "com_72fc29c6d9f3"
+        "com_72fc29c6d9f3",
+        "com_c58670960684"
       ]
     },
     {
@@ -6058,12 +6058,12 @@
         "eventbrite:4279966505"
       ],
       "similarCommunityIds": [
+        "com_bd0b659d95ac",
         "com_037b24ee6417",
         "com_0ae542c496b3",
         "com_160d3b550b59",
         "com_1c65032c5bbc",
-        "com_29bf3dd9f892",
-        "com_30bd6ca662e0"
+        "com_29bf3dd9f892"
       ]
     },
     {
@@ -6934,10 +6934,10 @@
       "similarCommunityIds": [
         "com_ab8259bb35a4",
         "com_9abdf9db297a",
-        "com_1b71901c7841",
         "com_e5e2d63247a1",
         "com_3837f308cd75",
-        "com_144b302fd731"
+        "com_144b302fd731",
+        "com_1466f20a9300"
       ]
     },
     {
@@ -7549,10 +7549,10 @@
       "similarCommunityIds": [
         "com_30bd6ca662e0",
         "com_4eae7de1bfbd",
-        "com_1b71901c7841",
         "com_359977ec663e",
         "com_9fe1e0196792",
-        "com_b8a3508a14a4"
+        "com_b8a3508a14a4",
+        "com_c58670960684"
       ]
     },
     {
@@ -7618,11 +7618,11 @@
       ],
       "similarCommunityIds": [
         "com_12939182c936",
+        "com_1b71901c7841",
         "com_96c1fc7fc4a9",
         "com_58a6ebb59b6b",
         "com_c58670960684",
-        "com_f084ce2ea8b1",
-        "com_072c9c3e12a8"
+        "com_f084ce2ea8b1"
       ]
     },
     {
@@ -7690,12 +7690,12 @@
         "eventbrite:82796394943"
       ],
       "similarCommunityIds": [
-        "com_57359d725dc0",
         "com_d36daf8ea112",
         "com_85cecaa99bb1",
         "com_22bf2a8b4978",
         "com_759f151a6d08",
-        "com_edf7e9714aa8"
+        "com_edf7e9714aa8",
+        "com_3cfda965b912"
       ]
     },
     {
@@ -8516,8 +8516,8 @@
         "com_f084ce2ea8b1",
         "com_3942d7a4c6e3",
         "com_79ec7e06a045",
-        "com_ab8259bb35a4",
-        "com_429985f30c7b"
+        "com_429985f30c7b",
+        "com_ab8259bb35a4"
       ]
     },
     {
@@ -8658,6 +8658,76 @@
         "com_b0e15eaab803",
         "com_02f781be3c26",
         "com_14a9b81bfe8f"
+      ]
+    },
+    {
+      "id": "com_9e04598579ba",
+      "slug": "fat-cat-fab-lab-8579ba",
+      "name": "Fat Cat Fab Lab",
+      "kind": "recurring_series",
+      "tagline": "Fat Cat Fab Lab is a recurring event series centered on exploration in west village.",
+      "description": "Fat Cat Fab Lab is a recurring event series centered on exploration in west village. Based on 6 observed event dates, it meets weekly on Wednesday and Sunday evenings.",
+      "categories": [
+        "exploration"
+      ],
+      "tags": [
+        "exploration"
+      ],
+      "neighborhoods": [
+        "west village"
+      ],
+      "homeVenue": "Fat Cat Fab Lab",
+      "imageUrl": "https://images.lumacdn.com/uploads/lb/615767e9-1aa9-43ff-ace1-1557fc6a2e36.gif",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/fatcatfablab"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-25",
+        "upcomingEventCount": 1,
+        "eventCount90d": 5
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday",
+          "Sunday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 1.0,
+        "sampleSize": 6
+      },
+      "upcomingEventIds": [
+        "6ef69ffe22a54c4e"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-26",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 6,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:fatcatfablab",
+        "luma:cal-1gf7hu4fpu3gzwo"
+      ],
+      "similarCommunityIds": [
+        "com_273757444236",
+        "com_cc512880b6d5",
+        "com_6bbe66998143",
+        "com_af4bea7d5316",
+        "com_4b9d7692e567",
+        "com_99e08820d1c1"
       ]
     },
     {
@@ -9314,10 +9384,10 @@
       "similarCommunityIds": [
         "com_7e654f58296b",
         "com_af4bea7d5316",
+        "com_9e04598579ba",
         "com_394b0acee032",
         "com_b14079f8c133",
-        "com_f084ce2ea8b1",
-        "com_f8e07f99b39d"
+        "com_f084ce2ea8b1"
       ]
     },
     {
@@ -10185,11 +10255,11 @@
       ],
       "similarCommunityIds": [
         "com_f9551f264561",
-        "com_1b71901c7841",
         "com_359977ec663e",
-        "com_ab8259bb35a4",
         "com_072c9c3e12a8",
-        "com_1c65032c5bbc"
+        "com_ab8259bb35a4",
+        "com_1c65032c5bbc",
+        "com_36cb2681053d"
       ]
     },
     {
@@ -10331,7 +10401,7 @@
         "com_82b5c4a47e6d",
         "com_feb5ce491629",
         "com_4b9d7692e567",
-        "com_065dafa96d43"
+        "com_9e04598579ba"
       ]
     },
     {
@@ -10545,17 +10615,17 @@
       "slug": "pitch-and-run-725dc0",
       "name": "Pitch and Run",
       "kind": "recurring_series",
-      "tagline": "Pitch and Run is a recurring event series centered on outdoors, parties in manhattan, chelsea.",
-      "description": "Pitch and Run is a recurring event series centered on outdoors, parties in manhattan, chelsea. Based on 18 observed event dates, it meets weekly on Monday and Tuesday mornings.",
+      "tagline": "Pitch and Run is a recurring event series centered on outdoors, parties, theater in manhattan, chelsea.",
+      "description": "Pitch and Run is a recurring event series centered on outdoors, parties, theater in manhattan, chelsea. Based on 18 observed event dates, it meets weekly on Monday and Tuesday mornings.",
       "categories": [
         "outdoors",
         "parties",
-        "other"
+        "theater"
       ],
       "tags": [
         "outdoors",
         "parties",
-        "other"
+        "theater"
       ],
       "neighborhoods": [
         "manhattan",
@@ -10615,11 +10685,11 @@
       ],
       "similarCommunityIds": [
         "com_fbbdf45a2a0e",
+        "com_cf4f17cc5b67",
+        "com_065dafa96d43",
         "com_759f151a6d08",
-        "com_edf7e9714aa8",
-        "com_14ba17c2cfae",
-        "com_3942d7a4c6e3",
-        "com_7d3e76b46ffc"
+        "com_79c45b85e55a",
+        "com_9c336784d52c"
       ]
     },
     {
@@ -10683,12 +10753,12 @@
         "luma:cal-exyuj1jcfvuk1yn"
       ],
       "similarCommunityIds": [
+        "com_c5fb2290140a",
         "com_cbf59944fb61",
         "com_037b24ee6417",
         "com_0ae542c496b3",
         "com_160d3b550b59",
-        "com_1c65032c5bbc",
-        "com_29bf3dd9f892"
+        "com_1c65032c5bbc"
       ]
     },
     {
@@ -11231,7 +11301,7 @@
         "com_160d3b550b59",
         "com_1c65032c5bbc",
         "com_30bd6ca662e0",
-        "com_36080a5c47cd"
+        "com_30bfa181fd47"
       ]
     },
     {
@@ -12429,11 +12499,11 @@
       ],
       "similarCommunityIds": [
         "com_12939182c936",
+        "com_1b71901c7841",
         "com_d829c420e5a9",
         "com_eefccbbf1a7a",
         "com_c567b4e02ff2",
-        "com_072c9c3e12a8",
-        "com_139883e18f84"
+        "com_072c9c3e12a8"
       ]
     },
     {
@@ -12862,6 +12932,78 @@
       ]
     },
     {
+      "id": "com_cc512880b6d5",
+      "slug": "omar-s-classes-80b6d5",
+      "name": "Omar's Classes",
+      "kind": "recurring_series",
+      "tagline": "Omar's Classes is a recurring event series centered on exploration in west village.",
+      "description": "Omar's Classes is a recurring event series centered on exploration in west village. Based on 2 observed event dates, it meets weekly on Tuesday and Wednesday evenings.",
+      "categories": [
+        "other",
+        "exploration"
+      ],
+      "tags": [
+        "other",
+        "exploration"
+      ],
+      "neighborhoods": [
+        "west village"
+      ],
+      "homeVenue": "Fat Cat Fab Lab",
+      "imageUrl": "https://images.lumacdn.com/uploads/77/333c75ff-bae2-4113-a829-5eeaee3b4813.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/omar-classes"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday",
+          "Wednesday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "93b1794c9e30ea40",
+        "6ef69ffe22a54c4e"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-26",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "luma:cal-mevibl1d0v1h15j"
+      ],
+      "similarCommunityIds": [
+        "com_af4bea7d5316",
+        "com_4b9d7692e567",
+        "com_9e04598579ba",
+        "com_8f2a69f866f2",
+        "com_273757444236",
+        "com_c5fb2290140a"
+      ]
+    },
+    {
       "id": "com_8963cc48d824",
       "slug": "mysha-happenings-48d824",
       "name": "mysha happenings",
@@ -13219,11 +13361,11 @@
       ],
       "similarCommunityIds": [
         "com_d2d455d2d6c9",
-        "com_57359d725dc0",
         "com_429985f30c7b",
         "com_2c239df2a554",
         "com_bb6928bc760c",
-        "com_759f151a6d08"
+        "com_759f151a6d08",
+        "com_79c45b85e55a"
       ]
     },
     {
@@ -14614,12 +14756,12 @@
         "luma:cal-s98roaps7lok8h6"
       ],
       "similarCommunityIds": [
+        "com_c5fb2290140a",
         "com_a20864ed56ec",
         "com_4b9d7692e567",
         "com_30e8efd15421",
         "com_387990e42591",
-        "com_40bf372e58c5",
-        "com_4187c60b9599"
+        "com_40bf372e58c5"
       ]
     },
     {
@@ -14689,12 +14831,12 @@
         "luma:cal-sc85bazzq7gzize"
       ],
       "similarCommunityIds": [
-        "com_1b71901c7841",
         "com_c58670960684",
         "com_c2900dc31273",
         "com_ab8259bb35a4",
         "com_072c9c3e12a8",
-        "com_5a3b32df6329"
+        "com_5a3b32df6329",
+        "com_5c8ac62f26b3"
       ]
     },
     {
@@ -15472,6 +15614,75 @@
       ]
     },
     {
+      "id": "com_c5fb2290140a",
+      "slug": "intro-to-embroidery-basic-use-safety-90140a",
+      "name": "Intro to Embroidery : Basic Use & Safety",
+      "kind": "recurring_series",
+      "tagline": "Intro to Embroidery : Basic Use & Safety is a recurring event series in west village.",
+      "description": "Intro to Embroidery : Basic Use & Safety is a recurring event series in west village. Based on 2 observed event dates, it meets biweekly on Tuesday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "west village"
+      ],
+      "homeVenue": "Fat Cat Fab Lab",
+      "imageUrl": "https://images.lumacdn.com/uploads/77/333c75ff-bae2-4113-a829-5eeaee3b4813.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/embroidery_at_fatcat"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 1,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Tuesday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "93b1794c9e30ea40"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-26",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:handmade_by_chen",
+        "luma:cal-uodu0glyysaquna"
+      ],
+      "similarCommunityIds": [
+        "com_cbf59944fb61",
+        "com_a20864ed56ec",
+        "com_4b9d7692e567",
+        "com_30e8efd15421",
+        "com_387990e42591",
+        "com_40bf372e58c5"
+      ]
+    },
+    {
       "id": "com_3f478631e906",
       "slug": "proof-running-co-31e906",
       "name": "PROOF Running Co",
@@ -15601,12 +15812,12 @@
         "luma:cal-v16gxkbcbt7btxk"
       ],
       "similarCommunityIds": [
+        "com_cc512880b6d5",
         "com_1c65032c5bbc",
         "com_36cb2681053d",
         "com_5f3066e419a7",
         "com_72ef3d04cd66",
-        "com_783d20e163ac",
-        "com_91772bf8b6fc"
+        "com_783d20e163ac"
       ]
     },
     {
@@ -16198,7 +16409,7 @@
       "name": "Kiki and Bouba Craft Lab",
       "kind": "recurring_series",
       "tagline": "Kiki and Bouba Craft Lab is a recurring event series in brooklyn.",
-      "description": "Kiki and Bouba Craft Lab is a recurring event series in brooklyn. Based on 5 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
+      "description": "Kiki and Bouba Craft Lab is a recurring event series in brooklyn. Based on 6 observed event dates, it meets weekly on Thursday and Wednesday evenings.",
       "categories": [
         "other"
       ],
@@ -16221,21 +16432,22 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-22",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 4
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Wednesday",
-          "Thursday"
+          "Thursday",
+          "Wednesday"
         ],
         "typicalTime": "18:00",
-        "confidence": 0.83,
-        "sampleSize": 5
+        "confidence": 1.0,
+        "sampleSize": 6
       },
       "upcomingEventIds": [
-        "d5fe13c3a380b210"
+        "d5fe13c3a380b210",
+        "54fd9e8a09cfb0db"
       ],
       "sourceAttributions": [
         "luma"
@@ -16244,7 +16456,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 5,
+        "observedDateCount": 6,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -17312,7 +17524,7 @@
         "com_139883e18f84",
         "com_9f333da89132",
         "com_d73abf992ef2",
-        "com_58a6ebb59b6b"
+        "com_1b71901c7841"
       ]
     },
     {
@@ -17693,7 +17905,8 @@
       "neighborhoods": [
         "manhattan",
         "upper east side",
-        "midtown"
+        "midtown",
+        "williamsburg"
       ],
       "homeVenue": "The Metropolitan Museum of Art",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=1920,height=1920/uploads/8k/df08b274-765d-4d9b-9288-fb2ab676a78a.jpg",
@@ -17708,7 +17921,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-25",
-        "upcomingEventCount": 6,
+        "upcomingEventCount": 7,
         "eventCount90d": 60
       },
       "schedule": {
@@ -17724,6 +17937,7 @@
       "upcomingEventIds": [
         "6cdc693fccade154",
         "e5f2ddfd2a7d3b99",
+        "96a651a134b40288",
         "e296ce125188c8de",
         "895496afe830d41a",
         "ce9537cdf57908e2",
@@ -17750,7 +17964,7 @@
         "com_1e60766a7318",
         "com_359977ec663e",
         "com_96c1fc7fc4a9",
-        "com_f9551f264561"
+        "com_28a4ec647815"
       ]
     },
     {
@@ -18450,11 +18664,9 @@
       "tagline": "603 Arts is a recurring event series centered on art in chelsea, long island city.",
       "description": "603 Arts is a recurring event series centered on art in chelsea, long island city. Based on 2 observed event dates, it meets weekly on Wednesday and Thursday evenings.",
       "categories": [
-        "other",
         "art"
       ],
       "tags": [
-        "other",
         "art"
       ],
       "neighborhoods": [
@@ -18508,12 +18720,12 @@
         "luma:usr-ds5cpafjqk5ygoa"
       ],
       "similarCommunityIds": [
-        "com_359977ec663e",
-        "com_c58670960684",
+        "com_d829c420e5a9",
+        "com_12939182c936",
+        "com_58a6ebb59b6b",
         "com_e5e2d63247a1",
-        "com_072c9c3e12a8",
-        "com_29bf3dd9f892",
-        "com_3be718149a43"
+        "com_359977ec663e",
+        "com_96c1fc7fc4a9"
       ]
     },
     {
@@ -18586,7 +18798,7 @@
         "com_525bddfaee91",
         "com_7c6e7432bd13",
         "com_28a4ec647815",
-        "com_3048e331f7b6"
+        "com_1b71901c7841"
       ]
     },
     {
@@ -18852,12 +19064,12 @@
         "luma:usr-lg1g0ksyucczp9p"
       ],
       "similarCommunityIds": [
+        "com_9e04598579ba",
+        "com_cc512880b6d5",
         "com_9f333da89132",
+        "com_c5fb2290140a",
         "com_cbf59944fb61",
-        "com_8ff2a593caac",
-        "com_c27c74be6386",
-        "com_6bbe66998143",
-        "com_a20864ed56ec"
+        "com_8ff2a593caac"
       ]
     },
     {
@@ -18925,11 +19137,77 @@
       ],
       "similarCommunityIds": [
         "com_4b79eca5454b",
+        "com_c5fb2290140a",
         "com_cbf59944fb61",
         "com_30e8efd15421",
         "com_387990e42591",
-        "com_40bf372e58c5",
-        "com_4187c60b9599"
+        "com_40bf372e58c5"
+      ]
+    },
+    {
+      "id": "com_bd0b659d95ac",
+      "slug": "still-good-9d95ac",
+      "name": "STILL GOOD",
+      "kind": "recurring_series",
+      "tagline": "STILL GOOD is a recurring event series in fidi, harlem.",
+      "description": "STILL GOOD is a recurring event series in fidi, harlem. Based on 2 observed event dates, it meets weekly on Sunday and Friday mornings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "fidi",
+        "harlem"
+      ],
+      "homeVenue": "The Laundromat Project",
+      "imageUrl": "https://images.lumacdn.com/uploads/b8/dbd0455b-bd3c-4d2d-b3b7-674025c6d0ec.png",
+      "links": [],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Sunday",
+          "Friday"
+        ],
+        "typicalTime": "11:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "43e66bd181dfa593",
+        "2e66a1fac53a841e"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-26",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:stillgoodny",
+        "luma:usr-mt3tagc6zsedare"
+      ],
+      "similarCommunityIds": [
+        "com_f8ff3d3257ed",
+        "com_037b24ee6417",
+        "com_0ae542c496b3",
+        "com_160d3b550b59",
+        "com_1c65032c5bbc",
+        "com_29bf3dd9f892"
       ]
     },
     {
@@ -19116,12 +19394,12 @@
         "luma:usr-psjhzdkvfrrg1ed"
       ],
       "similarCommunityIds": [
+        "com_30bfa181fd47",
         "com_30e8efd15421",
         "com_387990e42591",
         "com_40bf372e58c5",
         "com_4187c60b9599",
-        "com_483b995f5504",
-        "com_4b79eca5454b"
+        "com_483b995f5504"
       ]
     },
     {
@@ -19815,9 +20093,9 @@
         "com_40bf372e58c5",
         "com_c0cfe9590e66",
         "com_072c9c3e12a8",
-        "com_1b71901c7841",
         "com_bd68e20ac6b2",
-        "com_3be718149a43"
+        "com_3be718149a43",
+        "com_8406f1267c2e"
       ]
     },
     {
@@ -19951,6 +20229,80 @@
         "com_0ae542c496b3",
         "com_0df03478a9fc",
         "com_1f87b327b20e"
+      ]
+    },
+    {
+      "id": "com_30bfa181fd47",
+      "slug": "east-williamsburg-trash-club-81fd47",
+      "name": "East Williamsburg Trash Club",
+      "kind": "club",
+      "tagline": "East Williamsburg Trash Club is a community club in east williamsburg.",
+      "description": "East Williamsburg Trash Club is a community club in east williamsburg. Based on 2 observed event dates, it meets weekly on Wednesday evenings.",
+      "categories": [
+        "other"
+      ],
+      "tags": [
+        "other"
+      ],
+      "neighborhoods": [
+        "east williamsburg"
+      ],
+      "homeVenue": "East Williamsburg",
+      "imageUrl": "https://media0.giphy.com/media/J1p0Xb0MoyjZ0ID4mG/giphy.gif?cid=c00e53c6ipt7b8w60of4j2avnk0my1anqb9anuwk1kovdbet&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+      "links": [
+        {
+          "type": "partiful",
+          "label": "View on Partiful",
+          "url": "https://partiful.com/u/J5RpE6vK2lWsM01C10xv"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-25",
+        "upcomingEventCount": 1,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Wednesday"
+        ],
+        "typicalTime": "19:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "b5fecdbfcd2478b9"
+      ],
+      "sourceAttributions": [
+        "partiful"
+      ],
+      "lastVerifiedAt": "2026-11-26",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": true,
+      "newcomerEvidence": [
+        {
+          "eventId": "b5fecdbfcd2478b9",
+          "signal": "no experience"
+        }
+      ],
+      "aliases": [
+        "instagram:eastwburgtrashclub",
+        "partiful:j5rpe6vk2lwsm01c10xv"
+      ],
+      "similarCommunityIds": [
+        "com_6a28e65e2284",
+        "com_037b24ee6417",
+        "com_0ae542c496b3",
+        "com_160d3b550b59",
+        "com_1c65032c5bbc",
+        "com_29bf3dd9f892"
       ]
     },
     {
@@ -67749,7 +68101,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-26T11:02:29.744188+00:00",
+  "lastUpdated": "2026-11-26T12:21:03.897922+00:00",
   "version": 1,
   "schemaVersion": 1
 }
