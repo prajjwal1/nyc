@@ -1635,10 +1635,10 @@
         "eventbrite:121317604995"
       ],
       "similarCommunityIds": [
-        "com_4c7fef32815c",
         "com_d1da9ddb5fe6",
         "com_f5605b691048",
         "com_33a530deb7aa",
+        "com_4af3a0d8df95",
         "com_c4469caf0091",
         "com_f171cd222ca5"
       ]
@@ -3681,9 +3681,9 @@
       ],
       "similarCommunityIds": [
         "com_065dafa96d43",
+        "com_805e2fa93ad2",
         "com_03e40e81f4b4",
         "com_3bc67889299d",
-        "com_805e2fa93ad2",
         "com_82b5c4a47e6d",
         "com_99e08820d1c1"
       ]
@@ -6800,11 +6800,11 @@
         "eventbrite:52255937823"
       ],
       "similarCommunityIds": [
+        "com_4af3a0d8df95",
         "com_33a530deb7aa",
         "com_c4469caf0091",
         "com_d1da9ddb5fe6",
         "com_4a20115f4862",
-        "com_4c7fef32815c",
         "com_f5605b691048"
       ]
     },
@@ -7021,11 +7021,11 @@
       ],
       "similarCommunityIds": [
         "com_4a20115f4862",
-        "com_4c7fef32815c",
         "com_f5605b691048",
         "com_1e68b580d0be",
         "com_ddcfc606c1ae",
-        "com_f171cd222ca5"
+        "com_f171cd222ca5",
+        "com_146994a16b2e"
       ]
     },
     {
@@ -7861,12 +7861,12 @@
         "eventbrite:79929425663"
       ],
       "similarCommunityIds": [
+        "com_4af3a0d8df95",
         "com_b5c978844e87",
         "com_b736e77bdf93",
         "com_1466f20a9300",
         "com_a2114f75658a",
-        "com_a4d969c3c6eb",
-        "com_de070b382a28"
+        "com_a4d969c3c6eb"
       ]
     },
     {
@@ -8759,9 +8759,9 @@
         "com_805e2fa93ad2",
         "com_82b5c4a47e6d",
         "com_99e08820d1c1",
+        "com_8e231cf7376c",
         "com_feb5ce491629",
-        "com_065dafa96d43",
-        "com_21008b2f6401"
+        "com_065dafa96d43"
       ]
     },
     {
@@ -8995,13 +8995,15 @@
       "slug": "the-soft-spaces-events-calendar-f7376c",
       "name": "the soft(spaces) events calendar",
       "kind": "recurring_series",
-      "tagline": "the soft(spaces) events calendar is a recurring event series in bronx.",
-      "description": "the soft(spaces) events calendar is a recurring event series in bronx. Based on 6 observed event dates, it meets weekly on Saturday and Tuesday evenings.",
+      "tagline": "the soft(spaces) events calendar is a recurring event series centered on fitness in bronx.",
+      "description": "the soft(spaces) events calendar is a recurring event series centered on fitness in bronx. Based on 7 observed event dates, it meets weekly on Saturday and Tuesday mornings.",
       "categories": [
-        "free"
+        "free",
+        "fitness"
       ],
       "tags": [
-        "free"
+        "free",
+        "fitness"
       ],
       "neighborhoods": [
         "bronx"
@@ -9019,7 +9021,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-24",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 5
       },
       "schedule": {
@@ -9028,12 +9030,13 @@
           "Saturday",
           "Tuesday"
         ],
-        "typicalTime": "19:00",
+        "typicalTime": "11:00",
         "confidence": 1.0,
-        "sampleSize": 6
+        "sampleSize": 7
       },
       "upcomingEventIds": [
-        "869095a4c84ed88d"
+        "869095a4c84ed88d",
+        "36ba89bf5b817427"
       ],
       "sourceAttributions": [
         "luma"
@@ -9042,7 +9045,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 6,
+        "observedDateCount": 7,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -9052,12 +9055,12 @@
         "luma:cal-0qndhnkdwxsjdlh"
       ],
       "similarCommunityIds": [
-        "com_8172de11cbdf",
-        "com_cdd5daa67222",
-        "com_0259cd2e758d",
-        "com_02f781be3c26",
-        "com_032059b33438",
-        "com_037b24ee6417"
+        "com_3bc67889299d",
+        "com_805e2fa93ad2",
+        "com_82b5c4a47e6d",
+        "com_99e08820d1c1",
+        "com_feb5ce491629",
+        "com_065dafa96d43"
       ]
     },
     {
@@ -9998,9 +10001,9 @@
         "com_a4d969c3c6eb",
         "com_4a20115f4862",
         "com_1e7cda5c9e12",
+        "com_4af3a0d8df95",
         "com_1a46b1930293",
-        "com_218b97d674a6",
-        "com_592d5ae965a5"
+        "com_218b97d674a6"
       ]
     },
     {
@@ -11012,9 +11015,9 @@
         "com_3bc67889299d",
         "com_805e2fa93ad2",
         "com_82b5c4a47e6d",
+        "com_8e231cf7376c",
         "com_feb5ce491629",
-        "com_4b9d7692e567",
-        "com_9e04598579ba"
+        "com_4b9d7692e567"
       ]
     },
     {
@@ -12141,6 +12144,76 @@
       ]
     },
     {
+      "id": "com_4af3a0d8df95",
+      "slug": "the-warehouse-d8df95",
+      "name": "The Warehouse",
+      "kind": "recurring_series",
+      "tagline": "The Warehouse is a recurring event series centered on books in brooklyn.",
+      "description": "The Warehouse is a recurring event series centered on books in brooklyn. Based on 2 observed event dates, it meets weekly on Tuesday and Thursday mornings.",
+      "categories": [
+        "books"
+      ],
+      "tags": [
+        "books"
+      ],
+      "neighborhoods": [
+        "brooklyn"
+      ],
+      "homeVenue": "Brooklyn",
+      "imageUrl": "https://images.lumacdn.com/uploads/7j/c03f8250-0eb8-46aa-b191-e45c809896e1.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/the-warehouse"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 1,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "weekly",
+        "typicalDays": [
+          "Tuesday",
+          "Thursday"
+        ],
+        "typicalTime": "10:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "803f03683344d3e3"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-27",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:celiarrdavis",
+        "luma:cal-hfaxezbkmce80lz"
+      ],
+      "similarCommunityIds": [
+        "com_f171cd222ca5",
+        "com_33a530deb7aa",
+        "com_c4469caf0091",
+        "com_1740a8cfc76c",
+        "com_4a20115f4862",
+        "com_a4d969c3c6eb"
+      ]
+    },
+    {
       "id": "com_6577316c8d76",
       "slug": "honorly-6c8d76",
       "name": "Honorly",
@@ -12763,9 +12836,9 @@
       ],
       "similarCommunityIds": [
         "com_33a530deb7aa",
+        "com_4af3a0d8df95",
         "com_f171cd222ca5",
         "com_4a20115f4862",
-        "com_4c7fef32815c",
         "com_d1da9ddb5fe6",
         "com_f5605b691048"
       ]
@@ -12833,9 +12906,9 @@
       ],
       "similarCommunityIds": [
         "com_4a20115f4862",
-        "com_4c7fef32815c",
         "com_d1da9ddb5fe6",
         "com_33a530deb7aa",
+        "com_4af3a0d8df95",
         "com_c4469caf0091",
         "com_f171cd222ca5"
       ]
@@ -13760,10 +13833,10 @@
       "similarCommunityIds": [
         "com_8ff2a593caac",
         "com_4a20115f4862",
-        "com_4c7fef32815c",
         "com_d1da9ddb5fe6",
         "com_f5605b691048",
-        "com_6577316c8d76"
+        "com_6577316c8d76",
+        "com_8c92a460b4fd"
       ]
     },
     {
@@ -13981,8 +14054,8 @@
       "slug": "girls-who-meet-b46ffc",
       "name": "Girls Who Meet",
       "kind": "recurring_series",
-      "tagline": "Girls Who Meet is a recurring event series centered on parties, food, outdoors in manhattan, midtown.",
-      "description": "Girls Who Meet is a recurring event series centered on parties, food, outdoors in manhattan, midtown. Based on 14 observed event dates, it meets weekly on Saturday and Sunday evenings.",
+      "tagline": "Girls Who Meet is a recurring event series centered on parties, food, outdoors in chelsea, manhattan.",
+      "description": "Girls Who Meet is a recurring event series centered on parties, food, outdoors in chelsea, manhattan. Based on 15 observed event dates, it meets weekly on Saturday and Sunday evenings.",
       "categories": [
         "other",
         "parties",
@@ -13998,10 +14071,10 @@
         "books"
       ],
       "neighborhoods": [
+        "chelsea",
         "manhattan",
         "midtown",
-        "upper east side",
-        "chelsea"
+        "upper east side"
       ],
       "homeVenue": "Midtown Manhattan",
       "imageUrl": "https://images.lumacdn.com/uploads/ze/3f5319e3-825a-47a6-abb4-10d56f7e0d77.jpeg",
@@ -14016,7 +14089,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-21",
-        "upcomingEventCount": 7,
+        "upcomingEventCount": 8,
         "eventCount90d": 8
       },
       "schedule": {
@@ -14027,7 +14100,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 14
+        "sampleSize": 15
       },
       "upcomingEventIds": [
         "491dfbc6e8213b1a",
@@ -14036,7 +14109,8 @@
         "f0fd94e9562c2dae",
         "4b4a904a560262a6",
         "3ea99b1727667178",
-        "ee64688c33672ac7"
+        "ee64688c33672ac7",
+        "026055a4e57cbe82"
       ],
       "sourceAttributions": [
         "luma"
@@ -14045,7 +14119,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 14,
+        "observedDateCount": 15,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -14234,7 +14308,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-27",
-        "upcomingEventCount": 9,
+        "upcomingEventCount": 10,
         "eventCount90d": 25
       },
       "schedule": {
@@ -14250,6 +14324,7 @@
       "upcomingEventIds": [
         "d41c9f8ae7df4a92",
         "ee481370985a606b",
+        "209adce1f3450250",
         "53a8013ed0f6c8ee",
         "320ae4650d6dd8fe",
         "f99c63dc3740dd87",
@@ -14721,8 +14796,8 @@
       "slug": "reading-rhythms-nyc-2cb0a5",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in manhattan, upper west side.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in manhattan, upper west side. Based on 22 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in upper west side, manhattan.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in upper west side, manhattan. Based on 23 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -14738,8 +14813,8 @@
         "games"
       ],
       "neighborhoods": [
-        "manhattan",
         "upper west side",
+        "manhattan",
         "brooklyn",
         "williamsburg"
       ],
@@ -14756,7 +14831,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-24",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 19,
         "eventCount90d": 17
       },
       "schedule": {
@@ -14767,7 +14842,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 22
+        "sampleSize": 23
       },
       "upcomingEventIds": [
         "14a45f2ac9abcc9e",
@@ -14777,11 +14852,11 @@
         "d320a9a1b377df1b",
         "8198c72a91655640",
         "4629ec7233b7016e",
+        "88c309f0d28a70dd",
         "386b7375b75a029a",
         "e6fc89c33709c8fa",
         "dc56c4a66a942707",
-        "9a596a894123213f",
-        "9ca36c234dafa6b2"
+        "9a596a894123213f"
       ],
       "sourceAttributions": [
         "luma"
@@ -14790,7 +14865,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 22,
+        "observedDateCount": 23,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -15683,8 +15758,8 @@
       "slug": "founders-house-a93ad2",
       "name": "Founders House",
       "kind": "recurring_series",
-      "tagline": "Founders House is a recurring event series centered on fitness in manhattan.",
-      "description": "Founders House is a recurring event series centered on fitness in manhattan. Based on 8 observed event dates, it meets weekly on Tuesday and Wednesday mornings.",
+      "tagline": "Founders House is a recurring event series centered on fitness in manhattan, williamsburg.",
+      "description": "Founders House is a recurring event series centered on fitness in manhattan, williamsburg. Based on 9 observed event dates, it meets weekly on Tuesday and Wednesday mornings.",
       "categories": [
         "fitness"
       ],
@@ -15692,7 +15767,8 @@
         "fitness"
       ],
       "neighborhoods": [
-        "manhattan"
+        "manhattan",
+        "williamsburg"
       ],
       "homeVenue": "St. George Boulangerie",
       "imageUrl": "https://images.lumacdn.com/uploads/zq/485430ac-9e9b-4250-854c-4cc68e7fd7b7.png",
@@ -15707,7 +15783,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-25",
-        "upcomingEventCount": 1,
+        "upcomingEventCount": 2,
         "eventCount90d": 7
       },
       "schedule": {
@@ -15718,10 +15794,11 @@
         ],
         "typicalTime": "07:00",
         "confidence": 1.0,
-        "sampleSize": 8
+        "sampleSize": 9
       },
       "upcomingEventIds": [
-        "3de18a858bf6736d"
+        "3de18a858bf6736d",
+        "229c92cf51d208e8"
       ],
       "sourceAttributions": [
         "luma"
@@ -15730,7 +15807,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 8,
+        "observedDateCount": 9,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -15744,8 +15821,8 @@
         "com_3bc67889299d",
         "com_99e08820d1c1",
         "com_feb5ce491629",
-        "com_0259cd2e758d",
-        "com_02f781be3c26"
+        "com_8e231cf7376c",
+        "com_065dafa96d43"
       ]
     },
     {
@@ -18426,9 +18503,9 @@
       ],
       "similarCommunityIds": [
         "com_c4469caf0091",
+        "com_4af3a0d8df95",
         "com_f171cd222ca5",
         "com_4a20115f4862",
-        "com_4c7fef32815c",
         "com_d1da9ddb5fe6",
         "com_f5605b691048"
       ]
@@ -18752,8 +18829,8 @@
       "slug": "reading-rhythms-nyc-a67222",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in manhattan, bronx.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in manhattan, bronx. Based on 63 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in upper west side, manhattan.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in upper west side, manhattan. Based on 64 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -18765,17 +18842,17 @@
         "art"
       ],
       "neighborhoods": [
+        "upper west side",
         "manhattan",
         "bronx",
-        "upper west side",
         "williamsburg"
       ],
       "homeVenue": "BX Eatery",
       "imageUrl": "https://images.lumacdn.com/api-uploads/ni/892bfdbd-5bb3-4b33-a021-093cbca14402.jpg",
       "links": [
         {
-          "type": "luma",
-          "label": "View on Luma",
+          "type": "readingrhythms",
+          "label": "View on Readingrhythms",
           "url": "https://luma.com/readingrhythms-manhattan"
         }
       ],
@@ -18783,7 +18860,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-24",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 19,
         "eventCount90d": 70
       },
       "schedule": {
@@ -18794,7 +18871,7 @@
         ],
         "typicalTime": "18:30",
         "confidence": 1.0,
-        "sampleSize": 63
+        "sampleSize": 64
       },
       "upcomingEventIds": [
         "14a45f2ac9abcc9e",
@@ -18805,19 +18882,19 @@
         "d320a9a1b377df1b",
         "8198c72a91655640",
         "4629ec7233b7016e",
+        "88c309f0d28a70dd",
         "386b7375b75a029a",
         "e6fc89c33709c8fa",
-        "dc56c4a66a942707",
-        "9a596a894123213f"
+        "dc56c4a66a942707"
       ],
       "sourceAttributions": [
-        "luma"
+        "readingrhythms"
       ],
       "lastVerifiedAt": "2026-11-27",
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 63,
+        "observedDateCount": 64,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -20659,9 +20736,9 @@
         "com_805e2fa93ad2",
         "com_3bc67889299d",
         "com_99e08820d1c1",
+        "com_8e231cf7376c",
         "com_feb5ce491629",
-        "com_0259cd2e758d",
-        "com_02f781be3c26"
+        "com_0259cd2e758d"
       ]
     },
     {
@@ -21483,12 +21560,12 @@
         "source:centerforfiction"
       ],
       "similarCommunityIds": [
+        "com_4af3a0d8df95",
         "com_bfb16ef27b62",
         "com_1740a8cfc76c",
         "com_8664a7e5723e",
         "com_d8a5203885a9",
-        "com_f171cd222ca5",
-        "com_4a9490cb3534"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -21742,77 +21819,6 @@
         "com_759f151a6d08",
         "com_79c45b85e55a",
         "com_3048e331f7b6"
-      ]
-    },
-    {
-      "id": "com_4c7fef32815c",
-      "slug": "reading-rhythms-32815c",
-      "name": "Reading Rhythms",
-      "kind": "recurring_series",
-      "tagline": "Reading Rhythms is a recurring event series centered on books in upper west side, harlem.",
-      "description": "Reading Rhythms is a recurring event series centered on books in upper west side, harlem. Based on 2 observed event dates, it meets biweekly on Monday and Tuesday evenings.",
-      "categories": [
-        "books"
-      ],
-      "tags": [
-        "books"
-      ],
-      "neighborhoods": [
-        "upper west side",
-        "harlem"
-      ],
-      "homeVenue": "Upper West Side",
-      "imageUrl": "https://images.lumacdn.com/api-uploads/ru/5da8a3c2-3d0a-49f8-a206-8ef50d6d6ed5.jpg",
-      "links": [
-        {
-          "type": "readingrhythms",
-          "label": "View on Readingrhythms",
-          "url": "https://readingrhythms.co/"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": null,
-        "upcomingEventCount": 2,
-        "eventCount90d": 0
-      },
-      "schedule": {
-        "cadence": "biweekly",
-        "typicalDays": [
-          "Monday",
-          "Tuesday"
-        ],
-        "typicalTime": "18:30",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [
-        "88c309f0d28a70dd",
-        "0fe8034bf61da8f6"
-      ],
-      "sourceAttributions": [
-        "readingrhythms"
-      ],
-      "lastVerifiedAt": "2026-11-27",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 2,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "url:https://readingrhythms.co"
-      ],
-      "similarCommunityIds": [
-        "com_4a20115f4862",
-        "com_d1da9ddb5fe6",
-        "com_f5605b691048",
-        "com_33a530deb7aa",
-        "com_c4469caf0091",
-        "com_f171cd222ca5"
       ]
     },
     {
@@ -68949,7 +68955,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-27T22:06:18.483243+00:00",
+  "lastUpdated": "2026-11-27T22:41:22.473412+00:00",
   "version": 1,
   "schemaVersion": 1
 }
