@@ -831,8 +831,8 @@
         "com_37d913f99052",
         "com_8664a7e5723e",
         "com_cb019f4e9752",
-        "com_4a9490cb3534",
-        "com_68b36e93076a"
+        "com_0592ac08a866",
+        "com_4a9490cb3534"
       ]
     },
     {
@@ -2091,12 +2091,12 @@
         "eventbrite:121656053667"
       ],
       "similarCommunityIds": [
-        "com_0592ac08a866",
         "com_d6cec2ac3e5a",
         "com_9caab69e0812",
         "com_0df03478a9fc",
         "com_1e7cda5c9e12",
-        "com_1f87b327b20e"
+        "com_1f87b327b20e",
+        "com_5a1a72bded1f"
       ]
     },
     {
@@ -4456,12 +4456,12 @@
         "eventbrite:20002618011"
       ],
       "similarCommunityIds": [
-        "com_0592ac08a866",
         "com_0ae542c496b3",
         "com_1466f20a9300",
         "com_3048e331f7b6",
         "com_a2114f75658a",
-        "com_b736e77bdf93"
+        "com_b736e77bdf93",
+        "com_e341908692df"
       ]
     },
     {
@@ -4907,10 +4907,10 @@
       "similarCommunityIds": [
         "com_fa67d543a8b1",
         "com_72fc29c6d9f3",
-        "com_0592ac08a866",
         "com_30e8efd15421",
         "com_483b995f5504",
-        "com_7c6c5c3e08c8"
+        "com_7c6c5c3e08c8",
+        "com_94fe2e2a7db6"
       ]
     },
     {
@@ -5457,9 +5457,9 @@
         "com_cb019f4e9752",
         "com_a45e35db829c",
         "com_dca352748139",
+        "com_0592ac08a866",
         "com_037b24ee6417",
-        "com_68b36e93076a",
-        "com_70cbea4f18e4"
+        "com_68b36e93076a"
       ]
     },
     {
@@ -5540,12 +5540,12 @@
         "eventbrite:31639983301"
       ],
       "similarCommunityIds": [
+        "com_0592ac08a866",
         "com_7d3e76b46ffc",
         "com_bb6928bc760c",
         "com_9a5da9b3c52e",
         "com_72fc29c6d9f3",
-        "com_759f151a6d08",
-        "com_79c45b85e55a"
+        "com_759f151a6d08"
       ]
     },
     {
@@ -5772,9 +5772,9 @@
         "com_a0e62d8a426f",
         "com_3837f308cd75",
         "com_29bf3dd9f892",
-        "com_0592ac08a866",
         "com_0ae542c496b3",
-        "com_359977ec663e"
+        "com_359977ec663e",
+        "com_72fc29c6d9f3"
       ]
     },
     {
@@ -10334,8 +10334,8 @@
         "com_489a14652e20",
         "com_72fc29c6d9f3",
         "com_d2d455d2d6c9",
-        "com_0592ac08a866",
-        "com_14a9b81bfe8f"
+        "com_14a9b81bfe8f",
+        "com_3942d7a4c6e3"
       ]
     },
     {
@@ -11354,13 +11354,17 @@
       "slug": "crafting-events-at-a-mano-brooklyn-08a866",
       "name": "CRAFTING EVENTS at A.MANO Brooklyn",
       "kind": "recurring_series",
-      "tagline": "CRAFTING EVENTS at A.MANO Brooklyn is a recurring event series centered on food in brooklyn.",
-      "description": "CRAFTING EVENTS at A.MANO Brooklyn is a recurring event series centered on food in brooklyn. Based on 2 observed event dates, it meets weekly on Thursday and Saturday afternoons.",
+      "tagline": "CRAFTING EVENTS at A.MANO Brooklyn is a recurring event series centered on outdoors, games, food in brooklyn.",
+      "description": "CRAFTING EVENTS at A.MANO Brooklyn is a recurring event series centered on outdoors, games, food in brooklyn. Based on 3 observed event dates, it meets weekly on Tuesday and Thursday afternoons.",
       "categories": [
+        "outdoors",
+        "games",
         "food",
         "other"
       ],
       "tags": [
+        "outdoors",
+        "games",
         "food",
         "other"
       ],
@@ -11368,7 +11372,7 @@
         "brooklyn"
       ],
       "homeVenue": "A.MANO Brooklyn",
-      "imageUrl": "https://images.lumacdn.com/uploads/zj/bdf8d1c1-d2dd-4ab6-8817-32a5260f3c71.png",
+      "imageUrl": "https://images.lumacdn.com/uploads/on/0ec4f5e5-371d-4c53-a717-75558e11f9a1.png",
       "links": [
         {
           "type": "luma",
@@ -11380,20 +11384,21 @@
       "activity": {
         "state": "active",
         "lastEventDate": null,
-        "upcomingEventCount": 2,
+        "upcomingEventCount": 3,
         "eventCount90d": 0
       },
       "schedule": {
         "cadence": "weekly",
         "typicalDays": [
-          "Thursday",
-          "Saturday"
+          "Tuesday",
+          "Thursday"
         ],
-        "typicalTime": "12:00",
-        "confidence": 0.33,
-        "sampleSize": 2
+        "typicalTime": "16:00",
+        "confidence": 0.5,
+        "sampleSize": 3
       },
       "upcomingEventIds": [
+        "20e33d349faea8f2",
         "3a36ac2f0a65a839",
         "b668cd94baca4cd3"
       ],
@@ -11404,7 +11409,7 @@
       "verified": false,
       "verificationStatus": "observed_recurring",
       "qualificationEvidence": {
-        "observedDateCount": 2,
+        "observedDateCount": 3,
         "hasFirstPartyIdentity": true
       },
       "newcomerFriendly": false,
@@ -11415,12 +11420,12 @@
         "luma:cal-dcytr3bamuswvkm"
       ],
       "similarCommunityIds": [
-        "com_72fc29c6d9f3",
+        "com_8172de11cbdf",
+        "com_8664a7e5723e",
         "com_9caab69e0812",
-        "com_037b24ee6417",
-        "com_3837f308cd75",
-        "com_70cbea4f18e4",
-        "com_9e9d672a2fd6"
+        "com_a3b6b9e746c5",
+        "com_cb019f4e9752",
+        "com_3837f308cd75"
       ]
     },
     {
@@ -11849,6 +11854,79 @@
         "com_feb5ce491629",
         "com_4b9d7692e567",
         "com_9e04598579ba"
+      ]
+    },
+    {
+      "id": "com_96affe55bc5c",
+      "slug": "haze-photo-club-55bc5c",
+      "name": "Haze Photo Club",
+      "kind": "club",
+      "tagline": "Haze Photo Club is a community club centered on outdoors in manhattan, financial district.",
+      "description": "Haze Photo Club is a community club centered on outdoors in manhattan, financial district. Based on 2 observed event dates, it meets biweekly on Saturday afternoons.",
+      "categories": [
+        "other",
+        "outdoors"
+      ],
+      "tags": [
+        "other",
+        "outdoors"
+      ],
+      "neighborhoods": [
+        "manhattan",
+        "financial district"
+      ],
+      "homeVenue": "Manhattan",
+      "imageUrl": "https://images.lumacdn.com/uploads/d7/b0a4592a-4ce0-42b7-990c-32c62ba4a157.jpg",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/haze"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 2,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Saturday"
+        ],
+        "typicalTime": "14:00",
+        "confidence": 0.33,
+        "sampleSize": 2
+      },
+      "upcomingEventIds": [
+        "40aeb93ecdc8ccc6",
+        "4b4d07d7477b8061"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-28",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 2,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:shawn.chrome",
+        "luma:cal-dwzem7npxt9edu9"
+      ],
+      "similarCommunityIds": [
+        "com_14ba17c2cfae",
+        "com_30e8efd15421",
+        "com_483b995f5504",
+        "com_51bae2bbe63b",
+        "com_72645b205beb",
+        "com_7c6c5c3e08c8"
       ]
     },
     {
@@ -13745,6 +13823,83 @@
       ]
     },
     {
+      "id": "com_8963cc48d824",
+      "slug": "mysha-x-maman-mornings-48d824",
+      "name": "Mysha x Maman Mornings",
+      "kind": "recurring_series",
+      "tagline": "Mysha x Maman Mornings is a recurring event series centered on books, celebrities, art in soho, carroll gardens.",
+      "description": "Mysha x Maman Mornings is a recurring event series centered on books, celebrities, art in soho, carroll gardens. Based on 3 observed event dates, it meets biweekly on Monday and Thursday mornings.",
+      "categories": [
+        "books",
+        "celebrities",
+        "art"
+      ],
+      "tags": [
+        "books",
+        "celebrities",
+        "art"
+      ],
+      "neighborhoods": [
+        "soho",
+        "carroll gardens"
+      ],
+      "homeVenue": "113 Spring",
+      "imageUrl": "https://images.lumacdn.com/uploads/60/bda606cf-53a2-462a-b8ed-99268b778fb9.png",
+      "links": [
+        {
+          "type": "luma",
+          "label": "View on Luma",
+          "url": "https://luma.com/myshamamanmornings"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": "2026-11-16",
+        "upcomingEventCount": 2,
+        "eventCount90d": 1
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Monday",
+          "Thursday"
+        ],
+        "typicalTime": "09:00",
+        "confidence": 0.5,
+        "sampleSize": 3
+      },
+      "upcomingEventIds": [
+        "3a73121a56aeee62",
+        "6d11337366bbbd60"
+      ],
+      "sourceAttributions": [
+        "luma"
+      ],
+      "lastVerifiedAt": "2026-11-28",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "instagram:myshapods",
+        "luma:cal-j7sgzztqvi08hva",
+        "luma:cal-ms5jaaelmqxx6de"
+      ],
+      "similarCommunityIds": [
+        "com_8ff2a593caac",
+        "com_12939182c936",
+        "com_160d3b550b59",
+        "com_4a20115f4862",
+        "com_d1da9ddb5fe6",
+        "com_f5605b691048"
+      ]
+    },
+    {
       "id": "com_f5605b691048",
       "slug": "wise-community-events-691048",
       "name": "WISE Community Events",
@@ -14095,12 +14250,12 @@
         "luma:cal-k4jgwas5ouvdujf"
       ],
       "similarCommunityIds": [
-        "com_0592ac08a866",
         "com_9a5da9b3c52e",
         "com_fa67d543a8b1",
         "com_9caab69e0812",
         "com_bb6928bc760c",
-        "com_af97eec4cf97"
+        "com_af97eec4cf97",
+        "com_4a4119ad0f74"
       ]
     },
     {
@@ -14596,78 +14751,6 @@
         "com_4b9d7692e567",
         "com_9e04598579ba",
         "com_8f2a69f866f2"
-      ]
-    },
-    {
-      "id": "com_8963cc48d824",
-      "slug": "mysha-happenings-48d824",
-      "name": "mysha happenings",
-      "kind": "recurring_series",
-      "tagline": "mysha happenings is a recurring event series centered on books, celebrities in soho.",
-      "description": "mysha happenings is a recurring event series centered on books, celebrities in soho. Based on 2 observed event dates, it meets biweekly on Monday and Thursday mornings.",
-      "categories": [
-        "books",
-        "celebrities"
-      ],
-      "tags": [
-        "books",
-        "celebrities"
-      ],
-      "neighborhoods": [
-        "soho"
-      ],
-      "homeVenue": "113 Spring",
-      "imageUrl": "https://images.lumacdn.com/uploads/60/bda606cf-53a2-462a-b8ed-99268b778fb9.png",
-      "links": [
-        {
-          "type": "luma",
-          "label": "View on Luma",
-          "url": "https://luma.com/mysha-happenings"
-        }
-      ],
-      "joinMethod": "View an upcoming event",
-      "activity": {
-        "state": "active",
-        "lastEventDate": "2026-11-16",
-        "upcomingEventCount": 1,
-        "eventCount90d": 1
-      },
-      "schedule": {
-        "cadence": "biweekly",
-        "typicalDays": [
-          "Monday",
-          "Thursday"
-        ],
-        "typicalTime": "09:00",
-        "confidence": 0.33,
-        "sampleSize": 2
-      },
-      "upcomingEventIds": [
-        "3a73121a56aeee62"
-      ],
-      "sourceAttributions": [
-        "luma"
-      ],
-      "lastVerifiedAt": "2026-11-28",
-      "verified": false,
-      "verificationStatus": "observed_recurring",
-      "qualificationEvidence": {
-        "observedDateCount": 2,
-        "hasFirstPartyIdentity": true
-      },
-      "newcomerFriendly": false,
-      "newcomerEvidence": [],
-      "aliases": [
-        "instagram:myshapods",
-        "luma:cal-ms5jaaelmqxx6de"
-      ],
-      "similarCommunityIds": [
-        "com_8ff2a593caac",
-        "com_4a20115f4862",
-        "com_d1da9ddb5fe6",
-        "com_f5605b691048",
-        "com_6577316c8d76",
-        "com_8c92a460b4fd"
       ]
     },
     {
@@ -15255,9 +15338,9 @@
         "luma:cal-p6wrliz7nxddcxz"
       ],
       "similarCommunityIds": [
-        "com_0592ac08a866",
         "com_41aa702658a0",
         "com_72fc29c6d9f3",
+        "com_0592ac08a866",
         "com_3837f308cd75",
         "com_2586a09309da",
         "com_037b24ee6417"
@@ -15701,8 +15784,8 @@
       "slug": "reading-rhythms-nyc-2cb0a5",
       "name": "Reading Rhythms NYC",
       "kind": "recurring_series",
-      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in manhattan, upper west side.",
-      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in manhattan, upper west side. Based on 22 observed event dates, it meets weekly on Monday and Tuesday evenings.",
+      "tagline": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in manhattan, bronx.",
+      "description": "Reading Rhythms NYC is a recurring event series centered on books, parties, art in manhattan, bronx. Based on 22 observed event dates, it meets weekly on Monday and Tuesday evenings.",
       "categories": [
         "books",
         "parties",
@@ -15719,11 +15802,11 @@
       ],
       "neighborhoods": [
         "manhattan",
+        "bronx",
         "upper west side",
-        "brooklyn",
-        "long island city"
+        "brooklyn"
       ],
-      "homeVenue": "10-15 43rd Ave",
+      "homeVenue": "BX Eatery",
       "imageUrl": "https://images.lumacdn.com/api-uploads/ni/892bfdbd-5bb3-4b33-a021-093cbca14402.jpg",
       "links": [
         {
@@ -15736,7 +15819,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-24",
-        "upcomingEventCount": 17,
+        "upcomingEventCount": 18,
         "eventCount90d": 17
       },
       "schedule": {
@@ -15761,7 +15844,7 @@
         "e6fc89c33709c8fa",
         "dc56c4a66a942707",
         "9a596a894123213f",
-        "9ca36c234dafa6b2"
+        "c576baa00c0267f9"
       ],
       "sourceAttributions": [
         "luma"
@@ -15780,8 +15863,8 @@
         "luma:cal-q8l315usvmwb6h6"
       ],
       "similarCommunityIds": [
-        "com_55ca36db453a",
         "com_cdd5daa67222",
+        "com_55ca36db453a",
         "com_d2d455d2d6c9",
         "com_8172de11cbdf",
         "com_733b8a7ddfff",
@@ -69776,7 +69859,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-28T20:23:35.000772+00:00",
+  "lastUpdated": "2026-11-28T20:54:34.748960+00:00",
   "version": 1,
   "schemaVersion": 1
 }
