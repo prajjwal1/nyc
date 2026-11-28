@@ -1631,12 +1631,12 @@
         "eventbrite:121317604995"
       ],
       "similarCommunityIds": [
+        "com_4c7fef32815c",
         "com_d1da9ddb5fe6",
         "com_f5605b691048",
         "com_33a530deb7aa",
         "com_4af3a0d8df95",
-        "com_c4469caf0091",
-        "com_f171cd222ca5"
+        "com_c4469caf0091"
       ]
     },
     {
@@ -7076,11 +7076,11 @@
       ],
       "similarCommunityIds": [
         "com_4a20115f4862",
+        "com_4c7fef32815c",
         "com_f5605b691048",
         "com_1e68b580d0be",
         "com_ddcfc606c1ae",
-        "com_f171cd222ca5",
-        "com_146994a16b2e"
+        "com_f171cd222ca5"
       ]
     },
     {
@@ -13097,8 +13097,8 @@
         "com_4af3a0d8df95",
         "com_f171cd222ca5",
         "com_4a20115f4862",
-        "com_d1da9ddb5fe6",
-        "com_f5605b691048"
+        "com_4c7fef32815c",
+        "com_d1da9ddb5fe6"
       ]
     },
     {
@@ -13164,11 +13164,11 @@
       ],
       "similarCommunityIds": [
         "com_4a20115f4862",
+        "com_4c7fef32815c",
         "com_d1da9ddb5fe6",
         "com_33a530deb7aa",
         "com_4af3a0d8df95",
-        "com_c4469caf0091",
-        "com_f171cd222ca5"
+        "com_c4469caf0091"
       ]
     },
     {
@@ -14022,10 +14022,10 @@
       "similarCommunityIds": [
         "com_8ff2a593caac",
         "com_4a20115f4862",
+        "com_4c7fef32815c",
         "com_d1da9ddb5fe6",
         "com_f5605b691048",
-        "com_6577316c8d76",
-        "com_8c92a460b4fd"
+        "com_6577316c8d76"
       ]
     },
     {
@@ -18693,8 +18693,8 @@
         "com_4af3a0d8df95",
         "com_f171cd222ca5",
         "com_4a20115f4862",
-        "com_d1da9ddb5fe6",
-        "com_f5605b691048"
+        "com_4c7fef32815c",
+        "com_d1da9ddb5fe6"
       ]
     },
     {
@@ -21503,8 +21503,8 @@
         "com_55ca36db453a",
         "com_b736e77bdf93",
         "com_1740a8cfc76c",
-        "com_f23f8820878b",
-        "com_2057646865eb"
+        "com_2057646865eb",
+        "com_37d913f99052"
       ]
     },
     {
@@ -21921,22 +21921,22 @@
         "comedy",
         "music",
         "outdoors",
-        "parties",
-        "singles"
+        "celebrities",
+        "parties"
       ],
       "tags": [
         "comedy",
         "music",
         "outdoors",
-        "parties",
-        "singles"
+        "celebrities",
+        "parties"
       ],
       "neighborhoods": [
         "east village",
         "upper west side"
       ],
-      "homeVenue": "New York Comedy Club Upper West Side",
-      "imageUrl": "/img/comedians/dean-67360753-large-thumb.jpg",
+      "homeVenue": "New York Comedy Club on 4th Street",
+      "imageUrl": "/img/imagetest/Chuck-Nice-New-JPG-f9df0bb7-large-thumb.jpg",
       "links": [
         {
           "type": "newyorkcomedyclub",
@@ -21948,7 +21948,7 @@
       "activity": {
         "state": "active",
         "lastEventDate": "2026-11-28",
-        "upcomingEventCount": 21,
+        "upcomingEventCount": 25,
         "eventCount90d": 421
       },
       "schedule": {
@@ -21962,6 +21962,10 @@
         "sampleSize": 103
       },
       "upcomingEventIds": [
+        "f4cdc2e17713f605",
+        "09eecd96e95edda8",
+        "c7ec9637ff15bf32",
+        "35f55a48305e70fc",
         "1af2207f86129772",
         "40223a821ecf4dca",
         "71856b6f3df343fb",
@@ -21969,11 +21973,7 @@
         "f16374bc08ae43a6",
         "e9f79625035a4cd4",
         "554acbde4b01aa29",
-        "2e29c0cd6ce272d1",
-        "326a3269ac2bceed",
-        "5c7f2f6e9ad285df",
-        "019ab4a3432394d5",
-        "f7f1d268a88ecd85"
+        "2e29c0cd6ce272d1"
       ],
       "sourceAttributions": [
         "newyorkcomedyclub"
@@ -21994,9 +21994,82 @@
         "com_cf4f17cc5b67",
         "com_edf7e9714aa8",
         "com_55ca36db453a",
-        "com_c1410c07c4dd",
         "com_759f151a6d08",
-        "com_79c45b85e55a"
+        "com_79c45b85e55a",
+        "com_3048e331f7b6"
+      ]
+    },
+    {
+      "id": "com_4c7fef32815c",
+      "slug": "reading-rhythms-32815c",
+      "name": "Reading Rhythms",
+      "kind": "recurring_series",
+      "tagline": "Reading Rhythms is a recurring event series centered on books in queens, upper west side.",
+      "description": "Reading Rhythms is a recurring event series centered on books in queens, upper west side. Based on 3 observed event dates, it meets biweekly on Tuesday and Monday evenings.",
+      "categories": [
+        "books"
+      ],
+      "tags": [
+        "books"
+      ],
+      "neighborhoods": [
+        "queens",
+        "upper west side",
+        "harlem"
+      ],
+      "homeVenue": "Queens",
+      "imageUrl": "https://images.lumacdn.com/api-uploads/nc/361a8d7d-b52b-4eee-9a71-27eaf8905957.jpg",
+      "links": [
+        {
+          "type": "readingrhythms",
+          "label": "View on Readingrhythms",
+          "url": "https://readingrhythms.co/"
+        }
+      ],
+      "joinMethod": "View an upcoming event",
+      "activity": {
+        "state": "active",
+        "lastEventDate": null,
+        "upcomingEventCount": 3,
+        "eventCount90d": 0
+      },
+      "schedule": {
+        "cadence": "biweekly",
+        "typicalDays": [
+          "Tuesday",
+          "Monday"
+        ],
+        "typicalTime": "18:30",
+        "confidence": 0.5,
+        "sampleSize": 3
+      },
+      "upcomingEventIds": [
+        "a6de6b2b9adcb67a",
+        "88c309f0d28a70dd",
+        "0fe8034bf61da8f6"
+      ],
+      "sourceAttributions": [
+        "readingrhythms"
+      ],
+      "lastVerifiedAt": "2026-11-28",
+      "verified": false,
+      "verificationStatus": "observed_recurring",
+      "qualificationEvidence": {
+        "observedDateCount": 3,
+        "hasFirstPartyIdentity": true
+      },
+      "newcomerFriendly": false,
+      "newcomerEvidence": [],
+      "aliases": [
+        "url:https://readingrhythms.co"
+      ],
+      "similarCommunityIds": [
+        "com_4a20115f4862",
+        "com_d1da9ddb5fe6",
+        "com_f5605b691048",
+        "com_33a530deb7aa",
+        "com_4af3a0d8df95",
+        "com_c4469caf0091"
       ]
     },
     {
@@ -69133,7 +69206,7 @@
       "similarCommunityIds": []
     }
   ],
-  "lastUpdated": "2026-11-28T01:42:14.567305+00:00",
+  "lastUpdated": "2026-11-28T02:06:15.544873+00:00",
   "version": 1,
   "schemaVersion": 1
 }
